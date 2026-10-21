@@ -36,11 +36,10 @@ public abstract class CPlugDecoratorSolidBuilderBase<TSelf> where TSelf : CPlugD
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorSolid> state;
     private protected CPlugDecoratorSolidBuilderBase() => state = new();
     private protected CPlugDecoratorSolidBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorSolid> state) => this.state = state;
-    private protected static void SetTreeDecorators(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorSolid> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorSolidBuilderAssignments.GetTreeDecoratorsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree>? TreeDecorators
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree>?>("TreeDecorators");
-        set => SetTreeDecorators(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorSolidBuilderAssignments.GetTreeDecoratorsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithTreeDecorators(NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree>? value)
     {

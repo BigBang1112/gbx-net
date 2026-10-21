@@ -36,11 +36,10 @@ public abstract class CGameCtnMediaBlockFxBlurDepthBuilderBase<TSelf> where TSel
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth> state;
     private protected CGameCtnMediaBlockFxBlurDepthBuilderBase() => state = new();
     private protected CGameCtnMediaBlockFxBlurDepthBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth> state) => this.state = state;
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth.Key>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxBlurDepthBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth.Key>? Keys
     {
         get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth.Key>?>("Keys");
-        set => SetKeys(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxBlurDepthBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth.Key>? value)
     {

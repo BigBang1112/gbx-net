@@ -36,17 +36,10 @@ public abstract class CMotionEmitterParticlesBuilderBase<TSelf> where TSelf : CM
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterParticles> state;
     private protected CMotionEmitterParticlesBuilderBase() => state = new();
     private protected CMotionEmitterParticlesBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterParticles> state) => this.state = state;
-    private protected static void SetEmitterModel(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterParticles> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterParticlesBuilderAssignments.GetEmitterModelAssignment(), value, GameVersion.TMF);
-    private protected static void SetEmitterModelReference(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterParticles> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterParticlesBuilderAssignments.GetEmitterModelReferenceAssignment(), value, GameVersion.TMF);
-    private protected static void SetIsActive(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterParticles> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterParticlesBuilderAssignments.GetIsActiveAssignment(), value, GameVersion.TMF);
-    private protected static void SetIsEventMode(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterParticles> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterParticlesBuilderAssignments.GetIsEventModeAssignment(), value, GameVersion.TMF);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterParticles> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetParams(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterParticles> state, global::GBX.NET.Engines.Motion.CMotionEmitterParticles.EmitParams? value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterParticlesBuilderAssignments.GetParamsAssignment(), value, GameVersion.TMF);
-    private protected static void SetUseOwnerLoc(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterParticles> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterParticlesBuilderAssignments.GetUseOwnerLocAssignment(), value, GameVersion.TMF);
     public string? Name
     {
         get => state.Get<string?>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithName(string? value)
     {
@@ -153,7 +146,7 @@ public partial class CMotionEmitterParticlesBuilder : CMotionEmitterParticlesBui
         public global::GBX.NET.Engines.MwFoundations.CMwNod? EmitterModel
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("EmitterModel");
-            set => SetEmitterModel(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterParticlesBuilderAssignments.GetEmitterModelAssignment(), value, GameVersion.TMF);
         }
         public TMF WithEmitterModel(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -163,13 +156,13 @@ public partial class CMotionEmitterParticlesBuilder : CMotionEmitterParticlesBui
         public TMF WithEmitterModelReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetEmitterModelReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterParticlesBuilderAssignments.GetEmitterModelReferenceAssignment(), value, GameVersion.TMF);
             return this;
         }
         public bool IsActive
         {
             get => state.Get<bool>("IsActive");
-            set => SetIsActive(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterParticlesBuilderAssignments.GetIsActiveAssignment(), value, GameVersion.TMF);
         }
         public TMF WithIsActive(bool value)
         {
@@ -179,7 +172,7 @@ public partial class CMotionEmitterParticlesBuilder : CMotionEmitterParticlesBui
         public bool IsEventMode
         {
             get => state.Get<bool>("IsEventMode");
-            set => SetIsEventMode(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterParticlesBuilderAssignments.GetIsEventModeAssignment(), value, GameVersion.TMF);
         }
         public TMF WithIsEventMode(bool value)
         {
@@ -189,7 +182,7 @@ public partial class CMotionEmitterParticlesBuilder : CMotionEmitterParticlesBui
         public global::GBX.NET.Engines.Motion.CMotionEmitterParticles.EmitParams? Params
         {
             get => state.Get<global::GBX.NET.Engines.Motion.CMotionEmitterParticles.EmitParams?>("Params");
-            set => SetParams(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterParticlesBuilderAssignments.GetParamsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithParams(global::GBX.NET.Engines.Motion.CMotionEmitterParticles.EmitParams? value)
         {
@@ -199,7 +192,7 @@ public partial class CMotionEmitterParticlesBuilder : CMotionEmitterParticlesBui
         public bool UseOwnerLoc
         {
             get => state.Get<bool>("UseOwnerLoc");
-            set => SetUseOwnerLoc(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterParticlesBuilderAssignments.GetUseOwnerLocAssignment(), value, GameVersion.TMF);
         }
         public TMF WithUseOwnerLoc(bool value)
         {

@@ -36,14 +36,10 @@ public abstract class CSmArenaResourceBuilderBase<TSelf> where TSelf : CSmArenaR
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.ShootMania.CSmArenaResource> state;
     private protected CSmArenaResourceBuilderBase() => state = new();
     private protected CSmArenaResourceBuilderBase(NodeBuilderState<global::GBX.NET.Engines.ShootMania.CSmArenaResource> state) => this.state = state;
-    private protected static void SetAdditionalListenerDistanceNbSquares(NodeBuilderState<global::GBX.NET.Engines.ShootMania.CSmArenaResource> state, float value) => state.Set(global::GBX.NET.Builders.Engines.ShootMania.CSmArenaResourceBuilderAssignments.GetAdditionalListenerDistanceNbSquaresAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetRefBuffer(NodeBuilderState<global::GBX.NET.Engines.ShootMania.CSmArenaResource> state, global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value) => state.Set(global::GBX.NET.Builders.Engines.ShootMania.CSmArenaResourceBuilderAssignments.GetRefBufferAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetRefBufferReference(NodeBuilderState<global::GBX.NET.Engines.ShootMania.CSmArenaResource> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> value) => state.Set(global::GBX.NET.Builders.Engines.ShootMania.CSmArenaResourceBuilderAssignments.GetRefBufferReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetResources(NodeBuilderState<global::GBX.NET.Engines.ShootMania.CSmArenaResource> state, global::GBX.NET.Engines.ShootMania.CSmArenaResource.Resource[]? value) => state.Set(global::GBX.NET.Builders.Engines.ShootMania.CSmArenaResourceBuilderAssignments.GetResourcesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     public float AdditionalListenerDistanceNbSquares
     {
         get => state.Get<float>("AdditionalListenerDistanceNbSquares");
-        set => SetAdditionalListenerDistanceNbSquares(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.ShootMania.CSmArenaResourceBuilderAssignments.GetAdditionalListenerDistanceNbSquaresAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithAdditionalListenerDistanceNbSquares(float value)
     {
@@ -53,7 +49,7 @@ public abstract class CSmArenaResourceBuilderBase<TSelf> where TSelf : CSmArenaR
     public global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? RefBuffer
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?>("RefBuffer");
-        set => SetRefBuffer(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.ShootMania.CSmArenaResourceBuilderAssignments.GetRefBufferAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithRefBuffer(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value)
     {
@@ -63,13 +59,13 @@ public abstract class CSmArenaResourceBuilderBase<TSelf> where TSelf : CSmArenaR
     public TSelf WithRefBufferReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetRefBufferReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.ShootMania.CSmArenaResourceBuilderAssignments.GetRefBufferReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.ShootMania.CSmArenaResource.Resource[]? Resources
     {
         get => state.Get<global::GBX.NET.Engines.ShootMania.CSmArenaResource.Resource[]?>("Resources");
-        set => SetResources(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.ShootMania.CSmArenaResourceBuilderAssignments.GetResourcesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithResources(params global::GBX.NET.Engines.ShootMania.CSmArenaResource.Resource[]? value)
     {

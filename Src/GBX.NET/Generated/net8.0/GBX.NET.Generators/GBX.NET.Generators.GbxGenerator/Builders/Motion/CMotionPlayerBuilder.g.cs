@@ -36,17 +36,10 @@ public abstract class CMotionPlayerBuilderBase<TSelf> where TSelf : CMotionPlaye
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionPlayer> state;
     private protected CMotionPlayerBuilderBase() => state = new();
     private protected CMotionPlayerBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionPlayer> state) => this.state = state;
-    private protected static void SetBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionPlayer> state, global::GBX.NET.Engines.Motion.CMotionCmdBase? value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionPlayerBuilderAssignments.GetBaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBaseReference(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionPlayer> state, NodeRef<global::GBX.NET.Engines.Motion.CMotionCmdBase> value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionPlayerBuilderAssignments.GetBaseReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIsPhysics(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionPlayer> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionPlayerBuilderAssignments.GetIsPhysicsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionPlayer> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetPlayState(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionPlayer> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionPlayerBuilderAssignments.GetPlayStateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSavePlayState(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionPlayer> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionPlayerBuilderAssignments.GetSavePlayStateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetTracks(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionPlayer> state, NodeRefList<global::GBX.NET.Engines.Motion.CMotionTrack>? value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionPlayerBuilderAssignments.GetTracksAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public global::GBX.NET.Engines.Motion.CMotionCmdBase? Base
     {
         get => state.Get<global::GBX.NET.Engines.Motion.CMotionCmdBase?>("Base");
-        set => SetBase(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionPlayerBuilderAssignments.GetBaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBase(global::GBX.NET.Engines.Motion.CMotionCmdBase? value)
     {
@@ -56,13 +49,13 @@ public abstract class CMotionPlayerBuilderBase<TSelf> where TSelf : CMotionPlaye
     public TSelf WithBaseReference(NodeRef<global::GBX.NET.Engines.Motion.CMotionCmdBase> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBaseReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionPlayerBuilderAssignments.GetBaseReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public bool IsPhysics
     {
         get => state.Get<bool>("IsPhysics");
-        set => SetIsPhysics(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionPlayerBuilderAssignments.GetIsPhysicsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIsPhysics(bool value)
     {
@@ -72,7 +65,7 @@ public abstract class CMotionPlayerBuilderBase<TSelf> where TSelf : CMotionPlaye
     public uint PlayState
     {
         get => state.Get<uint>("PlayState");
-        set => SetPlayState(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionPlayerBuilderAssignments.GetPlayStateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPlayState(uint value)
     {
@@ -82,7 +75,7 @@ public abstract class CMotionPlayerBuilderBase<TSelf> where TSelf : CMotionPlaye
     public uint SavePlayState
     {
         get => state.Get<uint>("SavePlayState");
-        set => SetSavePlayState(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionPlayerBuilderAssignments.GetSavePlayStateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSavePlayState(uint value)
     {
@@ -92,7 +85,7 @@ public abstract class CMotionPlayerBuilderBase<TSelf> where TSelf : CMotionPlaye
     public NodeRefList<global::GBX.NET.Engines.Motion.CMotionTrack>? Tracks
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Motion.CMotionTrack>?>("Tracks");
-        set => SetTracks(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionPlayerBuilderAssignments.GetTracksAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithTracks(NodeRefList<global::GBX.NET.Engines.Motion.CMotionTrack>? value)
     {
@@ -114,7 +107,7 @@ public abstract class CMotionPlayerBuilderMembers1<TSelf> : CMotionPlayerBuilder
     public string? Name
     {
         get => state.Get<string?>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithName(string? value)
     {

@@ -36,12 +36,10 @@ public abstract class CGameCtnMediaBlockTurretBuilderBase<TSelf> where TSelf : C
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret> state;
     private protected CGameCtnMediaBlockTurretBuilderBase() => state = new();
     private protected CGameCtnMediaBlockTurretBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret> state) => this.state = state;
-    private protected static void SetDataTape(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret> state, global::GBX.NET.Engines.Plug.CPlugDataTape? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTurretBuilderAssignments.GetDataTapeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetDataTapeReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugDataTape> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTurretBuilderAssignments.GetDataTapeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     public global::GBX.NET.Engines.Plug.CPlugDataTape? DataTape
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugDataTape?>("DataTape");
-        set => SetDataTape(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTurretBuilderAssignments.GetDataTapeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithDataTape(global::GBX.NET.Engines.Plug.CPlugDataTape? value)
     {
@@ -51,7 +49,7 @@ public abstract class CGameCtnMediaBlockTurretBuilderBase<TSelf> where TSelf : C
     public TSelf WithDataTapeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugDataTape> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetDataTapeReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTurretBuilderAssignments.GetDataTapeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
 }

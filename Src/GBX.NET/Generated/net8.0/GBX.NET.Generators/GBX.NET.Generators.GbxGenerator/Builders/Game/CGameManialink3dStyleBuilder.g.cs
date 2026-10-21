@@ -36,12 +36,10 @@ public abstract class CGameManialink3dStyleBuilderBase<TSelf> where TSelf : CGam
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dStyle> state;
     private protected CGameManialink3dStyleBuilderBase() => state = new();
     private protected CGameManialink3dStyleBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dStyle> state) => this.state = state;
-    private protected static void SetMood(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dStyle> state, global::GBX.NET.Engines.Game.CGameManialink3dMood? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dStyleBuilderAssignments.GetMoodAssignment(), value, GameVersion.MP4);
-    private protected static void SetMoodReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dStyle> state, NodeRef<global::GBX.NET.Engines.Game.CGameManialink3dMood> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dStyleBuilderAssignments.GetMoodReferenceAssignment(), value, GameVersion.MP4);
     public global::GBX.NET.Engines.Game.CGameManialink3dMood? Mood
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameManialink3dMood?>("Mood");
-        set => SetMood(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dStyleBuilderAssignments.GetMoodAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithMood(global::GBX.NET.Engines.Game.CGameManialink3dMood? value)
     {
@@ -51,7 +49,7 @@ public abstract class CGameManialink3dStyleBuilderBase<TSelf> where TSelf : CGam
     public TSelf WithMoodReference(NodeRef<global::GBX.NET.Engines.Game.CGameManialink3dMood> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetMoodReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dStyleBuilderAssignments.GetMoodReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
 }

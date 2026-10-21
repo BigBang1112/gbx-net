@@ -36,11 +36,10 @@ public abstract class CMwCmdExpStringIdentBuilderBase<TSelf> where TSelf : CMwCm
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpStringIdent> state;
     private protected CMwCmdExpStringIdentBuilderBase() => state = new();
     private protected CMwCmdExpStringIdentBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpStringIdent> state) => this.state = state;
-    private protected static void SetIdent(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpStringIdent> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpStringIdentBuilderAssignments.GetIdentAssignment(), value, GameVersion.TMF);
     public string? Ident
     {
         get => state.Get<string?>("Ident");
-        set => SetIdent(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpStringIdentBuilderAssignments.GetIdentAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithIdent(string? value)
     {

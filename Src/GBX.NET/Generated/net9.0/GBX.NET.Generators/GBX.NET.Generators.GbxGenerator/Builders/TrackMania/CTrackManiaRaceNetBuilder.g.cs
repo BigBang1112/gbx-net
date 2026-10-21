@@ -36,13 +36,10 @@ public abstract class CTrackManiaRaceNetBuilderBase<TSelf> where TSelf : CTrackM
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNet> state;
     private protected CTrackManiaRaceNetBuilderBase() => state = new();
     private protected CTrackManiaRaceNetBuilderBase(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNet> state) => this.state = state;
-    private protected static void SetInterfaceFid(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNet> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameRaceBuilderAssignments.GetInterfaceFidAssignment(), value, GameVersion.TMF);
-    private protected static void SetInterfaceFidReference(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNet> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameRaceBuilderAssignments.GetInterfaceFidReferenceAssignment(), value, GameVersion.TMF);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNet> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameNodBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public string? Name
     {
         get => state.Get<string?>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameNodBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithName(string? value)
     {
@@ -191,7 +188,7 @@ public partial class CTrackManiaRaceNetBuilder : CTrackManiaRaceNetBuilderBase<C
         public global::GBX.NET.Engines.MwFoundations.CMwNod? InterfaceFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("InterfaceFid");
-            set => SetInterfaceFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameRaceBuilderAssignments.GetInterfaceFidAssignment(), value, GameVersion.TMF);
         }
         public TMF WithInterfaceFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -201,7 +198,7 @@ public partial class CTrackManiaRaceNetBuilder : CTrackManiaRaceNetBuilderBase<C
         public TMF WithInterfaceFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetInterfaceFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameRaceBuilderAssignments.GetInterfaceFidReferenceAssignment(), value, GameVersion.TMF);
             return this;
         }
         public global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceNetTMF BuildInterface() => Build();

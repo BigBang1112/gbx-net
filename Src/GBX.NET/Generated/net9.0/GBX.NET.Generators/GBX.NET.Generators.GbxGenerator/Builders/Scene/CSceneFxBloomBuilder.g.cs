@@ -36,13 +36,10 @@ public abstract class CSceneFxBloomBuilderBase<TSelf> where TSelf : CSceneFxBloo
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxBloom> state;
     private protected CSceneFxBloomBuilderBase() => state = new();
     private protected CSceneFxBloomBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxBloom> state) => this.state = state;
-    private protected static void SetBlurSize(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxBloom> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBloomBuilderAssignments.GetBlurSizeAssignment(), value, GameVersion.TMF);
-    private protected static void SetDatas(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxBloom> state, NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxBloomData>? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBloomBuilderAssignments.GetDatasAssignment(), value, GameVersion.TMF);
-    private protected static void SetIntensity(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxBloom> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBloomBuilderAssignments.GetIntensityAssignment(), value, GameVersion.TMF);
     public int BlurSize
     {
         get => state.Get<int>("BlurSize");
-        set => SetBlurSize(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBloomBuilderAssignments.GetBlurSizeAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithBlurSize(int value)
     {
@@ -52,7 +49,7 @@ public abstract class CSceneFxBloomBuilderBase<TSelf> where TSelf : CSceneFxBloo
     public NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxBloomData>? Datas
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxBloomData>?>("Datas");
-        set => SetDatas(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBloomBuilderAssignments.GetDatasAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithDatas(NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxBloomData>? value)
     {
@@ -70,7 +67,7 @@ public abstract class CSceneFxBloomBuilderBase<TSelf> where TSelf : CSceneFxBloo
     public float Intensity
     {
         get => state.Get<float>("Intensity");
-        set => SetIntensity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBloomBuilderAssignments.GetIntensityAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithIntensity(float value)
     {

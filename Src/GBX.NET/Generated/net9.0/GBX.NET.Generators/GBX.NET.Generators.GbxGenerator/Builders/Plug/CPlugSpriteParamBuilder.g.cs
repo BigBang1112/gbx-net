@@ -36,16 +36,10 @@ public abstract class CPlugSpriteParamBuilderBase<TSelf> where TSelf : CPlugSpri
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpriteParam> state;
     private protected CPlugSpriteParamBuilderBase() => state = new();
     private protected CPlugSpriteParamBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpriteParam> state) => this.state = state;
-    private protected static void SetGlobalDirTiltFactor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpriteParam> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpriteParamBuilderAssignments.GetGlobalDirTiltFactorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetGlobalDirection(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpriteParam> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpriteParamBuilderAssignments.GetGlobalDirectionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetPivotPoint(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpriteParam> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpriteParamBuilderAssignments.GetPivotPointAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTextureHeightInWorld(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpriteParam> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpriteParamBuilderAssignments.GetTextureHeightInWorldAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetVisibleMaxDistAtFov90(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpriteParam> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpriteParamBuilderAssignments.GetVisibleMaxDistAtFov90Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetVisibleMinScreenHeight01(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpriteParam> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpriteParamBuilderAssignments.GetVisibleMinScreenHeight01Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public float GlobalDirTiltFactor
     {
         get => state.Get<float>("GlobalDirTiltFactor");
-        set => SetGlobalDirTiltFactor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpriteParamBuilderAssignments.GetGlobalDirTiltFactorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGlobalDirTiltFactor(float value)
     {
@@ -55,7 +49,7 @@ public abstract class CPlugSpriteParamBuilderBase<TSelf> where TSelf : CPlugSpri
     public Vec3 GlobalDirection
     {
         get => state.Get<Vec3>("GlobalDirection");
-        set => SetGlobalDirection(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpriteParamBuilderAssignments.GetGlobalDirectionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGlobalDirection(Vec3 value)
     {
@@ -65,7 +59,7 @@ public abstract class CPlugSpriteParamBuilderBase<TSelf> where TSelf : CPlugSpri
     public Vec2 PivotPoint
     {
         get => state.Get<Vec2>("PivotPoint");
-        set => SetPivotPoint(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpriteParamBuilderAssignments.GetPivotPointAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithPivotPoint(Vec2 value)
     {
@@ -75,7 +69,7 @@ public abstract class CPlugSpriteParamBuilderBase<TSelf> where TSelf : CPlugSpri
     public float TextureHeightInWorld
     {
         get => state.Get<float>("TextureHeightInWorld");
-        set => SetTextureHeightInWorld(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpriteParamBuilderAssignments.GetTextureHeightInWorldAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTextureHeightInWorld(float value)
     {
@@ -85,7 +79,7 @@ public abstract class CPlugSpriteParamBuilderBase<TSelf> where TSelf : CPlugSpri
     public float? VisibleMaxDistAtFov90
     {
         get => state.Get<float?>("VisibleMaxDistAtFov90");
-        set => SetVisibleMaxDistAtFov90(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpriteParamBuilderAssignments.GetVisibleMaxDistAtFov90Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithVisibleMaxDistAtFov90(float? value)
     {
@@ -95,7 +89,7 @@ public abstract class CPlugSpriteParamBuilderBase<TSelf> where TSelf : CPlugSpri
     public float? VisibleMinScreenHeight01
     {
         get => state.Get<float?>("VisibleMinScreenHeight01");
-        set => SetVisibleMinScreenHeight01(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpriteParamBuilderAssignments.GetVisibleMinScreenHeight01Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithVisibleMinScreenHeight01(float? value)
     {

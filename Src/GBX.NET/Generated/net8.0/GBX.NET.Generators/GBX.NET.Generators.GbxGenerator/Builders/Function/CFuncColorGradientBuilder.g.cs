@@ -36,17 +36,10 @@ public abstract class CFuncColorGradientBuilderBase<TSelf> where TSelf : CFuncCo
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Function.CFuncColorGradient> state;
     private protected CFuncColorGradientBuilderBase() => state = new();
     private protected CFuncColorGradientBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncColorGradient> state) => this.state = state;
-    private protected static void SetColorSpace(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncColorGradient> state, global::GBX.NET.Engines.Function.CFuncColorGradient.EColorSpace value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncColorGradientBuilderAssignments.GetColorSpaceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetKeyFramePos1(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncColorGradient> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncColorGradientBuilderAssignments.GetKeyFramePos1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetKeyFramePos2(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncColorGradient> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncColorGradientBuilderAssignments.GetKeyFramePos2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetKeyFrameValue0(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncColorGradient> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncColorGradientBuilderAssignments.GetKeyFrameValue0Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetKeyFrameValue1(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncColorGradient> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncColorGradientBuilderAssignments.GetKeyFrameValue1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetKeyFrameValue2(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncColorGradient> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncColorGradientBuilderAssignments.GetKeyFrameValue2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetKeyFrameValue3(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncColorGradient> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncColorGradientBuilderAssignments.GetKeyFrameValue3Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public float KeyFramePos1
     {
         get => state.Get<float>("KeyFramePos1");
-        set => SetKeyFramePos1(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncColorGradientBuilderAssignments.GetKeyFramePos1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithKeyFramePos1(float value)
     {
@@ -56,7 +49,7 @@ public abstract class CFuncColorGradientBuilderBase<TSelf> where TSelf : CFuncCo
     public float KeyFramePos2
     {
         get => state.Get<float>("KeyFramePos2");
-        set => SetKeyFramePos2(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncColorGradientBuilderAssignments.GetKeyFramePos2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithKeyFramePos2(float value)
     {
@@ -66,7 +59,7 @@ public abstract class CFuncColorGradientBuilderBase<TSelf> where TSelf : CFuncCo
     public Vec3 KeyFrameValue0
     {
         get => state.Get<Vec3>("KeyFrameValue0");
-        set => SetKeyFrameValue0(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncColorGradientBuilderAssignments.GetKeyFrameValue0Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithKeyFrameValue0(Vec3 value)
     {
@@ -76,7 +69,7 @@ public abstract class CFuncColorGradientBuilderBase<TSelf> where TSelf : CFuncCo
     public Vec3 KeyFrameValue1
     {
         get => state.Get<Vec3>("KeyFrameValue1");
-        set => SetKeyFrameValue1(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncColorGradientBuilderAssignments.GetKeyFrameValue1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithKeyFrameValue1(Vec3 value)
     {
@@ -86,7 +79,7 @@ public abstract class CFuncColorGradientBuilderBase<TSelf> where TSelf : CFuncCo
     public Vec3 KeyFrameValue2
     {
         get => state.Get<Vec3>("KeyFrameValue2");
-        set => SetKeyFrameValue2(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncColorGradientBuilderAssignments.GetKeyFrameValue2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithKeyFrameValue2(Vec3 value)
     {
@@ -96,7 +89,7 @@ public abstract class CFuncColorGradientBuilderBase<TSelf> where TSelf : CFuncCo
     public Vec3 KeyFrameValue3
     {
         get => state.Get<Vec3>("KeyFrameValue3");
-        set => SetKeyFrameValue3(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncColorGradientBuilderAssignments.GetKeyFrameValue3Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithKeyFrameValue3(Vec3 value)
     {
@@ -110,7 +103,7 @@ public abstract class CFuncColorGradientBuilderMembers1<TSelf> : CFuncColorGradi
     public global::GBX.NET.Engines.Function.CFuncColorGradient.EColorSpace ColorSpace
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncColorGradient.EColorSpace>("ColorSpace");
-        set => SetColorSpace(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncColorGradientBuilderAssignments.GetColorSpaceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithColorSpace(global::GBX.NET.Engines.Function.CFuncColorGradient.EColorSpace value)
     {

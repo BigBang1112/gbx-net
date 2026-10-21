@@ -36,13 +36,10 @@ public abstract class CGameCtnMediaBlockVehicleLightBuilderBase<TSelf> where TSe
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockVehicleLight> state;
     private protected CGameCtnMediaBlockVehicleLightBuilderBase() => state = new();
     private protected CGameCtnMediaBlockVehicleLightBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockVehicleLight> state) => this.state = state;
-    private protected static void SetEnd(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockVehicleLight> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockVehicleLightBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetStart(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockVehicleLight> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockVehicleLightBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTarget(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockVehicleLight> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockVehicleLightBuilderAssignments.GetTargetAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public TimeSingle End
     {
         get => state.Get<TimeSingle>("End");
-        set => SetEnd(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockVehicleLightBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEnd(TimeSingle value)
     {
@@ -52,7 +49,7 @@ public abstract class CGameCtnMediaBlockVehicleLightBuilderBase<TSelf> where TSe
     public TimeSingle Start
     {
         get => state.Get<TimeSingle>("Start");
-        set => SetStart(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockVehicleLightBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStart(TimeSingle value)
     {
@@ -62,7 +59,7 @@ public abstract class CGameCtnMediaBlockVehicleLightBuilderBase<TSelf> where TSe
     public int Target
     {
         get => state.Get<int>("Target");
-        set => SetTarget(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockVehicleLightBuilderAssignments.GetTargetAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTarget(int value)
     {

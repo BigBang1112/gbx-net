@@ -36,13 +36,10 @@ public abstract class CPlugLocatedSoundBuilderBase<TSelf> where TSelf : CPlugLoc
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLocatedSound> state;
     private protected CPlugLocatedSoundBuilderBase() => state = new();
     private protected CPlugLocatedSoundBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLocatedSound> state) => this.state = state;
-    private protected static void SetLoc(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLocatedSound> state, Iso4 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLocatedSoundBuilderAssignments.GetLocAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSound(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLocatedSound> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLocatedSoundBuilderAssignments.GetSoundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSoundReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLocatedSound> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLocatedSoundBuilderAssignments.GetSoundReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public Iso4 Loc
     {
         get => state.Get<Iso4>("Loc");
-        set => SetLoc(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLocatedSoundBuilderAssignments.GetLocAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLoc(Iso4 value)
     {
@@ -52,7 +49,7 @@ public abstract class CPlugLocatedSoundBuilderBase<TSelf> where TSelf : CPlugLoc
     public global::GBX.NET.Engines.Plug.CPlugSound? Sound
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound");
-        set => SetSound(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLocatedSoundBuilderAssignments.GetSoundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSound(global::GBX.NET.Engines.Plug.CPlugSound? value)
     {
@@ -62,7 +59,7 @@ public abstract class CPlugLocatedSoundBuilderBase<TSelf> where TSelf : CPlugLoc
     public TSelf WithSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSoundReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLocatedSoundBuilderAssignments.GetSoundReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }

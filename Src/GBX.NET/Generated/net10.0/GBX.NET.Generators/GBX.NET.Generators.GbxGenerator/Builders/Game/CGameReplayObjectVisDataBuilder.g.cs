@@ -36,12 +36,10 @@ public abstract class CGameReplayObjectVisDataBuilderBase<TSelf> where TSelf : C
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameReplayObjectVisData> state;
     private protected CGameReplayObjectVisDataBuilderBase() => state = new();
     private protected CGameReplayObjectVisDataBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameReplayObjectVisData> state) => this.state = state;
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameReplayObjectVisData> state, List<global::GBX.NET.Engines.Game.CGameReplayObjectVisData.ObjectVisKey>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameReplayObjectVisDataBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetVisList(NodeBuilderState<global::GBX.NET.Engines.Game.CGameReplayObjectVisData> state, List<global::GBX.NET.Engines.Game.CGameReplayObjectVisData.ObjectVis>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameReplayObjectVisDataBuilderAssignments.GetVisListAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public List<global::GBX.NET.Engines.Game.CGameReplayObjectVisData.ObjectVisKey>? Keys
     {
         get => state.Get<List<global::GBX.NET.Engines.Game.CGameReplayObjectVisData.ObjectVisKey>?>("Keys");
-        set => SetKeys(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameReplayObjectVisDataBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameReplayObjectVisData.ObjectVisKey>? value)
     {
@@ -59,7 +57,7 @@ public abstract class CGameReplayObjectVisDataBuilderBase<TSelf> where TSelf : C
     public List<global::GBX.NET.Engines.Game.CGameReplayObjectVisData.ObjectVis>? VisList
     {
         get => state.Get<List<global::GBX.NET.Engines.Game.CGameReplayObjectVisData.ObjectVis>?>("VisList");
-        set => SetVisList(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameReplayObjectVisDataBuilderAssignments.GetVisListAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithVisList(List<global::GBX.NET.Engines.Game.CGameReplayObjectVisData.ObjectVis>? value)
     {

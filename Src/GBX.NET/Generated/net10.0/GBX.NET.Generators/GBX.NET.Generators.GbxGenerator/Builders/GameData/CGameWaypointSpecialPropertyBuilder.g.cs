@@ -36,13 +36,10 @@ public abstract class CGameWaypointSpecialPropertyBuilderBase<TSelf> where TSelf
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty> state;
     private protected CGameWaypointSpecialPropertyBuilderBase() => state = new();
     private protected CGameWaypointSpecialPropertyBuilderBase(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty> state) => this.state = state;
-    private protected static void SetOrder(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameWaypointSpecialPropertyBuilderAssignments.GetOrderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetScriptMetadata(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty> state, global::GBX.NET.Engines.Script.CScriptTraitsMetadata? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameWaypointSpecialPropertyBuilderAssignments.GetScriptMetadataAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTag(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameWaypointSpecialPropertyBuilderAssignments.GetTagAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public int Order
     {
         get => state.Get<int>("Order");
-        set => SetOrder(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameWaypointSpecialPropertyBuilderAssignments.GetOrderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithOrder(int value)
     {
@@ -52,7 +49,7 @@ public abstract class CGameWaypointSpecialPropertyBuilderBase<TSelf> where TSelf
     public global::GBX.NET.Engines.Script.CScriptTraitsMetadata? ScriptMetadata
     {
         get => state.Get<global::GBX.NET.Engines.Script.CScriptTraitsMetadata?>("ScriptMetadata");
-        set => SetScriptMetadata(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameWaypointSpecialPropertyBuilderAssignments.GetScriptMetadataAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithScriptMetadata(global::GBX.NET.Engines.Script.CScriptTraitsMetadata? value)
     {
@@ -62,7 +59,7 @@ public abstract class CGameWaypointSpecialPropertyBuilderBase<TSelf> where TSelf
     public string? Tag
     {
         get => state.Get<string?>("Tag");
-        set => SetTag(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameWaypointSpecialPropertyBuilderAssignments.GetTagAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTag(string? value)
     {

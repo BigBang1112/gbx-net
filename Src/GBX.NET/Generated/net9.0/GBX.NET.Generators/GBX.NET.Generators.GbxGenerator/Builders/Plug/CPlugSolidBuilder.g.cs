@@ -36,34 +36,10 @@ public abstract class CPlugSolidBuilderBase<TSelf> where TSelf : CPlugSolidBuild
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid> state;
     private protected CPlugSolidBuilderBase() => state = new();
     private protected CPlugSolidBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid> state) => this.state = state;
-    private protected static void SetAngularFluidFriction(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetAngularFluidFrictionAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetCenterOfMass(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetCenterOfMassAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetFileWriteTime(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid> state, DateTime? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetFileWriteTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetHasPreLightGen(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetHasPreLightGenAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetInverseInertiaMatrix(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid> state, Mat3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetInverseInertiaMatrixAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetLinearFluidFriction(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetLinearFluidFrictionAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetMass(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetMassAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetMaxDistPerStep(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetMaxDistPerStepAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetModel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid> state, global::GBX.NET.Engines.Plug.CPlugSolid? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetModelReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetModelReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetModelIsExternal(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid> state, bool? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetModelIsExternalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetParticleEmitterModels(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetParticleEmitterModelsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetParticleInstances(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid> state, global::GBX.NET.Engines.Plug.CPlugSolid.LocatedInstance[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetParticleInstancesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetPath(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid> state, global::GBX.NET.Engines.Plug.CPlugPath? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetPathAssignment(), value, GameVersion.TM2020);
-    private protected static void SetPathReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugPath> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetPathReferenceAssignment(), value, GameVersion.TM2020);
-    private protected static void SetPlugIdCounter(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetPlugIdCounterAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSolidLodNormalMap(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid> state, global::GBX.NET.Engines.Plug.CPlugSolid.LodNormalMap? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetSolidLodNormalMapAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSolidPreLightGen(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid> state, global::GBX.NET.Engines.Plug.CPlugSolid.PreLightGen? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetSolidPreLightGenAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSoundInstances(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid> state, global::GBX.NET.Engines.Plug.CPlugSolid.LocatedInstance[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetSoundInstancesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSounds(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugSound>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetSoundsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTileCountU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid> state, byte value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetTileCountUAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetTree(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid> state, global::GBX.NET.Engines.Plug.CPlugTree? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetTreeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetTreeReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugTree> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetTreeReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetUseModel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetUseModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public global::GBX.NET.Engines.Plug.CPlugSolid? Model
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSolid?>("Model");
-        set => SetModel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithModel(global::GBX.NET.Engines.Plug.CPlugSolid? value)
     {
@@ -73,13 +49,13 @@ public abstract class CPlugSolidBuilderBase<TSelf> where TSelf : CPlugSolidBuild
     public TSelf WithModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetModelReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetModelReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public int PlugIdCounter
     {
         get => state.Get<int>("PlugIdCounter");
-        set => SetPlugIdCounter(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetPlugIdCounterAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPlugIdCounter(int value)
     {
@@ -89,7 +65,7 @@ public abstract class CPlugSolidBuilderBase<TSelf> where TSelf : CPlugSolidBuild
     public global::GBX.NET.Engines.Plug.CPlugTree? Tree
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugTree?>("Tree");
-        set => SetTree(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetTreeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithTree(global::GBX.NET.Engines.Plug.CPlugTree? value)
     {
@@ -99,13 +75,13 @@ public abstract class CPlugSolidBuilderBase<TSelf> where TSelf : CPlugSolidBuild
     public TSelf WithTreeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugTree> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetTreeReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetTreeReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public bool UseModel
     {
         get => state.Get<bool>("UseModel");
-        set => SetUseModel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetUseModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithUseModel(bool value)
     {
@@ -119,7 +95,7 @@ public abstract class CPlugSolidBuilderMembers1<TSelf> : CPlugSolidBuilderBase<T
     public bool? ModelIsExternal
     {
         get => state.Get<bool?>("ModelIsExternal");
-        set => SetModelIsExternal(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetModelIsExternalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithModelIsExternal(bool? value)
     {
@@ -133,7 +109,7 @@ public abstract class CPlugSolidBuilderMembers2<TSelf> : CPlugSolidBuilderBase<T
     public float AngularFluidFriction
     {
         get => state.Get<float>("AngularFluidFriction");
-        set => SetAngularFluidFriction(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetAngularFluidFrictionAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithAngularFluidFriction(float value)
     {
@@ -143,7 +119,7 @@ public abstract class CPlugSolidBuilderMembers2<TSelf> : CPlugSolidBuilderBase<T
     public Vec3 CenterOfMass
     {
         get => state.Get<Vec3>("CenterOfMass");
-        set => SetCenterOfMass(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetCenterOfMassAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithCenterOfMass(Vec3 value)
     {
@@ -153,7 +129,7 @@ public abstract class CPlugSolidBuilderMembers2<TSelf> : CPlugSolidBuilderBase<T
     public Mat3 InverseInertiaMatrix
     {
         get => state.Get<Mat3>("InverseInertiaMatrix");
-        set => SetInverseInertiaMatrix(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetInverseInertiaMatrixAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithInverseInertiaMatrix(Mat3 value)
     {
@@ -163,7 +139,7 @@ public abstract class CPlugSolidBuilderMembers2<TSelf> : CPlugSolidBuilderBase<T
     public float LinearFluidFriction
     {
         get => state.Get<float>("LinearFluidFriction");
-        set => SetLinearFluidFriction(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetLinearFluidFrictionAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithLinearFluidFriction(float value)
     {
@@ -173,7 +149,7 @@ public abstract class CPlugSolidBuilderMembers2<TSelf> : CPlugSolidBuilderBase<T
     public float Mass
     {
         get => state.Get<float>("Mass");
-        set => SetMass(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetMassAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithMass(float value)
     {
@@ -183,7 +159,7 @@ public abstract class CPlugSolidBuilderMembers2<TSelf> : CPlugSolidBuilderBase<T
     public float MaxDistPerStep
     {
         get => state.Get<float>("MaxDistPerStep");
-        set => SetMaxDistPerStep(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetMaxDistPerStepAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithMaxDistPerStep(float value)
     {
@@ -197,7 +173,7 @@ public abstract class CPlugSolidBuilderMembers3<TSelf> : CPlugSolidBuilderMember
     public bool? ModelIsExternal
     {
         get => state.Get<bool?>("ModelIsExternal");
-        set => SetModelIsExternal(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetModelIsExternalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithModelIsExternal(bool? value)
     {
@@ -207,7 +183,7 @@ public abstract class CPlugSolidBuilderMembers3<TSelf> : CPlugSolidBuilderMember
     public byte TileCountU
     {
         get => state.Get<byte>("TileCountU");
-        set => SetTileCountU(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetTileCountUAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithTileCountU(byte value)
     {
@@ -221,7 +197,7 @@ public abstract class CPlugSolidBuilderMembers4<TSelf> : CPlugSolidBuilderMember
     public DateTime? FileWriteTime
     {
         get => state.Get<DateTime?>("FileWriteTime");
-        set => SetFileWriteTime(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetFileWriteTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFileWriteTime(DateTime? value)
     {
@@ -231,7 +207,7 @@ public abstract class CPlugSolidBuilderMembers4<TSelf> : CPlugSolidBuilderMember
     public bool HasPreLightGen
     {
         get => state.Get<bool>("HasPreLightGen");
-        set => SetHasPreLightGen(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetHasPreLightGenAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithHasPreLightGen(bool value)
     {
@@ -241,7 +217,7 @@ public abstract class CPlugSolidBuilderMembers4<TSelf> : CPlugSolidBuilderMember
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>? ParticleEmitterModels
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>?>("ParticleEmitterModels");
-        set => SetParticleEmitterModels(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetParticleEmitterModelsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithParticleEmitterModels(NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>? value)
     {
@@ -259,7 +235,7 @@ public abstract class CPlugSolidBuilderMembers4<TSelf> : CPlugSolidBuilderMember
     public global::GBX.NET.Engines.Plug.CPlugSolid.LocatedInstance[]? ParticleInstances
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSolid.LocatedInstance[]?>("ParticleInstances");
-        set => SetParticleInstances(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetParticleInstancesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithParticleInstances(params global::GBX.NET.Engines.Plug.CPlugSolid.LocatedInstance[]? value)
     {
@@ -273,7 +249,7 @@ public abstract class CPlugSolidBuilderMembers4<TSelf> : CPlugSolidBuilderMember
     public global::GBX.NET.Engines.Plug.CPlugSolid.PreLightGen? SolidPreLightGen
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSolid.PreLightGen?>("SolidPreLightGen");
-        set => SetSolidPreLightGen(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetSolidPreLightGenAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSolidPreLightGen(global::GBX.NET.Engines.Plug.CPlugSolid.PreLightGen? value)
     {
@@ -283,7 +259,7 @@ public abstract class CPlugSolidBuilderMembers4<TSelf> : CPlugSolidBuilderMember
     public global::GBX.NET.Engines.Plug.CPlugSolid.LocatedInstance[]? SoundInstances
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSolid.LocatedInstance[]?>("SoundInstances");
-        set => SetSoundInstances(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetSoundInstancesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSoundInstances(params global::GBX.NET.Engines.Plug.CPlugSolid.LocatedInstance[]? value)
     {
@@ -297,7 +273,7 @@ public abstract class CPlugSolidBuilderMembers4<TSelf> : CPlugSolidBuilderMember
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugSound>? Sounds
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugSound>?>("Sounds");
-        set => SetSounds(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetSoundsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSounds(NodeRefList<global::GBX.NET.Engines.Plug.CPlugSound>? value)
     {
@@ -319,7 +295,7 @@ public abstract class CPlugSolidBuilderMembers5<TSelf> : CPlugSolidBuilderMember
     public global::GBX.NET.Engines.Plug.CPlugSolid.LodNormalMap? SolidLodNormalMap
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSolid.LodNormalMap?>("SolidLodNormalMap");
-        set => SetSolidLodNormalMap(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetSolidLodNormalMapAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithSolidLodNormalMap(global::GBX.NET.Engines.Plug.CPlugSolid.LodNormalMap? value)
     {
@@ -866,7 +842,7 @@ public partial class CPlugSolidBuilder : CPlugSolidBuilderBase<CPlugSolidBuilder
         public global::GBX.NET.Engines.Plug.CPlugPath? Path
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugPath?>("Path");
-            set => SetPath(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetPathAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithPath(global::GBX.NET.Engines.Plug.CPlugPath? value)
         {
@@ -876,7 +852,7 @@ public partial class CPlugSolidBuilder : CPlugSolidBuilderBase<CPlugSolidBuilder
         public TM2020 WithPathReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugPath> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetPathReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetPathReferenceAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithPath(global::GBX.NET.Interfaces.Plug.IPlugPathTM2020? value)

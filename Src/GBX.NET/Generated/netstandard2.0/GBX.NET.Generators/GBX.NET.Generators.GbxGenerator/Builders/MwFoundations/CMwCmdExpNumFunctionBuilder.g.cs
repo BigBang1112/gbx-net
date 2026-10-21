@@ -36,14 +36,10 @@ public abstract class CMwCmdExpNumFunctionBuilderBase<TSelf> where TSelf : CMwCm
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumFunction> state;
     private protected CMwCmdExpNumFunctionBuilderBase() => state = new();
     private protected CMwCmdExpNumFunctionBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumFunction> state) => this.state = state;
-    private protected static void SetFunction(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumFunction> state, global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumFunction.FunctionArchive? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumFunctionBuilderAssignments.GetFunctionAssignment(), value, GameVersion.TMF);
-    private protected static void SetFunctionType(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumFunction> state, int value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumFunctionBuilderAssignments.GetFunctionTypeAssignment(), value, GameVersion.TMF);
-    private protected static void SetValue(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumFunction> state, global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumFunctionBuilderAssignments.GetValueAssignment(), value, GameVersion.TMF);
-    private protected static void SetValueReference(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumFunction> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumFunctionBuilderAssignments.GetValueReferenceAssignment(), value, GameVersion.TMF);
     public global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumFunction.FunctionArchive? Function
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumFunction.FunctionArchive?>("Function");
-        set => SetFunction(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumFunctionBuilderAssignments.GetFunctionAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithFunction(global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumFunction.FunctionArchive? value)
     {
@@ -53,7 +49,7 @@ public abstract class CMwCmdExpNumFunctionBuilderBase<TSelf> where TSelf : CMwCm
     public int FunctionType
     {
         get => state.Get<int>("FunctionType");
-        set => SetFunctionType(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumFunctionBuilderAssignments.GetFunctionTypeAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithFunctionType(int value)
     {
@@ -63,7 +59,7 @@ public abstract class CMwCmdExpNumFunctionBuilderBase<TSelf> where TSelf : CMwCm
     public global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Value
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdExp?>("Value");
-        set => SetValue(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumFunctionBuilderAssignments.GetValueAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithValue(global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value)
     {
@@ -73,7 +69,7 @@ public abstract class CMwCmdExpNumFunctionBuilderBase<TSelf> where TSelf : CMwCm
     public TSelf WithValueReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetValueReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumFunctionBuilderAssignments.GetValueReferenceAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
 }

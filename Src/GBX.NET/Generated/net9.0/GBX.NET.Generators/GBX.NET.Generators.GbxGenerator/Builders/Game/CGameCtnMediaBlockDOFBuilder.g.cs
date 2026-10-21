@@ -36,11 +36,10 @@ public abstract class CGameCtnMediaBlockDOFBuilderBase<TSelf> where TSelf : CGam
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockDOF> state;
     private protected CGameCtnMediaBlockDOFBuilderBase() => state = new();
     private protected CGameCtnMediaBlockDOFBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockDOF> state) => this.state = state;
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockDOF> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockDOF.Key>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockDOFBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockDOF.Key>? Keys
     {
         get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockDOF.Key>?>("Keys");
-        set => SetKeys(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockDOFBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockDOF.Key>? value)
     {

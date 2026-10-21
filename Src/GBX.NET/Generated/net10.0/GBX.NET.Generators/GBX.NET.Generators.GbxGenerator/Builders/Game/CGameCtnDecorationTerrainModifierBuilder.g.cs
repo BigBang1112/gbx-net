@@ -36,14 +36,10 @@ public abstract class CGameCtnDecorationTerrainModifierBuilderBase<TSelf> where 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier> state;
     private protected CGameCtnDecorationTerrainModifierBuilderBase() => state = new();
     private protected CGameCtnDecorationTerrainModifierBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier> state) => this.state = state;
-    private protected static void SetIdName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationTerrainModifierBuilderAssignments.GetIdNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRemapFolder(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationTerrainModifierBuilderAssignments.GetRemapFolderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRemapping(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier> state, global::GBX.NET.Engines.Plug.CPlugGameSkin? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationTerrainModifierBuilderAssignments.GetRemappingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRemappingReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationTerrainModifierBuilderAssignments.GetRemappingReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     public string? IdName
     {
         get => state.Get<string?>("IdName");
-        set => SetIdName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationTerrainModifierBuilderAssignments.GetIdNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIdName(string? value)
     {
@@ -53,7 +49,7 @@ public abstract class CGameCtnDecorationTerrainModifierBuilderBase<TSelf> where 
     public string? RemapFolder
     {
         get => state.Get<string?>("RemapFolder");
-        set => SetRemapFolder(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationTerrainModifierBuilderAssignments.GetRemapFolderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRemapFolder(string? value)
     {
@@ -63,7 +59,7 @@ public abstract class CGameCtnDecorationTerrainModifierBuilderBase<TSelf> where 
     public global::GBX.NET.Engines.Plug.CPlugGameSkin? Remapping
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugGameSkin?>("Remapping");
-        set => SetRemapping(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationTerrainModifierBuilderAssignments.GetRemappingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRemapping(global::GBX.NET.Engines.Plug.CPlugGameSkin? value)
     {
@@ -73,7 +69,7 @@ public abstract class CGameCtnDecorationTerrainModifierBuilderBase<TSelf> where 
     public TSelf WithRemappingReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetRemappingReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationTerrainModifierBuilderAssignments.GetRemappingReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }

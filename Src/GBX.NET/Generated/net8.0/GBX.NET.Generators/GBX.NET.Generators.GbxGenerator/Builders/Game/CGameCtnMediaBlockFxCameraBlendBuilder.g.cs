@@ -36,11 +36,10 @@ public abstract class CGameCtnMediaBlockFxCameraBlendBuilderBase<TSelf> where TS
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraBlend> state;
     private protected CGameCtnMediaBlockFxCameraBlendBuilderBase() => state = new();
     private protected CGameCtnMediaBlockFxCameraBlendBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraBlend> state) => this.state = state;
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraBlend> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraBlend.Key>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxCameraBlendBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraBlend.Key>? Keys
     {
         get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraBlend.Key>?>("Keys");
-        set => SetKeys(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxCameraBlendBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraBlend.Key>? value)
     {

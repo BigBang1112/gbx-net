@@ -36,12 +36,10 @@ public abstract class CGameCtnMediaBlockCameraSimpleBuilderBase<TSelf> where TSe
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple> state;
     private protected CGameCtnMediaBlockCameraSimpleBuilderBase() => state = new();
     private protected CGameCtnMediaBlockCameraSimpleBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple> state) => this.state = state;
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple.Key>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraSimpleBuilderAssignments.GetKeysAssignment(), value, GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetUseSmoothInterpolation(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraSimpleBuilderAssignments.GetUseSmoothInterpolationAssignment(), value, GameVersion.TM2020 | GameVersion.TMT);
     public List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple.Key>? Keys
     {
         get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple.Key>?>("Keys");
-        set => SetKeys(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraSimpleBuilderAssignments.GetKeysAssignment(), value, GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple.Key>? value)
     {
@@ -59,7 +57,7 @@ public abstract class CGameCtnMediaBlockCameraSimpleBuilderBase<TSelf> where TSe
     public bool UseSmoothInterpolation
     {
         get => state.Get<bool>("UseSmoothInterpolation");
-        set => SetUseSmoothInterpolation(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraSimpleBuilderAssignments.GetUseSmoothInterpolationAssignment(), value, GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithUseSmoothInterpolation(bool value)
     {

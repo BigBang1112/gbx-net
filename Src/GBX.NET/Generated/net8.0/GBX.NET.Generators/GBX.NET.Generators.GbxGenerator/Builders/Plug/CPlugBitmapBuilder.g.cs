@@ -36,63 +36,10 @@ public abstract class CPlugBitmapBuilderBase<TSelf> where TSelf : CPlugBitmapBui
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state;
     private protected CPlugBitmapBuilderBase() => state = new();
     private protected CPlugBitmapBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state) => this.state = state;
-    private protected static void SetAdditional(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, global::GBX.NET.Engines.Plug.CPlugBitmap.AdditionalParameters? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetAdditionalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetArraySettings(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, global::GBX.NET.Engines.Plug.CPlugBitmap.ImageArraySettings? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetArraySettingsAssignment(), value, GameVersion.TM2020);
-    private protected static void SetAtlas(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, global::GBX.NET.Engines.Plug.CPlugBitmapAtlas? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetAtlasAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAtlasCountU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, ushort value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetAtlasCountUAssignment(), value, GameVersion.TMSX);
-    private protected static void SetAtlasCountUVs(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, global::GBX.NET.Engines.Plug.CPlugBitmap.AtlasCount[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetAtlasCountUVsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
-    private protected static void SetAtlasCountV(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, ushort value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetAtlasCountVAssignment(), value, GameVersion.TMSX);
-    private protected static void SetAtlasCubeFlags(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetAtlasCubeFlagsAssignment(), value, GameVersion.TM2020);
-    private protected static void SetAtlasCubeIn(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, global::GBX.NET.Engines.Plug.CPlugBitmap.CubeAtlasInput? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetAtlasCubeInAssignment(), value, GameVersion.TM2020);
-    private protected static void SetBitmapArray(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, global::GBX.NET.Engines.Plug.CPlugBitmapArray? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetBitmapArrayAssignment(), value, GameVersion.TM2020);
-    private protected static void SetBitmapArrayReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapArray> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetBitmapArrayReferenceAssignment(), value, GameVersion.TM2020);
-    private protected static void SetBitmapArrayElemName(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, string value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetBitmapArrayElemNameAssignment(), value, GameVersion.TM2020);
-    private protected static void SetBitmapRender(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, global::GBX.NET.Engines.Plug.CPlugBitmapRender? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetBitmapRenderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBitmapRenderReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapRender> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetBitmapRenderReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBitmapShader(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, global::GBX.NET.Engines.Plug.CPlugBitmapShader? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetBitmapShaderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBorderRGB(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetBorderRGBAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBumpScaleFactor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetBumpScaleFactorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBumpScaleMipLevel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetBumpScaleMipLevelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetClearColor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetClearColorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetDecals(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, global::GBX.NET.Engines.Plug.CPlugBitmapDecals? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetDecalsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDecalsReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapDecals> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetDecalsReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDefaultRenderClearColor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetDefaultRenderClearColorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDefaultTexCoordRotate(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetDefaultTexCoordRotateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetDefaultTexCoordScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetDefaultTexCoordScaleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetDefaultTexCoordTrans(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetDefaultTexCoordTransAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFlags(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, ulong value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFlags2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetFlags2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFlags3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetFlags3Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFlagsHigh(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetFlagsHighAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetGrassId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, string value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetGrassIdAssignment(), value, GameVersion.TM2020);
-    private protected static void SetGrassIdImage(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, global::GBX.NET.Engines.Plug.CPlugFileImg? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetGrassIdImageAssignment(), value, GameVersion.TM2020);
-    private protected static void SetGrassIdImageReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetGrassIdImageReferenceAssignment(), value, GameVersion.TM2020);
-    private protected static void SetGrassIdTexCoordRotate(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetGrassIdTexCoordRotateAssignment(), value, GameVersion.TM2020);
-    private protected static void SetGrassIdTexCoordSize(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetGrassIdTexCoordSizeAssignment(), value, GameVersion.TM2020);
-    private protected static void SetGrassIdTexCoordTrans(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetGrassIdTexCoordTransAssignment(), value, GameVersion.TM2020);
-    private protected static void SetGrassMatterArray(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetGrassMatterArrayAssignment(), value, GameVersion.TM2020);
-    private protected static void SetGrassMatterArrayReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetGrassMatterArrayReferenceAssignment(), value, GameVersion.TM2020);
-    private protected static void SetHeightInMeters(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetHeightInMetersAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetImage(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, global::GBX.NET.Engines.Plug.CPlugFileImg? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetImageAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetImageReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetImageReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetImageArray(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, global::GBX.NET.Engines.Plug.CPlugImageArray? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetImageArrayAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetImageArrayReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugImageArray> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetImageArrayReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetImageArrayAdditional(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, global::GBX.NET.Engines.Plug.CPlugBitmap.AdditionalParameters? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetImageArrayAdditionalAssignment(), value, GameVersion.TM2020);
-    private protected static void SetImageArrayFids(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugFileImg>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetImageArrayFidsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetImageArraySuffix(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, string value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetImageArraySuffixAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetMipMapFadeAlphas(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, float[] value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetMipMapFadeAlphasAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMipMapLodBiasDefault(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetMipMapLodBiasDefaultAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMipMapLowerAlpha(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetMipMapLowerAlphaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRenderSizeDiv(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetRenderSizeDivAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetRenderSizeMul(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetRenderSizeMulAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSpecularSubMapCats(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, global::GBX.NET.Engines.Plug.CPlugBitmap.SpecularSubMapCat[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetSpecularSubMapCatsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSpriteParam(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, global::GBX.NET.Engines.Plug.CPlugSpriteParam? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetSpriteParamAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSpriteParamReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSpriteParam> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetSpriteParamReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTextureInfo(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state, global::GBX.NET.Engines.Plug.CPlugBitmap.TextureSettings? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetTextureInfoAssignment(), value, GameVersion.TM2020);
     public global::GBX.NET.Engines.Plug.CPlugBitmapRender? BitmapRender
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmapRender?>("BitmapRender");
-        set => SetBitmapRender(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetBitmapRenderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBitmapRender(global::GBX.NET.Engines.Plug.CPlugBitmapRender? value)
     {
@@ -102,13 +49,13 @@ public abstract class CPlugBitmapBuilderBase<TSelf> where TSelf : CPlugBitmapBui
     public TSelf WithBitmapRenderReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapRender> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBitmapRenderReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetBitmapRenderReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugBitmapShader? BitmapShader
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmapShader?>("BitmapShader");
-        set => SetBitmapShader(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetBitmapShaderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBitmapShader(global::GBX.NET.Engines.Plug.CPlugBitmapShader? value)
     {
@@ -118,7 +65,7 @@ public abstract class CPlugBitmapBuilderBase<TSelf> where TSelf : CPlugBitmapBui
     public int BorderRGB
     {
         get => state.Get<int>("BorderRGB");
-        set => SetBorderRGB(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetBorderRGBAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBorderRGB(int value)
     {
@@ -128,7 +75,7 @@ public abstract class CPlugBitmapBuilderBase<TSelf> where TSelf : CPlugBitmapBui
     public float BumpScaleFactor
     {
         get => state.Get<float>("BumpScaleFactor");
-        set => SetBumpScaleFactor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetBumpScaleFactorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBumpScaleFactor(float value)
     {
@@ -138,7 +85,7 @@ public abstract class CPlugBitmapBuilderBase<TSelf> where TSelf : CPlugBitmapBui
     public uint ClearColor
     {
         get => state.Get<uint>("ClearColor");
-        set => SetClearColor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetClearColorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithClearColor(uint value)
     {
@@ -148,7 +95,7 @@ public abstract class CPlugBitmapBuilderBase<TSelf> where TSelf : CPlugBitmapBui
     public ulong Flags
     {
         get => state.Get<ulong>("Flags");
-        set => SetFlags(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFlags(ulong value)
     {
@@ -158,7 +105,7 @@ public abstract class CPlugBitmapBuilderBase<TSelf> where TSelf : CPlugBitmapBui
     public global::GBX.NET.Engines.Plug.CPlugFileImg? Image
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugFileImg?>("Image");
-        set => SetImage(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetImageAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithImage(global::GBX.NET.Engines.Plug.CPlugFileImg? value)
     {
@@ -168,13 +115,13 @@ public abstract class CPlugBitmapBuilderBase<TSelf> where TSelf : CPlugBitmapBui
     public TSelf WithImageReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetImageReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetImageReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public float MipMapLodBiasDefault
     {
         get => state.Get<float>("MipMapLodBiasDefault");
-        set => SetMipMapLodBiasDefault(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetMipMapLodBiasDefaultAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMipMapLodBiasDefault(float value)
     {
@@ -184,7 +131,7 @@ public abstract class CPlugBitmapBuilderBase<TSelf> where TSelf : CPlugBitmapBui
     public float MipMapLowerAlpha
     {
         get => state.Get<float>("MipMapLowerAlpha");
-        set => SetMipMapLowerAlpha(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetMipMapLowerAlphaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMipMapLowerAlpha(float value)
     {
@@ -194,7 +141,7 @@ public abstract class CPlugBitmapBuilderBase<TSelf> where TSelf : CPlugBitmapBui
     public global::GBX.NET.Engines.Plug.CPlugBitmap.SpecularSubMapCat[]? SpecularSubMapCats
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap.SpecularSubMapCat[]?>("SpecularSubMapCats");
-        set => SetSpecularSubMapCats(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetSpecularSubMapCatsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSpecularSubMapCats(params global::GBX.NET.Engines.Plug.CPlugBitmap.SpecularSubMapCat[]? value)
     {
@@ -212,7 +159,7 @@ public abstract class CPlugBitmapBuilderMembers1<TSelf> : CPlugBitmapBuilderBase
     public float BumpScaleMipLevel
     {
         get => state.Get<float>("BumpScaleMipLevel");
-        set => SetBumpScaleMipLevel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetBumpScaleMipLevelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBumpScaleMipLevel(float value)
     {
@@ -222,7 +169,7 @@ public abstract class CPlugBitmapBuilderMembers1<TSelf> : CPlugBitmapBuilderBase
     public float DefaultTexCoordRotate
     {
         get => state.Get<float>("DefaultTexCoordRotate");
-        set => SetDefaultTexCoordRotate(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetDefaultTexCoordRotateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDefaultTexCoordRotate(float value)
     {
@@ -232,7 +179,7 @@ public abstract class CPlugBitmapBuilderMembers1<TSelf> : CPlugBitmapBuilderBase
     public Vec2 DefaultTexCoordScale
     {
         get => state.Get<Vec2>("DefaultTexCoordScale");
-        set => SetDefaultTexCoordScale(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetDefaultTexCoordScaleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDefaultTexCoordScale(Vec2 value)
     {
@@ -242,7 +189,7 @@ public abstract class CPlugBitmapBuilderMembers1<TSelf> : CPlugBitmapBuilderBase
     public Vec2 DefaultTexCoordTrans
     {
         get => state.Get<Vec2>("DefaultTexCoordTrans");
-        set => SetDefaultTexCoordTrans(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetDefaultTexCoordTransAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDefaultTexCoordTrans(Vec2 value)
     {
@@ -252,7 +199,7 @@ public abstract class CPlugBitmapBuilderMembers1<TSelf> : CPlugBitmapBuilderBase
     public uint Flags2
     {
         get => state.Get<uint>("Flags2");
-        set => SetFlags2(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetFlags2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFlags2(uint value)
     {
@@ -266,7 +213,7 @@ public abstract class CPlugBitmapBuilderMembers2<TSelf> : CPlugBitmapBuilderMemb
     public float[] MipMapFadeAlphas
     {
         get => state.Get<float[]>("MipMapFadeAlphas");
-        set => SetMipMapFadeAlphas(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetMipMapFadeAlphasAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMipMapFadeAlphas(params float[] value)
     {
@@ -284,7 +231,7 @@ public abstract class CPlugBitmapBuilderMembers3<TSelf> : CPlugBitmapBuilderMemb
     public global::GBX.NET.Engines.Plug.CPlugBitmap.AdditionalParameters? Additional
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap.AdditionalParameters?>("Additional");
-        set => SetAdditional(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetAdditionalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithAdditional(global::GBX.NET.Engines.Plug.CPlugBitmap.AdditionalParameters? value)
     {
@@ -298,7 +245,7 @@ public abstract class CPlugBitmapBuilderMembers4<TSelf> : CPlugBitmapBuilderMemb
     public global::GBX.NET.Engines.Plug.CPlugBitmap.AtlasCount[]? AtlasCountUVs
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap.AtlasCount[]?>("AtlasCountUVs");
-        set => SetAtlasCountUVs(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetAtlasCountUVsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithAtlasCountUVs(params global::GBX.NET.Engines.Plug.CPlugBitmap.AtlasCount[]? value)
     {
@@ -316,7 +263,7 @@ public abstract class CPlugBitmapBuilderMembers5<TSelf> : CPlugBitmapBuilderMemb
     public global::GBX.NET.Engines.Plug.CPlugBitmapAtlas? Atlas
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmapAtlas?>("Atlas");
-        set => SetAtlas(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetAtlasAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAtlas(global::GBX.NET.Engines.Plug.CPlugBitmapAtlas? value)
     {
@@ -326,7 +273,7 @@ public abstract class CPlugBitmapBuilderMembers5<TSelf> : CPlugBitmapBuilderMemb
     public global::GBX.NET.Engines.Plug.CPlugBitmapDecals? Decals
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmapDecals?>("Decals");
-        set => SetDecals(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetDecalsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDecals(global::GBX.NET.Engines.Plug.CPlugBitmapDecals? value)
     {
@@ -336,13 +283,13 @@ public abstract class CPlugBitmapBuilderMembers5<TSelf> : CPlugBitmapBuilderMemb
     public TSelf WithDecalsReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapDecals> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetDecalsReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetDecalsReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public uint DefaultRenderClearColor
     {
         get => state.Get<uint>("DefaultRenderClearColor");
-        set => SetDefaultRenderClearColor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetDefaultRenderClearColorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDefaultRenderClearColor(uint value)
     {
@@ -352,7 +299,7 @@ public abstract class CPlugBitmapBuilderMembers5<TSelf> : CPlugBitmapBuilderMemb
     public uint Flags3
     {
         get => state.Get<uint>("Flags3");
-        set => SetFlags3(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetFlags3Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFlags3(uint value)
     {
@@ -362,7 +309,7 @@ public abstract class CPlugBitmapBuilderMembers5<TSelf> : CPlugBitmapBuilderMemb
     public uint RenderSizeDiv
     {
         get => state.Get<uint>("RenderSizeDiv");
-        set => SetRenderSizeDiv(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetRenderSizeDivAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRenderSizeDiv(uint value)
     {
@@ -372,7 +319,7 @@ public abstract class CPlugBitmapBuilderMembers5<TSelf> : CPlugBitmapBuilderMemb
     public uint RenderSizeMul
     {
         get => state.Get<uint>("RenderSizeMul");
-        set => SetRenderSizeMul(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetRenderSizeMulAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRenderSizeMul(uint value)
     {
@@ -382,7 +329,7 @@ public abstract class CPlugBitmapBuilderMembers5<TSelf> : CPlugBitmapBuilderMemb
     public global::GBX.NET.Engines.Plug.CPlugSpriteParam? SpriteParam
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSpriteParam?>("SpriteParam");
-        set => SetSpriteParam(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetSpriteParamAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSpriteParam(global::GBX.NET.Engines.Plug.CPlugSpriteParam? value)
     {
@@ -392,7 +339,7 @@ public abstract class CPlugBitmapBuilderMembers5<TSelf> : CPlugBitmapBuilderMemb
     public TSelf WithSpriteParamReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSpriteParam> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSpriteParamReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetSpriteParamReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -402,7 +349,7 @@ public abstract class CPlugBitmapBuilderMembers6<TSelf> : CPlugBitmapBuilderMemb
     public uint FlagsHigh
     {
         get => state.Get<uint>("FlagsHigh");
-        set => SetFlagsHigh(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetFlagsHighAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFlagsHigh(uint value)
     {
@@ -416,7 +363,7 @@ public abstract class CPlugBitmapBuilderMembers7<TSelf> : CPlugBitmapBuilderMemb
     public float HeightInMeters
     {
         get => state.Get<float>("HeightInMeters");
-        set => SetHeightInMeters(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetHeightInMetersAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithHeightInMeters(float value)
     {
@@ -426,7 +373,7 @@ public abstract class CPlugBitmapBuilderMembers7<TSelf> : CPlugBitmapBuilderMemb
     public global::GBX.NET.Engines.Plug.CPlugImageArray? ImageArray
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugImageArray?>("ImageArray");
-        set => SetImageArray(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetImageArrayAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithImageArray(global::GBX.NET.Engines.Plug.CPlugImageArray? value)
     {
@@ -436,13 +383,13 @@ public abstract class CPlugBitmapBuilderMembers7<TSelf> : CPlugBitmapBuilderMemb
     public TSelf WithImageArrayReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugImageArray> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetImageArrayReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetImageArrayReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugFileImg>? ImageArrayFids
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugFileImg>?>("ImageArrayFids");
-        set => SetImageArrayFids(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetImageArrayFidsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithImageArrayFids(NodeRefList<global::GBX.NET.Engines.Plug.CPlugFileImg>? value)
     {
@@ -460,7 +407,7 @@ public abstract class CPlugBitmapBuilderMembers7<TSelf> : CPlugBitmapBuilderMemb
     public string ImageArraySuffix
     {
         get => state.Get<string>("ImageArraySuffix");
-        set => SetImageArraySuffix(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetImageArraySuffixAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithImageArraySuffix(string value)
     {
@@ -849,7 +796,7 @@ public partial class CPlugBitmapBuilder : CPlugBitmapBuilderBase<CPlugBitmapBuil
         public ushort AtlasCountU
         {
             get => state.Get<ushort>("AtlasCountU");
-            set => SetAtlasCountU(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetAtlasCountUAssignment(), value, GameVersion.TMSX);
         }
         public TMSX WithAtlasCountU(ushort value)
         {
@@ -859,7 +806,7 @@ public partial class CPlugBitmapBuilder : CPlugBitmapBuilderBase<CPlugBitmapBuil
         public ushort AtlasCountV
         {
             get => state.Get<ushort>("AtlasCountV");
-            set => SetAtlasCountV(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetAtlasCountVAssignment(), value, GameVersion.TMSX);
         }
         public TMSX WithAtlasCountV(ushort value)
         {
@@ -935,7 +882,7 @@ public partial class CPlugBitmapBuilder : CPlugBitmapBuilderBase<CPlugBitmapBuil
         public global::GBX.NET.Engines.Plug.CPlugBitmap.AdditionalParameters? Additional
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap.AdditionalParameters?>("Additional");
-            set => SetAdditional(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetAdditionalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         }
         public TMF WithAdditional(global::GBX.NET.Engines.Plug.CPlugBitmap.AdditionalParameters? value)
         {
@@ -1061,7 +1008,7 @@ public partial class CPlugBitmapBuilder : CPlugBitmapBuilderBase<CPlugBitmapBuil
         public global::GBX.NET.Engines.Plug.CPlugBitmap.ImageArraySettings? ArraySettings
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap.ImageArraySettings?>("ArraySettings");
-            set => SetArraySettings(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetArraySettingsAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithArraySettings(global::GBX.NET.Engines.Plug.CPlugBitmap.ImageArraySettings? value)
         {
@@ -1071,7 +1018,7 @@ public partial class CPlugBitmapBuilder : CPlugBitmapBuilderBase<CPlugBitmapBuil
         public uint AtlasCubeFlags
         {
             get => state.Get<uint>("AtlasCubeFlags");
-            set => SetAtlasCubeFlags(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetAtlasCubeFlagsAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithAtlasCubeFlags(uint value)
         {
@@ -1081,7 +1028,7 @@ public partial class CPlugBitmapBuilder : CPlugBitmapBuilderBase<CPlugBitmapBuil
         public global::GBX.NET.Engines.Plug.CPlugBitmap.CubeAtlasInput? AtlasCubeIn
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap.CubeAtlasInput?>("AtlasCubeIn");
-            set => SetAtlasCubeIn(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetAtlasCubeInAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithAtlasCubeIn(global::GBX.NET.Engines.Plug.CPlugBitmap.CubeAtlasInput? value)
         {
@@ -1091,7 +1038,7 @@ public partial class CPlugBitmapBuilder : CPlugBitmapBuilderBase<CPlugBitmapBuil
         public global::GBX.NET.Engines.Plug.CPlugBitmapArray? BitmapArray
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmapArray?>("BitmapArray");
-            set => SetBitmapArray(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetBitmapArrayAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithBitmapArray(global::GBX.NET.Engines.Plug.CPlugBitmapArray? value)
         {
@@ -1101,13 +1048,13 @@ public partial class CPlugBitmapBuilder : CPlugBitmapBuilderBase<CPlugBitmapBuil
         public TM2020 WithBitmapArrayReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapArray> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetBitmapArrayReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetBitmapArrayReferenceAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public string BitmapArrayElemName
         {
             get => state.Get<string>("BitmapArrayElemName");
-            set => SetBitmapArrayElemName(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetBitmapArrayElemNameAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithBitmapArrayElemName(string value)
         {
@@ -1125,7 +1072,7 @@ public partial class CPlugBitmapBuilder : CPlugBitmapBuilderBase<CPlugBitmapBuil
         public string GrassId
         {
             get => state.Get<string>("GrassId");
-            set => SetGrassId(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetGrassIdAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithGrassId(string value)
         {
@@ -1135,7 +1082,7 @@ public partial class CPlugBitmapBuilder : CPlugBitmapBuilderBase<CPlugBitmapBuil
         public global::GBX.NET.Engines.Plug.CPlugFileImg? GrassIdImage
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugFileImg?>("GrassIdImage");
-            set => SetGrassIdImage(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetGrassIdImageAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithGrassIdImage(global::GBX.NET.Engines.Plug.CPlugFileImg? value)
         {
@@ -1145,13 +1092,13 @@ public partial class CPlugBitmapBuilder : CPlugBitmapBuilderBase<CPlugBitmapBuil
         public TM2020 WithGrassIdImageReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetGrassIdImageReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetGrassIdImageReferenceAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public float GrassIdTexCoordRotate
         {
             get => state.Get<float>("GrassIdTexCoordRotate");
-            set => SetGrassIdTexCoordRotate(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetGrassIdTexCoordRotateAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithGrassIdTexCoordRotate(float value)
         {
@@ -1161,7 +1108,7 @@ public partial class CPlugBitmapBuilder : CPlugBitmapBuilderBase<CPlugBitmapBuil
         public Vec2 GrassIdTexCoordSize
         {
             get => state.Get<Vec2>("GrassIdTexCoordSize");
-            set => SetGrassIdTexCoordSize(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetGrassIdTexCoordSizeAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithGrassIdTexCoordSize(Vec2 value)
         {
@@ -1171,7 +1118,7 @@ public partial class CPlugBitmapBuilder : CPlugBitmapBuilderBase<CPlugBitmapBuil
         public Vec2 GrassIdTexCoordTrans
         {
             get => state.Get<Vec2>("GrassIdTexCoordTrans");
-            set => SetGrassIdTexCoordTrans(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetGrassIdTexCoordTransAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithGrassIdTexCoordTrans(Vec2 value)
         {
@@ -1181,7 +1128,7 @@ public partial class CPlugBitmapBuilder : CPlugBitmapBuilderBase<CPlugBitmapBuil
         public global::GBX.NET.Engines.MwFoundations.CMwNod? GrassMatterArray
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("GrassMatterArray");
-            set => SetGrassMatterArray(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetGrassMatterArrayAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithGrassMatterArray(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1191,7 +1138,7 @@ public partial class CPlugBitmapBuilder : CPlugBitmapBuilderBase<CPlugBitmapBuil
         public TM2020 WithGrassMatterArrayReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetGrassMatterArrayReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetGrassMatterArrayReferenceAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithImageArray(global::GBX.NET.Interfaces.Plug.IPlugImageArrayTM2020? value)
@@ -1201,7 +1148,7 @@ public partial class CPlugBitmapBuilder : CPlugBitmapBuilderBase<CPlugBitmapBuil
         public global::GBX.NET.Engines.Plug.CPlugBitmap.AdditionalParameters? ImageArrayAdditional
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap.AdditionalParameters?>("ImageArrayAdditional");
-            set => SetImageArrayAdditional(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetImageArrayAdditionalAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithImageArrayAdditional(global::GBX.NET.Engines.Plug.CPlugBitmap.AdditionalParameters? value)
         {
@@ -1215,7 +1162,7 @@ public partial class CPlugBitmapBuilder : CPlugBitmapBuilderBase<CPlugBitmapBuil
         public global::GBX.NET.Engines.Plug.CPlugBitmap.TextureSettings? TextureInfo
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap.TextureSettings?>("TextureInfo");
-            set => SetTextureInfo(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetTextureInfoAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithTextureInfo(global::GBX.NET.Engines.Plug.CPlugBitmap.TextureSettings? value)
         {

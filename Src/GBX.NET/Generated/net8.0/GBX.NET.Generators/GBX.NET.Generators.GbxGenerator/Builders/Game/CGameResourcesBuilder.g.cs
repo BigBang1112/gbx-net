@@ -36,235 +36,6 @@ public abstract class CGameResourcesBuilderBase<TSelf> where TSelf : CGameResour
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state;
     private protected CGameResourcesBuilderBase() => state = new();
     private protected CGameResourcesBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state) => this.state = state;
-    private protected static void SetAdnFolder(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetAdnFolderAssignment(), value, GameVersion.TM2020);
-    private protected static void SetAudioBalance_Base(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.Plug.CPlugAudioBalance? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetAudioBalance_BaseAssignment(), value, GameVersion.MP4);
-    private protected static void SetAudioBalance_BaseReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugAudioBalance> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetAudioBalance_BaseReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetAudioBalance_Editor(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.Plug.CPlugAudioBalance? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetAudioBalance_EditorAssignment(), value, GameVersion.MP4);
-    private protected static void SetAudioBalance_EditorReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugAudioBalance> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetAudioBalance_EditorReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetAudioBalance_Menus(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.Plug.CPlugAudioBalance? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetAudioBalance_MenusAssignment(), value, GameVersion.MP4);
-    private protected static void SetAudioBalance_MenusReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugAudioBalance> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetAudioBalance_MenusReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetBadWordDict(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetBadWordDictAssignment(), value, GameVersion.TM2020);
-    private protected static void SetBadWordDictReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetBadWordDictReferenceAssignment(), value, GameVersion.TM2020);
-    private protected static void SetBasicDialogsFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetBasicDialogsFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetBasicDialogsFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetBasicDialogsFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetBitmapCubeMenuManiaPlanet3d(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetBitmapCubeMenuManiaPlanet3dAssignment(), value, GameVersion.MP4);
-    private protected static void SetBitmapCubeMenuManiaPlanet3dReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetBitmapCubeMenuManiaPlanet3dReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetBitmapTeamEmblems(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetBitmapTeamEmblemsAssignment(), value, GameVersion.MP4);
-    private protected static void SetBitmapTeamEmblemsReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetBitmapTeamEmblemsReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetCardPlanetMenu1Fid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetCardPlanetMenu1FidAssignment(), value, GameVersion.MP4);
-    private protected static void SetCardPlanetMenu1FidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetCardPlanetMenu1FidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetCardPlanetMenu2Fid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetCardPlanetMenu2FidAssignment(), value, GameVersion.MP4);
-    private protected static void SetCardPlanetMenu2FidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetCardPlanetMenu2FidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetCardPlanetServerMainFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetCardPlanetServerMainFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetCardPlanetServerMainFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetCardPlanetServerMainFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetCardPlanetServerRackSummaryFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetCardPlanetServerRackSummaryFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetCardPlanetServerRackSummaryFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetCardPlanetServerRackSummaryFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetCardPlanetServerSummaryFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetCardPlanetServerSummaryFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetCardPlanetServerSummaryFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetCardPlanetServerSummaryFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetCardStationMainFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetCardStationMainFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetCardStationMainFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetCardStationMainFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetCardStationSummaryFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetCardStationSummaryFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetCardStationSummaryFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetCardStationSummaryFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetCompiledWordDictionary(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, byte[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetCompiledWordDictionaryAssignment(), value, GameVersion.TM2020);
-    private protected static void SetDefaultAvatarBitmapFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultAvatarBitmapFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetDefaultAvatarBitmapFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultAvatarBitmapFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetDefaultEditorEditorFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorEditorFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetDefaultEditorEditorFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorEditorFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetDefaultEditorMediaTrackerFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorMediaTrackerFidAssignment(), value, GameVersion.TM2020);
-    private protected static void SetDefaultEditorMediaTrackerFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorMediaTrackerFidReferenceAssignment(), value, GameVersion.TM2020);
-    private protected static void SetDefaultEditorMeshFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorMeshFidAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetDefaultEditorMeshFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorMeshFidReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetDefaultEditorModuleFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorModuleFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetDefaultEditorModuleFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorModuleFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetDefaultEditorSkinFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorSkinFidAssignment(), value, GameVersion.TM2020);
-    private protected static void SetDefaultEditorSkinFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorSkinFidReferenceAssignment(), value, GameVersion.TM2020);
-    private protected static void SetDefaultEditorVehicleFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorVehicleFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetDefaultEditorVehicleFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorVehicleFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetDefaultLeagueLogoBitmapFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultLeagueLogoBitmapFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetDefaultLeagueLogoBitmapFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultLeagueLogoBitmapFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetDefaultMTBlockBitmapFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultMTBlockBitmapFidAssignment(), value, GameVersion.MP4 | GameVersion.TMF);
-    private protected static void SetDefaultMTBlockBitmapFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultMTBlockBitmapFidReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TMF);
-    private protected static void SetDefaultMTBlockSoundFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultMTBlockSoundFidAssignment(), value, GameVersion.MP4 | GameVersion.TMF);
-    private protected static void SetDefaultMTBlockSoundFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultMTBlockSoundFidReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TMF);
-    private protected static void SetDefaultMTColorGradingImageFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultMTColorGradingImageFidAssignment(), value, GameVersion.MP4 | GameVersion.TMF);
-    private protected static void SetDefaultMTColorGradingImageFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultMTColorGradingImageFidReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TMF);
-    private protected static void SetDefaultMTDecal2dBitmapFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultMTDecal2dBitmapFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetDefaultMTDecal2dBitmapFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultMTDecal2dBitmapFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetDefaultMusicFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultMusicFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetDefaultMusicFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultMusicFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetDefaultOnlineNewsIconBitmapFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultOnlineNewsIconBitmapFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetDefaultOnlineNewsIconBitmapFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultOnlineNewsIconBitmapFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetDefaultSkillScoreComputerFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultSkillScoreComputerFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetDefaultSkillScoreComputerFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultSkillScoreComputerFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetDefaultTagBitmapFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultTagBitmapFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetDefaultTagBitmapFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultTagBitmapFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetDefaultTeamLogoBitmapFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultTeamLogoBitmapFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetDefaultTeamLogoBitmapFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultTeamLogoBitmapFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetDefaultTransitionInClipFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultTransitionInClipFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetDefaultTransitionInClipFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultTransitionInClipFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetDefaultTransitionOutClipFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultTransitionOutClipFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetDefaultTransitionOutClipFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultTransitionOutClipFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetDialogsFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDialogsFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetDialogsFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDialogsFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetEditorAnimCharInterfaceFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorAnimCharInterfaceFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetEditorAnimCharInterfaceFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorAnimCharInterfaceFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetEditorAnimInterfaceFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorAnimInterfaceFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetEditorAnimInterfaceFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorAnimInterfaceFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetEditorAnimSetInterfaceFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorAnimSetInterfaceFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetEditorAnimSetInterfaceFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorAnimSetInterfaceFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetEditorClassInterfaceFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorClassInterfaceFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetEditorClassInterfaceFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorClassInterfaceFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetEditorItemInterfaceFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorItemInterfaceFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetEditorItemInterfaceFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorItemInterfaceFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetEditorManialinkInterfaceFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorManialinkInterfaceFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetEditorManialinkInterfaceFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorManialinkInterfaceFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetEditorModelDefaultMaterialFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorModelDefaultMaterialFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetEditorModelDefaultMaterialFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorModelDefaultMaterialFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetEditorModelSpritesBitmapFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorModelSpritesBitmapFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetEditorModelSpritesBitmapFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorModelSpritesBitmapFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetEditorModuleInterfaceFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorModuleInterfaceFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetEditorModuleInterfaceFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorModuleInterfaceFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetEditorPixelCheckerImageFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorPixelCheckerImageFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetEditorPixelCheckerImageFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorPixelCheckerImageFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetEditorVehicleInterfaceFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorVehicleInterfaceFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetEditorVehicleInterfaceFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorVehicleInterfaceFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetEmptyChallengeCustomMusicFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEmptyChallengeCustomMusicFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetEmptyChallengeCustomMusicFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEmptyChallengeCustomMusicFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetFolderGlobalEnvBanners(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetFolderGlobalEnvBannersAssignment(), value, GameVersion.MP4);
-    private protected static void SetHasInterfaceBlockEditorFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetHasInterfaceBlockEditorFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetHasInterfaceEditorFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetHasInterfaceEditorFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetHasInterfaceEditorSimpleFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetHasInterfaceEditorSimpleFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetHasInterfacePuzzleFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetHasInterfacePuzzleFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetHasRaceInterfaceFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetHasRaceInterfaceFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetHasRaceNetInterfaceFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetHasRaceNetInterfaceFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetHasReplayInterfaceFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetHasReplayInterfaceFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetHymnsFolder(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetHymnsFolderAssignment(), value, GameVersion.MP4);
-    private protected static void SetIconShooterDefaultSettingsFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetIconShooterDefaultSettingsFidAssignment(), value, GameVersion.TM2020);
-    private protected static void SetIconShooterDefaultSettingsFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetIconShooterDefaultSettingsFidReferenceAssignment(), value, GameVersion.TM2020);
-    private protected static void SetIconShooterMoodFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetIconShooterMoodFidAssignment(), value, GameVersion.TM2020);
-    private protected static void SetIconShooterMoodFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetIconShooterMoodFidReferenceAssignment(), value, GameVersion.TM2020);
-    private protected static void SetIconShooterSceneLayoutFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetIconShooterSceneLayoutFidAssignment(), value, GameVersion.TM2020);
-    private protected static void SetIconShooterSceneLayoutFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetIconShooterSceneLayoutFidReferenceAssignment(), value, GameVersion.TM2020);
-    private protected static void SetImageTurboRoulette(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetImageTurboRouletteAssignment(), value, GameVersion.MP4);
-    private protected static void SetImageTurboRouletteReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetImageTurboRouletteReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetInGameDialogsFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInGameDialogsFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetInGameDialogsFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInGameDialogsFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetInterfaceBg(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfaceBgAssignment(), value, GameVersion.MP4);
-    private protected static void SetInterfaceBgReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfaceBgReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetInterfaceBlockEditorFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfaceBlockEditorFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetInterfaceBlockEditorFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfaceBlockEditorFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetInterfaceEditorFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfaceEditorFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetInterfaceEditorFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfaceEditorFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetInterfaceEditorInventoryModelFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfaceEditorInventoryModelFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetInterfaceEditorInventoryModelFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfaceEditorInventoryModelFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetInterfaceEditorSimpleFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfaceEditorSimpleFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetInterfaceEditorSimpleFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfaceEditorSimpleFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetInterfaceFont(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.Plug.CPlugFont? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfaceFontAssignment(), value, GameVersion.MP4);
-    private protected static void SetInterfaceFontReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFont> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfaceFontReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetInterfacePuzzleFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfacePuzzleFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetInterfacePuzzleFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfacePuzzleFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetManiaPlanetMenuMusic(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetManiaPlanetMenuMusicAssignment(), value, GameVersion.MP4);
-    private protected static void SetManiaPlanetMenuMusicReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetManiaPlanetMenuMusicReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetManialinkBrowserOverlayFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetManialinkBrowserOverlayFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetManialinkBrowserOverlayFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetManialinkBrowserOverlayFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetMaterialSkyDomeMenu(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMaterialSkyDomeMenuAssignment(), value, GameVersion.MP4);
-    private protected static void SetMaterialSkyDomeMenuReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMaterialSkyDomeMenuReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetMaterialsLibrariesFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMaterialsLibrariesFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetMaterialsLibrariesFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMaterialsLibrariesFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetMediaTrackerInterfaceFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMediaTrackerInterfaceFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetMediaTrackerInterfaceFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMediaTrackerInterfaceFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetMenuBackgroundsFolder(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMenuBackgroundsFolderAssignment(), value, GameVersion.MP4);
-    private protected static void SetMenuManialink3dFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMenuManialink3dFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetMenuManialink3dFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMenuManialink3dFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetMenuManialink3dResources(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.Plug.CPlugModelShading.FidId[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMenuManialink3dResourcesAssignment(), value, GameVersion.MP4);
-    private protected static void SetMenuManialink3d_BaseStyleFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMenuManialink3d_BaseStyleFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetMenuManialink3d_BaseStyleFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMenuManialink3d_BaseStyleFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetMenuManialink3d_StationsStyleFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMenuManialink3d_StationsStyleFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetMenuManialink3d_StationsStyleFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMenuManialink3d_StationsStyleFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetMenusFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMenusFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetMenusFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMenusFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetMenusRemapping(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMenusRemappingAssignment(), value, GameVersion.TMF);
-    private protected static void SetMenusRemappingReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMenusRemappingReferenceAssignment(), value, GameVersion.TMF);
-    private protected static void SetModuleMenuBaseScriptFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModuleMenuBaseScriptFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetModuleMenuBaseScriptFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModuleMenuBaseScriptFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetModuleMenuServerBrowserScriptFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModuleMenuServerBrowserScriptFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetModuleMenuServerBrowserScriptFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModuleMenuServerBrowserScriptFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetModulePlaygroundDefaultChronoFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundDefaultChronoFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetModulePlaygroundDefaultChronoFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundDefaultChronoFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetModulePlaygroundDefaultHudFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundDefaultHudFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetModulePlaygroundDefaultHudFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundDefaultHudFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetModulePlaygroundDefaultInventoryFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundDefaultInventoryFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetModulePlaygroundDefaultInventoryFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundDefaultInventoryFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetModulePlaygroundDefaultPlayerStateFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundDefaultPlayerStateFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetModulePlaygroundDefaultPlayerStateFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundDefaultPlayerStateFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetModulePlaygroundDefaultScoresTableFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundDefaultScoresTableFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetModulePlaygroundDefaultScoresTableFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundDefaultScoresTableFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetModulePlaygroundDefaultSpeedMeterFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundDefaultSpeedMeterFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetModulePlaygroundDefaultSpeedMeterFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundDefaultSpeedMeterFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetModulePlaygroundDefaultStoreFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundDefaultStoreFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetModulePlaygroundDefaultStoreFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundDefaultStoreFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetModulePlaygroundDefaultTeamStateFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundDefaultTeamStateFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetModulePlaygroundDefaultTeamStateFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundDefaultTeamStateFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetModulePlaygroundFullPlayerStateFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundFullPlayerStateFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetModulePlaygroundFullPlayerStateFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundFullPlayerStateFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetModulePlaygroundInventoryScriptFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundInventoryScriptFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetModulePlaygroundInventoryScriptFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundInventoryScriptFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetModulePlaygroundSpeedMeterScriptFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundSpeedMeterScriptFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetModulePlaygroundSpeedMeterScriptFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundSpeedMeterScriptFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetModulePlaygroundStoreScriptFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundStoreScriptFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetModulePlaygroundStoreScriptFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundStoreScriptFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetMusics(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.Game.CGameResources.NamedNod[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMusicsAssignment(), value, GameVersion.MP4);
-    private protected static void SetOffZoneLayerShaderFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetOffZoneLayerShaderFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetOffZoneLayerShaderFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetOffZoneLayerShaderFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetOffZoneSurfaceShaderFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetOffZoneSurfaceShaderFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetOffZoneSurfaceShaderFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetOffZoneSurfaceShaderFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetPainterSetting(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.Game.CGameCtnPainterSetting? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetPainterSettingAssignment(), value, GameVersion.MP4);
-    private protected static void SetPainterSettingReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnPainterSetting> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetPainterSettingReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetPlanetSolidFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetPlanetSolidFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetPlanetSolidFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetPlanetSolidFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetPluginsMenuOverlayFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetPluginsMenuOverlayFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetPluginsMenuOverlayFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetPluginsMenuOverlayFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetPodiumScene(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetPodiumSceneAssignment(), value, GameVersion.MP4);
-    private protected static void SetPodiumSceneReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetPodiumSceneReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetProgressOverlayFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetProgressOverlayFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetProgressOverlayFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetProgressOverlayFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetRaceInterfaceFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetRaceInterfaceFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetRaceInterfaceFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetRaceInterfaceFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetRaceNetInterfaceFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetRaceNetInterfaceFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetRaceNetInterfaceFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetRaceNetInterfaceFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetReplayInterfaceFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetReplayInterfaceFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetReplayInterfaceFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetReplayInterfaceFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSceneFxNodRoot(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetSceneFxNodRootAssignment(), value, GameVersion.MP4);
-    private protected static void SetSceneFxNodRootReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetSceneFxNodRootReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSounds(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.Game.CGameResources.NamedNod[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetSoundsAssignment(), value, GameVersion.MP4);
-    private protected static void SetStationBronzeFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStationBronzeFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetStationBronzeFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStationBronzeFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetStationGameSkin(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.Plug.CPlugGameSkin? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStationGameSkinAssignment(), value, GameVersion.MP4);
-    private protected static void SetStationGameSkinReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStationGameSkinReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetStationGoldFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStationGoldFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetStationGoldFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStationGoldFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetStationServerFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStationServerFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetStationServerFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStationServerFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetStationSilverFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStationSilverFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetStationSilverFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStationSilverFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetStoryInterfaceFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStoryInterfaceFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetStoryInterfaceFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStoryInterfaceFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetStyleDefaultTitleLogos(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStyleDefaultTitleLogosAssignment(), value, GameVersion.MP4);
-    private protected static void SetStyleDefaultTitleLogosReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStyleDefaultTitleLogosReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetStyleSheetFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStyleSheetFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetStyleSheetFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStyleSheetFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetStyleUrlLink(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStyleUrlLinkAssignment(), value, GameVersion.MP4);
-    private protected static void SetStyleUrlLinkReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStyleUrlLinkReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSystemDialogsFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetSystemDialogsFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetSystemDialogsFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetSystemDialogsFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSystemMenuFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetSystemMenuFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetSystemMenuFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetSystemMenuFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSystemOverlayFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetSystemOverlayFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetSystemOverlayFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetSystemOverlayFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetTitleTemplateFolder(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetTitleTemplateFolderAssignment(), value, GameVersion.MP4);
-    private protected static void SetTrafficFolder(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetTrafficFolderAssignment(), value, GameVersion.TM2020);
-    private protected static void SetUnknownFlagBitmap(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetUnknownFlagBitmapAssignment(), value, GameVersion.TMF);
-    private protected static void SetUnknownFlagBitmapReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetUnknownFlagBitmapReferenceAssignment(), value, GameVersion.TMF);
 }
 public abstract class CGameResourcesBuilderMembers1<TSelf> : CGameResourcesBuilderBase<TSelf> where TSelf : CGameResourcesBuilderMembers1<TSelf>
 {
@@ -272,7 +43,7 @@ public abstract class CGameResourcesBuilderMembers1<TSelf> : CGameResourcesBuild
     public global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultMTBlockBitmapFid
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("DefaultMTBlockBitmapFid");
-        set => SetDefaultMTBlockBitmapFid(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultMTBlockBitmapFidAssignment(), value, GameVersion.MP4 | GameVersion.TMF);
     }
     public TSelf WithDefaultMTBlockBitmapFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
@@ -282,13 +53,13 @@ public abstract class CGameResourcesBuilderMembers1<TSelf> : CGameResourcesBuild
     public TSelf WithDefaultMTBlockBitmapFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetDefaultMTBlockBitmapFidReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultMTBlockBitmapFidReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TMF);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultMTBlockSoundFid
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("DefaultMTBlockSoundFid");
-        set => SetDefaultMTBlockSoundFid(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultMTBlockSoundFidAssignment(), value, GameVersion.MP4 | GameVersion.TMF);
     }
     public TSelf WithDefaultMTBlockSoundFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
@@ -298,13 +69,13 @@ public abstract class CGameResourcesBuilderMembers1<TSelf> : CGameResourcesBuild
     public TSelf WithDefaultMTBlockSoundFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetDefaultMTBlockSoundFidReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultMTBlockSoundFidReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TMF);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultMTColorGradingImageFid
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("DefaultMTColorGradingImageFid");
-        set => SetDefaultMTColorGradingImageFid(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultMTColorGradingImageFidAssignment(), value, GameVersion.MP4 | GameVersion.TMF);
     }
     public TSelf WithDefaultMTColorGradingImageFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
@@ -314,7 +85,7 @@ public abstract class CGameResourcesBuilderMembers1<TSelf> : CGameResourcesBuild
     public TSelf WithDefaultMTColorGradingImageFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetDefaultMTColorGradingImageFidReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultMTColorGradingImageFidReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TMF);
         return (TSelf)this;
     }
 }
@@ -578,7 +349,7 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public global::GBX.NET.Engines.MwFoundations.CMwNod? MenusRemapping
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("MenusRemapping");
-            set => SetMenusRemapping(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMenusRemappingAssignment(), value, GameVersion.TMF);
         }
         public TMF WithMenusRemapping(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -588,13 +359,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public TMF WithMenusRemappingReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetMenusRemappingReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMenusRemappingReferenceAssignment(), value, GameVersion.TMF);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? UnknownFlagBitmap
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("UnknownFlagBitmap");
-            set => SetUnknownFlagBitmap(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetUnknownFlagBitmapAssignment(), value, GameVersion.TMF);
         }
         public TMF WithUnknownFlagBitmap(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -604,7 +375,7 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public TMF WithUnknownFlagBitmapReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetUnknownFlagBitmapReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetUnknownFlagBitmapReferenceAssignment(), value, GameVersion.TMF);
             return this;
         }
         public global::GBX.NET.Interfaces.Game.IGameResourcesTMF BuildInterface() => Build();
@@ -628,7 +399,7 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public global::GBX.NET.Engines.Plug.CPlugAudioBalance? AudioBalance_Base
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugAudioBalance?>("AudioBalance_Base");
-            set => SetAudioBalance_Base(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetAudioBalance_BaseAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithAudioBalance_Base(global::GBX.NET.Engines.Plug.CPlugAudioBalance? value)
         {
@@ -638,7 +409,7 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithAudioBalance_BaseReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugAudioBalance> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetAudioBalance_BaseReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetAudioBalance_BaseReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithAudioBalance_Base(global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? value)
@@ -648,7 +419,7 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public global::GBX.NET.Engines.Plug.CPlugAudioBalance? AudioBalance_Editor
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugAudioBalance?>("AudioBalance_Editor");
-            set => SetAudioBalance_Editor(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetAudioBalance_EditorAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithAudioBalance_Editor(global::GBX.NET.Engines.Plug.CPlugAudioBalance? value)
         {
@@ -658,7 +429,7 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithAudioBalance_EditorReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugAudioBalance> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetAudioBalance_EditorReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetAudioBalance_EditorReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithAudioBalance_Editor(global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? value)
@@ -668,7 +439,7 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public global::GBX.NET.Engines.Plug.CPlugAudioBalance? AudioBalance_Menus
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugAudioBalance?>("AudioBalance_Menus");
-            set => SetAudioBalance_Menus(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetAudioBalance_MenusAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithAudioBalance_Menus(global::GBX.NET.Engines.Plug.CPlugAudioBalance? value)
         {
@@ -678,7 +449,7 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithAudioBalance_MenusReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugAudioBalance> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetAudioBalance_MenusReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetAudioBalance_MenusReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithAudioBalance_Menus(global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? value)
@@ -688,7 +459,7 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public global::GBX.NET.Engines.MwFoundations.CMwNod? BasicDialogsFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("BasicDialogsFid");
-            set => SetBasicDialogsFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetBasicDialogsFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithBasicDialogsFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -698,13 +469,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithBasicDialogsFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetBasicDialogsFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetBasicDialogsFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapCubeMenuManiaPlanet3d
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapCubeMenuManiaPlanet3d");
-            set => SetBitmapCubeMenuManiaPlanet3d(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetBitmapCubeMenuManiaPlanet3dAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithBitmapCubeMenuManiaPlanet3d(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
         {
@@ -714,7 +485,7 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithBitmapCubeMenuManiaPlanet3dReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetBitmapCubeMenuManiaPlanet3dReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetBitmapCubeMenuManiaPlanet3dReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithBitmapCubeMenuManiaPlanet3d(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value)
@@ -724,7 +495,7 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapTeamEmblems
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapTeamEmblems");
-            set => SetBitmapTeamEmblems(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetBitmapTeamEmblemsAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithBitmapTeamEmblems(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
         {
@@ -734,7 +505,7 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithBitmapTeamEmblemsReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetBitmapTeamEmblemsReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetBitmapTeamEmblemsReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithBitmapTeamEmblems(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value)
@@ -744,7 +515,7 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public global::GBX.NET.Engines.MwFoundations.CMwNod? CardPlanetMenu1Fid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("CardPlanetMenu1Fid");
-            set => SetCardPlanetMenu1Fid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetCardPlanetMenu1FidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithCardPlanetMenu1Fid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -754,13 +525,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithCardPlanetMenu1FidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetCardPlanetMenu1FidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetCardPlanetMenu1FidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? CardPlanetMenu2Fid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("CardPlanetMenu2Fid");
-            set => SetCardPlanetMenu2Fid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetCardPlanetMenu2FidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithCardPlanetMenu2Fid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -770,13 +541,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithCardPlanetMenu2FidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetCardPlanetMenu2FidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetCardPlanetMenu2FidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? CardPlanetServerMainFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("CardPlanetServerMainFid");
-            set => SetCardPlanetServerMainFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetCardPlanetServerMainFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithCardPlanetServerMainFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -786,13 +557,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithCardPlanetServerMainFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetCardPlanetServerMainFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetCardPlanetServerMainFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? CardPlanetServerRackSummaryFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("CardPlanetServerRackSummaryFid");
-            set => SetCardPlanetServerRackSummaryFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetCardPlanetServerRackSummaryFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithCardPlanetServerRackSummaryFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -802,13 +573,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithCardPlanetServerRackSummaryFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetCardPlanetServerRackSummaryFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetCardPlanetServerRackSummaryFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? CardPlanetServerSummaryFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("CardPlanetServerSummaryFid");
-            set => SetCardPlanetServerSummaryFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetCardPlanetServerSummaryFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithCardPlanetServerSummaryFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -818,13 +589,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithCardPlanetServerSummaryFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetCardPlanetServerSummaryFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetCardPlanetServerSummaryFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? CardStationMainFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("CardStationMainFid");
-            set => SetCardStationMainFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetCardStationMainFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithCardStationMainFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -834,13 +605,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithCardStationMainFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetCardStationMainFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetCardStationMainFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? CardStationSummaryFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("CardStationSummaryFid");
-            set => SetCardStationSummaryFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetCardStationSummaryFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithCardStationSummaryFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -850,13 +621,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithCardStationSummaryFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetCardStationSummaryFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetCardStationSummaryFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultAvatarBitmapFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("DefaultAvatarBitmapFid");
-            set => SetDefaultAvatarBitmapFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultAvatarBitmapFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithDefaultAvatarBitmapFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -866,13 +637,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithDefaultAvatarBitmapFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetDefaultAvatarBitmapFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultAvatarBitmapFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultEditorEditorFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("DefaultEditorEditorFid");
-            set => SetDefaultEditorEditorFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorEditorFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithDefaultEditorEditorFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -882,13 +653,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithDefaultEditorEditorFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetDefaultEditorEditorFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorEditorFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultEditorMeshFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("DefaultEditorMeshFid");
-            set => SetDefaultEditorMeshFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorMeshFidAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         }
         public MP4 WithDefaultEditorMeshFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -898,13 +669,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithDefaultEditorMeshFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetDefaultEditorMeshFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorMeshFidReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultEditorModuleFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("DefaultEditorModuleFid");
-            set => SetDefaultEditorModuleFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorModuleFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithDefaultEditorModuleFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -914,13 +685,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithDefaultEditorModuleFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetDefaultEditorModuleFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorModuleFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultEditorVehicleFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("DefaultEditorVehicleFid");
-            set => SetDefaultEditorVehicleFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorVehicleFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithDefaultEditorVehicleFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -930,13 +701,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithDefaultEditorVehicleFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetDefaultEditorVehicleFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorVehicleFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultLeagueLogoBitmapFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("DefaultLeagueLogoBitmapFid");
-            set => SetDefaultLeagueLogoBitmapFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultLeagueLogoBitmapFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithDefaultLeagueLogoBitmapFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -946,13 +717,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithDefaultLeagueLogoBitmapFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetDefaultLeagueLogoBitmapFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultLeagueLogoBitmapFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultMTDecal2dBitmapFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("DefaultMTDecal2dBitmapFid");
-            set => SetDefaultMTDecal2dBitmapFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultMTDecal2dBitmapFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithDefaultMTDecal2dBitmapFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -962,13 +733,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithDefaultMTDecal2dBitmapFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetDefaultMTDecal2dBitmapFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultMTDecal2dBitmapFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultMusicFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("DefaultMusicFid");
-            set => SetDefaultMusicFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultMusicFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithDefaultMusicFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -978,13 +749,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithDefaultMusicFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetDefaultMusicFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultMusicFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultOnlineNewsIconBitmapFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("DefaultOnlineNewsIconBitmapFid");
-            set => SetDefaultOnlineNewsIconBitmapFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultOnlineNewsIconBitmapFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithDefaultOnlineNewsIconBitmapFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -994,13 +765,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithDefaultOnlineNewsIconBitmapFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetDefaultOnlineNewsIconBitmapFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultOnlineNewsIconBitmapFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultSkillScoreComputerFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("DefaultSkillScoreComputerFid");
-            set => SetDefaultSkillScoreComputerFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultSkillScoreComputerFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithDefaultSkillScoreComputerFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1010,13 +781,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithDefaultSkillScoreComputerFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetDefaultSkillScoreComputerFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultSkillScoreComputerFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultTagBitmapFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("DefaultTagBitmapFid");
-            set => SetDefaultTagBitmapFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultTagBitmapFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithDefaultTagBitmapFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1026,13 +797,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithDefaultTagBitmapFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetDefaultTagBitmapFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultTagBitmapFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultTeamLogoBitmapFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("DefaultTeamLogoBitmapFid");
-            set => SetDefaultTeamLogoBitmapFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultTeamLogoBitmapFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithDefaultTeamLogoBitmapFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1042,13 +813,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithDefaultTeamLogoBitmapFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetDefaultTeamLogoBitmapFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultTeamLogoBitmapFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultTransitionInClipFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("DefaultTransitionInClipFid");
-            set => SetDefaultTransitionInClipFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultTransitionInClipFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithDefaultTransitionInClipFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1058,13 +829,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithDefaultTransitionInClipFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetDefaultTransitionInClipFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultTransitionInClipFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultTransitionOutClipFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("DefaultTransitionOutClipFid");
-            set => SetDefaultTransitionOutClipFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultTransitionOutClipFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithDefaultTransitionOutClipFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1074,13 +845,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithDefaultTransitionOutClipFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetDefaultTransitionOutClipFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultTransitionOutClipFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? DialogsFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("DialogsFid");
-            set => SetDialogsFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDialogsFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithDialogsFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1090,13 +861,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithDialogsFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetDialogsFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDialogsFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? EditorAnimCharInterfaceFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("EditorAnimCharInterfaceFid");
-            set => SetEditorAnimCharInterfaceFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorAnimCharInterfaceFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithEditorAnimCharInterfaceFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1106,13 +877,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithEditorAnimCharInterfaceFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetEditorAnimCharInterfaceFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorAnimCharInterfaceFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? EditorAnimInterfaceFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("EditorAnimInterfaceFid");
-            set => SetEditorAnimInterfaceFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorAnimInterfaceFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithEditorAnimInterfaceFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1122,13 +893,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithEditorAnimInterfaceFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetEditorAnimInterfaceFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorAnimInterfaceFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? EditorAnimSetInterfaceFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("EditorAnimSetInterfaceFid");
-            set => SetEditorAnimSetInterfaceFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorAnimSetInterfaceFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithEditorAnimSetInterfaceFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1138,13 +909,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithEditorAnimSetInterfaceFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetEditorAnimSetInterfaceFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorAnimSetInterfaceFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? EditorClassInterfaceFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("EditorClassInterfaceFid");
-            set => SetEditorClassInterfaceFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorClassInterfaceFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithEditorClassInterfaceFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1154,13 +925,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithEditorClassInterfaceFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetEditorClassInterfaceFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorClassInterfaceFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? EditorItemInterfaceFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("EditorItemInterfaceFid");
-            set => SetEditorItemInterfaceFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorItemInterfaceFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithEditorItemInterfaceFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1170,13 +941,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithEditorItemInterfaceFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetEditorItemInterfaceFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorItemInterfaceFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? EditorManialinkInterfaceFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("EditorManialinkInterfaceFid");
-            set => SetEditorManialinkInterfaceFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorManialinkInterfaceFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithEditorManialinkInterfaceFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1186,13 +957,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithEditorManialinkInterfaceFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetEditorManialinkInterfaceFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorManialinkInterfaceFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? EditorModelDefaultMaterialFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("EditorModelDefaultMaterialFid");
-            set => SetEditorModelDefaultMaterialFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorModelDefaultMaterialFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithEditorModelDefaultMaterialFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1202,13 +973,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithEditorModelDefaultMaterialFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetEditorModelDefaultMaterialFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorModelDefaultMaterialFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? EditorModelSpritesBitmapFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("EditorModelSpritesBitmapFid");
-            set => SetEditorModelSpritesBitmapFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorModelSpritesBitmapFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithEditorModelSpritesBitmapFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1218,13 +989,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithEditorModelSpritesBitmapFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetEditorModelSpritesBitmapFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorModelSpritesBitmapFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? EditorModuleInterfaceFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("EditorModuleInterfaceFid");
-            set => SetEditorModuleInterfaceFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorModuleInterfaceFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithEditorModuleInterfaceFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1234,13 +1005,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithEditorModuleInterfaceFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetEditorModuleInterfaceFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorModuleInterfaceFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? EditorPixelCheckerImageFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("EditorPixelCheckerImageFid");
-            set => SetEditorPixelCheckerImageFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorPixelCheckerImageFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithEditorPixelCheckerImageFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1250,13 +1021,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithEditorPixelCheckerImageFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetEditorPixelCheckerImageFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorPixelCheckerImageFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? EditorVehicleInterfaceFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("EditorVehicleInterfaceFid");
-            set => SetEditorVehicleInterfaceFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorVehicleInterfaceFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithEditorVehicleInterfaceFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1266,13 +1037,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithEditorVehicleInterfaceFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetEditorVehicleInterfaceFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorVehicleInterfaceFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? EmptyChallengeCustomMusicFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("EmptyChallengeCustomMusicFid");
-            set => SetEmptyChallengeCustomMusicFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEmptyChallengeCustomMusicFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithEmptyChallengeCustomMusicFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1282,13 +1053,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithEmptyChallengeCustomMusicFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetEmptyChallengeCustomMusicFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEmptyChallengeCustomMusicFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public string? FolderGlobalEnvBanners
         {
             get => state.Get<string?>("FolderGlobalEnvBanners");
-            set => SetFolderGlobalEnvBanners(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetFolderGlobalEnvBannersAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithFolderGlobalEnvBanners(string? value)
         {
@@ -1298,7 +1069,7 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public bool HasInterfaceBlockEditorFid
         {
             get => state.Get<bool>("HasInterfaceBlockEditorFid");
-            set => SetHasInterfaceBlockEditorFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetHasInterfaceBlockEditorFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithHasInterfaceBlockEditorFid(bool value)
         {
@@ -1308,7 +1079,7 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public bool HasInterfaceEditorFid
         {
             get => state.Get<bool>("HasInterfaceEditorFid");
-            set => SetHasInterfaceEditorFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetHasInterfaceEditorFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithHasInterfaceEditorFid(bool value)
         {
@@ -1318,7 +1089,7 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public bool HasInterfaceEditorSimpleFid
         {
             get => state.Get<bool>("HasInterfaceEditorSimpleFid");
-            set => SetHasInterfaceEditorSimpleFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetHasInterfaceEditorSimpleFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithHasInterfaceEditorSimpleFid(bool value)
         {
@@ -1328,7 +1099,7 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public bool HasInterfacePuzzleFid
         {
             get => state.Get<bool>("HasInterfacePuzzleFid");
-            set => SetHasInterfacePuzzleFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetHasInterfacePuzzleFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithHasInterfacePuzzleFid(bool value)
         {
@@ -1338,7 +1109,7 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public bool HasRaceInterfaceFid
         {
             get => state.Get<bool>("HasRaceInterfaceFid");
-            set => SetHasRaceInterfaceFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetHasRaceInterfaceFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithHasRaceInterfaceFid(bool value)
         {
@@ -1348,7 +1119,7 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public bool HasRaceNetInterfaceFid
         {
             get => state.Get<bool>("HasRaceNetInterfaceFid");
-            set => SetHasRaceNetInterfaceFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetHasRaceNetInterfaceFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithHasRaceNetInterfaceFid(bool value)
         {
@@ -1358,7 +1129,7 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public bool HasReplayInterfaceFid
         {
             get => state.Get<bool>("HasReplayInterfaceFid");
-            set => SetHasReplayInterfaceFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetHasReplayInterfaceFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithHasReplayInterfaceFid(bool value)
         {
@@ -1368,7 +1139,7 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public string? HymnsFolder
         {
             get => state.Get<string?>("HymnsFolder");
-            set => SetHymnsFolder(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetHymnsFolderAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithHymnsFolder(string? value)
         {
@@ -1378,7 +1149,7 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public global::GBX.NET.Engines.MwFoundations.CMwNod? ImageTurboRoulette
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("ImageTurboRoulette");
-            set => SetImageTurboRoulette(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetImageTurboRouletteAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithImageTurboRoulette(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1388,13 +1159,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithImageTurboRouletteReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetImageTurboRouletteReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetImageTurboRouletteReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? InGameDialogsFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("InGameDialogsFid");
-            set => SetInGameDialogsFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInGameDialogsFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithInGameDialogsFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1404,13 +1175,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithInGameDialogsFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetInGameDialogsFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInGameDialogsFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? InterfaceBg
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("InterfaceBg");
-            set => SetInterfaceBg(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfaceBgAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithInterfaceBg(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1420,13 +1191,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithInterfaceBgReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetInterfaceBgReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfaceBgReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? InterfaceBlockEditorFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("InterfaceBlockEditorFid");
-            set => SetInterfaceBlockEditorFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfaceBlockEditorFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithInterfaceBlockEditorFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1436,13 +1207,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithInterfaceBlockEditorFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetInterfaceBlockEditorFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfaceBlockEditorFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? InterfaceEditorFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("InterfaceEditorFid");
-            set => SetInterfaceEditorFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfaceEditorFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithInterfaceEditorFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1452,13 +1223,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithInterfaceEditorFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetInterfaceEditorFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfaceEditorFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? InterfaceEditorInventoryModelFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("InterfaceEditorInventoryModelFid");
-            set => SetInterfaceEditorInventoryModelFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfaceEditorInventoryModelFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithInterfaceEditorInventoryModelFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1468,13 +1239,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithInterfaceEditorInventoryModelFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetInterfaceEditorInventoryModelFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfaceEditorInventoryModelFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? InterfaceEditorSimpleFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("InterfaceEditorSimpleFid");
-            set => SetInterfaceEditorSimpleFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfaceEditorSimpleFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithInterfaceEditorSimpleFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1484,13 +1255,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithInterfaceEditorSimpleFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetInterfaceEditorSimpleFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfaceEditorSimpleFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.Plug.CPlugFont? InterfaceFont
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugFont?>("InterfaceFont");
-            set => SetInterfaceFont(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfaceFontAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithInterfaceFont(global::GBX.NET.Engines.Plug.CPlugFont? value)
         {
@@ -1500,13 +1271,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithInterfaceFontReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFont> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetInterfaceFontReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfaceFontReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? InterfacePuzzleFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("InterfacePuzzleFid");
-            set => SetInterfacePuzzleFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfacePuzzleFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithInterfacePuzzleFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1516,13 +1287,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithInterfacePuzzleFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetInterfacePuzzleFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfacePuzzleFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? ManiaPlanetMenuMusic
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("ManiaPlanetMenuMusic");
-            set => SetManiaPlanetMenuMusic(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetManiaPlanetMenuMusicAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithManiaPlanetMenuMusic(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1532,13 +1303,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithManiaPlanetMenuMusicReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetManiaPlanetMenuMusicReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetManiaPlanetMenuMusicReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? ManialinkBrowserOverlayFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("ManialinkBrowserOverlayFid");
-            set => SetManialinkBrowserOverlayFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetManialinkBrowserOverlayFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithManialinkBrowserOverlayFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1548,13 +1319,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithManialinkBrowserOverlayFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetManialinkBrowserOverlayFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetManialinkBrowserOverlayFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? MaterialSkyDomeMenu
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("MaterialSkyDomeMenu");
-            set => SetMaterialSkyDomeMenu(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMaterialSkyDomeMenuAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithMaterialSkyDomeMenu(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1564,13 +1335,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithMaterialSkyDomeMenuReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetMaterialSkyDomeMenuReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMaterialSkyDomeMenuReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? MaterialsLibrariesFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("MaterialsLibrariesFid");
-            set => SetMaterialsLibrariesFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMaterialsLibrariesFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithMaterialsLibrariesFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1580,13 +1351,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithMaterialsLibrariesFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetMaterialsLibrariesFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMaterialsLibrariesFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? MediaTrackerInterfaceFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("MediaTrackerInterfaceFid");
-            set => SetMediaTrackerInterfaceFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMediaTrackerInterfaceFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithMediaTrackerInterfaceFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1596,13 +1367,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithMediaTrackerInterfaceFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetMediaTrackerInterfaceFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMediaTrackerInterfaceFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public string? MenuBackgroundsFolder
         {
             get => state.Get<string?>("MenuBackgroundsFolder");
-            set => SetMenuBackgroundsFolder(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMenuBackgroundsFolderAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithMenuBackgroundsFolder(string? value)
         {
@@ -1612,7 +1383,7 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public global::GBX.NET.Engines.MwFoundations.CMwNod? MenuManialink3dFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("MenuManialink3dFid");
-            set => SetMenuManialink3dFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMenuManialink3dFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithMenuManialink3dFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1622,13 +1393,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithMenuManialink3dFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetMenuManialink3dFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMenuManialink3dFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.Plug.CPlugModelShading.FidId[]? MenuManialink3dResources
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugModelShading.FidId[]?>("MenuManialink3dResources");
-            set => SetMenuManialink3dResources(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMenuManialink3dResourcesAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithMenuManialink3dResources(params global::GBX.NET.Engines.Plug.CPlugModelShading.FidId[]? value)
         {
@@ -1642,7 +1413,7 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public global::GBX.NET.Engines.MwFoundations.CMwNod? MenuManialink3d_BaseStyleFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("MenuManialink3d_BaseStyleFid");
-            set => SetMenuManialink3d_BaseStyleFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMenuManialink3d_BaseStyleFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithMenuManialink3d_BaseStyleFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1652,13 +1423,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithMenuManialink3d_BaseStyleFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetMenuManialink3d_BaseStyleFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMenuManialink3d_BaseStyleFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? MenuManialink3d_StationsStyleFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("MenuManialink3d_StationsStyleFid");
-            set => SetMenuManialink3d_StationsStyleFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMenuManialink3d_StationsStyleFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithMenuManialink3d_StationsStyleFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1668,13 +1439,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithMenuManialink3d_StationsStyleFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetMenuManialink3d_StationsStyleFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMenuManialink3d_StationsStyleFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? MenusFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("MenusFid");
-            set => SetMenusFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMenusFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithMenusFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1684,13 +1455,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithMenusFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetMenusFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMenusFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? ModuleMenuBaseScriptFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("ModuleMenuBaseScriptFid");
-            set => SetModuleMenuBaseScriptFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModuleMenuBaseScriptFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithModuleMenuBaseScriptFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1700,13 +1471,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithModuleMenuBaseScriptFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetModuleMenuBaseScriptFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModuleMenuBaseScriptFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? ModuleMenuServerBrowserScriptFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("ModuleMenuServerBrowserScriptFid");
-            set => SetModuleMenuServerBrowserScriptFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModuleMenuServerBrowserScriptFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithModuleMenuServerBrowserScriptFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1716,13 +1487,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithModuleMenuServerBrowserScriptFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetModuleMenuServerBrowserScriptFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModuleMenuServerBrowserScriptFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? ModulePlaygroundDefaultChronoFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("ModulePlaygroundDefaultChronoFid");
-            set => SetModulePlaygroundDefaultChronoFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundDefaultChronoFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithModulePlaygroundDefaultChronoFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1732,13 +1503,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithModulePlaygroundDefaultChronoFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetModulePlaygroundDefaultChronoFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundDefaultChronoFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? ModulePlaygroundDefaultHudFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("ModulePlaygroundDefaultHudFid");
-            set => SetModulePlaygroundDefaultHudFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundDefaultHudFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithModulePlaygroundDefaultHudFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1748,13 +1519,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithModulePlaygroundDefaultHudFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetModulePlaygroundDefaultHudFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundDefaultHudFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? ModulePlaygroundDefaultInventoryFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("ModulePlaygroundDefaultInventoryFid");
-            set => SetModulePlaygroundDefaultInventoryFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundDefaultInventoryFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithModulePlaygroundDefaultInventoryFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1764,13 +1535,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithModulePlaygroundDefaultInventoryFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetModulePlaygroundDefaultInventoryFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundDefaultInventoryFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? ModulePlaygroundDefaultPlayerStateFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("ModulePlaygroundDefaultPlayerStateFid");
-            set => SetModulePlaygroundDefaultPlayerStateFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundDefaultPlayerStateFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithModulePlaygroundDefaultPlayerStateFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1780,13 +1551,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithModulePlaygroundDefaultPlayerStateFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetModulePlaygroundDefaultPlayerStateFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundDefaultPlayerStateFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? ModulePlaygroundDefaultScoresTableFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("ModulePlaygroundDefaultScoresTableFid");
-            set => SetModulePlaygroundDefaultScoresTableFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundDefaultScoresTableFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithModulePlaygroundDefaultScoresTableFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1796,13 +1567,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithModulePlaygroundDefaultScoresTableFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetModulePlaygroundDefaultScoresTableFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundDefaultScoresTableFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? ModulePlaygroundDefaultSpeedMeterFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("ModulePlaygroundDefaultSpeedMeterFid");
-            set => SetModulePlaygroundDefaultSpeedMeterFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundDefaultSpeedMeterFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithModulePlaygroundDefaultSpeedMeterFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1812,13 +1583,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithModulePlaygroundDefaultSpeedMeterFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetModulePlaygroundDefaultSpeedMeterFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundDefaultSpeedMeterFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? ModulePlaygroundDefaultStoreFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("ModulePlaygroundDefaultStoreFid");
-            set => SetModulePlaygroundDefaultStoreFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundDefaultStoreFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithModulePlaygroundDefaultStoreFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1828,13 +1599,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithModulePlaygroundDefaultStoreFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetModulePlaygroundDefaultStoreFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundDefaultStoreFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? ModulePlaygroundDefaultTeamStateFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("ModulePlaygroundDefaultTeamStateFid");
-            set => SetModulePlaygroundDefaultTeamStateFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundDefaultTeamStateFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithModulePlaygroundDefaultTeamStateFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1844,13 +1615,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithModulePlaygroundDefaultTeamStateFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetModulePlaygroundDefaultTeamStateFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundDefaultTeamStateFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? ModulePlaygroundFullPlayerStateFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("ModulePlaygroundFullPlayerStateFid");
-            set => SetModulePlaygroundFullPlayerStateFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundFullPlayerStateFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithModulePlaygroundFullPlayerStateFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1860,13 +1631,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithModulePlaygroundFullPlayerStateFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetModulePlaygroundFullPlayerStateFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundFullPlayerStateFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? ModulePlaygroundInventoryScriptFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("ModulePlaygroundInventoryScriptFid");
-            set => SetModulePlaygroundInventoryScriptFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundInventoryScriptFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithModulePlaygroundInventoryScriptFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1876,13 +1647,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithModulePlaygroundInventoryScriptFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetModulePlaygroundInventoryScriptFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundInventoryScriptFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? ModulePlaygroundSpeedMeterScriptFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("ModulePlaygroundSpeedMeterScriptFid");
-            set => SetModulePlaygroundSpeedMeterScriptFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundSpeedMeterScriptFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithModulePlaygroundSpeedMeterScriptFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1892,13 +1663,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithModulePlaygroundSpeedMeterScriptFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetModulePlaygroundSpeedMeterScriptFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundSpeedMeterScriptFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? ModulePlaygroundStoreScriptFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("ModulePlaygroundStoreScriptFid");
-            set => SetModulePlaygroundStoreScriptFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundStoreScriptFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithModulePlaygroundStoreScriptFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1908,13 +1679,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithModulePlaygroundStoreScriptFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetModulePlaygroundStoreScriptFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundStoreScriptFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.Game.CGameResources.NamedNod[]? Musics
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameResources.NamedNod[]?>("Musics");
-            set => SetMusics(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMusicsAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithMusics(params global::GBX.NET.Engines.Game.CGameResources.NamedNod[]? value)
         {
@@ -1928,7 +1699,7 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public global::GBX.NET.Engines.MwFoundations.CMwNod? OffZoneLayerShaderFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("OffZoneLayerShaderFid");
-            set => SetOffZoneLayerShaderFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetOffZoneLayerShaderFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithOffZoneLayerShaderFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1938,13 +1709,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithOffZoneLayerShaderFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetOffZoneLayerShaderFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetOffZoneLayerShaderFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? OffZoneSurfaceShaderFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("OffZoneSurfaceShaderFid");
-            set => SetOffZoneSurfaceShaderFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetOffZoneSurfaceShaderFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithOffZoneSurfaceShaderFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1954,13 +1725,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithOffZoneSurfaceShaderFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetOffZoneSurfaceShaderFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetOffZoneSurfaceShaderFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.Game.CGameCtnPainterSetting? PainterSetting
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameCtnPainterSetting?>("PainterSetting");
-            set => SetPainterSetting(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetPainterSettingAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithPainterSetting(global::GBX.NET.Engines.Game.CGameCtnPainterSetting? value)
         {
@@ -1970,13 +1741,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithPainterSettingReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnPainterSetting> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetPainterSettingReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetPainterSettingReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? PlanetSolidFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("PlanetSolidFid");
-            set => SetPlanetSolidFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetPlanetSolidFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithPlanetSolidFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1986,13 +1757,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithPlanetSolidFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetPlanetSolidFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetPlanetSolidFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? PluginsMenuOverlayFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("PluginsMenuOverlayFid");
-            set => SetPluginsMenuOverlayFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetPluginsMenuOverlayFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithPluginsMenuOverlayFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -2002,13 +1773,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithPluginsMenuOverlayFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetPluginsMenuOverlayFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetPluginsMenuOverlayFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? PodiumScene
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("PodiumScene");
-            set => SetPodiumScene(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetPodiumSceneAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithPodiumScene(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -2018,13 +1789,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithPodiumSceneReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetPodiumSceneReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetPodiumSceneReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? ProgressOverlayFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("ProgressOverlayFid");
-            set => SetProgressOverlayFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetProgressOverlayFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithProgressOverlayFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -2034,13 +1805,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithProgressOverlayFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetProgressOverlayFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetProgressOverlayFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? RaceInterfaceFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("RaceInterfaceFid");
-            set => SetRaceInterfaceFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetRaceInterfaceFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithRaceInterfaceFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -2050,13 +1821,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithRaceInterfaceFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetRaceInterfaceFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetRaceInterfaceFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? RaceNetInterfaceFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("RaceNetInterfaceFid");
-            set => SetRaceNetInterfaceFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetRaceNetInterfaceFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithRaceNetInterfaceFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -2066,13 +1837,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithRaceNetInterfaceFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetRaceNetInterfaceFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetRaceNetInterfaceFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? ReplayInterfaceFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("ReplayInterfaceFid");
-            set => SetReplayInterfaceFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetReplayInterfaceFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithReplayInterfaceFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -2082,13 +1853,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithReplayInterfaceFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetReplayInterfaceFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetReplayInterfaceFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? SceneFxNodRoot
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("SceneFxNodRoot");
-            set => SetSceneFxNodRoot(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetSceneFxNodRootAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSceneFxNodRoot(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -2098,13 +1869,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithSceneFxNodRootReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSceneFxNodRootReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetSceneFxNodRootReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.Game.CGameResources.NamedNod[]? Sounds
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameResources.NamedNod[]?>("Sounds");
-            set => SetSounds(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetSoundsAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSounds(params global::GBX.NET.Engines.Game.CGameResources.NamedNod[]? value)
         {
@@ -2118,7 +1889,7 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public global::GBX.NET.Engines.MwFoundations.CMwNod? StationBronzeFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("StationBronzeFid");
-            set => SetStationBronzeFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStationBronzeFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithStationBronzeFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -2128,13 +1899,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithStationBronzeFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetStationBronzeFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStationBronzeFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.Plug.CPlugGameSkin? StationGameSkin
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugGameSkin?>("StationGameSkin");
-            set => SetStationGameSkin(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStationGameSkinAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithStationGameSkin(global::GBX.NET.Engines.Plug.CPlugGameSkin? value)
         {
@@ -2144,7 +1915,7 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithStationGameSkinReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetStationGameSkinReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStationGameSkinReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithStationGameSkin(global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4? value)
@@ -2154,7 +1925,7 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public global::GBX.NET.Engines.MwFoundations.CMwNod? StationGoldFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("StationGoldFid");
-            set => SetStationGoldFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStationGoldFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithStationGoldFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -2164,13 +1935,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithStationGoldFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetStationGoldFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStationGoldFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? StationServerFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("StationServerFid");
-            set => SetStationServerFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStationServerFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithStationServerFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -2180,13 +1951,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithStationServerFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetStationServerFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStationServerFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? StationSilverFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("StationSilverFid");
-            set => SetStationSilverFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStationSilverFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithStationSilverFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -2196,13 +1967,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithStationSilverFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetStationSilverFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStationSilverFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? StoryInterfaceFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("StoryInterfaceFid");
-            set => SetStoryInterfaceFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStoryInterfaceFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithStoryInterfaceFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -2212,13 +1983,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithStoryInterfaceFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetStoryInterfaceFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStoryInterfaceFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? StyleDefaultTitleLogos
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("StyleDefaultTitleLogos");
-            set => SetStyleDefaultTitleLogos(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStyleDefaultTitleLogosAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithStyleDefaultTitleLogos(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -2228,13 +1999,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithStyleDefaultTitleLogosReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetStyleDefaultTitleLogosReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStyleDefaultTitleLogosReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? StyleSheetFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("StyleSheetFid");
-            set => SetStyleSheetFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStyleSheetFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithStyleSheetFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -2244,13 +2015,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithStyleSheetFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetStyleSheetFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStyleSheetFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? StyleUrlLink
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("StyleUrlLink");
-            set => SetStyleUrlLink(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStyleUrlLinkAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithStyleUrlLink(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -2260,13 +2031,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithStyleUrlLinkReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetStyleUrlLinkReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStyleUrlLinkReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? SystemDialogsFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("SystemDialogsFid");
-            set => SetSystemDialogsFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetSystemDialogsFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSystemDialogsFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -2276,13 +2047,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithSystemDialogsFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSystemDialogsFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetSystemDialogsFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? SystemMenuFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("SystemMenuFid");
-            set => SetSystemMenuFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetSystemMenuFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSystemMenuFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -2292,13 +2063,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithSystemMenuFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSystemMenuFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetSystemMenuFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? SystemOverlayFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("SystemOverlayFid");
-            set => SetSystemOverlayFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetSystemOverlayFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSystemOverlayFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -2308,13 +2079,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithSystemOverlayFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSystemOverlayFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetSystemOverlayFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public string? TitleTemplateFolder
         {
             get => state.Get<string?>("TitleTemplateFolder");
-            set => SetTitleTemplateFolder(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetTitleTemplateFolderAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithTitleTemplateFolder(string? value)
         {
@@ -2342,7 +2113,7 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public string? AdnFolder
         {
             get => state.Get<string?>("AdnFolder");
-            set => SetAdnFolder(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetAdnFolderAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithAdnFolder(string? value)
         {
@@ -2352,7 +2123,7 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public global::GBX.NET.Engines.MwFoundations.CMwNod? BadWordDict
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("BadWordDict");
-            set => SetBadWordDict(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetBadWordDictAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithBadWordDict(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -2362,13 +2133,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public TM2020 WithBadWordDictReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetBadWordDictReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetBadWordDictReferenceAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public byte[]? CompiledWordDictionary
         {
             get => state.Get<byte[]?>("CompiledWordDictionary");
-            set => SetCompiledWordDictionary(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetCompiledWordDictionaryAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithCompiledWordDictionary(params byte[]? value)
         {
@@ -2382,7 +2153,7 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultEditorMediaTrackerFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("DefaultEditorMediaTrackerFid");
-            set => SetDefaultEditorMediaTrackerFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorMediaTrackerFidAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithDefaultEditorMediaTrackerFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -2392,13 +2163,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public TM2020 WithDefaultEditorMediaTrackerFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetDefaultEditorMediaTrackerFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorMediaTrackerFidReferenceAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultEditorMeshFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("DefaultEditorMeshFid");
-            set => SetDefaultEditorMeshFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorMeshFidAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         }
         public TM2020 WithDefaultEditorMeshFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -2408,13 +2179,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public TM2020 WithDefaultEditorMeshFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetDefaultEditorMeshFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorMeshFidReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultEditorSkinFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("DefaultEditorSkinFid");
-            set => SetDefaultEditorSkinFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorSkinFidAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithDefaultEditorSkinFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -2424,13 +2195,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public TM2020 WithDefaultEditorSkinFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetDefaultEditorSkinFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorSkinFidReferenceAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? IconShooterDefaultSettingsFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("IconShooterDefaultSettingsFid");
-            set => SetIconShooterDefaultSettingsFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetIconShooterDefaultSettingsFidAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithIconShooterDefaultSettingsFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -2440,13 +2211,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public TM2020 WithIconShooterDefaultSettingsFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetIconShooterDefaultSettingsFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetIconShooterDefaultSettingsFidReferenceAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? IconShooterMoodFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("IconShooterMoodFid");
-            set => SetIconShooterMoodFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetIconShooterMoodFidAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithIconShooterMoodFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -2456,13 +2227,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public TM2020 WithIconShooterMoodFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetIconShooterMoodFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetIconShooterMoodFidReferenceAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? IconShooterSceneLayoutFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("IconShooterSceneLayoutFid");
-            set => SetIconShooterSceneLayoutFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetIconShooterSceneLayoutFidAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithIconShooterSceneLayoutFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -2472,13 +2243,13 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public TM2020 WithIconShooterSceneLayoutFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetIconShooterSceneLayoutFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetIconShooterSceneLayoutFidReferenceAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public string? TrafficFolder
         {
             get => state.Get<string?>("TrafficFolder");
-            set => SetTrafficFolder(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetTrafficFolderAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithTrafficFolder(string? value)
         {

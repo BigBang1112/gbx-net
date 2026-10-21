@@ -36,15 +36,10 @@ public abstract class CGameCtnMediaBlockObjectBuilderBase<TSelf> where TSelf : C
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockObject> state;
     private protected CGameCtnMediaBlockObjectBuilderBase() => state = new();
     private protected CGameCtnMediaBlockObjectBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockObject> state) => this.state = state;
-    private protected static void SetEnd(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockObject> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockObjectBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetShowObjects(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockObject> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockObjectBuilderAssignments.GetShowObjectsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetStart(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockObject> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockObjectBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetVisData(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockObject> state, global::GBX.NET.Engines.Game.CGameReplayObjectVisData? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockObjectBuilderAssignments.GetVisDataAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetVisDataReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockObject> state, NodeRef<global::GBX.NET.Engines.Game.CGameReplayObjectVisData> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockObjectBuilderAssignments.GetVisDataReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public TimeSingle End
     {
         get => state.Get<TimeSingle>("End");
-        set => SetEnd(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockObjectBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEnd(TimeSingle value)
     {
@@ -54,7 +49,7 @@ public abstract class CGameCtnMediaBlockObjectBuilderBase<TSelf> where TSelf : C
     public bool ShowObjects
     {
         get => state.Get<bool>("ShowObjects");
-        set => SetShowObjects(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockObjectBuilderAssignments.GetShowObjectsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithShowObjects(bool value)
     {
@@ -64,7 +59,7 @@ public abstract class CGameCtnMediaBlockObjectBuilderBase<TSelf> where TSelf : C
     public TimeSingle Start
     {
         get => state.Get<TimeSingle>("Start");
-        set => SetStart(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockObjectBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStart(TimeSingle value)
     {
@@ -74,7 +69,7 @@ public abstract class CGameCtnMediaBlockObjectBuilderBase<TSelf> where TSelf : C
     public global::GBX.NET.Engines.Game.CGameReplayObjectVisData? VisData
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameReplayObjectVisData?>("VisData");
-        set => SetVisData(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockObjectBuilderAssignments.GetVisDataAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithVisData(global::GBX.NET.Engines.Game.CGameReplayObjectVisData? value)
     {
@@ -84,7 +79,7 @@ public abstract class CGameCtnMediaBlockObjectBuilderBase<TSelf> where TSelf : C
     public TSelf WithVisDataReference(NodeRef<global::GBX.NET.Engines.Game.CGameReplayObjectVisData> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetVisDataReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockObjectBuilderAssignments.GetVisDataReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }

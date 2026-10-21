@@ -36,15 +36,10 @@ public abstract class CGameCharacterModelBuilderBase<TSelf> where TSelf : CGameC
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCharacterModel> state;
     private protected CGameCharacterModelBuilderBase() => state = new();
     private protected CGameCharacterModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCharacterModel> state) => this.state = state;
-    private protected static void SetObjects(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCharacterModel> state, NodeRefList<global::GBX.NET.Engines.GameData.CGameObjectModel>? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCharacterModelBuilderAssignments.GetObjectsAssignment(), value, GameVersion.TM2020);
-    private protected static void SetPhysicsModel(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCharacterModel> state, global::GBX.NET.Engines.Plug.CPlugCharPhyModel? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCharacterModelBuilderAssignments.GetPhysicsModelAssignment(), value, GameVersion.TM2020);
-    private protected static void SetPhysicsModelReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCharacterModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugCharPhyModel> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCharacterModelBuilderAssignments.GetPhysicsModelReferenceAssignment(), value, GameVersion.TM2020);
-    private protected static void SetVisualModel(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCharacterModel> state, global::GBX.NET.Engines.MwFoundations.CMwRefBufferSelect? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCharacterModelBuilderAssignments.GetVisualModelAssignment(), value, GameVersion.TM2020);
-    private protected static void SetVisualModelReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCharacterModel> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBufferSelect> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCharacterModelBuilderAssignments.GetVisualModelReferenceAssignment(), value, GameVersion.TM2020);
     public NodeRefList<global::GBX.NET.Engines.GameData.CGameObjectModel>? Objects
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.GameData.CGameObjectModel>?>("Objects");
-        set => SetObjects(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCharacterModelBuilderAssignments.GetObjectsAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithObjects(NodeRefList<global::GBX.NET.Engines.GameData.CGameObjectModel>? value)
     {
@@ -62,7 +57,7 @@ public abstract class CGameCharacterModelBuilderBase<TSelf> where TSelf : CGameC
     public global::GBX.NET.Engines.Plug.CPlugCharPhyModel? PhysicsModel
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugCharPhyModel?>("PhysicsModel");
-        set => SetPhysicsModel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCharacterModelBuilderAssignments.GetPhysicsModelAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithPhysicsModel(global::GBX.NET.Engines.Plug.CPlugCharPhyModel? value)
     {
@@ -72,13 +67,13 @@ public abstract class CGameCharacterModelBuilderBase<TSelf> where TSelf : CGameC
     public TSelf WithPhysicsModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugCharPhyModel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetPhysicsModelReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCharacterModelBuilderAssignments.GetPhysicsModelReferenceAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.MwFoundations.CMwRefBufferSelect? VisualModel
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwRefBufferSelect?>("VisualModel");
-        set => SetVisualModel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCharacterModelBuilderAssignments.GetVisualModelAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithVisualModel(global::GBX.NET.Engines.MwFoundations.CMwRefBufferSelect? value)
     {
@@ -88,7 +83,7 @@ public abstract class CGameCharacterModelBuilderBase<TSelf> where TSelf : CGameC
     public TSelf WithVisualModelReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBufferSelect> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetVisualModelReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCharacterModelBuilderAssignments.GetVisualModelReferenceAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
     }
 }

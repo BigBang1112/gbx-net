@@ -82,7 +82,7 @@ When an existing common method would disappear, maintainers are encouraged to pr
 
 A compatibility member should preserve the previous behavior for games that support it, including pending assignment tracking. If the caller selects a game that does not support the assigned value, reject the build with a clear message instead of silently dropping it. Keeping an obsolete member in a partial does not make that member available in newly generated game stages or count as evidence of game support.
 
-The generated base keeps a `Set<Property>(state, value)` helper for each member supported by any game. A handwritten obsolete common setter can use that helper after its ordinary common setter disappears, preserving assignment order and the supported-game mask.
+The generator emits a `Set<Property>(state, value)` helper when a handwritten builder partial references it and at least one game supports the member. A handwritten obsolete common setter can use that helper after its ordinary common setter disappears, preserving assignment order and the supported-game mask. Generate descriptor-preserving `Set<Property>Reference` helpers under the same rule. Ordinary generated setters call the shared assignment descriptors directly, avoiding forwarding methods that no partial needs.
 
 ### v1.2 methods requiring migration
 
@@ -369,6 +369,7 @@ Keep member implementations proportional to distinct contracts and recipes rathe
 
 - Common setters share a generic base. Overlapping game-specific member sets share additional bases where at least two stages use them, retaining each stage's fluent return type. Handwritten replacements stay on the affected stage.
 - A property's declaring node owns its shared assignment descriptor. Derived builders supply their own availability masks, preserving setter order and snapshot behavior. Initialize descriptors lazily so using one setter does not root all setters during trimming.
+- Generated setters call those descriptors directly. Emit `Set<Property>` and `Set<Property>Reference` compatibility bridges only when a handwritten builder partial references them, including method groups and `nameof` expressions.
 - Identical ordered chunk recipes and versions share typed creation and validation methods. Pass the selected game to constructors to retain game-specific defaults. Keep optional customization and validation hooks on each concrete stage.
 - Derived interfaces inherit equivalent parent members. Game interfaces share member contracts, with generic parameters for scoped child interfaces. Keep existing handwritten interface declarations and their accessor slots.
 - Scoped collection views share conversion and child-validation code, while their collection getter follows replacement of the owner's collection.

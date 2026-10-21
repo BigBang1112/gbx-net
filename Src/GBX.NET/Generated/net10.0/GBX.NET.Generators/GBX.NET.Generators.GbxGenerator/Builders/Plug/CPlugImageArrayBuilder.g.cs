@@ -36,16 +36,10 @@ public abstract class CPlugImageArrayBuilderBase<TSelf> where TSelf : CPlugImage
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugImageArray> state;
     private protected CPlugImageArrayBuilderBase() => state = new();
     private protected CPlugImageArrayBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugImageArray> state) => this.state = state;
-    private protected static void SetFolder(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugImageArray> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugImageArrayBuilderAssignments.GetFolderAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetFolder_TextureDecals(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugImageArray> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugImageArrayBuilderAssignments.GetFolder_TextureDecalsAssignment(), value, GameVersion.TM2020);
-    private protected static void SetLayers(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugImageArray> state, global::GBX.NET.Engines.Plug.CPlugImageArray.Elem[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugImageArrayBuilderAssignments.GetLayersAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetMaskScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugImageArray> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugImageArrayBuilderAssignments.GetMaskScaleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetMaterial_VId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugImageArray> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugImageArrayBuilderAssignments.GetMaterial_VIdAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetMaterial_VIdReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugImageArray> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugImageArrayBuilderAssignments.GetMaterial_VIdReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     public string? Folder
     {
         get => state.Get<string?>("Folder");
-        set => SetFolder(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugImageArrayBuilderAssignments.GetFolderAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithFolder(string? value)
     {
@@ -55,7 +49,7 @@ public abstract class CPlugImageArrayBuilderBase<TSelf> where TSelf : CPlugImage
     public global::GBX.NET.Engines.Plug.CPlugImageArray.Elem[]? Layers
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugImageArray.Elem[]?>("Layers");
-        set => SetLayers(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugImageArrayBuilderAssignments.GetLayersAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLayers(params global::GBX.NET.Engines.Plug.CPlugImageArray.Elem[]? value)
     {
@@ -69,7 +63,7 @@ public abstract class CPlugImageArrayBuilderBase<TSelf> where TSelf : CPlugImage
     public float MaskScale
     {
         get => state.Get<float>("MaskScale");
-        set => SetMaskScale(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugImageArrayBuilderAssignments.GetMaskScaleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithMaskScale(float value)
     {
@@ -79,7 +73,7 @@ public abstract class CPlugImageArrayBuilderBase<TSelf> where TSelf : CPlugImage
     public global::GBX.NET.Engines.MwFoundations.CMwNod? Material_VId
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("Material_VId");
-        set => SetMaterial_VId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugImageArrayBuilderAssignments.GetMaterial_VIdAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithMaterial_VId(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
@@ -89,7 +83,7 @@ public abstract class CPlugImageArrayBuilderBase<TSelf> where TSelf : CPlugImage
     public TSelf WithMaterial_VIdReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetMaterial_VIdReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugImageArrayBuilderAssignments.GetMaterial_VIdReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
 }
@@ -148,7 +142,7 @@ public partial class CPlugImageArrayBuilder : CPlugImageArrayBuilderBase<CPlugIm
         public string? Folder_TextureDecals
         {
             get => state.Get<string?>("Folder_TextureDecals");
-            set => SetFolder_TextureDecals(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugImageArrayBuilderAssignments.GetFolder_TextureDecalsAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithFolder_TextureDecals(string? value)
         {

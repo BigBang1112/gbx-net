@@ -36,19 +36,6 @@ public abstract class CTrackManiaBuilderBase<TSelf> where TSelf : CTrackManiaBui
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackMania> state;
     private protected CTrackManiaBuilderBase() => state = new();
     private protected CTrackManiaBuilderBase(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackMania> state) => this.state = state;
-    private protected static void SetAdditionalSkinsFids(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackMania> state, NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdditionalSkinsFidsAssignment(), value, GameVersion.MP4);
-    private protected static void SetAdvertising(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackMania> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdvertisingAssignment(), value, GameVersion.MP4);
-    private protected static void SetAdvertisingReference(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackMania> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdvertisingReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetCoverFlowDesc(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackMania> state, global::GBX.NET.Engines.Game.CGameCoverFlowDesc? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManiaPlanetBuilderAssignments.GetCoverFlowDescAssignment(), value, GameVersion.MP4);
-    private protected static void SetCoverFlowDescReference(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackMania> state, NodeRef<global::GBX.NET.Engines.Game.CGameCoverFlowDesc> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManiaPlanetBuilderAssignments.GetCoverFlowDescReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetDefaultStyleSheet(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackMania> state, global::GBX.NET.Engines.Control.CControlStyleSheet? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManiaPlanetBuilderAssignments.GetDefaultStyleSheetAssignment(), value, GameVersion.MP4);
-    private protected static void SetDefaultStyleSheetReference(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackMania> state, NodeRef<global::GBX.NET.Engines.Control.CControlStyleSheet> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManiaPlanetBuilderAssignments.GetDefaultStyleSheetReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetManiaTitlesFolder(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackMania> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManiaPlanetBuilderAssignments.GetManiaTitlesFolderAssignment(), value, GameVersion.MP4);
-    private protected static void SetMenuBackground_MustLoopIntro(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackMania> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetMenuBackground_MustLoopIntroAssignment(), value, GameVersion.MP4);
-    private protected static void SetResources(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackMania> state, global::GBX.NET.Engines.Game.CGameResources? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetResourcesAssignment(), value, GameVersion.MP4);
-    private protected static void SetResourcesReference(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackMania> state, NodeRef<global::GBX.NET.Engines.Game.CGameResources> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetResourcesReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetTitleMainDefaultBgFid(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackMania> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManiaPlanetBuilderAssignments.GetTitleMainDefaultBgFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetTitleMainDefaultBgFidReference(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackMania> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManiaPlanetBuilderAssignments.GetTitleMainDefaultBgFidReferenceAssignment(), value, GameVersion.MP4);
 }
 public partial class CTrackManiaBuilder : CTrackManiaBuilderBase<CTrackManiaBuilder>
 {
@@ -154,7 +141,7 @@ public partial class CTrackManiaBuilder : CTrackManiaBuilderBase<CTrackManiaBuil
         public NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? AdditionalSkinsFids
         {
             get => state.Get<NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>?>("AdditionalSkinsFids");
-            set => SetAdditionalSkinsFids(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdditionalSkinsFidsAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithAdditionalSkinsFids(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value)
         {
@@ -172,7 +159,7 @@ public partial class CTrackManiaBuilder : CTrackManiaBuilderBase<CTrackManiaBuil
         public global::GBX.NET.Engines.MwFoundations.CMwNod? Advertising
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("Advertising");
-            set => SetAdvertising(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdvertisingAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithAdvertising(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -182,13 +169,13 @@ public partial class CTrackManiaBuilder : CTrackManiaBuilderBase<CTrackManiaBuil
         public MP4 WithAdvertisingReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetAdvertisingReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdvertisingReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Engines.Game.CGameCoverFlowDesc? CoverFlowDesc
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameCoverFlowDesc?>("CoverFlowDesc");
-            set => SetCoverFlowDesc(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManiaPlanetBuilderAssignments.GetCoverFlowDescAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithCoverFlowDesc(global::GBX.NET.Engines.Game.CGameCoverFlowDesc? value)
         {
@@ -198,7 +185,7 @@ public partial class CTrackManiaBuilder : CTrackManiaBuilderBase<CTrackManiaBuil
         public MP4 WithCoverFlowDescReference(NodeRef<global::GBX.NET.Engines.Game.CGameCoverFlowDesc> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetCoverFlowDescReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameManiaPlanetBuilderAssignments.GetCoverFlowDescReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithCoverFlowDesc(global::GBX.NET.Interfaces.Game.IGameCoverFlowDescMP4? value)
@@ -208,7 +195,7 @@ public partial class CTrackManiaBuilder : CTrackManiaBuilderBase<CTrackManiaBuil
         public global::GBX.NET.Engines.Control.CControlStyleSheet? DefaultStyleSheet
         {
             get => state.Get<global::GBX.NET.Engines.Control.CControlStyleSheet?>("DefaultStyleSheet");
-            set => SetDefaultStyleSheet(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManiaPlanetBuilderAssignments.GetDefaultStyleSheetAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithDefaultStyleSheet(global::GBX.NET.Engines.Control.CControlStyleSheet? value)
         {
@@ -218,7 +205,7 @@ public partial class CTrackManiaBuilder : CTrackManiaBuilderBase<CTrackManiaBuil
         public MP4 WithDefaultStyleSheetReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyleSheet> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetDefaultStyleSheetReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameManiaPlanetBuilderAssignments.GetDefaultStyleSheetReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithDefaultStyleSheet(global::GBX.NET.Interfaces.Control.IControlStyleSheetMP4? value)
@@ -228,7 +215,7 @@ public partial class CTrackManiaBuilder : CTrackManiaBuilderBase<CTrackManiaBuil
         public string? ManiaTitlesFolder
         {
             get => state.Get<string?>("ManiaTitlesFolder");
-            set => SetManiaTitlesFolder(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManiaPlanetBuilderAssignments.GetManiaTitlesFolderAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithManiaTitlesFolder(string? value)
         {
@@ -238,7 +225,7 @@ public partial class CTrackManiaBuilder : CTrackManiaBuilderBase<CTrackManiaBuil
         public bool MenuBackground_MustLoopIntro
         {
             get => state.Get<bool>("MenuBackground_MustLoopIntro");
-            set => SetMenuBackground_MustLoopIntro(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetMenuBackground_MustLoopIntroAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithMenuBackground_MustLoopIntro(bool value)
         {
@@ -248,7 +235,7 @@ public partial class CTrackManiaBuilder : CTrackManiaBuilderBase<CTrackManiaBuil
         public global::GBX.NET.Engines.Game.CGameResources? Resources
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameResources?>("Resources");
-            set => SetResources(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetResourcesAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithResources(global::GBX.NET.Engines.Game.CGameResources? value)
         {
@@ -258,7 +245,7 @@ public partial class CTrackManiaBuilder : CTrackManiaBuilderBase<CTrackManiaBuil
         public MP4 WithResourcesReference(NodeRef<global::GBX.NET.Engines.Game.CGameResources> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetResourcesReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetResourcesReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithResources(global::GBX.NET.Interfaces.Game.IGameResourcesMP4? value)
@@ -268,7 +255,7 @@ public partial class CTrackManiaBuilder : CTrackManiaBuilderBase<CTrackManiaBuil
         public global::GBX.NET.Engines.MwFoundations.CMwNod? TitleMainDefaultBgFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("TitleMainDefaultBgFid");
-            set => SetTitleMainDefaultBgFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManiaPlanetBuilderAssignments.GetTitleMainDefaultBgFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithTitleMainDefaultBgFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -278,7 +265,7 @@ public partial class CTrackManiaBuilder : CTrackManiaBuilderBase<CTrackManiaBuil
         public MP4 WithTitleMainDefaultBgFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetTitleMainDefaultBgFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameManiaPlanetBuilderAssignments.GetTitleMainDefaultBgFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Interfaces.TrackMania.ITrackManiaMP4 BuildInterface() => Build();

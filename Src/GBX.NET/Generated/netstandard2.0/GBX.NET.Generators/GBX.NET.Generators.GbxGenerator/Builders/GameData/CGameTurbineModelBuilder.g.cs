@@ -36,14 +36,10 @@ public abstract class CGameTurbineModelBuilderBase<TSelf> where TSelf : CGameTur
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.GameData.CGameTurbineModel> state;
     private protected CGameTurbineModelBuilderBase() => state = new();
     private protected CGameTurbineModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameTurbineModel> state) => this.state = state;
-    private protected static void SetLoc(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameTurbineModel> state, Iso4 value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameTurbineModelBuilderAssignments.GetLocAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSilencerBubble_OnlyPlayerSounds(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameTurbineModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameTurbineModelBuilderAssignments.GetSilencerBubble_OnlyPlayerSoundsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSilencerBubble_RadiusFade(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameTurbineModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameTurbineModelBuilderAssignments.GetSilencerBubble_RadiusFadeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSilencerBubble_RadiusMute(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameTurbineModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameTurbineModelBuilderAssignments.GetSilencerBubble_RadiusMuteAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public Iso4 Loc
     {
         get => state.Get<Iso4>("Loc");
-        set => SetLoc(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameTurbineModelBuilderAssignments.GetLocAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLoc(Iso4 value)
     {
@@ -53,7 +49,7 @@ public abstract class CGameTurbineModelBuilderBase<TSelf> where TSelf : CGameTur
     public bool SilencerBubble_OnlyPlayerSounds
     {
         get => state.Get<bool>("SilencerBubble_OnlyPlayerSounds");
-        set => SetSilencerBubble_OnlyPlayerSounds(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameTurbineModelBuilderAssignments.GetSilencerBubble_OnlyPlayerSoundsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSilencerBubble_OnlyPlayerSounds(bool value)
     {
@@ -63,7 +59,7 @@ public abstract class CGameTurbineModelBuilderBase<TSelf> where TSelf : CGameTur
     public float SilencerBubble_RadiusFade
     {
         get => state.Get<float>("SilencerBubble_RadiusFade");
-        set => SetSilencerBubble_RadiusFade(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameTurbineModelBuilderAssignments.GetSilencerBubble_RadiusFadeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSilencerBubble_RadiusFade(float value)
     {
@@ -73,7 +69,7 @@ public abstract class CGameTurbineModelBuilderBase<TSelf> where TSelf : CGameTur
     public float SilencerBubble_RadiusMute
     {
         get => state.Get<float>("SilencerBubble_RadiusMute");
-        set => SetSilencerBubble_RadiusMute(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameTurbineModelBuilderAssignments.GetSilencerBubble_RadiusMuteAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSilencerBubble_RadiusMute(float value)
     {

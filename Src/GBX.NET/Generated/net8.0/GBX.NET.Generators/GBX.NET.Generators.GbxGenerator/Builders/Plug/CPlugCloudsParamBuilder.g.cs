@@ -36,18 +36,10 @@ public abstract class CPlugCloudsParamBuilderBase<TSelf> where TSelf : CPlugClou
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCloudsParam> state;
     private protected CPlugCloudsParamBuilderBase() => state = new();
     private protected CPlugCloudsParamBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCloudsParam> state) => this.state = state;
-    private protected static void SetBottomFarZ(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCloudsParam> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsParamBuilderAssignments.GetBottomFarZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBottomNearZ(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCloudsParam> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsParamBuilderAssignments.GetBottomNearZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetHeightCenter(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCloudsParam> state, global::GBX.NET.Engines.Plug.CPlugCloudsParam.EHeightCenter value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsParamBuilderAssignments.GetHeightCenterAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetHeightCenterXZ(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCloudsParam> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsParamBuilderAssignments.GetHeightCenterXZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetLighting(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCloudsParam> state, global::GBX.NET.Engines.Plug.CPlugCloudsParam.ELighting value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsParamBuilderAssignments.GetLightingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMaterialUseT3b(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCloudsParam> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsParamBuilderAssignments.GetMaterialUseT3bAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetPoints(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCloudsParam> state, Vec2[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsParamBuilderAssignments.GetPointsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSpeedScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCloudsParam> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsParamBuilderAssignments.GetSpeedScaleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public float BottomFarZ
     {
         get => state.Get<float>("BottomFarZ");
-        set => SetBottomFarZ(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsParamBuilderAssignments.GetBottomFarZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBottomFarZ(float value)
     {
@@ -57,7 +49,7 @@ public abstract class CPlugCloudsParamBuilderBase<TSelf> where TSelf : CPlugClou
     public float BottomNearZ
     {
         get => state.Get<float>("BottomNearZ");
-        set => SetBottomNearZ(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsParamBuilderAssignments.GetBottomNearZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBottomNearZ(float value)
     {
@@ -67,7 +59,7 @@ public abstract class CPlugCloudsParamBuilderBase<TSelf> where TSelf : CPlugClou
     public global::GBX.NET.Engines.Plug.CPlugCloudsParam.EHeightCenter HeightCenter
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugCloudsParam.EHeightCenter>("HeightCenter");
-        set => SetHeightCenter(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsParamBuilderAssignments.GetHeightCenterAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithHeightCenter(global::GBX.NET.Engines.Plug.CPlugCloudsParam.EHeightCenter value)
     {
@@ -77,7 +69,7 @@ public abstract class CPlugCloudsParamBuilderBase<TSelf> where TSelf : CPlugClou
     public Vec2 HeightCenterXZ
     {
         get => state.Get<Vec2>("HeightCenterXZ");
-        set => SetHeightCenterXZ(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsParamBuilderAssignments.GetHeightCenterXZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithHeightCenterXZ(Vec2 value)
     {
@@ -87,7 +79,7 @@ public abstract class CPlugCloudsParamBuilderBase<TSelf> where TSelf : CPlugClou
     public global::GBX.NET.Engines.Plug.CPlugCloudsParam.ELighting Lighting
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugCloudsParam.ELighting>("Lighting");
-        set => SetLighting(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsParamBuilderAssignments.GetLightingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLighting(global::GBX.NET.Engines.Plug.CPlugCloudsParam.ELighting value)
     {
@@ -97,7 +89,7 @@ public abstract class CPlugCloudsParamBuilderBase<TSelf> where TSelf : CPlugClou
     public bool MaterialUseT3b
     {
         get => state.Get<bool>("MaterialUseT3b");
-        set => SetMaterialUseT3b(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsParamBuilderAssignments.GetMaterialUseT3bAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaterialUseT3b(bool value)
     {
@@ -107,7 +99,7 @@ public abstract class CPlugCloudsParamBuilderBase<TSelf> where TSelf : CPlugClou
     public Vec2[]? Points
     {
         get => state.Get<Vec2[]?>("Points");
-        set => SetPoints(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsParamBuilderAssignments.GetPointsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithPoints(params Vec2[]? value)
     {
@@ -121,7 +113,7 @@ public abstract class CPlugCloudsParamBuilderBase<TSelf> where TSelf : CPlugClou
     public float SpeedScale
     {
         get => state.Get<float>("SpeedScale");
-        set => SetSpeedScale(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsParamBuilderAssignments.GetSpeedScaleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSpeedScale(float value)
     {

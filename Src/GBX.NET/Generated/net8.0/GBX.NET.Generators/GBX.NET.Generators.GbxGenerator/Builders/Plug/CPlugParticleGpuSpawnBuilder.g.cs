@@ -36,11 +36,10 @@ public abstract class CPlugParticleGpuSpawnBuilderBase<TSelf> where TSelf : CPlu
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuSpawn> state;
     private protected CPlugParticleGpuSpawnBuilderBase() => state = new();
     private protected CPlugParticleGpuSpawnBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuSpawn> state) => this.state = state;
-    private protected static void SetSpawn(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuSpawn> state, global::GBX.NET.Engines.Plug.CPlugParticleGpuSpawn.ParticleGpuSpawn? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuSpawnBuilderAssignments.GetSpawnAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public global::GBX.NET.Engines.Plug.CPlugParticleGpuSpawn.ParticleGpuSpawn? Spawn
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleGpuSpawn.ParticleGpuSpawn?>("Spawn");
-        set => SetSpawn(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuSpawnBuilderAssignments.GetSpawnAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSpawn(global::GBX.NET.Engines.Plug.CPlugParticleGpuSpawn.ParticleGpuSpawn? value)
     {

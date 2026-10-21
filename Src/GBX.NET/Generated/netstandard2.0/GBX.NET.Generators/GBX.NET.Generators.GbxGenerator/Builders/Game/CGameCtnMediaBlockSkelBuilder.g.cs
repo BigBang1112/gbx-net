@@ -36,11 +36,10 @@ public abstract class CGameCtnMediaBlockSkelBuilderBase<TSelf> where TSelf : CGa
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSkel> state;
     private protected CGameCtnMediaBlockSkelBuilderBase() => state = new();
     private protected CGameCtnMediaBlockSkelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSkel> state) => this.state = state;
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSkel> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSkel.Key>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSkelBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
     public List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSkel.Key>? Keys
     {
         get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSkel.Key>?>("Keys");
-        set => SetKeys(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSkelBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSkel.Key>? value)
     {

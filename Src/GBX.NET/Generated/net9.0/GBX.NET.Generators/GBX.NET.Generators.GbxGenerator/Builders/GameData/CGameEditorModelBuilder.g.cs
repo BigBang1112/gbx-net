@@ -36,15 +36,10 @@ public abstract class CGameEditorModelBuilderBase<TSelf> where TSelf : CGameEdit
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.GameData.CGameEditorModel> state;
     private protected CGameEditorModelBuilderBase() => state = new();
     private protected CGameEditorModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameEditorModel> state) => this.state = state;
-    private protected static void SetAutoCreateTooltipsFromBindings(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameEditorModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameEditorModelBuilderAssignments.GetAutoCreateTooltipsFromBindingsAssignment(), value, GameVersion.TM2020);
-    private protected static void SetAutoGenerateHelp(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameEditorModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameEditorModelBuilderAssignments.GetAutoGenerateHelpAssignment(), value, GameVersion.TM2020);
-    private protected static void SetBindingContexts(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameEditorModel> state, global::GBX.NET.Engines.GameData.CGameEditorModel.BindingContext[]? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameEditorModelBuilderAssignments.GetBindingContextsAssignment(), value, GameVersion.TM2020);
-    private protected static void SetEditorType(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameEditorModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameEditorModelBuilderAssignments.GetEditorTypeAssignment(), value, GameVersion.TM2020);
-    private protected static void SetMediaFolder(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameEditorModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameEditorModelBuilderAssignments.GetMediaFolderAssignment(), value, GameVersion.TM2020);
     public bool AutoCreateTooltipsFromBindings
     {
         get => state.Get<bool>("AutoCreateTooltipsFromBindings");
-        set => SetAutoCreateTooltipsFromBindings(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameEditorModelBuilderAssignments.GetAutoCreateTooltipsFromBindingsAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithAutoCreateTooltipsFromBindings(bool value)
     {
@@ -54,7 +49,7 @@ public abstract class CGameEditorModelBuilderBase<TSelf> where TSelf : CGameEdit
     public bool AutoGenerateHelp
     {
         get => state.Get<bool>("AutoGenerateHelp");
-        set => SetAutoGenerateHelp(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameEditorModelBuilderAssignments.GetAutoGenerateHelpAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithAutoGenerateHelp(bool value)
     {
@@ -64,7 +59,7 @@ public abstract class CGameEditorModelBuilderBase<TSelf> where TSelf : CGameEdit
     public global::GBX.NET.Engines.GameData.CGameEditorModel.BindingContext[]? BindingContexts
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameEditorModel.BindingContext[]?>("BindingContexts");
-        set => SetBindingContexts(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameEditorModelBuilderAssignments.GetBindingContextsAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithBindingContexts(params global::GBX.NET.Engines.GameData.CGameEditorModel.BindingContext[]? value)
     {
@@ -78,7 +73,7 @@ public abstract class CGameEditorModelBuilderBase<TSelf> where TSelf : CGameEdit
     public int EditorType
     {
         get => state.Get<int>("EditorType");
-        set => SetEditorType(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameEditorModelBuilderAssignments.GetEditorTypeAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithEditorType(int value)
     {
@@ -88,7 +83,7 @@ public abstract class CGameEditorModelBuilderBase<TSelf> where TSelf : CGameEdit
     public string? MediaFolder
     {
         get => state.Get<string?>("MediaFolder");
-        set => SetMediaFolder(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameEditorModelBuilderAssignments.GetMediaFolderAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithMediaFolder(string? value)
     {

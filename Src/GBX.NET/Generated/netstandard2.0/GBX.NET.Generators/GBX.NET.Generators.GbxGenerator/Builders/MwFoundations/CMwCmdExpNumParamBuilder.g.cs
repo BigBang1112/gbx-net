@@ -36,11 +36,10 @@ public abstract class CMwCmdExpNumParamBuilderBase<TSelf> where TSelf : CMwCmdEx
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam> state;
     private protected CMwCmdExpNumParamBuilderBase() => state = new();
     private protected CMwCmdExpNumParamBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam> state) => this.state = state;
-    private protected static void SetParameter(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam> state, global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumParamBuilderAssignments.GetParameterAssignment(), value, GameVersion.TMF);
     public global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive? Parameter
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive?>("Parameter");
-        set => SetParameter(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumParamBuilderAssignments.GetParameterAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithParameter(global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive? value)
     {

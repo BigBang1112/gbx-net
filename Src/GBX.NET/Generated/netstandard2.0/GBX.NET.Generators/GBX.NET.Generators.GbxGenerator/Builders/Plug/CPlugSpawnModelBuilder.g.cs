@@ -36,14 +36,10 @@ public abstract class CPlugSpawnModelBuilderBase<TSelf> where TSelf : CPlugSpawn
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpawnModel> state;
     private protected CPlugSpawnModelBuilderBase() => state = new();
     private protected CPlugSpawnModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpawnModel> state) => this.state = state;
-    private protected static void SetDefaultGravitySpawn(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpawnModel> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpawnModelBuilderAssignments.GetDefaultGravitySpawnAssignment(), value, GameVersion.TM2020);
-    private protected static void SetLoc(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpawnModel> state, Iso4 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpawnModelBuilderAssignments.GetLocAssignment(), value, GameVersion.TM2020);
-    private protected static void SetTorqueDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpawnModel> state, TimeInt32 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpawnModelBuilderAssignments.GetTorqueDurationAssignment(), value, GameVersion.TM2020);
-    private protected static void SetTorqueX(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpawnModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpawnModelBuilderAssignments.GetTorqueXAssignment(), value, GameVersion.TM2020);
     public Vec3 DefaultGravitySpawn
     {
         get => state.Get<Vec3>("DefaultGravitySpawn");
-        set => SetDefaultGravitySpawn(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpawnModelBuilderAssignments.GetDefaultGravitySpawnAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithDefaultGravitySpawn(Vec3 value)
     {
@@ -53,7 +49,7 @@ public abstract class CPlugSpawnModelBuilderBase<TSelf> where TSelf : CPlugSpawn
     public Iso4 Loc
     {
         get => state.Get<Iso4>("Loc");
-        set => SetLoc(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpawnModelBuilderAssignments.GetLocAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithLoc(Iso4 value)
     {
@@ -63,7 +59,7 @@ public abstract class CPlugSpawnModelBuilderBase<TSelf> where TSelf : CPlugSpawn
     public TimeInt32 TorqueDuration
     {
         get => state.Get<TimeInt32>("TorqueDuration");
-        set => SetTorqueDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpawnModelBuilderAssignments.GetTorqueDurationAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithTorqueDuration(TimeInt32 value)
     {
@@ -73,7 +69,7 @@ public abstract class CPlugSpawnModelBuilderBase<TSelf> where TSelf : CPlugSpawn
     public float TorqueX
     {
         get => state.Get<float>("TorqueX");
-        set => SetTorqueX(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpawnModelBuilderAssignments.GetTorqueXAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithTorqueX(float value)
     {

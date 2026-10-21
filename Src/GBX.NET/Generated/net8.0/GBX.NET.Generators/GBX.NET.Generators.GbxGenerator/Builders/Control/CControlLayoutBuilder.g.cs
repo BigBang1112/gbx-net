@@ -36,16 +36,10 @@ public abstract class CControlLayoutBuilderBase<TSelf> where TSelf : CControlLay
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Control.CControlLayout> state;
     private protected CControlLayoutBuilderBase() => state = new();
     private protected CControlLayoutBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLayout> state) => this.state = state;
-    private protected static void SetAlignHorizontal(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLayout> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlLayoutBuilderAssignments.GetAlignHorizontalAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF);
-    private protected static void SetAlignVertical(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLayout> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlLayoutBuilderAssignments.GetAlignVerticalAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF);
-    private protected static void SetPaddingHorizontal(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLayout> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlLayoutBuilderAssignments.GetPaddingHorizontalAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF);
-    private protected static void SetPaddingVertical(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLayout> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlLayoutBuilderAssignments.GetPaddingVerticalAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF);
-    private protected static void SetRatioHorizontal(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLayout> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlLayoutBuilderAssignments.GetRatioHorizontalAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF);
-    private protected static void SetRatioVertical(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLayout> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlLayoutBuilderAssignments.GetRatioVerticalAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF);
     public int AlignHorizontal
     {
         get => state.Get<int>("AlignHorizontal");
-        set => SetAlignHorizontal(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlLayoutBuilderAssignments.GetAlignHorizontalAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF);
     }
     public TSelf WithAlignHorizontal(int value)
     {
@@ -55,7 +49,7 @@ public abstract class CControlLayoutBuilderBase<TSelf> where TSelf : CControlLay
     public int AlignVertical
     {
         get => state.Get<int>("AlignVertical");
-        set => SetAlignVertical(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlLayoutBuilderAssignments.GetAlignVerticalAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF);
     }
     public TSelf WithAlignVertical(int value)
     {
@@ -65,7 +59,7 @@ public abstract class CControlLayoutBuilderBase<TSelf> where TSelf : CControlLay
     public float PaddingHorizontal
     {
         get => state.Get<float>("PaddingHorizontal");
-        set => SetPaddingHorizontal(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlLayoutBuilderAssignments.GetPaddingHorizontalAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF);
     }
     public TSelf WithPaddingHorizontal(float value)
     {
@@ -75,7 +69,7 @@ public abstract class CControlLayoutBuilderBase<TSelf> where TSelf : CControlLay
     public float PaddingVertical
     {
         get => state.Get<float>("PaddingVertical");
-        set => SetPaddingVertical(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlLayoutBuilderAssignments.GetPaddingVerticalAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF);
     }
     public TSelf WithPaddingVertical(float value)
     {
@@ -85,7 +79,7 @@ public abstract class CControlLayoutBuilderBase<TSelf> where TSelf : CControlLay
     public float RatioHorizontal
     {
         get => state.Get<float>("RatioHorizontal");
-        set => SetRatioHorizontal(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlLayoutBuilderAssignments.GetRatioHorizontalAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF);
     }
     public TSelf WithRatioHorizontal(float value)
     {
@@ -95,7 +89,7 @@ public abstract class CControlLayoutBuilderBase<TSelf> where TSelf : CControlLay
     public float RatioVertical
     {
         get => state.Get<float>("RatioVertical");
-        set => SetRatioVertical(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlLayoutBuilderAssignments.GetRatioVerticalAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF);
     }
     public TSelf WithRatioVertical(float value)
     {

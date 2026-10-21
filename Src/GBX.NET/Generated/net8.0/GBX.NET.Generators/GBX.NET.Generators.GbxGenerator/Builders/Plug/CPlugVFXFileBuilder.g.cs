@@ -36,14 +36,10 @@ public abstract class CPlugVFXFileBuilderBase<TSelf> where TSelf : CPlugVFXFileB
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVFXFile> state;
     private protected CPlugVFXFileBuilderBase() => state = new();
     private protected CPlugVFXFileBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVFXFile> state) => this.state = state;
-    private protected static void SetClassId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVFXFile> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVFXFileBuilderAssignments.GetClassIdAssignment(), value, GameVersion.TM2020);
-    private protected static void SetMappings(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVFXFile> state, global::GBX.NET.Engines.Plug.CPlugVFXFile.Mapping[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVFXFileBuilderAssignments.GetMappingsAssignment(), value, GameVersion.TM2020);
-    private protected static void SetParameterVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVFXFile> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVFXFileBuilderAssignments.GetParameterVersionAssignment(), value, GameVersion.TM2020);
-    private protected static void SetParameters(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVFXFile> state, global::GBX.NET.Engines.Plug.CPlugVFXFile.Parameter[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVFXFileBuilderAssignments.GetParametersAssignment(), value, GameVersion.TM2020);
     public uint ClassId
     {
         get => state.Get<uint>("ClassId");
-        set => SetClassId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVFXFileBuilderAssignments.GetClassIdAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithClassId(uint value)
     {
@@ -53,7 +49,7 @@ public abstract class CPlugVFXFileBuilderBase<TSelf> where TSelf : CPlugVFXFileB
     public global::GBX.NET.Engines.Plug.CPlugVFXFile.Mapping[]? Mappings
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugVFXFile.Mapping[]?>("Mappings");
-        set => SetMappings(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVFXFileBuilderAssignments.GetMappingsAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithMappings(params global::GBX.NET.Engines.Plug.CPlugVFXFile.Mapping[]? value)
     {
@@ -67,7 +63,7 @@ public abstract class CPlugVFXFileBuilderBase<TSelf> where TSelf : CPlugVFXFileB
     public int ParameterVersion
     {
         get => state.Get<int>("ParameterVersion");
-        set => SetParameterVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVFXFileBuilderAssignments.GetParameterVersionAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithParameterVersion(int value)
     {
@@ -77,7 +73,7 @@ public abstract class CPlugVFXFileBuilderBase<TSelf> where TSelf : CPlugVFXFileB
     public global::GBX.NET.Engines.Plug.CPlugVFXFile.Parameter[]? Parameters
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugVFXFile.Parameter[]?>("Parameters");
-        set => SetParameters(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVFXFileBuilderAssignments.GetParametersAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithParameters(params global::GBX.NET.Engines.Plug.CPlugVFXFile.Parameter[]? value)
     {

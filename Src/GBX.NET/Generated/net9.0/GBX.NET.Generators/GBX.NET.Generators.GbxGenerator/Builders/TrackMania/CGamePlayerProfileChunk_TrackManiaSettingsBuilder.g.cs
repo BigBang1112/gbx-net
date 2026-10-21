@@ -36,11 +36,10 @@ public abstract class CGamePlayerProfileChunk_TrackManiaSettingsBuilderBase<TSel
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings> state;
     private protected CGamePlayerProfileChunk_TrackManiaSettingsBuilderBase() => state = new();
     private protected CGamePlayerProfileChunk_TrackManiaSettingsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings> state) => this.state = state;
-    private protected static void SetServerParametersVersion(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettingsBuilderAssignments.GetServerParametersVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public int ServerParametersVersion
     {
         get => state.Get<int>("ServerParametersVersion");
-        set => SetServerParametersVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettingsBuilderAssignments.GetServerParametersVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithServerParametersVersion(int value)
     {

@@ -36,15 +36,10 @@ public abstract class CGameVehicleModelBuilderBase<TSelf> where TSelf : CGameVeh
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.GameData.CGameVehicleModel> state;
     private protected CGameVehicleModelBuilderBase() => state = new();
     private protected CGameVehicleModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameVehicleModel> state) => this.state = state;
-    private protected static void SetItemOccupantSlotModels(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameVehicleModel> state, global::GBX.NET.Engines.GameData.CGameVehicleModel.ItemOccupantSlotModel[]? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameVehicleModelBuilderAssignments.GetItemOccupantSlotModelsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetPhyModel(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameVehicleModel> state, global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameVehicleModelBuilderAssignments.GetPhyModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetPhyModelReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameVehicleModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameVehicleModelBuilderAssignments.GetPhyModelReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetVisModel(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameVehicleModel> state, global::GBX.NET.Engines.Plug.CPlugVehicleVisModel? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameVehicleModelBuilderAssignments.GetVisModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetVisModelReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameVehicleModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameVehicleModelBuilderAssignments.GetVisModelReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     public global::GBX.NET.Engines.GameData.CGameVehicleModel.ItemOccupantSlotModel[]? ItemOccupantSlotModels
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameVehicleModel.ItemOccupantSlotModel[]?>("ItemOccupantSlotModels");
-        set => SetItemOccupantSlotModels(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameVehicleModelBuilderAssignments.GetItemOccupantSlotModelsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithItemOccupantSlotModels(params global::GBX.NET.Engines.GameData.CGameVehicleModel.ItemOccupantSlotModel[]? value)
     {
@@ -58,7 +53,7 @@ public abstract class CGameVehicleModelBuilderBase<TSelf> where TSelf : CGameVeh
     public global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel? PhyModel
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel?>("PhyModel");
-        set => SetPhyModel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameVehicleModelBuilderAssignments.GetPhyModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithPhyModel(global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel? value)
     {
@@ -68,13 +63,13 @@ public abstract class CGameVehicleModelBuilderBase<TSelf> where TSelf : CGameVeh
     public TSelf WithPhyModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetPhyModelReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameVehicleModelBuilderAssignments.GetPhyModelReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugVehicleVisModel? VisModel
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel?>("VisModel");
-        set => SetVisModel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameVehicleModelBuilderAssignments.GetVisModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithVisModel(global::GBX.NET.Engines.Plug.CPlugVehicleVisModel? value)
     {
@@ -84,7 +79,7 @@ public abstract class CGameVehicleModelBuilderBase<TSelf> where TSelf : CGameVeh
     public TSelf WithVisModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetVisModelReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameVehicleModelBuilderAssignments.GetVisModelReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
 }

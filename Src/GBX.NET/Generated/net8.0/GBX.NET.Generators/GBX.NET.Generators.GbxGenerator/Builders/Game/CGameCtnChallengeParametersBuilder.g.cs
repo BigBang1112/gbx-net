@@ -36,23 +36,10 @@ public abstract class CGameCtnChallengeParametersBuilderBase<TSelf> where TSelf 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeParameters> state;
     private protected CGameCtnChallengeParametersBuilderBase() => state = new();
     private protected CGameCtnChallengeParametersBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeParameters> state) => this.state = state;
-    private protected static void SetAuthorScore(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeParameters> state, int? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeParametersBuilderAssignments.GetAuthorScoreAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetAuthorTime(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeParameters> state, TimeInt32? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeParametersBuilderAssignments.GetAuthorTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBronzeTime(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeParameters> state, TimeInt32? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeParametersBuilderAssignments.GetBronzeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetGoldTime(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeParameters> state, TimeInt32? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeParametersBuilderAssignments.GetGoldTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIsValidatedForScriptModes(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeParameters> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeParametersBuilderAssignments.GetIsValidatedForScriptModesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetItems(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeParameters> state, int[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeParametersBuilderAssignments.GetItemsAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetMapStyle(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeParameters> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeParametersBuilderAssignments.GetMapStyleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMapType(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeParameters> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeParametersBuilderAssignments.GetMapTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetRaceValidateGhost(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeParameters> state, global::GBX.NET.Engines.Game.CGameCtnGhost? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeParametersBuilderAssignments.GetRaceValidateGhostAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetRaceValidateGhostReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeParameters> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnGhost> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeParametersBuilderAssignments.GetRaceValidateGhostReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSilverTime(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeParameters> state, TimeInt32? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeParametersBuilderAssignments.GetSilverTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetTimeLimit(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeParameters> state, TimeInt32 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeParametersBuilderAssignments.GetTimeLimitAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetTip(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeParameters> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeParametersBuilderAssignments.GetTipAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public TimeInt32? AuthorTime
     {
         get => state.Get<TimeInt32?>("AuthorTime");
-        set => SetAuthorTime(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeParametersBuilderAssignments.GetAuthorTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithAuthorTime(TimeInt32? value)
     {
@@ -62,7 +49,7 @@ public abstract class CGameCtnChallengeParametersBuilderBase<TSelf> where TSelf 
     public TimeInt32? BronzeTime
     {
         get => state.Get<TimeInt32?>("BronzeTime");
-        set => SetBronzeTime(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeParametersBuilderAssignments.GetBronzeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBronzeTime(TimeInt32? value)
     {
@@ -72,7 +59,7 @@ public abstract class CGameCtnChallengeParametersBuilderBase<TSelf> where TSelf 
     public TimeInt32? GoldTime
     {
         get => state.Get<TimeInt32?>("GoldTime");
-        set => SetGoldTime(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeParametersBuilderAssignments.GetGoldTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithGoldTime(TimeInt32? value)
     {
@@ -82,7 +69,7 @@ public abstract class CGameCtnChallengeParametersBuilderBase<TSelf> where TSelf 
     public TimeInt32? SilverTime
     {
         get => state.Get<TimeInt32?>("SilverTime");
-        set => SetSilverTime(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeParametersBuilderAssignments.GetSilverTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSilverTime(TimeInt32? value)
     {
@@ -92,7 +79,7 @@ public abstract class CGameCtnChallengeParametersBuilderBase<TSelf> where TSelf 
     public string? Tip
     {
         get => state.Get<string?>("Tip");
-        set => SetTip(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeParametersBuilderAssignments.GetTipAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithTip(string? value)
     {
@@ -106,7 +93,7 @@ public abstract class CGameCtnChallengeParametersBuilderMembers1<TSelf> : CGameC
     public int? AuthorScore
     {
         get => state.Get<int?>("AuthorScore");
-        set => SetAuthorScore(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeParametersBuilderAssignments.GetAuthorScoreAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithAuthorScore(int? value)
     {
@@ -116,7 +103,7 @@ public abstract class CGameCtnChallengeParametersBuilderMembers1<TSelf> : CGameC
     public TimeInt32 TimeLimit
     {
         get => state.Get<TimeInt32>("TimeLimit");
-        set => SetTimeLimit(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeParametersBuilderAssignments.GetTimeLimitAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithTimeLimit(TimeInt32 value)
     {
@@ -130,7 +117,7 @@ public abstract class CGameCtnChallengeParametersBuilderMembers2<TSelf> : CGameC
     public int[]? Items
     {
         get => state.Get<int[]?>("Items");
-        set => SetItems(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeParametersBuilderAssignments.GetItemsAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithItems(params int[]? value)
     {
@@ -148,7 +135,7 @@ public abstract class CGameCtnChallengeParametersBuilderMembers3<TSelf> : CGameC
     public bool IsValidatedForScriptModes
     {
         get => state.Get<bool>("IsValidatedForScriptModes");
-        set => SetIsValidatedForScriptModes(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeParametersBuilderAssignments.GetIsValidatedForScriptModesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIsValidatedForScriptModes(bool value)
     {
@@ -158,7 +145,7 @@ public abstract class CGameCtnChallengeParametersBuilderMembers3<TSelf> : CGameC
     public string? MapStyle
     {
         get => state.Get<string?>("MapStyle");
-        set => SetMapStyle(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeParametersBuilderAssignments.GetMapStyleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMapStyle(string? value)
     {
@@ -168,7 +155,7 @@ public abstract class CGameCtnChallengeParametersBuilderMembers3<TSelf> : CGameC
     public string? MapType
     {
         get => state.Get<string?>("MapType");
-        set => SetMapType(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeParametersBuilderAssignments.GetMapTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMapType(string? value)
     {
@@ -178,7 +165,7 @@ public abstract class CGameCtnChallengeParametersBuilderMembers3<TSelf> : CGameC
     public global::GBX.NET.Engines.Game.CGameCtnGhost? RaceValidateGhost
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnGhost?>("RaceValidateGhost");
-        set => SetRaceValidateGhost(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeParametersBuilderAssignments.GetRaceValidateGhostAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRaceValidateGhost(global::GBX.NET.Engines.Game.CGameCtnGhost? value)
     {
@@ -188,7 +175,7 @@ public abstract class CGameCtnChallengeParametersBuilderMembers3<TSelf> : CGameC
     public TSelf WithRaceValidateGhostReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnGhost> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetRaceValidateGhostReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeParametersBuilderAssignments.GetRaceValidateGhostReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }

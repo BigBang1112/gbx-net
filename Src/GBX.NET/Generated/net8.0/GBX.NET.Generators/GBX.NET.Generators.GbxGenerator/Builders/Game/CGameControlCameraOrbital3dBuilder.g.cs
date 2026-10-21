@@ -36,59 +36,10 @@ public abstract class CGameControlCameraOrbital3dBuilderBase<TSelf> where TSelf 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state;
     private protected CGameControlCameraOrbital3dBuilderBase() => state = new();
     private protected CGameControlCameraOrbital3dBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state) => this.state = state;
-    private protected static void SetCanCameraMove(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetCanCameraMoveAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetCanUseRelativeTargetLocation(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetDefaultFarZ(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetDefaultFarZAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
-    private protected static void SetDefaultFov(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetDefaultFovAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetDefaultNearZ(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetDefaultNearZAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
-    private protected static void SetDefaultRadius(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetDefaultRadiusAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetForcedLocation(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, Iso4 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetForcedLocationAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetForcedUp(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetForcedUpAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
-    private protected static void SetFov(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetFovAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetFovKeySensitivity(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetFovKeySensitivityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetInterpolate(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetInterpolateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIsFirstPerson(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetIsFirstPersonAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetIsFollowing(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetIsFollowingAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetIsUpLinked(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetIsUpLinkedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLatitude(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetLatitudeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetLatitudeMax(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetLatitudeMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetLatitudeMin(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetLatitudeMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetLocation(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, Iso4 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetLocationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLongitude(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetLongitudeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetLookAtFactor(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetLookAtFactorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMaxDist(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxDistAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetMaxFarZ(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxFarZAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
-    private protected static void SetMaxFov(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxFovAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
-    private protected static void SetMaxNearZ(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxNearZAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
-    private protected static void SetMaxSpeed(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxSpeedAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetMinDist(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMinDistAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetMinFarZ(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMinFarZAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
-    private protected static void SetMinFov(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMinFovAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
-    private protected static void SetMinNearZ(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMinNearZAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
-    private protected static void SetMouseBorderMoveSize(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetMouseBorderMoveSizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetOcclusionDistFromHit(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetOcclusionDistFromHitAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetOcclusionIsEnable(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetOcclusionIsEnableAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetOcclusionTargetRadius(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetOcclusionTargetRadiusAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetPlaneDist(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetPlaneDistAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetRadius(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetRadiusAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetRadiusMax(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetRadiusMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetRadiusMin(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetRadiusMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetRadiusScale(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetRadiusScaleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetRelativeFollowedPos(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetRelativeFollowedPosAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
-    private protected static void SetRelativeTargetLocation(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, Iso4 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetRelativeTargetLocationAssignment(), value, GameVersion.MP4);
-    private protected static void SetRelativeTargetPos(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetRelativeTargetPosAssignment(), value, GameVersion.TMSX);
-    private protected static void SetRotateSpeed(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetRotateSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetUseAutoRadiusFromTargets(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetUseAutoRadiusFromTargetsAssignment(), value, GameVersion.MP4);
-    private protected static void SetUseForcedLocation(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetUseForcedLocationAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetUseForcedUp(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetUseForcedUpAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
-    private protected static void SetUseOnlyFollowedMobilPosition(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetUseOnlyFollowedMobilPositionAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetWheelSensitivity(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetWheelSensitivityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetZoomKeySensitivity(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetZoomKeySensitivityAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
     public bool Interpolate
     {
         get => state.Get<bool>("Interpolate");
-        set => SetInterpolate(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetInterpolateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithInterpolate(bool value)
     {
@@ -98,7 +49,7 @@ public abstract class CGameControlCameraOrbital3dBuilderBase<TSelf> where TSelf 
     public bool IsUpLinked
     {
         get => state.Get<bool>("IsUpLinked");
-        set => SetIsUpLinked(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetIsUpLinkedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIsUpLinked(bool value)
     {
@@ -108,7 +59,7 @@ public abstract class CGameControlCameraOrbital3dBuilderBase<TSelf> where TSelf 
     public Iso4 Location
     {
         get => state.Get<Iso4>("Location");
-        set => SetLocation(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetLocationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLocation(Iso4 value)
     {
@@ -118,7 +69,7 @@ public abstract class CGameControlCameraOrbital3dBuilderBase<TSelf> where TSelf 
     public float LookAtFactor
     {
         get => state.Get<float>("LookAtFactor");
-        set => SetLookAtFactor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetLookAtFactorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLookAtFactor(float value)
     {
@@ -128,7 +79,7 @@ public abstract class CGameControlCameraOrbital3dBuilderBase<TSelf> where TSelf 
     public string? Name
     {
         get => state.Get<string?>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithName(string? value)
     {
@@ -142,7 +93,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers1<TSelf> : CGameC
     public float DefaultRadius
     {
         get => state.Get<float>("DefaultRadius");
-        set => SetDefaultRadius(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetDefaultRadiusAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDefaultRadius(float value)
     {
@@ -156,7 +107,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers2<TSelf> : CGameC
     public float FovKeySensitivity
     {
         get => state.Get<float>("FovKeySensitivity");
-        set => SetFovKeySensitivity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetFovKeySensitivityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithFovKeySensitivity(float value)
     {
@@ -166,7 +117,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers2<TSelf> : CGameC
     public float Latitude
     {
         get => state.Get<float>("Latitude");
-        set => SetLatitude(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetLatitudeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithLatitude(float value)
     {
@@ -176,7 +127,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers2<TSelf> : CGameC
     public float LatitudeMax
     {
         get => state.Get<float>("LatitudeMax");
-        set => SetLatitudeMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetLatitudeMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithLatitudeMax(float value)
     {
@@ -186,7 +137,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers2<TSelf> : CGameC
     public float LatitudeMin
     {
         get => state.Get<float>("LatitudeMin");
-        set => SetLatitudeMin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetLatitudeMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithLatitudeMin(float value)
     {
@@ -196,7 +147,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers2<TSelf> : CGameC
     public float Longitude
     {
         get => state.Get<float>("Longitude");
-        set => SetLongitude(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetLongitudeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithLongitude(float value)
     {
@@ -206,7 +157,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers2<TSelf> : CGameC
     public float MouseBorderMoveSize
     {
         get => state.Get<float>("MouseBorderMoveSize");
-        set => SetMouseBorderMoveSize(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetMouseBorderMoveSizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithMouseBorderMoveSize(float value)
     {
@@ -216,7 +167,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers2<TSelf> : CGameC
     public float OcclusionDistFromHit
     {
         get => state.Get<float>("OcclusionDistFromHit");
-        set => SetOcclusionDistFromHit(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetOcclusionDistFromHitAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithOcclusionDistFromHit(float value)
     {
@@ -226,7 +177,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers2<TSelf> : CGameC
     public bool OcclusionIsEnable
     {
         get => state.Get<bool>("OcclusionIsEnable");
-        set => SetOcclusionIsEnable(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetOcclusionIsEnableAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithOcclusionIsEnable(bool value)
     {
@@ -236,7 +187,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers2<TSelf> : CGameC
     public float OcclusionTargetRadius
     {
         get => state.Get<float>("OcclusionTargetRadius");
-        set => SetOcclusionTargetRadius(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetOcclusionTargetRadiusAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithOcclusionTargetRadius(float value)
     {
@@ -246,7 +197,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers2<TSelf> : CGameC
     public float Radius
     {
         get => state.Get<float>("Radius");
-        set => SetRadius(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetRadiusAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithRadius(float value)
     {
@@ -256,7 +207,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers2<TSelf> : CGameC
     public float RadiusMax
     {
         get => state.Get<float>("RadiusMax");
-        set => SetRadiusMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetRadiusMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithRadiusMax(float value)
     {
@@ -266,7 +217,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers2<TSelf> : CGameC
     public float RadiusMin
     {
         get => state.Get<float>("RadiusMin");
-        set => SetRadiusMin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetRadiusMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithRadiusMin(float value)
     {
@@ -276,7 +227,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers2<TSelf> : CGameC
     public Vec3 RadiusScale
     {
         get => state.Get<Vec3>("RadiusScale");
-        set => SetRadiusScale(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetRadiusScaleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithRadiusScale(Vec3 value)
     {
@@ -286,7 +237,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers2<TSelf> : CGameC
     public Vec2 RotateSpeed
     {
         get => state.Get<Vec2>("RotateSpeed");
-        set => SetRotateSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetRotateSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithRotateSpeed(Vec2 value)
     {
@@ -296,7 +247,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers2<TSelf> : CGameC
     public float WheelSensitivity
     {
         get => state.Get<float>("WheelSensitivity");
-        set => SetWheelSensitivity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetWheelSensitivityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithWheelSensitivity(float value)
     {
@@ -310,7 +261,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers3<TSelf> : CGameC
     public bool CanCameraMove
     {
         get => state.Get<bool>("CanCameraMove");
-        set => SetCanCameraMove(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetCanCameraMoveAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithCanCameraMove(bool value)
     {
@@ -320,7 +271,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers3<TSelf> : CGameC
     public float DefaultFov
     {
         get => state.Get<float>("DefaultFov");
-        set => SetDefaultFov(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetDefaultFovAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithDefaultFov(float value)
     {
@@ -330,7 +281,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers3<TSelf> : CGameC
     public Iso4 ForcedLocation
     {
         get => state.Get<Iso4>("ForcedLocation");
-        set => SetForcedLocation(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetForcedLocationAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithForcedLocation(Iso4 value)
     {
@@ -340,7 +291,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers3<TSelf> : CGameC
     public float Fov
     {
         get => state.Get<float>("Fov");
-        set => SetFov(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetFovAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithFov(float value)
     {
@@ -350,7 +301,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers3<TSelf> : CGameC
     public bool IsFirstPerson
     {
         get => state.Get<bool>("IsFirstPerson");
-        set => SetIsFirstPerson(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetIsFirstPersonAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithIsFirstPerson(bool value)
     {
@@ -360,7 +311,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers3<TSelf> : CGameC
     public bool IsFollowing
     {
         get => state.Get<bool>("IsFollowing");
-        set => SetIsFollowing(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetIsFollowingAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithIsFollowing(bool value)
     {
@@ -370,7 +321,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers3<TSelf> : CGameC
     public float MaxDist
     {
         get => state.Get<float>("MaxDist");
-        set => SetMaxDist(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxDistAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithMaxDist(float value)
     {
@@ -380,7 +331,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers3<TSelf> : CGameC
     public float MaxSpeed
     {
         get => state.Get<float>("MaxSpeed");
-        set => SetMaxSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxSpeedAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithMaxSpeed(float value)
     {
@@ -390,7 +341,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers3<TSelf> : CGameC
     public float MinDist
     {
         get => state.Get<float>("MinDist");
-        set => SetMinDist(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMinDistAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithMinDist(float value)
     {
@@ -400,7 +351,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers3<TSelf> : CGameC
     public float PlaneDist
     {
         get => state.Get<float>("PlaneDist");
-        set => SetPlaneDist(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetPlaneDistAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithPlaneDist(float value)
     {
@@ -410,7 +361,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers3<TSelf> : CGameC
     public bool UseForcedLocation
     {
         get => state.Get<bool>("UseForcedLocation");
-        set => SetUseForcedLocation(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetUseForcedLocationAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithUseForcedLocation(bool value)
     {
@@ -420,7 +371,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers3<TSelf> : CGameC
     public bool UseOnlyFollowedMobilPosition
     {
         get => state.Get<bool>("UseOnlyFollowedMobilPosition");
-        set => SetUseOnlyFollowedMobilPosition(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetUseOnlyFollowedMobilPositionAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithUseOnlyFollowedMobilPosition(bool value)
     {
@@ -434,7 +385,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers4<TSelf> : CGameC
     public float DefaultFarZ
     {
         get => state.Get<float>("DefaultFarZ");
-        set => SetDefaultFarZ(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetDefaultFarZAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithDefaultFarZ(float value)
     {
@@ -444,7 +395,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers4<TSelf> : CGameC
     public float DefaultNearZ
     {
         get => state.Get<float>("DefaultNearZ");
-        set => SetDefaultNearZ(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetDefaultNearZAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithDefaultNearZ(float value)
     {
@@ -454,7 +405,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers4<TSelf> : CGameC
     public float DefaultRadius
     {
         get => state.Get<float>("DefaultRadius");
-        set => SetDefaultRadius(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetDefaultRadiusAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDefaultRadius(float value)
     {
@@ -464,7 +415,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers4<TSelf> : CGameC
     public Vec3 ForcedUp
     {
         get => state.Get<Vec3>("ForcedUp");
-        set => SetForcedUp(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetForcedUpAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithForcedUp(Vec3 value)
     {
@@ -474,7 +425,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers4<TSelf> : CGameC
     public float MaxFarZ
     {
         get => state.Get<float>("MaxFarZ");
-        set => SetMaxFarZ(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxFarZAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithMaxFarZ(float value)
     {
@@ -484,7 +435,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers4<TSelf> : CGameC
     public float MaxFov
     {
         get => state.Get<float>("MaxFov");
-        set => SetMaxFov(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxFovAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithMaxFov(float value)
     {
@@ -494,7 +445,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers4<TSelf> : CGameC
     public float MaxNearZ
     {
         get => state.Get<float>("MaxNearZ");
-        set => SetMaxNearZ(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxNearZAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithMaxNearZ(float value)
     {
@@ -504,7 +455,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers4<TSelf> : CGameC
     public float MinFarZ
     {
         get => state.Get<float>("MinFarZ");
-        set => SetMinFarZ(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMinFarZAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithMinFarZ(float value)
     {
@@ -514,7 +465,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers4<TSelf> : CGameC
     public float MinFov
     {
         get => state.Get<float>("MinFov");
-        set => SetMinFov(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMinFovAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithMinFov(float value)
     {
@@ -524,7 +475,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers4<TSelf> : CGameC
     public float MinNearZ
     {
         get => state.Get<float>("MinNearZ");
-        set => SetMinNearZ(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMinNearZAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithMinNearZ(float value)
     {
@@ -534,7 +485,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers4<TSelf> : CGameC
     public Vec3 RelativeFollowedPos
     {
         get => state.Get<Vec3>("RelativeFollowedPos");
-        set => SetRelativeFollowedPos(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetRelativeFollowedPosAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithRelativeFollowedPos(Vec3 value)
     {
@@ -544,7 +495,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers4<TSelf> : CGameC
     public bool UseForcedUp
     {
         get => state.Get<bool>("UseForcedUp");
-        set => SetUseForcedUp(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetUseForcedUpAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithUseForcedUp(bool value)
     {
@@ -554,7 +505,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers4<TSelf> : CGameC
     public float ZoomKeySensitivity
     {
         get => state.Get<float>("ZoomKeySensitivity");
-        set => SetZoomKeySensitivity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetZoomKeySensitivityAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithZoomKeySensitivity(float value)
     {
@@ -746,7 +697,7 @@ public partial class CGameControlCameraOrbital3dBuilder : CGameControlCameraOrbi
         public bool CanUseRelativeTargetLocation
         {
             get => state.Get<bool>("CanUseRelativeTargetLocation");
-            set => SetCanUseRelativeTargetLocation(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMSX WithCanUseRelativeTargetLocation(bool value)
         {
@@ -756,7 +707,7 @@ public partial class CGameControlCameraOrbital3dBuilder : CGameControlCameraOrbi
         public Vec3 RelativeTargetPos
         {
             get => state.Get<Vec3>("RelativeTargetPos");
-            set => SetRelativeTargetPos(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetRelativeTargetPosAssignment(), value, GameVersion.TMSX);
         }
         public TMSX WithRelativeTargetPos(Vec3 value)
         {
@@ -784,7 +735,7 @@ public partial class CGameControlCameraOrbital3dBuilder : CGameControlCameraOrbi
         public bool CanUseRelativeTargetLocation
         {
             get => state.Get<bool>("CanUseRelativeTargetLocation");
-            set => SetCanUseRelativeTargetLocation(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMNESWC WithCanUseRelativeTargetLocation(bool value)
         {
@@ -812,7 +763,7 @@ public partial class CGameControlCameraOrbital3dBuilder : CGameControlCameraOrbi
         public bool CanUseRelativeTargetLocation
         {
             get => state.Get<bool>("CanUseRelativeTargetLocation");
-            set => SetCanUseRelativeTargetLocation(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         }
         public VSK5 WithCanUseRelativeTargetLocation(bool value)
         {
@@ -840,7 +791,7 @@ public partial class CGameControlCameraOrbital3dBuilder : CGameControlCameraOrbi
         public bool CanUseRelativeTargetLocation
         {
             get => state.Get<bool>("CanUseRelativeTargetLocation");
-            set => SetCanUseRelativeTargetLocation(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMF WithCanUseRelativeTargetLocation(bool value)
         {
@@ -868,7 +819,7 @@ public partial class CGameControlCameraOrbital3dBuilder : CGameControlCameraOrbi
         public bool CanUseRelativeTargetLocation
         {
             get => state.Get<bool>("CanUseRelativeTargetLocation");
-            set => SetCanUseRelativeTargetLocation(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         }
         public MP3 WithCanUseRelativeTargetLocation(bool value)
         {
@@ -878,7 +829,7 @@ public partial class CGameControlCameraOrbital3dBuilder : CGameControlCameraOrbi
         public float DefaultRadius
         {
             get => state.Get<float>("DefaultRadius");
-            set => SetDefaultRadius(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetDefaultRadiusAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP3 WithDefaultRadius(float value)
         {
@@ -924,7 +875,7 @@ public partial class CGameControlCameraOrbital3dBuilder : CGameControlCameraOrbi
         public Iso4 RelativeTargetLocation
         {
             get => state.Get<Iso4>("RelativeTargetLocation");
-            set => SetRelativeTargetLocation(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetRelativeTargetLocationAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithRelativeTargetLocation(Iso4 value)
         {
@@ -934,7 +885,7 @@ public partial class CGameControlCameraOrbital3dBuilder : CGameControlCameraOrbi
         public bool UseAutoRadiusFromTargets
         {
             get => state.Get<bool>("UseAutoRadiusFromTargets");
-            set => SetUseAutoRadiusFromTargets(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetUseAutoRadiusFromTargetsAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithUseAutoRadiusFromTargets(bool value)
         {

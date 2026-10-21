@@ -36,11 +36,10 @@ public abstract class CPlugCharPhyMaterialsBuilderBase<TSelf> where TSelf : CPlu
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials> state;
     private protected CPlugCharPhyMaterialsBuilderBase() => state = new();
     private protected CPlugCharPhyMaterialsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials> state) => this.state = state;
-    private protected static void SetMaterials(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyMaterialsBuilderAssignments.GetMaterialsAssignment(), value, GameVersion.TM2020);
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial>? Materials
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial>?>("Materials");
-        set => SetMaterials(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyMaterialsBuilderAssignments.GetMaterialsAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithMaterials(NodeRefList<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial>? value)
     {

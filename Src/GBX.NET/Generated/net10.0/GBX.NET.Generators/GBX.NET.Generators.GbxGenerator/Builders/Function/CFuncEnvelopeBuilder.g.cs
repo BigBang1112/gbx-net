@@ -36,18 +36,10 @@ public abstract class CFuncEnvelopeBuilderBase<TSelf> where TSelf : CFuncEnvelop
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnvelope> state;
     private protected CFuncEnvelopeBuilderBase() => state = new();
     private protected CFuncEnvelopeBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnvelope> state) => this.state = state;
-    private protected static void SetAmplitude(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnvelope> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetAmplitudeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFrequency(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnvelope> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetFrequencyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetKeyFramePos1(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnvelope> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetKeyFramePos1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetKeyFrameValue0(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnvelope> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetKeyFrameValue0Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetKeyFrameValue1(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnvelope> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetKeyFrameValue1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetKeyFrameValue2(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnvelope> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetKeyFrameValue2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetKeyFrameValue3(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnvelope> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetKeyFrameValue3Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetModFunc(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnvelope> state, global::GBX.NET.Engines.Function.CFuncEnvelope.EModulation value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetModFuncAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public float Amplitude
     {
         get => state.Get<float>("Amplitude");
-        set => SetAmplitude(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetAmplitudeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithAmplitude(float value)
     {
@@ -57,7 +49,7 @@ public abstract class CFuncEnvelopeBuilderBase<TSelf> where TSelf : CFuncEnvelop
     public float Frequency
     {
         get => state.Get<float>("Frequency");
-        set => SetFrequency(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetFrequencyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFrequency(float value)
     {
@@ -67,7 +59,7 @@ public abstract class CFuncEnvelopeBuilderBase<TSelf> where TSelf : CFuncEnvelop
     public float KeyFramePos1
     {
         get => state.Get<float>("KeyFramePos1");
-        set => SetKeyFramePos1(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetKeyFramePos1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithKeyFramePos1(float value)
     {
@@ -77,7 +69,7 @@ public abstract class CFuncEnvelopeBuilderBase<TSelf> where TSelf : CFuncEnvelop
     public float KeyFrameValue0
     {
         get => state.Get<float>("KeyFrameValue0");
-        set => SetKeyFrameValue0(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetKeyFrameValue0Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithKeyFrameValue0(float value)
     {
@@ -87,7 +79,7 @@ public abstract class CFuncEnvelopeBuilderBase<TSelf> where TSelf : CFuncEnvelop
     public float KeyFrameValue1
     {
         get => state.Get<float>("KeyFrameValue1");
-        set => SetKeyFrameValue1(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetKeyFrameValue1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithKeyFrameValue1(float value)
     {
@@ -97,7 +89,7 @@ public abstract class CFuncEnvelopeBuilderBase<TSelf> where TSelf : CFuncEnvelop
     public float KeyFrameValue2
     {
         get => state.Get<float>("KeyFrameValue2");
-        set => SetKeyFrameValue2(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetKeyFrameValue2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithKeyFrameValue2(float value)
     {
@@ -107,7 +99,7 @@ public abstract class CFuncEnvelopeBuilderBase<TSelf> where TSelf : CFuncEnvelop
     public float KeyFrameValue3
     {
         get => state.Get<float>("KeyFrameValue3");
-        set => SetKeyFrameValue3(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetKeyFrameValue3Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithKeyFrameValue3(float value)
     {
@@ -117,7 +109,7 @@ public abstract class CFuncEnvelopeBuilderBase<TSelf> where TSelf : CFuncEnvelop
     public global::GBX.NET.Engines.Function.CFuncEnvelope.EModulation ModFunc
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncEnvelope.EModulation>("ModFunc");
-        set => SetModFunc(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetModFuncAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithModFunc(global::GBX.NET.Engines.Function.CFuncEnvelope.EModulation value)
     {

@@ -36,194 +36,10 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state;
     private protected CPlugCharVisModelBuilderBase() => state = new();
     private protected CPlugCharVisModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state) => this.state = state;
-    private protected static void SetAimingAfterFireDurationMs(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetAimingAfterFireDurationMsAssignment(), value, GameVersion.MP4);
-    private protected static void SetAttractorModel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetAttractorModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetAttractorModelReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetAttractorModelReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetAttractorRelPos(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetAttractorRelPosAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetAudioEnvironmentForFirstPerson(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetAudioEnvironmentForFirstPersonAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetAudioEnvironmentForFirstPersonReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetAudioEnvironmentForFirstPersonReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetDummySkinnable(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetDummySkinnableAssignment(), value, GameVersion.MP4);
-    private protected static void SetDummySkinnableReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetDummySkinnableReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetGrapnelModel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetGrapnelModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetGrapnelModelReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetGrapnelModelReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetGrapnelReturnSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetGrapnelReturnSpeedAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetHurtFlashColor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetHurtFlashColorAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetHurtViewOffsetAngle(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetHurtViewOffsetAngleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetHurtViewOffsetDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetHurtViewOffsetDurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetHurtViewOffsetPos(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetHurtViewOffsetPosAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetJumpMaterialImpact(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetJumpMaterialImpactAssignment(), value, GameVersion.MP4);
-    private protected static void SetJumpMaterialImpactReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetJumpMaterialImpactReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetJumpPitchFromVel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetJumpPitchFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetJumpViewOffsetAngle(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetJumpViewOffsetAngleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetJumpViewOffsetDuration1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetJumpViewOffsetDuration1Assignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetJumpViewOffsetDuration2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetJumpViewOffsetDuration2Assignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetJumpViewOffsetPos(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetJumpViewOffsetPosAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetJumpVolumeFromVel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetJumpVolumeFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetLandMaterialImpact(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetLandMaterialImpactAssignment(), value, GameVersion.MP4);
-    private protected static void SetLandMaterialImpactReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetLandMaterialImpactReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetLandViewOffsetAngle(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetLandViewOffsetAngleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetLandViewOffsetDuration1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetLandViewOffsetDuration1Assignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetLandViewOffsetDuration2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetLandViewOffsetDuration2Assignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetLandViewOffsetPos(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetLandViewOffsetPosAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetLandVolumeFromVel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetLandVolumeFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetNullMesh(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSolid2Model? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetNullMeshAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetNullMeshReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid2Model> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetNullMeshReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetParagliderMesh(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSolid2Model? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParagliderMeshAssignment(), value, GameVersion.MP4);
-    private protected static void SetParagliderMeshReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid2Model> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParagliderMeshReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetParticle_Deactivated(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_DeactivatedAssignment(), value, GameVersion.MP4);
-    private protected static void SetParticle_DeactivatedReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_DeactivatedReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetParticle_DeactivatedShot(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_DeactivatedShotAssignment(), value, GameVersion.MP4);
-    private protected static void SetParticle_DeactivatedShotReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_DeactivatedShotReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetParticle_Deprecated_InjuredLight(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_Deprecated_InjuredLightAssignment(), value, GameVersion.MP4);
-    private protected static void SetParticle_Deprecated_InjuredLightReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_Deprecated_InjuredLightReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetParticle_EvolutionChange(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_EvolutionChangeAssignment(), value, GameVersion.MP4);
-    private protected static void SetParticle_EvolutionChangeReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_EvolutionChangeReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetParticle_EvolutionInProgress(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_EvolutionInProgressAssignment(), value, GameVersion.MP4);
-    private protected static void SetParticle_EvolutionInProgressReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_EvolutionInProgressReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetParticle_JumpPad(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_JumpPadAssignment(), value, GameVersion.MP4);
-    private protected static void SetParticle_JumpPadReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_JumpPadReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetParticle_ShieldDestroyed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_ShieldDestroyedAssignment(), value, GameVersion.MP4);
-    private protected static void SetParticle_ShieldDestroyedReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_ShieldDestroyedReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetParticle_ShieldDestroyed_Mesh(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_ShieldDestroyed_MeshAssignment(), value, GameVersion.MP4);
-    private protected static void SetParticle_ShieldDestroyed_MeshReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_ShieldDestroyed_MeshReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetParticle_Spawn(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_SpawnAssignment(), value, GameVersion.MP4);
-    private protected static void SetParticle_SpawnReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_SpawnReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetParticle_SpeedUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_SpeedUpAssignment(), value, GameVersion.MP4);
-    private protected static void SetParticle_SpeedUpReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_SpeedUpReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetParticle_TeleportSpawn(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_TeleportSpawnAssignment(), value, GameVersion.MP4);
-    private protected static void SetParticle_TeleportSpawnReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_TeleportSpawnReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetParticle_TeleportUnspawn(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_TeleportUnspawnAssignment(), value, GameVersion.MP4);
-    private protected static void SetParticle_TeleportUnspawnReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_TeleportUnspawnReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetParticle_Turbo(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_TurboAssignment(), value, GameVersion.MP4);
-    private protected static void SetParticle_TurboReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_TurboReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetRunStepBodyPitchFromVel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetRunStepBodyPitchFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetRunStepBodyVolumeFromVel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetRunStepBodyVolumeFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetRunStepDistFromVel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetRunStepDistFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetRunStepDistFromVel_Snow(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetRunStepDistFromVel_SnowAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetRunStepImpactPitchFromVel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetRunStepImpactPitchFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetRunStepImpactVolumeFromVel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetRunStepImpactVolumeFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetRunViewBobAmountFromVel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetRunViewBobAmountFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetRunViewBobOffsetPitch(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetRunViewBobOffsetPitchAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetRunViewBobOffsetPos(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetRunViewBobOffsetPosAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetRunViewBobOffsetRoll(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetRunViewBobOffsetRollAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetShieldModel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugShieldModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetShieldModelAssignment(), value, GameVersion.MP4);
-    private protected static void SetShieldModelReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugShieldModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetShieldModelReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSlideSurfPitchFromVel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSlideSurfPitchFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSlideSurfgVolumeFromVel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSlideSurfgVolumeFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSound_Attractor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_AttractorAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_AttractorReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_AttractorReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Breathe(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_BreatheAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_BreatheReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_BreatheReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_EvolutionChange(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_EvolutionChangeAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_EvolutionChangeReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_EvolutionChangeReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_EvolutionInProgress(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_EvolutionInProgressAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_EvolutionInProgressReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_EvolutionInProgressReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Gliding(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_GlidingAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_GlidingReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_GlidingReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_Attractor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_AttractorAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_AttractorReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_AttractorReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_BackFlipJump(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_BackFlipJumpAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_BackFlipJumpReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_BackFlipJumpReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_BulletHit(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_BulletHitAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_BulletHitReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_BulletHitReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_DoubleJump(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_DoubleJumpAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_DoubleJumpReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_DoubleJumpReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_FallDamage(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_FallDamageAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_FallDamageReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_FallDamageReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_Fire(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_FireAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_FireReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_FireReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_FreeWheeling(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_FreeWheelingAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_FreeWheelingReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_FreeWheelingReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_FrontFlipJump(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_FrontFlipJumpAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_FrontFlipJumpReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_FrontFlipJumpReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_GesturePointTo(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_GesturePointToAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_GesturePointToReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_GesturePointToReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_GestureTaunt(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_GestureTauntAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_GestureTauntReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_GestureTauntReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_InjuredEliminated(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_InjuredEliminatedAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_InjuredEliminatedReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_InjuredEliminatedReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_InjuredEliminatedShot(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_InjuredEliminatedShotAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_InjuredEliminatedShotReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_InjuredEliminatedShotReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_InjuredLight(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_InjuredLightAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_InjuredLightReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_InjuredLightReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_Jump(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_JumpAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_JumpReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_JumpReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_JumpChain1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_JumpChain1Assignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_JumpChain1Reference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_JumpChain1ReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_JumpChain2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_JumpChain2Assignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_JumpChain2Reference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_JumpChain2ReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_JumpPadBig(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_JumpPadBigAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_JumpPadBigReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_JumpPadBigReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_JumpPadMed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_JumpPadMedAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_JumpPadMedReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_JumpPadMedReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_JumpPadSmall(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_JumpPadSmallAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_JumpPadSmallReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_JumpPadSmallReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_Land(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_LandAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_LandReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_LandReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_MissingStamina(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_MissingStaminaAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_MissingStaminaReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_MissingStaminaReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_Spawn(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_SpawnAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_SpawnReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_SpawnReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_SpeedUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_SpeedUpAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_SpeedUpReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_SpeedUpReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_TechJump(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_TechJumpAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_TechJumpReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_TechJumpReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_TeleportSpawn(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_TeleportSpawnAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_TeleportSpawnReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_TeleportSpawnReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_TeleportUnspawn(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_TeleportUnspawnAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_TeleportUnspawnReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_TeleportUnspawnReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_Turbo(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_TurboAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_TurboReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_TurboReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_WallJump(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_WallJumpAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_WallJumpReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_WallJumpReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_ZoomIn(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_ZoomInAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_ZoomInReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_ZoomInReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_ZoomOut(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_ZoomOutAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Notice_ZoomOutReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_ZoomOutReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_RunBody(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_RunBodyAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_RunBodyReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_RunBodyReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Slide(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_SlideAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_SlideReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_SlideReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_SwimBody(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_SwimBodyAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_SwimBodyReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_SwimBodyReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_Swimming(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_SwimmingAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_SwimmingReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_SwimmingReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_WalkBody(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_WalkBodyAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_WalkBodyReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_WalkBodyReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_WalkBodySilent(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_WalkBodySilentAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound_WalkBodySilentReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_WalkBodySilentReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetStrafeMaxRollAngle(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetStrafeMaxRollAngleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetStrafeSmoothingPeriod(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetStrafeSmoothingPeriodAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSwimStepBodyPitchFromVel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSwimStepBodyPitchFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSwimStepBodyVolumeFromVel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSwimStepBodyVolumeFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSwimStepDistFromVel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSwimStepDistFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSwimStepImpactPitchFromVel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSwimStepImpactPitchFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSwimStepImpactVolumeFromVel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSwimStepImpactVolumeFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSwimmingPitchFromVel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSwimmingPitchFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSwimmingVolumeFromVel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSwimmingVolumeFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetViewBobPitchStepPhase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetViewBobPitchStepPhaseAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetViewBobRollWalkCyclePhase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetViewBobRollWalkCyclePhaseAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetWalkImpactBodyDelay(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetWalkImpactBodyDelayAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetWalkStepBodyPitchFromVel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetWalkStepBodyPitchFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetWalkStepBodyVolumeFromVel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetWalkStepBodyVolumeFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetWalkStepDistFromVel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetWalkStepDistFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetWalkStepDistFromVel_Snow(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetWalkStepDistFromVel_SnowAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetWalkStepImpactPitchFromVel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetWalkStepImpactPitchFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetWalkStepImpactVolumeFromVel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetWalkStepImpactVolumeFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetWalkStepMaterialImpact(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetWalkStepMaterialImpactAssignment(), value, GameVersion.MP4);
-    private protected static void SetWalkStepMaterialImpactReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetWalkStepMaterialImpactReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetWalkStepSoundOffset(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetWalkStepSoundOffsetAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetWalkViewBobAmountFromVel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetWalkViewBobAmountFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetWalkViewBobAmountFromVel_Rushing(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetWalkViewBobAmountFromVel_RushingAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetWalkViewBobOffsetPitch(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetWalkViewBobOffsetPitchAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetWalkViewBobOffsetPos(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetWalkViewBobOffsetPosAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetWalkViewBobOffsetRoll(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetWalkViewBobOffsetRollAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetWallJumpPitchFromVel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetWallJumpPitchFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetWallJumpVolumeFromVel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharVisModel> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetWallJumpVolumeFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     public global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel? AttractorModel
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel?>("AttractorModel");
-        set => SetAttractorModel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetAttractorModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithAttractorModel(global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel? value)
     {
@@ -233,13 +49,13 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public TSelf WithAttractorModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetAttractorModelReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetAttractorModelReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public Vec3 AttractorRelPos
     {
         get => state.Get<Vec3>("AttractorRelPos");
-        set => SetAttractorRelPos(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetAttractorRelPosAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithAttractorRelPos(Vec3 value)
     {
@@ -249,7 +65,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public global::GBX.NET.Engines.MwFoundations.CMwNod? AudioEnvironmentForFirstPerson
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("AudioEnvironmentForFirstPerson");
-        set => SetAudioEnvironmentForFirstPerson(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetAudioEnvironmentForFirstPersonAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithAudioEnvironmentForFirstPerson(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
@@ -259,13 +75,13 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public TSelf WithAudioEnvironmentForFirstPersonReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetAudioEnvironmentForFirstPersonReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetAudioEnvironmentForFirstPersonReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel? GrapnelModel
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel?>("GrapnelModel");
-        set => SetGrapnelModel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetGrapnelModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithGrapnelModel(global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel? value)
     {
@@ -275,13 +91,13 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public TSelf WithGrapnelModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetGrapnelModelReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetGrapnelModelReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public float GrapnelReturnSpeed
     {
         get => state.Get<float>("GrapnelReturnSpeed");
-        set => SetGrapnelReturnSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetGrapnelReturnSpeedAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithGrapnelReturnSpeed(float value)
     {
@@ -291,7 +107,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public Vec3 HurtFlashColor
     {
         get => state.Get<Vec3>("HurtFlashColor");
-        set => SetHurtFlashColor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetHurtFlashColorAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithHurtFlashColor(Vec3 value)
     {
@@ -301,7 +117,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public float HurtViewOffsetAngle
     {
         get => state.Get<float>("HurtViewOffsetAngle");
-        set => SetHurtViewOffsetAngle(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetHurtViewOffsetAngleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithHurtViewOffsetAngle(float value)
     {
@@ -311,7 +127,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public int HurtViewOffsetDuration
     {
         get => state.Get<int>("HurtViewOffsetDuration");
-        set => SetHurtViewOffsetDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetHurtViewOffsetDurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithHurtViewOffsetDuration(int value)
     {
@@ -321,7 +137,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public float HurtViewOffsetPos
     {
         get => state.Get<float>("HurtViewOffsetPos");
-        set => SetHurtViewOffsetPos(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetHurtViewOffsetPosAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithHurtViewOffsetPos(float value)
     {
@@ -331,7 +147,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public PlugCurve? JumpPitchFromVel
     {
         get => state.Get<PlugCurve?>("JumpPitchFromVel");
-        set => SetJumpPitchFromVel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetJumpPitchFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithJumpPitchFromVel(PlugCurve? value)
     {
@@ -341,7 +157,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public float JumpViewOffsetAngle
     {
         get => state.Get<float>("JumpViewOffsetAngle");
-        set => SetJumpViewOffsetAngle(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetJumpViewOffsetAngleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithJumpViewOffsetAngle(float value)
     {
@@ -351,7 +167,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public int JumpViewOffsetDuration1
     {
         get => state.Get<int>("JumpViewOffsetDuration1");
-        set => SetJumpViewOffsetDuration1(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetJumpViewOffsetDuration1Assignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithJumpViewOffsetDuration1(int value)
     {
@@ -361,7 +177,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public int JumpViewOffsetDuration2
     {
         get => state.Get<int>("JumpViewOffsetDuration2");
-        set => SetJumpViewOffsetDuration2(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetJumpViewOffsetDuration2Assignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithJumpViewOffsetDuration2(int value)
     {
@@ -371,7 +187,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public float JumpViewOffsetPos
     {
         get => state.Get<float>("JumpViewOffsetPos");
-        set => SetJumpViewOffsetPos(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetJumpViewOffsetPosAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithJumpViewOffsetPos(float value)
     {
@@ -381,7 +197,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public PlugCurve? JumpVolumeFromVel
     {
         get => state.Get<PlugCurve?>("JumpVolumeFromVel");
-        set => SetJumpVolumeFromVel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetJumpVolumeFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithJumpVolumeFromVel(PlugCurve? value)
     {
@@ -391,7 +207,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public float LandViewOffsetAngle
     {
         get => state.Get<float>("LandViewOffsetAngle");
-        set => SetLandViewOffsetAngle(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetLandViewOffsetAngleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLandViewOffsetAngle(float value)
     {
@@ -401,7 +217,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public int LandViewOffsetDuration1
     {
         get => state.Get<int>("LandViewOffsetDuration1");
-        set => SetLandViewOffsetDuration1(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetLandViewOffsetDuration1Assignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLandViewOffsetDuration1(int value)
     {
@@ -411,7 +227,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public int LandViewOffsetDuration2
     {
         get => state.Get<int>("LandViewOffsetDuration2");
-        set => SetLandViewOffsetDuration2(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetLandViewOffsetDuration2Assignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLandViewOffsetDuration2(int value)
     {
@@ -421,7 +237,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public float LandViewOffsetPos
     {
         get => state.Get<float>("LandViewOffsetPos");
-        set => SetLandViewOffsetPos(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetLandViewOffsetPosAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLandViewOffsetPos(float value)
     {
@@ -431,7 +247,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public PlugCurve? LandVolumeFromVel
     {
         get => state.Get<PlugCurve?>("LandVolumeFromVel");
-        set => SetLandVolumeFromVel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetLandVolumeFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLandVolumeFromVel(PlugCurve? value)
     {
@@ -441,7 +257,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public global::GBX.NET.Engines.Plug.CPlugSolid2Model? NullMesh
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSolid2Model?>("NullMesh");
-        set => SetNullMesh(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetNullMeshAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithNullMesh(global::GBX.NET.Engines.Plug.CPlugSolid2Model? value)
     {
@@ -451,13 +267,13 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public TSelf WithNullMeshReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid2Model> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetNullMeshReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetNullMeshReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public PlugCurve? RunStepBodyPitchFromVel
     {
         get => state.Get<PlugCurve?>("RunStepBodyPitchFromVel");
-        set => SetRunStepBodyPitchFromVel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetRunStepBodyPitchFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithRunStepBodyPitchFromVel(PlugCurve? value)
     {
@@ -467,7 +283,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public PlugCurve? RunStepBodyVolumeFromVel
     {
         get => state.Get<PlugCurve?>("RunStepBodyVolumeFromVel");
-        set => SetRunStepBodyVolumeFromVel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetRunStepBodyVolumeFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithRunStepBodyVolumeFromVel(PlugCurve? value)
     {
@@ -477,7 +293,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public PlugCurve? RunStepDistFromVel
     {
         get => state.Get<PlugCurve?>("RunStepDistFromVel");
-        set => SetRunStepDistFromVel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetRunStepDistFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithRunStepDistFromVel(PlugCurve? value)
     {
@@ -487,7 +303,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public PlugCurve? RunStepDistFromVel_Snow
     {
         get => state.Get<PlugCurve?>("RunStepDistFromVel_Snow");
-        set => SetRunStepDistFromVel_Snow(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetRunStepDistFromVel_SnowAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithRunStepDistFromVel_Snow(PlugCurve? value)
     {
@@ -497,7 +313,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public PlugCurve? RunStepImpactPitchFromVel
     {
         get => state.Get<PlugCurve?>("RunStepImpactPitchFromVel");
-        set => SetRunStepImpactPitchFromVel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetRunStepImpactPitchFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithRunStepImpactPitchFromVel(PlugCurve? value)
     {
@@ -507,7 +323,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public PlugCurve? RunStepImpactVolumeFromVel
     {
         get => state.Get<PlugCurve?>("RunStepImpactVolumeFromVel");
-        set => SetRunStepImpactVolumeFromVel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetRunStepImpactVolumeFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithRunStepImpactVolumeFromVel(PlugCurve? value)
     {
@@ -517,7 +333,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public PlugCurve? RunViewBobAmountFromVel
     {
         get => state.Get<PlugCurve?>("RunViewBobAmountFromVel");
-        set => SetRunViewBobAmountFromVel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetRunViewBobAmountFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithRunViewBobAmountFromVel(PlugCurve? value)
     {
@@ -527,7 +343,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public float RunViewBobOffsetPitch
     {
         get => state.Get<float>("RunViewBobOffsetPitch");
-        set => SetRunViewBobOffsetPitch(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetRunViewBobOffsetPitchAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithRunViewBobOffsetPitch(float value)
     {
@@ -537,7 +353,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public float RunViewBobOffsetPos
     {
         get => state.Get<float>("RunViewBobOffsetPos");
-        set => SetRunViewBobOffsetPos(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetRunViewBobOffsetPosAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithRunViewBobOffsetPos(float value)
     {
@@ -547,7 +363,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public float RunViewBobOffsetRoll
     {
         get => state.Get<float>("RunViewBobOffsetRoll");
-        set => SetRunViewBobOffsetRoll(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetRunViewBobOffsetRollAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithRunViewBobOffsetRoll(float value)
     {
@@ -557,7 +373,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public PlugCurve? SlideSurfPitchFromVel
     {
         get => state.Get<PlugCurve?>("SlideSurfPitchFromVel");
-        set => SetSlideSurfPitchFromVel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSlideSurfPitchFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithSlideSurfPitchFromVel(PlugCurve? value)
     {
@@ -567,7 +383,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public PlugCurve? SlideSurfgVolumeFromVel
     {
         get => state.Get<PlugCurve?>("SlideSurfgVolumeFromVel");
-        set => SetSlideSurfgVolumeFromVel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSlideSurfgVolumeFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithSlideSurfgVolumeFromVel(PlugCurve? value)
     {
@@ -577,7 +393,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public float StrafeMaxRollAngle
     {
         get => state.Get<float>("StrafeMaxRollAngle");
-        set => SetStrafeMaxRollAngle(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetStrafeMaxRollAngleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithStrafeMaxRollAngle(float value)
     {
@@ -587,7 +403,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public float StrafeSmoothingPeriod
     {
         get => state.Get<float>("StrafeSmoothingPeriod");
-        set => SetStrafeSmoothingPeriod(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetStrafeSmoothingPeriodAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithStrafeSmoothingPeriod(float value)
     {
@@ -597,7 +413,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public PlugCurve? SwimStepBodyPitchFromVel
     {
         get => state.Get<PlugCurve?>("SwimStepBodyPitchFromVel");
-        set => SetSwimStepBodyPitchFromVel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSwimStepBodyPitchFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithSwimStepBodyPitchFromVel(PlugCurve? value)
     {
@@ -607,7 +423,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public PlugCurve? SwimStepBodyVolumeFromVel
     {
         get => state.Get<PlugCurve?>("SwimStepBodyVolumeFromVel");
-        set => SetSwimStepBodyVolumeFromVel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSwimStepBodyVolumeFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithSwimStepBodyVolumeFromVel(PlugCurve? value)
     {
@@ -617,7 +433,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public PlugCurve? SwimStepDistFromVel
     {
         get => state.Get<PlugCurve?>("SwimStepDistFromVel");
-        set => SetSwimStepDistFromVel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSwimStepDistFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithSwimStepDistFromVel(PlugCurve? value)
     {
@@ -627,7 +443,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public PlugCurve? SwimStepImpactPitchFromVel
     {
         get => state.Get<PlugCurve?>("SwimStepImpactPitchFromVel");
-        set => SetSwimStepImpactPitchFromVel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSwimStepImpactPitchFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithSwimStepImpactPitchFromVel(PlugCurve? value)
     {
@@ -637,7 +453,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public PlugCurve? SwimStepImpactVolumeFromVel
     {
         get => state.Get<PlugCurve?>("SwimStepImpactVolumeFromVel");
-        set => SetSwimStepImpactVolumeFromVel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSwimStepImpactVolumeFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithSwimStepImpactVolumeFromVel(PlugCurve? value)
     {
@@ -647,7 +463,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public PlugCurve? SwimmingPitchFromVel
     {
         get => state.Get<PlugCurve?>("SwimmingPitchFromVel");
-        set => SetSwimmingPitchFromVel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSwimmingPitchFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithSwimmingPitchFromVel(PlugCurve? value)
     {
@@ -657,7 +473,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public PlugCurve? SwimmingVolumeFromVel
     {
         get => state.Get<PlugCurve?>("SwimmingVolumeFromVel");
-        set => SetSwimmingVolumeFromVel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSwimmingVolumeFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithSwimmingVolumeFromVel(PlugCurve? value)
     {
@@ -667,7 +483,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public float ViewBobPitchStepPhase
     {
         get => state.Get<float>("ViewBobPitchStepPhase");
-        set => SetViewBobPitchStepPhase(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetViewBobPitchStepPhaseAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithViewBobPitchStepPhase(float value)
     {
@@ -677,7 +493,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public float ViewBobRollWalkCyclePhase
     {
         get => state.Get<float>("ViewBobRollWalkCyclePhase");
-        set => SetViewBobRollWalkCyclePhase(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetViewBobRollWalkCyclePhaseAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithViewBobRollWalkCyclePhase(float value)
     {
@@ -687,7 +503,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public int WalkImpactBodyDelay
     {
         get => state.Get<int>("WalkImpactBodyDelay");
-        set => SetWalkImpactBodyDelay(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetWalkImpactBodyDelayAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithWalkImpactBodyDelay(int value)
     {
@@ -697,7 +513,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public PlugCurve? WalkStepBodyPitchFromVel
     {
         get => state.Get<PlugCurve?>("WalkStepBodyPitchFromVel");
-        set => SetWalkStepBodyPitchFromVel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetWalkStepBodyPitchFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithWalkStepBodyPitchFromVel(PlugCurve? value)
     {
@@ -707,7 +523,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public PlugCurve? WalkStepBodyVolumeFromVel
     {
         get => state.Get<PlugCurve?>("WalkStepBodyVolumeFromVel");
-        set => SetWalkStepBodyVolumeFromVel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetWalkStepBodyVolumeFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithWalkStepBodyVolumeFromVel(PlugCurve? value)
     {
@@ -717,7 +533,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public PlugCurve? WalkStepDistFromVel
     {
         get => state.Get<PlugCurve?>("WalkStepDistFromVel");
-        set => SetWalkStepDistFromVel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetWalkStepDistFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithWalkStepDistFromVel(PlugCurve? value)
     {
@@ -727,7 +543,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public PlugCurve? WalkStepDistFromVel_Snow
     {
         get => state.Get<PlugCurve?>("WalkStepDistFromVel_Snow");
-        set => SetWalkStepDistFromVel_Snow(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetWalkStepDistFromVel_SnowAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithWalkStepDistFromVel_Snow(PlugCurve? value)
     {
@@ -737,7 +553,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public PlugCurve? WalkStepImpactPitchFromVel
     {
         get => state.Get<PlugCurve?>("WalkStepImpactPitchFromVel");
-        set => SetWalkStepImpactPitchFromVel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetWalkStepImpactPitchFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithWalkStepImpactPitchFromVel(PlugCurve? value)
     {
@@ -747,7 +563,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public PlugCurve? WalkStepImpactVolumeFromVel
     {
         get => state.Get<PlugCurve?>("WalkStepImpactVolumeFromVel");
-        set => SetWalkStepImpactVolumeFromVel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetWalkStepImpactVolumeFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithWalkStepImpactVolumeFromVel(PlugCurve? value)
     {
@@ -757,7 +573,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public Vec3 WalkStepSoundOffset
     {
         get => state.Get<Vec3>("WalkStepSoundOffset");
-        set => SetWalkStepSoundOffset(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetWalkStepSoundOffsetAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithWalkStepSoundOffset(Vec3 value)
     {
@@ -767,7 +583,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public PlugCurve? WalkViewBobAmountFromVel
     {
         get => state.Get<PlugCurve?>("WalkViewBobAmountFromVel");
-        set => SetWalkViewBobAmountFromVel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetWalkViewBobAmountFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithWalkViewBobAmountFromVel(PlugCurve? value)
     {
@@ -777,7 +593,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public PlugCurve? WalkViewBobAmountFromVel_Rushing
     {
         get => state.Get<PlugCurve?>("WalkViewBobAmountFromVel_Rushing");
-        set => SetWalkViewBobAmountFromVel_Rushing(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetWalkViewBobAmountFromVel_RushingAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithWalkViewBobAmountFromVel_Rushing(PlugCurve? value)
     {
@@ -787,7 +603,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public float WalkViewBobOffsetPitch
     {
         get => state.Get<float>("WalkViewBobOffsetPitch");
-        set => SetWalkViewBobOffsetPitch(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetWalkViewBobOffsetPitchAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithWalkViewBobOffsetPitch(float value)
     {
@@ -797,7 +613,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public float WalkViewBobOffsetPos
     {
         get => state.Get<float>("WalkViewBobOffsetPos");
-        set => SetWalkViewBobOffsetPos(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetWalkViewBobOffsetPosAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithWalkViewBobOffsetPos(float value)
     {
@@ -807,7 +623,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public float WalkViewBobOffsetRoll
     {
         get => state.Get<float>("WalkViewBobOffsetRoll");
-        set => SetWalkViewBobOffsetRoll(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetWalkViewBobOffsetRollAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithWalkViewBobOffsetRoll(float value)
     {
@@ -817,7 +633,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public PlugCurve? WallJumpPitchFromVel
     {
         get => state.Get<PlugCurve?>("WallJumpPitchFromVel");
-        set => SetWallJumpPitchFromVel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetWallJumpPitchFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithWallJumpPitchFromVel(PlugCurve? value)
     {
@@ -827,7 +643,7 @@ public abstract class CPlugCharVisModelBuilderBase<TSelf> where TSelf : CPlugCha
     public PlugCurve? WallJumpVolumeFromVel
     {
         get => state.Get<PlugCurve?>("WallJumpVolumeFromVel");
-        set => SetWallJumpVolumeFromVel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetWallJumpVolumeFromVelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithWallJumpVolumeFromVel(PlugCurve? value)
     {
@@ -888,7 +704,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public int AimingAfterFireDurationMs
         {
             get => state.Get<int>("AimingAfterFireDurationMs");
-            set => SetAimingAfterFireDurationMs(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetAimingAfterFireDurationMsAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithAimingAfterFireDurationMs(int value)
         {
@@ -902,7 +718,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.MwFoundations.CMwNod? DummySkinnable
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("DummySkinnable");
-            set => SetDummySkinnable(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetDummySkinnableAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithDummySkinnable(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -912,7 +728,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithDummySkinnableReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetDummySkinnableReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetDummySkinnableReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithGrapnelModel(global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4? value)
@@ -922,7 +738,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel? JumpMaterialImpact
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel?>("JumpMaterialImpact");
-            set => SetJumpMaterialImpact(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetJumpMaterialImpactAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithJumpMaterialImpact(global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel? value)
         {
@@ -932,7 +748,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithJumpMaterialImpactReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetJumpMaterialImpactReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetJumpMaterialImpactReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithJumpMaterialImpact(global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4? value)
@@ -942,7 +758,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel? LandMaterialImpact
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel?>("LandMaterialImpact");
-            set => SetLandMaterialImpact(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetLandMaterialImpactAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithLandMaterialImpact(global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel? value)
         {
@@ -952,7 +768,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithLandMaterialImpactReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetLandMaterialImpactReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetLandMaterialImpactReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithLandMaterialImpact(global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4? value)
@@ -966,7 +782,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSolid2Model? ParagliderMesh
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSolid2Model?>("ParagliderMesh");
-            set => SetParagliderMesh(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParagliderMeshAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithParagliderMesh(global::GBX.NET.Engines.Plug.CPlugSolid2Model? value)
         {
@@ -976,7 +792,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithParagliderMeshReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid2Model> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetParagliderMeshReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParagliderMeshReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithParagliderMesh(global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4? value)
@@ -986,7 +802,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? Particle_Deactivated
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("Particle_Deactivated");
-            set => SetParticle_Deactivated(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_DeactivatedAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithParticle_Deactivated(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
         {
@@ -996,7 +812,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithParticle_DeactivatedReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetParticle_DeactivatedReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_DeactivatedReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithParticle_Deactivated(global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? value)
@@ -1006,7 +822,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? Particle_DeactivatedShot
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("Particle_DeactivatedShot");
-            set => SetParticle_DeactivatedShot(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_DeactivatedShotAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithParticle_DeactivatedShot(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
         {
@@ -1016,7 +832,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithParticle_DeactivatedShotReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetParticle_DeactivatedShotReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_DeactivatedShotReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithParticle_DeactivatedShot(global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? value)
@@ -1026,7 +842,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? Particle_Deprecated_InjuredLight
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("Particle_Deprecated_InjuredLight");
-            set => SetParticle_Deprecated_InjuredLight(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_Deprecated_InjuredLightAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithParticle_Deprecated_InjuredLight(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
         {
@@ -1036,7 +852,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithParticle_Deprecated_InjuredLightReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetParticle_Deprecated_InjuredLightReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_Deprecated_InjuredLightReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithParticle_Deprecated_InjuredLight(global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? value)
@@ -1046,7 +862,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? Particle_EvolutionChange
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("Particle_EvolutionChange");
-            set => SetParticle_EvolutionChange(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_EvolutionChangeAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithParticle_EvolutionChange(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
         {
@@ -1056,7 +872,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithParticle_EvolutionChangeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetParticle_EvolutionChangeReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_EvolutionChangeReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithParticle_EvolutionChange(global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? value)
@@ -1066,7 +882,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? Particle_EvolutionInProgress
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("Particle_EvolutionInProgress");
-            set => SetParticle_EvolutionInProgress(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_EvolutionInProgressAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithParticle_EvolutionInProgress(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
         {
@@ -1076,7 +892,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithParticle_EvolutionInProgressReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetParticle_EvolutionInProgressReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_EvolutionInProgressReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithParticle_EvolutionInProgress(global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? value)
@@ -1086,7 +902,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? Particle_JumpPad
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("Particle_JumpPad");
-            set => SetParticle_JumpPad(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_JumpPadAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithParticle_JumpPad(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
         {
@@ -1096,7 +912,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithParticle_JumpPadReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetParticle_JumpPadReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_JumpPadReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithParticle_JumpPad(global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? value)
@@ -1106,7 +922,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? Particle_ShieldDestroyed
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("Particle_ShieldDestroyed");
-            set => SetParticle_ShieldDestroyed(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_ShieldDestroyedAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithParticle_ShieldDestroyed(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
         {
@@ -1116,7 +932,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithParticle_ShieldDestroyedReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetParticle_ShieldDestroyedReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_ShieldDestroyedReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithParticle_ShieldDestroyed(global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? value)
@@ -1126,7 +942,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? Particle_ShieldDestroyed_Mesh
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("Particle_ShieldDestroyed_Mesh");
-            set => SetParticle_ShieldDestroyed_Mesh(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_ShieldDestroyed_MeshAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithParticle_ShieldDestroyed_Mesh(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
         {
@@ -1136,7 +952,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithParticle_ShieldDestroyed_MeshReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetParticle_ShieldDestroyed_MeshReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_ShieldDestroyed_MeshReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithParticle_ShieldDestroyed_Mesh(global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? value)
@@ -1146,7 +962,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? Particle_Spawn
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("Particle_Spawn");
-            set => SetParticle_Spawn(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_SpawnAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithParticle_Spawn(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
         {
@@ -1156,7 +972,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithParticle_SpawnReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetParticle_SpawnReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_SpawnReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithParticle_Spawn(global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? value)
@@ -1166,7 +982,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? Particle_SpeedUp
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("Particle_SpeedUp");
-            set => SetParticle_SpeedUp(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_SpeedUpAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithParticle_SpeedUp(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
         {
@@ -1176,7 +992,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithParticle_SpeedUpReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetParticle_SpeedUpReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_SpeedUpReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithParticle_SpeedUp(global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? value)
@@ -1186,7 +1002,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? Particle_TeleportSpawn
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("Particle_TeleportSpawn");
-            set => SetParticle_TeleportSpawn(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_TeleportSpawnAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithParticle_TeleportSpawn(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
         {
@@ -1196,7 +1012,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithParticle_TeleportSpawnReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetParticle_TeleportSpawnReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_TeleportSpawnReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithParticle_TeleportSpawn(global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? value)
@@ -1206,7 +1022,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? Particle_TeleportUnspawn
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("Particle_TeleportUnspawn");
-            set => SetParticle_TeleportUnspawn(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_TeleportUnspawnAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithParticle_TeleportUnspawn(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
         {
@@ -1216,7 +1032,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithParticle_TeleportUnspawnReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetParticle_TeleportUnspawnReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_TeleportUnspawnReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithParticle_TeleportUnspawn(global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? value)
@@ -1226,7 +1042,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? Particle_Turbo
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("Particle_Turbo");
-            set => SetParticle_Turbo(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_TurboAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithParticle_Turbo(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
         {
@@ -1236,7 +1052,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithParticle_TurboReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetParticle_TurboReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetParticle_TurboReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithParticle_Turbo(global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? value)
@@ -1246,7 +1062,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugShieldModel? ShieldModel
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugShieldModel?>("ShieldModel");
-            set => SetShieldModel(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetShieldModelAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithShieldModel(global::GBX.NET.Engines.Plug.CPlugShieldModel? value)
         {
@@ -1256,7 +1072,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithShieldModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShieldModel> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetShieldModelReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetShieldModelReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithShieldModel(global::GBX.NET.Interfaces.Plug.IPlugShieldModelMP4? value)
@@ -1266,7 +1082,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_Attractor
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_Attractor");
-            set => SetSound_Attractor(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_AttractorAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_Attractor(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1276,7 +1092,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_AttractorReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_AttractorReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_AttractorReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_Attractor(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -1286,7 +1102,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_Breathe
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_Breathe");
-            set => SetSound_Breathe(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_BreatheAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_Breathe(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1296,7 +1112,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_BreatheReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_BreatheReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_BreatheReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_Breathe(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -1306,7 +1122,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_EvolutionChange
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_EvolutionChange");
-            set => SetSound_EvolutionChange(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_EvolutionChangeAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_EvolutionChange(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1316,7 +1132,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_EvolutionChangeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_EvolutionChangeReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_EvolutionChangeReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_EvolutionChange(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -1326,7 +1142,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_EvolutionInProgress
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_EvolutionInProgress");
-            set => SetSound_EvolutionInProgress(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_EvolutionInProgressAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_EvolutionInProgress(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1336,7 +1152,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_EvolutionInProgressReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_EvolutionInProgressReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_EvolutionInProgressReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_EvolutionInProgress(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -1346,7 +1162,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_Gliding
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_Gliding");
-            set => SetSound_Gliding(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_GlidingAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_Gliding(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1356,7 +1172,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_GlidingReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_GlidingReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_GlidingReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_Gliding(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -1366,7 +1182,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_Notice_Attractor
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_Notice_Attractor");
-            set => SetSound_Notice_Attractor(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_AttractorAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_Notice_Attractor(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1376,7 +1192,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_Notice_AttractorReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_Notice_AttractorReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_AttractorReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_Notice_Attractor(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -1386,7 +1202,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_Notice_BackFlipJump
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_Notice_BackFlipJump");
-            set => SetSound_Notice_BackFlipJump(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_BackFlipJumpAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_Notice_BackFlipJump(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1396,7 +1212,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_Notice_BackFlipJumpReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_Notice_BackFlipJumpReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_BackFlipJumpReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_Notice_BackFlipJump(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -1406,7 +1222,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_Notice_BulletHit
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_Notice_BulletHit");
-            set => SetSound_Notice_BulletHit(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_BulletHitAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_Notice_BulletHit(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1416,7 +1232,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_Notice_BulletHitReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_Notice_BulletHitReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_BulletHitReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_Notice_BulletHit(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -1426,7 +1242,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_Notice_DoubleJump
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_Notice_DoubleJump");
-            set => SetSound_Notice_DoubleJump(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_DoubleJumpAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_Notice_DoubleJump(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1436,7 +1252,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_Notice_DoubleJumpReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_Notice_DoubleJumpReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_DoubleJumpReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_Notice_DoubleJump(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -1446,7 +1262,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_Notice_FallDamage
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_Notice_FallDamage");
-            set => SetSound_Notice_FallDamage(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_FallDamageAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_Notice_FallDamage(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1456,7 +1272,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_Notice_FallDamageReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_Notice_FallDamageReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_FallDamageReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_Notice_FallDamage(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -1466,7 +1282,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_Notice_Fire
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_Notice_Fire");
-            set => SetSound_Notice_Fire(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_FireAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_Notice_Fire(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1476,7 +1292,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_Notice_FireReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_Notice_FireReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_FireReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_Notice_Fire(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -1486,7 +1302,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_Notice_FreeWheeling
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_Notice_FreeWheeling");
-            set => SetSound_Notice_FreeWheeling(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_FreeWheelingAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_Notice_FreeWheeling(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1496,7 +1312,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_Notice_FreeWheelingReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_Notice_FreeWheelingReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_FreeWheelingReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_Notice_FreeWheeling(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -1506,7 +1322,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_Notice_FrontFlipJump
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_Notice_FrontFlipJump");
-            set => SetSound_Notice_FrontFlipJump(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_FrontFlipJumpAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_Notice_FrontFlipJump(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1516,7 +1332,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_Notice_FrontFlipJumpReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_Notice_FrontFlipJumpReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_FrontFlipJumpReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_Notice_FrontFlipJump(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -1526,7 +1342,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_Notice_GesturePointTo
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_Notice_GesturePointTo");
-            set => SetSound_Notice_GesturePointTo(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_GesturePointToAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_Notice_GesturePointTo(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1536,7 +1352,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_Notice_GesturePointToReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_Notice_GesturePointToReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_GesturePointToReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_Notice_GesturePointTo(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -1546,7 +1362,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_Notice_GestureTaunt
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_Notice_GestureTaunt");
-            set => SetSound_Notice_GestureTaunt(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_GestureTauntAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_Notice_GestureTaunt(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1556,7 +1372,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_Notice_GestureTauntReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_Notice_GestureTauntReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_GestureTauntReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_Notice_GestureTaunt(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -1566,7 +1382,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_Notice_InjuredEliminated
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_Notice_InjuredEliminated");
-            set => SetSound_Notice_InjuredEliminated(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_InjuredEliminatedAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_Notice_InjuredEliminated(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1576,7 +1392,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_Notice_InjuredEliminatedReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_Notice_InjuredEliminatedReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_InjuredEliminatedReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_Notice_InjuredEliminated(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -1586,7 +1402,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_Notice_InjuredEliminatedShot
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_Notice_InjuredEliminatedShot");
-            set => SetSound_Notice_InjuredEliminatedShot(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_InjuredEliminatedShotAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_Notice_InjuredEliminatedShot(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1596,7 +1412,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_Notice_InjuredEliminatedShotReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_Notice_InjuredEliminatedShotReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_InjuredEliminatedShotReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_Notice_InjuredEliminatedShot(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -1606,7 +1422,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_Notice_InjuredLight
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_Notice_InjuredLight");
-            set => SetSound_Notice_InjuredLight(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_InjuredLightAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_Notice_InjuredLight(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1616,7 +1432,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_Notice_InjuredLightReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_Notice_InjuredLightReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_InjuredLightReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_Notice_InjuredLight(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -1626,7 +1442,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_Notice_Jump
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_Notice_Jump");
-            set => SetSound_Notice_Jump(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_JumpAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_Notice_Jump(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1636,7 +1452,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_Notice_JumpReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_Notice_JumpReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_JumpReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_Notice_Jump(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -1646,7 +1462,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_Notice_JumpChain1
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_Notice_JumpChain1");
-            set => SetSound_Notice_JumpChain1(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_JumpChain1Assignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_Notice_JumpChain1(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1656,7 +1472,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_Notice_JumpChain1Reference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_Notice_JumpChain1Reference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_JumpChain1ReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_Notice_JumpChain1(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -1666,7 +1482,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_Notice_JumpChain2
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_Notice_JumpChain2");
-            set => SetSound_Notice_JumpChain2(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_JumpChain2Assignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_Notice_JumpChain2(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1676,7 +1492,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_Notice_JumpChain2Reference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_Notice_JumpChain2Reference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_JumpChain2ReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_Notice_JumpChain2(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -1686,7 +1502,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_Notice_JumpPadBig
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_Notice_JumpPadBig");
-            set => SetSound_Notice_JumpPadBig(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_JumpPadBigAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_Notice_JumpPadBig(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1696,7 +1512,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_Notice_JumpPadBigReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_Notice_JumpPadBigReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_JumpPadBigReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_Notice_JumpPadBig(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -1706,7 +1522,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_Notice_JumpPadMed
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_Notice_JumpPadMed");
-            set => SetSound_Notice_JumpPadMed(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_JumpPadMedAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_Notice_JumpPadMed(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1716,7 +1532,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_Notice_JumpPadMedReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_Notice_JumpPadMedReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_JumpPadMedReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_Notice_JumpPadMed(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -1726,7 +1542,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_Notice_JumpPadSmall
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_Notice_JumpPadSmall");
-            set => SetSound_Notice_JumpPadSmall(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_JumpPadSmallAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_Notice_JumpPadSmall(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1736,7 +1552,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_Notice_JumpPadSmallReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_Notice_JumpPadSmallReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_JumpPadSmallReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_Notice_JumpPadSmall(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -1746,7 +1562,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_Notice_Land
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_Notice_Land");
-            set => SetSound_Notice_Land(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_LandAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_Notice_Land(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1756,7 +1572,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_Notice_LandReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_Notice_LandReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_LandReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_Notice_Land(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -1766,7 +1582,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_Notice_MissingStamina
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_Notice_MissingStamina");
-            set => SetSound_Notice_MissingStamina(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_MissingStaminaAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_Notice_MissingStamina(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1776,7 +1592,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_Notice_MissingStaminaReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_Notice_MissingStaminaReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_MissingStaminaReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_Notice_MissingStamina(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -1786,7 +1602,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_Notice_Spawn
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_Notice_Spawn");
-            set => SetSound_Notice_Spawn(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_SpawnAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_Notice_Spawn(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1796,7 +1612,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_Notice_SpawnReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_Notice_SpawnReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_SpawnReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_Notice_Spawn(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -1806,7 +1622,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_Notice_SpeedUp
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_Notice_SpeedUp");
-            set => SetSound_Notice_SpeedUp(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_SpeedUpAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_Notice_SpeedUp(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1816,7 +1632,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_Notice_SpeedUpReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_Notice_SpeedUpReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_SpeedUpReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_Notice_SpeedUp(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -1826,7 +1642,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_Notice_TechJump
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_Notice_TechJump");
-            set => SetSound_Notice_TechJump(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_TechJumpAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_Notice_TechJump(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1836,7 +1652,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_Notice_TechJumpReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_Notice_TechJumpReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_TechJumpReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_Notice_TechJump(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -1846,7 +1662,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_Notice_TeleportSpawn
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_Notice_TeleportSpawn");
-            set => SetSound_Notice_TeleportSpawn(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_TeleportSpawnAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_Notice_TeleportSpawn(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1856,7 +1672,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_Notice_TeleportSpawnReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_Notice_TeleportSpawnReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_TeleportSpawnReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_Notice_TeleportSpawn(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -1866,7 +1682,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_Notice_TeleportUnspawn
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_Notice_TeleportUnspawn");
-            set => SetSound_Notice_TeleportUnspawn(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_TeleportUnspawnAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_Notice_TeleportUnspawn(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1876,7 +1692,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_Notice_TeleportUnspawnReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_Notice_TeleportUnspawnReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_TeleportUnspawnReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_Notice_TeleportUnspawn(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -1886,7 +1702,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_Notice_Turbo
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_Notice_Turbo");
-            set => SetSound_Notice_Turbo(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_TurboAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_Notice_Turbo(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1896,7 +1712,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_Notice_TurboReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_Notice_TurboReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_TurboReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_Notice_Turbo(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -1906,7 +1722,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_Notice_WallJump
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_Notice_WallJump");
-            set => SetSound_Notice_WallJump(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_WallJumpAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_Notice_WallJump(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1916,7 +1732,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_Notice_WallJumpReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_Notice_WallJumpReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_WallJumpReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_Notice_WallJump(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -1926,7 +1742,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_Notice_ZoomIn
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_Notice_ZoomIn");
-            set => SetSound_Notice_ZoomIn(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_ZoomInAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_Notice_ZoomIn(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1936,7 +1752,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_Notice_ZoomInReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_Notice_ZoomInReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_ZoomInReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_Notice_ZoomIn(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -1946,7 +1762,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_Notice_ZoomOut
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_Notice_ZoomOut");
-            set => SetSound_Notice_ZoomOut(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_ZoomOutAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_Notice_ZoomOut(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1956,7 +1772,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_Notice_ZoomOutReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_Notice_ZoomOutReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_Notice_ZoomOutReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_Notice_ZoomOut(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -1966,7 +1782,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_RunBody
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_RunBody");
-            set => SetSound_RunBody(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_RunBodyAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_RunBody(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1976,7 +1792,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_RunBodyReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_RunBodyReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_RunBodyReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_RunBody(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -1986,7 +1802,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_Slide
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_Slide");
-            set => SetSound_Slide(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_SlideAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_Slide(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1996,7 +1812,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_SlideReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_SlideReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_SlideReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_Slide(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -2006,7 +1822,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_SwimBody
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_SwimBody");
-            set => SetSound_SwimBody(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_SwimBodyAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_SwimBody(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -2016,7 +1832,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_SwimBodyReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_SwimBodyReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_SwimBodyReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_SwimBody(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -2026,7 +1842,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_Swimming
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_Swimming");
-            set => SetSound_Swimming(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_SwimmingAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_Swimming(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -2036,7 +1852,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_SwimmingReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_SwimmingReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_SwimmingReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_Swimming(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -2046,7 +1862,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_WalkBody
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_WalkBody");
-            set => SetSound_WalkBody(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_WalkBodyAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_WalkBody(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -2056,7 +1872,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_WalkBodyReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_WalkBodyReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_WalkBodyReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_WalkBody(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -2066,7 +1882,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugSound? Sound_WalkBodySilent
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound_WalkBodySilent");
-            set => SetSound_WalkBodySilent(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_WalkBodySilentAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSound_WalkBodySilent(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -2076,7 +1892,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithSound_WalkBodySilentReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSound_WalkBodySilentReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetSound_WalkBodySilentReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithSound_WalkBodySilent(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -2086,7 +1902,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel? WalkStepMaterialImpact
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel?>("WalkStepMaterialImpact");
-            set => SetWalkStepMaterialImpact(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetWalkStepMaterialImpactAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithWalkStepMaterialImpact(global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel? value)
         {
@@ -2096,7 +1912,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
         public MP4 WithWalkStepMaterialImpactReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetWalkStepMaterialImpactReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharVisModelBuilderAssignments.GetWalkStepMaterialImpactReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithWalkStepMaterialImpact(global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4? value)

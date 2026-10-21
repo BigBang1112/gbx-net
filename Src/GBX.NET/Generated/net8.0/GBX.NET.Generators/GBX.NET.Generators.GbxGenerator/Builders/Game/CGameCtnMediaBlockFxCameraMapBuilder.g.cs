@@ -36,18 +36,10 @@ public abstract class CGameCtnMediaBlockFxCameraMapBuilderBase<TSelf> where TSel
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraMap> state;
     private protected CGameCtnMediaBlockFxCameraMapBuilderBase() => state = new();
     private protected CGameCtnMediaBlockFxCameraMapBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraMap> state) => this.state = state;
-    private protected static void SetArchiveMarker(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraMap> state, byte value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxCameraMapBuilderAssignments.GetArchiveMarkerAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetEnd(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraMap> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxCameraMapBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFarZ(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraMap> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxCameraMapBuilderAssignments.GetFarZAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFov(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraMap> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxCameraMapBuilderAssignments.GetFovAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetImage(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraMap> state, PackDesc? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxCameraMapBuilderAssignments.GetImageAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetNearZ(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraMap> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxCameraMapBuilderAssignments.GetNearZAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetStart(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraMap> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxCameraMapBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTransform(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraMap> state, Iso4 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxCameraMapBuilderAssignments.GetTransformAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public byte ArchiveMarker
     {
         get => state.Get<byte>("ArchiveMarker");
-        set => SetArchiveMarker(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxCameraMapBuilderAssignments.GetArchiveMarkerAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithArchiveMarker(byte value)
     {
@@ -57,7 +49,7 @@ public abstract class CGameCtnMediaBlockFxCameraMapBuilderBase<TSelf> where TSel
     public TimeSingle End
     {
         get => state.Get<TimeSingle>("End");
-        set => SetEnd(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxCameraMapBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEnd(TimeSingle value)
     {
@@ -67,7 +59,7 @@ public abstract class CGameCtnMediaBlockFxCameraMapBuilderBase<TSelf> where TSel
     public float FarZ
     {
         get => state.Get<float>("FarZ");
-        set => SetFarZ(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxCameraMapBuilderAssignments.GetFarZAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFarZ(float value)
     {
@@ -77,7 +69,7 @@ public abstract class CGameCtnMediaBlockFxCameraMapBuilderBase<TSelf> where TSel
     public float Fov
     {
         get => state.Get<float>("Fov");
-        set => SetFov(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxCameraMapBuilderAssignments.GetFovAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFov(float value)
     {
@@ -87,7 +79,7 @@ public abstract class CGameCtnMediaBlockFxCameraMapBuilderBase<TSelf> where TSel
     public PackDesc? Image
     {
         get => state.Get<PackDesc?>("Image");
-        set => SetImage(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxCameraMapBuilderAssignments.GetImageAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithImage(PackDesc? value)
     {
@@ -97,7 +89,7 @@ public abstract class CGameCtnMediaBlockFxCameraMapBuilderBase<TSelf> where TSel
     public float NearZ
     {
         get => state.Get<float>("NearZ");
-        set => SetNearZ(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxCameraMapBuilderAssignments.GetNearZAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNearZ(float value)
     {
@@ -107,7 +99,7 @@ public abstract class CGameCtnMediaBlockFxCameraMapBuilderBase<TSelf> where TSel
     public TimeSingle Start
     {
         get => state.Get<TimeSingle>("Start");
-        set => SetStart(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxCameraMapBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStart(TimeSingle value)
     {
@@ -117,7 +109,7 @@ public abstract class CGameCtnMediaBlockFxCameraMapBuilderBase<TSelf> where TSel
     public Iso4 Transform
     {
         get => state.Get<Iso4>("Transform");
-        set => SetTransform(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxCameraMapBuilderAssignments.GetTransformAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTransform(Iso4 value)
     {

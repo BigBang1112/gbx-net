@@ -36,13 +36,10 @@ public abstract class CGameCtnMediaBlockImageBuilderBase<TSelf> where TSelf : CG
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockImage> state;
     private protected CGameCtnMediaBlockImageBuilderBase() => state = new();
     private protected CGameCtnMediaBlockImageBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockImage> state) => this.state = state;
-    private protected static void SetEffect(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockImage> state, global::GBX.NET.Engines.Control.CControlEffectSimi? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockImageBuilderAssignments.GetEffectAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetEffectReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockImage> state, NodeRef<global::GBX.NET.Engines.Control.CControlEffectSimi> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockImageBuilderAssignments.GetEffectReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetImage(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockImage> state, PackDesc? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockImageBuilderAssignments.GetImageAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public global::GBX.NET.Engines.Control.CControlEffectSimi? Effect
     {
         get => state.Get<global::GBX.NET.Engines.Control.CControlEffectSimi?>("Effect");
-        set => SetEffect(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockImageBuilderAssignments.GetEffectAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEffect(global::GBX.NET.Engines.Control.CControlEffectSimi? value)
     {
@@ -52,13 +49,13 @@ public abstract class CGameCtnMediaBlockImageBuilderBase<TSelf> where TSelf : CG
     public TSelf WithEffectReference(NodeRef<global::GBX.NET.Engines.Control.CControlEffectSimi> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetEffectReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockImageBuilderAssignments.GetEffectReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public PackDesc? Image
     {
         get => state.Get<PackDesc?>("Image");
-        set => SetImage(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockImageBuilderAssignments.GetImageAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithImage(PackDesc? value)
     {

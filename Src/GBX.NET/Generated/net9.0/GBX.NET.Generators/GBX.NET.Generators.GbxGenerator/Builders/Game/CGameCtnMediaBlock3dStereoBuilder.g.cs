@@ -36,11 +36,10 @@ public abstract class CGameCtnMediaBlock3dStereoBuilderBase<TSelf> where TSelf :
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo> state;
     private protected CGameCtnMediaBlock3dStereoBuilderBase() => state = new();
     private protected CGameCtnMediaBlock3dStereoBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo> state) => this.state = state;
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo.Key>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlock3dStereoBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     public List<global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo.Key>? Keys
     {
         get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo.Key>?>("Keys");
-        set => SetKeys(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlock3dStereoBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo.Key>? value)
     {

@@ -36,13 +36,10 @@ public abstract class CPlugTreeGeneratorBuilderBase<TSelf> where TSelf : CPlugTr
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeGenerator> state;
     private protected CPlugTreeGeneratorBuilderBase() => state = new();
     private protected CPlugTreeGeneratorBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeGenerator> state) => this.state = state;
-    private protected static void SetFlags(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeGenerator> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeGeneratorBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIsSaveGenerated(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeGenerator> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeGeneratorBuilderAssignments.GetIsSaveGeneratedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIsToKeepInSaveAsRelease(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeGenerator> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeGeneratorBuilderAssignments.GetIsToKeepInSaveAsReleaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public uint Flags
     {
         get => state.Get<uint>("Flags");
-        set => SetFlags(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeGeneratorBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFlags(uint value)
     {
@@ -52,7 +49,7 @@ public abstract class CPlugTreeGeneratorBuilderBase<TSelf> where TSelf : CPlugTr
     public bool IsSaveGenerated
     {
         get => state.Get<bool>("IsSaveGenerated");
-        set => SetIsSaveGenerated(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeGeneratorBuilderAssignments.GetIsSaveGeneratedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIsSaveGenerated(bool value)
     {
@@ -62,7 +59,7 @@ public abstract class CPlugTreeGeneratorBuilderBase<TSelf> where TSelf : CPlugTr
     public bool IsToKeepInSaveAsRelease
     {
         get => state.Get<bool>("IsToKeepInSaveAsRelease");
-        set => SetIsToKeepInSaveAsRelease(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeGeneratorBuilderAssignments.GetIsToKeepInSaveAsReleaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIsToKeepInSaveAsRelease(bool value)
     {

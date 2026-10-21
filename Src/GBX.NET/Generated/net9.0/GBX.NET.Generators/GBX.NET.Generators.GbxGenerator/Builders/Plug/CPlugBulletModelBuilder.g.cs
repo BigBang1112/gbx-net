@@ -36,164 +36,10 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state;
     private protected CPlugBulletModelBuilderBase() => state = new();
     private protected CPlugBulletModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state) => this.state = state;
-    private protected static void SetAmmoCostDuringTriggerDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetAmmoCostDuringTriggerDurationAssignment(), value, GameVersion.MP4);
-    private protected static void SetBeamMaxLength(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetBeamMaxLengthAssignment(), value, GameVersion.MP4);
-    private protected static void SetBeamVisualModel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetBeamVisualModelAssignment(), value, GameVersion.MP4);
-    private protected static void SetBeamVisualModelReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetBeamVisualModelReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetBitmapCrosshair(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetBitmapCrosshairAssignment(), value, GameVersion.MP4);
-    private protected static void SetBitmapCrosshairReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetBitmapCrosshairReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetBitmapCrosshairTriLaser(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetBitmapCrosshairTriLaserAssignment(), value, GameVersion.MP4);
-    private protected static void SetBitmapCrosshairTriLaserReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetBitmapCrosshairTriLaserReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetBitmapLasersight(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetBitmapLasersightAssignment(), value, GameVersion.MP4);
-    private protected static void SetBitmapLasersightReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetBitmapLasersightReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetBulletRadius(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetBulletRadiusAssignment(), value, GameVersion.MP4);
-    private protected static void SetBulletType(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetBulletTypeAssignment(), value, GameVersion.MP4);
-    private protected static void SetBulletVsMinAgeMs(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetBulletVsMinAgeMsAssignment(), value, GameVersion.MP4);
-    private protected static void SetBulletVsRadiusMargin(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetBulletVsRadiusMarginAssignment(), value, GameVersion.MP4);
-    private protected static void SetChargeDurationFull(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetChargeDurationFullAssignment(), value, GameVersion.MP4);
-    private protected static void SetChargeDurationStop(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetChargeDurationStopAssignment(), value, GameVersion.MP4);
-    private protected static void SetDamageAttenuationFromDist(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, global::GBX.NET.Engines.Function.CFuncKeysReal? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetDamageAttenuationFromDistAssignment(), value, GameVersion.MP4);
-    private protected static void SetDamageAttenuationFromDistReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetDamageAttenuationFromDistReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetDamageAttenuationWithDist(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetDamageAttenuationWithDistAssignment(), value, GameVersion.MP4);
-    private protected static void SetDefuserFirePeriod(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetDefuserFirePeriodAssignment(), value, GameVersion.MP4);
-    private protected static void SetDefuserMissAmmoLoss(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetDefuserMissAmmoLossAssignment(), value, GameVersion.MP4);
-    private protected static void SetDirectHitDamageValue(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetDirectHitDamageValueAssignment(), value, GameVersion.MP4);
-    private protected static void SetEndLifeWithoutExplosionOnMaterialId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, byte value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetEndLifeWithoutExplosionOnMaterialIdAssignment(), value, GameVersion.MP4);
-    private protected static void SetEnergyGainDelay(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetEnergyGainDelayAssignment(), value, GameVersion.MP4);
-    private protected static void SetExplosionBlowOnAllPlayers(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionBlowOnAllPlayersAssignment(), value, GameVersion.MP4);
-    private protected static void SetExplosionBlowRadius(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionBlowRadiusAssignment(), value, GameVersion.MP4);
-    private protected static void SetExplosionBlowRadiusAttenuation(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionBlowRadiusAttenuationAssignment(), value, GameVersion.MP4);
-    private protected static void SetExplosionBlowValue(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionBlowValueAssignment(), value, GameVersion.MP4);
-    private protected static void SetExplosionBlowVerticalScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionBlowVerticalScaleAssignment(), value, GameVersion.MP4);
-    private protected static void SetExplosionBullet(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionBulletAssignment(), value, GameVersion.MP4);
-    private protected static void SetExplosionBulletReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionBulletReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetExplosionDamageRadius(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionDamageRadiusAssignment(), value, GameVersion.MP4);
-    private protected static void SetExplosionDamageRadiusAttenuation(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionDamageRadiusAttenuationAssignment(), value, GameVersion.MP4);
-    private protected static void SetExplosionDamageValue(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionDamageValueAssignment(), value, GameVersion.MP4);
-    private protected static void SetExplosionDetectionRadius_Flying(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionDetectionRadius_FlyingAssignment(), value, GameVersion.MP4);
-    private protected static void SetExplosionDetectionRadius_Resting(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionDetectionRadius_RestingAssignment(), value, GameVersion.MP4);
-    private protected static void SetExplosionElectroPulseValue(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionElectroPulseValueAssignment(), value, GameVersion.MP4);
-    private protected static void SetExplosionEnergyFromLifeTime(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, global::GBX.NET.Engines.Function.CFuncKeysReal? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionEnergyFromLifeTimeAssignment(), value, GameVersion.MP4);
-    private protected static void SetExplosionEnergyFromLifeTimeReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionEnergyFromLifeTimeReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetExplosionEnergyWhenOccluded(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionEnergyWhenOccludedAssignment(), value, GameVersion.MP4);
-    private protected static void SetExplosionOccultationTest(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionOccultationTestAssignment(), value, GameVersion.MP4);
-    private protected static void SetExplosionOnAllPlayers(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionOnAllPlayersAssignment(), value, GameVersion.MP4);
-    private protected static void SetExplosionOnEndLife(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionOnEndLifeAssignment(), value, GameVersion.MP4);
-    private protected static void SetExplosionOnImpactCount(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionOnImpactCountAssignment(), value, GameVersion.MP4);
-    private protected static void SetExplosionOnImpactCountOnlyOnMaterialId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, byte value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionOnImpactCountOnlyOnMaterialIdAssignment(), value, GameVersion.MP4);
-    private protected static void SetExplosionOnSurfaceMaterialId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, byte value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionOnSurfaceMaterialIdAssignment(), value, GameVersion.MP4);
-    private protected static void SetExplosionRadiusCoefFromLifeTime(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, global::GBX.NET.Engines.Function.CFuncKeysReal? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionRadiusCoefFromLifeTimeAssignment(), value, GameVersion.MP4);
-    private protected static void SetExplosionRadiusCoefFromLifeTimeReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionRadiusCoefFromLifeTimeReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetExplosionSurface(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionSurfaceAssignment(), value, GameVersion.MP4);
-    private protected static void SetExplosionSurfaceReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionSurfaceReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetFireBulletCount(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFireBulletCountAssignment(), value, GameVersion.MP4);
-    private protected static void SetFireBulletCountSpeedCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFireBulletCountSpeedCoefAssignment(), value, GameVersion.MP4);
-    private protected static void SetFireBulletDispersionAngleDeg(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFireBulletDispersionAngleDegAssignment(), value, GameVersion.MP4);
-    private protected static void SetFireBulletPattern_ApexRegroup(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFireBulletPattern_ApexRegroupAssignment(), value, GameVersion.MP4);
-    private protected static void SetFireBulletPattern_ApexRegroup_MinApexTime(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFireBulletPattern_ApexRegroup_MinApexTimeAssignment(), value, GameVersion.MP4);
-    private protected static void SetFireBulletPattern_GrowingOffset_Offsets(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, Vec3[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFireBulletPattern_GrowingOffset_OffsetsAssignment(), value, GameVersion.MP4);
-    private protected static void SetFireBulletPattern_InitialBlendDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFireBulletPattern_InitialBlendDurationAssignment(), value, GameVersion.MP4);
-    private protected static void SetFireBulletPattern_Mode(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFireBulletPattern_ModeAssignment(), value, GameVersion.MP4);
-    private protected static void SetFireBulletPattern_OnlyVisual(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFireBulletPattern_OnlyVisualAssignment(), value, GameVersion.MP4);
-    private protected static void SetFireBulletPattern_RotateOddBulletsCounterClockwise(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFireBulletPattern_RotateOddBulletsCounterClockwiseAssignment(), value, GameVersion.MP4);
-    private protected static void SetFireBulletPattern_SpiralHatchetNet_BulletCount(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFireBulletPattern_SpiralHatchetNet_BulletCountAssignment(), value, GameVersion.MP4);
-    private protected static void SetFireBulletPattern_SpiralHatchetNet_Radius(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFireBulletPattern_SpiralHatchetNet_RadiusAssignment(), value, GameVersion.MP4);
-    private protected static void SetFireBulletPattern_SpiralHatchetNet_SpinPerSecond(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFireBulletPattern_SpiralHatchetNet_SpinPerSecondAssignment(), value, GameVersion.MP4);
-    private protected static void SetFireBulletSpreads(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, Vec3[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFireBulletSpreadsAssignment(), value, GameVersion.MP4);
-    private protected static void SetFireEnergyCost(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFireEnergyCostAssignment(), value, GameVersion.MP4);
-    private protected static void SetFireMaxEnergyStorage(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFireMaxEnergyStorageAssignment(), value, GameVersion.MP4);
-    private protected static void SetFirePeriod(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFirePeriodAssignment(), value, GameVersion.MP4);
-    private protected static void SetFlareAttractionRadius(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFlareAttractionRadiusAssignment(), value, GameVersion.MP4);
-    private protected static void SetFlareExplosionRadius(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFlareExplosionRadiusAssignment(), value, GameVersion.MP4);
-    private protected static void SetFluidFriction(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFluidFrictionAssignment(), value, GameVersion.MP4);
-    private protected static void SetGuidedAngularSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetGuidedAngularSpeedAssignment(), value, GameVersion.MP4);
-    private protected static void SetGuidedMinLifeTime(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetGuidedMinLifeTimeAssignment(), value, GameVersion.MP4);
-    private protected static void SetGuidedRollAngleMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetGuidedRollAngleMaxAssignment(), value, GameVersion.MP4);
-    private protected static void SetGunSpeedCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetGunSpeedCoefAssignment(), value, GameVersion.MP4);
-    private protected static void SetGunSpeedCoefRatioMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetGunSpeedCoefRatioMaxAssignment(), value, GameVersion.MP4);
-    private protected static void SetGunSpeedCoefRatioMin(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetGunSpeedCoefRatioMinAssignment(), value, GameVersion.MP4);
-    private protected static void SetHiddenDist(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetHiddenDistAssignment(), value, GameVersion.MP4);
-    private protected static void SetHoldTriggerToPower(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetHoldTriggerToPowerAssignment(), value, GameVersion.MP4);
-    private protected static void SetHomingDist(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetHomingDistAssignment(), value, GameVersion.MP4);
-    private protected static void SetHomingLockDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetHomingLockDurationAssignment(), value, GameVersion.MP4);
-    private protected static void SetHomingMaxAngularSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetHomingMaxAngularSpeedAssignment(), value, GameVersion.MP4);
-    private protected static void SetHomingPeriod(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetHomingPeriodAssignment(), value, GameVersion.MP4);
-    private protected static void SetIcon(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetIconAssignment(), value, GameVersion.MP4);
-    private protected static void SetIconReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetIconReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetImpactBounce(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetImpactBounceAssignment(), value, GameVersion.MP4);
-    private protected static void SetImpactBounceReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetImpactBounceReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetImpactBouncingN(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetImpactBouncingNAssignment(), value, GameVersion.MP4);
-    private protected static void SetImpactBouncingT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetImpactBouncingTAssignment(), value, GameVersion.MP4);
-    private protected static void SetIsFlare(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetIsFlareAssignment(), value, GameVersion.MP4);
-    private protected static void SetIsIce(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetIsIceAssignment(), value, GameVersion.MP4);
-    private protected static void SetIsWard(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetIsWardAssignment(), value, GameVersion.MP4);
-    private protected static void SetLifeTime(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetLifeTimeAssignment(), value, GameVersion.MP4);
-    private protected static void SetLifeTimeAfterFirstImpact(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetLifeTimeAfterFirstImpactAssignment(), value, GameVersion.MP4);
-    private protected static void SetMass(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetMassAssignment(), value, GameVersion.MP4);
-    private protected static void SetMultiSphereDetection(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetMultiSphereDetectionAssignment(), value, GameVersion.MP4);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetNameAssignment(), value, GameVersion.MP4);
-    private protected static void SetParticleModelAlive(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetParticleModelAliveAssignment(), value, GameVersion.MP4);
-    private protected static void SetParticleModelAliveReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetParticleModelAliveReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetParticleModelFire(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetParticleModelFireAssignment(), value, GameVersion.MP4);
-    private protected static void SetParticleModelFireReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetParticleModelFireReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetProjectileNearMissDelay(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetProjectileNearMissDelayAssignment(), value, GameVersion.MP4);
-    private protected static void SetProjectileNearMissDist(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetProjectileNearMissDistAssignment(), value, GameVersion.MP4);
-    private protected static void SetRestSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetRestSpeedAssignment(), value, GameVersion.MP4);
-    private protected static void SetShowImpactPos(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetShowImpactPosAssignment(), value, GameVersion.MP4);
-    private protected static void SetSizeXScreenPercent(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSizeXScreenPercentAssignment(), value, GameVersion.MP4);
-    private protected static void SetSizeXScreenPercentMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSizeXScreenPercentMaxAssignment(), value, GameVersion.MP4);
-    private protected static void SetSizeYScreenPercent(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSizeYScreenPercentAssignment(), value, GameVersion.MP4);
-    private protected static void SetSizeYScreenPercentMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSizeYScreenPercentMaxAssignment(), value, GameVersion.MP4);
-    private protected static void SetSm_AimIntertia(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSm_AimIntertiaAssignment(), value, GameVersion.MP4);
-    private protected static void SetSm_AutoAim(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSm_AutoAimAssignment(), value, GameVersion.MP4);
-    private protected static void SetSm_FirstPersonCam(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSm_FirstPersonCamAssignment(), value, GameVersion.MP4);
-    private protected static void SetSm_FirstPersonCamFov(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSm_FirstPersonCamFovAssignment(), value, GameVersion.MP4);
-    private protected static void SetSm_FirstPersonCamOffset(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSm_FirstPersonCamOffsetAssignment(), value, GameVersion.MP4);
-    private protected static void SetSm_OtherHitThisBulletBonusAmmoCount(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSm_OtherHitThisBulletBonusAmmoCountAssignment(), value, GameVersion.MP4);
-    private protected static void SetSm_OtherHitThisBulletBonusDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSm_OtherHitThisBulletBonusDurationAssignment(), value, GameVersion.MP4);
-    private protected static void SetSm_ProtectDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSm_ProtectDurationAssignment(), value, GameVersion.MP4);
-    private protected static void SetSm_Recoil(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSm_RecoilAssignment(), value, GameVersion.MP4);
-    private protected static void SetSm_SpChargeDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSm_SpChargeDurationAssignment(), value, GameVersion.MP4);
-    private protected static void SetSm_SpInactivityDelayBeforeCharge(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSm_SpInactivityDelayBeforeChargeAssignment(), value, GameVersion.MP4);
-    private protected static void SetSm_SpModelName(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSm_SpModelNameAssignment(), value, GameVersion.MP4);
-    private protected static void SetSm_ThisHitOtherBulletBonusAmmoCount(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSm_ThisHitOtherBulletBonusAmmoCountAssignment(), value, GameVersion.MP4);
-    private protected static void SetSm_ThisHitOtherBulletBonusDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSm_ThisHitOtherBulletBonusDurationAssignment(), value, GameVersion.MP4);
-    private protected static void SetSoundAlive(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSoundAliveAssignment(), value, GameVersion.MP4);
-    private protected static void SetSoundAliveReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSoundAliveReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSoundAlivePitchFromRemainingLifeTime(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, global::GBX.NET.Engines.Function.CFuncKeysReal? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSoundAlivePitchFromRemainingLifeTimeAssignment(), value, GameVersion.MP4);
-    private protected static void SetSoundAlivePitchFromRemainingLifeTimeReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSoundAlivePitchFromRemainingLifeTimeReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSoundAliveVolumeFromRemainingLifeTime(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, global::GBX.NET.Engines.Function.CFuncKeysReal? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSoundAliveVolumeFromRemainingLifeTimeAssignment(), value, GameVersion.MP4);
-    private protected static void SetSoundAliveVolumeFromRemainingLifeTimeReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSoundAliveVolumeFromRemainingLifeTimeReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSoundFire(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSoundFireAssignment(), value, GameVersion.MP4);
-    private protected static void SetSoundFireReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSoundFireReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSoundFireOffset(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSoundFireOffsetAssignment(), value, GameVersion.MP4);
-    private protected static void SetSoundFirePitchFromRemainingAmmo(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, global::GBX.NET.Engines.Function.CFuncKeysReal? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSoundFirePitchFromRemainingAmmoAssignment(), value, GameVersion.MP4);
-    private protected static void SetSoundFirePitchFromRemainingAmmoReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSoundFirePitchFromRemainingAmmoReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSoundFireVolumeFromRemainingAmmo(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, global::GBX.NET.Engines.Function.CFuncKeysReal? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSoundFireVolumeFromRemainingAmmoAssignment(), value, GameVersion.MP4);
-    private protected static void SetSoundFireVolumeFromRemainingAmmoReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSoundFireVolumeFromRemainingAmmoReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSoundGauge(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSoundGaugeAssignment(), value, GameVersion.MP4);
-    private protected static void SetSoundGaugeReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSoundGaugeReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSoundReloading(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSoundReloadingAssignment(), value, GameVersion.MP4);
-    private protected static void SetSoundReloadingReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSoundReloadingReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSpearLockDist(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSpearLockDistAssignment(), value, GameVersion.MP4);
-    private protected static void SetSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSpeedAssignment(), value, GameVersion.MP4);
-    private protected static void SetSpeedFromHorizonAngle(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, global::GBX.NET.Engines.Function.CFuncKeysReal? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSpeedFromHorizonAngleAssignment(), value, GameVersion.MP4);
-    private protected static void SetSpeedFromHorizonAngleReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSpeedFromHorizonAngleReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSpeedFromTriggerDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, global::GBX.NET.Engines.Function.CFuncKeysReal? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSpeedFromTriggerDurationAssignment(), value, GameVersion.MP4);
-    private protected static void SetSpeedFromTriggerDurationReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSpeedFromTriggerDurationReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSpreadCoefFormChargeDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, global::GBX.NET.Engines.Function.CFuncKeysReal? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSpreadCoefFormChargeDurationAssignment(), value, GameVersion.MP4);
-    private protected static void SetSpreadCoefFormChargeDurationReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSpreadCoefFormChargeDurationReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetTrajectoryUTurnDistance(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetTrajectoryUTurnDistanceAssignment(), value, GameVersion.MP4);
-    private protected static void SetTriLaserNearMissDist(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetTriLaserNearMissDistAssignment(), value, GameVersion.MP4);
-    private protected static void SetTriLaserRadiusAtOneMeter_Zoom0(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetTriLaserRadiusAtOneMeter_Zoom0Assignment(), value, GameVersion.MP4);
-    private protected static void SetTriLaserRadiusAtOneMeter_Zoom1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetTriLaserRadiusAtOneMeter_Zoom1Assignment(), value, GameVersion.MP4);
-    private protected static void SetVisualOffsetDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetVisualOffsetDurationAssignment(), value, GameVersion.MP4);
-    private protected static void SetVisualOffsetFirstPerson(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetVisualOffsetFirstPersonAssignment(), value, GameVersion.MP4);
-    private protected static void SetWardRadius(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBulletModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetWardRadiusAssignment(), value, GameVersion.MP4);
     public int AmmoCostDuringTriggerDuration
     {
         get => state.Get<int>("AmmoCostDuringTriggerDuration");
-        set => SetAmmoCostDuringTriggerDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetAmmoCostDuringTriggerDurationAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithAmmoCostDuringTriggerDuration(int value)
     {
@@ -203,7 +49,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float BeamMaxLength
     {
         get => state.Get<float>("BeamMaxLength");
-        set => SetBeamMaxLength(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetBeamMaxLengthAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithBeamMaxLength(float value)
     {
@@ -213,7 +59,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel? BeamVisualModel
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel?>("BeamVisualModel");
-        set => SetBeamVisualModel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetBeamVisualModelAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithBeamVisualModel(global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel? value)
     {
@@ -223,13 +69,13 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public TSelf WithBeamVisualModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBeamVisualModelReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetBeamVisualModelReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapCrosshair
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapCrosshair");
-        set => SetBitmapCrosshair(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetBitmapCrosshairAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithBitmapCrosshair(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -239,13 +85,13 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public TSelf WithBitmapCrosshairReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBitmapCrosshairReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetBitmapCrosshairReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapCrosshairTriLaser
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapCrosshairTriLaser");
-        set => SetBitmapCrosshairTriLaser(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetBitmapCrosshairTriLaserAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithBitmapCrosshairTriLaser(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -255,13 +101,13 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public TSelf WithBitmapCrosshairTriLaserReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBitmapCrosshairTriLaserReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetBitmapCrosshairTriLaserReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapLasersight
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapLasersight");
-        set => SetBitmapLasersight(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetBitmapLasersightAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithBitmapLasersight(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -271,13 +117,13 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public TSelf WithBitmapLasersightReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBitmapLasersightReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetBitmapLasersightReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public float BulletRadius
     {
         get => state.Get<float>("BulletRadius");
-        set => SetBulletRadius(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetBulletRadiusAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithBulletRadius(float value)
     {
@@ -287,7 +133,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public int BulletType
     {
         get => state.Get<int>("BulletType");
-        set => SetBulletType(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetBulletTypeAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithBulletType(int value)
     {
@@ -297,7 +143,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public int BulletVsMinAgeMs
     {
         get => state.Get<int>("BulletVsMinAgeMs");
-        set => SetBulletVsMinAgeMs(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetBulletVsMinAgeMsAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithBulletVsMinAgeMs(int value)
     {
@@ -307,7 +153,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float BulletVsRadiusMargin
     {
         get => state.Get<float>("BulletVsRadiusMargin");
-        set => SetBulletVsRadiusMargin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetBulletVsRadiusMarginAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithBulletVsRadiusMargin(float value)
     {
@@ -317,7 +163,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public int ChargeDurationFull
     {
         get => state.Get<int>("ChargeDurationFull");
-        set => SetChargeDurationFull(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetChargeDurationFullAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithChargeDurationFull(int value)
     {
@@ -327,7 +173,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public int ChargeDurationStop
     {
         get => state.Get<int>("ChargeDurationStop");
-        set => SetChargeDurationStop(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetChargeDurationStopAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithChargeDurationStop(int value)
     {
@@ -337,7 +183,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public global::GBX.NET.Engines.Function.CFuncKeysReal? DamageAttenuationFromDist
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("DamageAttenuationFromDist");
-        set => SetDamageAttenuationFromDist(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetDamageAttenuationFromDistAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithDamageAttenuationFromDist(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
     {
@@ -347,13 +193,13 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public TSelf WithDamageAttenuationFromDistReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetDamageAttenuationFromDistReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetDamageAttenuationFromDistReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public bool DamageAttenuationWithDist
     {
         get => state.Get<bool>("DamageAttenuationWithDist");
-        set => SetDamageAttenuationWithDist(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetDamageAttenuationWithDistAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithDamageAttenuationWithDist(bool value)
     {
@@ -363,7 +209,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public int DefuserFirePeriod
     {
         get => state.Get<int>("DefuserFirePeriod");
-        set => SetDefuserFirePeriod(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetDefuserFirePeriodAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithDefuserFirePeriod(int value)
     {
@@ -373,7 +219,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public int DefuserMissAmmoLoss
     {
         get => state.Get<int>("DefuserMissAmmoLoss");
-        set => SetDefuserMissAmmoLoss(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetDefuserMissAmmoLossAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithDefuserMissAmmoLoss(int value)
     {
@@ -383,7 +229,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public int DirectHitDamageValue
     {
         get => state.Get<int>("DirectHitDamageValue");
-        set => SetDirectHitDamageValue(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetDirectHitDamageValueAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithDirectHitDamageValue(int value)
     {
@@ -393,7 +239,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public byte EndLifeWithoutExplosionOnMaterialId
     {
         get => state.Get<byte>("EndLifeWithoutExplosionOnMaterialId");
-        set => SetEndLifeWithoutExplosionOnMaterialId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetEndLifeWithoutExplosionOnMaterialIdAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithEndLifeWithoutExplosionOnMaterialId(byte value)
     {
@@ -403,7 +249,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public int EnergyGainDelay
     {
         get => state.Get<int>("EnergyGainDelay");
-        set => SetEnergyGainDelay(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetEnergyGainDelayAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithEnergyGainDelay(int value)
     {
@@ -413,7 +259,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public bool ExplosionBlowOnAllPlayers
     {
         get => state.Get<bool>("ExplosionBlowOnAllPlayers");
-        set => SetExplosionBlowOnAllPlayers(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionBlowOnAllPlayersAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithExplosionBlowOnAllPlayers(bool value)
     {
@@ -423,7 +269,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float ExplosionBlowRadius
     {
         get => state.Get<float>("ExplosionBlowRadius");
-        set => SetExplosionBlowRadius(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionBlowRadiusAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithExplosionBlowRadius(float value)
     {
@@ -433,7 +279,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float ExplosionBlowRadiusAttenuation
     {
         get => state.Get<float>("ExplosionBlowRadiusAttenuation");
-        set => SetExplosionBlowRadiusAttenuation(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionBlowRadiusAttenuationAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithExplosionBlowRadiusAttenuation(float value)
     {
@@ -443,7 +289,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float ExplosionBlowValue
     {
         get => state.Get<float>("ExplosionBlowValue");
-        set => SetExplosionBlowValue(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionBlowValueAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithExplosionBlowValue(float value)
     {
@@ -453,7 +299,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float ExplosionBlowVerticalScale
     {
         get => state.Get<float>("ExplosionBlowVerticalScale");
-        set => SetExplosionBlowVerticalScale(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionBlowVerticalScaleAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithExplosionBlowVerticalScale(float value)
     {
@@ -463,7 +309,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel? ExplosionBullet
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel?>("ExplosionBullet");
-        set => SetExplosionBullet(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionBulletAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithExplosionBullet(global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel? value)
     {
@@ -473,13 +319,13 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public TSelf WithExplosionBulletReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetExplosionBulletReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionBulletReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public float ExplosionDamageRadius
     {
         get => state.Get<float>("ExplosionDamageRadius");
-        set => SetExplosionDamageRadius(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionDamageRadiusAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithExplosionDamageRadius(float value)
     {
@@ -489,7 +335,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float ExplosionDamageRadiusAttenuation
     {
         get => state.Get<float>("ExplosionDamageRadiusAttenuation");
-        set => SetExplosionDamageRadiusAttenuation(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionDamageRadiusAttenuationAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithExplosionDamageRadiusAttenuation(float value)
     {
@@ -499,7 +345,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public int ExplosionDamageValue
     {
         get => state.Get<int>("ExplosionDamageValue");
-        set => SetExplosionDamageValue(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionDamageValueAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithExplosionDamageValue(int value)
     {
@@ -509,7 +355,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float ExplosionDetectionRadius_Flying
     {
         get => state.Get<float>("ExplosionDetectionRadius_Flying");
-        set => SetExplosionDetectionRadius_Flying(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionDetectionRadius_FlyingAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithExplosionDetectionRadius_Flying(float value)
     {
@@ -519,7 +365,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float ExplosionDetectionRadius_Resting
     {
         get => state.Get<float>("ExplosionDetectionRadius_Resting");
-        set => SetExplosionDetectionRadius_Resting(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionDetectionRadius_RestingAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithExplosionDetectionRadius_Resting(float value)
     {
@@ -529,7 +375,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float ExplosionElectroPulseValue
     {
         get => state.Get<float>("ExplosionElectroPulseValue");
-        set => SetExplosionElectroPulseValue(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionElectroPulseValueAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithExplosionElectroPulseValue(float value)
     {
@@ -539,7 +385,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public global::GBX.NET.Engines.Function.CFuncKeysReal? ExplosionEnergyFromLifeTime
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("ExplosionEnergyFromLifeTime");
-        set => SetExplosionEnergyFromLifeTime(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionEnergyFromLifeTimeAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithExplosionEnergyFromLifeTime(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
     {
@@ -549,13 +395,13 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public TSelf WithExplosionEnergyFromLifeTimeReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetExplosionEnergyFromLifeTimeReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionEnergyFromLifeTimeReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public float ExplosionEnergyWhenOccluded
     {
         get => state.Get<float>("ExplosionEnergyWhenOccluded");
-        set => SetExplosionEnergyWhenOccluded(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionEnergyWhenOccludedAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithExplosionEnergyWhenOccluded(float value)
     {
@@ -565,7 +411,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public int ExplosionOccultationTest
     {
         get => state.Get<int>("ExplosionOccultationTest");
-        set => SetExplosionOccultationTest(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionOccultationTestAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithExplosionOccultationTest(int value)
     {
@@ -575,7 +421,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public bool ExplosionOnAllPlayers
     {
         get => state.Get<bool>("ExplosionOnAllPlayers");
-        set => SetExplosionOnAllPlayers(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionOnAllPlayersAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithExplosionOnAllPlayers(bool value)
     {
@@ -585,7 +431,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public bool ExplosionOnEndLife
     {
         get => state.Get<bool>("ExplosionOnEndLife");
-        set => SetExplosionOnEndLife(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionOnEndLifeAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithExplosionOnEndLife(bool value)
     {
@@ -595,7 +441,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public int ExplosionOnImpactCount
     {
         get => state.Get<int>("ExplosionOnImpactCount");
-        set => SetExplosionOnImpactCount(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionOnImpactCountAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithExplosionOnImpactCount(int value)
     {
@@ -605,7 +451,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public byte ExplosionOnImpactCountOnlyOnMaterialId
     {
         get => state.Get<byte>("ExplosionOnImpactCountOnlyOnMaterialId");
-        set => SetExplosionOnImpactCountOnlyOnMaterialId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionOnImpactCountOnlyOnMaterialIdAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithExplosionOnImpactCountOnlyOnMaterialId(byte value)
     {
@@ -615,7 +461,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public byte ExplosionOnSurfaceMaterialId
     {
         get => state.Get<byte>("ExplosionOnSurfaceMaterialId");
-        set => SetExplosionOnSurfaceMaterialId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionOnSurfaceMaterialIdAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithExplosionOnSurfaceMaterialId(byte value)
     {
@@ -625,7 +471,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public global::GBX.NET.Engines.Function.CFuncKeysReal? ExplosionRadiusCoefFromLifeTime
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("ExplosionRadiusCoefFromLifeTime");
-        set => SetExplosionRadiusCoefFromLifeTime(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionRadiusCoefFromLifeTimeAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithExplosionRadiusCoefFromLifeTime(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
     {
@@ -635,13 +481,13 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public TSelf WithExplosionRadiusCoefFromLifeTimeReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetExplosionRadiusCoefFromLifeTimeReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionRadiusCoefFromLifeTimeReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel? ExplosionSurface
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel?>("ExplosionSurface");
-        set => SetExplosionSurface(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionSurfaceAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithExplosionSurface(global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel? value)
     {
@@ -651,13 +497,13 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public TSelf WithExplosionSurfaceReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetExplosionSurfaceReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetExplosionSurfaceReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public int FireBulletCount
     {
         get => state.Get<int>("FireBulletCount");
-        set => SetFireBulletCount(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFireBulletCountAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithFireBulletCount(int value)
     {
@@ -667,7 +513,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float FireBulletCountSpeedCoef
     {
         get => state.Get<float>("FireBulletCountSpeedCoef");
-        set => SetFireBulletCountSpeedCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFireBulletCountSpeedCoefAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithFireBulletCountSpeedCoef(float value)
     {
@@ -677,7 +523,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float FireBulletDispersionAngleDeg
     {
         get => state.Get<float>("FireBulletDispersionAngleDeg");
-        set => SetFireBulletDispersionAngleDeg(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFireBulletDispersionAngleDegAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithFireBulletDispersionAngleDeg(float value)
     {
@@ -687,7 +533,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public bool FireBulletPattern_ApexRegroup
     {
         get => state.Get<bool>("FireBulletPattern_ApexRegroup");
-        set => SetFireBulletPattern_ApexRegroup(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFireBulletPattern_ApexRegroupAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithFireBulletPattern_ApexRegroup(bool value)
     {
@@ -697,7 +543,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float FireBulletPattern_ApexRegroup_MinApexTime
     {
         get => state.Get<float>("FireBulletPattern_ApexRegroup_MinApexTime");
-        set => SetFireBulletPattern_ApexRegroup_MinApexTime(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFireBulletPattern_ApexRegroup_MinApexTimeAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithFireBulletPattern_ApexRegroup_MinApexTime(float value)
     {
@@ -707,7 +553,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public Vec3[]? FireBulletPattern_GrowingOffset_Offsets
     {
         get => state.Get<Vec3[]?>("FireBulletPattern_GrowingOffset_Offsets");
-        set => SetFireBulletPattern_GrowingOffset_Offsets(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFireBulletPattern_GrowingOffset_OffsetsAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithFireBulletPattern_GrowingOffset_Offsets(params Vec3[]? value)
     {
@@ -721,7 +567,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float FireBulletPattern_InitialBlendDuration
     {
         get => state.Get<float>("FireBulletPattern_InitialBlendDuration");
-        set => SetFireBulletPattern_InitialBlendDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFireBulletPattern_InitialBlendDurationAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithFireBulletPattern_InitialBlendDuration(float value)
     {
@@ -731,7 +577,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public int FireBulletPattern_Mode
     {
         get => state.Get<int>("FireBulletPattern_Mode");
-        set => SetFireBulletPattern_Mode(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFireBulletPattern_ModeAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithFireBulletPattern_Mode(int value)
     {
@@ -741,7 +587,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public bool FireBulletPattern_OnlyVisual
     {
         get => state.Get<bool>("FireBulletPattern_OnlyVisual");
-        set => SetFireBulletPattern_OnlyVisual(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFireBulletPattern_OnlyVisualAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithFireBulletPattern_OnlyVisual(bool value)
     {
@@ -751,7 +597,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public bool FireBulletPattern_RotateOddBulletsCounterClockwise
     {
         get => state.Get<bool>("FireBulletPattern_RotateOddBulletsCounterClockwise");
-        set => SetFireBulletPattern_RotateOddBulletsCounterClockwise(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFireBulletPattern_RotateOddBulletsCounterClockwiseAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithFireBulletPattern_RotateOddBulletsCounterClockwise(bool value)
     {
@@ -761,7 +607,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public int FireBulletPattern_SpiralHatchetNet_BulletCount
     {
         get => state.Get<int>("FireBulletPattern_SpiralHatchetNet_BulletCount");
-        set => SetFireBulletPattern_SpiralHatchetNet_BulletCount(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFireBulletPattern_SpiralHatchetNet_BulletCountAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithFireBulletPattern_SpiralHatchetNet_BulletCount(int value)
     {
@@ -771,7 +617,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float FireBulletPattern_SpiralHatchetNet_Radius
     {
         get => state.Get<float>("FireBulletPattern_SpiralHatchetNet_Radius");
-        set => SetFireBulletPattern_SpiralHatchetNet_Radius(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFireBulletPattern_SpiralHatchetNet_RadiusAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithFireBulletPattern_SpiralHatchetNet_Radius(float value)
     {
@@ -781,7 +627,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float FireBulletPattern_SpiralHatchetNet_SpinPerSecond
     {
         get => state.Get<float>("FireBulletPattern_SpiralHatchetNet_SpinPerSecond");
-        set => SetFireBulletPattern_SpiralHatchetNet_SpinPerSecond(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFireBulletPattern_SpiralHatchetNet_SpinPerSecondAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithFireBulletPattern_SpiralHatchetNet_SpinPerSecond(float value)
     {
@@ -791,7 +637,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public Vec3[]? FireBulletSpreads
     {
         get => state.Get<Vec3[]?>("FireBulletSpreads");
-        set => SetFireBulletSpreads(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFireBulletSpreadsAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithFireBulletSpreads(params Vec3[]? value)
     {
@@ -805,7 +651,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public int FireEnergyCost
     {
         get => state.Get<int>("FireEnergyCost");
-        set => SetFireEnergyCost(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFireEnergyCostAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithFireEnergyCost(int value)
     {
@@ -815,7 +661,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public int FireMaxEnergyStorage
     {
         get => state.Get<int>("FireMaxEnergyStorage");
-        set => SetFireMaxEnergyStorage(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFireMaxEnergyStorageAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithFireMaxEnergyStorage(int value)
     {
@@ -825,7 +671,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public int FirePeriod
     {
         get => state.Get<int>("FirePeriod");
-        set => SetFirePeriod(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFirePeriodAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithFirePeriod(int value)
     {
@@ -835,7 +681,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float FlareAttractionRadius
     {
         get => state.Get<float>("FlareAttractionRadius");
-        set => SetFlareAttractionRadius(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFlareAttractionRadiusAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithFlareAttractionRadius(float value)
     {
@@ -845,7 +691,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float FlareExplosionRadius
     {
         get => state.Get<float>("FlareExplosionRadius");
-        set => SetFlareExplosionRadius(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFlareExplosionRadiusAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithFlareExplosionRadius(float value)
     {
@@ -855,7 +701,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float FluidFriction
     {
         get => state.Get<float>("FluidFriction");
-        set => SetFluidFriction(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetFluidFrictionAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithFluidFriction(float value)
     {
@@ -865,7 +711,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float GuidedAngularSpeed
     {
         get => state.Get<float>("GuidedAngularSpeed");
-        set => SetGuidedAngularSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetGuidedAngularSpeedAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithGuidedAngularSpeed(float value)
     {
@@ -875,7 +721,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public int GuidedMinLifeTime
     {
         get => state.Get<int>("GuidedMinLifeTime");
-        set => SetGuidedMinLifeTime(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetGuidedMinLifeTimeAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithGuidedMinLifeTime(int value)
     {
@@ -885,7 +731,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float GuidedRollAngleMax
     {
         get => state.Get<float>("GuidedRollAngleMax");
-        set => SetGuidedRollAngleMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetGuidedRollAngleMaxAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithGuidedRollAngleMax(float value)
     {
@@ -895,7 +741,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float GunSpeedCoef
     {
         get => state.Get<float>("GunSpeedCoef");
-        set => SetGunSpeedCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetGunSpeedCoefAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithGunSpeedCoef(float value)
     {
@@ -905,7 +751,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float GunSpeedCoefRatioMax
     {
         get => state.Get<float>("GunSpeedCoefRatioMax");
-        set => SetGunSpeedCoefRatioMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetGunSpeedCoefRatioMaxAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithGunSpeedCoefRatioMax(float value)
     {
@@ -915,7 +761,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float GunSpeedCoefRatioMin
     {
         get => state.Get<float>("GunSpeedCoefRatioMin");
-        set => SetGunSpeedCoefRatioMin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetGunSpeedCoefRatioMinAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithGunSpeedCoefRatioMin(float value)
     {
@@ -925,7 +771,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float HiddenDist
     {
         get => state.Get<float>("HiddenDist");
-        set => SetHiddenDist(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetHiddenDistAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithHiddenDist(float value)
     {
@@ -935,7 +781,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public bool HoldTriggerToPower
     {
         get => state.Get<bool>("HoldTriggerToPower");
-        set => SetHoldTriggerToPower(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetHoldTriggerToPowerAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithHoldTriggerToPower(bool value)
     {
@@ -945,7 +791,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float HomingDist
     {
         get => state.Get<float>("HomingDist");
-        set => SetHomingDist(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetHomingDistAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithHomingDist(float value)
     {
@@ -955,7 +801,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public int HomingLockDuration
     {
         get => state.Get<int>("HomingLockDuration");
-        set => SetHomingLockDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetHomingLockDurationAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithHomingLockDuration(int value)
     {
@@ -965,7 +811,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float HomingMaxAngularSpeed
     {
         get => state.Get<float>("HomingMaxAngularSpeed");
-        set => SetHomingMaxAngularSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetHomingMaxAngularSpeedAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithHomingMaxAngularSpeed(float value)
     {
@@ -975,7 +821,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float HomingPeriod
     {
         get => state.Get<float>("HomingPeriod");
-        set => SetHomingPeriod(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetHomingPeriodAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithHomingPeriod(float value)
     {
@@ -985,7 +831,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public global::GBX.NET.Engines.Plug.CPlugBitmap? Icon
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("Icon");
-        set => SetIcon(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetIconAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithIcon(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -995,13 +841,13 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public TSelf WithIconReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetIconReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetIconReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel? ImpactBounce
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel?>("ImpactBounce");
-        set => SetImpactBounce(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetImpactBounceAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithImpactBounce(global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel? value)
     {
@@ -1011,13 +857,13 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public TSelf WithImpactBounceReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetImpactBounceReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetImpactBounceReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public float ImpactBouncingN
     {
         get => state.Get<float>("ImpactBouncingN");
-        set => SetImpactBouncingN(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetImpactBouncingNAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithImpactBouncingN(float value)
     {
@@ -1027,7 +873,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float ImpactBouncingT
     {
         get => state.Get<float>("ImpactBouncingT");
-        set => SetImpactBouncingT(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetImpactBouncingTAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithImpactBouncingT(float value)
     {
@@ -1037,7 +883,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public bool IsFlare
     {
         get => state.Get<bool>("IsFlare");
-        set => SetIsFlare(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetIsFlareAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithIsFlare(bool value)
     {
@@ -1047,7 +893,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public bool IsIce
     {
         get => state.Get<bool>("IsIce");
-        set => SetIsIce(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetIsIceAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithIsIce(bool value)
     {
@@ -1057,7 +903,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public bool IsWard
     {
         get => state.Get<bool>("IsWard");
-        set => SetIsWard(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetIsWardAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithIsWard(bool value)
     {
@@ -1067,7 +913,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float LifeTime
     {
         get => state.Get<float>("LifeTime");
-        set => SetLifeTime(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetLifeTimeAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithLifeTime(float value)
     {
@@ -1077,7 +923,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float LifeTimeAfterFirstImpact
     {
         get => state.Get<float>("LifeTimeAfterFirstImpact");
-        set => SetLifeTimeAfterFirstImpact(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetLifeTimeAfterFirstImpactAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithLifeTimeAfterFirstImpact(float value)
     {
@@ -1087,7 +933,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float Mass
     {
         get => state.Get<float>("Mass");
-        set => SetMass(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetMassAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithMass(float value)
     {
@@ -1097,7 +943,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public bool MultiSphereDetection
     {
         get => state.Get<bool>("MultiSphereDetection");
-        set => SetMultiSphereDetection(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetMultiSphereDetectionAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithMultiSphereDetection(bool value)
     {
@@ -1107,7 +953,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public string? Name
     {
         get => state.Get<string?>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetNameAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithName(string? value)
     {
@@ -1117,7 +963,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? ParticleModelAlive
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("ParticleModelAlive");
-        set => SetParticleModelAlive(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetParticleModelAliveAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithParticleModelAlive(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
     {
@@ -1127,13 +973,13 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public TSelf WithParticleModelAliveReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetParticleModelAliveReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetParticleModelAliveReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? ParticleModelFire
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("ParticleModelFire");
-        set => SetParticleModelFire(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetParticleModelFireAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithParticleModelFire(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
     {
@@ -1143,13 +989,13 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public TSelf WithParticleModelFireReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetParticleModelFireReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetParticleModelFireReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public float ProjectileNearMissDelay
     {
         get => state.Get<float>("ProjectileNearMissDelay");
-        set => SetProjectileNearMissDelay(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetProjectileNearMissDelayAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithProjectileNearMissDelay(float value)
     {
@@ -1159,7 +1005,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float ProjectileNearMissDist
     {
         get => state.Get<float>("ProjectileNearMissDist");
-        set => SetProjectileNearMissDist(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetProjectileNearMissDistAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithProjectileNearMissDist(float value)
     {
@@ -1169,7 +1015,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float RestSpeed
     {
         get => state.Get<float>("RestSpeed");
-        set => SetRestSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetRestSpeedAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithRestSpeed(float value)
     {
@@ -1179,7 +1025,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public bool ShowImpactPos
     {
         get => state.Get<bool>("ShowImpactPos");
-        set => SetShowImpactPos(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetShowImpactPosAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithShowImpactPos(bool value)
     {
@@ -1189,7 +1035,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float SizeXScreenPercent
     {
         get => state.Get<float>("SizeXScreenPercent");
-        set => SetSizeXScreenPercent(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSizeXScreenPercentAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSizeXScreenPercent(float value)
     {
@@ -1199,7 +1045,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float SizeXScreenPercentMax
     {
         get => state.Get<float>("SizeXScreenPercentMax");
-        set => SetSizeXScreenPercentMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSizeXScreenPercentMaxAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSizeXScreenPercentMax(float value)
     {
@@ -1209,7 +1055,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float SizeYScreenPercent
     {
         get => state.Get<float>("SizeYScreenPercent");
-        set => SetSizeYScreenPercent(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSizeYScreenPercentAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSizeYScreenPercent(float value)
     {
@@ -1219,7 +1065,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float SizeYScreenPercentMax
     {
         get => state.Get<float>("SizeYScreenPercentMax");
-        set => SetSizeYScreenPercentMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSizeYScreenPercentMaxAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSizeYScreenPercentMax(float value)
     {
@@ -1229,7 +1075,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float Sm_AimIntertia
     {
         get => state.Get<float>("Sm_AimIntertia");
-        set => SetSm_AimIntertia(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSm_AimIntertiaAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSm_AimIntertia(float value)
     {
@@ -1239,7 +1085,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public bool Sm_AutoAim
     {
         get => state.Get<bool>("Sm_AutoAim");
-        set => SetSm_AutoAim(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSm_AutoAimAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSm_AutoAim(bool value)
     {
@@ -1249,7 +1095,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public bool Sm_FirstPersonCam
     {
         get => state.Get<bool>("Sm_FirstPersonCam");
-        set => SetSm_FirstPersonCam(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSm_FirstPersonCamAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSm_FirstPersonCam(bool value)
     {
@@ -1259,7 +1105,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float Sm_FirstPersonCamFov
     {
         get => state.Get<float>("Sm_FirstPersonCamFov");
-        set => SetSm_FirstPersonCamFov(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSm_FirstPersonCamFovAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSm_FirstPersonCamFov(float value)
     {
@@ -1269,7 +1115,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public Vec3 Sm_FirstPersonCamOffset
     {
         get => state.Get<Vec3>("Sm_FirstPersonCamOffset");
-        set => SetSm_FirstPersonCamOffset(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSm_FirstPersonCamOffsetAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSm_FirstPersonCamOffset(Vec3 value)
     {
@@ -1279,7 +1125,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float Sm_OtherHitThisBulletBonusAmmoCount
     {
         get => state.Get<float>("Sm_OtherHitThisBulletBonusAmmoCount");
-        set => SetSm_OtherHitThisBulletBonusAmmoCount(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSm_OtherHitThisBulletBonusAmmoCountAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSm_OtherHitThisBulletBonusAmmoCount(float value)
     {
@@ -1289,7 +1135,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public int Sm_OtherHitThisBulletBonusDuration
     {
         get => state.Get<int>("Sm_OtherHitThisBulletBonusDuration");
-        set => SetSm_OtherHitThisBulletBonusDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSm_OtherHitThisBulletBonusDurationAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSm_OtherHitThisBulletBonusDuration(int value)
     {
@@ -1299,7 +1145,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public int Sm_ProtectDuration
     {
         get => state.Get<int>("Sm_ProtectDuration");
-        set => SetSm_ProtectDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSm_ProtectDurationAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSm_ProtectDuration(int value)
     {
@@ -1309,7 +1155,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float Sm_Recoil
     {
         get => state.Get<float>("Sm_Recoil");
-        set => SetSm_Recoil(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSm_RecoilAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSm_Recoil(float value)
     {
@@ -1319,7 +1165,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public int Sm_SpChargeDuration
     {
         get => state.Get<int>("Sm_SpChargeDuration");
-        set => SetSm_SpChargeDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSm_SpChargeDurationAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSm_SpChargeDuration(int value)
     {
@@ -1329,7 +1175,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public int Sm_SpInactivityDelayBeforeCharge
     {
         get => state.Get<int>("Sm_SpInactivityDelayBeforeCharge");
-        set => SetSm_SpInactivityDelayBeforeCharge(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSm_SpInactivityDelayBeforeChargeAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSm_SpInactivityDelayBeforeCharge(int value)
     {
@@ -1339,7 +1185,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public string? Sm_SpModelName
     {
         get => state.Get<string?>("Sm_SpModelName");
-        set => SetSm_SpModelName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSm_SpModelNameAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSm_SpModelName(string? value)
     {
@@ -1349,7 +1195,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float Sm_ThisHitOtherBulletBonusAmmoCount
     {
         get => state.Get<float>("Sm_ThisHitOtherBulletBonusAmmoCount");
-        set => SetSm_ThisHitOtherBulletBonusAmmoCount(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSm_ThisHitOtherBulletBonusAmmoCountAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSm_ThisHitOtherBulletBonusAmmoCount(float value)
     {
@@ -1359,7 +1205,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public int Sm_ThisHitOtherBulletBonusDuration
     {
         get => state.Get<int>("Sm_ThisHitOtherBulletBonusDuration");
-        set => SetSm_ThisHitOtherBulletBonusDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSm_ThisHitOtherBulletBonusDurationAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSm_ThisHitOtherBulletBonusDuration(int value)
     {
@@ -1369,7 +1215,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public global::GBX.NET.Engines.Plug.CPlugSound? SoundAlive
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("SoundAlive");
-        set => SetSoundAlive(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSoundAliveAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSoundAlive(global::GBX.NET.Engines.Plug.CPlugSound? value)
     {
@@ -1379,13 +1225,13 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public TSelf WithSoundAliveReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSoundAliveReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSoundAliveReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Function.CFuncKeysReal? SoundAlivePitchFromRemainingLifeTime
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("SoundAlivePitchFromRemainingLifeTime");
-        set => SetSoundAlivePitchFromRemainingLifeTime(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSoundAlivePitchFromRemainingLifeTimeAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSoundAlivePitchFromRemainingLifeTime(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
     {
@@ -1395,13 +1241,13 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public TSelf WithSoundAlivePitchFromRemainingLifeTimeReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSoundAlivePitchFromRemainingLifeTimeReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSoundAlivePitchFromRemainingLifeTimeReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Function.CFuncKeysReal? SoundAliveVolumeFromRemainingLifeTime
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("SoundAliveVolumeFromRemainingLifeTime");
-        set => SetSoundAliveVolumeFromRemainingLifeTime(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSoundAliveVolumeFromRemainingLifeTimeAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSoundAliveVolumeFromRemainingLifeTime(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
     {
@@ -1411,13 +1257,13 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public TSelf WithSoundAliveVolumeFromRemainingLifeTimeReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSoundAliveVolumeFromRemainingLifeTimeReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSoundAliveVolumeFromRemainingLifeTimeReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugSound? SoundFire
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("SoundFire");
-        set => SetSoundFire(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSoundFireAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSoundFire(global::GBX.NET.Engines.Plug.CPlugSound? value)
     {
@@ -1427,13 +1273,13 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public TSelf WithSoundFireReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSoundFireReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSoundFireReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public Vec3 SoundFireOffset
     {
         get => state.Get<Vec3>("SoundFireOffset");
-        set => SetSoundFireOffset(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSoundFireOffsetAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSoundFireOffset(Vec3 value)
     {
@@ -1443,7 +1289,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public global::GBX.NET.Engines.Function.CFuncKeysReal? SoundFirePitchFromRemainingAmmo
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("SoundFirePitchFromRemainingAmmo");
-        set => SetSoundFirePitchFromRemainingAmmo(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSoundFirePitchFromRemainingAmmoAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSoundFirePitchFromRemainingAmmo(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
     {
@@ -1453,13 +1299,13 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public TSelf WithSoundFirePitchFromRemainingAmmoReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSoundFirePitchFromRemainingAmmoReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSoundFirePitchFromRemainingAmmoReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Function.CFuncKeysReal? SoundFireVolumeFromRemainingAmmo
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("SoundFireVolumeFromRemainingAmmo");
-        set => SetSoundFireVolumeFromRemainingAmmo(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSoundFireVolumeFromRemainingAmmoAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSoundFireVolumeFromRemainingAmmo(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
     {
@@ -1469,13 +1315,13 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public TSelf WithSoundFireVolumeFromRemainingAmmoReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSoundFireVolumeFromRemainingAmmoReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSoundFireVolumeFromRemainingAmmoReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugSound? SoundGauge
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("SoundGauge");
-        set => SetSoundGauge(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSoundGaugeAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSoundGauge(global::GBX.NET.Engines.Plug.CPlugSound? value)
     {
@@ -1485,13 +1331,13 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public TSelf WithSoundGaugeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSoundGaugeReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSoundGaugeReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugSound? SoundReloading
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("SoundReloading");
-        set => SetSoundReloading(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSoundReloadingAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSoundReloading(global::GBX.NET.Engines.Plug.CPlugSound? value)
     {
@@ -1501,13 +1347,13 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public TSelf WithSoundReloadingReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSoundReloadingReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSoundReloadingReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public float SpearLockDist
     {
         get => state.Get<float>("SpearLockDist");
-        set => SetSpearLockDist(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSpearLockDistAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSpearLockDist(float value)
     {
@@ -1517,7 +1363,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float Speed
     {
         get => state.Get<float>("Speed");
-        set => SetSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSpeedAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSpeed(float value)
     {
@@ -1527,7 +1373,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public global::GBX.NET.Engines.Function.CFuncKeysReal? SpeedFromHorizonAngle
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("SpeedFromHorizonAngle");
-        set => SetSpeedFromHorizonAngle(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSpeedFromHorizonAngleAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSpeedFromHorizonAngle(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
     {
@@ -1537,13 +1383,13 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public TSelf WithSpeedFromHorizonAngleReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSpeedFromHorizonAngleReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSpeedFromHorizonAngleReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Function.CFuncKeysReal? SpeedFromTriggerDuration
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("SpeedFromTriggerDuration");
-        set => SetSpeedFromTriggerDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSpeedFromTriggerDurationAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSpeedFromTriggerDuration(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
     {
@@ -1553,13 +1399,13 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public TSelf WithSpeedFromTriggerDurationReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSpeedFromTriggerDurationReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSpeedFromTriggerDurationReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Function.CFuncKeysReal? SpreadCoefFormChargeDuration
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("SpreadCoefFormChargeDuration");
-        set => SetSpreadCoefFormChargeDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSpreadCoefFormChargeDurationAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSpreadCoefFormChargeDuration(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
     {
@@ -1569,13 +1415,13 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public TSelf WithSpreadCoefFormChargeDurationReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSpreadCoefFormChargeDurationReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetSpreadCoefFormChargeDurationReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public float TrajectoryUTurnDistance
     {
         get => state.Get<float>("TrajectoryUTurnDistance");
-        set => SetTrajectoryUTurnDistance(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetTrajectoryUTurnDistanceAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithTrajectoryUTurnDistance(float value)
     {
@@ -1585,7 +1431,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float TriLaserNearMissDist
     {
         get => state.Get<float>("TriLaserNearMissDist");
-        set => SetTriLaserNearMissDist(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetTriLaserNearMissDistAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithTriLaserNearMissDist(float value)
     {
@@ -1595,7 +1441,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float TriLaserRadiusAtOneMeter_Zoom0
     {
         get => state.Get<float>("TriLaserRadiusAtOneMeter_Zoom0");
-        set => SetTriLaserRadiusAtOneMeter_Zoom0(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetTriLaserRadiusAtOneMeter_Zoom0Assignment(), value, GameVersion.MP4);
     }
     public TSelf WithTriLaserRadiusAtOneMeter_Zoom0(float value)
     {
@@ -1605,7 +1451,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float TriLaserRadiusAtOneMeter_Zoom1
     {
         get => state.Get<float>("TriLaserRadiusAtOneMeter_Zoom1");
-        set => SetTriLaserRadiusAtOneMeter_Zoom1(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetTriLaserRadiusAtOneMeter_Zoom1Assignment(), value, GameVersion.MP4);
     }
     public TSelf WithTriLaserRadiusAtOneMeter_Zoom1(float value)
     {
@@ -1615,7 +1461,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float VisualOffsetDuration
     {
         get => state.Get<float>("VisualOffsetDuration");
-        set => SetVisualOffsetDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetVisualOffsetDurationAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithVisualOffsetDuration(float value)
     {
@@ -1625,7 +1471,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public Vec3 VisualOffsetFirstPerson
     {
         get => state.Get<Vec3>("VisualOffsetFirstPerson");
-        set => SetVisualOffsetFirstPerson(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetVisualOffsetFirstPersonAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithVisualOffsetFirstPerson(Vec3 value)
     {
@@ -1635,7 +1481,7 @@ public abstract class CPlugBulletModelBuilderBase<TSelf> where TSelf : CPlugBull
     public float WardRadius
     {
         get => state.Get<float>("WardRadius");
-        set => SetWardRadius(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBulletModelBuilderAssignments.GetWardRadiusAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithWardRadius(float value)
     {

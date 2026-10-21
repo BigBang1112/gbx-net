@@ -36,129 +36,10 @@ public abstract class CConstructionChallengeVskBuilderBase<TSelf> where TSelf : 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state;
     private protected CConstructionChallengeVskBuilderBase() => state = new();
     private protected CConstructionChallengeVskBuilderBase(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state) => this.state = state;
-    private protected static void SetAnchoredObjects(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetAnchoredObjectsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAnimationTriggers(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.Engines.Plug.CPlugTriggerAction[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetAnimationTriggersAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetAuthorExtraInfo(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetAuthorExtraInfoAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAuthorLogin(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, string value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetAuthorLoginAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetAuthorNickname(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetAuthorNicknameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAuthorScore(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, int? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetAuthorScoreAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU);
-    private protected static void SetAuthorTime(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::TmEssentials.TimeInt32? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetAuthorTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU);
-    private protected static void SetAuthorVersion(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetAuthorVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAuthorZone(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetAuthorZoneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBakedBlocks(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetBakedBlocksAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBakedClipsAdditionalData(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetBakedClipsAdditionalDataAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBlockOctree(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.BlockOctreeData? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetBlockOctreeAssignment(), value, GameVersion.TM2020);
-    private protected static void SetBlockStock(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.Engines.Game.CGameCtnCollectorList? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetBlockStockAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetBlockStockReference(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnCollectorList> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetBlockStockReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetBlocks(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetBlocksAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetBotPaths(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, List<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetBotPathsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBronzeTime(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::TmEssentials.TimeInt32? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetBronzeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU);
-    private protected static void SetBuildVersion(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetBuildVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetCarMarksBuffer(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetCarMarksBufferAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetChallengeAnimation(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.Engines.Plug.CPlugAnimFile? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetChallengeAnimationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetChallengeAnimationReference(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimFile> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetChallengeAnimationReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetChallengeCardEventIds(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.SChallengeCardEventIds[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetChallengeCardEventIdsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetChallengeDecals(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, byte[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetChallengeDecalsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetChallengeParameters(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.Engines.Game.CGameCtnChallengeParameters? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetChallengeParametersAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetChallengeParametersReference(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnChallengeParameters> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetChallengeParametersReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetChallengeScript(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetChallengeScriptAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
-    private protected static void SetCheckpoints(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, List<Int3>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetCheckpointsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetClipAmbiance(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.Engines.Game.CGameCtnMediaClip? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipAmbianceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetClipAmbianceReference(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipAmbianceReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetClipGlobal(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.Engines.Game.CGameCtnMediaClip? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipGlobalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetClipGlobalReference(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipGlobalReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetClipGroupEndRace(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipGroupEndRaceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetClipGroupEndRaceReference(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipGroupEndRaceReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetClipGroupInGame(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipGroupInGameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetClipGroupInGameReference(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipGroupInGameReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetClipGroups(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipGroupsAssignment(), value, GameVersion.TM2020);
-    private protected static void SetClipIntro(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.Engines.Game.CGameCtnMediaClip? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipIntroAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetClipIntroReference(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipIntroReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetClipPodium(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.Engines.Game.CGameCtnMediaClip? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipPodiumAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetClipPodiumReference(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipPodiumReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetClipTriggerSize(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, Int3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipTriggerSizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetComments(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetCommentsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetCost(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetCostAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU);
-    private protected static void SetCrc32(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetCrc32Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetCreatedWithGamepadEditor(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetCreatedWithGamepadEditorAssignment(), value, GameVersion.TM2020);
-    private protected static void SetCreatedWithSimpleEditor(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetCreatedWithSimpleEditorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetCustomMusicPackDesc(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, PackDesc? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetCustomMusicPackDescAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetDayDuration(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, TimeInt32? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetDayDurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetDayTime(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, TimeSpan? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetDayTimeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetDecoBaseHeightOffset(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetDecoBaseHeightOffsetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDecoration(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.Ident value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetDecorationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetDynamicDaylight(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetDynamicDaylightAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetEditor(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.EditorMode value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetEditorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetEmbeddedItemModelsExternalDataRefs(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::System.Collections.Generic.List<string>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetEmbeddedItemModelsExternalDataRefsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetEmbeddedZipData(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, byte[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetEmbeddedZipDataAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetGoldTime(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::TmEssentials.TimeInt32? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetGoldTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU);
-    private protected static void SetHasClones(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetHasClonesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU);
-    private protected static void SetHasCustomCamThumbnail(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetHasCustomCamThumbnailAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetHasLightmaps(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetHasLightmapsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetHashedPassword(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.Checksum128? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetHashedPasswordAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetIsLapRace(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetIsLapRaceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetKind(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetKindAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetKindInHeader(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetKindInHeaderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU);
-    private protected static void SetLaunchedCheckpoints(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetLaunchedCheckpointsAssignment(), value, GameVersion.TM2020);
-    private protected static void SetLaunchedCheckpointsReference(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, NodeRef<global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetLaunchedCheckpointsReferenceAssignment(), value, GameVersion.TM2020);
-    private protected static void SetLegacyMacroblocks(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.MacroblockData[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetLegacyMacroblocksAssignment(), value, GameVersion.TM2020);
-    private protected static void SetLightmapCache(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.Engines.Hms.CHmsLightMapCache? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetLightmapCacheAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetLightmapCacheReference(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, NodeRef<global::GBX.NET.Engines.Hms.CHmsLightMapCache> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetLightmapCacheReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetLightmapCacheData(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.ZlibData? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetLightmapCacheDataAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetLightmapCacheUid(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, ulong value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetLightmapCacheUidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetLightmapFrames(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.Engines.Hms.CHmsLightMapCache.Frame[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetLightmapFramesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetLightmapVersion(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, int? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetLightmapVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMacroblockInstances(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::System.Collections.Generic.List<global::GBX.NET.MacroblockInstance>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetMacroblockInstancesAssignment(), value, GameVersion.TM2020);
-    private protected static void SetMapCoordOrigin(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetMapCoordOriginAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetMapCoordTarget(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetMapCoordTargetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetMapInfo(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.Ident value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetMapInfoAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetMapName(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, string value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetMapNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetMapStyle(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetMapStyleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMapType(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetMapTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMapUid(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, string value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetMapUidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetModPackDesc(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, PackDesc? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetModPackDescAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetMode(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetNbCheckpoints(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetNbCheckpointsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetNbLaps(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetNbLapsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetNeedUnlock(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetNeedUnlockAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetObjectiveTextAuthor(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetObjectiveTextAuthorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetObjectiveTextBronze(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetObjectiveTextBronzeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetObjectiveTextGold(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetObjectiveTextGoldAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetObjectiveTextSilver(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetObjectiveTextSilverAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetOffzoneTriggerSize(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, Int3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetOffzoneTriggerSizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetOffzones(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, List<BoxInt3>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetOffzonesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetPackMask(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, UInt128 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetPackMaskAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU);
-    private protected static void SetPalette(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.PaletteColor value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetPaletteAssignment(), value, GameVersion.TM2020);
-    private protected static void SetPassword(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetPasswordAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetPlayerModel(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, Ident? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetPlayerModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetRecordedBotPaths(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.RecordedBotPath[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetRecordedBotPathsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetScriptMetadata(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.Engines.Script.CScriptTraitsMetadata? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetScriptMetadataAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSilverTime(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::TmEssentials.TimeInt32? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetSilverTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU);
-    private protected static void SetSize(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.Int3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetSizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetSpectators(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.SpectatorData? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetSpectatorsAssignment(), value, GameVersion.TM2020);
-    private protected static void SetSubMapSectorGrid(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.SubMapSectorGridData? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetSubMapSectorGridAssignment(), value, GameVersion.TM2020);
-    private protected static void SetSubMapSectors(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.SubMapSector[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetSubMapSectorsAssignment(), value, GameVersion.TM2020);
-    private protected static void SetSubMapsInfos(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.SubMapInfo[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetSubMapsInfosAssignment(), value, GameVersion.MP4);
-    private protected static void SetThumbnail(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, byte[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetThumbnailAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU);
-    private protected static void SetThumbnailFarClipPlane(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetThumbnailFarClipPlaneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetThumbnailFov(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetThumbnailFovAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetThumbnailNearClipPlane(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetThumbnailNearClipPlaneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetThumbnailPitchYawRoll(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetThumbnailPitchYawRollAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetThumbnailPosition(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetThumbnailPositionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetThumbnailRotationMatrix(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, Mat3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetThumbnailRotationMatrixAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetTitleId(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetTitleIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTrafficElemDescs(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetTrafficElemDescsAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
-    private protected static void SetTrafficPathSplines(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugSpline3D>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetTrafficPathSplinesAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
-    private protected static void SetTrafficPathSquares(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetTrafficPathSquaresAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
-    private protected static void SetTrafficZoneSquares(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetTrafficZoneSquaresAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
-    private protected static void SetWorldDistortScales(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetWorldDistortScalesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetWorldDistortXYZ(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.WorldDistortBitmapData? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetWorldDistortXYZAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetXml(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetXmlAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU);
-    private protected static void SetZoneGenealogy(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state, global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetZoneGenealogyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public string AuthorLogin
     {
         get => state.Get<string>("AuthorLogin");
-        set => SetAuthorLogin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetAuthorLoginAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithAuthorLogin(string value)
     {
@@ -168,7 +49,7 @@ public abstract class CConstructionChallengeVskBuilderBase<TSelf> where TSelf : 
     public global::GBX.NET.Engines.Game.CGameCtnCollectorList? BlockStock
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnCollectorList?>("BlockStock");
-        set => SetBlockStock(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetBlockStockAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithBlockStock(global::GBX.NET.Engines.Game.CGameCtnCollectorList? value)
     {
@@ -178,13 +59,13 @@ public abstract class CConstructionChallengeVskBuilderBase<TSelf> where TSelf : 
     public TSelf WithBlockStockReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnCollectorList> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBlockStockReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetBlockStockReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>? Blocks
     {
         get => state.Get<global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>?>("Blocks");
-        set => SetBlocks(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetBlocksAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithBlocks(global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>? value)
     {
@@ -202,7 +83,7 @@ public abstract class CConstructionChallengeVskBuilderBase<TSelf> where TSelf : 
     public global::GBX.NET.Engines.Game.CGameCtnChallengeParameters? ChallengeParameters
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallengeParameters?>("ChallengeParameters");
-        set => SetChallengeParameters(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetChallengeParametersAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithChallengeParameters(global::GBX.NET.Engines.Game.CGameCtnChallengeParameters? value)
     {
@@ -212,13 +93,13 @@ public abstract class CConstructionChallengeVskBuilderBase<TSelf> where TSelf : 
     public TSelf WithChallengeParametersReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnChallengeParameters> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetChallengeParametersReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetChallengeParametersReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Ident Decoration
     {
         get => state.Get<global::GBX.NET.Ident>("Decoration");
-        set => SetDecoration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetDecorationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithDecoration(global::GBX.NET.Ident value)
     {
@@ -228,7 +109,7 @@ public abstract class CConstructionChallengeVskBuilderBase<TSelf> where TSelf : 
     public global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind Kind
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind>("Kind");
-        set => SetKind(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetKindAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithKind(global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind value)
     {
@@ -238,7 +119,7 @@ public abstract class CConstructionChallengeVskBuilderBase<TSelf> where TSelf : 
     public global::GBX.NET.Ident MapInfo
     {
         get => state.Get<global::GBX.NET.Ident>("MapInfo");
-        set => SetMapInfo(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetMapInfoAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithMapInfo(global::GBX.NET.Ident value)
     {
@@ -248,7 +129,7 @@ public abstract class CConstructionChallengeVskBuilderBase<TSelf> where TSelf : 
     public string MapName
     {
         get => state.Get<string>("MapName");
-        set => SetMapName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetMapNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithMapName(string value)
     {
@@ -258,7 +139,7 @@ public abstract class CConstructionChallengeVskBuilderBase<TSelf> where TSelf : 
     public string MapUid
     {
         get => state.Get<string>("MapUid");
-        set => SetMapUid(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetMapUidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithMapUid(string value)
     {
@@ -268,7 +149,7 @@ public abstract class CConstructionChallengeVskBuilderBase<TSelf> where TSelf : 
     public bool NeedUnlock
     {
         get => state.Get<bool>("NeedUnlock");
-        set => SetNeedUnlock(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetNeedUnlockAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithNeedUnlock(bool value)
     {
@@ -278,7 +159,7 @@ public abstract class CConstructionChallengeVskBuilderBase<TSelf> where TSelf : 
     public Ident? PlayerModel
     {
         get => state.Get<Ident?>("PlayerModel");
-        set => SetPlayerModel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetPlayerModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithPlayerModel(Ident? value)
     {
@@ -288,7 +169,7 @@ public abstract class CConstructionChallengeVskBuilderBase<TSelf> where TSelf : 
     public global::GBX.NET.Int3 Size
     {
         get => state.Get<global::GBX.NET.Int3>("Size");
-        set => SetSize(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetSizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithSize(global::GBX.NET.Int3 value)
     {
@@ -302,7 +183,7 @@ public abstract class CConstructionChallengeVskBuilderMembers1<TSelf> : CConstru
     public global::TmEssentials.TimeInt32? AuthorTime
     {
         get => state.Get<global::TmEssentials.TimeInt32?>("AuthorTime");
-        set => SetAuthorTime(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetAuthorTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU);
     }
     public TSelf WithAuthorTime(global::TmEssentials.TimeInt32? value)
     {
@@ -312,7 +193,7 @@ public abstract class CConstructionChallengeVskBuilderMembers1<TSelf> : CConstru
     public global::TmEssentials.TimeInt32? BronzeTime
     {
         get => state.Get<global::TmEssentials.TimeInt32?>("BronzeTime");
-        set => SetBronzeTime(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetBronzeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU);
     }
     public TSelf WithBronzeTime(global::TmEssentials.TimeInt32? value)
     {
@@ -322,7 +203,7 @@ public abstract class CConstructionChallengeVskBuilderMembers1<TSelf> : CConstru
     public global::TmEssentials.TimeInt32? GoldTime
     {
         get => state.Get<global::TmEssentials.TimeInt32?>("GoldTime");
-        set => SetGoldTime(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetGoldTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU);
     }
     public TSelf WithGoldTime(global::TmEssentials.TimeInt32? value)
     {
@@ -332,7 +213,7 @@ public abstract class CConstructionChallengeVskBuilderMembers1<TSelf> : CConstru
     public global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind KindInHeader
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind>("KindInHeader");
-        set => SetKindInHeader(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetKindInHeaderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU);
     }
     public TSelf WithKindInHeader(global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind value)
     {
@@ -342,7 +223,7 @@ public abstract class CConstructionChallengeVskBuilderMembers1<TSelf> : CConstru
     public global::TmEssentials.TimeInt32? SilverTime
     {
         get => state.Get<global::TmEssentials.TimeInt32?>("SilverTime");
-        set => SetSilverTime(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetSilverTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU);
     }
     public TSelf WithSilverTime(global::TmEssentials.TimeInt32? value)
     {
@@ -356,7 +237,7 @@ public abstract class CConstructionChallengeVskBuilderMembers2<TSelf> : CConstru
     public int Cost
     {
         get => state.Get<int>("Cost");
-        set => SetCost(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetCostAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU);
     }
     public TSelf WithCost(int value)
     {
@@ -366,7 +247,7 @@ public abstract class CConstructionChallengeVskBuilderMembers2<TSelf> : CConstru
     public string? Password
     {
         get => state.Get<string?>("Password");
-        set => SetPassword(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetPasswordAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithPassword(string? value)
     {
@@ -380,7 +261,7 @@ public abstract class CConstructionChallengeVskBuilderMembers3<TSelf> : CConstru
     public bool IsLapRace
     {
         get => state.Get<bool>("IsLapRace");
-        set => SetIsLapRace(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetIsLapRaceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithIsLapRace(bool value)
     {
@@ -390,7 +271,7 @@ public abstract class CConstructionChallengeVskBuilderMembers3<TSelf> : CConstru
     public PackDesc? ModPackDesc
     {
         get => state.Get<PackDesc?>("ModPackDesc");
-        set => SetModPackDesc(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetModPackDescAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithModPackDesc(PackDesc? value)
     {
@@ -400,7 +281,7 @@ public abstract class CConstructionChallengeVskBuilderMembers3<TSelf> : CConstru
     public global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode Mode
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode>("Mode");
-        set => SetMode(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithMode(global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode value)
     {
@@ -410,7 +291,7 @@ public abstract class CConstructionChallengeVskBuilderMembers3<TSelf> : CConstru
     public int NbLaps
     {
         get => state.Get<int>("NbLaps");
-        set => SetNbLaps(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetNbLapsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithNbLaps(int value)
     {
@@ -420,7 +301,7 @@ public abstract class CConstructionChallengeVskBuilderMembers3<TSelf> : CConstru
     public string? Xml
     {
         get => state.Get<string?>("Xml");
-        set => SetXml(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetXmlAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU);
     }
     public TSelf WithXml(string? value)
     {
@@ -434,7 +315,7 @@ public abstract class CConstructionChallengeVskBuilderMembers4<TSelf> : CConstru
     public int? AuthorScore
     {
         get => state.Get<int?>("AuthorScore");
-        set => SetAuthorScore(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetAuthorScoreAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU);
     }
     public TSelf WithAuthorScore(int? value)
     {
@@ -444,7 +325,7 @@ public abstract class CConstructionChallengeVskBuilderMembers4<TSelf> : CConstru
     public global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? ClipGroupEndRace
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?>("ClipGroupEndRace");
-        set => SetClipGroupEndRace(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipGroupEndRaceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithClipGroupEndRace(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? value)
     {
@@ -454,13 +335,13 @@ public abstract class CConstructionChallengeVskBuilderMembers4<TSelf> : CConstru
     public TSelf WithClipGroupEndRaceReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetClipGroupEndRaceReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipGroupEndRaceReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? ClipGroupInGame
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?>("ClipGroupInGame");
-        set => SetClipGroupInGame(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipGroupInGameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithClipGroupInGame(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? value)
     {
@@ -470,13 +351,13 @@ public abstract class CConstructionChallengeVskBuilderMembers4<TSelf> : CConstru
     public TSelf WithClipGroupInGameReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetClipGroupInGameReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipGroupInGameReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Game.CGameCtnMediaClip? ClipIntro
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipIntro");
-        set => SetClipIntro(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipIntroAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithClipIntro(global::GBX.NET.Engines.Game.CGameCtnMediaClip? value)
     {
@@ -486,13 +367,13 @@ public abstract class CConstructionChallengeVskBuilderMembers4<TSelf> : CConstru
     public TSelf WithClipIntroReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetClipIntroReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipIntroReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
     }
     public PackDesc? CustomMusicPackDesc
     {
         get => state.Get<PackDesc?>("CustomMusicPackDesc");
-        set => SetCustomMusicPackDesc(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetCustomMusicPackDescAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithCustomMusicPackDesc(PackDesc? value)
     {
@@ -502,7 +383,7 @@ public abstract class CConstructionChallengeVskBuilderMembers4<TSelf> : CConstru
     public bool HasClones
     {
         get => state.Get<bool>("HasClones");
-        set => SetHasClones(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetHasClonesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU);
     }
     public TSelf WithHasClones(bool value)
     {
@@ -512,7 +393,7 @@ public abstract class CConstructionChallengeVskBuilderMembers4<TSelf> : CConstru
     public Vec2 MapCoordOrigin
     {
         get => state.Get<Vec2>("MapCoordOrigin");
-        set => SetMapCoordOrigin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetMapCoordOriginAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithMapCoordOrigin(Vec2 value)
     {
@@ -522,7 +403,7 @@ public abstract class CConstructionChallengeVskBuilderMembers4<TSelf> : CConstru
     public Vec2 MapCoordTarget
     {
         get => state.Get<Vec2>("MapCoordTarget");
-        set => SetMapCoordTarget(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetMapCoordTargetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithMapCoordTarget(Vec2 value)
     {
@@ -536,7 +417,7 @@ public abstract class CConstructionChallengeVskBuilderMembers5<TSelf> : CConstru
     public global::GBX.NET.Engines.Game.CGameCtnMediaClip? ClipGlobal
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipGlobal");
-        set => SetClipGlobal(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipGlobalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithClipGlobal(global::GBX.NET.Engines.Game.CGameCtnMediaClip? value)
     {
@@ -546,13 +427,13 @@ public abstract class CConstructionChallengeVskBuilderMembers5<TSelf> : CConstru
     public TSelf WithClipGlobalReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetClipGlobalReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipGlobalReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
     }
     public string? Comments
     {
         get => state.Get<string?>("Comments");
-        set => SetComments(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetCommentsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithComments(string? value)
     {
@@ -562,7 +443,7 @@ public abstract class CConstructionChallengeVskBuilderMembers5<TSelf> : CConstru
     public bool HasCustomCamThumbnail
     {
         get => state.Get<bool>("HasCustomCamThumbnail");
-        set => SetHasCustomCamThumbnail(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetHasCustomCamThumbnailAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithHasCustomCamThumbnail(bool value)
     {
@@ -572,7 +453,7 @@ public abstract class CConstructionChallengeVskBuilderMembers5<TSelf> : CConstru
     public UInt128 PackMask
     {
         get => state.Get<UInt128>("PackMask");
-        set => SetPackMask(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetPackMaskAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU);
     }
     public TSelf WithPackMask(UInt128 value)
     {
@@ -582,7 +463,7 @@ public abstract class CConstructionChallengeVskBuilderMembers5<TSelf> : CConstru
     public byte[]? Thumbnail
     {
         get => state.Get<byte[]?>("Thumbnail");
-        set => SetThumbnail(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetThumbnailAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU);
     }
     public TSelf WithThumbnail(params byte[]? value)
     {
@@ -596,7 +477,7 @@ public abstract class CConstructionChallengeVskBuilderMembers5<TSelf> : CConstru
     public float ThumbnailFarClipPlane
     {
         get => state.Get<float>("ThumbnailFarClipPlane");
-        set => SetThumbnailFarClipPlane(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetThumbnailFarClipPlaneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithThumbnailFarClipPlane(float value)
     {
@@ -606,7 +487,7 @@ public abstract class CConstructionChallengeVskBuilderMembers5<TSelf> : CConstru
     public float ThumbnailFov
     {
         get => state.Get<float>("ThumbnailFov");
-        set => SetThumbnailFov(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetThumbnailFovAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithThumbnailFov(float value)
     {
@@ -616,7 +497,7 @@ public abstract class CConstructionChallengeVskBuilderMembers5<TSelf> : CConstru
     public float ThumbnailNearClipPlane
     {
         get => state.Get<float>("ThumbnailNearClipPlane");
-        set => SetThumbnailNearClipPlane(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetThumbnailNearClipPlaneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithThumbnailNearClipPlane(float value)
     {
@@ -626,7 +507,7 @@ public abstract class CConstructionChallengeVskBuilderMembers5<TSelf> : CConstru
     public global::GBX.NET.Vec3 ThumbnailPosition
     {
         get => state.Get<global::GBX.NET.Vec3>("ThumbnailPosition");
-        set => SetThumbnailPosition(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetThumbnailPositionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithThumbnailPosition(global::GBX.NET.Vec3 value)
     {
@@ -636,7 +517,7 @@ public abstract class CConstructionChallengeVskBuilderMembers5<TSelf> : CConstru
     public Mat3 ThumbnailRotationMatrix
     {
         get => state.Get<Mat3>("ThumbnailRotationMatrix");
-        set => SetThumbnailRotationMatrix(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetThumbnailRotationMatrixAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithThumbnailRotationMatrix(Mat3 value)
     {
@@ -650,7 +531,7 @@ public abstract class CConstructionChallengeVskBuilderMembers6<TSelf> : CConstru
     public uint Crc32
     {
         get => state.Get<uint>("Crc32");
-        set => SetCrc32(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetCrc32Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithCrc32(uint value)
     {
@@ -660,7 +541,7 @@ public abstract class CConstructionChallengeVskBuilderMembers6<TSelf> : CConstru
     public bool CreatedWithSimpleEditor
     {
         get => state.Get<bool>("CreatedWithSimpleEditor");
-        set => SetCreatedWithSimpleEditor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetCreatedWithSimpleEditorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithCreatedWithSimpleEditor(bool value)
     {
@@ -670,7 +551,7 @@ public abstract class CConstructionChallengeVskBuilderMembers6<TSelf> : CConstru
     public global::GBX.NET.Engines.Game.CGameCtnChallenge.EditorMode Editor
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.EditorMode>("Editor");
-        set => SetEditor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetEditorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithEditor(global::GBX.NET.Engines.Game.CGameCtnChallenge.EditorMode value)
     {
@@ -680,7 +561,7 @@ public abstract class CConstructionChallengeVskBuilderMembers6<TSelf> : CConstru
     public global::GBX.NET.Checksum128? HashedPassword
     {
         get => state.Get<global::GBX.NET.Checksum128?>("HashedPassword");
-        set => SetHashedPassword(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetHashedPasswordAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithHashedPassword(global::GBX.NET.Checksum128? value)
     {
@@ -694,7 +575,7 @@ public abstract class CConstructionChallengeVskBuilderMembers7<TSelf> : CConstru
     public global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject>? AnchoredObjects
     {
         get => state.Get<global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject>?>("AnchoredObjects");
-        set => SetAnchoredObjects(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetAnchoredObjectsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAnchoredObjects(global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject>? value)
     {
@@ -712,7 +593,7 @@ public abstract class CConstructionChallengeVskBuilderMembers7<TSelf> : CConstru
     public string? AuthorExtraInfo
     {
         get => state.Get<string?>("AuthorExtraInfo");
-        set => SetAuthorExtraInfo(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetAuthorExtraInfoAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAuthorExtraInfo(string? value)
     {
@@ -722,7 +603,7 @@ public abstract class CConstructionChallengeVskBuilderMembers7<TSelf> : CConstru
     public string? AuthorNickname
     {
         get => state.Get<string?>("AuthorNickname");
-        set => SetAuthorNickname(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetAuthorNicknameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAuthorNickname(string? value)
     {
@@ -732,7 +613,7 @@ public abstract class CConstructionChallengeVskBuilderMembers7<TSelf> : CConstru
     public int AuthorVersion
     {
         get => state.Get<int>("AuthorVersion");
-        set => SetAuthorVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetAuthorVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAuthorVersion(int value)
     {
@@ -742,7 +623,7 @@ public abstract class CConstructionChallengeVskBuilderMembers7<TSelf> : CConstru
     public string? AuthorZone
     {
         get => state.Get<string?>("AuthorZone");
-        set => SetAuthorZone(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetAuthorZoneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAuthorZone(string? value)
     {
@@ -752,7 +633,7 @@ public abstract class CConstructionChallengeVskBuilderMembers7<TSelf> : CConstru
     public global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>? BakedBlocks
     {
         get => state.Get<global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>?>("BakedBlocks");
-        set => SetBakedBlocks(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetBakedBlocksAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBakedBlocks(global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>? value)
     {
@@ -770,7 +651,7 @@ public abstract class CConstructionChallengeVskBuilderMembers7<TSelf> : CConstru
     public global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData>? BakedClipsAdditionalData
     {
         get => state.Get<global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData>?>("BakedClipsAdditionalData");
-        set => SetBakedClipsAdditionalData(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetBakedClipsAdditionalDataAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBakedClipsAdditionalData(global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData>? value)
     {
@@ -788,7 +669,7 @@ public abstract class CConstructionChallengeVskBuilderMembers7<TSelf> : CConstru
     public List<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath>? BotPaths
     {
         get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath>?>("BotPaths");
-        set => SetBotPaths(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetBotPathsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBotPaths(List<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath>? value)
     {
@@ -806,7 +687,7 @@ public abstract class CConstructionChallengeVskBuilderMembers7<TSelf> : CConstru
     public string? BuildVersion
     {
         get => state.Get<string?>("BuildVersion");
-        set => SetBuildVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetBuildVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBuildVersion(string? value)
     {
@@ -816,7 +697,7 @@ public abstract class CConstructionChallengeVskBuilderMembers7<TSelf> : CConstru
     public NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples>? CarMarksBuffer
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples>?>("CarMarksBuffer");
-        set => SetCarMarksBuffer(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetCarMarksBufferAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCarMarksBuffer(NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples>? value)
     {
@@ -834,7 +715,7 @@ public abstract class CConstructionChallengeVskBuilderMembers7<TSelf> : CConstru
     public global::GBX.NET.Engines.Game.CGameCtnChallenge.SChallengeCardEventIds[]? ChallengeCardEventIds
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.SChallengeCardEventIds[]?>("ChallengeCardEventIds");
-        set => SetChallengeCardEventIds(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetChallengeCardEventIdsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithChallengeCardEventIds(params global::GBX.NET.Engines.Game.CGameCtnChallenge.SChallengeCardEventIds[]? value)
     {
@@ -848,7 +729,7 @@ public abstract class CConstructionChallengeVskBuilderMembers7<TSelf> : CConstru
     public byte[]? ChallengeDecals
     {
         get => state.Get<byte[]?>("ChallengeDecals");
-        set => SetChallengeDecals(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetChallengeDecalsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithChallengeDecals(params byte[]? value)
     {
@@ -862,7 +743,7 @@ public abstract class CConstructionChallengeVskBuilderMembers7<TSelf> : CConstru
     public global::GBX.NET.Engines.Game.CGameCtnMediaClip? ClipAmbiance
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipAmbiance");
-        set => SetClipAmbiance(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipAmbianceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithClipAmbiance(global::GBX.NET.Engines.Game.CGameCtnMediaClip? value)
     {
@@ -872,13 +753,13 @@ public abstract class CConstructionChallengeVskBuilderMembers7<TSelf> : CConstru
     public TSelf WithClipAmbianceReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetClipAmbianceReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipAmbianceReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Game.CGameCtnMediaClip? ClipPodium
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipPodium");
-        set => SetClipPodium(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipPodiumAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithClipPodium(global::GBX.NET.Engines.Game.CGameCtnMediaClip? value)
     {
@@ -888,13 +769,13 @@ public abstract class CConstructionChallengeVskBuilderMembers7<TSelf> : CConstru
     public TSelf WithClipPodiumReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetClipPodiumReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipPodiumReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public Int3 ClipTriggerSize
     {
         get => state.Get<Int3>("ClipTriggerSize");
-        set => SetClipTriggerSize(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipTriggerSizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithClipTriggerSize(Int3 value)
     {
@@ -904,7 +785,7 @@ public abstract class CConstructionChallengeVskBuilderMembers7<TSelf> : CConstru
     public int DecoBaseHeightOffset
     {
         get => state.Get<int>("DecoBaseHeightOffset");
-        set => SetDecoBaseHeightOffset(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetDecoBaseHeightOffsetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDecoBaseHeightOffset(int value)
     {
@@ -914,7 +795,7 @@ public abstract class CConstructionChallengeVskBuilderMembers7<TSelf> : CConstru
     public global::System.Collections.Generic.List<string>? EmbeddedItemModelsExternalDataRefs
     {
         get => state.Get<global::System.Collections.Generic.List<string>?>("EmbeddedItemModelsExternalDataRefs");
-        set => SetEmbeddedItemModelsExternalDataRefs(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetEmbeddedItemModelsExternalDataRefsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEmbeddedItemModelsExternalDataRefs(global::System.Collections.Generic.List<string>? value)
     {
@@ -932,7 +813,7 @@ public abstract class CConstructionChallengeVskBuilderMembers7<TSelf> : CConstru
     public byte[]? EmbeddedZipData
     {
         get => state.Get<byte[]?>("EmbeddedZipData");
-        set => SetEmbeddedZipData(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetEmbeddedZipDataAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEmbeddedZipData(params byte[]? value)
     {
@@ -946,7 +827,7 @@ public abstract class CConstructionChallengeVskBuilderMembers7<TSelf> : CConstru
     public bool HasLightmaps
     {
         get => state.Get<bool>("HasLightmaps");
-        set => SetHasLightmaps(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetHasLightmapsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithHasLightmaps(bool value)
     {
@@ -956,7 +837,7 @@ public abstract class CConstructionChallengeVskBuilderMembers7<TSelf> : CConstru
     public global::GBX.NET.Engines.Hms.CHmsLightMapCache? LightmapCache
     {
         get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache?>("LightmapCache");
-        set => SetLightmapCache(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetLightmapCacheAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLightmapCache(global::GBX.NET.Engines.Hms.CHmsLightMapCache? value)
     {
@@ -966,13 +847,13 @@ public abstract class CConstructionChallengeVskBuilderMembers7<TSelf> : CConstru
     public TSelf WithLightmapCacheReference(NodeRef<global::GBX.NET.Engines.Hms.CHmsLightMapCache> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetLightmapCacheReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetLightmapCacheReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public global::GBX.NET.ZlibData? LightmapCacheData
     {
         get => state.Get<global::GBX.NET.ZlibData?>("LightmapCacheData");
-        set => SetLightmapCacheData(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetLightmapCacheDataAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLightmapCacheData(global::GBX.NET.ZlibData? value)
     {
@@ -982,7 +863,7 @@ public abstract class CConstructionChallengeVskBuilderMembers7<TSelf> : CConstru
     public ulong LightmapCacheUid
     {
         get => state.Get<ulong>("LightmapCacheUid");
-        set => SetLightmapCacheUid(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetLightmapCacheUidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLightmapCacheUid(ulong value)
     {
@@ -992,7 +873,7 @@ public abstract class CConstructionChallengeVskBuilderMembers7<TSelf> : CConstru
     public global::GBX.NET.Engines.Hms.CHmsLightMapCache.Frame[]? LightmapFrames
     {
         get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Frame[]?>("LightmapFrames");
-        set => SetLightmapFrames(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetLightmapFramesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLightmapFrames(params global::GBX.NET.Engines.Hms.CHmsLightMapCache.Frame[]? value)
     {
@@ -1006,7 +887,7 @@ public abstract class CConstructionChallengeVskBuilderMembers7<TSelf> : CConstru
     public int? LightmapVersion
     {
         get => state.Get<int?>("LightmapVersion");
-        set => SetLightmapVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetLightmapVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLightmapVersion(int? value)
     {
@@ -1016,7 +897,7 @@ public abstract class CConstructionChallengeVskBuilderMembers7<TSelf> : CConstru
     public string? MapStyle
     {
         get => state.Get<string?>("MapStyle");
-        set => SetMapStyle(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetMapStyleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMapStyle(string? value)
     {
@@ -1026,7 +907,7 @@ public abstract class CConstructionChallengeVskBuilderMembers7<TSelf> : CConstru
     public string? MapType
     {
         get => state.Get<string?>("MapType");
-        set => SetMapType(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetMapTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMapType(string? value)
     {
@@ -1036,7 +917,7 @@ public abstract class CConstructionChallengeVskBuilderMembers7<TSelf> : CConstru
     public int NbCheckpoints
     {
         get => state.Get<int>("NbCheckpoints");
-        set => SetNbCheckpoints(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetNbCheckpointsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNbCheckpoints(int value)
     {
@@ -1046,7 +927,7 @@ public abstract class CConstructionChallengeVskBuilderMembers7<TSelf> : CConstru
     public string? ObjectiveTextAuthor
     {
         get => state.Get<string?>("ObjectiveTextAuthor");
-        set => SetObjectiveTextAuthor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetObjectiveTextAuthorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithObjectiveTextAuthor(string? value)
     {
@@ -1056,7 +937,7 @@ public abstract class CConstructionChallengeVskBuilderMembers7<TSelf> : CConstru
     public string? ObjectiveTextBronze
     {
         get => state.Get<string?>("ObjectiveTextBronze");
-        set => SetObjectiveTextBronze(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetObjectiveTextBronzeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithObjectiveTextBronze(string? value)
     {
@@ -1066,7 +947,7 @@ public abstract class CConstructionChallengeVskBuilderMembers7<TSelf> : CConstru
     public string? ObjectiveTextGold
     {
         get => state.Get<string?>("ObjectiveTextGold");
-        set => SetObjectiveTextGold(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetObjectiveTextGoldAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithObjectiveTextGold(string? value)
     {
@@ -1076,7 +957,7 @@ public abstract class CConstructionChallengeVskBuilderMembers7<TSelf> : CConstru
     public string? ObjectiveTextSilver
     {
         get => state.Get<string?>("ObjectiveTextSilver");
-        set => SetObjectiveTextSilver(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetObjectiveTextSilverAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithObjectiveTextSilver(string? value)
     {
@@ -1086,7 +967,7 @@ public abstract class CConstructionChallengeVskBuilderMembers7<TSelf> : CConstru
     public Int3 OffzoneTriggerSize
     {
         get => state.Get<Int3>("OffzoneTriggerSize");
-        set => SetOffzoneTriggerSize(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetOffzoneTriggerSizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithOffzoneTriggerSize(Int3 value)
     {
@@ -1096,7 +977,7 @@ public abstract class CConstructionChallengeVskBuilderMembers7<TSelf> : CConstru
     public List<BoxInt3>? Offzones
     {
         get => state.Get<List<BoxInt3>?>("Offzones");
-        set => SetOffzones(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetOffzonesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithOffzones(List<BoxInt3>? value)
     {
@@ -1114,7 +995,7 @@ public abstract class CConstructionChallengeVskBuilderMembers7<TSelf> : CConstru
     public global::GBX.NET.Engines.Script.CScriptTraitsMetadata? ScriptMetadata
     {
         get => state.Get<global::GBX.NET.Engines.Script.CScriptTraitsMetadata?>("ScriptMetadata");
-        set => SetScriptMetadata(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetScriptMetadataAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithScriptMetadata(global::GBX.NET.Engines.Script.CScriptTraitsMetadata? value)
     {
@@ -1124,7 +1005,7 @@ public abstract class CConstructionChallengeVskBuilderMembers7<TSelf> : CConstru
     public global::GBX.NET.Vec3 ThumbnailPitchYawRoll
     {
         get => state.Get<global::GBX.NET.Vec3>("ThumbnailPitchYawRoll");
-        set => SetThumbnailPitchYawRoll(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetThumbnailPitchYawRollAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithThumbnailPitchYawRoll(global::GBX.NET.Vec3 value)
     {
@@ -1134,7 +1015,7 @@ public abstract class CConstructionChallengeVskBuilderMembers7<TSelf> : CConstru
     public string? TitleId
     {
         get => state.Get<string?>("TitleId");
-        set => SetTitleId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetTitleIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTitleId(string? value)
     {
@@ -1144,7 +1025,7 @@ public abstract class CConstructionChallengeVskBuilderMembers7<TSelf> : CConstru
     public global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy>? ZoneGenealogy
     {
         get => state.Get<global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy>?>("ZoneGenealogy");
-        set => SetZoneGenealogy(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetZoneGenealogyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithZoneGenealogy(global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy>? value)
     {
@@ -1166,7 +1047,7 @@ public abstract class CConstructionChallengeVskBuilderMembers8<TSelf> : CConstru
     public string? ChallengeScript
     {
         get => state.Get<string?>("ChallengeScript");
-        set => SetChallengeScript(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetChallengeScriptAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
     }
     public TSelf WithChallengeScript(string? value)
     {
@@ -1176,7 +1057,7 @@ public abstract class CConstructionChallengeVskBuilderMembers8<TSelf> : CConstru
     public NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc>? TrafficElemDescs
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc>?>("TrafficElemDescs");
-        set => SetTrafficElemDescs(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetTrafficElemDescsAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
     }
     public TSelf WithTrafficElemDescs(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc>? value)
     {
@@ -1194,7 +1075,7 @@ public abstract class CConstructionChallengeVskBuilderMembers8<TSelf> : CConstru
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugSpline3D>? TrafficPathSplines
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugSpline3D>?>("TrafficPathSplines");
-        set => SetTrafficPathSplines(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetTrafficPathSplinesAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
     }
     public TSelf WithTrafficPathSplines(NodeRefList<global::GBX.NET.Engines.Plug.CPlugSpline3D>? value)
     {
@@ -1212,7 +1093,7 @@ public abstract class CConstructionChallengeVskBuilderMembers8<TSelf> : CConstru
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares>? TrafficPathSquares
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares>?>("TrafficPathSquares");
-        set => SetTrafficPathSquares(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetTrafficPathSquaresAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
     }
     public TSelf WithTrafficPathSquares(NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares>? value)
     {
@@ -1230,7 +1111,7 @@ public abstract class CConstructionChallengeVskBuilderMembers8<TSelf> : CConstru
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares>? TrafficZoneSquares
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares>?>("TrafficZoneSquares");
-        set => SetTrafficZoneSquares(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetTrafficZoneSquaresAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
     }
     public TSelf WithTrafficZoneSquares(NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares>? value)
     {
@@ -1252,7 +1133,7 @@ public abstract class CConstructionChallengeVskBuilderMembers9<TSelf> : CConstru
     public global::GBX.NET.Engines.Plug.CPlugTriggerAction[]? AnimationTriggers
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugTriggerAction[]?>("AnimationTriggers");
-        set => SetAnimationTriggers(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetAnimationTriggersAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithAnimationTriggers(params global::GBX.NET.Engines.Plug.CPlugTriggerAction[]? value)
     {
@@ -1266,7 +1147,7 @@ public abstract class CConstructionChallengeVskBuilderMembers9<TSelf> : CConstru
     public global::GBX.NET.Engines.Plug.CPlugAnimFile? ChallengeAnimation
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugAnimFile?>("ChallengeAnimation");
-        set => SetChallengeAnimation(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetChallengeAnimationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithChallengeAnimation(global::GBX.NET.Engines.Plug.CPlugAnimFile? value)
     {
@@ -1276,13 +1157,13 @@ public abstract class CConstructionChallengeVskBuilderMembers9<TSelf> : CConstru
     public TSelf WithChallengeAnimationReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimFile> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetChallengeAnimationReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetChallengeAnimationReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TimeInt32? DayDuration
     {
         get => state.Get<TimeInt32?>("DayDuration");
-        set => SetDayDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetDayDurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithDayDuration(TimeInt32? value)
     {
@@ -1292,7 +1173,7 @@ public abstract class CConstructionChallengeVskBuilderMembers9<TSelf> : CConstru
     public TimeSpan? DayTime
     {
         get => state.Get<TimeSpan?>("DayTime");
-        set => SetDayTime(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetDayTimeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithDayTime(TimeSpan? value)
     {
@@ -1302,7 +1183,7 @@ public abstract class CConstructionChallengeVskBuilderMembers9<TSelf> : CConstru
     public bool DynamicDaylight
     {
         get => state.Get<bool>("DynamicDaylight");
-        set => SetDynamicDaylight(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetDynamicDaylightAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithDynamicDaylight(bool value)
     {
@@ -1312,7 +1193,7 @@ public abstract class CConstructionChallengeVskBuilderMembers9<TSelf> : CConstru
     public global::GBX.NET.Engines.Game.CGameCtnChallenge.RecordedBotPath[]? RecordedBotPaths
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.RecordedBotPath[]?>("RecordedBotPaths");
-        set => SetRecordedBotPaths(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetRecordedBotPathsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithRecordedBotPaths(params global::GBX.NET.Engines.Game.CGameCtnChallenge.RecordedBotPath[]? value)
     {
@@ -1326,7 +1207,7 @@ public abstract class CConstructionChallengeVskBuilderMembers9<TSelf> : CConstru
     public Vec3 WorldDistortScales
     {
         get => state.Get<Vec3>("WorldDistortScales");
-        set => SetWorldDistortScales(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetWorldDistortScalesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithWorldDistortScales(Vec3 value)
     {
@@ -1336,7 +1217,7 @@ public abstract class CConstructionChallengeVskBuilderMembers9<TSelf> : CConstru
     public global::GBX.NET.Engines.Game.CGameCtnChallenge.WorldDistortBitmapData? WorldDistortXYZ
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.WorldDistortBitmapData?>("WorldDistortXYZ");
-        set => SetWorldDistortXYZ(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetWorldDistortXYZAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithWorldDistortXYZ(global::GBX.NET.Engines.Game.CGameCtnChallenge.WorldDistortBitmapData? value)
     {
@@ -2495,7 +2376,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public List<Int3>? Checkpoints
         {
             get => state.Get<List<Int3>?>("Checkpoints");
-            set => SetCheckpoints(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetCheckpointsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMS WithCheckpoints(List<Int3>? value)
         {
@@ -2513,7 +2394,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? ClipGroupEndRace
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?>("ClipGroupEndRace");
-            set => SetClipGroupEndRace(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipGroupEndRaceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMS WithClipGroupEndRace(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? value)
         {
@@ -2523,13 +2404,13 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public TMS WithClipGroupEndRaceReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipGroupEndRaceReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipGroupEndRaceReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? ClipGroupInGame
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?>("ClipGroupInGame");
-            set => SetClipGroupInGame(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipGroupInGameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMS WithClipGroupInGame(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? value)
         {
@@ -2539,13 +2420,13 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public TMS WithClipGroupInGameReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipGroupInGameReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipGroupInGameReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Engines.Game.CGameCtnMediaClip? ClipIntro
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipIntro");
-            set => SetClipIntro(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipIntroAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMS WithClipIntro(global::GBX.NET.Engines.Game.CGameCtnMediaClip? value)
         {
@@ -2555,7 +2436,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public TMS WithClipIntroReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipIntroReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipIntroReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.VirtualSkipper.IConstructionChallengeVskTMS BuildInterface() => Build();
@@ -2579,7 +2460,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public List<Int3>? Checkpoints
         {
             get => state.Get<List<Int3>?>("Checkpoints");
-            set => SetCheckpoints(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetCheckpointsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMO WithCheckpoints(List<Int3>? value)
         {
@@ -2631,7 +2512,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public List<Int3>? Checkpoints
         {
             get => state.Get<List<Int3>?>("Checkpoints");
-            set => SetCheckpoints(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetCheckpointsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMSX WithCheckpoints(List<Int3>? value)
         {
@@ -2687,7 +2568,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public List<Int3>? Checkpoints
         {
             get => state.Get<List<Int3>?>("Checkpoints");
-            set => SetCheckpoints(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetCheckpointsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMNESWC WithCheckpoints(List<Int3>? value)
         {
@@ -2705,7 +2586,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public global::GBX.NET.Engines.Game.CGameCtnMediaClip? ClipGlobal
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipGlobal");
-            set => SetClipGlobal(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipGlobalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMNESWC WithClipGlobal(global::GBX.NET.Engines.Game.CGameCtnMediaClip? value)
         {
@@ -2715,7 +2596,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public TMNESWC WithClipGlobalReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipGlobalReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipGlobalReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
             return this;
         }
         public TMNESWC WithClipGlobal(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMNESWC? value)
@@ -2755,7 +2636,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public List<Int3>? Checkpoints
         {
             get => state.Get<List<Int3>?>("Checkpoints");
-            set => SetCheckpoints(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetCheckpointsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMU WithCheckpoints(List<Int3>? value)
         {
@@ -2807,7 +2688,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public List<Int3>? Checkpoints
         {
             get => state.Get<List<Int3>?>("Checkpoints");
-            set => SetCheckpoints(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetCheckpointsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public VSK5 WithCheckpoints(List<Int3>? value)
         {
@@ -2825,7 +2706,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public global::GBX.NET.Engines.Game.CGameCtnMediaClip? ClipGlobal
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipGlobal");
-            set => SetClipGlobal(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipGlobalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         }
         public VSK5 WithClipGlobal(global::GBX.NET.Engines.Game.CGameCtnMediaClip? value)
         {
@@ -2835,7 +2716,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public VSK5 WithClipGlobalReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipGlobalReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipGlobalReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
             return this;
         }
         public VSK5 WithClipGlobal(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipVSK5? value)
@@ -2845,7 +2726,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? ClipGroupEndRace
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?>("ClipGroupEndRace");
-            set => SetClipGroupEndRace(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipGroupEndRaceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         }
         public VSK5 WithClipGroupEndRace(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? value)
         {
@@ -2855,7 +2736,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public VSK5 WithClipGroupEndRaceReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipGroupEndRaceReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipGroupEndRaceReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
             return this;
         }
         public VSK5 WithClipGroupEndRace(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupVSK5? value)
@@ -2865,7 +2746,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? ClipGroupInGame
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?>("ClipGroupInGame");
-            set => SetClipGroupInGame(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipGroupInGameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         }
         public VSK5 WithClipGroupInGame(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? value)
         {
@@ -2875,7 +2756,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public VSK5 WithClipGroupInGameReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipGroupInGameReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipGroupInGameReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
             return this;
         }
         public VSK5 WithClipGroupInGame(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupVSK5? value)
@@ -2885,7 +2766,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public global::GBX.NET.Engines.Game.CGameCtnMediaClip? ClipIntro
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipIntro");
-            set => SetClipIntro(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipIntroAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         }
         public VSK5 WithClipIntro(global::GBX.NET.Engines.Game.CGameCtnMediaClip? value)
         {
@@ -2895,7 +2776,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public VSK5 WithClipIntroReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipIntroReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipIntroReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
             return this;
         }
         public VSK5 WithClipIntro(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipVSK5? value)
@@ -2905,7 +2786,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public string? Comments
         {
             get => state.Get<string?>("Comments");
-            set => SetComments(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetCommentsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         }
         public VSK5 WithComments(string? value)
         {
@@ -2915,7 +2796,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public PackDesc? CustomMusicPackDesc
         {
             get => state.Get<PackDesc?>("CustomMusicPackDesc");
-            set => SetCustomMusicPackDesc(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetCustomMusicPackDescAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         }
         public VSK5 WithCustomMusicPackDesc(PackDesc? value)
         {
@@ -2925,7 +2806,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public bool HasCustomCamThumbnail
         {
             get => state.Get<bool>("HasCustomCamThumbnail");
-            set => SetHasCustomCamThumbnail(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetHasCustomCamThumbnailAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         }
         public VSK5 WithHasCustomCamThumbnail(bool value)
         {
@@ -2935,7 +2816,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public bool IsLapRace
         {
             get => state.Get<bool>("IsLapRace");
-            set => SetIsLapRace(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetIsLapRaceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         }
         public VSK5 WithIsLapRace(bool value)
         {
@@ -2945,7 +2826,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public Vec2 MapCoordOrigin
         {
             get => state.Get<Vec2>("MapCoordOrigin");
-            set => SetMapCoordOrigin(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetMapCoordOriginAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         }
         public VSK5 WithMapCoordOrigin(Vec2 value)
         {
@@ -2955,7 +2836,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public Vec2 MapCoordTarget
         {
             get => state.Get<Vec2>("MapCoordTarget");
-            set => SetMapCoordTarget(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetMapCoordTargetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         }
         public VSK5 WithMapCoordTarget(Vec2 value)
         {
@@ -2965,7 +2846,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public PackDesc? ModPackDesc
         {
             get => state.Get<PackDesc?>("ModPackDesc");
-            set => SetModPackDesc(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetModPackDescAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         }
         public VSK5 WithModPackDesc(PackDesc? value)
         {
@@ -2975,7 +2856,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode Mode
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode>("Mode");
-            set => SetMode(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         }
         public VSK5 WithMode(global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode value)
         {
@@ -2985,7 +2866,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public int NbLaps
         {
             get => state.Get<int>("NbLaps");
-            set => SetNbLaps(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetNbLapsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         }
         public VSK5 WithNbLaps(int value)
         {
@@ -2995,7 +2876,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public string? Password
         {
             get => state.Get<string?>("Password");
-            set => SetPassword(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetPasswordAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         }
         public VSK5 WithPassword(string? value)
         {
@@ -3005,7 +2886,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public float ThumbnailFarClipPlane
         {
             get => state.Get<float>("ThumbnailFarClipPlane");
-            set => SetThumbnailFarClipPlane(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetThumbnailFarClipPlaneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         }
         public VSK5 WithThumbnailFarClipPlane(float value)
         {
@@ -3015,7 +2896,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public float ThumbnailFov
         {
             get => state.Get<float>("ThumbnailFov");
-            set => SetThumbnailFov(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetThumbnailFovAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         }
         public VSK5 WithThumbnailFov(float value)
         {
@@ -3025,7 +2906,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public float ThumbnailNearClipPlane
         {
             get => state.Get<float>("ThumbnailNearClipPlane");
-            set => SetThumbnailNearClipPlane(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetThumbnailNearClipPlaneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         }
         public VSK5 WithThumbnailNearClipPlane(float value)
         {
@@ -3035,7 +2916,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public global::GBX.NET.Vec3 ThumbnailPosition
         {
             get => state.Get<global::GBX.NET.Vec3>("ThumbnailPosition");
-            set => SetThumbnailPosition(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetThumbnailPositionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         }
         public VSK5 WithThumbnailPosition(global::GBX.NET.Vec3 value)
         {
@@ -3045,7 +2926,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public Mat3 ThumbnailRotationMatrix
         {
             get => state.Get<Mat3>("ThumbnailRotationMatrix");
-            set => SetThumbnailRotationMatrix(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetThumbnailRotationMatrixAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         }
         public VSK5 WithThumbnailRotationMatrix(Mat3 value)
         {
@@ -3089,7 +2970,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public List<Int3>? Checkpoints
         {
             get => state.Get<List<Int3>?>("Checkpoints");
-            set => SetCheckpoints(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetCheckpointsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMF WithCheckpoints(List<Int3>? value)
         {
@@ -3393,7 +3274,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public global::GBX.NET.Engines.Game.CGameCtnChallenge.SubMapInfo[]? SubMapsInfos
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.SubMapInfo[]?>("SubMapsInfos");
-            set => SetSubMapsInfos(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetSubMapsInfosAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithSubMapsInfos(params global::GBX.NET.Engines.Game.CGameCtnChallenge.SubMapInfo[]? value)
         {
@@ -3449,7 +3330,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public global::GBX.NET.Engines.Game.CGameCtnChallenge.BlockOctreeData? BlockOctree
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.BlockOctreeData?>("BlockOctree");
-            set => SetBlockOctree(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetBlockOctreeAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithBlockOctree(global::GBX.NET.Engines.Game.CGameCtnChallenge.BlockOctreeData? value)
         {
@@ -3503,7 +3384,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup>? ClipGroups
         {
             get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup>?>("ClipGroups");
-            set => SetClipGroups(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipGroupsAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithClipGroups(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup>? value)
         {
@@ -3537,7 +3418,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public bool CreatedWithGamepadEditor
         {
             get => state.Get<bool>("CreatedWithGamepadEditor");
-            set => SetCreatedWithGamepadEditor(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetCreatedWithGamepadEditorAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithCreatedWithGamepadEditor(bool value)
         {
@@ -3547,7 +3428,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints? LaunchedCheckpoints
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints?>("LaunchedCheckpoints");
-            set => SetLaunchedCheckpoints(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetLaunchedCheckpointsAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithLaunchedCheckpoints(global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints? value)
         {
@@ -3557,7 +3438,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public TM2020 WithLaunchedCheckpointsReference(NodeRef<global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetLaunchedCheckpointsReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetLaunchedCheckpointsReferenceAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithLaunchedCheckpoints(global::GBX.NET.Interfaces.Game.IGameSaveLaunchedCheckpointsTM2020? value)
@@ -3567,7 +3448,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public global::GBX.NET.Engines.Game.CGameCtnChallenge.MacroblockData[]? LegacyMacroblocks
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.MacroblockData[]?>("LegacyMacroblocks");
-            set => SetLegacyMacroblocks(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetLegacyMacroblocksAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithLegacyMacroblocks(params global::GBX.NET.Engines.Game.CGameCtnChallenge.MacroblockData[]? value)
         {
@@ -3585,7 +3466,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public global::System.Collections.Generic.List<global::GBX.NET.MacroblockInstance>? MacroblockInstances
         {
             get => state.Get<global::System.Collections.Generic.List<global::GBX.NET.MacroblockInstance>?>("MacroblockInstances");
-            set => SetMacroblockInstances(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetMacroblockInstancesAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithMacroblockInstances(global::System.Collections.Generic.List<global::GBX.NET.MacroblockInstance>? value)
         {
@@ -3603,7 +3484,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public global::GBX.NET.Engines.Game.CGameCtnChallenge.PaletteColor Palette
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.PaletteColor>("Palette");
-            set => SetPalette(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetPaletteAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithPalette(global::GBX.NET.Engines.Game.CGameCtnChallenge.PaletteColor value)
         {
@@ -3613,7 +3494,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public global::GBX.NET.Engines.Game.CGameCtnChallenge.SpectatorData? Spectators
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.SpectatorData?>("Spectators");
-            set => SetSpectators(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetSpectatorsAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithSpectators(global::GBX.NET.Engines.Game.CGameCtnChallenge.SpectatorData? value)
         {
@@ -3623,7 +3504,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public global::GBX.NET.Engines.Game.CGameCtnChallenge.SubMapSectorGridData? SubMapSectorGrid
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.SubMapSectorGridData?>("SubMapSectorGrid");
-            set => SetSubMapSectorGrid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetSubMapSectorGridAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithSubMapSectorGrid(global::GBX.NET.Engines.Game.CGameCtnChallenge.SubMapSectorGridData? value)
         {
@@ -3633,7 +3514,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public global::GBX.NET.Engines.Game.CGameCtnChallenge.SubMapSector[]? SubMapSectors
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.SubMapSector[]?>("SubMapSectors");
-            set => SetSubMapSectors(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetSubMapSectorsAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithSubMapSectors(params global::GBX.NET.Engines.Game.CGameCtnChallenge.SubMapSector[]? value)
         {

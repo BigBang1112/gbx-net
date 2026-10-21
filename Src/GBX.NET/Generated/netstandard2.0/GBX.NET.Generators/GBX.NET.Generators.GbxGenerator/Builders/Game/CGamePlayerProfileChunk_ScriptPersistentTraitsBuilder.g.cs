@@ -36,11 +36,10 @@ public abstract class CGamePlayerProfileChunk_ScriptPersistentTraitsBuilderBase<
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ScriptPersistentTraits> state;
     private protected CGamePlayerProfileChunk_ScriptPersistentTraitsBuilderBase() => state = new();
     private protected CGamePlayerProfileChunk_ScriptPersistentTraitsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ScriptPersistentTraits> state) => this.state = state;
-    private protected static void SetScriptPersistentTraits(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ScriptPersistentTraits> state, global::GBX.NET.Engines.Script.CScriptTraitsPersistent? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_ScriptPersistentTraitsBuilderAssignments.GetScriptPersistentTraitsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public global::GBX.NET.Engines.Script.CScriptTraitsPersistent? ScriptPersistentTraits
     {
         get => state.Get<global::GBX.NET.Engines.Script.CScriptTraitsPersistent?>("ScriptPersistentTraits");
-        set => SetScriptPersistentTraits(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_ScriptPersistentTraitsBuilderAssignments.GetScriptPersistentTraitsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithScriptPersistentTraits(global::GBX.NET.Engines.Script.CScriptTraitsPersistent? value)
     {

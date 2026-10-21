@@ -36,11 +36,10 @@ public abstract class CFuncSkelBuilderBase<TSelf> where TSelf : CFuncSkelBuilder
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Function.CFuncSkel> state;
     private protected CFuncSkelBuilderBase() => state = new();
     private protected CFuncSkelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncSkel> state) => this.state = state;
-    private protected static void SetBones(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncSkel> state, string[]? value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncSkelBuilderAssignments.GetBonesAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     public string[]? Bones
     {
         get => state.Get<string[]?>("Bones");
-        set => SetBones(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncSkelBuilderAssignments.GetBonesAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithBones(params string[]? value)
     {

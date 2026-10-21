@@ -36,22 +36,10 @@ public abstract class CFuncLightColorBuilderBase<TSelf> where TSelf : CFuncLight
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Function.CFuncLightColor> state;
     private protected CFuncLightColorBuilderBase() => state = new();
     private protected CFuncLightColorBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncLightColor> state) => this.state = state;
-    private protected static void SetAutoCreateMotion(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncLightColor> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetAutoCreateMotionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetColor0(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncLightColor> state, Vec4 value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncLightColorBuilderAssignments.GetColor0Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetColor1(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncLightColor> state, Vec4 value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncLightColorBuilderAssignments.GetColor1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFctType(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncLightColor> state, global::GBX.NET.Engines.Function.CFuncLight.EFctType value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncLightBuilderAssignments.GetFctTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFlickCount(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncLightColor> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncLightBuilderAssignments.GetFlickCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFlickPeriod(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncLightColor> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncLightBuilderAssignments.GetFlickPeriodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetImage(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncLightColor> state, global::GBX.NET.Engines.Plug.CPlugFileImg? value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncLightColorBuilderAssignments.GetImageAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetImageReference(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncLightColor> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncLightColorBuilderAssignments.GetImageReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetInputValId(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncLightColor> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetInputValIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetPeriod(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncLightColor> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetPeriodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetPhase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncLightColor> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetPhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRandomizePhase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncLightColor> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public bool AutoCreateMotion
     {
         get => state.Get<bool>("AutoCreateMotion");
-        set => SetAutoCreateMotion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetAutoCreateMotionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithAutoCreateMotion(bool value)
     {
@@ -61,7 +49,7 @@ public abstract class CFuncLightColorBuilderBase<TSelf> where TSelf : CFuncLight
     public float Period
     {
         get => state.Get<float>("Period");
-        set => SetPeriod(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetPeriodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPeriod(float value)
     {
@@ -71,7 +59,7 @@ public abstract class CFuncLightColorBuilderBase<TSelf> where TSelf : CFuncLight
     public float Phase
     {
         get => state.Get<float>("Phase");
-        set => SetPhase(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetPhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPhase(float value)
     {
@@ -85,7 +73,7 @@ public abstract class CFuncLightColorBuilderMembers1<TSelf> : CFuncLightColorBui
     public Vec4 Color0
     {
         get => state.Get<Vec4>("Color0");
-        set => SetColor0(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncLightColorBuilderAssignments.GetColor0Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithColor0(Vec4 value)
     {
@@ -95,7 +83,7 @@ public abstract class CFuncLightColorBuilderMembers1<TSelf> : CFuncLightColorBui
     public Vec4 Color1
     {
         get => state.Get<Vec4>("Color1");
-        set => SetColor1(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncLightColorBuilderAssignments.GetColor1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithColor1(Vec4 value)
     {
@@ -105,7 +93,7 @@ public abstract class CFuncLightColorBuilderMembers1<TSelf> : CFuncLightColorBui
     public global::GBX.NET.Engines.Function.CFuncLight.EFctType FctType
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncLight.EFctType>("FctType");
-        set => SetFctType(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncLightBuilderAssignments.GetFctTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFctType(global::GBX.NET.Engines.Function.CFuncLight.EFctType value)
     {
@@ -115,7 +103,7 @@ public abstract class CFuncLightColorBuilderMembers1<TSelf> : CFuncLightColorBui
     public int FlickCount
     {
         get => state.Get<int>("FlickCount");
-        set => SetFlickCount(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncLightBuilderAssignments.GetFlickCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFlickCount(int value)
     {
@@ -125,7 +113,7 @@ public abstract class CFuncLightColorBuilderMembers1<TSelf> : CFuncLightColorBui
     public float FlickPeriod
     {
         get => state.Get<float>("FlickPeriod");
-        set => SetFlickPeriod(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncLightBuilderAssignments.GetFlickPeriodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFlickPeriod(float value)
     {
@@ -135,7 +123,7 @@ public abstract class CFuncLightColorBuilderMembers1<TSelf> : CFuncLightColorBui
     public global::GBX.NET.Engines.Plug.CPlugFileImg? Image
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugFileImg?>("Image");
-        set => SetImage(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncLightColorBuilderAssignments.GetImageAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithImage(global::GBX.NET.Engines.Plug.CPlugFileImg? value)
     {
@@ -145,7 +133,7 @@ public abstract class CFuncLightColorBuilderMembers1<TSelf> : CFuncLightColorBui
     public TSelf WithImageReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetImageReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncLightColorBuilderAssignments.GetImageReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -252,7 +240,7 @@ public partial class CFuncLightColorBuilder : CFuncLightColorBuilderBase<CFuncLi
         public bool RandomizePhase
         {
             get => state.Get<bool>("RandomizePhase");
-            set => SetRandomizePhase(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMPU WithRandomizePhase(bool value)
         {
@@ -280,7 +268,7 @@ public partial class CFuncLightColorBuilder : CFuncLightColorBuilderBase<CFuncLi
         public bool RandomizePhase
         {
             get => state.Get<bool>("RandomizePhase");
-            set => SetRandomizePhase(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMSX WithRandomizePhase(bool value)
         {
@@ -308,7 +296,7 @@ public partial class CFuncLightColorBuilder : CFuncLightColorBuilderBase<CFuncLi
         public bool RandomizePhase
         {
             get => state.Get<bool>("RandomizePhase");
-            set => SetRandomizePhase(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMNESWC WithRandomizePhase(bool value)
         {
@@ -336,7 +324,7 @@ public partial class CFuncLightColorBuilder : CFuncLightColorBuilderBase<CFuncLi
         public bool RandomizePhase
         {
             get => state.Get<bool>("RandomizePhase");
-            set => SetRandomizePhase(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public VSK5 WithRandomizePhase(bool value)
         {
@@ -364,7 +352,7 @@ public partial class CFuncLightColorBuilder : CFuncLightColorBuilderBase<CFuncLi
         public string? InputValId
         {
             get => state.Get<string?>("InputValId");
-            set => SetInputValId(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetInputValIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         }
         public TMF WithInputValId(string? value)
         {
@@ -374,7 +362,7 @@ public partial class CFuncLightColorBuilder : CFuncLightColorBuilderBase<CFuncLi
         public bool RandomizePhase
         {
             get => state.Get<bool>("RandomizePhase");
-            set => SetRandomizePhase(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMF WithRandomizePhase(bool value)
         {
@@ -402,7 +390,7 @@ public partial class CFuncLightColorBuilder : CFuncLightColorBuilderBase<CFuncLi
         public string? InputValId
         {
             get => state.Get<string?>("InputValId");
-            set => SetInputValId(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetInputValIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         }
         public MP3 WithInputValId(string? value)
         {
@@ -412,7 +400,7 @@ public partial class CFuncLightColorBuilder : CFuncLightColorBuilderBase<CFuncLi
         public bool RandomizePhase
         {
             get => state.Get<bool>("RandomizePhase");
-            set => SetRandomizePhase(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP3 WithRandomizePhase(bool value)
         {
@@ -440,7 +428,7 @@ public partial class CFuncLightColorBuilder : CFuncLightColorBuilderBase<CFuncLi
         public string? InputValId
         {
             get => state.Get<string?>("InputValId");
-            set => SetInputValId(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetInputValIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         }
         public TMT WithInputValId(string? value)
         {
@@ -450,7 +438,7 @@ public partial class CFuncLightColorBuilder : CFuncLightColorBuilderBase<CFuncLi
         public bool RandomizePhase
         {
             get => state.Get<bool>("RandomizePhase");
-            set => SetRandomizePhase(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMT WithRandomizePhase(bool value)
         {
@@ -478,7 +466,7 @@ public partial class CFuncLightColorBuilder : CFuncLightColorBuilderBase<CFuncLi
         public string? InputValId
         {
             get => state.Get<string?>("InputValId");
-            set => SetInputValId(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetInputValIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         }
         public MP4 WithInputValId(string? value)
         {
@@ -488,7 +476,7 @@ public partial class CFuncLightColorBuilder : CFuncLightColorBuilderBase<CFuncLi
         public bool RandomizePhase
         {
             get => state.Get<bool>("RandomizePhase");
-            set => SetRandomizePhase(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP4 WithRandomizePhase(bool value)
         {
@@ -516,7 +504,7 @@ public partial class CFuncLightColorBuilder : CFuncLightColorBuilderBase<CFuncLi
         public string? InputValId
         {
             get => state.Get<string?>("InputValId");
-            set => SetInputValId(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetInputValIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         }
         public TM2020 WithInputValId(string? value)
         {
@@ -526,7 +514,7 @@ public partial class CFuncLightColorBuilder : CFuncLightColorBuilderBase<CFuncLi
         public bool RandomizePhase
         {
             get => state.Get<bool>("RandomizePhase");
-            set => SetRandomizePhase(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TM2020 WithRandomizePhase(bool value)
         {

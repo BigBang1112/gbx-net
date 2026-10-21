@@ -36,20 +36,10 @@ public abstract class CPlugCrystalBuilderBase<TSelf> where TSelf : CPlugCrystalB
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCrystal> state;
     private protected CPlugCrystalBuilderBase() => state = new();
     private protected CPlugCrystalBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCrystal> state) => this.state = state;
-    private protected static void SetEditorData(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCrystal> state, byte[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetEditorDataAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetEditorDataFlags(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCrystal> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetEditorDataFlagsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetFaceSmoothingGroupIndices(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCrystal> state, int[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetFaceSmoothingGroupIndicesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetFlags(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCrystal> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeGeneratorBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetGenerateMode(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCrystal> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetGenerateModeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetIsSaveGenerated(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCrystal> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeGeneratorBuilderAssignments.GetIsSaveGeneratedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIsToKeepInSaveAsRelease(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCrystal> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeGeneratorBuilderAssignments.GetIsToKeepInSaveAsReleaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMaterials(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCrystal> state, List<global::GBX.NET.Engines.Plug.CPlugCrystal.Material> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetMaterialsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSmoothingGroups(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCrystal> state, float[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetSmoothingGroupsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSpriteSize(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCrystal> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetSpriteSizeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     public List<global::GBX.NET.Engines.Plug.CPlugCrystal.Material> Materials
     {
         get => state.Get<List<global::GBX.NET.Engines.Plug.CPlugCrystal.Material>>("Materials");
-        set => SetMaterials(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetMaterialsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMaterials(List<global::GBX.NET.Engines.Plug.CPlugCrystal.Material> value)
     {
@@ -71,7 +61,7 @@ public abstract class CPlugCrystalBuilderMembers1<TSelf> : CPlugCrystalBuilderBa
     public int GenerateMode
     {
         get => state.Get<int>("GenerateMode");
-        set => SetGenerateMode(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetGenerateModeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithGenerateMode(int value)
     {
@@ -81,7 +71,7 @@ public abstract class CPlugCrystalBuilderMembers1<TSelf> : CPlugCrystalBuilderBa
     public float SpriteSize
     {
         get => state.Get<float>("SpriteSize");
-        set => SetSpriteSize(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetSpriteSizeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSpriteSize(float value)
     {
@@ -95,7 +85,7 @@ public abstract class CPlugCrystalBuilderMembers2<TSelf> : CPlugCrystalBuilderBa
     public uint Flags
     {
         get => state.Get<uint>("Flags");
-        set => SetFlags(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeGeneratorBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFlags(uint value)
     {
@@ -105,7 +95,7 @@ public abstract class CPlugCrystalBuilderMembers2<TSelf> : CPlugCrystalBuilderBa
     public bool IsSaveGenerated
     {
         get => state.Get<bool>("IsSaveGenerated");
-        set => SetIsSaveGenerated(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeGeneratorBuilderAssignments.GetIsSaveGeneratedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIsSaveGenerated(bool value)
     {
@@ -115,7 +105,7 @@ public abstract class CPlugCrystalBuilderMembers2<TSelf> : CPlugCrystalBuilderBa
     public bool IsToKeepInSaveAsRelease
     {
         get => state.Get<bool>("IsToKeepInSaveAsRelease");
-        set => SetIsToKeepInSaveAsRelease(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeGeneratorBuilderAssignments.GetIsToKeepInSaveAsReleaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIsToKeepInSaveAsRelease(bool value)
     {
@@ -129,7 +119,7 @@ public abstract class CPlugCrystalBuilderMembers3<TSelf> : CPlugCrystalBuilderMe
     public byte[]? EditorData
     {
         get => state.Get<byte[]?>("EditorData");
-        set => SetEditorData(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetEditorDataAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithEditorData(params byte[]? value)
     {
@@ -143,7 +133,7 @@ public abstract class CPlugCrystalBuilderMembers3<TSelf> : CPlugCrystalBuilderMe
     public int EditorDataFlags
     {
         get => state.Get<int>("EditorDataFlags");
-        set => SetEditorDataFlags(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetEditorDataFlagsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithEditorDataFlags(int value)
     {
@@ -153,7 +143,7 @@ public abstract class CPlugCrystalBuilderMembers3<TSelf> : CPlugCrystalBuilderMe
     public int[]? FaceSmoothingGroupIndices
     {
         get => state.Get<int[]?>("FaceSmoothingGroupIndices");
-        set => SetFaceSmoothingGroupIndices(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetFaceSmoothingGroupIndicesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithFaceSmoothingGroupIndices(params int[]? value)
     {
@@ -167,7 +157,7 @@ public abstract class CPlugCrystalBuilderMembers3<TSelf> : CPlugCrystalBuilderMe
     public float[]? SmoothingGroups
     {
         get => state.Get<float[]?>("SmoothingGroups");
-        set => SetSmoothingGroups(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetSmoothingGroupsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithSmoothingGroups(params float[]? value)
     {
@@ -349,7 +339,7 @@ public partial class CPlugCrystalBuilder : CPlugCrystalBuilderBase<CPlugCrystalB
         public int GenerateMode
         {
             get => state.Get<int>("GenerateMode");
-            set => SetGenerateMode(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetGenerateModeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMSX WithGenerateMode(int value)
         {
@@ -359,7 +349,7 @@ public partial class CPlugCrystalBuilder : CPlugCrystalBuilderBase<CPlugCrystalB
         public float SpriteSize
         {
             get => state.Get<float>("SpriteSize");
-            set => SetSpriteSize(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetSpriteSizeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMSX WithSpriteSize(float value)
         {
@@ -387,7 +377,7 @@ public partial class CPlugCrystalBuilder : CPlugCrystalBuilderBase<CPlugCrystalB
         public int GenerateMode
         {
             get => state.Get<int>("GenerateMode");
-            set => SetGenerateMode(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetGenerateModeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMNESWC WithGenerateMode(int value)
         {
@@ -397,7 +387,7 @@ public partial class CPlugCrystalBuilder : CPlugCrystalBuilderBase<CPlugCrystalB
         public float SpriteSize
         {
             get => state.Get<float>("SpriteSize");
-            set => SetSpriteSize(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetSpriteSizeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMNESWC WithSpriteSize(float value)
         {
@@ -425,7 +415,7 @@ public partial class CPlugCrystalBuilder : CPlugCrystalBuilderBase<CPlugCrystalB
         public int GenerateMode
         {
             get => state.Get<int>("GenerateMode");
-            set => SetGenerateMode(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetGenerateModeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public VSK5 WithGenerateMode(int value)
         {
@@ -435,7 +425,7 @@ public partial class CPlugCrystalBuilder : CPlugCrystalBuilderBase<CPlugCrystalB
         public float SpriteSize
         {
             get => state.Get<float>("SpriteSize");
-            set => SetSpriteSize(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetSpriteSizeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public VSK5 WithSpriteSize(float value)
         {
@@ -463,7 +453,7 @@ public partial class CPlugCrystalBuilder : CPlugCrystalBuilderBase<CPlugCrystalB
         public int GenerateMode
         {
             get => state.Get<int>("GenerateMode");
-            set => SetGenerateMode(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetGenerateModeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMF WithGenerateMode(int value)
         {
@@ -473,7 +463,7 @@ public partial class CPlugCrystalBuilder : CPlugCrystalBuilderBase<CPlugCrystalB
         public float SpriteSize
         {
             get => state.Get<float>("SpriteSize");
-            set => SetSpriteSize(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetSpriteSizeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMF WithSpriteSize(float value)
         {

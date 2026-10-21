@@ -36,29 +36,10 @@ public abstract class CGameManialink3dMoodBuilderBase<TSelf> where TSelf : CGame
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state;
     private protected CGameManialink3dMoodBuilderBase() => state = new();
     private protected CGameManialink3dMoodBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state) => this.state = state;
-    private protected static void SetCloudsRgbMaxLinear(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetCloudsRgbMaxLinearAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetCloudsRgbMinLinear(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetCloudsRgbMinLinearAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetFidImageCloudsMinMaxDayTime(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, global::GBX.NET.Engines.Plug.CPlugFileImg? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetFidImageCloudsMinMaxDayTimeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetFidImageCloudsMinMaxDayTimeReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetFidImageCloudsMinMaxDayTimeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetFidImageSkyGradientV(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, global::GBX.NET.Engines.Plug.CPlugFileImg? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetFidImageSkyGradientVAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetFidImageSkyGradientVReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetFidImageSkyGradientVReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetFogColorSrgb(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetFogColorSrgbAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetLAmbient_LinearRgb(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLAmbient_LinearRgbAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetLBall_Intens(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLBall_IntensAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetLBall_LinearRgb(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLBall_LinearRgbAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetLBall_Radius(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLBall_RadiusAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetLDir0_DirPhi(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir0_DirPhiAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetLDir0_DirTheta(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir0_DirThetaAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetLDir0_Intens(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir0_IntensAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetLDir0_LinearRgb(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir0_LinearRgbAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetLDir1_DirPhi(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir1_DirPhiAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetLDir1_DirTheta(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir1_DirThetaAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetLDir1_Intens(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir1_IntensAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetLDir1_LinearRgb(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir1_LinearRgbAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     public Vec3 CloudsRgbMaxLinear
     {
         get => state.Get<Vec3>("CloudsRgbMaxLinear");
-        set => SetCloudsRgbMaxLinear(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetCloudsRgbMaxLinearAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithCloudsRgbMaxLinear(Vec3 value)
     {
@@ -68,7 +49,7 @@ public abstract class CGameManialink3dMoodBuilderBase<TSelf> where TSelf : CGame
     public Vec3 CloudsRgbMinLinear
     {
         get => state.Get<Vec3>("CloudsRgbMinLinear");
-        set => SetCloudsRgbMinLinear(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetCloudsRgbMinLinearAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithCloudsRgbMinLinear(Vec3 value)
     {
@@ -78,7 +59,7 @@ public abstract class CGameManialink3dMoodBuilderBase<TSelf> where TSelf : CGame
     public global::GBX.NET.Engines.Plug.CPlugFileImg? FidImageCloudsMinMaxDayTime
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugFileImg?>("FidImageCloudsMinMaxDayTime");
-        set => SetFidImageCloudsMinMaxDayTime(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetFidImageCloudsMinMaxDayTimeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithFidImageCloudsMinMaxDayTime(global::GBX.NET.Engines.Plug.CPlugFileImg? value)
     {
@@ -88,13 +69,13 @@ public abstract class CGameManialink3dMoodBuilderBase<TSelf> where TSelf : CGame
     public TSelf WithFidImageCloudsMinMaxDayTimeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetFidImageCloudsMinMaxDayTimeReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetFidImageCloudsMinMaxDayTimeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugFileImg? FidImageSkyGradientV
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugFileImg?>("FidImageSkyGradientV");
-        set => SetFidImageSkyGradientV(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetFidImageSkyGradientVAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithFidImageSkyGradientV(global::GBX.NET.Engines.Plug.CPlugFileImg? value)
     {
@@ -104,13 +85,13 @@ public abstract class CGameManialink3dMoodBuilderBase<TSelf> where TSelf : CGame
     public TSelf WithFidImageSkyGradientVReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetFidImageSkyGradientVReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetFidImageSkyGradientVReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public Vec3 FogColorSrgb
     {
         get => state.Get<Vec3>("FogColorSrgb");
-        set => SetFogColorSrgb(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetFogColorSrgbAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithFogColorSrgb(Vec3 value)
     {
@@ -120,7 +101,7 @@ public abstract class CGameManialink3dMoodBuilderBase<TSelf> where TSelf : CGame
     public Vec3 LAmbient_LinearRgb
     {
         get => state.Get<Vec3>("LAmbient_LinearRgb");
-        set => SetLAmbient_LinearRgb(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLAmbient_LinearRgbAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLAmbient_LinearRgb(Vec3 value)
     {
@@ -130,7 +111,7 @@ public abstract class CGameManialink3dMoodBuilderBase<TSelf> where TSelf : CGame
     public float LBall_Intens
     {
         get => state.Get<float>("LBall_Intens");
-        set => SetLBall_Intens(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLBall_IntensAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLBall_Intens(float value)
     {
@@ -140,7 +121,7 @@ public abstract class CGameManialink3dMoodBuilderBase<TSelf> where TSelf : CGame
     public Vec3 LBall_LinearRgb
     {
         get => state.Get<Vec3>("LBall_LinearRgb");
-        set => SetLBall_LinearRgb(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLBall_LinearRgbAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLBall_LinearRgb(Vec3 value)
     {
@@ -150,7 +131,7 @@ public abstract class CGameManialink3dMoodBuilderBase<TSelf> where TSelf : CGame
     public float LBall_Radius
     {
         get => state.Get<float>("LBall_Radius");
-        set => SetLBall_Radius(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLBall_RadiusAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLBall_Radius(float value)
     {
@@ -160,7 +141,7 @@ public abstract class CGameManialink3dMoodBuilderBase<TSelf> where TSelf : CGame
     public float LDir0_DirPhi
     {
         get => state.Get<float>("LDir0_DirPhi");
-        set => SetLDir0_DirPhi(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir0_DirPhiAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLDir0_DirPhi(float value)
     {
@@ -170,7 +151,7 @@ public abstract class CGameManialink3dMoodBuilderBase<TSelf> where TSelf : CGame
     public float LDir0_DirTheta
     {
         get => state.Get<float>("LDir0_DirTheta");
-        set => SetLDir0_DirTheta(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir0_DirThetaAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLDir0_DirTheta(float value)
     {
@@ -180,7 +161,7 @@ public abstract class CGameManialink3dMoodBuilderBase<TSelf> where TSelf : CGame
     public float LDir0_Intens
     {
         get => state.Get<float>("LDir0_Intens");
-        set => SetLDir0_Intens(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir0_IntensAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLDir0_Intens(float value)
     {
@@ -190,7 +171,7 @@ public abstract class CGameManialink3dMoodBuilderBase<TSelf> where TSelf : CGame
     public Vec3 LDir0_LinearRgb
     {
         get => state.Get<Vec3>("LDir0_LinearRgb");
-        set => SetLDir0_LinearRgb(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir0_LinearRgbAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLDir0_LinearRgb(Vec3 value)
     {
@@ -200,7 +181,7 @@ public abstract class CGameManialink3dMoodBuilderBase<TSelf> where TSelf : CGame
     public float LDir1_DirPhi
     {
         get => state.Get<float>("LDir1_DirPhi");
-        set => SetLDir1_DirPhi(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir1_DirPhiAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLDir1_DirPhi(float value)
     {
@@ -210,7 +191,7 @@ public abstract class CGameManialink3dMoodBuilderBase<TSelf> where TSelf : CGame
     public float LDir1_DirTheta
     {
         get => state.Get<float>("LDir1_DirTheta");
-        set => SetLDir1_DirTheta(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir1_DirThetaAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLDir1_DirTheta(float value)
     {
@@ -220,7 +201,7 @@ public abstract class CGameManialink3dMoodBuilderBase<TSelf> where TSelf : CGame
     public float LDir1_Intens
     {
         get => state.Get<float>("LDir1_Intens");
-        set => SetLDir1_Intens(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir1_IntensAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLDir1_Intens(float value)
     {
@@ -230,7 +211,7 @@ public abstract class CGameManialink3dMoodBuilderBase<TSelf> where TSelf : CGame
     public Vec3 LDir1_LinearRgb
     {
         get => state.Get<Vec3>("LDir1_LinearRgb");
-        set => SetLDir1_LinearRgb(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir1_LinearRgbAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLDir1_LinearRgb(Vec3 value)
     {

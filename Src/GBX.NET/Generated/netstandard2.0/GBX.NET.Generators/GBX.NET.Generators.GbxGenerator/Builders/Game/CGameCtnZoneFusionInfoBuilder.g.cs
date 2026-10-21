@@ -36,13 +36,10 @@ public abstract class CGameCtnZoneFusionInfoBuilderBase<TSelf> where TSelf : CGa
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo> state;
     private protected CGameCtnZoneFusionInfoBuilderBase() => state = new();
     private protected CGameCtnZoneFusionInfoBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo> state) => this.state = state;
-    private protected static void SetCompatibleZoneId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFusionInfoBuilderAssignments.GetCompatibleZoneIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFusionType(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFusionInfoBuilderAssignments.GetFusionTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMergedZoneId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFusionInfoBuilderAssignments.GetMergedZoneIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public string? CompatibleZoneId
     {
         get => state.Get<string?>("CompatibleZoneId");
-        set => SetCompatibleZoneId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFusionInfoBuilderAssignments.GetCompatibleZoneIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCompatibleZoneId(string? value)
     {
@@ -52,7 +49,7 @@ public abstract class CGameCtnZoneFusionInfoBuilderBase<TSelf> where TSelf : CGa
     public int FusionType
     {
         get => state.Get<int>("FusionType");
-        set => SetFusionType(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFusionInfoBuilderAssignments.GetFusionTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFusionType(int value)
     {
@@ -62,7 +59,7 @@ public abstract class CGameCtnZoneFusionInfoBuilderBase<TSelf> where TSelf : CGa
     public string? MergedZoneId
     {
         get => state.Get<string?>("MergedZoneId");
-        set => SetMergedZoneId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFusionInfoBuilderAssignments.GetMergedZoneIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMergedZoneId(string? value)
     {

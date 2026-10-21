@@ -36,17 +36,10 @@ public abstract class CSceneObjectLinkBuilderBase<TSelf> where TSelf : CSceneObj
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state;
     private protected CSceneObjectLinkBuilderBase() => state = new();
     private protected CSceneObjectLinkBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state) => this.state = state;
-    private protected static void SetMobil(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state, global::GBX.NET.Engines.Scene.CSceneMobil? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectLinkBuilderAssignments.GetMobilAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMobilReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state, NodeRef<global::GBX.NET.Engines.Scene.CSceneMobil> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectLinkBuilderAssignments.GetMobilReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMobilTreeId(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectLinkBuilderAssignments.GetMobilTreeIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectLinkBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetObject(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state, global::GBX.NET.Engines.Scene.CSceneObject? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectLinkBuilderAssignments.GetObjectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetObjectReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state, NodeRef<global::GBX.NET.Engines.Scene.CSceneObject> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectLinkBuilderAssignments.GetObjectReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRelativeLocation(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state, Iso4 value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectLinkBuilderAssignments.GetRelativeLocationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public global::GBX.NET.Engines.Scene.CSceneMobil? Mobil
     {
         get => state.Get<global::GBX.NET.Engines.Scene.CSceneMobil?>("Mobil");
-        set => SetMobil(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectLinkBuilderAssignments.GetMobilAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMobil(global::GBX.NET.Engines.Scene.CSceneMobil? value)
     {
@@ -56,13 +49,13 @@ public abstract class CSceneObjectLinkBuilderBase<TSelf> where TSelf : CSceneObj
     public TSelf WithMobilReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMobil> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetMobilReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectLinkBuilderAssignments.GetMobilReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public string? Name
     {
         get => state.Get<string?>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectLinkBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithName(string? value)
     {
@@ -72,7 +65,7 @@ public abstract class CSceneObjectLinkBuilderBase<TSelf> where TSelf : CSceneObj
     public global::GBX.NET.Engines.Scene.CSceneObject? Object
     {
         get => state.Get<global::GBX.NET.Engines.Scene.CSceneObject?>("Object");
-        set => SetObject(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectLinkBuilderAssignments.GetObjectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithObject(global::GBX.NET.Engines.Scene.CSceneObject? value)
     {
@@ -82,13 +75,13 @@ public abstract class CSceneObjectLinkBuilderBase<TSelf> where TSelf : CSceneObj
     public TSelf WithObjectReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneObject> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetObjectReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectLinkBuilderAssignments.GetObjectReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public Iso4 RelativeLocation
     {
         get => state.Get<Iso4>("RelativeLocation");
-        set => SetRelativeLocation(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectLinkBuilderAssignments.GetRelativeLocationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRelativeLocation(Iso4 value)
     {
@@ -102,7 +95,7 @@ public abstract class CSceneObjectLinkBuilderMembers1<TSelf> : CSceneObjectLinkB
     public string? MobilTreeId
     {
         get => state.Get<string?>("MobilTreeId");
-        set => SetMobilTreeId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectLinkBuilderAssignments.GetMobilTreeIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMobilTreeId(string? value)
     {

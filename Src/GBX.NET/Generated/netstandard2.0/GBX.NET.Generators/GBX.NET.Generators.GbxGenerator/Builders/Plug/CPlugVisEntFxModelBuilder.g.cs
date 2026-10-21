@@ -36,23 +36,10 @@ public abstract class CPlugVisEntFxModelBuilderBase<TSelf> where TSelf : CPlugVi
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisEntFxModel> state;
     private protected CPlugVisEntFxModelBuilderBase() => state = new();
     private protected CPlugVisEntFxModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisEntFxModel> state) => this.state = state;
-    private protected static void SetEliminatedHighlight(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisEntFxModel> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisEntFxModelBuilderAssignments.GetEliminatedHighlightAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetEliminatedHighlightRgb(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisEntFxModel> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisEntFxModelBuilderAssignments.GetEliminatedHighlightRgbAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetEliminatedTeleportIntens(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisEntFxModel> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisEntFxModelBuilderAssignments.GetEliminatedTeleportIntensAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetPart_Deactivated(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisEntFxModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisEntFxModelBuilderAssignments.GetPart_DeactivatedAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetPart_DeactivatedReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisEntFxModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisEntFxModelBuilderAssignments.GetPart_DeactivatedReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetPart_DeactivatedShot(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisEntFxModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisEntFxModelBuilderAssignments.GetPart_DeactivatedShotAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetPart_DeactivatedShotReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisEntFxModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisEntFxModelBuilderAssignments.GetPart_DeactivatedShotReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetPart_TeleportSpawn(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisEntFxModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisEntFxModelBuilderAssignments.GetPart_TeleportSpawnAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetPart_TeleportSpawnReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisEntFxModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisEntFxModelBuilderAssignments.GetPart_TeleportSpawnReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetPart_TeleportUnspawn(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisEntFxModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisEntFxModelBuilderAssignments.GetPart_TeleportUnspawnAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetPart_TeleportUnspawnReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisEntFxModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisEntFxModelBuilderAssignments.GetPart_TeleportUnspawnReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetTacticalLight(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisEntFxModel> state, global::GBX.NET.Engines.Graphic.GxLightBall? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisEntFxModelBuilderAssignments.GetTacticalLightAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetTacticalLightReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisEntFxModel> state, NodeRef<global::GBX.NET.Engines.Graphic.GxLightBall> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisEntFxModelBuilderAssignments.GetTacticalLightReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     public PlugCurve? EliminatedHighlight
     {
         get => state.Get<PlugCurve?>("EliminatedHighlight");
-        set => SetEliminatedHighlight(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisEntFxModelBuilderAssignments.GetEliminatedHighlightAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithEliminatedHighlight(PlugCurve? value)
     {
@@ -62,7 +49,7 @@ public abstract class CPlugVisEntFxModelBuilderBase<TSelf> where TSelf : CPlugVi
     public Vec3 EliminatedHighlightRgb
     {
         get => state.Get<Vec3>("EliminatedHighlightRgb");
-        set => SetEliminatedHighlightRgb(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisEntFxModelBuilderAssignments.GetEliminatedHighlightRgbAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithEliminatedHighlightRgb(Vec3 value)
     {
@@ -72,7 +59,7 @@ public abstract class CPlugVisEntFxModelBuilderBase<TSelf> where TSelf : CPlugVi
     public PlugCurve? EliminatedTeleportIntens
     {
         get => state.Get<PlugCurve?>("EliminatedTeleportIntens");
-        set => SetEliminatedTeleportIntens(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisEntFxModelBuilderAssignments.GetEliminatedTeleportIntensAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithEliminatedTeleportIntens(PlugCurve? value)
     {
@@ -82,7 +69,7 @@ public abstract class CPlugVisEntFxModelBuilderBase<TSelf> where TSelf : CPlugVi
     public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? Part_Deactivated
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("Part_Deactivated");
-        set => SetPart_Deactivated(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisEntFxModelBuilderAssignments.GetPart_DeactivatedAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithPart_Deactivated(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
     {
@@ -92,13 +79,13 @@ public abstract class CPlugVisEntFxModelBuilderBase<TSelf> where TSelf : CPlugVi
     public TSelf WithPart_DeactivatedReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetPart_DeactivatedReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisEntFxModelBuilderAssignments.GetPart_DeactivatedReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? Part_DeactivatedShot
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("Part_DeactivatedShot");
-        set => SetPart_DeactivatedShot(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisEntFxModelBuilderAssignments.GetPart_DeactivatedShotAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithPart_DeactivatedShot(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
     {
@@ -108,13 +95,13 @@ public abstract class CPlugVisEntFxModelBuilderBase<TSelf> where TSelf : CPlugVi
     public TSelf WithPart_DeactivatedShotReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetPart_DeactivatedShotReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisEntFxModelBuilderAssignments.GetPart_DeactivatedShotReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? Part_TeleportSpawn
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("Part_TeleportSpawn");
-        set => SetPart_TeleportSpawn(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisEntFxModelBuilderAssignments.GetPart_TeleportSpawnAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithPart_TeleportSpawn(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
     {
@@ -124,13 +111,13 @@ public abstract class CPlugVisEntFxModelBuilderBase<TSelf> where TSelf : CPlugVi
     public TSelf WithPart_TeleportSpawnReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetPart_TeleportSpawnReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisEntFxModelBuilderAssignments.GetPart_TeleportSpawnReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? Part_TeleportUnspawn
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("Part_TeleportUnspawn");
-        set => SetPart_TeleportUnspawn(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisEntFxModelBuilderAssignments.GetPart_TeleportUnspawnAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithPart_TeleportUnspawn(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
     {
@@ -140,13 +127,13 @@ public abstract class CPlugVisEntFxModelBuilderBase<TSelf> where TSelf : CPlugVi
     public TSelf WithPart_TeleportUnspawnReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetPart_TeleportUnspawnReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisEntFxModelBuilderAssignments.GetPart_TeleportUnspawnReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Graphic.GxLightBall? TacticalLight
     {
         get => state.Get<global::GBX.NET.Engines.Graphic.GxLightBall?>("TacticalLight");
-        set => SetTacticalLight(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisEntFxModelBuilderAssignments.GetTacticalLightAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithTacticalLight(global::GBX.NET.Engines.Graphic.GxLightBall? value)
     {
@@ -156,7 +143,7 @@ public abstract class CPlugVisEntFxModelBuilderBase<TSelf> where TSelf : CPlugVi
     public TSelf WithTacticalLightReference(NodeRef<global::GBX.NET.Engines.Graphic.GxLightBall> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetTacticalLightReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisEntFxModelBuilderAssignments.GetTacticalLightReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
 }

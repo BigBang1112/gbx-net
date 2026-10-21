@@ -36,37 +36,10 @@ public abstract class CControlColorChooserBuilderBase<TSelf> where TSelf : CCont
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Control.CControlColorChooser> state;
     private protected CControlColorChooserBuilderBase() => state = new();
     private protected CControlColorChooserBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Control.CControlColorChooser> state) => this.state = state;
-    private protected static void SetAcceptOwnControls(NodeBuilderState<global::GBX.NET.Engines.Control.CControlColorChooser> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlContainerBuilderAssignments.GetAcceptOwnControlsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetChilds(NodeBuilderState<global::GBX.NET.Engines.Control.CControlColorChooser> state, global::GBX.NET.Engines.Control.CControlContainer.Child[] value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlContainerBuilderAssignments.GetChildsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetColorChooserShader(NodeBuilderState<global::GBX.NET.Engines.Control.CControlColorChooser> state, global::GBX.NET.Engines.Plug.CPlugShader? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlColorChooserBuilderAssignments.GetColorChooserShaderAssignment(), value, GameVersion.MP4);
-    private protected static void SetColorChooserShaderReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlColorChooser> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlColorChooserBuilderAssignments.GetColorChooserShaderReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetColorChooserSize(NodeBuilderState<global::GBX.NET.Engines.Control.CControlColorChooser> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlColorChooserBuilderAssignments.GetColorChooserSizeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetControlFlags(NodeBuilderState<global::GBX.NET.Engines.Control.CControlColorChooser> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetControlFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetCreateScript(NodeBuilderState<global::GBX.NET.Engines.Control.CControlColorChooser> state, global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlContainerBuilderAssignments.GetCreateScriptAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetCreateScriptReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlColorChooser> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlContainerBuilderAssignments.GetCreateScriptReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetItem(NodeBuilderState<global::GBX.NET.Engines.Control.CControlColorChooser> state, global::GBX.NET.Engines.Hms.CHmsItem? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetItemAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLayout(NodeBuilderState<global::GBX.NET.Engines.Control.CControlColorChooser> state, global::GBX.NET.Engines.Control.CControlLayout? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLayoutAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLayoutReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlColorChooser> state, NodeRef<global::GBX.NET.Engines.Control.CControlLayout> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLayoutReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLegacyStyle(NodeBuilderState<global::GBX.NET.Engines.Control.CControlColorChooser> state, global::GBX.NET.Engines.Control.CControlStyle? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLegacyStyleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLegacyStyleReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlColorChooser> state, NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLegacyStyleReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMessageHandler(NodeBuilderState<global::GBX.NET.Engines.Control.CControlColorChooser> state, global::GBX.NET.Engines.Scene.CSceneMessageHandler? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetMessageHandlerReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlColorChooser> state, NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetMotion(NodeBuilderState<global::GBX.NET.Engines.Control.CControlColorChooser> state, global::GBX.NET.Engines.Motion.CMotion? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMotionReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlColorChooser> state, NodeRef<global::GBX.NET.Engines.Motion.CMotion> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Control.CControlColorChooser> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetNod(NodeBuilderState<global::GBX.NET.Engines.Control.CControlColorChooser> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetNodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetNodReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlColorChooser> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetNodReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetObjectLink(NodeBuilderState<global::GBX.NET.Engines.Control.CControlColorChooser> state, NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetObjectLinkAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetStackText(NodeBuilderState<global::GBX.NET.Engines.Control.CControlColorChooser> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStackTextAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetStyle(NodeBuilderState<global::GBX.NET.Engines.Control.CControlColorChooser> state, global::GBX.NET.Engines.Control.CControlStyle? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetStyleReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlColorChooser> state, NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetStyleId(NodeBuilderState<global::GBX.NET.Engines.Control.CControlColorChooser> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetStyleType(NodeBuilderState<global::GBX.NET.Engines.Control.CControlColorChooser> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlColorChooserBuilderAssignments.GetStyleTypeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetUseScript(NodeBuilderState<global::GBX.NET.Engines.Control.CControlColorChooser> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlContainerBuilderAssignments.GetUseScriptAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public bool AcceptOwnControls
     {
         get => state.Get<bool>("AcceptOwnControls");
-        set => SetAcceptOwnControls(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlContainerBuilderAssignments.GetAcceptOwnControlsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithAcceptOwnControls(bool value)
     {
@@ -76,7 +49,7 @@ public abstract class CControlColorChooserBuilderBase<TSelf> where TSelf : CCont
     public global::GBX.NET.Engines.Control.CControlContainer.Child[] Childs
     {
         get => state.Get<global::GBX.NET.Engines.Control.CControlContainer.Child[]>("Childs");
-        set => SetChilds(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlContainerBuilderAssignments.GetChildsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithChilds(params global::GBX.NET.Engines.Control.CControlContainer.Child[] value)
     {
@@ -90,7 +63,7 @@ public abstract class CControlColorChooserBuilderBase<TSelf> where TSelf : CCont
     public uint ControlFlags
     {
         get => state.Get<uint>("ControlFlags");
-        set => SetControlFlags(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetControlFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithControlFlags(uint value)
     {
@@ -100,7 +73,7 @@ public abstract class CControlColorChooserBuilderBase<TSelf> where TSelf : CCont
     public global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain?>("CreateScript");
-        set => SetCreateScript(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlContainerBuilderAssignments.GetCreateScriptAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithCreateScript(global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? value)
     {
@@ -110,13 +83,13 @@ public abstract class CControlColorChooserBuilderBase<TSelf> where TSelf : CCont
     public TSelf WithCreateScriptReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetCreateScriptReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlContainerBuilderAssignments.GetCreateScriptReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Hms.CHmsItem? Item
     {
         get => state.Get<global::GBX.NET.Engines.Hms.CHmsItem?>("Item");
-        set => SetItem(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetItemAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithItem(global::GBX.NET.Engines.Hms.CHmsItem? value)
     {
@@ -126,7 +99,7 @@ public abstract class CControlColorChooserBuilderBase<TSelf> where TSelf : CCont
     public global::GBX.NET.Engines.Control.CControlLayout? Layout
     {
         get => state.Get<global::GBX.NET.Engines.Control.CControlLayout?>("Layout");
-        set => SetLayout(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLayoutAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLayout(global::GBX.NET.Engines.Control.CControlLayout? value)
     {
@@ -136,13 +109,13 @@ public abstract class CControlColorChooserBuilderBase<TSelf> where TSelf : CCont
     public TSelf WithLayoutReference(NodeRef<global::GBX.NET.Engines.Control.CControlLayout> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetLayoutReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLayoutReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Control.CControlStyle? LegacyStyle
     {
         get => state.Get<global::GBX.NET.Engines.Control.CControlStyle?>("LegacyStyle");
-        set => SetLegacyStyle(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLegacyStyleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLegacyStyle(global::GBX.NET.Engines.Control.CControlStyle? value)
     {
@@ -152,13 +125,13 @@ public abstract class CControlColorChooserBuilderBase<TSelf> where TSelf : CCont
     public TSelf WithLegacyStyleReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetLegacyStyleReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLegacyStyleReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Motion.CMotion? Motion
     {
         get => state.Get<global::GBX.NET.Engines.Motion.CMotion?>("Motion");
-        set => SetMotion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMotion(global::GBX.NET.Engines.Motion.CMotion? value)
     {
@@ -168,13 +141,13 @@ public abstract class CControlColorChooserBuilderBase<TSelf> where TSelf : CCont
     public TSelf WithMotionReference(NodeRef<global::GBX.NET.Engines.Motion.CMotion> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetMotionReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public string? Name
     {
         get => state.Get<string?>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithName(string? value)
     {
@@ -184,7 +157,7 @@ public abstract class CControlColorChooserBuilderBase<TSelf> where TSelf : CCont
     public global::GBX.NET.Engines.MwFoundations.CMwNod? Nod
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("Nod");
-        set => SetNod(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetNodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithNod(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
@@ -194,13 +167,13 @@ public abstract class CControlColorChooserBuilderBase<TSelf> where TSelf : CCont
     public TSelf WithNodReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetNodReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetNodReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? ObjectLink
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>?>("ObjectLink");
-        set => SetObjectLink(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetObjectLinkAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithObjectLink(NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? value)
     {
@@ -218,7 +191,7 @@ public abstract class CControlColorChooserBuilderBase<TSelf> where TSelf : CCont
     public string? StackText
     {
         get => state.Get<string?>("StackText");
-        set => SetStackText(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStackTextAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithStackText(string? value)
     {
@@ -228,7 +201,7 @@ public abstract class CControlColorChooserBuilderBase<TSelf> where TSelf : CCont
     public bool UseScript
     {
         get => state.Get<bool>("UseScript");
-        set => SetUseScript(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlContainerBuilderAssignments.GetUseScriptAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithUseScript(bool value)
     {
@@ -242,7 +215,7 @@ public abstract class CControlColorChooserBuilderMembers1<TSelf> : CControlColor
     public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
     {
         get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
-        set => SetMessageHandler(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
     {
@@ -252,7 +225,7 @@ public abstract class CControlColorChooserBuilderMembers1<TSelf> : CControlColor
     public TSelf WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetMessageHandlerReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -262,7 +235,7 @@ public abstract class CControlColorChooserBuilderMembers2<TSelf> : CControlColor
     public global::GBX.NET.Engines.Control.CControlStyle? Style
     {
         get => state.Get<global::GBX.NET.Engines.Control.CControlStyle?>("Style");
-        set => SetStyle(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithStyle(global::GBX.NET.Engines.Control.CControlStyle? value)
     {
@@ -272,13 +245,13 @@ public abstract class CControlColorChooserBuilderMembers2<TSelf> : CControlColor
     public TSelf WithStyleReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetStyleReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public string? StyleId
     {
         get => state.Get<string?>("StyleId");
-        set => SetStyleId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithStyleId(string? value)
     {
@@ -292,7 +265,7 @@ public abstract class CControlColorChooserBuilderMembers3<TSelf> : CControlColor
     public Vec2 ColorChooserSize
     {
         get => state.Get<Vec2>("ColorChooserSize");
-        set => SetColorChooserSize(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlColorChooserBuilderAssignments.GetColorChooserSizeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithColorChooserSize(Vec2 value)
     {
@@ -302,7 +275,7 @@ public abstract class CControlColorChooserBuilderMembers3<TSelf> : CControlColor
     public int StyleType
     {
         get => state.Get<int>("StyleType");
-        set => SetStyleType(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlColorChooserBuilderAssignments.GetStyleTypeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithStyleType(int value)
     {
@@ -664,7 +637,7 @@ public partial class CControlColorChooserBuilder : CControlColorChooserBuilderBa
         public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
         {
             get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
-            set => SetMessageHandler(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMSX WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
         {
@@ -674,7 +647,7 @@ public partial class CControlColorChooserBuilder : CControlColorChooserBuilderBa
         public TMSX WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetMessageHandlerReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public TMSX WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMSX? value)
@@ -726,7 +699,7 @@ public partial class CControlColorChooserBuilder : CControlColorChooserBuilderBa
         public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
         {
             get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
-            set => SetMessageHandler(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMNESWC WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
         {
@@ -736,7 +709,7 @@ public partial class CControlColorChooserBuilder : CControlColorChooserBuilderBa
         public TMNESWC WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetMessageHandlerReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public TMNESWC WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMNESWC? value)
@@ -788,7 +761,7 @@ public partial class CControlColorChooserBuilder : CControlColorChooserBuilderBa
         public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
         {
             get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
-            set => SetMessageHandler(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public VSK5 WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
         {
@@ -798,7 +771,7 @@ public partial class CControlColorChooserBuilder : CControlColorChooserBuilderBa
         public VSK5 WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetMessageHandlerReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public VSK5 WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerVSK5? value)
@@ -854,7 +827,7 @@ public partial class CControlColorChooserBuilder : CControlColorChooserBuilderBa
         public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
         {
             get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
-            set => SetMessageHandler(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMF WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
         {
@@ -864,7 +837,7 @@ public partial class CControlColorChooserBuilder : CControlColorChooserBuilderBa
         public TMF WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetMessageHandlerReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public TMF WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMF? value)
@@ -984,7 +957,7 @@ public partial class CControlColorChooserBuilder : CControlColorChooserBuilderBa
         public global::GBX.NET.Engines.Plug.CPlugShader? ColorChooserShader
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugShader?>("ColorChooserShader");
-            set => SetColorChooserShader(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlColorChooserBuilderAssignments.GetColorChooserShaderAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithColorChooserShader(global::GBX.NET.Engines.Plug.CPlugShader? value)
         {
@@ -994,7 +967,7 @@ public partial class CControlColorChooserBuilder : CControlColorChooserBuilderBa
         public MP4 WithColorChooserShaderReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetColorChooserShaderReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Control.CControlColorChooserBuilderAssignments.GetColorChooserShaderReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithColorChooserShader(global::GBX.NET.Interfaces.Plug.IPlugShaderMP4? value)

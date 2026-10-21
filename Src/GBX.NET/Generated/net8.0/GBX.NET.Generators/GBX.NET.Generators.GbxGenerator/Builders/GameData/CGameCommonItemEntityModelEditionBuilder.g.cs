@@ -36,50 +36,10 @@ public abstract class CGameCommonItemEntityModelEditionBuilderBase<TSelf> where 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state;
     private protected CGameCommonItemEntityModelEditionBuilderBase() => state = new();
     private protected CGameCommonItemEntityModelEditionBuilderBase(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state) => this.state = state;
-    private protected static void SetCustomHitShapeCrystal(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, global::GBX.NET.Engines.Plug.CPlugCrystal? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetCustomHitShapeCrystalAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetCustomHitShapeCrystalReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugCrystal> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetCustomHitShapeCrystalReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetCustomTriggerShapeCrystal(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, global::GBX.NET.Engines.Plug.CPlugCrystal? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetCustomTriggerShapeCrystalAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetCustomTriggerShapeCrystalReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugCrystal> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetCustomTriggerShapeCrystalReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetDestroyParticleModel(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetDestroyParticleModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetDestroyParticleModelReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetDestroyParticleModelReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetDynaPointModel(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, global::GBX.NET.Engines.Plug.CPlugDynaPointModel? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetDynaPointModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetImages(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition.ImageRef[]? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetImagesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetInventoryDescription(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetInventoryDescriptionAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetInventoryItemClass(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetInventoryItemClassAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetInventoryName(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetInventoryNameAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetInventoryOccupation(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetInventoryOccupationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetItemType(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition.EItemType value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetItemTypeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetLightBallStates(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition.LightBallStateSimple[]? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetLightBallStatesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetLocAnim(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, global::GBX.NET.Engines.Plug.CPlugAnimLocSimple? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetLocAnimAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetLocAnimReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetLocAnimReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetMass(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, float value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetMassAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetMeshCrystal(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, global::GBX.NET.Engines.Plug.CPlugCrystal? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetMeshCrystalAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetMeshCrystalReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugCrystal> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetMeshCrystalReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetParticleModelAlivePos(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetParticleModelAlivePosAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetParticleModelAliveRef(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetParticleModelAliveRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetPickupActionModel(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, global::GBX.NET.Engines.GameData.CGameActionModel? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetPickupActionModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetPickupActionModelReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, NodeRef<global::GBX.NET.Engines.GameData.CGameActionModel> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetPickupActionModelReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetProgram(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, global::GBX.NET.Engines.GameData.CGameObjectPhyModel.EProgram value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetProgramAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSmashParticleRef(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetSmashParticleRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSolid(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, global::GBX.NET.Engines.Plug.CPlugSolid? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetSolidAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSolidReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetSolidReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSolidRef(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetSolidRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSoundLocPermanent(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, Iso4 value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetSoundLocPermanentAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSoundRefGrab(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetSoundRefGrabAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSoundRefPermanent(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetSoundRefPermanentAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSoundRefSmashed(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetSoundRefSmashedAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSoundRefSpawn(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetSoundRefSpawnAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSoundRefUnspawn(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetSoundRefUnspawnAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSpriteParams(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition.SpriteParam[]? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetSpriteParamsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetTriggerActionVersion(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetTriggerActionVersionAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetTriggeredActions(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, NodeRefList<global::GBX.NET.Engines.GameData.CGameActionModel>? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetTriggeredActionsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetTriggers(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, global::GBX.NET.Engines.Plug.CPlugTriggerAction[]? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetTriggersAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetUseMeshAsHitShape(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetUseMeshAsHitShapeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetUseMeshAsTriggerShape(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetUseMeshAsTriggerShapeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     public global::GBX.NET.Engines.Plug.CPlugCrystal? CustomHitShapeCrystal
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugCrystal?>("CustomHitShapeCrystal");
-        set => SetCustomHitShapeCrystal(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetCustomHitShapeCrystalAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithCustomHitShapeCrystal(global::GBX.NET.Engines.Plug.CPlugCrystal? value)
     {
@@ -89,13 +49,13 @@ public abstract class CGameCommonItemEntityModelEditionBuilderBase<TSelf> where 
     public TSelf WithCustomHitShapeCrystalReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugCrystal> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetCustomHitShapeCrystalReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetCustomHitShapeCrystalReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugCrystal? CustomTriggerShapeCrystal
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugCrystal?>("CustomTriggerShapeCrystal");
-        set => SetCustomTriggerShapeCrystal(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetCustomTriggerShapeCrystalAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithCustomTriggerShapeCrystal(global::GBX.NET.Engines.Plug.CPlugCrystal? value)
     {
@@ -105,13 +65,13 @@ public abstract class CGameCommonItemEntityModelEditionBuilderBase<TSelf> where 
     public TSelf WithCustomTriggerShapeCrystalReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugCrystal> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetCustomTriggerShapeCrystalReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetCustomTriggerShapeCrystalReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? DestroyParticleModel
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("DestroyParticleModel");
-        set => SetDestroyParticleModel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetDestroyParticleModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithDestroyParticleModel(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
     {
@@ -121,13 +81,13 @@ public abstract class CGameCommonItemEntityModelEditionBuilderBase<TSelf> where 
     public TSelf WithDestroyParticleModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetDestroyParticleModelReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetDestroyParticleModelReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugDynaPointModel? DynaPointModel
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugDynaPointModel?>("DynaPointModel");
-        set => SetDynaPointModel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetDynaPointModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithDynaPointModel(global::GBX.NET.Engines.Plug.CPlugDynaPointModel? value)
     {
@@ -137,7 +97,7 @@ public abstract class CGameCommonItemEntityModelEditionBuilderBase<TSelf> where 
     public global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition.ImageRef[]? Images
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition.ImageRef[]?>("Images");
-        set => SetImages(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetImagesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithImages(params global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition.ImageRef[]? value)
     {
@@ -151,7 +111,7 @@ public abstract class CGameCommonItemEntityModelEditionBuilderBase<TSelf> where 
     public string? InventoryDescription
     {
         get => state.Get<string?>("InventoryDescription");
-        set => SetInventoryDescription(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetInventoryDescriptionAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithInventoryDescription(string? value)
     {
@@ -161,7 +121,7 @@ public abstract class CGameCommonItemEntityModelEditionBuilderBase<TSelf> where 
     public int InventoryItemClass
     {
         get => state.Get<int>("InventoryItemClass");
-        set => SetInventoryItemClass(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetInventoryItemClassAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithInventoryItemClass(int value)
     {
@@ -171,7 +131,7 @@ public abstract class CGameCommonItemEntityModelEditionBuilderBase<TSelf> where 
     public string? InventoryName
     {
         get => state.Get<string?>("InventoryName");
-        set => SetInventoryName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetInventoryNameAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithInventoryName(string? value)
     {
@@ -181,7 +141,7 @@ public abstract class CGameCommonItemEntityModelEditionBuilderBase<TSelf> where 
     public int InventoryOccupation
     {
         get => state.Get<int>("InventoryOccupation");
-        set => SetInventoryOccupation(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetInventoryOccupationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithInventoryOccupation(int value)
     {
@@ -191,7 +151,7 @@ public abstract class CGameCommonItemEntityModelEditionBuilderBase<TSelf> where 
     public global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition.EItemType ItemType
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition.EItemType>("ItemType");
-        set => SetItemType(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetItemTypeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithItemType(global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition.EItemType value)
     {
@@ -201,7 +161,7 @@ public abstract class CGameCommonItemEntityModelEditionBuilderBase<TSelf> where 
     public global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition.LightBallStateSimple[]? LightBallStates
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition.LightBallStateSimple[]?>("LightBallStates");
-        set => SetLightBallStates(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetLightBallStatesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLightBallStates(params global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition.LightBallStateSimple[]? value)
     {
@@ -215,7 +175,7 @@ public abstract class CGameCommonItemEntityModelEditionBuilderBase<TSelf> where 
     public global::GBX.NET.Engines.Plug.CPlugAnimLocSimple? LocAnim
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple?>("LocAnim");
-        set => SetLocAnim(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetLocAnimAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLocAnim(global::GBX.NET.Engines.Plug.CPlugAnimLocSimple? value)
     {
@@ -225,13 +185,13 @@ public abstract class CGameCommonItemEntityModelEditionBuilderBase<TSelf> where 
     public TSelf WithLocAnimReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetLocAnimReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetLocAnimReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public float Mass
     {
         get => state.Get<float>("Mass");
-        set => SetMass(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetMassAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithMass(float value)
     {
@@ -241,7 +201,7 @@ public abstract class CGameCommonItemEntityModelEditionBuilderBase<TSelf> where 
     public global::GBX.NET.Engines.Plug.CPlugCrystal? MeshCrystal
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugCrystal?>("MeshCrystal");
-        set => SetMeshCrystal(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetMeshCrystalAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithMeshCrystal(global::GBX.NET.Engines.Plug.CPlugCrystal? value)
     {
@@ -251,13 +211,13 @@ public abstract class CGameCommonItemEntityModelEditionBuilderBase<TSelf> where 
     public TSelf WithMeshCrystalReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugCrystal> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetMeshCrystalReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetMeshCrystalReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public Vec3 ParticleModelAlivePos
     {
         get => state.Get<Vec3>("ParticleModelAlivePos");
-        set => SetParticleModelAlivePos(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetParticleModelAlivePosAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithParticleModelAlivePos(Vec3 value)
     {
@@ -267,7 +227,7 @@ public abstract class CGameCommonItemEntityModelEditionBuilderBase<TSelf> where 
     public string? ParticleModelAliveRef
     {
         get => state.Get<string?>("ParticleModelAliveRef");
-        set => SetParticleModelAliveRef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetParticleModelAliveRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithParticleModelAliveRef(string? value)
     {
@@ -277,7 +237,7 @@ public abstract class CGameCommonItemEntityModelEditionBuilderBase<TSelf> where 
     public global::GBX.NET.Engines.GameData.CGameActionModel? PickupActionModel
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameActionModel?>("PickupActionModel");
-        set => SetPickupActionModel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetPickupActionModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithPickupActionModel(global::GBX.NET.Engines.GameData.CGameActionModel? value)
     {
@@ -287,13 +247,13 @@ public abstract class CGameCommonItemEntityModelEditionBuilderBase<TSelf> where 
     public TSelf WithPickupActionModelReference(NodeRef<global::GBX.NET.Engines.GameData.CGameActionModel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetPickupActionModelReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetPickupActionModelReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.GameData.CGameObjectPhyModel.EProgram Program
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameObjectPhyModel.EProgram>("Program");
-        set => SetProgram(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetProgramAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithProgram(global::GBX.NET.Engines.GameData.CGameObjectPhyModel.EProgram value)
     {
@@ -303,7 +263,7 @@ public abstract class CGameCommonItemEntityModelEditionBuilderBase<TSelf> where 
     public string? SmashParticleRef
     {
         get => state.Get<string?>("SmashParticleRef");
-        set => SetSmashParticleRef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetSmashParticleRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithSmashParticleRef(string? value)
     {
@@ -313,7 +273,7 @@ public abstract class CGameCommonItemEntityModelEditionBuilderBase<TSelf> where 
     public global::GBX.NET.Engines.Plug.CPlugSolid? Solid
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSolid?>("Solid");
-        set => SetSolid(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetSolidAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithSolid(global::GBX.NET.Engines.Plug.CPlugSolid? value)
     {
@@ -323,13 +283,13 @@ public abstract class CGameCommonItemEntityModelEditionBuilderBase<TSelf> where 
     public TSelf WithSolidReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSolidReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetSolidReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public string? SolidRef
     {
         get => state.Get<string?>("SolidRef");
-        set => SetSolidRef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetSolidRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithSolidRef(string? value)
     {
@@ -339,7 +299,7 @@ public abstract class CGameCommonItemEntityModelEditionBuilderBase<TSelf> where 
     public Iso4 SoundLocPermanent
     {
         get => state.Get<Iso4>("SoundLocPermanent");
-        set => SetSoundLocPermanent(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetSoundLocPermanentAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithSoundLocPermanent(Iso4 value)
     {
@@ -349,7 +309,7 @@ public abstract class CGameCommonItemEntityModelEditionBuilderBase<TSelf> where 
     public string? SoundRefGrab
     {
         get => state.Get<string?>("SoundRefGrab");
-        set => SetSoundRefGrab(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetSoundRefGrabAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithSoundRefGrab(string? value)
     {
@@ -359,7 +319,7 @@ public abstract class CGameCommonItemEntityModelEditionBuilderBase<TSelf> where 
     public string? SoundRefPermanent
     {
         get => state.Get<string?>("SoundRefPermanent");
-        set => SetSoundRefPermanent(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetSoundRefPermanentAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithSoundRefPermanent(string? value)
     {
@@ -369,7 +329,7 @@ public abstract class CGameCommonItemEntityModelEditionBuilderBase<TSelf> where 
     public string? SoundRefSmashed
     {
         get => state.Get<string?>("SoundRefSmashed");
-        set => SetSoundRefSmashed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetSoundRefSmashedAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithSoundRefSmashed(string? value)
     {
@@ -379,7 +339,7 @@ public abstract class CGameCommonItemEntityModelEditionBuilderBase<TSelf> where 
     public string? SoundRefSpawn
     {
         get => state.Get<string?>("SoundRefSpawn");
-        set => SetSoundRefSpawn(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetSoundRefSpawnAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithSoundRefSpawn(string? value)
     {
@@ -389,7 +349,7 @@ public abstract class CGameCommonItemEntityModelEditionBuilderBase<TSelf> where 
     public string? SoundRefUnspawn
     {
         get => state.Get<string?>("SoundRefUnspawn");
-        set => SetSoundRefUnspawn(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetSoundRefUnspawnAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithSoundRefUnspawn(string? value)
     {
@@ -399,7 +359,7 @@ public abstract class CGameCommonItemEntityModelEditionBuilderBase<TSelf> where 
     public global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition.SpriteParam[]? SpriteParams
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition.SpriteParam[]?>("SpriteParams");
-        set => SetSpriteParams(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetSpriteParamsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithSpriteParams(params global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition.SpriteParam[]? value)
     {
@@ -413,7 +373,7 @@ public abstract class CGameCommonItemEntityModelEditionBuilderBase<TSelf> where 
     public int TriggerActionVersion
     {
         get => state.Get<int>("TriggerActionVersion");
-        set => SetTriggerActionVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetTriggerActionVersionAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithTriggerActionVersion(int value)
     {
@@ -423,7 +383,7 @@ public abstract class CGameCommonItemEntityModelEditionBuilderBase<TSelf> where 
     public NodeRefList<global::GBX.NET.Engines.GameData.CGameActionModel>? TriggeredActions
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.GameData.CGameActionModel>?>("TriggeredActions");
-        set => SetTriggeredActions(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetTriggeredActionsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithTriggeredActions(NodeRefList<global::GBX.NET.Engines.GameData.CGameActionModel>? value)
     {
@@ -441,7 +401,7 @@ public abstract class CGameCommonItemEntityModelEditionBuilderBase<TSelf> where 
     public global::GBX.NET.Engines.Plug.CPlugTriggerAction[]? Triggers
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugTriggerAction[]?>("Triggers");
-        set => SetTriggers(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetTriggersAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithTriggers(params global::GBX.NET.Engines.Plug.CPlugTriggerAction[]? value)
     {
@@ -455,7 +415,7 @@ public abstract class CGameCommonItemEntityModelEditionBuilderBase<TSelf> where 
     public bool UseMeshAsHitShape
     {
         get => state.Get<bool>("UseMeshAsHitShape");
-        set => SetUseMeshAsHitShape(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetUseMeshAsHitShapeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithUseMeshAsHitShape(bool value)
     {
@@ -465,7 +425,7 @@ public abstract class CGameCommonItemEntityModelEditionBuilderBase<TSelf> where 
     public bool UseMeshAsTriggerShape
     {
         get => state.Get<bool>("UseMeshAsTriggerShape");
-        set => SetUseMeshAsTriggerShape(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelEditionBuilderAssignments.GetUseMeshAsTriggerShapeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithUseMeshAsTriggerShape(bool value)
     {

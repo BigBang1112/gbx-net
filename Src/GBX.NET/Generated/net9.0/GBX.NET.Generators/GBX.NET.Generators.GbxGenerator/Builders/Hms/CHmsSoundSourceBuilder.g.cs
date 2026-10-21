@@ -36,18 +36,10 @@ public abstract class CHmsSoundSourceBuilderBase<TSelf> where TSelf : CHmsSoundS
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsSoundSource> state;
     private protected CHmsSoundSourceBuilderBase() => state = new();
     private protected CHmsSoundSourceBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsSoundSource> state) => this.state = state;
-    private protected static void SetPitch(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsSoundSource> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsSoundSourceBuilderAssignments.GetPitchAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetPlugSound(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsSoundSource> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsSoundSourceBuilderAssignments.GetPlugSoundAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetPlugSoundReference(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsSoundSource> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsSoundSourceBuilderAssignments.GetPlugSoundReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetPriorityAdjustement(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsSoundSource> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsSoundSourceBuilderAssignments.GetPriorityAdjustementAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetRpmOrSpeed(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsSoundSource> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsSoundSourceBuilderAssignments.GetRpmOrSpeedAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetUseLowQuality(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsSoundSource> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsSoundSourceBuilderAssignments.GetUseLowQualityAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetVolume(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsSoundSource> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsSoundSourceBuilderAssignments.GetVolumeAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetVolumicSize(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsSoundSource> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsSoundSourceBuilderAssignments.GetVolumicSizeAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
     public float Pitch
     {
         get => state.Get<float>("Pitch");
-        set => SetPitch(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsSoundSourceBuilderAssignments.GetPitchAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithPitch(float value)
     {
@@ -57,7 +49,7 @@ public abstract class CHmsSoundSourceBuilderBase<TSelf> where TSelf : CHmsSoundS
     public global::GBX.NET.Engines.Plug.CPlugSound? PlugSound
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("PlugSound");
-        set => SetPlugSound(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsSoundSourceBuilderAssignments.GetPlugSoundAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithPlugSound(global::GBX.NET.Engines.Plug.CPlugSound? value)
     {
@@ -67,13 +59,13 @@ public abstract class CHmsSoundSourceBuilderBase<TSelf> where TSelf : CHmsSoundS
     public TSelf WithPlugSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetPlugSoundReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsSoundSourceBuilderAssignments.GetPlugSoundReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public float Volume
     {
         get => state.Get<float>("Volume");
-        set => SetVolume(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsSoundSourceBuilderAssignments.GetVolumeAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithVolume(float value)
     {
@@ -87,7 +79,7 @@ public abstract class CHmsSoundSourceBuilderMembers1<TSelf> : CHmsSoundSourceBui
     public float PriorityAdjustement
     {
         get => state.Get<float>("PriorityAdjustement");
-        set => SetPriorityAdjustement(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsSoundSourceBuilderAssignments.GetPriorityAdjustementAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithPriorityAdjustement(float value)
     {
@@ -97,7 +89,7 @@ public abstract class CHmsSoundSourceBuilderMembers1<TSelf> : CHmsSoundSourceBui
     public float RpmOrSpeed
     {
         get => state.Get<float>("RpmOrSpeed");
-        set => SetRpmOrSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsSoundSourceBuilderAssignments.GetRpmOrSpeedAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithRpmOrSpeed(float value)
     {
@@ -107,7 +99,7 @@ public abstract class CHmsSoundSourceBuilderMembers1<TSelf> : CHmsSoundSourceBui
     public bool UseLowQuality
     {
         get => state.Get<bool>("UseLowQuality");
-        set => SetUseLowQuality(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsSoundSourceBuilderAssignments.GetUseLowQualityAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithUseLowQuality(bool value)
     {
@@ -121,7 +113,7 @@ public abstract class CHmsSoundSourceBuilderMembers2<TSelf> : CHmsSoundSourceBui
     public Vec3 VolumicSize
     {
         get => state.Get<Vec3>("VolumicSize");
-        set => SetVolumicSize(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsSoundSourceBuilderAssignments.GetVolumicSizeAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithVolumicSize(Vec3 value)
     {

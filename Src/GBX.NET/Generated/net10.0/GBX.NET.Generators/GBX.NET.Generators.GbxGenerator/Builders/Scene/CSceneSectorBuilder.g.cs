@@ -36,13 +36,10 @@ public abstract class CSceneSectorBuilderBase<TSelf> where TSelf : CSceneSectorB
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSector> state;
     private protected CSceneSectorBuilderBase() => state = new();
     private protected CSceneSectorBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSector> state) => this.state = state;
-    private protected static void SetScene(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSector> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneSectorBuilderAssignments.GetSceneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetZone(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSector> state, global::GBX.NET.Engines.Hms.CHmsZone? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneSectorBuilderAssignments.GetZoneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetZoneReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSector> state, NodeRef<global::GBX.NET.Engines.Hms.CHmsZone> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneSectorBuilderAssignments.GetZoneReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public int Scene
     {
         get => state.Get<int>("Scene");
-        set => SetScene(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneSectorBuilderAssignments.GetSceneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithScene(int value)
     {
@@ -52,7 +49,7 @@ public abstract class CSceneSectorBuilderBase<TSelf> where TSelf : CSceneSectorB
     public global::GBX.NET.Engines.Hms.CHmsZone? Zone
     {
         get => state.Get<global::GBX.NET.Engines.Hms.CHmsZone?>("Zone");
-        set => SetZone(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneSectorBuilderAssignments.GetZoneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithZone(global::GBX.NET.Engines.Hms.CHmsZone? value)
     {
@@ -62,7 +59,7 @@ public abstract class CSceneSectorBuilderBase<TSelf> where TSelf : CSceneSectorB
     public TSelf WithZoneReference(NodeRef<global::GBX.NET.Engines.Hms.CHmsZone> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetZoneReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneSectorBuilderAssignments.GetZoneReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }

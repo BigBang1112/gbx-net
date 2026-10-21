@@ -36,15 +36,10 @@ public abstract class CGameCtnBlockSkinBuilderBase<TSelf> where TSelf : CGameCtn
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockSkin> state;
     private protected CGameCtnBlockSkinBuilderBase() => state = new();
     private protected CGameCtnBlockSkinBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockSkin> state) => this.state = state;
-    private protected static void SetForegroundPackDesc(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockSkin> state, PackDesc? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockSkinBuilderAssignments.GetForegroundPackDescAssignment(), value, GameVersion.TM2020);
-    private protected static void SetPackDesc(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockSkin> state, PackDesc? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockSkinBuilderAssignments.GetPackDescAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetParentPackDesc(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockSkin> state, PackDesc? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockSkinBuilderAssignments.GetParentPackDescAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSkinName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockSkin> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockSkinBuilderAssignments.GetSkinNameAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
-    private protected static void SetText(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockSkin> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockSkinBuilderAssignments.GetTextAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public string? Text
     {
         get => state.Get<string?>("Text");
-        set => SetText(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockSkinBuilderAssignments.GetTextAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithText(string? value)
     {
@@ -58,7 +53,7 @@ public abstract class CGameCtnBlockSkinBuilderMembers1<TSelf> : CGameCtnBlockSki
     public string? SkinName
     {
         get => state.Get<string?>("SkinName");
-        set => SetSkinName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockSkinBuilderAssignments.GetSkinNameAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
     }
     public TSelf WithSkinName(string? value)
     {
@@ -72,7 +67,7 @@ public abstract class CGameCtnBlockSkinBuilderMembers2<TSelf> : CGameCtnBlockSki
     public PackDesc? PackDesc
     {
         get => state.Get<PackDesc?>("PackDesc");
-        set => SetPackDesc(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockSkinBuilderAssignments.GetPackDescAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPackDesc(PackDesc? value)
     {
@@ -82,7 +77,7 @@ public abstract class CGameCtnBlockSkinBuilderMembers2<TSelf> : CGameCtnBlockSki
     public PackDesc? ParentPackDesc
     {
         get => state.Get<PackDesc?>("ParentPackDesc");
-        set => SetParentPackDesc(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockSkinBuilderAssignments.GetParentPackDescAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithParentPackDesc(PackDesc? value)
     {
@@ -312,7 +307,7 @@ public partial class CGameCtnBlockSkinBuilder : CGameCtnBlockSkinBuilderBase<CGa
         public PackDesc? ForegroundPackDesc
         {
             get => state.Get<PackDesc?>("ForegroundPackDesc");
-            set => SetForegroundPackDesc(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockSkinBuilderAssignments.GetForegroundPackDescAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithForegroundPackDesc(PackDesc? value)
         {

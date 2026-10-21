@@ -36,7 +36,6 @@ public abstract class CGameGhostBuilderBase<TSelf> where TSelf : CGameGhostBuild
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameGhost> state;
     private protected CGameGhostBuilderBase() => state = new();
     private protected CGameGhostBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameGhost> state) => this.state = state;
-    private protected static void SetSavedMobilClassId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameGhost> state, uint? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameGhostBuilderAssignments.GetSavedMobilClassIdAssignment(), value, GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX);
 }
 public abstract class CGameGhostBuilderMembers1<TSelf> : CGameGhostBuilderBase<TSelf> where TSelf : CGameGhostBuilderMembers1<TSelf>
 {
@@ -44,7 +43,7 @@ public abstract class CGameGhostBuilderMembers1<TSelf> : CGameGhostBuilderBase<T
     public uint? SavedMobilClassId
     {
         get => state.Get<uint?>("SavedMobilClassId");
-        set => SetSavedMobilClassId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameGhostBuilderAssignments.GetSavedMobilClassIdAssignment(), value, GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX);
     }
     public TSelf WithSavedMobilClassId(uint? value)
     {

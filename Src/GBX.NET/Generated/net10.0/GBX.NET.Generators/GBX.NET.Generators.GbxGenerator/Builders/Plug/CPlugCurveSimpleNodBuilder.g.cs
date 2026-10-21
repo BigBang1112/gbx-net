@@ -36,18 +36,10 @@ public abstract class CPlugCurveSimpleNodBuilderBase<TSelf> where TSelf : CPlugC
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod> state;
     private protected CPlugCurveSimpleNodBuilderBase() => state = new();
     private protected CPlugCurveSimpleNodBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod> state) => this.state = state;
-    private protected static void SetCurve(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod> state, global::GBX.NET.PlugCurve value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCurveSimpleNodBuilderAssignments.GetCurveAssignment(), value, GameVersion.TM2020);
-    private protected static void SetForceTangentMaxX(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetForceTangentMaxXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
-    private protected static void SetForceTangentMinX(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetForceTangentMinXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
-    private protected static void SetForcedTangentMaxX(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetForcedTangentMaxXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
-    private protected static void SetForcedTangentMinX(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetForcedTangentMinXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
-    private protected static void SetRealInterp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod> state, global::GBX.NET.Engines.Function.CFuncKeysReal.ERealInterp value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetRealInterpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetXs(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod> state, float[]? value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysBuilderAssignments.GetXsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetYs(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod> state, float[]? value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetYsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public float[]? Xs
     {
         get => state.Get<float[]?>("Xs");
-        set => SetXs(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysBuilderAssignments.GetXsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithXs(params float[]? value)
     {
@@ -65,7 +57,7 @@ public abstract class CPlugCurveSimpleNodBuilderMembers1<TSelf> : CPlugCurveSimp
     public float[]? Ys
     {
         get => state.Get<float[]?>("Ys");
-        set => SetYs(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetYsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithYs(params float[]? value)
     {
@@ -83,7 +75,7 @@ public abstract class CPlugCurveSimpleNodBuilderMembers2<TSelf> : CPlugCurveSimp
     public global::GBX.NET.Engines.Function.CFuncKeysReal.ERealInterp RealInterp
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal.ERealInterp>("RealInterp");
-        set => SetRealInterp(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetRealInterpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRealInterp(global::GBX.NET.Engines.Function.CFuncKeysReal.ERealInterp value)
     {
@@ -97,7 +89,7 @@ public abstract class CPlugCurveSimpleNodBuilderMembers3<TSelf> : CPlugCurveSimp
     public bool ForceTangentMaxX
     {
         get => state.Get<bool>("ForceTangentMaxX");
-        set => SetForceTangentMaxX(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetForceTangentMaxXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithForceTangentMaxX(bool value)
     {
@@ -107,7 +99,7 @@ public abstract class CPlugCurveSimpleNodBuilderMembers3<TSelf> : CPlugCurveSimp
     public bool ForceTangentMinX
     {
         get => state.Get<bool>("ForceTangentMinX");
-        set => SetForceTangentMinX(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetForceTangentMinXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithForceTangentMinX(bool value)
     {
@@ -117,7 +109,7 @@ public abstract class CPlugCurveSimpleNodBuilderMembers3<TSelf> : CPlugCurveSimp
     public float ForcedTangentMaxX
     {
         get => state.Get<float>("ForcedTangentMaxX");
-        set => SetForcedTangentMaxX(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetForcedTangentMaxXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithForcedTangentMaxX(float value)
     {
@@ -127,7 +119,7 @@ public abstract class CPlugCurveSimpleNodBuilderMembers3<TSelf> : CPlugCurveSimp
     public float ForcedTangentMinX
     {
         get => state.Get<float>("ForcedTangentMinX");
-        set => SetForcedTangentMinX(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetForcedTangentMinXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithForcedTangentMinX(float value)
     {
@@ -389,7 +381,7 @@ public partial class CPlugCurveSimpleNodBuilder : CPlugCurveSimpleNodBuilderBase
         public global::GBX.NET.PlugCurve Curve
         {
             get => state.Get<global::GBX.NET.PlugCurve>("Curve");
-            set => SetCurve(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCurveSimpleNodBuilderAssignments.GetCurveAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithCurve(global::GBX.NET.PlugCurve value)
         {

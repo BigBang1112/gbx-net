@@ -36,12 +36,10 @@ public abstract class CGameCtnMediaBlockTransitionFadeBuilderBase<TSelf> where T
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade> state;
     private protected CGameCtnMediaBlockTransitionFadeBuilderBase() => state = new();
     private protected CGameCtnMediaBlockTransitionFadeBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade> state) => this.state = state;
-    private protected static void SetColor(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade> state, Vec4 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTransitionFadeBuilderAssignments.GetColorAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade.Key>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTransitionFadeBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public Vec4 Color
     {
         get => state.Get<Vec4>("Color");
-        set => SetColor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTransitionFadeBuilderAssignments.GetColorAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithColor(Vec4 value)
     {
@@ -51,7 +49,7 @@ public abstract class CGameCtnMediaBlockTransitionFadeBuilderBase<TSelf> where T
     public List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade.Key>? Keys
     {
         get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade.Key>?>("Keys");
-        set => SetKeys(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTransitionFadeBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade.Key>? value)
     {

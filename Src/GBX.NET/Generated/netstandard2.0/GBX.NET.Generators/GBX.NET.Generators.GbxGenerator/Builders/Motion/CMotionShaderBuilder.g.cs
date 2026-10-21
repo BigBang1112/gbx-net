@@ -36,16 +36,10 @@ public abstract class CMotionShaderBuilderBase<TSelf> where TSelf : CMotionShade
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionShader> state;
     private protected CMotionShaderBuilderBase() => state = new();
     private protected CMotionShaderBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionShader> state) => this.state = state;
-    private protected static void SetFuncShader(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionShader> state, global::GBX.NET.Engines.Function.CFuncShader? value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionShaderBuilderAssignments.GetFuncShaderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFuncShaderReference(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionShader> state, NodeRef<global::GBX.NET.Engines.Function.CFuncShader> value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionShaderBuilderAssignments.GetFuncShaderReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMaterial(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionShader> state, global::GBX.NET.Engines.Plug.CPlugMaterial? value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionShaderBuilderAssignments.GetMaterialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMaterialReference(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionShader> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionShaderBuilderAssignments.GetMaterialReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetShader(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionShader> state, global::GBX.NET.Engines.Plug.CPlugShader? value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionShaderBuilderAssignments.GetShaderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetShaderReference(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionShader> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionShaderBuilderAssignments.GetShaderReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public global::GBX.NET.Engines.Function.CFuncShader? FuncShader
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncShader?>("FuncShader");
-        set => SetFuncShader(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionShaderBuilderAssignments.GetFuncShaderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFuncShader(global::GBX.NET.Engines.Function.CFuncShader? value)
     {
@@ -55,13 +49,13 @@ public abstract class CMotionShaderBuilderBase<TSelf> where TSelf : CMotionShade
     public TSelf WithFuncShaderReference(NodeRef<global::GBX.NET.Engines.Function.CFuncShader> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetFuncShaderReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionShaderBuilderAssignments.GetFuncShaderReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugMaterial? Material
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("Material");
-        set => SetMaterial(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionShaderBuilderAssignments.GetMaterialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMaterial(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
     {
@@ -71,13 +65,13 @@ public abstract class CMotionShaderBuilderBase<TSelf> where TSelf : CMotionShade
     public TSelf WithMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetMaterialReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionShaderBuilderAssignments.GetMaterialReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugShader? Shader
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugShader?>("Shader");
-        set => SetShader(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionShaderBuilderAssignments.GetShaderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithShader(global::GBX.NET.Engines.Plug.CPlugShader? value)
     {
@@ -87,7 +81,7 @@ public abstract class CMotionShaderBuilderBase<TSelf> where TSelf : CMotionShade
     public TSelf WithShaderReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetShaderReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionShaderBuilderAssignments.GetShaderReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }

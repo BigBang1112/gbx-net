@@ -36,11 +36,10 @@ public abstract class CPlugAdnRandomGenListBuilderBase<TSelf> where TSelf : CPlu
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAdnRandomGenList> state;
     private protected CPlugAdnRandomGenListBuilderBase() => state = new();
     private protected CPlugAdnRandomGenListBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAdnRandomGenList> state) => this.state = state;
-    private protected static void SetDatas(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAdnRandomGenList> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugAdnRandomGen>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAdnRandomGenListBuilderAssignments.GetDatasAssignment(), value, GameVersion.TM2020);
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugAdnRandomGen>? Datas
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugAdnRandomGen>?>("Datas");
-        set => SetDatas(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAdnRandomGenListBuilderAssignments.GetDatasAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithDatas(NodeRefList<global::GBX.NET.Engines.Plug.CPlugAdnRandomGen>? value)
     {

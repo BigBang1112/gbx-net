@@ -36,25 +36,10 @@ public abstract class CSceneFxDepthOfFieldBuilderBase<TSelf> where TSelf : CScen
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDepthOfField> state;
     private protected CSceneFxDepthOfFieldBuilderBase() => state = new();
     private protected CSceneFxDepthOfFieldBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDepthOfField> state) => this.state = state;
-    private protected static void SetBlurAmp(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDepthOfField> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetBlurAmpAssignment(), value, GameVersion.TMF);
-    private protected static void SetBlurRatio(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDepthOfField> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetBlurRatioAssignment(), value, GameVersion.TMF);
-    private protected static void SetBlurSize(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDepthOfField> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetBlurSizeAssignment(), value, GameVersion.TMF);
-    private protected static void SetBlurSizeF(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDepthOfField> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetBlurSizeFAssignment(), value, GameVersion.TMF);
-    private protected static void SetBlurSizeN(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDepthOfField> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetBlurSizeNAssignment(), value, GameVersion.TMF);
-    private protected static void SetFidMrtDOF_BlurAtDepth(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDepthOfField> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetFidMrtDOF_BlurAtDepthAssignment(), value, GameVersion.TMF);
-    private protected static void SetFidMrtDOF_BlurAtDepthReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDepthOfField> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetFidMrtDOF_BlurAtDepthReferenceAssignment(), value, GameVersion.TMF);
-    private protected static void SetFocusRange(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDepthOfField> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetFocusRangeAssignment(), value, GameVersion.TMF);
-    private protected static void SetFocusZ(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDepthOfField> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetFocusZAssignment(), value, GameVersion.TMF);
-    private protected static void SetIntensity(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDepthOfField> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetIntensityAssignment(), value, GameVersion.TMF);
-    private protected static void SetIsAlphaInHomo(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDepthOfField> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetIsAlphaInHomoAssignment(), value, GameVersion.TMF);
-    private protected static void SetOverlapF(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDepthOfField> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetOverlapFAssignment(), value, GameVersion.TMF);
-    private protected static void SetTechnique(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDepthOfField> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetTechniqueAssignment(), value, GameVersion.TMF);
-    private protected static void SetTexSizeF(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDepthOfField> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetTexSizeFAssignment(), value, GameVersion.TMF);
-    private protected static void SetTexSizeN(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDepthOfField> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetTexSizeNAssignment(), value, GameVersion.TMF);
     public float BlurAmp
     {
         get => state.Get<float>("BlurAmp");
-        set => SetBlurAmp(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetBlurAmpAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithBlurAmp(float value)
     {
@@ -64,7 +49,7 @@ public abstract class CSceneFxDepthOfFieldBuilderBase<TSelf> where TSelf : CScen
     public float BlurRatio
     {
         get => state.Get<float>("BlurRatio");
-        set => SetBlurRatio(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetBlurRatioAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithBlurRatio(float value)
     {
@@ -74,7 +59,7 @@ public abstract class CSceneFxDepthOfFieldBuilderBase<TSelf> where TSelf : CScen
     public int BlurSize
     {
         get => state.Get<int>("BlurSize");
-        set => SetBlurSize(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetBlurSizeAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithBlurSize(int value)
     {
@@ -84,7 +69,7 @@ public abstract class CSceneFxDepthOfFieldBuilderBase<TSelf> where TSelf : CScen
     public int BlurSizeF
     {
         get => state.Get<int>("BlurSizeF");
-        set => SetBlurSizeF(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetBlurSizeFAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithBlurSizeF(int value)
     {
@@ -94,7 +79,7 @@ public abstract class CSceneFxDepthOfFieldBuilderBase<TSelf> where TSelf : CScen
     public int BlurSizeN
     {
         get => state.Get<int>("BlurSizeN");
-        set => SetBlurSizeN(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetBlurSizeNAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithBlurSizeN(int value)
     {
@@ -104,7 +89,7 @@ public abstract class CSceneFxDepthOfFieldBuilderBase<TSelf> where TSelf : CScen
     public global::GBX.NET.Engines.MwFoundations.CMwNod? FidMrtDOF_BlurAtDepth
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("FidMrtDOF_BlurAtDepth");
-        set => SetFidMrtDOF_BlurAtDepth(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetFidMrtDOF_BlurAtDepthAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithFidMrtDOF_BlurAtDepth(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
@@ -114,13 +99,13 @@ public abstract class CSceneFxDepthOfFieldBuilderBase<TSelf> where TSelf : CScen
     public TSelf WithFidMrtDOF_BlurAtDepthReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetFidMrtDOF_BlurAtDepthReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetFidMrtDOF_BlurAtDepthReferenceAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
     public float FocusRange
     {
         get => state.Get<float>("FocusRange");
-        set => SetFocusRange(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetFocusRangeAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithFocusRange(float value)
     {
@@ -130,7 +115,7 @@ public abstract class CSceneFxDepthOfFieldBuilderBase<TSelf> where TSelf : CScen
     public float FocusZ
     {
         get => state.Get<float>("FocusZ");
-        set => SetFocusZ(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetFocusZAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithFocusZ(float value)
     {
@@ -140,7 +125,7 @@ public abstract class CSceneFxDepthOfFieldBuilderBase<TSelf> where TSelf : CScen
     public float Intensity
     {
         get => state.Get<float>("Intensity");
-        set => SetIntensity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetIntensityAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithIntensity(float value)
     {
@@ -150,7 +135,7 @@ public abstract class CSceneFxDepthOfFieldBuilderBase<TSelf> where TSelf : CScen
     public bool IsAlphaInHomo
     {
         get => state.Get<bool>("IsAlphaInHomo");
-        set => SetIsAlphaInHomo(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetIsAlphaInHomoAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithIsAlphaInHomo(bool value)
     {
@@ -160,7 +145,7 @@ public abstract class CSceneFxDepthOfFieldBuilderBase<TSelf> where TSelf : CScen
     public float OverlapF
     {
         get => state.Get<float>("OverlapF");
-        set => SetOverlapF(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetOverlapFAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithOverlapF(float value)
     {
@@ -170,7 +155,7 @@ public abstract class CSceneFxDepthOfFieldBuilderBase<TSelf> where TSelf : CScen
     public int Technique
     {
         get => state.Get<int>("Technique");
-        set => SetTechnique(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetTechniqueAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithTechnique(int value)
     {
@@ -180,7 +165,7 @@ public abstract class CSceneFxDepthOfFieldBuilderBase<TSelf> where TSelf : CScen
     public int TexSizeF
     {
         get => state.Get<int>("TexSizeF");
-        set => SetTexSizeF(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetTexSizeFAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithTexSizeF(int value)
     {
@@ -190,7 +175,7 @@ public abstract class CSceneFxDepthOfFieldBuilderBase<TSelf> where TSelf : CScen
     public int TexSizeN
     {
         get => state.Get<int>("TexSizeN");
-        set => SetTexSizeN(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetTexSizeNAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithTexSizeN(int value)
     {

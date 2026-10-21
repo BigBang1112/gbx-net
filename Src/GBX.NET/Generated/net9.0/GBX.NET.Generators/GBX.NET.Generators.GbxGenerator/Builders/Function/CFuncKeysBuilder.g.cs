@@ -36,11 +36,10 @@ public abstract class CFuncKeysBuilderBase<TSelf> where TSelf : CFuncKeysBuilder
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeys> state;
     private protected CFuncKeysBuilderBase() => state = new();
     private protected CFuncKeysBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeys> state) => this.state = state;
-    private protected static void SetXs(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeys> state, float[]? value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysBuilderAssignments.GetXsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public float[]? Xs
     {
         get => state.Get<float[]?>("Xs");
-        set => SetXs(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysBuilderAssignments.GetXsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithXs(params float[]? value)
     {

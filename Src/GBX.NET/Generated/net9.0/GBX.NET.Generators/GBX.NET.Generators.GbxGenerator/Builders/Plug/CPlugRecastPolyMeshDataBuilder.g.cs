@@ -36,11 +36,10 @@ public abstract class CPlugRecastPolyMeshDataBuilderBase<TSelf> where TSelf : CP
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData> state;
     private protected CPlugRecastPolyMeshDataBuilderBase() => state = new();
     private protected CPlugRecastPolyMeshDataBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData> state) => this.state = state;
-    private protected static void SetHeightfieldLayers(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData> state, global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData.HeightfieldLayer[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugRecastPolyMeshDataBuilderAssignments.GetHeightfieldLayersAssignment(), value, GameVersion.TM2020);
     public global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData.HeightfieldLayer[]? HeightfieldLayers
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData.HeightfieldLayer[]?>("HeightfieldLayers");
-        set => SetHeightfieldLayers(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugRecastPolyMeshDataBuilderAssignments.GetHeightfieldLayersAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithHeightfieldLayers(params global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData.HeightfieldLayer[]? value)
     {

@@ -36,14 +36,6 @@ public abstract class CPlugGameSkinBuilderBase<TSelf> where TSelf : CPlugGameSki
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGameSkin> state;
     private protected CPlugGameSkinBuilderBase() => state = new();
     private protected CPlugGameSkinBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGameSkin> state) => this.state = state;
-    private protected static void SetCustomizableFids(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGameSkin> state, global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinBuilderAssignments.GetCustomizableFidsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetCustomizableFids2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGameSkin> state, global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinBuilderAssignments.GetCustomizableFids2Assignment(), value, GameVersion.TM10 | GameVersion.TMPU);
-    private protected static void SetCustomizableFilePaths(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGameSkin> state, global::GBX.NET.Engines.Plug.CPlugGameSkin.HeaderFid[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinBuilderAssignments.GetCustomizableFilePathsAssignment(), value, GameVersion.TM2020);
-    private protected static void SetDirName(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGameSkin> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinBuilderAssignments.GetDirNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetDirNameAlt(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGameSkin> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinBuilderAssignments.GetDirNameAltAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetHeaderFids(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGameSkin> state, global::GBX.NET.Engines.Plug.CPlugGameSkin.HeaderFid[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinBuilderAssignments.GetHeaderFidsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX | GameVersion.TMT);
-    private protected static void SetPainterSceneId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGameSkin> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinBuilderAssignments.GetPainterSceneIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetPainterTextureName(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGameSkin> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinBuilderAssignments.GetPainterTextureNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
 }
 public abstract class CPlugGameSkinBuilderMembers1<TSelf> : CPlugGameSkinBuilderBase<TSelf> where TSelf : CPlugGameSkinBuilderMembers1<TSelf>
 {
@@ -51,7 +43,7 @@ public abstract class CPlugGameSkinBuilderMembers1<TSelf> : CPlugGameSkinBuilder
     public global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid[]? CustomizableFids2
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid[]?>("CustomizableFids2");
-        set => SetCustomizableFids2(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinBuilderAssignments.GetCustomizableFids2Assignment(), value, GameVersion.TM10 | GameVersion.TMPU);
     }
     public TSelf WithCustomizableFids2(params global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid[]? value)
     {
@@ -69,7 +61,7 @@ public abstract class CPlugGameSkinBuilderMembers2<TSelf> : CPlugGameSkinBuilder
     public string? DirName
     {
         get => state.Get<string?>("DirName");
-        set => SetDirName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinBuilderAssignments.GetDirNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDirName(string? value)
     {
@@ -79,7 +71,7 @@ public abstract class CPlugGameSkinBuilderMembers2<TSelf> : CPlugGameSkinBuilder
     public string? PainterSceneId
     {
         get => state.Get<string?>("PainterSceneId");
-        set => SetPainterSceneId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinBuilderAssignments.GetPainterSceneIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPainterSceneId(string? value)
     {
@@ -89,7 +81,7 @@ public abstract class CPlugGameSkinBuilderMembers2<TSelf> : CPlugGameSkinBuilder
     public string? PainterTextureName
     {
         get => state.Get<string?>("PainterTextureName");
-        set => SetPainterTextureName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinBuilderAssignments.GetPainterTextureNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPainterTextureName(string? value)
     {
@@ -103,7 +95,7 @@ public abstract class CPlugGameSkinBuilderMembers3<TSelf> : CPlugGameSkinBuilder
     public global::GBX.NET.Engines.Plug.CPlugGameSkin.HeaderFid[]? HeaderFids
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugGameSkin.HeaderFid[]?>("HeaderFids");
-        set => SetHeaderFids(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinBuilderAssignments.GetHeaderFidsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX | GameVersion.TMT);
     }
     public TSelf WithHeaderFids(params global::GBX.NET.Engines.Plug.CPlugGameSkin.HeaderFid[]? value)
     {
@@ -284,7 +276,7 @@ public partial class CPlugGameSkinBuilder : CPlugGameSkinBuilderBase<CPlugGameSk
         public global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid[]? CustomizableFids
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid[]?>("CustomizableFids");
-            set => SetCustomizableFids(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinBuilderAssignments.GetCustomizableFidsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMSX WithCustomizableFids(params global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid[]? value)
         {
@@ -316,7 +308,7 @@ public partial class CPlugGameSkinBuilder : CPlugGameSkinBuilderBase<CPlugGameSk
         public global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid[]? CustomizableFids
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid[]?>("CustomizableFids");
-            set => SetCustomizableFids(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinBuilderAssignments.GetCustomizableFidsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMNESWC WithCustomizableFids(params global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid[]? value)
         {
@@ -348,7 +340,7 @@ public partial class CPlugGameSkinBuilder : CPlugGameSkinBuilderBase<CPlugGameSk
         public global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid[]? CustomizableFids
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid[]?>("CustomizableFids");
-            set => SetCustomizableFids(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinBuilderAssignments.GetCustomizableFidsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public VSK5 WithCustomizableFids(params global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid[]? value)
         {
@@ -362,7 +354,7 @@ public partial class CPlugGameSkinBuilder : CPlugGameSkinBuilderBase<CPlugGameSk
         public string? DirNameAlt
         {
             get => state.Get<string?>("DirNameAlt");
-            set => SetDirNameAlt(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinBuilderAssignments.GetDirNameAltAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         }
         public VSK5 WithDirNameAlt(string? value)
         {
@@ -390,7 +382,7 @@ public partial class CPlugGameSkinBuilder : CPlugGameSkinBuilderBase<CPlugGameSk
         public global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid[]? CustomizableFids
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid[]?>("CustomizableFids");
-            set => SetCustomizableFids(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinBuilderAssignments.GetCustomizableFidsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMF WithCustomizableFids(params global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid[]? value)
         {
@@ -404,7 +396,7 @@ public partial class CPlugGameSkinBuilder : CPlugGameSkinBuilderBase<CPlugGameSk
         public string? DirNameAlt
         {
             get => state.Get<string?>("DirNameAlt");
-            set => SetDirNameAlt(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinBuilderAssignments.GetDirNameAltAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMF WithDirNameAlt(string? value)
         {
@@ -432,7 +424,7 @@ public partial class CPlugGameSkinBuilder : CPlugGameSkinBuilderBase<CPlugGameSk
         public global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid[]? CustomizableFids
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid[]?>("CustomizableFids");
-            set => SetCustomizableFids(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinBuilderAssignments.GetCustomizableFidsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP3 WithCustomizableFids(params global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid[]? value)
         {
@@ -446,7 +438,7 @@ public partial class CPlugGameSkinBuilder : CPlugGameSkinBuilderBase<CPlugGameSk
         public string? DirNameAlt
         {
             get => state.Get<string?>("DirNameAlt");
-            set => SetDirNameAlt(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinBuilderAssignments.GetDirNameAltAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP3 WithDirNameAlt(string? value)
         {
@@ -474,7 +466,7 @@ public partial class CPlugGameSkinBuilder : CPlugGameSkinBuilderBase<CPlugGameSk
         public global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid[]? CustomizableFids
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid[]?>("CustomizableFids");
-            set => SetCustomizableFids(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinBuilderAssignments.GetCustomizableFidsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMT WithCustomizableFids(params global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid[]? value)
         {
@@ -488,7 +480,7 @@ public partial class CPlugGameSkinBuilder : CPlugGameSkinBuilderBase<CPlugGameSk
         public string? DirNameAlt
         {
             get => state.Get<string?>("DirNameAlt");
-            set => SetDirNameAlt(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinBuilderAssignments.GetDirNameAltAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMT WithDirNameAlt(string? value)
         {
@@ -516,7 +508,7 @@ public partial class CPlugGameSkinBuilder : CPlugGameSkinBuilderBase<CPlugGameSk
         public global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid[]? CustomizableFids
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid[]?>("CustomizableFids");
-            set => SetCustomizableFids(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinBuilderAssignments.GetCustomizableFidsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP4 WithCustomizableFids(params global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid[]? value)
         {
@@ -530,7 +522,7 @@ public partial class CPlugGameSkinBuilder : CPlugGameSkinBuilderBase<CPlugGameSk
         public string? DirNameAlt
         {
             get => state.Get<string?>("DirNameAlt");
-            set => SetDirNameAlt(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinBuilderAssignments.GetDirNameAltAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP4 WithDirNameAlt(string? value)
         {
@@ -558,7 +550,7 @@ public partial class CPlugGameSkinBuilder : CPlugGameSkinBuilderBase<CPlugGameSk
         public global::GBX.NET.Engines.Plug.CPlugGameSkin.HeaderFid[]? CustomizableFilePaths
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugGameSkin.HeaderFid[]?>("CustomizableFilePaths");
-            set => SetCustomizableFilePaths(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinBuilderAssignments.GetCustomizableFilePathsAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithCustomizableFilePaths(params global::GBX.NET.Engines.Plug.CPlugGameSkin.HeaderFid[]? value)
         {
@@ -572,7 +564,7 @@ public partial class CPlugGameSkinBuilder : CPlugGameSkinBuilderBase<CPlugGameSk
         public string? DirNameAlt
         {
             get => state.Get<string?>("DirNameAlt");
-            set => SetDirNameAlt(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinBuilderAssignments.GetDirNameAltAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         }
         public TM2020 WithDirNameAlt(string? value)
         {

@@ -35,6 +35,14 @@ public partial interface IGameCtnMediaBlock : IClassVersion<global::GBX.NET.Engi
 {
 }
 
+public partial interface IGameCtnMediaBlockTMF : IGameCtnMediaBlock
+{
+}
+
+public partial interface IGameCtnMediaBlockMP3 : IGameCtnMediaBlock
+{
+}
+
 public partial interface IGameCtnMediaBlockTMT : IGameCtnMediaBlock
 {
 }
@@ -47,14 +55,6 @@ public partial interface IGameCtnMediaBlockTM2020 : IGameCtnMediaBlock
 {
 }
 
-public partial interface IGameCtnMediaBlockVSK5 : IGameCtnMediaBlock
-{
-}
-
-public partial interface IGameCtnMediaBlockTMF : IGameCtnMediaBlock
-{
-}
-
 public partial interface IGameCtnMediaBlockTMSX : IGameCtnMediaBlock
 {
 }
@@ -63,7 +63,7 @@ public partial interface IGameCtnMediaBlockTMNESWC : IGameCtnMediaBlock
 {
 }
 
-public partial interface IGameCtnMediaBlockMP3 : IGameCtnMediaBlock
+public partial interface IGameCtnMediaBlockVSK5 : IGameCtnMediaBlock
 {
 }
 

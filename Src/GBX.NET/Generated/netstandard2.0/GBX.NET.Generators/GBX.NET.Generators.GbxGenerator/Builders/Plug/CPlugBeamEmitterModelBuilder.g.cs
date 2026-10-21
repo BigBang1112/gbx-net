@@ -36,11 +36,10 @@ public abstract class CPlugBeamEmitterModelBuilderBase<TSelf> where TSelf : CPlu
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel> state;
     private protected CPlugBeamEmitterModelBuilderBase() => state = new();
     private protected CPlugBeamEmitterModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel> state) => this.state = state;
-    private protected static void SetSubModels(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterModelBuilderAssignments.GetSubModelsAssignment(), value, GameVersion.MP4);
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel>? SubModels
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel>?>("SubModels");
-        set => SetSubModels(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterModelBuilderAssignments.GetSubModelsAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSubModels(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel>? value)
     {

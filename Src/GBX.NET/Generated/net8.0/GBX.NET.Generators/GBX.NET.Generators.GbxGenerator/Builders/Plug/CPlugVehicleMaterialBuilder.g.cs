@@ -36,21 +36,6 @@ public abstract class CPlugVehicleMaterialBuilderBase<TSelf> where TSelf : CPlug
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial> state;
     private protected CPlugVehicleMaterialBuilderBase() => state = new();
     private protected CPlugVehicleMaterialBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial> state) => this.state = state;
-    private protected static void SetAccelerationCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetAccelerationCoefAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetBrakeCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetBrakeCoefAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetGrip(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetGripAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetMaterialHeightDetailBitmap(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetMaterialHeightDetailBitmapAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetMaterialHeightDetailBitmapReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetMaterialHeightDetailBitmapReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetMaterialHeightDetailScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetMaterialHeightDetailScaleAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetMaterialId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial> state, byte value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetMaterialIdAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetSpeedAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetTrailIsOnlyWhenSliding(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetTrailIsOnlyWhenSlidingAssignment(), value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX);
-    private protected static void SetTrailManagerModel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial> state, global::GBX.NET.Engines.Plug.CPlugFlockModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetTrailManagerModelAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
-    private protected static void SetTrailManagerModelReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFlockModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetTrailManagerModelReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
-    private protected static void SetTrailShader(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial> state, global::GBX.NET.Engines.Plug.CPlugShader? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetTrailShaderAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
-    private protected static void SetTrailShaderReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetTrailShaderReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
-    private protected static void SetVibrationMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetVibrationMaxAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetVibrationSpeedCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetVibrationSpeedCoefAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
 }
 public abstract class CPlugVehicleMaterialBuilderMembers1<TSelf> : CPlugVehicleMaterialBuilderBase<TSelf> where TSelf : CPlugVehicleMaterialBuilderMembers1<TSelf>
 {
@@ -58,7 +43,7 @@ public abstract class CPlugVehicleMaterialBuilderMembers1<TSelf> : CPlugVehicleM
     public global::GBX.NET.Engines.Plug.CPlugBitmap? MaterialHeightDetailBitmap
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("MaterialHeightDetailBitmap");
-        set => SetMaterialHeightDetailBitmap(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetMaterialHeightDetailBitmapAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithMaterialHeightDetailBitmap(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -68,13 +53,13 @@ public abstract class CPlugVehicleMaterialBuilderMembers1<TSelf> : CPlugVehicleM
     public TSelf WithMaterialHeightDetailBitmapReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetMaterialHeightDetailBitmapReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetMaterialHeightDetailBitmapReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public Vec2 MaterialHeightDetailScale
     {
         get => state.Get<Vec2>("MaterialHeightDetailScale");
-        set => SetMaterialHeightDetailScale(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetMaterialHeightDetailScaleAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithMaterialHeightDetailScale(Vec2 value)
     {
@@ -88,7 +73,7 @@ public abstract class CPlugVehicleMaterialBuilderMembers2<TSelf> : CPlugVehicleM
     public float AccelerationCoef
     {
         get => state.Get<float>("AccelerationCoef");
-        set => SetAccelerationCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetAccelerationCoefAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithAccelerationCoef(float value)
     {
@@ -98,7 +83,7 @@ public abstract class CPlugVehicleMaterialBuilderMembers2<TSelf> : CPlugVehicleM
     public float BrakeCoef
     {
         get => state.Get<float>("BrakeCoef");
-        set => SetBrakeCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetBrakeCoefAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithBrakeCoef(float value)
     {
@@ -108,7 +93,7 @@ public abstract class CPlugVehicleMaterialBuilderMembers2<TSelf> : CPlugVehicleM
     public float Grip
     {
         get => state.Get<float>("Grip");
-        set => SetGrip(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetGripAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithGrip(float value)
     {
@@ -118,7 +103,7 @@ public abstract class CPlugVehicleMaterialBuilderMembers2<TSelf> : CPlugVehicleM
     public byte MaterialId
     {
         get => state.Get<byte>("MaterialId");
-        set => SetMaterialId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetMaterialIdAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithMaterialId(byte value)
     {
@@ -128,7 +113,7 @@ public abstract class CPlugVehicleMaterialBuilderMembers2<TSelf> : CPlugVehicleM
     public float Speed
     {
         get => state.Get<float>("Speed");
-        set => SetSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetSpeedAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSpeed(float value)
     {
@@ -138,7 +123,7 @@ public abstract class CPlugVehicleMaterialBuilderMembers2<TSelf> : CPlugVehicleM
     public float VibrationMax
     {
         get => state.Get<float>("VibrationMax");
-        set => SetVibrationMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetVibrationMaxAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithVibrationMax(float value)
     {
@@ -148,7 +133,7 @@ public abstract class CPlugVehicleMaterialBuilderMembers2<TSelf> : CPlugVehicleM
     public float VibrationSpeedCoef
     {
         get => state.Get<float>("VibrationSpeedCoef");
-        set => SetVibrationSpeedCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetVibrationSpeedCoefAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithVibrationSpeedCoef(float value)
     {
@@ -162,7 +147,7 @@ public abstract class CPlugVehicleMaterialBuilderMembers3<TSelf> : CPlugVehicleM
     public bool TrailIsOnlyWhenSliding
     {
         get => state.Get<bool>("TrailIsOnlyWhenSliding");
-        set => SetTrailIsOnlyWhenSliding(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetTrailIsOnlyWhenSlidingAssignment(), value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX);
     }
     public TSelf WithTrailIsOnlyWhenSliding(bool value)
     {
@@ -176,7 +161,7 @@ public abstract class CPlugVehicleMaterialBuilderMembers4<TSelf> : CPlugVehicleM
     public global::GBX.NET.Engines.Plug.CPlugFlockModel? TrailManagerModel
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugFlockModel?>("TrailManagerModel");
-        set => SetTrailManagerModel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetTrailManagerModelAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
     }
     public TSelf WithTrailManagerModel(global::GBX.NET.Engines.Plug.CPlugFlockModel? value)
     {
@@ -186,13 +171,13 @@ public abstract class CPlugVehicleMaterialBuilderMembers4<TSelf> : CPlugVehicleM
     public TSelf WithTrailManagerModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFlockModel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetTrailManagerModelReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetTrailManagerModelReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugShader? TrailShader
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugShader?>("TrailShader");
-        set => SetTrailShader(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetTrailShaderAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
     }
     public TSelf WithTrailShader(global::GBX.NET.Engines.Plug.CPlugShader? value)
     {
@@ -202,7 +187,7 @@ public abstract class CPlugVehicleMaterialBuilderMembers4<TSelf> : CPlugVehicleM
     public TSelf WithTrailShaderReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetTrailShaderReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetTrailShaderReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
         return (TSelf)this;
     }
 }

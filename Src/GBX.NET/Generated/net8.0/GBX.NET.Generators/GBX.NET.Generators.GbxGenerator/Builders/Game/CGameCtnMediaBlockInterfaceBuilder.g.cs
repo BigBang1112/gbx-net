@@ -36,14 +36,10 @@ public abstract class CGameCtnMediaBlockInterfaceBuilderBase<TSelf> where TSelf 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockInterface> state;
     private protected CGameCtnMediaBlockInterfaceBuilderBase() => state = new();
     private protected CGameCtnMediaBlockInterfaceBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockInterface> state) => this.state = state;
-    private protected static void SetEnd(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockInterface> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockInterfaceBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetManialink(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockInterface> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockInterfaceBuilderAssignments.GetManialinkAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetShowInterface(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockInterface> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockInterfaceBuilderAssignments.GetShowInterfaceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetStart(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockInterface> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockInterfaceBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public TimeSingle End
     {
         get => state.Get<TimeSingle>("End");
-        set => SetEnd(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockInterfaceBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEnd(TimeSingle value)
     {
@@ -53,7 +49,7 @@ public abstract class CGameCtnMediaBlockInterfaceBuilderBase<TSelf> where TSelf 
     public string? Manialink
     {
         get => state.Get<string?>("Manialink");
-        set => SetManialink(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockInterfaceBuilderAssignments.GetManialinkAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithManialink(string? value)
     {
@@ -63,7 +59,7 @@ public abstract class CGameCtnMediaBlockInterfaceBuilderBase<TSelf> where TSelf 
     public bool ShowInterface
     {
         get => state.Get<bool>("ShowInterface");
-        set => SetShowInterface(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockInterfaceBuilderAssignments.GetShowInterfaceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithShowInterface(bool value)
     {
@@ -73,7 +69,7 @@ public abstract class CGameCtnMediaBlockInterfaceBuilderBase<TSelf> where TSelf 
     public TimeSingle Start
     {
         get => state.Get<TimeSingle>("Start");
-        set => SetStart(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockInterfaceBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStart(TimeSingle value)
     {

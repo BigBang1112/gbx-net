@@ -36,12 +36,10 @@ public abstract class CPlugPathBuilderBase<TSelf> where TSelf : CPlugPathBuilder
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugPath> state;
     private protected CPlugPathBuilderBase() => state = new();
     private protected CPlugPathBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugPath> state) => this.state = state;
-    private protected static void SetLineGroups(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugPath> state, byte[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugPathBuilderAssignments.GetLineGroupsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetPolyLines(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugPath> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugPolyLine3>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugPathBuilderAssignments.GetPolyLinesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     public byte[]? LineGroups
     {
         get => state.Get<byte[]?>("LineGroups");
-        set => SetLineGroups(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugPathBuilderAssignments.GetLineGroupsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLineGroups(params byte[]? value)
     {
@@ -55,7 +53,7 @@ public abstract class CPlugPathBuilderBase<TSelf> where TSelf : CPlugPathBuilder
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugPolyLine3>? PolyLines
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugPolyLine3>?>("PolyLines");
-        set => SetPolyLines(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugPathBuilderAssignments.GetPolyLinesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithPolyLines(NodeRefList<global::GBX.NET.Engines.Plug.CPlugPolyLine3>? value)
     {

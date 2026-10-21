@@ -36,30 +36,10 @@ public abstract class CPlugVehicleVisModelBuilderBase<TSelf> where TSelf : CPlug
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state;
     private protected CPlugVehicleVisModelBuilderBase() => state = new();
     private protected CPlugVehicleVisModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state) => this.state = state;
-    private protected static void SetAudioEnvironmentForFirstPerson(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, global::GBX.NET.Engines.Plug.CPlugAudioEnvironment? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetAudioEnvironmentForFirstPersonAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAudioEnvironmentForFirstPersonReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetAudioEnvironmentForFirstPersonReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDefaultDamperMinLen(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetDefaultDamperMinLenAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDefaultSparkleRelSpeedThreshold(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetDefaultSparkleRelSpeedThresholdAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetDefaultSparkleScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetDefaultSparkleScaleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetDefaultWheelOffsetY(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetDefaultWheelOffsetYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFxSystem(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, global::GBX.NET.Engines.Plug.CPlugFxSystem? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetFxSystemAssignment(), value, GameVersion.TM2020);
-    private protected static void SetFxSystemReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFxSystem> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetFxSystemReferenceAssignment(), value, GameVersion.TM2020);
-    private protected static void SetGeomModel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, global::GBX.NET.Engines.Plug.CPlugVehicleVisGeomModel value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetGeomModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetShared(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetSharedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSharedReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetSharedReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSoundBodyImpact_Hard_ThresholdKmh(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetSoundBodyImpact_Hard_ThresholdKmhAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSoundBodyImpact_Soft_ThresholdKmh(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetSoundBodyImpact_Soft_ThresholdKmhAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSoundEvents(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.SoundEventSet value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetSoundEventsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSoundImpactWheelBackPos(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetSoundImpactWheelBackPosAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSoundImpactWheelFrontPos(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetSoundImpactWheelFrontPosAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSoundWheelImpact_Hard_ThresholdKmh(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetSoundWheelImpact_Hard_ThresholdKmhAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSoundWheelImpact_Soft_ThresholdKmh(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetSoundWheelImpact_Soft_ThresholdKmhAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSounds(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.SoundSet value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetSoundsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSurfVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetSurfVersionAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public float DefaultDamperMinLen
     {
         get => state.Get<float>("DefaultDamperMinLen");
-        set => SetDefaultDamperMinLen(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetDefaultDamperMinLenAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDefaultDamperMinLen(float value)
     {
@@ -69,7 +49,7 @@ public abstract class CPlugVehicleVisModelBuilderBase<TSelf> where TSelf : CPlug
     public float DefaultWheelOffsetY
     {
         get => state.Get<float>("DefaultWheelOffsetY");
-        set => SetDefaultWheelOffsetY(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetDefaultWheelOffsetYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDefaultWheelOffsetY(float value)
     {
@@ -79,7 +59,7 @@ public abstract class CPlugVehicleVisModelBuilderBase<TSelf> where TSelf : CPlug
     public global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared? Shared
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared?>("Shared");
-        set => SetShared(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetSharedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithShared(global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared? value)
     {
@@ -89,13 +69,13 @@ public abstract class CPlugVehicleVisModelBuilderBase<TSelf> where TSelf : CPlug
     public TSelf WithSharedReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSharedReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetSharedReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.SoundSet Sounds
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.SoundSet>("Sounds");
-        set => SetSounds(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetSoundsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSounds(global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.SoundSet value)
     {
@@ -109,7 +89,7 @@ public abstract class CPlugVehicleVisModelBuilderMembers1<TSelf> : CPlugVehicleV
     public global::GBX.NET.Engines.Plug.CPlugAudioEnvironment? AudioEnvironmentForFirstPerson
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment?>("AudioEnvironmentForFirstPerson");
-        set => SetAudioEnvironmentForFirstPerson(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetAudioEnvironmentForFirstPersonAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAudioEnvironmentForFirstPerson(global::GBX.NET.Engines.Plug.CPlugAudioEnvironment? value)
     {
@@ -119,13 +99,13 @@ public abstract class CPlugVehicleVisModelBuilderMembers1<TSelf> : CPlugVehicleV
     public TSelf WithAudioEnvironmentForFirstPersonReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetAudioEnvironmentForFirstPersonReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetAudioEnvironmentForFirstPersonReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugVehicleVisGeomModel GeomModel
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugVehicleVisGeomModel>("GeomModel");
-        set => SetGeomModel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetGeomModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGeomModel(global::GBX.NET.Engines.Plug.CPlugVehicleVisGeomModel value)
     {
@@ -135,7 +115,7 @@ public abstract class CPlugVehicleVisModelBuilderMembers1<TSelf> : CPlugVehicleV
     public float SoundBodyImpact_Hard_ThresholdKmh
     {
         get => state.Get<float>("SoundBodyImpact_Hard_ThresholdKmh");
-        set => SetSoundBodyImpact_Hard_ThresholdKmh(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetSoundBodyImpact_Hard_ThresholdKmhAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSoundBodyImpact_Hard_ThresholdKmh(float value)
     {
@@ -145,7 +125,7 @@ public abstract class CPlugVehicleVisModelBuilderMembers1<TSelf> : CPlugVehicleV
     public float SoundBodyImpact_Soft_ThresholdKmh
     {
         get => state.Get<float>("SoundBodyImpact_Soft_ThresholdKmh");
-        set => SetSoundBodyImpact_Soft_ThresholdKmh(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetSoundBodyImpact_Soft_ThresholdKmhAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSoundBodyImpact_Soft_ThresholdKmh(float value)
     {
@@ -155,7 +135,7 @@ public abstract class CPlugVehicleVisModelBuilderMembers1<TSelf> : CPlugVehicleV
     public global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.SoundEventSet SoundEvents
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.SoundEventSet>("SoundEvents");
-        set => SetSoundEvents(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetSoundEventsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSoundEvents(global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.SoundEventSet value)
     {
@@ -165,7 +145,7 @@ public abstract class CPlugVehicleVisModelBuilderMembers1<TSelf> : CPlugVehicleV
     public Vec3 SoundImpactWheelBackPos
     {
         get => state.Get<Vec3>("SoundImpactWheelBackPos");
-        set => SetSoundImpactWheelBackPos(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetSoundImpactWheelBackPosAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSoundImpactWheelBackPos(Vec3 value)
     {
@@ -175,7 +155,7 @@ public abstract class CPlugVehicleVisModelBuilderMembers1<TSelf> : CPlugVehicleV
     public Vec3 SoundImpactWheelFrontPos
     {
         get => state.Get<Vec3>("SoundImpactWheelFrontPos");
-        set => SetSoundImpactWheelFrontPos(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetSoundImpactWheelFrontPosAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSoundImpactWheelFrontPos(Vec3 value)
     {
@@ -185,7 +165,7 @@ public abstract class CPlugVehicleVisModelBuilderMembers1<TSelf> : CPlugVehicleV
     public float SoundWheelImpact_Hard_ThresholdKmh
     {
         get => state.Get<float>("SoundWheelImpact_Hard_ThresholdKmh");
-        set => SetSoundWheelImpact_Hard_ThresholdKmh(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetSoundWheelImpact_Hard_ThresholdKmhAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSoundWheelImpact_Hard_ThresholdKmh(float value)
     {
@@ -195,7 +175,7 @@ public abstract class CPlugVehicleVisModelBuilderMembers1<TSelf> : CPlugVehicleV
     public float SoundWheelImpact_Soft_ThresholdKmh
     {
         get => state.Get<float>("SoundWheelImpact_Soft_ThresholdKmh");
-        set => SetSoundWheelImpact_Soft_ThresholdKmh(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetSoundWheelImpact_Soft_ThresholdKmhAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSoundWheelImpact_Soft_ThresholdKmh(float value)
     {
@@ -205,7 +185,7 @@ public abstract class CPlugVehicleVisModelBuilderMembers1<TSelf> : CPlugVehicleV
     public int SurfVersion
     {
         get => state.Get<int>("SurfVersion");
-        set => SetSurfVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetSurfVersionAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSurfVersion(int value)
     {
@@ -219,7 +199,7 @@ public abstract class CPlugVehicleVisModelBuilderMembers2<TSelf> : CPlugVehicleV
     public float DefaultSparkleRelSpeedThreshold
     {
         get => state.Get<float>("DefaultSparkleRelSpeedThreshold");
-        set => SetDefaultSparkleRelSpeedThreshold(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetDefaultSparkleRelSpeedThresholdAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithDefaultSparkleRelSpeedThreshold(float value)
     {
@@ -229,7 +209,7 @@ public abstract class CPlugVehicleVisModelBuilderMembers2<TSelf> : CPlugVehicleV
     public float DefaultSparkleScale
     {
         get => state.Get<float>("DefaultSparkleScale");
-        set => SetDefaultSparkleScale(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetDefaultSparkleScaleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithDefaultSparkleScale(float value)
     {
@@ -394,7 +374,7 @@ public partial class CPlugVehicleVisModelBuilder : CPlugVehicleVisModelBuilderBa
         public global::GBX.NET.Engines.Plug.CPlugFxSystem? FxSystem
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugFxSystem?>("FxSystem");
-            set => SetFxSystem(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetFxSystemAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithFxSystem(global::GBX.NET.Engines.Plug.CPlugFxSystem? value)
         {
@@ -404,7 +384,7 @@ public partial class CPlugVehicleVisModelBuilder : CPlugVehicleVisModelBuilderBa
         public TM2020 WithFxSystemReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFxSystem> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFxSystemReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetFxSystemReferenceAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithFxSystem(global::GBX.NET.Interfaces.Plug.IPlugFxSystemTM2020? value)

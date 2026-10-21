@@ -36,14 +36,6 @@ public abstract class CPlugMaterialBuilderBase<TSelf> where TSelf : CPlugMateria
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state;
     private protected CPlugMaterialBuilderBase() => state = new();
     private protected CPlugMaterialBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state) => this.state = state;
-    private protected static void SetCustomMaterial(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state, global::GBX.NET.Engines.Plug.CPlugMaterialCustom? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetCustomMaterialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetCustomMaterialReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetCustomMaterialReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetDeviceMaterials(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state, global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetDeviceMaterialsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetGameplayId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state, global::GBX.NET.Engines.Plug.CPlugSurface.GameplayId value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetGameplayIdAssignment(), value, GameVersion.TM2020);
-    private protected static void SetShader(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state, global::GBX.NET.Engines.Plug.CPlug? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetShaderAssignment(), value, GameVersion.TM2020);
-    private protected static void SetShaderReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state, NodeRef<global::GBX.NET.Engines.Plug.CPlug> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetShaderReferenceAssignment(), value, GameVersion.TM2020);
-    private protected static void SetShading(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state, global::GBX.NET.Engines.Plug.CPlugMaterial.ShadingDesc? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetShadingAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSurfaceId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state, global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetSurfaceIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
 }
 public abstract class CPlugMaterialBuilderMembers1<TSelf> : CPlugMaterialBuilderBase<TSelf> where TSelf : CPlugMaterialBuilderMembers1<TSelf>
 {
@@ -51,7 +43,7 @@ public abstract class CPlugMaterialBuilderMembers1<TSelf> : CPlugMaterialBuilder
     public global::GBX.NET.Engines.Plug.CPlugMaterialCustom? CustomMaterial
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialCustom?>("CustomMaterial");
-        set => SetCustomMaterial(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetCustomMaterialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithCustomMaterial(global::GBX.NET.Engines.Plug.CPlugMaterialCustom? value)
     {
@@ -61,7 +53,7 @@ public abstract class CPlugMaterialBuilderMembers1<TSelf> : CPlugMaterialBuilder
     public TSelf WithCustomMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetCustomMaterialReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetCustomMaterialReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -71,7 +63,7 @@ public abstract class CPlugMaterialBuilderMembers2<TSelf> : CPlugMaterialBuilder
     public global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? DeviceMaterials
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]?>("DeviceMaterials");
-        set => SetDeviceMaterials(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetDeviceMaterialsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDeviceMaterials(params global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? value)
     {
@@ -89,7 +81,7 @@ public abstract class CPlugMaterialBuilderMembers3<TSelf> : CPlugMaterialBuilder
     public global::GBX.NET.Engines.Plug.CPlugMaterialCustom? CustomMaterial
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialCustom?>("CustomMaterial");
-        set => SetCustomMaterial(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetCustomMaterialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithCustomMaterial(global::GBX.NET.Engines.Plug.CPlugMaterialCustom? value)
     {
@@ -99,13 +91,13 @@ public abstract class CPlugMaterialBuilderMembers3<TSelf> : CPlugMaterialBuilder
     public TSelf WithCustomMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetCustomMaterialReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetCustomMaterialReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId SurfaceId
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId>("SurfaceId");
-        set => SetSurfaceId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetSurfaceIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithSurfaceId(global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId value)
     {
@@ -119,7 +111,7 @@ public abstract class CPlugMaterialBuilderMembers4<TSelf> : CPlugMaterialBuilder
     public global::GBX.NET.Engines.Plug.CPlugMaterial.ShadingDesc? Shading
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial.ShadingDesc?>("Shading");
-        set => SetShading(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetShadingAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithShading(global::GBX.NET.Engines.Plug.CPlugMaterial.ShadingDesc? value)
     {
@@ -420,7 +412,7 @@ public partial class CPlugMaterialBuilder : CPlugMaterialBuilderBase<CPlugMateri
         public global::GBX.NET.Engines.Plug.CPlugMaterialCustom? CustomMaterial
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialCustom?>("CustomMaterial");
-            set => SetCustomMaterial(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetCustomMaterialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public VSK5 WithCustomMaterial(global::GBX.NET.Engines.Plug.CPlugMaterialCustom? value)
         {
@@ -430,7 +422,7 @@ public partial class CPlugMaterialBuilder : CPlugMaterialBuilderBase<CPlugMateri
         public VSK5 WithCustomMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetCustomMaterialReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetCustomMaterialReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public VSK5 WithCustomMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomVSK5? value)
@@ -550,7 +542,7 @@ public partial class CPlugMaterialBuilder : CPlugMaterialBuilderBase<CPlugMateri
         public global::GBX.NET.Engines.Plug.CPlugSurface.GameplayId GameplayId
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSurface.GameplayId>("GameplayId");
-            set => SetGameplayId(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetGameplayIdAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithGameplayId(global::GBX.NET.Engines.Plug.CPlugSurface.GameplayId value)
         {
@@ -560,7 +552,7 @@ public partial class CPlugMaterialBuilder : CPlugMaterialBuilderBase<CPlugMateri
         public global::GBX.NET.Engines.Plug.CPlug? Shader
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlug?>("Shader");
-            set => SetShader(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetShaderAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithShader(global::GBX.NET.Engines.Plug.CPlug? value)
         {
@@ -570,7 +562,7 @@ public partial class CPlugMaterialBuilder : CPlugMaterialBuilderBase<CPlugMateri
         public TM2020 WithShaderReference(NodeRef<global::GBX.NET.Engines.Plug.CPlug> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetShaderReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetShaderReferenceAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020 BuildInterface() => Build();

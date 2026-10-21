@@ -36,33 +36,10 @@ public abstract class CControlLabelBuilderBase<TSelf> where TSelf : CControlLabe
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Control.CControlLabel> state;
     private protected CControlLabelBuilderBase() => state = new();
     private protected CControlLabelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLabel> state) => this.state = state;
-    private protected static void SetBitmap(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLabel> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlLabelBuilderAssignments.GetBitmapAssignment(), value, GameVersion.TM2020);
-    private protected static void SetBitmapReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLabel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlLabelBuilderAssignments.GetBitmapReferenceAssignment(), value, GameVersion.TM2020);
-    private protected static void SetControlFlags(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLabel> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetControlFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetDontDrawText(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLabel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlLabelBuilderAssignments.GetDontDrawTextAssignment(), value, GameVersion.TM2020);
-    private protected static void SetImageColor(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLabel> state, Vec4 value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlLabelBuilderAssignments.GetImageColorAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetItem(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLabel> state, global::GBX.NET.Engines.Hms.CHmsItem? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetItemAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLabel(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLabel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlLabelBuilderAssignments.GetLabelAssignment(), value, GameVersion.TM2020);
-    private protected static void SetLayout(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLabel> state, global::GBX.NET.Engines.Control.CControlLayout? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLayoutAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLayoutReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLabel> state, NodeRef<global::GBX.NET.Engines.Control.CControlLayout> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLayoutReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLegacyStyle(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLabel> state, global::GBX.NET.Engines.Control.CControlStyle? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLegacyStyleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLegacyStyleReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLabel> state, NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLegacyStyleReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMessageHandler(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLabel> state, global::GBX.NET.Engines.Scene.CSceneMessageHandler? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetMessageHandlerReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLabel> state, NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetMotion(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLabel> state, global::GBX.NET.Engines.Motion.CMotion? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMotionReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLabel> state, NodeRef<global::GBX.NET.Engines.Motion.CMotion> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLabel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetNod(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLabel> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetNodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetNodReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLabel> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetNodReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetObjectLink(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLabel> state, NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetObjectLinkAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetStackText(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLabel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStackTextAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetStyle(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLabel> state, global::GBX.NET.Engines.Control.CControlStyle? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetStyleReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLabel> state, NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetStyleId(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLabel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public uint ControlFlags
     {
         get => state.Get<uint>("ControlFlags");
-        set => SetControlFlags(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetControlFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithControlFlags(uint value)
     {
@@ -72,7 +49,7 @@ public abstract class CControlLabelBuilderBase<TSelf> where TSelf : CControlLabe
     public global::GBX.NET.Engines.Hms.CHmsItem? Item
     {
         get => state.Get<global::GBX.NET.Engines.Hms.CHmsItem?>("Item");
-        set => SetItem(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetItemAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithItem(global::GBX.NET.Engines.Hms.CHmsItem? value)
     {
@@ -82,7 +59,7 @@ public abstract class CControlLabelBuilderBase<TSelf> where TSelf : CControlLabe
     public global::GBX.NET.Engines.Control.CControlLayout? Layout
     {
         get => state.Get<global::GBX.NET.Engines.Control.CControlLayout?>("Layout");
-        set => SetLayout(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLayoutAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLayout(global::GBX.NET.Engines.Control.CControlLayout? value)
     {
@@ -92,13 +69,13 @@ public abstract class CControlLabelBuilderBase<TSelf> where TSelf : CControlLabe
     public TSelf WithLayoutReference(NodeRef<global::GBX.NET.Engines.Control.CControlLayout> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetLayoutReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLayoutReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Control.CControlStyle? LegacyStyle
     {
         get => state.Get<global::GBX.NET.Engines.Control.CControlStyle?>("LegacyStyle");
-        set => SetLegacyStyle(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLegacyStyleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLegacyStyle(global::GBX.NET.Engines.Control.CControlStyle? value)
     {
@@ -108,13 +85,13 @@ public abstract class CControlLabelBuilderBase<TSelf> where TSelf : CControlLabe
     public TSelf WithLegacyStyleReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetLegacyStyleReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLegacyStyleReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Motion.CMotion? Motion
     {
         get => state.Get<global::GBX.NET.Engines.Motion.CMotion?>("Motion");
-        set => SetMotion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMotion(global::GBX.NET.Engines.Motion.CMotion? value)
     {
@@ -124,13 +101,13 @@ public abstract class CControlLabelBuilderBase<TSelf> where TSelf : CControlLabe
     public TSelf WithMotionReference(NodeRef<global::GBX.NET.Engines.Motion.CMotion> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetMotionReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public string? Name
     {
         get => state.Get<string?>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithName(string? value)
     {
@@ -140,7 +117,7 @@ public abstract class CControlLabelBuilderBase<TSelf> where TSelf : CControlLabe
     public global::GBX.NET.Engines.MwFoundations.CMwNod? Nod
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("Nod");
-        set => SetNod(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetNodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithNod(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
@@ -150,13 +127,13 @@ public abstract class CControlLabelBuilderBase<TSelf> where TSelf : CControlLabe
     public TSelf WithNodReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetNodReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetNodReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? ObjectLink
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>?>("ObjectLink");
-        set => SetObjectLink(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetObjectLinkAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithObjectLink(NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? value)
     {
@@ -174,7 +151,7 @@ public abstract class CControlLabelBuilderBase<TSelf> where TSelf : CControlLabe
     public string? StackText
     {
         get => state.Get<string?>("StackText");
-        set => SetStackText(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStackTextAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithStackText(string? value)
     {
@@ -188,7 +165,7 @@ public abstract class CControlLabelBuilderMembers1<TSelf> : CControlLabelBuilder
     public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
     {
         get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
-        set => SetMessageHandler(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
     {
@@ -198,7 +175,7 @@ public abstract class CControlLabelBuilderMembers1<TSelf> : CControlLabelBuilder
     public TSelf WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetMessageHandlerReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -208,7 +185,7 @@ public abstract class CControlLabelBuilderMembers2<TSelf> : CControlLabelBuilder
     public global::GBX.NET.Engines.Control.CControlStyle? Style
     {
         get => state.Get<global::GBX.NET.Engines.Control.CControlStyle?>("Style");
-        set => SetStyle(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithStyle(global::GBX.NET.Engines.Control.CControlStyle? value)
     {
@@ -218,13 +195,13 @@ public abstract class CControlLabelBuilderMembers2<TSelf> : CControlLabelBuilder
     public TSelf WithStyleReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetStyleReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public string? StyleId
     {
         get => state.Get<string?>("StyleId");
-        set => SetStyleId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithStyleId(string? value)
     {
@@ -238,7 +215,7 @@ public abstract class CControlLabelBuilderMembers3<TSelf> : CControlLabelBuilder
     public Vec4 ImageColor
     {
         get => state.Get<Vec4>("ImageColor");
-        set => SetImageColor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlLabelBuilderAssignments.GetImageColorAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithImageColor(Vec4 value)
     {
@@ -567,7 +544,7 @@ public partial class CControlLabelBuilder : CControlLabelBuilderBase<CControlLab
         public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
         {
             get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
-            set => SetMessageHandler(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMSX WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
         {
@@ -577,7 +554,7 @@ public partial class CControlLabelBuilder : CControlLabelBuilderBase<CControlLab
         public TMSX WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetMessageHandlerReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public TMSX WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMSX? value)
@@ -625,7 +602,7 @@ public partial class CControlLabelBuilder : CControlLabelBuilderBase<CControlLab
         public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
         {
             get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
-            set => SetMessageHandler(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMNESWC WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
         {
@@ -635,7 +612,7 @@ public partial class CControlLabelBuilder : CControlLabelBuilderBase<CControlLab
         public TMNESWC WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetMessageHandlerReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public TMNESWC WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMNESWC? value)
@@ -683,7 +660,7 @@ public partial class CControlLabelBuilder : CControlLabelBuilderBase<CControlLab
         public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
         {
             get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
-            set => SetMessageHandler(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public VSK5 WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
         {
@@ -693,7 +670,7 @@ public partial class CControlLabelBuilder : CControlLabelBuilderBase<CControlLab
         public VSK5 WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetMessageHandlerReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public VSK5 WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerVSK5? value)
@@ -745,7 +722,7 @@ public partial class CControlLabelBuilder : CControlLabelBuilderBase<CControlLab
         public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
         {
             get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
-            set => SetMessageHandler(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMF WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
         {
@@ -755,7 +732,7 @@ public partial class CControlLabelBuilder : CControlLabelBuilderBase<CControlLab
         public TMF WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetMessageHandlerReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public TMF WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMF? value)
@@ -917,7 +894,7 @@ public partial class CControlLabelBuilder : CControlLabelBuilderBase<CControlLab
         public global::GBX.NET.Engines.Plug.CPlugBitmap? Bitmap
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("Bitmap");
-            set => SetBitmap(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlLabelBuilderAssignments.GetBitmapAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithBitmap(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
         {
@@ -927,7 +904,7 @@ public partial class CControlLabelBuilder : CControlLabelBuilderBase<CControlLab
         public TM2020 WithBitmapReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetBitmapReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Control.CControlLabelBuilderAssignments.GetBitmapReferenceAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithBitmap(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? value)
@@ -937,7 +914,7 @@ public partial class CControlLabelBuilder : CControlLabelBuilderBase<CControlLab
         public bool DontDrawText
         {
             get => state.Get<bool>("DontDrawText");
-            set => SetDontDrawText(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlLabelBuilderAssignments.GetDontDrawTextAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithDontDrawText(bool value)
         {
@@ -947,7 +924,7 @@ public partial class CControlLabelBuilder : CControlLabelBuilderBase<CControlLab
         public string? Label
         {
             get => state.Get<string?>("Label");
-            set => SetLabel(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlLabelBuilderAssignments.GetLabelAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithLabel(string? value)
         {

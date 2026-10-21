@@ -36,12 +36,10 @@ public abstract class CMotionSkelSimpleBuilderBase<TSelf> where TSelf : CMotionS
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionSkelSimple> state;
     private protected CMotionSkelSimpleBuilderBase() => state = new();
     private protected CMotionSkelSimpleBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionSkelSimple> state) => this.state = state;
-    private protected static void SetSkelValues(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionSkelSimple> state, global::GBX.NET.Engines.Function.CFuncSkelValues? value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionSkelSimpleBuilderAssignments.GetSkelValuesAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSkelValuesReference(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionSkelSimple> state, NodeRef<global::GBX.NET.Engines.Function.CFuncSkelValues> value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionSkelSimpleBuilderAssignments.GetSkelValuesReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     public global::GBX.NET.Engines.Function.CFuncSkelValues? SkelValues
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncSkelValues?>("SkelValues");
-        set => SetSkelValues(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionSkelSimpleBuilderAssignments.GetSkelValuesAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSkelValues(global::GBX.NET.Engines.Function.CFuncSkelValues? value)
     {
@@ -51,7 +49,7 @@ public abstract class CMotionSkelSimpleBuilderBase<TSelf> where TSelf : CMotionS
     public TSelf WithSkelValuesReference(NodeRef<global::GBX.NET.Engines.Function.CFuncSkelValues> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSkelValuesReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionSkelSimpleBuilderAssignments.GetSkelValuesReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
 }

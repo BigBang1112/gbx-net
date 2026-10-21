@@ -36,16 +36,10 @@ public abstract class CFuncFullColorGradientBuilderBase<TSelf> where TSelf : CFu
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Function.CFuncFullColorGradient> state;
     private protected CFuncFullColorGradientBuilderBase() => state = new();
     private protected CFuncFullColorGradientBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncFullColorGradient> state) => this.state = state;
-    private protected static void SetKeyFramePos1(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncFullColorGradient> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncFullColorGradientBuilderAssignments.GetKeyFramePos1Assignment(), value, GameVersion.TMF);
-    private protected static void SetKeyFramePos2(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncFullColorGradient> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncFullColorGradientBuilderAssignments.GetKeyFramePos2Assignment(), value, GameVersion.TMF);
-    private protected static void SetKeyFrameValue0(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncFullColorGradient> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncFullColorGradientBuilderAssignments.GetKeyFrameValue0Assignment(), value, GameVersion.TMF);
-    private protected static void SetKeyFrameValue1(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncFullColorGradient> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncFullColorGradientBuilderAssignments.GetKeyFrameValue1Assignment(), value, GameVersion.TMF);
-    private protected static void SetKeyFrameValue2(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncFullColorGradient> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncFullColorGradientBuilderAssignments.GetKeyFrameValue2Assignment(), value, GameVersion.TMF);
-    private protected static void SetKeyFrameValue3(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncFullColorGradient> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncFullColorGradientBuilderAssignments.GetKeyFrameValue3Assignment(), value, GameVersion.TMF);
     public float KeyFramePos1
     {
         get => state.Get<float>("KeyFramePos1");
-        set => SetKeyFramePos1(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncFullColorGradientBuilderAssignments.GetKeyFramePos1Assignment(), value, GameVersion.TMF);
     }
     public TSelf WithKeyFramePos1(float value)
     {
@@ -55,7 +49,7 @@ public abstract class CFuncFullColorGradientBuilderBase<TSelf> where TSelf : CFu
     public float KeyFramePos2
     {
         get => state.Get<float>("KeyFramePos2");
-        set => SetKeyFramePos2(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncFullColorGradientBuilderAssignments.GetKeyFramePos2Assignment(), value, GameVersion.TMF);
     }
     public TSelf WithKeyFramePos2(float value)
     {
@@ -65,7 +59,7 @@ public abstract class CFuncFullColorGradientBuilderBase<TSelf> where TSelf : CFu
     public Vec3 KeyFrameValue0
     {
         get => state.Get<Vec3>("KeyFrameValue0");
-        set => SetKeyFrameValue0(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncFullColorGradientBuilderAssignments.GetKeyFrameValue0Assignment(), value, GameVersion.TMF);
     }
     public TSelf WithKeyFrameValue0(Vec3 value)
     {
@@ -75,7 +69,7 @@ public abstract class CFuncFullColorGradientBuilderBase<TSelf> where TSelf : CFu
     public Vec3 KeyFrameValue1
     {
         get => state.Get<Vec3>("KeyFrameValue1");
-        set => SetKeyFrameValue1(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncFullColorGradientBuilderAssignments.GetKeyFrameValue1Assignment(), value, GameVersion.TMF);
     }
     public TSelf WithKeyFrameValue1(Vec3 value)
     {
@@ -85,7 +79,7 @@ public abstract class CFuncFullColorGradientBuilderBase<TSelf> where TSelf : CFu
     public Vec3 KeyFrameValue2
     {
         get => state.Get<Vec3>("KeyFrameValue2");
-        set => SetKeyFrameValue2(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncFullColorGradientBuilderAssignments.GetKeyFrameValue2Assignment(), value, GameVersion.TMF);
     }
     public TSelf WithKeyFrameValue2(Vec3 value)
     {
@@ -95,7 +89,7 @@ public abstract class CFuncFullColorGradientBuilderBase<TSelf> where TSelf : CFu
     public Vec3 KeyFrameValue3
     {
         get => state.Get<Vec3>("KeyFrameValue3");
-        set => SetKeyFrameValue3(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncFullColorGradientBuilderAssignments.GetKeyFrameValue3Assignment(), value, GameVersion.TMF);
     }
     public TSelf WithKeyFrameValue3(Vec3 value)
     {

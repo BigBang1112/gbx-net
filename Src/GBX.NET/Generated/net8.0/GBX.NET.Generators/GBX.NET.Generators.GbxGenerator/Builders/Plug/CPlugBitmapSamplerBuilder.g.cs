@@ -36,17 +36,10 @@ public abstract class CPlugBitmapSamplerBuilderBase<TSelf> where TSelf : CPlugBi
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapSampler> state;
     private protected CPlugBitmapSamplerBuilderBase() => state = new();
     private protected CPlugBitmapSamplerBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapSampler> state) => this.state = state;
-    private protected static void SetBitmap(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapSampler> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapSamplerBuilderAssignments.GetBitmapAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBitmapReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapSampler> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapSamplerBuilderAssignments.GetBitmapReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBorderColor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapSampler> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapSamplerBuilderAssignments.GetBorderColorAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetFlags(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapSampler> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapSamplerBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetLegacyFlags(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapSampler> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapSamplerBuilderAssignments.GetLegacyFlagsAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetMipMapLodBias(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapSampler> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapSamplerBuilderAssignments.GetMipMapLodBiasAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapSampler> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapSamplerBuilderAssignments.GetNameAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public global::GBX.NET.Engines.Plug.CPlugBitmap? Bitmap
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("Bitmap");
-        set => SetBitmap(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapSamplerBuilderAssignments.GetBitmapAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBitmap(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -56,13 +49,13 @@ public abstract class CPlugBitmapSamplerBuilderBase<TSelf> where TSelf : CPlugBi
     public TSelf WithBitmapReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBitmapReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapSamplerBuilderAssignments.GetBitmapReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public float MipMapLodBias
     {
         get => state.Get<float>("MipMapLodBias");
-        set => SetMipMapLodBias(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapSamplerBuilderAssignments.GetMipMapLodBiasAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMipMapLodBias(float value)
     {
@@ -72,7 +65,7 @@ public abstract class CPlugBitmapSamplerBuilderBase<TSelf> where TSelf : CPlugBi
     public string? Name
     {
         get => state.Get<string?>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapSamplerBuilderAssignments.GetNameAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithName(string? value)
     {
@@ -86,7 +79,7 @@ public abstract class CPlugBitmapSamplerBuilderMembers1<TSelf> : CPlugBitmapSamp
     public uint BorderColor
     {
         get => state.Get<uint>("BorderColor");
-        set => SetBorderColor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapSamplerBuilderAssignments.GetBorderColorAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithBorderColor(uint value)
     {
@@ -100,7 +93,7 @@ public abstract class CPlugBitmapSamplerBuilderMembers2<TSelf> : CPlugBitmapSamp
     public uint LegacyFlags
     {
         get => state.Get<uint>("LegacyFlags");
-        set => SetLegacyFlags(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapSamplerBuilderAssignments.GetLegacyFlagsAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithLegacyFlags(uint value)
     {
@@ -114,7 +107,7 @@ public abstract class CPlugBitmapSamplerBuilderMembers3<TSelf> : CPlugBitmapSamp
     public uint Flags
     {
         get => state.Get<uint>("Flags");
-        set => SetFlags(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapSamplerBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFlags(uint value)
     {
@@ -325,7 +318,7 @@ public partial class CPlugBitmapSamplerBuilder : CPlugBitmapSamplerBuilderBase<C
         public uint BorderColor
         {
             get => state.Get<uint>("BorderColor");
-            set => SetBorderColor(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapSamplerBuilderAssignments.GetBorderColorAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         }
         public TMF WithBorderColor(uint value)
         {

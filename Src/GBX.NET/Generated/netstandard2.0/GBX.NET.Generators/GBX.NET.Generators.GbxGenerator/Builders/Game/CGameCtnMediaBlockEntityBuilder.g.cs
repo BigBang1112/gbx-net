@@ -36,32 +36,10 @@ public abstract class CGameCtnMediaBlockEntityBuilderBase<TSelf> where TSelf : C
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state;
     private protected CGameCtnMediaBlockEntityBuilderBase() => state = new();
     private protected CGameCtnMediaBlockEntityBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state) => this.state = state;
-    private protected static void SetAppearanceArchiveVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetAppearanceArchiveVersionAssignment(), value, GameVersion.TM2020);
-    private protected static void SetAppearanceColor(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, Vec3? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetAppearanceColorAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetBadge(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.SBadge? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetBadgeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetEnd(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, TimeSingle? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4);
-    private protected static void SetForceHue(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetForceHueAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetForceLight(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetForceLightAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetForceTrail(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetForceTrailAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetGhostName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetGhostNameAssignment(), value, GameVersion.TM2020);
-    private protected static void SetHasBadges(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetHasBadgesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.Key>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetKeysAssignment(), value, GameVersion.TM2020);
-    private protected static void SetLightTrailColor(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, global::GBX.NET.Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetLightTrailColorAssignment(), value, GameVersion.MP4);
-    private protected static void SetNoDamage(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetNoDamageAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetNoticeRecords(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, int[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetNoticeRecordsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetPlayerModel(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, Ident value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetPlayerModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetRaceTime(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, TimeInt32? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetRaceTimeAssignment(), value, GameVersion.TM2020);
-    private protected static void SetRecordData(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, global::GBX.NET.Engines.Plug.CPlugEntRecordData? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetRecordDataAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetRecordDataReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugEntRecordData> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetRecordDataReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSkinNames(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, List<PackDesc>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetSkinNamesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSkinOptions(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetSkinOptionsAssignment(), value, GameVersion.TM2020);
-    private protected static void SetStart(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, TimeSingle? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4);
-    private protected static void SetStartOffset(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetStartOffsetAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetTimeScale(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetTimeScaleAssignment(), value, GameVersion.TM2020);
     public Vec3? AppearanceColor
     {
         get => state.Get<Vec3?>("AppearanceColor");
-        set => SetAppearanceColor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetAppearanceColorAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithAppearanceColor(Vec3? value)
     {
@@ -71,7 +49,7 @@ public abstract class CGameCtnMediaBlockEntityBuilderBase<TSelf> where TSelf : C
     public global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.SBadge? Badge
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.SBadge?>("Badge");
-        set => SetBadge(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetBadgeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithBadge(global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.SBadge? value)
     {
@@ -81,7 +59,7 @@ public abstract class CGameCtnMediaBlockEntityBuilderBase<TSelf> where TSelf : C
     public bool ForceHue
     {
         get => state.Get<bool>("ForceHue");
-        set => SetForceHue(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetForceHueAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithForceHue(bool value)
     {
@@ -91,7 +69,7 @@ public abstract class CGameCtnMediaBlockEntityBuilderBase<TSelf> where TSelf : C
     public bool ForceLight
     {
         get => state.Get<bool>("ForceLight");
-        set => SetForceLight(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetForceLightAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithForceLight(bool value)
     {
@@ -101,7 +79,7 @@ public abstract class CGameCtnMediaBlockEntityBuilderBase<TSelf> where TSelf : C
     public bool ForceTrail
     {
         get => state.Get<bool>("ForceTrail");
-        set => SetForceTrail(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetForceTrailAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithForceTrail(bool value)
     {
@@ -111,7 +89,7 @@ public abstract class CGameCtnMediaBlockEntityBuilderBase<TSelf> where TSelf : C
     public bool HasBadges
     {
         get => state.Get<bool>("HasBadges");
-        set => SetHasBadges(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetHasBadgesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithHasBadges(bool value)
     {
@@ -121,7 +99,7 @@ public abstract class CGameCtnMediaBlockEntityBuilderBase<TSelf> where TSelf : C
     public bool NoDamage
     {
         get => state.Get<bool>("NoDamage");
-        set => SetNoDamage(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetNoDamageAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithNoDamage(bool value)
     {
@@ -131,7 +109,7 @@ public abstract class CGameCtnMediaBlockEntityBuilderBase<TSelf> where TSelf : C
     public int[]? NoticeRecords
     {
         get => state.Get<int[]?>("NoticeRecords");
-        set => SetNoticeRecords(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetNoticeRecordsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithNoticeRecords(params int[]? value)
     {
@@ -145,7 +123,7 @@ public abstract class CGameCtnMediaBlockEntityBuilderBase<TSelf> where TSelf : C
     public Ident PlayerModel
     {
         get => state.Get<Ident>("PlayerModel");
-        set => SetPlayerModel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetPlayerModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithPlayerModel(Ident value)
     {
@@ -155,7 +133,7 @@ public abstract class CGameCtnMediaBlockEntityBuilderBase<TSelf> where TSelf : C
     public global::GBX.NET.Engines.Plug.CPlugEntRecordData? RecordData
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugEntRecordData?>("RecordData");
-        set => SetRecordData(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetRecordDataAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithRecordData(global::GBX.NET.Engines.Plug.CPlugEntRecordData? value)
     {
@@ -165,13 +143,13 @@ public abstract class CGameCtnMediaBlockEntityBuilderBase<TSelf> where TSelf : C
     public TSelf WithRecordDataReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugEntRecordData> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetRecordDataReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetRecordDataReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public List<PackDesc>? SkinNames
     {
         get => state.Get<List<PackDesc>?>("SkinNames");
-        set => SetSkinNames(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetSkinNamesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithSkinNames(List<PackDesc>? value)
     {
@@ -189,7 +167,7 @@ public abstract class CGameCtnMediaBlockEntityBuilderBase<TSelf> where TSelf : C
     public TimeSingle StartOffset
     {
         get => state.Get<TimeSingle>("StartOffset");
-        set => SetStartOffset(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetStartOffsetAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithStartOffset(TimeSingle value)
     {
@@ -241,7 +219,7 @@ public partial class CGameCtnMediaBlockEntityBuilder : CGameCtnMediaBlockEntityB
         public TimeSingle? End
         {
             get => state.Get<TimeSingle?>("End");
-            set => SetEnd(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithEnd(TimeSingle? value)
         {
@@ -251,7 +229,7 @@ public partial class CGameCtnMediaBlockEntityBuilder : CGameCtnMediaBlockEntityB
         public global::GBX.NET.Vec3 LightTrailColor
         {
             get => state.Get<global::GBX.NET.Vec3>("LightTrailColor");
-            set => SetLightTrailColor(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetLightTrailColorAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithLightTrailColor(global::GBX.NET.Vec3 value)
         {
@@ -265,7 +243,7 @@ public partial class CGameCtnMediaBlockEntityBuilder : CGameCtnMediaBlockEntityB
         public TimeSingle? Start
         {
             get => state.Get<TimeSingle?>("Start");
-            set => SetStart(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithStart(TimeSingle? value)
         {
@@ -293,7 +271,7 @@ public partial class CGameCtnMediaBlockEntityBuilder : CGameCtnMediaBlockEntityB
         public int AppearanceArchiveVersion
         {
             get => state.Get<int>("AppearanceArchiveVersion");
-            set => SetAppearanceArchiveVersion(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetAppearanceArchiveVersionAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithAppearanceArchiveVersion(int value)
         {
@@ -303,7 +281,7 @@ public partial class CGameCtnMediaBlockEntityBuilder : CGameCtnMediaBlockEntityB
         public string? GhostName
         {
             get => state.Get<string?>("GhostName");
-            set => SetGhostName(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetGhostNameAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithGhostName(string? value)
         {
@@ -313,7 +291,7 @@ public partial class CGameCtnMediaBlockEntityBuilder : CGameCtnMediaBlockEntityB
         public List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.Key>? Keys
         {
             get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.Key>?>("Keys");
-            set => SetKeys(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetKeysAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.Key>? value)
         {
@@ -331,7 +309,7 @@ public partial class CGameCtnMediaBlockEntityBuilder : CGameCtnMediaBlockEntityB
         public TimeInt32? RaceTime
         {
             get => state.Get<TimeInt32?>("RaceTime");
-            set => SetRaceTime(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetRaceTimeAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithRaceTime(TimeInt32? value)
         {
@@ -345,7 +323,7 @@ public partial class CGameCtnMediaBlockEntityBuilder : CGameCtnMediaBlockEntityB
         public string? SkinOptions
         {
             get => state.Get<string?>("SkinOptions");
-            set => SetSkinOptions(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetSkinOptionsAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithSkinOptions(string? value)
         {
@@ -355,7 +333,7 @@ public partial class CGameCtnMediaBlockEntityBuilder : CGameCtnMediaBlockEntityB
         public float TimeScale
         {
             get => state.Get<float>("TimeScale");
-            set => SetTimeScale(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetTimeScaleAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithTimeScale(float value)
         {

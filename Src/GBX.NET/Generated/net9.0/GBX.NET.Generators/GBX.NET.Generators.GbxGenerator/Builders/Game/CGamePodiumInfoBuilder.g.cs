@@ -36,11 +36,10 @@ public abstract class CGamePodiumInfoBuilderBase<TSelf> where TSelf : CGamePodiu
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGamePodiumInfo> state;
     private protected CGamePodiumInfoBuilderBase() => state = new();
     private protected CGamePodiumInfoBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePodiumInfo> state) => this.state = state;
-    private protected static void SetMediaClipFids(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePodiumInfo> state, NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePodiumInfoBuilderAssignments.GetMediaClipFidsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     public NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? MediaClipFids
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>?>("MediaClipFids");
-        set => SetMediaClipFids(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePodiumInfoBuilderAssignments.GetMediaClipFidsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithMediaClipFids(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value)
     {

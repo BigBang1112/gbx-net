@@ -36,15 +36,10 @@ public abstract class CGameTeleporterModelBuilderBase<TSelf> where TSelf : CGame
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.GameData.CGameTeleporterModel> state;
     private protected CGameTeleporterModelBuilderBase() => state = new();
     private protected CGameTeleporterModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameTeleporterModel> state) => this.state = state;
-    private protected static void SetCenterPos(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameTeleporterModel> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameTeleporterModelBuilderAssignments.GetCenterPosAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSpawn(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameTeleporterModel> state, global::GBX.NET.Engines.GameData.CGameSpawnModel? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameTeleporterModelBuilderAssignments.GetSpawnAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSpawnReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameTeleporterModel> state, NodeRef<global::GBX.NET.Engines.GameData.CGameSpawnModel> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameTeleporterModelBuilderAssignments.GetSpawnReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTriggerShape(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameTeleporterModel> state, global::GBX.NET.Engines.Plug.CPlugSurface? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameTeleporterModelBuilderAssignments.GetTriggerShapeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTriggerShapeReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameTeleporterModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSurface> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameTeleporterModelBuilderAssignments.GetTriggerShapeReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public Vec3 CenterPos
     {
         get => state.Get<Vec3>("CenterPos");
-        set => SetCenterPos(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameTeleporterModelBuilderAssignments.GetCenterPosAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCenterPos(Vec3 value)
     {
@@ -54,7 +49,7 @@ public abstract class CGameTeleporterModelBuilderBase<TSelf> where TSelf : CGame
     public global::GBX.NET.Engines.GameData.CGameSpawnModel? Spawn
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameSpawnModel?>("Spawn");
-        set => SetSpawn(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameTeleporterModelBuilderAssignments.GetSpawnAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSpawn(global::GBX.NET.Engines.GameData.CGameSpawnModel? value)
     {
@@ -64,13 +59,13 @@ public abstract class CGameTeleporterModelBuilderBase<TSelf> where TSelf : CGame
     public TSelf WithSpawnReference(NodeRef<global::GBX.NET.Engines.GameData.CGameSpawnModel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSpawnReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameTeleporterModelBuilderAssignments.GetSpawnReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugSurface? TriggerShape
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSurface?>("TriggerShape");
-        set => SetTriggerShape(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameTeleporterModelBuilderAssignments.GetTriggerShapeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTriggerShape(global::GBX.NET.Engines.Plug.CPlugSurface? value)
     {
@@ -80,7 +75,7 @@ public abstract class CGameTeleporterModelBuilderBase<TSelf> where TSelf : CGame
     public TSelf WithTriggerShapeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSurface> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetTriggerShapeReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameTeleporterModelBuilderAssignments.GetTriggerShapeReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }

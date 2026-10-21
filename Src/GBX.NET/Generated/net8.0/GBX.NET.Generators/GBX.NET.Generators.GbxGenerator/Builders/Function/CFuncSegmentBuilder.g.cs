@@ -36,11 +36,10 @@ public abstract class CFuncSegmentBuilderBase<TSelf> where TSelf : CFuncSegmentB
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Function.CFuncSegment> state;
     private protected CFuncSegmentBuilderBase() => state = new();
     private protected CFuncSegmentBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncSegment> state) => this.state = state;
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncSegment> state, global::GBX.NET.Engines.Function.CFuncSegment.Key[]? value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncSegmentBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TMF);
     public global::GBX.NET.Engines.Function.CFuncSegment.Key[]? Keys
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncSegment.Key[]?>("Keys");
-        set => SetKeys(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncSegmentBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TMF);
     }
     public TSelf WithKeys(params global::GBX.NET.Engines.Function.CFuncSegment.Key[]? value)
     {

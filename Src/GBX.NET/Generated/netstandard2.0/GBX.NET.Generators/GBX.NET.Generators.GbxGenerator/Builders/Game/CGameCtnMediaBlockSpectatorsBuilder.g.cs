@@ -36,11 +36,10 @@ public abstract class CGameCtnMediaBlockSpectatorsBuilderBase<TSelf> where TSelf
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators> state;
     private protected CGameCtnMediaBlockSpectatorsBuilderBase() => state = new();
     private protected CGameCtnMediaBlockSpectatorsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators> state) => this.state = state;
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators.Key>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSpectatorsBuilderAssignments.GetKeysAssignment(), value, GameVersion.TM2020);
     public List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators.Key>? Keys
     {
         get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators.Key>?>("Keys");
-        set => SetKeys(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSpectatorsBuilderAssignments.GetKeysAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators.Key>? value)
     {

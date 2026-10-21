@@ -36,20 +36,10 @@ public abstract class CFuncEnumBuilderBase<TSelf> where TSelf : CFuncEnumBuilder
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state;
     private protected CFuncEnumBuilderBase() => state = new();
     private protected CFuncEnumBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state) => this.state = state;
-    private protected static void SetAtlas(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state, Int2 value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnumBuilderAssignments.GetAtlasAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIconIndexs(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state, global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnumBuilderAssignments.GetIconIndexsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIconIndexsReference(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnumBuilderAssignments.GetIconIndexsReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMaxTexCoord(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnumBuilderAssignments.GetMaxTexCoordAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMinTexCoord(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnumBuilderAssignments.GetMinTexCoordAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnumBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetTexSize(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnumBuilderAssignments.GetTexSizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetValues(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlug>? value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnumBuilderAssignments.GetValuesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetValuesAtlasYx(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state, int[]? value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnumBuilderAssignments.GetValuesAtlasYxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetWantedCount(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnumBuilderAssignments.GetWantedCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     public Int2 Atlas
     {
         get => state.Get<Int2>("Atlas");
-        set => SetAtlas(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnumBuilderAssignments.GetAtlasAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithAtlas(Int2 value)
     {
@@ -59,7 +49,7 @@ public abstract class CFuncEnumBuilderBase<TSelf> where TSelf : CFuncEnumBuilder
     public Vec2 MaxTexCoord
     {
         get => state.Get<Vec2>("MaxTexCoord");
-        set => SetMaxTexCoord(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnumBuilderAssignments.GetMaxTexCoordAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMaxTexCoord(Vec2 value)
     {
@@ -69,7 +59,7 @@ public abstract class CFuncEnumBuilderBase<TSelf> where TSelf : CFuncEnumBuilder
     public Vec2 MinTexCoord
     {
         get => state.Get<Vec2>("MinTexCoord");
-        set => SetMinTexCoord(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnumBuilderAssignments.GetMinTexCoordAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMinTexCoord(Vec2 value)
     {
@@ -79,7 +69,7 @@ public abstract class CFuncEnumBuilderBase<TSelf> where TSelf : CFuncEnumBuilder
     public string? Name
     {
         get => state.Get<string?>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnumBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithName(string? value)
     {
@@ -89,7 +79,7 @@ public abstract class CFuncEnumBuilderBase<TSelf> where TSelf : CFuncEnumBuilder
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlug>? Values
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlug>?>("Values");
-        set => SetValues(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnumBuilderAssignments.GetValuesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithValues(NodeRefList<global::GBX.NET.Engines.Plug.CPlug>? value)
     {
@@ -107,7 +97,7 @@ public abstract class CFuncEnumBuilderBase<TSelf> where TSelf : CFuncEnumBuilder
     public int[]? ValuesAtlasYx
     {
         get => state.Get<int[]?>("ValuesAtlasYx");
-        set => SetValuesAtlasYx(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnumBuilderAssignments.GetValuesAtlasYxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithValuesAtlasYx(params int[]? value)
     {
@@ -121,7 +111,7 @@ public abstract class CFuncEnumBuilderBase<TSelf> where TSelf : CFuncEnumBuilder
     public int WantedCount
     {
         get => state.Get<int>("WantedCount");
-        set => SetWantedCount(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnumBuilderAssignments.GetWantedCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithWantedCount(int value)
     {
@@ -135,7 +125,7 @@ public abstract class CFuncEnumBuilderMembers1<TSelf> : CFuncEnumBuilderBase<TSe
     public global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? IconIndexs
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?>("IconIndexs");
-        set => SetIconIndexs(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnumBuilderAssignments.GetIconIndexsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIconIndexs(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value)
     {
@@ -145,7 +135,7 @@ public abstract class CFuncEnumBuilderMembers1<TSelf> : CFuncEnumBuilderBase<TSe
     public TSelf WithIconIndexsReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetIconIndexsReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnumBuilderAssignments.GetIconIndexsReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -155,7 +145,7 @@ public abstract class CFuncEnumBuilderMembers2<TSelf> : CFuncEnumBuilderMembers1
     public Vec2 TexSize
     {
         get => state.Get<Vec2>("TexSize");
-        set => SetTexSize(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnumBuilderAssignments.GetTexSizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithTexSize(Vec2 value)
     {

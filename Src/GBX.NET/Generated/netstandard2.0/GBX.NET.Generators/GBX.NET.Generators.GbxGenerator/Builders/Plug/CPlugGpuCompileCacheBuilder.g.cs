@@ -36,17 +36,10 @@ public abstract class CPlugGpuCompileCacheBuilderBase<TSelf> where TSelf : CPlug
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache> state;
     private protected CPlugGpuCompileCacheBuilderBase() => state = new();
     private protected CPlugGpuCompileCacheBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache> state) => this.state = state;
-    private protected static void SetData(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache> state, global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.CompileData? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGpuCompileCacheBuilderAssignments.GetDataAssignment(), value, GameVersion.TM2020);
-    private protected static void SetEntryPoint(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGpuCompileCacheBuilderAssignments.GetEntryPointAssignment(), value, GameVersion.TM2020);
-    private protected static void SetHasSlots(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGpuCompileCacheBuilderAssignments.GetHasSlotsAssignment(), value, GameVersion.TM2020);
-    private protected static void SetHashes(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache> state, ulong[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGpuCompileCacheBuilderAssignments.GetHashesAssignment(), value, GameVersion.TM2020);
-    private protected static void SetIncludes(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache> state, global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.Include[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGpuCompileCacheBuilderAssignments.GetIncludesAssignment(), value, GameVersion.TM2020);
-    private protected static void SetSlots(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache> state, global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.SlotTable? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGpuCompileCacheBuilderAssignments.GetSlotsAssignment(), value, GameVersion.TM2020);
-    private protected static void SetType(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGpuCompileCacheBuilderAssignments.GetTypeAssignment(), value, GameVersion.TM2020);
     public global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.CompileData? Data
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.CompileData?>("Data");
-        set => SetData(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGpuCompileCacheBuilderAssignments.GetDataAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithData(global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.CompileData? value)
     {
@@ -56,7 +49,7 @@ public abstract class CPlugGpuCompileCacheBuilderBase<TSelf> where TSelf : CPlug
     public string? EntryPoint
     {
         get => state.Get<string?>("EntryPoint");
-        set => SetEntryPoint(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGpuCompileCacheBuilderAssignments.GetEntryPointAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithEntryPoint(string? value)
     {
@@ -66,7 +59,7 @@ public abstract class CPlugGpuCompileCacheBuilderBase<TSelf> where TSelf : CPlug
     public bool HasSlots
     {
         get => state.Get<bool>("HasSlots");
-        set => SetHasSlots(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGpuCompileCacheBuilderAssignments.GetHasSlotsAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithHasSlots(bool value)
     {
@@ -76,7 +69,7 @@ public abstract class CPlugGpuCompileCacheBuilderBase<TSelf> where TSelf : CPlug
     public ulong[]? Hashes
     {
         get => state.Get<ulong[]?>("Hashes");
-        set => SetHashes(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGpuCompileCacheBuilderAssignments.GetHashesAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithHashes(params ulong[]? value)
     {
@@ -90,7 +83,7 @@ public abstract class CPlugGpuCompileCacheBuilderBase<TSelf> where TSelf : CPlug
     public global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.Include[]? Includes
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.Include[]?>("Includes");
-        set => SetIncludes(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGpuCompileCacheBuilderAssignments.GetIncludesAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithIncludes(params global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.Include[]? value)
     {
@@ -104,7 +97,7 @@ public abstract class CPlugGpuCompileCacheBuilderBase<TSelf> where TSelf : CPlug
     public global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.SlotTable? Slots
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.SlotTable?>("Slots");
-        set => SetSlots(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGpuCompileCacheBuilderAssignments.GetSlotsAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithSlots(global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.SlotTable? value)
     {
@@ -114,7 +107,7 @@ public abstract class CPlugGpuCompileCacheBuilderBase<TSelf> where TSelf : CPlug
     public int Type
     {
         get => state.Get<int>("Type");
-        set => SetType(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGpuCompileCacheBuilderAssignments.GetTypeAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithType(int value)
     {

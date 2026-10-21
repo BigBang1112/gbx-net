@@ -36,11 +36,10 @@ public abstract class CPlugVehicleMaterialGroupBuilderBase<TSelf> where TSelf : 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup> state;
     private protected CPlugVehicleMaterialGroupBuilderBase() => state = new();
     private protected CPlugVehicleMaterialGroupBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup> state) => this.state = state;
-    private protected static void SetMaterialIds(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup> state, int[] value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialGroupBuilderAssignments.GetMaterialIdsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     public int[] MaterialIds
     {
         get => state.Get<int[]>("MaterialIds");
-        set => SetMaterialIds(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialGroupBuilderAssignments.GetMaterialIdsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMaterialIds(params int[] value)
     {

@@ -36,72 +36,10 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state;
     private protected CGamePlayerProfileChunk_GameStatsBuilderBase() => state = new();
     private protected CGamePlayerProfileChunk_GameStatsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state) => this.state = state;
-    private protected static void SetAverageNbFinish(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetAverageNbFinishAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAverageNbReset(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetAverageNbResetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAverageTimeInEditChallenge(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetAverageTimeInEditChallengeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAverageTimeInHotSeat(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetAverageTimeInHotSeatAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAverageTimeInNetwork(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetAverageTimeInNetworkAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAverageTimeInNetworkCup(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetAverageTimeInNetworkCupAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAverageTimeInNetworkLaps(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetAverageTimeInNetworkLapsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAverageTimeInNetworkRounds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetAverageTimeInNetworkRoundsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAverageTimeInNetworkScript(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetAverageTimeInNetworkScriptAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAverageTimeInNetworkStunts(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetAverageTimeInNetworkStuntsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAverageTimeInNetworkTimeAttack(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetAverageTimeInNetworkTimeAttackAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAverageTimeInSolo(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetAverageTimeInSoloAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAverageTimeInSoloPlatform(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetAverageTimeInSoloPlatformAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAverageTimeInSoloPuzzle(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetAverageTimeInSoloPuzzleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAverageTimeInSoloRace(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetAverageTimeInSoloRaceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAverageTimeInSoloScript(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetAverageTimeInSoloScriptAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAverageTimeInSplitScreen(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetAverageTimeInSplitScreenAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAverageTimePlay(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetAverageTimePlayAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMaxNbFinish(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMaxNbFinishAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMaxNbReset(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMaxNbResetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMaxTimeInEditChallenge(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMaxTimeInEditChallengeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMaxTimeInHotSeat(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMaxTimeInHotSeatAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMaxTimeInNetwork(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMaxTimeInNetworkAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMaxTimeInNetworkCup(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMaxTimeInNetworkCupAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMaxTimeInNetworkLaps(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMaxTimeInNetworkLapsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMaxTimeInNetworkRounds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMaxTimeInNetworkRoundsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMaxTimeInNetworkScript(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMaxTimeInNetworkScriptAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMaxTimeInNetworkStunts(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMaxTimeInNetworkStuntsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMaxTimeInNetworkTimeAttack(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMaxTimeInNetworkTimeAttackAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMaxTimeInSolo(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMaxTimeInSoloAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMaxTimeInSoloPlatform(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMaxTimeInSoloPlatformAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMaxTimeInSoloPuzzle(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMaxTimeInSoloPuzzleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMaxTimeInSoloRace(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMaxTimeInSoloRaceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMaxTimeInSoloScript(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMaxTimeInSoloScriptAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMaxTimeInSplitScreen(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMaxTimeInSplitScreenAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMaxTimePlay(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMaxTimePlayAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMostEdited(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMostEditedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMostNetted(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMostNettedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMostPlayed(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMostPlayedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMostRaced(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMostRacedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTotalNbChallenges(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalNbChallengesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTotalNbFinish(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalNbFinishAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTotalNbReset(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalNbResetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTotalTimeInEditChallenge(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimeInEditChallengeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTotalTimeInEditReplay(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimeInEditReplayAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTotalTimeInEditSkin(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimeInEditSkinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTotalTimeInHotSeat(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimeInHotSeatAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTotalTimeInManiaLink(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimeInManiaLinkAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTotalTimeInNetwork(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimeInNetworkAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTotalTimeInNetworkCup(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimeInNetworkCupAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTotalTimeInNetworkLaps(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimeInNetworkLapsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTotalTimeInNetworkRounds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimeInNetworkRoundsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTotalTimeInNetworkScript(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimeInNetworkScriptAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTotalTimeInNetworkStunts(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimeInNetworkStuntsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTotalTimeInNetworkTimeAttack(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimeInNetworkTimeAttackAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTotalTimeInSolo(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimeInSoloAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTotalTimeInSoloPlatform(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimeInSoloPlatformAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTotalTimeInSoloPuzzle(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimeInSoloPuzzleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTotalTimeInSoloRace(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimeInSoloRaceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTotalTimeInSoloScript(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimeInSoloScriptAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTotalTimeInSplitScreen(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimeInSplitScreenAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTotalTimePlay(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameStats> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimePlayAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public int AverageNbFinish
     {
         get => state.Get<int>("AverageNbFinish");
-        set => SetAverageNbFinish(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetAverageNbFinishAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAverageNbFinish(int value)
     {
@@ -111,7 +49,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int AverageNbReset
     {
         get => state.Get<int>("AverageNbReset");
-        set => SetAverageNbReset(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetAverageNbResetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAverageNbReset(int value)
     {
@@ -121,7 +59,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int AverageTimeInEditChallenge
     {
         get => state.Get<int>("AverageTimeInEditChallenge");
-        set => SetAverageTimeInEditChallenge(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetAverageTimeInEditChallengeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAverageTimeInEditChallenge(int value)
     {
@@ -131,7 +69,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int AverageTimeInHotSeat
     {
         get => state.Get<int>("AverageTimeInHotSeat");
-        set => SetAverageTimeInHotSeat(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetAverageTimeInHotSeatAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAverageTimeInHotSeat(int value)
     {
@@ -141,7 +79,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int AverageTimeInNetwork
     {
         get => state.Get<int>("AverageTimeInNetwork");
-        set => SetAverageTimeInNetwork(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetAverageTimeInNetworkAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAverageTimeInNetwork(int value)
     {
@@ -151,7 +89,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int AverageTimeInNetworkCup
     {
         get => state.Get<int>("AverageTimeInNetworkCup");
-        set => SetAverageTimeInNetworkCup(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetAverageTimeInNetworkCupAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAverageTimeInNetworkCup(int value)
     {
@@ -161,7 +99,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int AverageTimeInNetworkLaps
     {
         get => state.Get<int>("AverageTimeInNetworkLaps");
-        set => SetAverageTimeInNetworkLaps(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetAverageTimeInNetworkLapsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAverageTimeInNetworkLaps(int value)
     {
@@ -171,7 +109,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int AverageTimeInNetworkRounds
     {
         get => state.Get<int>("AverageTimeInNetworkRounds");
-        set => SetAverageTimeInNetworkRounds(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetAverageTimeInNetworkRoundsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAverageTimeInNetworkRounds(int value)
     {
@@ -181,7 +119,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int AverageTimeInNetworkScript
     {
         get => state.Get<int>("AverageTimeInNetworkScript");
-        set => SetAverageTimeInNetworkScript(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetAverageTimeInNetworkScriptAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAverageTimeInNetworkScript(int value)
     {
@@ -191,7 +129,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int AverageTimeInNetworkStunts
     {
         get => state.Get<int>("AverageTimeInNetworkStunts");
-        set => SetAverageTimeInNetworkStunts(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetAverageTimeInNetworkStuntsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAverageTimeInNetworkStunts(int value)
     {
@@ -201,7 +139,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int AverageTimeInNetworkTimeAttack
     {
         get => state.Get<int>("AverageTimeInNetworkTimeAttack");
-        set => SetAverageTimeInNetworkTimeAttack(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetAverageTimeInNetworkTimeAttackAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAverageTimeInNetworkTimeAttack(int value)
     {
@@ -211,7 +149,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int AverageTimeInSolo
     {
         get => state.Get<int>("AverageTimeInSolo");
-        set => SetAverageTimeInSolo(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetAverageTimeInSoloAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAverageTimeInSolo(int value)
     {
@@ -221,7 +159,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int AverageTimeInSoloPlatform
     {
         get => state.Get<int>("AverageTimeInSoloPlatform");
-        set => SetAverageTimeInSoloPlatform(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetAverageTimeInSoloPlatformAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAverageTimeInSoloPlatform(int value)
     {
@@ -231,7 +169,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int AverageTimeInSoloPuzzle
     {
         get => state.Get<int>("AverageTimeInSoloPuzzle");
-        set => SetAverageTimeInSoloPuzzle(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetAverageTimeInSoloPuzzleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAverageTimeInSoloPuzzle(int value)
     {
@@ -241,7 +179,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int AverageTimeInSoloRace
     {
         get => state.Get<int>("AverageTimeInSoloRace");
-        set => SetAverageTimeInSoloRace(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetAverageTimeInSoloRaceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAverageTimeInSoloRace(int value)
     {
@@ -251,7 +189,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int AverageTimeInSoloScript
     {
         get => state.Get<int>("AverageTimeInSoloScript");
-        set => SetAverageTimeInSoloScript(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetAverageTimeInSoloScriptAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAverageTimeInSoloScript(int value)
     {
@@ -261,7 +199,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int AverageTimeInSplitScreen
     {
         get => state.Get<int>("AverageTimeInSplitScreen");
-        set => SetAverageTimeInSplitScreen(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetAverageTimeInSplitScreenAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAverageTimeInSplitScreen(int value)
     {
@@ -271,7 +209,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int AverageTimePlay
     {
         get => state.Get<int>("AverageTimePlay");
-        set => SetAverageTimePlay(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetAverageTimePlayAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAverageTimePlay(int value)
     {
@@ -281,7 +219,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int MaxNbFinish
     {
         get => state.Get<int>("MaxNbFinish");
-        set => SetMaxNbFinish(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMaxNbFinishAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaxNbFinish(int value)
     {
@@ -291,7 +229,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int MaxNbReset
     {
         get => state.Get<int>("MaxNbReset");
-        set => SetMaxNbReset(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMaxNbResetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaxNbReset(int value)
     {
@@ -301,7 +239,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int MaxTimeInEditChallenge
     {
         get => state.Get<int>("MaxTimeInEditChallenge");
-        set => SetMaxTimeInEditChallenge(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMaxTimeInEditChallengeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaxTimeInEditChallenge(int value)
     {
@@ -311,7 +249,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int MaxTimeInHotSeat
     {
         get => state.Get<int>("MaxTimeInHotSeat");
-        set => SetMaxTimeInHotSeat(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMaxTimeInHotSeatAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaxTimeInHotSeat(int value)
     {
@@ -321,7 +259,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int MaxTimeInNetwork
     {
         get => state.Get<int>("MaxTimeInNetwork");
-        set => SetMaxTimeInNetwork(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMaxTimeInNetworkAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaxTimeInNetwork(int value)
     {
@@ -331,7 +269,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int MaxTimeInNetworkCup
     {
         get => state.Get<int>("MaxTimeInNetworkCup");
-        set => SetMaxTimeInNetworkCup(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMaxTimeInNetworkCupAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaxTimeInNetworkCup(int value)
     {
@@ -341,7 +279,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int MaxTimeInNetworkLaps
     {
         get => state.Get<int>("MaxTimeInNetworkLaps");
-        set => SetMaxTimeInNetworkLaps(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMaxTimeInNetworkLapsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaxTimeInNetworkLaps(int value)
     {
@@ -351,7 +289,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int MaxTimeInNetworkRounds
     {
         get => state.Get<int>("MaxTimeInNetworkRounds");
-        set => SetMaxTimeInNetworkRounds(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMaxTimeInNetworkRoundsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaxTimeInNetworkRounds(int value)
     {
@@ -361,7 +299,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int MaxTimeInNetworkScript
     {
         get => state.Get<int>("MaxTimeInNetworkScript");
-        set => SetMaxTimeInNetworkScript(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMaxTimeInNetworkScriptAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaxTimeInNetworkScript(int value)
     {
@@ -371,7 +309,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int MaxTimeInNetworkStunts
     {
         get => state.Get<int>("MaxTimeInNetworkStunts");
-        set => SetMaxTimeInNetworkStunts(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMaxTimeInNetworkStuntsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaxTimeInNetworkStunts(int value)
     {
@@ -381,7 +319,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int MaxTimeInNetworkTimeAttack
     {
         get => state.Get<int>("MaxTimeInNetworkTimeAttack");
-        set => SetMaxTimeInNetworkTimeAttack(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMaxTimeInNetworkTimeAttackAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaxTimeInNetworkTimeAttack(int value)
     {
@@ -391,7 +329,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int MaxTimeInSolo
     {
         get => state.Get<int>("MaxTimeInSolo");
-        set => SetMaxTimeInSolo(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMaxTimeInSoloAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaxTimeInSolo(int value)
     {
@@ -401,7 +339,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int MaxTimeInSoloPlatform
     {
         get => state.Get<int>("MaxTimeInSoloPlatform");
-        set => SetMaxTimeInSoloPlatform(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMaxTimeInSoloPlatformAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaxTimeInSoloPlatform(int value)
     {
@@ -411,7 +349,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int MaxTimeInSoloPuzzle
     {
         get => state.Get<int>("MaxTimeInSoloPuzzle");
-        set => SetMaxTimeInSoloPuzzle(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMaxTimeInSoloPuzzleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaxTimeInSoloPuzzle(int value)
     {
@@ -421,7 +359,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int MaxTimeInSoloRace
     {
         get => state.Get<int>("MaxTimeInSoloRace");
-        set => SetMaxTimeInSoloRace(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMaxTimeInSoloRaceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaxTimeInSoloRace(int value)
     {
@@ -431,7 +369,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int MaxTimeInSoloScript
     {
         get => state.Get<int>("MaxTimeInSoloScript");
-        set => SetMaxTimeInSoloScript(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMaxTimeInSoloScriptAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaxTimeInSoloScript(int value)
     {
@@ -441,7 +379,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int MaxTimeInSplitScreen
     {
         get => state.Get<int>("MaxTimeInSplitScreen");
-        set => SetMaxTimeInSplitScreen(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMaxTimeInSplitScreenAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaxTimeInSplitScreen(int value)
     {
@@ -451,7 +389,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int MaxTimePlay
     {
         get => state.Get<int>("MaxTimePlay");
-        set => SetMaxTimePlay(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMaxTimePlayAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaxTimePlay(int value)
     {
@@ -461,7 +399,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public string? MostEdited
     {
         get => state.Get<string?>("MostEdited");
-        set => SetMostEdited(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMostEditedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMostEdited(string? value)
     {
@@ -471,7 +409,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public string? MostNetted
     {
         get => state.Get<string?>("MostNetted");
-        set => SetMostNetted(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMostNettedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMostNetted(string? value)
     {
@@ -481,7 +419,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public string? MostPlayed
     {
         get => state.Get<string?>("MostPlayed");
-        set => SetMostPlayed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMostPlayedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMostPlayed(string? value)
     {
@@ -491,7 +429,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public string? MostRaced
     {
         get => state.Get<string?>("MostRaced");
-        set => SetMostRaced(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetMostRacedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMostRaced(string? value)
     {
@@ -501,7 +439,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int TotalNbChallenges
     {
         get => state.Get<int>("TotalNbChallenges");
-        set => SetTotalNbChallenges(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalNbChallengesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTotalNbChallenges(int value)
     {
@@ -511,7 +449,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int TotalNbFinish
     {
         get => state.Get<int>("TotalNbFinish");
-        set => SetTotalNbFinish(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalNbFinishAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTotalNbFinish(int value)
     {
@@ -521,7 +459,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int TotalNbReset
     {
         get => state.Get<int>("TotalNbReset");
-        set => SetTotalNbReset(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalNbResetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTotalNbReset(int value)
     {
@@ -531,7 +469,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int TotalTimeInEditChallenge
     {
         get => state.Get<int>("TotalTimeInEditChallenge");
-        set => SetTotalTimeInEditChallenge(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimeInEditChallengeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTotalTimeInEditChallenge(int value)
     {
@@ -541,7 +479,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int TotalTimeInEditReplay
     {
         get => state.Get<int>("TotalTimeInEditReplay");
-        set => SetTotalTimeInEditReplay(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimeInEditReplayAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTotalTimeInEditReplay(int value)
     {
@@ -551,7 +489,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int TotalTimeInEditSkin
     {
         get => state.Get<int>("TotalTimeInEditSkin");
-        set => SetTotalTimeInEditSkin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimeInEditSkinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTotalTimeInEditSkin(int value)
     {
@@ -561,7 +499,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int TotalTimeInHotSeat
     {
         get => state.Get<int>("TotalTimeInHotSeat");
-        set => SetTotalTimeInHotSeat(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimeInHotSeatAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTotalTimeInHotSeat(int value)
     {
@@ -571,7 +509,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int TotalTimeInManiaLink
     {
         get => state.Get<int>("TotalTimeInManiaLink");
-        set => SetTotalTimeInManiaLink(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimeInManiaLinkAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTotalTimeInManiaLink(int value)
     {
@@ -581,7 +519,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int TotalTimeInNetwork
     {
         get => state.Get<int>("TotalTimeInNetwork");
-        set => SetTotalTimeInNetwork(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimeInNetworkAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTotalTimeInNetwork(int value)
     {
@@ -591,7 +529,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int TotalTimeInNetworkCup
     {
         get => state.Get<int>("TotalTimeInNetworkCup");
-        set => SetTotalTimeInNetworkCup(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimeInNetworkCupAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTotalTimeInNetworkCup(int value)
     {
@@ -601,7 +539,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int TotalTimeInNetworkLaps
     {
         get => state.Get<int>("TotalTimeInNetworkLaps");
-        set => SetTotalTimeInNetworkLaps(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimeInNetworkLapsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTotalTimeInNetworkLaps(int value)
     {
@@ -611,7 +549,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int TotalTimeInNetworkRounds
     {
         get => state.Get<int>("TotalTimeInNetworkRounds");
-        set => SetTotalTimeInNetworkRounds(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimeInNetworkRoundsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTotalTimeInNetworkRounds(int value)
     {
@@ -621,7 +559,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int TotalTimeInNetworkScript
     {
         get => state.Get<int>("TotalTimeInNetworkScript");
-        set => SetTotalTimeInNetworkScript(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimeInNetworkScriptAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTotalTimeInNetworkScript(int value)
     {
@@ -631,7 +569,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int TotalTimeInNetworkStunts
     {
         get => state.Get<int>("TotalTimeInNetworkStunts");
-        set => SetTotalTimeInNetworkStunts(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimeInNetworkStuntsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTotalTimeInNetworkStunts(int value)
     {
@@ -641,7 +579,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int TotalTimeInNetworkTimeAttack
     {
         get => state.Get<int>("TotalTimeInNetworkTimeAttack");
-        set => SetTotalTimeInNetworkTimeAttack(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimeInNetworkTimeAttackAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTotalTimeInNetworkTimeAttack(int value)
     {
@@ -651,7 +589,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int TotalTimeInSolo
     {
         get => state.Get<int>("TotalTimeInSolo");
-        set => SetTotalTimeInSolo(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimeInSoloAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTotalTimeInSolo(int value)
     {
@@ -661,7 +599,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int TotalTimeInSoloPlatform
     {
         get => state.Get<int>("TotalTimeInSoloPlatform");
-        set => SetTotalTimeInSoloPlatform(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimeInSoloPlatformAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTotalTimeInSoloPlatform(int value)
     {
@@ -671,7 +609,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int TotalTimeInSoloPuzzle
     {
         get => state.Get<int>("TotalTimeInSoloPuzzle");
-        set => SetTotalTimeInSoloPuzzle(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimeInSoloPuzzleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTotalTimeInSoloPuzzle(int value)
     {
@@ -681,7 +619,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int TotalTimeInSoloRace
     {
         get => state.Get<int>("TotalTimeInSoloRace");
-        set => SetTotalTimeInSoloRace(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimeInSoloRaceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTotalTimeInSoloRace(int value)
     {
@@ -691,7 +629,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int TotalTimeInSoloScript
     {
         get => state.Get<int>("TotalTimeInSoloScript");
-        set => SetTotalTimeInSoloScript(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimeInSoloScriptAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTotalTimeInSoloScript(int value)
     {
@@ -701,7 +639,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int TotalTimeInSplitScreen
     {
         get => state.Get<int>("TotalTimeInSplitScreen");
-        set => SetTotalTimeInSplitScreen(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimeInSplitScreenAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTotalTimeInSplitScreen(int value)
     {
@@ -711,7 +649,7 @@ public abstract class CGamePlayerProfileChunk_GameStatsBuilderBase<TSelf> where 
     public int TotalTimePlay
     {
         get => state.Get<int>("TotalTimePlay");
-        set => SetTotalTimePlay(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameStatsBuilderAssignments.GetTotalTimePlayAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTotalTimePlay(int value)
     {

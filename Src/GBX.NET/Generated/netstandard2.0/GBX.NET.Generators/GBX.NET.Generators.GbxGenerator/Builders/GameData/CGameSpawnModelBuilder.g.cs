@@ -36,15 +36,10 @@ public abstract class CGameSpawnModelBuilderBase<TSelf> where TSelf : CGameSpawn
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.GameData.CGameSpawnModel> state;
     private protected CGameSpawnModelBuilderBase() => state = new();
     private protected CGameSpawnModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameSpawnModel> state) => this.state = state;
-    private protected static void SetDefaultGravitySpawn(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameSpawnModel> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameSpawnModelBuilderAssignments.GetDefaultGravitySpawnAssignment(), value, GameVersion.MP4);
-    private protected static void SetLoc(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameSpawnModel> state, Iso4 value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameSpawnModelBuilderAssignments.GetLocAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
-    private protected static void SetTorqueDuration(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameSpawnModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameSpawnModelBuilderAssignments.GetTorqueDurationAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
-    private protected static void SetTorqueX(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameSpawnModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameSpawnModelBuilderAssignments.GetTorqueXAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
-    private protected static void SetUnderground(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameSpawnModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameSpawnModelBuilderAssignments.GetUndergroundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     public Iso4 Loc
     {
         get => state.Get<Iso4>("Loc");
-        set => SetLoc(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameSpawnModelBuilderAssignments.GetLocAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithLoc(Iso4 value)
     {
@@ -54,7 +49,7 @@ public abstract class CGameSpawnModelBuilderBase<TSelf> where TSelf : CGameSpawn
     public bool Underground
     {
         get => state.Get<bool>("Underground");
-        set => SetUnderground(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameSpawnModelBuilderAssignments.GetUndergroundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithUnderground(bool value)
     {
@@ -68,7 +63,7 @@ public abstract class CGameSpawnModelBuilderMembers1<TSelf> : CGameSpawnModelBui
     public int TorqueDuration
     {
         get => state.Get<int>("TorqueDuration");
-        set => SetTorqueDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameSpawnModelBuilderAssignments.GetTorqueDurationAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithTorqueDuration(int value)
     {
@@ -78,7 +73,7 @@ public abstract class CGameSpawnModelBuilderMembers1<TSelf> : CGameSpawnModelBui
     public float TorqueX
     {
         get => state.Get<float>("TorqueX");
-        set => SetTorqueX(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameSpawnModelBuilderAssignments.GetTorqueXAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithTorqueX(float value)
     {
@@ -171,7 +166,7 @@ public partial class CGameSpawnModelBuilder : CGameSpawnModelBuilderBase<CGameSp
         public Vec3 DefaultGravitySpawn
         {
             get => state.Get<Vec3>("DefaultGravitySpawn");
-            set => SetDefaultGravitySpawn(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameSpawnModelBuilderAssignments.GetDefaultGravitySpawnAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithDefaultGravitySpawn(Vec3 value)
         {

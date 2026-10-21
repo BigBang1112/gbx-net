@@ -39,6 +39,9 @@ public partial class GenerationTests
         for (var type = builder.GetTypeMembers("TM10").Single(); type is not null; type = type.BaseType)
             await Assert.That(type.GetMembers("WithModern")).IsEmpty();
         await Assert.That(builder.GetMembers().OfType<IMethodSymbol>().Count(static m => m.Name.StartsWith("CreateRecipe"))).IsEqualTo(2);
+        var commonBase = compilation.GetTypeByMetadataName("GBX.NET.Builders.Engines.Game.ExampleBuilderBase`1")!;
+        await Assert.That(commonBase.GetMembers("SetValue")).IsEmpty();
+        await Assert.That(commonBase.GetMembers("SetModern")).IsEmpty();
         // Availability remains correct through shared contracts as well as
         // through the concrete builder stages.
         var oldView = compilation.GetTypeByMetadataName("GBX.NET.Interfaces.Game.IExampleTM10")!;
@@ -47,6 +50,109 @@ public partial class GenerationTests
         var sharedView = compilation.GetTypeByMetadataName("GBX.NET.Interfaces.Game.IExampleMP4")!.AllInterfaces
             .Single(static i => i.GetMembers("Modern").Length > 0);
         await Assert.That(compilation.GetTypeByMetadataName("GBX.NET.Interfaces.Game.IExampleTM2020")!.AllInterfaces.Contains(sharedView)).IsTrue();
+        await Assert.That((bool)InvokeGame(compilation, "Verify")!).IsTrue();
+    }
+
+    [Test]
+    public async Task Generate_GameBuilders_RetainsOnlyHelpersReferencedByTheirHandwrittenPartials()
+    {
+        var (result, compilation) = RunGame("""
+            namespace GBX.NET.Builders.Engines.Game
+            {
+                public partial class ExampleBuilder
+                {
+                    private const string HelperName = nameof(SetSpare);
+                    private const string IgnoredText = "SetValue";
+
+                    [System.Obsolete("Select ForMP4 or ForTM2020 before assigning Modern.")]
+                    public ExampleBuilder WithLegacyModern(int value)
+                    {
+                        System.Action<GBX.NET.Builders.NodeBuilderState<GBX.NET.Engines.Game.Example>, int> assign = SetModern;
+                        assign(state, value);
+                        return this;
+                    }
+                }
+            }
+            namespace GBX.NET.Engines.Game
+            {
+                public partial class Example
+                {
+                    public static bool Verify()
+                    {
+                        if (Create().WithLegacyModern(17).ForMP4().Build().Modern != 17) return false;
+                        try { Create().WithLegacyModern(18).ForTM10().Build(); return false; }
+                        catch (System.InvalidOperationException) { return true; }
+                    }
+                }
+            }
+            """, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001 [TM10, MP4, TM2020]
+              int Value
+              int Spare
+            0x002 [MP4, TM2020]
+              int Modern
+            """), new Text("Engines/Game/Other.chunkl", """
+            Other 0x03044000
+            0x001 [MP4]
+              int Modern
+            """));
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var commonBase = compilation.GetTypeByMetadataName("GBX.NET.Builders.Engines.Game.ExampleBuilderBase`1")!;
+        await Assert.That(commonBase.GetMembers("SetValue")).IsEmpty();
+        await Assert.That(commonBase.GetMembers("SetModern").Length).IsEqualTo(1);
+        await Assert.That(commonBase.GetMembers("SetSpare").Length).IsEqualTo(1);
+        await Assert.That(compilation.GetTypeByMetadataName("GBX.NET.Builders.Engines.Game.OtherBuilderBase`1")!.GetMembers("SetModern")).IsEmpty();
+        await Assert.That((bool)InvokeGame(compilation, "Verify")!).IsTrue();
+    }
+
+    [Test]
+    public async Task Generate_GameBuilders_PartialReferenceHelperSnapshotsItsInput()
+    {
+        var (result, compilation) = RunGame("""
+            namespace GBX.NET.Builders.Engines.Game
+            {
+                public partial class ExampleBuilder
+                {
+                    public partial class MP4
+                    {
+                        public MP4 WithLegacyLink(GBX.NET.NodeRef<GBX.NET.Engines.Game.CChild> value)
+                        {
+                            SetLinkReference(state, value);
+                            return this;
+                        }
+                    }
+                }
+            }
+            namespace GBX.NET.Engines.Game
+            {
+                public partial class Example
+                {
+                    public static bool Verify()
+                    {
+                        var child = CChild.Create().ForMP4().Build();
+                        var reference = new GBX.NET.NodeRef<CChild> { Node = child };
+                        var builder = Create().ForMP4().WithLegacyLink(reference);
+                        reference.Clear();
+                        return object.ReferenceEquals(builder.Build().Link, child);
+                    }
+                }
+            }
+            """, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001 [MP4]
+              CChild Link
+            """), new Text("Engines/Game/CChild.chunkl", """
+            CChild 0x03044000
+            0x001 [MP4]
+              int Value
+            """));
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var commonBase = compilation.GetTypeByMetadataName("GBX.NET.Builders.Engines.Game.ExampleBuilderBase`1")!;
+        await Assert.That(commonBase.GetMembers("SetLink")).IsEmpty();
+        await Assert.That(commonBase.GetMembers("SetLinkReference").Length).IsEqualTo(1);
         await Assert.That((bool)InvokeGame(compilation, "Verify")!).IsTrue();
     }
 

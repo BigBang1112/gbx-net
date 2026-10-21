@@ -36,32 +36,10 @@ public abstract class CGameObjectVisModelBuilderBase<TSelf> where TSelf : CGameO
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectVisModel> state;
     private protected CGameObjectVisModelBuilderBase() => state = new();
     private protected CGameObjectVisModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectVisModel> state) => this.state = state;
-    private protected static void SetDomeShaderColor(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectVisModel> state, global::GBX.NET.Vec3? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetDomeShaderColorAssignment(), value, GameVersion.TM2020);
-    private protected static void SetImages(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectVisModel> state, global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition.ImageRef[]? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetImagesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetLightBallStates(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectVisModel> state, global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel.LightBallStateSimple[]? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetLightBallStatesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetLocAnim(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectVisModel> state, global::GBX.NET.Engines.Plug.CPlugAnimLocSimple? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetLocAnimAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetLocAnimReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetLocAnimReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMesh(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectVisModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetMeshAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMeshShaded(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectVisModel> state, global::GBX.NET.Engines.Plug.CPlugSolid2Model? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetMeshShadedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMeshShadedReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid2Model> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetMeshShadedReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMeshShadedFid(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectVisModel> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetMeshShadedFidAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetMeshShadedFidReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectVisModel> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetMeshShadedFidReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSmashParticleRef(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectVisModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetSmashParticleRefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSolid(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectVisModel> state, global::GBX.NET.Engines.Plug.CPlugSolid? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetSolidAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSolidReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetSolidReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSolidRef(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectVisModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetSolidRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSoundLocPermanent(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectVisModel> state, Iso4 value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetSoundLocPermanentAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSoundRefGrab(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectVisModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetSoundRefGrabAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSoundRefPermanent(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectVisModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetSoundRefPermanentAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSoundRefSmashed(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectVisModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetSoundRefSmashedAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSoundRefSpawn(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectVisModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetSoundRefSpawnAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSoundRefUnspawn(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectVisModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetSoundRefUnspawnAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSpriteParams(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectVisModel> state, global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition.SpriteParam[]? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetSpriteParamsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetVisEntFx(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectVisModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetVisEntFxAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     public global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel.LightBallStateSimple[]? LightBallStates
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel.LightBallStateSimple[]?>("LightBallStates");
-        set => SetLightBallStates(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetLightBallStatesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLightBallStates(params global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel.LightBallStateSimple[]? value)
     {
@@ -75,7 +53,7 @@ public abstract class CGameObjectVisModelBuilderBase<TSelf> where TSelf : CGameO
     public global::GBX.NET.Engines.Plug.CPlugAnimLocSimple? LocAnim
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple?>("LocAnim");
-        set => SetLocAnim(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetLocAnimAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLocAnim(global::GBX.NET.Engines.Plug.CPlugAnimLocSimple? value)
     {
@@ -85,13 +63,13 @@ public abstract class CGameObjectVisModelBuilderBase<TSelf> where TSelf : CGameO
     public TSelf WithLocAnimReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetLocAnimReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetLocAnimReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public string? Mesh
     {
         get => state.Get<string?>("Mesh");
-        set => SetMesh(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetMeshAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMesh(string? value)
     {
@@ -101,7 +79,7 @@ public abstract class CGameObjectVisModelBuilderBase<TSelf> where TSelf : CGameO
     public global::GBX.NET.Engines.Plug.CPlugSolid2Model? MeshShaded
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSolid2Model?>("MeshShaded");
-        set => SetMeshShaded(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetMeshShadedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMeshShaded(global::GBX.NET.Engines.Plug.CPlugSolid2Model? value)
     {
@@ -111,13 +89,13 @@ public abstract class CGameObjectVisModelBuilderBase<TSelf> where TSelf : CGameO
     public TSelf WithMeshShadedReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid2Model> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetMeshShadedReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetMeshShadedReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public string? SmashParticleRef
     {
         get => state.Get<string?>("SmashParticleRef");
-        set => SetSmashParticleRef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetSmashParticleRefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSmashParticleRef(string? value)
     {
@@ -127,7 +105,7 @@ public abstract class CGameObjectVisModelBuilderBase<TSelf> where TSelf : CGameO
     public string? SoundRefGrab
     {
         get => state.Get<string?>("SoundRefGrab");
-        set => SetSoundRefGrab(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetSoundRefGrabAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSoundRefGrab(string? value)
     {
@@ -137,7 +115,7 @@ public abstract class CGameObjectVisModelBuilderBase<TSelf> where TSelf : CGameO
     public string? SoundRefSpawn
     {
         get => state.Get<string?>("SoundRefSpawn");
-        set => SetSoundRefSpawn(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetSoundRefSpawnAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSoundRefSpawn(string? value)
     {
@@ -147,7 +125,7 @@ public abstract class CGameObjectVisModelBuilderBase<TSelf> where TSelf : CGameO
     public string? SoundRefUnspawn
     {
         get => state.Get<string?>("SoundRefUnspawn");
-        set => SetSoundRefUnspawn(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetSoundRefUnspawnAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSoundRefUnspawn(string? value)
     {
@@ -161,7 +139,7 @@ public abstract class CGameObjectVisModelBuilderMembers1<TSelf> : CGameObjectVis
     public global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition.ImageRef[]? Images
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition.ImageRef[]?>("Images");
-        set => SetImages(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetImagesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithImages(params global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition.ImageRef[]? value)
     {
@@ -175,7 +153,7 @@ public abstract class CGameObjectVisModelBuilderMembers1<TSelf> : CGameObjectVis
     public global::GBX.NET.Engines.Plug.CPlugSolid? Solid
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSolid?>("Solid");
-        set => SetSolid(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetSolidAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSolid(global::GBX.NET.Engines.Plug.CPlugSolid? value)
     {
@@ -185,13 +163,13 @@ public abstract class CGameObjectVisModelBuilderMembers1<TSelf> : CGameObjectVis
     public TSelf WithSolidReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSolidReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetSolidReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public string? SolidRef
     {
         get => state.Get<string?>("SolidRef");
-        set => SetSolidRef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetSolidRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSolidRef(string? value)
     {
@@ -201,7 +179,7 @@ public abstract class CGameObjectVisModelBuilderMembers1<TSelf> : CGameObjectVis
     public Iso4 SoundLocPermanent
     {
         get => state.Get<Iso4>("SoundLocPermanent");
-        set => SetSoundLocPermanent(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetSoundLocPermanentAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSoundLocPermanent(Iso4 value)
     {
@@ -211,7 +189,7 @@ public abstract class CGameObjectVisModelBuilderMembers1<TSelf> : CGameObjectVis
     public string? SoundRefPermanent
     {
         get => state.Get<string?>("SoundRefPermanent");
-        set => SetSoundRefPermanent(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetSoundRefPermanentAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSoundRefPermanent(string? value)
     {
@@ -221,7 +199,7 @@ public abstract class CGameObjectVisModelBuilderMembers1<TSelf> : CGameObjectVis
     public string? SoundRefSmashed
     {
         get => state.Get<string?>("SoundRefSmashed");
-        set => SetSoundRefSmashed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetSoundRefSmashedAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSoundRefSmashed(string? value)
     {
@@ -231,7 +209,7 @@ public abstract class CGameObjectVisModelBuilderMembers1<TSelf> : CGameObjectVis
     public global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition.SpriteParam[]? SpriteParams
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition.SpriteParam[]?>("SpriteParams");
-        set => SetSpriteParams(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetSpriteParamsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSpriteParams(params global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition.SpriteParam[]? value)
     {
@@ -249,7 +227,7 @@ public abstract class CGameObjectVisModelBuilderMembers2<TSelf> : CGameObjectVis
     public global::GBX.NET.Engines.MwFoundations.CMwNod? MeshShadedFid
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("MeshShadedFid");
-        set => SetMeshShadedFid(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetMeshShadedFidAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithMeshShadedFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
@@ -259,13 +237,13 @@ public abstract class CGameObjectVisModelBuilderMembers2<TSelf> : CGameObjectVis
     public TSelf WithMeshShadedFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetMeshShadedFidReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetMeshShadedFidReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public string? VisEntFx
     {
         get => state.Get<string?>("VisEntFx");
-        set => SetVisEntFx(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetVisEntFxAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithVisEntFx(string? value)
     {
@@ -432,7 +410,7 @@ public partial class CGameObjectVisModelBuilder : CGameObjectVisModelBuilderBase
         public global::GBX.NET.Vec3? DomeShaderColor
         {
             get => state.Get<global::GBX.NET.Vec3?>("DomeShaderColor");
-            set => SetDomeShaderColor(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectVisModelBuilderAssignments.GetDomeShaderColorAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithDomeShaderColor(global::GBX.NET.Vec3? value)
         {

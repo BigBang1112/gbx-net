@@ -36,19 +36,10 @@ public abstract class CPlugAnimSkelBakedBuilderBase<TSelf> where TSelf : CPlugAn
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> state;
     private protected CPlugAnimSkelBakedBuilderBase() => state = new();
     private protected CPlugAnimSkelBakedBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> state) => this.state = state;
-    private protected static void SetFlags(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> state, global::GBX.NET.Engines.Plug.CPlugAnimClip.ClipFlags? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetFlagsAssignment(), value, GameVersion.TM2020);
-    private protected static void SetFlagsVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetFlagsVersionAssignment(), value, GameVersion.TM2020);
-    private protected static void SetHash(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> state, ulong value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetHashAssignment(), value, GameVersion.TM2020);
-    private protected static void SetJointGroup(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> state, global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetJointGroupAssignment(), value, GameVersion.TM2020);
-    private protected static void SetJointGroupReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetJointGroupReferenceAssignment(), value, GameVersion.TM2020);
-    private protected static void SetPackedLocalJointsData(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> state, byte[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetPackedLocalJointsDataAssignment(), value, GameVersion.TM2020);
-    private protected static void SetRootMotionFrames(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> state, global::GBX.NET.Engines.Plug.CPlugAnimFile.RootMotionFrame[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetRootMotionFramesAssignment(), value, GameVersion.TM2020);
-    private protected static void SetTiming(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> state, global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked.TimingFixedPeriod? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetTimingAssignment(), value, GameVersion.TM2020);
-    private protected static void SetTimingVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetTimingVersionAssignment(), value, GameVersion.TM2020);
     public global::GBX.NET.Engines.Plug.CPlugAnimClip.ClipFlags? Flags
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugAnimClip.ClipFlags?>("Flags");
-        set => SetFlags(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetFlagsAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithFlags(global::GBX.NET.Engines.Plug.CPlugAnimClip.ClipFlags? value)
     {
@@ -58,7 +49,7 @@ public abstract class CPlugAnimSkelBakedBuilderBase<TSelf> where TSelf : CPlugAn
     public int FlagsVersion
     {
         get => state.Get<int>("FlagsVersion");
-        set => SetFlagsVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetFlagsVersionAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithFlagsVersion(int value)
     {
@@ -68,7 +59,7 @@ public abstract class CPlugAnimSkelBakedBuilderBase<TSelf> where TSelf : CPlugAn
     public ulong Hash
     {
         get => state.Get<ulong>("Hash");
-        set => SetHash(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetHashAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithHash(ulong value)
     {
@@ -78,7 +69,7 @@ public abstract class CPlugAnimSkelBakedBuilderBase<TSelf> where TSelf : CPlugAn
     public global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup? JointGroup
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup?>("JointGroup");
-        set => SetJointGroup(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetJointGroupAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithJointGroup(global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup? value)
     {
@@ -88,13 +79,13 @@ public abstract class CPlugAnimSkelBakedBuilderBase<TSelf> where TSelf : CPlugAn
     public TSelf WithJointGroupReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetJointGroupReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetJointGroupReferenceAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
     }
     public byte[]? PackedLocalJointsData
     {
         get => state.Get<byte[]?>("PackedLocalJointsData");
-        set => SetPackedLocalJointsData(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetPackedLocalJointsDataAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithPackedLocalJointsData(params byte[]? value)
     {
@@ -108,7 +99,7 @@ public abstract class CPlugAnimSkelBakedBuilderBase<TSelf> where TSelf : CPlugAn
     public global::GBX.NET.Engines.Plug.CPlugAnimFile.RootMotionFrame[]? RootMotionFrames
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugAnimFile.RootMotionFrame[]?>("RootMotionFrames");
-        set => SetRootMotionFrames(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetRootMotionFramesAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithRootMotionFrames(params global::GBX.NET.Engines.Plug.CPlugAnimFile.RootMotionFrame[]? value)
     {
@@ -122,7 +113,7 @@ public abstract class CPlugAnimSkelBakedBuilderBase<TSelf> where TSelf : CPlugAn
     public global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked.TimingFixedPeriod? Timing
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked.TimingFixedPeriod?>("Timing");
-        set => SetTiming(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetTimingAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithTiming(global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked.TimingFixedPeriod? value)
     {
@@ -132,7 +123,7 @@ public abstract class CPlugAnimSkelBakedBuilderBase<TSelf> where TSelf : CPlugAn
     public int TimingVersion
     {
         get => state.Get<int>("TimingVersion");
-        set => SetTimingVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetTimingVersionAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithTimingVersion(int value)
     {

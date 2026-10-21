@@ -36,36 +36,10 @@ public abstract class CPlugTrainWagonModelBuilderBase<TSelf> where TSelf : CPlug
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrainWagonModel> state;
     private protected CPlugTrainWagonModelBuilderBase() => state = new();
     private protected CPlugTrainWagonModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrainWagonModel> state) => this.state = state;
-    private protected static void SetAccelCurve(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrainWagonModel> state, global::GBX.NET.Engines.Function.CFuncKeysReal? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetAccelCurveAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetAccelCurveReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrainWagonModel> state, NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetAccelCurveReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetAnimFile(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrainWagonModel> state, global::GBX.NET.Engines.Plug.CPlugAnimFile? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetAnimFileAssignment(), value, GameVersion.TM2020);
-    private protected static void SetAnimFileReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrainWagonModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimFile> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetAnimFileReferenceAssignment(), value, GameVersion.TM2020);
-    private protected static void SetDustEmitterModel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrainWagonModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetDustEmitterModelAssignment(), value, GameVersion.TM2020);
-    private protected static void SetDustEmitterModelReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrainWagonModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetDustEmitterModelReferenceAssignment(), value, GameVersion.TM2020);
-    private protected static void SetGenLengthFromShape(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrainWagonModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetGenLengthFromShapeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetIsLoco(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrainWagonModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetIsLocoAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetMesh(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrainWagonModel> state, global::GBX.NET.Engines.Plug.CPlugSolid2Model? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetMeshAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetMeshReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrainWagonModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid2Model> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetMeshReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetShape(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrainWagonModel> state, global::GBX.NET.Engines.Plug.CPlugSurface? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetShapeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetShapeReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrainWagonModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSurface> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetShapeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSmokeEmitterModel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrainWagonModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetSmokeEmitterModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSmokeEmitterModelReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrainWagonModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetSmokeEmitterModelReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSoundBrake(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrainWagonModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetSoundBrakeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSoundBrakeReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrainWagonModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetSoundBrakeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSoundCollision(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrainWagonModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetSoundCollisionAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSoundCollisionReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrainWagonModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetSoundCollisionReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSoundEngine(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrainWagonModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetSoundEngineAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSoundEngineReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrainWagonModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetSoundEngineReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSoundRailContact(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrainWagonModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetSoundRailContactAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSoundRailContactReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrainWagonModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetSoundRailContactReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSparkleParticle(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrainWagonModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetSparkleParticleAssignment(), value, GameVersion.TM2020);
-    private protected static void SetSparkleParticleReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrainWagonModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetSparkleParticleReferenceAssignment(), value, GameVersion.TM2020);
-    private protected static void SetWagonColOffset(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrainWagonModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetWagonColOffsetAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetWagonLength(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrainWagonModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetWagonLengthAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     public global::GBX.NET.Engines.Function.CFuncKeysReal? AccelCurve
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("AccelCurve");
-        set => SetAccelCurve(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetAccelCurveAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithAccelCurve(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
     {
@@ -75,13 +49,13 @@ public abstract class CPlugTrainWagonModelBuilderBase<TSelf> where TSelf : CPlug
     public TSelf WithAccelCurveReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetAccelCurveReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetAccelCurveReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public bool GenLengthFromShape
     {
         get => state.Get<bool>("GenLengthFromShape");
-        set => SetGenLengthFromShape(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetGenLengthFromShapeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithGenLengthFromShape(bool value)
     {
@@ -91,7 +65,7 @@ public abstract class CPlugTrainWagonModelBuilderBase<TSelf> where TSelf : CPlug
     public bool IsLoco
     {
         get => state.Get<bool>("IsLoco");
-        set => SetIsLoco(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetIsLocoAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithIsLoco(bool value)
     {
@@ -101,7 +75,7 @@ public abstract class CPlugTrainWagonModelBuilderBase<TSelf> where TSelf : CPlug
     public global::GBX.NET.Engines.Plug.CPlugSolid2Model? Mesh
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSolid2Model?>("Mesh");
-        set => SetMesh(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetMeshAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithMesh(global::GBX.NET.Engines.Plug.CPlugSolid2Model? value)
     {
@@ -111,13 +85,13 @@ public abstract class CPlugTrainWagonModelBuilderBase<TSelf> where TSelf : CPlug
     public TSelf WithMeshReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid2Model> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetMeshReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetMeshReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugSurface? Shape
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSurface?>("Shape");
-        set => SetShape(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetShapeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithShape(global::GBX.NET.Engines.Plug.CPlugSurface? value)
     {
@@ -127,13 +101,13 @@ public abstract class CPlugTrainWagonModelBuilderBase<TSelf> where TSelf : CPlug
     public TSelf WithShapeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSurface> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetShapeReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetShapeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? SmokeEmitterModel
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("SmokeEmitterModel");
-        set => SetSmokeEmitterModel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetSmokeEmitterModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithSmokeEmitterModel(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
     {
@@ -143,13 +117,13 @@ public abstract class CPlugTrainWagonModelBuilderBase<TSelf> where TSelf : CPlug
     public TSelf WithSmokeEmitterModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSmokeEmitterModelReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetSmokeEmitterModelReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugSound? SoundBrake
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("SoundBrake");
-        set => SetSoundBrake(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetSoundBrakeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithSoundBrake(global::GBX.NET.Engines.Plug.CPlugSound? value)
     {
@@ -159,13 +133,13 @@ public abstract class CPlugTrainWagonModelBuilderBase<TSelf> where TSelf : CPlug
     public TSelf WithSoundBrakeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSoundBrakeReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetSoundBrakeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugSound? SoundCollision
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("SoundCollision");
-        set => SetSoundCollision(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetSoundCollisionAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithSoundCollision(global::GBX.NET.Engines.Plug.CPlugSound? value)
     {
@@ -175,13 +149,13 @@ public abstract class CPlugTrainWagonModelBuilderBase<TSelf> where TSelf : CPlug
     public TSelf WithSoundCollisionReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSoundCollisionReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetSoundCollisionReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugSound? SoundEngine
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("SoundEngine");
-        set => SetSoundEngine(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetSoundEngineAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithSoundEngine(global::GBX.NET.Engines.Plug.CPlugSound? value)
     {
@@ -191,13 +165,13 @@ public abstract class CPlugTrainWagonModelBuilderBase<TSelf> where TSelf : CPlug
     public TSelf WithSoundEngineReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSoundEngineReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetSoundEngineReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugSound? SoundRailContact
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("SoundRailContact");
-        set => SetSoundRailContact(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetSoundRailContactAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithSoundRailContact(global::GBX.NET.Engines.Plug.CPlugSound? value)
     {
@@ -207,13 +181,13 @@ public abstract class CPlugTrainWagonModelBuilderBase<TSelf> where TSelf : CPlug
     public TSelf WithSoundRailContactReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSoundRailContactReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetSoundRailContactReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public float WagonColOffset
     {
         get => state.Get<float>("WagonColOffset");
-        set => SetWagonColOffset(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetWagonColOffsetAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithWagonColOffset(float value)
     {
@@ -223,7 +197,7 @@ public abstract class CPlugTrainWagonModelBuilderBase<TSelf> where TSelf : CPlug
     public float WagonLength
     {
         get => state.Get<float>("WagonLength");
-        set => SetWagonLength(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetWagonLengthAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithWagonLength(float value)
     {
@@ -322,7 +296,7 @@ public partial class CPlugTrainWagonModelBuilder : CPlugTrainWagonModelBuilderBa
         public global::GBX.NET.Engines.Plug.CPlugAnimFile? AnimFile
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugAnimFile?>("AnimFile");
-            set => SetAnimFile(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetAnimFileAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithAnimFile(global::GBX.NET.Engines.Plug.CPlugAnimFile? value)
         {
@@ -332,7 +306,7 @@ public partial class CPlugTrainWagonModelBuilder : CPlugTrainWagonModelBuilderBa
         public TM2020 WithAnimFileReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimFile> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetAnimFileReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetAnimFileReferenceAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithAnimFile(global::GBX.NET.Interfaces.Plug.IPlugAnimFileTM2020? value)
@@ -342,7 +316,7 @@ public partial class CPlugTrainWagonModelBuilder : CPlugTrainWagonModelBuilderBa
         public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? DustEmitterModel
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("DustEmitterModel");
-            set => SetDustEmitterModel(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetDustEmitterModelAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithDustEmitterModel(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
         {
@@ -352,7 +326,7 @@ public partial class CPlugTrainWagonModelBuilder : CPlugTrainWagonModelBuilderBa
         public TM2020 WithDustEmitterModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetDustEmitterModelReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetDustEmitterModelReferenceAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithDustEmitterModel(global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? value)
@@ -390,7 +364,7 @@ public partial class CPlugTrainWagonModelBuilder : CPlugTrainWagonModelBuilderBa
         public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? SparkleParticle
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("SparkleParticle");
-            set => SetSparkleParticle(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetSparkleParticleAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithSparkleParticle(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
         {
@@ -400,7 +374,7 @@ public partial class CPlugTrainWagonModelBuilder : CPlugTrainWagonModelBuilderBa
         public TM2020 WithSparkleParticleReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSparkleParticleReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetSparkleParticleReferenceAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithSparkleParticle(global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? value)

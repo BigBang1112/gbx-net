@@ -36,31 +36,10 @@ public abstract class CHmsZoneOverlayBuilderBase<TSelf> where TSelf : CHmsZoneOv
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state;
     private protected CHmsZoneOverlayBuilderBase() => state = new();
     private protected CHmsZoneOverlayBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state) => this.state = state;
-    private protected static void SetAdaptRatio(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneOverlayBuilderAssignments.GetAdaptRatioAssignment(), value, GameVersion.MP4);
-    private protected static void SetBitmapCubeReflectHardSpecA(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetBitmapCubeReflectHardSpecAAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBitmapCubeReflectHardSpecAReference(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetBitmapCubeReflectHardSpecAReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBitmapCubeReflectHdrAlpha2(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetBitmapCubeReflectHdrAlpha2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBitmapCubeReflectHdrAlpha2Reference(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetBitmapCubeReflectHdrAlpha2ReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFogByVertex(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetFogByVertexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFogExpDensity(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetFogExpDensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFogFlags(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetFogFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFogFormula(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, global::GBX.NET.Engines.Hms.CHmsZone.EGxFogFormula value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetFogFormulaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFogLinearEnd(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetFogLinearEndAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFogLinearStart(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetFogLinearStartAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFogPlanes(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, NodeRefList<global::GBX.NET.Engines.Hms.CHmsFogPlane>? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetFogPlanesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFogRGB(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetFogRGBAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFogSpace(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, global::GBX.NET.Engines.Hms.CHmsZone.EGxFogSpace value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetFogSpaceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFrustum(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, BoxAligned value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneOverlayBuilderAssignments.GetFrustumAssignment(), value, GameVersion.MP4);
-    private protected static void SetIsOrthographic(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneOverlayBuilderAssignments.GetIsOrthographicAssignment(), value, GameVersion.MP4);
-    private protected static void SetMRIsForced(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetMRIsForcedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMRNormal(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetMRNormalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMRPoint(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetMRPointAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetPrecalcRenders(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, NodeRefList<global::GBX.NET.Engines.Hms.CHmsPrecalcRender>? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetPrecalcRendersAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetUseZBuffer(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneOverlayBuilderAssignments.GetUseZBufferAssignment(), value, GameVersion.MP4);
     public bool FogByVertex
     {
         get => state.Get<bool>("FogByVertex");
-        set => SetFogByVertex(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetFogByVertexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFogByVertex(bool value)
     {
@@ -70,7 +49,7 @@ public abstract class CHmsZoneOverlayBuilderBase<TSelf> where TSelf : CHmsZoneOv
     public float FogExpDensity
     {
         get => state.Get<float>("FogExpDensity");
-        set => SetFogExpDensity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetFogExpDensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFogExpDensity(float value)
     {
@@ -80,7 +59,7 @@ public abstract class CHmsZoneOverlayBuilderBase<TSelf> where TSelf : CHmsZoneOv
     public uint FogFlags
     {
         get => state.Get<uint>("FogFlags");
-        set => SetFogFlags(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetFogFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFogFlags(uint value)
     {
@@ -90,7 +69,7 @@ public abstract class CHmsZoneOverlayBuilderBase<TSelf> where TSelf : CHmsZoneOv
     public global::GBX.NET.Engines.Hms.CHmsZone.EGxFogFormula FogFormula
     {
         get => state.Get<global::GBX.NET.Engines.Hms.CHmsZone.EGxFogFormula>("FogFormula");
-        set => SetFogFormula(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetFogFormulaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFogFormula(global::GBX.NET.Engines.Hms.CHmsZone.EGxFogFormula value)
     {
@@ -100,7 +79,7 @@ public abstract class CHmsZoneOverlayBuilderBase<TSelf> where TSelf : CHmsZoneOv
     public float FogLinearEnd
     {
         get => state.Get<float>("FogLinearEnd");
-        set => SetFogLinearEnd(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetFogLinearEndAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFogLinearEnd(float value)
     {
@@ -110,7 +89,7 @@ public abstract class CHmsZoneOverlayBuilderBase<TSelf> where TSelf : CHmsZoneOv
     public float FogLinearStart
     {
         get => state.Get<float>("FogLinearStart");
-        set => SetFogLinearStart(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetFogLinearStartAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFogLinearStart(float value)
     {
@@ -120,7 +99,7 @@ public abstract class CHmsZoneOverlayBuilderBase<TSelf> where TSelf : CHmsZoneOv
     public NodeRefList<global::GBX.NET.Engines.Hms.CHmsFogPlane>? FogPlanes
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Hms.CHmsFogPlane>?>("FogPlanes");
-        set => SetFogPlanes(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetFogPlanesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFogPlanes(NodeRefList<global::GBX.NET.Engines.Hms.CHmsFogPlane>? value)
     {
@@ -138,7 +117,7 @@ public abstract class CHmsZoneOverlayBuilderBase<TSelf> where TSelf : CHmsZoneOv
     public Vec3 FogRGB
     {
         get => state.Get<Vec3>("FogRGB");
-        set => SetFogRGB(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetFogRGBAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFogRGB(Vec3 value)
     {
@@ -148,7 +127,7 @@ public abstract class CHmsZoneOverlayBuilderBase<TSelf> where TSelf : CHmsZoneOv
     public global::GBX.NET.Engines.Hms.CHmsZone.EGxFogSpace FogSpace
     {
         get => state.Get<global::GBX.NET.Engines.Hms.CHmsZone.EGxFogSpace>("FogSpace");
-        set => SetFogSpace(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetFogSpaceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFogSpace(global::GBX.NET.Engines.Hms.CHmsZone.EGxFogSpace value)
     {
@@ -158,7 +137,7 @@ public abstract class CHmsZoneOverlayBuilderBase<TSelf> where TSelf : CHmsZoneOv
     public bool MRIsForced
     {
         get => state.Get<bool>("MRIsForced");
-        set => SetMRIsForced(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetMRIsForcedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMRIsForced(bool value)
     {
@@ -168,7 +147,7 @@ public abstract class CHmsZoneOverlayBuilderBase<TSelf> where TSelf : CHmsZoneOv
     public Vec3 MRNormal
     {
         get => state.Get<Vec3>("MRNormal");
-        set => SetMRNormal(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetMRNormalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMRNormal(Vec3 value)
     {
@@ -178,7 +157,7 @@ public abstract class CHmsZoneOverlayBuilderBase<TSelf> where TSelf : CHmsZoneOv
     public Vec3 MRPoint
     {
         get => state.Get<Vec3>("MRPoint");
-        set => SetMRPoint(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetMRPointAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMRPoint(Vec3 value)
     {
@@ -188,7 +167,7 @@ public abstract class CHmsZoneOverlayBuilderBase<TSelf> where TSelf : CHmsZoneOv
     public NodeRefList<global::GBX.NET.Engines.Hms.CHmsPrecalcRender>? PrecalcRenders
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Hms.CHmsPrecalcRender>?>("PrecalcRenders");
-        set => SetPrecalcRenders(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetPrecalcRendersAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPrecalcRenders(NodeRefList<global::GBX.NET.Engines.Hms.CHmsPrecalcRender>? value)
     {
@@ -210,7 +189,7 @@ public abstract class CHmsZoneOverlayBuilderMembers1<TSelf> : CHmsZoneOverlayBui
     public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapCubeReflectHardSpecA
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapCubeReflectHardSpecA");
-        set => SetBitmapCubeReflectHardSpecA(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetBitmapCubeReflectHardSpecAAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBitmapCubeReflectHardSpecA(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -220,7 +199,7 @@ public abstract class CHmsZoneOverlayBuilderMembers1<TSelf> : CHmsZoneOverlayBui
     public TSelf WithBitmapCubeReflectHardSpecAReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBitmapCubeReflectHardSpecAReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetBitmapCubeReflectHardSpecAReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -230,7 +209,7 @@ public abstract class CHmsZoneOverlayBuilderMembers2<TSelf> : CHmsZoneOverlayBui
     public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapCubeReflectHdrAlpha2
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapCubeReflectHdrAlpha2");
-        set => SetBitmapCubeReflectHdrAlpha2(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetBitmapCubeReflectHdrAlpha2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBitmapCubeReflectHdrAlpha2(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -240,7 +219,7 @@ public abstract class CHmsZoneOverlayBuilderMembers2<TSelf> : CHmsZoneOverlayBui
     public TSelf WithBitmapCubeReflectHdrAlpha2Reference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBitmapCubeReflectHdrAlpha2Reference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetBitmapCubeReflectHdrAlpha2ReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -515,7 +494,7 @@ public partial class CHmsZoneOverlayBuilder : CHmsZoneOverlayBuilderBase<CHmsZon
         public int AdaptRatio
         {
             get => state.Get<int>("AdaptRatio");
-            set => SetAdaptRatio(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneOverlayBuilderAssignments.GetAdaptRatioAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithAdaptRatio(int value)
         {
@@ -533,7 +512,7 @@ public partial class CHmsZoneOverlayBuilder : CHmsZoneOverlayBuilderBase<CHmsZon
         public BoxAligned Frustum
         {
             get => state.Get<BoxAligned>("Frustum");
-            set => SetFrustum(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneOverlayBuilderAssignments.GetFrustumAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithFrustum(BoxAligned value)
         {
@@ -543,7 +522,7 @@ public partial class CHmsZoneOverlayBuilder : CHmsZoneOverlayBuilderBase<CHmsZon
         public bool IsOrthographic
         {
             get => state.Get<bool>("IsOrthographic");
-            set => SetIsOrthographic(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneOverlayBuilderAssignments.GetIsOrthographicAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithIsOrthographic(bool value)
         {
@@ -553,7 +532,7 @@ public partial class CHmsZoneOverlayBuilder : CHmsZoneOverlayBuilderBase<CHmsZon
         public bool UseZBuffer
         {
             get => state.Get<bool>("UseZBuffer");
-            set => SetUseZBuffer(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneOverlayBuilderAssignments.GetUseZBufferAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithUseZBuffer(bool value)
         {

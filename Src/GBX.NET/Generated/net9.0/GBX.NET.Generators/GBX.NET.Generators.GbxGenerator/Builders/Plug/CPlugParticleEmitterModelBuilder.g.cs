@@ -36,23 +36,10 @@ public abstract class CPlugParticleEmitterModelBuilderBase<TSelf> where TSelf : 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> state;
     private protected CPlugParticleEmitterModelBuilderBase() => state = new();
     private protected CPlugParticleEmitterModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> state) => this.state = state;
-    private protected static void SetCircleNormal(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetCircleNormalAssignment(), value, GameVersion.TM2020);
-    private protected static void SetCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetEmitPeriod(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetEmitPeriodAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetEnableVortexEmitter(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetEnableVortexEmitterAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetIsSplashMode(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetIsSplashModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetLifeTime(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetLifeTimeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetLod_cPixelMin(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetLod_cPixelMinAssignment(), value, GameVersion.TM2020);
-    private protected static void SetParticleEmitterSubModels(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetParticleEmitterSubModelsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRadius(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetRadiusAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetRandomness(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetRandomnessAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetShadowMapTexelSize(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetShadowMapTexelSizeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetStrength(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetStrengthAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetVortexCountPerCircle(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetVortexCountPerCircleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel>? ParticleEmitterSubModels
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel>?>("ParticleEmitterSubModels");
-        set => SetParticleEmitterSubModels(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetParticleEmitterSubModelsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithParticleEmitterSubModels(NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel>? value)
     {
@@ -74,7 +61,7 @@ public abstract class CPlugParticleEmitterModelBuilderMembers1<TSelf> : CPlugPar
     public bool IsSplashMode
     {
         get => state.Get<bool>("IsSplashMode");
-        set => SetIsSplashMode(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetIsSplashModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIsSplashMode(bool value)
     {
@@ -88,7 +75,7 @@ public abstract class CPlugParticleEmitterModelBuilderMembers2<TSelf> : CPlugPar
     public float Coef
     {
         get => state.Get<float>("Coef");
-        set => SetCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithCoef(float value)
     {
@@ -98,7 +85,7 @@ public abstract class CPlugParticleEmitterModelBuilderMembers2<TSelf> : CPlugPar
     public int EmitPeriod
     {
         get => state.Get<int>("EmitPeriod");
-        set => SetEmitPeriod(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetEmitPeriodAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithEmitPeriod(int value)
     {
@@ -108,7 +95,7 @@ public abstract class CPlugParticleEmitterModelBuilderMembers2<TSelf> : CPlugPar
     public bool EnableVortexEmitter
     {
         get => state.Get<bool>("EnableVortexEmitter");
-        set => SetEnableVortexEmitter(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetEnableVortexEmitterAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithEnableVortexEmitter(bool value)
     {
@@ -118,7 +105,7 @@ public abstract class CPlugParticleEmitterModelBuilderMembers2<TSelf> : CPlugPar
     public int LifeTime
     {
         get => state.Get<int>("LifeTime");
-        set => SetLifeTime(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetLifeTimeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLifeTime(int value)
     {
@@ -128,7 +115,7 @@ public abstract class CPlugParticleEmitterModelBuilderMembers2<TSelf> : CPlugPar
     public float Radius
     {
         get => state.Get<float>("Radius");
-        set => SetRadius(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetRadiusAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithRadius(float value)
     {
@@ -138,7 +125,7 @@ public abstract class CPlugParticleEmitterModelBuilderMembers2<TSelf> : CPlugPar
     public float Randomness
     {
         get => state.Get<float>("Randomness");
-        set => SetRandomness(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetRandomnessAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithRandomness(float value)
     {
@@ -148,7 +135,7 @@ public abstract class CPlugParticleEmitterModelBuilderMembers2<TSelf> : CPlugPar
     public float ShadowMapTexelSize
     {
         get => state.Get<float>("ShadowMapTexelSize");
-        set => SetShadowMapTexelSize(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetShadowMapTexelSizeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithShadowMapTexelSize(float value)
     {
@@ -158,7 +145,7 @@ public abstract class CPlugParticleEmitterModelBuilderMembers2<TSelf> : CPlugPar
     public float Strength
     {
         get => state.Get<float>("Strength");
-        set => SetStrength(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetStrengthAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithStrength(float value)
     {
@@ -168,7 +155,7 @@ public abstract class CPlugParticleEmitterModelBuilderMembers2<TSelf> : CPlugPar
     public int VortexCountPerCircle
     {
         get => state.Get<int>("VortexCountPerCircle");
-        set => SetVortexCountPerCircle(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetVortexCountPerCircleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithVortexCountPerCircle(int value)
     {
@@ -459,7 +446,7 @@ public partial class CPlugParticleEmitterModelBuilder : CPlugParticleEmitterMode
         public Vec3 CircleNormal
         {
             get => state.Get<Vec3>("CircleNormal");
-            set => SetCircleNormal(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetCircleNormalAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithCircleNormal(Vec3 value)
         {
@@ -469,7 +456,7 @@ public partial class CPlugParticleEmitterModelBuilder : CPlugParticleEmitterMode
         public float Lod_cPixelMin
         {
             get => state.Get<float>("Lod_cPixelMin");
-            set => SetLod_cPixelMin(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetLod_cPixelMinAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithLod_cPixelMin(float value)
         {

@@ -36,16 +36,10 @@ public abstract class CHmsLightBuilderBase<TSelf> where TSelf : CHmsLightBuilder
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLight> state;
     private protected CHmsLightBuilderBase() => state = new();
     private protected CHmsLightBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLight> state) => this.state = state;
-    private protected static void SetBitmapFlare(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLight> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightBuilderAssignments.GetBitmapFlareAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBitmapFlareReference(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLight> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightBuilderAssignments.GetBitmapFlareReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBitmapSprite(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLight> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightBuilderAssignments.GetBitmapSpriteAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBitmapSpriteReference(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLight> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightBuilderAssignments.GetBitmapSpriteReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMainGxLight(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLight> state, global::GBX.NET.Engines.Graphic.GxLight? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightBuilderAssignments.GetMainGxLightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMainGxLightReference(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLight> state, NodeRef<global::GBX.NET.Engines.Graphic.GxLight> value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightBuilderAssignments.GetMainGxLightReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapFlare
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapFlare");
-        set => SetBitmapFlare(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightBuilderAssignments.GetBitmapFlareAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBitmapFlare(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -55,13 +49,13 @@ public abstract class CHmsLightBuilderBase<TSelf> where TSelf : CHmsLightBuilder
     public TSelf WithBitmapFlareReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBitmapFlareReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightBuilderAssignments.GetBitmapFlareReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapSprite
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapSprite");
-        set => SetBitmapSprite(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightBuilderAssignments.GetBitmapSpriteAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBitmapSprite(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -71,13 +65,13 @@ public abstract class CHmsLightBuilderBase<TSelf> where TSelf : CHmsLightBuilder
     public TSelf WithBitmapSpriteReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBitmapSpriteReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightBuilderAssignments.GetBitmapSpriteReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Graphic.GxLight? MainGxLight
     {
         get => state.Get<global::GBX.NET.Engines.Graphic.GxLight?>("MainGxLight");
-        set => SetMainGxLight(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightBuilderAssignments.GetMainGxLightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMainGxLight(global::GBX.NET.Engines.Graphic.GxLight? value)
     {
@@ -87,7 +81,7 @@ public abstract class CHmsLightBuilderBase<TSelf> where TSelf : CHmsLightBuilder
     public TSelf WithMainGxLightReference(NodeRef<global::GBX.NET.Engines.Graphic.GxLight> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetMainGxLightReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightBuilderAssignments.GetMainGxLightReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }

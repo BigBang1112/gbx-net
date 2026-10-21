@@ -36,21 +36,10 @@ public abstract class GxLightAmbientBuilderBase<TSelf> where TSelf : GxLightAmbi
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightAmbient> state;
     private protected GxLightAmbientBuilderBase() => state = new();
     private protected GxLightAmbientBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightAmbient> state) => this.state = state;
-    private protected static void SetColor(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightAmbient> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetColorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetDiffuseIntensity(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightAmbient> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetDiffuseIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFlags(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightAmbient> state, global::GBX.NET.Engines.Graphic.GxLight.EFlags value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFlareIntensity(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightAmbient> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetFlareIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIntensity(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightAmbient> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetShadeMaxY(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightAmbient> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightAmbientBuilderAssignments.GetShadeMaxYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetShadeMinY(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightAmbient> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightAmbientBuilderAssignments.GetShadeMinYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetShadowIntensity(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightAmbient> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetShadowIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetShadowRGB(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightAmbient> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetShadowRGBAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSpecularIntens(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightAmbient> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetSpecularIntensAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSpecularPower(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightAmbient> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetSpecularPowerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     public Vec3 Color
     {
         get => state.Get<Vec3>("Color");
-        set => SetColor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetColorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithColor(Vec3 value)
     {
@@ -60,7 +49,7 @@ public abstract class GxLightAmbientBuilderBase<TSelf> where TSelf : GxLightAmbi
     public global::GBX.NET.Engines.Graphic.GxLight.EFlags Flags
     {
         get => state.Get<global::GBX.NET.Engines.Graphic.GxLight.EFlags>("Flags");
-        set => SetFlags(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFlags(global::GBX.NET.Engines.Graphic.GxLight.EFlags value)
     {
@@ -70,7 +59,7 @@ public abstract class GxLightAmbientBuilderBase<TSelf> where TSelf : GxLightAmbi
     public float FlareIntensity
     {
         get => state.Get<float>("FlareIntensity");
-        set => SetFlareIntensity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetFlareIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFlareIntensity(float value)
     {
@@ -80,7 +69,7 @@ public abstract class GxLightAmbientBuilderBase<TSelf> where TSelf : GxLightAmbi
     public float Intensity
     {
         get => state.Get<float>("Intensity");
-        set => SetIntensity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIntensity(float value)
     {
@@ -90,7 +79,7 @@ public abstract class GxLightAmbientBuilderBase<TSelf> where TSelf : GxLightAmbi
     public float ShadowIntensity
     {
         get => state.Get<float>("ShadowIntensity");
-        set => SetShadowIntensity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetShadowIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithShadowIntensity(float value)
     {
@@ -100,7 +89,7 @@ public abstract class GxLightAmbientBuilderBase<TSelf> where TSelf : GxLightAmbi
     public Vec3 ShadowRGB
     {
         get => state.Get<Vec3>("ShadowRGB");
-        set => SetShadowRGB(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetShadowRGBAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithShadowRGB(Vec3 value)
     {
@@ -114,7 +103,7 @@ public abstract class GxLightAmbientBuilderMembers1<TSelf> : GxLightAmbientBuild
     public float ShadeMaxY
     {
         get => state.Get<float>("ShadeMaxY");
-        set => SetShadeMaxY(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightAmbientBuilderAssignments.GetShadeMaxYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithShadeMaxY(float value)
     {
@@ -124,7 +113,7 @@ public abstract class GxLightAmbientBuilderMembers1<TSelf> : GxLightAmbientBuild
     public float ShadeMinY
     {
         get => state.Get<float>("ShadeMinY");
-        set => SetShadeMinY(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightAmbientBuilderAssignments.GetShadeMinYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithShadeMinY(float value)
     {
@@ -138,7 +127,7 @@ public abstract class GxLightAmbientBuilderMembers2<TSelf> : GxLightAmbientBuild
     public float DiffuseIntensity
     {
         get => state.Get<float>("DiffuseIntensity");
-        set => SetDiffuseIntensity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetDiffuseIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDiffuseIntensity(float value)
     {
@@ -152,7 +141,7 @@ public abstract class GxLightAmbientBuilderMembers3<TSelf> : GxLightAmbientBuild
     public float SpecularIntens
     {
         get => state.Get<float>("SpecularIntens");
-        set => SetSpecularIntens(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetSpecularIntensAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSpecularIntens(float value)
     {
@@ -162,7 +151,7 @@ public abstract class GxLightAmbientBuilderMembers3<TSelf> : GxLightAmbientBuild
     public float SpecularPower
     {
         get => state.Get<float>("SpecularPower");
-        set => SetSpecularPower(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetSpecularPowerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSpecularPower(float value)
     {

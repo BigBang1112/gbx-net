@@ -36,22 +36,10 @@ public abstract class CPlugSoundComponentBuilderBase<TSelf> where TSelf : CPlugS
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSoundComponent> state;
     private protected CPlugSoundComponentBuilderBase() => state = new();
     private protected CPlugSoundComponentBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSoundComponent> state) => this.state = state;
-    private protected static void SetFadeInEndSpeedKmh(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSoundComponent> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSoundComponentBuilderAssignments.GetFadeInEndSpeedKmhAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFadeInStartSpeedKmh(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSoundComponent> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSoundComponentBuilderAssignments.GetFadeInStartSpeedKmhAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFadeOutEndSpeedKmh(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSoundComponent> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSoundComponentBuilderAssignments.GetFadeOutEndSpeedKmhAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFadeOutStartSpeedKmh(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSoundComponent> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSoundComponentBuilderAssignments.GetFadeOutStartSpeedKmhAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMaxPitch(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSoundComponent> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSoundComponentBuilderAssignments.GetMaxPitchAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMaxVolume(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSoundComponent> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSoundComponentBuilderAssignments.GetMaxVolumeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMinPitch(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSoundComponent> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSoundComponentBuilderAssignments.GetMinPitchAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMinVolume(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSoundComponent> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSoundComponentBuilderAssignments.GetMinVolumeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetPitchShiftEndSpeedKmh(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSoundComponent> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSoundComponentBuilderAssignments.GetPitchShiftEndSpeedKmhAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetPitchShiftStartSpeedKmh(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSoundComponent> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSoundComponentBuilderAssignments.GetPitchShiftStartSpeedKmhAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetPlugFile(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSoundComponent> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSoundComponentBuilderAssignments.GetPlugFileAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetPlugFileReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSoundComponent> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSoundComponentBuilderAssignments.GetPlugFileReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public float FadeInEndSpeedKmh
     {
         get => state.Get<float>("FadeInEndSpeedKmh");
-        set => SetFadeInEndSpeedKmh(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSoundComponentBuilderAssignments.GetFadeInEndSpeedKmhAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFadeInEndSpeedKmh(float value)
     {
@@ -61,7 +49,7 @@ public abstract class CPlugSoundComponentBuilderBase<TSelf> where TSelf : CPlugS
     public float FadeInStartSpeedKmh
     {
         get => state.Get<float>("FadeInStartSpeedKmh");
-        set => SetFadeInStartSpeedKmh(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSoundComponentBuilderAssignments.GetFadeInStartSpeedKmhAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFadeInStartSpeedKmh(float value)
     {
@@ -71,7 +59,7 @@ public abstract class CPlugSoundComponentBuilderBase<TSelf> where TSelf : CPlugS
     public float FadeOutEndSpeedKmh
     {
         get => state.Get<float>("FadeOutEndSpeedKmh");
-        set => SetFadeOutEndSpeedKmh(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSoundComponentBuilderAssignments.GetFadeOutEndSpeedKmhAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFadeOutEndSpeedKmh(float value)
     {
@@ -81,7 +69,7 @@ public abstract class CPlugSoundComponentBuilderBase<TSelf> where TSelf : CPlugS
     public float FadeOutStartSpeedKmh
     {
         get => state.Get<float>("FadeOutStartSpeedKmh");
-        set => SetFadeOutStartSpeedKmh(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSoundComponentBuilderAssignments.GetFadeOutStartSpeedKmhAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFadeOutStartSpeedKmh(float value)
     {
@@ -91,7 +79,7 @@ public abstract class CPlugSoundComponentBuilderBase<TSelf> where TSelf : CPlugS
     public float MaxPitch
     {
         get => state.Get<float>("MaxPitch");
-        set => SetMaxPitch(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSoundComponentBuilderAssignments.GetMaxPitchAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMaxPitch(float value)
     {
@@ -101,7 +89,7 @@ public abstract class CPlugSoundComponentBuilderBase<TSelf> where TSelf : CPlugS
     public float MaxVolume
     {
         get => state.Get<float>("MaxVolume");
-        set => SetMaxVolume(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSoundComponentBuilderAssignments.GetMaxVolumeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMaxVolume(float value)
     {
@@ -111,7 +99,7 @@ public abstract class CPlugSoundComponentBuilderBase<TSelf> where TSelf : CPlugS
     public float MinPitch
     {
         get => state.Get<float>("MinPitch");
-        set => SetMinPitch(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSoundComponentBuilderAssignments.GetMinPitchAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMinPitch(float value)
     {
@@ -121,7 +109,7 @@ public abstract class CPlugSoundComponentBuilderBase<TSelf> where TSelf : CPlugS
     public float MinVolume
     {
         get => state.Get<float>("MinVolume");
-        set => SetMinVolume(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSoundComponentBuilderAssignments.GetMinVolumeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMinVolume(float value)
     {
@@ -131,7 +119,7 @@ public abstract class CPlugSoundComponentBuilderBase<TSelf> where TSelf : CPlugS
     public float PitchShiftEndSpeedKmh
     {
         get => state.Get<float>("PitchShiftEndSpeedKmh");
-        set => SetPitchShiftEndSpeedKmh(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSoundComponentBuilderAssignments.GetPitchShiftEndSpeedKmhAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPitchShiftEndSpeedKmh(float value)
     {
@@ -141,7 +129,7 @@ public abstract class CPlugSoundComponentBuilderBase<TSelf> where TSelf : CPlugS
     public float PitchShiftStartSpeedKmh
     {
         get => state.Get<float>("PitchShiftStartSpeedKmh");
-        set => SetPitchShiftStartSpeedKmh(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSoundComponentBuilderAssignments.GetPitchShiftStartSpeedKmhAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPitchShiftStartSpeedKmh(float value)
     {
@@ -151,7 +139,7 @@ public abstract class CPlugSoundComponentBuilderBase<TSelf> where TSelf : CPlugS
     public global::GBX.NET.Engines.MwFoundations.CMwNod? PlugFile
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("PlugFile");
-        set => SetPlugFile(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSoundComponentBuilderAssignments.GetPlugFileAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPlugFile(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
@@ -161,7 +149,7 @@ public abstract class CPlugSoundComponentBuilderBase<TSelf> where TSelf : CPlugS
     public TSelf WithPlugFileReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetPlugFileReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSoundComponentBuilderAssignments.GetPlugFileReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }

@@ -36,18 +36,10 @@ public abstract class CMotionEmitterFlockBuilderBase<TSelf> where TSelf : CMotio
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterFlock> state;
     private protected CMotionEmitterFlockBuilderBase() => state = new();
     private protected CMotionEmitterFlockBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterFlock> state) => this.state = state;
-    private protected static void SetFlockModel(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterFlock> state, global::GBX.NET.Engines.Plug.CPlugFlockModel? value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterFlockBuilderAssignments.GetFlockModelAssignment(), value, GameVersion.MP3);
-    private protected static void SetFlockModelReference(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterFlock> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFlockModel> value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterFlockBuilderAssignments.GetFlockModelReferenceAssignment(), value, GameVersion.MP3);
-    private protected static void SetIsLandingArea(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterFlock> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterFlockBuilderAssignments.GetIsLandingAreaAssignment(), value, GameVersion.MP3);
-    private protected static void SetIsRepulsor(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterFlock> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterFlockBuilderAssignments.GetIsRepulsorAssignment(), value, GameVersion.MP3);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterFlock> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetPower(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterFlock> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterFlockBuilderAssignments.GetPowerAssignment(), value, GameVersion.MP3);
-    private protected static void SetRadius(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterFlock> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterFlockBuilderAssignments.GetRadiusAssignment(), value, GameVersion.MP3);
-    private protected static void SetSpawnCount(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterFlock> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterFlockBuilderAssignments.GetSpawnCountAssignment(), value, GameVersion.MP3);
     public string? Name
     {
         get => state.Get<string?>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithName(string? value)
     {
@@ -175,7 +167,7 @@ public partial class CMotionEmitterFlockBuilder : CMotionEmitterFlockBuilderBase
         public global::GBX.NET.Engines.Plug.CPlugFlockModel? FlockModel
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugFlockModel?>("FlockModel");
-            set => SetFlockModel(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterFlockBuilderAssignments.GetFlockModelAssignment(), value, GameVersion.MP3);
         }
         public MP3 WithFlockModel(global::GBX.NET.Engines.Plug.CPlugFlockModel? value)
         {
@@ -185,7 +177,7 @@ public partial class CMotionEmitterFlockBuilder : CMotionEmitterFlockBuilderBase
         public MP3 WithFlockModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFlockModel> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFlockModelReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterFlockBuilderAssignments.GetFlockModelReferenceAssignment(), value, GameVersion.MP3);
             return this;
         }
         public MP3 WithFlockModel(global::GBX.NET.Interfaces.Plug.IPlugFlockModelMP3? value)
@@ -195,7 +187,7 @@ public partial class CMotionEmitterFlockBuilder : CMotionEmitterFlockBuilderBase
         public bool IsLandingArea
         {
             get => state.Get<bool>("IsLandingArea");
-            set => SetIsLandingArea(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterFlockBuilderAssignments.GetIsLandingAreaAssignment(), value, GameVersion.MP3);
         }
         public MP3 WithIsLandingArea(bool value)
         {
@@ -205,7 +197,7 @@ public partial class CMotionEmitterFlockBuilder : CMotionEmitterFlockBuilderBase
         public bool IsRepulsor
         {
             get => state.Get<bool>("IsRepulsor");
-            set => SetIsRepulsor(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterFlockBuilderAssignments.GetIsRepulsorAssignment(), value, GameVersion.MP3);
         }
         public MP3 WithIsRepulsor(bool value)
         {
@@ -215,7 +207,7 @@ public partial class CMotionEmitterFlockBuilder : CMotionEmitterFlockBuilderBase
         public float Power
         {
             get => state.Get<float>("Power");
-            set => SetPower(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterFlockBuilderAssignments.GetPowerAssignment(), value, GameVersion.MP3);
         }
         public MP3 WithPower(float value)
         {
@@ -225,7 +217,7 @@ public partial class CMotionEmitterFlockBuilder : CMotionEmitterFlockBuilderBase
         public float Radius
         {
             get => state.Get<float>("Radius");
-            set => SetRadius(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterFlockBuilderAssignments.GetRadiusAssignment(), value, GameVersion.MP3);
         }
         public MP3 WithRadius(float value)
         {
@@ -235,7 +227,7 @@ public partial class CMotionEmitterFlockBuilder : CMotionEmitterFlockBuilderBase
         public int SpawnCount
         {
             get => state.Get<int>("SpawnCount");
-            set => SetSpawnCount(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterFlockBuilderAssignments.GetSpawnCountAssignment(), value, GameVersion.MP3);
         }
         public MP3 WithSpawnCount(int value)
         {

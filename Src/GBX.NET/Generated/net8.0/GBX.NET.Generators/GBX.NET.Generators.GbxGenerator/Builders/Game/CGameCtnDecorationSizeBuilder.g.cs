@@ -36,18 +36,10 @@ public abstract class CGameCtnDecorationSizeBuilderBase<TSelf> where TSelf : CGa
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationSize> state;
     private protected CGameCtnDecorationSizeBuilderBase() => state = new();
     private protected CGameCtnDecorationSizeBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationSize> state) => this.state = state;
-    private protected static void SetBaseHeightBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationSize> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationSizeBuilderAssignments.GetBaseHeightBaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBaseHeightOffset(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationSize> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationSizeBuilderAssignments.GetBaseHeightOffsetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetEditionZoneMax(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationSize> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationSizeBuilderAssignments.GetEditionZoneMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetEditionZoneMin(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationSize> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationSizeBuilderAssignments.GetEditionZoneMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetOffsetBlockY(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationSize> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationSizeBuilderAssignments.GetOffsetBlockYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetScene(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationSize> state, global::GBX.NET.Engines.Scene.CSceneLayout? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationSizeBuilderAssignments.GetSceneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSceneReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationSize> state, NodeRef<global::GBX.NET.Engines.Scene.CSceneLayout> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationSizeBuilderAssignments.GetSceneReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSize(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationSize> state, Int3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationSizeBuilderAssignments.GetSizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public int BaseHeightBase
     {
         get => state.Get<int>("BaseHeightBase");
-        set => SetBaseHeightBase(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationSizeBuilderAssignments.GetBaseHeightBaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBaseHeightBase(int value)
     {
@@ -57,7 +49,7 @@ public abstract class CGameCtnDecorationSizeBuilderBase<TSelf> where TSelf : CGa
     public Vec2 EditionZoneMax
     {
         get => state.Get<Vec2>("EditionZoneMax");
-        set => SetEditionZoneMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationSizeBuilderAssignments.GetEditionZoneMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEditionZoneMax(Vec2 value)
     {
@@ -67,7 +59,7 @@ public abstract class CGameCtnDecorationSizeBuilderBase<TSelf> where TSelf : CGa
     public Vec2 EditionZoneMin
     {
         get => state.Get<Vec2>("EditionZoneMin");
-        set => SetEditionZoneMin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationSizeBuilderAssignments.GetEditionZoneMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEditionZoneMin(Vec2 value)
     {
@@ -77,7 +69,7 @@ public abstract class CGameCtnDecorationSizeBuilderBase<TSelf> where TSelf : CGa
     public global::GBX.NET.Engines.Scene.CSceneLayout? Scene
     {
         get => state.Get<global::GBX.NET.Engines.Scene.CSceneLayout?>("Scene");
-        set => SetScene(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationSizeBuilderAssignments.GetSceneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithScene(global::GBX.NET.Engines.Scene.CSceneLayout? value)
     {
@@ -87,13 +79,13 @@ public abstract class CGameCtnDecorationSizeBuilderBase<TSelf> where TSelf : CGa
     public TSelf WithSceneReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneLayout> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSceneReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationSizeBuilderAssignments.GetSceneReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public Int3 Size
     {
         get => state.Get<Int3>("Size");
-        set => SetSize(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationSizeBuilderAssignments.GetSizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSize(Int3 value)
     {
@@ -107,7 +99,7 @@ public abstract class CGameCtnDecorationSizeBuilderMembers1<TSelf> : CGameCtnDec
     public int BaseHeightOffset
     {
         get => state.Get<int>("BaseHeightOffset");
-        set => SetBaseHeightOffset(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationSizeBuilderAssignments.GetBaseHeightOffsetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBaseHeightOffset(int value)
     {
@@ -117,7 +109,7 @@ public abstract class CGameCtnDecorationSizeBuilderMembers1<TSelf> : CGameCtnDec
     public bool OffsetBlockY
     {
         get => state.Get<bool>("OffsetBlockY");
-        set => SetOffsetBlockY(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationSizeBuilderAssignments.GetOffsetBlockYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithOffsetBlockY(bool value)
     {

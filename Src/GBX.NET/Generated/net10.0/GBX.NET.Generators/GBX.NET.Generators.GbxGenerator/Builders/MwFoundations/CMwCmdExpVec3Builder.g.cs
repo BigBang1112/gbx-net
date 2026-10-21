@@ -36,16 +36,10 @@ public abstract class CMwCmdExpVec3BuilderBase<TSelf> where TSelf : CMwCmdExpVec
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpVec3> state;
     private protected CMwCmdExpVec3BuilderBase() => state = new();
     private protected CMwCmdExpVec3BuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpVec3> state) => this.state = state;
-    private protected static void SetExp1(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpVec3> state, global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpVec3BuilderAssignments.GetExp1Assignment(), value, GameVersion.TMF);
-    private protected static void SetExp1Reference(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpVec3> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpVec3BuilderAssignments.GetExp1ReferenceAssignment(), value, GameVersion.TMF);
-    private protected static void SetExp2(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpVec3> state, global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpVec3BuilderAssignments.GetExp2Assignment(), value, GameVersion.TMF);
-    private protected static void SetExp2Reference(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpVec3> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpVec3BuilderAssignments.GetExp2ReferenceAssignment(), value, GameVersion.TMF);
-    private protected static void SetExp3(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpVec3> state, global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpVec3BuilderAssignments.GetExp3Assignment(), value, GameVersion.TMF);
-    private protected static void SetExp3Reference(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpVec3> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpVec3BuilderAssignments.GetExp3ReferenceAssignment(), value, GameVersion.TMF);
     public global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Exp1
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdExp?>("Exp1");
-        set => SetExp1(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpVec3BuilderAssignments.GetExp1Assignment(), value, GameVersion.TMF);
     }
     public TSelf WithExp1(global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value)
     {
@@ -55,13 +49,13 @@ public abstract class CMwCmdExpVec3BuilderBase<TSelf> where TSelf : CMwCmdExpVec
     public TSelf WithExp1Reference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetExp1Reference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpVec3BuilderAssignments.GetExp1ReferenceAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Exp2
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdExp?>("Exp2");
-        set => SetExp2(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpVec3BuilderAssignments.GetExp2Assignment(), value, GameVersion.TMF);
     }
     public TSelf WithExp2(global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value)
     {
@@ -71,13 +65,13 @@ public abstract class CMwCmdExpVec3BuilderBase<TSelf> where TSelf : CMwCmdExpVec
     public TSelf WithExp2Reference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetExp2Reference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpVec3BuilderAssignments.GetExp2ReferenceAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Exp3
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdExp?>("Exp3");
-        set => SetExp3(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpVec3BuilderAssignments.GetExp3Assignment(), value, GameVersion.TMF);
     }
     public TSelf WithExp3(global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value)
     {
@@ -87,7 +81,7 @@ public abstract class CMwCmdExpVec3BuilderBase<TSelf> where TSelf : CMwCmdExpVec
     public TSelf WithExp3Reference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetExp3Reference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpVec3BuilderAssignments.GetExp3ReferenceAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
 }

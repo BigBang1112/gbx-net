@@ -36,97 +36,10 @@ public abstract class CSystemConfigDisplayBuilderBase<TSelf> where TSelf : CSyst
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state;
     private protected CSystemConfigDisplayBuilderBase() => state = new();
     private protected CSystemConfigDisplayBuilderBase(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state) => this.state = state;
-    private protected static void SetAdapterDesc(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetAdapterDescAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetAgpUseFactor(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, float value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetAgpUseFactorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetAnisoQuality(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetAnisoQualityAssignment(), value, GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetAntialiasing(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, global::GBX.NET.Engines.System.CSystemConfigDisplay.EAntialiasing value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetAntialiasingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetAsyncRenderEnabled(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetAsyncRenderEnabledAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetAutoScale(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, global::GBX.NET.Engines.System.CSystemConfigDisplay.EAutoScale value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetAutoScaleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetAutomaticEnabled(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetAutomaticEnabledAssignment(), value, GameVersion.TM2020);
-    private protected static void SetAutomaticMinFps(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetAutomaticMinFpsAssignment(), value, GameVersion.TM2020);
-    private protected static void SetColorDepth(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, global::GBX.NET.Engines.System.CSystemConfigDisplay.EColorDepth value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetColorDepthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetConfigVersion(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetConfigVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetCustomize(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetCustomizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetDeferredAA(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, global::GBX.NET.Engines.System.CSystemConfigDisplay.EDeferredAA value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDeferredAAAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDisableColorWMask(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisableColorWMaskAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetDisableHdrCubeRenderMipMap(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisableHdrCubeRenderMipMapAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDisableShadowBuffer(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisableShadowBufferAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetDisableShadowBufferRaw(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisableShadowBufferRawAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDisableWindowedAntiAlias(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisableWindowedAntiAliasAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetDisableZBufferRange(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisableZBufferRangeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetDisplayMode(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, global::GBX.NET.Engines.System.CSystemConfigDisplay.EDisplayMode value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisplayModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDisplaySync(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, global::GBX.NET.Engines.System.CSystemConfigDisplay.EDisplaySync value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisplaySyncAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetEmulateCursorGDI(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEmulateCursorGDIAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetEnableCheckLags(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEnableCheckLagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetEnableD3D9Ex(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEnableD3D9ExAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
-    private protected static void SetEnableD3D9_BC4_BC5(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEnableD3D9_BC4_BC5Assignment(), value, GameVersion.MP3 | GameVersion.TMT);
-    private protected static void SetEnableFullscreenGDI(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEnableFullscreenGDIAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetEnableLightMap(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEnableLightMapAssignment(), value, GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetEnableRenderReadBack(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEnableRenderReadBackAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetEverywhereReflect(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, global::GBX.NET.Engines.System.CSystemConfigDisplay.EEverywhereReflect value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEverywhereReflectAssignment(), value, GameVersion.TM2020);
-    private protected static void SetFastLoad(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetFastLoadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetFilterAnisoQ(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, global::GBX.NET.Engines.System.CSystemConfigDisplay.EFilterAnisoQ value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetFilterAnisoQAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetForceD3D11FeatureLevel10(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetForceD3D11FeatureLevel10Assignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetForceFxBloom(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetForceFxBloomAssignment(), value, GameVersion.TMF | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetForceFxColors(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetForceFxColorsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetForceFxMotionBlur(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetForceFxMotionBlurAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetFullScreen(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetFullScreenAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetFxBloomHdr(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, global::GBX.NET.Engines.System.CSystemConfigDisplay.EFxBloomHdr value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetFxBloomHdrAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFxBlur(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, global::GBX.NET.Engines.System.CSystemConfigDisplay.EFxBlur value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetFxBlurAssignment(), value, GameVersion.TM2020);
-    private protected static void SetFxMotionBlur(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, global::GBX.NET.Engines.System.CSystemConfigDisplay.EFxMotionBlur value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetFxMotionBlurAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFxMotionBlurIntens(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, float value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetFxMotionBlurIntensAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetGeomLodScaleZ(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, float value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetGeomLodScaleZAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetGeometryQuality(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, global::GBX.NET.Engines.System.CSystemConfigDisplay.EGeometryQuality value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetGeometryQualityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetGfxQualityOld(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetGfxQualityOldAssignment(), value, GameVersion.TMPU);
-    private protected static void SetGpuSync(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, global::GBX.NET.Engines.System.CSystemConfigDisplay.EGpuSyncOld value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetGpuSyncAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetGpuSync0(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, global::GBX.NET.Engines.System.CSystemConfigDisplay.EGpuSync value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetGpuSync0Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetIgnoreDriverCrashes(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetIgnoreDriverCrashesAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetIgnoreDriverCrashesRaw(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetIgnoreDriverCrashesRawAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetLightFromMap(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightFromMap value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetLightFromMapAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetLightMapCompute(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapCompute value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetLightMapComputeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetLightMapLightIndex(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetLightMapLightIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetLightMapQuality(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapQuality value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetLightMapQualityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetLightMapQualityOld(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapQualityOld value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetLightMapQualityOldAssignment(), value, GameVersion.TMF);
-    private protected static void SetLightMapQualityUltra(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetLightMapQualityUltraAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetLightMapSizeMax(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapSizeMax value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetLightMapSizeMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMaxFiltering(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetMaxFilteringAssignment(), value, GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetMaxFps(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetMaxFpsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMultiThreadCountMax(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetMultiThreadCountMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMultiThreadEnable(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetMultiThreadEnableAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetOptimizePartialDynaGeom(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetOptimizePartialDynaGeomAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetParticleMaxGpuLoadMs(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, float value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetParticleMaxGpuLoadMsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetPostFxEnable(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetPostFxEnableAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetPreset(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, global::GBX.NET.Engines.System.CSystemConfigDisplay.EPreset value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetPresetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetPresetOld(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, global::GBX.NET.Engines.System.CSystemConfigDisplay.EPresetOld value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetPresetOldAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetRefreshRate(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetRefreshRateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetRenderingApi(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, global::GBX.NET.Engines.System.CSystemConfigDisplay.ERenderingApi value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetRenderingApiAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetScreenShotExt(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, global::GBX.NET.Engines.System.CSystemConfigDisplay.EScreenShotExt value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetScreenShotExtAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetScreenSizeFS(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, Int2 value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetScreenSizeFSAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetScreenSizeWin(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetScreenSizeWinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetShaderQuality(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, global::GBX.NET.Engines.System.CSystemConfigDisplay.EShaderQ value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetShaderQualityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetShaderQualityOld(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, global::GBX.NET.Engines.System.CSystemConfigDisplay.EShaderQualityOld value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetShaderQualityOldAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetShadows(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, global::GBX.NET.Engines.System.CSystemConfigDisplay.EShadows value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetShadowsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetShowBackground(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetShowBackgroundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetStereoscopyAdvanced(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetStereoscopyAdvancedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetStereoscopyByDefault(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetStereoscopyByDefaultAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetTextureDecals_2D(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetTextureDecals_2DAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTextureDecals_3D(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetTextureDecals_3DAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTexturesQuality(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, global::GBX.NET.Engines.System.CSystemConfigDisplay.ETexturesQuality value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetTexturesQualityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetTreeAlwaysHq(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetTreeAlwaysHqAssignment(), value, GameVersion.TMF);
-    private protected static void SetTripleBuffer(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, global::GBX.NET.Engines.System.CSystemConfigDisplay.ETripleBuffer value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetTripleBufferAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetVSync(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetVSyncAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetVehicleReflect(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, global::GBX.NET.Engines.System.CSystemConfigDisplay.EVehicleReflect value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetVehicleReflectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetVertexProcess(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, global::GBX.NET.Engines.System.CSystemConfigDisplay.EVertexProcess value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetVertexProcessAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetWaterComplex(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetWaterComplexAssignment(), value, GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX);
-    private protected static void SetWaterGeomStadium(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetWaterGeomStadiumAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetWaterReflect(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, global::GBX.NET.Engines.System.CSystemConfigDisplay.EWaterReflect value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetWaterReflectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetZClip(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, global::GBX.NET.Engines.System.CSystemConfigDisplay.EZClip value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetZClipAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetZClipAuto(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, global::GBX.NET.Engines.System.CSystemConfigDisplay.EZClipAuto value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetZClipAutoAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetZClipNbBlock(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetZClipNbBlockAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     public global::GBX.NET.Engines.System.CSystemConfigDisplay.EAntialiasing Antialiasing
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EAntialiasing>("Antialiasing");
-        set => SetAntialiasing(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetAntialiasingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithAntialiasing(global::GBX.NET.Engines.System.CSystemConfigDisplay.EAntialiasing value)
     {
@@ -136,7 +49,7 @@ public abstract class CSystemConfigDisplayBuilderBase<TSelf> where TSelf : CSyst
     public global::GBX.NET.Engines.System.CSystemConfigDisplay.EColorDepth ColorDepth
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EColorDepth>("ColorDepth");
-        set => SetColorDepth(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetColorDepthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithColorDepth(global::GBX.NET.Engines.System.CSystemConfigDisplay.EColorDepth value)
     {
@@ -146,7 +59,7 @@ public abstract class CSystemConfigDisplayBuilderBase<TSelf> where TSelf : CSyst
     public bool EmulateCursorGDI
     {
         get => state.Get<bool>("EmulateCursorGDI");
-        set => SetEmulateCursorGDI(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEmulateCursorGDIAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithEmulateCursorGDI(bool value)
     {
@@ -156,7 +69,7 @@ public abstract class CSystemConfigDisplayBuilderBase<TSelf> where TSelf : CSyst
     public bool OptimizePartialDynaGeom
     {
         get => state.Get<bool>("OptimizePartialDynaGeom");
-        set => SetOptimizePartialDynaGeom(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetOptimizePartialDynaGeomAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithOptimizePartialDynaGeom(bool value)
     {
@@ -166,7 +79,7 @@ public abstract class CSystemConfigDisplayBuilderBase<TSelf> where TSelf : CSyst
     public int RefreshRate
     {
         get => state.Get<int>("RefreshRate");
-        set => SetRefreshRate(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetRefreshRateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithRefreshRate(int value)
     {
@@ -176,7 +89,7 @@ public abstract class CSystemConfigDisplayBuilderBase<TSelf> where TSelf : CSyst
     public Int2 ScreenSizeFS
     {
         get => state.Get<Int2>("ScreenSizeFS");
-        set => SetScreenSizeFS(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetScreenSizeFSAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithScreenSizeFS(Int2 value)
     {
@@ -186,7 +99,7 @@ public abstract class CSystemConfigDisplayBuilderBase<TSelf> where TSelf : CSyst
     public int ScreenSizeWin
     {
         get => state.Get<int>("ScreenSizeWin");
-        set => SetScreenSizeWin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetScreenSizeWinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithScreenSizeWin(int value)
     {
@@ -196,7 +109,7 @@ public abstract class CSystemConfigDisplayBuilderBase<TSelf> where TSelf : CSyst
     public global::GBX.NET.Engines.System.CSystemConfigDisplay.EShadows Shadows
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EShadows>("Shadows");
-        set => SetShadows(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetShadowsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithShadows(global::GBX.NET.Engines.System.CSystemConfigDisplay.EShadows value)
     {
@@ -206,7 +119,7 @@ public abstract class CSystemConfigDisplayBuilderBase<TSelf> where TSelf : CSyst
     public global::GBX.NET.Engines.System.CSystemConfigDisplay.ETexturesQuality TexturesQuality
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.ETexturesQuality>("TexturesQuality");
-        set => SetTexturesQuality(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetTexturesQualityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithTexturesQuality(global::GBX.NET.Engines.System.CSystemConfigDisplay.ETexturesQuality value)
     {
@@ -216,7 +129,7 @@ public abstract class CSystemConfigDisplayBuilderBase<TSelf> where TSelf : CSyst
     public global::GBX.NET.Engines.System.CSystemConfigDisplay.EVertexProcess VertexProcess
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EVertexProcess>("VertexProcess");
-        set => SetVertexProcess(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetVertexProcessAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithVertexProcess(global::GBX.NET.Engines.System.CSystemConfigDisplay.EVertexProcess value)
     {
@@ -230,7 +143,7 @@ public abstract class CSystemConfigDisplayBuilderMembers1<TSelf> : CSystemConfig
     public float AgpUseFactor
     {
         get => state.Get<float>("AgpUseFactor");
-        set => SetAgpUseFactor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetAgpUseFactorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithAgpUseFactor(float value)
     {
@@ -240,7 +153,7 @@ public abstract class CSystemConfigDisplayBuilderMembers1<TSelf> : CSystemConfig
     public global::GBX.NET.Engines.System.CSystemConfigDisplay.EAutoScale AutoScale
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EAutoScale>("AutoScale");
-        set => SetAutoScale(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetAutoScaleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithAutoScale(global::GBX.NET.Engines.System.CSystemConfigDisplay.EAutoScale value)
     {
@@ -250,7 +163,7 @@ public abstract class CSystemConfigDisplayBuilderMembers1<TSelf> : CSystemConfig
     public bool Customize
     {
         get => state.Get<bool>("Customize");
-        set => SetCustomize(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetCustomizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithCustomize(bool value)
     {
@@ -260,7 +173,7 @@ public abstract class CSystemConfigDisplayBuilderMembers1<TSelf> : CSystemConfig
     public bool DisableColorWMask
     {
         get => state.Get<bool>("DisableColorWMask");
-        set => SetDisableColorWMask(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisableColorWMaskAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithDisableColorWMask(bool value)
     {
@@ -270,7 +183,7 @@ public abstract class CSystemConfigDisplayBuilderMembers1<TSelf> : CSystemConfig
     public bool DisableZBufferRange
     {
         get => state.Get<bool>("DisableZBufferRange");
-        set => SetDisableZBufferRange(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisableZBufferRangeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithDisableZBufferRange(bool value)
     {
@@ -280,7 +193,7 @@ public abstract class CSystemConfigDisplayBuilderMembers1<TSelf> : CSystemConfig
     public bool EnableFullscreenGDI
     {
         get => state.Get<bool>("EnableFullscreenGDI");
-        set => SetEnableFullscreenGDI(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEnableFullscreenGDIAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithEnableFullscreenGDI(bool value)
     {
@@ -290,7 +203,7 @@ public abstract class CSystemConfigDisplayBuilderMembers1<TSelf> : CSystemConfig
     public bool FastLoad
     {
         get => state.Get<bool>("FastLoad");
-        set => SetFastLoad(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetFastLoadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithFastLoad(bool value)
     {
@@ -300,7 +213,7 @@ public abstract class CSystemConfigDisplayBuilderMembers1<TSelf> : CSystemConfig
     public bool PostFxEnable
     {
         get => state.Get<bool>("PostFxEnable");
-        set => SetPostFxEnable(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetPostFxEnableAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithPostFxEnable(bool value)
     {
@@ -310,7 +223,7 @@ public abstract class CSystemConfigDisplayBuilderMembers1<TSelf> : CSystemConfig
     public bool ShowBackground
     {
         get => state.Get<bool>("ShowBackground");
-        set => SetShowBackground(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetShowBackgroundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithShowBackground(bool value)
     {
@@ -320,7 +233,7 @@ public abstract class CSystemConfigDisplayBuilderMembers1<TSelf> : CSystemConfig
     public global::GBX.NET.Engines.System.CSystemConfigDisplay.EWaterReflect WaterReflect
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EWaterReflect>("WaterReflect");
-        set => SetWaterReflect(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetWaterReflectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithWaterReflect(global::GBX.NET.Engines.System.CSystemConfigDisplay.EWaterReflect value)
     {
@@ -330,7 +243,7 @@ public abstract class CSystemConfigDisplayBuilderMembers1<TSelf> : CSystemConfig
     public global::GBX.NET.Engines.System.CSystemConfigDisplay.EZClip ZClip
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EZClip>("ZClip");
-        set => SetZClip(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetZClipAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithZClip(global::GBX.NET.Engines.System.CSystemConfigDisplay.EZClip value)
     {
@@ -340,7 +253,7 @@ public abstract class CSystemConfigDisplayBuilderMembers1<TSelf> : CSystemConfig
     public global::GBX.NET.Engines.System.CSystemConfigDisplay.EZClipAuto ZClipAuto
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EZClipAuto>("ZClipAuto");
-        set => SetZClipAuto(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetZClipAutoAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithZClipAuto(global::GBX.NET.Engines.System.CSystemConfigDisplay.EZClipAuto value)
     {
@@ -350,7 +263,7 @@ public abstract class CSystemConfigDisplayBuilderMembers1<TSelf> : CSystemConfig
     public int ZClipNbBlock
     {
         get => state.Get<int>("ZClipNbBlock");
-        set => SetZClipNbBlock(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetZClipNbBlockAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithZClipNbBlock(int value)
     {
@@ -364,7 +277,7 @@ public abstract class CSystemConfigDisplayBuilderMembers2<TSelf> : CSystemConfig
     public bool DisableWindowedAntiAlias
     {
         get => state.Get<bool>("DisableWindowedAntiAlias");
-        set => SetDisableWindowedAntiAlias(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisableWindowedAntiAliasAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithDisableWindowedAntiAlias(bool value)
     {
@@ -374,7 +287,7 @@ public abstract class CSystemConfigDisplayBuilderMembers2<TSelf> : CSystemConfig
     public bool EnableCheckLags
     {
         get => state.Get<bool>("EnableCheckLags");
-        set => SetEnableCheckLags(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEnableCheckLagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithEnableCheckLags(bool value)
     {
@@ -384,7 +297,7 @@ public abstract class CSystemConfigDisplayBuilderMembers2<TSelf> : CSystemConfig
     public bool EnableRenderReadBack
     {
         get => state.Get<bool>("EnableRenderReadBack");
-        set => SetEnableRenderReadBack(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEnableRenderReadBackAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithEnableRenderReadBack(bool value)
     {
@@ -394,7 +307,7 @@ public abstract class CSystemConfigDisplayBuilderMembers2<TSelf> : CSystemConfig
     public global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightFromMap LightFromMap
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightFromMap>("LightFromMap");
-        set => SetLightFromMap(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetLightFromMapAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithLightFromMap(global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightFromMap value)
     {
@@ -404,7 +317,7 @@ public abstract class CSystemConfigDisplayBuilderMembers2<TSelf> : CSystemConfig
     public global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapCompute LightMapCompute
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapCompute>("LightMapCompute");
-        set => SetLightMapCompute(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetLightMapComputeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithLightMapCompute(global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapCompute value)
     {
@@ -418,7 +331,7 @@ public abstract class CSystemConfigDisplayBuilderMembers3<TSelf> : CSystemConfig
     public int MultiThreadCountMax
     {
         get => state.Get<int>("MultiThreadCountMax");
-        set => SetMultiThreadCountMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetMultiThreadCountMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMultiThreadCountMax(int value)
     {
@@ -428,7 +341,7 @@ public abstract class CSystemConfigDisplayBuilderMembers3<TSelf> : CSystemConfig
     public bool MultiThreadEnable
     {
         get => state.Get<bool>("MultiThreadEnable");
-        set => SetMultiThreadEnable(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetMultiThreadEnableAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMultiThreadEnable(bool value)
     {
@@ -442,7 +355,7 @@ public abstract class CSystemConfigDisplayBuilderMembers4<TSelf> : CSystemConfig
     public bool DisableShadowBuffer
     {
         get => state.Get<bool>("DisableShadowBuffer");
-        set => SetDisableShadowBuffer(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisableShadowBufferAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithDisableShadowBuffer(bool value)
     {
@@ -452,7 +365,7 @@ public abstract class CSystemConfigDisplayBuilderMembers4<TSelf> : CSystemConfig
     public bool ForceFxColors
     {
         get => state.Get<bool>("ForceFxColors");
-        set => SetForceFxColors(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetForceFxColorsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithForceFxColors(bool value)
     {
@@ -462,7 +375,7 @@ public abstract class CSystemConfigDisplayBuilderMembers4<TSelf> : CSystemConfig
     public bool ForceFxMotionBlur
     {
         get => state.Get<bool>("ForceFxMotionBlur");
-        set => SetForceFxMotionBlur(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetForceFxMotionBlurAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithForceFxMotionBlur(bool value)
     {
@@ -472,7 +385,7 @@ public abstract class CSystemConfigDisplayBuilderMembers4<TSelf> : CSystemConfig
     public bool FullScreen
     {
         get => state.Get<bool>("FullScreen");
-        set => SetFullScreen(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetFullScreenAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithFullScreen(bool value)
     {
@@ -482,7 +395,7 @@ public abstract class CSystemConfigDisplayBuilderMembers4<TSelf> : CSystemConfig
     public global::GBX.NET.Engines.System.CSystemConfigDisplay.EGpuSyncOld GpuSync
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EGpuSyncOld>("GpuSync");
-        set => SetGpuSync(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetGpuSyncAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithGpuSync(global::GBX.NET.Engines.System.CSystemConfigDisplay.EGpuSyncOld value)
     {
@@ -492,7 +405,7 @@ public abstract class CSystemConfigDisplayBuilderMembers4<TSelf> : CSystemConfig
     public bool IgnoreDriverCrashes
     {
         get => state.Get<bool>("IgnoreDriverCrashes");
-        set => SetIgnoreDriverCrashes(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetIgnoreDriverCrashesAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithIgnoreDriverCrashes(bool value)
     {
@@ -502,7 +415,7 @@ public abstract class CSystemConfigDisplayBuilderMembers4<TSelf> : CSystemConfig
     public global::GBX.NET.Engines.System.CSystemConfigDisplay.EPresetOld PresetOld
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EPresetOld>("PresetOld");
-        set => SetPresetOld(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetPresetOldAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithPresetOld(global::GBX.NET.Engines.System.CSystemConfigDisplay.EPresetOld value)
     {
@@ -512,7 +425,7 @@ public abstract class CSystemConfigDisplayBuilderMembers4<TSelf> : CSystemConfig
     public global::GBX.NET.Engines.System.CSystemConfigDisplay.EShaderQualityOld ShaderQualityOld
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EShaderQualityOld>("ShaderQualityOld");
-        set => SetShaderQualityOld(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetShaderQualityOldAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithShaderQualityOld(global::GBX.NET.Engines.System.CSystemConfigDisplay.EShaderQualityOld value)
     {
@@ -522,7 +435,7 @@ public abstract class CSystemConfigDisplayBuilderMembers4<TSelf> : CSystemConfig
     public bool VSync
     {
         get => state.Get<bool>("VSync");
-        set => SetVSync(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetVSyncAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithVSync(bool value)
     {
@@ -536,7 +449,7 @@ public abstract class CSystemConfigDisplayBuilderMembers5<TSelf> : CSystemConfig
     public float GeomLodScaleZ
     {
         get => state.Get<float>("GeomLodScaleZ");
-        set => SetGeomLodScaleZ(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetGeomLodScaleZAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithGeomLodScaleZ(float value)
     {
@@ -550,7 +463,7 @@ public abstract class CSystemConfigDisplayBuilderMembers6<TSelf> : CSystemConfig
     public int AnisoQuality
     {
         get => state.Get<int>("AnisoQuality");
-        set => SetAnisoQuality(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetAnisoQualityAssignment(), value, GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithAnisoQuality(int value)
     {
@@ -560,7 +473,7 @@ public abstract class CSystemConfigDisplayBuilderMembers6<TSelf> : CSystemConfig
     public int MaxFiltering
     {
         get => state.Get<int>("MaxFiltering");
-        set => SetMaxFiltering(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetMaxFilteringAssignment(), value, GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithMaxFiltering(int value)
     {
@@ -574,7 +487,7 @@ public abstract class CSystemConfigDisplayBuilderMembers7<TSelf> : CSystemConfig
     public global::GBX.NET.Engines.System.CSystemConfigDisplay.EFilterAnisoQ FilterAnisoQ
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EFilterAnisoQ>("FilterAnisoQ");
-        set => SetFilterAnisoQ(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetFilterAnisoQAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithFilterAnisoQ(global::GBX.NET.Engines.System.CSystemConfigDisplay.EFilterAnisoQ value)
     {
@@ -584,7 +497,7 @@ public abstract class CSystemConfigDisplayBuilderMembers7<TSelf> : CSystemConfig
     public bool StereoscopyAdvanced
     {
         get => state.Get<bool>("StereoscopyAdvanced");
-        set => SetStereoscopyAdvanced(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetStereoscopyAdvancedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithStereoscopyAdvanced(bool value)
     {
@@ -594,7 +507,7 @@ public abstract class CSystemConfigDisplayBuilderMembers7<TSelf> : CSystemConfig
     public bool StereoscopyByDefault
     {
         get => state.Get<bool>("StereoscopyByDefault");
-        set => SetStereoscopyByDefault(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetStereoscopyByDefaultAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithStereoscopyByDefault(bool value)
     {
@@ -604,7 +517,7 @@ public abstract class CSystemConfigDisplayBuilderMembers7<TSelf> : CSystemConfig
     public bool WaterGeomStadium
     {
         get => state.Get<bool>("WaterGeomStadium");
-        set => SetWaterGeomStadium(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetWaterGeomStadiumAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithWaterGeomStadium(bool value)
     {
@@ -618,7 +531,7 @@ public abstract class CSystemConfigDisplayBuilderMembers8<TSelf> : CSystemConfig
     public bool WaterComplex
     {
         get => state.Get<bool>("WaterComplex");
-        set => SetWaterComplex(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetWaterComplexAssignment(), value, GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX);
     }
     public TSelf WithWaterComplex(bool value)
     {
@@ -632,7 +545,7 @@ public abstract class CSystemConfigDisplayBuilderMembers9<TSelf> : CSystemConfig
     public bool DisableWindowedAntiAlias
     {
         get => state.Get<bool>("DisableWindowedAntiAlias");
-        set => SetDisableWindowedAntiAlias(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisableWindowedAntiAliasAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithDisableWindowedAntiAlias(bool value)
     {
@@ -642,7 +555,7 @@ public abstract class CSystemConfigDisplayBuilderMembers9<TSelf> : CSystemConfig
     public bool EnableCheckLags
     {
         get => state.Get<bool>("EnableCheckLags");
-        set => SetEnableCheckLags(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEnableCheckLagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithEnableCheckLags(bool value)
     {
@@ -652,7 +565,7 @@ public abstract class CSystemConfigDisplayBuilderMembers9<TSelf> : CSystemConfig
     public bool EnableRenderReadBack
     {
         get => state.Get<bool>("EnableRenderReadBack");
-        set => SetEnableRenderReadBack(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEnableRenderReadBackAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithEnableRenderReadBack(bool value)
     {
@@ -662,7 +575,7 @@ public abstract class CSystemConfigDisplayBuilderMembers9<TSelf> : CSystemConfig
     public bool ForceFxBloom
     {
         get => state.Get<bool>("ForceFxBloom");
-        set => SetForceFxBloom(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetForceFxBloomAssignment(), value, GameVersion.TMF | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithForceFxBloom(bool value)
     {
@@ -672,7 +585,7 @@ public abstract class CSystemConfigDisplayBuilderMembers9<TSelf> : CSystemConfig
     public global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightFromMap LightFromMap
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightFromMap>("LightFromMap");
-        set => SetLightFromMap(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetLightFromMapAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithLightFromMap(global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightFromMap value)
     {
@@ -682,7 +595,7 @@ public abstract class CSystemConfigDisplayBuilderMembers9<TSelf> : CSystemConfig
     public global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapCompute LightMapCompute
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapCompute>("LightMapCompute");
-        set => SetLightMapCompute(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetLightMapComputeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithLightMapCompute(global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapCompute value)
     {
@@ -696,7 +609,7 @@ public abstract class CSystemConfigDisplayBuilderMembers10<TSelf> : CSystemConfi
     public int AnisoQuality
     {
         get => state.Get<int>("AnisoQuality");
-        set => SetAnisoQuality(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetAnisoQualityAssignment(), value, GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithAnisoQuality(int value)
     {
@@ -706,7 +619,7 @@ public abstract class CSystemConfigDisplayBuilderMembers10<TSelf> : CSystemConfi
     public bool EnableLightMap
     {
         get => state.Get<bool>("EnableLightMap");
-        set => SetEnableLightMap(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEnableLightMapAssignment(), value, GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithEnableLightMap(bool value)
     {
@@ -716,7 +629,7 @@ public abstract class CSystemConfigDisplayBuilderMembers10<TSelf> : CSystemConfi
     public int MaxFiltering
     {
         get => state.Get<int>("MaxFiltering");
-        set => SetMaxFiltering(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetMaxFilteringAssignment(), value, GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithMaxFiltering(int value)
     {
@@ -730,7 +643,7 @@ public abstract class CSystemConfigDisplayBuilderMembers11<TSelf> : CSystemConfi
     public int ConfigVersion
     {
         get => state.Get<int>("ConfigVersion");
-        set => SetConfigVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetConfigVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithConfigVersion(int value)
     {
@@ -740,7 +653,7 @@ public abstract class CSystemConfigDisplayBuilderMembers11<TSelf> : CSystemConfi
     public global::GBX.NET.Engines.System.CSystemConfigDisplay.EDeferredAA DeferredAA
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EDeferredAA>("DeferredAA");
-        set => SetDeferredAA(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDeferredAAAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDeferredAA(global::GBX.NET.Engines.System.CSystemConfigDisplay.EDeferredAA value)
     {
@@ -750,7 +663,7 @@ public abstract class CSystemConfigDisplayBuilderMembers11<TSelf> : CSystemConfi
     public bool DisableHdrCubeRenderMipMap
     {
         get => state.Get<bool>("DisableHdrCubeRenderMipMap");
-        set => SetDisableHdrCubeRenderMipMap(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisableHdrCubeRenderMipMapAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDisableHdrCubeRenderMipMap(bool value)
     {
@@ -760,7 +673,7 @@ public abstract class CSystemConfigDisplayBuilderMembers11<TSelf> : CSystemConfi
     public bool DisableShadowBufferRaw
     {
         get => state.Get<bool>("DisableShadowBufferRaw");
-        set => SetDisableShadowBufferRaw(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisableShadowBufferRawAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDisableShadowBufferRaw(bool value)
     {
@@ -770,7 +683,7 @@ public abstract class CSystemConfigDisplayBuilderMembers11<TSelf> : CSystemConfi
     public global::GBX.NET.Engines.System.CSystemConfigDisplay.EDisplayMode DisplayMode
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EDisplayMode>("DisplayMode");
-        set => SetDisplayMode(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisplayModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDisplayMode(global::GBX.NET.Engines.System.CSystemConfigDisplay.EDisplayMode value)
     {
@@ -780,7 +693,7 @@ public abstract class CSystemConfigDisplayBuilderMembers11<TSelf> : CSystemConfi
     public global::GBX.NET.Engines.System.CSystemConfigDisplay.EDisplaySync DisplaySync
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EDisplaySync>("DisplaySync");
-        set => SetDisplaySync(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisplaySyncAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDisplaySync(global::GBX.NET.Engines.System.CSystemConfigDisplay.EDisplaySync value)
     {
@@ -790,7 +703,7 @@ public abstract class CSystemConfigDisplayBuilderMembers11<TSelf> : CSystemConfi
     public global::GBX.NET.Engines.System.CSystemConfigDisplay.EFxBloomHdr FxBloomHdr
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EFxBloomHdr>("FxBloomHdr");
-        set => SetFxBloomHdr(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetFxBloomHdrAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFxBloomHdr(global::GBX.NET.Engines.System.CSystemConfigDisplay.EFxBloomHdr value)
     {
@@ -800,7 +713,7 @@ public abstract class CSystemConfigDisplayBuilderMembers11<TSelf> : CSystemConfi
     public global::GBX.NET.Engines.System.CSystemConfigDisplay.EFxMotionBlur FxMotionBlur
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EFxMotionBlur>("FxMotionBlur");
-        set => SetFxMotionBlur(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetFxMotionBlurAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFxMotionBlur(global::GBX.NET.Engines.System.CSystemConfigDisplay.EFxMotionBlur value)
     {
@@ -810,7 +723,7 @@ public abstract class CSystemConfigDisplayBuilderMembers11<TSelf> : CSystemConfi
     public float FxMotionBlurIntens
     {
         get => state.Get<float>("FxMotionBlurIntens");
-        set => SetFxMotionBlurIntens(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetFxMotionBlurIntensAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFxMotionBlurIntens(float value)
     {
@@ -820,7 +733,7 @@ public abstract class CSystemConfigDisplayBuilderMembers11<TSelf> : CSystemConfi
     public global::GBX.NET.Engines.System.CSystemConfigDisplay.EGeometryQuality GeometryQuality
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EGeometryQuality>("GeometryQuality");
-        set => SetGeometryQuality(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetGeometryQualityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGeometryQuality(global::GBX.NET.Engines.System.CSystemConfigDisplay.EGeometryQuality value)
     {
@@ -830,7 +743,7 @@ public abstract class CSystemConfigDisplayBuilderMembers11<TSelf> : CSystemConfi
     public global::GBX.NET.Engines.System.CSystemConfigDisplay.EGpuSync GpuSync0
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EGpuSync>("GpuSync0");
-        set => SetGpuSync0(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetGpuSync0Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGpuSync0(global::GBX.NET.Engines.System.CSystemConfigDisplay.EGpuSync value)
     {
@@ -840,7 +753,7 @@ public abstract class CSystemConfigDisplayBuilderMembers11<TSelf> : CSystemConfi
     public bool IgnoreDriverCrashesRaw
     {
         get => state.Get<bool>("IgnoreDriverCrashesRaw");
-        set => SetIgnoreDriverCrashesRaw(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetIgnoreDriverCrashesRawAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIgnoreDriverCrashesRaw(bool value)
     {
@@ -850,7 +763,7 @@ public abstract class CSystemConfigDisplayBuilderMembers11<TSelf> : CSystemConfi
     public bool LightMapLightIndex
     {
         get => state.Get<bool>("LightMapLightIndex");
-        set => SetLightMapLightIndex(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetLightMapLightIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLightMapLightIndex(bool value)
     {
@@ -860,7 +773,7 @@ public abstract class CSystemConfigDisplayBuilderMembers11<TSelf> : CSystemConfi
     public global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapQuality LightMapQuality
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapQuality>("LightMapQuality");
-        set => SetLightMapQuality(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetLightMapQualityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLightMapQuality(global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapQuality value)
     {
@@ -870,7 +783,7 @@ public abstract class CSystemConfigDisplayBuilderMembers11<TSelf> : CSystemConfi
     public bool LightMapQualityUltra
     {
         get => state.Get<bool>("LightMapQualityUltra");
-        set => SetLightMapQualityUltra(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetLightMapQualityUltraAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLightMapQualityUltra(bool value)
     {
@@ -880,7 +793,7 @@ public abstract class CSystemConfigDisplayBuilderMembers11<TSelf> : CSystemConfi
     public global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapSizeMax LightMapSizeMax
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapSizeMax>("LightMapSizeMax");
-        set => SetLightMapSizeMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetLightMapSizeMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLightMapSizeMax(global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapSizeMax value)
     {
@@ -890,7 +803,7 @@ public abstract class CSystemConfigDisplayBuilderMembers11<TSelf> : CSystemConfi
     public int MaxFps
     {
         get => state.Get<int>("MaxFps");
-        set => SetMaxFps(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetMaxFpsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaxFps(int value)
     {
@@ -900,7 +813,7 @@ public abstract class CSystemConfigDisplayBuilderMembers11<TSelf> : CSystemConfi
     public float ParticleMaxGpuLoadMs
     {
         get => state.Get<float>("ParticleMaxGpuLoadMs");
-        set => SetParticleMaxGpuLoadMs(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetParticleMaxGpuLoadMsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithParticleMaxGpuLoadMs(float value)
     {
@@ -910,7 +823,7 @@ public abstract class CSystemConfigDisplayBuilderMembers11<TSelf> : CSystemConfi
     public global::GBX.NET.Engines.System.CSystemConfigDisplay.EPreset Preset
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EPreset>("Preset");
-        set => SetPreset(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetPresetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithPreset(global::GBX.NET.Engines.System.CSystemConfigDisplay.EPreset value)
     {
@@ -920,7 +833,7 @@ public abstract class CSystemConfigDisplayBuilderMembers11<TSelf> : CSystemConfi
     public global::GBX.NET.Engines.System.CSystemConfigDisplay.EScreenShotExt ScreenShotExt
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EScreenShotExt>("ScreenShotExt");
-        set => SetScreenShotExt(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetScreenShotExtAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithScreenShotExt(global::GBX.NET.Engines.System.CSystemConfigDisplay.EScreenShotExt value)
     {
@@ -930,7 +843,7 @@ public abstract class CSystemConfigDisplayBuilderMembers11<TSelf> : CSystemConfi
     public global::GBX.NET.Engines.System.CSystemConfigDisplay.EShaderQ ShaderQuality
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EShaderQ>("ShaderQuality");
-        set => SetShaderQuality(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetShaderQualityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithShaderQuality(global::GBX.NET.Engines.System.CSystemConfigDisplay.EShaderQ value)
     {
@@ -940,7 +853,7 @@ public abstract class CSystemConfigDisplayBuilderMembers11<TSelf> : CSystemConfi
     public bool TextureDecals_2D
     {
         get => state.Get<bool>("TextureDecals_2D");
-        set => SetTextureDecals_2D(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetTextureDecals_2DAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTextureDecals_2D(bool value)
     {
@@ -950,7 +863,7 @@ public abstract class CSystemConfigDisplayBuilderMembers11<TSelf> : CSystemConfi
     public bool TextureDecals_3D
     {
         get => state.Get<bool>("TextureDecals_3D");
-        set => SetTextureDecals_3D(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetTextureDecals_3DAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTextureDecals_3D(bool value)
     {
@@ -960,7 +873,7 @@ public abstract class CSystemConfigDisplayBuilderMembers11<TSelf> : CSystemConfi
     public global::GBX.NET.Engines.System.CSystemConfigDisplay.ETripleBuffer TripleBuffer
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.ETripleBuffer>("TripleBuffer");
-        set => SetTripleBuffer(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetTripleBufferAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTripleBuffer(global::GBX.NET.Engines.System.CSystemConfigDisplay.ETripleBuffer value)
     {
@@ -970,7 +883,7 @@ public abstract class CSystemConfigDisplayBuilderMembers11<TSelf> : CSystemConfi
     public global::GBX.NET.Engines.System.CSystemConfigDisplay.EVehicleReflect VehicleReflect
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EVehicleReflect>("VehicleReflect");
-        set => SetVehicleReflect(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetVehicleReflectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithVehicleReflect(global::GBX.NET.Engines.System.CSystemConfigDisplay.EVehicleReflect value)
     {
@@ -984,7 +897,7 @@ public abstract class CSystemConfigDisplayBuilderMembers12<TSelf> : CSystemConfi
     public bool EnableD3D9Ex
     {
         get => state.Get<bool>("EnableD3D9Ex");
-        set => SetEnableD3D9Ex(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEnableD3D9ExAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithEnableD3D9Ex(bool value)
     {
@@ -998,7 +911,7 @@ public abstract class CSystemConfigDisplayBuilderMembers13<TSelf> : CSystemConfi
     public global::GBX.NET.Engines.System.CSystemConfigDisplay.ERenderingApi RenderingApi
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.ERenderingApi>("RenderingApi");
-        set => SetRenderingApi(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetRenderingApiAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRenderingApi(global::GBX.NET.Engines.System.CSystemConfigDisplay.ERenderingApi value)
     {
@@ -1012,7 +925,7 @@ public abstract class CSystemConfigDisplayBuilderMembers14<TSelf> : CSystemConfi
     public bool EnableD3D9_BC4_BC5
     {
         get => state.Get<bool>("EnableD3D9_BC4_BC5");
-        set => SetEnableD3D9_BC4_BC5(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEnableD3D9_BC4_BC5Assignment(), value, GameVersion.MP3 | GameVersion.TMT);
     }
     public TSelf WithEnableD3D9_BC4_BC5(bool value)
     {
@@ -1026,7 +939,7 @@ public abstract class CSystemConfigDisplayBuilderMembers15<TSelf> : CSystemConfi
     public string? AdapterDesc
     {
         get => state.Get<string?>("AdapterDesc");
-        set => SetAdapterDesc(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetAdapterDescAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithAdapterDesc(string? value)
     {
@@ -1036,7 +949,7 @@ public abstract class CSystemConfigDisplayBuilderMembers15<TSelf> : CSystemConfi
     public bool AsyncRenderEnabled
     {
         get => state.Get<bool>("AsyncRenderEnabled");
-        set => SetAsyncRenderEnabled(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetAsyncRenderEnabledAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithAsyncRenderEnabled(bool value)
     {
@@ -1046,7 +959,7 @@ public abstract class CSystemConfigDisplayBuilderMembers15<TSelf> : CSystemConfi
     public bool ForceD3D11FeatureLevel10
     {
         get => state.Get<bool>("ForceD3D11FeatureLevel10");
-        set => SetForceD3D11FeatureLevel10(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetForceD3D11FeatureLevel10Assignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithForceD3D11FeatureLevel10(bool value)
     {
@@ -1824,7 +1737,7 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         public bool DisableShadowBuffer
         {
             get => state.Get<bool>("DisableShadowBuffer");
-            set => SetDisableShadowBuffer(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisableShadowBufferAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMPU WithDisableShadowBuffer(bool value)
         {
@@ -1834,7 +1747,7 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         public bool FullScreen
         {
             get => state.Get<bool>("FullScreen");
-            set => SetFullScreen(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetFullScreenAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMPU WithFullScreen(bool value)
         {
@@ -1844,7 +1757,7 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         public int GfxQualityOld
         {
             get => state.Get<int>("GfxQualityOld");
-            set => SetGfxQualityOld(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetGfxQualityOldAssignment(), value, GameVersion.TMPU);
         }
         public TMPU WithGfxQualityOld(int value)
         {
@@ -1854,7 +1767,7 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         public global::GBX.NET.Engines.System.CSystemConfigDisplay.EGpuSyncOld GpuSync
         {
             get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EGpuSyncOld>("GpuSync");
-            set => SetGpuSync(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetGpuSyncAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMPU WithGpuSync(global::GBX.NET.Engines.System.CSystemConfigDisplay.EGpuSyncOld value)
         {
@@ -1864,7 +1777,7 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         public bool IgnoreDriverCrashes
         {
             get => state.Get<bool>("IgnoreDriverCrashes");
-            set => SetIgnoreDriverCrashes(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetIgnoreDriverCrashesAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMPU WithIgnoreDriverCrashes(bool value)
         {
@@ -1874,7 +1787,7 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         public int MaxFiltering
         {
             get => state.Get<int>("MaxFiltering");
-            set => SetMaxFiltering(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetMaxFilteringAssignment(), value, GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMPU WithMaxFiltering(int value)
         {
@@ -1884,7 +1797,7 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         public global::GBX.NET.Engines.System.CSystemConfigDisplay.EShaderQualityOld ShaderQualityOld
         {
             get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EShaderQualityOld>("ShaderQualityOld");
-            set => SetShaderQualityOld(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetShaderQualityOldAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMPU WithShaderQualityOld(global::GBX.NET.Engines.System.CSystemConfigDisplay.EShaderQualityOld value)
         {
@@ -1894,7 +1807,7 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         public bool VSync
         {
             get => state.Get<bool>("VSync");
-            set => SetVSync(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetVSyncAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMPU WithVSync(bool value)
         {
@@ -1958,7 +1871,7 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         public float GeomLodScaleZ
         {
             get => state.Get<float>("GeomLodScaleZ");
-            set => SetGeomLodScaleZ(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetGeomLodScaleZAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMNESWC WithGeomLodScaleZ(float value)
         {
@@ -2004,7 +1917,7 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         public int MultiThreadCountMax
         {
             get => state.Get<int>("MultiThreadCountMax");
-            set => SetMultiThreadCountMax(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetMultiThreadCountMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         }
         public VSK5 WithMultiThreadCountMax(int value)
         {
@@ -2014,7 +1927,7 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         public bool MultiThreadEnable
         {
             get => state.Get<bool>("MultiThreadEnable");
-            set => SetMultiThreadEnable(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetMultiThreadEnableAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         }
         public VSK5 WithMultiThreadEnable(bool value)
         {
@@ -2042,7 +1955,7 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         public global::GBX.NET.Engines.System.CSystemConfigDisplay.EFilterAnisoQ FilterAnisoQ
         {
             get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EFilterAnisoQ>("FilterAnisoQ");
-            set => SetFilterAnisoQ(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetFilterAnisoQAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         }
         public TMF WithFilterAnisoQ(global::GBX.NET.Engines.System.CSystemConfigDisplay.EFilterAnisoQ value)
         {
@@ -2052,7 +1965,7 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         public global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapQualityOld LightMapQualityOld
         {
             get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapQualityOld>("LightMapQualityOld");
-            set => SetLightMapQualityOld(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetLightMapQualityOldAssignment(), value, GameVersion.TMF);
         }
         public TMF WithLightMapQualityOld(global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapQualityOld value)
         {
@@ -2062,7 +1975,7 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         public int MultiThreadCountMax
         {
             get => state.Get<int>("MultiThreadCountMax");
-            set => SetMultiThreadCountMax(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetMultiThreadCountMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMF WithMultiThreadCountMax(int value)
         {
@@ -2072,7 +1985,7 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         public bool MultiThreadEnable
         {
             get => state.Get<bool>("MultiThreadEnable");
-            set => SetMultiThreadEnable(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetMultiThreadEnableAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMF WithMultiThreadEnable(bool value)
         {
@@ -2082,7 +1995,7 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         public bool StereoscopyAdvanced
         {
             get => state.Get<bool>("StereoscopyAdvanced");
-            set => SetStereoscopyAdvanced(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetStereoscopyAdvancedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         }
         public TMF WithStereoscopyAdvanced(bool value)
         {
@@ -2092,7 +2005,7 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         public bool StereoscopyByDefault
         {
             get => state.Get<bool>("StereoscopyByDefault");
-            set => SetStereoscopyByDefault(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetStereoscopyByDefaultAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         }
         public TMF WithStereoscopyByDefault(bool value)
         {
@@ -2102,7 +2015,7 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         public bool TreeAlwaysHq
         {
             get => state.Get<bool>("TreeAlwaysHq");
-            set => SetTreeAlwaysHq(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetTreeAlwaysHqAssignment(), value, GameVersion.TMF);
         }
         public TMF WithTreeAlwaysHq(bool value)
         {
@@ -2112,7 +2025,7 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         public bool WaterGeomStadium
         {
             get => state.Get<bool>("WaterGeomStadium");
-            set => SetWaterGeomStadium(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetWaterGeomStadiumAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         }
         public TMF WithWaterGeomStadium(bool value)
         {
@@ -2158,7 +2071,7 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         public global::GBX.NET.Engines.System.CSystemConfigDisplay.ERenderingApi RenderingApi
         {
             get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.ERenderingApi>("RenderingApi");
-            set => SetRenderingApi(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetRenderingApiAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public TMT WithRenderingApi(global::GBX.NET.Engines.System.CSystemConfigDisplay.ERenderingApi value)
         {
@@ -2186,7 +2099,7 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         public bool EnableD3D9Ex
         {
             get => state.Get<bool>("EnableD3D9Ex");
-            set => SetEnableD3D9Ex(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEnableD3D9ExAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
         }
         public MP4 WithEnableD3D9Ex(bool value)
         {
@@ -2214,7 +2127,7 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         public bool AutomaticEnabled
         {
             get => state.Get<bool>("AutomaticEnabled");
-            set => SetAutomaticEnabled(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetAutomaticEnabledAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithAutomaticEnabled(bool value)
         {
@@ -2224,7 +2137,7 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         public int AutomaticMinFps
         {
             get => state.Get<int>("AutomaticMinFps");
-            set => SetAutomaticMinFps(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetAutomaticMinFpsAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithAutomaticMinFps(int value)
         {
@@ -2234,7 +2147,7 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         public global::GBX.NET.Engines.System.CSystemConfigDisplay.EEverywhereReflect EverywhereReflect
         {
             get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EEverywhereReflect>("EverywhereReflect");
-            set => SetEverywhereReflect(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEverywhereReflectAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithEverywhereReflect(global::GBX.NET.Engines.System.CSystemConfigDisplay.EEverywhereReflect value)
         {
@@ -2244,7 +2157,7 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         public global::GBX.NET.Engines.System.CSystemConfigDisplay.EFxBlur FxBlur
         {
             get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EFxBlur>("FxBlur");
-            set => SetFxBlur(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetFxBlurAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithFxBlur(global::GBX.NET.Engines.System.CSystemConfigDisplay.EFxBlur value)
         {

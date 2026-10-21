@@ -36,13 +36,10 @@ public abstract class CMwCmdExpNumBuilderBase<TSelf> where TSelf : CMwCmdExpNumB
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum> state;
     private protected CMwCmdExpNumBuilderBase() => state = new();
     private protected CMwCmdExpNumBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum> state) => this.state = state;
-    private protected static void SetInteger(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum> state, int value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumBuilderAssignments.GetIntegerAssignment(), value, GameVersion.TMF);
-    private protected static void SetReal(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum> state, float value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumBuilderAssignments.GetRealAssignment(), value, GameVersion.TMF);
-    private protected static void SetType(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum> state, int value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumBuilderAssignments.GetTypeAssignment(), value, GameVersion.TMF);
     public int Integer
     {
         get => state.Get<int>("Integer");
-        set => SetInteger(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumBuilderAssignments.GetIntegerAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithInteger(int value)
     {
@@ -52,7 +49,7 @@ public abstract class CMwCmdExpNumBuilderBase<TSelf> where TSelf : CMwCmdExpNumB
     public float Real
     {
         get => state.Get<float>("Real");
-        set => SetReal(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumBuilderAssignments.GetRealAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithReal(float value)
     {
@@ -62,7 +59,7 @@ public abstract class CMwCmdExpNumBuilderBase<TSelf> where TSelf : CMwCmdExpNumB
     public int Type
     {
         get => state.Get<int>("Type");
-        set => SetType(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumBuilderAssignments.GetTypeAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithType(int value)
     {

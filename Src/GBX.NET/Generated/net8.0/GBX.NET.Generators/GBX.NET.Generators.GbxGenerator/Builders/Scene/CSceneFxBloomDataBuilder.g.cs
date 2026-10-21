@@ -36,13 +36,10 @@ public abstract class CSceneFxBloomDataBuilderBase<TSelf> where TSelf : CSceneFx
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxBloomData> state;
     private protected CSceneFxBloomDataBuilderBase() => state = new();
     private protected CSceneFxBloomDataBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxBloomData> state) => this.state = state;
-    private protected static void SetFakeHdrExponent(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxBloomData> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBloomDataBuilderAssignments.GetFakeHdrExponentAssignment(), value, GameVersion.TMF);
-    private protected static void SetFakeHdrMin(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxBloomData> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBloomDataBuilderAssignments.GetFakeHdrMinAssignment(), value, GameVersion.TMF);
-    private protected static void SetHighInvExponent(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxBloomData> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBloomDataBuilderAssignments.GetHighInvExponentAssignment(), value, GameVersion.TMF);
     public float FakeHdrExponent
     {
         get => state.Get<float>("FakeHdrExponent");
-        set => SetFakeHdrExponent(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBloomDataBuilderAssignments.GetFakeHdrExponentAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithFakeHdrExponent(float value)
     {
@@ -52,7 +49,7 @@ public abstract class CSceneFxBloomDataBuilderBase<TSelf> where TSelf : CSceneFx
     public float FakeHdrMin
     {
         get => state.Get<float>("FakeHdrMin");
-        set => SetFakeHdrMin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBloomDataBuilderAssignments.GetFakeHdrMinAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithFakeHdrMin(float value)
     {
@@ -62,7 +59,7 @@ public abstract class CSceneFxBloomDataBuilderBase<TSelf> where TSelf : CSceneFx
     public float HighInvExponent
     {
         get => state.Get<float>("HighInvExponent");
-        set => SetHighInvExponent(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBloomDataBuilderAssignments.GetHighInvExponentAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithHighInvExponent(float value)
     {

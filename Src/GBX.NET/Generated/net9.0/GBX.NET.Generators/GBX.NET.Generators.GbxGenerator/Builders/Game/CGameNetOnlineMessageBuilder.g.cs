@@ -36,16 +36,10 @@ public abstract class CGameNetOnlineMessageBuilderBase<TSelf> where TSelf : CGam
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameNetOnlineMessage> state;
     private protected CGameNetOnlineMessageBuilderBase() => state = new();
     private protected CGameNetOnlineMessageBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameNetOnlineMessage> state) => this.state = state;
-    private protected static void SetDate(NodeBuilderState<global::GBX.NET.Engines.Game.CGameNetOnlineMessage> state, DateTime? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameNetOnlineMessageBuilderAssignments.GetDateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetDonation(NodeBuilderState<global::GBX.NET.Engines.Game.CGameNetOnlineMessage> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameNetOnlineMessageBuilderAssignments.GetDonationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMessage(NodeBuilderState<global::GBX.NET.Engines.Game.CGameNetOnlineMessage> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameNetOnlineMessageBuilderAssignments.GetMessageAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetReceiverLogin(NodeBuilderState<global::GBX.NET.Engines.Game.CGameNetOnlineMessage> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameNetOnlineMessageBuilderAssignments.GetReceiverLoginAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSenderLogin(NodeBuilderState<global::GBX.NET.Engines.Game.CGameNetOnlineMessage> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameNetOnlineMessageBuilderAssignments.GetSenderLoginAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSubject(NodeBuilderState<global::GBX.NET.Engines.Game.CGameNetOnlineMessage> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameNetOnlineMessageBuilderAssignments.GetSubjectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     public DateTime? Date
     {
         get => state.Get<DateTime?>("Date");
-        set => SetDate(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameNetOnlineMessageBuilderAssignments.GetDateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDate(DateTime? value)
     {
@@ -55,7 +49,7 @@ public abstract class CGameNetOnlineMessageBuilderBase<TSelf> where TSelf : CGam
     public int Donation
     {
         get => state.Get<int>("Donation");
-        set => SetDonation(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameNetOnlineMessageBuilderAssignments.GetDonationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDonation(int value)
     {
@@ -65,7 +59,7 @@ public abstract class CGameNetOnlineMessageBuilderBase<TSelf> where TSelf : CGam
     public string? Message
     {
         get => state.Get<string?>("Message");
-        set => SetMessage(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameNetOnlineMessageBuilderAssignments.GetMessageAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMessage(string? value)
     {
@@ -75,7 +69,7 @@ public abstract class CGameNetOnlineMessageBuilderBase<TSelf> where TSelf : CGam
     public string? ReceiverLogin
     {
         get => state.Get<string?>("ReceiverLogin");
-        set => SetReceiverLogin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameNetOnlineMessageBuilderAssignments.GetReceiverLoginAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithReceiverLogin(string? value)
     {
@@ -85,7 +79,7 @@ public abstract class CGameNetOnlineMessageBuilderBase<TSelf> where TSelf : CGam
     public string? SenderLogin
     {
         get => state.Get<string?>("SenderLogin");
-        set => SetSenderLogin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameNetOnlineMessageBuilderAssignments.GetSenderLoginAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSenderLogin(string? value)
     {
@@ -95,7 +89,7 @@ public abstract class CGameNetOnlineMessageBuilderBase<TSelf> where TSelf : CGam
     public string? Subject
     {
         get => state.Get<string?>("Subject");
-        set => SetSubject(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameNetOnlineMessageBuilderAssignments.GetSubjectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSubject(string? value)
     {

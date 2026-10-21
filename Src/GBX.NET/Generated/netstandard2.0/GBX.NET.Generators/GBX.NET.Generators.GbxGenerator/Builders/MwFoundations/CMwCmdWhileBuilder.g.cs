@@ -36,14 +36,10 @@ public abstract class CMwCmdWhileBuilderBase<TSelf> where TSelf : CMwCmdWhileBui
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdWhile> state;
     private protected CMwCmdWhileBuilderBase() => state = new();
     private protected CMwCmdWhileBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdWhile> state) => this.state = state;
-    private protected static void SetBlock(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdWhile> state, global::GBX.NET.Engines.MwFoundations.CMwCmdBlock? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdWhileBuilderAssignments.GetBlockAssignment(), value, GameVersion.TMF);
-    private protected static void SetBlockReference(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdWhile> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdBlock> value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdWhileBuilderAssignments.GetBlockReferenceAssignment(), value, GameVersion.TMF);
-    private protected static void SetCondition(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdWhile> state, global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdWhileBuilderAssignments.GetConditionAssignment(), value, GameVersion.TMF);
-    private protected static void SetConditionReference(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdWhile> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdWhileBuilderAssignments.GetConditionReferenceAssignment(), value, GameVersion.TMF);
     public global::GBX.NET.Engines.MwFoundations.CMwCmdBlock? Block
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdBlock?>("Block");
-        set => SetBlock(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdWhileBuilderAssignments.GetBlockAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithBlock(global::GBX.NET.Engines.MwFoundations.CMwCmdBlock? value)
     {
@@ -53,13 +49,13 @@ public abstract class CMwCmdWhileBuilderBase<TSelf> where TSelf : CMwCmdWhileBui
     public TSelf WithBlockReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdBlock> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBlockReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdWhileBuilderAssignments.GetBlockReferenceAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Condition
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdExp?>("Condition");
-        set => SetCondition(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdWhileBuilderAssignments.GetConditionAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithCondition(global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value)
     {
@@ -69,7 +65,7 @@ public abstract class CMwCmdWhileBuilderBase<TSelf> where TSelf : CMwCmdWhileBui
     public TSelf WithConditionReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetConditionReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdWhileBuilderAssignments.GetConditionReferenceAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
 }

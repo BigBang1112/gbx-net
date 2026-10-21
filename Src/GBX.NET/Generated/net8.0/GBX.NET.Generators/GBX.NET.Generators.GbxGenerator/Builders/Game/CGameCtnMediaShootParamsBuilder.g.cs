@@ -36,31 +36,10 @@ public abstract class CGameCtnMediaShootParamsBuilderBase<TSelf> where TSelf : C
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams> state;
     private protected CGameCtnMediaShootParamsBuilderBase() => state = new();
     private protected CGameCtnMediaShootParamsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams> state) => this.state = state;
-    private protected static void SetAudioEncoding(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams> state, global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.AudioEnc? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetAudioEncodingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDofSampleCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetDofSampleCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetExtScreen(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams> state, global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EExtScreen value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetExtScreenAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetExtVideo(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams> state, global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EExtVideo value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetExtVideoAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetHq(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetHqAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetHqAmbientOcc(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetHqAmbientOccAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetHqCarReflects(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetHqCarReflectsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetHqDOF(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetHqDOFAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetHqSampleCountPerAxe(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetHqSampleCountPerAxeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetHqSoftShadows(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetHqSoftShadowsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetHud3d(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetHud3dAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetIsAudioStream(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetIsAudioStreamAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetMotionBlur(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams> state, global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EMotionBlur value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetMotionBlurAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetReflectRayCast(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetReflectRayCastAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetReflectSubSample(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetReflectSubSampleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSizeX(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetSizeXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetSizeY(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetSizeYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetStereo3d(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams> state, global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EStereo3d value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetStereo3dAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetVideoEncoding(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams> state, global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.VideoEnc? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetVideoEncodingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetVideoFps(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetVideoFpsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetWebmVideoAutoBitrate(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams> state, global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EQualityPreset value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetWebmVideoAutoBitrateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public bool Hq
     {
         get => state.Get<bool>("Hq");
-        set => SetHq(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetHqAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithHq(bool value)
     {
@@ -70,7 +49,7 @@ public abstract class CGameCtnMediaShootParamsBuilderBase<TSelf> where TSelf : C
     public bool HqAmbientOcc
     {
         get => state.Get<bool>("HqAmbientOcc");
-        set => SetHqAmbientOcc(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetHqAmbientOccAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithHqAmbientOcc(bool value)
     {
@@ -80,7 +59,7 @@ public abstract class CGameCtnMediaShootParamsBuilderBase<TSelf> where TSelf : C
     public int HqSampleCountPerAxe
     {
         get => state.Get<int>("HqSampleCountPerAxe");
-        set => SetHqSampleCountPerAxe(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetHqSampleCountPerAxeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithHqSampleCountPerAxe(int value)
     {
@@ -90,7 +69,7 @@ public abstract class CGameCtnMediaShootParamsBuilderBase<TSelf> where TSelf : C
     public bool HqSoftShadows
     {
         get => state.Get<bool>("HqSoftShadows");
-        set => SetHqSoftShadows(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetHqSoftShadowsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithHqSoftShadows(bool value)
     {
@@ -100,7 +79,7 @@ public abstract class CGameCtnMediaShootParamsBuilderBase<TSelf> where TSelf : C
     public bool IsAudioStream
     {
         get => state.Get<bool>("IsAudioStream");
-        set => SetIsAudioStream(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetIsAudioStreamAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithIsAudioStream(bool value)
     {
@@ -110,7 +89,7 @@ public abstract class CGameCtnMediaShootParamsBuilderBase<TSelf> where TSelf : C
     public int SizeX
     {
         get => state.Get<int>("SizeX");
-        set => SetSizeX(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetSizeXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithSizeX(int value)
     {
@@ -120,7 +99,7 @@ public abstract class CGameCtnMediaShootParamsBuilderBase<TSelf> where TSelf : C
     public int SizeY
     {
         get => state.Get<int>("SizeY");
-        set => SetSizeY(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetSizeYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithSizeY(int value)
     {
@@ -130,7 +109,7 @@ public abstract class CGameCtnMediaShootParamsBuilderBase<TSelf> where TSelf : C
     public global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EStereo3d Stereo3d
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EStereo3d>("Stereo3d");
-        set => SetStereo3d(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetStereo3dAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithStereo3d(global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EStereo3d value)
     {
@@ -140,7 +119,7 @@ public abstract class CGameCtnMediaShootParamsBuilderBase<TSelf> where TSelf : C
     public int VideoFps
     {
         get => state.Get<int>("VideoFps");
-        set => SetVideoFps(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetVideoFpsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithVideoFps(int value)
     {
@@ -154,7 +133,7 @@ public abstract class CGameCtnMediaShootParamsBuilderMembers1<TSelf> : CGameCtnM
     public global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.AudioEnc? AudioEncoding
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.AudioEnc?>("AudioEncoding");
-        set => SetAudioEncoding(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetAudioEncodingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAudioEncoding(global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.AudioEnc? value)
     {
@@ -164,7 +143,7 @@ public abstract class CGameCtnMediaShootParamsBuilderMembers1<TSelf> : CGameCtnM
     public int DofSampleCount
     {
         get => state.Get<int>("DofSampleCount");
-        set => SetDofSampleCount(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetDofSampleCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDofSampleCount(int value)
     {
@@ -174,7 +153,7 @@ public abstract class CGameCtnMediaShootParamsBuilderMembers1<TSelf> : CGameCtnM
     public global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EExtScreen ExtScreen
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EExtScreen>("ExtScreen");
-        set => SetExtScreen(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetExtScreenAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithExtScreen(global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EExtScreen value)
     {
@@ -184,7 +163,7 @@ public abstract class CGameCtnMediaShootParamsBuilderMembers1<TSelf> : CGameCtnM
     public global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EExtVideo ExtVideo
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EExtVideo>("ExtVideo");
-        set => SetExtVideo(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetExtVideoAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithExtVideo(global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EExtVideo value)
     {
@@ -194,7 +173,7 @@ public abstract class CGameCtnMediaShootParamsBuilderMembers1<TSelf> : CGameCtnM
     public bool HqCarReflects
     {
         get => state.Get<bool>("HqCarReflects");
-        set => SetHqCarReflects(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetHqCarReflectsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithHqCarReflects(bool value)
     {
@@ -204,7 +183,7 @@ public abstract class CGameCtnMediaShootParamsBuilderMembers1<TSelf> : CGameCtnM
     public bool HqDOF
     {
         get => state.Get<bool>("HqDOF");
-        set => SetHqDOF(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetHqDOFAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithHqDOF(bool value)
     {
@@ -214,7 +193,7 @@ public abstract class CGameCtnMediaShootParamsBuilderMembers1<TSelf> : CGameCtnM
     public bool Hud3d
     {
         get => state.Get<bool>("Hud3d");
-        set => SetHud3d(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetHud3dAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithHud3d(bool value)
     {
@@ -224,7 +203,7 @@ public abstract class CGameCtnMediaShootParamsBuilderMembers1<TSelf> : CGameCtnM
     public bool ReflectRayCast
     {
         get => state.Get<bool>("ReflectRayCast");
-        set => SetReflectRayCast(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetReflectRayCastAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithReflectRayCast(bool value)
     {
@@ -234,7 +213,7 @@ public abstract class CGameCtnMediaShootParamsBuilderMembers1<TSelf> : CGameCtnM
     public bool ReflectSubSample
     {
         get => state.Get<bool>("ReflectSubSample");
-        set => SetReflectSubSample(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetReflectSubSampleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithReflectSubSample(bool value)
     {
@@ -244,7 +223,7 @@ public abstract class CGameCtnMediaShootParamsBuilderMembers1<TSelf> : CGameCtnM
     public global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.VideoEnc? VideoEncoding
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.VideoEnc?>("VideoEncoding");
-        set => SetVideoEncoding(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetVideoEncodingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithVideoEncoding(global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.VideoEnc? value)
     {
@@ -254,7 +233,7 @@ public abstract class CGameCtnMediaShootParamsBuilderMembers1<TSelf> : CGameCtnM
     public global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EQualityPreset WebmVideoAutoBitrate
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EQualityPreset>("WebmVideoAutoBitrate");
-        set => SetWebmVideoAutoBitrate(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetWebmVideoAutoBitrateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithWebmVideoAutoBitrate(global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EQualityPreset value)
     {
@@ -268,7 +247,7 @@ public abstract class CGameCtnMediaShootParamsBuilderMembers2<TSelf> : CGameCtnM
     public global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EMotionBlur MotionBlur
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EMotionBlur>("MotionBlur");
-        set => SetMotionBlur(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetMotionBlurAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithMotionBlur(global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EMotionBlur value)
     {

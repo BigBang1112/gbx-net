@@ -36,12 +36,10 @@ public abstract class CGameCtnMediaBlockCameraEffectScriptBuilderBase<TSelf> whe
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectScript> state;
     private protected CGameCtnMediaBlockCameraEffectScriptBuilderBase() => state = new();
     private protected CGameCtnMediaBlockCameraEffectScriptBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectScript> state) => this.state = state;
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectScript> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectScript.Key>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraEffectScriptBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
-    private protected static void SetScript(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectScript> state, string value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraEffectScriptBuilderAssignments.GetScriptAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
     public List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectScript.Key>? Keys
     {
         get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectScript.Key>?>("Keys");
-        set => SetKeys(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraEffectScriptBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectScript.Key>? value)
     {
@@ -59,7 +57,7 @@ public abstract class CGameCtnMediaBlockCameraEffectScriptBuilderBase<TSelf> whe
     public string Script
     {
         get => state.Get<string>("Script");
-        set => SetScript(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraEffectScriptBuilderAssignments.GetScriptAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithScript(string value)
     {

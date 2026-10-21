@@ -36,11 +36,6 @@ public abstract class CPlugVehicleVisModelSharedBuilderBase<TSelf> where TSelf :
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared> state;
     private protected CPlugVehicleVisModelSharedBuilderBase() => state = new();
     private protected CPlugVehicleVisModelSharedBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared> state) => this.state = state;
-    private protected static void SetSimulationWheels(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared> state, global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.SimulationWheel[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelSharedBuilderAssignments.GetSimulationWheelsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
-    private protected static void SetVehicleEmitters(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelSharedBuilderAssignments.GetVehicleEmittersAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetVehicleMaterialGroups(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelSharedBuilderAssignments.GetVehicleMaterialGroupsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetWheelNames(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared> state, string[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelSharedBuilderAssignments.GetWheelNamesAssignment(), value, GameVersion.TM2020);
-    private protected static void SetWheelSettings(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared> state, global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.WheelSetting[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelSharedBuilderAssignments.GetWheelSettingsAssignment(), value, GameVersion.TM2020);
 }
 public abstract class CPlugVehicleVisModelSharedBuilderMembers1<TSelf> : CPlugVehicleVisModelSharedBuilderBase<TSelf> where TSelf : CPlugVehicleVisModelSharedBuilderMembers1<TSelf>
 {
@@ -48,7 +43,7 @@ public abstract class CPlugVehicleVisModelSharedBuilderMembers1<TSelf> : CPlugVe
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup>? VehicleMaterialGroups
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup>?>("VehicleMaterialGroups");
-        set => SetVehicleMaterialGroups(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelSharedBuilderAssignments.GetVehicleMaterialGroupsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithVehicleMaterialGroups(NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup>? value)
     {
@@ -70,7 +65,7 @@ public abstract class CPlugVehicleVisModelSharedBuilderMembers2<TSelf> : CPlugVe
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel>? VehicleEmitters
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel>?>("VehicleEmitters");
-        set => SetVehicleEmitters(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelSharedBuilderAssignments.GetVehicleEmittersAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithVehicleEmitters(NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel>? value)
     {
@@ -355,7 +350,7 @@ public partial class CPlugVehicleVisModelSharedBuilder : CPlugVehicleVisModelSha
         public global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.SimulationWheel[]? SimulationWheels
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.SimulationWheel[]?>("SimulationWheels");
-            set => SetSimulationWheels(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelSharedBuilderAssignments.GetSimulationWheelsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
         }
         public TMNESWC WithSimulationWheels(params global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.SimulationWheel[]? value)
         {
@@ -387,7 +382,7 @@ public partial class CPlugVehicleVisModelSharedBuilder : CPlugVehicleVisModelSha
         public global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.SimulationWheel[]? SimulationWheels
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.SimulationWheel[]?>("SimulationWheels");
-            set => SetSimulationWheels(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelSharedBuilderAssignments.GetSimulationWheelsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
         }
         public VSK5 WithSimulationWheels(params global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.SimulationWheel[]? value)
         {
@@ -435,7 +430,7 @@ public partial class CPlugVehicleVisModelSharedBuilder : CPlugVehicleVisModelSha
         public global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.SimulationWheel[]? SimulationWheels
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.SimulationWheel[]?>("SimulationWheels");
-            set => SetSimulationWheels(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelSharedBuilderAssignments.GetSimulationWheelsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
         }
         public TMF WithSimulationWheels(params global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.SimulationWheel[]? value)
         {
@@ -577,7 +572,7 @@ public partial class CPlugVehicleVisModelSharedBuilder : CPlugVehicleVisModelSha
         public string[]? WheelNames
         {
             get => state.Get<string[]?>("WheelNames");
-            set => SetWheelNames(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelSharedBuilderAssignments.GetWheelNamesAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithWheelNames(params string[]? value)
         {
@@ -591,7 +586,7 @@ public partial class CPlugVehicleVisModelSharedBuilder : CPlugVehicleVisModelSha
         public global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.WheelSetting[]? WheelSettings
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.WheelSetting[]?>("WheelSettings");
-            set => SetWheelSettings(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelSharedBuilderAssignments.GetWheelSettingsAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithWheelSettings(params global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.WheelSetting[]? value)
         {

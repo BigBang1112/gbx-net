@@ -36,14 +36,10 @@ public abstract class CGameLeagueManagerBuilderBase<TSelf> where TSelf : CGameLe
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameLeagueManager> state;
     private protected CGameLeagueManagerBuilderBase() => state = new();
     private protected CGameLeagueManagerBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameLeagueManager> state) => this.state = state;
-    private protected static void SetCacheDuration(NodeBuilderState<global::GBX.NET.Engines.Game.CGameLeagueManager> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameLeagueManagerBuilderAssignments.GetCacheDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetLeagues(NodeBuilderState<global::GBX.NET.Engines.Game.CGameLeagueManager> state, NodeRefList<global::GBX.NET.Engines.Game.CGameLeague>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameLeagueManagerBuilderAssignments.GetLeaguesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTimestamp(NodeBuilderState<global::GBX.NET.Engines.Game.CGameLeagueManager> state, DateTime? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameLeagueManagerBuilderAssignments.GetTimestampAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetUpdated(NodeBuilderState<global::GBX.NET.Engines.Game.CGameLeagueManager> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameLeagueManagerBuilderAssignments.GetUpdatedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public int CacheDuration
     {
         get => state.Get<int>("CacheDuration");
-        set => SetCacheDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameLeagueManagerBuilderAssignments.GetCacheDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCacheDuration(int value)
     {
@@ -53,7 +49,7 @@ public abstract class CGameLeagueManagerBuilderBase<TSelf> where TSelf : CGameLe
     public NodeRefList<global::GBX.NET.Engines.Game.CGameLeague>? Leagues
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameLeague>?>("Leagues");
-        set => SetLeagues(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameLeagueManagerBuilderAssignments.GetLeaguesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLeagues(NodeRefList<global::GBX.NET.Engines.Game.CGameLeague>? value)
     {
@@ -71,7 +67,7 @@ public abstract class CGameLeagueManagerBuilderBase<TSelf> where TSelf : CGameLe
     public DateTime? Timestamp
     {
         get => state.Get<DateTime?>("Timestamp");
-        set => SetTimestamp(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameLeagueManagerBuilderAssignments.GetTimestampAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTimestamp(DateTime? value)
     {
@@ -81,7 +77,7 @@ public abstract class CGameLeagueManagerBuilderBase<TSelf> where TSelf : CGameLe
     public bool Updated
     {
         get => state.Get<bool>("Updated");
-        set => SetUpdated(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameLeagueManagerBuilderAssignments.GetUpdatedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithUpdated(bool value)
     {

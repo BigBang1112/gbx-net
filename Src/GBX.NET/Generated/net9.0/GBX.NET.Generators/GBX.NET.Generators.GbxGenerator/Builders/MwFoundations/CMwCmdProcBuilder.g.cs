@@ -36,12 +36,10 @@ public abstract class CMwCmdProcBuilderBase<TSelf> where TSelf : CMwCmdProcBuild
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdProc> state;
     private protected CMwCmdProcBuilderBase() => state = new();
     private protected CMwCmdProcBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdProc> state) => this.state = state;
-    private protected static void SetArguments(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdProc> state, NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwCmdExp>? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdProcBuilderAssignments.GetArgumentsAssignment(), value, GameVersion.TMF);
-    private protected static void SetParameter(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdProc> state, global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdProcBuilderAssignments.GetParameterAssignment(), value, GameVersion.TMF);
     public NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwCmdExp>? Arguments
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwCmdExp>?>("Arguments");
-        set => SetArguments(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdProcBuilderAssignments.GetArgumentsAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithArguments(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwCmdExp>? value)
     {
@@ -59,7 +57,7 @@ public abstract class CMwCmdProcBuilderBase<TSelf> where TSelf : CMwCmdProcBuild
     public global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive? Parameter
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive?>("Parameter");
-        set => SetParameter(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdProcBuilderAssignments.GetParameterAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithParameter(global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive? value)
     {

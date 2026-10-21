@@ -36,14 +36,10 @@ public abstract class CGameCtnMediaBlockDecal2dBuilderBase<TSelf> where TSelf : 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockDecal2d> state;
     private protected CGameCtnMediaBlockDecal2dBuilderBase() => state = new();
     private protected CGameCtnMediaBlockDecal2dBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockDecal2d> state) => this.state = state;
-    private protected static void SetDecals(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockDecal2d> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockDecal2d.Decal>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockDecal2dBuilderAssignments.GetDecalsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetEnd(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockDecal2d> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockDecal2dBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetImages(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockDecal2d> state, PackDesc[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockDecal2dBuilderAssignments.GetImagesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetStart(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockDecal2d> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockDecal2dBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockDecal2d.Decal>? Decals
     {
         get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockDecal2d.Decal>?>("Decals");
-        set => SetDecals(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockDecal2dBuilderAssignments.GetDecalsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDecals(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockDecal2d.Decal>? value)
     {
@@ -61,7 +57,7 @@ public abstract class CGameCtnMediaBlockDecal2dBuilderBase<TSelf> where TSelf : 
     public TimeSingle End
     {
         get => state.Get<TimeSingle>("End");
-        set => SetEnd(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockDecal2dBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEnd(TimeSingle value)
     {
@@ -71,7 +67,7 @@ public abstract class CGameCtnMediaBlockDecal2dBuilderBase<TSelf> where TSelf : 
     public PackDesc[]? Images
     {
         get => state.Get<PackDesc[]?>("Images");
-        set => SetImages(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockDecal2dBuilderAssignments.GetImagesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithImages(params PackDesc[]? value)
     {
@@ -85,7 +81,7 @@ public abstract class CGameCtnMediaBlockDecal2dBuilderBase<TSelf> where TSelf : 
     public TimeSingle Start
     {
         get => state.Get<TimeSingle>("Start");
-        set => SetStart(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockDecal2dBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStart(TimeSingle value)
     {

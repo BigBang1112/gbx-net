@@ -36,27 +36,10 @@ public abstract class CPlugVisualGridBuilderBase<TSelf> where TSelf : CPlugVisua
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualGrid> state;
     private protected CPlugVisualGridBuilderBase() => state = new();
     private protected CPlugVisualGridBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualGrid> state) => this.state = state;
-    private protected static void SetBiTangents(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualGrid> state, global::GBX.NET.Vec3[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisual3DBuilderAssignments.GetBiTangentsAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
-    private protected static void SetBitmapElemToPacks(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualGrid> state, global::GBX.NET.Engines.Plug.CPlugVisual.BitmapElemToPack[] value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetBitmapElemToPacksAssignment(), value, GameVersion.TMF);
-    private protected static void SetBlendShapes(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualGrid> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisual3DBuilderAssignments.GetBlendShapesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBlendShapesReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualGrid> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisual3DBuilderAssignments.GetBlendShapesReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFuncVisual(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualGrid> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFuncVisualReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualGrid> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIsInverse(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualGrid> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetIsInverseAssignment(), value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX);
-    private protected static void SetMorphs(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualGrid> state, global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetMorphsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetNPatchTessLevel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualGrid> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetNPatchTessLevelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetNbPointX(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualGrid> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualGridBuilderAssignments.GetNbPointXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetNbPointZ(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualGrid> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualGridBuilderAssignments.GetNbPointZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRangeX(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualGrid> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualGridBuilderAssignments.GetRangeXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRangeZ(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualGrid> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualGridBuilderAssignments.GetRangeZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSplits(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualGrid> state, global::GBX.NET.Engines.Plug.CPlugVisual.Split[] value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetSplitsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSubVisuals(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualGrid> state, Int3[] value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetSubVisualsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetVertexStreams(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualGrid> state, global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Plug.CPlugVertexStream> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetVertexStreamsAssignment(), value, GameVersion.TMSX);
-    private protected static void SetVisualId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualGrid> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetVisualIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public global::GBX.NET.Engines.MwFoundations.CMwNod? BlendShapes
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("BlendShapes");
-        set => SetBlendShapes(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisual3DBuilderAssignments.GetBlendShapesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBlendShapes(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
@@ -66,13 +49,13 @@ public abstract class CPlugVisualGridBuilderBase<TSelf> where TSelf : CPlugVisua
     public TSelf WithBlendShapesReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBlendShapesReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisual3DBuilderAssignments.GetBlendShapesReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public int NbPointX
     {
         get => state.Get<int>("NbPointX");
-        set => SetNbPointX(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualGridBuilderAssignments.GetNbPointXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithNbPointX(int value)
     {
@@ -82,7 +65,7 @@ public abstract class CPlugVisualGridBuilderBase<TSelf> where TSelf : CPlugVisua
     public int NbPointZ
     {
         get => state.Get<int>("NbPointZ");
-        set => SetNbPointZ(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualGridBuilderAssignments.GetNbPointZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithNbPointZ(int value)
     {
@@ -92,7 +75,7 @@ public abstract class CPlugVisualGridBuilderBase<TSelf> where TSelf : CPlugVisua
     public float RangeX
     {
         get => state.Get<float>("RangeX");
-        set => SetRangeX(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualGridBuilderAssignments.GetRangeXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRangeX(float value)
     {
@@ -102,7 +85,7 @@ public abstract class CPlugVisualGridBuilderBase<TSelf> where TSelf : CPlugVisua
     public float RangeZ
     {
         get => state.Get<float>("RangeZ");
-        set => SetRangeZ(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualGridBuilderAssignments.GetRangeZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRangeZ(float value)
     {
@@ -112,7 +95,7 @@ public abstract class CPlugVisualGridBuilderBase<TSelf> where TSelf : CPlugVisua
     public Int3[] SubVisuals
     {
         get => state.Get<Int3[]>("SubVisuals");
-        set => SetSubVisuals(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetSubVisualsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSubVisuals(params Int3[] value)
     {
@@ -126,7 +109,7 @@ public abstract class CPlugVisualGridBuilderBase<TSelf> where TSelf : CPlugVisua
     public string? VisualId
     {
         get => state.Get<string?>("VisualId");
-        set => SetVisualId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetVisualIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithVisualId(string? value)
     {
@@ -140,7 +123,7 @@ public abstract class CPlugVisualGridBuilderMembers1<TSelf> : CPlugVisualGridBui
     public global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("FuncVisual");
-        set => SetFuncVisual(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFuncVisual(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
@@ -150,7 +133,7 @@ public abstract class CPlugVisualGridBuilderMembers1<TSelf> : CPlugVisualGridBui
     public TSelf WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetFuncVisualReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -160,7 +143,7 @@ public abstract class CPlugVisualGridBuilderMembers2<TSelf> : CPlugVisualGridBui
     public float NPatchTessLevel
     {
         get => state.Get<float>("NPatchTessLevel");
-        set => SetNPatchTessLevel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetNPatchTessLevelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithNPatchTessLevel(float value)
     {
@@ -174,7 +157,7 @@ public abstract class CPlugVisualGridBuilderMembers3<TSelf> : CPlugVisualGridBui
     public global::GBX.NET.Vec3[]? BiTangents
     {
         get => state.Get<global::GBX.NET.Vec3[]?>("BiTangents");
-        set => SetBiTangents(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisual3DBuilderAssignments.GetBiTangentsAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
     }
     public TSelf WithBiTangents(params global::GBX.NET.Vec3[]? value)
     {
@@ -192,7 +175,7 @@ public abstract class CPlugVisualGridBuilderMembers4<TSelf> : CPlugVisualGridBui
     public global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisual.Split[]>("Splits");
-        set => SetSplits(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetSplitsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSplits(params global::GBX.NET.Engines.Plug.CPlugVisual.Split[] value)
     {
@@ -210,7 +193,7 @@ public abstract class CPlugVisualGridBuilderMembers5<TSelf> : CPlugVisualGridBui
     public bool IsInverse
     {
         get => state.Get<bool>("IsInverse");
-        set => SetIsInverse(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetIsInverseAssignment(), value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX);
     }
     public TSelf WithIsInverse(bool value)
     {
@@ -224,7 +207,7 @@ public abstract class CPlugVisualGridBuilderMembers6<TSelf> : CPlugVisualGridBui
     public global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] Morphs
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisual.Morph[]>("Morphs");
-        set => SetMorphs(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetMorphsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMorphs(params global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] value)
     {
@@ -575,7 +558,7 @@ public partial class CPlugVisualGridBuilder : CPlugVisualGridBuilderBase<CPlugVi
         public float NPatchTessLevel
         {
             get => state.Get<float>("NPatchTessLevel");
-            set => SetNPatchTessLevel(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetNPatchTessLevelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMPU WithNPatchTessLevel(float value)
         {
@@ -603,7 +586,7 @@ public partial class CPlugVisualGridBuilder : CPlugVisualGridBuilderBase<CPlugVi
         public global::GBX.NET.Vec3[]? BiTangents
         {
             get => state.Get<global::GBX.NET.Vec3[]?>("BiTangents");
-            set => SetBiTangents(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisual3DBuilderAssignments.GetBiTangentsAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
         }
         public TMNESWC WithBiTangents(params global::GBX.NET.Vec3[]? value)
         {
@@ -617,7 +600,7 @@ public partial class CPlugVisualGridBuilder : CPlugVisualGridBuilderBase<CPlugVi
         public global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("FuncVisual");
-            set => SetFuncVisual(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMNESWC WithFuncVisual(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -627,7 +610,7 @@ public partial class CPlugVisualGridBuilder : CPlugVisualGridBuilderBase<CPlugVi
         public TMNESWC WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFuncVisualReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.Plug.IPlugVisualGridTMNESWC BuildInterface() => Build();
@@ -651,7 +634,7 @@ public partial class CPlugVisualGridBuilder : CPlugVisualGridBuilderBase<CPlugVi
         public global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("FuncVisual");
-            set => SetFuncVisual(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public VSK5 WithFuncVisual(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -661,7 +644,7 @@ public partial class CPlugVisualGridBuilder : CPlugVisualGridBuilderBase<CPlugVi
         public VSK5 WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFuncVisualReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.Plug.IPlugVisualGridVSK5 BuildInterface() => Build();
@@ -685,7 +668,7 @@ public partial class CPlugVisualGridBuilder : CPlugVisualGridBuilderBase<CPlugVi
         public global::GBX.NET.Engines.Plug.CPlugVisual.BitmapElemToPack[] BitmapElemToPacks
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisual.BitmapElemToPack[]>("BitmapElemToPacks");
-            set => SetBitmapElemToPacks(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetBitmapElemToPacksAssignment(), value, GameVersion.TMF);
         }
         public TMF WithBitmapElemToPacks(params global::GBX.NET.Engines.Plug.CPlugVisual.BitmapElemToPack[] value)
         {
@@ -699,7 +682,7 @@ public partial class CPlugVisualGridBuilder : CPlugVisualGridBuilderBase<CPlugVi
         public global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("FuncVisual");
-            set => SetFuncVisual(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMF WithFuncVisual(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -709,7 +692,7 @@ public partial class CPlugVisualGridBuilder : CPlugVisualGridBuilderBase<CPlugVi
         public TMF WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFuncVisualReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.Plug.IPlugVisualGridTMF BuildInterface() => Build();
@@ -733,7 +716,7 @@ public partial class CPlugVisualGridBuilder : CPlugVisualGridBuilderBase<CPlugVi
         public global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("FuncVisual");
-            set => SetFuncVisual(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP3 WithFuncVisual(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -743,7 +726,7 @@ public partial class CPlugVisualGridBuilder : CPlugVisualGridBuilderBase<CPlugVi
         public MP3 WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFuncVisualReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.Plug.IPlugVisualGridMP3 BuildInterface() => Build();
@@ -767,7 +750,7 @@ public partial class CPlugVisualGridBuilder : CPlugVisualGridBuilderBase<CPlugVi
         public global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("FuncVisual");
-            set => SetFuncVisual(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMT WithFuncVisual(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -777,7 +760,7 @@ public partial class CPlugVisualGridBuilder : CPlugVisualGridBuilderBase<CPlugVi
         public TMT WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFuncVisualReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.Plug.IPlugVisualGridTMT BuildInterface() => Build();
@@ -801,7 +784,7 @@ public partial class CPlugVisualGridBuilder : CPlugVisualGridBuilderBase<CPlugVi
         public global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("FuncVisual");
-            set => SetFuncVisual(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP4 WithFuncVisual(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -811,7 +794,7 @@ public partial class CPlugVisualGridBuilder : CPlugVisualGridBuilderBase<CPlugVi
         public MP4 WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFuncVisualReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.Plug.IPlugVisualGridMP4 BuildInterface() => Build();

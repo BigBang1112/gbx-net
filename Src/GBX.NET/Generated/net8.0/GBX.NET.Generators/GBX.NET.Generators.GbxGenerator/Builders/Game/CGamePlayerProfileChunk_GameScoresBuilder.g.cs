@@ -36,16 +36,10 @@ public abstract class CGamePlayerProfileChunk_GameScoresBuilderBase<TSelf> where
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameScores> state;
     private protected CGamePlayerProfileChunk_GameScoresBuilderBase() => state = new();
     private protected CGamePlayerProfileChunk_GameScoresBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameScores> state) => this.state = state;
-    private protected static void SetLadderMatchResults(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameScores> state, global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameScores.LadderMatchResult[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameScoresBuilderAssignments.GetLadderMatchResultsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
-    private protected static void SetOfficialScores1(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameScores> state, global::GBX.NET.Engines.Game.CGamePlayerOfficialScores? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameScoresBuilderAssignments.GetOfficialScores1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
-    private protected static void SetOfficialScores1Reference(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameScores> state, NodeRef<global::GBX.NET.Engines.Game.CGamePlayerOfficialScores> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameScoresBuilderAssignments.GetOfficialScores1ReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
-    private protected static void SetOfficialScores2(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameScores> state, global::GBX.NET.Engines.Game.CGamePlayerOfficialScores? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameScoresBuilderAssignments.GetOfficialScores2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
-    private protected static void SetOfficialScores2Reference(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameScores> state, NodeRef<global::GBX.NET.Engines.Game.CGamePlayerOfficialScores> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameScoresBuilderAssignments.GetOfficialScores2ReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
-    private protected static void SetTrainingMedalsScores(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameScores> state, global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameScores.STrainingMedalsScores[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameScoresBuilderAssignments.GetTrainingMedalsScoresAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameScores.LadderMatchResult[]? LadderMatchResults
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameScores.LadderMatchResult[]?>("LadderMatchResults");
-        set => SetLadderMatchResults(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameScoresBuilderAssignments.GetLadderMatchResultsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithLadderMatchResults(params global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameScores.LadderMatchResult[]? value)
     {
@@ -59,7 +53,7 @@ public abstract class CGamePlayerProfileChunk_GameScoresBuilderBase<TSelf> where
     public global::GBX.NET.Engines.Game.CGamePlayerOfficialScores? OfficialScores1
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerOfficialScores?>("OfficialScores1");
-        set => SetOfficialScores1(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameScoresBuilderAssignments.GetOfficialScores1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithOfficialScores1(global::GBX.NET.Engines.Game.CGamePlayerOfficialScores? value)
     {
@@ -69,13 +63,13 @@ public abstract class CGamePlayerProfileChunk_GameScoresBuilderBase<TSelf> where
     public TSelf WithOfficialScores1Reference(NodeRef<global::GBX.NET.Engines.Game.CGamePlayerOfficialScores> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetOfficialScores1Reference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameScoresBuilderAssignments.GetOfficialScores1ReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Game.CGamePlayerOfficialScores? OfficialScores2
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerOfficialScores?>("OfficialScores2");
-        set => SetOfficialScores2(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameScoresBuilderAssignments.GetOfficialScores2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithOfficialScores2(global::GBX.NET.Engines.Game.CGamePlayerOfficialScores? value)
     {
@@ -85,13 +79,13 @@ public abstract class CGamePlayerProfileChunk_GameScoresBuilderBase<TSelf> where
     public TSelf WithOfficialScores2Reference(NodeRef<global::GBX.NET.Engines.Game.CGamePlayerOfficialScores> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetOfficialScores2Reference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameScoresBuilderAssignments.GetOfficialScores2ReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameScores.STrainingMedalsScores[]? TrainingMedalsScores
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameScores.STrainingMedalsScores[]?>("TrainingMedalsScores");
-        set => SetTrainingMedalsScores(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameScoresBuilderAssignments.GetTrainingMedalsScoresAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithTrainingMedalsScores(params global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameScores.STrainingMedalsScores[]? value)
     {

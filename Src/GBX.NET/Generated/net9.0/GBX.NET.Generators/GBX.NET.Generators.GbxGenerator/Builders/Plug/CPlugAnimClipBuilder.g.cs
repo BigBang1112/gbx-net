@@ -36,17 +36,10 @@ public abstract class CPlugAnimClipBuilderBase<TSelf> where TSelf : CPlugAnimCli
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimClip> state;
     private protected CPlugAnimClipBuilderBase() => state = new();
     private protected CPlugAnimClipBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimClip> state) => this.state = state;
-    private protected static void SetBaked(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimClip> state, global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimClipBuilderAssignments.GetBakedAssignment(), value, GameVersion.TM2020);
-    private protected static void SetBakedReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimClip> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimClipBuilderAssignments.GetBakedReferenceAssignment(), value, GameVersion.TM2020);
-    private protected static void SetEdition(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimClip> state, global::GBX.NET.Engines.Plug.CPlugAnimSkelEdition? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimClipBuilderAssignments.GetEditionAssignment(), value, GameVersion.TM2020);
-    private protected static void SetEditionReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimClip> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimSkelEdition> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimClipBuilderAssignments.GetEditionReferenceAssignment(), value, GameVersion.TM2020);
-    private protected static void SetFlags(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimClip> state, global::GBX.NET.Engines.Plug.CPlugAnimClip.ClipFlags? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimClipBuilderAssignments.GetFlagsAssignment(), value, GameVersion.TM2020);
-    private protected static void SetFlagsVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimClip> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimClipBuilderAssignments.GetFlagsVersionAssignment(), value, GameVersion.TM2020);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimClip> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimClipBuilderAssignments.GetNameAssignment(), value, GameVersion.TM2020);
     public global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked? Baked
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked?>("Baked");
-        set => SetBaked(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimClipBuilderAssignments.GetBakedAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithBaked(global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked? value)
     {
@@ -56,13 +49,13 @@ public abstract class CPlugAnimClipBuilderBase<TSelf> where TSelf : CPlugAnimCli
     public TSelf WithBakedReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBakedReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimClipBuilderAssignments.GetBakedReferenceAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugAnimSkelEdition? Edition
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugAnimSkelEdition?>("Edition");
-        set => SetEdition(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimClipBuilderAssignments.GetEditionAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithEdition(global::GBX.NET.Engines.Plug.CPlugAnimSkelEdition? value)
     {
@@ -72,13 +65,13 @@ public abstract class CPlugAnimClipBuilderBase<TSelf> where TSelf : CPlugAnimCli
     public TSelf WithEditionReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimSkelEdition> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetEditionReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimClipBuilderAssignments.GetEditionReferenceAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugAnimClip.ClipFlags? Flags
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugAnimClip.ClipFlags?>("Flags");
-        set => SetFlags(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimClipBuilderAssignments.GetFlagsAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithFlags(global::GBX.NET.Engines.Plug.CPlugAnimClip.ClipFlags? value)
     {
@@ -88,7 +81,7 @@ public abstract class CPlugAnimClipBuilderBase<TSelf> where TSelf : CPlugAnimCli
     public int FlagsVersion
     {
         get => state.Get<int>("FlagsVersion");
-        set => SetFlagsVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimClipBuilderAssignments.GetFlagsVersionAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithFlagsVersion(int value)
     {
@@ -98,7 +91,7 @@ public abstract class CPlugAnimClipBuilderBase<TSelf> where TSelf : CPlugAnimCli
     public string? Name
     {
         get => state.Get<string?>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimClipBuilderAssignments.GetNameAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithName(string? value)
     {

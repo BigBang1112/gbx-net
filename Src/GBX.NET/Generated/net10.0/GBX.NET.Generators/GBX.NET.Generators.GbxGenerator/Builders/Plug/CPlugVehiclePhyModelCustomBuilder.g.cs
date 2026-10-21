@@ -36,13 +36,10 @@ public abstract class CPlugVehiclePhyModelCustomBuilderBase<TSelf> where TSelf :
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModelCustom> state;
     private protected CPlugVehiclePhyModelCustomBuilderBase() => state = new();
     private protected CPlugVehiclePhyModelCustomBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModelCustom> state) => this.state = state;
-    private protected static void SetAccelCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModelCustom> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelCustomBuilderAssignments.GetAccelCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetControlCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModelCustom> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelCustomBuilderAssignments.GetControlCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetGravityCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModelCustom> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelCustomBuilderAssignments.GetGravityCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     public float AccelCoef
     {
         get => state.Get<float>("AccelCoef");
-        set => SetAccelCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelCustomBuilderAssignments.GetAccelCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithAccelCoef(float value)
     {
@@ -52,7 +49,7 @@ public abstract class CPlugVehiclePhyModelCustomBuilderBase<TSelf> where TSelf :
     public float ControlCoef
     {
         get => state.Get<float>("ControlCoef");
-        set => SetControlCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelCustomBuilderAssignments.GetControlCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithControlCoef(float value)
     {
@@ -62,7 +59,7 @@ public abstract class CPlugVehiclePhyModelCustomBuilderBase<TSelf> where TSelf :
     public float GravityCoef
     {
         get => state.Get<float>("GravityCoef");
-        set => SetGravityCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelCustomBuilderAssignments.GetGravityCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithGravityCoef(float value)
     {

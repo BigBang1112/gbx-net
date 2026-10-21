@@ -36,21 +36,10 @@ public abstract class CGameMenuColorEffectBuilderBase<TSelf> where TSelf : CGame
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state;
     private protected CGameMenuColorEffectBuilderBase() => state = new();
     private protected CGameMenuColorEffectBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state) => this.state = state;
-    private protected static void SetColorBeams(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state, global::GBX.NET.Engines.Game.CGameMenuColorEffect.ColorBeam[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetColorBeamsAssignment(), value, GameVersion.TMF);
-    private protected static void SetForceFirstColorWord(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetForceFirstColorWordAssignment(), value, GameVersion.TMF);
-    private protected static void SetForceNoMove(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetForceNoMoveAssignment(), value, GameVersion.TMF);
-    private protected static void SetIsBeamColorEvolving(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetIsBeamColorEvolvingAssignment(), value, GameVersion.TMF);
-    private protected static void SetIsBeamMoving(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetIsBeamMovingAssignment(), value, GameVersion.TMF);
-    private protected static void SetIsColorEvolveHalf(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetIsColorEvolveHalfAssignment(), value, GameVersion.TMF);
-    private protected static void SetIsColorEvolveInverse(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetIsColorEvolveInverseAssignment(), value, GameVersion.TMF);
-    private protected static void SetIsMoveHalf(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetIsMoveHalfAssignment(), value, GameVersion.TMF);
-    private protected static void SetIsMoveInverse(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetIsMoveInverseAssignment(), value, GameVersion.TMF);
-    private protected static void SetLastInterWidth(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetLastInterWidthAssignment(), value, GameVersion.TMF);
-    private protected static void SetPeriodMs(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetPeriodMsAssignment(), value, GameVersion.TMF);
     public global::GBX.NET.Engines.Game.CGameMenuColorEffect.ColorBeam[]? ColorBeams
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameMenuColorEffect.ColorBeam[]?>("ColorBeams");
-        set => SetColorBeams(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetColorBeamsAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithColorBeams(params global::GBX.NET.Engines.Game.CGameMenuColorEffect.ColorBeam[]? value)
     {
@@ -64,7 +53,7 @@ public abstract class CGameMenuColorEffectBuilderBase<TSelf> where TSelf : CGame
     public bool ForceFirstColorWord
     {
         get => state.Get<bool>("ForceFirstColorWord");
-        set => SetForceFirstColorWord(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetForceFirstColorWordAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithForceFirstColorWord(bool value)
     {
@@ -74,7 +63,7 @@ public abstract class CGameMenuColorEffectBuilderBase<TSelf> where TSelf : CGame
     public bool ForceNoMove
     {
         get => state.Get<bool>("ForceNoMove");
-        set => SetForceNoMove(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetForceNoMoveAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithForceNoMove(bool value)
     {
@@ -84,7 +73,7 @@ public abstract class CGameMenuColorEffectBuilderBase<TSelf> where TSelf : CGame
     public bool IsBeamColorEvolving
     {
         get => state.Get<bool>("IsBeamColorEvolving");
-        set => SetIsBeamColorEvolving(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetIsBeamColorEvolvingAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithIsBeamColorEvolving(bool value)
     {
@@ -94,7 +83,7 @@ public abstract class CGameMenuColorEffectBuilderBase<TSelf> where TSelf : CGame
     public bool IsBeamMoving
     {
         get => state.Get<bool>("IsBeamMoving");
-        set => SetIsBeamMoving(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetIsBeamMovingAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithIsBeamMoving(bool value)
     {
@@ -104,7 +93,7 @@ public abstract class CGameMenuColorEffectBuilderBase<TSelf> where TSelf : CGame
     public bool IsColorEvolveHalf
     {
         get => state.Get<bool>("IsColorEvolveHalf");
-        set => SetIsColorEvolveHalf(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetIsColorEvolveHalfAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithIsColorEvolveHalf(bool value)
     {
@@ -114,7 +103,7 @@ public abstract class CGameMenuColorEffectBuilderBase<TSelf> where TSelf : CGame
     public bool IsColorEvolveInverse
     {
         get => state.Get<bool>("IsColorEvolveInverse");
-        set => SetIsColorEvolveInverse(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetIsColorEvolveInverseAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithIsColorEvolveInverse(bool value)
     {
@@ -124,7 +113,7 @@ public abstract class CGameMenuColorEffectBuilderBase<TSelf> where TSelf : CGame
     public bool IsMoveHalf
     {
         get => state.Get<bool>("IsMoveHalf");
-        set => SetIsMoveHalf(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetIsMoveHalfAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithIsMoveHalf(bool value)
     {
@@ -134,7 +123,7 @@ public abstract class CGameMenuColorEffectBuilderBase<TSelf> where TSelf : CGame
     public bool IsMoveInverse
     {
         get => state.Get<bool>("IsMoveInverse");
-        set => SetIsMoveInverse(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetIsMoveInverseAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithIsMoveInverse(bool value)
     {
@@ -144,7 +133,7 @@ public abstract class CGameMenuColorEffectBuilderBase<TSelf> where TSelf : CGame
     public float LastInterWidth
     {
         get => state.Get<float>("LastInterWidth");
-        set => SetLastInterWidth(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetLastInterWidthAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithLastInterWidth(float value)
     {
@@ -154,7 +143,7 @@ public abstract class CGameMenuColorEffectBuilderBase<TSelf> where TSelf : CGame
     public int PeriodMs
     {
         get => state.Get<int>("PeriodMs");
-        set => SetPeriodMs(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetPeriodMsAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithPeriodMs(int value)
     {

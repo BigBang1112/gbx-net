@@ -36,7 +36,6 @@ public abstract class CGamePlayerProfileChunk_ChallengesScoresBuilderBase<TSelf>
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores> state;
     private protected CGamePlayerProfileChunk_ChallengesScoresBuilderBase() => state = new();
     private protected CGamePlayerProfileChunk_ChallengesScoresBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores> state) => this.state = state;
-    private protected static void SetContextMapRecordsForProfile(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores> state, global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores.SContextMapRecordForProfile[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_ChallengesScoresBuilderAssignments.GetContextMapRecordsForProfileAssignment(), value, GameVersion.MP4);
 }
 public partial class CGamePlayerProfileChunk_ChallengesScoresBuilder : CGamePlayerProfileChunk_ChallengesScoresBuilderBase<CGamePlayerProfileChunk_ChallengesScoresBuilder>
 {
@@ -115,7 +114,7 @@ public partial class CGamePlayerProfileChunk_ChallengesScoresBuilder : CGamePlay
         public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores.SContextMapRecordForProfile[]? ContextMapRecordsForProfile
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores.SContextMapRecordForProfile[]?>("ContextMapRecordsForProfile");
-            set => SetContextMapRecordsForProfile(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_ChallengesScoresBuilderAssignments.GetContextMapRecordsForProfileAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithContextMapRecordsForProfile(params global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores.SContextMapRecordForProfile[]? value)
         {

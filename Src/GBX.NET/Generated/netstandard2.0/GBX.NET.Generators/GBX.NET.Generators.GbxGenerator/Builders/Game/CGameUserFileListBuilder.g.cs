@@ -36,11 +36,10 @@ public abstract class CGameUserFileListBuilderBase<TSelf> where TSelf : CGameUse
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserFileList> state;
     private protected CGameUserFileListBuilderBase() => state = new();
     private protected CGameUserFileListBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserFileList> state) => this.state = state;
-    private protected static void SetFiles(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserFileList> state, global::GBX.NET.Engines.Game.CGameUserFileList.FileInfo[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserFileListBuilderAssignments.GetFilesAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
     public global::GBX.NET.Engines.Game.CGameUserFileList.FileInfo[]? Files
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameUserFileList.FileInfo[]?>("Files");
-        set => SetFiles(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserFileListBuilderAssignments.GetFilesAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithFiles(params global::GBX.NET.Engines.Game.CGameUserFileList.FileInfo[]? value)
     {

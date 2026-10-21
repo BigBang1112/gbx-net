@@ -36,11 +36,10 @@ public abstract class CGameCtnCollectorListBuilderBase<TSelf> where TSelf : CGam
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCollectorList> state;
     private protected CGameCtnCollectorListBuilderBase() => state = new();
     private protected CGameCtnCollectorListBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCollectorList> state) => this.state = state;
-    private protected static void SetCollectorStock(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCollectorList> state, List<global::GBX.NET.Engines.Game.CGameCtnCollectorList.SCollectorStock>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCollectorListBuilderAssignments.GetCollectorStockAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public List<global::GBX.NET.Engines.Game.CGameCtnCollectorList.SCollectorStock>? CollectorStock
     {
         get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnCollectorList.SCollectorStock>?>("CollectorStock");
-        set => SetCollectorStock(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCollectorListBuilderAssignments.GetCollectorStockAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithCollectorStock(List<global::GBX.NET.Engines.Game.CGameCtnCollectorList.SCollectorStock>? value)
     {

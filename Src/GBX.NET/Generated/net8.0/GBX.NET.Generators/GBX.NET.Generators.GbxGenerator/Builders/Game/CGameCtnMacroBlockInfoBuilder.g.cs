@@ -36,59 +36,10 @@ public abstract class CGameCtnMacroBlockInfoBuilderBase<TSelf> where TSelf : CGa
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state;
     private protected CGameCtnMacroBlockInfoBuilderBase() => state = new();
     private protected CGameCtnMacroBlockInfoBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state) => this.state = state;
-    private protected static void SetAutoTerrains(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetAutoTerrainsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBlockSkinSpawns(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.BlockSkinSpawn>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetBlockSkinSpawnsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBlockSpawns(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.BlockSpawn>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetBlockSpawnsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetCardEventsSpawns(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.CardEventsSpawn>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetCardEventsSpawnsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetCatalogPosition(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetCatalogPositionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetClipGroupEndRace(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetClipGroupEndRaceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetClipGroupEndRaceReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetClipGroupEndRaceReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetClipGroupInGame(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetClipGroupInGameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetClipGroupInGameReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetClipGroupInGameReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetClipOffset(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, Int3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetClipOffsetAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetClipTriggerSize(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, Int3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetClipTriggerSizeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetCopperPrice(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetCopperPriceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetDefaultSkin(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, global::GBX.NET.Engines.Plug.CPlugFileZip? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetDefaultSkinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDefaultSkinReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileZip> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetDefaultSkinReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDefaultSkinName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetDefaultSkinNameAssignment(), value, GameVersion.TM2020);
-    private protected static void SetDescription(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetDescriptionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFlags(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX | GameVersion.TMT);
-    private protected static void SetIcon(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, global::GBX.NET.Color[,]? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
-    private protected static void SetIconFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconFidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIconFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconFidReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIconPhase01(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, float value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconPhase01Assignment(), value, GameVersion.TM2020);
-    private protected static void SetIconQuarterRotationY(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconQuarterRotationYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetIconSize(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetIconSizeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetIconUseAutoRender(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconUseAutoRenderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetIconWebP(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, byte[]? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
-    private protected static void SetIdent(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, global::GBX.NET.Ident value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIdentAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIsAdvanced(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIsAdvancedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetIsInternal(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIsInternalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLightmapComputeTime(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, DateTime? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetModelKitDb(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbAssignment(), value, GameVersion.TM2020);
-    private protected static void SetModelKitDbReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbReferenceAssignment(), value, GameVersion.TM2020);
-    private protected static void SetModelKitDbRelease(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbReleaseAssignment(), value, GameVersion.TM2020);
-    private protected static void SetModelKitDbReleaseReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbReleaseReferenceAssignment(), value, GameVersion.TM2020);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetNbAvailableMax(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNbAvailableMaxAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetNbAvailableMin(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNbAvailableMinAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetNeedUnlock(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNeedUnlockAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetObjectNeighbourPairsLegacy(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, Int2[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetObjectNeighbourPairsLegacyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetObjectSpawns(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.ObjectSpawn>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetObjectSpawnsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetOffzoneOffset(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, Int3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetOffzoneOffsetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetOffzoneTriggerSize(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, Int3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetOffzoneTriggerSizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetOffzones(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, BoxInt3[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetOffzonesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetPageName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetPageNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetParentCollectorId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetProdState(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, global::GBX.NET.Engines.GameData.CGameCtnCollector.EProdState value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetProdStateAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSceneDecals(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, byte[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetSceneDecalsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetScriptMetadata(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, global::GBX.NET.Engines.Script.CScriptTraitsMetadata? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetScriptMetadataAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSkinDirectory(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetSkinDirectoryAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSkinKind(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state, global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetSkinKindAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     public int CatalogPosition
     {
         get => state.Get<int>("CatalogPosition");
-        set => SetCatalogPosition(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetCatalogPositionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithCatalogPosition(int value)
     {
@@ -98,7 +49,7 @@ public abstract class CGameCtnMacroBlockInfoBuilderBase<TSelf> where TSelf : CGa
     public global::GBX.NET.Engines.MwFoundations.CMwNod? IconFid
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("IconFid");
-        set => SetIconFid(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconFidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIconFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
@@ -108,13 +59,13 @@ public abstract class CGameCtnMacroBlockInfoBuilderBase<TSelf> where TSelf : CGa
     public TSelf WithIconFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetIconFidReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconFidReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Ident Ident
     {
         get => state.Get<global::GBX.NET.Ident>("Ident");
-        set => SetIdent(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIdentAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIdent(global::GBX.NET.Ident value)
     {
@@ -124,7 +75,7 @@ public abstract class CGameCtnMacroBlockInfoBuilderBase<TSelf> where TSelf : CGa
     public bool IsInternal
     {
         get => state.Get<bool>("IsInternal");
-        set => SetIsInternal(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIsInternalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIsInternal(bool value)
     {
@@ -134,7 +85,7 @@ public abstract class CGameCtnMacroBlockInfoBuilderBase<TSelf> where TSelf : CGa
     public string? PageName
     {
         get => state.Get<string?>("PageName");
-        set => SetPageName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetPageNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPageName(string? value)
     {
@@ -148,7 +99,7 @@ public abstract class CGameCtnMacroBlockInfoBuilderMembers1<TSelf> : CGameCtnMac
     public global::GBX.NET.Color[,]? Icon
     {
         get => state.Get<global::GBX.NET.Color[,]?>("Icon");
-        set => SetIcon(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
     }
     public TSelf WithIcon(global::GBX.NET.Color[,]? value)
     {
@@ -158,7 +109,7 @@ public abstract class CGameCtnMacroBlockInfoBuilderMembers1<TSelf> : CGameCtnMac
     public byte[]? IconWebP
     {
         get => state.Get<byte[]?>("IconWebP");
-        set => SetIconWebP(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
     }
     public TSelf WithIconWebP(params byte[]? value)
     {
@@ -176,7 +127,7 @@ public abstract class CGameCtnMacroBlockInfoBuilderMembers2<TSelf> : CGameCtnMac
     public global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags>("Flags");
-        set => SetFlags(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX | GameVersion.TMT);
     }
     public TSelf WithFlags(global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags value)
     {
@@ -190,7 +141,7 @@ public abstract class CGameCtnMacroBlockInfoBuilderMembers3<TSelf> : CGameCtnMac
     public int CopperPrice
     {
         get => state.Get<int>("CopperPrice");
-        set => SetCopperPrice(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetCopperPriceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithCopperPrice(int value)
     {
@@ -200,7 +151,7 @@ public abstract class CGameCtnMacroBlockInfoBuilderMembers3<TSelf> : CGameCtnMac
     public int NbAvailableMax
     {
         get => state.Get<int>("NbAvailableMax");
-        set => SetNbAvailableMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNbAvailableMaxAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithNbAvailableMax(int value)
     {
@@ -210,7 +161,7 @@ public abstract class CGameCtnMacroBlockInfoBuilderMembers3<TSelf> : CGameCtnMac
     public int NbAvailableMin
     {
         get => state.Get<int>("NbAvailableMin");
-        set => SetNbAvailableMin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNbAvailableMinAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithNbAvailableMin(int value)
     {
@@ -220,7 +171,7 @@ public abstract class CGameCtnMacroBlockInfoBuilderMembers3<TSelf> : CGameCtnMac
     public bool NeedUnlock
     {
         get => state.Get<bool>("NeedUnlock");
-        set => SetNeedUnlock(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNeedUnlockAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithNeedUnlock(bool value)
     {
@@ -230,7 +181,7 @@ public abstract class CGameCtnMacroBlockInfoBuilderMembers3<TSelf> : CGameCtnMac
     public global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind SkinKind
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind>("SkinKind");
-        set => SetSkinKind(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetSkinKindAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSkinKind(global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind value)
     {
@@ -244,7 +195,7 @@ public abstract class CGameCtnMacroBlockInfoBuilderMembers4<TSelf> : CGameCtnMac
     public NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain>? AutoTerrains
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain>?>("AutoTerrains");
-        set => SetAutoTerrains(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetAutoTerrainsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAutoTerrains(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain>? value)
     {
@@ -262,7 +213,7 @@ public abstract class CGameCtnMacroBlockInfoBuilderMembers4<TSelf> : CGameCtnMac
     public List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.BlockSkinSpawn>? BlockSkinSpawns
     {
         get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.BlockSkinSpawn>?>("BlockSkinSpawns");
-        set => SetBlockSkinSpawns(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetBlockSkinSpawnsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBlockSkinSpawns(List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.BlockSkinSpawn>? value)
     {
@@ -280,7 +231,7 @@ public abstract class CGameCtnMacroBlockInfoBuilderMembers4<TSelf> : CGameCtnMac
     public List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.BlockSpawn>? BlockSpawns
     {
         get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.BlockSpawn>?>("BlockSpawns");
-        set => SetBlockSpawns(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetBlockSpawnsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBlockSpawns(List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.BlockSpawn>? value)
     {
@@ -298,7 +249,7 @@ public abstract class CGameCtnMacroBlockInfoBuilderMembers4<TSelf> : CGameCtnMac
     public List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.CardEventsSpawn>? CardEventsSpawns
     {
         get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.CardEventsSpawn>?>("CardEventsSpawns");
-        set => SetCardEventsSpawns(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetCardEventsSpawnsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCardEventsSpawns(List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.CardEventsSpawn>? value)
     {
@@ -316,7 +267,7 @@ public abstract class CGameCtnMacroBlockInfoBuilderMembers4<TSelf> : CGameCtnMac
     public global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? ClipGroupEndRace
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?>("ClipGroupEndRace");
-        set => SetClipGroupEndRace(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetClipGroupEndRaceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithClipGroupEndRace(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? value)
     {
@@ -326,13 +277,13 @@ public abstract class CGameCtnMacroBlockInfoBuilderMembers4<TSelf> : CGameCtnMac
     public TSelf WithClipGroupEndRaceReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetClipGroupEndRaceReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetClipGroupEndRaceReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? ClipGroupInGame
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?>("ClipGroupInGame");
-        set => SetClipGroupInGame(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetClipGroupInGameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithClipGroupInGame(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? value)
     {
@@ -342,13 +293,13 @@ public abstract class CGameCtnMacroBlockInfoBuilderMembers4<TSelf> : CGameCtnMac
     public TSelf WithClipGroupInGameReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetClipGroupInGameReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetClipGroupInGameReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugFileZip? DefaultSkin
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugFileZip?>("DefaultSkin");
-        set => SetDefaultSkin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetDefaultSkinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDefaultSkin(global::GBX.NET.Engines.Plug.CPlugFileZip? value)
     {
@@ -358,13 +309,13 @@ public abstract class CGameCtnMacroBlockInfoBuilderMembers4<TSelf> : CGameCtnMac
     public TSelf WithDefaultSkinReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileZip> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetDefaultSkinReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetDefaultSkinReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public string? Description
     {
         get => state.Get<string?>("Description");
-        set => SetDescription(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetDescriptionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDescription(string? value)
     {
@@ -374,7 +325,7 @@ public abstract class CGameCtnMacroBlockInfoBuilderMembers4<TSelf> : CGameCtnMac
     public int IconQuarterRotationY
     {
         get => state.Get<int>("IconQuarterRotationY");
-        set => SetIconQuarterRotationY(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconQuarterRotationYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIconQuarterRotationY(int value)
     {
@@ -384,7 +335,7 @@ public abstract class CGameCtnMacroBlockInfoBuilderMembers4<TSelf> : CGameCtnMac
     public bool IconUseAutoRender
     {
         get => state.Get<bool>("IconUseAutoRender");
-        set => SetIconUseAutoRender(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconUseAutoRenderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIconUseAutoRender(bool value)
     {
@@ -394,7 +345,7 @@ public abstract class CGameCtnMacroBlockInfoBuilderMembers4<TSelf> : CGameCtnMac
     public bool IsAdvanced
     {
         get => state.Get<bool>("IsAdvanced");
-        set => SetIsAdvanced(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIsAdvancedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIsAdvanced(bool value)
     {
@@ -404,7 +355,7 @@ public abstract class CGameCtnMacroBlockInfoBuilderMembers4<TSelf> : CGameCtnMac
     public DateTime? LightmapComputeTime
     {
         get => state.Get<DateTime?>("LightmapComputeTime");
-        set => SetLightmapComputeTime(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLightmapComputeTime(DateTime? value)
     {
@@ -414,7 +365,7 @@ public abstract class CGameCtnMacroBlockInfoBuilderMembers4<TSelf> : CGameCtnMac
     public string? Name
     {
         get => state.Get<string?>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithName(string? value)
     {
@@ -424,7 +375,7 @@ public abstract class CGameCtnMacroBlockInfoBuilderMembers4<TSelf> : CGameCtnMac
     public Int2[]? ObjectNeighbourPairsLegacy
     {
         get => state.Get<Int2[]?>("ObjectNeighbourPairsLegacy");
-        set => SetObjectNeighbourPairsLegacy(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetObjectNeighbourPairsLegacyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithObjectNeighbourPairsLegacy(params Int2[]? value)
     {
@@ -438,7 +389,7 @@ public abstract class CGameCtnMacroBlockInfoBuilderMembers4<TSelf> : CGameCtnMac
     public List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.ObjectSpawn>? ObjectSpawns
     {
         get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.ObjectSpawn>?>("ObjectSpawns");
-        set => SetObjectSpawns(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetObjectSpawnsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithObjectSpawns(List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.ObjectSpawn>? value)
     {
@@ -456,7 +407,7 @@ public abstract class CGameCtnMacroBlockInfoBuilderMembers4<TSelf> : CGameCtnMac
     public Int3 OffzoneOffset
     {
         get => state.Get<Int3>("OffzoneOffset");
-        set => SetOffzoneOffset(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetOffzoneOffsetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithOffzoneOffset(Int3 value)
     {
@@ -466,7 +417,7 @@ public abstract class CGameCtnMacroBlockInfoBuilderMembers4<TSelf> : CGameCtnMac
     public Int3 OffzoneTriggerSize
     {
         get => state.Get<Int3>("OffzoneTriggerSize");
-        set => SetOffzoneTriggerSize(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetOffzoneTriggerSizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithOffzoneTriggerSize(Int3 value)
     {
@@ -476,7 +427,7 @@ public abstract class CGameCtnMacroBlockInfoBuilderMembers4<TSelf> : CGameCtnMac
     public BoxInt3[]? Offzones
     {
         get => state.Get<BoxInt3[]?>("Offzones");
-        set => SetOffzones(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetOffzonesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithOffzones(params BoxInt3[]? value)
     {
@@ -490,7 +441,7 @@ public abstract class CGameCtnMacroBlockInfoBuilderMembers4<TSelf> : CGameCtnMac
     public string? ParentCollectorId
     {
         get => state.Get<string?>("ParentCollectorId");
-        set => SetParentCollectorId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithParentCollectorId(string? value)
     {
@@ -500,7 +451,7 @@ public abstract class CGameCtnMacroBlockInfoBuilderMembers4<TSelf> : CGameCtnMac
     public byte[]? SceneDecals
     {
         get => state.Get<byte[]?>("SceneDecals");
-        set => SetSceneDecals(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetSceneDecalsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSceneDecals(params byte[]? value)
     {
@@ -514,7 +465,7 @@ public abstract class CGameCtnMacroBlockInfoBuilderMembers4<TSelf> : CGameCtnMac
     public global::GBX.NET.Engines.Script.CScriptTraitsMetadata? ScriptMetadata
     {
         get => state.Get<global::GBX.NET.Engines.Script.CScriptTraitsMetadata?>("ScriptMetadata");
-        set => SetScriptMetadata(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetScriptMetadataAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithScriptMetadata(global::GBX.NET.Engines.Script.CScriptTraitsMetadata? value)
     {
@@ -524,7 +475,7 @@ public abstract class CGameCtnMacroBlockInfoBuilderMembers4<TSelf> : CGameCtnMac
     public string? SkinDirectory
     {
         get => state.Get<string?>("SkinDirectory");
-        set => SetSkinDirectory(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetSkinDirectoryAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSkinDirectory(string? value)
     {
@@ -538,7 +489,7 @@ public abstract class CGameCtnMacroBlockInfoBuilderMembers5<TSelf> : CGameCtnMac
     public Int3 ClipOffset
     {
         get => state.Get<Int3>("ClipOffset");
-        set => SetClipOffset(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetClipOffsetAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithClipOffset(Int3 value)
     {
@@ -548,7 +499,7 @@ public abstract class CGameCtnMacroBlockInfoBuilderMembers5<TSelf> : CGameCtnMac
     public Int3 ClipTriggerSize
     {
         get => state.Get<Int3>("ClipTriggerSize");
-        set => SetClipTriggerSize(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetClipTriggerSizeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithClipTriggerSize(Int3 value)
     {
@@ -558,7 +509,7 @@ public abstract class CGameCtnMacroBlockInfoBuilderMembers5<TSelf> : CGameCtnMac
     public int IconSize
     {
         get => state.Get<int>("IconSize");
-        set => SetIconSize(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetIconSizeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIconSize(int value)
     {
@@ -568,7 +519,7 @@ public abstract class CGameCtnMacroBlockInfoBuilderMembers5<TSelf> : CGameCtnMac
     public global::GBX.NET.Engines.GameData.CGameCtnCollector.EProdState ProdState
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameCtnCollector.EProdState>("ProdState");
-        set => SetProdState(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetProdStateAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithProdState(global::GBX.NET.Engines.GameData.CGameCtnCollector.EProdState value)
     {
@@ -1067,7 +1018,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         public global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags
         {
             get => state.Get<global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags>("Flags");
-            set => SetFlags(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX | GameVersion.TMT);
         }
         public TM10 WithFlags(global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags value)
         {
@@ -1077,7 +1028,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         public global::GBX.NET.Color[,]? Icon
         {
             get => state.Get<global::GBX.NET.Color[,]?>("Icon");
-            set => SetIcon(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
         }
         public TM10 WithIcon(global::GBX.NET.Color[,]? value)
         {
@@ -1087,7 +1038,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         public byte[]? IconWebP
         {
             get => state.Get<byte[]?>("IconWebP");
-            set => SetIconWebP(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
         }
         public TM10 WithIconWebP(params byte[]? value)
         {
@@ -1119,7 +1070,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         public global::GBX.NET.Color[,]? Icon
         {
             get => state.Get<global::GBX.NET.Color[,]?>("Icon");
-            set => SetIcon(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
         }
         public TMPU WithIcon(global::GBX.NET.Color[,]? value)
         {
@@ -1129,7 +1080,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         public byte[]? IconWebP
         {
             get => state.Get<byte[]?>("IconWebP");
-            set => SetIconWebP(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
         }
         public TMPU WithIconWebP(params byte[]? value)
         {
@@ -1161,7 +1112,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         public global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags
         {
             get => state.Get<global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags>("Flags");
-            set => SetFlags(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX | GameVersion.TMT);
         }
         public TMSX WithFlags(global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags value)
         {
@@ -1171,7 +1122,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         public global::GBX.NET.Color[,]? Icon
         {
             get => state.Get<global::GBX.NET.Color[,]?>("Icon");
-            set => SetIcon(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
         }
         public TMSX WithIcon(global::GBX.NET.Color[,]? value)
         {
@@ -1181,7 +1132,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         public byte[]? IconWebP
         {
             get => state.Get<byte[]?>("IconWebP");
-            set => SetIconWebP(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
         }
         public TMSX WithIconWebP(params byte[]? value)
         {
@@ -1195,7 +1146,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         public string? ParentCollectorId
         {
             get => state.Get<string?>("ParentCollectorId");
-            set => SetParentCollectorId(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMSX WithParentCollectorId(string? value)
         {
@@ -1223,7 +1174,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         public string? ParentCollectorId
         {
             get => state.Get<string?>("ParentCollectorId");
-            set => SetParentCollectorId(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMNESWC WithParentCollectorId(string? value)
         {
@@ -1251,7 +1202,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         public string? ParentCollectorId
         {
             get => state.Get<string?>("ParentCollectorId");
-            set => SetParentCollectorId(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public VSK5 WithParentCollectorId(string? value)
         {
@@ -1279,7 +1230,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         public global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags
         {
             get => state.Get<global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags>("Flags");
-            set => SetFlags(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX | GameVersion.TMT);
         }
         public TMF WithFlags(global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags value)
         {
@@ -1289,7 +1240,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         public global::GBX.NET.Color[,]? Icon
         {
             get => state.Get<global::GBX.NET.Color[,]?>("Icon");
-            set => SetIcon(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
         }
         public TMF WithIcon(global::GBX.NET.Color[,]? value)
         {
@@ -1299,7 +1250,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         public byte[]? IconWebP
         {
             get => state.Get<byte[]?>("IconWebP");
-            set => SetIconWebP(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
         }
         public TMF WithIconWebP(params byte[]? value)
         {
@@ -1313,7 +1264,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         public string? ParentCollectorId
         {
             get => state.Get<string?>("ParentCollectorId");
-            set => SetParentCollectorId(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMF WithParentCollectorId(string? value)
         {
@@ -1459,7 +1410,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         public string? DefaultSkinName
         {
             get => state.Get<string?>("DefaultSkinName");
-            set => SetDefaultSkinName(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetDefaultSkinNameAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithDefaultSkinName(string? value)
         {
@@ -1469,7 +1420,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         public float IconPhase01
         {
             get => state.Get<float>("IconPhase01");
-            set => SetIconPhase01(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconPhase01Assignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithIconPhase01(float value)
         {
@@ -1479,7 +1430,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         public global::GBX.NET.Engines.MwFoundations.CMwNod? ModelKitDb
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("ModelKitDb");
-            set => SetModelKitDb(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithModelKitDb(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1489,13 +1440,13 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         public TM2020 WithModelKitDbReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetModelKitDbReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbReferenceAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? ModelKitDbRelease
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("ModelKitDbRelease");
-            set => SetModelKitDbRelease(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbReleaseAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithModelKitDbRelease(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -1505,7 +1456,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         public TM2020 WithModelKitDbReleaseReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetModelKitDbReleaseReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbReleaseReferenceAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoTM2020 BuildInterface() => Build();

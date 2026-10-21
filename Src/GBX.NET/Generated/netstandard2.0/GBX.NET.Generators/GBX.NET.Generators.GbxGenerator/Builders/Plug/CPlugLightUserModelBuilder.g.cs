@@ -36,20 +36,10 @@ public abstract class CPlugLightUserModelBuilderBase<TSelf> where TSelf : CPlugL
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLightUserModel> state;
     private protected CPlugLightUserModelBuilderBase() => state = new();
     private protected CPlugLightUserModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLightUserModel> state) => this.state = state;
-    private protected static void SetColor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLightUserModel> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightUserModelBuilderAssignments.GetColorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDistance(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLightUserModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightUserModelBuilderAssignments.GetDistanceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetIntensity(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLightUserModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightUserModelBuilderAssignments.GetIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetNightOnly(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLightUserModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightUserModelBuilderAssignments.GetNightOnlyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetPointEmissionLength(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLightUserModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightUserModelBuilderAssignments.GetPointEmissionLengthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetPointEmissionRadius(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLightUserModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightUserModelBuilderAssignments.GetPointEmissionRadiusAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSpotEmissionSizeX(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLightUserModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightUserModelBuilderAssignments.GetSpotEmissionSizeXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSpotEmissionSizeY(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLightUserModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightUserModelBuilderAssignments.GetSpotEmissionSizeYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSpotInnerAngle(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLightUserModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightUserModelBuilderAssignments.GetSpotInnerAngleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSpotOuterAngle(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLightUserModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightUserModelBuilderAssignments.GetSpotOuterAngleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public Vec3 Color
     {
         get => state.Get<Vec3>("Color");
-        set => SetColor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightUserModelBuilderAssignments.GetColorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithColor(Vec3 value)
     {
@@ -59,7 +49,7 @@ public abstract class CPlugLightUserModelBuilderBase<TSelf> where TSelf : CPlugL
     public float Distance
     {
         get => state.Get<float>("Distance");
-        set => SetDistance(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightUserModelBuilderAssignments.GetDistanceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDistance(float value)
     {
@@ -69,7 +59,7 @@ public abstract class CPlugLightUserModelBuilderBase<TSelf> where TSelf : CPlugL
     public float Intensity
     {
         get => state.Get<float>("Intensity");
-        set => SetIntensity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightUserModelBuilderAssignments.GetIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIntensity(float value)
     {
@@ -79,7 +69,7 @@ public abstract class CPlugLightUserModelBuilderBase<TSelf> where TSelf : CPlugL
     public bool NightOnly
     {
         get => state.Get<bool>("NightOnly");
-        set => SetNightOnly(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightUserModelBuilderAssignments.GetNightOnlyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNightOnly(bool value)
     {
@@ -89,7 +79,7 @@ public abstract class CPlugLightUserModelBuilderBase<TSelf> where TSelf : CPlugL
     public float PointEmissionLength
     {
         get => state.Get<float>("PointEmissionLength");
-        set => SetPointEmissionLength(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightUserModelBuilderAssignments.GetPointEmissionLengthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithPointEmissionLength(float value)
     {
@@ -99,7 +89,7 @@ public abstract class CPlugLightUserModelBuilderBase<TSelf> where TSelf : CPlugL
     public float PointEmissionRadius
     {
         get => state.Get<float>("PointEmissionRadius");
-        set => SetPointEmissionRadius(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightUserModelBuilderAssignments.GetPointEmissionRadiusAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithPointEmissionRadius(float value)
     {
@@ -109,7 +99,7 @@ public abstract class CPlugLightUserModelBuilderBase<TSelf> where TSelf : CPlugL
     public float SpotEmissionSizeX
     {
         get => state.Get<float>("SpotEmissionSizeX");
-        set => SetSpotEmissionSizeX(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightUserModelBuilderAssignments.GetSpotEmissionSizeXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSpotEmissionSizeX(float value)
     {
@@ -119,7 +109,7 @@ public abstract class CPlugLightUserModelBuilderBase<TSelf> where TSelf : CPlugL
     public float SpotEmissionSizeY
     {
         get => state.Get<float>("SpotEmissionSizeY");
-        set => SetSpotEmissionSizeY(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightUserModelBuilderAssignments.GetSpotEmissionSizeYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSpotEmissionSizeY(float value)
     {
@@ -129,7 +119,7 @@ public abstract class CPlugLightUserModelBuilderBase<TSelf> where TSelf : CPlugL
     public float SpotInnerAngle
     {
         get => state.Get<float>("SpotInnerAngle");
-        set => SetSpotInnerAngle(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightUserModelBuilderAssignments.GetSpotInnerAngleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSpotInnerAngle(float value)
     {
@@ -139,7 +129,7 @@ public abstract class CPlugLightUserModelBuilderBase<TSelf> where TSelf : CPlugL
     public float SpotOuterAngle
     {
         get => state.Get<float>("SpotOuterAngle");
-        set => SetSpotOuterAngle(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightUserModelBuilderAssignments.GetSpotOuterAngleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSpotOuterAngle(float value)
     {

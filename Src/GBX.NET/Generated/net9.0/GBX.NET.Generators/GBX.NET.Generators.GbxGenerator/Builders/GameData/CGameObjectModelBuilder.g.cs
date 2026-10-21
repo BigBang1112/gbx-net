@@ -36,23 +36,10 @@ public abstract class CGameObjectModelBuilderBase<TSelf> where TSelf : CGameObje
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectModel> state;
     private protected CGameObjectModelBuilderBase() => state = new();
     private protected CGameObjectModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectModel> state) => this.state = state;
-    private protected static void SetInventoryDescription(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectModelBuilderAssignments.GetInventoryDescriptionAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetInventoryItemClass(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectModel> state, global::GBX.NET.Engines.GameData.CGameObjectModel.EGameInventoryItemClass value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectModelBuilderAssignments.GetInventoryItemClassAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetInventoryName(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectModelBuilderAssignments.GetInventoryNameAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetInventoryOccupation(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectModel> state, int? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectModelBuilderAssignments.GetInventoryOccupationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetPhy(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectModel> state, global::GBX.NET.Engines.GameData.CGameObjectPhyModel? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectModelBuilderAssignments.GetPhyAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetPhyReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectModel> state, NodeRef<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectModelBuilderAssignments.GetPhyReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetScriptId(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectModelBuilderAssignments.GetScriptIdAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSlaveHealDome(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectModel> state, global::GBX.NET.Engines.GameData.CGameObjectModel? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectModelBuilderAssignments.GetSlaveHealDomeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSlaveHealDomeReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectModel> state, NodeRef<global::GBX.NET.Engines.GameData.CGameObjectModel> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectModelBuilderAssignments.GetSlaveHealDomeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSlaveShieldDome(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectModel> state, global::GBX.NET.Engines.GameData.CGameObjectModel? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectModelBuilderAssignments.GetSlaveShieldDomeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSlaveShieldDomeReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectModel> state, NodeRef<global::GBX.NET.Engines.GameData.CGameObjectModel> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectModelBuilderAssignments.GetSlaveShieldDomeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetVis(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectModel> state, global::GBX.NET.Engines.GameData.CGameObjectVisModel? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectModelBuilderAssignments.GetVisAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetVisReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectModel> state, NodeRef<global::GBX.NET.Engines.GameData.CGameObjectVisModel> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectModelBuilderAssignments.GetVisReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     public string? InventoryDescription
     {
         get => state.Get<string?>("InventoryDescription");
-        set => SetInventoryDescription(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectModelBuilderAssignments.GetInventoryDescriptionAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithInventoryDescription(string? value)
     {
@@ -62,7 +49,7 @@ public abstract class CGameObjectModelBuilderBase<TSelf> where TSelf : CGameObje
     public global::GBX.NET.Engines.GameData.CGameObjectModel.EGameInventoryItemClass InventoryItemClass
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameObjectModel.EGameInventoryItemClass>("InventoryItemClass");
-        set => SetInventoryItemClass(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectModelBuilderAssignments.GetInventoryItemClassAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithInventoryItemClass(global::GBX.NET.Engines.GameData.CGameObjectModel.EGameInventoryItemClass value)
     {
@@ -72,7 +59,7 @@ public abstract class CGameObjectModelBuilderBase<TSelf> where TSelf : CGameObje
     public string? InventoryName
     {
         get => state.Get<string?>("InventoryName");
-        set => SetInventoryName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectModelBuilderAssignments.GetInventoryNameAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithInventoryName(string? value)
     {
@@ -82,7 +69,7 @@ public abstract class CGameObjectModelBuilderBase<TSelf> where TSelf : CGameObje
     public int? InventoryOccupation
     {
         get => state.Get<int?>("InventoryOccupation");
-        set => SetInventoryOccupation(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectModelBuilderAssignments.GetInventoryOccupationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithInventoryOccupation(int? value)
     {
@@ -92,7 +79,7 @@ public abstract class CGameObjectModelBuilderBase<TSelf> where TSelf : CGameObje
     public global::GBX.NET.Engines.GameData.CGameObjectPhyModel? Phy
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameObjectPhyModel?>("Phy");
-        set => SetPhy(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectModelBuilderAssignments.GetPhyAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithPhy(global::GBX.NET.Engines.GameData.CGameObjectPhyModel? value)
     {
@@ -102,13 +89,13 @@ public abstract class CGameObjectModelBuilderBase<TSelf> where TSelf : CGameObje
     public TSelf WithPhyReference(NodeRef<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetPhyReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectModelBuilderAssignments.GetPhyReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public string? ScriptId
     {
         get => state.Get<string?>("ScriptId");
-        set => SetScriptId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectModelBuilderAssignments.GetScriptIdAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithScriptId(string? value)
     {
@@ -118,7 +105,7 @@ public abstract class CGameObjectModelBuilderBase<TSelf> where TSelf : CGameObje
     public global::GBX.NET.Engines.GameData.CGameObjectModel? SlaveHealDome
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameObjectModel?>("SlaveHealDome");
-        set => SetSlaveHealDome(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectModelBuilderAssignments.GetSlaveHealDomeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithSlaveHealDome(global::GBX.NET.Engines.GameData.CGameObjectModel? value)
     {
@@ -128,13 +115,13 @@ public abstract class CGameObjectModelBuilderBase<TSelf> where TSelf : CGameObje
     public TSelf WithSlaveHealDomeReference(NodeRef<global::GBX.NET.Engines.GameData.CGameObjectModel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSlaveHealDomeReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectModelBuilderAssignments.GetSlaveHealDomeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.GameData.CGameObjectModel? SlaveShieldDome
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameObjectModel?>("SlaveShieldDome");
-        set => SetSlaveShieldDome(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectModelBuilderAssignments.GetSlaveShieldDomeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithSlaveShieldDome(global::GBX.NET.Engines.GameData.CGameObjectModel? value)
     {
@@ -144,13 +131,13 @@ public abstract class CGameObjectModelBuilderBase<TSelf> where TSelf : CGameObje
     public TSelf WithSlaveShieldDomeReference(NodeRef<global::GBX.NET.Engines.GameData.CGameObjectModel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSlaveShieldDomeReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectModelBuilderAssignments.GetSlaveShieldDomeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.GameData.CGameObjectVisModel? Vis
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameObjectVisModel?>("Vis");
-        set => SetVis(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectModelBuilderAssignments.GetVisAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithVis(global::GBX.NET.Engines.GameData.CGameObjectVisModel? value)
     {
@@ -160,7 +147,7 @@ public abstract class CGameObjectModelBuilderBase<TSelf> where TSelf : CGameObje
     public TSelf WithVisReference(NodeRef<global::GBX.NET.Engines.GameData.CGameObjectVisModel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetVisReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectModelBuilderAssignments.GetVisReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
 }

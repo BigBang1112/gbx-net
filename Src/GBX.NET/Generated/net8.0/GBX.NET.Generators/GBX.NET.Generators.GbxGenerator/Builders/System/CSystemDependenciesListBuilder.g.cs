@@ -36,12 +36,10 @@ public abstract class CSystemDependenciesListBuilderBase<TSelf> where TSelf : CS
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.System.CSystemDependenciesList> state;
     private protected CSystemDependenciesListBuilderBase() => state = new();
     private protected CSystemDependenciesListBuilderBase(NodeBuilderState<global::GBX.NET.Engines.System.CSystemDependenciesList> state) => this.state = state;
-    private protected static void SetFiles(NodeBuilderState<global::GBX.NET.Engines.System.CSystemDependenciesList> state, NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemDependenciesListBuilderAssignments.GetFilesAssignment(), value, GameVersion.TM2020);
-    private protected static void SetFolders(NodeBuilderState<global::GBX.NET.Engines.System.CSystemDependenciesList> state, global::GBX.NET.Engines.System.CSystemDependenciesList.Folder[]? value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemDependenciesListBuilderAssignments.GetFoldersAssignment(), value, GameVersion.TM2020);
     public NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? Files
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>?>("Files");
-        set => SetFiles(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemDependenciesListBuilderAssignments.GetFilesAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithFiles(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value)
     {
@@ -59,7 +57,7 @@ public abstract class CSystemDependenciesListBuilderBase<TSelf> where TSelf : CS
     public global::GBX.NET.Engines.System.CSystemDependenciesList.Folder[]? Folders
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemDependenciesList.Folder[]?>("Folders");
-        set => SetFolders(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemDependenciesListBuilderAssignments.GetFoldersAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithFolders(params global::GBX.NET.Engines.System.CSystemDependenciesList.Folder[]? value)
     {

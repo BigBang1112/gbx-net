@@ -36,19 +36,10 @@ public abstract class CFuncTreeSubVisualSequenceBuilderBase<TSelf> where TSelf :
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence> state;
     private protected CFuncTreeSubVisualSequenceBuilderBase() => state = new();
     private protected CFuncTreeSubVisualSequenceBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence> state) => this.state = state;
-    private protected static void SetAutoCreateMotion(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetAutoCreateMotionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetInputValId(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetInputValIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetPeriod(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetPeriodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetPhase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetPhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRandomizePhase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSimpleModeEndIndex(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncTreeSubVisualSequenceBuilderAssignments.GetSimpleModeEndIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSimpleModeIsLooping(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncTreeSubVisualSequenceBuilderAssignments.GetSimpleModeIsLoopingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSimpleModeStartIndex(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncTreeSubVisualSequenceBuilderAssignments.GetSimpleModeStartIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSubKeys(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence> state, global::GBX.NET.Engines.Function.CFuncKeysNatural? value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncTreeSubVisualSequenceBuilderAssignments.GetSubKeysAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public bool AutoCreateMotion
     {
         get => state.Get<bool>("AutoCreateMotion");
-        set => SetAutoCreateMotion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetAutoCreateMotionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithAutoCreateMotion(bool value)
     {
@@ -58,7 +49,7 @@ public abstract class CFuncTreeSubVisualSequenceBuilderBase<TSelf> where TSelf :
     public float Period
     {
         get => state.Get<float>("Period");
-        set => SetPeriod(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetPeriodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPeriod(float value)
     {
@@ -68,7 +59,7 @@ public abstract class CFuncTreeSubVisualSequenceBuilderBase<TSelf> where TSelf :
     public float Phase
     {
         get => state.Get<float>("Phase");
-        set => SetPhase(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetPhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPhase(float value)
     {
@@ -78,7 +69,7 @@ public abstract class CFuncTreeSubVisualSequenceBuilderBase<TSelf> where TSelf :
     public global::GBX.NET.Engines.Function.CFuncKeysNatural? SubKeys
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysNatural?>("SubKeys");
-        set => SetSubKeys(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncTreeSubVisualSequenceBuilderAssignments.GetSubKeysAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSubKeys(global::GBX.NET.Engines.Function.CFuncKeysNatural? value)
     {
@@ -92,7 +83,7 @@ public abstract class CFuncTreeSubVisualSequenceBuilderMembers1<TSelf> : CFuncTr
     public bool RandomizePhase
     {
         get => state.Get<bool>("RandomizePhase");
-        set => SetRandomizePhase(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRandomizePhase(bool value)
     {
@@ -106,7 +97,7 @@ public abstract class CFuncTreeSubVisualSequenceBuilderMembers2<TSelf> : CFuncTr
     public int SimpleModeEndIndex
     {
         get => state.Get<int>("SimpleModeEndIndex");
-        set => SetSimpleModeEndIndex(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncTreeSubVisualSequenceBuilderAssignments.GetSimpleModeEndIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSimpleModeEndIndex(int value)
     {
@@ -116,7 +107,7 @@ public abstract class CFuncTreeSubVisualSequenceBuilderMembers2<TSelf> : CFuncTr
     public bool SimpleModeIsLooping
     {
         get => state.Get<bool>("SimpleModeIsLooping");
-        set => SetSimpleModeIsLooping(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncTreeSubVisualSequenceBuilderAssignments.GetSimpleModeIsLoopingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSimpleModeIsLooping(bool value)
     {
@@ -126,7 +117,7 @@ public abstract class CFuncTreeSubVisualSequenceBuilderMembers2<TSelf> : CFuncTr
     public int SimpleModeStartIndex
     {
         get => state.Get<int>("SimpleModeStartIndex");
-        set => SetSimpleModeStartIndex(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncTreeSubVisualSequenceBuilderAssignments.GetSimpleModeStartIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSimpleModeStartIndex(int value)
     {
@@ -140,7 +131,7 @@ public abstract class CFuncTreeSubVisualSequenceBuilderMembers3<TSelf> : CFuncTr
     public string? InputValId
     {
         get => state.Get<string?>("InputValId");
-        set => SetInputValId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetInputValIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithInputValId(string? value)
     {

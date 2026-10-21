@@ -36,27 +36,10 @@ public abstract class CHmsPortalBuilderBase<TSelf> where TSelf : CHmsPortalBuild
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state;
     private protected CHmsPortalBuilderBase() => state = new();
     private protected CHmsPortalBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state) => this.state = state;
-    private protected static void SetCanPassThrough(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetCanPassThroughAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetCanSeeThrough(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetCanSeeThroughAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetDirectOcclusion(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetDirectOcclusionAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetDirectOcclusionRatio(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetDirectOcclusionRatioAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetDirectOcclusionSpectralRatio(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetDirectOcclusionSpectralRatioAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIndirectObstruction(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIndirectObstructionAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIndirectObstructionSpectralRatio(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIndirectObstructionSpectralRatioAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIndirectOcclusion(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIndirectOcclusionAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIndirectOcclusionRatio(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIndirectOcclusionRatioAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIndirectOcclusionSpectralRatio(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIndirectOcclusionSpectralRatioAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIsDirectPathSet(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIsDirectPathSetAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIsPickingPossible(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIsPickingPossibleAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIsVisualVisible(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIsVisualVisibleAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetNeedClipping2D(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetNeedClipping2DAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetNeedClipping3D(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetNeedClipping3DAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSeeThroughOpacity(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetSeeThroughOpacityAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSoundCanPassThrough(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetSoundCanPassThroughAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public bool CanPassThrough
     {
         get => state.Get<bool>("CanPassThrough");
-        set => SetCanPassThrough(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetCanPassThroughAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithCanPassThrough(bool value)
     {
@@ -66,7 +49,7 @@ public abstract class CHmsPortalBuilderBase<TSelf> where TSelf : CHmsPortalBuild
     public bool CanSeeThrough
     {
         get => state.Get<bool>("CanSeeThrough");
-        set => SetCanSeeThrough(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetCanSeeThroughAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithCanSeeThrough(bool value)
     {
@@ -76,7 +59,7 @@ public abstract class CHmsPortalBuilderBase<TSelf> where TSelf : CHmsPortalBuild
     public int DirectOcclusion
     {
         get => state.Get<int>("DirectOcclusion");
-        set => SetDirectOcclusion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetDirectOcclusionAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDirectOcclusion(int value)
     {
@@ -86,7 +69,7 @@ public abstract class CHmsPortalBuilderBase<TSelf> where TSelf : CHmsPortalBuild
     public float DirectOcclusionRatio
     {
         get => state.Get<float>("DirectOcclusionRatio");
-        set => SetDirectOcclusionRatio(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetDirectOcclusionRatioAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDirectOcclusionRatio(float value)
     {
@@ -96,7 +79,7 @@ public abstract class CHmsPortalBuilderBase<TSelf> where TSelf : CHmsPortalBuild
     public float DirectOcclusionSpectralRatio
     {
         get => state.Get<float>("DirectOcclusionSpectralRatio");
-        set => SetDirectOcclusionSpectralRatio(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetDirectOcclusionSpectralRatioAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDirectOcclusionSpectralRatio(float value)
     {
@@ -106,7 +89,7 @@ public abstract class CHmsPortalBuilderBase<TSelf> where TSelf : CHmsPortalBuild
     public int IndirectObstruction
     {
         get => state.Get<int>("IndirectObstruction");
-        set => SetIndirectObstruction(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIndirectObstructionAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIndirectObstruction(int value)
     {
@@ -116,7 +99,7 @@ public abstract class CHmsPortalBuilderBase<TSelf> where TSelf : CHmsPortalBuild
     public float IndirectObstructionSpectralRatio
     {
         get => state.Get<float>("IndirectObstructionSpectralRatio");
-        set => SetIndirectObstructionSpectralRatio(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIndirectObstructionSpectralRatioAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIndirectObstructionSpectralRatio(float value)
     {
@@ -126,7 +109,7 @@ public abstract class CHmsPortalBuilderBase<TSelf> where TSelf : CHmsPortalBuild
     public int IndirectOcclusion
     {
         get => state.Get<int>("IndirectOcclusion");
-        set => SetIndirectOcclusion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIndirectOcclusionAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIndirectOcclusion(int value)
     {
@@ -136,7 +119,7 @@ public abstract class CHmsPortalBuilderBase<TSelf> where TSelf : CHmsPortalBuild
     public float IndirectOcclusionRatio
     {
         get => state.Get<float>("IndirectOcclusionRatio");
-        set => SetIndirectOcclusionRatio(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIndirectOcclusionRatioAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIndirectOcclusionRatio(float value)
     {
@@ -146,7 +129,7 @@ public abstract class CHmsPortalBuilderBase<TSelf> where TSelf : CHmsPortalBuild
     public float IndirectOcclusionSpectralRatio
     {
         get => state.Get<float>("IndirectOcclusionSpectralRatio");
-        set => SetIndirectOcclusionSpectralRatio(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIndirectOcclusionSpectralRatioAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIndirectOcclusionSpectralRatio(float value)
     {
@@ -156,7 +139,7 @@ public abstract class CHmsPortalBuilderBase<TSelf> where TSelf : CHmsPortalBuild
     public bool IsDirectPathSet
     {
         get => state.Get<bool>("IsDirectPathSet");
-        set => SetIsDirectPathSet(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIsDirectPathSetAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIsDirectPathSet(bool value)
     {
@@ -166,7 +149,7 @@ public abstract class CHmsPortalBuilderBase<TSelf> where TSelf : CHmsPortalBuild
     public bool IsPickingPossible
     {
         get => state.Get<bool>("IsPickingPossible");
-        set => SetIsPickingPossible(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIsPickingPossibleAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIsPickingPossible(bool value)
     {
@@ -176,7 +159,7 @@ public abstract class CHmsPortalBuilderBase<TSelf> where TSelf : CHmsPortalBuild
     public bool IsVisualVisible
     {
         get => state.Get<bool>("IsVisualVisible");
-        set => SetIsVisualVisible(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIsVisualVisibleAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIsVisualVisible(bool value)
     {
@@ -186,7 +169,7 @@ public abstract class CHmsPortalBuilderBase<TSelf> where TSelf : CHmsPortalBuild
     public bool NeedClipping2D
     {
         get => state.Get<bool>("NeedClipping2D");
-        set => SetNeedClipping2D(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetNeedClipping2DAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithNeedClipping2D(bool value)
     {
@@ -196,7 +179,7 @@ public abstract class CHmsPortalBuilderBase<TSelf> where TSelf : CHmsPortalBuild
     public bool NeedClipping3D
     {
         get => state.Get<bool>("NeedClipping3D");
-        set => SetNeedClipping3D(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetNeedClipping3DAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithNeedClipping3D(bool value)
     {
@@ -206,7 +189,7 @@ public abstract class CHmsPortalBuilderBase<TSelf> where TSelf : CHmsPortalBuild
     public float SeeThroughOpacity
     {
         get => state.Get<float>("SeeThroughOpacity");
-        set => SetSeeThroughOpacity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetSeeThroughOpacityAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSeeThroughOpacity(float value)
     {
@@ -216,7 +199,7 @@ public abstract class CHmsPortalBuilderBase<TSelf> where TSelf : CHmsPortalBuild
     public bool SoundCanPassThrough
     {
         get => state.Get<bool>("SoundCanPassThrough");
-        set => SetSoundCanPassThrough(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetSoundCanPassThroughAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSoundCanPassThrough(bool value)
     {

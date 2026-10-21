@@ -36,12 +36,10 @@ public abstract class CMotionManagerLeavesBuilderBase<TSelf> where TSelf : CMoti
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionManagerLeaves> state;
     private protected CMotionManagerLeavesBuilderBase() => state = new();
     private protected CMotionManagerLeavesBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionManagerLeaves> state) => this.state = state;
-    private protected static void SetMobilLeaves(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionManagerLeaves> state, global::GBX.NET.Engines.Scene.CSceneMobilLeaves? value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionManagerLeavesBuilderAssignments.GetMobilLeavesAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMobilLeavesReference(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionManagerLeaves> state, NodeRef<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionManagerLeavesBuilderAssignments.GetMobilLeavesReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public global::GBX.NET.Engines.Scene.CSceneMobilLeaves? MobilLeaves
     {
         get => state.Get<global::GBX.NET.Engines.Scene.CSceneMobilLeaves?>("MobilLeaves");
-        set => SetMobilLeaves(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionManagerLeavesBuilderAssignments.GetMobilLeavesAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMobilLeaves(global::GBX.NET.Engines.Scene.CSceneMobilLeaves? value)
     {
@@ -51,7 +49,7 @@ public abstract class CMotionManagerLeavesBuilderBase<TSelf> where TSelf : CMoti
     public TSelf WithMobilLeavesReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetMobilLeavesReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionManagerLeavesBuilderAssignments.GetMobilLeavesReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }

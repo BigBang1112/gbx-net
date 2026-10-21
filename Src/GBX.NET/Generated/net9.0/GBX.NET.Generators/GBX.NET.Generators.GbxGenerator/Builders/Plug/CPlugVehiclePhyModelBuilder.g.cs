@@ -36,45 +36,10 @@ public abstract class CPlugVehiclePhyModelBuilderBase<TSelf> where TSelf : CPlug
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> state;
     private protected CPlugVehiclePhyModelBuilderBase() => state = new();
     private protected CPlugVehiclePhyModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> state) => this.state = state;
-    private protected static void SetBackWheelHalfWidth(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetBackWheelHalfWidthAssignment(), value, GameVersion.MP3);
-    private protected static void SetBackWheelRadius(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetBackWheelRadiusAssignment(), value, GameVersion.MP3);
-    private protected static void SetBackWheelX(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetBackWheelXAssignment(), value, GameVersion.MP3);
-    private protected static void SetBackWheelZ(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetBackWheelZAssignment(), value, GameVersion.MP3);
-    private protected static void SetBigCollisionSpringStiffness(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetBigCollisionSpringStiffnessAssignment(), value, GameVersion.MP3);
-    private protected static void SetCarVsCarShapeBox(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> state, BoxAligned value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetCarVsCarShapeBoxAssignment(), value, GameVersion.MP3);
-    private protected static void SetDoApplyFriction(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetDoApplyFrictionAssignment(), value, GameVersion.MP3);
-    private protected static void SetDoCreateForcesInCollisionResponse(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetDoCreateForcesInCollisionResponseAssignment(), value, GameVersion.MP3);
-    private protected static void SetDoLimitPenetration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetDoLimitPenetrationAssignment(), value, GameVersion.MP3);
-    private protected static void SetFrictionCoeff(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetFrictionCoeffAssignment(), value, GameVersion.MP3);
-    private protected static void SetFrontWheelHalfWidth(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetFrontWheelHalfWidthAssignment(), value, GameVersion.MP3);
-    private protected static void SetFrontWheelRadius(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetFrontWheelRadiusAssignment(), value, GameVersion.MP3);
-    private protected static void SetFrontWheelX(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetFrontWheelXAssignment(), value, GameVersion.MP3);
-    private protected static void SetFrontWheelZ(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetFrontWheelZAssignment(), value, GameVersion.MP3);
-    private protected static void SetGroundY(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetGroundYAssignment(), value, GameVersion.MP3);
-    private protected static void SetImpactRelVelDtCoeff(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetImpactRelVelDtCoeffAssignment(), value, GameVersion.MP3);
-    private protected static void SetOccupantSlots(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> state, global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel.OccupantSlot[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetOccupantSlotsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetOffsetX(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetOffsetXAssignment(), value, GameVersion.MP3);
-    private protected static void SetPenetrationDepthMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetPenetrationDepthMaxAssignment(), value, GameVersion.MP3);
-    private protected static void SetPhyShape(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> state, global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetPhyShapeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetPhyShapeReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetPhyShapeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetPlayerAgstTrafficMinRelVelToPhysicallize(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetPlayerAgstTrafficMinRelVelToPhysicallizeAssignment(), value, GameVersion.MP3);
-    private protected static void SetRefBuffer(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> state, global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetRefBufferAssignment(), value, GameVersion.MP3 | GameVersion.MP4);
-    private protected static void SetRefBufferReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetRefBufferReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4);
-    private protected static void SetSimplifiedCarShapeBox(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> state, BoxAligned value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetSimplifiedCarShapeBoxAssignment(), value, GameVersion.MP3);
-    private protected static void SetSmallCollisionSpringStiffness(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetSmallCollisionSpringStiffnessAssignment(), value, GameVersion.MP3);
-    private protected static void SetSurfSolid(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> state, global::GBX.NET.Engines.Plug.CPlugSolid? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetSurfSolidAssignment(), value, GameVersion.MP3);
-    private protected static void SetSurfSolidReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetSurfSolidReferenceAssignment(), value, GameVersion.MP3);
-    private protected static void SetTrafficAgstTrafficMinRelVelToPhysicallize(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetTrafficAgstTrafficMinRelVelToPhysicallizeAssignment(), value, GameVersion.MP3);
-    private protected static void SetTunings(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> state, global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetTuningsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetTuningsReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetTuningsReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetUsePenetration_InSpringCompute(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetUsePenetration_InSpringComputeAssignment(), value, GameVersion.MP3);
-    private protected static void SetUseRelVel_InSpringCompute(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetUseRelVel_InSpringComputeAssignment(), value, GameVersion.MP3);
-    private protected static void SetUseSimplifiedCarModel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetUseSimplifiedCarModelAssignment(), value, GameVersion.MP3);
-    private protected static void SetWheels(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> state, global::GBX.NET.Engines.Plug.CPlugVehicleWheelPhyModel[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetWheelsAssignment(), value, GameVersion.MP3);
     public global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings? Tunings
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings?>("Tunings");
-        set => SetTunings(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetTuningsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithTunings(global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings? value)
     {
@@ -84,7 +49,7 @@ public abstract class CPlugVehiclePhyModelBuilderBase<TSelf> where TSelf : CPlug
     public TSelf WithTuningsReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetTuningsReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetTuningsReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
 }
@@ -94,7 +59,7 @@ public abstract class CPlugVehiclePhyModelBuilderMembers1<TSelf> : CPlugVehicleP
     public global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel.OccupantSlot[]? OccupantSlots
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel.OccupantSlot[]?>("OccupantSlots");
-        set => SetOccupantSlots(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetOccupantSlotsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithOccupantSlots(params global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel.OccupantSlot[]? value)
     {
@@ -108,7 +73,7 @@ public abstract class CPlugVehiclePhyModelBuilderMembers1<TSelf> : CPlugVehicleP
     public global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape? PhyShape
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape?>("PhyShape");
-        set => SetPhyShape(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetPhyShapeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithPhyShape(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape? value)
     {
@@ -118,7 +83,7 @@ public abstract class CPlugVehiclePhyModelBuilderMembers1<TSelf> : CPlugVehicleP
     public TSelf WithPhyShapeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetPhyShapeReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetPhyShapeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
 }
@@ -202,7 +167,7 @@ public partial class CPlugVehiclePhyModelBuilder : CPlugVehiclePhyModelBuilderBa
         public float BackWheelHalfWidth
         {
             get => state.Get<float>("BackWheelHalfWidth");
-            set => SetBackWheelHalfWidth(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetBackWheelHalfWidthAssignment(), value, GameVersion.MP3);
         }
         public MP3 WithBackWheelHalfWidth(float value)
         {
@@ -212,7 +177,7 @@ public partial class CPlugVehiclePhyModelBuilder : CPlugVehiclePhyModelBuilderBa
         public float BackWheelRadius
         {
             get => state.Get<float>("BackWheelRadius");
-            set => SetBackWheelRadius(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetBackWheelRadiusAssignment(), value, GameVersion.MP3);
         }
         public MP3 WithBackWheelRadius(float value)
         {
@@ -222,7 +187,7 @@ public partial class CPlugVehiclePhyModelBuilder : CPlugVehiclePhyModelBuilderBa
         public float BackWheelX
         {
             get => state.Get<float>("BackWheelX");
-            set => SetBackWheelX(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetBackWheelXAssignment(), value, GameVersion.MP3);
         }
         public MP3 WithBackWheelX(float value)
         {
@@ -232,7 +197,7 @@ public partial class CPlugVehiclePhyModelBuilder : CPlugVehiclePhyModelBuilderBa
         public float BackWheelZ
         {
             get => state.Get<float>("BackWheelZ");
-            set => SetBackWheelZ(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetBackWheelZAssignment(), value, GameVersion.MP3);
         }
         public MP3 WithBackWheelZ(float value)
         {
@@ -242,7 +207,7 @@ public partial class CPlugVehiclePhyModelBuilder : CPlugVehiclePhyModelBuilderBa
         public float BigCollisionSpringStiffness
         {
             get => state.Get<float>("BigCollisionSpringStiffness");
-            set => SetBigCollisionSpringStiffness(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetBigCollisionSpringStiffnessAssignment(), value, GameVersion.MP3);
         }
         public MP3 WithBigCollisionSpringStiffness(float value)
         {
@@ -252,7 +217,7 @@ public partial class CPlugVehiclePhyModelBuilder : CPlugVehiclePhyModelBuilderBa
         public BoxAligned CarVsCarShapeBox
         {
             get => state.Get<BoxAligned>("CarVsCarShapeBox");
-            set => SetCarVsCarShapeBox(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetCarVsCarShapeBoxAssignment(), value, GameVersion.MP3);
         }
         public MP3 WithCarVsCarShapeBox(BoxAligned value)
         {
@@ -262,7 +227,7 @@ public partial class CPlugVehiclePhyModelBuilder : CPlugVehiclePhyModelBuilderBa
         public bool DoApplyFriction
         {
             get => state.Get<bool>("DoApplyFriction");
-            set => SetDoApplyFriction(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetDoApplyFrictionAssignment(), value, GameVersion.MP3);
         }
         public MP3 WithDoApplyFriction(bool value)
         {
@@ -272,7 +237,7 @@ public partial class CPlugVehiclePhyModelBuilder : CPlugVehiclePhyModelBuilderBa
         public bool DoCreateForcesInCollisionResponse
         {
             get => state.Get<bool>("DoCreateForcesInCollisionResponse");
-            set => SetDoCreateForcesInCollisionResponse(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetDoCreateForcesInCollisionResponseAssignment(), value, GameVersion.MP3);
         }
         public MP3 WithDoCreateForcesInCollisionResponse(bool value)
         {
@@ -282,7 +247,7 @@ public partial class CPlugVehiclePhyModelBuilder : CPlugVehiclePhyModelBuilderBa
         public bool DoLimitPenetration
         {
             get => state.Get<bool>("DoLimitPenetration");
-            set => SetDoLimitPenetration(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetDoLimitPenetrationAssignment(), value, GameVersion.MP3);
         }
         public MP3 WithDoLimitPenetration(bool value)
         {
@@ -292,7 +257,7 @@ public partial class CPlugVehiclePhyModelBuilder : CPlugVehiclePhyModelBuilderBa
         public float FrictionCoeff
         {
             get => state.Get<float>("FrictionCoeff");
-            set => SetFrictionCoeff(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetFrictionCoeffAssignment(), value, GameVersion.MP3);
         }
         public MP3 WithFrictionCoeff(float value)
         {
@@ -302,7 +267,7 @@ public partial class CPlugVehiclePhyModelBuilder : CPlugVehiclePhyModelBuilderBa
         public float FrontWheelHalfWidth
         {
             get => state.Get<float>("FrontWheelHalfWidth");
-            set => SetFrontWheelHalfWidth(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetFrontWheelHalfWidthAssignment(), value, GameVersion.MP3);
         }
         public MP3 WithFrontWheelHalfWidth(float value)
         {
@@ -312,7 +277,7 @@ public partial class CPlugVehiclePhyModelBuilder : CPlugVehiclePhyModelBuilderBa
         public float FrontWheelRadius
         {
             get => state.Get<float>("FrontWheelRadius");
-            set => SetFrontWheelRadius(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetFrontWheelRadiusAssignment(), value, GameVersion.MP3);
         }
         public MP3 WithFrontWheelRadius(float value)
         {
@@ -322,7 +287,7 @@ public partial class CPlugVehiclePhyModelBuilder : CPlugVehiclePhyModelBuilderBa
         public float FrontWheelX
         {
             get => state.Get<float>("FrontWheelX");
-            set => SetFrontWheelX(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetFrontWheelXAssignment(), value, GameVersion.MP3);
         }
         public MP3 WithFrontWheelX(float value)
         {
@@ -332,7 +297,7 @@ public partial class CPlugVehiclePhyModelBuilder : CPlugVehiclePhyModelBuilderBa
         public float FrontWheelZ
         {
             get => state.Get<float>("FrontWheelZ");
-            set => SetFrontWheelZ(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetFrontWheelZAssignment(), value, GameVersion.MP3);
         }
         public MP3 WithFrontWheelZ(float value)
         {
@@ -342,7 +307,7 @@ public partial class CPlugVehiclePhyModelBuilder : CPlugVehiclePhyModelBuilderBa
         public float GroundY
         {
             get => state.Get<float>("GroundY");
-            set => SetGroundY(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetGroundYAssignment(), value, GameVersion.MP3);
         }
         public MP3 WithGroundY(float value)
         {
@@ -352,7 +317,7 @@ public partial class CPlugVehiclePhyModelBuilder : CPlugVehiclePhyModelBuilderBa
         public float ImpactRelVelDtCoeff
         {
             get => state.Get<float>("ImpactRelVelDtCoeff");
-            set => SetImpactRelVelDtCoeff(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetImpactRelVelDtCoeffAssignment(), value, GameVersion.MP3);
         }
         public MP3 WithImpactRelVelDtCoeff(float value)
         {
@@ -362,7 +327,7 @@ public partial class CPlugVehiclePhyModelBuilder : CPlugVehiclePhyModelBuilderBa
         public float OffsetX
         {
             get => state.Get<float>("OffsetX");
-            set => SetOffsetX(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetOffsetXAssignment(), value, GameVersion.MP3);
         }
         public MP3 WithOffsetX(float value)
         {
@@ -372,7 +337,7 @@ public partial class CPlugVehiclePhyModelBuilder : CPlugVehiclePhyModelBuilderBa
         public float PenetrationDepthMax
         {
             get => state.Get<float>("PenetrationDepthMax");
-            set => SetPenetrationDepthMax(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetPenetrationDepthMaxAssignment(), value, GameVersion.MP3);
         }
         public MP3 WithPenetrationDepthMax(float value)
         {
@@ -382,7 +347,7 @@ public partial class CPlugVehiclePhyModelBuilder : CPlugVehiclePhyModelBuilderBa
         public float PlayerAgstTrafficMinRelVelToPhysicallize
         {
             get => state.Get<float>("PlayerAgstTrafficMinRelVelToPhysicallize");
-            set => SetPlayerAgstTrafficMinRelVelToPhysicallize(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetPlayerAgstTrafficMinRelVelToPhysicallizeAssignment(), value, GameVersion.MP3);
         }
         public MP3 WithPlayerAgstTrafficMinRelVelToPhysicallize(float value)
         {
@@ -392,7 +357,7 @@ public partial class CPlugVehiclePhyModelBuilder : CPlugVehiclePhyModelBuilderBa
         public global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? RefBuffer
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?>("RefBuffer");
-            set => SetRefBuffer(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetRefBufferAssignment(), value, GameVersion.MP3 | GameVersion.MP4);
         }
         public MP3 WithRefBuffer(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value)
         {
@@ -402,7 +367,7 @@ public partial class CPlugVehiclePhyModelBuilder : CPlugVehiclePhyModelBuilderBa
         public MP3 WithRefBufferReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetRefBufferReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetRefBufferReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4);
             return this;
         }
         public MP3 WithRefBuffer(global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3? value)
@@ -412,7 +377,7 @@ public partial class CPlugVehiclePhyModelBuilder : CPlugVehiclePhyModelBuilderBa
         public BoxAligned SimplifiedCarShapeBox
         {
             get => state.Get<BoxAligned>("SimplifiedCarShapeBox");
-            set => SetSimplifiedCarShapeBox(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetSimplifiedCarShapeBoxAssignment(), value, GameVersion.MP3);
         }
         public MP3 WithSimplifiedCarShapeBox(BoxAligned value)
         {
@@ -422,7 +387,7 @@ public partial class CPlugVehiclePhyModelBuilder : CPlugVehiclePhyModelBuilderBa
         public float SmallCollisionSpringStiffness
         {
             get => state.Get<float>("SmallCollisionSpringStiffness");
-            set => SetSmallCollisionSpringStiffness(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetSmallCollisionSpringStiffnessAssignment(), value, GameVersion.MP3);
         }
         public MP3 WithSmallCollisionSpringStiffness(float value)
         {
@@ -432,7 +397,7 @@ public partial class CPlugVehiclePhyModelBuilder : CPlugVehiclePhyModelBuilderBa
         public global::GBX.NET.Engines.Plug.CPlugSolid? SurfSolid
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSolid?>("SurfSolid");
-            set => SetSurfSolid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetSurfSolidAssignment(), value, GameVersion.MP3);
         }
         public MP3 WithSurfSolid(global::GBX.NET.Engines.Plug.CPlugSolid? value)
         {
@@ -442,7 +407,7 @@ public partial class CPlugVehiclePhyModelBuilder : CPlugVehiclePhyModelBuilderBa
         public MP3 WithSurfSolidReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSurfSolidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetSurfSolidReferenceAssignment(), value, GameVersion.MP3);
             return this;
         }
         public MP3 WithSurfSolid(global::GBX.NET.Interfaces.Plug.IPlugSolidMP3? value)
@@ -452,7 +417,7 @@ public partial class CPlugVehiclePhyModelBuilder : CPlugVehiclePhyModelBuilderBa
         public float TrafficAgstTrafficMinRelVelToPhysicallize
         {
             get => state.Get<float>("TrafficAgstTrafficMinRelVelToPhysicallize");
-            set => SetTrafficAgstTrafficMinRelVelToPhysicallize(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetTrafficAgstTrafficMinRelVelToPhysicallizeAssignment(), value, GameVersion.MP3);
         }
         public MP3 WithTrafficAgstTrafficMinRelVelToPhysicallize(float value)
         {
@@ -466,7 +431,7 @@ public partial class CPlugVehiclePhyModelBuilder : CPlugVehiclePhyModelBuilderBa
         public bool UsePenetration_InSpringCompute
         {
             get => state.Get<bool>("UsePenetration_InSpringCompute");
-            set => SetUsePenetration_InSpringCompute(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetUsePenetration_InSpringComputeAssignment(), value, GameVersion.MP3);
         }
         public MP3 WithUsePenetration_InSpringCompute(bool value)
         {
@@ -476,7 +441,7 @@ public partial class CPlugVehiclePhyModelBuilder : CPlugVehiclePhyModelBuilderBa
         public bool UseRelVel_InSpringCompute
         {
             get => state.Get<bool>("UseRelVel_InSpringCompute");
-            set => SetUseRelVel_InSpringCompute(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetUseRelVel_InSpringComputeAssignment(), value, GameVersion.MP3);
         }
         public MP3 WithUseRelVel_InSpringCompute(bool value)
         {
@@ -486,7 +451,7 @@ public partial class CPlugVehiclePhyModelBuilder : CPlugVehiclePhyModelBuilderBa
         public bool UseSimplifiedCarModel
         {
             get => state.Get<bool>("UseSimplifiedCarModel");
-            set => SetUseSimplifiedCarModel(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetUseSimplifiedCarModelAssignment(), value, GameVersion.MP3);
         }
         public MP3 WithUseSimplifiedCarModel(bool value)
         {
@@ -496,7 +461,7 @@ public partial class CPlugVehiclePhyModelBuilder : CPlugVehiclePhyModelBuilderBa
         public global::GBX.NET.Engines.Plug.CPlugVehicleWheelPhyModel[]? Wheels
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugVehicleWheelPhyModel[]?>("Wheels");
-            set => SetWheels(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetWheelsAssignment(), value, GameVersion.MP3);
         }
         public MP3 WithWheels(params global::GBX.NET.Engines.Plug.CPlugVehicleWheelPhyModel[]? value)
         {
@@ -532,7 +497,7 @@ public partial class CPlugVehiclePhyModelBuilder : CPlugVehiclePhyModelBuilderBa
         public global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? RefBuffer
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?>("RefBuffer");
-            set => SetRefBuffer(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetRefBufferAssignment(), value, GameVersion.MP3 | GameVersion.MP4);
         }
         public MP4 WithRefBuffer(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value)
         {
@@ -542,7 +507,7 @@ public partial class CPlugVehiclePhyModelBuilder : CPlugVehiclePhyModelBuilderBa
         public MP4 WithRefBufferReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetRefBufferReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelBuilderAssignments.GetRefBufferReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4);
             return this;
         }
         public MP4 WithRefBuffer(global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4? value)

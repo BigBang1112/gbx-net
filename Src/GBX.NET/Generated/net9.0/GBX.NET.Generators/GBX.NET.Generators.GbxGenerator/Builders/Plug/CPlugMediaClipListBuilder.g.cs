@@ -36,11 +36,10 @@ public abstract class CPlugMediaClipListBuilderBase<TSelf> where TSelf : CPlugMe
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMediaClipList> state;
     private protected CPlugMediaClipListBuilderBase() => state = new();
     private protected CPlugMediaClipListBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMediaClipList> state) => this.state = state;
-    private protected static void SetMediaClipFids(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMediaClipList> state, NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMediaClipListBuilderAssignments.GetMediaClipFidsAssignment(), value, GameVersion.TM2020);
     public NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? MediaClipFids
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>?>("MediaClipFids");
-        set => SetMediaClipFids(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMediaClipListBuilderAssignments.GetMediaClipFidsAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithMediaClipFids(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value)
     {

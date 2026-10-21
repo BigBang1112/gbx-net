@@ -352,15 +352,16 @@ internal static partial class GameApiWriter
         code.Line($"private protected readonly NodeBuilderState<{node.Layout.QualifiedName}> state;");
         code.Line($"private protected {node.BuilderName}Base() => state = new();");
         code.Line($"private protected {node.BuilderName}Base(NodeBuilderState<{node.Layout.QualifiedName}> state) => this.state = state;");
+        var referencedHelpers = ReferencedAssignmentHelpers(node, plan);
         foreach (var member in node.Members.Where(static m => m.Writable))
         {
-            var mask = string.Join(" | ", member.Games.OrderBy(static g => g, StringComparer.Ordinal).Select(static g => "GameVersion." + g));
-            var descriptors = $"global::GBX.NET.Builders.Engines.{member.Owner.File.Engine}.{member.Owner.Name}BuilderAssignments";
-            code.Line($"private protected static void Set{member.Name}(NodeBuilderState<{node.Layout.QualifiedName}> state, {member.Type} value) => state.Set({descriptors}.Get{member.Name}Assignment(), value, {mask});");
-            if (member.IsReference && member.Field?.StorageDeclaration.Type.ArrayDimensions == 0)
+            if (referencedHelpers.Contains("Set" + member.Name))
+                code.Line($"private protected static void Set{member.Name}(NodeBuilderState<{node.Layout.QualifiedName}> state, {member.Type} value) => {Assignment(member, "value")};");
+            if (member.IsReference && member.Field?.StorageDeclaration.Type.ArrayDimensions == 0 &&
+                referencedHelpers.Contains("Set" + member.Name + "Reference"))
             {
                 var element = GameNodeModel.Qualify(ReferenceModel.Element(member.Field), member.Owner, plan);
-                code.Line($"private protected static void Set{member.Name}Reference(NodeBuilderState<{node.Layout.QualifiedName}> state, NodeRef<{element}> value) => state.Set({descriptors}.Get{member.Name}ReferenceAssignment(), value, {mask});");
+                code.Line($"private protected static void Set{member.Name}Reference(NodeBuilderState<{node.Layout.QualifiedName}> state, NodeRef<{element}> value) => {Assignment(member, "value", reference: true)};");
             }
         }
         WriteMembers(code, node, "", null, plan, nodes);
@@ -412,6 +413,25 @@ internal static partial class GameApiWriter
         }
         code.Close();
         return code.ToString();
+    }
+
+    private static HashSet<string> ReferencedAssignmentHelpers(GameNodeModel node, GenerationPlan plan)
+    {
+        var key = node.BuilderNamespace + "." + node.BuilderName;
+        // These names may be unresolved in the input compilation: the helpers
+        // themselves are generated. Inspect syntax, including method groups,
+        // nameof and documentation references in every handwritten partial.
+        return new HashSet<string>(plan.Existing.Values.Where(type => type.Key == key || type.Key.StartsWith(key + "+", StringComparison.Ordinal))
+            .SelectMany(static type => type.Declarations)
+            .SelectMany(static declaration => declaration.DescendantNodes(descendIntoTrivia: true).OfType<IdentifierNameSyntax>())
+            .Select(static name => name.Identifier.ValueText).Where(static name => name.StartsWith("Set", StringComparison.Ordinal)), StringComparer.Ordinal);
+    }
+
+    private static string Assignment(GameMember member, string value, bool reference = false)
+    {
+        var mask = string.Join(" | ", member.Games.OrderBy(static g => g, StringComparer.Ordinal).Select(static g => "GameVersion." + g));
+        var descriptors = $"global::GBX.NET.Builders.Engines.{member.Owner.File.Engine}.{member.Owner.Name}BuilderAssignments";
+        return $"state.Set({descriptors}.Get{member.Name}{(reference ? "Reference" : "")}Assignment(), {value}, {mask})";
     }
 
     private static void WritePropertyDescriptors(SourceProductionContext context, GenerationPlan plan, Dictionary<string, GameNodeModel> nodes)
@@ -520,7 +540,7 @@ internal static partial class GameApiWriter
             {
                 code.Open($"public {type} {name}");
                 code.Line($"get => state.Get<{type}>({SymbolDisplay.FormatLiteral(member.Name, true)});");
-                code.Line($"set => Set{member.Name}(state, value);");
+                code.Line($"set => {Assignment(member, "value")};");
                 code.Close();
             }
             var method = "With" + member.Name;
@@ -529,7 +549,7 @@ internal static partial class GameApiWriter
                 var arrayParameter = type.TrimEnd('?').EndsWith("[]", StringComparison.Ordinal) ? "params " : "";
                 code.Open($"public {stage} {method}({arrayParameter}{type} value)");
                 code.Line(SyntaxOverlap.Has(existing, member.Name) && existing?.Properties.Any(p => p.Identifier.ValueText == member.Name) != true
-                    ? $"Set{member.Name}(state, value);" : $"{name} = value;");
+                    ? Assignment(member, "value") + ";" : $"{name} = value;");
                 code.Line("return " + self + ";");
                 code.Close();
             }
@@ -541,7 +561,7 @@ internal static partial class GameApiWriter
                 {
                     code.Open($"public {stage} {method}Reference(NodeRef<{element}> value)");
                     code.Line("if (value is null) throw new ArgumentNullException(nameof(value));");
-                    code.Line($"Set{member.Name}Reference(state, value);");
+                    code.Line(Assignment(member, "value", reference: true) + ";");
                     code.Line("return " + self + ";");
                     code.Close();
                 }

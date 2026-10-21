@@ -36,23 +36,10 @@ public abstract class CGamePlayerProfileChunk_GameSettingsBuilderBase<TSelf> whe
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings> state;
     private protected CGamePlayerProfileChunk_GameSettingsBuilderBase() => state = new();
     private protected CGamePlayerProfileChunk_GameSettingsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings> state) => this.state = state;
-    private protected static void SetChallengeOpponents(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings> state, global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings.SChallengeOpponents[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameSettingsBuilderAssignments.GetChallengeOpponentsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetEditorHelp(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameSettingsBuilderAssignments.GetEditorHelpAssignment(), value, GameVersion.TM2020);
-    private protected static void SetMaxSpectatorCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings> state, byte value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameSettingsBuilderAssignments.GetMaxSpectatorCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMouseAccelQuantity(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameSettingsBuilderAssignments.GetMouseAccelQuantityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMouseSensitivity_Default(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameSettingsBuilderAssignments.GetMouseSensitivity_DefaultAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetNetworkGameMode(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameSettingsBuilderAssignments.GetNetworkGameModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetOpponentVisibility(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings> state, byte value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameSettingsBuilderAssignments.GetOpponentVisibilityAssignment(), value, GameVersion.TM2020);
-    private protected static void SetOpponentsVersionLast(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameSettingsBuilderAssignments.GetOpponentsVersionLastAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetServerComment(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameSettingsBuilderAssignments.GetServerCommentAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetServerName(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameSettingsBuilderAssignments.GetServerNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetShootParamsVideo(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings> state, global::GBX.NET.Engines.Game.CGameCtnMediaShootParams? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameSettingsBuilderAssignments.GetShootParamsVideoAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetStereoscopyAdvancedScreenDist(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameSettingsBuilderAssignments.GetStereoscopyAdvancedScreenDistAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetStereoscopyStrength01(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameSettingsBuilderAssignments.GetStereoscopyStrength01Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings.SChallengeOpponents[]? ChallengeOpponents
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings.SChallengeOpponents[]?>("ChallengeOpponents");
-        set => SetChallengeOpponents(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameSettingsBuilderAssignments.GetChallengeOpponentsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithChallengeOpponents(params global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings.SChallengeOpponents[]? value)
     {
@@ -66,7 +53,7 @@ public abstract class CGamePlayerProfileChunk_GameSettingsBuilderBase<TSelf> whe
     public byte MaxSpectatorCount
     {
         get => state.Get<byte>("MaxSpectatorCount");
-        set => SetMaxSpectatorCount(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameSettingsBuilderAssignments.GetMaxSpectatorCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaxSpectatorCount(byte value)
     {
@@ -76,7 +63,7 @@ public abstract class CGamePlayerProfileChunk_GameSettingsBuilderBase<TSelf> whe
     public float MouseAccelQuantity
     {
         get => state.Get<float>("MouseAccelQuantity");
-        set => SetMouseAccelQuantity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameSettingsBuilderAssignments.GetMouseAccelQuantityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMouseAccelQuantity(float value)
     {
@@ -86,7 +73,7 @@ public abstract class CGamePlayerProfileChunk_GameSettingsBuilderBase<TSelf> whe
     public float MouseSensitivity_Default
     {
         get => state.Get<float>("MouseSensitivity_Default");
-        set => SetMouseSensitivity_Default(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameSettingsBuilderAssignments.GetMouseSensitivity_DefaultAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMouseSensitivity_Default(float value)
     {
@@ -96,7 +83,7 @@ public abstract class CGamePlayerProfileChunk_GameSettingsBuilderBase<TSelf> whe
     public int NetworkGameMode
     {
         get => state.Get<int>("NetworkGameMode");
-        set => SetNetworkGameMode(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameSettingsBuilderAssignments.GetNetworkGameModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNetworkGameMode(int value)
     {
@@ -106,7 +93,7 @@ public abstract class CGamePlayerProfileChunk_GameSettingsBuilderBase<TSelf> whe
     public int OpponentsVersionLast
     {
         get => state.Get<int>("OpponentsVersionLast");
-        set => SetOpponentsVersionLast(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameSettingsBuilderAssignments.GetOpponentsVersionLastAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithOpponentsVersionLast(int value)
     {
@@ -116,7 +103,7 @@ public abstract class CGamePlayerProfileChunk_GameSettingsBuilderBase<TSelf> whe
     public string? ServerComment
     {
         get => state.Get<string?>("ServerComment");
-        set => SetServerComment(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameSettingsBuilderAssignments.GetServerCommentAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithServerComment(string? value)
     {
@@ -126,7 +113,7 @@ public abstract class CGamePlayerProfileChunk_GameSettingsBuilderBase<TSelf> whe
     public string? ServerName
     {
         get => state.Get<string?>("ServerName");
-        set => SetServerName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameSettingsBuilderAssignments.GetServerNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithServerName(string? value)
     {
@@ -136,7 +123,7 @@ public abstract class CGamePlayerProfileChunk_GameSettingsBuilderBase<TSelf> whe
     public global::GBX.NET.Engines.Game.CGameCtnMediaShootParams? ShootParamsVideo
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams?>("ShootParamsVideo");
-        set => SetShootParamsVideo(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameSettingsBuilderAssignments.GetShootParamsVideoAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithShootParamsVideo(global::GBX.NET.Engines.Game.CGameCtnMediaShootParams? value)
     {
@@ -146,7 +133,7 @@ public abstract class CGamePlayerProfileChunk_GameSettingsBuilderBase<TSelf> whe
     public float StereoscopyAdvancedScreenDist
     {
         get => state.Get<float>("StereoscopyAdvancedScreenDist");
-        set => SetStereoscopyAdvancedScreenDist(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameSettingsBuilderAssignments.GetStereoscopyAdvancedScreenDistAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStereoscopyAdvancedScreenDist(float value)
     {
@@ -156,7 +143,7 @@ public abstract class CGamePlayerProfileChunk_GameSettingsBuilderBase<TSelf> whe
     public float StereoscopyStrength01
     {
         get => state.Get<float>("StereoscopyStrength01");
-        set => SetStereoscopyStrength01(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameSettingsBuilderAssignments.GetStereoscopyStrength01Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStereoscopyStrength01(float value)
     {
@@ -379,7 +366,7 @@ public partial class CGamePlayerProfileChunk_GameSettingsBuilder : CGamePlayerPr
         public bool EditorHelp
         {
             get => state.Get<bool>("EditorHelp");
-            set => SetEditorHelp(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameSettingsBuilderAssignments.GetEditorHelpAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithEditorHelp(bool value)
         {
@@ -389,7 +376,7 @@ public partial class CGamePlayerProfileChunk_GameSettingsBuilder : CGamePlayerPr
         public byte OpponentVisibility
         {
             get => state.Get<byte>("OpponentVisibility");
-            set => SetOpponentVisibility(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameSettingsBuilderAssignments.GetOpponentVisibilityAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithOpponentVisibility(byte value)
         {

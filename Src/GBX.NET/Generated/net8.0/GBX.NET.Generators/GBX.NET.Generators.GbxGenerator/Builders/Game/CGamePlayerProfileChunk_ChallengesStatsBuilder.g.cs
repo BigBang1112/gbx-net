@@ -36,11 +36,10 @@ public abstract class CGamePlayerProfileChunk_ChallengesStatsBuilderBase<TSelf> 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesStats> state;
     private protected CGamePlayerProfileChunk_ChallengesStatsBuilderBase() => state = new();
     private protected CGamePlayerProfileChunk_ChallengesStatsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesStats> state) => this.state = state;
-    private protected static void SetChallengeStats(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesStats> state, global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesStats.SChallengeStats[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_ChallengesStatsBuilderAssignments.GetChallengeStatsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesStats.SChallengeStats[]? ChallengeStats
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesStats.SChallengeStats[]?>("ChallengeStats");
-        set => SetChallengeStats(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_ChallengesStatsBuilderAssignments.GetChallengeStatsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithChallengeStats(params global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesStats.SChallengeStats[]? value)
     {

@@ -36,13 +36,10 @@ public abstract class CGameCtnMediaBlockColoringBaseBuilderBase<TSelf> where TSe
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringBase> state;
     private protected CGameCtnMediaBlockColoringBaseBuilderBase() => state = new();
     private protected CGameCtnMediaBlockColoringBaseBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringBase> state) => this.state = state;
-    private protected static void SetBaseIndex(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringBase> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockColoringBaseBuilderAssignments.GetBaseIndexAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetKeyArchiveVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringBase> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockColoringBaseBuilderAssignments.GetKeyArchiveVersionAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringBase> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringBase.Key>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockColoringBaseBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public int BaseIndex
     {
         get => state.Get<int>("BaseIndex");
-        set => SetBaseIndex(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockColoringBaseBuilderAssignments.GetBaseIndexAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBaseIndex(int value)
     {
@@ -52,7 +49,7 @@ public abstract class CGameCtnMediaBlockColoringBaseBuilderBase<TSelf> where TSe
     public int KeyArchiveVersion
     {
         get => state.Get<int>("KeyArchiveVersion");
-        set => SetKeyArchiveVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockColoringBaseBuilderAssignments.GetKeyArchiveVersionAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithKeyArchiveVersion(int value)
     {
@@ -62,7 +59,7 @@ public abstract class CGameCtnMediaBlockColoringBaseBuilderBase<TSelf> where TSe
     public List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringBase.Key>? Keys
     {
         get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringBase.Key>?>("Keys");
-        set => SetKeys(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockColoringBaseBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringBase.Key>? value)
     {

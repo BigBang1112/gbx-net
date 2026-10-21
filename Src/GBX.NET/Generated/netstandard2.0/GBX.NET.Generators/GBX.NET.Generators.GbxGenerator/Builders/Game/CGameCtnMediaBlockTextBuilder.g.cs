@@ -36,14 +36,10 @@ public abstract class CGameCtnMediaBlockTextBuilderBase<TSelf> where TSelf : CGa
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockText> state;
     private protected CGameCtnMediaBlockTextBuilderBase() => state = new();
     private protected CGameCtnMediaBlockTextBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockText> state) => this.state = state;
-    private protected static void SetColor(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockText> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTextBuilderAssignments.GetColorAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetEffect(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockText> state, global::GBX.NET.Engines.Control.CControlEffectSimi? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTextBuilderAssignments.GetEffectAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetEffectReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockText> state, NodeRef<global::GBX.NET.Engines.Control.CControlEffectSimi> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTextBuilderAssignments.GetEffectReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetText(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockText> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTextBuilderAssignments.GetTextAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public Vec3 Color
     {
         get => state.Get<Vec3>("Color");
-        set => SetColor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTextBuilderAssignments.GetColorAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithColor(Vec3 value)
     {
@@ -53,7 +49,7 @@ public abstract class CGameCtnMediaBlockTextBuilderBase<TSelf> where TSelf : CGa
     public global::GBX.NET.Engines.Control.CControlEffectSimi? Effect
     {
         get => state.Get<global::GBX.NET.Engines.Control.CControlEffectSimi?>("Effect");
-        set => SetEffect(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTextBuilderAssignments.GetEffectAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEffect(global::GBX.NET.Engines.Control.CControlEffectSimi? value)
     {
@@ -63,13 +59,13 @@ public abstract class CGameCtnMediaBlockTextBuilderBase<TSelf> where TSelf : CGa
     public TSelf WithEffectReference(NodeRef<global::GBX.NET.Engines.Control.CControlEffectSimi> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetEffectReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTextBuilderAssignments.GetEffectReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public string? Text
     {
         get => state.Get<string?>("Text");
-        set => SetText(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTextBuilderAssignments.GetTextAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithText(string? value)
     {

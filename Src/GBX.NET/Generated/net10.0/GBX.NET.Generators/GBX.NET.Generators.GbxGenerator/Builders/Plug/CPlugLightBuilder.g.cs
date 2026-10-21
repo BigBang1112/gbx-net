@@ -36,24 +36,10 @@ public abstract class CPlugLightBuilderBase<TSelf> where TSelf : CPlugLightBuild
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLight> state;
     private protected CPlugLightBuilderBase() => state = new();
     private protected CPlugLightBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLight> state) => this.state = state;
-    private protected static void SetAnimPeriodMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLight> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetAnimPeriodMaxAssignment(), value, GameVersion.TM2020);
-    private protected static void SetAnimPeriodMin(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLight> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetAnimPeriodMinAssignment(), value, GameVersion.TM2020);
-    private protected static void SetAnimTimerName(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLight> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetAnimTimerNameAssignment(), value, GameVersion.TM2020);
-    private protected static void SetBitmapFlare(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLight> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetBitmapFlareAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBitmapFlareReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLight> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetBitmapFlareReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBitmapProjector(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLight> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetBitmapProjectorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBitmapProjectorReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLight> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetBitmapProjectorReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFlags(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLight> state, global::GBX.NET.Engines.Plug.CPlugLight.EFlags value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFuncLight(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLight> state, global::GBX.NET.Engines.Function.CFuncLight? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetFuncLightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFuncLightReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLight> state, NodeRef<global::GBX.NET.Engines.Function.CFuncLight> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetFuncLightReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetImageAnim(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLight> state, global::GBX.NET.Engines.Plug.CPlugFileImg? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetImageAnimAssignment(), value, GameVersion.TM2020);
-    private protected static void SetImageAnimReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLight> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetImageAnimReferenceAssignment(), value, GameVersion.TM2020);
-    private protected static void SetLight(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLight> state, global::GBX.NET.Engines.Graphic.GxLight? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetLightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLightReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLight> state, NodeRef<global::GBX.NET.Engines.Graphic.GxLight> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetLightReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public global::GBX.NET.Engines.Graphic.GxLight? Light
     {
         get => state.Get<global::GBX.NET.Engines.Graphic.GxLight?>("Light");
-        set => SetLight(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetLightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLight(global::GBX.NET.Engines.Graphic.GxLight? value)
     {
@@ -63,7 +49,7 @@ public abstract class CPlugLightBuilderBase<TSelf> where TSelf : CPlugLightBuild
     public TSelf WithLightReference(NodeRef<global::GBX.NET.Engines.Graphic.GxLight> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetLightReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetLightReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -73,7 +59,7 @@ public abstract class CPlugLightBuilderMembers1<TSelf> : CPlugLightBuilderBase<T
     public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapFlare
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapFlare");
-        set => SetBitmapFlare(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetBitmapFlareAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBitmapFlare(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -83,13 +69,13 @@ public abstract class CPlugLightBuilderMembers1<TSelf> : CPlugLightBuilderBase<T
     public TSelf WithBitmapFlareReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBitmapFlareReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetBitmapFlareReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapProjector
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapProjector");
-        set => SetBitmapProjector(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetBitmapProjectorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBitmapProjector(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -99,13 +85,13 @@ public abstract class CPlugLightBuilderMembers1<TSelf> : CPlugLightBuilderBase<T
     public TSelf WithBitmapProjectorReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBitmapProjectorReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetBitmapProjectorReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Function.CFuncLight? FuncLight
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncLight?>("FuncLight");
-        set => SetFuncLight(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetFuncLightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFuncLight(global::GBX.NET.Engines.Function.CFuncLight? value)
     {
@@ -115,7 +101,7 @@ public abstract class CPlugLightBuilderMembers1<TSelf> : CPlugLightBuilderBase<T
     public TSelf WithFuncLightReference(NodeRef<global::GBX.NET.Engines.Function.CFuncLight> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetFuncLightReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetFuncLightReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -125,7 +111,7 @@ public abstract class CPlugLightBuilderMembers2<TSelf> : CPlugLightBuilderMember
     public global::GBX.NET.Engines.Plug.CPlugLight.EFlags Flags
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugLight.EFlags>("Flags");
-        set => SetFlags(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFlags(global::GBX.NET.Engines.Plug.CPlugLight.EFlags value)
     {
@@ -499,7 +485,7 @@ public partial class CPlugLightBuilder : CPlugLightBuilderBase<CPlugLightBuilder
         public float AnimPeriodMax
         {
             get => state.Get<float>("AnimPeriodMax");
-            set => SetAnimPeriodMax(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetAnimPeriodMaxAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithAnimPeriodMax(float value)
         {
@@ -509,7 +495,7 @@ public partial class CPlugLightBuilder : CPlugLightBuilderBase<CPlugLightBuilder
         public float AnimPeriodMin
         {
             get => state.Get<float>("AnimPeriodMin");
-            set => SetAnimPeriodMin(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetAnimPeriodMinAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithAnimPeriodMin(float value)
         {
@@ -519,7 +505,7 @@ public partial class CPlugLightBuilder : CPlugLightBuilderBase<CPlugLightBuilder
         public string? AnimTimerName
         {
             get => state.Get<string?>("AnimTimerName");
-            set => SetAnimTimerName(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetAnimTimerNameAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithAnimTimerName(string? value)
         {
@@ -529,7 +515,7 @@ public partial class CPlugLightBuilder : CPlugLightBuilderBase<CPlugLightBuilder
         public global::GBX.NET.Engines.Plug.CPlugFileImg? ImageAnim
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugFileImg?>("ImageAnim");
-            set => SetImageAnim(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetImageAnimAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithImageAnim(global::GBX.NET.Engines.Plug.CPlugFileImg? value)
         {
@@ -539,7 +525,7 @@ public partial class CPlugLightBuilder : CPlugLightBuilderBase<CPlugLightBuilder
         public TM2020 WithImageAnimReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetImageAnimReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetImageAnimReferenceAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithLight(global::GBX.NET.Interfaces.Graphic.IGxLightTM2020? value)

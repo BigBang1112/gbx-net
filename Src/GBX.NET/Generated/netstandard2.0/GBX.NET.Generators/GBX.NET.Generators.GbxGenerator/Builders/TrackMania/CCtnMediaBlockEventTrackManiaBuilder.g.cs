@@ -36,14 +36,10 @@ public abstract class CCtnMediaBlockEventTrackManiaBuilderBase<TSelf> where TSel
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania> state;
     private protected CCtnMediaBlockEventTrackManiaBuilderBase() => state = new();
     private protected CCtnMediaBlockEventTrackManiaBuilderBase(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania> state) => this.state = state;
-    private protected static void SetEnd(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockEventTrackManiaBuilderAssignments.GetEndAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetEvents(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania> state, global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania.Event[]? value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockEventTrackManiaBuilderAssignments.GetEventsAssignment(), value, GameVersion.TMNESWC | GameVersion.VSK5);
-    private protected static void SetStart(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockEventTrackManiaBuilderAssignments.GetStartAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetStunts(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania> state, global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania.Stunt[]? value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockEventTrackManiaBuilderAssignments.GetStuntsAssignment(), value, GameVersion.TMSX);
     public TimeSingle End
     {
         get => state.Get<TimeSingle>("End");
-        set => SetEnd(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockEventTrackManiaBuilderAssignments.GetEndAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithEnd(TimeSingle value)
     {
@@ -53,7 +49,7 @@ public abstract class CCtnMediaBlockEventTrackManiaBuilderBase<TSelf> where TSel
     public TimeSingle Start
     {
         get => state.Get<TimeSingle>("Start");
-        set => SetStart(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockEventTrackManiaBuilderAssignments.GetStartAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithStart(TimeSingle value)
     {
@@ -67,7 +63,7 @@ public abstract class CCtnMediaBlockEventTrackManiaBuilderMembers1<TSelf> : CCtn
     public global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania.Event[]? Events
     {
         get => state.Get<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania.Event[]?>("Events");
-        set => SetEvents(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockEventTrackManiaBuilderAssignments.GetEventsAssignment(), value, GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithEvents(params global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania.Event[]? value)
     {
@@ -115,7 +111,7 @@ public partial class CCtnMediaBlockEventTrackManiaBuilder : CCtnMediaBlockEventT
         public global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania.Stunt[]? Stunts
         {
             get => state.Get<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania.Stunt[]?>("Stunts");
-            set => SetStunts(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockEventTrackManiaBuilderAssignments.GetStuntsAssignment(), value, GameVersion.TMSX);
         }
         public TMSX WithStunts(params global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania.Stunt[]? value)
         {

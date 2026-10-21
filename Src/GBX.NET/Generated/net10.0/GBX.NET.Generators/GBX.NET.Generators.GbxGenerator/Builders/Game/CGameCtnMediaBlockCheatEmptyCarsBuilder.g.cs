@@ -36,14 +36,10 @@ public abstract class CGameCtnMediaBlockCheatEmptyCarsBuilderBase<TSelf> where T
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCheatEmptyCars> state;
     private protected CGameCtnMediaBlockCheatEmptyCarsBuilderBase() => state = new();
     private protected CGameCtnMediaBlockCheatEmptyCarsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCheatEmptyCars> state) => this.state = state;
-    private protected static void SetDataTape(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCheatEmptyCars> state, global::GBX.NET.Engines.Plug.CPlugDataTape? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCheatEmptyCarsBuilderAssignments.GetDataTapeAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
-    private protected static void SetDataTapeReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCheatEmptyCars> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugDataTape> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCheatEmptyCarsBuilderAssignments.GetDataTapeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
-    private protected static void SetEnd(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCheatEmptyCars> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCheatEmptyCarsBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
-    private protected static void SetStart(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCheatEmptyCars> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCheatEmptyCarsBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
     public global::GBX.NET.Engines.Plug.CPlugDataTape? DataTape
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugDataTape?>("DataTape");
-        set => SetDataTape(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCheatEmptyCarsBuilderAssignments.GetDataTapeAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithDataTape(global::GBX.NET.Engines.Plug.CPlugDataTape? value)
     {
@@ -53,13 +49,13 @@ public abstract class CGameCtnMediaBlockCheatEmptyCarsBuilderBase<TSelf> where T
     public TSelf WithDataTapeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugDataTape> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetDataTapeReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCheatEmptyCarsBuilderAssignments.GetDataTapeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TimeSingle End
     {
         get => state.Get<TimeSingle>("End");
-        set => SetEnd(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCheatEmptyCarsBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithEnd(TimeSingle value)
     {
@@ -69,7 +65,7 @@ public abstract class CGameCtnMediaBlockCheatEmptyCarsBuilderBase<TSelf> where T
     public TimeSingle Start
     {
         get => state.Get<TimeSingle>("Start");
-        set => SetStart(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCheatEmptyCarsBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithStart(TimeSingle value)
     {

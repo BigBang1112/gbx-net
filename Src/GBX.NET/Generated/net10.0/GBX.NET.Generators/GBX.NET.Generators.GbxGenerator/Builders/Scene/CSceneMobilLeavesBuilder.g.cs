@@ -36,35 +36,10 @@ public abstract class CSceneMobilLeavesBuilderBase<TSelf> where TSelf : CSceneMo
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state;
     private protected CSceneMobilLeavesBuilderBase() => state = new();
     private protected CSceneMobilLeavesBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state) => this.state = state;
-    private protected static void SetCurvature(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetCurvatureAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFarZ(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetFarZAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetItem(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, global::GBX.NET.Engines.Hms.CHmsItem? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetItemAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLeafAlphaSpeedMax(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafAlphaSpeedMaxAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLeafBetaSpeedlMax(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafBetaSpeedlMaxAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLeafEmitterMaxCount(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafEmitterMaxCountAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLeafFallingSpeedBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafFallingSpeedBaseAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLeafFallingSpeedRandom(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafFallingSpeedRandomAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLeafMaxCount(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafMaxCountAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLeafOscillationAmplitudeBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafOscillationAmplitudeBaseAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLeafOscillationAmplitudeRandom(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafOscillationAmplitudeRandomAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLeafOscillationPeriodBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafOscillationPeriodBaseAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLeafOscillationPeriodRandom(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafOscillationPeriodRandomAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLeafRadiusBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafRadiusBaseAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLeafRadiusRandom(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafRadiusRandomAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLeafShader(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, global::GBX.NET.Engines.Plug.CPlugShader? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafShaderAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLeafShaderReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafShaderReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMessageHandler(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, global::GBX.NET.Engines.Scene.CSceneMessageHandler? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetMessageHandlerReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetMotion(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, global::GBX.NET.Engines.Motion.CMotion? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMotionReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, NodeRef<global::GBX.NET.Engines.Motion.CMotion> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetObjectLink(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetObjectLinkAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRespawnPeriod(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetRespawnPeriodAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetWind(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetWindAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public global::GBX.NET.Engines.Hms.CHmsItem? Item
     {
         get => state.Get<global::GBX.NET.Engines.Hms.CHmsItem?>("Item");
-        set => SetItem(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetItemAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithItem(global::GBX.NET.Engines.Hms.CHmsItem? value)
     {
@@ -74,7 +49,7 @@ public abstract class CSceneMobilLeavesBuilderBase<TSelf> where TSelf : CSceneMo
     public global::GBX.NET.Engines.Motion.CMotion? Motion
     {
         get => state.Get<global::GBX.NET.Engines.Motion.CMotion?>("Motion");
-        set => SetMotion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMotion(global::GBX.NET.Engines.Motion.CMotion? value)
     {
@@ -84,13 +59,13 @@ public abstract class CSceneMobilLeavesBuilderBase<TSelf> where TSelf : CSceneMo
     public TSelf WithMotionReference(NodeRef<global::GBX.NET.Engines.Motion.CMotion> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetMotionReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public string? Name
     {
         get => state.Get<string?>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithName(string? value)
     {
@@ -100,7 +75,7 @@ public abstract class CSceneMobilLeavesBuilderBase<TSelf> where TSelf : CSceneMo
     public NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? ObjectLink
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>?>("ObjectLink");
-        set => SetObjectLink(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetObjectLinkAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithObjectLink(NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? value)
     {
@@ -122,7 +97,7 @@ public abstract class CSceneMobilLeavesBuilderMembers1<TSelf> : CSceneMobilLeave
     public float Curvature
     {
         get => state.Get<float>("Curvature");
-        set => SetCurvature(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetCurvatureAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithCurvature(float value)
     {
@@ -132,7 +107,7 @@ public abstract class CSceneMobilLeavesBuilderMembers1<TSelf> : CSceneMobilLeave
     public float FarZ
     {
         get => state.Get<float>("FarZ");
-        set => SetFarZ(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetFarZAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFarZ(float value)
     {
@@ -142,7 +117,7 @@ public abstract class CSceneMobilLeavesBuilderMembers1<TSelf> : CSceneMobilLeave
     public float LeafAlphaSpeedMax
     {
         get => state.Get<float>("LeafAlphaSpeedMax");
-        set => SetLeafAlphaSpeedMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafAlphaSpeedMaxAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLeafAlphaSpeedMax(float value)
     {
@@ -152,7 +127,7 @@ public abstract class CSceneMobilLeavesBuilderMembers1<TSelf> : CSceneMobilLeave
     public float LeafBetaSpeedlMax
     {
         get => state.Get<float>("LeafBetaSpeedlMax");
-        set => SetLeafBetaSpeedlMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafBetaSpeedlMaxAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLeafBetaSpeedlMax(float value)
     {
@@ -162,7 +137,7 @@ public abstract class CSceneMobilLeavesBuilderMembers1<TSelf> : CSceneMobilLeave
     public int LeafEmitterMaxCount
     {
         get => state.Get<int>("LeafEmitterMaxCount");
-        set => SetLeafEmitterMaxCount(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafEmitterMaxCountAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLeafEmitterMaxCount(int value)
     {
@@ -172,7 +147,7 @@ public abstract class CSceneMobilLeavesBuilderMembers1<TSelf> : CSceneMobilLeave
     public float LeafFallingSpeedBase
     {
         get => state.Get<float>("LeafFallingSpeedBase");
-        set => SetLeafFallingSpeedBase(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafFallingSpeedBaseAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLeafFallingSpeedBase(float value)
     {
@@ -182,7 +157,7 @@ public abstract class CSceneMobilLeavesBuilderMembers1<TSelf> : CSceneMobilLeave
     public float LeafFallingSpeedRandom
     {
         get => state.Get<float>("LeafFallingSpeedRandom");
-        set => SetLeafFallingSpeedRandom(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafFallingSpeedRandomAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLeafFallingSpeedRandom(float value)
     {
@@ -192,7 +167,7 @@ public abstract class CSceneMobilLeavesBuilderMembers1<TSelf> : CSceneMobilLeave
     public int LeafMaxCount
     {
         get => state.Get<int>("LeafMaxCount");
-        set => SetLeafMaxCount(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafMaxCountAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLeafMaxCount(int value)
     {
@@ -202,7 +177,7 @@ public abstract class CSceneMobilLeavesBuilderMembers1<TSelf> : CSceneMobilLeave
     public float LeafOscillationAmplitudeBase
     {
         get => state.Get<float>("LeafOscillationAmplitudeBase");
-        set => SetLeafOscillationAmplitudeBase(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafOscillationAmplitudeBaseAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLeafOscillationAmplitudeBase(float value)
     {
@@ -212,7 +187,7 @@ public abstract class CSceneMobilLeavesBuilderMembers1<TSelf> : CSceneMobilLeave
     public float LeafOscillationAmplitudeRandom
     {
         get => state.Get<float>("LeafOscillationAmplitudeRandom");
-        set => SetLeafOscillationAmplitudeRandom(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafOscillationAmplitudeRandomAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLeafOscillationAmplitudeRandom(float value)
     {
@@ -222,7 +197,7 @@ public abstract class CSceneMobilLeavesBuilderMembers1<TSelf> : CSceneMobilLeave
     public float LeafOscillationPeriodBase
     {
         get => state.Get<float>("LeafOscillationPeriodBase");
-        set => SetLeafOscillationPeriodBase(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafOscillationPeriodBaseAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLeafOscillationPeriodBase(float value)
     {
@@ -232,7 +207,7 @@ public abstract class CSceneMobilLeavesBuilderMembers1<TSelf> : CSceneMobilLeave
     public float LeafOscillationPeriodRandom
     {
         get => state.Get<float>("LeafOscillationPeriodRandom");
-        set => SetLeafOscillationPeriodRandom(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafOscillationPeriodRandomAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLeafOscillationPeriodRandom(float value)
     {
@@ -242,7 +217,7 @@ public abstract class CSceneMobilLeavesBuilderMembers1<TSelf> : CSceneMobilLeave
     public float LeafRadiusBase
     {
         get => state.Get<float>("LeafRadiusBase");
-        set => SetLeafRadiusBase(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafRadiusBaseAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLeafRadiusBase(float value)
     {
@@ -252,7 +227,7 @@ public abstract class CSceneMobilLeavesBuilderMembers1<TSelf> : CSceneMobilLeave
     public float LeafRadiusRandom
     {
         get => state.Get<float>("LeafRadiusRandom");
-        set => SetLeafRadiusRandom(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafRadiusRandomAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLeafRadiusRandom(float value)
     {
@@ -262,7 +237,7 @@ public abstract class CSceneMobilLeavesBuilderMembers1<TSelf> : CSceneMobilLeave
     public global::GBX.NET.Engines.Plug.CPlugShader? LeafShader
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugShader?>("LeafShader");
-        set => SetLeafShader(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafShaderAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLeafShader(global::GBX.NET.Engines.Plug.CPlugShader? value)
     {
@@ -272,13 +247,13 @@ public abstract class CSceneMobilLeavesBuilderMembers1<TSelf> : CSceneMobilLeave
     public TSelf WithLeafShaderReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetLeafShaderReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafShaderReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public float RespawnPeriod
     {
         get => state.Get<float>("RespawnPeriod");
-        set => SetRespawnPeriod(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetRespawnPeriodAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRespawnPeriod(float value)
     {
@@ -288,7 +263,7 @@ public abstract class CSceneMobilLeavesBuilderMembers1<TSelf> : CSceneMobilLeave
     public Vec3 Wind
     {
         get => state.Get<Vec3>("Wind");
-        set => SetWind(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetWindAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithWind(Vec3 value)
     {
@@ -302,7 +277,7 @@ public abstract class CSceneMobilLeavesBuilderMembers2<TSelf> : CSceneMobilLeave
     public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
     {
         get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
-        set => SetMessageHandler(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
     {
@@ -312,7 +287,7 @@ public abstract class CSceneMobilLeavesBuilderMembers2<TSelf> : CSceneMobilLeave
     public TSelf WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetMessageHandlerReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
 }

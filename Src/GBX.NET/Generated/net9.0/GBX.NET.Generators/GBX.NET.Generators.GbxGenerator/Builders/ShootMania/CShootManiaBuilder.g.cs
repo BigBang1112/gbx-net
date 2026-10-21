@@ -36,15 +36,10 @@ public abstract class CShootManiaBuilderBase<TSelf> where TSelf : CShootManiaBui
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.ShootMania.CShootMania> state;
     private protected CShootManiaBuilderBase() => state = new();
     private protected CShootManiaBuilderBase(NodeBuilderState<global::GBX.NET.Engines.ShootMania.CShootMania> state) => this.state = state;
-    private protected static void SetArenaInterfaceUI(NodeBuilderState<global::GBX.NET.Engines.ShootMania.CShootMania> state, global::GBX.NET.Engines.Scene.CScene2d? value) => state.Set(global::GBX.NET.Builders.Engines.ShootMania.CShootManiaBuilderAssignments.GetArenaInterfaceUIAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetArenaInterfaceUIReference(NodeBuilderState<global::GBX.NET.Engines.ShootMania.CShootMania> state, NodeRef<global::GBX.NET.Engines.Scene.CScene2d> value) => state.Set(global::GBX.NET.Builders.Engines.ShootMania.CShootManiaBuilderAssignments.GetArenaInterfaceUIReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetArenaResources(NodeBuilderState<global::GBX.NET.Engines.ShootMania.CShootMania> state, global::GBX.NET.Engines.ShootMania.CSmArenaResource? value) => state.Set(global::GBX.NET.Builders.Engines.ShootMania.CShootManiaBuilderAssignments.GetArenaResourcesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetArenaResourcesReference(NodeBuilderState<global::GBX.NET.Engines.ShootMania.CShootMania> state, NodeRef<global::GBX.NET.Engines.ShootMania.CSmArenaResource> value) => state.Set(global::GBX.NET.Builders.Engines.ShootMania.CShootManiaBuilderAssignments.GetArenaResourcesReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.ShootMania.CShootMania> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameNodBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public string? Name
     {
         get => state.Get<string?>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameNodBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithName(string? value)
     {
@@ -58,7 +53,7 @@ public abstract class CShootManiaBuilderMembers1<TSelf> : CShootManiaBuilderBase
     public global::GBX.NET.Engines.Scene.CScene2d? ArenaInterfaceUI
     {
         get => state.Get<global::GBX.NET.Engines.Scene.CScene2d?>("ArenaInterfaceUI");
-        set => SetArenaInterfaceUI(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.ShootMania.CShootManiaBuilderAssignments.GetArenaInterfaceUIAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithArenaInterfaceUI(global::GBX.NET.Engines.Scene.CScene2d? value)
     {
@@ -68,13 +63,13 @@ public abstract class CShootManiaBuilderMembers1<TSelf> : CShootManiaBuilderBase
     public TSelf WithArenaInterfaceUIReference(NodeRef<global::GBX.NET.Engines.Scene.CScene2d> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetArenaInterfaceUIReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.ShootMania.CShootManiaBuilderAssignments.GetArenaInterfaceUIReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.ShootMania.CSmArenaResource? ArenaResources
     {
         get => state.Get<global::GBX.NET.Engines.ShootMania.CSmArenaResource?>("ArenaResources");
-        set => SetArenaResources(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.ShootMania.CShootManiaBuilderAssignments.GetArenaResourcesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithArenaResources(global::GBX.NET.Engines.ShootMania.CSmArenaResource? value)
     {
@@ -84,7 +79,7 @@ public abstract class CShootManiaBuilderMembers1<TSelf> : CShootManiaBuilderBase
     public TSelf WithArenaResourcesReference(NodeRef<global::GBX.NET.Engines.ShootMania.CSmArenaResource> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetArenaResourcesReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.ShootMania.CShootManiaBuilderAssignments.GetArenaResourcesReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
 }

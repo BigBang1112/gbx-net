@@ -36,11 +36,10 @@ public abstract class CPlugCamShakeModelBuilderBase<TSelf> where TSelf : CPlugCa
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCamShakeModel> state;
     private protected CPlugCamShakeModelBuilderBase() => state = new();
     private protected CPlugCamShakeModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCamShakeModel> state) => this.state = state;
-    private protected static void SetParams(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCamShakeModel> state, global::GBX.NET.Engines.Plug.CPlugCamShakeModel.CamShakeParams[] value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCamShakeModelBuilderAssignments.GetParamsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public global::GBX.NET.Engines.Plug.CPlugCamShakeModel.CamShakeParams[] Params
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugCamShakeModel.CamShakeParams[]>("Params");
-        set => SetParams(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCamShakeModelBuilderAssignments.GetParamsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithParams(params global::GBX.NET.Engines.Plug.CPlugCamShakeModel.CamShakeParams[] value)
     {

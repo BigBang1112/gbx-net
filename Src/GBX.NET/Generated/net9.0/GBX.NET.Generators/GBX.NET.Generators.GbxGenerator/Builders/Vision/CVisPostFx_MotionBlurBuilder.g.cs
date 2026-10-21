@@ -36,16 +36,10 @@ public abstract class CVisPostFx_MotionBlurBuilderBase<TSelf> where TSelf : CVis
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Vision.CVisPostFx_MotionBlur> state;
     private protected CVisPostFx_MotionBlurBuilderBase() => state = new();
     private protected CVisPostFx_MotionBlurBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Vision.CVisPostFx_MotionBlur> state) => this.state = state;
-    private protected static void SetT2_DelayShadows(NodeBuilderState<global::GBX.NET.Engines.Vision.CVisPostFx_MotionBlur> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Vision.CVisPostFx_MotionBlurBuilderAssignments.GetT2_DelayShadowsAssignment(), value, GameVersion.TMF);
-    private protected static void SetT2_Fid_PHlsl_MotionLenCmp(NodeBuilderState<global::GBX.NET.Engines.Vision.CVisPostFx_MotionBlur> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Vision.CVisPostFx_MotionBlurBuilderAssignments.GetT2_Fid_PHlsl_MotionLenCmpAssignment(), value, GameVersion.TMF);
-    private protected static void SetT2_Fid_PHlsl_MotionLenCmpReference(NodeBuilderState<global::GBX.NET.Engines.Vision.CVisPostFx_MotionBlur> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Vision.CVisPostFx_MotionBlurBuilderAssignments.GetT2_Fid_PHlsl_MotionLenCmpReferenceAssignment(), value, GameVersion.TMF);
-    private protected static void SetT2_MotionMaxLen(NodeBuilderState<global::GBX.NET.Engines.Vision.CVisPostFx_MotionBlur> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Vision.CVisPostFx_MotionBlurBuilderAssignments.GetT2_MotionMaxLenAssignment(), value, GameVersion.TMF);
-    private protected static void SetT2_MotionScale(NodeBuilderState<global::GBX.NET.Engines.Vision.CVisPostFx_MotionBlur> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Vision.CVisPostFx_MotionBlurBuilderAssignments.GetT2_MotionScaleAssignment(), value, GameVersion.TMF);
-    private protected static void SetTechnique(NodeBuilderState<global::GBX.NET.Engines.Vision.CVisPostFx_MotionBlur> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Vision.CVisPostFx_MotionBlurBuilderAssignments.GetTechniqueAssignment(), value, GameVersion.TMF);
     public bool T2_DelayShadows
     {
         get => state.Get<bool>("T2_DelayShadows");
-        set => SetT2_DelayShadows(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Vision.CVisPostFx_MotionBlurBuilderAssignments.GetT2_DelayShadowsAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithT2_DelayShadows(bool value)
     {
@@ -55,7 +49,7 @@ public abstract class CVisPostFx_MotionBlurBuilderBase<TSelf> where TSelf : CVis
     public global::GBX.NET.Engines.MwFoundations.CMwNod? T2_Fid_PHlsl_MotionLenCmp
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("T2_Fid_PHlsl_MotionLenCmp");
-        set => SetT2_Fid_PHlsl_MotionLenCmp(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Vision.CVisPostFx_MotionBlurBuilderAssignments.GetT2_Fid_PHlsl_MotionLenCmpAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithT2_Fid_PHlsl_MotionLenCmp(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
@@ -65,13 +59,13 @@ public abstract class CVisPostFx_MotionBlurBuilderBase<TSelf> where TSelf : CVis
     public TSelf WithT2_Fid_PHlsl_MotionLenCmpReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetT2_Fid_PHlsl_MotionLenCmpReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Vision.CVisPostFx_MotionBlurBuilderAssignments.GetT2_Fid_PHlsl_MotionLenCmpReferenceAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
     public float T2_MotionMaxLen
     {
         get => state.Get<float>("T2_MotionMaxLen");
-        set => SetT2_MotionMaxLen(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Vision.CVisPostFx_MotionBlurBuilderAssignments.GetT2_MotionMaxLenAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithT2_MotionMaxLen(float value)
     {
@@ -81,7 +75,7 @@ public abstract class CVisPostFx_MotionBlurBuilderBase<TSelf> where TSelf : CVis
     public float T2_MotionScale
     {
         get => state.Get<float>("T2_MotionScale");
-        set => SetT2_MotionScale(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Vision.CVisPostFx_MotionBlurBuilderAssignments.GetT2_MotionScaleAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithT2_MotionScale(float value)
     {
@@ -91,7 +85,7 @@ public abstract class CVisPostFx_MotionBlurBuilderBase<TSelf> where TSelf : CVis
     public int Technique
     {
         get => state.Get<int>("Technique");
-        set => SetTechnique(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Vision.CVisPostFx_MotionBlurBuilderAssignments.GetTechniqueAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithTechnique(int value)
     {

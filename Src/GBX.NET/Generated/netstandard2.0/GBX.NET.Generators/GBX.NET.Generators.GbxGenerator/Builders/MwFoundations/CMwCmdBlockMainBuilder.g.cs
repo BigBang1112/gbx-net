@@ -36,14 +36,10 @@ public abstract class CMwCmdBlockMainBuilderBase<TSelf> where TSelf : CMwCmdBloc
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain> state;
     private protected CMwCmdBlockMainBuilderBase() => state = new();
     private protected CMwCmdBlockMainBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain> state) => this.state = state;
-    private protected static void SetCmds(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain> state, NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwCmdScript>? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdBlockBuilderAssignments.GetCmdsAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetContextVariables(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain> state, global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.BlockVariable[]? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdBlockBuilderAssignments.GetContextVariablesAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetMethods(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain> state, NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdBlockMainBuilderAssignments.GetMethodsAssignment(), value, GameVersion.TMF);
-    private protected static void SetVariables(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain> state, global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.BlockVariable[]? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdBlockBuilderAssignments.GetVariablesAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     public NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwCmdScript>? Cmds
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwCmdScript>?>("Cmds");
-        set => SetCmds(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdBlockBuilderAssignments.GetCmdsAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithCmds(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwCmdScript>? value)
     {
@@ -61,7 +57,7 @@ public abstract class CMwCmdBlockMainBuilderBase<TSelf> where TSelf : CMwCmdBloc
     public global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.BlockVariable[]? ContextVariables
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.BlockVariable[]?>("ContextVariables");
-        set => SetContextVariables(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdBlockBuilderAssignments.GetContextVariablesAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithContextVariables(params global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.BlockVariable[]? value)
     {
@@ -75,7 +71,7 @@ public abstract class CMwCmdBlockMainBuilderBase<TSelf> where TSelf : CMwCmdBloc
     public global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.BlockVariable[]? Variables
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.BlockVariable[]?>("Variables");
-        set => SetVariables(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdBlockBuilderAssignments.GetVariablesAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithVariables(params global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.BlockVariable[]? value)
     {
@@ -219,7 +215,7 @@ public partial class CMwCmdBlockMainBuilder : CMwCmdBlockMainBuilderBase<CMwCmdB
         public NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? Methods
         {
             get => state.Get<NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>?>("Methods");
-            set => SetMethods(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdBlockMainBuilderAssignments.GetMethodsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithMethods(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value)
         {

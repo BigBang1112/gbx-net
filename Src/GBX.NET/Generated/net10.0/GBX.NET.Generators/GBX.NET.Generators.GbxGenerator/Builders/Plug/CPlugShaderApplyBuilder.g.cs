@@ -36,53 +36,10 @@ public abstract class CPlugShaderApplyBuilderBase<TSelf> where TSelf : CPlugShad
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state;
     private protected CPlugShaderApplyBuilderBase() => state = new();
     private protected CPlugShaderApplyBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state) => this.state = state;
-    private protected static void SetApplyField(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetApplyFieldAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetApplyField2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetApplyField2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetApplyField3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetApplyField3Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetApplyFlags(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, byte value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetApplyFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBitmapAddresses(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetBitmapAddressesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBitmapApplyArray(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetBitmapApplyArrayAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBitmapApplyArrayReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetBitmapApplyArrayReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBlendDst(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetBlendDstAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
-    private protected static void SetBlendSrc(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetBlendSrcAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
-    private protected static void SetBumpMap(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, global::GBX.NET.Engines.Plug.CPlugBitmapAddress? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetBumpMapAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
-    private protected static void SetBumpMapReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapAddress> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetBumpMapReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
-    private protected static void SetCustomShaders(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, global::GBX.NET.Engines.Plug.CPlugShader.ShaderCustom[] value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetCustomShadersAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDiffuse(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, global::GBX.NET.Engines.Plug.CPlugBitmapAddress? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetDiffuseAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
-    private protected static void SetDiffuseReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapAddress> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetDiffuseReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
-    private protected static void SetEnvMap(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, global::GBX.NET.Engines.Plug.CPlugBitmapAddress? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetEnvMapAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
-    private protected static void SetEnvMapReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapAddress> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetEnvMapReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
-    private protected static void SetEnvMapTexOp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetEnvMapTexOpAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
-    private protected static void SetFlags(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFuncShader(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, global::GBX.NET.Engines.Function.CFuncShader? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetFuncShaderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFuncShaderReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, NodeRef<global::GBX.NET.Engines.Function.CFuncShader> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetFuncShaderReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetGPU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, global::GBX.NET.Engines.Plug.CPlugFileGPUV? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetGPUAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetGPUReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileGPUV> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetGPUReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetLegacyAlphaFlags(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetLegacyAlphaFlagsAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
-    private protected static void SetLegacyCustomShaders(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetLegacyCustomShadersAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetLegacyMaterialFlags(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetLegacyMaterialFlagsAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
-    private protected static void SetLightMap(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, global::GBX.NET.Engines.Plug.CPlugBitmapAddress? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetLightMapAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
-    private protected static void SetLightMapReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapAddress> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetLightMapReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
-    private protected static void SetLightMapQuality(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetLightMapQualityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMaterial(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, global::GBX.NET.Engines.Plug.CPlugShaderGeneric.SMaterial? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderGenericBuilderAssignments.GetMaterialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMaterialFx(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, global::GBX.NET.Engines.Plug.CPlugMaterialFx? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetMaterialFxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMaterialFxReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialFx> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetMaterialFxReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetPasses(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetPassesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRequirementFlags(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, ulong value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetRequirementFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRequirementFlags2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetRequirementFlags2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSelfIllum(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, global::GBX.NET.Engines.Plug.CPlugBitmapAddress? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetSelfIllumAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
-    private protected static void SetSelfIllumReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapAddress> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetSelfIllumReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
-    private protected static void SetSolidWiredApply(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, global::GBX.NET.Engines.Plug.CPlugBitmapApply? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetSolidWiredApplyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSolidWiredApplyReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapApply> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetSolidWiredApplyReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetTexOpConstant(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetTexOpConstantAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetUnusedBitmapAddresses(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetUnusedBitmapAddressesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetVisibleIdFlags(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, ushort value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetVisibleIdFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetVisibleMaxDist(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetVisibleMaxDistAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetVisibleMinScreenHeight(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetVisibleMinScreenHeightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>? BitmapAddresses
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>?>("BitmapAddresses");
-        set => SetBitmapAddresses(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetBitmapAddressesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBitmapAddresses(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>? value)
     {
@@ -100,7 +57,7 @@ public abstract class CPlugShaderApplyBuilderBase<TSelf> where TSelf : CPlugShad
     public global::GBX.NET.Engines.Function.CFuncShader? FuncShader
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncShader?>("FuncShader");
-        set => SetFuncShader(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetFuncShaderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFuncShader(global::GBX.NET.Engines.Function.CFuncShader? value)
     {
@@ -110,13 +67,13 @@ public abstract class CPlugShaderApplyBuilderBase<TSelf> where TSelf : CPlugShad
     public TSelf WithFuncShaderReference(NodeRef<global::GBX.NET.Engines.Function.CFuncShader> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetFuncShaderReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetFuncShaderReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public float LightMapQuality
     {
         get => state.Get<float>("LightMapQuality");
-        set => SetLightMapQuality(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetLightMapQualityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLightMapQuality(float value)
     {
@@ -126,7 +83,7 @@ public abstract class CPlugShaderApplyBuilderBase<TSelf> where TSelf : CPlugShad
     public global::GBX.NET.Engines.Plug.CPlugShaderGeneric.SMaterial? Material
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugShaderGeneric.SMaterial?>("Material");
-        set => SetMaterial(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderGenericBuilderAssignments.GetMaterialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMaterial(global::GBX.NET.Engines.Plug.CPlugShaderGeneric.SMaterial? value)
     {
@@ -136,7 +93,7 @@ public abstract class CPlugShaderApplyBuilderBase<TSelf> where TSelf : CPlugShad
     public global::GBX.NET.Engines.Plug.CPlugMaterialFx? MaterialFx
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialFx?>("MaterialFx");
-        set => SetMaterialFx(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetMaterialFxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMaterialFx(global::GBX.NET.Engines.Plug.CPlugMaterialFx? value)
     {
@@ -146,13 +103,13 @@ public abstract class CPlugShaderApplyBuilderBase<TSelf> where TSelf : CPlugShad
     public TSelf WithMaterialFxReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialFx> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetMaterialFxReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetMaterialFxReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>? Passes
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>?>("Passes");
-        set => SetPasses(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetPassesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPasses(NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>? value)
     {
@@ -170,7 +127,7 @@ public abstract class CPlugShaderApplyBuilderBase<TSelf> where TSelf : CPlugShad
     public global::GBX.NET.Engines.Plug.CPlugBitmapApply? SolidWiredApply
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmapApply?>("SolidWiredApply");
-        set => SetSolidWiredApply(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetSolidWiredApplyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSolidWiredApply(global::GBX.NET.Engines.Plug.CPlugBitmapApply? value)
     {
@@ -180,13 +137,13 @@ public abstract class CPlugShaderApplyBuilderBase<TSelf> where TSelf : CPlugShad
     public TSelf WithSolidWiredApplyReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapApply> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSolidWiredApplyReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetSolidWiredApplyReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public ushort VisibleIdFlags
     {
         get => state.Get<ushort>("VisibleIdFlags");
-        set => SetVisibleIdFlags(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetVisibleIdFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithVisibleIdFlags(ushort value)
     {
@@ -200,7 +157,7 @@ public abstract class CPlugShaderApplyBuilderMembers1<TSelf> : CPlugShaderApplyB
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>? LegacyCustomShaders
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>?>("LegacyCustomShaders");
-        set => SetLegacyCustomShaders(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetLegacyCustomShadersAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithLegacyCustomShaders(NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>? value)
     {
@@ -222,7 +179,7 @@ public abstract class CPlugShaderApplyBuilderMembers2<TSelf> : CPlugShaderApplyB
     public ulong RequirementFlags
     {
         get => state.Get<ulong>("RequirementFlags");
-        set => SetRequirementFlags(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetRequirementFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRequirementFlags(ulong value)
     {
@@ -236,7 +193,7 @@ public abstract class CPlugShaderApplyBuilderMembers3<TSelf> : CPlugShaderApplyB
     public uint ApplyField
     {
         get => state.Get<uint>("ApplyField");
-        set => SetApplyField(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetApplyFieldAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithApplyField(uint value)
     {
@@ -246,7 +203,7 @@ public abstract class CPlugShaderApplyBuilderMembers3<TSelf> : CPlugShaderApplyB
     public uint TexOpConstant
     {
         get => state.Get<uint>("TexOpConstant");
-        set => SetTexOpConstant(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetTexOpConstantAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithTexOpConstant(uint value)
     {
@@ -260,7 +217,7 @@ public abstract class CPlugShaderApplyBuilderMembers4<TSelf> : CPlugShaderApplyB
     public uint ApplyField2
     {
         get => state.Get<uint>("ApplyField2");
-        set => SetApplyField2(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetApplyField2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithApplyField2(uint value)
     {
@@ -274,7 +231,7 @@ public abstract class CPlugShaderApplyBuilderMembers5<TSelf> : CPlugShaderApplyB
     public int BlendDst
     {
         get => state.Get<int>("BlendDst");
-        set => SetBlendDst(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetBlendDstAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
     }
     public TSelf WithBlendDst(int value)
     {
@@ -284,7 +241,7 @@ public abstract class CPlugShaderApplyBuilderMembers5<TSelf> : CPlugShaderApplyB
     public int BlendSrc
     {
         get => state.Get<int>("BlendSrc");
-        set => SetBlendSrc(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetBlendSrcAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
     }
     public TSelf WithBlendSrc(int value)
     {
@@ -294,7 +251,7 @@ public abstract class CPlugShaderApplyBuilderMembers5<TSelf> : CPlugShaderApplyB
     public global::GBX.NET.Engines.Plug.CPlugBitmapAddress? BumpMap
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmapAddress?>("BumpMap");
-        set => SetBumpMap(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetBumpMapAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
     }
     public TSelf WithBumpMap(global::GBX.NET.Engines.Plug.CPlugBitmapAddress? value)
     {
@@ -304,13 +261,13 @@ public abstract class CPlugShaderApplyBuilderMembers5<TSelf> : CPlugShaderApplyB
     public TSelf WithBumpMapReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapAddress> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBumpMapReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetBumpMapReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugBitmapAddress? Diffuse
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmapAddress?>("Diffuse");
-        set => SetDiffuse(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetDiffuseAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
     }
     public TSelf WithDiffuse(global::GBX.NET.Engines.Plug.CPlugBitmapAddress? value)
     {
@@ -320,13 +277,13 @@ public abstract class CPlugShaderApplyBuilderMembers5<TSelf> : CPlugShaderApplyB
     public TSelf WithDiffuseReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapAddress> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetDiffuseReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetDiffuseReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugBitmapAddress? EnvMap
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmapAddress?>("EnvMap");
-        set => SetEnvMap(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetEnvMapAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
     }
     public TSelf WithEnvMap(global::GBX.NET.Engines.Plug.CPlugBitmapAddress? value)
     {
@@ -336,13 +293,13 @@ public abstract class CPlugShaderApplyBuilderMembers5<TSelf> : CPlugShaderApplyB
     public TSelf WithEnvMapReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapAddress> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetEnvMapReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetEnvMapReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
         return (TSelf)this;
     }
     public int EnvMapTexOp
     {
         get => state.Get<int>("EnvMapTexOp");
-        set => SetEnvMapTexOp(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetEnvMapTexOpAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
     }
     public TSelf WithEnvMapTexOp(int value)
     {
@@ -352,7 +309,7 @@ public abstract class CPlugShaderApplyBuilderMembers5<TSelf> : CPlugShaderApplyB
     public uint LegacyAlphaFlags
     {
         get => state.Get<uint>("LegacyAlphaFlags");
-        set => SetLegacyAlphaFlags(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetLegacyAlphaFlagsAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
     }
     public TSelf WithLegacyAlphaFlags(uint value)
     {
@@ -362,7 +319,7 @@ public abstract class CPlugShaderApplyBuilderMembers5<TSelf> : CPlugShaderApplyB
     public uint LegacyMaterialFlags
     {
         get => state.Get<uint>("LegacyMaterialFlags");
-        set => SetLegacyMaterialFlags(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetLegacyMaterialFlagsAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
     }
     public TSelf WithLegacyMaterialFlags(uint value)
     {
@@ -372,7 +329,7 @@ public abstract class CPlugShaderApplyBuilderMembers5<TSelf> : CPlugShaderApplyB
     public global::GBX.NET.Engines.Plug.CPlugBitmapAddress? LightMap
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmapAddress?>("LightMap");
-        set => SetLightMap(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetLightMapAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
     }
     public TSelf WithLightMap(global::GBX.NET.Engines.Plug.CPlugBitmapAddress? value)
     {
@@ -382,13 +339,13 @@ public abstract class CPlugShaderApplyBuilderMembers5<TSelf> : CPlugShaderApplyB
     public TSelf WithLightMapReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapAddress> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetLightMapReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetLightMapReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugBitmapAddress? SelfIllum
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmapAddress?>("SelfIllum");
-        set => SetSelfIllum(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetSelfIllumAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
     }
     public TSelf WithSelfIllum(global::GBX.NET.Engines.Plug.CPlugBitmapAddress? value)
     {
@@ -398,7 +355,7 @@ public abstract class CPlugShaderApplyBuilderMembers5<TSelf> : CPlugShaderApplyB
     public TSelf WithSelfIllumReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapAddress> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSelfIllumReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetSelfIllumReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
         return (TSelf)this;
     }
 }
@@ -408,7 +365,7 @@ public abstract class CPlugShaderApplyBuilderMembers6<TSelf> : CPlugShaderApplyB
     public uint ApplyField3
     {
         get => state.Get<uint>("ApplyField3");
-        set => SetApplyField3(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetApplyField3Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithApplyField3(uint value)
     {
@@ -418,7 +375,7 @@ public abstract class CPlugShaderApplyBuilderMembers6<TSelf> : CPlugShaderApplyB
     public byte ApplyFlags
     {
         get => state.Get<byte>("ApplyFlags");
-        set => SetApplyFlags(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetApplyFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithApplyFlags(byte value)
     {
@@ -428,7 +385,7 @@ public abstract class CPlugShaderApplyBuilderMembers6<TSelf> : CPlugShaderApplyB
     public global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray? BitmapApplyArray
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray?>("BitmapApplyArray");
-        set => SetBitmapApplyArray(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetBitmapApplyArrayAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBitmapApplyArray(global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray? value)
     {
@@ -438,13 +395,13 @@ public abstract class CPlugShaderApplyBuilderMembers6<TSelf> : CPlugShaderApplyB
     public TSelf WithBitmapApplyArrayReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBitmapApplyArrayReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetBitmapApplyArrayReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugShader.ShaderCustom[] CustomShaders
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugShader.ShaderCustom[]>("CustomShaders");
-        set => SetCustomShaders(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetCustomShadersAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCustomShaders(params global::GBX.NET.Engines.Plug.CPlugShader.ShaderCustom[] value)
     {
@@ -458,7 +415,7 @@ public abstract class CPlugShaderApplyBuilderMembers6<TSelf> : CPlugShaderApplyB
     public uint Flags
     {
         get => state.Get<uint>("Flags");
-        set => SetFlags(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFlags(uint value)
     {
@@ -468,7 +425,7 @@ public abstract class CPlugShaderApplyBuilderMembers6<TSelf> : CPlugShaderApplyB
     public global::GBX.NET.Engines.Plug.CPlugFileGPUV? GPU
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugFileGPUV?>("GPU");
-        set => SetGPU(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetGPUAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGPU(global::GBX.NET.Engines.Plug.CPlugFileGPUV? value)
     {
@@ -478,13 +435,13 @@ public abstract class CPlugShaderApplyBuilderMembers6<TSelf> : CPlugShaderApplyB
     public TSelf WithGPUReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileGPUV> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetGPUReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetGPUReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public uint RequirementFlags2
     {
         get => state.Get<uint>("RequirementFlags2");
-        set => SetRequirementFlags2(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetRequirementFlags2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRequirementFlags2(uint value)
     {
@@ -494,7 +451,7 @@ public abstract class CPlugShaderApplyBuilderMembers6<TSelf> : CPlugShaderApplyB
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>? UnusedBitmapAddresses
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>?>("UnusedBitmapAddresses");
-        set => SetUnusedBitmapAddresses(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetUnusedBitmapAddressesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithUnusedBitmapAddresses(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>? value)
     {
@@ -512,7 +469,7 @@ public abstract class CPlugShaderApplyBuilderMembers6<TSelf> : CPlugShaderApplyB
     public float VisibleMaxDist
     {
         get => state.Get<float>("VisibleMaxDist");
-        set => SetVisibleMaxDist(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetVisibleMaxDistAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithVisibleMaxDist(float value)
     {
@@ -522,7 +479,7 @@ public abstract class CPlugShaderApplyBuilderMembers6<TSelf> : CPlugShaderApplyB
     public float VisibleMinScreenHeight
     {
         get => state.Get<float>("VisibleMinScreenHeight");
-        set => SetVisibleMinScreenHeight(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetVisibleMinScreenHeightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithVisibleMinScreenHeight(float value)
     {
@@ -1098,7 +1055,7 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
         public ulong RequirementFlags
         {
             get => state.Get<ulong>("RequirementFlags");
-            set => SetRequirementFlags(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetRequirementFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMNESWC WithRequirementFlags(ulong value)
         {
@@ -1146,7 +1103,7 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
         public NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>? LegacyCustomShaders
         {
             get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>?>("LegacyCustomShaders");
-            set => SetLegacyCustomShaders(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetLegacyCustomShadersAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public VSK5 WithLegacyCustomShaders(NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>? value)
         {
@@ -1214,7 +1171,7 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
         public NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>? LegacyCustomShaders
         {
             get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>?>("LegacyCustomShaders");
-            set => SetLegacyCustomShaders(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetLegacyCustomShadersAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMF WithLegacyCustomShaders(NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>? value)
         {

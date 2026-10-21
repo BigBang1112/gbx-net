@@ -42,6 +42,14 @@ public partial interface IGameCtnMediaBlockFx : IClassVersion<global::GBX.NET.En
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
 }
 
+public partial interface IGameCtnMediaBlockFxTMSX : IGameCtnMediaBlockFx, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMSX
+{
+}
+
+public partial interface IGameCtnMediaBlockFxTMNESWC : IGameCtnMediaBlockFx, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMNESWC
+{
+}
+
 public partial interface IGameCtnMediaBlockFxVSK5 : IGameCtnMediaBlockFx, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockVSK5
 {
 }
@@ -55,14 +63,6 @@ public partial interface IGameCtnMediaBlockFxTMT : IGameCtnMediaBlockFx, global:
 }
 
 public partial interface IGameCtnMediaBlockFxMP4 : IGameCtnMediaBlockFx, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMP4
-{
-}
-
-public partial interface IGameCtnMediaBlockFxTMSX : IGameCtnMediaBlockFx, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMSX
-{
-}
-
-public partial interface IGameCtnMediaBlockFxTMNESWC : IGameCtnMediaBlockFx, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMNESWC
 {
 }
 

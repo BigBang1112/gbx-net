@@ -36,66 +36,10 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state;
     private protected CGameModulePlaygroundScoresTableModelBuilderBase() => state = new();
     private protected CGameModulePlaygroundScoresTableModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state) => this.state = state;
-    private protected static void SetColumnCount(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetColumnCountAssignment(), value, GameVersion.MP4);
-    private protected static void SetColumnMargin(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetColumnMarginAssignment(), value, GameVersion.MP4);
-    private protected static void SetColumns(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel.Column[]? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetColumnsAssignment(), value, GameVersion.MP4);
-    private protected static void SetDefaultTeam1Name(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetDefaultTeam1NameAssignment(), value, GameVersion.MP4);
-    private protected static void SetDefaultTeam2Name(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetDefaultTeam2NameAssignment(), value, GameVersion.MP4);
-    private protected static void SetDisplayColumnLegends(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetDisplayColumnLegendsAssignment(), value, GameVersion.MP4);
-    private protected static void SetDisplayLocalPlayerInfo(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetDisplayLocalPlayerInfoAssignment(), value, GameVersion.MP4);
-    private protected static void SetDisplayServerName(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetDisplayServerNameAssignment(), value, GameVersion.MP4);
-    private protected static void SetDisplayTeamScores(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetDisplayTeamScoresAssignment(), value, GameVersion.MP4);
-    private protected static void SetEchelon1(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetEchelon1Assignment(), value, GameVersion.MP4);
-    private protected static void SetEchelon1Rev(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetEchelon1RevAssignment(), value, GameVersion.MP4);
-    private protected static void SetEchelon2(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetEchelon2Assignment(), value, GameVersion.MP4);
-    private protected static void SetEchelon2Rev(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetEchelon2RevAssignment(), value, GameVersion.MP4);
-    private protected static void SetEchelon3(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetEchelon3Assignment(), value, GameVersion.MP4);
-    private protected static void SetEchelon3Rev(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetEchelon3RevAssignment(), value, GameVersion.MP4);
-    private protected static void SetEchelon4(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetEchelon4Assignment(), value, GameVersion.MP4);
-    private protected static void SetEchelon4Rev(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetEchelon4RevAssignment(), value, GameVersion.MP4);
-    private protected static void SetEchelon5(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetEchelon5Assignment(), value, GameVersion.MP4);
-    private protected static void SetEchelon5Rev(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetEchelon5RevAssignment(), value, GameVersion.MP4);
-    private protected static void SetEchelon6(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetEchelon6Assignment(), value, GameVersion.MP4);
-    private protected static void SetEchelon6Rev(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetEchelon6RevAssignment(), value, GameVersion.MP4);
-    private protected static void SetEchelon7(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetEchelon7Assignment(), value, GameVersion.MP4);
-    private protected static void SetEchelon7Rev(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetEchelon7RevAssignment(), value, GameVersion.MP4);
-    private protected static void SetEchelon8(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetEchelon8Assignment(), value, GameVersion.MP4);
-    private protected static void SetEchelon8Rev(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetEchelon8RevAssignment(), value, GameVersion.MP4);
-    private protected static void SetEchelon9(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetEchelon9Assignment(), value, GameVersion.MP4);
-    private protected static void SetEchelon9Rev(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetEchelon9RevAssignment(), value, GameVersion.MP4);
-    private protected static void SetGameModeIcon(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetGameModeIconAssignment(), value, GameVersion.MP4);
-    private protected static void SetHeaderScale(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetHeaderScaleAssignment(), value, GameVersion.MP4);
-    private protected static void SetHeaderStyle(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetHeaderStyleAssignment(), value, GameVersion.MP4);
-    private protected static void SetLineCount(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetLineCountAssignment(), value, GameVersion.MP4);
-    private protected static void SetPlayerCardLocalRankScale(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetPlayerCardLocalRankScaleAssignment(), value, GameVersion.MP4);
-    private protected static void SetPlayerCardLocalRankStyle(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetPlayerCardLocalRankStyleAssignment(), value, GameVersion.MP4);
-    private protected static void SetPlayerInfoLocalRankScale(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetPlayerInfoLocalRankScaleAssignment(), value, GameVersion.MP4);
-    private protected static void SetPlayerInfoLocalRankStyle(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetPlayerInfoLocalRankStyleAssignment(), value, GameVersion.MP4);
-    private protected static void SetSmHeaderTeam1Bg(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetSmHeaderTeam1BgAssignment(), value, GameVersion.MP4);
-    private protected static void SetSmHeaderTeam2Bg(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetSmHeaderTeam2BgAssignment(), value, GameVersion.MP4);
-    private protected static void SetSmPlayerCardBackgroundQuad(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetSmPlayerCardBackgroundQuadAssignment(), value, GameVersion.MP4);
-    private protected static void SetSmPlayerCardBackgroundQuadRevert(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetSmPlayerCardBackgroundQuadRevertAssignment(), value, GameVersion.MP4);
-    private protected static void SetSmPlayerCardSquareQuad(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetSmPlayerCardSquareQuadAssignment(), value, GameVersion.MP4);
-    private protected static void SetSmStormBackground(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetSmStormBackgroundAssignment(), value, GameVersion.MP4);
-    private protected static void SetSortDisconnectedLast(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetSortDisconnectedLastAssignment(), value, GameVersion.MP4);
-    private protected static void SetSortSpectatorsLast(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetSortSpectatorsLastAssignment(), value, GameVersion.MP4);
-    private protected static void SetTitle(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetTitleAssignment(), value, GameVersion.MP4);
-    private protected static void SetTmCanyonBackground(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetTmCanyonBackgroundAssignment(), value, GameVersion.MP4);
-    private protected static void SetTmHeaderTeam1Bg(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetTmHeaderTeam1BgAssignment(), value, GameVersion.MP4);
-    private protected static void SetTmHeaderTeam2Bg(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetTmHeaderTeam2BgAssignment(), value, GameVersion.MP4);
-    private protected static void SetTmLagoonBackground(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetTmLagoonBackgroundAssignment(), value, GameVersion.MP4);
-    private protected static void SetTmPlayerCardBackgroundQuad(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetTmPlayerCardBackgroundQuadAssignment(), value, GameVersion.MP4);
-    private protected static void SetTmPlayerCardBackgroundQuadRevert(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetTmPlayerCardBackgroundQuadRevertAssignment(), value, GameVersion.MP4);
-    private protected static void SetTmPlayerCardSquareQuad(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetTmPlayerCardSquareQuadAssignment(), value, GameVersion.MP4);
-    private protected static void SetTmStadiumBackground(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetTmStadiumBackgroundAssignment(), value, GameVersion.MP4);
-    private protected static void SetTmValleyBackground(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetTmValleyBackgroundAssignment(), value, GameVersion.MP4);
-    private protected static void SetUsePlayerDarkening(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetUsePlayerDarkeningAssignment(), value, GameVersion.MP4);
-    private protected static void SetUseSettings(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetUseSettingsAssignment(), value, GameVersion.MP4);
-    private protected static void SetUseTeams(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetUseTeamsAssignment(), value, GameVersion.MP4);
     public int ColumnCount
     {
         get => state.Get<int>("ColumnCount");
-        set => SetColumnCount(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetColumnCountAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithColumnCount(int value)
     {
@@ -105,7 +49,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public float ColumnMargin
     {
         get => state.Get<float>("ColumnMargin");
-        set => SetColumnMargin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetColumnMarginAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithColumnMargin(float value)
     {
@@ -115,7 +59,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel.Column[]? Columns
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel.Column[]?>("Columns");
-        set => SetColumns(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetColumnsAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithColumns(params global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel.Column[]? value)
     {
@@ -129,7 +73,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public string? DefaultTeam1Name
     {
         get => state.Get<string?>("DefaultTeam1Name");
-        set => SetDefaultTeam1Name(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetDefaultTeam1NameAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithDefaultTeam1Name(string? value)
     {
@@ -139,7 +83,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public string? DefaultTeam2Name
     {
         get => state.Get<string?>("DefaultTeam2Name");
-        set => SetDefaultTeam2Name(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetDefaultTeam2NameAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithDefaultTeam2Name(string? value)
     {
@@ -149,7 +93,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public bool DisplayColumnLegends
     {
         get => state.Get<bool>("DisplayColumnLegends");
-        set => SetDisplayColumnLegends(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetDisplayColumnLegendsAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithDisplayColumnLegends(bool value)
     {
@@ -159,7 +103,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public bool DisplayLocalPlayerInfo
     {
         get => state.Get<bool>("DisplayLocalPlayerInfo");
-        set => SetDisplayLocalPlayerInfo(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetDisplayLocalPlayerInfoAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithDisplayLocalPlayerInfo(bool value)
     {
@@ -169,7 +113,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public bool DisplayServerName
     {
         get => state.Get<bool>("DisplayServerName");
-        set => SetDisplayServerName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetDisplayServerNameAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithDisplayServerName(bool value)
     {
@@ -179,7 +123,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public bool DisplayTeamScores
     {
         get => state.Get<bool>("DisplayTeamScores");
-        set => SetDisplayTeamScores(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetDisplayTeamScoresAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithDisplayTeamScores(bool value)
     {
@@ -189,7 +133,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? Echelon1
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef?>("Echelon1");
-        set => SetEchelon1(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetEchelon1Assignment(), value, GameVersion.MP4);
     }
     public TSelf WithEchelon1(global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value)
     {
@@ -199,7 +143,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? Echelon1Rev
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef?>("Echelon1Rev");
-        set => SetEchelon1Rev(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetEchelon1RevAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithEchelon1Rev(global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value)
     {
@@ -209,7 +153,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? Echelon2
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef?>("Echelon2");
-        set => SetEchelon2(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetEchelon2Assignment(), value, GameVersion.MP4);
     }
     public TSelf WithEchelon2(global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value)
     {
@@ -219,7 +163,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? Echelon2Rev
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef?>("Echelon2Rev");
-        set => SetEchelon2Rev(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetEchelon2RevAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithEchelon2Rev(global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value)
     {
@@ -229,7 +173,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? Echelon3
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef?>("Echelon3");
-        set => SetEchelon3(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetEchelon3Assignment(), value, GameVersion.MP4);
     }
     public TSelf WithEchelon3(global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value)
     {
@@ -239,7 +183,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? Echelon3Rev
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef?>("Echelon3Rev");
-        set => SetEchelon3Rev(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetEchelon3RevAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithEchelon3Rev(global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value)
     {
@@ -249,7 +193,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? Echelon4
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef?>("Echelon4");
-        set => SetEchelon4(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetEchelon4Assignment(), value, GameVersion.MP4);
     }
     public TSelf WithEchelon4(global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value)
     {
@@ -259,7 +203,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? Echelon4Rev
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef?>("Echelon4Rev");
-        set => SetEchelon4Rev(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetEchelon4RevAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithEchelon4Rev(global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value)
     {
@@ -269,7 +213,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? Echelon5
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef?>("Echelon5");
-        set => SetEchelon5(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetEchelon5Assignment(), value, GameVersion.MP4);
     }
     public TSelf WithEchelon5(global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value)
     {
@@ -279,7 +223,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? Echelon5Rev
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef?>("Echelon5Rev");
-        set => SetEchelon5Rev(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetEchelon5RevAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithEchelon5Rev(global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value)
     {
@@ -289,7 +233,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? Echelon6
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef?>("Echelon6");
-        set => SetEchelon6(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetEchelon6Assignment(), value, GameVersion.MP4);
     }
     public TSelf WithEchelon6(global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value)
     {
@@ -299,7 +243,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? Echelon6Rev
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef?>("Echelon6Rev");
-        set => SetEchelon6Rev(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetEchelon6RevAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithEchelon6Rev(global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value)
     {
@@ -309,7 +253,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? Echelon7
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef?>("Echelon7");
-        set => SetEchelon7(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetEchelon7Assignment(), value, GameVersion.MP4);
     }
     public TSelf WithEchelon7(global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value)
     {
@@ -319,7 +263,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? Echelon7Rev
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef?>("Echelon7Rev");
-        set => SetEchelon7Rev(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetEchelon7RevAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithEchelon7Rev(global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value)
     {
@@ -329,7 +273,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? Echelon8
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef?>("Echelon8");
-        set => SetEchelon8(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetEchelon8Assignment(), value, GameVersion.MP4);
     }
     public TSelf WithEchelon8(global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value)
     {
@@ -339,7 +283,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? Echelon8Rev
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef?>("Echelon8Rev");
-        set => SetEchelon8Rev(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetEchelon8RevAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithEchelon8Rev(global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value)
     {
@@ -349,7 +293,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? Echelon9
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef?>("Echelon9");
-        set => SetEchelon9(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetEchelon9Assignment(), value, GameVersion.MP4);
     }
     public TSelf WithEchelon9(global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value)
     {
@@ -359,7 +303,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? Echelon9Rev
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef?>("Echelon9Rev");
-        set => SetEchelon9Rev(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetEchelon9RevAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithEchelon9Rev(global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value)
     {
@@ -369,7 +313,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? GameModeIcon
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef?>("GameModeIcon");
-        set => SetGameModeIcon(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetGameModeIconAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithGameModeIcon(global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value)
     {
@@ -379,7 +323,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public float HeaderScale
     {
         get => state.Get<float>("HeaderScale");
-        set => SetHeaderScale(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetHeaderScaleAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithHeaderScale(float value)
     {
@@ -389,7 +333,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public string? HeaderStyle
     {
         get => state.Get<string?>("HeaderStyle");
-        set => SetHeaderStyle(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetHeaderStyleAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithHeaderStyle(string? value)
     {
@@ -399,7 +343,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public int LineCount
     {
         get => state.Get<int>("LineCount");
-        set => SetLineCount(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetLineCountAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithLineCount(int value)
     {
@@ -409,7 +353,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public float PlayerCardLocalRankScale
     {
         get => state.Get<float>("PlayerCardLocalRankScale");
-        set => SetPlayerCardLocalRankScale(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetPlayerCardLocalRankScaleAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithPlayerCardLocalRankScale(float value)
     {
@@ -419,7 +363,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public string? PlayerCardLocalRankStyle
     {
         get => state.Get<string?>("PlayerCardLocalRankStyle");
-        set => SetPlayerCardLocalRankStyle(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetPlayerCardLocalRankStyleAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithPlayerCardLocalRankStyle(string? value)
     {
@@ -429,7 +373,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public float PlayerInfoLocalRankScale
     {
         get => state.Get<float>("PlayerInfoLocalRankScale");
-        set => SetPlayerInfoLocalRankScale(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetPlayerInfoLocalRankScaleAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithPlayerInfoLocalRankScale(float value)
     {
@@ -439,7 +383,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public string? PlayerInfoLocalRankStyle
     {
         get => state.Get<string?>("PlayerInfoLocalRankStyle");
-        set => SetPlayerInfoLocalRankStyle(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetPlayerInfoLocalRankStyleAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithPlayerInfoLocalRankStyle(string? value)
     {
@@ -449,7 +393,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? SmHeaderTeam1Bg
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef?>("SmHeaderTeam1Bg");
-        set => SetSmHeaderTeam1Bg(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetSmHeaderTeam1BgAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSmHeaderTeam1Bg(global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value)
     {
@@ -459,7 +403,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? SmHeaderTeam2Bg
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef?>("SmHeaderTeam2Bg");
-        set => SetSmHeaderTeam2Bg(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetSmHeaderTeam2BgAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSmHeaderTeam2Bg(global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value)
     {
@@ -469,7 +413,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? SmPlayerCardBackgroundQuad
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef?>("SmPlayerCardBackgroundQuad");
-        set => SetSmPlayerCardBackgroundQuad(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetSmPlayerCardBackgroundQuadAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSmPlayerCardBackgroundQuad(global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value)
     {
@@ -479,7 +423,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? SmPlayerCardBackgroundQuadRevert
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef?>("SmPlayerCardBackgroundQuadRevert");
-        set => SetSmPlayerCardBackgroundQuadRevert(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetSmPlayerCardBackgroundQuadRevertAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSmPlayerCardBackgroundQuadRevert(global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value)
     {
@@ -489,7 +433,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? SmPlayerCardSquareQuad
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef?>("SmPlayerCardSquareQuad");
-        set => SetSmPlayerCardSquareQuad(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetSmPlayerCardSquareQuadAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSmPlayerCardSquareQuad(global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value)
     {
@@ -499,7 +443,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? SmStormBackground
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef?>("SmStormBackground");
-        set => SetSmStormBackground(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetSmStormBackgroundAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSmStormBackground(global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value)
     {
@@ -509,7 +453,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public bool SortDisconnectedLast
     {
         get => state.Get<bool>("SortDisconnectedLast");
-        set => SetSortDisconnectedLast(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetSortDisconnectedLastAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSortDisconnectedLast(bool value)
     {
@@ -519,7 +463,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public bool SortSpectatorsLast
     {
         get => state.Get<bool>("SortSpectatorsLast");
-        set => SetSortSpectatorsLast(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetSortSpectatorsLastAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSortSpectatorsLast(bool value)
     {
@@ -529,7 +473,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public string? Title
     {
         get => state.Get<string?>("Title");
-        set => SetTitle(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetTitleAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithTitle(string? value)
     {
@@ -539,7 +483,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? TmCanyonBackground
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef?>("TmCanyonBackground");
-        set => SetTmCanyonBackground(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetTmCanyonBackgroundAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithTmCanyonBackground(global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value)
     {
@@ -549,7 +493,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? TmHeaderTeam1Bg
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef?>("TmHeaderTeam1Bg");
-        set => SetTmHeaderTeam1Bg(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetTmHeaderTeam1BgAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithTmHeaderTeam1Bg(global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value)
     {
@@ -559,7 +503,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? TmHeaderTeam2Bg
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef?>("TmHeaderTeam2Bg");
-        set => SetTmHeaderTeam2Bg(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetTmHeaderTeam2BgAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithTmHeaderTeam2Bg(global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value)
     {
@@ -569,7 +513,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? TmLagoonBackground
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef?>("TmLagoonBackground");
-        set => SetTmLagoonBackground(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetTmLagoonBackgroundAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithTmLagoonBackground(global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value)
     {
@@ -579,7 +523,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? TmPlayerCardBackgroundQuad
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef?>("TmPlayerCardBackgroundQuad");
-        set => SetTmPlayerCardBackgroundQuad(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetTmPlayerCardBackgroundQuadAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithTmPlayerCardBackgroundQuad(global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value)
     {
@@ -589,7 +533,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? TmPlayerCardBackgroundQuadRevert
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef?>("TmPlayerCardBackgroundQuadRevert");
-        set => SetTmPlayerCardBackgroundQuadRevert(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetTmPlayerCardBackgroundQuadRevertAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithTmPlayerCardBackgroundQuadRevert(global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value)
     {
@@ -599,7 +543,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? TmPlayerCardSquareQuad
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef?>("TmPlayerCardSquareQuad");
-        set => SetTmPlayerCardSquareQuad(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetTmPlayerCardSquareQuadAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithTmPlayerCardSquareQuad(global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value)
     {
@@ -609,7 +553,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? TmStadiumBackground
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef?>("TmStadiumBackground");
-        set => SetTmStadiumBackground(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetTmStadiumBackgroundAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithTmStadiumBackground(global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value)
     {
@@ -619,7 +563,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? TmValleyBackground
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef?>("TmValleyBackground");
-        set => SetTmValleyBackground(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetTmValleyBackgroundAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithTmValleyBackground(global::GBX.NET.Engines.GameData.CGameModulePlaygroundModel.ImageRef? value)
     {
@@ -629,7 +573,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public bool UsePlayerDarkening
     {
         get => state.Get<bool>("UsePlayerDarkening");
-        set => SetUsePlayerDarkening(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetUsePlayerDarkeningAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithUsePlayerDarkening(bool value)
     {
@@ -639,7 +583,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public bool UseSettings
     {
         get => state.Get<bool>("UseSettings");
-        set => SetUseSettings(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetUseSettingsAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithUseSettings(bool value)
     {
@@ -649,7 +593,7 @@ public abstract class CGameModulePlaygroundScoresTableModelBuilderBase<TSelf> wh
     public bool UseTeams
     {
         get => state.Get<bool>("UseTeams");
-        set => SetUseTeams(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilderAssignments.GetUseTeamsAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithUseTeams(bool value)
     {

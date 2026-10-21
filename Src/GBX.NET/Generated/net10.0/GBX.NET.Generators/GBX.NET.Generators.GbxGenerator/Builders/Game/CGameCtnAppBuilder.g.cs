@@ -36,12 +36,6 @@ public abstract class CGameCtnAppBuilderBase<TSelf> where TSelf : CGameCtnAppBui
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state;
     private protected CGameCtnAppBuilderBase() => state = new();
     private protected CGameCtnAppBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state) => this.state = state;
-    private protected static void SetAdditionalSkinsFids(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state, NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdditionalSkinsFidsAssignment(), value, GameVersion.MP4);
-    private protected static void SetAdvertising(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdvertisingAssignment(), value, GameVersion.MP4);
-    private protected static void SetAdvertisingReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdvertisingReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetMenuBackground_MustLoopIntro(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetMenuBackground_MustLoopIntroAssignment(), value, GameVersion.MP4);
-    private protected static void SetResources(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state, global::GBX.NET.Engines.Game.CGameResources? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetResourcesAssignment(), value, GameVersion.MP4);
-    private protected static void SetResourcesReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state, NodeRef<global::GBX.NET.Engines.Game.CGameResources> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetResourcesReferenceAssignment(), value, GameVersion.MP4);
 }
 public partial class CGameCtnAppBuilder : CGameCtnAppBuilderBase<CGameCtnAppBuilder>
 {
@@ -131,7 +125,7 @@ public partial class CGameCtnAppBuilder : CGameCtnAppBuilderBase<CGameCtnAppBuil
         public NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? AdditionalSkinsFids
         {
             get => state.Get<NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>?>("AdditionalSkinsFids");
-            set => SetAdditionalSkinsFids(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdditionalSkinsFidsAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithAdditionalSkinsFids(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value)
         {
@@ -149,7 +143,7 @@ public partial class CGameCtnAppBuilder : CGameCtnAppBuilderBase<CGameCtnAppBuil
         public global::GBX.NET.Engines.MwFoundations.CMwNod? Advertising
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("Advertising");
-            set => SetAdvertising(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdvertisingAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithAdvertising(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -159,13 +153,13 @@ public partial class CGameCtnAppBuilder : CGameCtnAppBuilderBase<CGameCtnAppBuil
         public MP4 WithAdvertisingReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetAdvertisingReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdvertisingReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public bool MenuBackground_MustLoopIntro
         {
             get => state.Get<bool>("MenuBackground_MustLoopIntro");
-            set => SetMenuBackground_MustLoopIntro(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetMenuBackground_MustLoopIntroAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithMenuBackground_MustLoopIntro(bool value)
         {
@@ -175,7 +169,7 @@ public partial class CGameCtnAppBuilder : CGameCtnAppBuilderBase<CGameCtnAppBuil
         public global::GBX.NET.Engines.Game.CGameResources? Resources
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameResources?>("Resources");
-            set => SetResources(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetResourcesAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithResources(global::GBX.NET.Engines.Game.CGameResources? value)
         {
@@ -185,7 +179,7 @@ public partial class CGameCtnAppBuilder : CGameCtnAppBuilderBase<CGameCtnAppBuil
         public MP4 WithResourcesReference(NodeRef<global::GBX.NET.Engines.Game.CGameResources> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetResourcesReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetResourcesReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithResources(global::GBX.NET.Interfaces.Game.IGameResourcesMP4? value)

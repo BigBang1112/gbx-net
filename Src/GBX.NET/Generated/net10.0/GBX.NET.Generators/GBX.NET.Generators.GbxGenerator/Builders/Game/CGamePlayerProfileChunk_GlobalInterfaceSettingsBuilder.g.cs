@@ -36,14 +36,10 @@ public abstract class CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilderBase
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettings> state;
     private protected CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilderBase() => state = new();
     private protected CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettings> state) => this.state = state;
-    private protected static void SetOpenWebLinksInSteamOverlay(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettings> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilderAssignments.GetOpenWebLinksInSteamOverlayAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetPluginSettings(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettings> state, global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettings.SPluginSettings[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilderAssignments.GetPluginSettingsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetPreferSteamScreenshots(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettings> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilderAssignments.GetPreferSteamScreenshotsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSynchonizeSteamWorkshopFiles(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettings> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilderAssignments.GetSynchonizeSteamWorkshopFilesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public bool OpenWebLinksInSteamOverlay
     {
         get => state.Get<bool>("OpenWebLinksInSteamOverlay");
-        set => SetOpenWebLinksInSteamOverlay(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilderAssignments.GetOpenWebLinksInSteamOverlayAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithOpenWebLinksInSteamOverlay(bool value)
     {
@@ -53,7 +49,7 @@ public abstract class CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilderBase
     public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettings.SPluginSettings[]? PluginSettings
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettings.SPluginSettings[]?>("PluginSettings");
-        set => SetPluginSettings(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilderAssignments.GetPluginSettingsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithPluginSettings(params global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettings.SPluginSettings[]? value)
     {
@@ -67,7 +63,7 @@ public abstract class CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilderBase
     public bool PreferSteamScreenshots
     {
         get => state.Get<bool>("PreferSteamScreenshots");
-        set => SetPreferSteamScreenshots(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilderAssignments.GetPreferSteamScreenshotsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithPreferSteamScreenshots(bool value)
     {
@@ -77,7 +73,7 @@ public abstract class CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilderBase
     public bool SynchonizeSteamWorkshopFiles
     {
         get => state.Get<bool>("SynchonizeSteamWorkshopFiles");
-        set => SetSynchonizeSteamWorkshopFiles(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilderAssignments.GetSynchonizeSteamWorkshopFilesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSynchonizeSteamWorkshopFiles(bool value)
     {

@@ -36,37 +36,10 @@ public abstract class GxLightFrustumBuilderBase<TSelf> where TSelf : GxLightFrus
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightFrustum> state;
     private protected GxLightFrustumBuilderBase() => state = new();
     private protected GxLightFrustumBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightFrustum> state) => this.state = state;
-    private protected static void SetAmbientRGB(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightFrustum> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetAmbientRGBAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetAttHTnLR(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightFrustum> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetAttHTnLRAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAttHTnLR2(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightFrustum> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetAttHTnLR2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAttHdrRadiusCoef(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightFrustum> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetAttHdrRadiusCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAttHyper2DerivAt0(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightFrustum> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetAttHyper2DerivAt0Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAttHyper2Tension(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightFrustum> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetAttHyper2TensionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAttenuation1(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightFrustum> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetAttenuation1Assignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetAttenuation2(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightFrustum> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetAttenuation2Assignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetColor(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightFrustum> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetColorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetDiffuseIntensity(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightFrustum> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetDiffuseIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetEmittingCylinderLenZ(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightFrustum> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetEmittingCylinderLenZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetEmittingRadius(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightFrustum> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetEmittingRadiusAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFlags(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightFrustum> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightFrustumBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFlareBiasZ(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightFrustum> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightPointBuilderAssignments.GetFlareBiasZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFlareIntensity(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightFrustum> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetFlareIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFlareSize(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightFrustum> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightPointBuilderAssignments.GetFlareSizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFrustum(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightFrustum> state, global::GBX.NET.Engines.Graphic.GxLightFrustum.FrustumData value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightFrustumBuilderAssignments.GetFrustumAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIntensity(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightFrustum> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRadius(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightFrustum> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetRadiusAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRadiusFlare(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightFrustum> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetRadiusFlareAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRadiusIndex(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightFrustum> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetRadiusIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetRadiusShadow(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightFrustum> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetRadiusShadowAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRadiusSpecular(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightFrustum> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetRadiusSpecularAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetShadowIntensity(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightFrustum> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetShadowIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetShadowRGB(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightFrustum> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetShadowRGBAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSpecularIntens(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightFrustum> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetSpecularIntensAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSpecularPower(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightFrustum> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetSpecularPowerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     public Vec3 AmbientRGB
     {
         get => state.Get<Vec3>("AmbientRGB");
-        set => SetAmbientRGB(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetAmbientRGBAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithAmbientRGB(Vec3 value)
     {
@@ -76,7 +49,7 @@ public abstract class GxLightFrustumBuilderBase<TSelf> where TSelf : GxLightFrus
     public Vec3 Color
     {
         get => state.Get<Vec3>("Color");
-        set => SetColor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetColorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithColor(Vec3 value)
     {
@@ -86,7 +59,7 @@ public abstract class GxLightFrustumBuilderBase<TSelf> where TSelf : GxLightFrus
     public float EmittingRadius
     {
         get => state.Get<float>("EmittingRadius");
-        set => SetEmittingRadius(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetEmittingRadiusAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEmittingRadius(float value)
     {
@@ -96,7 +69,7 @@ public abstract class GxLightFrustumBuilderBase<TSelf> where TSelf : GxLightFrus
     public uint Flags
     {
         get => state.Get<uint>("Flags");
-        set => SetFlags(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightFrustumBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFlags(uint value)
     {
@@ -106,7 +79,7 @@ public abstract class GxLightFrustumBuilderBase<TSelf> where TSelf : GxLightFrus
     public float FlareIntensity
     {
         get => state.Get<float>("FlareIntensity");
-        set => SetFlareIntensity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetFlareIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFlareIntensity(float value)
     {
@@ -116,7 +89,7 @@ public abstract class GxLightFrustumBuilderBase<TSelf> where TSelf : GxLightFrus
     public float FlareSize
     {
         get => state.Get<float>("FlareSize");
-        set => SetFlareSize(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightPointBuilderAssignments.GetFlareSizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFlareSize(float value)
     {
@@ -126,7 +99,7 @@ public abstract class GxLightFrustumBuilderBase<TSelf> where TSelf : GxLightFrus
     public global::GBX.NET.Engines.Graphic.GxLightFrustum.FrustumData Frustum
     {
         get => state.Get<global::GBX.NET.Engines.Graphic.GxLightFrustum.FrustumData>("Frustum");
-        set => SetFrustum(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightFrustumBuilderAssignments.GetFrustumAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFrustum(global::GBX.NET.Engines.Graphic.GxLightFrustum.FrustumData value)
     {
@@ -136,7 +109,7 @@ public abstract class GxLightFrustumBuilderBase<TSelf> where TSelf : GxLightFrus
     public float Intensity
     {
         get => state.Get<float>("Intensity");
-        set => SetIntensity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIntensity(float value)
     {
@@ -146,7 +119,7 @@ public abstract class GxLightFrustumBuilderBase<TSelf> where TSelf : GxLightFrus
     public float Radius
     {
         get => state.Get<float>("Radius");
-        set => SetRadius(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetRadiusAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRadius(float value)
     {
@@ -156,7 +129,7 @@ public abstract class GxLightFrustumBuilderBase<TSelf> where TSelf : GxLightFrus
     public float ShadowIntensity
     {
         get => state.Get<float>("ShadowIntensity");
-        set => SetShadowIntensity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetShadowIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithShadowIntensity(float value)
     {
@@ -166,7 +139,7 @@ public abstract class GxLightFrustumBuilderBase<TSelf> where TSelf : GxLightFrus
     public Vec3 ShadowRGB
     {
         get => state.Get<Vec3>("ShadowRGB");
-        set => SetShadowRGB(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetShadowRGBAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithShadowRGB(Vec3 value)
     {
@@ -180,7 +153,7 @@ public abstract class GxLightFrustumBuilderMembers1<TSelf> : GxLightFrustumBuild
     public float Attenuation1
     {
         get => state.Get<float>("Attenuation1");
-        set => SetAttenuation1(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetAttenuation1Assignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithAttenuation1(float value)
     {
@@ -190,7 +163,7 @@ public abstract class GxLightFrustumBuilderMembers1<TSelf> : GxLightFrustumBuild
     public float Attenuation2
     {
         get => state.Get<float>("Attenuation2");
-        set => SetAttenuation2(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetAttenuation2Assignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithAttenuation2(float value)
     {
@@ -204,7 +177,7 @@ public abstract class GxLightFrustumBuilderMembers2<TSelf> : GxLightFrustumBuild
     public float FlareBiasZ
     {
         get => state.Get<float>("FlareBiasZ");
-        set => SetFlareBiasZ(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightPointBuilderAssignments.GetFlareBiasZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFlareBiasZ(float value)
     {
@@ -214,7 +187,7 @@ public abstract class GxLightFrustumBuilderMembers2<TSelf> : GxLightFrustumBuild
     public float RadiusFlare
     {
         get => state.Get<float>("RadiusFlare");
-        set => SetRadiusFlare(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetRadiusFlareAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRadiusFlare(float value)
     {
@@ -224,7 +197,7 @@ public abstract class GxLightFrustumBuilderMembers2<TSelf> : GxLightFrustumBuild
     public float RadiusShadow
     {
         get => state.Get<float>("RadiusShadow");
-        set => SetRadiusShadow(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetRadiusShadowAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRadiusShadow(float value)
     {
@@ -234,7 +207,7 @@ public abstract class GxLightFrustumBuilderMembers2<TSelf> : GxLightFrustumBuild
     public float RadiusSpecular
     {
         get => state.Get<float>("RadiusSpecular");
-        set => SetRadiusSpecular(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetRadiusSpecularAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRadiusSpecular(float value)
     {
@@ -248,7 +221,7 @@ public abstract class GxLightFrustumBuilderMembers3<TSelf> : GxLightFrustumBuild
     public float DiffuseIntensity
     {
         get => state.Get<float>("DiffuseIntensity");
-        set => SetDiffuseIntensity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetDiffuseIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDiffuseIntensity(float value)
     {
@@ -262,7 +235,7 @@ public abstract class GxLightFrustumBuilderMembers4<TSelf> : GxLightFrustumBuild
     public float SpecularIntens
     {
         get => state.Get<float>("SpecularIntens");
-        set => SetSpecularIntens(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetSpecularIntensAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSpecularIntens(float value)
     {
@@ -272,7 +245,7 @@ public abstract class GxLightFrustumBuilderMembers4<TSelf> : GxLightFrustumBuild
     public float SpecularPower
     {
         get => state.Get<float>("SpecularPower");
-        set => SetSpecularPower(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetSpecularPowerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSpecularPower(float value)
     {
@@ -286,7 +259,7 @@ public abstract class GxLightFrustumBuilderMembers5<TSelf> : GxLightFrustumBuild
     public float AttHTnLR
     {
         get => state.Get<float>("AttHTnLR");
-        set => SetAttHTnLR(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetAttHTnLRAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAttHTnLR(float value)
     {
@@ -296,7 +269,7 @@ public abstract class GxLightFrustumBuilderMembers5<TSelf> : GxLightFrustumBuild
     public float AttHTnLR2
     {
         get => state.Get<float>("AttHTnLR2");
-        set => SetAttHTnLR2(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetAttHTnLR2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAttHTnLR2(float value)
     {
@@ -306,7 +279,7 @@ public abstract class GxLightFrustumBuilderMembers5<TSelf> : GxLightFrustumBuild
     public float AttHdrRadiusCoef
     {
         get => state.Get<float>("AttHdrRadiusCoef");
-        set => SetAttHdrRadiusCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetAttHdrRadiusCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAttHdrRadiusCoef(float value)
     {
@@ -316,7 +289,7 @@ public abstract class GxLightFrustumBuilderMembers5<TSelf> : GxLightFrustumBuild
     public float AttHyper2DerivAt0
     {
         get => state.Get<float>("AttHyper2DerivAt0");
-        set => SetAttHyper2DerivAt0(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetAttHyper2DerivAt0Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAttHyper2DerivAt0(float value)
     {
@@ -326,7 +299,7 @@ public abstract class GxLightFrustumBuilderMembers5<TSelf> : GxLightFrustumBuild
     public float AttHyper2Tension
     {
         get => state.Get<float>("AttHyper2Tension");
-        set => SetAttHyper2Tension(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetAttHyper2TensionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAttHyper2Tension(float value)
     {
@@ -336,7 +309,7 @@ public abstract class GxLightFrustumBuilderMembers5<TSelf> : GxLightFrustumBuild
     public float EmittingCylinderLenZ
     {
         get => state.Get<float>("EmittingCylinderLenZ");
-        set => SetEmittingCylinderLenZ(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetEmittingCylinderLenZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEmittingCylinderLenZ(float value)
     {
@@ -346,7 +319,7 @@ public abstract class GxLightFrustumBuilderMembers5<TSelf> : GxLightFrustumBuild
     public float RadiusIndex
     {
         get => state.Get<float>("RadiusIndex");
-        set => SetRadiusIndex(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetRadiusIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRadiusIndex(float value)
     {
@@ -526,7 +499,7 @@ public partial class GxLightFrustumBuilder : GxLightFrustumBuilderBase<GxLightFr
         public float Attenuation1
         {
             get => state.Get<float>("Attenuation1");
-            set => SetAttenuation1(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetAttenuation1Assignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMSX WithAttenuation1(float value)
         {
@@ -536,7 +509,7 @@ public partial class GxLightFrustumBuilder : GxLightFrustumBuilderBase<GxLightFr
         public float Attenuation2
         {
             get => state.Get<float>("Attenuation2");
-            set => SetAttenuation2(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetAttenuation2Assignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMSX WithAttenuation2(float value)
         {
@@ -564,7 +537,7 @@ public partial class GxLightFrustumBuilder : GxLightFrustumBuilderBase<GxLightFr
         public float Attenuation1
         {
             get => state.Get<float>("Attenuation1");
-            set => SetAttenuation1(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetAttenuation1Assignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMNESWC WithAttenuation1(float value)
         {
@@ -574,7 +547,7 @@ public partial class GxLightFrustumBuilder : GxLightFrustumBuilderBase<GxLightFr
         public float Attenuation2
         {
             get => state.Get<float>("Attenuation2");
-            set => SetAttenuation2(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetAttenuation2Assignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMNESWC WithAttenuation2(float value)
         {
@@ -602,7 +575,7 @@ public partial class GxLightFrustumBuilder : GxLightFrustumBuilderBase<GxLightFr
         public float Attenuation1
         {
             get => state.Get<float>("Attenuation1");
-            set => SetAttenuation1(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetAttenuation1Assignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public VSK5 WithAttenuation1(float value)
         {
@@ -612,7 +585,7 @@ public partial class GxLightFrustumBuilder : GxLightFrustumBuilderBase<GxLightFr
         public float Attenuation2
         {
             get => state.Get<float>("Attenuation2");
-            set => SetAttenuation2(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetAttenuation2Assignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public VSK5 WithAttenuation2(float value)
         {
@@ -640,7 +613,7 @@ public partial class GxLightFrustumBuilder : GxLightFrustumBuilderBase<GxLightFr
         public float Attenuation1
         {
             get => state.Get<float>("Attenuation1");
-            set => SetAttenuation1(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetAttenuation1Assignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMF WithAttenuation1(float value)
         {
@@ -650,7 +623,7 @@ public partial class GxLightFrustumBuilder : GxLightFrustumBuilderBase<GxLightFr
         public float Attenuation2
         {
             get => state.Get<float>("Attenuation2");
-            set => SetAttenuation2(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetAttenuation2Assignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMF WithAttenuation2(float value)
         {
@@ -678,7 +651,7 @@ public partial class GxLightFrustumBuilder : GxLightFrustumBuilderBase<GxLightFr
         public float SpecularIntens
         {
             get => state.Get<float>("SpecularIntens");
-            set => SetSpecularIntens(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetSpecularIntensAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP3 WithSpecularIntens(float value)
         {
@@ -688,7 +661,7 @@ public partial class GxLightFrustumBuilder : GxLightFrustumBuilderBase<GxLightFr
         public float SpecularPower
         {
             get => state.Get<float>("SpecularPower");
-            set => SetSpecularPower(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetSpecularPowerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP3 WithSpecularPower(float value)
         {
@@ -716,7 +689,7 @@ public partial class GxLightFrustumBuilder : GxLightFrustumBuilderBase<GxLightFr
         public float SpecularIntens
         {
             get => state.Get<float>("SpecularIntens");
-            set => SetSpecularIntens(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetSpecularIntensAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMT WithSpecularIntens(float value)
         {
@@ -726,7 +699,7 @@ public partial class GxLightFrustumBuilder : GxLightFrustumBuilderBase<GxLightFr
         public float SpecularPower
         {
             get => state.Get<float>("SpecularPower");
-            set => SetSpecularPower(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetSpecularPowerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMT WithSpecularPower(float value)
         {
@@ -754,7 +727,7 @@ public partial class GxLightFrustumBuilder : GxLightFrustumBuilderBase<GxLightFr
         public float SpecularIntens
         {
             get => state.Get<float>("SpecularIntens");
-            set => SetSpecularIntens(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetSpecularIntensAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP4 WithSpecularIntens(float value)
         {
@@ -764,7 +737,7 @@ public partial class GxLightFrustumBuilder : GxLightFrustumBuilderBase<GxLightFr
         public float SpecularPower
         {
             get => state.Get<float>("SpecularPower");
-            set => SetSpecularPower(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetSpecularPowerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP4 WithSpecularPower(float value)
         {

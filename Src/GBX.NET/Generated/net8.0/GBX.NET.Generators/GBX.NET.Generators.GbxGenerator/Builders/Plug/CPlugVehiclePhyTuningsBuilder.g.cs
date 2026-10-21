@@ -36,12 +36,10 @@ public abstract class CPlugVehiclePhyTuningsBuilderBase<TSelf> where TSelf : CPl
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings> state;
     private protected CPlugVehiclePhyTuningsBuilderBase() => state = new();
     private protected CPlugVehiclePhyTuningsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings> state) => this.state = state;
-    private protected static void SetTuning(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyTuningsBuilderAssignments.GetTuningAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetTuningIndex(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyTuningsBuilderAssignments.GetTuningIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning>? Tuning
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning>?>("Tuning");
-        set => SetTuning(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyTuningsBuilderAssignments.GetTuningAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithTuning(NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning>? value)
     {
@@ -59,7 +57,7 @@ public abstract class CPlugVehiclePhyTuningsBuilderBase<TSelf> where TSelf : CPl
     public int TuningIndex
     {
         get => state.Get<int>("TuningIndex");
-        set => SetTuningIndex(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyTuningsBuilderAssignments.GetTuningIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithTuningIndex(int value)
     {

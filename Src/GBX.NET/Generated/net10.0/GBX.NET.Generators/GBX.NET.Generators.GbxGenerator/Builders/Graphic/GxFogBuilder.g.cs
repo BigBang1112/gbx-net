@@ -36,23 +36,10 @@ public abstract class GxFogBuilderBase<TSelf> where TSelf : GxFogBuilderBase<TSe
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Graphic.GxFog> state;
     private protected GxFogBuilderBase() => state = new();
     private protected GxFogBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxFog> state) => this.state = state;
-    private protected static void SetColor(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxFog> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetColorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDepthMax(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxFog> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetDepthMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetDepthMin(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxFog> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetDepthMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetEnabled(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxFog> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetEnabledAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetExponent(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxFog> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetExponentAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFogVersion(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxFog> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetFogVersionAssignment(), value, GameVersion.TM2020);
-    private protected static void SetHeightMulBottom(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxFog> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetHeightMulBottomAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetHeightMulTop(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxFog> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetHeightMulTopAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetHeightYBottom(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxFog> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetHeightYBottomAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetHeightYTop(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxFog> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetHeightYTopAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIntensityMax(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxFog> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetIntensityMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIntensityMin(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxFog> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetIntensityMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLegacyMode(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxFog> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetLegacyModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     public float DepthMax
     {
         get => state.Get<float>("DepthMax");
-        set => SetDepthMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetDepthMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDepthMax(float value)
     {
@@ -62,7 +49,7 @@ public abstract class GxFogBuilderBase<TSelf> where TSelf : GxFogBuilderBase<TSe
     public float DepthMin
     {
         get => state.Get<float>("DepthMin");
-        set => SetDepthMin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetDepthMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDepthMin(float value)
     {
@@ -72,7 +59,7 @@ public abstract class GxFogBuilderBase<TSelf> where TSelf : GxFogBuilderBase<TSe
     public bool Enabled
     {
         get => state.Get<bool>("Enabled");
-        set => SetEnabled(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetEnabledAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEnabled(bool value)
     {
@@ -82,7 +69,7 @@ public abstract class GxFogBuilderBase<TSelf> where TSelf : GxFogBuilderBase<TSe
     public float Exponent
     {
         get => state.Get<float>("Exponent");
-        set => SetExponent(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetExponentAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithExponent(float value)
     {
@@ -92,7 +79,7 @@ public abstract class GxFogBuilderBase<TSelf> where TSelf : GxFogBuilderBase<TSe
     public float HeightMulBottom
     {
         get => state.Get<float>("HeightMulBottom");
-        set => SetHeightMulBottom(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetHeightMulBottomAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithHeightMulBottom(float value)
     {
@@ -102,7 +89,7 @@ public abstract class GxFogBuilderBase<TSelf> where TSelf : GxFogBuilderBase<TSe
     public float HeightMulTop
     {
         get => state.Get<float>("HeightMulTop");
-        set => SetHeightMulTop(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetHeightMulTopAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithHeightMulTop(float value)
     {
@@ -112,7 +99,7 @@ public abstract class GxFogBuilderBase<TSelf> where TSelf : GxFogBuilderBase<TSe
     public float HeightYBottom
     {
         get => state.Get<float>("HeightYBottom");
-        set => SetHeightYBottom(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetHeightYBottomAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithHeightYBottom(float value)
     {
@@ -122,7 +109,7 @@ public abstract class GxFogBuilderBase<TSelf> where TSelf : GxFogBuilderBase<TSe
     public float HeightYTop
     {
         get => state.Get<float>("HeightYTop");
-        set => SetHeightYTop(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetHeightYTopAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithHeightYTop(float value)
     {
@@ -132,7 +119,7 @@ public abstract class GxFogBuilderBase<TSelf> where TSelf : GxFogBuilderBase<TSe
     public float IntensityMax
     {
         get => state.Get<float>("IntensityMax");
-        set => SetIntensityMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetIntensityMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIntensityMax(float value)
     {
@@ -142,7 +129,7 @@ public abstract class GxFogBuilderBase<TSelf> where TSelf : GxFogBuilderBase<TSe
     public float IntensityMin
     {
         get => state.Get<float>("IntensityMin");
-        set => SetIntensityMin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetIntensityMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIntensityMin(float value)
     {
@@ -152,7 +139,7 @@ public abstract class GxFogBuilderBase<TSelf> where TSelf : GxFogBuilderBase<TSe
     public int LegacyMode
     {
         get => state.Get<int>("LegacyMode");
-        set => SetLegacyMode(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetLegacyModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLegacyMode(int value)
     {
@@ -166,7 +153,7 @@ public abstract class GxFogBuilderMembers1<TSelf> : GxFogBuilderBase<TSelf> wher
     public Vec3 Color
     {
         get => state.Get<Vec3>("Color");
-        set => SetColor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetColorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithColor(Vec3 value)
     {
@@ -328,7 +315,7 @@ public partial class GxFogBuilder : GxFogBuilderBase<GxFogBuilder>
         public int FogVersion
         {
             get => state.Get<int>("FogVersion");
-            set => SetFogVersion(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetFogVersionAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithFogVersion(int value)
         {

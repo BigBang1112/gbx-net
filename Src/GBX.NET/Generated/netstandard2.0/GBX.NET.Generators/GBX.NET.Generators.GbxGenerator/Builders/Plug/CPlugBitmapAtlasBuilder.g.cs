@@ -36,11 +36,10 @@ public abstract class CPlugBitmapAtlasBuilderBase<TSelf> where TSelf : CPlugBitm
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapAtlas> state;
     private protected CPlugBitmapAtlasBuilderBase() => state = new();
     private protected CPlugBitmapAtlasBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapAtlas> state) => this.state = state;
-    private protected static void SetSubTextures(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapAtlas> state, global::GBX.NET.Engines.Plug.CPlugBitmapAtlas.SubTex[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapAtlasBuilderAssignments.GetSubTexturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public global::GBX.NET.Engines.Plug.CPlugBitmapAtlas.SubTex[]? SubTextures
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmapAtlas.SubTex[]?>("SubTextures");
-        set => SetSubTextures(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapAtlasBuilderAssignments.GetSubTexturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSubTextures(params global::GBX.NET.Engines.Plug.CPlugBitmapAtlas.SubTex[]? value)
     {

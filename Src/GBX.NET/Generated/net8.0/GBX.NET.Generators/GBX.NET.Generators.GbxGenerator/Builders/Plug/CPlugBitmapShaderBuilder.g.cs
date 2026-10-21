@@ -36,15 +36,10 @@ public abstract class CPlugBitmapShaderBuilderBase<TSelf> where TSelf : CPlugBit
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapShader> state;
     private protected CPlugBitmapShaderBuilderBase() => state = new();
     private protected CPlugBitmapShaderBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapShader> state) => this.state = state;
-    private protected static void SetBitmapToSwap(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapShader> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapShaderBuilderAssignments.GetBitmapToSwapAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBitmapToSwapReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapShader> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapShaderBuilderAssignments.GetBitmapToSwapReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLegacyBitmaps(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapShader> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmap>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapShaderBuilderAssignments.GetLegacyBitmapsAssignment(), value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX);
-    private protected static void SetShader(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapShader> state, global::GBX.NET.Engines.Plug.CPlugShader? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapShaderBuilderAssignments.GetShaderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetShaderReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapShader> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapShaderBuilderAssignments.GetShaderReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapToSwap
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapToSwap");
-        set => SetBitmapToSwap(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapShaderBuilderAssignments.GetBitmapToSwapAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBitmapToSwap(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -54,13 +49,13 @@ public abstract class CPlugBitmapShaderBuilderBase<TSelf> where TSelf : CPlugBit
     public TSelf WithBitmapToSwapReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBitmapToSwapReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapShaderBuilderAssignments.GetBitmapToSwapReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugShader? Shader
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugShader?>("Shader");
-        set => SetShader(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapShaderBuilderAssignments.GetShaderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithShader(global::GBX.NET.Engines.Plug.CPlugShader? value)
     {
@@ -70,7 +65,7 @@ public abstract class CPlugBitmapShaderBuilderBase<TSelf> where TSelf : CPlugBit
     public TSelf WithShaderReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetShaderReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapShaderBuilderAssignments.GetShaderReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -80,7 +75,7 @@ public abstract class CPlugBitmapShaderBuilderMembers1<TSelf> : CPlugBitmapShade
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmap>? LegacyBitmaps
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmap>?>("LegacyBitmaps");
-        set => SetLegacyBitmaps(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapShaderBuilderAssignments.GetLegacyBitmapsAssignment(), value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX);
     }
     public TSelf WithLegacyBitmaps(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmap>? value)
     {

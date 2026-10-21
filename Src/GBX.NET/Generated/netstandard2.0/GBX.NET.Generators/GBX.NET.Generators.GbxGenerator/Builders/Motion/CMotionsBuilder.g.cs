@@ -36,12 +36,10 @@ public abstract class CMotionsBuilderBase<TSelf> where TSelf : CMotionsBuilderBa
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Motion.CMotions> state;
     private protected CMotionsBuilderBase() => state = new();
     private protected CMotionsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotions> state) => this.state = state;
-    private protected static void SetMotions(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotions> state, NodeRefList<global::GBX.NET.Engines.Motion.CMotion>? value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionsBuilderAssignments.GetMotionsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotions> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public NodeRefList<global::GBX.NET.Engines.Motion.CMotion>? Motions
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Motion.CMotion>?>("Motions");
-        set => SetMotions(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionsBuilderAssignments.GetMotionsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMotions(NodeRefList<global::GBX.NET.Engines.Motion.CMotion>? value)
     {
@@ -63,7 +61,7 @@ public abstract class CMotionsBuilderMembers1<TSelf> : CMotionsBuilderBase<TSelf
     public string? Name
     {
         get => state.Get<string?>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithName(string? value)
     {

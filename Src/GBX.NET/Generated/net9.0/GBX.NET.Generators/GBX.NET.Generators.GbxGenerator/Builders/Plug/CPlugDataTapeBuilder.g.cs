@@ -36,16 +36,10 @@ public abstract class CPlugDataTapeBuilderBase<TSelf> where TSelf : CPlugDataTap
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDataTape> state;
     private protected CPlugDataTapeBuilderBase() => state = new();
     private protected CPlugDataTapeBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDataTape> state) => this.state = state;
-    private protected static void SetHeader(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDataTape> state, global::GBX.NET.Engines.Plug.CPlugDataTape.TapeHeader? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDataTapeBuilderAssignments.GetHeaderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetNoticeCount(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDataTape> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDataTapeBuilderAssignments.GetNoticeCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetNoticeData(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDataTape> state, byte[] value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDataTapeBuilderAssignments.GetNoticeDataAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetStateData(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDataTape> state, byte[] value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDataTapeBuilderAssignments.GetStateDataAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetStateOffsets(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDataTape> state, int[] value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDataTapeBuilderAssignments.GetStateOffsetsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetStateTimes(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDataTape> state, int[] value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDataTapeBuilderAssignments.GetStateTimesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public global::GBX.NET.Engines.Plug.CPlugDataTape.TapeHeader? Header
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugDataTape.TapeHeader?>("Header");
-        set => SetHeader(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDataTapeBuilderAssignments.GetHeaderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithHeader(global::GBX.NET.Engines.Plug.CPlugDataTape.TapeHeader? value)
     {
@@ -55,7 +49,7 @@ public abstract class CPlugDataTapeBuilderBase<TSelf> where TSelf : CPlugDataTap
     public int NoticeCount
     {
         get => state.Get<int>("NoticeCount");
-        set => SetNoticeCount(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDataTapeBuilderAssignments.GetNoticeCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNoticeCount(int value)
     {
@@ -65,7 +59,7 @@ public abstract class CPlugDataTapeBuilderBase<TSelf> where TSelf : CPlugDataTap
     public byte[] NoticeData
     {
         get => state.Get<byte[]>("NoticeData");
-        set => SetNoticeData(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDataTapeBuilderAssignments.GetNoticeDataAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNoticeData(params byte[] value)
     {
@@ -79,7 +73,7 @@ public abstract class CPlugDataTapeBuilderBase<TSelf> where TSelf : CPlugDataTap
     public byte[] StateData
     {
         get => state.Get<byte[]>("StateData");
-        set => SetStateData(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDataTapeBuilderAssignments.GetStateDataAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStateData(params byte[] value)
     {
@@ -93,7 +87,7 @@ public abstract class CPlugDataTapeBuilderBase<TSelf> where TSelf : CPlugDataTap
     public int[] StateOffsets
     {
         get => state.Get<int[]>("StateOffsets");
-        set => SetStateOffsets(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDataTapeBuilderAssignments.GetStateOffsetsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStateOffsets(params int[] value)
     {
@@ -107,7 +101,7 @@ public abstract class CPlugDataTapeBuilderBase<TSelf> where TSelf : CPlugDataTap
     public int[] StateTimes
     {
         get => state.Get<int[]>("StateTimes");
-        set => SetStateTimes(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDataTapeBuilderAssignments.GetStateTimesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStateTimes(params int[] value)
     {

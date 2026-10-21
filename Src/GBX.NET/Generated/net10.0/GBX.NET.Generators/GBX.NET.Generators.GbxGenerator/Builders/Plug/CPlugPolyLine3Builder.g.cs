@@ -36,12 +36,10 @@ public abstract class CPlugPolyLine3BuilderBase<TSelf> where TSelf : CPlugPolyLi
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugPolyLine3> state;
     private protected CPlugPolyLine3BuilderBase() => state = new();
     private protected CPlugPolyLine3BuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugPolyLine3> state) => this.state = state;
-    private protected static void SetLefts(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugPolyLine3> state, Vec3[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugPolyLine3BuilderAssignments.GetLeftsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetPoss(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugPolyLine3> state, Vec3[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugPolyLine3BuilderAssignments.GetPossAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     public Vec3[]? Lefts
     {
         get => state.Get<Vec3[]?>("Lefts");
-        set => SetLefts(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugPolyLine3BuilderAssignments.GetLeftsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLefts(params Vec3[]? value)
     {
@@ -55,7 +53,7 @@ public abstract class CPlugPolyLine3BuilderBase<TSelf> where TSelf : CPlugPolyLi
     public Vec3[]? Poss
     {
         get => state.Get<Vec3[]?>("Poss");
-        set => SetPoss(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugPolyLine3BuilderAssignments.GetPossAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithPoss(params Vec3[]? value)
     {

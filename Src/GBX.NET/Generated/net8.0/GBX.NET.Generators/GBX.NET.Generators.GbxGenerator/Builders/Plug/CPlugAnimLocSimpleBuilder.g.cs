@@ -36,19 +36,10 @@ public abstract class CPlugAnimLocSimpleBuilderBase<TSelf> where TSelf : CPlugAn
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple> state;
     private protected CPlugAnimLocSimpleBuilderBase() => state = new();
     private protected CPlugAnimLocSimpleBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple> state) => this.state = state;
-    private protected static void SetAnimationVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimLocSimpleBuilderAssignments.GetAnimationVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAxis(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimLocSimpleBuilderAssignments.GetAxisAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetRotAngle(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimLocSimpleBuilderAssignments.GetRotAngleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetRotFunc(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple> state, byte value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimLocSimpleBuilderAssignments.GetRotFuncAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetRotPeriod(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimLocSimpleBuilderAssignments.GetRotPeriodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetRotPeriodMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimLocSimpleBuilderAssignments.GetRotPeriodMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTransPeriod(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimLocSimpleBuilderAssignments.GetTransPeriodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTransPeriodMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimLocSimpleBuilderAssignments.GetTransPeriodMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTransY(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimLocSimpleBuilderAssignments.GetTransYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public int AnimationVersion
     {
         get => state.Get<int>("AnimationVersion");
-        set => SetAnimationVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimLocSimpleBuilderAssignments.GetAnimationVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAnimationVersion(int value)
     {
@@ -58,7 +49,7 @@ public abstract class CPlugAnimLocSimpleBuilderBase<TSelf> where TSelf : CPlugAn
     public int Axis
     {
         get => state.Get<int>("Axis");
-        set => SetAxis(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimLocSimpleBuilderAssignments.GetAxisAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAxis(int value)
     {
@@ -68,7 +59,7 @@ public abstract class CPlugAnimLocSimpleBuilderBase<TSelf> where TSelf : CPlugAn
     public float RotAngle
     {
         get => state.Get<float>("RotAngle");
-        set => SetRotAngle(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimLocSimpleBuilderAssignments.GetRotAngleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRotAngle(float value)
     {
@@ -78,7 +69,7 @@ public abstract class CPlugAnimLocSimpleBuilderBase<TSelf> where TSelf : CPlugAn
     public byte RotFunc
     {
         get => state.Get<byte>("RotFunc");
-        set => SetRotFunc(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimLocSimpleBuilderAssignments.GetRotFuncAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRotFunc(byte value)
     {
@@ -88,7 +79,7 @@ public abstract class CPlugAnimLocSimpleBuilderBase<TSelf> where TSelf : CPlugAn
     public int RotPeriod
     {
         get => state.Get<int>("RotPeriod");
-        set => SetRotPeriod(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimLocSimpleBuilderAssignments.GetRotPeriodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRotPeriod(int value)
     {
@@ -98,7 +89,7 @@ public abstract class CPlugAnimLocSimpleBuilderBase<TSelf> where TSelf : CPlugAn
     public int RotPeriodMax
     {
         get => state.Get<int>("RotPeriodMax");
-        set => SetRotPeriodMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimLocSimpleBuilderAssignments.GetRotPeriodMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRotPeriodMax(int value)
     {
@@ -108,7 +99,7 @@ public abstract class CPlugAnimLocSimpleBuilderBase<TSelf> where TSelf : CPlugAn
     public int TransPeriod
     {
         get => state.Get<int>("TransPeriod");
-        set => SetTransPeriod(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimLocSimpleBuilderAssignments.GetTransPeriodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTransPeriod(int value)
     {
@@ -118,7 +109,7 @@ public abstract class CPlugAnimLocSimpleBuilderBase<TSelf> where TSelf : CPlugAn
     public int TransPeriodMax
     {
         get => state.Get<int>("TransPeriodMax");
-        set => SetTransPeriodMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimLocSimpleBuilderAssignments.GetTransPeriodMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTransPeriodMax(int value)
     {
@@ -128,7 +119,7 @@ public abstract class CPlugAnimLocSimpleBuilderBase<TSelf> where TSelf : CPlugAn
     public float TransY
     {
         get => state.Get<float>("TransY");
-        set => SetTransY(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimLocSimpleBuilderAssignments.GetTransYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTransY(float value)
     {

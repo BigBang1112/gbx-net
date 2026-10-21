@@ -36,140 +36,10 @@ public abstract class CSystemConfigBuilderBase<TSelf> where TSelf : CSystemConfi
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state;
     private protected CSystemConfigBuilderBase() => state = new();
     private protected CSystemConfigBuilderBase(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state) => this.state = state;
-    private protected static void SetAdvertising_DisabledByUser(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAdvertising_DisabledByUserAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetAdvertising_Enabled(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, global::GBX.NET.Engines.System.CSystemConfig.EAdvertisingEnabled value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAdvertising_EnabledAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetAdvertising_TunningCoef(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, float value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAdvertising_TunningCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetAntiCheatServerUrl(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAntiCheatServerUrlAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAudioAcceleration_Dx9(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, global::GBX.NET.Engines.System.CSystemConfig.EAudioAcceleration value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioAcceleration_Dx9Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetAudioAllowEFX(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioAllowEFXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetAudioAllowHRTF(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioAllowHRTFAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAudioDevice_Oal(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioDevice_OalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetAudioDisableDoppler(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioDisableDopplerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetAudioDontMuteWhenApplicationUnfocused(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioDontMuteWhenApplicationUnfocusedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAudioEnabled(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioEnabledAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetAudioGlobalQuality(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioGlobalQualityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetAudioMaxSounds(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioMaxSoundsAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
-    private protected static void SetAudioMusicVolume(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, float value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioMusicVolumeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetAudioQuality3d_Dx9(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, global::GBX.NET.Engines.System.CSystemConfig.EAudioQuality3d value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioQuality3d_Dx9Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetAudioSoundHdr(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioSoundHdrAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAudioSoundVolume(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, float value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioSoundVolumeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetAudioSoundsPerUpdate(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioSoundsPerUpdateAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
-    private protected static void SetAudioSpeakerConfig(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, global::GBX.NET.Engines.System.CSystemConfig.EAudioSpeakerConfig value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioSpeakerConfigAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetAudioUpdatePeriod(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioUpdatePeriodAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
-    private protected static void SetAudioUseEAX(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioUseEAXAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetAutoUpdateFromLocator(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAutoUpdateFromLocatorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetAutoUpdateFromLocatorAtInternetConnection(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAutoUpdateFromLocatorAtInternetConnectionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetAutoUpdateLocatorDBUrl(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAutoUpdateLocatorDBUrlAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetBadWordListUrl(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetBadWordListUrlAssignment(), value, GameVersion.TM2020);
-    private protected static void SetBlackListUrl(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetBlackListUrlAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetDesiredLanguageId(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetDesiredLanguageIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetDisableReplayRecording(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetDisableReplayRecordingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDisplay(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, global::GBX.NET.Engines.System.CSystemConfigDisplay? value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetDisplayAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetDisplayAntialiasing(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetDisplayAntialiasingAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
-    private protected static void SetDisplayColorDepth(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetDisplayColorDepthAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
-    private protected static void SetDisplayDisableShadowBuffer(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetDisplayDisableShadowBufferAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
-    private protected static void SetDisplayFullScreen(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetDisplayFullScreenAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
-    private protected static void SetDisplayHLQuality(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetDisplayHLQualityAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
-    private protected static void SetDisplayMaxFiltering(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetDisplayMaxFilteringAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
-    private protected static void SetDisplayRefreshRate(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetDisplayRefreshRateAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
-    private protected static void SetDisplayScreenSizeFS(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, Int2 value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetDisplayScreenSizeFSAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
-    private protected static void SetDisplayShaderQuality(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetDisplayShaderQualityAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
-    private protected static void SetDisplayShadows(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetDisplayShadowsAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
-    private protected static void SetDisplayTexturesQuality(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetDisplayTexturesQualityAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
-    private protected static void SetDisplayVSync(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetDisplayVSyncAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
-    private protected static void SetEdDontConnect(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetEdDontConnectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetEnableCrashLogUpload(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetEnableCrashLogUploadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetEnableLocators(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetEnableLocatorsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetEncryptedKey(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetEncryptedKeyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetFileTransferEnableAvatarDownload(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableAvatarDownloadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFileTransferEnableAvatarLocators(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableAvatarLocatorsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFileTransferEnableAvatarUpload(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableAvatarUploadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFileTransferEnableDownload(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableDownloadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetFileTransferEnableMapDownload(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableMapDownloadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFileTransferEnableMapLocators(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableMapLocatorsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFileTransferEnableMapModDownload(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableMapModDownloadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFileTransferEnableMapModLocators(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableMapModLocatorsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFileTransferEnableMapModUpload(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableMapModUploadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFileTransferEnableMapSkinDownload(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableMapSkinDownloadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFileTransferEnableMapSkinLocators(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableMapSkinLocatorsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFileTransferEnableMapSkinUpload(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableMapSkinUploadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFileTransferEnableMapUpload(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableMapUploadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFileTransferEnableTagSkinDownload(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableTagSkinDownloadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFileTransferEnableTagSkinLocators(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableTagSkinLocatorsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFileTransferEnableTagSkinUpload(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableTagSkinUploadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFileTransferEnableUnknownTypeDownload(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableUnknownTypeDownloadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFileTransferEnableUnknownTypeLocators(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableUnknownTypeLocatorsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFileTransferEnableUnknownTypeUpload(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableUnknownTypeUploadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFileTransferEnableUpload(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableUploadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetFileTransferEnableVehicleSkinDownload(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableVehicleSkinDownloadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFileTransferEnableVehicleSkinLocators(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableVehicleSkinLocatorsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFileTransferEnableVehicleSkinUpload(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableVehicleSkinUploadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFileTransferMaxCacheSize(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, ulong value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferMaxCacheSizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFileTransferMaxCacheSize32(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferMaxCacheSize32Assignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetGamePackQuality(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, global::GBX.NET.Engines.System.CSystemConfig.EGamePackQuality value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetGamePackQualityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetInputsAlternateMethod(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetInputsAlternateMethodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetInputsCaptureKeyboard(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetInputsCaptureKeyboardAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetInputsDeadZone(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, float value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetInputsDeadZoneAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetInputsEnableJoysticks(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetInputsEnableJoysticksAssignment(), value, GameVersion.TM2020);
-    private protected static void SetInputsEnableRumble(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetInputsEnableRumbleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetInputsFreezeUnusedAxes(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetInputsFreezeUnusedAxesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetInputsSensitivity(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, float value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetInputsSensitivityAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetInstallCdKey(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetInstallCdKeyAssignment(), value, GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetInstallUid(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetInstallUidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetIsIgnorePlayerSkins(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetIsIgnorePlayerSkinsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetIsSafeMode(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetIsSafeModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetIsSkipRollingDemo(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetIsSkipRollingDemoAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetKeyHashes(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, string[]? value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetKeyHashesAssignment(), value, GameVersion.MP3 | GameVersion.TMF);
-    private protected static void SetMasterServerIsRegistred(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetMasterServerIsRegistredAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX);
-    private protected static void SetMasterServerKey(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetMasterServerKeyAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX);
-    private protected static void SetMasterServerLogin(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetMasterServerLoginAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX);
-    private protected static void SetMasterServerPassword(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetMasterServerPasswordAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX);
-    private protected static void SetMenuSkin(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetMenuSkinAssignment(), value, GameVersion.TMF);
-    private protected static void SetNetworkClientPort(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkClientPortAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetNetworkConnection(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkConnectionAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX);
-    private protected static void SetNetworkDownloadRate(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkDownloadRateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetNetworkEnableAvatarDownload(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkEnableAvatarDownloadAssignment(), value, GameVersion.TMPU);
-    private protected static void SetNetworkFirewallTestedExeChecksums(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, uint[]? value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkFirewallTestedExeChecksumsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetNetworkForceServerAddress(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkForceServerAddressAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetNetworkForceUseLocalAddress(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkForceUseLocalAddressAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetNetworkLastUsedMSAddress(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkLastUsedMSAddressAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetNetworkLastUsedMSPath(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkLastUsedMSPathAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetNetworkMasterServerAddress(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkMasterServerAddressAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
-    private protected static void SetNetworkP2PServerPort(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkP2PServerPortAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetNetworkProxyLogin(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkProxyLoginAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetNetworkProxyPassword(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkProxyPasswordAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetNetworkProxyUrl(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkProxyUrlAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetNetworkServerBroadcastLength(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkServerBroadcastLengthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetNetworkServerPort(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkServerPortAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetNetworkSpeed(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetNetworkTestInternetConnection(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkTestInternetConnectionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetNetworkUploadRate(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkUploadRateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetNetworkUseNatUPnP(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkUseNatUPnPAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetNetworkUseProxy(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkUseProxyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetParentalLockLastUnlockedTime(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, DateTime? value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetParentalLockLastUnlockedTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetParentalLockPasswordHash(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, UInt128 value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetParentalLockPasswordHashAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetPlayerInfoDisplaySize(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetPlayerInfoDisplaySizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetPlayerInfoDisplayType(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, global::GBX.NET.Engines.System.CSystemConfig.EPlayerInfoDisplayType value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetPlayerInfoDisplayTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetPlayerOcclusion(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, global::GBX.NET.Engines.System.CSystemConfig.EPlayerOcclusion value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetPlayerOcclusionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetPlayerShadow(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetPlayerShadowAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetProfileEnableMulti(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetProfileEnableMultiAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetProfileName(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetProfileNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetSmMaxPlayerResimStepPerFrame(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetSmMaxPlayerResimStepPerFrameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTmBackgroundQuality(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetTmBackgroundQualityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetTmCarParticlesQuality(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, global::GBX.NET.Engines.System.CSystemConfig.ETmCarParticlesQuality value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetTmCarParticlesQualityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetTmCarProjector(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, global::GBX.NET.Engines.System.CSystemConfig.ETmCarProjector value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetTmCarProjectorAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetTmCarQuality(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetTmCarQualityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetTmMaxOpponents(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetTmMaxOpponentsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetTmOppShadows(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetTmOppShadowsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetTmOpponents(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, int value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetTmOpponentsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetVsk3BoatQuality(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, global::GBX.NET.Engines.System.CSystemConfig.EVsk3BoatQuality value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetVsk3BoatQualityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetVsk3SeaQuality(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, global::GBX.NET.Engines.System.CSystemConfig.EVsk3SeaQuality value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetVsk3SeaQualityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetVsk3Stem(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, global::GBX.NET.Engines.System.CSystemConfig.EVsk3BoatVisibility value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetVsk3StemAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetVsk3TeamMate(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfig> state, global::GBX.NET.Engines.System.CSystemConfig.EVsk3BoatVisibility value) => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetVsk3TeamMateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     public global::GBX.NET.Engines.System.CSystemConfig.EAudioAcceleration AudioAcceleration_Dx9
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfig.EAudioAcceleration>("AudioAcceleration_Dx9");
-        set => SetAudioAcceleration_Dx9(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioAcceleration_Dx9Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithAudioAcceleration_Dx9(global::GBX.NET.Engines.System.CSystemConfig.EAudioAcceleration value)
     {
@@ -179,7 +49,7 @@ public abstract class CSystemConfigBuilderBase<TSelf> where TSelf : CSystemConfi
     public bool AudioEnabled
     {
         get => state.Get<bool>("AudioEnabled");
-        set => SetAudioEnabled(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioEnabledAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithAudioEnabled(bool value)
     {
@@ -189,7 +59,7 @@ public abstract class CSystemConfigBuilderBase<TSelf> where TSelf : CSystemConfi
     public float AudioMusicVolume
     {
         get => state.Get<float>("AudioMusicVolume");
-        set => SetAudioMusicVolume(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioMusicVolumeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithAudioMusicVolume(float value)
     {
@@ -199,7 +69,7 @@ public abstract class CSystemConfigBuilderBase<TSelf> where TSelf : CSystemConfi
     public global::GBX.NET.Engines.System.CSystemConfig.EAudioQuality3d AudioQuality3d_Dx9
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfig.EAudioQuality3d>("AudioQuality3d_Dx9");
-        set => SetAudioQuality3d_Dx9(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioQuality3d_Dx9Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithAudioQuality3d_Dx9(global::GBX.NET.Engines.System.CSystemConfig.EAudioQuality3d value)
     {
@@ -209,7 +79,7 @@ public abstract class CSystemConfigBuilderBase<TSelf> where TSelf : CSystemConfi
     public float AudioSoundVolume
     {
         get => state.Get<float>("AudioSoundVolume");
-        set => SetAudioSoundVolume(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioSoundVolumeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithAudioSoundVolume(float value)
     {
@@ -219,7 +89,7 @@ public abstract class CSystemConfigBuilderBase<TSelf> where TSelf : CSystemConfi
     public string? DesiredLanguageId
     {
         get => state.Get<string?>("DesiredLanguageId");
-        set => SetDesiredLanguageId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetDesiredLanguageIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithDesiredLanguageId(string? value)
     {
@@ -229,7 +99,7 @@ public abstract class CSystemConfigBuilderBase<TSelf> where TSelf : CSystemConfi
     public bool IsIgnorePlayerSkins
     {
         get => state.Get<bool>("IsIgnorePlayerSkins");
-        set => SetIsIgnorePlayerSkins(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetIsIgnorePlayerSkinsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithIsIgnorePlayerSkins(bool value)
     {
@@ -239,7 +109,7 @@ public abstract class CSystemConfigBuilderBase<TSelf> where TSelf : CSystemConfi
     public int NetworkClientPort
     {
         get => state.Get<int>("NetworkClientPort");
-        set => SetNetworkClientPort(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkClientPortAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithNetworkClientPort(int value)
     {
@@ -249,7 +119,7 @@ public abstract class CSystemConfigBuilderBase<TSelf> where TSelf : CSystemConfi
     public string? NetworkForceServerAddress
     {
         get => state.Get<string?>("NetworkForceServerAddress");
-        set => SetNetworkForceServerAddress(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkForceServerAddressAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithNetworkForceServerAddress(string? value)
     {
@@ -259,7 +129,7 @@ public abstract class CSystemConfigBuilderBase<TSelf> where TSelf : CSystemConfi
     public bool NetworkForceUseLocalAddress
     {
         get => state.Get<bool>("NetworkForceUseLocalAddress");
-        set => SetNetworkForceUseLocalAddress(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkForceUseLocalAddressAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithNetworkForceUseLocalAddress(bool value)
     {
@@ -269,7 +139,7 @@ public abstract class CSystemConfigBuilderBase<TSelf> where TSelf : CSystemConfi
     public string? NetworkProxyLogin
     {
         get => state.Get<string?>("NetworkProxyLogin");
-        set => SetNetworkProxyLogin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkProxyLoginAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithNetworkProxyLogin(string? value)
     {
@@ -279,7 +149,7 @@ public abstract class CSystemConfigBuilderBase<TSelf> where TSelf : CSystemConfi
     public string? NetworkProxyPassword
     {
         get => state.Get<string?>("NetworkProxyPassword");
-        set => SetNetworkProxyPassword(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkProxyPasswordAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithNetworkProxyPassword(string? value)
     {
@@ -289,7 +159,7 @@ public abstract class CSystemConfigBuilderBase<TSelf> where TSelf : CSystemConfi
     public int NetworkServerPort
     {
         get => state.Get<int>("NetworkServerPort");
-        set => SetNetworkServerPort(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkServerPortAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithNetworkServerPort(int value)
     {
@@ -299,7 +169,7 @@ public abstract class CSystemConfigBuilderBase<TSelf> where TSelf : CSystemConfi
     public bool NetworkUseProxy
     {
         get => state.Get<bool>("NetworkUseProxy");
-        set => SetNetworkUseProxy(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkUseProxyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithNetworkUseProxy(bool value)
     {
@@ -309,7 +179,7 @@ public abstract class CSystemConfigBuilderBase<TSelf> where TSelf : CSystemConfi
     public global::GBX.NET.Engines.System.CSystemConfig.ETmCarParticlesQuality TmCarParticlesQuality
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfig.ETmCarParticlesQuality>("TmCarParticlesQuality");
-        set => SetTmCarParticlesQuality(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetTmCarParticlesQualityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithTmCarParticlesQuality(global::GBX.NET.Engines.System.CSystemConfig.ETmCarParticlesQuality value)
     {
@@ -319,7 +189,7 @@ public abstract class CSystemConfigBuilderBase<TSelf> where TSelf : CSystemConfi
     public int TmCarQuality
     {
         get => state.Get<int>("TmCarQuality");
-        set => SetTmCarQuality(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetTmCarQualityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithTmCarQuality(int value)
     {
@@ -329,7 +199,7 @@ public abstract class CSystemConfigBuilderBase<TSelf> where TSelf : CSystemConfi
     public int TmOpponents
     {
         get => state.Get<int>("TmOpponents");
-        set => SetTmOpponents(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetTmOpponentsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithTmOpponents(int value)
     {
@@ -339,7 +209,7 @@ public abstract class CSystemConfigBuilderBase<TSelf> where TSelf : CSystemConfi
     public global::GBX.NET.Engines.System.CSystemConfig.EVsk3BoatQuality Vsk3BoatQuality
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfig.EVsk3BoatQuality>("Vsk3BoatQuality");
-        set => SetVsk3BoatQuality(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetVsk3BoatQualityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithVsk3BoatQuality(global::GBX.NET.Engines.System.CSystemConfig.EVsk3BoatQuality value)
     {
@@ -349,7 +219,7 @@ public abstract class CSystemConfigBuilderBase<TSelf> where TSelf : CSystemConfi
     public global::GBX.NET.Engines.System.CSystemConfig.EVsk3SeaQuality Vsk3SeaQuality
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfig.EVsk3SeaQuality>("Vsk3SeaQuality");
-        set => SetVsk3SeaQuality(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetVsk3SeaQualityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithVsk3SeaQuality(global::GBX.NET.Engines.System.CSystemConfig.EVsk3SeaQuality value)
     {
@@ -359,7 +229,7 @@ public abstract class CSystemConfigBuilderBase<TSelf> where TSelf : CSystemConfi
     public global::GBX.NET.Engines.System.CSystemConfig.EVsk3BoatVisibility Vsk3Stem
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfig.EVsk3BoatVisibility>("Vsk3Stem");
-        set => SetVsk3Stem(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetVsk3StemAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithVsk3Stem(global::GBX.NET.Engines.System.CSystemConfig.EVsk3BoatVisibility value)
     {
@@ -369,7 +239,7 @@ public abstract class CSystemConfigBuilderBase<TSelf> where TSelf : CSystemConfi
     public global::GBX.NET.Engines.System.CSystemConfig.EVsk3BoatVisibility Vsk3TeamMate
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfig.EVsk3BoatVisibility>("Vsk3TeamMate");
-        set => SetVsk3TeamMate(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetVsk3TeamMateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithVsk3TeamMate(global::GBX.NET.Engines.System.CSystemConfig.EVsk3BoatVisibility value)
     {
@@ -383,7 +253,7 @@ public abstract class CSystemConfigBuilderMembers1<TSelf> : CSystemConfigBuilder
     public bool AudioUseEAX
     {
         get => state.Get<bool>("AudioUseEAX");
-        set => SetAudioUseEAX(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioUseEAXAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithAudioUseEAX(bool value)
     {
@@ -393,7 +263,7 @@ public abstract class CSystemConfigBuilderMembers1<TSelf> : CSystemConfigBuilder
     public float InputsDeadZone
     {
         get => state.Get<float>("InputsDeadZone");
-        set => SetInputsDeadZone(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetInputsDeadZoneAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithInputsDeadZone(float value)
     {
@@ -403,7 +273,7 @@ public abstract class CSystemConfigBuilderMembers1<TSelf> : CSystemConfigBuilder
     public float InputsSensitivity
     {
         get => state.Get<float>("InputsSensitivity");
-        set => SetInputsSensitivity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetInputsSensitivityAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithInputsSensitivity(float value)
     {
@@ -417,7 +287,7 @@ public abstract class CSystemConfigBuilderMembers2<TSelf> : CSystemConfigBuilder
     public global::GBX.NET.Engines.System.CSystemConfigDisplay? Display
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay?>("Display");
-        set => SetDisplay(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetDisplayAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithDisplay(global::GBX.NET.Engines.System.CSystemConfigDisplay? value)
     {
@@ -427,7 +297,7 @@ public abstract class CSystemConfigBuilderMembers2<TSelf> : CSystemConfigBuilder
     public bool InputsAlternateMethod
     {
         get => state.Get<bool>("InputsAlternateMethod");
-        set => SetInputsAlternateMethod(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetInputsAlternateMethodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithInputsAlternateMethod(bool value)
     {
@@ -437,7 +307,7 @@ public abstract class CSystemConfigBuilderMembers2<TSelf> : CSystemConfigBuilder
     public bool IsSafeMode
     {
         get => state.Get<bool>("IsSafeMode");
-        set => SetIsSafeMode(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetIsSafeModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithIsSafeMode(bool value)
     {
@@ -447,7 +317,7 @@ public abstract class CSystemConfigBuilderMembers2<TSelf> : CSystemConfigBuilder
     public bool IsSkipRollingDemo
     {
         get => state.Get<bool>("IsSkipRollingDemo");
-        set => SetIsSkipRollingDemo(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetIsSkipRollingDemoAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithIsSkipRollingDemo(bool value)
     {
@@ -461,7 +331,7 @@ public abstract class CSystemConfigBuilderMembers3<TSelf> : CSystemConfigBuilder
     public bool MasterServerIsRegistred
     {
         get => state.Get<bool>("MasterServerIsRegistred");
-        set => SetMasterServerIsRegistred(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetMasterServerIsRegistredAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX);
     }
     public TSelf WithMasterServerIsRegistred(bool value)
     {
@@ -471,7 +341,7 @@ public abstract class CSystemConfigBuilderMembers3<TSelf> : CSystemConfigBuilder
     public string? MasterServerKey
     {
         get => state.Get<string?>("MasterServerKey");
-        set => SetMasterServerKey(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetMasterServerKeyAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX);
     }
     public TSelf WithMasterServerKey(string? value)
     {
@@ -481,7 +351,7 @@ public abstract class CSystemConfigBuilderMembers3<TSelf> : CSystemConfigBuilder
     public string? MasterServerLogin
     {
         get => state.Get<string?>("MasterServerLogin");
-        set => SetMasterServerLogin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetMasterServerLoginAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX);
     }
     public TSelf WithMasterServerLogin(string? value)
     {
@@ -491,7 +361,7 @@ public abstract class CSystemConfigBuilderMembers3<TSelf> : CSystemConfigBuilder
     public string? MasterServerPassword
     {
         get => state.Get<string?>("MasterServerPassword");
-        set => SetMasterServerPassword(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetMasterServerPasswordAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX);
     }
     public TSelf WithMasterServerPassword(string? value)
     {
@@ -501,7 +371,7 @@ public abstract class CSystemConfigBuilderMembers3<TSelf> : CSystemConfigBuilder
     public int NetworkConnection
     {
         get => state.Get<int>("NetworkConnection");
-        set => SetNetworkConnection(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkConnectionAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX);
     }
     public TSelf WithNetworkConnection(int value)
     {
@@ -515,7 +385,7 @@ public abstract class CSystemConfigBuilderMembers4<TSelf> : CSystemConfigBuilder
     public bool Advertising_DisabledByUser
     {
         get => state.Get<bool>("Advertising_DisabledByUser");
-        set => SetAdvertising_DisabledByUser(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAdvertising_DisabledByUserAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithAdvertising_DisabledByUser(bool value)
     {
@@ -525,7 +395,7 @@ public abstract class CSystemConfigBuilderMembers4<TSelf> : CSystemConfigBuilder
     public global::GBX.NET.Engines.System.CSystemConfig.EAdvertisingEnabled Advertising_Enabled
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfig.EAdvertisingEnabled>("Advertising_Enabled");
-        set => SetAdvertising_Enabled(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAdvertising_EnabledAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithAdvertising_Enabled(global::GBX.NET.Engines.System.CSystemConfig.EAdvertisingEnabled value)
     {
@@ -535,7 +405,7 @@ public abstract class CSystemConfigBuilderMembers4<TSelf> : CSystemConfigBuilder
     public float Advertising_TunningCoef
     {
         get => state.Get<float>("Advertising_TunningCoef");
-        set => SetAdvertising_TunningCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAdvertising_TunningCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithAdvertising_TunningCoef(float value)
     {
@@ -545,7 +415,7 @@ public abstract class CSystemConfigBuilderMembers4<TSelf> : CSystemConfigBuilder
     public bool AudioDisableDoppler
     {
         get => state.Get<bool>("AudioDisableDoppler");
-        set => SetAudioDisableDoppler(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioDisableDopplerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithAudioDisableDoppler(bool value)
     {
@@ -555,7 +425,7 @@ public abstract class CSystemConfigBuilderMembers4<TSelf> : CSystemConfigBuilder
     public int AudioGlobalQuality
     {
         get => state.Get<int>("AudioGlobalQuality");
-        set => SetAudioGlobalQuality(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioGlobalQualityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithAudioGlobalQuality(int value)
     {
@@ -565,7 +435,7 @@ public abstract class CSystemConfigBuilderMembers4<TSelf> : CSystemConfigBuilder
     public global::GBX.NET.Engines.System.CSystemConfig.EAudioSpeakerConfig AudioSpeakerConfig
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfig.EAudioSpeakerConfig>("AudioSpeakerConfig");
-        set => SetAudioSpeakerConfig(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioSpeakerConfigAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithAudioSpeakerConfig(global::GBX.NET.Engines.System.CSystemConfig.EAudioSpeakerConfig value)
     {
@@ -575,7 +445,7 @@ public abstract class CSystemConfigBuilderMembers4<TSelf> : CSystemConfigBuilder
     public bool AutoUpdateFromLocator
     {
         get => state.Get<bool>("AutoUpdateFromLocator");
-        set => SetAutoUpdateFromLocator(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAutoUpdateFromLocatorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithAutoUpdateFromLocator(bool value)
     {
@@ -585,7 +455,7 @@ public abstract class CSystemConfigBuilderMembers4<TSelf> : CSystemConfigBuilder
     public bool AutoUpdateFromLocatorAtInternetConnection
     {
         get => state.Get<bool>("AutoUpdateFromLocatorAtInternetConnection");
-        set => SetAutoUpdateFromLocatorAtInternetConnection(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAutoUpdateFromLocatorAtInternetConnectionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithAutoUpdateFromLocatorAtInternetConnection(bool value)
     {
@@ -595,7 +465,7 @@ public abstract class CSystemConfigBuilderMembers4<TSelf> : CSystemConfigBuilder
     public string? AutoUpdateLocatorDBUrl
     {
         get => state.Get<string?>("AutoUpdateLocatorDBUrl");
-        set => SetAutoUpdateLocatorDBUrl(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAutoUpdateLocatorDBUrlAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithAutoUpdateLocatorDBUrl(string? value)
     {
@@ -605,7 +475,7 @@ public abstract class CSystemConfigBuilderMembers4<TSelf> : CSystemConfigBuilder
     public string? BlackListUrl
     {
         get => state.Get<string?>("BlackListUrl");
-        set => SetBlackListUrl(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetBlackListUrlAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithBlackListUrl(string? value)
     {
@@ -615,7 +485,7 @@ public abstract class CSystemConfigBuilderMembers4<TSelf> : CSystemConfigBuilder
     public bool EnableCrashLogUpload
     {
         get => state.Get<bool>("EnableCrashLogUpload");
-        set => SetEnableCrashLogUpload(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetEnableCrashLogUploadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithEnableCrashLogUpload(bool value)
     {
@@ -625,7 +495,7 @@ public abstract class CSystemConfigBuilderMembers4<TSelf> : CSystemConfigBuilder
     public bool EnableLocators
     {
         get => state.Get<bool>("EnableLocators");
-        set => SetEnableLocators(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetEnableLocatorsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithEnableLocators(bool value)
     {
@@ -635,7 +505,7 @@ public abstract class CSystemConfigBuilderMembers4<TSelf> : CSystemConfigBuilder
     public bool FileTransferEnableDownload
     {
         get => state.Get<bool>("FileTransferEnableDownload");
-        set => SetFileTransferEnableDownload(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableDownloadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithFileTransferEnableDownload(bool value)
     {
@@ -645,7 +515,7 @@ public abstract class CSystemConfigBuilderMembers4<TSelf> : CSystemConfigBuilder
     public bool FileTransferEnableUpload
     {
         get => state.Get<bool>("FileTransferEnableUpload");
-        set => SetFileTransferEnableUpload(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableUploadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithFileTransferEnableUpload(bool value)
     {
@@ -655,7 +525,7 @@ public abstract class CSystemConfigBuilderMembers4<TSelf> : CSystemConfigBuilder
     public bool InputsFreezeUnusedAxes
     {
         get => state.Get<bool>("InputsFreezeUnusedAxes");
-        set => SetInputsFreezeUnusedAxes(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetInputsFreezeUnusedAxesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithInputsFreezeUnusedAxes(bool value)
     {
@@ -665,7 +535,7 @@ public abstract class CSystemConfigBuilderMembers4<TSelf> : CSystemConfigBuilder
     public bool NetworkUseNatUPnP
     {
         get => state.Get<bool>("NetworkUseNatUPnP");
-        set => SetNetworkUseNatUPnP(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkUseNatUPnPAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithNetworkUseNatUPnP(bool value)
     {
@@ -675,7 +545,7 @@ public abstract class CSystemConfigBuilderMembers4<TSelf> : CSystemConfigBuilder
     public int TmMaxOpponents
     {
         get => state.Get<int>("TmMaxOpponents");
-        set => SetTmMaxOpponents(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetTmMaxOpponentsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithTmMaxOpponents(int value)
     {
@@ -689,7 +559,7 @@ public abstract class CSystemConfigBuilderMembers5<TSelf> : CSystemConfigBuilder
     public uint FileTransferMaxCacheSize32
     {
         get => state.Get<uint>("FileTransferMaxCacheSize32");
-        set => SetFileTransferMaxCacheSize32(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferMaxCacheSize32Assignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithFileTransferMaxCacheSize32(uint value)
     {
@@ -699,7 +569,7 @@ public abstract class CSystemConfigBuilderMembers5<TSelf> : CSystemConfigBuilder
     public global::GBX.NET.Engines.System.CSystemConfig.ETmCarProjector TmCarProjector
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfig.ETmCarProjector>("TmCarProjector");
-        set => SetTmCarProjector(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetTmCarProjectorAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithTmCarProjector(global::GBX.NET.Engines.System.CSystemConfig.ETmCarProjector value)
     {
@@ -709,7 +579,7 @@ public abstract class CSystemConfigBuilderMembers5<TSelf> : CSystemConfigBuilder
     public bool TmOppShadows
     {
         get => state.Get<bool>("TmOppShadows");
-        set => SetTmOppShadows(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetTmOppShadowsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithTmOppShadows(bool value)
     {
@@ -723,7 +593,7 @@ public abstract class CSystemConfigBuilderMembers6<TSelf> : CSystemConfigBuilder
     public int AudioMaxSounds
     {
         get => state.Get<int>("AudioMaxSounds");
-        set => SetAudioMaxSounds(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioMaxSoundsAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
     }
     public TSelf WithAudioMaxSounds(int value)
     {
@@ -733,7 +603,7 @@ public abstract class CSystemConfigBuilderMembers6<TSelf> : CSystemConfigBuilder
     public int AudioSoundsPerUpdate
     {
         get => state.Get<int>("AudioSoundsPerUpdate");
-        set => SetAudioSoundsPerUpdate(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioSoundsPerUpdateAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
     }
     public TSelf WithAudioSoundsPerUpdate(int value)
     {
@@ -743,7 +613,7 @@ public abstract class CSystemConfigBuilderMembers6<TSelf> : CSystemConfigBuilder
     public int AudioUpdatePeriod
     {
         get => state.Get<int>("AudioUpdatePeriod");
-        set => SetAudioUpdatePeriod(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioUpdatePeriodAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
     }
     public TSelf WithAudioUpdatePeriod(int value)
     {
@@ -753,7 +623,7 @@ public abstract class CSystemConfigBuilderMembers6<TSelf> : CSystemConfigBuilder
     public int DisplayAntialiasing
     {
         get => state.Get<int>("DisplayAntialiasing");
-        set => SetDisplayAntialiasing(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetDisplayAntialiasingAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
     }
     public TSelf WithDisplayAntialiasing(int value)
     {
@@ -763,7 +633,7 @@ public abstract class CSystemConfigBuilderMembers6<TSelf> : CSystemConfigBuilder
     public int DisplayColorDepth
     {
         get => state.Get<int>("DisplayColorDepth");
-        set => SetDisplayColorDepth(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetDisplayColorDepthAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
     }
     public TSelf WithDisplayColorDepth(int value)
     {
@@ -773,7 +643,7 @@ public abstract class CSystemConfigBuilderMembers6<TSelf> : CSystemConfigBuilder
     public bool DisplayDisableShadowBuffer
     {
         get => state.Get<bool>("DisplayDisableShadowBuffer");
-        set => SetDisplayDisableShadowBuffer(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetDisplayDisableShadowBufferAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
     }
     public TSelf WithDisplayDisableShadowBuffer(bool value)
     {
@@ -783,7 +653,7 @@ public abstract class CSystemConfigBuilderMembers6<TSelf> : CSystemConfigBuilder
     public bool DisplayFullScreen
     {
         get => state.Get<bool>("DisplayFullScreen");
-        set => SetDisplayFullScreen(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetDisplayFullScreenAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
     }
     public TSelf WithDisplayFullScreen(bool value)
     {
@@ -793,7 +663,7 @@ public abstract class CSystemConfigBuilderMembers6<TSelf> : CSystemConfigBuilder
     public int DisplayHLQuality
     {
         get => state.Get<int>("DisplayHLQuality");
-        set => SetDisplayHLQuality(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetDisplayHLQualityAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
     }
     public TSelf WithDisplayHLQuality(int value)
     {
@@ -803,7 +673,7 @@ public abstract class CSystemConfigBuilderMembers6<TSelf> : CSystemConfigBuilder
     public int DisplayMaxFiltering
     {
         get => state.Get<int>("DisplayMaxFiltering");
-        set => SetDisplayMaxFiltering(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetDisplayMaxFilteringAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
     }
     public TSelf WithDisplayMaxFiltering(int value)
     {
@@ -813,7 +683,7 @@ public abstract class CSystemConfigBuilderMembers6<TSelf> : CSystemConfigBuilder
     public int DisplayRefreshRate
     {
         get => state.Get<int>("DisplayRefreshRate");
-        set => SetDisplayRefreshRate(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetDisplayRefreshRateAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
     }
     public TSelf WithDisplayRefreshRate(int value)
     {
@@ -823,7 +693,7 @@ public abstract class CSystemConfigBuilderMembers6<TSelf> : CSystemConfigBuilder
     public Int2 DisplayScreenSizeFS
     {
         get => state.Get<Int2>("DisplayScreenSizeFS");
-        set => SetDisplayScreenSizeFS(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetDisplayScreenSizeFSAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
     }
     public TSelf WithDisplayScreenSizeFS(Int2 value)
     {
@@ -833,7 +703,7 @@ public abstract class CSystemConfigBuilderMembers6<TSelf> : CSystemConfigBuilder
     public int DisplayShaderQuality
     {
         get => state.Get<int>("DisplayShaderQuality");
-        set => SetDisplayShaderQuality(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetDisplayShaderQualityAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
     }
     public TSelf WithDisplayShaderQuality(int value)
     {
@@ -843,7 +713,7 @@ public abstract class CSystemConfigBuilderMembers6<TSelf> : CSystemConfigBuilder
     public int DisplayShadows
     {
         get => state.Get<int>("DisplayShadows");
-        set => SetDisplayShadows(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetDisplayShadowsAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
     }
     public TSelf WithDisplayShadows(int value)
     {
@@ -853,7 +723,7 @@ public abstract class CSystemConfigBuilderMembers6<TSelf> : CSystemConfigBuilder
     public int DisplayTexturesQuality
     {
         get => state.Get<int>("DisplayTexturesQuality");
-        set => SetDisplayTexturesQuality(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetDisplayTexturesQualityAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
     }
     public TSelf WithDisplayTexturesQuality(int value)
     {
@@ -863,7 +733,7 @@ public abstract class CSystemConfigBuilderMembers6<TSelf> : CSystemConfigBuilder
     public bool DisplayVSync
     {
         get => state.Get<bool>("DisplayVSync");
-        set => SetDisplayVSync(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetDisplayVSyncAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
     }
     public TSelf WithDisplayVSync(bool value)
     {
@@ -873,7 +743,7 @@ public abstract class CSystemConfigBuilderMembers6<TSelf> : CSystemConfigBuilder
     public string? NetworkMasterServerAddress
     {
         get => state.Get<string?>("NetworkMasterServerAddress");
-        set => SetNetworkMasterServerAddress(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkMasterServerAddressAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
     }
     public TSelf WithNetworkMasterServerAddress(string? value)
     {
@@ -887,7 +757,7 @@ public abstract class CSystemConfigBuilderMembers7<TSelf> : CSystemConfigBuilder
     public int NetworkP2PServerPort
     {
         get => state.Get<int>("NetworkP2PServerPort");
-        set => SetNetworkP2PServerPort(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkP2PServerPortAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithNetworkP2PServerPort(int value)
     {
@@ -897,7 +767,7 @@ public abstract class CSystemConfigBuilderMembers7<TSelf> : CSystemConfigBuilder
     public int NetworkServerBroadcastLength
     {
         get => state.Get<int>("NetworkServerBroadcastLength");
-        set => SetNetworkServerBroadcastLength(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkServerBroadcastLengthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithNetworkServerBroadcastLength(int value)
     {
@@ -907,7 +777,7 @@ public abstract class CSystemConfigBuilderMembers7<TSelf> : CSystemConfigBuilder
     public bool NetworkTestInternetConnection
     {
         get => state.Get<bool>("NetworkTestInternetConnection");
-        set => SetNetworkTestInternetConnection(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkTestInternetConnectionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithNetworkTestInternetConnection(bool value)
     {
@@ -917,7 +787,7 @@ public abstract class CSystemConfigBuilderMembers7<TSelf> : CSystemConfigBuilder
     public int TmBackgroundQuality
     {
         get => state.Get<int>("TmBackgroundQuality");
-        set => SetTmBackgroundQuality(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetTmBackgroundQualityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithTmBackgroundQuality(int value)
     {
@@ -931,7 +801,7 @@ public abstract class CSystemConfigBuilderMembers8<TSelf> : CSystemConfigBuilder
     public int NetworkDownloadRate
     {
         get => state.Get<int>("NetworkDownloadRate");
-        set => SetNetworkDownloadRate(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkDownloadRateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithNetworkDownloadRate(int value)
     {
@@ -941,7 +811,7 @@ public abstract class CSystemConfigBuilderMembers8<TSelf> : CSystemConfigBuilder
     public int NetworkUploadRate
     {
         get => state.Get<int>("NetworkUploadRate");
-        set => SetNetworkUploadRate(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkUploadRateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithNetworkUploadRate(int value)
     {
@@ -951,7 +821,7 @@ public abstract class CSystemConfigBuilderMembers8<TSelf> : CSystemConfigBuilder
     public bool ProfileEnableMulti
     {
         get => state.Get<bool>("ProfileEnableMulti");
-        set => SetProfileEnableMulti(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetProfileEnableMultiAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithProfileEnableMulti(bool value)
     {
@@ -961,7 +831,7 @@ public abstract class CSystemConfigBuilderMembers8<TSelf> : CSystemConfigBuilder
     public string? ProfileName
     {
         get => state.Get<string?>("ProfileName");
-        set => SetProfileName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetProfileNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithProfileName(string? value)
     {
@@ -975,7 +845,7 @@ public abstract class CSystemConfigBuilderMembers9<TSelf> : CSystemConfigBuilder
     public bool AudioUseEAX
     {
         get => state.Get<bool>("AudioUseEAX");
-        set => SetAudioUseEAX(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioUseEAXAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithAudioUseEAX(bool value)
     {
@@ -985,7 +855,7 @@ public abstract class CSystemConfigBuilderMembers9<TSelf> : CSystemConfigBuilder
     public uint FileTransferMaxCacheSize32
     {
         get => state.Get<uint>("FileTransferMaxCacheSize32");
-        set => SetFileTransferMaxCacheSize32(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferMaxCacheSize32Assignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithFileTransferMaxCacheSize32(uint value)
     {
@@ -995,7 +865,7 @@ public abstract class CSystemConfigBuilderMembers9<TSelf> : CSystemConfigBuilder
     public float InputsDeadZone
     {
         get => state.Get<float>("InputsDeadZone");
-        set => SetInputsDeadZone(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetInputsDeadZoneAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithInputsDeadZone(float value)
     {
@@ -1005,7 +875,7 @@ public abstract class CSystemConfigBuilderMembers9<TSelf> : CSystemConfigBuilder
     public float InputsSensitivity
     {
         get => state.Get<float>("InputsSensitivity");
-        set => SetInputsSensitivity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetInputsSensitivityAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithInputsSensitivity(float value)
     {
@@ -1015,7 +885,7 @@ public abstract class CSystemConfigBuilderMembers9<TSelf> : CSystemConfigBuilder
     public string? InstallCdKey
     {
         get => state.Get<string?>("InstallCdKey");
-        set => SetInstallCdKey(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetInstallCdKeyAssignment(), value, GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithInstallCdKey(string? value)
     {
@@ -1025,7 +895,7 @@ public abstract class CSystemConfigBuilderMembers9<TSelf> : CSystemConfigBuilder
     public global::GBX.NET.Engines.System.CSystemConfig.ETmCarProjector TmCarProjector
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfig.ETmCarProjector>("TmCarProjector");
-        set => SetTmCarProjector(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetTmCarProjectorAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithTmCarProjector(global::GBX.NET.Engines.System.CSystemConfig.ETmCarProjector value)
     {
@@ -1035,7 +905,7 @@ public abstract class CSystemConfigBuilderMembers9<TSelf> : CSystemConfigBuilder
     public bool TmOppShadows
     {
         get => state.Get<bool>("TmOppShadows");
-        set => SetTmOppShadows(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetTmOppShadowsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithTmOppShadows(bool value)
     {
@@ -1049,7 +919,7 @@ public abstract class CSystemConfigBuilderMembers10<TSelf> : CSystemConfigBuilde
     public bool AudioAllowEFX
     {
         get => state.Get<bool>("AudioAllowEFX");
-        set => SetAudioAllowEFX(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioAllowEFXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithAudioAllowEFX(bool value)
     {
@@ -1059,7 +929,7 @@ public abstract class CSystemConfigBuilderMembers10<TSelf> : CSystemConfigBuilde
     public string? AudioDevice_Oal
     {
         get => state.Get<string?>("AudioDevice_Oal");
-        set => SetAudioDevice_Oal(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioDevice_OalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithAudioDevice_Oal(string? value)
     {
@@ -1069,7 +939,7 @@ public abstract class CSystemConfigBuilderMembers10<TSelf> : CSystemConfigBuilde
     public string? EncryptedKey
     {
         get => state.Get<string?>("EncryptedKey");
-        set => SetEncryptedKey(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetEncryptedKeyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithEncryptedKey(string? value)
     {
@@ -1079,7 +949,7 @@ public abstract class CSystemConfigBuilderMembers10<TSelf> : CSystemConfigBuilde
     public bool InputsCaptureKeyboard
     {
         get => state.Get<bool>("InputsCaptureKeyboard");
-        set => SetInputsCaptureKeyboard(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetInputsCaptureKeyboardAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithInputsCaptureKeyboard(bool value)
     {
@@ -1089,7 +959,7 @@ public abstract class CSystemConfigBuilderMembers10<TSelf> : CSystemConfigBuilde
     public bool InputsEnableRumble
     {
         get => state.Get<bool>("InputsEnableRumble");
-        set => SetInputsEnableRumble(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetInputsEnableRumbleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithInputsEnableRumble(bool value)
     {
@@ -1099,7 +969,7 @@ public abstract class CSystemConfigBuilderMembers10<TSelf> : CSystemConfigBuilde
     public uint[]? NetworkFirewallTestedExeChecksums
     {
         get => state.Get<uint[]?>("NetworkFirewallTestedExeChecksums");
-        set => SetNetworkFirewallTestedExeChecksums(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkFirewallTestedExeChecksumsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithNetworkFirewallTestedExeChecksums(params uint[]? value)
     {
@@ -1113,7 +983,7 @@ public abstract class CSystemConfigBuilderMembers10<TSelf> : CSystemConfigBuilde
     public string? NetworkLastUsedMSAddress
     {
         get => state.Get<string?>("NetworkLastUsedMSAddress");
-        set => SetNetworkLastUsedMSAddress(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkLastUsedMSAddressAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithNetworkLastUsedMSAddress(string? value)
     {
@@ -1123,7 +993,7 @@ public abstract class CSystemConfigBuilderMembers10<TSelf> : CSystemConfigBuilde
     public string? NetworkLastUsedMSPath
     {
         get => state.Get<string?>("NetworkLastUsedMSPath");
-        set => SetNetworkLastUsedMSPath(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkLastUsedMSPathAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithNetworkLastUsedMSPath(string? value)
     {
@@ -1133,7 +1003,7 @@ public abstract class CSystemConfigBuilderMembers10<TSelf> : CSystemConfigBuilde
     public DateTime? ParentalLockLastUnlockedTime
     {
         get => state.Get<DateTime?>("ParentalLockLastUnlockedTime");
-        set => SetParentalLockLastUnlockedTime(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetParentalLockLastUnlockedTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithParentalLockLastUnlockedTime(DateTime? value)
     {
@@ -1143,7 +1013,7 @@ public abstract class CSystemConfigBuilderMembers10<TSelf> : CSystemConfigBuilde
     public UInt128 ParentalLockPasswordHash
     {
         get => state.Get<UInt128>("ParentalLockPasswordHash");
-        set => SetParentalLockPasswordHash(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetParentalLockPasswordHashAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithParentalLockPasswordHash(UInt128 value)
     {
@@ -1153,7 +1023,7 @@ public abstract class CSystemConfigBuilderMembers10<TSelf> : CSystemConfigBuilde
     public int PlayerInfoDisplaySize
     {
         get => state.Get<int>("PlayerInfoDisplaySize");
-        set => SetPlayerInfoDisplaySize(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetPlayerInfoDisplaySizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithPlayerInfoDisplaySize(int value)
     {
@@ -1163,7 +1033,7 @@ public abstract class CSystemConfigBuilderMembers10<TSelf> : CSystemConfigBuilde
     public global::GBX.NET.Engines.System.CSystemConfig.EPlayerInfoDisplayType PlayerInfoDisplayType
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfig.EPlayerInfoDisplayType>("PlayerInfoDisplayType");
-        set => SetPlayerInfoDisplayType(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetPlayerInfoDisplayTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithPlayerInfoDisplayType(global::GBX.NET.Engines.System.CSystemConfig.EPlayerInfoDisplayType value)
     {
@@ -1177,7 +1047,7 @@ public abstract class CSystemConfigBuilderMembers11<TSelf> : CSystemConfigBuilde
     public string? AntiCheatServerUrl
     {
         get => state.Get<string?>("AntiCheatServerUrl");
-        set => SetAntiCheatServerUrl(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAntiCheatServerUrlAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAntiCheatServerUrl(string? value)
     {
@@ -1187,7 +1057,7 @@ public abstract class CSystemConfigBuilderMembers11<TSelf> : CSystemConfigBuilde
     public bool AudioAllowHRTF
     {
         get => state.Get<bool>("AudioAllowHRTF");
-        set => SetAudioAllowHRTF(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioAllowHRTFAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAudioAllowHRTF(bool value)
     {
@@ -1197,7 +1067,7 @@ public abstract class CSystemConfigBuilderMembers11<TSelf> : CSystemConfigBuilde
     public int AudioDontMuteWhenApplicationUnfocused
     {
         get => state.Get<int>("AudioDontMuteWhenApplicationUnfocused");
-        set => SetAudioDontMuteWhenApplicationUnfocused(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioDontMuteWhenApplicationUnfocusedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAudioDontMuteWhenApplicationUnfocused(int value)
     {
@@ -1207,7 +1077,7 @@ public abstract class CSystemConfigBuilderMembers11<TSelf> : CSystemConfigBuilde
     public bool AudioSoundHdr
     {
         get => state.Get<bool>("AudioSoundHdr");
-        set => SetAudioSoundHdr(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioSoundHdrAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAudioSoundHdr(bool value)
     {
@@ -1217,7 +1087,7 @@ public abstract class CSystemConfigBuilderMembers11<TSelf> : CSystemConfigBuilde
     public bool DisableReplayRecording
     {
         get => state.Get<bool>("DisableReplayRecording");
-        set => SetDisableReplayRecording(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetDisableReplayRecordingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDisableReplayRecording(bool value)
     {
@@ -1227,7 +1097,7 @@ public abstract class CSystemConfigBuilderMembers11<TSelf> : CSystemConfigBuilde
     public bool EdDontConnect
     {
         get => state.Get<bool>("EdDontConnect");
-        set => SetEdDontConnect(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetEdDontConnectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEdDontConnect(bool value)
     {
@@ -1237,7 +1107,7 @@ public abstract class CSystemConfigBuilderMembers11<TSelf> : CSystemConfigBuilde
     public bool FileTransferEnableAvatarDownload
     {
         get => state.Get<bool>("FileTransferEnableAvatarDownload");
-        set => SetFileTransferEnableAvatarDownload(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableAvatarDownloadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFileTransferEnableAvatarDownload(bool value)
     {
@@ -1247,7 +1117,7 @@ public abstract class CSystemConfigBuilderMembers11<TSelf> : CSystemConfigBuilde
     public bool FileTransferEnableAvatarLocators
     {
         get => state.Get<bool>("FileTransferEnableAvatarLocators");
-        set => SetFileTransferEnableAvatarLocators(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableAvatarLocatorsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFileTransferEnableAvatarLocators(bool value)
     {
@@ -1257,7 +1127,7 @@ public abstract class CSystemConfigBuilderMembers11<TSelf> : CSystemConfigBuilde
     public bool FileTransferEnableAvatarUpload
     {
         get => state.Get<bool>("FileTransferEnableAvatarUpload");
-        set => SetFileTransferEnableAvatarUpload(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableAvatarUploadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFileTransferEnableAvatarUpload(bool value)
     {
@@ -1267,7 +1137,7 @@ public abstract class CSystemConfigBuilderMembers11<TSelf> : CSystemConfigBuilde
     public bool FileTransferEnableMapDownload
     {
         get => state.Get<bool>("FileTransferEnableMapDownload");
-        set => SetFileTransferEnableMapDownload(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableMapDownloadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFileTransferEnableMapDownload(bool value)
     {
@@ -1277,7 +1147,7 @@ public abstract class CSystemConfigBuilderMembers11<TSelf> : CSystemConfigBuilde
     public bool FileTransferEnableMapLocators
     {
         get => state.Get<bool>("FileTransferEnableMapLocators");
-        set => SetFileTransferEnableMapLocators(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableMapLocatorsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFileTransferEnableMapLocators(bool value)
     {
@@ -1287,7 +1157,7 @@ public abstract class CSystemConfigBuilderMembers11<TSelf> : CSystemConfigBuilde
     public bool FileTransferEnableMapModDownload
     {
         get => state.Get<bool>("FileTransferEnableMapModDownload");
-        set => SetFileTransferEnableMapModDownload(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableMapModDownloadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFileTransferEnableMapModDownload(bool value)
     {
@@ -1297,7 +1167,7 @@ public abstract class CSystemConfigBuilderMembers11<TSelf> : CSystemConfigBuilde
     public bool FileTransferEnableMapModLocators
     {
         get => state.Get<bool>("FileTransferEnableMapModLocators");
-        set => SetFileTransferEnableMapModLocators(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableMapModLocatorsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFileTransferEnableMapModLocators(bool value)
     {
@@ -1307,7 +1177,7 @@ public abstract class CSystemConfigBuilderMembers11<TSelf> : CSystemConfigBuilde
     public bool FileTransferEnableMapModUpload
     {
         get => state.Get<bool>("FileTransferEnableMapModUpload");
-        set => SetFileTransferEnableMapModUpload(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableMapModUploadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFileTransferEnableMapModUpload(bool value)
     {
@@ -1317,7 +1187,7 @@ public abstract class CSystemConfigBuilderMembers11<TSelf> : CSystemConfigBuilde
     public bool FileTransferEnableMapSkinDownload
     {
         get => state.Get<bool>("FileTransferEnableMapSkinDownload");
-        set => SetFileTransferEnableMapSkinDownload(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableMapSkinDownloadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFileTransferEnableMapSkinDownload(bool value)
     {
@@ -1327,7 +1197,7 @@ public abstract class CSystemConfigBuilderMembers11<TSelf> : CSystemConfigBuilde
     public bool FileTransferEnableMapSkinLocators
     {
         get => state.Get<bool>("FileTransferEnableMapSkinLocators");
-        set => SetFileTransferEnableMapSkinLocators(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableMapSkinLocatorsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFileTransferEnableMapSkinLocators(bool value)
     {
@@ -1337,7 +1207,7 @@ public abstract class CSystemConfigBuilderMembers11<TSelf> : CSystemConfigBuilde
     public bool FileTransferEnableMapSkinUpload
     {
         get => state.Get<bool>("FileTransferEnableMapSkinUpload");
-        set => SetFileTransferEnableMapSkinUpload(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableMapSkinUploadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFileTransferEnableMapSkinUpload(bool value)
     {
@@ -1347,7 +1217,7 @@ public abstract class CSystemConfigBuilderMembers11<TSelf> : CSystemConfigBuilde
     public bool FileTransferEnableMapUpload
     {
         get => state.Get<bool>("FileTransferEnableMapUpload");
-        set => SetFileTransferEnableMapUpload(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableMapUploadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFileTransferEnableMapUpload(bool value)
     {
@@ -1357,7 +1227,7 @@ public abstract class CSystemConfigBuilderMembers11<TSelf> : CSystemConfigBuilde
     public bool FileTransferEnableTagSkinDownload
     {
         get => state.Get<bool>("FileTransferEnableTagSkinDownload");
-        set => SetFileTransferEnableTagSkinDownload(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableTagSkinDownloadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFileTransferEnableTagSkinDownload(bool value)
     {
@@ -1367,7 +1237,7 @@ public abstract class CSystemConfigBuilderMembers11<TSelf> : CSystemConfigBuilde
     public bool FileTransferEnableTagSkinLocators
     {
         get => state.Get<bool>("FileTransferEnableTagSkinLocators");
-        set => SetFileTransferEnableTagSkinLocators(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableTagSkinLocatorsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFileTransferEnableTagSkinLocators(bool value)
     {
@@ -1377,7 +1247,7 @@ public abstract class CSystemConfigBuilderMembers11<TSelf> : CSystemConfigBuilde
     public bool FileTransferEnableTagSkinUpload
     {
         get => state.Get<bool>("FileTransferEnableTagSkinUpload");
-        set => SetFileTransferEnableTagSkinUpload(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableTagSkinUploadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFileTransferEnableTagSkinUpload(bool value)
     {
@@ -1387,7 +1257,7 @@ public abstract class CSystemConfigBuilderMembers11<TSelf> : CSystemConfigBuilde
     public bool FileTransferEnableUnknownTypeDownload
     {
         get => state.Get<bool>("FileTransferEnableUnknownTypeDownload");
-        set => SetFileTransferEnableUnknownTypeDownload(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableUnknownTypeDownloadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFileTransferEnableUnknownTypeDownload(bool value)
     {
@@ -1397,7 +1267,7 @@ public abstract class CSystemConfigBuilderMembers11<TSelf> : CSystemConfigBuilde
     public bool FileTransferEnableUnknownTypeLocators
     {
         get => state.Get<bool>("FileTransferEnableUnknownTypeLocators");
-        set => SetFileTransferEnableUnknownTypeLocators(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableUnknownTypeLocatorsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFileTransferEnableUnknownTypeLocators(bool value)
     {
@@ -1407,7 +1277,7 @@ public abstract class CSystemConfigBuilderMembers11<TSelf> : CSystemConfigBuilde
     public bool FileTransferEnableUnknownTypeUpload
     {
         get => state.Get<bool>("FileTransferEnableUnknownTypeUpload");
-        set => SetFileTransferEnableUnknownTypeUpload(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableUnknownTypeUploadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFileTransferEnableUnknownTypeUpload(bool value)
     {
@@ -1417,7 +1287,7 @@ public abstract class CSystemConfigBuilderMembers11<TSelf> : CSystemConfigBuilde
     public bool FileTransferEnableVehicleSkinDownload
     {
         get => state.Get<bool>("FileTransferEnableVehicleSkinDownload");
-        set => SetFileTransferEnableVehicleSkinDownload(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableVehicleSkinDownloadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFileTransferEnableVehicleSkinDownload(bool value)
     {
@@ -1427,7 +1297,7 @@ public abstract class CSystemConfigBuilderMembers11<TSelf> : CSystemConfigBuilde
     public bool FileTransferEnableVehicleSkinLocators
     {
         get => state.Get<bool>("FileTransferEnableVehicleSkinLocators");
-        set => SetFileTransferEnableVehicleSkinLocators(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableVehicleSkinLocatorsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFileTransferEnableVehicleSkinLocators(bool value)
     {
@@ -1437,7 +1307,7 @@ public abstract class CSystemConfigBuilderMembers11<TSelf> : CSystemConfigBuilde
     public bool FileTransferEnableVehicleSkinUpload
     {
         get => state.Get<bool>("FileTransferEnableVehicleSkinUpload");
-        set => SetFileTransferEnableVehicleSkinUpload(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferEnableVehicleSkinUploadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFileTransferEnableVehicleSkinUpload(bool value)
     {
@@ -1447,7 +1317,7 @@ public abstract class CSystemConfigBuilderMembers11<TSelf> : CSystemConfigBuilde
     public ulong FileTransferMaxCacheSize
     {
         get => state.Get<ulong>("FileTransferMaxCacheSize");
-        set => SetFileTransferMaxCacheSize(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferMaxCacheSizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFileTransferMaxCacheSize(ulong value)
     {
@@ -1457,7 +1327,7 @@ public abstract class CSystemConfigBuilderMembers11<TSelf> : CSystemConfigBuilde
     public global::GBX.NET.Engines.System.CSystemConfig.EGamePackQuality GamePackQuality
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfig.EGamePackQuality>("GamePackQuality");
-        set => SetGamePackQuality(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetGamePackQualityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGamePackQuality(global::GBX.NET.Engines.System.CSystemConfig.EGamePackQuality value)
     {
@@ -1467,7 +1337,7 @@ public abstract class CSystemConfigBuilderMembers11<TSelf> : CSystemConfigBuilde
     public string? InstallUid
     {
         get => state.Get<string?>("InstallUid");
-        set => SetInstallUid(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetInstallUidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInstallUid(string? value)
     {
@@ -1477,7 +1347,7 @@ public abstract class CSystemConfigBuilderMembers11<TSelf> : CSystemConfigBuilde
     public int NetworkSpeed
     {
         get => state.Get<int>("NetworkSpeed");
-        set => SetNetworkSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNetworkSpeed(int value)
     {
@@ -1487,7 +1357,7 @@ public abstract class CSystemConfigBuilderMembers11<TSelf> : CSystemConfigBuilde
     public global::GBX.NET.Engines.System.CSystemConfig.EPlayerOcclusion PlayerOcclusion
     {
         get => state.Get<global::GBX.NET.Engines.System.CSystemConfig.EPlayerOcclusion>("PlayerOcclusion");
-        set => SetPlayerOcclusion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetPlayerOcclusionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithPlayerOcclusion(global::GBX.NET.Engines.System.CSystemConfig.EPlayerOcclusion value)
     {
@@ -1497,7 +1367,7 @@ public abstract class CSystemConfigBuilderMembers11<TSelf> : CSystemConfigBuilde
     public int PlayerShadow
     {
         get => state.Get<int>("PlayerShadow");
-        set => SetPlayerShadow(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetPlayerShadowAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithPlayerShadow(int value)
     {
@@ -1507,7 +1377,7 @@ public abstract class CSystemConfigBuilderMembers11<TSelf> : CSystemConfigBuilde
     public int SmMaxPlayerResimStepPerFrame
     {
         get => state.Get<int>("SmMaxPlayerResimStepPerFrame");
-        set => SetSmMaxPlayerResimStepPerFrame(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetSmMaxPlayerResimStepPerFrameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSmMaxPlayerResimStepPerFrame(int value)
     {
@@ -1521,7 +1391,7 @@ public abstract class CSystemConfigBuilderMembers12<TSelf> : CSystemConfigBuilde
     public string? NetworkProxyUrl
     {
         get => state.Get<string?>("NetworkProxyUrl");
-        set => SetNetworkProxyUrl(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkProxyUrlAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithNetworkProxyUrl(string? value)
     {
@@ -2249,7 +2119,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public global::GBX.NET.Engines.System.CSystemConfigDisplay? Display
         {
             get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay?>("Display");
-            set => SetDisplay(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetDisplayAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMPU WithDisplay(global::GBX.NET.Engines.System.CSystemConfigDisplay? value)
         {
@@ -2259,7 +2129,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public bool InputsAlternateMethod
         {
             get => state.Get<bool>("InputsAlternateMethod");
-            set => SetInputsAlternateMethod(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetInputsAlternateMethodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMPU WithInputsAlternateMethod(bool value)
         {
@@ -2269,7 +2139,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public bool IsSafeMode
         {
             get => state.Get<bool>("IsSafeMode");
-            set => SetIsSafeMode(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetIsSafeModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMPU WithIsSafeMode(bool value)
         {
@@ -2279,7 +2149,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public bool IsSkipRollingDemo
         {
             get => state.Get<bool>("IsSkipRollingDemo");
-            set => SetIsSkipRollingDemo(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetIsSkipRollingDemoAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMPU WithIsSkipRollingDemo(bool value)
         {
@@ -2289,7 +2159,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public bool NetworkEnableAvatarDownload
         {
             get => state.Get<bool>("NetworkEnableAvatarDownload");
-            set => SetNetworkEnableAvatarDownload(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkEnableAvatarDownloadAssignment(), value, GameVersion.TMPU);
         }
         public TMPU WithNetworkEnableAvatarDownload(bool value)
         {
@@ -2299,7 +2169,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public global::GBX.NET.Engines.System.CSystemConfig.ETmCarProjector TmCarProjector
         {
             get => state.Get<global::GBX.NET.Engines.System.CSystemConfig.ETmCarProjector>("TmCarProjector");
-            set => SetTmCarProjector(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetTmCarProjectorAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMPU WithTmCarProjector(global::GBX.NET.Engines.System.CSystemConfig.ETmCarProjector value)
         {
@@ -2309,7 +2179,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public bool TmOppShadows
         {
             get => state.Get<bool>("TmOppShadows");
-            set => SetTmOppShadows(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetTmOppShadowsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMPU WithTmOppShadows(bool value)
         {
@@ -2337,7 +2207,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public bool AudioUseEAX
         {
             get => state.Get<bool>("AudioUseEAX");
-            set => SetAudioUseEAX(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioUseEAXAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMO WithAudioUseEAX(bool value)
         {
@@ -2347,7 +2217,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public float InputsDeadZone
         {
             get => state.Get<float>("InputsDeadZone");
-            set => SetInputsDeadZone(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetInputsDeadZoneAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMO WithInputsDeadZone(float value)
         {
@@ -2357,7 +2227,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public float InputsSensitivity
         {
             get => state.Get<float>("InputsSensitivity");
-            set => SetInputsSensitivity(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetInputsSensitivityAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMO WithInputsSensitivity(float value)
         {
@@ -2367,7 +2237,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public bool MasterServerIsRegistred
         {
             get => state.Get<bool>("MasterServerIsRegistred");
-            set => SetMasterServerIsRegistred(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetMasterServerIsRegistredAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX);
         }
         public TMO WithMasterServerIsRegistred(bool value)
         {
@@ -2377,7 +2247,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public string? MasterServerKey
         {
             get => state.Get<string?>("MasterServerKey");
-            set => SetMasterServerKey(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetMasterServerKeyAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX);
         }
         public TMO WithMasterServerKey(string? value)
         {
@@ -2387,7 +2257,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public string? MasterServerLogin
         {
             get => state.Get<string?>("MasterServerLogin");
-            set => SetMasterServerLogin(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetMasterServerLoginAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX);
         }
         public TMO WithMasterServerLogin(string? value)
         {
@@ -2397,7 +2267,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public string? MasterServerPassword
         {
             get => state.Get<string?>("MasterServerPassword");
-            set => SetMasterServerPassword(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetMasterServerPasswordAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX);
         }
         public TMO WithMasterServerPassword(string? value)
         {
@@ -2407,7 +2277,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public int NetworkConnection
         {
             get => state.Get<int>("NetworkConnection");
-            set => SetNetworkConnection(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkConnectionAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX);
         }
         public TMO WithNetworkConnection(int value)
         {
@@ -2435,7 +2305,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public bool AudioUseEAX
         {
             get => state.Get<bool>("AudioUseEAX");
-            set => SetAudioUseEAX(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioUseEAXAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMSX WithAudioUseEAX(bool value)
         {
@@ -2445,7 +2315,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public float InputsDeadZone
         {
             get => state.Get<float>("InputsDeadZone");
-            set => SetInputsDeadZone(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetInputsDeadZoneAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMSX WithInputsDeadZone(float value)
         {
@@ -2455,7 +2325,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public float InputsSensitivity
         {
             get => state.Get<float>("InputsSensitivity");
-            set => SetInputsSensitivity(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetInputsSensitivityAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMSX WithInputsSensitivity(float value)
         {
@@ -2465,7 +2335,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public bool MasterServerIsRegistred
         {
             get => state.Get<bool>("MasterServerIsRegistred");
-            set => SetMasterServerIsRegistred(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetMasterServerIsRegistredAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX);
         }
         public TMSX WithMasterServerIsRegistred(bool value)
         {
@@ -2475,7 +2345,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public string? MasterServerKey
         {
             get => state.Get<string?>("MasterServerKey");
-            set => SetMasterServerKey(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetMasterServerKeyAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX);
         }
         public TMSX WithMasterServerKey(string? value)
         {
@@ -2485,7 +2355,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public string? MasterServerLogin
         {
             get => state.Get<string?>("MasterServerLogin");
-            set => SetMasterServerLogin(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetMasterServerLoginAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX);
         }
         public TMSX WithMasterServerLogin(string? value)
         {
@@ -2495,7 +2365,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public string? MasterServerPassword
         {
             get => state.Get<string?>("MasterServerPassword");
-            set => SetMasterServerPassword(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetMasterServerPasswordAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX);
         }
         public TMSX WithMasterServerPassword(string? value)
         {
@@ -2505,7 +2375,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public int NetworkConnection
         {
             get => state.Get<int>("NetworkConnection");
-            set => SetNetworkConnection(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkConnectionAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX);
         }
         public TMSX WithNetworkConnection(int value)
         {
@@ -2533,7 +2403,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public bool AudioUseEAX
         {
             get => state.Get<bool>("AudioUseEAX");
-            set => SetAudioUseEAX(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetAudioUseEAXAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMNESWC WithAudioUseEAX(bool value)
         {
@@ -2543,7 +2413,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public uint FileTransferMaxCacheSize32
         {
             get => state.Get<uint>("FileTransferMaxCacheSize32");
-            set => SetFileTransferMaxCacheSize32(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferMaxCacheSize32Assignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMNESWC WithFileTransferMaxCacheSize32(uint value)
         {
@@ -2553,7 +2423,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public float InputsDeadZone
         {
             get => state.Get<float>("InputsDeadZone");
-            set => SetInputsDeadZone(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetInputsDeadZoneAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMNESWC WithInputsDeadZone(float value)
         {
@@ -2563,7 +2433,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public float InputsSensitivity
         {
             get => state.Get<float>("InputsSensitivity");
-            set => SetInputsSensitivity(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetInputsSensitivityAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMNESWC WithInputsSensitivity(float value)
         {
@@ -2573,7 +2443,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public bool MasterServerIsRegistred
         {
             get => state.Get<bool>("MasterServerIsRegistred");
-            set => SetMasterServerIsRegistred(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetMasterServerIsRegistredAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX);
         }
         public TMNESWC WithMasterServerIsRegistred(bool value)
         {
@@ -2583,7 +2453,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public string? MasterServerKey
         {
             get => state.Get<string?>("MasterServerKey");
-            set => SetMasterServerKey(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetMasterServerKeyAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX);
         }
         public TMNESWC WithMasterServerKey(string? value)
         {
@@ -2593,7 +2463,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public string? MasterServerLogin
         {
             get => state.Get<string?>("MasterServerLogin");
-            set => SetMasterServerLogin(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetMasterServerLoginAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX);
         }
         public TMNESWC WithMasterServerLogin(string? value)
         {
@@ -2603,7 +2473,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public string? MasterServerPassword
         {
             get => state.Get<string?>("MasterServerPassword");
-            set => SetMasterServerPassword(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetMasterServerPasswordAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX);
         }
         public TMNESWC WithMasterServerPassword(string? value)
         {
@@ -2613,7 +2483,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public int NetworkConnection
         {
             get => state.Get<int>("NetworkConnection");
-            set => SetNetworkConnection(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetNetworkConnectionAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX);
         }
         public TMNESWC WithNetworkConnection(int value)
         {
@@ -2623,7 +2493,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public global::GBX.NET.Engines.System.CSystemConfig.ETmCarProjector TmCarProjector
         {
             get => state.Get<global::GBX.NET.Engines.System.CSystemConfig.ETmCarProjector>("TmCarProjector");
-            set => SetTmCarProjector(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetTmCarProjectorAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMNESWC WithTmCarProjector(global::GBX.NET.Engines.System.CSystemConfig.ETmCarProjector value)
         {
@@ -2633,7 +2503,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public bool TmOppShadows
         {
             get => state.Get<bool>("TmOppShadows");
-            set => SetTmOppShadows(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetTmOppShadowsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMNESWC WithTmOppShadows(bool value)
         {
@@ -2697,7 +2567,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public uint FileTransferMaxCacheSize32
         {
             get => state.Get<uint>("FileTransferMaxCacheSize32");
-            set => SetFileTransferMaxCacheSize32(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetFileTransferMaxCacheSize32Assignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMF WithFileTransferMaxCacheSize32(uint value)
         {
@@ -2707,7 +2577,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public string[]? KeyHashes
         {
             get => state.Get<string[]?>("KeyHashes");
-            set => SetKeyHashes(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetKeyHashesAssignment(), value, GameVersion.MP3 | GameVersion.TMF);
         }
         public TMF WithKeyHashes(params string[]? value)
         {
@@ -2721,7 +2591,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public string? MenuSkin
         {
             get => state.Get<string?>("MenuSkin");
-            set => SetMenuSkin(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetMenuSkinAssignment(), value, GameVersion.TMF);
         }
         public TMF WithMenuSkin(string? value)
         {
@@ -2731,7 +2601,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public global::GBX.NET.Engines.System.CSystemConfig.ETmCarProjector TmCarProjector
         {
             get => state.Get<global::GBX.NET.Engines.System.CSystemConfig.ETmCarProjector>("TmCarProjector");
-            set => SetTmCarProjector(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetTmCarProjectorAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMF WithTmCarProjector(global::GBX.NET.Engines.System.CSystemConfig.ETmCarProjector value)
         {
@@ -2741,7 +2611,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public bool TmOppShadows
         {
             get => state.Get<bool>("TmOppShadows");
-            set => SetTmOppShadows(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetTmOppShadowsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMF WithTmOppShadows(bool value)
         {
@@ -2769,7 +2639,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public string[]? KeyHashes
         {
             get => state.Get<string[]?>("KeyHashes");
-            set => SetKeyHashes(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetKeyHashesAssignment(), value, GameVersion.MP3 | GameVersion.TMF);
         }
         public MP3 WithKeyHashes(params string[]? value)
         {
@@ -2837,7 +2707,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public string? BadWordListUrl
         {
             get => state.Get<string?>("BadWordListUrl");
-            set => SetBadWordListUrl(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetBadWordListUrlAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithBadWordListUrl(string? value)
         {
@@ -2847,7 +2717,7 @@ public partial class CSystemConfigBuilder : CSystemConfigBuilderBase<CSystemConf
         public bool InputsEnableJoysticks
         {
             get => state.Get<bool>("InputsEnableJoysticks");
-            set => SetInputsEnableJoysticks(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigBuilderAssignments.GetInputsEnableJoysticksAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithInputsEnableJoysticks(bool value)
         {

@@ -36,30 +36,10 @@ public abstract class CGameCtnZoneFrontierBuilderBase<TSelf> where TSelf : CGame
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFrontier> state;
     private protected CGameCtnZoneFrontierBuilderBase() => state = new();
     private protected CGameCtnZoneFrontierBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFrontier> state) => this.state = state;
-    private protected static void SetBlockInfoFrontier(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFrontier> state, global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFrontierBuilderAssignments.GetBlockInfoFrontierAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBlockInfoFrontierReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFrontier> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFrontierBuilderAssignments.GetBlockInfoFrontierReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBlockYOffsetFromParent(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFrontier> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFrontierBuilderAssignments.GetBlockYOffsetFromParentAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetChildZoneId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFrontier> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFrontierBuilderAssignments.GetChildZoneIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetCompatibleZones(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFrontier> state, NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFrontierBuilderAssignments.GetCompatibleZonesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDepth(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFrontier> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetDepthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetForcedParentZoneFrontierId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFrontier> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetForcedParentZoneFrontierIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFrontierChildBorder_AcceptPylons(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFrontier> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFrontierBuilderAssignments.GetFrontierChildBorder_AcceptPylonsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFrontierParentBorder_AcceptPylons(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFrontier> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFrontierBuilderAssignments.GetFrontierParentBorder_AcceptPylonsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFrontierStraightMiddle_AcceptPylons(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFrontier> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFrontierBuilderAssignments.GetFrontierStraightMiddle_AcceptPylonsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFrontierTransitionMiddle_AcceptPylons(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFrontier> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFrontierBuilderAssignments.GetFrontierTransitionMiddle_AcceptPylonsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetHasWater(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFrontier> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetHasWaterAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetHeight(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFrontier> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetHeightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIsLargeZone(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFrontier> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetIsLargeZoneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetOldZone(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFrontier> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetOldZoneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetParentZoneId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFrontier> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFrontierBuilderAssignments.GetParentZoneIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSurfaceId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFrontier> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetSurfaceIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetVisualTopGroundHeight(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFrontier> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetVisualTopGroundHeightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetWaterId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFrontier> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetWaterIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetZoneId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFrontier> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetZoneIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier? BlockInfoFrontier
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier?>("BlockInfoFrontier");
-        set => SetBlockInfoFrontier(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFrontierBuilderAssignments.GetBlockInfoFrontierAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBlockInfoFrontier(global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier? value)
     {
@@ -69,13 +49,13 @@ public abstract class CGameCtnZoneFrontierBuilderBase<TSelf> where TSelf : CGame
     public TSelf WithBlockInfoFrontierReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBlockInfoFrontierReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFrontierBuilderAssignments.GetBlockInfoFrontierReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public string? ChildZoneId
     {
         get => state.Get<string?>("ChildZoneId");
-        set => SetChildZoneId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFrontierBuilderAssignments.GetChildZoneIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithChildZoneId(string? value)
     {
@@ -85,7 +65,7 @@ public abstract class CGameCtnZoneFrontierBuilderBase<TSelf> where TSelf : CGame
     public int Height
     {
         get => state.Get<int>("Height");
-        set => SetHeight(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetHeightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithHeight(int value)
     {
@@ -95,7 +75,7 @@ public abstract class CGameCtnZoneFrontierBuilderBase<TSelf> where TSelf : CGame
     public string? ParentZoneId
     {
         get => state.Get<string?>("ParentZoneId");
-        set => SetParentZoneId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFrontierBuilderAssignments.GetParentZoneIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithParentZoneId(string? value)
     {
@@ -105,7 +85,7 @@ public abstract class CGameCtnZoneFrontierBuilderBase<TSelf> where TSelf : CGame
     public string? SurfaceId
     {
         get => state.Get<string?>("SurfaceId");
-        set => SetSurfaceId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetSurfaceIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSurfaceId(string? value)
     {
@@ -115,7 +95,7 @@ public abstract class CGameCtnZoneFrontierBuilderBase<TSelf> where TSelf : CGame
     public string? ZoneId
     {
         get => state.Get<string?>("ZoneId");
-        set => SetZoneId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetZoneIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithZoneId(string? value)
     {
@@ -129,7 +109,7 @@ public abstract class CGameCtnZoneFrontierBuilderMembers1<TSelf> : CGameCtnZoneF
     public int Depth
     {
         get => state.Get<int>("Depth");
-        set => SetDepth(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetDepthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDepth(int value)
     {
@@ -139,7 +119,7 @@ public abstract class CGameCtnZoneFrontierBuilderMembers1<TSelf> : CGameCtnZoneF
     public bool OldZone
     {
         get => state.Get<bool>("OldZone");
-        set => SetOldZone(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetOldZoneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithOldZone(bool value)
     {
@@ -153,7 +133,7 @@ public abstract class CGameCtnZoneFrontierBuilderMembers2<TSelf> : CGameCtnZoneF
     public bool HasWater
     {
         get => state.Get<bool>("HasWater");
-        set => SetHasWater(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetHasWaterAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithHasWater(bool value)
     {
@@ -167,7 +147,7 @@ public abstract class CGameCtnZoneFrontierBuilderMembers3<TSelf> : CGameCtnZoneF
     public int BlockYOffsetFromParent
     {
         get => state.Get<int>("BlockYOffsetFromParent");
-        set => SetBlockYOffsetFromParent(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFrontierBuilderAssignments.GetBlockYOffsetFromParentAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBlockYOffsetFromParent(int value)
     {
@@ -177,7 +157,7 @@ public abstract class CGameCtnZoneFrontierBuilderMembers3<TSelf> : CGameCtnZoneF
     public NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo>? CompatibleZones
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo>?>("CompatibleZones");
-        set => SetCompatibleZones(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFrontierBuilderAssignments.GetCompatibleZonesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCompatibleZones(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo>? value)
     {
@@ -195,7 +175,7 @@ public abstract class CGameCtnZoneFrontierBuilderMembers3<TSelf> : CGameCtnZoneF
     public string? ForcedParentZoneFrontierId
     {
         get => state.Get<string?>("ForcedParentZoneFrontierId");
-        set => SetForcedParentZoneFrontierId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetForcedParentZoneFrontierIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithForcedParentZoneFrontierId(string? value)
     {
@@ -205,7 +185,7 @@ public abstract class CGameCtnZoneFrontierBuilderMembers3<TSelf> : CGameCtnZoneF
     public bool FrontierChildBorder_AcceptPylons
     {
         get => state.Get<bool>("FrontierChildBorder_AcceptPylons");
-        set => SetFrontierChildBorder_AcceptPylons(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFrontierBuilderAssignments.GetFrontierChildBorder_AcceptPylonsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFrontierChildBorder_AcceptPylons(bool value)
     {
@@ -215,7 +195,7 @@ public abstract class CGameCtnZoneFrontierBuilderMembers3<TSelf> : CGameCtnZoneF
     public bool FrontierParentBorder_AcceptPylons
     {
         get => state.Get<bool>("FrontierParentBorder_AcceptPylons");
-        set => SetFrontierParentBorder_AcceptPylons(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFrontierBuilderAssignments.GetFrontierParentBorder_AcceptPylonsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFrontierParentBorder_AcceptPylons(bool value)
     {
@@ -225,7 +205,7 @@ public abstract class CGameCtnZoneFrontierBuilderMembers3<TSelf> : CGameCtnZoneF
     public bool FrontierStraightMiddle_AcceptPylons
     {
         get => state.Get<bool>("FrontierStraightMiddle_AcceptPylons");
-        set => SetFrontierStraightMiddle_AcceptPylons(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFrontierBuilderAssignments.GetFrontierStraightMiddle_AcceptPylonsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFrontierStraightMiddle_AcceptPylons(bool value)
     {
@@ -235,7 +215,7 @@ public abstract class CGameCtnZoneFrontierBuilderMembers3<TSelf> : CGameCtnZoneF
     public bool FrontierTransitionMiddle_AcceptPylons
     {
         get => state.Get<bool>("FrontierTransitionMiddle_AcceptPylons");
-        set => SetFrontierTransitionMiddle_AcceptPylons(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFrontierBuilderAssignments.GetFrontierTransitionMiddle_AcceptPylonsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFrontierTransitionMiddle_AcceptPylons(bool value)
     {
@@ -245,7 +225,7 @@ public abstract class CGameCtnZoneFrontierBuilderMembers3<TSelf> : CGameCtnZoneF
     public bool IsLargeZone
     {
         get => state.Get<bool>("IsLargeZone");
-        set => SetIsLargeZone(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetIsLargeZoneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIsLargeZone(bool value)
     {
@@ -255,7 +235,7 @@ public abstract class CGameCtnZoneFrontierBuilderMembers3<TSelf> : CGameCtnZoneF
     public float VisualTopGroundHeight
     {
         get => state.Get<float>("VisualTopGroundHeight");
-        set => SetVisualTopGroundHeight(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetVisualTopGroundHeightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithVisualTopGroundHeight(float value)
     {
@@ -265,7 +245,7 @@ public abstract class CGameCtnZoneFrontierBuilderMembers3<TSelf> : CGameCtnZoneF
     public string? WaterId
     {
         get => state.Get<string?>("WaterId");
-        set => SetWaterId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetWaterIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithWaterId(string? value)
     {

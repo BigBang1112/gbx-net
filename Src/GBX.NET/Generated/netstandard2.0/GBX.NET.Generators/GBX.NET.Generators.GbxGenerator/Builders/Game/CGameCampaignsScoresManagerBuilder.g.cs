@@ -36,16 +36,10 @@ public abstract class CGameCampaignsScoresManagerBuilderBase<TSelf> where TSelf 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCampaignsScoresManager> state;
     private protected CGameCampaignsScoresManagerBuilderBase() => state = new();
     private protected CGameCampaignsScoresManagerBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCampaignsScoresManager> state) => this.state = state;
-    private protected static void SetCampaignScores(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCampaignsScoresManager> state, NodeRefList<global::GBX.NET.Engines.Game.CGameCampaignScores>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCampaignsScoresManagerBuilderAssignments.GetCampaignScoresAssignment(), value, GameVersion.MP3 | GameVersion.TMF);
-    private protected static void SetChallengeScores(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCampaignsScoresManager> state, NodeRefList<global::GBX.NET.Engines.Game.CGameChallengeScores>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCampaignsScoresManagerBuilderAssignments.GetChallengeScoresAssignment(), value, GameVersion.MP3 | GameVersion.TMF);
-    private protected static void SetGeneralScores(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCampaignsScoresManager> state, global::GBX.NET.Engines.Game.CGameGeneralScores? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCampaignsScoresManagerBuilderAssignments.GetGeneralScoresAssignment(), value, GameVersion.MP3 | GameVersion.TMF);
-    private protected static void SetGeneralScoresReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCampaignsScoresManager> state, NodeRef<global::GBX.NET.Engines.Game.CGameGeneralScores> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCampaignsScoresManagerBuilderAssignments.GetGeneralScoresReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TMF);
-    private protected static void SetSkillScoreComputer(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCampaignsScoresManager> state, global::GBX.NET.Engines.Game.CGameSkillScoreComputer? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCampaignsScoresManagerBuilderAssignments.GetSkillScoreComputerAssignment(), value, GameVersion.MP3 | GameVersion.TMF);
-    private protected static void SetSkillScoreComputerReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCampaignsScoresManager> state, NodeRef<global::GBX.NET.Engines.Game.CGameSkillScoreComputer> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCampaignsScoresManagerBuilderAssignments.GetSkillScoreComputerReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TMF);
     public NodeRefList<global::GBX.NET.Engines.Game.CGameCampaignScores>? CampaignScores
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameCampaignScores>?>("CampaignScores");
-        set => SetCampaignScores(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCampaignsScoresManagerBuilderAssignments.GetCampaignScoresAssignment(), value, GameVersion.MP3 | GameVersion.TMF);
     }
     public TSelf WithCampaignScores(NodeRefList<global::GBX.NET.Engines.Game.CGameCampaignScores>? value)
     {
@@ -63,7 +57,7 @@ public abstract class CGameCampaignsScoresManagerBuilderBase<TSelf> where TSelf 
     public NodeRefList<global::GBX.NET.Engines.Game.CGameChallengeScores>? ChallengeScores
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameChallengeScores>?>("ChallengeScores");
-        set => SetChallengeScores(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCampaignsScoresManagerBuilderAssignments.GetChallengeScoresAssignment(), value, GameVersion.MP3 | GameVersion.TMF);
     }
     public TSelf WithChallengeScores(NodeRefList<global::GBX.NET.Engines.Game.CGameChallengeScores>? value)
     {
@@ -81,7 +75,7 @@ public abstract class CGameCampaignsScoresManagerBuilderBase<TSelf> where TSelf 
     public global::GBX.NET.Engines.Game.CGameGeneralScores? GeneralScores
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameGeneralScores?>("GeneralScores");
-        set => SetGeneralScores(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCampaignsScoresManagerBuilderAssignments.GetGeneralScoresAssignment(), value, GameVersion.MP3 | GameVersion.TMF);
     }
     public TSelf WithGeneralScores(global::GBX.NET.Engines.Game.CGameGeneralScores? value)
     {
@@ -91,13 +85,13 @@ public abstract class CGameCampaignsScoresManagerBuilderBase<TSelf> where TSelf 
     public TSelf WithGeneralScoresReference(NodeRef<global::GBX.NET.Engines.Game.CGameGeneralScores> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetGeneralScoresReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCampaignsScoresManagerBuilderAssignments.GetGeneralScoresReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TMF);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Game.CGameSkillScoreComputer? SkillScoreComputer
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameSkillScoreComputer?>("SkillScoreComputer");
-        set => SetSkillScoreComputer(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCampaignsScoresManagerBuilderAssignments.GetSkillScoreComputerAssignment(), value, GameVersion.MP3 | GameVersion.TMF);
     }
     public TSelf WithSkillScoreComputer(global::GBX.NET.Engines.Game.CGameSkillScoreComputer? value)
     {
@@ -107,7 +101,7 @@ public abstract class CGameCampaignsScoresManagerBuilderBase<TSelf> where TSelf 
     public TSelf WithSkillScoreComputerReference(NodeRef<global::GBX.NET.Engines.Game.CGameSkillScoreComputer> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSkillScoreComputerReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCampaignsScoresManagerBuilderAssignments.GetSkillScoreComputerReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TMF);
         return (TSelf)this;
     }
 }

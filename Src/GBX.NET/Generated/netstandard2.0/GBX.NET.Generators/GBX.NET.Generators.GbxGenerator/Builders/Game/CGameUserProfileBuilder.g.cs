@@ -36,44 +36,10 @@ public abstract class CGameUserProfileBuilderBase<TSelf> where TSelf : CGameUser
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state;
     private protected CGameUserProfileBuilderBase() => state = new();
     private protected CGameUserProfileBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state) => this.state = state;
-    private protected static void SetAuthorMedalCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetAuthorMedalCountAssignment(), value, GameVersion.TM2020);
-    private protected static void SetBadgeColor(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetBadgeColorAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBronzeMedalCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetBronzeMedalCountAssignment(), value, GameVersion.TM2020);
-    private protected static void SetCamName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetCamNameAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
-    private protected static void SetCenterSpringIntensity(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetCenterSpringIntensityAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetClubTag(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetClubTagAssignment(), value, GameVersion.TM2020);
-    private protected static void SetContextMapRecordsForProfile(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state, global::GBX.NET.Engines.Game.CGameUserProfile.ContextMapRecordForProfile[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetContextMapRecordsForProfileAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
-    private protected static void SetContextTimes(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state, global::GBX.NET.Engines.Game.CGameUserProfile.ContextTime[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetContextTimesAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
-    private protected static void SetEditor_ShowHelp(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetEditor_ShowHelpAssignment(), value, GameVersion.TM2020);
-    private protected static void SetGoldMedalCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetGoldMedalCountAssignment(), value, GameVersion.TM2020);
-    private protected static void SetInputBindingsConfig(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state, global::GBX.NET.Engines.Input.CInputBindingsConfig? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetInputBindingsConfigAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
-    private protected static void SetInputBindingsConfigReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state, NodeRef<global::GBX.NET.Engines.Input.CInputBindingsConfig> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetInputBindingsConfigReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
-    private protected static void SetInputBindingsConfigs(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state, NodeRefList<global::GBX.NET.Engines.Input.CInputBindingsConfig>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetInputBindingsConfigsAssignment(), value, GameVersion.TM2020);
-    private protected static void SetLayers(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state, string[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetLayersAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetLegacyVehicleSettings(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state, global::GBX.NET.Engines.Game.CGameUserProfile.Unknown[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetLegacyVehicleSettingsAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
-    private protected static void SetMouseAccel(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetMouseAccelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMouseAccelQuantity(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetMouseAccelQuantityAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMouseLookInvertY(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetMouseLookInvertYAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMouseReleaseKey(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state, global::GBX.NET.Engines.Game.CGameUserProfile.EMouseReleaseKey value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetMouseReleaseKeyAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMouseScaleFreeLook(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetMouseScaleFreeLookAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMouseScaleY(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetMouseScaleYAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMouseSensitivities_EnableSpecific(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetMouseSensitivities_EnableSpecificAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMouseSensitivity_Default(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetMouseSensitivity_DefaultAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMouseSensitivity_Laser(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetMouseSensitivity_LaserAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetRumbleIntensity(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetRumbleIntensityAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetScriptPersistentTraits(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state, global::GBX.NET.Engines.Script.CScriptTraitsPersistent? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetScriptPersistentTraitsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetShootParamsScreenshot(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state, global::GBX.NET.Engines.Game.CGameCtnMediaShootParams? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetShootParamsScreenshotAssignment(), value, GameVersion.TM2020);
-    private protected static void SetShootParamsVideo(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state, global::GBX.NET.Engines.Game.CGameCtnMediaShootParams? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetShootParamsVideoAssignment(), value, GameVersion.TM2020);
-    private protected static void SetSilverMedalCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetSilverMedalCountAssignment(), value, GameVersion.TM2020);
-    private protected static void SetSkinName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state, string value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetSkinNameAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetStickers(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state, global::GBX.NET.Engines.Game.CGameUserProfile.Sticker[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetStickersAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTotalMedals(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetTotalMedalsAssignment(), value, GameVersion.TM2020);
-    private protected static void SetUseBadge(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetUseBadgeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetVehicleSettings(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state, global::GBX.NET.Engines.Game.CGameUserProfile.DeviceSettings[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetVehicleSettingsAssignment(), value, GameVersion.TM2020);
     public Vec3 BadgeColor
     {
         get => state.Get<Vec3>("BadgeColor");
-        set => SetBadgeColor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetBadgeColorAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBadgeColor(Vec3 value)
     {
@@ -83,7 +49,7 @@ public abstract class CGameUserProfileBuilderBase<TSelf> where TSelf : CGameUser
     public float CenterSpringIntensity
     {
         get => state.Get<float>("CenterSpringIntensity");
-        set => SetCenterSpringIntensity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetCenterSpringIntensityAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCenterSpringIntensity(float value)
     {
@@ -93,7 +59,7 @@ public abstract class CGameUserProfileBuilderBase<TSelf> where TSelf : CGameUser
     public string[]? Layers
     {
         get => state.Get<string[]?>("Layers");
-        set => SetLayers(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetLayersAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLayers(params string[]? value)
     {
@@ -107,7 +73,7 @@ public abstract class CGameUserProfileBuilderBase<TSelf> where TSelf : CGameUser
     public bool MouseAccel
     {
         get => state.Get<bool>("MouseAccel");
-        set => SetMouseAccel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetMouseAccelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMouseAccel(bool value)
     {
@@ -117,7 +83,7 @@ public abstract class CGameUserProfileBuilderBase<TSelf> where TSelf : CGameUser
     public float MouseAccelQuantity
     {
         get => state.Get<float>("MouseAccelQuantity");
-        set => SetMouseAccelQuantity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetMouseAccelQuantityAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMouseAccelQuantity(float value)
     {
@@ -127,7 +93,7 @@ public abstract class CGameUserProfileBuilderBase<TSelf> where TSelf : CGameUser
     public bool MouseLookInvertY
     {
         get => state.Get<bool>("MouseLookInvertY");
-        set => SetMouseLookInvertY(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetMouseLookInvertYAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMouseLookInvertY(bool value)
     {
@@ -137,7 +103,7 @@ public abstract class CGameUserProfileBuilderBase<TSelf> where TSelf : CGameUser
     public global::GBX.NET.Engines.Game.CGameUserProfile.EMouseReleaseKey MouseReleaseKey
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameUserProfile.EMouseReleaseKey>("MouseReleaseKey");
-        set => SetMouseReleaseKey(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetMouseReleaseKeyAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMouseReleaseKey(global::GBX.NET.Engines.Game.CGameUserProfile.EMouseReleaseKey value)
     {
@@ -147,7 +113,7 @@ public abstract class CGameUserProfileBuilderBase<TSelf> where TSelf : CGameUser
     public float MouseScaleFreeLook
     {
         get => state.Get<float>("MouseScaleFreeLook");
-        set => SetMouseScaleFreeLook(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetMouseScaleFreeLookAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMouseScaleFreeLook(float value)
     {
@@ -157,7 +123,7 @@ public abstract class CGameUserProfileBuilderBase<TSelf> where TSelf : CGameUser
     public float MouseScaleY
     {
         get => state.Get<float>("MouseScaleY");
-        set => SetMouseScaleY(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetMouseScaleYAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMouseScaleY(float value)
     {
@@ -167,7 +133,7 @@ public abstract class CGameUserProfileBuilderBase<TSelf> where TSelf : CGameUser
     public bool MouseSensitivities_EnableSpecific
     {
         get => state.Get<bool>("MouseSensitivities_EnableSpecific");
-        set => SetMouseSensitivities_EnableSpecific(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetMouseSensitivities_EnableSpecificAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMouseSensitivities_EnableSpecific(bool value)
     {
@@ -177,7 +143,7 @@ public abstract class CGameUserProfileBuilderBase<TSelf> where TSelf : CGameUser
     public float MouseSensitivity_Default
     {
         get => state.Get<float>("MouseSensitivity_Default");
-        set => SetMouseSensitivity_Default(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetMouseSensitivity_DefaultAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMouseSensitivity_Default(float value)
     {
@@ -187,7 +153,7 @@ public abstract class CGameUserProfileBuilderBase<TSelf> where TSelf : CGameUser
     public float MouseSensitivity_Laser
     {
         get => state.Get<float>("MouseSensitivity_Laser");
-        set => SetMouseSensitivity_Laser(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetMouseSensitivity_LaserAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMouseSensitivity_Laser(float value)
     {
@@ -197,7 +163,7 @@ public abstract class CGameUserProfileBuilderBase<TSelf> where TSelf : CGameUser
     public float RumbleIntensity
     {
         get => state.Get<float>("RumbleIntensity");
-        set => SetRumbleIntensity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetRumbleIntensityAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRumbleIntensity(float value)
     {
@@ -207,7 +173,7 @@ public abstract class CGameUserProfileBuilderBase<TSelf> where TSelf : CGameUser
     public global::GBX.NET.Engines.Script.CScriptTraitsPersistent? ScriptPersistentTraits
     {
         get => state.Get<global::GBX.NET.Engines.Script.CScriptTraitsPersistent?>("ScriptPersistentTraits");
-        set => SetScriptPersistentTraits(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetScriptPersistentTraitsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithScriptPersistentTraits(global::GBX.NET.Engines.Script.CScriptTraitsPersistent? value)
     {
@@ -217,7 +183,7 @@ public abstract class CGameUserProfileBuilderBase<TSelf> where TSelf : CGameUser
     public string SkinName
     {
         get => state.Get<string>("SkinName");
-        set => SetSkinName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetSkinNameAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSkinName(string value)
     {
@@ -227,7 +193,7 @@ public abstract class CGameUserProfileBuilderBase<TSelf> where TSelf : CGameUser
     public global::GBX.NET.Engines.Game.CGameUserProfile.Sticker[]? Stickers
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameUserProfile.Sticker[]?>("Stickers");
-        set => SetStickers(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetStickersAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStickers(params global::GBX.NET.Engines.Game.CGameUserProfile.Sticker[]? value)
     {
@@ -241,7 +207,7 @@ public abstract class CGameUserProfileBuilderBase<TSelf> where TSelf : CGameUser
     public bool UseBadge
     {
         get => state.Get<bool>("UseBadge");
-        set => SetUseBadge(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetUseBadgeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithUseBadge(bool value)
     {
@@ -255,7 +221,7 @@ public abstract class CGameUserProfileBuilderMembers1<TSelf> : CGameUserProfileB
     public uint CamName
     {
         get => state.Get<uint>("CamName");
-        set => SetCamName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetCamNameAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithCamName(uint value)
     {
@@ -265,7 +231,7 @@ public abstract class CGameUserProfileBuilderMembers1<TSelf> : CGameUserProfileB
     public global::GBX.NET.Engines.Game.CGameUserProfile.ContextMapRecordForProfile[]? ContextMapRecordsForProfile
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameUserProfile.ContextMapRecordForProfile[]?>("ContextMapRecordsForProfile");
-        set => SetContextMapRecordsForProfile(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetContextMapRecordsForProfileAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithContextMapRecordsForProfile(params global::GBX.NET.Engines.Game.CGameUserProfile.ContextMapRecordForProfile[]? value)
     {
@@ -279,7 +245,7 @@ public abstract class CGameUserProfileBuilderMembers1<TSelf> : CGameUserProfileB
     public global::GBX.NET.Engines.Game.CGameUserProfile.ContextTime[]? ContextTimes
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameUserProfile.ContextTime[]?>("ContextTimes");
-        set => SetContextTimes(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetContextTimesAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithContextTimes(params global::GBX.NET.Engines.Game.CGameUserProfile.ContextTime[]? value)
     {
@@ -293,7 +259,7 @@ public abstract class CGameUserProfileBuilderMembers1<TSelf> : CGameUserProfileB
     public global::GBX.NET.Engines.Input.CInputBindingsConfig? InputBindingsConfig
     {
         get => state.Get<global::GBX.NET.Engines.Input.CInputBindingsConfig?>("InputBindingsConfig");
-        set => SetInputBindingsConfig(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetInputBindingsConfigAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithInputBindingsConfig(global::GBX.NET.Engines.Input.CInputBindingsConfig? value)
     {
@@ -303,13 +269,13 @@ public abstract class CGameUserProfileBuilderMembers1<TSelf> : CGameUserProfileB
     public TSelf WithInputBindingsConfigReference(NodeRef<global::GBX.NET.Engines.Input.CInputBindingsConfig> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetInputBindingsConfigReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetInputBindingsConfigReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Game.CGameUserProfile.Unknown[]? LegacyVehicleSettings
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameUserProfile.Unknown[]?>("LegacyVehicleSettings");
-        set => SetLegacyVehicleSettings(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetLegacyVehicleSettingsAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithLegacyVehicleSettings(params global::GBX.NET.Engines.Game.CGameUserProfile.Unknown[]? value)
     {
@@ -561,7 +527,7 @@ public partial class CGameUserProfileBuilder : CGameUserProfileBuilderBase<CGame
         public uint AuthorMedalCount
         {
             get => state.Get<uint>("AuthorMedalCount");
-            set => SetAuthorMedalCount(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetAuthorMedalCountAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithAuthorMedalCount(uint value)
         {
@@ -571,7 +537,7 @@ public partial class CGameUserProfileBuilder : CGameUserProfileBuilderBase<CGame
         public uint BronzeMedalCount
         {
             get => state.Get<uint>("BronzeMedalCount");
-            set => SetBronzeMedalCount(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetBronzeMedalCountAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithBronzeMedalCount(uint value)
         {
@@ -581,7 +547,7 @@ public partial class CGameUserProfileBuilder : CGameUserProfileBuilderBase<CGame
         public string? ClubTag
         {
             get => state.Get<string?>("ClubTag");
-            set => SetClubTag(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetClubTagAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithClubTag(string? value)
         {
@@ -591,7 +557,7 @@ public partial class CGameUserProfileBuilder : CGameUserProfileBuilderBase<CGame
         public bool Editor_ShowHelp
         {
             get => state.Get<bool>("Editor_ShowHelp");
-            set => SetEditor_ShowHelp(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetEditor_ShowHelpAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithEditor_ShowHelp(bool value)
         {
@@ -601,7 +567,7 @@ public partial class CGameUserProfileBuilder : CGameUserProfileBuilderBase<CGame
         public uint GoldMedalCount
         {
             get => state.Get<uint>("GoldMedalCount");
-            set => SetGoldMedalCount(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetGoldMedalCountAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithGoldMedalCount(uint value)
         {
@@ -611,7 +577,7 @@ public partial class CGameUserProfileBuilder : CGameUserProfileBuilderBase<CGame
         public NodeRefList<global::GBX.NET.Engines.Input.CInputBindingsConfig>? InputBindingsConfigs
         {
             get => state.Get<NodeRefList<global::GBX.NET.Engines.Input.CInputBindingsConfig>?>("InputBindingsConfigs");
-            set => SetInputBindingsConfigs(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetInputBindingsConfigsAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithInputBindingsConfigs(NodeRefList<global::GBX.NET.Engines.Input.CInputBindingsConfig>? value)
         {
@@ -637,7 +603,7 @@ public partial class CGameUserProfileBuilder : CGameUserProfileBuilderBase<CGame
         public global::GBX.NET.Engines.Game.CGameCtnMediaShootParams? ShootParamsScreenshot
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams?>("ShootParamsScreenshot");
-            set => SetShootParamsScreenshot(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetShootParamsScreenshotAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithShootParamsScreenshot(global::GBX.NET.Engines.Game.CGameCtnMediaShootParams? value)
         {
@@ -647,7 +613,7 @@ public partial class CGameUserProfileBuilder : CGameUserProfileBuilderBase<CGame
         public global::GBX.NET.Engines.Game.CGameCtnMediaShootParams? ShootParamsVideo
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams?>("ShootParamsVideo");
-            set => SetShootParamsVideo(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetShootParamsVideoAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithShootParamsVideo(global::GBX.NET.Engines.Game.CGameCtnMediaShootParams? value)
         {
@@ -657,7 +623,7 @@ public partial class CGameUserProfileBuilder : CGameUserProfileBuilderBase<CGame
         public uint SilverMedalCount
         {
             get => state.Get<uint>("SilverMedalCount");
-            set => SetSilverMedalCount(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetSilverMedalCountAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithSilverMedalCount(uint value)
         {
@@ -667,7 +633,7 @@ public partial class CGameUserProfileBuilder : CGameUserProfileBuilderBase<CGame
         public uint TotalMedals
         {
             get => state.Get<uint>("TotalMedals");
-            set => SetTotalMedals(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetTotalMedalsAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithTotalMedals(uint value)
         {
@@ -677,7 +643,7 @@ public partial class CGameUserProfileBuilder : CGameUserProfileBuilderBase<CGame
         public global::GBX.NET.Engines.Game.CGameUserProfile.DeviceSettings[]? VehicleSettings
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameUserProfile.DeviceSettings[]?>("VehicleSettings");
-            set => SetVehicleSettings(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetVehicleSettingsAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithVehicleSettings(params global::GBX.NET.Engines.Game.CGameUserProfile.DeviceSettings[]? value)
         {

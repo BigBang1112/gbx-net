@@ -36,376 +36,10 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state;
     private protected CPlugVehicleCarPhyTuningBuilderBase() => state = new();
     private protected CPlugVehicleCarPhyTuningBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state) => this.state = state;
-    private protected static void SetAccelCurve(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAccelCurveAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetAccelCurveRear(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAccelCurveRearAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetAccelCurveTargetSpeedTruck(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAccelCurveTargetSpeedTruckAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetAccelTorqueCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAccelTorqueCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAdherenceAccelDirYCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceAccelDirYCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAdherenceAngleMaxDeg(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceAngleMaxDegAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAdherenceAngleMaxDeg_Roll(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceAngleMaxDeg_RollAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAdherenceAngleMinDeg(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceAngleMinDegAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAdherenceAngleMinDeg_AntiSteerUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceAngleMinDeg_AntiSteerUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAdherenceAngleMinDeg_Roll(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceAngleMinDeg_RollAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAdherenceAntiSteerUpCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceAntiSteerUpCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAdherenceMin_ForDragForce(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceMin_ForDragForceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAdherenceMin_ForTorque(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceMin_ForTorqueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAdherenceUseMaxForAccel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, bool? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceUseMaxForAccelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAdherenceVelMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceVelMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAdherenceVel_VelHMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceVel_VelHMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAdherenceVel_VelHMin(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceVel_VelHMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAdherenceVel_VelYMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceVel_VelYMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAdherenceVel_VelYMin(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceVel_VelYMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAerialForce_AngleMinDeg(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAerialForce_AngleMinDegAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAerialForce_Base(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAerialForce_BaseAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAerialForce_Duration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAerialForce_DurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAerialForce_VelYMin(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAerialForce_VelYMinAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAerialMove_Dist(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAerialMove_DistAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAerialMove_Duration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAerialMove_DurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAerialMove_SpeedMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAerialMove_SpeedMaxAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAerialMove_SpeedMin(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAerialMove_SpeedMinAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAerialMove_UseVehicleUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAerialMove_UseVehicleUpAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAfterJumpOrientationAngularSpeedThreshold(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAfterJumpOrientationAngularSpeedThresholdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAfterJumpOrientationForceCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAfterJumpOrientationForceCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAfterJumpOrientationForceDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAfterJumpOrientationForceDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAirAngularFluidFrictionCoef1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirAngularFluidFrictionCoef1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetAirAngularFluidFrictionCoef2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirAngularFluidFrictionCoef2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetAirControlDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirControlDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetAirControlMaxAngularSpeedY(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirControlMaxAngularSpeedYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetAirControlNewModel7(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirControlNewModel7Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAirControlXStopFrictionCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirControlXStopFrictionCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAirControlYKeepFrictionCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirControlYKeepFrictionCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAirControlYStopFrictionCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirControlYStopFrictionCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAirControlZCoefFromAngularSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirControlZCoefFromAngularSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetAirFrictionFromSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirFrictionFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAirFrictionFromSpeed_Variable(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirFrictionFromSpeed_VariableAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAirGravityCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirGravityCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetAngularSpeedClamp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAngularSpeedClampAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetAngularSpeedImpulseScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAngularSpeedImpulseScaleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetAntiWallHitAccelCoefFromSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAntiWallHitAccelCoefFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAntiWallHitDurationInc_FromLateralContactRelSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAntiWallHitDurationInc_FromLateralContactRelSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAntiWallHitDurationMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAntiWallHitDurationMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAntiWallHitForceFromSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAntiWallHitForceFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAntiWallHitSpeedTransfertCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAntiWallHitSpeedTransfertCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAxialSlopeAdherenceMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAxialSlopeAdherenceMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetAxialSlopeAdherenceMin(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAxialSlopeAdherenceMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBigCarAccelCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBigCarAccelCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBigCarControlCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBigCarControlCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBigCarGravityCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBigCarGravityCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBigCarScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBigCarScaleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBodyFrictionCoef_Concrete(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBodyFrictionCoef_ConcreteAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBodyFrictionCoef_Metal(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBodyFrictionCoef_MetalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBodyRestCoef_Concrete(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBodyRestCoef_ConcreteAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBodyRestCoef_Metal(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBodyRestCoef_MetalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBrakeBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBrakeBaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBrakeCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBrakeCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBrakeCoolingSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBrakeCoolingSpeedAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetBrakeHeatSpeedFromFBrake(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, global::GBX.NET.Engines.Function.CFuncKeysReal? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBrakeHeatSpeedFromFBrakeAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetBrakeHeatSpeedFromFBrakeReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBrakeHeatSpeedFromFBrakeReferenceAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetBrakeMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBrakeMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBrakeMaxDynamic(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBrakeMaxDynamicAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBrakeTorqueCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBrakeTorqueCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetCamModelIronSight(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, global::GBX.NET.Engines.Plug.CPlugCamControlModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCamModelIronSightAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetCamModelIronSightReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugCamControlModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCamModelIronSightReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetCamModelRear(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, global::GBX.NET.Engines.Plug.CPlugCamControlModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCamModelRearAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetCamModelRearReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugCamControlModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCamModelRearReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetCameraModels(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCameraModelsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetCameraModels_Console(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCameraModels_ConsoleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetCatchUpAccelFactor0(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCatchUpAccelFactor0Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetCatchUpAccelFactor1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCatchUpAccelFactor1Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetCatchUpAccelFactor2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCatchUpAccelFactor2Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetCatchUpAccelFactor3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCatchUpAccelFactor3Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetCatchUpSpeed0(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCatchUpSpeed0Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetCatchUpSpeed1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCatchUpSpeed1Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetCatchUpSpeed2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCatchUpSpeed2Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetCatchUpSpeed3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCatchUpSpeed3Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetCatchUpSpeed4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCatchUpSpeed4Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetCenterOfMassY(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCenterOfMassYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetCenterOfMassZNormed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCenterOfMassZNormedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetDamperForceAllways(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperForceAllwaysAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDamperForceSmoothStop(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, bool? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperForceSmoothStopAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDamperKa(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperKaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetDamperKeepContactDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperKeepContactDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDamperKi(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperKiAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetDamperLengthMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperLengthMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetDamperLengthMin(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperLengthMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetDamperLengthRest(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperLengthRestAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetDamperModel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetDamperOffset(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperOffsetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDamperTension(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperTensionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetDebugAbsorbCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDebugAbsorbCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetDeclutchingDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDeclutchingDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDecrepitudeCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDecrepitudeCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetDecrepitudeImpactVal(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDecrepitudeImpactValAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetDisplaySteerRadiusCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDisplaySteerRadiusCoefAssignment(), value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX);
-    private protected static void SetDisplaySteerRadiusMin(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDisplaySteerRadiusMinAssignment(), value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX);
-    private protected static void SetDragForceFromFrontSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDragForceFromFrontSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDrifting_BackCoefDisableDurationAfterLanding(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_BackCoefDisableDurationAfterLandingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDrifting_BackCoefFromSlipAngle(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_BackCoefFromSlipAngleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDrifting_BackCoefIntensityFromSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_BackCoefIntensityFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDrifting_BackCoefSmoothSpeed_CounterSteer(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_BackCoefSmoothSpeed_CounterSteerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDrifting_BackCoefSmoothSpeed_Steer(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_BackCoefSmoothSpeed_SteerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDrifting_BackCoefSmoothSpeed_StopSteer(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_BackCoefSmoothSpeed_StopSteerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDrifting_InputSteerAngleSmoothSpeedFromSlipAngle_CounterSteer(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_InputSteerAngleSmoothSpeedFromSlipAngle_CounterSteerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDrifting_InputSteerAngleSmoothSpeedFromSlipAngle_Steer(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_InputSteerAngleSmoothSpeedFromSlipAngle_SteerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDrifting_InputSteerAngleSmoothSpeedFromSlipAngle_StopSteer(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_InputSteerAngleSmoothSpeedFromSlipAngle_StopSteerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDrifting_InputSteerRadiusFromSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_InputSteerRadiusFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDrifting_InputSteerSensitivityFromSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_InputSteerSensitivityFromSpeedAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDrifting_TransfertForceCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_TransfertForceCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDrifting_VehicleBrakeForce_FromVehicleBrakeSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_VehicleBrakeForce_FromVehicleBrakeSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDrifting_VehicleBrakeSpeedMin(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_VehicleBrakeSpeedMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDrifting_VehicleLateralForce_FromVehicleLateralSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_VehicleLateralForce_FromVehicleLateralSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDrifting_VehicleLateralSpeedMin(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_VehicleLateralSpeedMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDrifting_WheelLateralForce_FromWheelLateralSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_WheelLateralForce_FromWheelLateralSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDriveModel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDriveModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetEngineAutoGearMaxRPMs(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetEngineAutoGearMaxRPMsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetEngineAutoGearMinRPMs(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetEngineAutoGearMinRPMsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetEngineGearRatios(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetEngineGearRatiosAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetEngineIdleRPM(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetEngineIdleRPMAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetEngineMaxRPM(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetEngineMaxRPMAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetEngineSlowDownFromSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetEngineSlowDownFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFrictionFactor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetFrictionFactorAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetGameplayModel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGameplayModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetGearBox(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, global::GBX.NET.Engines.Plug.CPlugVehicleGearBox? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGearBoxAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetGearBoxReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugVehicleGearBox> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGearBoxReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetGroundAngularFluidFrictionCoef1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGroundAngularFluidFrictionCoef1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetGroundAngularFluidFrictionCoef2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGroundAngularFluidFrictionCoef2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetGroundAngularFluidFrictionSpeedMin(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGroundAngularFluidFrictionSpeedMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetGroundGravityCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGroundGravityCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetGroundSlowDownBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGroundSlowDownBaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetGroundSlowDownCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGroundSlowDownCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetGroundSlowDownFromSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGroundSlowDownFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetHookPos(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, Vec3? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetHookPosAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetImpulseDamperReduceCoef_FromLocalVelY(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetImpulseDamperReduceCoef_FromLocalVelYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetImpulseFriction(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetImpulseFrictionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetImpulseGroundBodyRestCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetImpulseGroundBodyRestCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetImpulseGroundWheelRestCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetImpulseGroundWheelRestCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetImpulseRestCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetImpulseRestCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetImpulseRotationCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetImpulseRotationCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetInTuningCycle(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyTuningBuilderAssignments.GetInTuningCycleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetInertiaHalfDiag(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetInertiaHalfDiagAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetInertiaMass(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetInertiaMassAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetInputBrakeSmoothSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetInputBrakeSmoothSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetInputBrakeSwitchCountMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetInputBrakeSwitchCountMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetInputGasSmoothSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetInputGasSmoothSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetInputRawGasBrake(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, bool? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetInputRawGasBrakeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetInputSteerAlgo(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, int? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetInputSteerAlgoAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetInputSteerAngleMaxDeg(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetInputSteerAngleMaxDegAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetInputSteerPowFromSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetInputSteerPowFromSpeedAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetIsFakeEngine(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetIsFakeEngineAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetJumpClassicDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetJumpClassicDurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetJumpClassicImpulseY(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetJumpClassicImpulseYAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetJumpClassicImpulseZ(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetJumpClassicImpulseZAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetJumpCooldown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetJumpCooldownAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetJumpProgressiveDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetJumpProgressiveDurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetJumpProgressiveForceY(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetJumpProgressiveForceYAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetJumpProgressiveForceZ(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetJumpProgressiveForceZAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetJumpProgressiveImpulseY(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetJumpProgressiveImpulseYAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetJumpProgressiveImpulseZ(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetJumpProgressiveImpulseZAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetKeepContactDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetKeepContactDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetKeepDragForceDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetKeepDragForceDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetLateralContactSlowDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetLateralContactSlowDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLateralSlopeAdherenceMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetLateralSlopeAdherenceMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLateralSlopeAdherenceMin(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetLateralSlopeAdherenceMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLimitToMaxSpeedForce(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetLimitToMaxSpeedForceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLinearFluidFrictionCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetLinearFluidFrictionCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLinearSpeed2PositiveDeltaMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetLinearSpeed2PositiveDeltaMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLinearSpeedClamp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetLinearSpeedClampAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetM4LateralFrictionForce(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4LateralFrictionForceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM4LateralFrictionSquareForce(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4LateralFrictionSquareForceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM4LateralFrictionSquareTorque(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4LateralFrictionSquareTorqueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM4LateralFrictionTorque(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4LateralFrictionTorqueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM4LeaveSlippingSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4LeaveSlippingSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM4MaxFrictionForceFromSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4MaxFrictionForceFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM4MaxFrictionForceWhenSlipping(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4MaxFrictionForceWhenSlippingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM4MaxFrictionTorqueFromSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4MaxFrictionTorqueFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM4MaxFrictionTorqueWhenSlippingCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4MaxFrictionTorqueWhenSlippingCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM4SlipAngleSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4SlipAngleSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM4SteerAngleWhenSlippingMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4SteerAngleWhenSlippingMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM4SteerRadiusCoefFromSlipAngle(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4SteerRadiusCoefFromSlipAngleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM4SteerRadiusFromSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4SteerRadiusFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM4SteerRadiusWhenSlippingCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4SteerRadiusWhenSlippingCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM5AccelSlipCoefMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM5AccelSlipCoefMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM5KeepNoSteerSlowDownWhenSlippingDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM5KeepNoSteerSlowDownWhenSlippingDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM5KeepSlidingAccelDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM5KeepSlidingAccelDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM5KeepSteerSlowDownDurarion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM5KeepSteerSlowDownDurarionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM5LateralConstantSlowDownDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM5LateralConstantSlowDownDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM5MaxAxialRolloverTorque(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM5MaxAxialRolloverTorqueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM5SlippingAccelCurve(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM5SlippingAccelCurveAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM5SmoothInputSteerDurationFromSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM5SmoothInputSteerDurationFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM5SteerCoefFromSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM5SteerCoefFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6AfterBurnoutAccMod(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6AfterBurnoutAccModAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6AfterBurnoutDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6AfterBurnoutDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6AfterBurnoutImpulse(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6AfterBurnoutImpulseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6AirRpmAcc(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6AirRpmAccAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6AirRpmDeadening(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6AirRpmDeadeningAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6BrakeMaxDynamicFront(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BrakeMaxDynamicFrontAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6BrakeMaxDynamicRear(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BrakeMaxDynamicRearAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6BrakeMaxFront(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BrakeMaxFrontAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6BrakeMaxRear(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BrakeMaxRearAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6BrakeModulationWhenSlipping(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BrakeModulationWhenSlippingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6BrakeSmokeIntensity(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BrakeSmokeIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6BurnoutAccMod(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutAccModAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6BurnoutCenterForceCoeff(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutCenterForceCoeffAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6BurnoutCenterForceCoeff2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutCenterForceCoeff2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6BurnoutDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6BurnoutFricMod(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutFricModAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6BurnoutLateralSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutLateralSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6BurnoutLateralSpeedCoeff(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutLateralSpeedCoeffAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6BurnoutLateralSpeedMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutLateralSpeedMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6BurnoutRadius(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutRadiusAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6BurnoutRadiusMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutRadiusMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6BurnoutRolloverFromSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutRolloverFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6BurnoutRpmAcc(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutRpmAccAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6BurnoutSmokeIntensity(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutSmokeIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6BurnoutSmokeVelocity(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutSmokeVelocityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6BurnoutSteerCoeff(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutSteerCoeffAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6BurnoutSteerCoeff2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutSteerCoeff2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6BurnoutSteerCoeff3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutSteerCoeff3Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6BurnoutWheelAngularRotation(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutWheelAngularRotationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6DonutRolloverFromSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6DonutRolloverFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6ForceEpsilon(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6ForceEpsilonAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6FrictionModulationWhenSlipNBrake(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6FrictionModulationWhenSlipNBrakeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6InertialMass(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6InertialMassAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6InertialTorqueModualtionX(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6InertialTorqueModualtionXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6InertialTorqueModulationZ(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6InertialTorqueModulationZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6MaxDiffBtwGroundNormal(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6MaxDiffBtwGroundNormalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6MaxDiffBtwnPropulsionAndSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6MaxDiffBtwnPropulsionAndSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6MaxNegAngle4Burnout(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6MaxNegAngle4BurnoutAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6MaxPosAngle4Burnout(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6MaxPosAngle4BurnoutAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6MaxRpm(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6MaxRpmAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6MaxSpeed4Burnout(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6MaxSpeed4BurnoutAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6MinSpeed4Burnout(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6MinSpeed4BurnoutAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6RolloverLateralFromSpeedRatio(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6RolloverLateralFromSpeedRatioAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetM6RpmGainCoefOnGearDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6RpmGainCoefOnGearDownAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetM6RpmGainOnTakeOff(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6RpmGainOnTakeOffAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetM6RpmLossCoefOnGearUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6RpmLossCoefOnGearUpAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetM6RpmLossOnTakeOffFinished(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6RpmLossOnTakeOffFinishedAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetM6RpmWantedOnGearUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6RpmWantedOnGearUpAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetM6SpeedLimitNegForTakeOffFront(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6SpeedLimitNegForTakeOffFrontAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetM6SpeedLimitNegTakeOffRear(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6SpeedLimitNegTakeOffRearAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetM6SpeedLimitPositiveForTakeOffFront(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6SpeedLimitPositiveForTakeOffFrontAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetM6SpeedLimitPositiveForTakeOffRear(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6SpeedLimitPositiveForTakeOffRearAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetMagnetic(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMagneticAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMagneticForce(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMagneticForceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMagneticGravity(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMagneticGravityAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMagneticHackAccelCoef_Val(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMagneticHackAccelCoef_ValAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetMagneticHackDamperForceAllways(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, bool? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMagneticHackDamperForceAllwaysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetMagneticHackEnabled(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMagneticHackEnabledAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetMagneticHackSpeedOffset_Val(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMagneticHackSpeedOffset_ValAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetMagneticKeepContactDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMagneticKeepContactDurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetMagneticSuperDragForceFromSpeedKmh(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMagneticSuperDragForceFromSpeedKmhAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMass(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMassAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMaterials(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMaterialsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMaterialsReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMaterialsReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMaxDistPerStep(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMaxDistPerStepAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMaxSideFriction(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMaxSideFrictionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMaxSideFrictionBlendCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMaxSideFrictionBlendCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMaxSideFrictionSliding(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMaxSideFrictionSlidingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMaxSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMaxSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetModulationFromWheelCompression(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetModulationFromWheelCompressionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetNoBodyBottomFriction(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNoBodyBottomFrictionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetNoSteerSlowDownWhenSlipping(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNoSteerSlowDownWhenSlippingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetNormalEnv(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormalEnvAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetNormalEnvBody_FlatZoneYMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormalEnvBody_FlatZoneYMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetNormalEnvBody_FlatZoneYMin(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormalEnvBody_FlatZoneYMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetNormalEnvBody_HalfSizeX(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormalEnvBody_HalfSizeXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetNormalEnvBody_HalfSizeZ(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormalEnvBody_HalfSizeZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetNormalEnvWheel_WidthCoef1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormalEnvWheel_WidthCoef1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetNormal_InputSteerAngleSmoothSpeedReset(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormal_InputSteerAngleSmoothSpeedResetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetNormal_InputSteerAngleSmoothSpeed_OverSteer(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormal_InputSteerAngleSmoothSpeed_OverSteerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetNormal_InputSteerAngleSmoothSpeed_Steer(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormal_InputSteerAngleSmoothSpeed_SteerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetNormal_InputSteerRadiusFromSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormal_InputSteerRadiusFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetNormal_InputSteerSensitivityFromSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormal_InputSteerSensitivityFromSpeedAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetNormal_VehicleBrakeForce_FromVehicleBrakeSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormal_VehicleBrakeForce_FromVehicleBrakeSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetNormal_VehicleBrakeSpeedMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormal_VehicleBrakeSpeedMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetNormal_VehicleLateralSpeedMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormal_VehicleLateralSpeedMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetNormal_WheelLateralForce_FromWheelLateralSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormal_WheelLateralForce_FromWheelLateralSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetRelSpeedMultCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetRelSpeedMultCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetReverseMaxSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetReverseMaxSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRollover(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetRolloverAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetRolloverAxial(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetRolloverAxialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRolloverLateral(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetRolloverLateralAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRolloverLateralFromAngle(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetRolloverLateralFromAngleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRubberBallElasticity(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetRubberBallElasticityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetShape(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetShapeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetShapeReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetShapeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSideFriction1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSideFriction1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSideFriction2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSideFriction2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSlipAngleForceCoef1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSlipAngleForceCoef1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSlipAngleForceCoef2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSlipAngleForceCoef2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSlipAngleForceMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSlipAngleForceMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSlopeSpeedGainLimit(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSlopeSpeedGainLimitAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSoundBodyImpact_Hard_Threshold(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundBodyImpact_Hard_ThresholdAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSoundBodyImpact_Soft_Threshold(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundBodyImpact_Soft_ThresholdAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSoundEngineVolume(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundEngineVolumeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSoundImpactVolume(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundImpactVolumeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSoundSkidConcreteVolume(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundSkidConcreteVolumeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSoundSkidSandVolume(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundSkidSandVolumeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSoundWheelImpact_Hard_Threshold(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundWheelImpact_Hard_ThresholdAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSoundWheelImpact_Soft_Threshold(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundWheelImpact_Soft_ThresholdAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSteerAngleMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerAngleMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSteerDriveTorque(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerDriveTorqueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSteerDurationBeforeSteerSlowDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerDurationBeforeSteerSlowDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSteerGroundTorque(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerGroundTorqueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSteerGroundTorqueSlippingCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerGroundTorqueSlippingCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSteerLowSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerLowSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSteerRadiusCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerRadiusCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSteerRadiusMin(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerRadiusMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSteerSlowDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSlowDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSteerSlowDownCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSlowDownCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSteerSlowDownFadeInDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSlowDownFadeInDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSteerSlowDownFadeOutDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSlowDownFadeOutDurationAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSteerSlowDownFromSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSlowDownFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSteerSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSteerTorqueZMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerTorqueZMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTakeOffBoost(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTakeOffBoostAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTakeOffBoost_Enable(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTakeOffBoost_EnableAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTakeOffBoost_MaxRPMCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTakeOffBoost_MaxRPMCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTargetSpeedFromSpeedTruck(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTargetSpeedFromSpeedTruckAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetTargetSpeedFromSpeedTruckRear(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTargetSpeedFromSpeedTruckRearAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetTireMaterial(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTireMaterialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetTurboBrakeCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboBrakeCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetTurboBrakeDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboBrakeDurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetTurboBrakeMinSpeedZKmh(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboBrakeMinSpeedZKmhAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetTurboCheatAccelCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboCheatAccelCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTurboCheatAccelCoefDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, int? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboCheatAccelCoefDurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTurboCheatConstantDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, int? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboCheatConstantDurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTurboCheatConstantFromSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboCheatConstantFromSpeedAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTurboRedAccelCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboRedAccelCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetTurboRedAccelCoefDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboRedAccelCoefDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetTurboRedConstantDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, int? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboRedConstantDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTurboRedConstantFromSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboRedConstantFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTurboYellowAccelCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboYellowAccelCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetTurboYellowAccelCoefDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboYellowAccelCoefDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetTurboYellowConstantDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, int? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboYellowConstantDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTurboYellowConstantFromSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboYellowConstantFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetUltraCatchUpAccelFactor0(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetUltraCatchUpAccelFactor0Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetUltraCatchUpAccelFactor1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetUltraCatchUpAccelFactor1Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetUltraCatchUpAccelFactor2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetUltraCatchUpAccelFactor2Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetUltraCatchUpAccelFactor3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetUltraCatchUpAccelFactor3Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetUseRealGroundReferential(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetUseRealGroundReferentialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetVibrationPeriodSpeedCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetVibrationPeriodSpeedCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetVisualSteerAngleFromSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetVisualSteerAngleFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetWaterAngularFriction(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterAngularFrictionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetWaterAngularFrictionSq(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterAngularFrictionSqAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetWaterBumpMinSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterBumpMinSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetWaterBumpSlowDownFromSpeedRatio(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterBumpSlowDownFromSpeedRatioAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetWaterFrictionFromSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterFrictionFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetWaterGravity(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterGravityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetWaterReboundFromSpeedRatio(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterReboundFromSpeedRatioAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetWaterReboundMinHSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterReboundMinHSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetWaterSplashFromSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, global::GBX.NET.Engines.Function.CFuncKeysReal? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterSplashFromSpeedAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX);
-    private protected static void SetWaterSplashFromSpeedReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterSplashFromSpeedReferenceAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX);
-    private protected static void SetWheelFrictionCoef_Concrete(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWheelFrictionCoef_ConcreteAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetWheelFrictionCoef_Metal(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWheelFrictionCoef_MetalAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetWheelKeepContactDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWheelKeepContactDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetWheelRestCoef_Concrete(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWheelRestCoef_ConcreteAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetWheelRestCoef_Metal(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWheelRestCoef_MetalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public PlugCurve? AccelCurve
     {
         get => state.Get<PlugCurve?>("AccelCurve");
-        set => SetAccelCurve(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAccelCurveAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithAccelCurve(PlugCurve? value)
     {
@@ -415,7 +49,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float AirAngularFluidFrictionCoef1
     {
         get => state.Get<float>("AirAngularFluidFrictionCoef1");
-        set => SetAirAngularFluidFrictionCoef1(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirAngularFluidFrictionCoef1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithAirAngularFluidFrictionCoef1(float value)
     {
@@ -425,7 +59,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float AirAngularFluidFrictionCoef2
     {
         get => state.Get<float>("AirAngularFluidFrictionCoef2");
-        set => SetAirAngularFluidFrictionCoef2(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirAngularFluidFrictionCoef2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithAirAngularFluidFrictionCoef2(float value)
     {
@@ -435,7 +69,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public int AirControlDuration
     {
         get => state.Get<int>("AirControlDuration");
-        set => SetAirControlDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirControlDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithAirControlDuration(int value)
     {
@@ -445,7 +79,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float AirControlMaxAngularSpeedY
     {
         get => state.Get<float>("AirControlMaxAngularSpeedY");
-        set => SetAirControlMaxAngularSpeedY(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirControlMaxAngularSpeedYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithAirControlMaxAngularSpeedY(float value)
     {
@@ -455,7 +89,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float AirGravityCoef
     {
         get => state.Get<float>("AirGravityCoef");
-        set => SetAirGravityCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirGravityCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithAirGravityCoef(float value)
     {
@@ -465,7 +99,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float AngularSpeedClamp
     {
         get => state.Get<float>("AngularSpeedClamp");
-        set => SetAngularSpeedClamp(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAngularSpeedClampAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithAngularSpeedClamp(float value)
     {
@@ -475,7 +109,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float AngularSpeedImpulseScale
     {
         get => state.Get<float>("AngularSpeedImpulseScale");
-        set => SetAngularSpeedImpulseScale(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAngularSpeedImpulseScaleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithAngularSpeedImpulseScale(float value)
     {
@@ -485,7 +119,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float AxialSlopeAdherenceMax
     {
         get => state.Get<float>("AxialSlopeAdherenceMax");
-        set => SetAxialSlopeAdherenceMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAxialSlopeAdherenceMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithAxialSlopeAdherenceMax(float value)
     {
@@ -495,7 +129,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float AxialSlopeAdherenceMin
     {
         get => state.Get<float>("AxialSlopeAdherenceMin");
-        set => SetAxialSlopeAdherenceMin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAxialSlopeAdherenceMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithAxialSlopeAdherenceMin(float value)
     {
@@ -505,7 +139,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float BodyFrictionCoef_Concrete
     {
         get => state.Get<float>("BodyFrictionCoef_Concrete");
-        set => SetBodyFrictionCoef_Concrete(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBodyFrictionCoef_ConcreteAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBodyFrictionCoef_Concrete(float value)
     {
@@ -515,7 +149,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float BodyFrictionCoef_Metal
     {
         get => state.Get<float>("BodyFrictionCoef_Metal");
-        set => SetBodyFrictionCoef_Metal(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBodyFrictionCoef_MetalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBodyFrictionCoef_Metal(float value)
     {
@@ -525,7 +159,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float BodyRestCoef_Concrete
     {
         get => state.Get<float>("BodyRestCoef_Concrete");
-        set => SetBodyRestCoef_Concrete(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBodyRestCoef_ConcreteAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBodyRestCoef_Concrete(float value)
     {
@@ -535,7 +169,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float BodyRestCoef_Metal
     {
         get => state.Get<float>("BodyRestCoef_Metal");
-        set => SetBodyRestCoef_Metal(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBodyRestCoef_MetalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBodyRestCoef_Metal(float value)
     {
@@ -545,7 +179,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float BrakeBase
     {
         get => state.Get<float>("BrakeBase");
-        set => SetBrakeBase(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBrakeBaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBrakeBase(float value)
     {
@@ -555,7 +189,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float BrakeCoef
     {
         get => state.Get<float>("BrakeCoef");
-        set => SetBrakeCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBrakeCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBrakeCoef(float value)
     {
@@ -565,7 +199,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float BrakeMax
     {
         get => state.Get<float>("BrakeMax");
-        set => SetBrakeMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBrakeMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBrakeMax(float value)
     {
@@ -575,7 +209,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float BrakeMaxDynamic
     {
         get => state.Get<float>("BrakeMaxDynamic");
-        set => SetBrakeMaxDynamic(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBrakeMaxDynamicAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBrakeMaxDynamic(float value)
     {
@@ -585,7 +219,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float CenterOfMassY
     {
         get => state.Get<float>("CenterOfMassY");
-        set => SetCenterOfMassY(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCenterOfMassYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithCenterOfMassY(float value)
     {
@@ -595,7 +229,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float CenterOfMassZNormed
     {
         get => state.Get<float>("CenterOfMassZNormed");
-        set => SetCenterOfMassZNormed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCenterOfMassZNormedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithCenterOfMassZNormed(float value)
     {
@@ -605,7 +239,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float DamperKa
     {
         get => state.Get<float>("DamperKa");
-        set => SetDamperKa(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperKaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDamperKa(float value)
     {
@@ -615,7 +249,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float DamperKi
     {
         get => state.Get<float>("DamperKi");
-        set => SetDamperKi(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperKiAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDamperKi(float value)
     {
@@ -625,7 +259,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float DamperLengthMax
     {
         get => state.Get<float>("DamperLengthMax");
-        set => SetDamperLengthMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperLengthMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDamperLengthMax(float value)
     {
@@ -635,7 +269,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float DamperLengthMin
     {
         get => state.Get<float>("DamperLengthMin");
-        set => SetDamperLengthMin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperLengthMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDamperLengthMin(float value)
     {
@@ -645,7 +279,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float DamperLengthRest
     {
         get => state.Get<float>("DamperLengthRest");
-        set => SetDamperLengthRest(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperLengthRestAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDamperLengthRest(float value)
     {
@@ -655,7 +289,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public int DamperModel
     {
         get => state.Get<int>("DamperModel");
-        set => SetDamperModel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDamperModel(int value)
     {
@@ -665,7 +299,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float DamperTension
     {
         get => state.Get<float>("DamperTension");
-        set => SetDamperTension(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperTensionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDamperTension(float value)
     {
@@ -675,7 +309,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float DebugAbsorbCoef
     {
         get => state.Get<float>("DebugAbsorbCoef");
-        set => SetDebugAbsorbCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDebugAbsorbCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDebugAbsorbCoef(float value)
     {
@@ -685,7 +319,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float DecrepitudeCoef
     {
         get => state.Get<float>("DecrepitudeCoef");
-        set => SetDecrepitudeCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDecrepitudeCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDecrepitudeCoef(float value)
     {
@@ -695,7 +329,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float DecrepitudeImpactVal
     {
         get => state.Get<float>("DecrepitudeImpactVal");
-        set => SetDecrepitudeImpactVal(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDecrepitudeImpactValAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDecrepitudeImpactVal(float value)
     {
@@ -705,7 +339,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public int GameplayModel
     {
         get => state.Get<int>("GameplayModel");
-        set => SetGameplayModel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGameplayModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithGameplayModel(int value)
     {
@@ -715,7 +349,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float GroundGravityCoef
     {
         get => state.Get<float>("GroundGravityCoef");
-        set => SetGroundGravityCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGroundGravityCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithGroundGravityCoef(float value)
     {
@@ -725,7 +359,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float GroundSlowDownBase
     {
         get => state.Get<float>("GroundSlowDownBase");
-        set => SetGroundSlowDownBase(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGroundSlowDownBaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithGroundSlowDownBase(float value)
     {
@@ -735,7 +369,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float GroundSlowDownCoef
     {
         get => state.Get<float>("GroundSlowDownCoef");
-        set => SetGroundSlowDownCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGroundSlowDownCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithGroundSlowDownCoef(float value)
     {
@@ -745,7 +379,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public Vec3 InertiaHalfDiag
     {
         get => state.Get<Vec3>("InertiaHalfDiag");
-        set => SetInertiaHalfDiag(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetInertiaHalfDiagAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithInertiaHalfDiag(Vec3 value)
     {
@@ -755,7 +389,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float InertiaMass
     {
         get => state.Get<float>("InertiaMass");
-        set => SetInertiaMass(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetInertiaMassAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithInertiaMass(float value)
     {
@@ -765,7 +399,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public PlugCurve? LateralContactSlowDown
     {
         get => state.Get<PlugCurve?>("LateralContactSlowDown");
-        set => SetLateralContactSlowDown(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetLateralContactSlowDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLateralContactSlowDown(PlugCurve? value)
     {
@@ -775,7 +409,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float LateralSlopeAdherenceMax
     {
         get => state.Get<float>("LateralSlopeAdherenceMax");
-        set => SetLateralSlopeAdherenceMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetLateralSlopeAdherenceMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLateralSlopeAdherenceMax(float value)
     {
@@ -785,7 +419,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float LateralSlopeAdherenceMin
     {
         get => state.Get<float>("LateralSlopeAdherenceMin");
-        set => SetLateralSlopeAdherenceMin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetLateralSlopeAdherenceMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLateralSlopeAdherenceMin(float value)
     {
@@ -795,7 +429,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float LimitToMaxSpeedForce
     {
         get => state.Get<float>("LimitToMaxSpeedForce");
-        set => SetLimitToMaxSpeedForce(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetLimitToMaxSpeedForceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLimitToMaxSpeedForce(float value)
     {
@@ -805,7 +439,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float LinearFluidFrictionCoef
     {
         get => state.Get<float>("LinearFluidFrictionCoef");
-        set => SetLinearFluidFrictionCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetLinearFluidFrictionCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLinearFluidFrictionCoef(float value)
     {
@@ -815,7 +449,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float LinearSpeed2PositiveDeltaMax
     {
         get => state.Get<float>("LinearSpeed2PositiveDeltaMax");
-        set => SetLinearSpeed2PositiveDeltaMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetLinearSpeed2PositiveDeltaMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLinearSpeed2PositiveDeltaMax(float value)
     {
@@ -825,7 +459,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float Mass
     {
         get => state.Get<float>("Mass");
-        set => SetMass(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMassAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMass(float value)
     {
@@ -835,7 +469,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public PlugCurve? MaxSideFriction
     {
         get => state.Get<PlugCurve?>("MaxSideFriction");
-        set => SetMaxSideFriction(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMaxSideFrictionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMaxSideFriction(PlugCurve? value)
     {
@@ -845,7 +479,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float MaxSideFrictionBlendCoef
     {
         get => state.Get<float>("MaxSideFrictionBlendCoef");
-        set => SetMaxSideFrictionBlendCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMaxSideFrictionBlendCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMaxSideFrictionBlendCoef(float value)
     {
@@ -855,7 +489,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float MaxSideFrictionSliding
     {
         get => state.Get<float>("MaxSideFrictionSliding");
-        set => SetMaxSideFrictionSliding(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMaxSideFrictionSlidingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMaxSideFrictionSliding(float value)
     {
@@ -865,7 +499,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float MaxSpeed
     {
         get => state.Get<float>("MaxSpeed");
-        set => SetMaxSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMaxSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMaxSpeed(float value)
     {
@@ -875,7 +509,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public string? Name
     {
         get => state.Get<string?>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithName(string? value)
     {
@@ -885,7 +519,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float RelSpeedMultCoef
     {
         get => state.Get<float>("RelSpeedMultCoef");
-        set => SetRelSpeedMultCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetRelSpeedMultCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRelSpeedMultCoef(float value)
     {
@@ -895,7 +529,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float ReverseMaxSpeed
     {
         get => state.Get<float>("ReverseMaxSpeed");
-        set => SetReverseMaxSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetReverseMaxSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithReverseMaxSpeed(float value)
     {
@@ -905,7 +539,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float RolloverAxial
     {
         get => state.Get<float>("RolloverAxial");
-        set => SetRolloverAxial(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetRolloverAxialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRolloverAxial(float value)
     {
@@ -915,7 +549,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public PlugCurve? RolloverLateral
     {
         get => state.Get<PlugCurve?>("RolloverLateral");
-        set => SetRolloverLateral(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetRolloverLateralAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRolloverLateral(PlugCurve? value)
     {
@@ -925,7 +559,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public PlugCurve? RolloverLateralFromAngle
     {
         get => state.Get<PlugCurve?>("RolloverLateralFromAngle");
-        set => SetRolloverLateralFromAngle(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetRolloverLateralFromAngleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRolloverLateralFromAngle(PlugCurve? value)
     {
@@ -935,7 +569,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float SideFriction1
     {
         get => state.Get<float>("SideFriction1");
-        set => SetSideFriction1(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSideFriction1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSideFriction1(float value)
     {
@@ -945,7 +579,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float SlipAngleForceCoef1
     {
         get => state.Get<float>("SlipAngleForceCoef1");
-        set => SetSlipAngleForceCoef1(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSlipAngleForceCoef1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSlipAngleForceCoef1(float value)
     {
@@ -955,7 +589,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float SlipAngleForceCoef2
     {
         get => state.Get<float>("SlipAngleForceCoef2");
-        set => SetSlipAngleForceCoef2(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSlipAngleForceCoef2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSlipAngleForceCoef2(float value)
     {
@@ -965,7 +599,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float SlipAngleForceMax
     {
         get => state.Get<float>("SlipAngleForceMax");
-        set => SetSlipAngleForceMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSlipAngleForceMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSlipAngleForceMax(float value)
     {
@@ -975,7 +609,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float SlopeSpeedGainLimit
     {
         get => state.Get<float>("SlopeSpeedGainLimit");
-        set => SetSlopeSpeedGainLimit(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSlopeSpeedGainLimitAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSlopeSpeedGainLimit(float value)
     {
@@ -985,7 +619,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float SteerAngleMax
     {
         get => state.Get<float>("SteerAngleMax");
-        set => SetSteerAngleMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerAngleMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSteerAngleMax(float value)
     {
@@ -995,7 +629,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public PlugCurve? SteerDriveTorque
     {
         get => state.Get<PlugCurve?>("SteerDriveTorque");
-        set => SetSteerDriveTorque(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerDriveTorqueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSteerDriveTorque(PlugCurve? value)
     {
@@ -1005,7 +639,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float SteerGroundTorque
     {
         get => state.Get<float>("SteerGroundTorque");
-        set => SetSteerGroundTorque(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerGroundTorqueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSteerGroundTorque(float value)
     {
@@ -1015,7 +649,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float SteerGroundTorqueSlippingCoef
     {
         get => state.Get<float>("SteerGroundTorqueSlippingCoef");
-        set => SetSteerGroundTorqueSlippingCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerGroundTorqueSlippingCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSteerGroundTorqueSlippingCoef(float value)
     {
@@ -1025,7 +659,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float SteerLowSpeed
     {
         get => state.Get<float>("SteerLowSpeed");
-        set => SetSteerLowSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerLowSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSteerLowSpeed(float value)
     {
@@ -1035,7 +669,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float SteerRadiusCoef
     {
         get => state.Get<float>("SteerRadiusCoef");
-        set => SetSteerRadiusCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerRadiusCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSteerRadiusCoef(float value)
     {
@@ -1045,7 +679,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float SteerRadiusMin
     {
         get => state.Get<float>("SteerRadiusMin");
-        set => SetSteerRadiusMin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerRadiusMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSteerRadiusMin(float value)
     {
@@ -1055,7 +689,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public PlugCurve? SteerSlowDown
     {
         get => state.Get<PlugCurve?>("SteerSlowDown");
-        set => SetSteerSlowDown(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSlowDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSteerSlowDown(PlugCurve? value)
     {
@@ -1065,7 +699,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float SteerSlowDownCoef
     {
         get => state.Get<float>("SteerSlowDownCoef");
-        set => SetSteerSlowDownCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSlowDownCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSteerSlowDownCoef(float value)
     {
@@ -1075,7 +709,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float SteerSpeed
     {
         get => state.Get<float>("SteerSpeed");
-        set => SetSteerSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSteerSpeed(float value)
     {
@@ -1085,7 +719,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public int TireMaterial
     {
         get => state.Get<int>("TireMaterial");
-        set => SetTireMaterial(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTireMaterialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithTireMaterial(int value)
     {
@@ -1095,7 +729,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float TurboYellowAccelCoef
     {
         get => state.Get<float>("TurboYellowAccelCoef");
-        set => SetTurboYellowAccelCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboYellowAccelCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithTurboYellowAccelCoef(float value)
     {
@@ -1105,7 +739,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public int TurboYellowAccelCoefDuration
     {
         get => state.Get<int>("TurboYellowAccelCoefDuration");
-        set => SetTurboYellowAccelCoefDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboYellowAccelCoefDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithTurboYellowAccelCoefDuration(int value)
     {
@@ -1115,7 +749,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float VibrationPeriodSpeedCoef
     {
         get => state.Get<float>("VibrationPeriodSpeedCoef");
-        set => SetVibrationPeriodSpeedCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetVibrationPeriodSpeedCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithVibrationPeriodSpeedCoef(float value)
     {
@@ -1125,7 +759,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float WheelRestCoef_Concrete
     {
         get => state.Get<float>("WheelRestCoef_Concrete");
-        set => SetWheelRestCoef_Concrete(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWheelRestCoef_ConcreteAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithWheelRestCoef_Concrete(float value)
     {
@@ -1135,7 +769,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     public float WheelRestCoef_Metal
     {
         get => state.Get<float>("WheelRestCoef_Metal");
-        set => SetWheelRestCoef_Metal(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWheelRestCoef_MetalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithWheelRestCoef_Metal(float value)
     {
@@ -1149,7 +783,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers1<TSelf> : CPlugVehi
     public float RubberBallElasticity
     {
         get => state.Get<float>("RubberBallElasticity");
-        set => SetRubberBallElasticity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetRubberBallElasticityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRubberBallElasticity(float value)
     {
@@ -1159,7 +793,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers1<TSelf> : CPlugVehi
     public float SideFriction2
     {
         get => state.Get<float>("SideFriction2");
-        set => SetSideFriction2(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSideFriction2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSideFriction2(float value)
     {
@@ -1169,7 +803,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers1<TSelf> : CPlugVehi
     public int SteerSlowDownFadeInDuration
     {
         get => state.Get<int>("SteerSlowDownFadeInDuration");
-        set => SetSteerSlowDownFadeInDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSlowDownFadeInDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSteerSlowDownFadeInDuration(int value)
     {
@@ -1183,7 +817,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers2<TSelf> : CPlugVehi
     public bool IsFakeEngine
     {
         get => state.Get<bool>("IsFakeEngine");
-        set => SetIsFakeEngine(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetIsFakeEngineAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithIsFakeEngine(bool value)
     {
@@ -1193,7 +827,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers2<TSelf> : CPlugVehi
     public float SoundBodyImpact_Hard_Threshold
     {
         get => state.Get<float>("SoundBodyImpact_Hard_Threshold");
-        set => SetSoundBodyImpact_Hard_Threshold(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundBodyImpact_Hard_ThresholdAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSoundBodyImpact_Hard_Threshold(float value)
     {
@@ -1203,7 +837,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers2<TSelf> : CPlugVehi
     public float SoundBodyImpact_Soft_Threshold
     {
         get => state.Get<float>("SoundBodyImpact_Soft_Threshold");
-        set => SetSoundBodyImpact_Soft_Threshold(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundBodyImpact_Soft_ThresholdAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSoundBodyImpact_Soft_Threshold(float value)
     {
@@ -1213,7 +847,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers2<TSelf> : CPlugVehi
     public float SoundEngineVolume
     {
         get => state.Get<float>("SoundEngineVolume");
-        set => SetSoundEngineVolume(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundEngineVolumeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSoundEngineVolume(float value)
     {
@@ -1223,7 +857,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers2<TSelf> : CPlugVehi
     public float SoundImpactVolume
     {
         get => state.Get<float>("SoundImpactVolume");
-        set => SetSoundImpactVolume(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundImpactVolumeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSoundImpactVolume(float value)
     {
@@ -1233,7 +867,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers2<TSelf> : CPlugVehi
     public float SoundSkidConcreteVolume
     {
         get => state.Get<float>("SoundSkidConcreteVolume");
-        set => SetSoundSkidConcreteVolume(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundSkidConcreteVolumeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSoundSkidConcreteVolume(float value)
     {
@@ -1243,7 +877,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers2<TSelf> : CPlugVehi
     public float SoundSkidSandVolume
     {
         get => state.Get<float>("SoundSkidSandVolume");
-        set => SetSoundSkidSandVolume(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundSkidSandVolumeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSoundSkidSandVolume(float value)
     {
@@ -1253,7 +887,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers2<TSelf> : CPlugVehi
     public float SoundWheelImpact_Hard_Threshold
     {
         get => state.Get<float>("SoundWheelImpact_Hard_Threshold");
-        set => SetSoundWheelImpact_Hard_Threshold(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundWheelImpact_Hard_ThresholdAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSoundWheelImpact_Hard_Threshold(float value)
     {
@@ -1263,7 +897,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers2<TSelf> : CPlugVehi
     public float SoundWheelImpact_Soft_Threshold
     {
         get => state.Get<float>("SoundWheelImpact_Soft_Threshold");
-        set => SetSoundWheelImpact_Soft_Threshold(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundWheelImpact_Soft_ThresholdAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSoundWheelImpact_Soft_Threshold(float value)
     {
@@ -1273,7 +907,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers2<TSelf> : CPlugVehi
     public int SteerSlowDownFadeOutDuration
     {
         get => state.Get<int>("SteerSlowDownFadeOutDuration");
-        set => SetSteerSlowDownFadeOutDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSlowDownFadeOutDurationAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSteerSlowDownFadeOutDuration(int value)
     {
@@ -1283,7 +917,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers2<TSelf> : CPlugVehi
     public float WheelFrictionCoef_Concrete
     {
         get => state.Get<float>("WheelFrictionCoef_Concrete");
-        set => SetWheelFrictionCoef_Concrete(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWheelFrictionCoef_ConcreteAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithWheelFrictionCoef_Concrete(float value)
     {
@@ -1293,7 +927,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers2<TSelf> : CPlugVehi
     public float WheelFrictionCoef_Metal
     {
         get => state.Get<float>("WheelFrictionCoef_Metal");
-        set => SetWheelFrictionCoef_Metal(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWheelFrictionCoef_MetalAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithWheelFrictionCoef_Metal(float value)
     {
@@ -1307,7 +941,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers3<TSelf> : CPlugVehi
     public float DisplaySteerRadiusCoef
     {
         get => state.Get<float>("DisplaySteerRadiusCoef");
-        set => SetDisplaySteerRadiusCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDisplaySteerRadiusCoefAssignment(), value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX);
     }
     public TSelf WithDisplaySteerRadiusCoef(float value)
     {
@@ -1317,7 +951,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers3<TSelf> : CPlugVehi
     public float DisplaySteerRadiusMin
     {
         get => state.Get<float>("DisplaySteerRadiusMin");
-        set => SetDisplaySteerRadiusMin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDisplaySteerRadiusMinAssignment(), value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX);
     }
     public TSelf WithDisplaySteerRadiusMin(float value)
     {
@@ -1331,7 +965,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public PlugCurve? AccelCurveRear
     {
         get => state.Get<PlugCurve?>("AccelCurveRear");
-        set => SetAccelCurveRear(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAccelCurveRearAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithAccelCurveRear(PlugCurve? value)
     {
@@ -1341,7 +975,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public PlugCurve? AirControlZCoefFromAngularSpeed
     {
         get => state.Get<PlugCurve?>("AirControlZCoefFromAngularSpeed");
-        set => SetAirControlZCoefFromAngularSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirControlZCoefFromAngularSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithAirControlZCoefFromAngularSpeed(PlugCurve? value)
     {
@@ -1351,7 +985,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float[]? EngineAutoGearMaxRPMs
     {
         get => state.Get<float[]?>("EngineAutoGearMaxRPMs");
-        set => SetEngineAutoGearMaxRPMs(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetEngineAutoGearMaxRPMsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEngineAutoGearMaxRPMs(params float[]? value)
     {
@@ -1365,7 +999,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float[]? EngineAutoGearMinRPMs
     {
         get => state.Get<float[]?>("EngineAutoGearMinRPMs");
-        set => SetEngineAutoGearMinRPMs(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetEngineAutoGearMinRPMsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEngineAutoGearMinRPMs(params float[]? value)
     {
@@ -1379,7 +1013,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float[]? EngineGearRatios
     {
         get => state.Get<float[]?>("EngineGearRatios");
-        set => SetEngineGearRatios(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetEngineGearRatiosAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEngineGearRatios(params float[]? value)
     {
@@ -1393,7 +1027,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M4LateralFrictionForce
     {
         get => state.Get<float>("M4LateralFrictionForce");
-        set => SetM4LateralFrictionForce(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4LateralFrictionForceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM4LateralFrictionForce(float value)
     {
@@ -1403,7 +1037,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M4LateralFrictionSquareForce
     {
         get => state.Get<float>("M4LateralFrictionSquareForce");
-        set => SetM4LateralFrictionSquareForce(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4LateralFrictionSquareForceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM4LateralFrictionSquareForce(float value)
     {
@@ -1413,7 +1047,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M4LateralFrictionSquareTorque
     {
         get => state.Get<float>("M4LateralFrictionSquareTorque");
-        set => SetM4LateralFrictionSquareTorque(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4LateralFrictionSquareTorqueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM4LateralFrictionSquareTorque(float value)
     {
@@ -1423,7 +1057,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M4LateralFrictionTorque
     {
         get => state.Get<float>("M4LateralFrictionTorque");
-        set => SetM4LateralFrictionTorque(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4LateralFrictionTorqueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM4LateralFrictionTorque(float value)
     {
@@ -1433,7 +1067,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M4LeaveSlippingSpeed
     {
         get => state.Get<float>("M4LeaveSlippingSpeed");
-        set => SetM4LeaveSlippingSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4LeaveSlippingSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM4LeaveSlippingSpeed(float value)
     {
@@ -1443,7 +1077,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public PlugCurve? M4MaxFrictionForceFromSpeed
     {
         get => state.Get<PlugCurve?>("M4MaxFrictionForceFromSpeed");
-        set => SetM4MaxFrictionForceFromSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4MaxFrictionForceFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM4MaxFrictionForceFromSpeed(PlugCurve? value)
     {
@@ -1453,7 +1087,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M4MaxFrictionForceWhenSlipping
     {
         get => state.Get<float>("M4MaxFrictionForceWhenSlipping");
-        set => SetM4MaxFrictionForceWhenSlipping(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4MaxFrictionForceWhenSlippingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM4MaxFrictionForceWhenSlipping(float value)
     {
@@ -1463,7 +1097,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public PlugCurve? M4MaxFrictionTorqueFromSpeed
     {
         get => state.Get<PlugCurve?>("M4MaxFrictionTorqueFromSpeed");
-        set => SetM4MaxFrictionTorqueFromSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4MaxFrictionTorqueFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM4MaxFrictionTorqueFromSpeed(PlugCurve? value)
     {
@@ -1473,7 +1107,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M4MaxFrictionTorqueWhenSlippingCoef
     {
         get => state.Get<float>("M4MaxFrictionTorqueWhenSlippingCoef");
-        set => SetM4MaxFrictionTorqueWhenSlippingCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4MaxFrictionTorqueWhenSlippingCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM4MaxFrictionTorqueWhenSlippingCoef(float value)
     {
@@ -1483,7 +1117,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M4SlipAngleSpeed
     {
         get => state.Get<float>("M4SlipAngleSpeed");
-        set => SetM4SlipAngleSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4SlipAngleSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM4SlipAngleSpeed(float value)
     {
@@ -1493,7 +1127,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M4SteerAngleWhenSlippingMax
     {
         get => state.Get<float>("M4SteerAngleWhenSlippingMax");
-        set => SetM4SteerAngleWhenSlippingMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4SteerAngleWhenSlippingMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM4SteerAngleWhenSlippingMax(float value)
     {
@@ -1503,7 +1137,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M4SteerRadiusCoefFromSlipAngle
     {
         get => state.Get<float>("M4SteerRadiusCoefFromSlipAngle");
-        set => SetM4SteerRadiusCoefFromSlipAngle(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4SteerRadiusCoefFromSlipAngleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM4SteerRadiusCoefFromSlipAngle(float value)
     {
@@ -1513,7 +1147,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public PlugCurve? M4SteerRadiusFromSpeed
     {
         get => state.Get<PlugCurve?>("M4SteerRadiusFromSpeed");
-        set => SetM4SteerRadiusFromSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4SteerRadiusFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM4SteerRadiusFromSpeed(PlugCurve? value)
     {
@@ -1523,7 +1157,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M4SteerRadiusWhenSlippingCoef
     {
         get => state.Get<float>("M4SteerRadiusWhenSlippingCoef");
-        set => SetM4SteerRadiusWhenSlippingCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4SteerRadiusWhenSlippingCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM4SteerRadiusWhenSlippingCoef(float value)
     {
@@ -1533,7 +1167,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M5AccelSlipCoefMax
     {
         get => state.Get<float>("M5AccelSlipCoefMax");
-        set => SetM5AccelSlipCoefMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM5AccelSlipCoefMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM5AccelSlipCoefMax(float value)
     {
@@ -1543,7 +1177,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public int M5KeepNoSteerSlowDownWhenSlippingDuration
     {
         get => state.Get<int>("M5KeepNoSteerSlowDownWhenSlippingDuration");
-        set => SetM5KeepNoSteerSlowDownWhenSlippingDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM5KeepNoSteerSlowDownWhenSlippingDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM5KeepNoSteerSlowDownWhenSlippingDuration(int value)
     {
@@ -1553,7 +1187,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public int M5KeepSlidingAccelDuration
     {
         get => state.Get<int>("M5KeepSlidingAccelDuration");
-        set => SetM5KeepSlidingAccelDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM5KeepSlidingAccelDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM5KeepSlidingAccelDuration(int value)
     {
@@ -1563,7 +1197,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public int M5KeepSteerSlowDownDurarion
     {
         get => state.Get<int>("M5KeepSteerSlowDownDurarion");
-        set => SetM5KeepSteerSlowDownDurarion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM5KeepSteerSlowDownDurarionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM5KeepSteerSlowDownDurarion(int value)
     {
@@ -1573,7 +1207,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public int M5LateralConstantSlowDownDuration
     {
         get => state.Get<int>("M5LateralConstantSlowDownDuration");
-        set => SetM5LateralConstantSlowDownDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM5LateralConstantSlowDownDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM5LateralConstantSlowDownDuration(int value)
     {
@@ -1583,7 +1217,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M5MaxAxialRolloverTorque
     {
         get => state.Get<float>("M5MaxAxialRolloverTorque");
-        set => SetM5MaxAxialRolloverTorque(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM5MaxAxialRolloverTorqueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM5MaxAxialRolloverTorque(float value)
     {
@@ -1593,7 +1227,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public PlugCurve? M5SlippingAccelCurve
     {
         get => state.Get<PlugCurve?>("M5SlippingAccelCurve");
-        set => SetM5SlippingAccelCurve(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM5SlippingAccelCurveAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM5SlippingAccelCurve(PlugCurve? value)
     {
@@ -1603,7 +1237,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public PlugCurve? M5SmoothInputSteerDurationFromSpeed
     {
         get => state.Get<PlugCurve?>("M5SmoothInputSteerDurationFromSpeed");
-        set => SetM5SmoothInputSteerDurationFromSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM5SmoothInputSteerDurationFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM5SmoothInputSteerDurationFromSpeed(PlugCurve? value)
     {
@@ -1613,7 +1247,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public PlugCurve? M5SteerCoefFromSpeed
     {
         get => state.Get<PlugCurve?>("M5SteerCoefFromSpeed");
-        set => SetM5SteerCoefFromSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM5SteerCoefFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM5SteerCoefFromSpeed(PlugCurve? value)
     {
@@ -1623,7 +1257,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M6AfterBurnoutAccMod
     {
         get => state.Get<float>("M6AfterBurnoutAccMod");
-        set => SetM6AfterBurnoutAccMod(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6AfterBurnoutAccModAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6AfterBurnoutAccMod(float value)
     {
@@ -1633,7 +1267,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public int M6AfterBurnoutDuration
     {
         get => state.Get<int>("M6AfterBurnoutDuration");
-        set => SetM6AfterBurnoutDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6AfterBurnoutDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6AfterBurnoutDuration(int value)
     {
@@ -1643,7 +1277,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M6AfterBurnoutImpulse
     {
         get => state.Get<float>("M6AfterBurnoutImpulse");
-        set => SetM6AfterBurnoutImpulse(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6AfterBurnoutImpulseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6AfterBurnoutImpulse(float value)
     {
@@ -1653,7 +1287,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M6AirRpmAcc
     {
         get => state.Get<float>("M6AirRpmAcc");
-        set => SetM6AirRpmAcc(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6AirRpmAccAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6AirRpmAcc(float value)
     {
@@ -1663,7 +1297,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M6AirRpmDeadening
     {
         get => state.Get<float>("M6AirRpmDeadening");
-        set => SetM6AirRpmDeadening(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6AirRpmDeadeningAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6AirRpmDeadening(float value)
     {
@@ -1673,7 +1307,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M6BrakeMaxDynamicRear
     {
         get => state.Get<float>("M6BrakeMaxDynamicRear");
-        set => SetM6BrakeMaxDynamicRear(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BrakeMaxDynamicRearAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BrakeMaxDynamicRear(float value)
     {
@@ -1683,7 +1317,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M6BrakeMaxRear
     {
         get => state.Get<float>("M6BrakeMaxRear");
-        set => SetM6BrakeMaxRear(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BrakeMaxRearAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BrakeMaxRear(float value)
     {
@@ -1693,7 +1327,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M6BrakeModulationWhenSlipping
     {
         get => state.Get<float>("M6BrakeModulationWhenSlipping");
-        set => SetM6BrakeModulationWhenSlipping(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BrakeModulationWhenSlippingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BrakeModulationWhenSlipping(float value)
     {
@@ -1703,7 +1337,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M6BrakeSmokeIntensity
     {
         get => state.Get<float>("M6BrakeSmokeIntensity");
-        set => SetM6BrakeSmokeIntensity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BrakeSmokeIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BrakeSmokeIntensity(float value)
     {
@@ -1713,7 +1347,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M6BurnoutAccMod
     {
         get => state.Get<float>("M6BurnoutAccMod");
-        set => SetM6BurnoutAccMod(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutAccModAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BurnoutAccMod(float value)
     {
@@ -1723,7 +1357,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M6BurnoutCenterForceCoeff
     {
         get => state.Get<float>("M6BurnoutCenterForceCoeff");
-        set => SetM6BurnoutCenterForceCoeff(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutCenterForceCoeffAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BurnoutCenterForceCoeff(float value)
     {
@@ -1733,7 +1367,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M6BurnoutCenterForceCoeff2
     {
         get => state.Get<float>("M6BurnoutCenterForceCoeff2");
-        set => SetM6BurnoutCenterForceCoeff2(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutCenterForceCoeff2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BurnoutCenterForceCoeff2(float value)
     {
@@ -1743,7 +1377,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public int M6BurnoutDuration
     {
         get => state.Get<int>("M6BurnoutDuration");
-        set => SetM6BurnoutDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BurnoutDuration(int value)
     {
@@ -1753,7 +1387,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M6BurnoutFricMod
     {
         get => state.Get<float>("M6BurnoutFricMod");
-        set => SetM6BurnoutFricMod(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutFricModAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BurnoutFricMod(float value)
     {
@@ -1763,7 +1397,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public PlugCurve? M6BurnoutLateralSpeed
     {
         get => state.Get<PlugCurve?>("M6BurnoutLateralSpeed");
-        set => SetM6BurnoutLateralSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutLateralSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BurnoutLateralSpeed(PlugCurve? value)
     {
@@ -1773,7 +1407,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M6BurnoutLateralSpeedCoeff
     {
         get => state.Get<float>("M6BurnoutLateralSpeedCoeff");
-        set => SetM6BurnoutLateralSpeedCoeff(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutLateralSpeedCoeffAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BurnoutLateralSpeedCoeff(float value)
     {
@@ -1783,7 +1417,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M6BurnoutLateralSpeedMax
     {
         get => state.Get<float>("M6BurnoutLateralSpeedMax");
-        set => SetM6BurnoutLateralSpeedMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutLateralSpeedMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BurnoutLateralSpeedMax(float value)
     {
@@ -1793,7 +1427,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public PlugCurve? M6BurnoutRadius
     {
         get => state.Get<PlugCurve?>("M6BurnoutRadius");
-        set => SetM6BurnoutRadius(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutRadiusAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BurnoutRadius(PlugCurve? value)
     {
@@ -1803,7 +1437,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M6BurnoutRadiusMax
     {
         get => state.Get<float>("M6BurnoutRadiusMax");
-        set => SetM6BurnoutRadiusMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutRadiusMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BurnoutRadiusMax(float value)
     {
@@ -1813,7 +1447,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public PlugCurve? M6BurnoutRolloverFromSpeed
     {
         get => state.Get<PlugCurve?>("M6BurnoutRolloverFromSpeed");
-        set => SetM6BurnoutRolloverFromSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutRolloverFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BurnoutRolloverFromSpeed(PlugCurve? value)
     {
@@ -1823,7 +1457,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M6BurnoutRpmAcc
     {
         get => state.Get<float>("M6BurnoutRpmAcc");
-        set => SetM6BurnoutRpmAcc(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutRpmAccAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BurnoutRpmAcc(float value)
     {
@@ -1833,7 +1467,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M6BurnoutSmokeIntensity
     {
         get => state.Get<float>("M6BurnoutSmokeIntensity");
-        set => SetM6BurnoutSmokeIntensity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutSmokeIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BurnoutSmokeIntensity(float value)
     {
@@ -1843,7 +1477,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M6BurnoutSmokeVelocity
     {
         get => state.Get<float>("M6BurnoutSmokeVelocity");
-        set => SetM6BurnoutSmokeVelocity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutSmokeVelocityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BurnoutSmokeVelocity(float value)
     {
@@ -1853,7 +1487,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M6BurnoutSteerCoeff
     {
         get => state.Get<float>("M6BurnoutSteerCoeff");
-        set => SetM6BurnoutSteerCoeff(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutSteerCoeffAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BurnoutSteerCoeff(float value)
     {
@@ -1863,7 +1497,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M6BurnoutSteerCoeff2
     {
         get => state.Get<float>("M6BurnoutSteerCoeff2");
-        set => SetM6BurnoutSteerCoeff2(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutSteerCoeff2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BurnoutSteerCoeff2(float value)
     {
@@ -1873,7 +1507,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M6BurnoutSteerCoeff3
     {
         get => state.Get<float>("M6BurnoutSteerCoeff3");
-        set => SetM6BurnoutSteerCoeff3(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutSteerCoeff3Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BurnoutSteerCoeff3(float value)
     {
@@ -1883,7 +1517,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M6BurnoutWheelAngularRotation
     {
         get => state.Get<float>("M6BurnoutWheelAngularRotation");
-        set => SetM6BurnoutWheelAngularRotation(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutWheelAngularRotationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BurnoutWheelAngularRotation(float value)
     {
@@ -1893,7 +1527,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public PlugCurve? M6DonutRolloverFromSpeed
     {
         get => state.Get<PlugCurve?>("M6DonutRolloverFromSpeed");
-        set => SetM6DonutRolloverFromSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6DonutRolloverFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6DonutRolloverFromSpeed(PlugCurve? value)
     {
@@ -1903,7 +1537,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M6ForceEpsilon
     {
         get => state.Get<float>("M6ForceEpsilon");
-        set => SetM6ForceEpsilon(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6ForceEpsilonAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6ForceEpsilon(float value)
     {
@@ -1913,7 +1547,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M6FrictionModulationWhenSlipNBrake
     {
         get => state.Get<float>("M6FrictionModulationWhenSlipNBrake");
-        set => SetM6FrictionModulationWhenSlipNBrake(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6FrictionModulationWhenSlipNBrakeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6FrictionModulationWhenSlipNBrake(float value)
     {
@@ -1923,7 +1557,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M6InertialMass
     {
         get => state.Get<float>("M6InertialMass");
-        set => SetM6InertialMass(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6InertialMassAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6InertialMass(float value)
     {
@@ -1933,7 +1567,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M6InertialTorqueModualtionX
     {
         get => state.Get<float>("M6InertialTorqueModualtionX");
-        set => SetM6InertialTorqueModualtionX(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6InertialTorqueModualtionXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6InertialTorqueModualtionX(float value)
     {
@@ -1943,7 +1577,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M6InertialTorqueModulationZ
     {
         get => state.Get<float>("M6InertialTorqueModulationZ");
-        set => SetM6InertialTorqueModulationZ(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6InertialTorqueModulationZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6InertialTorqueModulationZ(float value)
     {
@@ -1953,7 +1587,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M6MaxDiffBtwGroundNormal
     {
         get => state.Get<float>("M6MaxDiffBtwGroundNormal");
-        set => SetM6MaxDiffBtwGroundNormal(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6MaxDiffBtwGroundNormalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6MaxDiffBtwGroundNormal(float value)
     {
@@ -1963,7 +1597,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M6MaxDiffBtwnPropulsionAndSpeed
     {
         get => state.Get<float>("M6MaxDiffBtwnPropulsionAndSpeed");
-        set => SetM6MaxDiffBtwnPropulsionAndSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6MaxDiffBtwnPropulsionAndSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6MaxDiffBtwnPropulsionAndSpeed(float value)
     {
@@ -1973,7 +1607,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M6MaxNegAngle4Burnout
     {
         get => state.Get<float>("M6MaxNegAngle4Burnout");
-        set => SetM6MaxNegAngle4Burnout(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6MaxNegAngle4BurnoutAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6MaxNegAngle4Burnout(float value)
     {
@@ -1983,7 +1617,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M6MaxPosAngle4Burnout
     {
         get => state.Get<float>("M6MaxPosAngle4Burnout");
-        set => SetM6MaxPosAngle4Burnout(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6MaxPosAngle4BurnoutAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6MaxPosAngle4Burnout(float value)
     {
@@ -1993,7 +1627,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M6MaxSpeed4Burnout
     {
         get => state.Get<float>("M6MaxSpeed4Burnout");
-        set => SetM6MaxSpeed4Burnout(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6MaxSpeed4BurnoutAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6MaxSpeed4Burnout(float value)
     {
@@ -2003,7 +1637,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float M6MinSpeed4Burnout
     {
         get => state.Get<float>("M6MinSpeed4Burnout");
-        set => SetM6MinSpeed4Burnout(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6MinSpeed4BurnoutAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6MinSpeed4Burnout(float value)
     {
@@ -2013,7 +1647,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public PlugCurve? M6RolloverLateralFromSpeedRatio
     {
         get => state.Get<PlugCurve?>("M6RolloverLateralFromSpeedRatio");
-        set => SetM6RolloverLateralFromSpeedRatio(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6RolloverLateralFromSpeedRatioAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6RolloverLateralFromSpeedRatio(PlugCurve? value)
     {
@@ -2023,7 +1657,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public PlugCurve? ModulationFromWheelCompression
     {
         get => state.Get<PlugCurve?>("ModulationFromWheelCompression");
-        set => SetModulationFromWheelCompression(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetModulationFromWheelCompressionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithModulationFromWheelCompression(PlugCurve? value)
     {
@@ -2033,7 +1667,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public bool NoSteerSlowDownWhenSlipping
     {
         get => state.Get<bool>("NoSteerSlowDownWhenSlipping");
-        set => SetNoSteerSlowDownWhenSlipping(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNoSteerSlowDownWhenSlippingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithNoSteerSlowDownWhenSlipping(bool value)
     {
@@ -2043,7 +1677,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float TurboRedAccelCoef
     {
         get => state.Get<float>("TurboRedAccelCoef");
-        set => SetTurboRedAccelCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboRedAccelCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithTurboRedAccelCoef(float value)
     {
@@ -2053,7 +1687,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public int TurboRedAccelCoefDuration
     {
         get => state.Get<int>("TurboRedAccelCoefDuration");
-        set => SetTurboRedAccelCoefDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboRedAccelCoefDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithTurboRedAccelCoefDuration(int value)
     {
@@ -2063,7 +1697,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float WaterAngularFriction
     {
         get => state.Get<float>("WaterAngularFriction");
-        set => SetWaterAngularFriction(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterAngularFrictionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithWaterAngularFriction(float value)
     {
@@ -2073,7 +1707,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float WaterAngularFrictionSq
     {
         get => state.Get<float>("WaterAngularFrictionSq");
-        set => SetWaterAngularFrictionSq(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterAngularFrictionSqAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithWaterAngularFrictionSq(float value)
     {
@@ -2083,7 +1717,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float WaterBumpMinSpeed
     {
         get => state.Get<float>("WaterBumpMinSpeed");
-        set => SetWaterBumpMinSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterBumpMinSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithWaterBumpMinSpeed(float value)
     {
@@ -2093,7 +1727,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public PlugCurve? WaterBumpSlowDownFromSpeedRatio
     {
         get => state.Get<PlugCurve?>("WaterBumpSlowDownFromSpeedRatio");
-        set => SetWaterBumpSlowDownFromSpeedRatio(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterBumpSlowDownFromSpeedRatioAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithWaterBumpSlowDownFromSpeedRatio(PlugCurve? value)
     {
@@ -2103,7 +1737,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public PlugCurve? WaterFrictionFromSpeed
     {
         get => state.Get<PlugCurve?>("WaterFrictionFromSpeed");
-        set => SetWaterFrictionFromSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterFrictionFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithWaterFrictionFromSpeed(PlugCurve? value)
     {
@@ -2113,7 +1747,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public PlugCurve? WaterReboundFromSpeedRatio
     {
         get => state.Get<PlugCurve?>("WaterReboundFromSpeedRatio");
-        set => SetWaterReboundFromSpeedRatio(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterReboundFromSpeedRatioAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithWaterReboundFromSpeedRatio(PlugCurve? value)
     {
@@ -2123,7 +1757,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehi
     public float WaterReboundMinHSpeed
     {
         get => state.Get<float>("WaterReboundMinHSpeed");
-        set => SetWaterReboundMinHSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterReboundMinHSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithWaterReboundMinHSpeed(float value)
     {
@@ -2137,7 +1771,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers5<TSelf> : CPlugVehi
     public PlugCurve? VisualSteerAngleFromSpeed
     {
         get => state.Get<PlugCurve?>("VisualSteerAngleFromSpeed");
-        set => SetVisualSteerAngleFromSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetVisualSteerAngleFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithVisualSteerAngleFromSpeed(PlugCurve? value)
     {
@@ -2151,7 +1785,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers6<TSelf> : CPlugVehi
     public float M6BrakeMaxDynamicFront
     {
         get => state.Get<float>("M6BrakeMaxDynamicFront");
-        set => SetM6BrakeMaxDynamicFront(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BrakeMaxDynamicFrontAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BrakeMaxDynamicFront(float value)
     {
@@ -2161,7 +1795,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers6<TSelf> : CPlugVehi
     public float M6BrakeMaxFront
     {
         get => state.Get<float>("M6BrakeMaxFront");
-        set => SetM6BrakeMaxFront(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BrakeMaxFrontAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BrakeMaxFront(float value)
     {
@@ -2175,7 +1809,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers7<TSelf> : CPlugVehi
     public float M6MaxRpm
     {
         get => state.Get<float>("M6MaxRpm");
-        set => SetM6MaxRpm(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6MaxRpmAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6MaxRpm(float value)
     {
@@ -2185,7 +1819,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers7<TSelf> : CPlugVehi
     public float RubberBallElasticity
     {
         get => state.Get<float>("RubberBallElasticity");
-        set => SetRubberBallElasticity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetRubberBallElasticityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRubberBallElasticity(float value)
     {
@@ -2195,7 +1829,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers7<TSelf> : CPlugVehi
     public float SideFriction2
     {
         get => state.Get<float>("SideFriction2");
-        set => SetSideFriction2(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSideFriction2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSideFriction2(float value)
     {
@@ -2205,7 +1839,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers7<TSelf> : CPlugVehi
     public int SteerDurationBeforeSteerSlowDown
     {
         get => state.Get<int>("SteerDurationBeforeSteerSlowDown");
-        set => SetSteerDurationBeforeSteerSlowDown(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerDurationBeforeSteerSlowDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSteerDurationBeforeSteerSlowDown(int value)
     {
@@ -2215,7 +1849,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers7<TSelf> : CPlugVehi
     public int SteerSlowDownFadeInDuration
     {
         get => state.Get<int>("SteerSlowDownFadeInDuration");
-        set => SetSteerSlowDownFadeInDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSlowDownFadeInDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSteerSlowDownFadeInDuration(int value)
     {
@@ -2225,7 +1859,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers7<TSelf> : CPlugVehi
     public float WaterGravity
     {
         get => state.Get<float>("WaterGravity");
-        set => SetWaterGravity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterGravityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithWaterGravity(float value)
     {
@@ -2239,7 +1873,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers8<TSelf> : CPlugVehi
     public float BrakeCoolingSpeed
     {
         get => state.Get<float>("BrakeCoolingSpeed");
-        set => SetBrakeCoolingSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBrakeCoolingSpeedAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithBrakeCoolingSpeed(float value)
     {
@@ -2249,7 +1883,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers8<TSelf> : CPlugVehi
     public global::GBX.NET.Engines.Function.CFuncKeysReal? BrakeHeatSpeedFromFBrake
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("BrakeHeatSpeedFromFBrake");
-        set => SetBrakeHeatSpeedFromFBrake(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBrakeHeatSpeedFromFBrakeAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithBrakeHeatSpeedFromFBrake(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
     {
@@ -2259,13 +1893,13 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers8<TSelf> : CPlugVehi
     public TSelf WithBrakeHeatSpeedFromFBrakeReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBrakeHeatSpeedFromFBrakeReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBrakeHeatSpeedFromFBrakeReferenceAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public bool IsFakeEngine
     {
         get => state.Get<bool>("IsFakeEngine");
-        set => SetIsFakeEngine(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetIsFakeEngineAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithIsFakeEngine(bool value)
     {
@@ -2275,7 +1909,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers8<TSelf> : CPlugVehi
     public float M6RpmGainCoefOnGearDown
     {
         get => state.Get<float>("M6RpmGainCoefOnGearDown");
-        set => SetM6RpmGainCoefOnGearDown(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6RpmGainCoefOnGearDownAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithM6RpmGainCoefOnGearDown(float value)
     {
@@ -2285,7 +1919,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers8<TSelf> : CPlugVehi
     public float M6RpmGainOnTakeOff
     {
         get => state.Get<float>("M6RpmGainOnTakeOff");
-        set => SetM6RpmGainOnTakeOff(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6RpmGainOnTakeOffAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithM6RpmGainOnTakeOff(float value)
     {
@@ -2295,7 +1929,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers8<TSelf> : CPlugVehi
     public float M6RpmLossCoefOnGearUp
     {
         get => state.Get<float>("M6RpmLossCoefOnGearUp");
-        set => SetM6RpmLossCoefOnGearUp(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6RpmLossCoefOnGearUpAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithM6RpmLossCoefOnGearUp(float value)
     {
@@ -2305,7 +1939,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers8<TSelf> : CPlugVehi
     public float M6RpmLossOnTakeOffFinished
     {
         get => state.Get<float>("M6RpmLossOnTakeOffFinished");
-        set => SetM6RpmLossOnTakeOffFinished(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6RpmLossOnTakeOffFinishedAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithM6RpmLossOnTakeOffFinished(float value)
     {
@@ -2315,7 +1949,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers8<TSelf> : CPlugVehi
     public float[]? M6RpmWantedOnGearUp
     {
         get => state.Get<float[]?>("M6RpmWantedOnGearUp");
-        set => SetM6RpmWantedOnGearUp(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6RpmWantedOnGearUpAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithM6RpmWantedOnGearUp(params float[]? value)
     {
@@ -2329,7 +1963,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers8<TSelf> : CPlugVehi
     public float M6SpeedLimitNegForTakeOffFront
     {
         get => state.Get<float>("M6SpeedLimitNegForTakeOffFront");
-        set => SetM6SpeedLimitNegForTakeOffFront(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6SpeedLimitNegForTakeOffFrontAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithM6SpeedLimitNegForTakeOffFront(float value)
     {
@@ -2339,7 +1973,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers8<TSelf> : CPlugVehi
     public float M6SpeedLimitNegTakeOffRear
     {
         get => state.Get<float>("M6SpeedLimitNegTakeOffRear");
-        set => SetM6SpeedLimitNegTakeOffRear(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6SpeedLimitNegTakeOffRearAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithM6SpeedLimitNegTakeOffRear(float value)
     {
@@ -2349,7 +1983,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers8<TSelf> : CPlugVehi
     public float M6SpeedLimitPositiveForTakeOffFront
     {
         get => state.Get<float>("M6SpeedLimitPositiveForTakeOffFront");
-        set => SetM6SpeedLimitPositiveForTakeOffFront(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6SpeedLimitPositiveForTakeOffFrontAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithM6SpeedLimitPositiveForTakeOffFront(float value)
     {
@@ -2359,7 +1993,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers8<TSelf> : CPlugVehi
     public float M6SpeedLimitPositiveForTakeOffRear
     {
         get => state.Get<float>("M6SpeedLimitPositiveForTakeOffRear");
-        set => SetM6SpeedLimitPositiveForTakeOffRear(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6SpeedLimitPositiveForTakeOffRearAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithM6SpeedLimitPositiveForTakeOffRear(float value)
     {
@@ -2369,7 +2003,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers8<TSelf> : CPlugVehi
     public float SoundBodyImpact_Hard_Threshold
     {
         get => state.Get<float>("SoundBodyImpact_Hard_Threshold");
-        set => SetSoundBodyImpact_Hard_Threshold(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundBodyImpact_Hard_ThresholdAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSoundBodyImpact_Hard_Threshold(float value)
     {
@@ -2379,7 +2013,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers8<TSelf> : CPlugVehi
     public float SoundBodyImpact_Soft_Threshold
     {
         get => state.Get<float>("SoundBodyImpact_Soft_Threshold");
-        set => SetSoundBodyImpact_Soft_Threshold(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundBodyImpact_Soft_ThresholdAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSoundBodyImpact_Soft_Threshold(float value)
     {
@@ -2389,7 +2023,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers8<TSelf> : CPlugVehi
     public float SoundEngineVolume
     {
         get => state.Get<float>("SoundEngineVolume");
-        set => SetSoundEngineVolume(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundEngineVolumeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSoundEngineVolume(float value)
     {
@@ -2399,7 +2033,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers8<TSelf> : CPlugVehi
     public float SoundImpactVolume
     {
         get => state.Get<float>("SoundImpactVolume");
-        set => SetSoundImpactVolume(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundImpactVolumeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSoundImpactVolume(float value)
     {
@@ -2409,7 +2043,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers8<TSelf> : CPlugVehi
     public float SoundSkidConcreteVolume
     {
         get => state.Get<float>("SoundSkidConcreteVolume");
-        set => SetSoundSkidConcreteVolume(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundSkidConcreteVolumeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSoundSkidConcreteVolume(float value)
     {
@@ -2419,7 +2053,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers8<TSelf> : CPlugVehi
     public float SoundSkidSandVolume
     {
         get => state.Get<float>("SoundSkidSandVolume");
-        set => SetSoundSkidSandVolume(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundSkidSandVolumeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSoundSkidSandVolume(float value)
     {
@@ -2429,7 +2063,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers8<TSelf> : CPlugVehi
     public float SoundWheelImpact_Hard_Threshold
     {
         get => state.Get<float>("SoundWheelImpact_Hard_Threshold");
-        set => SetSoundWheelImpact_Hard_Threshold(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundWheelImpact_Hard_ThresholdAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSoundWheelImpact_Hard_Threshold(float value)
     {
@@ -2439,7 +2073,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers8<TSelf> : CPlugVehi
     public float SoundWheelImpact_Soft_Threshold
     {
         get => state.Get<float>("SoundWheelImpact_Soft_Threshold");
-        set => SetSoundWheelImpact_Soft_Threshold(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundWheelImpact_Soft_ThresholdAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSoundWheelImpact_Soft_Threshold(float value)
     {
@@ -2449,7 +2083,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers8<TSelf> : CPlugVehi
     public int SteerSlowDownFadeOutDuration
     {
         get => state.Get<int>("SteerSlowDownFadeOutDuration");
-        set => SetSteerSlowDownFadeOutDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSlowDownFadeOutDurationAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSteerSlowDownFadeOutDuration(int value)
     {
@@ -2459,7 +2093,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers8<TSelf> : CPlugVehi
     public float WheelFrictionCoef_Concrete
     {
         get => state.Get<float>("WheelFrictionCoef_Concrete");
-        set => SetWheelFrictionCoef_Concrete(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWheelFrictionCoef_ConcreteAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithWheelFrictionCoef_Concrete(float value)
     {
@@ -2469,7 +2103,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers8<TSelf> : CPlugVehi
     public float WheelFrictionCoef_Metal
     {
         get => state.Get<float>("WheelFrictionCoef_Metal");
-        set => SetWheelFrictionCoef_Metal(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWheelFrictionCoef_MetalAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithWheelFrictionCoef_Metal(float value)
     {
@@ -2483,7 +2117,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers9<TSelf> : CPlugVehi
     public global::GBX.NET.Engines.Function.CFuncKeysReal? WaterSplashFromSpeed
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("WaterSplashFromSpeed");
-        set => SetWaterSplashFromSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterSplashFromSpeedAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX);
     }
     public TSelf WithWaterSplashFromSpeed(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
     {
@@ -2493,7 +2127,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers9<TSelf> : CPlugVehi
     public TSelf WithWaterSplashFromSpeedReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetWaterSplashFromSpeedReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterSplashFromSpeedReferenceAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX);
         return (TSelf)this;
     }
 }
@@ -2503,7 +2137,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float AccelTorqueCoef
     {
         get => state.Get<float>("AccelTorqueCoef");
-        set => SetAccelTorqueCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAccelTorqueCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAccelTorqueCoef(float value)
     {
@@ -2513,7 +2147,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float? AdherenceAccelDirYCoef
     {
         get => state.Get<float?>("AdherenceAccelDirYCoef");
-        set => SetAdherenceAccelDirYCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceAccelDirYCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAdherenceAccelDirYCoef(float? value)
     {
@@ -2523,7 +2157,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float? AdherenceAngleMaxDeg
     {
         get => state.Get<float?>("AdherenceAngleMaxDeg");
-        set => SetAdherenceAngleMaxDeg(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceAngleMaxDegAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAdherenceAngleMaxDeg(float? value)
     {
@@ -2533,7 +2167,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float? AdherenceAngleMaxDeg_Roll
     {
         get => state.Get<float?>("AdherenceAngleMaxDeg_Roll");
-        set => SetAdherenceAngleMaxDeg_Roll(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceAngleMaxDeg_RollAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAdherenceAngleMaxDeg_Roll(float? value)
     {
@@ -2543,7 +2177,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float? AdherenceAngleMinDeg
     {
         get => state.Get<float?>("AdherenceAngleMinDeg");
-        set => SetAdherenceAngleMinDeg(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceAngleMinDegAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAdherenceAngleMinDeg(float? value)
     {
@@ -2553,7 +2187,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float? AdherenceAngleMinDeg_AntiSteerUp
     {
         get => state.Get<float?>("AdherenceAngleMinDeg_AntiSteerUp");
-        set => SetAdherenceAngleMinDeg_AntiSteerUp(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceAngleMinDeg_AntiSteerUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAdherenceAngleMinDeg_AntiSteerUp(float? value)
     {
@@ -2563,7 +2197,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float? AdherenceAngleMinDeg_Roll
     {
         get => state.Get<float?>("AdherenceAngleMinDeg_Roll");
-        set => SetAdherenceAngleMinDeg_Roll(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceAngleMinDeg_RollAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAdherenceAngleMinDeg_Roll(float? value)
     {
@@ -2573,7 +2207,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float? AdherenceAntiSteerUpCoef
     {
         get => state.Get<float?>("AdherenceAntiSteerUpCoef");
-        set => SetAdherenceAntiSteerUpCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceAntiSteerUpCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAdherenceAntiSteerUpCoef(float? value)
     {
@@ -2583,7 +2217,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float? AdherenceMin_ForDragForce
     {
         get => state.Get<float?>("AdherenceMin_ForDragForce");
-        set => SetAdherenceMin_ForDragForce(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceMin_ForDragForceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAdherenceMin_ForDragForce(float? value)
     {
@@ -2593,7 +2227,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float? AdherenceMin_ForTorque
     {
         get => state.Get<float?>("AdherenceMin_ForTorque");
-        set => SetAdherenceMin_ForTorque(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceMin_ForTorqueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAdherenceMin_ForTorque(float? value)
     {
@@ -2603,7 +2237,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float? AdherenceVelMax
     {
         get => state.Get<float?>("AdherenceVelMax");
-        set => SetAdherenceVelMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceVelMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAdherenceVelMax(float? value)
     {
@@ -2613,7 +2247,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float? AdherenceVel_VelHMax
     {
         get => state.Get<float?>("AdherenceVel_VelHMax");
-        set => SetAdherenceVel_VelHMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceVel_VelHMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAdherenceVel_VelHMax(float? value)
     {
@@ -2623,7 +2257,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float? AdherenceVel_VelHMin
     {
         get => state.Get<float?>("AdherenceVel_VelHMin");
-        set => SetAdherenceVel_VelHMin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceVel_VelHMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAdherenceVel_VelHMin(float? value)
     {
@@ -2633,7 +2267,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float? AdherenceVel_VelYMax
     {
         get => state.Get<float?>("AdherenceVel_VelYMax");
-        set => SetAdherenceVel_VelYMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceVel_VelYMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAdherenceVel_VelYMax(float? value)
     {
@@ -2643,7 +2277,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float? AdherenceVel_VelYMin
     {
         get => state.Get<float?>("AdherenceVel_VelYMin");
-        set => SetAdherenceVel_VelYMin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceVel_VelYMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAdherenceVel_VelYMin(float? value)
     {
@@ -2653,7 +2287,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float AfterJumpOrientationAngularSpeedThreshold
     {
         get => state.Get<float>("AfterJumpOrientationAngularSpeedThreshold");
-        set => SetAfterJumpOrientationAngularSpeedThreshold(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAfterJumpOrientationAngularSpeedThresholdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAfterJumpOrientationAngularSpeedThreshold(float value)
     {
@@ -2663,7 +2297,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float? AfterJumpOrientationForceCoef
     {
         get => state.Get<float?>("AfterJumpOrientationForceCoef");
-        set => SetAfterJumpOrientationForceCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAfterJumpOrientationForceCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAfterJumpOrientationForceCoef(float? value)
     {
@@ -2673,7 +2307,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float? AfterJumpOrientationForceDuration
     {
         get => state.Get<float?>("AfterJumpOrientationForceDuration");
-        set => SetAfterJumpOrientationForceDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAfterJumpOrientationForceDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAfterJumpOrientationForceDuration(float? value)
     {
@@ -2683,7 +2317,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public bool AirControlNewModel7
     {
         get => state.Get<bool>("AirControlNewModel7");
-        set => SetAirControlNewModel7(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirControlNewModel7Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAirControlNewModel7(bool value)
     {
@@ -2693,7 +2327,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float AirControlXStopFrictionCoef
     {
         get => state.Get<float>("AirControlXStopFrictionCoef");
-        set => SetAirControlXStopFrictionCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirControlXStopFrictionCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAirControlXStopFrictionCoef(float value)
     {
@@ -2703,7 +2337,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float AirControlYKeepFrictionCoef
     {
         get => state.Get<float>("AirControlYKeepFrictionCoef");
-        set => SetAirControlYKeepFrictionCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirControlYKeepFrictionCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAirControlYKeepFrictionCoef(float value)
     {
@@ -2713,7 +2347,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float AirControlYStopFrictionCoef
     {
         get => state.Get<float>("AirControlYStopFrictionCoef");
-        set => SetAirControlYStopFrictionCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirControlYStopFrictionCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAirControlYStopFrictionCoef(float value)
     {
@@ -2723,7 +2357,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public PlugCurve? AirFrictionFromSpeed
     {
         get => state.Get<PlugCurve?>("AirFrictionFromSpeed");
-        set => SetAirFrictionFromSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirFrictionFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAirFrictionFromSpeed(PlugCurve? value)
     {
@@ -2733,7 +2367,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public PlugCurve? AirFrictionFromSpeed_Variable
     {
         get => state.Get<PlugCurve?>("AirFrictionFromSpeed_Variable");
-        set => SetAirFrictionFromSpeed_Variable(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirFrictionFromSpeed_VariableAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAirFrictionFromSpeed_Variable(PlugCurve? value)
     {
@@ -2743,7 +2377,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public PlugCurve? AntiWallHitAccelCoefFromSpeed
     {
         get => state.Get<PlugCurve?>("AntiWallHitAccelCoefFromSpeed");
-        set => SetAntiWallHitAccelCoefFromSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAntiWallHitAccelCoefFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAntiWallHitAccelCoefFromSpeed(PlugCurve? value)
     {
@@ -2753,7 +2387,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public PlugCurve? AntiWallHitDurationInc_FromLateralContactRelSpeed
     {
         get => state.Get<PlugCurve?>("AntiWallHitDurationInc_FromLateralContactRelSpeed");
-        set => SetAntiWallHitDurationInc_FromLateralContactRelSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAntiWallHitDurationInc_FromLateralContactRelSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAntiWallHitDurationInc_FromLateralContactRelSpeed(PlugCurve? value)
     {
@@ -2763,7 +2397,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public int AntiWallHitDurationMax
     {
         get => state.Get<int>("AntiWallHitDurationMax");
-        set => SetAntiWallHitDurationMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAntiWallHitDurationMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAntiWallHitDurationMax(int value)
     {
@@ -2773,7 +2407,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public PlugCurve? AntiWallHitForceFromSpeed
     {
         get => state.Get<PlugCurve?>("AntiWallHitForceFromSpeed");
-        set => SetAntiWallHitForceFromSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAntiWallHitForceFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAntiWallHitForceFromSpeed(PlugCurve? value)
     {
@@ -2783,7 +2417,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float AntiWallHitSpeedTransfertCoef
     {
         get => state.Get<float>("AntiWallHitSpeedTransfertCoef");
-        set => SetAntiWallHitSpeedTransfertCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAntiWallHitSpeedTransfertCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAntiWallHitSpeedTransfertCoef(float value)
     {
@@ -2793,7 +2427,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float BrakeTorqueCoef
     {
         get => state.Get<float>("BrakeTorqueCoef");
-        set => SetBrakeTorqueCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBrakeTorqueCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBrakeTorqueCoef(float value)
     {
@@ -2803,7 +2437,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>? CameraModels
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>?>("CameraModels");
-        set => SetCameraModels(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCameraModelsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCameraModels(NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>? value)
     {
@@ -2821,7 +2455,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public bool DamperForceAllways
     {
         get => state.Get<bool>("DamperForceAllways");
-        set => SetDamperForceAllways(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperForceAllwaysAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDamperForceAllways(bool value)
     {
@@ -2831,7 +2465,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public bool? DamperForceSmoothStop
     {
         get => state.Get<bool?>("DamperForceSmoothStop");
-        set => SetDamperForceSmoothStop(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperForceSmoothStopAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDamperForceSmoothStop(bool? value)
     {
@@ -2841,7 +2475,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float DamperKeepContactDuration
     {
         get => state.Get<float>("DamperKeepContactDuration");
-        set => SetDamperKeepContactDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperKeepContactDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDamperKeepContactDuration(float value)
     {
@@ -2851,7 +2485,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float DamperOffset
     {
         get => state.Get<float>("DamperOffset");
-        set => SetDamperOffset(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperOffsetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDamperOffset(float value)
     {
@@ -2861,7 +2495,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float DeclutchingDuration
     {
         get => state.Get<float>("DeclutchingDuration");
-        set => SetDeclutchingDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDeclutchingDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDeclutchingDuration(float value)
     {
@@ -2871,7 +2505,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public PlugCurve? DragForceFromFrontSpeed
     {
         get => state.Get<PlugCurve?>("DragForceFromFrontSpeed");
-        set => SetDragForceFromFrontSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDragForceFromFrontSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDragForceFromFrontSpeed(PlugCurve? value)
     {
@@ -2881,7 +2515,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public int Drifting_BackCoefDisableDurationAfterLanding
     {
         get => state.Get<int>("Drifting_BackCoefDisableDurationAfterLanding");
-        set => SetDrifting_BackCoefDisableDurationAfterLanding(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_BackCoefDisableDurationAfterLandingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDrifting_BackCoefDisableDurationAfterLanding(int value)
     {
@@ -2891,7 +2525,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public PlugCurve? Drifting_BackCoefFromSlipAngle
     {
         get => state.Get<PlugCurve?>("Drifting_BackCoefFromSlipAngle");
-        set => SetDrifting_BackCoefFromSlipAngle(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_BackCoefFromSlipAngleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDrifting_BackCoefFromSlipAngle(PlugCurve? value)
     {
@@ -2901,7 +2535,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public PlugCurve? Drifting_BackCoefIntensityFromSpeed
     {
         get => state.Get<PlugCurve?>("Drifting_BackCoefIntensityFromSpeed");
-        set => SetDrifting_BackCoefIntensityFromSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_BackCoefIntensityFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDrifting_BackCoefIntensityFromSpeed(PlugCurve? value)
     {
@@ -2911,7 +2545,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float Drifting_BackCoefSmoothSpeed_CounterSteer
     {
         get => state.Get<float>("Drifting_BackCoefSmoothSpeed_CounterSteer");
-        set => SetDrifting_BackCoefSmoothSpeed_CounterSteer(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_BackCoefSmoothSpeed_CounterSteerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDrifting_BackCoefSmoothSpeed_CounterSteer(float value)
     {
@@ -2921,7 +2555,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float Drifting_BackCoefSmoothSpeed_Steer
     {
         get => state.Get<float>("Drifting_BackCoefSmoothSpeed_Steer");
-        set => SetDrifting_BackCoefSmoothSpeed_Steer(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_BackCoefSmoothSpeed_SteerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDrifting_BackCoefSmoothSpeed_Steer(float value)
     {
@@ -2931,7 +2565,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float Drifting_BackCoefSmoothSpeed_StopSteer
     {
         get => state.Get<float>("Drifting_BackCoefSmoothSpeed_StopSteer");
-        set => SetDrifting_BackCoefSmoothSpeed_StopSteer(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_BackCoefSmoothSpeed_StopSteerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDrifting_BackCoefSmoothSpeed_StopSteer(float value)
     {
@@ -2941,7 +2575,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public PlugCurve? Drifting_InputSteerAngleSmoothSpeedFromSlipAngle_CounterSteer
     {
         get => state.Get<PlugCurve?>("Drifting_InputSteerAngleSmoothSpeedFromSlipAngle_CounterSteer");
-        set => SetDrifting_InputSteerAngleSmoothSpeedFromSlipAngle_CounterSteer(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_InputSteerAngleSmoothSpeedFromSlipAngle_CounterSteerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDrifting_InputSteerAngleSmoothSpeedFromSlipAngle_CounterSteer(PlugCurve? value)
     {
@@ -2951,7 +2585,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public PlugCurve? Drifting_InputSteerAngleSmoothSpeedFromSlipAngle_Steer
     {
         get => state.Get<PlugCurve?>("Drifting_InputSteerAngleSmoothSpeedFromSlipAngle_Steer");
-        set => SetDrifting_InputSteerAngleSmoothSpeedFromSlipAngle_Steer(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_InputSteerAngleSmoothSpeedFromSlipAngle_SteerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDrifting_InputSteerAngleSmoothSpeedFromSlipAngle_Steer(PlugCurve? value)
     {
@@ -2961,7 +2595,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public PlugCurve? Drifting_InputSteerAngleSmoothSpeedFromSlipAngle_StopSteer
     {
         get => state.Get<PlugCurve?>("Drifting_InputSteerAngleSmoothSpeedFromSlipAngle_StopSteer");
-        set => SetDrifting_InputSteerAngleSmoothSpeedFromSlipAngle_StopSteer(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_InputSteerAngleSmoothSpeedFromSlipAngle_StopSteerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDrifting_InputSteerAngleSmoothSpeedFromSlipAngle_StopSteer(PlugCurve? value)
     {
@@ -2971,7 +2605,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public PlugCurve? Drifting_InputSteerRadiusFromSpeed
     {
         get => state.Get<PlugCurve?>("Drifting_InputSteerRadiusFromSpeed");
-        set => SetDrifting_InputSteerRadiusFromSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_InputSteerRadiusFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDrifting_InputSteerRadiusFromSpeed(PlugCurve? value)
     {
@@ -2981,7 +2615,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float Drifting_TransfertForceCoef
     {
         get => state.Get<float>("Drifting_TransfertForceCoef");
-        set => SetDrifting_TransfertForceCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_TransfertForceCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDrifting_TransfertForceCoef(float value)
     {
@@ -2991,7 +2625,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public PlugCurve? Drifting_VehicleBrakeForce_FromVehicleBrakeSpeed
     {
         get => state.Get<PlugCurve?>("Drifting_VehicleBrakeForce_FromVehicleBrakeSpeed");
-        set => SetDrifting_VehicleBrakeForce_FromVehicleBrakeSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_VehicleBrakeForce_FromVehicleBrakeSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDrifting_VehicleBrakeForce_FromVehicleBrakeSpeed(PlugCurve? value)
     {
@@ -3001,7 +2635,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float Drifting_VehicleBrakeSpeedMin
     {
         get => state.Get<float>("Drifting_VehicleBrakeSpeedMin");
-        set => SetDrifting_VehicleBrakeSpeedMin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_VehicleBrakeSpeedMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDrifting_VehicleBrakeSpeedMin(float value)
     {
@@ -3011,7 +2645,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public PlugCurve? Drifting_VehicleLateralForce_FromVehicleLateralSpeed
     {
         get => state.Get<PlugCurve?>("Drifting_VehicleLateralForce_FromVehicleLateralSpeed");
-        set => SetDrifting_VehicleLateralForce_FromVehicleLateralSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_VehicleLateralForce_FromVehicleLateralSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDrifting_VehicleLateralForce_FromVehicleLateralSpeed(PlugCurve? value)
     {
@@ -3021,7 +2655,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float Drifting_VehicleLateralSpeedMin
     {
         get => state.Get<float>("Drifting_VehicleLateralSpeedMin");
-        set => SetDrifting_VehicleLateralSpeedMin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_VehicleLateralSpeedMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDrifting_VehicleLateralSpeedMin(float value)
     {
@@ -3031,7 +2665,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public PlugCurve? Drifting_WheelLateralForce_FromWheelLateralSpeed
     {
         get => state.Get<PlugCurve?>("Drifting_WheelLateralForce_FromWheelLateralSpeed");
-        set => SetDrifting_WheelLateralForce_FromWheelLateralSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_WheelLateralForce_FromWheelLateralSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDrifting_WheelLateralForce_FromWheelLateralSpeed(PlugCurve? value)
     {
@@ -3041,7 +2675,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public int DriveModel
     {
         get => state.Get<int>("DriveModel");
-        set => SetDriveModel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDriveModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDriveModel(int value)
     {
@@ -3051,7 +2685,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float EngineIdleRPM
     {
         get => state.Get<float>("EngineIdleRPM");
-        set => SetEngineIdleRPM(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetEngineIdleRPMAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEngineIdleRPM(float value)
     {
@@ -3061,7 +2695,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float EngineMaxRPM
     {
         get => state.Get<float>("EngineMaxRPM");
-        set => SetEngineMaxRPM(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetEngineMaxRPMAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEngineMaxRPM(float value)
     {
@@ -3071,7 +2705,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public PlugCurve? EngineSlowDownFromSpeed
     {
         get => state.Get<PlugCurve?>("EngineSlowDownFromSpeed");
-        set => SetEngineSlowDownFromSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetEngineSlowDownFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEngineSlowDownFromSpeed(PlugCurve? value)
     {
@@ -3081,7 +2715,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float GroundAngularFluidFrictionCoef1
     {
         get => state.Get<float>("GroundAngularFluidFrictionCoef1");
-        set => SetGroundAngularFluidFrictionCoef1(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGroundAngularFluidFrictionCoef1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGroundAngularFluidFrictionCoef1(float value)
     {
@@ -3091,7 +2725,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float GroundAngularFluidFrictionCoef2
     {
         get => state.Get<float>("GroundAngularFluidFrictionCoef2");
-        set => SetGroundAngularFluidFrictionCoef2(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGroundAngularFluidFrictionCoef2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGroundAngularFluidFrictionCoef2(float value)
     {
@@ -3101,7 +2735,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float GroundAngularFluidFrictionSpeedMin
     {
         get => state.Get<float>("GroundAngularFluidFrictionSpeedMin");
-        set => SetGroundAngularFluidFrictionSpeedMin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGroundAngularFluidFrictionSpeedMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGroundAngularFluidFrictionSpeedMin(float value)
     {
@@ -3111,7 +2745,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public PlugCurve? GroundSlowDownFromSpeed
     {
         get => state.Get<PlugCurve?>("GroundSlowDownFromSpeed");
-        set => SetGroundSlowDownFromSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGroundSlowDownFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGroundSlowDownFromSpeed(PlugCurve? value)
     {
@@ -3121,7 +2755,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public PlugCurve? ImpulseDamperReduceCoef_FromLocalVelY
     {
         get => state.Get<PlugCurve?>("ImpulseDamperReduceCoef_FromLocalVelY");
-        set => SetImpulseDamperReduceCoef_FromLocalVelY(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetImpulseDamperReduceCoef_FromLocalVelYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithImpulseDamperReduceCoef_FromLocalVelY(PlugCurve? value)
     {
@@ -3131,7 +2765,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float ImpulseFriction
     {
         get => state.Get<float>("ImpulseFriction");
-        set => SetImpulseFriction(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetImpulseFrictionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithImpulseFriction(float value)
     {
@@ -3141,7 +2775,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float ImpulseGroundBodyRestCoef
     {
         get => state.Get<float>("ImpulseGroundBodyRestCoef");
-        set => SetImpulseGroundBodyRestCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetImpulseGroundBodyRestCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithImpulseGroundBodyRestCoef(float value)
     {
@@ -3151,7 +2785,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float ImpulseGroundWheelRestCoef
     {
         get => state.Get<float>("ImpulseGroundWheelRestCoef");
-        set => SetImpulseGroundWheelRestCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetImpulseGroundWheelRestCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithImpulseGroundWheelRestCoef(float value)
     {
@@ -3161,7 +2795,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float ImpulseRestCoef
     {
         get => state.Get<float>("ImpulseRestCoef");
-        set => SetImpulseRestCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetImpulseRestCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithImpulseRestCoef(float value)
     {
@@ -3171,7 +2805,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float? ImpulseRotationCoef
     {
         get => state.Get<float?>("ImpulseRotationCoef");
-        set => SetImpulseRotationCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetImpulseRotationCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithImpulseRotationCoef(float? value)
     {
@@ -3181,7 +2815,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public bool InTuningCycle
     {
         get => state.Get<bool>("InTuningCycle");
-        set => SetInTuningCycle(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyTuningBuilderAssignments.GetInTuningCycleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInTuningCycle(bool value)
     {
@@ -3191,7 +2825,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float InputBrakeSmoothSpeed
     {
         get => state.Get<float>("InputBrakeSmoothSpeed");
-        set => SetInputBrakeSmoothSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetInputBrakeSmoothSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputBrakeSmoothSpeed(float value)
     {
@@ -3201,7 +2835,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public int InputBrakeSwitchCountMax
     {
         get => state.Get<int>("InputBrakeSwitchCountMax");
-        set => SetInputBrakeSwitchCountMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetInputBrakeSwitchCountMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputBrakeSwitchCountMax(int value)
     {
@@ -3211,7 +2845,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float InputGasSmoothSpeed
     {
         get => state.Get<float>("InputGasSmoothSpeed");
-        set => SetInputGasSmoothSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetInputGasSmoothSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputGasSmoothSpeed(float value)
     {
@@ -3221,7 +2855,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float InputSteerAngleMaxDeg
     {
         get => state.Get<float>("InputSteerAngleMaxDeg");
-        set => SetInputSteerAngleMaxDeg(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetInputSteerAngleMaxDegAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputSteerAngleMaxDeg(float value)
     {
@@ -3231,7 +2865,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public int KeepContactDuration
     {
         get => state.Get<int>("KeepContactDuration");
-        set => SetKeepContactDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetKeepContactDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithKeepContactDuration(int value)
     {
@@ -3241,7 +2875,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public int KeepDragForceDuration
     {
         get => state.Get<int>("KeepDragForceDuration");
-        set => SetKeepDragForceDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetKeepDragForceDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithKeepDragForceDuration(int value)
     {
@@ -3251,7 +2885,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float LinearSpeedClamp
     {
         get => state.Get<float>("LinearSpeedClamp");
-        set => SetLinearSpeedClamp(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetLinearSpeedClampAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLinearSpeedClamp(float value)
     {
@@ -3261,7 +2895,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float MaxDistPerStep
     {
         get => state.Get<float>("MaxDistPerStep");
-        set => SetMaxDistPerStep(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMaxDistPerStepAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaxDistPerStep(float value)
     {
@@ -3271,7 +2905,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public bool NoBodyBottomFriction
     {
         get => state.Get<bool>("NoBodyBottomFriction");
-        set => SetNoBodyBottomFriction(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNoBodyBottomFrictionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNoBodyBottomFriction(bool value)
     {
@@ -3281,7 +2915,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public bool NormalEnv
     {
         get => state.Get<bool>("NormalEnv");
-        set => SetNormalEnv(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormalEnvAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNormalEnv(bool value)
     {
@@ -3291,7 +2925,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float NormalEnvBody_FlatZoneYMax
     {
         get => state.Get<float>("NormalEnvBody_FlatZoneYMax");
-        set => SetNormalEnvBody_FlatZoneYMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormalEnvBody_FlatZoneYMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNormalEnvBody_FlatZoneYMax(float value)
     {
@@ -3301,7 +2935,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float NormalEnvBody_FlatZoneYMin
     {
         get => state.Get<float>("NormalEnvBody_FlatZoneYMin");
-        set => SetNormalEnvBody_FlatZoneYMin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormalEnvBody_FlatZoneYMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNormalEnvBody_FlatZoneYMin(float value)
     {
@@ -3311,7 +2945,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float NormalEnvBody_HalfSizeX
     {
         get => state.Get<float>("NormalEnvBody_HalfSizeX");
-        set => SetNormalEnvBody_HalfSizeX(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormalEnvBody_HalfSizeXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNormalEnvBody_HalfSizeX(float value)
     {
@@ -3321,7 +2955,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float NormalEnvBody_HalfSizeZ
     {
         get => state.Get<float>("NormalEnvBody_HalfSizeZ");
-        set => SetNormalEnvBody_HalfSizeZ(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormalEnvBody_HalfSizeZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNormalEnvBody_HalfSizeZ(float value)
     {
@@ -3331,7 +2965,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float NormalEnvWheel_WidthCoef1
     {
         get => state.Get<float>("NormalEnvWheel_WidthCoef1");
-        set => SetNormalEnvWheel_WidthCoef1(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormalEnvWheel_WidthCoef1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNormalEnvWheel_WidthCoef1(float value)
     {
@@ -3341,7 +2975,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float Normal_InputSteerAngleSmoothSpeedReset
     {
         get => state.Get<float>("Normal_InputSteerAngleSmoothSpeedReset");
-        set => SetNormal_InputSteerAngleSmoothSpeedReset(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormal_InputSteerAngleSmoothSpeedResetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNormal_InputSteerAngleSmoothSpeedReset(float value)
     {
@@ -3351,7 +2985,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float Normal_InputSteerAngleSmoothSpeed_OverSteer
     {
         get => state.Get<float>("Normal_InputSteerAngleSmoothSpeed_OverSteer");
-        set => SetNormal_InputSteerAngleSmoothSpeed_OverSteer(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormal_InputSteerAngleSmoothSpeed_OverSteerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNormal_InputSteerAngleSmoothSpeed_OverSteer(float value)
     {
@@ -3361,7 +2995,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float Normal_InputSteerAngleSmoothSpeed_Steer
     {
         get => state.Get<float>("Normal_InputSteerAngleSmoothSpeed_Steer");
-        set => SetNormal_InputSteerAngleSmoothSpeed_Steer(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormal_InputSteerAngleSmoothSpeed_SteerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNormal_InputSteerAngleSmoothSpeed_Steer(float value)
     {
@@ -3371,7 +3005,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public PlugCurve? Normal_InputSteerRadiusFromSpeed
     {
         get => state.Get<PlugCurve?>("Normal_InputSteerRadiusFromSpeed");
-        set => SetNormal_InputSteerRadiusFromSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormal_InputSteerRadiusFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNormal_InputSteerRadiusFromSpeed(PlugCurve? value)
     {
@@ -3381,7 +3015,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public PlugCurve? Normal_VehicleBrakeForce_FromVehicleBrakeSpeed
     {
         get => state.Get<PlugCurve?>("Normal_VehicleBrakeForce_FromVehicleBrakeSpeed");
-        set => SetNormal_VehicleBrakeForce_FromVehicleBrakeSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormal_VehicleBrakeForce_FromVehicleBrakeSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNormal_VehicleBrakeForce_FromVehicleBrakeSpeed(PlugCurve? value)
     {
@@ -3391,7 +3025,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float Normal_VehicleBrakeSpeedMax
     {
         get => state.Get<float>("Normal_VehicleBrakeSpeedMax");
-        set => SetNormal_VehicleBrakeSpeedMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormal_VehicleBrakeSpeedMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNormal_VehicleBrakeSpeedMax(float value)
     {
@@ -3401,7 +3035,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float Normal_VehicleLateralSpeedMax
     {
         get => state.Get<float>("Normal_VehicleLateralSpeedMax");
-        set => SetNormal_VehicleLateralSpeedMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormal_VehicleLateralSpeedMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNormal_VehicleLateralSpeedMax(float value)
     {
@@ -3411,7 +3045,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public PlugCurve? Normal_WheelLateralForce_FromWheelLateralSpeed
     {
         get => state.Get<PlugCurve?>("Normal_WheelLateralForce_FromWheelLateralSpeed");
-        set => SetNormal_WheelLateralForce_FromWheelLateralSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormal_WheelLateralForce_FromWheelLateralSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNormal_WheelLateralForce_FromWheelLateralSpeed(PlugCurve? value)
     {
@@ -3421,7 +3055,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float Rollover
     {
         get => state.Get<float>("Rollover");
-        set => SetRollover(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetRolloverAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRollover(float value)
     {
@@ -3431,7 +3065,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public PlugCurve? SteerSlowDownFromSpeed
     {
         get => state.Get<PlugCurve?>("SteerSlowDownFromSpeed");
-        set => SetSteerSlowDownFromSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSlowDownFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSteerSlowDownFromSpeed(PlugCurve? value)
     {
@@ -3441,7 +3075,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float SteerTorqueZMax
     {
         get => state.Get<float>("SteerTorqueZMax");
-        set => SetSteerTorqueZMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerTorqueZMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSteerTorqueZMax(float value)
     {
@@ -3451,7 +3085,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float TakeOffBoost
     {
         get => state.Get<float>("TakeOffBoost");
-        set => SetTakeOffBoost(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTakeOffBoostAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTakeOffBoost(float value)
     {
@@ -3461,7 +3095,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public bool TakeOffBoost_Enable
     {
         get => state.Get<bool>("TakeOffBoost_Enable");
-        set => SetTakeOffBoost_Enable(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTakeOffBoost_EnableAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTakeOffBoost_Enable(bool value)
     {
@@ -3471,7 +3105,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public float TakeOffBoost_MaxRPMCoef
     {
         get => state.Get<float>("TakeOffBoost_MaxRPMCoef");
-        set => SetTakeOffBoost_MaxRPMCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTakeOffBoost_MaxRPMCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTakeOffBoost_MaxRPMCoef(float value)
     {
@@ -3481,7 +3115,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public int? TurboRedConstantDuration
     {
         get => state.Get<int?>("TurboRedConstantDuration");
-        set => SetTurboRedConstantDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboRedConstantDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTurboRedConstantDuration(int? value)
     {
@@ -3491,7 +3125,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public PlugCurve? TurboRedConstantFromSpeed
     {
         get => state.Get<PlugCurve?>("TurboRedConstantFromSpeed");
-        set => SetTurboRedConstantFromSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboRedConstantFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTurboRedConstantFromSpeed(PlugCurve? value)
     {
@@ -3501,7 +3135,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public int? TurboYellowConstantDuration
     {
         get => state.Get<int?>("TurboYellowConstantDuration");
-        set => SetTurboYellowConstantDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboYellowConstantDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTurboYellowConstantDuration(int? value)
     {
@@ -3511,7 +3145,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public PlugCurve? TurboYellowConstantFromSpeed
     {
         get => state.Get<PlugCurve?>("TurboYellowConstantFromSpeed");
-        set => SetTurboYellowConstantFromSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboYellowConstantFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTurboYellowConstantFromSpeed(PlugCurve? value)
     {
@@ -3521,7 +3155,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public bool UseRealGroundReferential
     {
         get => state.Get<bool>("UseRealGroundReferential");
-        set => SetUseRealGroundReferential(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetUseRealGroundReferentialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithUseRealGroundReferential(bool value)
     {
@@ -3531,7 +3165,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     public int WheelKeepContactDuration
     {
         get => state.Get<int>("WheelKeepContactDuration");
-        set => SetWheelKeepContactDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWheelKeepContactDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithWheelKeepContactDuration(int value)
     {
@@ -3545,7 +3179,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public bool? AdherenceUseMaxForAccel
     {
         get => state.Get<bool?>("AdherenceUseMaxForAccel");
-        set => SetAdherenceUseMaxForAccel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceUseMaxForAccelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAdherenceUseMaxForAccel(bool? value)
     {
@@ -3555,7 +3189,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public float AerialForce_AngleMinDeg
     {
         get => state.Get<float>("AerialForce_AngleMinDeg");
-        set => SetAerialForce_AngleMinDeg(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAerialForce_AngleMinDegAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAerialForce_AngleMinDeg(float value)
     {
@@ -3565,7 +3199,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public float AerialForce_Base
     {
         get => state.Get<float>("AerialForce_Base");
-        set => SetAerialForce_Base(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAerialForce_BaseAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAerialForce_Base(float value)
     {
@@ -3575,7 +3209,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public int AerialForce_Duration
     {
         get => state.Get<int>("AerialForce_Duration");
-        set => SetAerialForce_Duration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAerialForce_DurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAerialForce_Duration(int value)
     {
@@ -3585,7 +3219,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public float AerialForce_VelYMin
     {
         get => state.Get<float>("AerialForce_VelYMin");
-        set => SetAerialForce_VelYMin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAerialForce_VelYMinAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAerialForce_VelYMin(float value)
     {
@@ -3595,7 +3229,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public float AerialMove_Dist
     {
         get => state.Get<float>("AerialMove_Dist");
-        set => SetAerialMove_Dist(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAerialMove_DistAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAerialMove_Dist(float value)
     {
@@ -3605,7 +3239,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public int AerialMove_Duration
     {
         get => state.Get<int>("AerialMove_Duration");
-        set => SetAerialMove_Duration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAerialMove_DurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAerialMove_Duration(int value)
     {
@@ -3615,7 +3249,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public float AerialMove_SpeedMax
     {
         get => state.Get<float>("AerialMove_SpeedMax");
-        set => SetAerialMove_SpeedMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAerialMove_SpeedMaxAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAerialMove_SpeedMax(float value)
     {
@@ -3625,7 +3259,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public float AerialMove_SpeedMin
     {
         get => state.Get<float>("AerialMove_SpeedMin");
-        set => SetAerialMove_SpeedMin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAerialMove_SpeedMinAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAerialMove_SpeedMin(float value)
     {
@@ -3635,7 +3269,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public bool AerialMove_UseVehicleUp
     {
         get => state.Get<bool>("AerialMove_UseVehicleUp");
-        set => SetAerialMove_UseVehicleUp(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAerialMove_UseVehicleUpAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAerialMove_UseVehicleUp(bool value)
     {
@@ -3645,7 +3279,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public float? BigCarAccelCoef
     {
         get => state.Get<float?>("BigCarAccelCoef");
-        set => SetBigCarAccelCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBigCarAccelCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBigCarAccelCoef(float? value)
     {
@@ -3655,7 +3289,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public float? BigCarControlCoef
     {
         get => state.Get<float?>("BigCarControlCoef");
-        set => SetBigCarControlCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBigCarControlCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBigCarControlCoef(float? value)
     {
@@ -3665,7 +3299,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public float? BigCarGravityCoef
     {
         get => state.Get<float?>("BigCarGravityCoef");
-        set => SetBigCarGravityCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBigCarGravityCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBigCarGravityCoef(float? value)
     {
@@ -3675,7 +3309,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public float? BigCarScale
     {
         get => state.Get<float?>("BigCarScale");
-        set => SetBigCarScale(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBigCarScaleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBigCarScale(float? value)
     {
@@ -3685,7 +3319,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>? CameraModels_Console
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>?>("CameraModels_Console");
-        set => SetCameraModels_Console(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCameraModels_ConsoleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCameraModels_Console(NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>? value)
     {
@@ -3703,7 +3337,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public float? CatchUpAccelFactor0
     {
         get => state.Get<float?>("CatchUpAccelFactor0");
-        set => SetCatchUpAccelFactor0(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCatchUpAccelFactor0Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCatchUpAccelFactor0(float? value)
     {
@@ -3713,7 +3347,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public float? CatchUpAccelFactor1
     {
         get => state.Get<float?>("CatchUpAccelFactor1");
-        set => SetCatchUpAccelFactor1(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCatchUpAccelFactor1Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCatchUpAccelFactor1(float? value)
     {
@@ -3723,7 +3357,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public float? CatchUpAccelFactor2
     {
         get => state.Get<float?>("CatchUpAccelFactor2");
-        set => SetCatchUpAccelFactor2(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCatchUpAccelFactor2Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCatchUpAccelFactor2(float? value)
     {
@@ -3733,7 +3367,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public float? CatchUpAccelFactor3
     {
         get => state.Get<float?>("CatchUpAccelFactor3");
-        set => SetCatchUpAccelFactor3(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCatchUpAccelFactor3Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCatchUpAccelFactor3(float? value)
     {
@@ -3743,7 +3377,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public float? CatchUpSpeed0
     {
         get => state.Get<float?>("CatchUpSpeed0");
-        set => SetCatchUpSpeed0(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCatchUpSpeed0Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCatchUpSpeed0(float? value)
     {
@@ -3753,7 +3387,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public float? CatchUpSpeed1
     {
         get => state.Get<float?>("CatchUpSpeed1");
-        set => SetCatchUpSpeed1(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCatchUpSpeed1Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCatchUpSpeed1(float? value)
     {
@@ -3763,7 +3397,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public float? CatchUpSpeed2
     {
         get => state.Get<float?>("CatchUpSpeed2");
-        set => SetCatchUpSpeed2(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCatchUpSpeed2Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCatchUpSpeed2(float? value)
     {
@@ -3773,7 +3407,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public float? CatchUpSpeed3
     {
         get => state.Get<float?>("CatchUpSpeed3");
-        set => SetCatchUpSpeed3(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCatchUpSpeed3Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCatchUpSpeed3(float? value)
     {
@@ -3783,7 +3417,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public float? CatchUpSpeed4
     {
         get => state.Get<float?>("CatchUpSpeed4");
-        set => SetCatchUpSpeed4(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCatchUpSpeed4Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCatchUpSpeed4(float? value)
     {
@@ -3793,7 +3427,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public PlugCurve? Drifting_InputSteerSensitivityFromSpeed
     {
         get => state.Get<PlugCurve?>("Drifting_InputSteerSensitivityFromSpeed");
-        set => SetDrifting_InputSteerSensitivityFromSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_InputSteerSensitivityFromSpeedAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDrifting_InputSteerSensitivityFromSpeed(PlugCurve? value)
     {
@@ -3803,7 +3437,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public float? FrictionFactor
     {
         get => state.Get<float?>("FrictionFactor");
-        set => SetFrictionFactor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetFrictionFactorAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFrictionFactor(float? value)
     {
@@ -3813,7 +3447,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public global::GBX.NET.Engines.Plug.CPlugVehicleGearBox? GearBox
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugVehicleGearBox?>("GearBox");
-        set => SetGearBox(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGearBoxAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGearBox(global::GBX.NET.Engines.Plug.CPlugVehicleGearBox? value)
     {
@@ -3823,13 +3457,13 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public TSelf WithGearBoxReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugVehicleGearBox> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetGearBoxReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGearBoxReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public Vec3? HookPos
     {
         get => state.Get<Vec3?>("HookPos");
-        set => SetHookPos(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetHookPosAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithHookPos(Vec3? value)
     {
@@ -3839,7 +3473,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public bool? InputRawGasBrake
     {
         get => state.Get<bool?>("InputRawGasBrake");
-        set => SetInputRawGasBrake(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetInputRawGasBrakeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputRawGasBrake(bool? value)
     {
@@ -3849,7 +3483,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public int? InputSteerAlgo
     {
         get => state.Get<int?>("InputSteerAlgo");
-        set => SetInputSteerAlgo(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetInputSteerAlgoAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputSteerAlgo(int? value)
     {
@@ -3859,7 +3493,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public PlugCurve? InputSteerPowFromSpeed
     {
         get => state.Get<PlugCurve?>("InputSteerPowFromSpeed");
-        set => SetInputSteerPowFromSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetInputSteerPowFromSpeedAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputSteerPowFromSpeed(PlugCurve? value)
     {
@@ -3869,7 +3503,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public int JumpClassicDuration
     {
         get => state.Get<int>("JumpClassicDuration");
-        set => SetJumpClassicDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetJumpClassicDurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithJumpClassicDuration(int value)
     {
@@ -3879,7 +3513,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public float JumpClassicImpulseY
     {
         get => state.Get<float>("JumpClassicImpulseY");
-        set => SetJumpClassicImpulseY(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetJumpClassicImpulseYAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithJumpClassicImpulseY(float value)
     {
@@ -3889,7 +3523,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public float JumpClassicImpulseZ
     {
         get => state.Get<float>("JumpClassicImpulseZ");
-        set => SetJumpClassicImpulseZ(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetJumpClassicImpulseZAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithJumpClassicImpulseZ(float value)
     {
@@ -3899,7 +3533,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public int JumpCooldown
     {
         get => state.Get<int>("JumpCooldown");
-        set => SetJumpCooldown(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetJumpCooldownAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithJumpCooldown(int value)
     {
@@ -3909,7 +3543,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public int JumpProgressiveDuration
     {
         get => state.Get<int>("JumpProgressiveDuration");
-        set => SetJumpProgressiveDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetJumpProgressiveDurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithJumpProgressiveDuration(int value)
     {
@@ -3919,7 +3553,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public float JumpProgressiveForceY
     {
         get => state.Get<float>("JumpProgressiveForceY");
-        set => SetJumpProgressiveForceY(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetJumpProgressiveForceYAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithJumpProgressiveForceY(float value)
     {
@@ -3929,7 +3563,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public float JumpProgressiveForceZ
     {
         get => state.Get<float>("JumpProgressiveForceZ");
-        set => SetJumpProgressiveForceZ(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetJumpProgressiveForceZAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithJumpProgressiveForceZ(float value)
     {
@@ -3939,7 +3573,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public float JumpProgressiveImpulseY
     {
         get => state.Get<float>("JumpProgressiveImpulseY");
-        set => SetJumpProgressiveImpulseY(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetJumpProgressiveImpulseYAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithJumpProgressiveImpulseY(float value)
     {
@@ -3949,7 +3583,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public float JumpProgressiveImpulseZ
     {
         get => state.Get<float>("JumpProgressiveImpulseZ");
-        set => SetJumpProgressiveImpulseZ(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetJumpProgressiveImpulseZAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithJumpProgressiveImpulseZ(float value)
     {
@@ -3959,7 +3593,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public bool Magnetic
     {
         get => state.Get<bool>("Magnetic");
-        set => SetMagnetic(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMagneticAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMagnetic(bool value)
     {
@@ -3969,7 +3603,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public float MagneticForce
     {
         get => state.Get<float>("MagneticForce");
-        set => SetMagneticForce(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMagneticForceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMagneticForce(float value)
     {
@@ -3979,7 +3613,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public float MagneticGravity
     {
         get => state.Get<float>("MagneticGravity");
-        set => SetMagneticGravity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMagneticGravityAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMagneticGravity(float value)
     {
@@ -3989,7 +3623,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public PlugCurve? MagneticSuperDragForceFromSpeedKmh
     {
         get => state.Get<PlugCurve?>("MagneticSuperDragForceFromSpeedKmh");
-        set => SetMagneticSuperDragForceFromSpeedKmh(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMagneticSuperDragForceFromSpeedKmhAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMagneticSuperDragForceFromSpeedKmh(PlugCurve? value)
     {
@@ -3999,7 +3633,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? Materials
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?>("Materials");
-        set => SetMaterials(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMaterialsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaterials(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value)
     {
@@ -4009,13 +3643,13 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public TSelf WithMaterialsReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetMaterialsReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMaterialsReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public PlugCurve? Normal_InputSteerSensitivityFromSpeed
     {
         get => state.Get<PlugCurve?>("Normal_InputSteerSensitivityFromSpeed");
-        set => SetNormal_InputSteerSensitivityFromSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormal_InputSteerSensitivityFromSpeedAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNormal_InputSteerSensitivityFromSpeed(PlugCurve? value)
     {
@@ -4025,7 +3659,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape? Shape
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape?>("Shape");
-        set => SetShape(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetShapeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithShape(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape? value)
     {
@@ -4035,13 +3669,13 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public TSelf WithShapeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetShapeReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetShapeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public float? TurboCheatAccelCoef
     {
         get => state.Get<float?>("TurboCheatAccelCoef");
-        set => SetTurboCheatAccelCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboCheatAccelCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTurboCheatAccelCoef(float? value)
     {
@@ -4051,7 +3685,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public int? TurboCheatAccelCoefDuration
     {
         get => state.Get<int?>("TurboCheatAccelCoefDuration");
-        set => SetTurboCheatAccelCoefDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboCheatAccelCoefDurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTurboCheatAccelCoefDuration(int? value)
     {
@@ -4061,7 +3695,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public int? TurboCheatConstantDuration
     {
         get => state.Get<int?>("TurboCheatConstantDuration");
-        set => SetTurboCheatConstantDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboCheatConstantDurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTurboCheatConstantDuration(int? value)
     {
@@ -4071,7 +3705,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public PlugCurve? TurboCheatConstantFromSpeed
     {
         get => state.Get<PlugCurve?>("TurboCheatConstantFromSpeed");
-        set => SetTurboCheatConstantFromSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboCheatConstantFromSpeedAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTurboCheatConstantFromSpeed(PlugCurve? value)
     {
@@ -4081,7 +3715,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public float? UltraCatchUpAccelFactor0
     {
         get => state.Get<float?>("UltraCatchUpAccelFactor0");
-        set => SetUltraCatchUpAccelFactor0(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetUltraCatchUpAccelFactor0Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithUltraCatchUpAccelFactor0(float? value)
     {
@@ -4091,7 +3725,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public float? UltraCatchUpAccelFactor1
     {
         get => state.Get<float?>("UltraCatchUpAccelFactor1");
-        set => SetUltraCatchUpAccelFactor1(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetUltraCatchUpAccelFactor1Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithUltraCatchUpAccelFactor1(float? value)
     {
@@ -4101,7 +3735,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public float? UltraCatchUpAccelFactor2
     {
         get => state.Get<float?>("UltraCatchUpAccelFactor2");
-        set => SetUltraCatchUpAccelFactor2(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetUltraCatchUpAccelFactor2Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithUltraCatchUpAccelFactor2(float? value)
     {
@@ -4111,7 +3745,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     public float? UltraCatchUpAccelFactor3
     {
         get => state.Get<float?>("UltraCatchUpAccelFactor3");
-        set => SetUltraCatchUpAccelFactor3(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetUltraCatchUpAccelFactor3Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithUltraCatchUpAccelFactor3(float? value)
     {
@@ -4125,7 +3759,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers12<TSelf> : CPlugVeh
     public PlugCurve? AccelCurveTargetSpeedTruck
     {
         get => state.Get<PlugCurve?>("AccelCurveTargetSpeedTruck");
-        set => SetAccelCurveTargetSpeedTruck(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAccelCurveTargetSpeedTruckAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithAccelCurveTargetSpeedTruck(PlugCurve? value)
     {
@@ -4135,7 +3769,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers12<TSelf> : CPlugVeh
     public global::GBX.NET.Engines.Plug.CPlugCamControlModel? CamModelIronSight
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugCamControlModel?>("CamModelIronSight");
-        set => SetCamModelIronSight(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCamModelIronSightAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithCamModelIronSight(global::GBX.NET.Engines.Plug.CPlugCamControlModel? value)
     {
@@ -4145,13 +3779,13 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers12<TSelf> : CPlugVeh
     public TSelf WithCamModelIronSightReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugCamControlModel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetCamModelIronSightReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCamModelIronSightReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugCamControlModel? CamModelRear
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugCamControlModel?>("CamModelRear");
-        set => SetCamModelRear(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCamModelRearAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithCamModelRear(global::GBX.NET.Engines.Plug.CPlugCamControlModel? value)
     {
@@ -4161,13 +3795,13 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers12<TSelf> : CPlugVeh
     public TSelf WithCamModelRearReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugCamControlModel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetCamModelRearReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCamModelRearReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public float MagneticHackAccelCoef_Val
     {
         get => state.Get<float>("MagneticHackAccelCoef_Val");
-        set => SetMagneticHackAccelCoef_Val(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMagneticHackAccelCoef_ValAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithMagneticHackAccelCoef_Val(float value)
     {
@@ -4177,7 +3811,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers12<TSelf> : CPlugVeh
     public bool? MagneticHackDamperForceAllways
     {
         get => state.Get<bool?>("MagneticHackDamperForceAllways");
-        set => SetMagneticHackDamperForceAllways(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMagneticHackDamperForceAllwaysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithMagneticHackDamperForceAllways(bool? value)
     {
@@ -4187,7 +3821,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers12<TSelf> : CPlugVeh
     public bool MagneticHackEnabled
     {
         get => state.Get<bool>("MagneticHackEnabled");
-        set => SetMagneticHackEnabled(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMagneticHackEnabledAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithMagneticHackEnabled(bool value)
     {
@@ -4197,7 +3831,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers12<TSelf> : CPlugVeh
     public float MagneticHackSpeedOffset_Val
     {
         get => state.Get<float>("MagneticHackSpeedOffset_Val");
-        set => SetMagneticHackSpeedOffset_Val(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMagneticHackSpeedOffset_ValAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithMagneticHackSpeedOffset_Val(float value)
     {
@@ -4207,7 +3841,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers12<TSelf> : CPlugVeh
     public int MagneticKeepContactDuration
     {
         get => state.Get<int>("MagneticKeepContactDuration");
-        set => SetMagneticKeepContactDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMagneticKeepContactDurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithMagneticKeepContactDuration(int value)
     {
@@ -4217,7 +3851,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers12<TSelf> : CPlugVeh
     public PlugCurve? TargetSpeedFromSpeedTruck
     {
         get => state.Get<PlugCurve?>("TargetSpeedFromSpeedTruck");
-        set => SetTargetSpeedFromSpeedTruck(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTargetSpeedFromSpeedTruckAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithTargetSpeedFromSpeedTruck(PlugCurve? value)
     {
@@ -4227,7 +3861,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers12<TSelf> : CPlugVeh
     public PlugCurve? TargetSpeedFromSpeedTruckRear
     {
         get => state.Get<PlugCurve?>("TargetSpeedFromSpeedTruckRear");
-        set => SetTargetSpeedFromSpeedTruckRear(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTargetSpeedFromSpeedTruckRearAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithTargetSpeedFromSpeedTruckRear(PlugCurve? value)
     {
@@ -4237,7 +3871,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers12<TSelf> : CPlugVeh
     public float TurboBrakeCoef
     {
         get => state.Get<float>("TurboBrakeCoef");
-        set => SetTurboBrakeCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboBrakeCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithTurboBrakeCoef(float value)
     {
@@ -4247,7 +3881,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers12<TSelf> : CPlugVeh
     public int TurboBrakeDuration
     {
         get => state.Get<int>("TurboBrakeDuration");
-        set => SetTurboBrakeDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboBrakeDurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithTurboBrakeDuration(int value)
     {
@@ -4257,7 +3891,7 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers12<TSelf> : CPlugVeh
     public float TurboBrakeMinSpeedZKmh
     {
         get => state.Get<float>("TurboBrakeMinSpeedZKmh");
-        set => SetTurboBrakeMinSpeedZKmh(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboBrakeMinSpeedZKmhAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithTurboBrakeMinSpeedZKmh(float value)
     {
@@ -6351,7 +5985,7 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         public float DisplaySteerRadiusCoef
         {
             get => state.Get<float>("DisplaySteerRadiusCoef");
-            set => SetDisplaySteerRadiusCoef(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDisplaySteerRadiusCoefAssignment(), value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX);
         }
         public TMSX WithDisplaySteerRadiusCoef(float value)
         {
@@ -6361,7 +5995,7 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         public float DisplaySteerRadiusMin
         {
             get => state.Get<float>("DisplaySteerRadiusMin");
-            set => SetDisplaySteerRadiusMin(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDisplaySteerRadiusMinAssignment(), value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX);
         }
         public TMSX WithDisplaySteerRadiusMin(float value)
         {
@@ -6397,7 +6031,7 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         public PlugCurve? VisualSteerAngleFromSpeed
         {
             get => state.Get<PlugCurve?>("VisualSteerAngleFromSpeed");
-            set => SetVisualSteerAngleFromSpeed(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetVisualSteerAngleFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMNESWC WithVisualSteerAngleFromSpeed(PlugCurve? value)
         {
@@ -6433,7 +6067,7 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         public float M6BrakeMaxDynamicFront
         {
             get => state.Get<float>("M6BrakeMaxDynamicFront");
-            set => SetM6BrakeMaxDynamicFront(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BrakeMaxDynamicFrontAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         }
         public VSK5 WithM6BrakeMaxDynamicFront(float value)
         {
@@ -6443,7 +6077,7 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         public float M6BrakeMaxFront
         {
             get => state.Get<float>("M6BrakeMaxFront");
-            set => SetM6BrakeMaxFront(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BrakeMaxFrontAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         }
         public VSK5 WithM6BrakeMaxFront(float value)
         {
@@ -6453,7 +6087,7 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         public PlugCurve? VisualSteerAngleFromSpeed
         {
             get => state.Get<PlugCurve?>("VisualSteerAngleFromSpeed");
-            set => SetVisualSteerAngleFromSpeed(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetVisualSteerAngleFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
         }
         public VSK5 WithVisualSteerAngleFromSpeed(PlugCurve? value)
         {
@@ -6485,7 +6119,7 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         public float M6BrakeMaxDynamicFront
         {
             get => state.Get<float>("M6BrakeMaxDynamicFront");
-            set => SetM6BrakeMaxDynamicFront(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BrakeMaxDynamicFrontAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMF WithM6BrakeMaxDynamicFront(float value)
         {
@@ -6495,7 +6129,7 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         public float M6BrakeMaxFront
         {
             get => state.Get<float>("M6BrakeMaxFront");
-            set => SetM6BrakeMaxFront(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BrakeMaxFrontAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMF WithM6BrakeMaxFront(float value)
         {
@@ -6505,7 +6139,7 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         public PlugCurve? VisualSteerAngleFromSpeed
         {
             get => state.Get<PlugCurve?>("VisualSteerAngleFromSpeed");
-            set => SetVisualSteerAngleFromSpeed(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetVisualSteerAngleFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMF WithVisualSteerAngleFromSpeed(PlugCurve? value)
         {
@@ -6533,7 +6167,7 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         public float M6MaxRpm
         {
             get => state.Get<float>("M6MaxRpm");
-            set => SetM6MaxRpm(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6MaxRpmAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP3 WithM6MaxRpm(float value)
         {
@@ -6543,7 +6177,7 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         public float RubberBallElasticity
         {
             get => state.Get<float>("RubberBallElasticity");
-            set => SetRubberBallElasticity(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetRubberBallElasticityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP3 WithRubberBallElasticity(float value)
         {
@@ -6553,7 +6187,7 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         public float SideFriction2
         {
             get => state.Get<float>("SideFriction2");
-            set => SetSideFriction2(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSideFriction2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP3 WithSideFriction2(float value)
         {
@@ -6563,7 +6197,7 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         public int SteerDurationBeforeSteerSlowDown
         {
             get => state.Get<int>("SteerDurationBeforeSteerSlowDown");
-            set => SetSteerDurationBeforeSteerSlowDown(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerDurationBeforeSteerSlowDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP3 WithSteerDurationBeforeSteerSlowDown(int value)
         {
@@ -6573,7 +6207,7 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         public int SteerSlowDownFadeInDuration
         {
             get => state.Get<int>("SteerSlowDownFadeInDuration");
-            set => SetSteerSlowDownFadeInDuration(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSlowDownFadeInDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP3 WithSteerSlowDownFadeInDuration(int value)
         {
@@ -6583,7 +6217,7 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         public float WaterGravity
         {
             get => state.Get<float>("WaterGravity");
-            set => SetWaterGravity(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterGravityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP3 WithWaterGravity(float value)
         {
@@ -6627,7 +6261,7 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         public float M6MaxRpm
         {
             get => state.Get<float>("M6MaxRpm");
-            set => SetM6MaxRpm(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6MaxRpmAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMT WithM6MaxRpm(float value)
         {
@@ -6641,7 +6275,7 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         public float RubberBallElasticity
         {
             get => state.Get<float>("RubberBallElasticity");
-            set => SetRubberBallElasticity(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetRubberBallElasticityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMT WithRubberBallElasticity(float value)
         {
@@ -6651,7 +6285,7 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         public float SideFriction2
         {
             get => state.Get<float>("SideFriction2");
-            set => SetSideFriction2(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSideFriction2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMT WithSideFriction2(float value)
         {
@@ -6661,7 +6295,7 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         public int SteerDurationBeforeSteerSlowDown
         {
             get => state.Get<int>("SteerDurationBeforeSteerSlowDown");
-            set => SetSteerDurationBeforeSteerSlowDown(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerDurationBeforeSteerSlowDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMT WithSteerDurationBeforeSteerSlowDown(int value)
         {
@@ -6671,7 +6305,7 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         public int SteerSlowDownFadeInDuration
         {
             get => state.Get<int>("SteerSlowDownFadeInDuration");
-            set => SetSteerSlowDownFadeInDuration(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSlowDownFadeInDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMT WithSteerSlowDownFadeInDuration(int value)
         {
@@ -6681,7 +6315,7 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         public float WaterGravity
         {
             get => state.Get<float>("WaterGravity");
-            set => SetWaterGravity(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterGravityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMT WithWaterGravity(float value)
         {
@@ -6737,7 +6371,7 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         public float M6MaxRpm
         {
             get => state.Get<float>("M6MaxRpm");
-            set => SetM6MaxRpm(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6MaxRpmAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP4 WithM6MaxRpm(float value)
         {
@@ -6751,7 +6385,7 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         public float RubberBallElasticity
         {
             get => state.Get<float>("RubberBallElasticity");
-            set => SetRubberBallElasticity(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetRubberBallElasticityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP4 WithRubberBallElasticity(float value)
         {
@@ -6765,7 +6399,7 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         public float SideFriction2
         {
             get => state.Get<float>("SideFriction2");
-            set => SetSideFriction2(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSideFriction2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP4 WithSideFriction2(float value)
         {
@@ -6775,7 +6409,7 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         public int SteerDurationBeforeSteerSlowDown
         {
             get => state.Get<int>("SteerDurationBeforeSteerSlowDown");
-            set => SetSteerDurationBeforeSteerSlowDown(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerDurationBeforeSteerSlowDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP4 WithSteerDurationBeforeSteerSlowDown(int value)
         {
@@ -6785,7 +6419,7 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         public int SteerSlowDownFadeInDuration
         {
             get => state.Get<int>("SteerSlowDownFadeInDuration");
-            set => SetSteerSlowDownFadeInDuration(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSlowDownFadeInDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP4 WithSteerSlowDownFadeInDuration(int value)
         {
@@ -6795,7 +6429,7 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         public float WaterGravity
         {
             get => state.Get<float>("WaterGravity");
-            set => SetWaterGravity(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterGravityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP4 WithWaterGravity(float value)
         {

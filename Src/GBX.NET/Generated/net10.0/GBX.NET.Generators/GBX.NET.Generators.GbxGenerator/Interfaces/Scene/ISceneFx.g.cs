@@ -35,11 +35,11 @@ public partial interface ISceneFx : IClassVersion<global::GBX.NET.Engines.Scene.
 {
 }
 
-public partial interface ISceneFxTM2020 : ISceneFx
+public partial interface ISceneFxTMF : ISceneFx
 {
 }
 
-public partial interface ISceneFxTMF : ISceneFx
+public partial interface ISceneFxTM2020 : ISceneFx
 {
 }
 

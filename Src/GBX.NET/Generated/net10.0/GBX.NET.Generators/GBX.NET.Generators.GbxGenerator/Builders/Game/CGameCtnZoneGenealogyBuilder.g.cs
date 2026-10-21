@@ -36,14 +36,10 @@ public abstract class CGameCtnZoneGenealogyBuilderBase<TSelf> where TSelf : CGam
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy> state;
     private protected CGameCtnZoneGenealogyBuilderBase() => state = new();
     private protected CGameCtnZoneGenealogyBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy> state) => this.state = state;
-    private protected static void SetCurrentIndex(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneGenealogyBuilderAssignments.GetCurrentIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetCurrentZoneId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneGenealogyBuilderAssignments.GetCurrentZoneIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDir(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy> state, Direction value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneGenealogyBuilderAssignments.GetDirAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetZoneIds(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy> state, string[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneGenealogyBuilderAssignments.GetZoneIdsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public int CurrentIndex
     {
         get => state.Get<int>("CurrentIndex");
-        set => SetCurrentIndex(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneGenealogyBuilderAssignments.GetCurrentIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCurrentIndex(int value)
     {
@@ -53,7 +49,7 @@ public abstract class CGameCtnZoneGenealogyBuilderBase<TSelf> where TSelf : CGam
     public string? CurrentZoneId
     {
         get => state.Get<string?>("CurrentZoneId");
-        set => SetCurrentZoneId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneGenealogyBuilderAssignments.GetCurrentZoneIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCurrentZoneId(string? value)
     {
@@ -63,7 +59,7 @@ public abstract class CGameCtnZoneGenealogyBuilderBase<TSelf> where TSelf : CGam
     public Direction Dir
     {
         get => state.Get<Direction>("Dir");
-        set => SetDir(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneGenealogyBuilderAssignments.GetDirAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDir(Direction value)
     {
@@ -73,7 +69,7 @@ public abstract class CGameCtnZoneGenealogyBuilderBase<TSelf> where TSelf : CGam
     public string[]? ZoneIds
     {
         get => state.Get<string[]?>("ZoneIds");
-        set => SetZoneIds(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneGenealogyBuilderAssignments.GetZoneIdsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithZoneIds(params string[]? value)
     {

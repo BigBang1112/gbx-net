@@ -36,25 +36,10 @@ public abstract class CGameCtnAnchoredObjectBuilderBase<TSelf> where TSelf : CGa
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject> state;
     private protected CGameCtnAnchoredObjectBuilderBase() => state = new();
     private protected CGameCtnAnchoredObjectBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject> state) => this.state = state;
-    private protected static void SetAbsolutePositionInMap(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAnchoredObjectBuilderAssignments.GetAbsolutePositionInMapAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAnchorTreeId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAnchoredObjectBuilderAssignments.GetAnchorTreeIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBlockUnitCoord(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject> state, Byte3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAnchoredObjectBuilderAssignments.GetBlockUnitCoordAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBotPathIndex(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAnchoredObjectBuilderAssignments.GetBotPathIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBoundingBox(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject> state, BoxAligned value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAnchoredObjectBuilderAssignments.GetBoundingBoxAssignment(), value, GameVersion.TM2020);
-    private protected static void SetFlags(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject> state, short value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAnchoredObjectBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetItemModel(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject> state, Ident value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAnchoredObjectBuilderAssignments.GetItemModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetPackDesc(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject> state, global::GBX.NET.PackDesc? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAnchoredObjectBuilderAssignments.GetPackDescAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetPivotPosition(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAnchoredObjectBuilderAssignments.GetPivotPositionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetScale(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAnchoredObjectBuilderAssignments.GetScaleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetScriptParameters(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject> state, global::GBX.NET.Engines.Game.CGameCtnAnchoredObject.ScriptParameter[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAnchoredObjectBuilderAssignments.GetScriptParametersAssignment(), value, GameVersion.TM2020);
-    private protected static void SetScriptTraitsVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject> state, byte value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAnchoredObjectBuilderAssignments.GetScriptTraitsVersionAssignment(), value, GameVersion.TM2020);
-    private protected static void SetWaypointSpecialProperty(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject> state, global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAnchoredObjectBuilderAssignments.GetWaypointSpecialPropertyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetWaypointSpecialPropertyReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject> state, NodeRef<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAnchoredObjectBuilderAssignments.GetWaypointSpecialPropertyReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetYawPitchRoll(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAnchoredObjectBuilderAssignments.GetYawPitchRollAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public Vec3 AbsolutePositionInMap
     {
         get => state.Get<Vec3>("AbsolutePositionInMap");
-        set => SetAbsolutePositionInMap(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAnchoredObjectBuilderAssignments.GetAbsolutePositionInMapAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAbsolutePositionInMap(Vec3 value)
     {
@@ -64,7 +49,7 @@ public abstract class CGameCtnAnchoredObjectBuilderBase<TSelf> where TSelf : CGa
     public string? AnchorTreeId
     {
         get => state.Get<string?>("AnchorTreeId");
-        set => SetAnchorTreeId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAnchoredObjectBuilderAssignments.GetAnchorTreeIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAnchorTreeId(string? value)
     {
@@ -74,7 +59,7 @@ public abstract class CGameCtnAnchoredObjectBuilderBase<TSelf> where TSelf : CGa
     public Byte3 BlockUnitCoord
     {
         get => state.Get<Byte3>("BlockUnitCoord");
-        set => SetBlockUnitCoord(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAnchoredObjectBuilderAssignments.GetBlockUnitCoordAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBlockUnitCoord(Byte3 value)
     {
@@ -84,7 +69,7 @@ public abstract class CGameCtnAnchoredObjectBuilderBase<TSelf> where TSelf : CGa
     public int BotPathIndex
     {
         get => state.Get<int>("BotPathIndex");
-        set => SetBotPathIndex(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAnchoredObjectBuilderAssignments.GetBotPathIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBotPathIndex(int value)
     {
@@ -94,7 +79,7 @@ public abstract class CGameCtnAnchoredObjectBuilderBase<TSelf> where TSelf : CGa
     public short Flags
     {
         get => state.Get<short>("Flags");
-        set => SetFlags(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAnchoredObjectBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFlags(short value)
     {
@@ -104,7 +89,7 @@ public abstract class CGameCtnAnchoredObjectBuilderBase<TSelf> where TSelf : CGa
     public Ident ItemModel
     {
         get => state.Get<Ident>("ItemModel");
-        set => SetItemModel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAnchoredObjectBuilderAssignments.GetItemModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithItemModel(Ident value)
     {
@@ -114,7 +99,7 @@ public abstract class CGameCtnAnchoredObjectBuilderBase<TSelf> where TSelf : CGa
     public Vec3 PivotPosition
     {
         get => state.Get<Vec3>("PivotPosition");
-        set => SetPivotPosition(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAnchoredObjectBuilderAssignments.GetPivotPositionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithPivotPosition(Vec3 value)
     {
@@ -124,7 +109,7 @@ public abstract class CGameCtnAnchoredObjectBuilderBase<TSelf> where TSelf : CGa
     public global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty? WaypointSpecialProperty
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty?>("WaypointSpecialProperty");
-        set => SetWaypointSpecialProperty(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAnchoredObjectBuilderAssignments.GetWaypointSpecialPropertyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithWaypointSpecialProperty(global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty? value)
     {
@@ -134,13 +119,13 @@ public abstract class CGameCtnAnchoredObjectBuilderBase<TSelf> where TSelf : CGa
     public TSelf WithWaypointSpecialPropertyReference(NodeRef<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetWaypointSpecialPropertyReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAnchoredObjectBuilderAssignments.GetWaypointSpecialPropertyReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public Vec3 YawPitchRoll
     {
         get => state.Get<Vec3>("YawPitchRoll");
-        set => SetYawPitchRoll(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAnchoredObjectBuilderAssignments.GetYawPitchRollAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithYawPitchRoll(Vec3 value)
     {
@@ -154,7 +139,7 @@ public abstract class CGameCtnAnchoredObjectBuilderMembers1<TSelf> : CGameCtnAnc
     public float Scale
     {
         get => state.Get<float>("Scale");
-        set => SetScale(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAnchoredObjectBuilderAssignments.GetScaleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithScale(float value)
     {
@@ -168,7 +153,7 @@ public abstract class CGameCtnAnchoredObjectBuilderMembers2<TSelf> : CGameCtnAnc
     public global::GBX.NET.PackDesc? PackDesc
     {
         get => state.Get<global::GBX.NET.PackDesc?>("PackDesc");
-        set => SetPackDesc(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAnchoredObjectBuilderAssignments.GetPackDescAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithPackDesc(global::GBX.NET.PackDesc? value)
     {
@@ -323,7 +308,7 @@ public partial class CGameCtnAnchoredObjectBuilder : CGameCtnAnchoredObjectBuild
         public BoxAligned BoundingBox
         {
             get => state.Get<BoxAligned>("BoundingBox");
-            set => SetBoundingBox(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAnchoredObjectBuilderAssignments.GetBoundingBoxAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithBoundingBox(BoxAligned value)
         {
@@ -333,7 +318,7 @@ public partial class CGameCtnAnchoredObjectBuilder : CGameCtnAnchoredObjectBuild
         public global::GBX.NET.Engines.Game.CGameCtnAnchoredObject.ScriptParameter[]? ScriptParameters
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject.ScriptParameter[]?>("ScriptParameters");
-            set => SetScriptParameters(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAnchoredObjectBuilderAssignments.GetScriptParametersAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithScriptParameters(params global::GBX.NET.Engines.Game.CGameCtnAnchoredObject.ScriptParameter[]? value)
         {
@@ -347,7 +332,7 @@ public partial class CGameCtnAnchoredObjectBuilder : CGameCtnAnchoredObjectBuild
         public byte ScriptTraitsVersion
         {
             get => state.Get<byte>("ScriptTraitsVersion");
-            set => SetScriptTraitsVersion(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAnchoredObjectBuilderAssignments.GetScriptTraitsVersionAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithScriptTraitsVersion(byte value)
         {

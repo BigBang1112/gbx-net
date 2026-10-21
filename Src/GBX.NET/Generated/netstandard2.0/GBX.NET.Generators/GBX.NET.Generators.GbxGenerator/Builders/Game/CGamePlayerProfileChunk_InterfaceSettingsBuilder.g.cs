@@ -36,14 +36,10 @@ public abstract class CGamePlayerProfileChunk_InterfaceSettingsBuilderBase<TSelf
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InterfaceSettings> state;
     private protected CGamePlayerProfileChunk_InterfaceSettingsBuilderBase() => state = new();
     private protected CGamePlayerProfileChunk_InterfaceSettingsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InterfaceSettings> state) => this.state = state;
-    private protected static void SetCampaignSettings(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InterfaceSettings> state, global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InterfaceSettings.SCampaignSettings[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_InterfaceSettingsBuilderAssignments.GetCampaignSettingsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDynamicLoadScreenIndex(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InterfaceSettings> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_InterfaceSettingsBuilderAssignments.GetDynamicLoadScreenIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMenuInternetView(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InterfaceSettings> state, byte value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_InterfaceSettingsBuilderAssignments.GetMenuInternetViewAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMenuLeagueFilter(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InterfaceSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_InterfaceSettingsBuilderAssignments.GetMenuLeagueFilterAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InterfaceSettings.SCampaignSettings[]? CampaignSettings
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InterfaceSettings.SCampaignSettings[]?>("CampaignSettings");
-        set => SetCampaignSettings(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_InterfaceSettingsBuilderAssignments.GetCampaignSettingsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCampaignSettings(params global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InterfaceSettings.SCampaignSettings[]? value)
     {
@@ -57,7 +53,7 @@ public abstract class CGamePlayerProfileChunk_InterfaceSettingsBuilderBase<TSelf
     public int DynamicLoadScreenIndex
     {
         get => state.Get<int>("DynamicLoadScreenIndex");
-        set => SetDynamicLoadScreenIndex(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_InterfaceSettingsBuilderAssignments.GetDynamicLoadScreenIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDynamicLoadScreenIndex(int value)
     {
@@ -67,7 +63,7 @@ public abstract class CGamePlayerProfileChunk_InterfaceSettingsBuilderBase<TSelf
     public byte MenuInternetView
     {
         get => state.Get<byte>("MenuInternetView");
-        set => SetMenuInternetView(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_InterfaceSettingsBuilderAssignments.GetMenuInternetViewAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMenuInternetView(byte value)
     {
@@ -77,7 +73,7 @@ public abstract class CGamePlayerProfileChunk_InterfaceSettingsBuilderBase<TSelf
     public string? MenuLeagueFilter
     {
         get => state.Get<string?>("MenuLeagueFilter");
-        set => SetMenuLeagueFilter(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_InterfaceSettingsBuilderAssignments.GetMenuLeagueFilterAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMenuLeagueFilter(string? value)
     {

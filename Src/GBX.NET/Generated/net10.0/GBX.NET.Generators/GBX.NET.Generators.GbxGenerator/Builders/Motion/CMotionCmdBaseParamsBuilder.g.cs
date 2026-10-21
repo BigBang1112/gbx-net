@@ -36,12 +36,10 @@ public abstract class CMotionCmdBaseParamsBuilderBase<TSelf> where TSelf : CMoti
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionCmdBaseParams> state;
     private protected CMotionCmdBaseParamsBuilderBase() => state = new();
     private protected CMotionCmdBaseParamsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionCmdBaseParams> state) => this.state = state;
-    private protected static void SetPeriod(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionCmdBaseParams> state, TimeInt32 value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionCmdBaseParamsBuilderAssignments.GetPeriodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetPhase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionCmdBaseParams> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionCmdBaseParamsBuilderAssignments.GetPhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public TimeInt32 Period
     {
         get => state.Get<TimeInt32>("Period");
-        set => SetPeriod(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionCmdBaseParamsBuilderAssignments.GetPeriodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPeriod(TimeInt32 value)
     {
@@ -51,7 +49,7 @@ public abstract class CMotionCmdBaseParamsBuilderBase<TSelf> where TSelf : CMoti
     public float Phase
     {
         get => state.Get<float>("Phase");
-        set => SetPhase(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionCmdBaseParamsBuilderAssignments.GetPhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPhase(float value)
     {

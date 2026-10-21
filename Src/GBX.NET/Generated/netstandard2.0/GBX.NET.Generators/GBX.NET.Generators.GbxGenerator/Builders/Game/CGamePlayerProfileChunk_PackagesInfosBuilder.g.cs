@@ -36,11 +36,10 @@ public abstract class CGamePlayerProfileChunk_PackagesInfosBuilderBase<TSelf> wh
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_PackagesInfos> state;
     private protected CGamePlayerProfileChunk_PackagesInfosBuilderBase() => state = new();
     private protected CGamePlayerProfileChunk_PackagesInfosBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_PackagesInfos> state) => this.state = state;
-    private protected static void SetPackagesInfos(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_PackagesInfos> state, global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_PackagesInfos.PackageInfo[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_PackagesInfosBuilderAssignments.GetPackagesInfosAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_PackagesInfos.PackageInfo[]? PackagesInfos
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_PackagesInfos.PackageInfo[]?>("PackagesInfos");
-        set => SetPackagesInfos(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_PackagesInfosBuilderAssignments.GetPackagesInfosAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithPackagesInfos(params global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_PackagesInfos.PackageInfo[]? value)
     {

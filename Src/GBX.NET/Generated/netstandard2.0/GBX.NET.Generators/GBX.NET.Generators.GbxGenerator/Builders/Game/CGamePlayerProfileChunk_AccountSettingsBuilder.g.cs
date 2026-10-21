@@ -36,68 +36,10 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state;
     private protected CGamePlayerProfileChunk_AccountSettingsBuilderBase() => state = new();
     private protected CGamePlayerProfileChunk_AccountSettingsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state) => this.state = state;
-    private protected static void SetAge(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetAgeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAnalogDeadZone(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetAnalogDeadZoneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAnalogSensitivity(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetAnalogSensitivityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAvatarName(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetAvatarNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBroadcastAudioEnable(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBroadcastAudioEnableAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBroadcastAudioVolumePlayback(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBroadcastAudioVolumePlaybackAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBroadcastAudioVolumeRecorder(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBroadcastAudioVolumeRecorderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBroadcastLogin(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBroadcastLoginAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBroadcastPasswordEncryptedHexa(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBroadcastPasswordEncryptedHexaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBroadcastVideoCpuUsage(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBroadcastVideoCpuUsageAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBroadcastVideoHeight(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBroadcastVideoHeightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBroadcastVideoKbps(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBroadcastVideoKbpsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBroadcastVideoMaxKbps(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBroadcastVideoMaxKbpsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBroadcastVideoTargetFps(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBroadcastVideoTargetFpsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBroadcastVideoWidth(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBroadcastVideoWidthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBuddies(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, global::GBX.NET.Engines.Game.CGameBuddy[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBuddiesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBuddyArchiveVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBuddyArchiveVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetCenterSpringIntensity(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetCenterSpringIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetClubLinkUrl(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetClubLinkUrlAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDescription(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetDescriptionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetEncryptedKeyHexa(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetEncryptedKeyHexaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetEulaVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetEulaVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFameStars(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, byte value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetFameStarsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFlags(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, byte value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFlags2(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, byte value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetFlags2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetInboxMessages(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetInboxMessagesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetLastSessionId(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetLastSessionIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetLastUsedMSAddress(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetLastUsedMSAddressAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetLastUsedMSPath(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetLastUsedMSPathAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetLeague(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetLeagueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMouseAccel(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetMouseAccelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMouseAccelQuantity(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetMouseAccelQuantityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMouseLookInvertY(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetMouseLookInvertYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMouseReleaseKey(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetMouseReleaseKeyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMouseScaleFreeLook(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetMouseScaleFreeLookAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMouseScaleY(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetMouseScaleYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMouseSensitivities_EnableSpecific(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetMouseSensitivities_EnableSpecificAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMouseSensitivity_Default(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetMouseSensitivity_DefaultAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMouseSensitivity_Laser(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetMouseSensitivity_LaserAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetNickName(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetNickNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetOnlineLogin(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetOnlineLoginAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetOnlinePassword(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetOnlinePasswordAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetOnlinePlanets(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetOnlinePlanetsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetOnlineRemainingNickNamesChangesCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetOnlineRemainingNickNamesChangesCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetOnlineSupportKey(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetOnlineSupportKeyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetOnlineValidationCode(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetOnlineValidationCodeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetOutboxMessages(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetOutboxMessagesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetPlayerTagsConfig(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.SPlayerTagsConfig? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetPlayerTagsConfigAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetPrivacyPolicyVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetPrivacyPolicyVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetRSAPrivateKey(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetRSAPrivateKeyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetReadMessages(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetReadMessagesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetReceiveNews(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetReceiveNewsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetReceivedMessagesAt(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, DateTime? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetReceivedMessagesAtAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetRumbleIntensity(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetRumbleIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSteamId(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, ulong value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetSteamIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTrigram(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetTrigramAssignment(), value, GameVersion.TM2020);
-    private protected static void SetYoutubeRefreshToken(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetYoutubeRefreshTokenAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
-    private protected static void SetYoutubeUploads(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.YoutubeUpload[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetYoutubeUploadsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     public int Age
     {
         get => state.Get<int>("Age");
-        set => SetAge(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetAgeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAge(int value)
     {
@@ -107,7 +49,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public float AnalogDeadZone
     {
         get => state.Get<float>("AnalogDeadZone");
-        set => SetAnalogDeadZone(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetAnalogDeadZoneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAnalogDeadZone(float value)
     {
@@ -117,7 +59,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public float AnalogSensitivity
     {
         get => state.Get<float>("AnalogSensitivity");
-        set => SetAnalogSensitivity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetAnalogSensitivityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAnalogSensitivity(float value)
     {
@@ -127,7 +69,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public string? AvatarName
     {
         get => state.Get<string?>("AvatarName");
-        set => SetAvatarName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetAvatarNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAvatarName(string? value)
     {
@@ -137,7 +79,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public bool BroadcastAudioEnable
     {
         get => state.Get<bool>("BroadcastAudioEnable");
-        set => SetBroadcastAudioEnable(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBroadcastAudioEnableAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBroadcastAudioEnable(bool value)
     {
@@ -147,7 +89,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public float BroadcastAudioVolumePlayback
     {
         get => state.Get<float>("BroadcastAudioVolumePlayback");
-        set => SetBroadcastAudioVolumePlayback(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBroadcastAudioVolumePlaybackAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBroadcastAudioVolumePlayback(float value)
     {
@@ -157,7 +99,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public float BroadcastAudioVolumeRecorder
     {
         get => state.Get<float>("BroadcastAudioVolumeRecorder");
-        set => SetBroadcastAudioVolumeRecorder(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBroadcastAudioVolumeRecorderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBroadcastAudioVolumeRecorder(float value)
     {
@@ -167,7 +109,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public string? BroadcastLogin
     {
         get => state.Get<string?>("BroadcastLogin");
-        set => SetBroadcastLogin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBroadcastLoginAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBroadcastLogin(string? value)
     {
@@ -177,7 +119,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public string? BroadcastPasswordEncryptedHexa
     {
         get => state.Get<string?>("BroadcastPasswordEncryptedHexa");
-        set => SetBroadcastPasswordEncryptedHexa(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBroadcastPasswordEncryptedHexaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBroadcastPasswordEncryptedHexa(string? value)
     {
@@ -187,7 +129,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public int BroadcastVideoCpuUsage
     {
         get => state.Get<int>("BroadcastVideoCpuUsage");
-        set => SetBroadcastVideoCpuUsage(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBroadcastVideoCpuUsageAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBroadcastVideoCpuUsage(int value)
     {
@@ -197,7 +139,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public int BroadcastVideoHeight
     {
         get => state.Get<int>("BroadcastVideoHeight");
-        set => SetBroadcastVideoHeight(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBroadcastVideoHeightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBroadcastVideoHeight(int value)
     {
@@ -207,7 +149,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public int BroadcastVideoKbps
     {
         get => state.Get<int>("BroadcastVideoKbps");
-        set => SetBroadcastVideoKbps(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBroadcastVideoKbpsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBroadcastVideoKbps(int value)
     {
@@ -217,7 +159,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public int BroadcastVideoMaxKbps
     {
         get => state.Get<int>("BroadcastVideoMaxKbps");
-        set => SetBroadcastVideoMaxKbps(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBroadcastVideoMaxKbpsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBroadcastVideoMaxKbps(int value)
     {
@@ -227,7 +169,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public int BroadcastVideoTargetFps
     {
         get => state.Get<int>("BroadcastVideoTargetFps");
-        set => SetBroadcastVideoTargetFps(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBroadcastVideoTargetFpsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBroadcastVideoTargetFps(int value)
     {
@@ -237,7 +179,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public int BroadcastVideoWidth
     {
         get => state.Get<int>("BroadcastVideoWidth");
-        set => SetBroadcastVideoWidth(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBroadcastVideoWidthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBroadcastVideoWidth(int value)
     {
@@ -247,7 +189,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public global::GBX.NET.Engines.Game.CGameBuddy[]? Buddies
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameBuddy[]?>("Buddies");
-        set => SetBuddies(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBuddiesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBuddies(params global::GBX.NET.Engines.Game.CGameBuddy[]? value)
     {
@@ -261,7 +203,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public int BuddyArchiveVersion
     {
         get => state.Get<int>("BuddyArchiveVersion");
-        set => SetBuddyArchiveVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBuddyArchiveVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBuddyArchiveVersion(int value)
     {
@@ -271,7 +213,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public float CenterSpringIntensity
     {
         get => state.Get<float>("CenterSpringIntensity");
-        set => SetCenterSpringIntensity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetCenterSpringIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCenterSpringIntensity(float value)
     {
@@ -281,7 +223,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public string? ClubLinkUrl
     {
         get => state.Get<string?>("ClubLinkUrl");
-        set => SetClubLinkUrl(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetClubLinkUrlAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithClubLinkUrl(string? value)
     {
@@ -291,7 +233,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public string? Description
     {
         get => state.Get<string?>("Description");
-        set => SetDescription(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetDescriptionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDescription(string? value)
     {
@@ -301,7 +243,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public string? EncryptedKeyHexa
     {
         get => state.Get<string?>("EncryptedKeyHexa");
-        set => SetEncryptedKeyHexa(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetEncryptedKeyHexaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEncryptedKeyHexa(string? value)
     {
@@ -311,7 +253,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public int EulaVersion
     {
         get => state.Get<int>("EulaVersion");
-        set => SetEulaVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetEulaVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEulaVersion(int value)
     {
@@ -321,7 +263,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public byte FameStars
     {
         get => state.Get<byte>("FameStars");
-        set => SetFameStars(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetFameStarsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFameStars(byte value)
     {
@@ -331,7 +273,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public byte Flags
     {
         get => state.Get<byte>("Flags");
-        set => SetFlags(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFlags(byte value)
     {
@@ -341,7 +283,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public byte Flags2
     {
         get => state.Get<byte>("Flags2");
-        set => SetFlags2(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetFlags2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFlags2(byte value)
     {
@@ -351,7 +293,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>? InboxMessages
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>?>("InboxMessages");
-        set => SetInboxMessages(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetInboxMessagesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInboxMessages(NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>? value)
     {
@@ -369,7 +311,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public string? LastSessionId
     {
         get => state.Get<string?>("LastSessionId");
-        set => SetLastSessionId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetLastSessionIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLastSessionId(string? value)
     {
@@ -379,7 +321,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public string? LastUsedMSAddress
     {
         get => state.Get<string?>("LastUsedMSAddress");
-        set => SetLastUsedMSAddress(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetLastUsedMSAddressAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLastUsedMSAddress(string? value)
     {
@@ -389,7 +331,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public string? LastUsedMSPath
     {
         get => state.Get<string?>("LastUsedMSPath");
-        set => SetLastUsedMSPath(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetLastUsedMSPathAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLastUsedMSPath(string? value)
     {
@@ -399,7 +341,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public string? League
     {
         get => state.Get<string?>("League");
-        set => SetLeague(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetLeagueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLeague(string? value)
     {
@@ -409,7 +351,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public bool MouseAccel
     {
         get => state.Get<bool>("MouseAccel");
-        set => SetMouseAccel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetMouseAccelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMouseAccel(bool value)
     {
@@ -419,7 +361,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public float MouseAccelQuantity
     {
         get => state.Get<float>("MouseAccelQuantity");
-        set => SetMouseAccelQuantity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetMouseAccelQuantityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMouseAccelQuantity(float value)
     {
@@ -429,7 +371,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public bool MouseLookInvertY
     {
         get => state.Get<bool>("MouseLookInvertY");
-        set => SetMouseLookInvertY(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetMouseLookInvertYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMouseLookInvertY(bool value)
     {
@@ -439,7 +381,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public int MouseReleaseKey
     {
         get => state.Get<int>("MouseReleaseKey");
-        set => SetMouseReleaseKey(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetMouseReleaseKeyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMouseReleaseKey(int value)
     {
@@ -449,7 +391,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public float MouseScaleFreeLook
     {
         get => state.Get<float>("MouseScaleFreeLook");
-        set => SetMouseScaleFreeLook(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetMouseScaleFreeLookAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMouseScaleFreeLook(float value)
     {
@@ -459,7 +401,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public float MouseScaleY
     {
         get => state.Get<float>("MouseScaleY");
-        set => SetMouseScaleY(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetMouseScaleYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMouseScaleY(float value)
     {
@@ -469,7 +411,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public bool MouseSensitivities_EnableSpecific
     {
         get => state.Get<bool>("MouseSensitivities_EnableSpecific");
-        set => SetMouseSensitivities_EnableSpecific(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetMouseSensitivities_EnableSpecificAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMouseSensitivities_EnableSpecific(bool value)
     {
@@ -479,7 +421,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public float MouseSensitivity_Default
     {
         get => state.Get<float>("MouseSensitivity_Default");
-        set => SetMouseSensitivity_Default(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetMouseSensitivity_DefaultAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMouseSensitivity_Default(float value)
     {
@@ -489,7 +431,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public float MouseSensitivity_Laser
     {
         get => state.Get<float>("MouseSensitivity_Laser");
-        set => SetMouseSensitivity_Laser(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetMouseSensitivity_LaserAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMouseSensitivity_Laser(float value)
     {
@@ -499,7 +441,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public string? NickName
     {
         get => state.Get<string?>("NickName");
-        set => SetNickName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetNickNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNickName(string? value)
     {
@@ -509,7 +451,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public string? OnlineLogin
     {
         get => state.Get<string?>("OnlineLogin");
-        set => SetOnlineLogin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetOnlineLoginAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithOnlineLogin(string? value)
     {
@@ -519,7 +461,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public string? OnlinePassword
     {
         get => state.Get<string?>("OnlinePassword");
-        set => SetOnlinePassword(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetOnlinePasswordAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithOnlinePassword(string? value)
     {
@@ -529,7 +471,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public int OnlinePlanets
     {
         get => state.Get<int>("OnlinePlanets");
-        set => SetOnlinePlanets(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetOnlinePlanetsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithOnlinePlanets(int value)
     {
@@ -539,7 +481,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public int OnlineRemainingNickNamesChangesCount
     {
         get => state.Get<int>("OnlineRemainingNickNamesChangesCount");
-        set => SetOnlineRemainingNickNamesChangesCount(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetOnlineRemainingNickNamesChangesCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithOnlineRemainingNickNamesChangesCount(int value)
     {
@@ -549,7 +491,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public string? OnlineSupportKey
     {
         get => state.Get<string?>("OnlineSupportKey");
-        set => SetOnlineSupportKey(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetOnlineSupportKeyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithOnlineSupportKey(string? value)
     {
@@ -559,7 +501,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public string? OnlineValidationCode
     {
         get => state.Get<string?>("OnlineValidationCode");
-        set => SetOnlineValidationCode(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetOnlineValidationCodeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithOnlineValidationCode(string? value)
     {
@@ -569,7 +511,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>? OutboxMessages
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>?>("OutboxMessages");
-        set => SetOutboxMessages(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetOutboxMessagesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithOutboxMessages(NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>? value)
     {
@@ -587,7 +529,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.SPlayerTagsConfig? PlayerTagsConfig
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.SPlayerTagsConfig?>("PlayerTagsConfig");
-        set => SetPlayerTagsConfig(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetPlayerTagsConfigAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithPlayerTagsConfig(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.SPlayerTagsConfig? value)
     {
@@ -597,7 +539,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public int PrivacyPolicyVersion
     {
         get => state.Get<int>("PrivacyPolicyVersion");
-        set => SetPrivacyPolicyVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetPrivacyPolicyVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithPrivacyPolicyVersion(int value)
     {
@@ -607,7 +549,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public string? RSAPrivateKey
     {
         get => state.Get<string?>("RSAPrivateKey");
-        set => SetRSAPrivateKey(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetRSAPrivateKeyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRSAPrivateKey(string? value)
     {
@@ -617,7 +559,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>? ReadMessages
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>?>("ReadMessages");
-        set => SetReadMessages(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetReadMessagesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithReadMessages(NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>? value)
     {
@@ -635,7 +577,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public bool ReceiveNews
     {
         get => state.Get<bool>("ReceiveNews");
-        set => SetReceiveNews(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetReceiveNewsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithReceiveNews(bool value)
     {
@@ -645,7 +587,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public DateTime? ReceivedMessagesAt
     {
         get => state.Get<DateTime?>("ReceivedMessagesAt");
-        set => SetReceivedMessagesAt(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetReceivedMessagesAtAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithReceivedMessagesAt(DateTime? value)
     {
@@ -655,7 +597,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public float RumbleIntensity
     {
         get => state.Get<float>("RumbleIntensity");
-        set => SetRumbleIntensity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetRumbleIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRumbleIntensity(float value)
     {
@@ -665,7 +607,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     public ulong SteamId
     {
         get => state.Get<ulong>("SteamId");
-        set => SetSteamId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetSteamIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSteamId(ulong value)
     {
@@ -679,7 +621,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderMembers1<TSe
     public string? YoutubeRefreshToken
     {
         get => state.Get<string?>("YoutubeRefreshToken");
-        set => SetYoutubeRefreshToken(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetYoutubeRefreshTokenAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithYoutubeRefreshToken(string? value)
     {
@@ -689,7 +631,7 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderMembers1<TSe
     public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.YoutubeUpload[]? YoutubeUploads
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.YoutubeUpload[]?>("YoutubeUploads");
-        set => SetYoutubeUploads(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetYoutubeUploadsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithYoutubeUploads(params global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.YoutubeUpload[]? value)
     {
@@ -1047,7 +989,7 @@ public partial class CGamePlayerProfileChunk_AccountSettingsBuilder : CGamePlaye
         public string? Trigram
         {
             get => state.Get<string?>("Trigram");
-            set => SetTrigram(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetTrigramAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithTrigram(string? value)
         {

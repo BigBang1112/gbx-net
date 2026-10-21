@@ -36,15 +36,10 @@ public abstract class CInputBindingsConfigBuilderBase<TSelf> where TSelf : CInpu
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Input.CInputBindingsConfig> state;
     private protected CInputBindingsConfigBuilderBase() => state = new();
     private protected CInputBindingsConfigBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Input.CInputBindingsConfig> state) => this.state = state;
-    private protected static void SetBindings(NodeBuilderState<global::GBX.NET.Engines.Input.CInputBindingsConfig> state, global::GBX.NET.Engines.Input.CInputBindingsConfig.Binding[]? value) => state.Set(global::GBX.NET.Builders.Engines.Input.CInputBindingsConfigBuilderAssignments.GetBindingsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetConfiguredDeviceModels(NodeBuilderState<global::GBX.NET.Engines.Input.CInputBindingsConfig> state, string[]? value) => state.Set(global::GBX.NET.Builders.Engines.Input.CInputBindingsConfigBuilderAssignments.GetConfiguredDeviceModelsAssignment(), value, GameVersion.TM2020);
-    private protected static void SetConfiguredDevices(NodeBuilderState<global::GBX.NET.Engines.Input.CInputBindingsConfig> state, string[]? value) => state.Set(global::GBX.NET.Builders.Engines.Input.CInputBindingsConfigBuilderAssignments.GetConfiguredDevicesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Input.CInputBindingsConfig> state, string value) => state.Set(global::GBX.NET.Builders.Engines.Input.CInputBindingsConfigBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetVersion(NodeBuilderState<global::GBX.NET.Engines.Input.CInputBindingsConfig> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Input.CInputBindingsConfigBuilderAssignments.GetVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public global::GBX.NET.Engines.Input.CInputBindingsConfig.Binding[]? Bindings
     {
         get => state.Get<global::GBX.NET.Engines.Input.CInputBindingsConfig.Binding[]?>("Bindings");
-        set => SetBindings(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Input.CInputBindingsConfigBuilderAssignments.GetBindingsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBindings(params global::GBX.NET.Engines.Input.CInputBindingsConfig.Binding[]? value)
     {
@@ -58,7 +53,7 @@ public abstract class CInputBindingsConfigBuilderBase<TSelf> where TSelf : CInpu
     public string[]? ConfiguredDevices
     {
         get => state.Get<string[]?>("ConfiguredDevices");
-        set => SetConfiguredDevices(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Input.CInputBindingsConfigBuilderAssignments.GetConfiguredDevicesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithConfiguredDevices(params string[]? value)
     {
@@ -72,7 +67,7 @@ public abstract class CInputBindingsConfigBuilderBase<TSelf> where TSelf : CInpu
     public string Name
     {
         get => state.Get<string>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Input.CInputBindingsConfigBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithName(string value)
     {
@@ -86,7 +81,7 @@ public abstract class CInputBindingsConfigBuilderMembers1<TSelf> : CInputBinding
     public int Version
     {
         get => state.Get<int>("Version");
-        set => SetVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Input.CInputBindingsConfigBuilderAssignments.GetVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithVersion(int value)
     {
@@ -337,7 +332,7 @@ public partial class CInputBindingsConfigBuilder : CInputBindingsConfigBuilderBa
         public string[]? ConfiguredDeviceModels
         {
             get => state.Get<string[]?>("ConfiguredDeviceModels");
-            set => SetConfiguredDeviceModels(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Input.CInputBindingsConfigBuilderAssignments.GetConfiguredDeviceModelsAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithConfiguredDeviceModels(params string[]? value)
         {

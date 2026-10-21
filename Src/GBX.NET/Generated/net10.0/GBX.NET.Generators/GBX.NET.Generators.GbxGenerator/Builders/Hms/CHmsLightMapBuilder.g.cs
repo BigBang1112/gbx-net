@@ -36,55 +36,10 @@ public abstract class CHmsLightMapBuilderBase<TSelf> where TSelf : CHmsLightMapB
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state;
     private protected CHmsLightMapBuilderBase() => state = new();
     private protected CHmsLightMapBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state) => this.state = state;
-    private protected static void SetBackgroundUseClouds(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBackgroundUseCloudsAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBitmapArrayLightSH(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, global::GBX.NET.Engines.Plug.CPlugBitmapArray? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapArrayLightSHAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBitmapArrayLightSHReference(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapArray> value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapArrayLightSHReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBitmapLM_ILightDir(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLM_ILightDirAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBitmapLM_ILightDirReference(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLM_ILightDirReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBitmapLM_ILightInput(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLM_ILightInputAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBitmapLM_ILightInputReference(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLM_ILightInputReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBitmapLM_LListUV(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLM_LListUVAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBitmapLM_LListUVReference(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLM_LListUVReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBitmapLM_LListW(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLM_LListWAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBitmapLM_LListWReference(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLM_LListWReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBitmapLM_LocalDirect(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLM_LocalDirectAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBitmapLM_LocalDirectReference(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLM_LocalDirectReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBitmapLightSumBump(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, global::GBX.NET.Engines.Plug.CPlugBitmapArray? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLightSumBumpAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBitmapLightSumBumpReference(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapArray> value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLightSumBumpReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBitmapProbeGeom_BBoxInvHDiag_ThroughBounce(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapProbeGeom_BBoxInvHDiag_ThroughBounceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBitmapProbeGeom_BBoxInvHDiag_ThroughBounceReference(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapProbeGeom_BBoxInvHDiag_ThroughBounceReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBitmapProbeGridAmbSV(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapProbeGridAmbSVAssignment(), value, GameVersion.TM2020);
-    private protected static void SetBitmapProbeGridAmbSVReference(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapProbeGridAmbSVReferenceAssignment(), value, GameVersion.TM2020);
-    private protected static void SetBitmapProbeGridAmbSV_Spread1(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapProbeGridAmbSV_Spread1Assignment(), value, GameVersion.TM2020);
-    private protected static void SetBitmapProbeGridAmbSV_Spread1Reference(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapProbeGridAmbSV_Spread1ReferenceAssignment(), value, GameVersion.TM2020);
-    private protected static void SetBitmapSM_ColorPeeled(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapSM_ColorPeeledAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBitmapSM_ColorPeeledReference(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapSM_ColorPeeledReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBitmapSM_DepthToPeel(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapSM_DepthToPeelAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBitmapSM_DepthToPeelReference(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapSM_DepthToPeelReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBitmapShadow(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapShadowAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBitmapShadowReference(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapShadowReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBitmapSprite3x3_Light(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapSprite3x3_LightAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBitmapSprite3x3_LightReference(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapSprite3x3_LightReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBitmapSprite_ILightDir(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapSprite_ILightDirAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBitmapSprite_ILightDirReference(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapSprite_ILightDirReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBitmapSprite_PosAndRadius(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapSprite_PosAndRadiusAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBitmapSprite_PosAndRadiusReference(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapSprite_PosAndRadiusReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetClampAmb_PosY(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetClampAmb_PosYAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetClampDir_PosY(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetClampDir_PosYAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetCompressMode(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, global::GBX.NET.Engines.Hms.CHmsLightMap.ECompressMode value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetCompressModeAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetGameTimerSeconds(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetGameTimerSecondsAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetIsSpriteLDirInAlpha(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetIsSpriteLDirInAlphaAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMood(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, global::GBX.NET.Engines.Hms.CHmsLightMapMood? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetMoodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMoodReference(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, NodeRef<global::GBX.NET.Engines.Hms.CHmsLightMapMood> value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetMoodReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetPointsInSphereOpt(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetPointsInSphereOptAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetPointsInSphereOptReference(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt> value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetPointsInSphereOptReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSRGB(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetSRGBAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetStoreLDir0(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, global::GBX.NET.Engines.Hms.CHmsLightMap.EStoreLDir0 value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetStoreLDir0Assignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetUseHDR(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetUseHDRAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     public global::GBX.NET.Engines.Hms.CHmsLightMapMood? Mood
     {
         get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapMood?>("Mood");
-        set => SetMood(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetMoodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMood(global::GBX.NET.Engines.Hms.CHmsLightMapMood? value)
     {
@@ -94,13 +49,13 @@ public abstract class CHmsLightMapBuilderBase<TSelf> where TSelf : CHmsLightMapB
     public TSelf WithMoodReference(NodeRef<global::GBX.NET.Engines.Hms.CHmsLightMapMood> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetMoodReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetMoodReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt? PointsInSphereOpt
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt?>("PointsInSphereOpt");
-        set => SetPointsInSphereOpt(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetPointsInSphereOptAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPointsInSphereOpt(global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt? value)
     {
@@ -110,7 +65,7 @@ public abstract class CHmsLightMapBuilderBase<TSelf> where TSelf : CHmsLightMapB
     public TSelf WithPointsInSphereOptReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetPointsInSphereOptReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetPointsInSphereOptReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -120,7 +75,7 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
     public bool BackgroundUseClouds
     {
         get => state.Get<bool>("BackgroundUseClouds");
-        set => SetBackgroundUseClouds(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBackgroundUseCloudsAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBackgroundUseClouds(bool value)
     {
@@ -130,7 +85,7 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
     public global::GBX.NET.Engines.Plug.CPlugBitmapArray? BitmapArrayLightSH
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmapArray?>("BitmapArrayLightSH");
-        set => SetBitmapArrayLightSH(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapArrayLightSHAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBitmapArrayLightSH(global::GBX.NET.Engines.Plug.CPlugBitmapArray? value)
     {
@@ -140,13 +95,13 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
     public TSelf WithBitmapArrayLightSHReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapArray> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBitmapArrayLightSHReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapArrayLightSHReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapLM_ILightDir
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapLM_ILightDir");
-        set => SetBitmapLM_ILightDir(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLM_ILightDirAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBitmapLM_ILightDir(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -156,13 +111,13 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
     public TSelf WithBitmapLM_ILightDirReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBitmapLM_ILightDirReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLM_ILightDirReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapLM_ILightInput
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapLM_ILightInput");
-        set => SetBitmapLM_ILightInput(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLM_ILightInputAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBitmapLM_ILightInput(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -172,13 +127,13 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
     public TSelf WithBitmapLM_ILightInputReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBitmapLM_ILightInputReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLM_ILightInputReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapLM_LListUV
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapLM_LListUV");
-        set => SetBitmapLM_LListUV(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLM_LListUVAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBitmapLM_LListUV(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -188,13 +143,13 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
     public TSelf WithBitmapLM_LListUVReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBitmapLM_LListUVReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLM_LListUVReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapLM_LListW
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapLM_LListW");
-        set => SetBitmapLM_LListW(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLM_LListWAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBitmapLM_LListW(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -204,13 +159,13 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
     public TSelf WithBitmapLM_LListWReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBitmapLM_LListWReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLM_LListWReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapLM_LocalDirect
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapLM_LocalDirect");
-        set => SetBitmapLM_LocalDirect(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLM_LocalDirectAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBitmapLM_LocalDirect(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -220,13 +175,13 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
     public TSelf WithBitmapLM_LocalDirectReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBitmapLM_LocalDirectReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLM_LocalDirectReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugBitmapArray? BitmapLightSumBump
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmapArray?>("BitmapLightSumBump");
-        set => SetBitmapLightSumBump(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLightSumBumpAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBitmapLightSumBump(global::GBX.NET.Engines.Plug.CPlugBitmapArray? value)
     {
@@ -236,13 +191,13 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
     public TSelf WithBitmapLightSumBumpReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapArray> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBitmapLightSumBumpReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLightSumBumpReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapProbeGeom_BBoxInvHDiag_ThroughBounce
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapProbeGeom_BBoxInvHDiag_ThroughBounce");
-        set => SetBitmapProbeGeom_BBoxInvHDiag_ThroughBounce(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapProbeGeom_BBoxInvHDiag_ThroughBounceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBitmapProbeGeom_BBoxInvHDiag_ThroughBounce(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -252,13 +207,13 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
     public TSelf WithBitmapProbeGeom_BBoxInvHDiag_ThroughBounceReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBitmapProbeGeom_BBoxInvHDiag_ThroughBounceReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapProbeGeom_BBoxInvHDiag_ThroughBounceReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapSM_ColorPeeled
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapSM_ColorPeeled");
-        set => SetBitmapSM_ColorPeeled(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapSM_ColorPeeledAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBitmapSM_ColorPeeled(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -268,13 +223,13 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
     public TSelf WithBitmapSM_ColorPeeledReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBitmapSM_ColorPeeledReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapSM_ColorPeeledReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapSM_DepthToPeel
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapSM_DepthToPeel");
-        set => SetBitmapSM_DepthToPeel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapSM_DepthToPeelAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBitmapSM_DepthToPeel(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -284,13 +239,13 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
     public TSelf WithBitmapSM_DepthToPeelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBitmapSM_DepthToPeelReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapSM_DepthToPeelReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapShadow
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapShadow");
-        set => SetBitmapShadow(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapShadowAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBitmapShadow(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -300,13 +255,13 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
     public TSelf WithBitmapShadowReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBitmapShadowReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapShadowReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapSprite3x3_Light
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapSprite3x3_Light");
-        set => SetBitmapSprite3x3_Light(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapSprite3x3_LightAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBitmapSprite3x3_Light(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -316,13 +271,13 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
     public TSelf WithBitmapSprite3x3_LightReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBitmapSprite3x3_LightReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapSprite3x3_LightReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapSprite_ILightDir
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapSprite_ILightDir");
-        set => SetBitmapSprite_ILightDir(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapSprite_ILightDirAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBitmapSprite_ILightDir(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -332,13 +287,13 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
     public TSelf WithBitmapSprite_ILightDirReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBitmapSprite_ILightDirReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapSprite_ILightDirReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapSprite_PosAndRadius
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapSprite_PosAndRadius");
-        set => SetBitmapSprite_PosAndRadius(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapSprite_PosAndRadiusAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBitmapSprite_PosAndRadius(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -348,13 +303,13 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
     public TSelf WithBitmapSprite_PosAndRadiusReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBitmapSprite_PosAndRadiusReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapSprite_PosAndRadiusReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public bool ClampAmb_PosY
     {
         get => state.Get<bool>("ClampAmb_PosY");
-        set => SetClampAmb_PosY(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetClampAmb_PosYAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithClampAmb_PosY(bool value)
     {
@@ -364,7 +319,7 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
     public bool ClampDir_PosY
     {
         get => state.Get<bool>("ClampDir_PosY");
-        set => SetClampDir_PosY(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetClampDir_PosYAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithClampDir_PosY(bool value)
     {
@@ -374,7 +329,7 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
     public global::GBX.NET.Engines.Hms.CHmsLightMap.ECompressMode CompressMode
     {
         get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMap.ECompressMode>("CompressMode");
-        set => SetCompressMode(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetCompressModeAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCompressMode(global::GBX.NET.Engines.Hms.CHmsLightMap.ECompressMode value)
     {
@@ -384,7 +339,7 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
     public uint GameTimerSeconds
     {
         get => state.Get<uint>("GameTimerSeconds");
-        set => SetGameTimerSeconds(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetGameTimerSecondsAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGameTimerSeconds(uint value)
     {
@@ -394,7 +349,7 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
     public bool IsSpriteLDirInAlpha
     {
         get => state.Get<bool>("IsSpriteLDirInAlpha");
-        set => SetIsSpriteLDirInAlpha(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetIsSpriteLDirInAlphaAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIsSpriteLDirInAlpha(bool value)
     {
@@ -404,7 +359,7 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
     public bool SRGB
     {
         get => state.Get<bool>("SRGB");
-        set => SetSRGB(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetSRGBAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSRGB(bool value)
     {
@@ -414,7 +369,7 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
     public global::GBX.NET.Engines.Hms.CHmsLightMap.EStoreLDir0 StoreLDir0
     {
         get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMap.EStoreLDir0>("StoreLDir0");
-        set => SetStoreLDir0(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetStoreLDir0Assignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStoreLDir0(global::GBX.NET.Engines.Hms.CHmsLightMap.EStoreLDir0 value)
     {
@@ -424,7 +379,7 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
     public bool UseHDR
     {
         get => state.Get<bool>("UseHDR");
-        set => SetUseHDR(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetUseHDRAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithUseHDR(bool value)
     {
@@ -894,7 +849,7 @@ public partial class CHmsLightMapBuilder : CHmsLightMapBuilderBase<CHmsLightMapB
         public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapProbeGridAmbSV
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapProbeGridAmbSV");
-            set => SetBitmapProbeGridAmbSV(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapProbeGridAmbSVAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithBitmapProbeGridAmbSV(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
         {
@@ -904,7 +859,7 @@ public partial class CHmsLightMapBuilder : CHmsLightMapBuilderBase<CHmsLightMapB
         public TM2020 WithBitmapProbeGridAmbSVReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetBitmapProbeGridAmbSVReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapProbeGridAmbSVReferenceAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithBitmapProbeGridAmbSV(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? value)
@@ -914,7 +869,7 @@ public partial class CHmsLightMapBuilder : CHmsLightMapBuilderBase<CHmsLightMapB
         public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapProbeGridAmbSV_Spread1
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapProbeGridAmbSV_Spread1");
-            set => SetBitmapProbeGridAmbSV_Spread1(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapProbeGridAmbSV_Spread1Assignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithBitmapProbeGridAmbSV_Spread1(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
         {
@@ -924,7 +879,7 @@ public partial class CHmsLightMapBuilder : CHmsLightMapBuilderBase<CHmsLightMapB
         public TM2020 WithBitmapProbeGridAmbSV_Spread1Reference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetBitmapProbeGridAmbSV_Spread1Reference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapProbeGridAmbSV_Spread1ReferenceAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithBitmapProbeGridAmbSV_Spread1(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? value)

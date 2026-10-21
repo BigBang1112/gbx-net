@@ -36,12 +36,10 @@ public abstract class CSceneVehicleCarMarksModelBuilderBase<TSelf> where TSelf :
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel> state;
     private protected CSceneVehicleCarMarksModelBuilderBase() => state = new();
     private protected CSceneVehicleCarMarksModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel> state) => this.state = state;
-    private protected static void SetDisabled(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelBuilderAssignments.GetDisabledAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetModels(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel> state, NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub>? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelBuilderAssignments.GetModelsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public bool Disabled
     {
         get => state.Get<bool>("Disabled");
-        set => SetDisabled(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelBuilderAssignments.GetDisabledAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDisabled(bool value)
     {
@@ -51,7 +49,7 @@ public abstract class CSceneVehicleCarMarksModelBuilderBase<TSelf> where TSelf :
     public NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub>? Models
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub>?>("Models");
-        set => SetModels(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelBuilderAssignments.GetModelsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithModels(NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub>? value)
     {

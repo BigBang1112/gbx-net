@@ -36,12 +36,10 @@ public abstract class CPlugVehiclePhyTuningBuilderBase<TSelf> where TSelf : CPlu
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning> state;
     private protected CPlugVehiclePhyTuningBuilderBase() => state = new();
     private protected CPlugVehiclePhyTuningBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning> state) => this.state = state;
-    private protected static void SetInTuningCycle(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyTuningBuilderAssignments.GetInTuningCycleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning> state, string value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyTuningBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     public string Name
     {
         get => state.Get<string>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyTuningBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithName(string value)
     {
@@ -55,7 +53,7 @@ public abstract class CPlugVehiclePhyTuningBuilderMembers1<TSelf> : CPlugVehicle
     public bool InTuningCycle
     {
         get => state.Get<bool>("InTuningCycle");
-        set => SetInTuningCycle(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyTuningBuilderAssignments.GetInTuningCycleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInTuningCycle(bool value)
     {

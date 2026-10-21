@@ -36,13 +36,10 @@ public abstract class CPlugGameSkinAndFolderBuilderBase<TSelf> where TSelf : CPl
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder> state;
     private protected CPlugGameSkinAndFolderBuilderBase() => state = new();
     private protected CPlugGameSkinAndFolderBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder> state) => this.state = state;
-    private protected static void SetRemapFolder(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinAndFolderBuilderAssignments.GetRemapFolderAssignment(), value, GameVersion.TM2020);
-    private protected static void SetRemapping(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder> state, global::GBX.NET.Engines.Plug.CPlugGameSkin? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinAndFolderBuilderAssignments.GetRemappingAssignment(), value, GameVersion.TM2020);
-    private protected static void SetRemappingReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinAndFolderBuilderAssignments.GetRemappingReferenceAssignment(), value, GameVersion.TM2020);
     public string? RemapFolder
     {
         get => state.Get<string?>("RemapFolder");
-        set => SetRemapFolder(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinAndFolderBuilderAssignments.GetRemapFolderAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithRemapFolder(string? value)
     {
@@ -52,7 +49,7 @@ public abstract class CPlugGameSkinAndFolderBuilderBase<TSelf> where TSelf : CPl
     public global::GBX.NET.Engines.Plug.CPlugGameSkin? Remapping
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugGameSkin?>("Remapping");
-        set => SetRemapping(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinAndFolderBuilderAssignments.GetRemappingAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithRemapping(global::GBX.NET.Engines.Plug.CPlugGameSkin? value)
     {
@@ -62,7 +59,7 @@ public abstract class CPlugGameSkinAndFolderBuilderBase<TSelf> where TSelf : CPl
     public TSelf WithRemappingReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetRemappingReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinAndFolderBuilderAssignments.GetRemappingReferenceAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
     }
 }

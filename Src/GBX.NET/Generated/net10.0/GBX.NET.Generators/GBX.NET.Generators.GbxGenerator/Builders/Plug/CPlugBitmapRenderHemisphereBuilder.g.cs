@@ -36,31 +36,10 @@ public abstract class CPlugBitmapRenderHemisphereBuilderBase<TSelf> where TSelf 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderHemisphere> state;
     private protected CPlugBitmapRenderHemisphereBuilderBase() => state = new();
     private protected CPlugBitmapRenderHemisphereBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderHemisphere> state) => this.state = state;
-    private protected static void SetAutoScaleWithPower(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderHemisphere> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderHemisphereBuilderAssignments.GetAutoScaleWithPowerAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBitmapClear(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderHemisphere> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetBitmapClearAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBitmapClearReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderHemisphere> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetBitmapClearReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBitmapClearUV(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderHemisphere> state, Vec2? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetBitmapClearUVAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetClearColor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderHemisphere> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetClearColorAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFogCustomFarZ(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderHemisphere> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetFogCustomFarZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetHemiLayout(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderHemisphere> state, global::GBX.NET.Engines.Plug.CPlugBitmapRenderHemisphere.EHemiLayout value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderHemisphereBuilderAssignments.GetHemiLayoutAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIVIdMask(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderHemisphere> state, ushort value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetIVIdMaskAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIVIdRef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderHemisphere> state, ushort value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetIVIdRefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLegacyRenderFlags(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderHemisphere> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetLegacyRenderFlagsAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
-    private protected static void SetRenderFlags(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderHemisphere> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderFlagsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRenderFlags2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderHemisphere> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderFlags2Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRenderPath(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderHemisphere> state, global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPath value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderPathAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRenderPathFails(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderHemisphere> state, global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPathFails value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderPathFailsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRenderSub(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderHemisphere> state, global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderSubAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRenderSubReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderHemisphere> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderSubReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSVIdMask(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderHemisphere> state, ushort value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetSVIdMaskAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSVIdRef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderHemisphere> state, ushort value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetSVIdRefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSpecularPower0(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderHemisphere> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderHemisphereBuilderAssignments.GetSpecularPower0Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSpecularPower1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderHemisphere> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderHemisphereBuilderAssignments.GetSpecularPower1Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetUseLightDir(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderHemisphere> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderHemisphereBuilderAssignments.GetUseLightDirAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public ushort IVIdMask
     {
         get => state.Get<ushort>("IVIdMask");
-        set => SetIVIdMask(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetIVIdMaskAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIVIdMask(ushort value)
     {
@@ -70,7 +49,7 @@ public abstract class CPlugBitmapRenderHemisphereBuilderBase<TSelf> where TSelf 
     public ushort IVIdRef
     {
         get => state.Get<ushort>("IVIdRef");
-        set => SetIVIdRef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetIVIdRefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIVIdRef(ushort value)
     {
@@ -80,7 +59,7 @@ public abstract class CPlugBitmapRenderHemisphereBuilderBase<TSelf> where TSelf 
     public ushort SVIdMask
     {
         get => state.Get<ushort>("SVIdMask");
-        set => SetSVIdMask(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetSVIdMaskAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSVIdMask(ushort value)
     {
@@ -90,7 +69,7 @@ public abstract class CPlugBitmapRenderHemisphereBuilderBase<TSelf> where TSelf 
     public ushort SVIdRef
     {
         get => state.Get<ushort>("SVIdRef");
-        set => SetSVIdRef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetSVIdRefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSVIdRef(ushort value)
     {
@@ -104,7 +83,7 @@ public abstract class CPlugBitmapRenderHemisphereBuilderMembers1<TSelf> : CPlugB
     public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapClear
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapClear");
-        set => SetBitmapClear(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetBitmapClearAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBitmapClear(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -114,13 +93,13 @@ public abstract class CPlugBitmapRenderHemisphereBuilderMembers1<TSelf> : CPlugB
     public TSelf WithBitmapClearReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBitmapClearReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetBitmapClearReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public Vec2? BitmapClearUV
     {
         get => state.Get<Vec2?>("BitmapClearUV");
-        set => SetBitmapClearUV(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetBitmapClearUVAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBitmapClearUV(Vec2? value)
     {
@@ -130,7 +109,7 @@ public abstract class CPlugBitmapRenderHemisphereBuilderMembers1<TSelf> : CPlugB
     public uint ClearColor
     {
         get => state.Get<uint>("ClearColor");
-        set => SetClearColor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetClearColorAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithClearColor(uint value)
     {
@@ -144,7 +123,7 @@ public abstract class CPlugBitmapRenderHemisphereBuilderMembers2<TSelf> : CPlugB
     public global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPath RenderPath
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPath>("RenderPath");
-        set => SetRenderPath(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderPathAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRenderPath(global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPath value)
     {
@@ -154,7 +133,7 @@ public abstract class CPlugBitmapRenderHemisphereBuilderMembers2<TSelf> : CPlugB
     public global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPathFails RenderPathFails
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPathFails>("RenderPathFails");
-        set => SetRenderPathFails(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderPathFailsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRenderPathFails(global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPathFails value)
     {
@@ -168,7 +147,7 @@ public abstract class CPlugBitmapRenderHemisphereBuilderMembers3<TSelf> : CPlugB
     public float FogCustomFarZ
     {
         get => state.Get<float>("FogCustomFarZ");
-        set => SetFogCustomFarZ(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetFogCustomFarZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFogCustomFarZ(float value)
     {
@@ -178,7 +157,7 @@ public abstract class CPlugBitmapRenderHemisphereBuilderMembers3<TSelf> : CPlugB
     public global::GBX.NET.Engines.Plug.CPlugBitmapRenderHemisphere.EHemiLayout HemiLayout
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmapRenderHemisphere.EHemiLayout>("HemiLayout");
-        set => SetHemiLayout(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderHemisphereBuilderAssignments.GetHemiLayoutAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithHemiLayout(global::GBX.NET.Engines.Plug.CPlugBitmapRenderHemisphere.EHemiLayout value)
     {
@@ -188,7 +167,7 @@ public abstract class CPlugBitmapRenderHemisphereBuilderMembers3<TSelf> : CPlugB
     public uint RenderFlags
     {
         get => state.Get<uint>("RenderFlags");
-        set => SetRenderFlags(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderFlagsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRenderFlags(uint value)
     {
@@ -198,7 +177,7 @@ public abstract class CPlugBitmapRenderHemisphereBuilderMembers3<TSelf> : CPlugB
     public float SpecularPower0
     {
         get => state.Get<float>("SpecularPower0");
-        set => SetSpecularPower0(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderHemisphereBuilderAssignments.GetSpecularPower0Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSpecularPower0(float value)
     {
@@ -208,7 +187,7 @@ public abstract class CPlugBitmapRenderHemisphereBuilderMembers3<TSelf> : CPlugB
     public float SpecularPower1
     {
         get => state.Get<float>("SpecularPower1");
-        set => SetSpecularPower1(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderHemisphereBuilderAssignments.GetSpecularPower1Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSpecularPower1(float value)
     {
@@ -222,7 +201,7 @@ public abstract class CPlugBitmapRenderHemisphereBuilderMembers4<TSelf> : CPlugB
     public uint RenderFlags2
     {
         get => state.Get<uint>("RenderFlags2");
-        set => SetRenderFlags2(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderFlags2Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRenderFlags2(uint value)
     {
@@ -232,7 +211,7 @@ public abstract class CPlugBitmapRenderHemisphereBuilderMembers4<TSelf> : CPlugB
     public global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub? RenderSub
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub?>("RenderSub");
-        set => SetRenderSub(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderSubAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRenderSub(global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub? value)
     {
@@ -242,7 +221,7 @@ public abstract class CPlugBitmapRenderHemisphereBuilderMembers4<TSelf> : CPlugB
     public TSelf WithRenderSubReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetRenderSubReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderSubReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -252,7 +231,7 @@ public abstract class CPlugBitmapRenderHemisphereBuilderMembers5<TSelf> : CPlugB
     public bool AutoScaleWithPower
     {
         get => state.Get<bool>("AutoScaleWithPower");
-        set => SetAutoScaleWithPower(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderHemisphereBuilderAssignments.GetAutoScaleWithPowerAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAutoScaleWithPower(bool value)
     {
@@ -262,7 +241,7 @@ public abstract class CPlugBitmapRenderHemisphereBuilderMembers5<TSelf> : CPlugB
     public bool UseLightDir
     {
         get => state.Get<bool>("UseLightDir");
-        set => SetUseLightDir(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderHemisphereBuilderAssignments.GetUseLightDirAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithUseLightDir(bool value)
     {
@@ -455,7 +434,7 @@ public partial class CPlugBitmapRenderHemisphereBuilder : CPlugBitmapRenderHemis
         public uint LegacyRenderFlags
         {
             get => state.Get<uint>("LegacyRenderFlags");
-            set => SetLegacyRenderFlags(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetLegacyRenderFlagsAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
         }
         public TM10 WithLegacyRenderFlags(uint value)
         {
@@ -487,7 +466,7 @@ public partial class CPlugBitmapRenderHemisphereBuilder : CPlugBitmapRenderHemis
         public uint LegacyRenderFlags
         {
             get => state.Get<uint>("LegacyRenderFlags");
-            set => SetLegacyRenderFlags(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetLegacyRenderFlagsAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
         }
         public TMPU WithLegacyRenderFlags(uint value)
         {
@@ -615,7 +594,7 @@ public partial class CPlugBitmapRenderHemisphereBuilder : CPlugBitmapRenderHemis
         public float FogCustomFarZ
         {
             get => state.Get<float>("FogCustomFarZ");
-            set => SetFogCustomFarZ(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetFogCustomFarZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP3 WithFogCustomFarZ(float value)
         {
@@ -625,7 +604,7 @@ public partial class CPlugBitmapRenderHemisphereBuilder : CPlugBitmapRenderHemis
         public global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub? RenderSub
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub?>("RenderSub");
-            set => SetRenderSub(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderSubAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP3 WithRenderSub(global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub? value)
         {
@@ -635,7 +614,7 @@ public partial class CPlugBitmapRenderHemisphereBuilder : CPlugBitmapRenderHemis
         public MP3 WithRenderSubReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetRenderSubReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderSubReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public MP3 WithRenderSub(global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubMP3? value)

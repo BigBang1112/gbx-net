@@ -36,7 +36,6 @@ public abstract class CPlugSurfaceGeomBuilderBase<TSelf> where TSelf : CPlugSurf
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom> state;
     private protected CPlugSurfaceGeomBuilderBase() => state = new();
     private protected CPlugSurfaceGeomBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom> state) => this.state = state;
-    private protected static void SetBoundingBox(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom> state, BoxAligned value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSurfaceGeomBuilderAssignments.GetBoundingBoxAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
 }
 public abstract class CPlugSurfaceGeomBuilderMembers1<TSelf> : CPlugSurfaceGeomBuilderBase<TSelf> where TSelf : CPlugSurfaceGeomBuilderMembers1<TSelf>
 {
@@ -44,7 +43,7 @@ public abstract class CPlugSurfaceGeomBuilderMembers1<TSelf> : CPlugSurfaceGeomB
     public BoxAligned BoundingBox
     {
         get => state.Get<BoxAligned>("BoundingBox");
-        set => SetBoundingBox(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSurfaceGeomBuilderAssignments.GetBoundingBoxAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithBoundingBox(BoxAligned value)
     {

@@ -36,11 +36,10 @@ public abstract class CPlugBitmapApplyArrayBuilderBase<TSelf> where TSelf : CPlu
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray> state;
     private protected CPlugBitmapApplyArrayBuilderBase() => state = new();
     private protected CPlugBitmapApplyArrayBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray> state) => this.state = state;
-    private protected static void SetBitmapAddresses(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapApplyArrayBuilderAssignments.GetBitmapAddressesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>? BitmapAddresses
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>?>("BitmapAddresses");
-        set => SetBitmapAddresses(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapApplyArrayBuilderAssignments.GetBitmapAddressesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBitmapAddresses(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>? value)
     {

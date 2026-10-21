@@ -36,11 +36,10 @@ public abstract class CGameCtnMediaClipGroupBuilderBase<TSelf> where TSelf : CGa
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> state;
     private protected CGameCtnMediaClipGroupBuilderBase() => state = new();
     private protected CGameCtnMediaClipGroupBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> state) => this.state = state;
-    private protected static void SetClips(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> state, global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup.ClipTrigger> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipGroupBuilderAssignments.GetClipsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup.ClipTrigger> Clips
     {
         get => state.Get<global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup.ClipTrigger>>("Clips");
-        set => SetClips(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipGroupBuilderAssignments.GetClipsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithClips(global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup.ClipTrigger> value)
     {

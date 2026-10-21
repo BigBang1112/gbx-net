@@ -36,13 +36,10 @@ public abstract class CGameSaveLaunchedCheckpointsBuilderBase<TSelf> where TSelf
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints> state;
     private protected CGameSaveLaunchedCheckpointsBuilderBase() => state = new();
     private protected CGameSaveLaunchedCheckpointsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints> state) => this.state = state;
-    private protected static void SetCheckpoints(NodeBuilderState<global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints> state, global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints.Checkpoint[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameSaveLaunchedCheckpointsBuilderAssignments.GetCheckpointsAssignment(), value, GameVersion.TM2020);
-    private protected static void SetRecordVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameSaveLaunchedCheckpointsBuilderAssignments.GetRecordVersionAssignment(), value, GameVersion.TM2020);
-    private protected static void SetSnapshots(NodeBuilderState<global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints> state, global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints.Snapshot[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameSaveLaunchedCheckpointsBuilderAssignments.GetSnapshotsAssignment(), value, GameVersion.TM2020);
     public global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints.Checkpoint[]? Checkpoints
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints.Checkpoint[]?>("Checkpoints");
-        set => SetCheckpoints(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameSaveLaunchedCheckpointsBuilderAssignments.GetCheckpointsAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithCheckpoints(params global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints.Checkpoint[]? value)
     {
@@ -56,7 +53,7 @@ public abstract class CGameSaveLaunchedCheckpointsBuilderBase<TSelf> where TSelf
     public int RecordVersion
     {
         get => state.Get<int>("RecordVersion");
-        set => SetRecordVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameSaveLaunchedCheckpointsBuilderAssignments.GetRecordVersionAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithRecordVersion(int value)
     {
@@ -66,7 +63,7 @@ public abstract class CGameSaveLaunchedCheckpointsBuilderBase<TSelf> where TSelf
     public global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints.Snapshot[]? Snapshots
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints.Snapshot[]?>("Snapshots");
-        set => SetSnapshots(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameSaveLaunchedCheckpointsBuilderAssignments.GetSnapshotsAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithSnapshots(params global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints.Snapshot[]? value)
     {

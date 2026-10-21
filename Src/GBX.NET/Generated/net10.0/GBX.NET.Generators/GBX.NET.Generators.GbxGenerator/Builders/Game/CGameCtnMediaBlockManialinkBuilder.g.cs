@@ -36,13 +36,10 @@ public abstract class CGameCtnMediaBlockManialinkBuilderBase<TSelf> where TSelf 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockManialink> state;
     private protected CGameCtnMediaBlockManialinkBuilderBase() => state = new();
     private protected CGameCtnMediaBlockManialinkBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockManialink> state) => this.state = state;
-    private protected static void SetEnd(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockManialink> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockManialinkBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetManialinkUrl(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockManialink> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockManialinkBuilderAssignments.GetManialinkUrlAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetStart(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockManialink> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockManialinkBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public TimeSingle End
     {
         get => state.Get<TimeSingle>("End");
-        set => SetEnd(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockManialinkBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEnd(TimeSingle value)
     {
@@ -52,7 +49,7 @@ public abstract class CGameCtnMediaBlockManialinkBuilderBase<TSelf> where TSelf 
     public string? ManialinkUrl
     {
         get => state.Get<string?>("ManialinkUrl");
-        set => SetManialinkUrl(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockManialinkBuilderAssignments.GetManialinkUrlAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithManialinkUrl(string? value)
     {
@@ -62,7 +59,7 @@ public abstract class CGameCtnMediaBlockManialinkBuilderBase<TSelf> where TSelf 
     public TimeSingle Start
     {
         get => state.Get<TimeSingle>("Start");
-        set => SetStart(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockManialinkBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStart(TimeSingle value)
     {

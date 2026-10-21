@@ -36,22 +36,10 @@ public abstract class CPlugCloudsBuilderBase<TSelf> where TSelf : CPlugCloudsBui
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugClouds> state;
     private protected CPlugCloudsBuilderBase() => state = new();
     private protected CPlugCloudsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugClouds> state) => this.state = state;
-    private protected static void SetBottomFarZ(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugClouds> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetBottomFarZAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetBottomNearZ(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugClouds> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetBottomNearZAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetHeightCenter(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugClouds> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetHeightCenterAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetHeightCenterXZ(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugClouds> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetHeightCenterXZAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetImageColorMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugClouds> state, global::GBX.NET.Engines.Plug.CPlugFileImg? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetImageColorMaxAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetImageColorMaxReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugClouds> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetImageColorMaxReferenceAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetImageColorMin(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugClouds> state, global::GBX.NET.Engines.Plug.CPlugFileImg? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetImageColorMinAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetImageColorMinReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugClouds> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetImageColorMinReferenceAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetLighting(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugClouds> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetLightingAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetPointHeights(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugClouds> state, Vec2[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetPointHeightsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
-    private protected static void SetSolidFids(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugClouds> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugSolid>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetSolidFidsAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetSpeedScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugClouds> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetSpeedScaleAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     public Vec2[]? PointHeights
     {
         get => state.Get<Vec2[]?>("PointHeights");
-        set => SetPointHeights(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetPointHeightsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithPointHeights(params Vec2[]? value)
     {
@@ -69,7 +57,7 @@ public abstract class CPlugCloudsBuilderMembers1<TSelf> : CPlugCloudsBuilderBase
     public float BottomFarZ
     {
         get => state.Get<float>("BottomFarZ");
-        set => SetBottomFarZ(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetBottomFarZAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithBottomFarZ(float value)
     {
@@ -79,7 +67,7 @@ public abstract class CPlugCloudsBuilderMembers1<TSelf> : CPlugCloudsBuilderBase
     public float BottomNearZ
     {
         get => state.Get<float>("BottomNearZ");
-        set => SetBottomNearZ(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetBottomNearZAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithBottomNearZ(float value)
     {
@@ -89,7 +77,7 @@ public abstract class CPlugCloudsBuilderMembers1<TSelf> : CPlugCloudsBuilderBase
     public int HeightCenter
     {
         get => state.Get<int>("HeightCenter");
-        set => SetHeightCenter(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetHeightCenterAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithHeightCenter(int value)
     {
@@ -99,7 +87,7 @@ public abstract class CPlugCloudsBuilderMembers1<TSelf> : CPlugCloudsBuilderBase
     public Vec2 HeightCenterXZ
     {
         get => state.Get<Vec2>("HeightCenterXZ");
-        set => SetHeightCenterXZ(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetHeightCenterXZAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithHeightCenterXZ(Vec2 value)
     {
@@ -109,7 +97,7 @@ public abstract class CPlugCloudsBuilderMembers1<TSelf> : CPlugCloudsBuilderBase
     public global::GBX.NET.Engines.Plug.CPlugFileImg? ImageColorMax
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugFileImg?>("ImageColorMax");
-        set => SetImageColorMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetImageColorMaxAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithImageColorMax(global::GBX.NET.Engines.Plug.CPlugFileImg? value)
     {
@@ -119,13 +107,13 @@ public abstract class CPlugCloudsBuilderMembers1<TSelf> : CPlugCloudsBuilderBase
     public TSelf WithImageColorMaxReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetImageColorMaxReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetImageColorMaxReferenceAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugFileImg? ImageColorMin
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugFileImg?>("ImageColorMin");
-        set => SetImageColorMin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetImageColorMinAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithImageColorMin(global::GBX.NET.Engines.Plug.CPlugFileImg? value)
     {
@@ -135,13 +123,13 @@ public abstract class CPlugCloudsBuilderMembers1<TSelf> : CPlugCloudsBuilderBase
     public TSelf WithImageColorMinReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetImageColorMinReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetImageColorMinReferenceAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
     }
     public int Lighting
     {
         get => state.Get<int>("Lighting");
-        set => SetLighting(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetLightingAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithLighting(int value)
     {
@@ -151,7 +139,7 @@ public abstract class CPlugCloudsBuilderMembers1<TSelf> : CPlugCloudsBuilderBase
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugSolid>? SolidFids
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugSolid>?>("SolidFids");
-        set => SetSolidFids(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetSolidFidsAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithSolidFids(NodeRefList<global::GBX.NET.Engines.Plug.CPlugSolid>? value)
     {
@@ -169,7 +157,7 @@ public abstract class CPlugCloudsBuilderMembers1<TSelf> : CPlugCloudsBuilderBase
     public float SpeedScale
     {
         get => state.Get<float>("SpeedScale");
-        set => SetSpeedScale(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetSpeedScaleAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithSpeedScale(float value)
     {

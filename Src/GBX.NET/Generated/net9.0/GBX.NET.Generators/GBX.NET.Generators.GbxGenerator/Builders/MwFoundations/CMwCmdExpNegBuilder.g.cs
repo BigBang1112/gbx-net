@@ -36,15 +36,10 @@ public abstract class CMwCmdExpNegBuilderBase<TSelf> where TSelf : CMwCmdExpNegB
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNeg> state;
     private protected CMwCmdExpNegBuilderBase() => state = new();
     private protected CMwCmdExpNegBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNeg> state) => this.state = state;
-    private protected static void SetInteger(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNeg> state, int value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumBuilderAssignments.GetIntegerAssignment(), value, GameVersion.TMF);
-    private protected static void SetReal(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNeg> state, float value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumBuilderAssignments.GetRealAssignment(), value, GameVersion.TMF);
-    private protected static void SetType(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNeg> state, int value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumBuilderAssignments.GetTypeAssignment(), value, GameVersion.TMF);
-    private protected static void SetValue(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNeg> state, global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNegBuilderAssignments.GetValueAssignment(), value, GameVersion.TMF);
-    private protected static void SetValueReference(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNeg> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNegBuilderAssignments.GetValueReferenceAssignment(), value, GameVersion.TMF);
     public int Integer
     {
         get => state.Get<int>("Integer");
-        set => SetInteger(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumBuilderAssignments.GetIntegerAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithInteger(int value)
     {
@@ -54,7 +49,7 @@ public abstract class CMwCmdExpNegBuilderBase<TSelf> where TSelf : CMwCmdExpNegB
     public float Real
     {
         get => state.Get<float>("Real");
-        set => SetReal(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumBuilderAssignments.GetRealAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithReal(float value)
     {
@@ -64,7 +59,7 @@ public abstract class CMwCmdExpNegBuilderBase<TSelf> where TSelf : CMwCmdExpNegB
     public int Type
     {
         get => state.Get<int>("Type");
-        set => SetType(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumBuilderAssignments.GetTypeAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithType(int value)
     {
@@ -74,7 +69,7 @@ public abstract class CMwCmdExpNegBuilderBase<TSelf> where TSelf : CMwCmdExpNegB
     public global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Value
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdExp?>("Value");
-        set => SetValue(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNegBuilderAssignments.GetValueAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithValue(global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value)
     {
@@ -84,7 +79,7 @@ public abstract class CMwCmdExpNegBuilderBase<TSelf> where TSelf : CMwCmdExpNegB
     public TSelf WithValueReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetValueReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNegBuilderAssignments.GetValueReferenceAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
 }

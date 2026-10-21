@@ -36,75 +36,10 @@ public abstract class CPlugParticleEmitterSubModelBuilderBase<TSelf> where TSelf
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state;
     private protected CPlugParticleEmitterSubModelBuilderBase() => state = new();
     private protected CPlugParticleEmitterSubModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state) => this.state = state;
-    private protected static void SetBeamLengthSpeedScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetBeamLengthSpeedScaleAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetCircularTrailVertPerPartCount(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetCircularTrailVertPerPartCountAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetCollisionBounce(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetCollisionBounceAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetCollisionDamper(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetCollisionDamperAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetCollisionEnabled(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetCollisionEnabledAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetCollisionRadius(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetCollisionRadiusAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetColorBirthUseIntensity(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetColorBirthUseIntensityAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetColorGradient(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, global::GBX.NET.Engines.Function.CFuncColorGradient? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetColorGradientAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetColorGradientReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, NodeRef<global::GBX.NET.Engines.Function.CFuncColorGradient> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetColorGradientReferenceAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetColorGradientUse(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetColorGradientUseAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetColorModulateWithTransparency(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetColorModulateWithTransparencyAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetFluidFrictionBirth(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetFluidFrictionBirthAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetFluidFrictionBirthIntensityBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetFluidFrictionBirthIntensityBaseAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetFluidFrictionBirthUseIntensity(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetFluidFrictionBirthUseIntensityAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetFluidFrictionBirthVariation(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetFluidFrictionBirthVariationAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetIntensityFilter(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, global::GBX.NET.Engines.Function.CFuncEnvelope? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetIntensityFilterAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetIntensityFilterReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, NodeRef<global::GBX.NET.Engines.Function.CFuncEnvelope> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetIntensityFilterReferenceAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetLife(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetLifeAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetLifeVariation(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetLifeVariationAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetMaterial(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, global::GBX.NET.Engines.Plug.CPlugMaterial? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetMaterialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMaterialReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetMaterialReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMaxParticleCount(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetMaxParticleCountAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetMeshRef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetMeshRefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMultiStateRenderMode(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetMultiStateRenderModeAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetMultiState_IsAsyncLink(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetMultiState_IsAsyncLinkAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
-    private protected static void SetParticleEmitterSubModel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.EPlugParticleEmitterSubModel value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetParticleEmitterSubModelAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetPrecalcEnabled(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetPrecalcEnabledAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetPrecalcPartCount(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetPrecalcPartCountAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetPrecalcSampleRate(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetPrecalcSampleRateAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetRollSpeedBirth(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetRollSpeedBirthAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetRollSpeedBirthVariation(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetRollSpeedBirthVariationAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetShader(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, global::GBX.NET.Engines.Plug.CPlugShader? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetShaderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetShaderReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetShaderReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSizeBirth(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeBirthAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSizeBirthEmissionZoneScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeBirthEmissionZoneScaleAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSizeBirthRatioXY(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeBirthRatioXYAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSizeBirthUseEmissionZone(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeBirthUseEmissionZoneAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSizeBirthUseIntensity(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeBirthUseIntensityAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSizeBirthVariation(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeBirthVariationAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSizeOverLife(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, global::GBX.NET.Engines.Function.CFuncEnvelope? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeOverLifeAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSizeOverLifeReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, NodeRef<global::GBX.NET.Engines.Function.CFuncEnvelope> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeOverLifeReferenceAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSizeUseSizeX(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeUseSizeXAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSizeXOverLife(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, global::GBX.NET.Engines.Function.CFuncEnvelope? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeXOverLifeAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSizeXOverLifeReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, NodeRef<global::GBX.NET.Engines.Function.CFuncEnvelope> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeXOverLifeReferenceAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSolid2Model(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, global::GBX.NET.Engines.Plug.CPlugSolid2Model? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSolid2ModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSolid2ModelReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid2Model> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSolid2ModelReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSortSprites(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSortSpritesAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetSpawnCond(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSpawnCondAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSpawnMinDist(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSpawnMinDistAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSpawnPeriod(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSpawnPeriodAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSpritePivotPoint(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSpritePivotPointAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetStandardRenderMode(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetStandardRenderModeAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetTextureAtlas(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetTextureAtlasAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetTextureAtlasDimX(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetTextureAtlasDimXAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetTextureAtlasDimY(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetTextureAtlasDimYAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetTextureAtlasFixedIndex(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetTextureAtlasFixedIndexAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetTransparencyBirth(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetTransparencyBirthAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetTransparencyBirthUseIntensity(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetTransparencyBirthUseIntensityAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetTransparencyBirthVariation(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetTransparencyBirthVariationAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetTransparencyOverLife(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, global::GBX.NET.Engines.Function.CFuncEnvelope? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetTransparencyOverLifeAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetTransparencyOverLifeReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, NodeRef<global::GBX.NET.Engines.Function.CFuncEnvelope> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetTransparencyOverLifeReferenceAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetUScaleDist(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetUScaleDistAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetVScaleDist(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetVScaleDistAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetWeightBirth(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetWeightBirthAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetWeightBirthVariation(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetWeightBirthVariationAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     public global::GBX.NET.Engines.Plug.CPlugMaterial? Material
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("Material");
-        set => SetMaterial(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetMaterialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMaterial(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
     {
@@ -114,13 +49,13 @@ public abstract class CPlugParticleEmitterSubModelBuilderBase<TSelf> where TSelf
     public TSelf WithMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetMaterialReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetMaterialReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugShader? Shader
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugShader?>("Shader");
-        set => SetShader(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetShaderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithShader(global::GBX.NET.Engines.Plug.CPlugShader? value)
     {
@@ -130,7 +65,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderBase<TSelf> where TSelf
     public TSelf WithShaderReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetShaderReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetShaderReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -140,7 +75,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers1<TSelf> : CPlug
     public string? MeshRef
     {
         get => state.Get<string?>("MeshRef");
-        set => SetMeshRef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetMeshRefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMeshRef(string? value)
     {
@@ -150,7 +85,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers1<TSelf> : CPlug
     public global::GBX.NET.Engines.Plug.CPlugSolid2Model? Solid2Model
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSolid2Model?>("Solid2Model");
-        set => SetSolid2Model(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSolid2ModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSolid2Model(global::GBX.NET.Engines.Plug.CPlugSolid2Model? value)
     {
@@ -160,7 +95,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers1<TSelf> : CPlug
     public TSelf WithSolid2ModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid2Model> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSolid2ModelReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSolid2ModelReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -170,7 +105,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public int CircularTrailVertPerPartCount
     {
         get => state.Get<int>("CircularTrailVertPerPartCount");
-        set => SetCircularTrailVertPerPartCount(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetCircularTrailVertPerPartCountAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithCircularTrailVertPerPartCount(int value)
     {
@@ -180,7 +115,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public bool ColorBirthUseIntensity
     {
         get => state.Get<bool>("ColorBirthUseIntensity");
-        set => SetColorBirthUseIntensity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetColorBirthUseIntensityAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithColorBirthUseIntensity(bool value)
     {
@@ -190,7 +125,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public global::GBX.NET.Engines.Function.CFuncColorGradient? ColorGradient
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncColorGradient?>("ColorGradient");
-        set => SetColorGradient(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetColorGradientAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithColorGradient(global::GBX.NET.Engines.Function.CFuncColorGradient? value)
     {
@@ -200,13 +135,13 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public TSelf WithColorGradientReference(NodeRef<global::GBX.NET.Engines.Function.CFuncColorGradient> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetColorGradientReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetColorGradientReferenceAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public int ColorGradientUse
     {
         get => state.Get<int>("ColorGradientUse");
-        set => SetColorGradientUse(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetColorGradientUseAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithColorGradientUse(int value)
     {
@@ -216,7 +151,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public bool ColorModulateWithTransparency
     {
         get => state.Get<bool>("ColorModulateWithTransparency");
-        set => SetColorModulateWithTransparency(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetColorModulateWithTransparencyAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithColorModulateWithTransparency(bool value)
     {
@@ -226,7 +161,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public float FluidFrictionBirth
     {
         get => state.Get<float>("FluidFrictionBirth");
-        set => SetFluidFrictionBirth(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetFluidFrictionBirthAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithFluidFrictionBirth(float value)
     {
@@ -236,7 +171,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public float FluidFrictionBirthIntensityBase
     {
         get => state.Get<float>("FluidFrictionBirthIntensityBase");
-        set => SetFluidFrictionBirthIntensityBase(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetFluidFrictionBirthIntensityBaseAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithFluidFrictionBirthIntensityBase(float value)
     {
@@ -246,7 +181,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public bool FluidFrictionBirthUseIntensity
     {
         get => state.Get<bool>("FluidFrictionBirthUseIntensity");
-        set => SetFluidFrictionBirthUseIntensity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetFluidFrictionBirthUseIntensityAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithFluidFrictionBirthUseIntensity(bool value)
     {
@@ -256,7 +191,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public float FluidFrictionBirthVariation
     {
         get => state.Get<float>("FluidFrictionBirthVariation");
-        set => SetFluidFrictionBirthVariation(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetFluidFrictionBirthVariationAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithFluidFrictionBirthVariation(float value)
     {
@@ -266,7 +201,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public global::GBX.NET.Engines.Function.CFuncEnvelope? IntensityFilter
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncEnvelope?>("IntensityFilter");
-        set => SetIntensityFilter(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetIntensityFilterAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithIntensityFilter(global::GBX.NET.Engines.Function.CFuncEnvelope? value)
     {
@@ -276,13 +211,13 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public TSelf WithIntensityFilterReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnvelope> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetIntensityFilterReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetIntensityFilterReferenceAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public float Life
     {
         get => state.Get<float>("Life");
-        set => SetLife(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetLifeAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithLife(float value)
     {
@@ -292,7 +227,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public float LifeVariation
     {
         get => state.Get<float>("LifeVariation");
-        set => SetLifeVariation(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetLifeVariationAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithLifeVariation(float value)
     {
@@ -302,7 +237,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public int MaxParticleCount
     {
         get => state.Get<int>("MaxParticleCount");
-        set => SetMaxParticleCount(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetMaxParticleCountAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithMaxParticleCount(int value)
     {
@@ -312,7 +247,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public int MultiStateRenderMode
     {
         get => state.Get<int>("MultiStateRenderMode");
-        set => SetMultiStateRenderMode(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetMultiStateRenderModeAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithMultiStateRenderMode(int value)
     {
@@ -322,7 +257,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.EPlugParticleEmitterSubModel ParticleEmitterSubModel
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.EPlugParticleEmitterSubModel>("ParticleEmitterSubModel");
-        set => SetParticleEmitterSubModel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetParticleEmitterSubModelAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithParticleEmitterSubModel(global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.EPlugParticleEmitterSubModel value)
     {
@@ -332,7 +267,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public float RollSpeedBirth
     {
         get => state.Get<float>("RollSpeedBirth");
-        set => SetRollSpeedBirth(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetRollSpeedBirthAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithRollSpeedBirth(float value)
     {
@@ -342,7 +277,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public float RollSpeedBirthVariation
     {
         get => state.Get<float>("RollSpeedBirthVariation");
-        set => SetRollSpeedBirthVariation(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetRollSpeedBirthVariationAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithRollSpeedBirthVariation(float value)
     {
@@ -352,7 +287,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public float SizeBirth
     {
         get => state.Get<float>("SizeBirth");
-        set => SetSizeBirth(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeBirthAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSizeBirth(float value)
     {
@@ -362,7 +297,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public float SizeBirthEmissionZoneScale
     {
         get => state.Get<float>("SizeBirthEmissionZoneScale");
-        set => SetSizeBirthEmissionZoneScale(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeBirthEmissionZoneScaleAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSizeBirthEmissionZoneScale(float value)
     {
@@ -372,7 +307,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public float SizeBirthRatioXY
     {
         get => state.Get<float>("SizeBirthRatioXY");
-        set => SetSizeBirthRatioXY(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeBirthRatioXYAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSizeBirthRatioXY(float value)
     {
@@ -382,7 +317,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public bool SizeBirthUseEmissionZone
     {
         get => state.Get<bool>("SizeBirthUseEmissionZone");
-        set => SetSizeBirthUseEmissionZone(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeBirthUseEmissionZoneAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSizeBirthUseEmissionZone(bool value)
     {
@@ -392,7 +327,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public bool SizeBirthUseIntensity
     {
         get => state.Get<bool>("SizeBirthUseIntensity");
-        set => SetSizeBirthUseIntensity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeBirthUseIntensityAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSizeBirthUseIntensity(bool value)
     {
@@ -402,7 +337,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public float SizeBirthVariation
     {
         get => state.Get<float>("SizeBirthVariation");
-        set => SetSizeBirthVariation(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeBirthVariationAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSizeBirthVariation(float value)
     {
@@ -412,7 +347,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public global::GBX.NET.Engines.Function.CFuncEnvelope? SizeOverLife
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncEnvelope?>("SizeOverLife");
-        set => SetSizeOverLife(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeOverLifeAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSizeOverLife(global::GBX.NET.Engines.Function.CFuncEnvelope? value)
     {
@@ -422,13 +357,13 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public TSelf WithSizeOverLifeReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnvelope> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSizeOverLifeReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeOverLifeReferenceAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public bool SizeUseSizeX
     {
         get => state.Get<bool>("SizeUseSizeX");
-        set => SetSizeUseSizeX(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeUseSizeXAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSizeUseSizeX(bool value)
     {
@@ -438,7 +373,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public global::GBX.NET.Engines.Function.CFuncEnvelope? SizeXOverLife
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncEnvelope?>("SizeXOverLife");
-        set => SetSizeXOverLife(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeXOverLifeAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSizeXOverLife(global::GBX.NET.Engines.Function.CFuncEnvelope? value)
     {
@@ -448,13 +383,13 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public TSelf WithSizeXOverLifeReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnvelope> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSizeXOverLifeReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeXOverLifeReferenceAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public int SpawnCond
     {
         get => state.Get<int>("SpawnCond");
-        set => SetSpawnCond(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSpawnCondAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSpawnCond(int value)
     {
@@ -464,7 +399,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public float SpawnMinDist
     {
         get => state.Get<float>("SpawnMinDist");
-        set => SetSpawnMinDist(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSpawnMinDistAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSpawnMinDist(float value)
     {
@@ -474,7 +409,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public float SpawnPeriod
     {
         get => state.Get<float>("SpawnPeriod");
-        set => SetSpawnPeriod(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSpawnPeriodAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSpawnPeriod(float value)
     {
@@ -484,7 +419,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public Vec2 SpritePivotPoint
     {
         get => state.Get<Vec2>("SpritePivotPoint");
-        set => SetSpritePivotPoint(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSpritePivotPointAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSpritePivotPoint(Vec2 value)
     {
@@ -494,7 +429,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public int StandardRenderMode
     {
         get => state.Get<int>("StandardRenderMode");
-        set => SetStandardRenderMode(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetStandardRenderModeAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithStandardRenderMode(int value)
     {
@@ -504,7 +439,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public float TransparencyBirth
     {
         get => state.Get<float>("TransparencyBirth");
-        set => SetTransparencyBirth(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetTransparencyBirthAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithTransparencyBirth(float value)
     {
@@ -514,7 +449,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public bool TransparencyBirthUseIntensity
     {
         get => state.Get<bool>("TransparencyBirthUseIntensity");
-        set => SetTransparencyBirthUseIntensity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetTransparencyBirthUseIntensityAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithTransparencyBirthUseIntensity(bool value)
     {
@@ -524,7 +459,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public float TransparencyBirthVariation
     {
         get => state.Get<float>("TransparencyBirthVariation");
-        set => SetTransparencyBirthVariation(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetTransparencyBirthVariationAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithTransparencyBirthVariation(float value)
     {
@@ -534,7 +469,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public global::GBX.NET.Engines.Function.CFuncEnvelope? TransparencyOverLife
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncEnvelope?>("TransparencyOverLife");
-        set => SetTransparencyOverLife(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetTransparencyOverLifeAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithTransparencyOverLife(global::GBX.NET.Engines.Function.CFuncEnvelope? value)
     {
@@ -544,13 +479,13 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public TSelf WithTransparencyOverLifeReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnvelope> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetTransparencyOverLifeReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetTransparencyOverLifeReferenceAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public float UScaleDist
     {
         get => state.Get<float>("UScaleDist");
-        set => SetUScaleDist(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetUScaleDistAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithUScaleDist(float value)
     {
@@ -560,7 +495,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public float VScaleDist
     {
         get => state.Get<float>("VScaleDist");
-        set => SetVScaleDist(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetVScaleDistAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithVScaleDist(float value)
     {
@@ -570,7 +505,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public float WeightBirth
     {
         get => state.Get<float>("WeightBirth");
-        set => SetWeightBirth(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetWeightBirthAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithWeightBirth(float value)
     {
@@ -580,7 +515,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
     public float WeightBirthVariation
     {
         get => state.Get<float>("WeightBirthVariation");
-        set => SetWeightBirthVariation(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetWeightBirthVariationAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithWeightBirthVariation(float value)
     {
@@ -594,7 +529,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers3<TSelf> : CPlug
     public bool MultiState_IsAsyncLink
     {
         get => state.Get<bool>("MultiState_IsAsyncLink");
-        set => SetMultiState_IsAsyncLink(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetMultiState_IsAsyncLinkAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithMultiState_IsAsyncLink(bool value)
     {
@@ -608,7 +543,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers4<TSelf> : CPlug
     public float BeamLengthSpeedScale
     {
         get => state.Get<float>("BeamLengthSpeedScale");
-        set => SetBeamLengthSpeedScale(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetBeamLengthSpeedScaleAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithBeamLengthSpeedScale(float value)
     {
@@ -618,7 +553,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers4<TSelf> : CPlug
     public float CollisionBounce
     {
         get => state.Get<float>("CollisionBounce");
-        set => SetCollisionBounce(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetCollisionBounceAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithCollisionBounce(float value)
     {
@@ -628,7 +563,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers4<TSelf> : CPlug
     public float CollisionDamper
     {
         get => state.Get<float>("CollisionDamper");
-        set => SetCollisionDamper(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetCollisionDamperAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithCollisionDamper(float value)
     {
@@ -638,7 +573,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers4<TSelf> : CPlug
     public bool CollisionEnabled
     {
         get => state.Get<bool>("CollisionEnabled");
-        set => SetCollisionEnabled(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetCollisionEnabledAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithCollisionEnabled(bool value)
     {
@@ -648,7 +583,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers4<TSelf> : CPlug
     public float CollisionRadius
     {
         get => state.Get<float>("CollisionRadius");
-        set => SetCollisionRadius(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetCollisionRadiusAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithCollisionRadius(float value)
     {
@@ -658,7 +593,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers4<TSelf> : CPlug
     public bool PrecalcEnabled
     {
         get => state.Get<bool>("PrecalcEnabled");
-        set => SetPrecalcEnabled(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetPrecalcEnabledAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithPrecalcEnabled(bool value)
     {
@@ -668,7 +603,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers4<TSelf> : CPlug
     public int PrecalcPartCount
     {
         get => state.Get<int>("PrecalcPartCount");
-        set => SetPrecalcPartCount(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetPrecalcPartCountAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithPrecalcPartCount(int value)
     {
@@ -678,7 +613,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers4<TSelf> : CPlug
     public int PrecalcSampleRate
     {
         get => state.Get<int>("PrecalcSampleRate");
-        set => SetPrecalcSampleRate(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetPrecalcSampleRateAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithPrecalcSampleRate(int value)
     {
@@ -688,7 +623,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers4<TSelf> : CPlug
     public bool SortSprites
     {
         get => state.Get<bool>("SortSprites");
-        set => SetSortSprites(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSortSpritesAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithSortSprites(bool value)
     {
@@ -698,7 +633,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers4<TSelf> : CPlug
     public int TextureAtlas
     {
         get => state.Get<int>("TextureAtlas");
-        set => SetTextureAtlas(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetTextureAtlasAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithTextureAtlas(int value)
     {
@@ -708,7 +643,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers4<TSelf> : CPlug
     public int TextureAtlasDimX
     {
         get => state.Get<int>("TextureAtlasDimX");
-        set => SetTextureAtlasDimX(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetTextureAtlasDimXAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithTextureAtlasDimX(int value)
     {
@@ -718,7 +653,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers4<TSelf> : CPlug
     public int TextureAtlasDimY
     {
         get => state.Get<int>("TextureAtlasDimY");
-        set => SetTextureAtlasDimY(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetTextureAtlasDimYAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithTextureAtlasDimY(int value)
     {
@@ -728,7 +663,7 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers4<TSelf> : CPlug
     public int TextureAtlasFixedIndex
     {
         get => state.Get<int>("TextureAtlasFixedIndex");
-        set => SetTextureAtlasFixedIndex(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetTextureAtlasFixedIndexAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithTextureAtlasFixedIndex(int value)
     {

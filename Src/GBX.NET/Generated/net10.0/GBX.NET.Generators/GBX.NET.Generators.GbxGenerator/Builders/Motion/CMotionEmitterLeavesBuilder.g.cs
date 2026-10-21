@@ -36,11 +36,6 @@ public abstract class CMotionEmitterLeavesBuilderBase<TSelf> where TSelf : CMoti
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves> state;
     private protected CMotionEmitterLeavesBuilderBase() => state = new();
     private protected CMotionEmitterLeavesBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves> state) => this.state = state;
-    private protected static void SetManagerModel(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves> state, global::GBX.NET.Engines.Motion.CMotionManagerLeaves? value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterLeavesBuilderAssignments.GetManagerModelAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetManagerModelReference(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves> state, NodeRef<global::GBX.NET.Engines.Motion.CMotionManagerLeaves> value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterLeavesBuilderAssignments.GetManagerModelReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetPos(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterLeavesBuilderAssignments.GetPosAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRadius(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterLeavesBuilderAssignments.GetRadiusAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
 }
 public abstract class CMotionEmitterLeavesBuilderMembers1<TSelf> : CMotionEmitterLeavesBuilderBase<TSelf> where TSelf : CMotionEmitterLeavesBuilderMembers1<TSelf>
 {
@@ -48,7 +43,7 @@ public abstract class CMotionEmitterLeavesBuilderMembers1<TSelf> : CMotionEmitte
     public global::GBX.NET.Engines.Motion.CMotionManagerLeaves? ManagerModel
     {
         get => state.Get<global::GBX.NET.Engines.Motion.CMotionManagerLeaves?>("ManagerModel");
-        set => SetManagerModel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterLeavesBuilderAssignments.GetManagerModelAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithManagerModel(global::GBX.NET.Engines.Motion.CMotionManagerLeaves? value)
     {
@@ -58,13 +53,13 @@ public abstract class CMotionEmitterLeavesBuilderMembers1<TSelf> : CMotionEmitte
     public TSelf WithManagerModelReference(NodeRef<global::GBX.NET.Engines.Motion.CMotionManagerLeaves> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetManagerModelReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterLeavesBuilderAssignments.GetManagerModelReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public Vec3 Pos
     {
         get => state.Get<Vec3>("Pos");
-        set => SetPos(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterLeavesBuilderAssignments.GetPosAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPos(Vec3 value)
     {
@@ -74,7 +69,7 @@ public abstract class CMotionEmitterLeavesBuilderMembers1<TSelf> : CMotionEmitte
     public Vec3 Radius
     {
         get => state.Get<Vec3>("Radius");
-        set => SetRadius(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterLeavesBuilderAssignments.GetRadiusAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRadius(Vec3 value)
     {
@@ -188,7 +183,7 @@ public partial class CMotionEmitterLeavesBuilder : CMotionEmitterLeavesBuilderBa
         public string? Name
         {
             get => state.Get<string?>("Name");
-            set => SetName(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMSX WithName(string? value)
         {
@@ -220,7 +215,7 @@ public partial class CMotionEmitterLeavesBuilder : CMotionEmitterLeavesBuilderBa
         public string? Name
         {
             get => state.Get<string?>("Name");
-            set => SetName(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMNESWC WithName(string? value)
         {
@@ -252,7 +247,7 @@ public partial class CMotionEmitterLeavesBuilder : CMotionEmitterLeavesBuilderBa
         public string? Name
         {
             get => state.Get<string?>("Name");
-            set => SetName(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public VSK5 WithName(string? value)
         {
@@ -284,7 +279,7 @@ public partial class CMotionEmitterLeavesBuilder : CMotionEmitterLeavesBuilderBa
         public string? Name
         {
             get => state.Get<string?>("Name");
-            set => SetName(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMF WithName(string? value)
         {
@@ -316,7 +311,7 @@ public partial class CMotionEmitterLeavesBuilder : CMotionEmitterLeavesBuilderBa
         public string? Name
         {
             get => state.Get<string?>("Name");
-            set => SetName(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP3 WithName(string? value)
         {
@@ -348,7 +343,7 @@ public partial class CMotionEmitterLeavesBuilder : CMotionEmitterLeavesBuilderBa
         public string? Name
         {
             get => state.Get<string?>("Name");
-            set => SetName(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMT WithName(string? value)
         {
@@ -376,7 +371,7 @@ public partial class CMotionEmitterLeavesBuilder : CMotionEmitterLeavesBuilderBa
         public string? Name
         {
             get => state.Get<string?>("Name");
-            set => SetName(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP4 WithName(string? value)
         {

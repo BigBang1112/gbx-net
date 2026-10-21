@@ -36,103 +36,10 @@ public abstract class CGameCtnBlockInfoFrontierBuilderBase<TSelf> where TSelf : 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state;
     private protected CGameCtnBlockInfoFrontierBuilderBase() => state = new();
     private protected CGameCtnBlockInfoFrontierBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state) => this.state = state;
-    private protected static void SetAdditionalVariantsAir(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantAir>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetAdditionalVariantsAirAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAdditionalVariantsGround(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetAdditionalVariantsGroundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAirBlockUnitInfos(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetAirBlockUnitInfosAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetAirHelperMobil(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, global::GBX.NET.Engines.Scene.CSceneMobil? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetAirHelperMobilAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetAirHelperMobilReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, NodeRef<global::GBX.NET.Engines.Scene.CSceneMobil> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetAirHelperMobilReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetAirMobils(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, NodeRefList<global::GBX.NET.Engines.Scene.CSceneMobil>[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetAirMobilsAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetBaseType(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, global::GBX.NET.Engines.Game.CGameCtnBlockInfo.EBaseType value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetBaseTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBlockInfoModelFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, global::GBX.NET.Engines.Game.CGameCtnBlockInfo? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetBlockInfoModelFidAssignment(), value, GameVersion.TM2020);
-    private protected static void SetBlockInfoModelFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockInfo> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetBlockInfoModelFidReferenceAssignment(), value, GameVersion.TM2020);
-    private protected static void SetCatalogPosition(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetCatalogPositionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetCharPhySpecialProperty(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetCharPhySpecialPropertyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetCharPhySpecialPropertyReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetCharPhySpecialPropertyReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetCharPhySpecialPropertyCustomizable(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetCharPhySpecialPropertyCustomizableAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetConstructionModeHelperMobil(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, global::GBX.NET.Engines.Scene.CSceneMobil? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetConstructionModeHelperMobilAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetConstructionModeHelperMobilReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, NodeRef<global::GBX.NET.Engines.Scene.CSceneMobil> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetConstructionModeHelperMobilReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetCopperPrice(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetCopperPriceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetDefaultSkin(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, global::GBX.NET.Engines.Plug.CPlugFileZip? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetDefaultSkinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDefaultSkinReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileZip> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetDefaultSkinReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDefaultSkinName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetDefaultSkinNameAssignment(), value, GameVersion.TM2020);
-    private protected static void SetDescription(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetDescriptionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDir(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, Direction value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetDirAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFlags(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX | GameVersion.TMT);
-    private protected static void SetFogVolumeBox(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, global::GBX.NET.Engines.Plug.CPlugFogVolumeBox? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetFogVolumeBoxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFogVolumeBoxReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFogVolumeBox> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetFogVolumeBoxReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetGroundBlockUnitInfos(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetGroundBlockUnitInfosAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetGroundHelperMobil(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, global::GBX.NET.Engines.Scene.CSceneMobil? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetGroundHelperMobilAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetGroundHelperMobilReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, NodeRef<global::GBX.NET.Engines.Scene.CSceneMobil> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetGroundHelperMobilReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetGroundMobils(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, NodeRefList<global::GBX.NET.Engines.Scene.CSceneMobil>[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetGroundMobilsAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetIcon(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, global::GBX.NET.Color[,]? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
-    private protected static void SetIconAutoUseGround(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIconAutoUseGroundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetIconFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconFidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIconFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconFidReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIconMacroBlockInfo(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIconMacroBlockInfoAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetIconMacroBlockInfoReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIconMacroBlockInfoReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetIconPhase01(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, float value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconPhase01Assignment(), value, GameVersion.TM2020);
-    private protected static void SetIconQuarterRotationY(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconQuarterRotationYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetIconUseAutoRender(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconUseAutoRenderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetIconWebP(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, byte[]? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
-    private protected static void SetIdent(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, global::GBX.NET.Ident value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIdentAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIntroInfo(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIntroInfoAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetIntroInfoReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIntroInfoReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetIsAdvanced(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIsAdvancedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetIsInternal(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIsInternalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIsMultiHeightPillarOrVFC(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIsMultiHeightPillarOrVFCAssignment(), value, GameVersion.TM2020);
-    private protected static void SetIsPillar(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIsPillarAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIsReplacement(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIsReplacementAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetLightmapComputeTime(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, DateTime? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMatModifierPlacementTag(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, global::GBX.NET.Engines.Game.CGameCtnBlockInfo.MaterialModifierPlacementTag? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetMatModifierPlacementTagAssignment(), value, GameVersion.TM2020);
-    private protected static void SetMaterialModifier(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetMaterialModifierAssignment(), value, GameVersion.TM2020);
-    private protected static void SetMaterialModifierReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetMaterialModifierReferenceAssignment(), value, GameVersion.TM2020);
-    private protected static void SetMaterialModifier2(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetMaterialModifier2Assignment(), value, GameVersion.TM2020);
-    private protected static void SetMaterialModifier2Reference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetMaterialModifier2ReferenceAssignment(), value, GameVersion.TM2020);
-    private protected static void SetModelKitDb(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbAssignment(), value, GameVersion.TM2020);
-    private protected static void SetModelKitDbReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbReferenceAssignment(), value, GameVersion.TM2020);
-    private protected static void SetModelKitDbRelease(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbReleaseAssignment(), value, GameVersion.TM2020);
-    private protected static void SetModelKitDbReleaseReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbReleaseReferenceAssignment(), value, GameVersion.TM2020);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetNbAvailableMax(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNbAvailableMaxAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetNbAvailableMin(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNbAvailableMinAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetNeedUnlock(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNeedUnlockAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetNoRespawn(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetNoRespawnAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetPageName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetPageNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetParentCollectorId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetPillar(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetPillarAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetPillarReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetPillarReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetPillarShapeMultiDir(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, global::GBX.NET.Engines.Game.CGameCtnBlockInfo.EMultiDir value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetPillarShapeMultiDirAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetPodiumInfo(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetPodiumInfoAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetPodiumInfoReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetPodiumInfoReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetPrecalcPartLoc(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, Iso4 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetPrecalcPartLocAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
-    private protected static void SetPrecalcPartParams(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetPrecalcPartParamsAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
-    private protected static void SetPrecalcPartParamsReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetPrecalcPartParamsReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
-    private protected static void SetProdState(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, global::GBX.NET.Engines.GameData.CGameCtnCollector.EProdState value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetProdStateAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSelection(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, global::GBX.NET.Engines.Game.CGameCtnBlockInfo.ESelection value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSelectionAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSizeX(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSizeXAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSizeY(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSizeYAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSizeZ(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSizeZAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSkinDirectory(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetSkinDirectoryAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSkinKind(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetSkinKindAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSound1(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSound1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSound1Reference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSound1ReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSound1Loc(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, Iso4 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSound1LocAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSound2(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSound2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSound2Reference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSound2ReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSound2Loc(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, Iso4 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSound2LocAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSpawnLocAir(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, Iso4? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSpawnLocAirAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSpawnLocGround(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, Iso4? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSpawnLocGroundAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSpawnUnderground(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSpawnUndergroundAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
-    private protected static void SetSymmetricalBlockInfoId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSymmetricalBlockInfoIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetVariantBaseAir(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantAir? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetVariantBaseAirAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetVariantBaseGround(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetVariantBaseGroundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetWayPointType(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, global::GBX.NET.Engines.Game.CGameCtnBlockInfo.EWayPointType value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetWayPointTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetWaypointSpecialProperty(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetWaypointSpecialPropertyAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
-    private protected static void SetWaypointSpecialPropertyReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> state, NodeRef<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetWaypointSpecialPropertyReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
     public int CatalogPosition
     {
         get => state.Get<int>("CatalogPosition");
-        set => SetCatalogPosition(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetCatalogPositionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithCatalogPosition(int value)
     {
@@ -142,7 +49,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderBase<TSelf> where TSelf : 
     public global::GBX.NET.Engines.MwFoundations.CMwNod? IconFid
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("IconFid");
-        set => SetIconFid(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconFidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIconFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
@@ -152,13 +59,13 @@ public abstract class CGameCtnBlockInfoFrontierBuilderBase<TSelf> where TSelf : 
     public TSelf WithIconFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetIconFidReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconFidReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Ident Ident
     {
         get => state.Get<global::GBX.NET.Ident>("Ident");
-        set => SetIdent(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIdentAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIdent(global::GBX.NET.Ident value)
     {
@@ -168,7 +75,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderBase<TSelf> where TSelf : 
     public bool IsInternal
     {
         get => state.Get<bool>("IsInternal");
-        set => SetIsInternal(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIsInternalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIsInternal(bool value)
     {
@@ -178,7 +85,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderBase<TSelf> where TSelf : 
     public bool IsPillar
     {
         get => state.Get<bool>("IsPillar");
-        set => SetIsPillar(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIsPillarAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIsPillar(bool value)
     {
@@ -188,7 +95,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderBase<TSelf> where TSelf : 
     public string? PageName
     {
         get => state.Get<string?>("PageName");
-        set => SetPageName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetPageNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPageName(string? value)
     {
@@ -198,7 +105,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderBase<TSelf> where TSelf : 
     public global::GBX.NET.Engines.Game.CGameCtnBlockInfo.EWayPointType WayPointType
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.EWayPointType>("WayPointType");
-        set => SetWayPointType(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetWayPointTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithWayPointType(global::GBX.NET.Engines.Game.CGameCtnBlockInfo.EWayPointType value)
     {
@@ -212,7 +119,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers1<TSelf> : CGameCtn
     public global::GBX.NET.Color[,]? Icon
     {
         get => state.Get<global::GBX.NET.Color[,]?>("Icon");
-        set => SetIcon(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
     }
     public TSelf WithIcon(global::GBX.NET.Color[,]? value)
     {
@@ -222,7 +129,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers1<TSelf> : CGameCtn
     public byte[]? IconWebP
     {
         get => state.Get<byte[]?>("IconWebP");
-        set => SetIconWebP(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
     }
     public TSelf WithIconWebP(params byte[]? value)
     {
@@ -240,7 +147,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers2<TSelf> : CGameCtn
     public global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags>("Flags");
-        set => SetFlags(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX | GameVersion.TMT);
     }
     public TSelf WithFlags(global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags value)
     {
@@ -254,7 +161,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers3<TSelf> : CGameCtn
     public bool NoRespawn
     {
         get => state.Get<bool>("NoRespawn");
-        set => SetNoRespawn(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetNoRespawnAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithNoRespawn(bool value)
     {
@@ -264,7 +171,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers3<TSelf> : CGameCtn
     public string? ParentCollectorId
     {
         get => state.Get<string?>("ParentCollectorId");
-        set => SetParentCollectorId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithParentCollectorId(string? value)
     {
@@ -278,7 +185,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers4<TSelf> : CGameCtn
     public NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>? AirBlockUnitInfos
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>?>("AirBlockUnitInfos");
-        set => SetAirBlockUnitInfos(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetAirBlockUnitInfosAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithAirBlockUnitInfos(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>? value)
     {
@@ -296,7 +203,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers4<TSelf> : CGameCtn
     public global::GBX.NET.Engines.Scene.CSceneMobil? AirHelperMobil
     {
         get => state.Get<global::GBX.NET.Engines.Scene.CSceneMobil?>("AirHelperMobil");
-        set => SetAirHelperMobil(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetAirHelperMobilAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithAirHelperMobil(global::GBX.NET.Engines.Scene.CSceneMobil? value)
     {
@@ -306,13 +213,13 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers4<TSelf> : CGameCtn
     public TSelf WithAirHelperMobilReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMobil> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetAirHelperMobilReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetAirHelperMobilReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public NodeRefList<global::GBX.NET.Engines.Scene.CSceneMobil>[]? AirMobils
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Scene.CSceneMobil>[]?>("AirMobils");
-        set => SetAirMobils(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetAirMobilsAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithAirMobils(params NodeRefList<global::GBX.NET.Engines.Scene.CSceneMobil>[]? value)
     {
@@ -326,7 +233,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers4<TSelf> : CGameCtn
     public global::GBX.NET.Engines.Scene.CSceneMobil? ConstructionModeHelperMobil
     {
         get => state.Get<global::GBX.NET.Engines.Scene.CSceneMobil?>("ConstructionModeHelperMobil");
-        set => SetConstructionModeHelperMobil(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetConstructionModeHelperMobilAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithConstructionModeHelperMobil(global::GBX.NET.Engines.Scene.CSceneMobil? value)
     {
@@ -336,13 +243,13 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers4<TSelf> : CGameCtn
     public TSelf WithConstructionModeHelperMobilReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMobil> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetConstructionModeHelperMobilReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetConstructionModeHelperMobilReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public int CopperPrice
     {
         get => state.Get<int>("CopperPrice");
-        set => SetCopperPrice(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetCopperPriceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithCopperPrice(int value)
     {
@@ -352,7 +259,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers4<TSelf> : CGameCtn
     public NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>? GroundBlockUnitInfos
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>?>("GroundBlockUnitInfos");
-        set => SetGroundBlockUnitInfos(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetGroundBlockUnitInfosAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithGroundBlockUnitInfos(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>? value)
     {
@@ -370,7 +277,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers4<TSelf> : CGameCtn
     public global::GBX.NET.Engines.Scene.CSceneMobil? GroundHelperMobil
     {
         get => state.Get<global::GBX.NET.Engines.Scene.CSceneMobil?>("GroundHelperMobil");
-        set => SetGroundHelperMobil(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetGroundHelperMobilAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithGroundHelperMobil(global::GBX.NET.Engines.Scene.CSceneMobil? value)
     {
@@ -380,13 +287,13 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers4<TSelf> : CGameCtn
     public TSelf WithGroundHelperMobilReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMobil> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetGroundHelperMobilReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetGroundHelperMobilReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public NodeRefList<global::GBX.NET.Engines.Scene.CSceneMobil>[]? GroundMobils
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Scene.CSceneMobil>[]?>("GroundMobils");
-        set => SetGroundMobils(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetGroundMobilsAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithGroundMobils(params NodeRefList<global::GBX.NET.Engines.Scene.CSceneMobil>[]? value)
     {
@@ -400,7 +307,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers4<TSelf> : CGameCtn
     public int NbAvailableMax
     {
         get => state.Get<int>("NbAvailableMax");
-        set => SetNbAvailableMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNbAvailableMaxAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithNbAvailableMax(int value)
     {
@@ -410,7 +317,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers4<TSelf> : CGameCtn
     public int NbAvailableMin
     {
         get => state.Get<int>("NbAvailableMin");
-        set => SetNbAvailableMin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNbAvailableMinAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithNbAvailableMin(int value)
     {
@@ -420,7 +327,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers4<TSelf> : CGameCtn
     public bool NeedUnlock
     {
         get => state.Get<bool>("NeedUnlock");
-        set => SetNeedUnlock(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNeedUnlockAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithNeedUnlock(bool value)
     {
@@ -430,7 +337,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers4<TSelf> : CGameCtn
     public global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic? Pillar
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic?>("Pillar");
-        set => SetPillar(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetPillarAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithPillar(global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic? value)
     {
@@ -440,13 +347,13 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers4<TSelf> : CGameCtn
     public TSelf WithPillarReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetPillarReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetPillarReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Game.CGameCtnBlockInfo.ESelection Selection
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.ESelection>("Selection");
-        set => SetSelection(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSelectionAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSelection(global::GBX.NET.Engines.Game.CGameCtnBlockInfo.ESelection value)
     {
@@ -456,7 +363,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers4<TSelf> : CGameCtn
     public int SizeX
     {
         get => state.Get<int>("SizeX");
-        set => SetSizeX(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSizeXAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSizeX(int value)
     {
@@ -466,7 +373,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers4<TSelf> : CGameCtn
     public int SizeY
     {
         get => state.Get<int>("SizeY");
-        set => SetSizeY(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSizeYAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSizeY(int value)
     {
@@ -476,7 +383,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers4<TSelf> : CGameCtn
     public int SizeZ
     {
         get => state.Get<int>("SizeZ");
-        set => SetSizeZ(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSizeZAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSizeZ(int value)
     {
@@ -486,7 +393,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers4<TSelf> : CGameCtn
     public global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind SkinKind
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind>("SkinKind");
-        set => SetSkinKind(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetSkinKindAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSkinKind(global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind value)
     {
@@ -496,7 +403,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers4<TSelf> : CGameCtn
     public Iso4? SpawnLocAir
     {
         get => state.Get<Iso4?>("SpawnLocAir");
-        set => SetSpawnLocAir(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSpawnLocAirAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSpawnLocAir(Iso4? value)
     {
@@ -506,7 +413,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers4<TSelf> : CGameCtn
     public Iso4? SpawnLocGround
     {
         get => state.Get<Iso4?>("SpawnLocGround");
-        set => SetSpawnLocGround(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSpawnLocGroundAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSpawnLocGround(Iso4? value)
     {
@@ -520,7 +427,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers5<TSelf> : CGameCtn
     public bool IsReplacement
     {
         get => state.Get<bool>("IsReplacement");
-        set => SetIsReplacement(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIsReplacementAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithIsReplacement(bool value)
     {
@@ -530,7 +437,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers5<TSelf> : CGameCtn
     public string? ParentCollectorId
     {
         get => state.Get<string?>("ParentCollectorId");
-        set => SetParentCollectorId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithParentCollectorId(string? value)
     {
@@ -544,7 +451,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers6<TSelf> : CGameCtn
     public NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantAir>? AdditionalVariantsAir
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantAir>?>("AdditionalVariantsAir");
-        set => SetAdditionalVariantsAir(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetAdditionalVariantsAirAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAdditionalVariantsAir(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantAir>? value)
     {
@@ -562,7 +469,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers6<TSelf> : CGameCtn
     public NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround>? AdditionalVariantsGround
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround>?>("AdditionalVariantsGround");
-        set => SetAdditionalVariantsGround(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetAdditionalVariantsGroundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAdditionalVariantsGround(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround>? value)
     {
@@ -580,7 +487,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers6<TSelf> : CGameCtn
     public global::GBX.NET.Engines.Game.CGameCtnBlockInfo.EBaseType BaseType
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.EBaseType>("BaseType");
-        set => SetBaseType(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetBaseTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBaseType(global::GBX.NET.Engines.Game.CGameCtnBlockInfo.EBaseType value)
     {
@@ -590,7 +497,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers6<TSelf> : CGameCtn
     public global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty? CharPhySpecialProperty
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty?>("CharPhySpecialProperty");
-        set => SetCharPhySpecialProperty(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetCharPhySpecialPropertyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCharPhySpecialProperty(global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty? value)
     {
@@ -600,13 +507,13 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers6<TSelf> : CGameCtn
     public TSelf WithCharPhySpecialPropertyReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetCharPhySpecialPropertyReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetCharPhySpecialPropertyReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public bool CharPhySpecialPropertyCustomizable
     {
         get => state.Get<bool>("CharPhySpecialPropertyCustomizable");
-        set => SetCharPhySpecialPropertyCustomizable(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetCharPhySpecialPropertyCustomizableAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCharPhySpecialPropertyCustomizable(bool value)
     {
@@ -616,7 +523,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers6<TSelf> : CGameCtn
     public global::GBX.NET.Engines.Plug.CPlugFileZip? DefaultSkin
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugFileZip?>("DefaultSkin");
-        set => SetDefaultSkin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetDefaultSkinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDefaultSkin(global::GBX.NET.Engines.Plug.CPlugFileZip? value)
     {
@@ -626,13 +533,13 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers6<TSelf> : CGameCtn
     public TSelf WithDefaultSkinReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileZip> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetDefaultSkinReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetDefaultSkinReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public string? Description
     {
         get => state.Get<string?>("Description");
-        set => SetDescription(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetDescriptionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDescription(string? value)
     {
@@ -642,7 +549,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers6<TSelf> : CGameCtn
     public Direction Dir
     {
         get => state.Get<Direction>("Dir");
-        set => SetDir(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetDirAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDir(Direction value)
     {
@@ -652,7 +559,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers6<TSelf> : CGameCtn
     public global::GBX.NET.Engines.Plug.CPlugFogVolumeBox? FogVolumeBox
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugFogVolumeBox?>("FogVolumeBox");
-        set => SetFogVolumeBox(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetFogVolumeBoxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFogVolumeBox(global::GBX.NET.Engines.Plug.CPlugFogVolumeBox? value)
     {
@@ -662,13 +569,13 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers6<TSelf> : CGameCtn
     public TSelf WithFogVolumeBoxReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFogVolumeBox> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetFogVolumeBoxReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetFogVolumeBoxReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public bool IconAutoUseGround
     {
         get => state.Get<bool>("IconAutoUseGround");
-        set => SetIconAutoUseGround(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIconAutoUseGroundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIconAutoUseGround(bool value)
     {
@@ -678,7 +585,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers6<TSelf> : CGameCtn
     public int IconQuarterRotationY
     {
         get => state.Get<int>("IconQuarterRotationY");
-        set => SetIconQuarterRotationY(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconQuarterRotationYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIconQuarterRotationY(int value)
     {
@@ -688,7 +595,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers6<TSelf> : CGameCtn
     public bool IconUseAutoRender
     {
         get => state.Get<bool>("IconUseAutoRender");
-        set => SetIconUseAutoRender(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconUseAutoRenderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIconUseAutoRender(bool value)
     {
@@ -698,7 +605,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers6<TSelf> : CGameCtn
     public global::GBX.NET.Engines.MwFoundations.CMwNod? IntroInfo
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("IntroInfo");
-        set => SetIntroInfo(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIntroInfoAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIntroInfo(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
@@ -708,13 +615,13 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers6<TSelf> : CGameCtn
     public TSelf WithIntroInfoReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetIntroInfoReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIntroInfoReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public bool IsAdvanced
     {
         get => state.Get<bool>("IsAdvanced");
-        set => SetIsAdvanced(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIsAdvancedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIsAdvanced(bool value)
     {
@@ -724,7 +631,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers6<TSelf> : CGameCtn
     public DateTime? LightmapComputeTime
     {
         get => state.Get<DateTime?>("LightmapComputeTime");
-        set => SetLightmapComputeTime(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLightmapComputeTime(DateTime? value)
     {
@@ -734,7 +641,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers6<TSelf> : CGameCtn
     public string? Name
     {
         get => state.Get<string?>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithName(string? value)
     {
@@ -744,7 +651,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers6<TSelf> : CGameCtn
     public global::GBX.NET.Engines.MwFoundations.CMwNod? PodiumInfo
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("PodiumInfo");
-        set => SetPodiumInfo(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetPodiumInfoAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithPodiumInfo(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
@@ -754,13 +661,13 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers6<TSelf> : CGameCtn
     public TSelf WithPodiumInfoReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetPodiumInfoReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetPodiumInfoReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public string? SkinDirectory
     {
         get => state.Get<string?>("SkinDirectory");
-        set => SetSkinDirectory(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetSkinDirectoryAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSkinDirectory(string? value)
     {
@@ -770,7 +677,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers6<TSelf> : CGameCtn
     public global::GBX.NET.Engines.Plug.CPlugSound? Sound1
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound1");
-        set => SetSound1(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSound1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSound1(global::GBX.NET.Engines.Plug.CPlugSound? value)
     {
@@ -780,13 +687,13 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers6<TSelf> : CGameCtn
     public TSelf WithSound1Reference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSound1Reference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSound1ReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public Iso4 Sound1Loc
     {
         get => state.Get<Iso4>("Sound1Loc");
-        set => SetSound1Loc(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSound1LocAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSound1Loc(Iso4 value)
     {
@@ -796,7 +703,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers6<TSelf> : CGameCtn
     public global::GBX.NET.Engines.Plug.CPlugSound? Sound2
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound2");
-        set => SetSound2(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSound2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSound2(global::GBX.NET.Engines.Plug.CPlugSound? value)
     {
@@ -806,13 +713,13 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers6<TSelf> : CGameCtn
     public TSelf WithSound2Reference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSound2Reference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSound2ReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public Iso4 Sound2Loc
     {
         get => state.Get<Iso4>("Sound2Loc");
-        set => SetSound2Loc(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSound2LocAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSound2Loc(Iso4 value)
     {
@@ -822,7 +729,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers6<TSelf> : CGameCtn
     public string? SymmetricalBlockInfoId
     {
         get => state.Get<string?>("SymmetricalBlockInfoId");
-        set => SetSymmetricalBlockInfoId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSymmetricalBlockInfoIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSymmetricalBlockInfoId(string? value)
     {
@@ -832,7 +739,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers6<TSelf> : CGameCtn
     public global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantAir? VariantBaseAir
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantAir?>("VariantBaseAir");
-        set => SetVariantBaseAir(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetVariantBaseAirAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithVariantBaseAir(global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantAir? value)
     {
@@ -842,7 +749,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers6<TSelf> : CGameCtn
     public global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround? VariantBaseGround
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround?>("VariantBaseGround");
-        set => SetVariantBaseGround(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetVariantBaseGroundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithVariantBaseGround(global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround? value)
     {
@@ -856,7 +763,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers7<TSelf> : CGameCtn
     public global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo? IconMacroBlockInfo
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo?>("IconMacroBlockInfo");
-        set => SetIconMacroBlockInfo(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIconMacroBlockInfoAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIconMacroBlockInfo(global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo? value)
     {
@@ -866,13 +773,13 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers7<TSelf> : CGameCtn
     public TSelf WithIconMacroBlockInfoReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetIconMacroBlockInfoReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIconMacroBlockInfoReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.GameData.CGameCtnCollector.EProdState ProdState
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameCtnCollector.EProdState>("ProdState");
-        set => SetProdState(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetProdStateAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithProdState(global::GBX.NET.Engines.GameData.CGameCtnCollector.EProdState value)
     {
@@ -886,7 +793,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers8<TSelf> : CGameCtn
     public global::GBX.NET.Engines.Game.CGameCtnBlockInfo.EMultiDir PillarShapeMultiDir
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.EMultiDir>("PillarShapeMultiDir");
-        set => SetPillarShapeMultiDir(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetPillarShapeMultiDirAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithPillarShapeMultiDir(global::GBX.NET.Engines.Game.CGameCtnBlockInfo.EMultiDir value)
     {
@@ -900,7 +807,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers9<TSelf> : CGameCtn
     public Iso4 PrecalcPartLoc
     {
         get => state.Get<Iso4>("PrecalcPartLoc");
-        set => SetPrecalcPartLoc(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetPrecalcPartLocAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
     }
     public TSelf WithPrecalcPartLoc(Iso4 value)
     {
@@ -910,7 +817,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers9<TSelf> : CGameCtn
     public global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams? PrecalcPartParams
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams?>("PrecalcPartParams");
-        set => SetPrecalcPartParams(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetPrecalcPartParamsAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
     }
     public TSelf WithPrecalcPartParams(global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams? value)
     {
@@ -920,13 +827,13 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers9<TSelf> : CGameCtn
     public TSelf WithPrecalcPartParamsReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetPrecalcPartParamsReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetPrecalcPartParamsReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
         return (TSelf)this;
     }
     public bool SpawnUnderground
     {
         get => state.Get<bool>("SpawnUnderground");
-        set => SetSpawnUnderground(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSpawnUndergroundAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
     }
     public TSelf WithSpawnUnderground(bool value)
     {
@@ -936,7 +843,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers9<TSelf> : CGameCtn
     public global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty? WaypointSpecialProperty
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty?>("WaypointSpecialProperty");
-        set => SetWaypointSpecialProperty(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetWaypointSpecialPropertyAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
     }
     public TSelf WithWaypointSpecialProperty(global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty? value)
     {
@@ -946,7 +853,7 @@ public abstract class CGameCtnBlockInfoFrontierBuilderMembers9<TSelf> : CGameCtn
     public TSelf WithWaypointSpecialPropertyReference(NodeRef<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetWaypointSpecialPropertyReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetWaypointSpecialPropertyReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -1591,7 +1498,7 @@ public partial class CGameCtnBlockInfoFrontierBuilder : CGameCtnBlockInfoFrontie
         public global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags
         {
             get => state.Get<global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags>("Flags");
-            set => SetFlags(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX | GameVersion.TMT);
         }
         public TM10 WithFlags(global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags value)
         {
@@ -1613,7 +1520,7 @@ public partial class CGameCtnBlockInfoFrontierBuilder : CGameCtnBlockInfoFrontie
         public global::GBX.NET.Color[,]? Icon
         {
             get => state.Get<global::GBX.NET.Color[,]?>("Icon");
-            set => SetIcon(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
         }
         public TM10 WithIcon(global::GBX.NET.Color[,]? value)
         {
@@ -1623,7 +1530,7 @@ public partial class CGameCtnBlockInfoFrontierBuilder : CGameCtnBlockInfoFrontie
         public byte[]? IconWebP
         {
             get => state.Get<byte[]?>("IconWebP");
-            set => SetIconWebP(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
         }
         public TM10 WithIconWebP(params byte[]? value)
         {
@@ -1687,7 +1594,7 @@ public partial class CGameCtnBlockInfoFrontierBuilder : CGameCtnBlockInfoFrontie
         public global::GBX.NET.Color[,]? Icon
         {
             get => state.Get<global::GBX.NET.Color[,]?>("Icon");
-            set => SetIcon(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
         }
         public TMPU WithIcon(global::GBX.NET.Color[,]? value)
         {
@@ -1697,7 +1604,7 @@ public partial class CGameCtnBlockInfoFrontierBuilder : CGameCtnBlockInfoFrontie
         public byte[]? IconWebP
         {
             get => state.Get<byte[]?>("IconWebP");
-            set => SetIconWebP(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
         }
         public TMPU WithIconWebP(params byte[]? value)
         {
@@ -1749,7 +1656,7 @@ public partial class CGameCtnBlockInfoFrontierBuilder : CGameCtnBlockInfoFrontie
         public global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags
         {
             get => state.Get<global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags>("Flags");
-            set => SetFlags(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX | GameVersion.TMT);
         }
         public TMSX WithFlags(global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags value)
         {
@@ -1771,7 +1678,7 @@ public partial class CGameCtnBlockInfoFrontierBuilder : CGameCtnBlockInfoFrontie
         public global::GBX.NET.Color[,]? Icon
         {
             get => state.Get<global::GBX.NET.Color[,]?>("Icon");
-            set => SetIcon(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
         }
         public TMSX WithIcon(global::GBX.NET.Color[,]? value)
         {
@@ -1781,7 +1688,7 @@ public partial class CGameCtnBlockInfoFrontierBuilder : CGameCtnBlockInfoFrontie
         public byte[]? IconWebP
         {
             get => state.Get<byte[]?>("IconWebP");
-            set => SetIconWebP(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
         }
         public TMSX WithIconWebP(params byte[]? value)
         {
@@ -1933,7 +1840,7 @@ public partial class CGameCtnBlockInfoFrontierBuilder : CGameCtnBlockInfoFrontie
         public global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags
         {
             get => state.Get<global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags>("Flags");
-            set => SetFlags(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX | GameVersion.TMT);
         }
         public TMF WithFlags(global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags value)
         {
@@ -1955,7 +1862,7 @@ public partial class CGameCtnBlockInfoFrontierBuilder : CGameCtnBlockInfoFrontie
         public global::GBX.NET.Color[,]? Icon
         {
             get => state.Get<global::GBX.NET.Color[,]?>("Icon");
-            set => SetIcon(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
         }
         public TMF WithIcon(global::GBX.NET.Color[,]? value)
         {
@@ -1965,7 +1872,7 @@ public partial class CGameCtnBlockInfoFrontierBuilder : CGameCtnBlockInfoFrontie
         public byte[]? IconWebP
         {
             get => state.Get<byte[]?>("IconWebP");
-            set => SetIconWebP(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
         }
         public TMF WithIconWebP(params byte[]? value)
         {
@@ -1979,7 +1886,7 @@ public partial class CGameCtnBlockInfoFrontierBuilder : CGameCtnBlockInfoFrontie
         public bool NoRespawn
         {
             get => state.Get<bool>("NoRespawn");
-            set => SetNoRespawn(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetNoRespawnAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         }
         public TMF WithNoRespawn(bool value)
         {
@@ -2089,7 +1996,7 @@ public partial class CGameCtnBlockInfoFrontierBuilder : CGameCtnBlockInfoFrontie
         public global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo? IconMacroBlockInfo
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo?>("IconMacroBlockInfo");
-            set => SetIconMacroBlockInfo(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIconMacroBlockInfoAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public TMT WithIconMacroBlockInfo(global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo? value)
         {
@@ -2099,7 +2006,7 @@ public partial class CGameCtnBlockInfoFrontierBuilder : CGameCtnBlockInfoFrontie
         public TMT WithIconMacroBlockInfoReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetIconMacroBlockInfoReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIconMacroBlockInfoReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
             return this;
         }
         public TMT WithIconMacroBlockInfo(global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoTMT? value)
@@ -2113,7 +2020,7 @@ public partial class CGameCtnBlockInfoFrontierBuilder : CGameCtnBlockInfoFrontie
         public global::GBX.NET.Engines.GameData.CGameCtnCollector.EProdState ProdState
         {
             get => state.Get<global::GBX.NET.Engines.GameData.CGameCtnCollector.EProdState>("ProdState");
-            set => SetProdState(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetProdStateAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public TMT WithProdState(global::GBX.NET.Engines.GameData.CGameCtnCollector.EProdState value)
         {
@@ -2223,7 +2130,7 @@ public partial class CGameCtnBlockInfoFrontierBuilder : CGameCtnBlockInfoFrontie
         public global::GBX.NET.Engines.Game.CGameCtnBlockInfo? BlockInfoModelFid
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameCtnBlockInfo?>("BlockInfoModelFid");
-            set => SetBlockInfoModelFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetBlockInfoModelFidAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithBlockInfoModelFid(global::GBX.NET.Engines.Game.CGameCtnBlockInfo? value)
         {
@@ -2233,7 +2140,7 @@ public partial class CGameCtnBlockInfoFrontierBuilder : CGameCtnBlockInfoFrontie
         public TM2020 WithBlockInfoModelFidReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockInfo> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetBlockInfoModelFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetBlockInfoModelFidReferenceAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithBlockInfoModelFid(global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTM2020? value)
@@ -2247,7 +2154,7 @@ public partial class CGameCtnBlockInfoFrontierBuilder : CGameCtnBlockInfoFrontie
         public string? DefaultSkinName
         {
             get => state.Get<string?>("DefaultSkinName");
-            set => SetDefaultSkinName(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetDefaultSkinNameAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithDefaultSkinName(string? value)
         {
@@ -2265,7 +2172,7 @@ public partial class CGameCtnBlockInfoFrontierBuilder : CGameCtnBlockInfoFrontie
         public float IconPhase01
         {
             get => state.Get<float>("IconPhase01");
-            set => SetIconPhase01(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconPhase01Assignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithIconPhase01(float value)
         {
@@ -2275,7 +2182,7 @@ public partial class CGameCtnBlockInfoFrontierBuilder : CGameCtnBlockInfoFrontie
         public bool IsMultiHeightPillarOrVFC
         {
             get => state.Get<bool>("IsMultiHeightPillarOrVFC");
-            set => SetIsMultiHeightPillarOrVFC(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIsMultiHeightPillarOrVFCAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithIsMultiHeightPillarOrVFC(bool value)
         {
@@ -2285,7 +2192,7 @@ public partial class CGameCtnBlockInfoFrontierBuilder : CGameCtnBlockInfoFrontie
         public global::GBX.NET.Engines.Game.CGameCtnBlockInfo.MaterialModifierPlacementTag? MatModifierPlacementTag
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.MaterialModifierPlacementTag?>("MatModifierPlacementTag");
-            set => SetMatModifierPlacementTag(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetMatModifierPlacementTagAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithMatModifierPlacementTag(global::GBX.NET.Engines.Game.CGameCtnBlockInfo.MaterialModifierPlacementTag? value)
         {
@@ -2295,7 +2202,7 @@ public partial class CGameCtnBlockInfoFrontierBuilder : CGameCtnBlockInfoFrontie
         public global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder? MaterialModifier
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder?>("MaterialModifier");
-            set => SetMaterialModifier(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetMaterialModifierAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithMaterialModifier(global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder? value)
         {
@@ -2305,7 +2212,7 @@ public partial class CGameCtnBlockInfoFrontierBuilder : CGameCtnBlockInfoFrontie
         public TM2020 WithMaterialModifierReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetMaterialModifierReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetMaterialModifierReferenceAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithMaterialModifier(global::GBX.NET.Interfaces.Plug.IPlugGameSkinAndFolderTM2020? value)
@@ -2315,7 +2222,7 @@ public partial class CGameCtnBlockInfoFrontierBuilder : CGameCtnBlockInfoFrontie
         public global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder? MaterialModifier2
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder?>("MaterialModifier2");
-            set => SetMaterialModifier2(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetMaterialModifier2Assignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithMaterialModifier2(global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder? value)
         {
@@ -2325,7 +2232,7 @@ public partial class CGameCtnBlockInfoFrontierBuilder : CGameCtnBlockInfoFrontie
         public TM2020 WithMaterialModifier2Reference(NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetMaterialModifier2Reference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetMaterialModifier2ReferenceAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithMaterialModifier2(global::GBX.NET.Interfaces.Plug.IPlugGameSkinAndFolderTM2020? value)
@@ -2335,7 +2242,7 @@ public partial class CGameCtnBlockInfoFrontierBuilder : CGameCtnBlockInfoFrontie
         public global::GBX.NET.Engines.MwFoundations.CMwNod? ModelKitDb
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("ModelKitDb");
-            set => SetModelKitDb(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithModelKitDb(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -2345,13 +2252,13 @@ public partial class CGameCtnBlockInfoFrontierBuilder : CGameCtnBlockInfoFrontie
         public TM2020 WithModelKitDbReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetModelKitDbReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbReferenceAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? ModelKitDbRelease
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("ModelKitDbRelease");
-            set => SetModelKitDbRelease(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbReleaseAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithModelKitDbRelease(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -2361,7 +2268,7 @@ public partial class CGameCtnBlockInfoFrontierBuilder : CGameCtnBlockInfoFrontie
         public TM2020 WithModelKitDbReleaseReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetModelKitDbReleaseReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbReleaseReferenceAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithSound1(global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? value)

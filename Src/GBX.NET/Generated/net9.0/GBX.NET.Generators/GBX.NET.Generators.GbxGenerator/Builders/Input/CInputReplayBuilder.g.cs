@@ -36,13 +36,10 @@ public abstract class CInputReplayBuilderBase<TSelf> where TSelf : CInputReplayB
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Input.CInputReplay> state;
     private protected CInputReplayBuilderBase() => state = new();
     private protected CInputReplayBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Input.CInputReplay> state) => this.state = state;
-    private protected static void SetActionIds(NodeBuilderState<global::GBX.NET.Engines.Input.CInputReplay> state, string[]? value) => state.Set(global::GBX.NET.Builders.Engines.Input.CInputReplayBuilderAssignments.GetActionIdsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetEvents(NodeBuilderState<global::GBX.NET.Engines.Input.CInputReplay> state, global::GBX.NET.Engines.Input.CInputReplay.Event[]? value) => state.Set(global::GBX.NET.Builders.Engines.Input.CInputReplayBuilderAssignments.GetEventsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMaxEventCount(NodeBuilderState<global::GBX.NET.Engines.Input.CInputReplay> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Input.CInputReplayBuilderAssignments.GetMaxEventCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public string[]? ActionIds
     {
         get => state.Get<string[]?>("ActionIds");
-        set => SetActionIds(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Input.CInputReplayBuilderAssignments.GetActionIdsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithActionIds(params string[]? value)
     {
@@ -56,7 +53,7 @@ public abstract class CInputReplayBuilderBase<TSelf> where TSelf : CInputReplayB
     public global::GBX.NET.Engines.Input.CInputReplay.Event[]? Events
     {
         get => state.Get<global::GBX.NET.Engines.Input.CInputReplay.Event[]?>("Events");
-        set => SetEvents(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Input.CInputReplayBuilderAssignments.GetEventsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEvents(params global::GBX.NET.Engines.Input.CInputReplay.Event[]? value)
     {
@@ -70,7 +67,7 @@ public abstract class CInputReplayBuilderBase<TSelf> where TSelf : CInputReplayB
     public uint MaxEventCount
     {
         get => state.Get<uint>("MaxEventCount");
-        set => SetMaxEventCount(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Input.CInputReplayBuilderAssignments.GetMaxEventCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaxEventCount(uint value)
     {

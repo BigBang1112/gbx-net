@@ -36,9 +36,6 @@ public abstract class CMotionWeatherBuilderBase<TSelf> where TSelf : CMotionWeat
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionWeather> state;
     private protected CMotionWeatherBuilderBase() => state = new();
     private protected CMotionWeatherBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionWeather> state) => this.state = state;
-    private protected static void SetLegacyModel(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionWeather> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionWeatherBuilderAssignments.GetLegacyModelAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
-    private protected static void SetLegacyModelReference(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionWeather> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionWeatherBuilderAssignments.GetLegacyModelReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionWeather> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
 }
 public abstract class CMotionWeatherBuilderMembers1<TSelf> : CMotionWeatherBuilderBase<TSelf> where TSelf : CMotionWeatherBuilderMembers1<TSelf>
 {
@@ -46,7 +43,7 @@ public abstract class CMotionWeatherBuilderMembers1<TSelf> : CMotionWeatherBuild
     public global::GBX.NET.Engines.MwFoundations.CMwNod? LegacyModel
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("LegacyModel");
-        set => SetLegacyModel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionWeatherBuilderAssignments.GetLegacyModelAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
     }
     public TSelf WithLegacyModel(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
@@ -56,7 +53,7 @@ public abstract class CMotionWeatherBuilderMembers1<TSelf> : CMotionWeatherBuild
     public TSelf WithLegacyModelReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetLegacyModelReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionWeatherBuilderAssignments.GetLegacyModelReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
         return (TSelf)this;
     }
 }
@@ -66,7 +63,7 @@ public abstract class CMotionWeatherBuilderMembers2<TSelf> : CMotionWeatherBuild
     public string? Name
     {
         get => state.Get<string?>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithName(string? value)
     {

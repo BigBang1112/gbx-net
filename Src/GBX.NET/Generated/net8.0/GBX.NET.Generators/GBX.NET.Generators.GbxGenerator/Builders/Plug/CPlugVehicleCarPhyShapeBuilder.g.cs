@@ -36,13 +36,10 @@ public abstract class CPlugVehicleCarPhyShapeBuilderBase<TSelf> where TSelf : CP
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape> state;
     private protected CPlugVehicleCarPhyShapeBuilderBase() => state = new();
     private protected CPlugVehicleCarPhyShapeBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape> state) => this.state = state;
-    private protected static void SetCarVsCarShapeBox(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape> state, BoxAligned value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetCarVsCarShapeBoxAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetMoveShape(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape> state, global::GBX.NET.Engines.Plug.CPlugSurface? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetMoveShapeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetMoveShapeReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSurface> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetMoveShapeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     public BoxAligned CarVsCarShapeBox
     {
         get => state.Get<BoxAligned>("CarVsCarShapeBox");
-        set => SetCarVsCarShapeBox(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetCarVsCarShapeBoxAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithCarVsCarShapeBox(BoxAligned value)
     {
@@ -52,7 +49,7 @@ public abstract class CPlugVehicleCarPhyShapeBuilderBase<TSelf> where TSelf : CP
     public global::GBX.NET.Engines.Plug.CPlugSurface? MoveShape
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSurface?>("MoveShape");
-        set => SetMoveShape(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetMoveShapeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithMoveShape(global::GBX.NET.Engines.Plug.CPlugSurface? value)
     {
@@ -62,7 +59,7 @@ public abstract class CPlugVehicleCarPhyShapeBuilderBase<TSelf> where TSelf : CP
     public TSelf WithMoveShapeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSurface> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetMoveShapeReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetMoveShapeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
 }

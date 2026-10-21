@@ -36,23 +36,10 @@ public abstract class CPlugDecoratorTreeBuilderBase<TSelf> where TSelf : CPlugDe
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state;
     private protected CPlugDecoratorTreeBuilderBase() => state = new();
     private protected CPlugDecoratorTreeBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state) => this.state = state;
-    private protected static void SetCollidableCond(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetCollidableCondAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetExistCond(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetExistCondAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMaterial(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, global::GBX.NET.Engines.Plug.CPlugMaterial? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetMaterialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMaterialReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetMaterialReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetNoLocation(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetNoLocationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetShadowCasterApplyOnChilds(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetShadowCasterApplyOnChildsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetShadowCasterCond(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetShadowCasterCondAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetTransformVisualToSurface(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetTransformVisualToSurfaceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetTreeId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetTreeIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetTreeLight(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, global::GBX.NET.Engines.Plug.CPlugTreeLight? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetTreeLightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetTreeLightReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugTreeLight> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetTreeLightReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetVisibleApplyOnChilds(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetVisibleApplyOnChildsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetVisibleCond(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetVisibleCondAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     public global::GBX.NET.Engines.Plug.CPlugMaterial? Material
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("Material");
-        set => SetMaterial(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetMaterialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMaterial(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
     {
@@ -62,13 +49,13 @@ public abstract class CPlugDecoratorTreeBuilderBase<TSelf> where TSelf : CPlugDe
     public TSelf WithMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetMaterialReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetMaterialReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public bool ShadowCasterApplyOnChilds
     {
         get => state.Get<bool>("ShadowCasterApplyOnChilds");
-        set => SetShadowCasterApplyOnChilds(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetShadowCasterApplyOnChildsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithShadowCasterApplyOnChilds(bool value)
     {
@@ -78,7 +65,7 @@ public abstract class CPlugDecoratorTreeBuilderBase<TSelf> where TSelf : CPlugDe
     public int ShadowCasterCond
     {
         get => state.Get<int>("ShadowCasterCond");
-        set => SetShadowCasterCond(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetShadowCasterCondAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithShadowCasterCond(int value)
     {
@@ -88,7 +75,7 @@ public abstract class CPlugDecoratorTreeBuilderBase<TSelf> where TSelf : CPlugDe
     public bool TransformVisualToSurface
     {
         get => state.Get<bool>("TransformVisualToSurface");
-        set => SetTransformVisualToSurface(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetTransformVisualToSurfaceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithTransformVisualToSurface(bool value)
     {
@@ -98,7 +85,7 @@ public abstract class CPlugDecoratorTreeBuilderBase<TSelf> where TSelf : CPlugDe
     public string? TreeId
     {
         get => state.Get<string?>("TreeId");
-        set => SetTreeId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetTreeIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithTreeId(string? value)
     {
@@ -108,7 +95,7 @@ public abstract class CPlugDecoratorTreeBuilderBase<TSelf> where TSelf : CPlugDe
     public global::GBX.NET.Engines.Plug.CPlugTreeLight? TreeLight
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugTreeLight?>("TreeLight");
-        set => SetTreeLight(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetTreeLightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithTreeLight(global::GBX.NET.Engines.Plug.CPlugTreeLight? value)
     {
@@ -118,13 +105,13 @@ public abstract class CPlugDecoratorTreeBuilderBase<TSelf> where TSelf : CPlugDe
     public TSelf WithTreeLightReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugTreeLight> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetTreeLightReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetTreeLightReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public bool VisibleApplyOnChilds
     {
         get => state.Get<bool>("VisibleApplyOnChilds");
-        set => SetVisibleApplyOnChilds(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetVisibleApplyOnChildsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithVisibleApplyOnChilds(bool value)
     {
@@ -134,7 +121,7 @@ public abstract class CPlugDecoratorTreeBuilderBase<TSelf> where TSelf : CPlugDe
     public int VisibleCond
     {
         get => state.Get<int>("VisibleCond");
-        set => SetVisibleCond(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetVisibleCondAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithVisibleCond(int value)
     {
@@ -148,7 +135,7 @@ public abstract class CPlugDecoratorTreeBuilderMembers1<TSelf> : CPlugDecoratorT
     public int ExistCond
     {
         get => state.Get<int>("ExistCond");
-        set => SetExistCond(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetExistCondAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithExistCond(int value)
     {
@@ -158,7 +145,7 @@ public abstract class CPlugDecoratorTreeBuilderMembers1<TSelf> : CPlugDecoratorT
     public bool NoLocation
     {
         get => state.Get<bool>("NoLocation");
-        set => SetNoLocation(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetNoLocationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithNoLocation(bool value)
     {
@@ -172,7 +159,7 @@ public abstract class CPlugDecoratorTreeBuilderMembers2<TSelf> : CPlugDecoratorT
     public int CollidableCond
     {
         get => state.Get<int>("CollidableCond");
-        set => SetCollidableCond(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetCollidableCondAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithCollidableCond(int value)
     {

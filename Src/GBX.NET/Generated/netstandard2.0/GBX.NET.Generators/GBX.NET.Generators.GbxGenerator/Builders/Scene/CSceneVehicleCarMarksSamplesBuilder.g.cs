@@ -36,14 +36,10 @@ public abstract class CSceneVehicleCarMarksSamplesBuilderBase<TSelf> where TSelf
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples> state;
     private protected CSceneVehicleCarMarksSamplesBuilderBase() => state = new();
     private protected CSceneVehicleCarMarksSamplesBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples> state) => this.state = state;
-    private protected static void SetDisabled(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksSamplesBuilderAssignments.GetDisabledAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksSamplesBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSamples(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples> state, global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples.Sample[]? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksSamplesBuilderAssignments.GetSamplesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetStops(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples> state, uint[]? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksSamplesBuilderAssignments.GetStopsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public bool Disabled
     {
         get => state.Get<bool>("Disabled");
-        set => SetDisabled(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksSamplesBuilderAssignments.GetDisabledAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDisabled(bool value)
     {
@@ -53,7 +49,7 @@ public abstract class CSceneVehicleCarMarksSamplesBuilderBase<TSelf> where TSelf
     public string? Name
     {
         get => state.Get<string?>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksSamplesBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithName(string? value)
     {
@@ -63,7 +59,7 @@ public abstract class CSceneVehicleCarMarksSamplesBuilderBase<TSelf> where TSelf
     public global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples.Sample[]? Samples
     {
         get => state.Get<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples.Sample[]?>("Samples");
-        set => SetSamples(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksSamplesBuilderAssignments.GetSamplesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSamples(params global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples.Sample[]? value)
     {
@@ -77,7 +73,7 @@ public abstract class CSceneVehicleCarMarksSamplesBuilderBase<TSelf> where TSelf
     public uint[]? Stops
     {
         get => state.Get<uint[]?>("Stops");
-        set => SetStops(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksSamplesBuilderAssignments.GetStopsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStops(params uint[]? value)
     {

@@ -36,11 +36,10 @@ public abstract class CPlugPointsInSphereOptBuilderBase<TSelf> where TSelf : CPl
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt> state;
     private protected CPlugPointsInSphereOptBuilderBase() => state = new();
     private protected CPlugPointsInSphereOptBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt> state) => this.state = state;
-    private protected static void SetPacks(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt> state, global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt.Pack[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugPointsInSphereOptBuilderAssignments.GetPacksAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt.Pack[]? Packs
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt.Pack[]?>("Packs");
-        set => SetPacks(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugPointsInSphereOptBuilderAssignments.GetPacksAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPacks(params global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt.Pack[]? value)
     {

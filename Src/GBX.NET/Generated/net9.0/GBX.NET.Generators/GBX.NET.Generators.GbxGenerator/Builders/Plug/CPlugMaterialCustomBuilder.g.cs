@@ -36,14 +36,10 @@ public abstract class CPlugMaterialCustomBuilderBase<TSelf> where TSelf : CPlugM
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> state;
     private protected CPlugMaterialCustomBuilderBase() => state = new();
     private protected CPlugMaterialCustomBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> state) => this.state = state;
-    private protected static void SetGpuFxs1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> state, global::GBX.NET.Engines.Plug.CPlugMaterialCustom.GpuFx[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialCustomBuilderAssignments.GetGpuFxs1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetGpuFxs2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> state, global::GBX.NET.Engines.Plug.CPlugMaterialCustom.GpuFx[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialCustomBuilderAssignments.GetGpuFxs2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSkipSamplers(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> state, global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialCustomBuilderAssignments.GetSkipSamplersAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetTextures(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> state, global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Bitmap[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialCustomBuilderAssignments.GetTexturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public global::GBX.NET.Engines.Plug.CPlugMaterialCustom.GpuFx[]? GpuFxs1
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.GpuFx[]?>("GpuFxs1");
-        set => SetGpuFxs1(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialCustomBuilderAssignments.GetGpuFxs1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithGpuFxs1(params global::GBX.NET.Engines.Plug.CPlugMaterialCustom.GpuFx[]? value)
     {
@@ -57,7 +53,7 @@ public abstract class CPlugMaterialCustomBuilderBase<TSelf> where TSelf : CPlugM
     public global::GBX.NET.Engines.Plug.CPlugMaterialCustom.GpuFx[]? GpuFxs2
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.GpuFx[]?>("GpuFxs2");
-        set => SetGpuFxs2(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialCustomBuilderAssignments.GetGpuFxs2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithGpuFxs2(params global::GBX.NET.Engines.Plug.CPlugMaterialCustom.GpuFx[]? value)
     {
@@ -71,7 +67,7 @@ public abstract class CPlugMaterialCustomBuilderBase<TSelf> where TSelf : CPlugM
     public global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Bitmap[]? Textures
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Bitmap[]?>("Textures");
-        set => SetTextures(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialCustomBuilderAssignments.GetTexturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithTextures(params global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Bitmap[]? value)
     {
@@ -89,7 +85,7 @@ public abstract class CPlugMaterialCustomBuilderMembers1<TSelf> : CPlugMaterialC
     public global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]? SkipSamplers
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]?>("SkipSamplers");
-        set => SetSkipSamplers(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialCustomBuilderAssignments.GetSkipSamplersAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSkipSamplers(params global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]? value)
     {

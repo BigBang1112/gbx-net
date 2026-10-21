@@ -36,11 +36,10 @@ public abstract class CMwCmdExpStringBuilderBase<TSelf> where TSelf : CMwCmdExpS
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpString> state;
     private protected CMwCmdExpStringBuilderBase() => state = new();
     private protected CMwCmdExpStringBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpString> state) => this.state = state;
-    private protected static void SetString(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpString> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpStringBuilderAssignments.GetStringAssignment(), value, GameVersion.TMF);
     public string? String
     {
         get => state.Get<string?>("String");
-        set => SetString(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpStringBuilderAssignments.GetStringAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithString(string? value)
     {

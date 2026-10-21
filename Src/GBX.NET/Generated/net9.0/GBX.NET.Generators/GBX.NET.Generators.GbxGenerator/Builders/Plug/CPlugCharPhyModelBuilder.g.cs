@@ -36,13 +36,10 @@ public abstract class CPlugCharPhyModelBuilderBase<TSelf> where TSelf : CPlugCha
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhyModel> state;
     private protected CPlugCharPhyModelBuilderBase() => state = new();
     private protected CPlugCharPhyModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhyModel> state) => this.state = state;
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhyModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyModelBuilderAssignments.GetNameAssignment(), value, GameVersion.TM2020);
-    private protected static void SetSmoothing(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhyModel> state, global::GBX.NET.Engines.Plug.CPlugCharPhyModel.SmoothRealModel[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyModelBuilderAssignments.GetSmoothingAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSmoothingVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhyModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyModelBuilderAssignments.GetSmoothingVersionAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     public global::GBX.NET.Engines.Plug.CPlugCharPhyModel.SmoothRealModel[]? Smoothing
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.SmoothRealModel[]?>("Smoothing");
-        set => SetSmoothing(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyModelBuilderAssignments.GetSmoothingAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithSmoothing(params global::GBX.NET.Engines.Plug.CPlugCharPhyModel.SmoothRealModel[]? value)
     {
@@ -56,7 +53,7 @@ public abstract class CPlugCharPhyModelBuilderBase<TSelf> where TSelf : CPlugCha
     public int SmoothingVersion
     {
         get => state.Get<int>("SmoothingVersion");
-        set => SetSmoothingVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyModelBuilderAssignments.GetSmoothingVersionAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithSmoothingVersion(int value)
     {
@@ -338,7 +335,7 @@ public partial class CPlugCharPhyModelBuilder : CPlugCharPhyModelBuilderBase<CPl
         public string? Name
         {
             get => state.Get<string?>("Name");
-            set => SetName(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyModelBuilderAssignments.GetNameAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithName(string? value)
         {

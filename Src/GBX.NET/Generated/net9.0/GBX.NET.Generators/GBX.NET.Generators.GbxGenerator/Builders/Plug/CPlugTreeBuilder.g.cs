@@ -36,31 +36,10 @@ public abstract class CPlugTreeBuilderBase<TSelf> where TSelf : CPlugTreeBuilder
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTree> state;
     private protected CPlugTreeBuilderBase() => state = new();
     private protected CPlugTreeBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTree> state) => this.state = state;
-    private protected static void SetChildren(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTree> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetChildrenAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFlags(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTree> state, ulong value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFuncTree(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTree> state, global::GBX.NET.Engines.Function.CFuncTree? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetFuncTreeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFuncTreeReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTree> state, NodeRef<global::GBX.NET.Engines.Function.CFuncTree> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetFuncTreeReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetGenerator(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTree> state, global::GBX.NET.Engines.Plug.CPlugTreeGenerator? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetGeneratorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetGeneratorReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTree> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugTreeGenerator> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetGeneratorReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIsCustomBBox(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTree> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetIsCustomBBoxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLocation(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTree> state, Iso4? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetLocationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetModelPlugId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTree> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetModelPlugIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetModelSolid(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTree> state, global::GBX.NET.Engines.Plug.CPlugSolid? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetModelSolidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetModelSolidReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTree> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetModelSolidReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetNodParameterIds(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTree> state, string[] value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetNodParameterIdsAssignment(), value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX);
-    private protected static void SetPlugId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTree> state, string value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetPlugIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRefBuffer(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTree> state, global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetRefBufferAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX);
-    private protected static void SetRefBufferReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTree> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetRefBufferReferenceAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX);
-    private protected static void SetShader(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTree> state, global::GBX.NET.Engines.Plug.CPlug? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetShaderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetShaderReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTree> state, NodeRef<global::GBX.NET.Engines.Plug.CPlug> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetShaderReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSurface(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTree> state, global::GBX.NET.Engines.Plug.CPlug? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetSurfaceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSurfaceReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTree> state, NodeRef<global::GBX.NET.Engines.Plug.CPlug> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetSurfaceReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetVisual(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTree> state, global::GBX.NET.Engines.Plug.CPlugVisual? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetVisualAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetVisualReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTree> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugVisual> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetVisualReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>? Children
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>?>("Children");
-        set => SetChildren(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetChildrenAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithChildren(NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>? value)
     {
@@ -78,7 +57,7 @@ public abstract class CPlugTreeBuilderBase<TSelf> where TSelf : CPlugTreeBuilder
     public ulong Flags
     {
         get => state.Get<ulong>("Flags");
-        set => SetFlags(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFlags(ulong value)
     {
@@ -88,7 +67,7 @@ public abstract class CPlugTreeBuilderBase<TSelf> where TSelf : CPlugTreeBuilder
     public global::GBX.NET.Engines.Function.CFuncTree? FuncTree
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncTree?>("FuncTree");
-        set => SetFuncTree(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetFuncTreeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFuncTree(global::GBX.NET.Engines.Function.CFuncTree? value)
     {
@@ -98,13 +77,13 @@ public abstract class CPlugTreeBuilderBase<TSelf> where TSelf : CPlugTreeBuilder
     public TSelf WithFuncTreeReference(NodeRef<global::GBX.NET.Engines.Function.CFuncTree> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetFuncTreeReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetFuncTreeReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugTreeGenerator? Generator
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugTreeGenerator?>("Generator");
-        set => SetGenerator(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetGeneratorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithGenerator(global::GBX.NET.Engines.Plug.CPlugTreeGenerator? value)
     {
@@ -114,13 +93,13 @@ public abstract class CPlugTreeBuilderBase<TSelf> where TSelf : CPlugTreeBuilder
     public TSelf WithGeneratorReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugTreeGenerator> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetGeneratorReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetGeneratorReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public bool IsCustomBBox
     {
         get => state.Get<bool>("IsCustomBBox");
-        set => SetIsCustomBBox(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetIsCustomBBoxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIsCustomBBox(bool value)
     {
@@ -130,7 +109,7 @@ public abstract class CPlugTreeBuilderBase<TSelf> where TSelf : CPlugTreeBuilder
     public Iso4? Location
     {
         get => state.Get<Iso4?>("Location");
-        set => SetLocation(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetLocationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLocation(Iso4? value)
     {
@@ -140,7 +119,7 @@ public abstract class CPlugTreeBuilderBase<TSelf> where TSelf : CPlugTreeBuilder
     public string? ModelPlugId
     {
         get => state.Get<string?>("ModelPlugId");
-        set => SetModelPlugId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetModelPlugIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithModelPlugId(string? value)
     {
@@ -150,7 +129,7 @@ public abstract class CPlugTreeBuilderBase<TSelf> where TSelf : CPlugTreeBuilder
     public global::GBX.NET.Engines.Plug.CPlugSolid? ModelSolid
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSolid?>("ModelSolid");
-        set => SetModelSolid(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetModelSolidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithModelSolid(global::GBX.NET.Engines.Plug.CPlugSolid? value)
     {
@@ -160,13 +139,13 @@ public abstract class CPlugTreeBuilderBase<TSelf> where TSelf : CPlugTreeBuilder
     public TSelf WithModelSolidReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetModelSolidReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetModelSolidReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public string PlugId
     {
         get => state.Get<string>("PlugId");
-        set => SetPlugId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetPlugIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPlugId(string value)
     {
@@ -176,7 +155,7 @@ public abstract class CPlugTreeBuilderBase<TSelf> where TSelf : CPlugTreeBuilder
     public global::GBX.NET.Engines.Plug.CPlug? Shader
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlug?>("Shader");
-        set => SetShader(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetShaderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithShader(global::GBX.NET.Engines.Plug.CPlug? value)
     {
@@ -186,13 +165,13 @@ public abstract class CPlugTreeBuilderBase<TSelf> where TSelf : CPlugTreeBuilder
     public TSelf WithShaderReference(NodeRef<global::GBX.NET.Engines.Plug.CPlug> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetShaderReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetShaderReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlug? Surface
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlug?>("Surface");
-        set => SetSurface(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetSurfaceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSurface(global::GBX.NET.Engines.Plug.CPlug? value)
     {
@@ -202,13 +181,13 @@ public abstract class CPlugTreeBuilderBase<TSelf> where TSelf : CPlugTreeBuilder
     public TSelf WithSurfaceReference(NodeRef<global::GBX.NET.Engines.Plug.CPlug> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSurfaceReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetSurfaceReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugVisual? Visual
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisual?>("Visual");
-        set => SetVisual(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetVisualAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithVisual(global::GBX.NET.Engines.Plug.CPlugVisual? value)
     {
@@ -218,7 +197,7 @@ public abstract class CPlugTreeBuilderBase<TSelf> where TSelf : CPlugTreeBuilder
     public TSelf WithVisualReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugVisual> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetVisualReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetVisualReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -228,7 +207,7 @@ public abstract class CPlugTreeBuilderMembers1<TSelf> : CPlugTreeBuilderBase<TSe
     public string[] NodParameterIds
     {
         get => state.Get<string[]>("NodParameterIds");
-        set => SetNodParameterIds(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetNodParameterIdsAssignment(), value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX);
     }
     public TSelf WithNodParameterIds(params string[] value)
     {
@@ -246,7 +225,7 @@ public abstract class CPlugTreeBuilderMembers2<TSelf> : CPlugTreeBuilderBase<TSe
     public global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? RefBuffer
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?>("RefBuffer");
-        set => SetRefBuffer(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetRefBufferAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX);
     }
     public TSelf WithRefBuffer(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value)
     {
@@ -256,7 +235,7 @@ public abstract class CPlugTreeBuilderMembers2<TSelf> : CPlugTreeBuilderBase<TSe
     public TSelf WithRefBufferReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetRefBufferReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetRefBufferReferenceAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX);
         return (TSelf)this;
     }
 }
@@ -485,7 +464,7 @@ public partial class CPlugTreeBuilder : CPlugTreeBuilderBase<CPlugTreeBuilder>
         public string[] NodParameterIds
         {
             get => state.Get<string[]>("NodParameterIds");
-            set => SetNodParameterIds(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetNodParameterIdsAssignment(), value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX);
         }
         public TMSX WithNodParameterIds(params string[] value)
         {

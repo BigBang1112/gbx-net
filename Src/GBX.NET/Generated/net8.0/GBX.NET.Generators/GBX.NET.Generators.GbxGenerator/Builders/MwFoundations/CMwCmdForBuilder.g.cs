@@ -36,17 +36,10 @@ public abstract class CMwCmdForBuilderBase<TSelf> where TSelf : CMwCmdForBuilder
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdFor> state;
     private protected CMwCmdForBuilderBase() => state = new();
     private protected CMwCmdForBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdFor> state) => this.state = state;
-    private protected static void SetBlock(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdFor> state, global::GBX.NET.Engines.MwFoundations.CMwCmdBlock? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdForBuilderAssignments.GetBlockAssignment(), value, GameVersion.TMF);
-    private protected static void SetBlockReference(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdFor> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdBlock> value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdForBuilderAssignments.GetBlockReferenceAssignment(), value, GameVersion.TMF);
-    private protected static void SetMax(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdFor> state, global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdForBuilderAssignments.GetMaxAssignment(), value, GameVersion.TMF);
-    private protected static void SetMaxReference(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdFor> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdForBuilderAssignments.GetMaxReferenceAssignment(), value, GameVersion.TMF);
-    private protected static void SetMin(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdFor> state, global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdForBuilderAssignments.GetMinAssignment(), value, GameVersion.TMF);
-    private protected static void SetMinReference(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdFor> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdForBuilderAssignments.GetMinReferenceAssignment(), value, GameVersion.TMF);
-    private protected static void SetVariableName(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdFor> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdForBuilderAssignments.GetVariableNameAssignment(), value, GameVersion.TMF);
     public global::GBX.NET.Engines.MwFoundations.CMwCmdBlock? Block
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdBlock?>("Block");
-        set => SetBlock(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdForBuilderAssignments.GetBlockAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithBlock(global::GBX.NET.Engines.MwFoundations.CMwCmdBlock? value)
     {
@@ -56,13 +49,13 @@ public abstract class CMwCmdForBuilderBase<TSelf> where TSelf : CMwCmdForBuilder
     public TSelf WithBlockReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdBlock> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBlockReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdForBuilderAssignments.GetBlockReferenceAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Max
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdExp?>("Max");
-        set => SetMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdForBuilderAssignments.GetMaxAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithMax(global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value)
     {
@@ -72,13 +65,13 @@ public abstract class CMwCmdForBuilderBase<TSelf> where TSelf : CMwCmdForBuilder
     public TSelf WithMaxReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetMaxReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdForBuilderAssignments.GetMaxReferenceAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Min
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdExp?>("Min");
-        set => SetMin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdForBuilderAssignments.GetMinAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithMin(global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value)
     {
@@ -88,13 +81,13 @@ public abstract class CMwCmdForBuilderBase<TSelf> where TSelf : CMwCmdForBuilder
     public TSelf WithMinReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetMinReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdForBuilderAssignments.GetMinReferenceAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
     public string? VariableName
     {
         get => state.Get<string?>("VariableName");
-        set => SetVariableName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdForBuilderAssignments.GetVariableNameAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithVariableName(string? value)
     {

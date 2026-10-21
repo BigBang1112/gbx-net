@@ -36,22 +36,10 @@ public abstract class CGameCtnMediaClipBuilderBase<TSelf> where TSelf : CGameCtn
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state;
     private protected CGameCtnMediaClipBuilderBase() => state = new();
     private protected CGameCtnMediaClipBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state) => this.state = state;
-    private protected static void SetConfigScript(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state, string value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilderAssignments.GetConfigScriptAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFlags(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilderAssignments.GetFlagsAssignment(), value, GameVersion.TM2020);
-    private protected static void SetIsScriptEvent(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilderAssignments.GetIsScriptEventAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetLocalPlayerClipEntIndex(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilderAssignments.GetLocalPlayerClipEntIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetScene(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state, global::GBX.NET.Engines.Scene.CScene? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilderAssignments.GetSceneAssignment(), value, GameVersion.TMF | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetSceneReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state, NodeRef<global::GBX.NET.Engines.Scene.CScene> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilderAssignments.GetSceneReferenceAssignment(), value, GameVersion.TMF | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetStereoSepMax(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilderAssignments.GetStereoSepMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetStopWhenLeave(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilderAssignments.GetStopWhenLeaveAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetStopWhenRespawn(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilderAssignments.GetStopWhenRespawnAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTracks(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state, global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilderAssignments.GetTracksAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetTriggersBeforeRaceStart(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilderAssignments.GetTriggersBeforeRaceStartAssignment(), value, GameVersion.TM2020);
     public string? Name
     {
         get => state.Get<string?>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithName(string? value)
     {
@@ -61,7 +49,7 @@ public abstract class CGameCtnMediaClipBuilderBase<TSelf> where TSelf : CGameCtn
     public global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack> Tracks
     {
         get => state.Get<global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack>>("Tracks");
-        set => SetTracks(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilderAssignments.GetTracksAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithTracks(global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack> value)
     {
@@ -83,7 +71,7 @@ public abstract class CGameCtnMediaClipBuilderMembers1<TSelf> : CGameCtnMediaCli
     public int LocalPlayerClipEntIndex
     {
         get => state.Get<int>("LocalPlayerClipEntIndex");
-        set => SetLocalPlayerClipEntIndex(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilderAssignments.GetLocalPlayerClipEntIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithLocalPlayerClipEntIndex(int value)
     {
@@ -97,7 +85,7 @@ public abstract class CGameCtnMediaClipBuilderMembers2<TSelf> : CGameCtnMediaCli
     public global::GBX.NET.Engines.Scene.CScene? Scene
     {
         get => state.Get<global::GBX.NET.Engines.Scene.CScene?>("Scene");
-        set => SetScene(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilderAssignments.GetSceneAssignment(), value, GameVersion.TMF | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithScene(global::GBX.NET.Engines.Scene.CScene? value)
     {
@@ -107,7 +95,7 @@ public abstract class CGameCtnMediaClipBuilderMembers2<TSelf> : CGameCtnMediaCli
     public TSelf WithSceneReference(NodeRef<global::GBX.NET.Engines.Scene.CScene> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSceneReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilderAssignments.GetSceneReferenceAssignment(), value, GameVersion.TMF | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -117,7 +105,7 @@ public abstract class CGameCtnMediaClipBuilderMembers3<TSelf> : CGameCtnMediaCli
     public string ConfigScript
     {
         get => state.Get<string>("ConfigScript");
-        set => SetConfigScript(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilderAssignments.GetConfigScriptAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithConfigScript(string value)
     {
@@ -127,7 +115,7 @@ public abstract class CGameCtnMediaClipBuilderMembers3<TSelf> : CGameCtnMediaCli
     public bool IsScriptEvent
     {
         get => state.Get<bool>("IsScriptEvent");
-        set => SetIsScriptEvent(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilderAssignments.GetIsScriptEventAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIsScriptEvent(bool value)
     {
@@ -137,7 +125,7 @@ public abstract class CGameCtnMediaClipBuilderMembers3<TSelf> : CGameCtnMediaCli
     public float StereoSepMax
     {
         get => state.Get<float>("StereoSepMax");
-        set => SetStereoSepMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilderAssignments.GetStereoSepMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStereoSepMax(float value)
     {
@@ -147,7 +135,7 @@ public abstract class CGameCtnMediaClipBuilderMembers3<TSelf> : CGameCtnMediaCli
     public bool StopWhenLeave
     {
         get => state.Get<bool>("StopWhenLeave");
-        set => SetStopWhenLeave(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilderAssignments.GetStopWhenLeaveAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStopWhenLeave(bool value)
     {
@@ -161,7 +149,7 @@ public abstract class CGameCtnMediaClipBuilderMembers4<TSelf> : CGameCtnMediaCli
     public bool StopWhenRespawn
     {
         get => state.Get<bool>("StopWhenRespawn");
-        set => SetStopWhenRespawn(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilderAssignments.GetStopWhenRespawnAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStopWhenRespawn(bool value)
     {
@@ -393,7 +381,7 @@ public partial class CGameCtnMediaClipBuilder : CGameCtnMediaClipBuilderBase<CGa
         public int LocalPlayerClipEntIndex
         {
             get => state.Get<int>("LocalPlayerClipEntIndex");
-            set => SetLocalPlayerClipEntIndex(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilderAssignments.GetLocalPlayerClipEntIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         }
         public TMF WithLocalPlayerClipEntIndex(int value)
         {
@@ -511,7 +499,7 @@ public partial class CGameCtnMediaClipBuilder : CGameCtnMediaClipBuilderBase<CGa
         public int Flags
         {
             get => state.Get<int>("Flags");
-            set => SetFlags(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilderAssignments.GetFlagsAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithFlags(int value)
         {
@@ -529,7 +517,7 @@ public partial class CGameCtnMediaClipBuilder : CGameCtnMediaClipBuilderBase<CGa
         public bool TriggersBeforeRaceStart
         {
             get => state.Get<bool>("TriggersBeforeRaceStart");
-            set => SetTriggersBeforeRaceStart(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilderAssignments.GetTriggersBeforeRaceStartAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithTriggersBeforeRaceStart(bool value)
         {

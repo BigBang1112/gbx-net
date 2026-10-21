@@ -36,63 +36,10 @@ public abstract class CPlugAudioEnvironmentBuilderBase<TSelf> where TSelf : CPlu
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state;
     private protected CPlugAudioEnvironmentBuilderBase() => state = new();
     private protected CPlugAudioEnvironmentBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state) => this.state = state;
-    private protected static void SetAirAbsorbtionHF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetAirAbsorbtionHFAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetAirAbsorptionGainHF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetAirAbsorptionGainHFAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetDecayHFLimit(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetDecayHFLimitAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetDecayHFLimitScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetDecayHFLimitScaleAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetDecayHFRatio(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetDecayHFRatioAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetDecayLFRatio(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetDecayLFRatioAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetDecayTime(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetDecayTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetDecayTimeScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetDecayTimeScaleAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetDensity(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetDensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetDiffusion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetDiffusionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetDopplerFactor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetDopplerFactorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetEAXPreset(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.EEAXPreset value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetEAXPresetAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetEchoDepth(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetEchoDepthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetEchoTime(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetEchoTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetEchoTimeScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetEchoTimeScaleAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetGain(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetGainAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetGainHF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetGainHFAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetGainLF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetGainLFAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetHFReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetHFReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLFReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetLFReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLateReverbDelay(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetLateReverbDelayAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetLateReverbGain(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetLateReverbGainAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetLowPassGain(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetLowPassGainAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetLowPassGainHF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetLowPassGainHFAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetModulationDepth(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetModulationDepthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetModulationTime(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetModulationTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetModulationTimeScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetModulationTimeScaleAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, string value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetReflections(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetReflectionsAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetReflectionsDelay(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetReflectionsDelayAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetReflectionsDelayScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetReflectionsDelayScaleAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetReflectionsGain(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetReflectionsGainAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetReflectionsScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetReflectionsScaleAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetReverb(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetReverbAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetReverbDelay(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetReverbDelayAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetReverbDelayScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetReverbDelayScaleAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetReverbScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetReverbScaleAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetRolloffFactor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRolloffFactorAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetRoom(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetRoomFxHighGain(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomFxHighGainAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetRoomFxHighGainHF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomFxHighGainHFAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetRoomFxLowGain(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomFxLowGainAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetRoomFxLowGainHF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomFxLowGainHFAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetRoomFxMidGain(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomFxMidGainAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetRoomFxMidGainHF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomFxMidGainHFAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetRoomFxMusicGain(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomFxMusicGainAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetRoomFxMusicGainHF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomFxMusicGainHFAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetRoomFxUIGain(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomFxUIGainAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetRoomFxUIGainHF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomFxUIGainHFAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetRoomHFRatio(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomHFRatioAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetRoomLFRatio(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomLFRatioAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetRoomRolloffFactor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomRolloffFactorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetSizeFactor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetSizeFactorAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     public float DecayHFRatio
     {
         get => state.Get<float>("DecayHFRatio");
-        set => SetDecayHFRatio(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetDecayHFRatioAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDecayHFRatio(float value)
     {
@@ -102,7 +49,7 @@ public abstract class CPlugAudioEnvironmentBuilderBase<TSelf> where TSelf : CPlu
     public float DecayLFRatio
     {
         get => state.Get<float>("DecayLFRatio");
-        set => SetDecayLFRatio(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetDecayLFRatioAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDecayLFRatio(float value)
     {
@@ -112,7 +59,7 @@ public abstract class CPlugAudioEnvironmentBuilderBase<TSelf> where TSelf : CPlu
     public float DecayTime
     {
         get => state.Get<float>("DecayTime");
-        set => SetDecayTime(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetDecayTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDecayTime(float value)
     {
@@ -122,7 +69,7 @@ public abstract class CPlugAudioEnvironmentBuilderBase<TSelf> where TSelf : CPlu
     public float Diffusion
     {
         get => state.Get<float>("Diffusion");
-        set => SetDiffusion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetDiffusionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDiffusion(float value)
     {
@@ -132,7 +79,7 @@ public abstract class CPlugAudioEnvironmentBuilderBase<TSelf> where TSelf : CPlu
     public float EchoDepth
     {
         get => state.Get<float>("EchoDepth");
-        set => SetEchoDepth(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetEchoDepthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEchoDepth(float value)
     {
@@ -142,7 +89,7 @@ public abstract class CPlugAudioEnvironmentBuilderBase<TSelf> where TSelf : CPlu
     public float EchoTime
     {
         get => state.Get<float>("EchoTime");
-        set => SetEchoTime(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetEchoTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEchoTime(float value)
     {
@@ -152,7 +99,7 @@ public abstract class CPlugAudioEnvironmentBuilderBase<TSelf> where TSelf : CPlu
     public float HFReference
     {
         get => state.Get<float>("HFReference");
-        set => SetHFReference(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetHFReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithHFReference(float value)
     {
@@ -162,7 +109,7 @@ public abstract class CPlugAudioEnvironmentBuilderBase<TSelf> where TSelf : CPlu
     public float LFReference
     {
         get => state.Get<float>("LFReference");
-        set => SetLFReference(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetLFReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLFReference(float value)
     {
@@ -172,7 +119,7 @@ public abstract class CPlugAudioEnvironmentBuilderBase<TSelf> where TSelf : CPlu
     public float ModulationDepth
     {
         get => state.Get<float>("ModulationDepth");
-        set => SetModulationDepth(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetModulationDepthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithModulationDepth(float value)
     {
@@ -182,7 +129,7 @@ public abstract class CPlugAudioEnvironmentBuilderBase<TSelf> where TSelf : CPlu
     public float ModulationTime
     {
         get => state.Get<float>("ModulationTime");
-        set => SetModulationTime(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetModulationTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithModulationTime(float value)
     {
@@ -192,7 +139,7 @@ public abstract class CPlugAudioEnvironmentBuilderBase<TSelf> where TSelf : CPlu
     public float ReflectionsDelay
     {
         get => state.Get<float>("ReflectionsDelay");
-        set => SetReflectionsDelay(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetReflectionsDelayAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithReflectionsDelay(float value)
     {
@@ -206,7 +153,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers1<TSelf> : CPlugAudioEn
     public float DopplerFactor
     {
         get => state.Get<float>("DopplerFactor");
-        set => SetDopplerFactor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetDopplerFactorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDopplerFactor(float value)
     {
@@ -216,7 +163,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers1<TSelf> : CPlugAudioEn
     public string Name
     {
         get => state.Get<string>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithName(string value)
     {
@@ -230,7 +177,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers2<TSelf> : CPlugAudioEn
     public float AirAbsorptionGainHF
     {
         get => state.Get<float>("AirAbsorptionGainHF");
-        set => SetAirAbsorptionGainHF(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetAirAbsorptionGainHFAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithAirAbsorptionGainHF(float value)
     {
@@ -240,7 +187,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers2<TSelf> : CPlugAudioEn
     public bool DecayHFLimit
     {
         get => state.Get<bool>("DecayHFLimit");
-        set => SetDecayHFLimit(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetDecayHFLimitAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithDecayHFLimit(bool value)
     {
@@ -250,7 +197,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers2<TSelf> : CPlugAudioEn
     public float Density
     {
         get => state.Get<float>("Density");
-        set => SetDensity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetDensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithDensity(float value)
     {
@@ -260,7 +207,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers2<TSelf> : CPlugAudioEn
     public float Gain
     {
         get => state.Get<float>("Gain");
-        set => SetGain(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetGainAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithGain(float value)
     {
@@ -270,7 +217,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers2<TSelf> : CPlugAudioEn
     public float GainHF
     {
         get => state.Get<float>("GainHF");
-        set => SetGainHF(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetGainHFAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithGainHF(float value)
     {
@@ -280,7 +227,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers2<TSelf> : CPlugAudioEn
     public float GainLF
     {
         get => state.Get<float>("GainLF");
-        set => SetGainLF(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetGainLFAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithGainLF(float value)
     {
@@ -290,7 +237,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers2<TSelf> : CPlugAudioEn
     public float LateReverbDelay
     {
         get => state.Get<float>("LateReverbDelay");
-        set => SetLateReverbDelay(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetLateReverbDelayAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithLateReverbDelay(float value)
     {
@@ -300,7 +247,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers2<TSelf> : CPlugAudioEn
     public float LateReverbGain
     {
         get => state.Get<float>("LateReverbGain");
-        set => SetLateReverbGain(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetLateReverbGainAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithLateReverbGain(float value)
     {
@@ -310,7 +257,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers2<TSelf> : CPlugAudioEn
     public float ReflectionsGain
     {
         get => state.Get<float>("ReflectionsGain");
-        set => SetReflectionsGain(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetReflectionsGainAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithReflectionsGain(float value)
     {
@@ -320,7 +267,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers2<TSelf> : CPlugAudioEn
     public float RoomRolloffFactor
     {
         get => state.Get<float>("RoomRolloffFactor");
-        set => SetRoomRolloffFactor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomRolloffFactorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithRoomRolloffFactor(float value)
     {
@@ -334,7 +281,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers3<TSelf> : CPlugAudioEn
     public float AirAbsorbtionHF
     {
         get => state.Get<float>("AirAbsorbtionHF");
-        set => SetAirAbsorbtionHF(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetAirAbsorbtionHFAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithAirAbsorbtionHF(float value)
     {
@@ -344,7 +291,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers3<TSelf> : CPlugAudioEn
     public bool DecayHFLimitScale
     {
         get => state.Get<bool>("DecayHFLimitScale");
-        set => SetDecayHFLimitScale(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetDecayHFLimitScaleAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithDecayHFLimitScale(bool value)
     {
@@ -354,7 +301,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers3<TSelf> : CPlugAudioEn
     public bool DecayTimeScale
     {
         get => state.Get<bool>("DecayTimeScale");
-        set => SetDecayTimeScale(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetDecayTimeScaleAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithDecayTimeScale(bool value)
     {
@@ -364,7 +311,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers3<TSelf> : CPlugAudioEn
     public global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.EEAXPreset EAXPreset
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.EEAXPreset>("EAXPreset");
-        set => SetEAXPreset(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetEAXPresetAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithEAXPreset(global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.EEAXPreset value)
     {
@@ -374,7 +321,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers3<TSelf> : CPlugAudioEn
     public bool EchoTimeScale
     {
         get => state.Get<bool>("EchoTimeScale");
-        set => SetEchoTimeScale(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetEchoTimeScaleAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithEchoTimeScale(bool value)
     {
@@ -384,7 +331,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers3<TSelf> : CPlugAudioEn
     public bool ModulationTimeScale
     {
         get => state.Get<bool>("ModulationTimeScale");
-        set => SetModulationTimeScale(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetModulationTimeScaleAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithModulationTimeScale(bool value)
     {
@@ -394,7 +341,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers3<TSelf> : CPlugAudioEn
     public float Reflections
     {
         get => state.Get<float>("Reflections");
-        set => SetReflections(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetReflectionsAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithReflections(float value)
     {
@@ -404,7 +351,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers3<TSelf> : CPlugAudioEn
     public bool ReflectionsDelayScale
     {
         get => state.Get<bool>("ReflectionsDelayScale");
-        set => SetReflectionsDelayScale(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetReflectionsDelayScaleAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithReflectionsDelayScale(bool value)
     {
@@ -414,7 +361,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers3<TSelf> : CPlugAudioEn
     public bool ReflectionsScale
     {
         get => state.Get<bool>("ReflectionsScale");
-        set => SetReflectionsScale(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetReflectionsScaleAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithReflectionsScale(bool value)
     {
@@ -424,7 +371,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers3<TSelf> : CPlugAudioEn
     public float Reverb
     {
         get => state.Get<float>("Reverb");
-        set => SetReverb(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetReverbAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithReverb(float value)
     {
@@ -434,7 +381,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers3<TSelf> : CPlugAudioEn
     public float ReverbDelay
     {
         get => state.Get<float>("ReverbDelay");
-        set => SetReverbDelay(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetReverbDelayAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithReverbDelay(float value)
     {
@@ -444,7 +391,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers3<TSelf> : CPlugAudioEn
     public bool ReverbDelayScale
     {
         get => state.Get<bool>("ReverbDelayScale");
-        set => SetReverbDelayScale(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetReverbDelayScaleAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithReverbDelayScale(bool value)
     {
@@ -454,7 +401,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers3<TSelf> : CPlugAudioEn
     public bool ReverbScale
     {
         get => state.Get<bool>("ReverbScale");
-        set => SetReverbScale(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetReverbScaleAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithReverbScale(bool value)
     {
@@ -464,7 +411,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers3<TSelf> : CPlugAudioEn
     public float RolloffFactor
     {
         get => state.Get<float>("RolloffFactor");
-        set => SetRolloffFactor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRolloffFactorAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithRolloffFactor(float value)
     {
@@ -474,7 +421,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers3<TSelf> : CPlugAudioEn
     public float Room
     {
         get => state.Get<float>("Room");
-        set => SetRoom(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithRoom(float value)
     {
@@ -484,7 +431,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers3<TSelf> : CPlugAudioEn
     public float RoomHFRatio
     {
         get => state.Get<float>("RoomHFRatio");
-        set => SetRoomHFRatio(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomHFRatioAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithRoomHFRatio(float value)
     {
@@ -494,7 +441,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers3<TSelf> : CPlugAudioEn
     public float RoomLFRatio
     {
         get => state.Get<float>("RoomLFRatio");
-        set => SetRoomLFRatio(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomLFRatioAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithRoomLFRatio(float value)
     {
@@ -504,7 +451,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers3<TSelf> : CPlugAudioEn
     public float SizeFactor
     {
         get => state.Get<float>("SizeFactor");
-        set => SetSizeFactor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetSizeFactorAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSizeFactor(float value)
     {
@@ -518,7 +465,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers4<TSelf> : CPlugAudioEn
     public float LowPassGain
     {
         get => state.Get<float>("LowPassGain");
-        set => SetLowPassGain(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetLowPassGainAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLowPassGain(float value)
     {
@@ -528,7 +475,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers4<TSelf> : CPlugAudioEn
     public float LowPassGainHF
     {
         get => state.Get<float>("LowPassGainHF");
-        set => SetLowPassGainHF(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetLowPassGainHFAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLowPassGainHF(float value)
     {
@@ -538,7 +485,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers4<TSelf> : CPlugAudioEn
     public float RoomFxHighGain
     {
         get => state.Get<float>("RoomFxHighGain");
-        set => SetRoomFxHighGain(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomFxHighGainAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRoomFxHighGain(float value)
     {
@@ -548,7 +495,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers4<TSelf> : CPlugAudioEn
     public float RoomFxHighGainHF
     {
         get => state.Get<float>("RoomFxHighGainHF");
-        set => SetRoomFxHighGainHF(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomFxHighGainHFAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRoomFxHighGainHF(float value)
     {
@@ -558,7 +505,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers4<TSelf> : CPlugAudioEn
     public float RoomFxLowGain
     {
         get => state.Get<float>("RoomFxLowGain");
-        set => SetRoomFxLowGain(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomFxLowGainAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRoomFxLowGain(float value)
     {
@@ -568,7 +515,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers4<TSelf> : CPlugAudioEn
     public float RoomFxLowGainHF
     {
         get => state.Get<float>("RoomFxLowGainHF");
-        set => SetRoomFxLowGainHF(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomFxLowGainHFAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRoomFxLowGainHF(float value)
     {
@@ -578,7 +525,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers4<TSelf> : CPlugAudioEn
     public float RoomFxMidGain
     {
         get => state.Get<float>("RoomFxMidGain");
-        set => SetRoomFxMidGain(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomFxMidGainAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRoomFxMidGain(float value)
     {
@@ -588,7 +535,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers4<TSelf> : CPlugAudioEn
     public float RoomFxMidGainHF
     {
         get => state.Get<float>("RoomFxMidGainHF");
-        set => SetRoomFxMidGainHF(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomFxMidGainHFAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRoomFxMidGainHF(float value)
     {
@@ -598,7 +545,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers4<TSelf> : CPlugAudioEn
     public float RoomFxMusicGain
     {
         get => state.Get<float>("RoomFxMusicGain");
-        set => SetRoomFxMusicGain(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomFxMusicGainAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRoomFxMusicGain(float value)
     {
@@ -608,7 +555,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers4<TSelf> : CPlugAudioEn
     public float RoomFxMusicGainHF
     {
         get => state.Get<float>("RoomFxMusicGainHF");
-        set => SetRoomFxMusicGainHF(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomFxMusicGainHFAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRoomFxMusicGainHF(float value)
     {
@@ -618,7 +565,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers4<TSelf> : CPlugAudioEn
     public float RoomFxUIGain
     {
         get => state.Get<float>("RoomFxUIGain");
-        set => SetRoomFxUIGain(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomFxUIGainAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRoomFxUIGain(float value)
     {
@@ -628,7 +575,7 @@ public abstract class CPlugAudioEnvironmentBuilderMembers4<TSelf> : CPlugAudioEn
     public float RoomFxUIGainHF
     {
         get => state.Get<float>("RoomFxUIGainHF");
-        set => SetRoomFxUIGainHF(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomFxUIGainHFAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRoomFxUIGainHF(float value)
     {
@@ -742,7 +689,7 @@ public partial class CPlugAudioEnvironmentBuilder : CPlugAudioEnvironmentBuilder
         public float DopplerFactor
         {
             get => state.Get<float>("DopplerFactor");
-            set => SetDopplerFactor(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetDopplerFactorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMSX WithDopplerFactor(float value)
         {
@@ -752,7 +699,7 @@ public partial class CPlugAudioEnvironmentBuilder : CPlugAudioEnvironmentBuilder
         public string Name
         {
             get => state.Get<string>("Name");
-            set => SetName(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMSX WithName(string value)
         {
@@ -780,7 +727,7 @@ public partial class CPlugAudioEnvironmentBuilder : CPlugAudioEnvironmentBuilder
         public float DopplerFactor
         {
             get => state.Get<float>("DopplerFactor");
-            set => SetDopplerFactor(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetDopplerFactorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMNESWC WithDopplerFactor(float value)
         {
@@ -790,7 +737,7 @@ public partial class CPlugAudioEnvironmentBuilder : CPlugAudioEnvironmentBuilder
         public string Name
         {
             get => state.Get<string>("Name");
-            set => SetName(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMNESWC WithName(string value)
         {
@@ -818,7 +765,7 @@ public partial class CPlugAudioEnvironmentBuilder : CPlugAudioEnvironmentBuilder
         public float DopplerFactor
         {
             get => state.Get<float>("DopplerFactor");
-            set => SetDopplerFactor(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetDopplerFactorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public VSK5 WithDopplerFactor(float value)
         {
@@ -828,7 +775,7 @@ public partial class CPlugAudioEnvironmentBuilder : CPlugAudioEnvironmentBuilder
         public string Name
         {
             get => state.Get<string>("Name");
-            set => SetName(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public VSK5 WithName(string value)
         {

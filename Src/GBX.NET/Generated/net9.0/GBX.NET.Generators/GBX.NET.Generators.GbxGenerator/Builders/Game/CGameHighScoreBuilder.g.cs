@@ -36,16 +36,10 @@ public abstract class CGameHighScoreBuilderBase<TSelf> where TSelf : CGameHighSc
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameHighScore> state;
     private protected CGameHighScoreBuilderBase() => state = new();
     private protected CGameHighScoreBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameHighScore> state) => this.state = state;
-    private protected static void SetCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGameHighScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameHighScoreBuilderAssignments.GetCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetGhostUrl(NodeBuilderState<global::GBX.NET.Engines.Game.CGameHighScore> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameHighScoreBuilderAssignments.GetGhostUrlAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameHighScore> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameHighScoreBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetRank(NodeBuilderState<global::GBX.NET.Engines.Game.CGameHighScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameHighScoreBuilderAssignments.GetRankAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetScore(NodeBuilderState<global::GBX.NET.Engines.Game.CGameHighScore> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameHighScoreBuilderAssignments.GetScoreAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetTime(NodeBuilderState<global::GBX.NET.Engines.Game.CGameHighScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameHighScoreBuilderAssignments.GetTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT);
     public int Count
     {
         get => state.Get<int>("Count");
-        set => SetCount(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameHighScoreBuilderAssignments.GetCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithCount(int value)
     {
@@ -55,7 +49,7 @@ public abstract class CGameHighScoreBuilderBase<TSelf> where TSelf : CGameHighSc
     public string? Name
     {
         get => state.Get<string?>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameHighScoreBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithName(string? value)
     {
@@ -65,7 +59,7 @@ public abstract class CGameHighScoreBuilderBase<TSelf> where TSelf : CGameHighSc
     public int Rank
     {
         get => state.Get<int>("Rank");
-        set => SetRank(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameHighScoreBuilderAssignments.GetRankAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithRank(int value)
     {
@@ -75,7 +69,7 @@ public abstract class CGameHighScoreBuilderBase<TSelf> where TSelf : CGameHighSc
     public string? Score
     {
         get => state.Get<string?>("Score");
-        set => SetScore(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameHighScoreBuilderAssignments.GetScoreAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithScore(string? value)
     {
@@ -85,7 +79,7 @@ public abstract class CGameHighScoreBuilderBase<TSelf> where TSelf : CGameHighSc
     public int Time
     {
         get => state.Get<int>("Time");
-        set => SetTime(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameHighScoreBuilderAssignments.GetTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithTime(int value)
     {
@@ -99,7 +93,7 @@ public abstract class CGameHighScoreBuilderMembers1<TSelf> : CGameHighScoreBuild
     public string? GhostUrl
     {
         get => state.Get<string?>("GhostUrl");
-        set => SetGhostUrl(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameHighScoreBuilderAssignments.GetGhostUrlAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithGhostUrl(string? value)
     {

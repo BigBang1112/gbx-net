@@ -36,12 +36,10 @@ public abstract class CGameArmorModelBuilderBase<TSelf> where TSelf : CGameArmor
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.GameData.CGameArmorModel> state;
     private protected CGameArmorModelBuilderBase() => state = new();
     private protected CGameArmorModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameArmorModel> state) => this.state = state;
-    private protected static void SetArmorMax(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameArmorModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameArmorModelBuilderAssignments.GetArmorMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetReplenishDelayAfterDamage(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameArmorModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameArmorModelBuilderAssignments.GetReplenishDelayAfterDamageAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public int ArmorMax
     {
         get => state.Get<int>("ArmorMax");
-        set => SetArmorMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameArmorModelBuilderAssignments.GetArmorMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithArmorMax(int value)
     {
@@ -51,7 +49,7 @@ public abstract class CGameArmorModelBuilderBase<TSelf> where TSelf : CGameArmor
     public int ReplenishDelayAfterDamage
     {
         get => state.Get<int>("ReplenishDelayAfterDamage");
-        set => SetReplenishDelayAfterDamage(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameArmorModelBuilderAssignments.GetReplenishDelayAfterDamageAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithReplenishDelayAfterDamage(int value)
     {

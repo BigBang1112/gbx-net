@@ -36,78 +36,10 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state;
     private protected CPlugWeatherBuilderBase() => state = new();
     private protected CPlugWeatherBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state) => this.state = state;
-    private protected static void SetBitmapFlareMoon(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetBitmapFlareMoonAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBitmapFlareMoonReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetBitmapFlareMoonReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBitmapFlareSun(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetBitmapFlareSunAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBitmapFlareSunReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetBitmapFlareSunReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBitmapRainFid(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetBitmapRainFidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBitmapRainFidReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetBitmapRainFidReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBitmapSkyGradV(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetBitmapSkyGradVAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBitmapSkyGradVReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetBitmapSkyGradVReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetCameraFarZ(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetCameraFarZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetClouds(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, global::GBX.NET.Engines.Plug.CPlugClouds? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetCloudsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetCloudsReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugClouds> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetCloudsReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetDayFogColor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetDayFogColorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetDayFogDensity(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetDayFogDensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetDayFogEnd(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetDayFogEndAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetDayFogFlags(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetDayFogFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetDayFogStart(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetDayFogStartAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetEmitterInFog(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetEmitterInFogAssignment(), value, GameVersion.TM2020);
-    private protected static void SetEmitterInFogReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetEmitterInFogReferenceAssignment(), value, GameVersion.TM2020);
-    private protected static void SetFlareAngularSizeMoon(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetFlareAngularSizeMoonAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFlareAngularSizeSun(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetFlareAngularSizeSunAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFogBlender(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, global::GBX.NET.Engines.Graphic.GxFogBlender? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetFogBlenderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFogBlenderReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, NodeRef<global::GBX.NET.Engines.Graphic.GxFogBlender> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetFogBlenderReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFogByVertex(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetFogByVertexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFogExpDensity(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetFogExpDensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFogFlags(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetFogFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFogFormula(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, global::GBX.NET.Engines.Plug.CPlugWeather.EGxFogFormula value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetFogFormulaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFogLinearEnd(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetFogLinearEndAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFogLinearStart(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetFogLinearStartAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFogRGB(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetFogRGBAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFogSpace(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, global::GBX.NET.Engines.Plug.CPlugWeather.EGxFogSpace value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetFogSpaceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetImageFogColor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, global::GBX.NET.Engines.Plug.CPlugFileImg? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetImageFogColorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetImageFogColorReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetImageFogColorReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetImageLightAmb(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, global::GBX.NET.Engines.Plug.CPlugFileImg? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetImageLightAmbAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetImageLightAmbReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetImageLightAmbReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetImageLightDirDblSided(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, global::GBX.NET.Engines.Plug.CPlugFileImg? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetImageLightDirDblSidedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetImageLightDirDblSidedReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetImageLightDirDblSidedReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetImageLightDirMoon(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, global::GBX.NET.Engines.Plug.CPlugFileImg? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetImageLightDirMoonAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetImageLightDirMoonReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetImageLightDirMoonReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetImageLightDirSun(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, global::GBX.NET.Engines.Plug.CPlugFileImg? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetImageLightDirSunAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetImageLightDirSunReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetImageLightDirSunReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetImageSeaColor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, global::GBX.NET.Engines.Plug.CPlugFileImg? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetImageSeaColorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetImageSeaColorReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetImageSeaColorReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLDirSpecIntens(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetLDirSpecIntensAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLDirSpecPower(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetLDirSpecPowerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMaterialSea0(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, global::GBX.NET.Engines.Plug.CPlugMaterial? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetMaterialSea0Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMaterialSea0Reference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetMaterialSea0ReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMaterialSea1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, global::GBX.NET.Engines.Plug.CPlugMaterial? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetMaterialSea1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMaterialSea1Reference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetMaterialSea1ReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMaterialSky_Day(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, global::GBX.NET.Engines.Plug.CPlugMaterial? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetMaterialSky_DayAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMaterialSky_DayReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetMaterialSky_DayReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMaterialSky_Night(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, global::GBX.NET.Engines.Plug.CPlugMaterial? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetMaterialSky_NightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMaterialSky_NightReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetMaterialSky_NightReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMaterialSky_SunFall(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, global::GBX.NET.Engines.Plug.CPlugMaterial? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetMaterialSky_SunFallAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMaterialSky_SunFallReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetMaterialSky_SunFallReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMaterialSky_SunRise(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, global::GBX.NET.Engines.Plug.CPlugMaterial? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetMaterialSky_SunRiseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMaterialSky_SunRiseReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetMaterialSky_SunRiseReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSceneFxFid(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetSceneFxFidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSceneFxFidReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetSceneFxFidReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSeaTwkReflecIntensDay(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetSeaTwkReflecIntensDayAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSeaTwkReflecIntensMidDay(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetSeaTwkReflecIntensMidDayAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSeaTwkReflecIntensMidNight(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetSeaTwkReflecIntensMidNightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSeaTwkReflecIntensNight(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetSeaTwkReflecIntensNightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSeaTwkReflecIntensTMDay(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetSeaTwkReflecIntensTMDayAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSeaTwkReflecIntensTMNight(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetSeaTwkReflecIntensTMNightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSeaTwkReflecIntensTMmidDay(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetSeaTwkReflecIntensTMmidDayAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSeaTwkReflecIntensTMmidNight(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetSeaTwkReflecIntensTMmidNightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSeaTwkWaterColor_Day(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetSeaTwkWaterColor_DayAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSeaTwkWaterColor_Night(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeather> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetSeaTwkWaterColor_NightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapFlareMoon
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapFlareMoon");
-        set => SetBitmapFlareMoon(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetBitmapFlareMoonAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBitmapFlareMoon(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -117,13 +49,13 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public TSelf WithBitmapFlareMoonReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBitmapFlareMoonReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetBitmapFlareMoonReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapFlareSun
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapFlareSun");
-        set => SetBitmapFlareSun(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetBitmapFlareSunAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBitmapFlareSun(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -133,13 +65,13 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public TSelf WithBitmapFlareSunReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBitmapFlareSunReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetBitmapFlareSunReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapRainFid
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapRainFid");
-        set => SetBitmapRainFid(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetBitmapRainFidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBitmapRainFid(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -149,13 +81,13 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public TSelf WithBitmapRainFidReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBitmapRainFidReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetBitmapRainFidReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public float CameraFarZ
     {
         get => state.Get<float>("CameraFarZ");
-        set => SetCameraFarZ(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetCameraFarZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithCameraFarZ(float value)
     {
@@ -165,7 +97,7 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public Vec3 DayFogColor
     {
         get => state.Get<Vec3>("DayFogColor");
-        set => SetDayFogColor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetDayFogColorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDayFogColor(Vec3 value)
     {
@@ -175,7 +107,7 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public float DayFogDensity
     {
         get => state.Get<float>("DayFogDensity");
-        set => SetDayFogDensity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetDayFogDensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDayFogDensity(float value)
     {
@@ -185,7 +117,7 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public float DayFogEnd
     {
         get => state.Get<float>("DayFogEnd");
-        set => SetDayFogEnd(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetDayFogEndAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDayFogEnd(float value)
     {
@@ -195,7 +127,7 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public uint DayFogFlags
     {
         get => state.Get<uint>("DayFogFlags");
-        set => SetDayFogFlags(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetDayFogFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDayFogFlags(uint value)
     {
@@ -205,7 +137,7 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public float DayFogStart
     {
         get => state.Get<float>("DayFogStart");
-        set => SetDayFogStart(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetDayFogStartAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDayFogStart(float value)
     {
@@ -215,7 +147,7 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public float FlareAngularSizeMoon
     {
         get => state.Get<float>("FlareAngularSizeMoon");
-        set => SetFlareAngularSizeMoon(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetFlareAngularSizeMoonAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFlareAngularSizeMoon(float value)
     {
@@ -225,7 +157,7 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public float FlareAngularSizeSun
     {
         get => state.Get<float>("FlareAngularSizeSun");
-        set => SetFlareAngularSizeSun(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetFlareAngularSizeSunAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFlareAngularSizeSun(float value)
     {
@@ -235,7 +167,7 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public bool FogByVertex
     {
         get => state.Get<bool>("FogByVertex");
-        set => SetFogByVertex(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetFogByVertexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFogByVertex(bool value)
     {
@@ -245,7 +177,7 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public float FogExpDensity
     {
         get => state.Get<float>("FogExpDensity");
-        set => SetFogExpDensity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetFogExpDensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFogExpDensity(float value)
     {
@@ -255,7 +187,7 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public uint FogFlags
     {
         get => state.Get<uint>("FogFlags");
-        set => SetFogFlags(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetFogFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFogFlags(uint value)
     {
@@ -265,7 +197,7 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public global::GBX.NET.Engines.Plug.CPlugWeather.EGxFogFormula FogFormula
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugWeather.EGxFogFormula>("FogFormula");
-        set => SetFogFormula(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetFogFormulaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFogFormula(global::GBX.NET.Engines.Plug.CPlugWeather.EGxFogFormula value)
     {
@@ -275,7 +207,7 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public float FogLinearEnd
     {
         get => state.Get<float>("FogLinearEnd");
-        set => SetFogLinearEnd(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetFogLinearEndAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFogLinearEnd(float value)
     {
@@ -285,7 +217,7 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public float FogLinearStart
     {
         get => state.Get<float>("FogLinearStart");
-        set => SetFogLinearStart(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetFogLinearStartAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFogLinearStart(float value)
     {
@@ -295,7 +227,7 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public Vec3 FogRGB
     {
         get => state.Get<Vec3>("FogRGB");
-        set => SetFogRGB(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetFogRGBAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFogRGB(Vec3 value)
     {
@@ -305,7 +237,7 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public global::GBX.NET.Engines.Plug.CPlugWeather.EGxFogSpace FogSpace
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugWeather.EGxFogSpace>("FogSpace");
-        set => SetFogSpace(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetFogSpaceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFogSpace(global::GBX.NET.Engines.Plug.CPlugWeather.EGxFogSpace value)
     {
@@ -315,7 +247,7 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public global::GBX.NET.Engines.Plug.CPlugFileImg? ImageLightAmb
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugFileImg?>("ImageLightAmb");
-        set => SetImageLightAmb(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetImageLightAmbAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithImageLightAmb(global::GBX.NET.Engines.Plug.CPlugFileImg? value)
     {
@@ -325,13 +257,13 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public TSelf WithImageLightAmbReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetImageLightAmbReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetImageLightAmbReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugFileImg? ImageLightDirMoon
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugFileImg?>("ImageLightDirMoon");
-        set => SetImageLightDirMoon(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetImageLightDirMoonAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithImageLightDirMoon(global::GBX.NET.Engines.Plug.CPlugFileImg? value)
     {
@@ -341,13 +273,13 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public TSelf WithImageLightDirMoonReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetImageLightDirMoonReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetImageLightDirMoonReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugFileImg? ImageLightDirSun
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugFileImg?>("ImageLightDirSun");
-        set => SetImageLightDirSun(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetImageLightDirSunAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithImageLightDirSun(global::GBX.NET.Engines.Plug.CPlugFileImg? value)
     {
@@ -357,13 +289,13 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public TSelf WithImageLightDirSunReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetImageLightDirSunReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetImageLightDirSunReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public Vec2 LDirSpecIntens
     {
         get => state.Get<Vec2>("LDirSpecIntens");
-        set => SetLDirSpecIntens(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetLDirSpecIntensAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLDirSpecIntens(Vec2 value)
     {
@@ -373,7 +305,7 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public Vec2 LDirSpecPower
     {
         get => state.Get<Vec2>("LDirSpecPower");
-        set => SetLDirSpecPower(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetLDirSpecPowerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLDirSpecPower(Vec2 value)
     {
@@ -383,7 +315,7 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public global::GBX.NET.Engines.Plug.CPlugMaterial? MaterialSea0
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("MaterialSea0");
-        set => SetMaterialSea0(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetMaterialSea0Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMaterialSea0(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
     {
@@ -393,13 +325,13 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public TSelf WithMaterialSea0Reference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetMaterialSea0Reference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetMaterialSea0ReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugMaterial? MaterialSea1
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("MaterialSea1");
-        set => SetMaterialSea1(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetMaterialSea1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMaterialSea1(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
     {
@@ -409,13 +341,13 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public TSelf WithMaterialSea1Reference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetMaterialSea1Reference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetMaterialSea1ReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugMaterial? MaterialSky_Day
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("MaterialSky_Day");
-        set => SetMaterialSky_Day(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetMaterialSky_DayAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMaterialSky_Day(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
     {
@@ -425,13 +357,13 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public TSelf WithMaterialSky_DayReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetMaterialSky_DayReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetMaterialSky_DayReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugMaterial? MaterialSky_Night
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("MaterialSky_Night");
-        set => SetMaterialSky_Night(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetMaterialSky_NightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMaterialSky_Night(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
     {
@@ -441,13 +373,13 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public TSelf WithMaterialSky_NightReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetMaterialSky_NightReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetMaterialSky_NightReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugMaterial? MaterialSky_SunFall
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("MaterialSky_SunFall");
-        set => SetMaterialSky_SunFall(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetMaterialSky_SunFallAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMaterialSky_SunFall(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
     {
@@ -457,13 +389,13 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public TSelf WithMaterialSky_SunFallReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetMaterialSky_SunFallReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetMaterialSky_SunFallReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugMaterial? MaterialSky_SunRise
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("MaterialSky_SunRise");
-        set => SetMaterialSky_SunRise(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetMaterialSky_SunRiseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMaterialSky_SunRise(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
     {
@@ -473,13 +405,13 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public TSelf WithMaterialSky_SunRiseReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetMaterialSky_SunRiseReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetMaterialSky_SunRiseReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.MwFoundations.CMwNod? SceneFxFid
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("SceneFxFid");
-        set => SetSceneFxFid(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetSceneFxFidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSceneFxFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
@@ -489,13 +421,13 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public TSelf WithSceneFxFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSceneFxFidReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetSceneFxFidReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public float SeaTwkReflecIntensDay
     {
         get => state.Get<float>("SeaTwkReflecIntensDay");
-        set => SetSeaTwkReflecIntensDay(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetSeaTwkReflecIntensDayAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSeaTwkReflecIntensDay(float value)
     {
@@ -505,7 +437,7 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public float SeaTwkReflecIntensMidDay
     {
         get => state.Get<float>("SeaTwkReflecIntensMidDay");
-        set => SetSeaTwkReflecIntensMidDay(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetSeaTwkReflecIntensMidDayAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSeaTwkReflecIntensMidDay(float value)
     {
@@ -515,7 +447,7 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public float SeaTwkReflecIntensMidNight
     {
         get => state.Get<float>("SeaTwkReflecIntensMidNight");
-        set => SetSeaTwkReflecIntensMidNight(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetSeaTwkReflecIntensMidNightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSeaTwkReflecIntensMidNight(float value)
     {
@@ -525,7 +457,7 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public float SeaTwkReflecIntensNight
     {
         get => state.Get<float>("SeaTwkReflecIntensNight");
-        set => SetSeaTwkReflecIntensNight(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetSeaTwkReflecIntensNightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSeaTwkReflecIntensNight(float value)
     {
@@ -535,7 +467,7 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public float SeaTwkReflecIntensTMDay
     {
         get => state.Get<float>("SeaTwkReflecIntensTMDay");
-        set => SetSeaTwkReflecIntensTMDay(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetSeaTwkReflecIntensTMDayAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSeaTwkReflecIntensTMDay(float value)
     {
@@ -545,7 +477,7 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public float SeaTwkReflecIntensTMNight
     {
         get => state.Get<float>("SeaTwkReflecIntensTMNight");
-        set => SetSeaTwkReflecIntensTMNight(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetSeaTwkReflecIntensTMNightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSeaTwkReflecIntensTMNight(float value)
     {
@@ -555,7 +487,7 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public float SeaTwkReflecIntensTMmidDay
     {
         get => state.Get<float>("SeaTwkReflecIntensTMmidDay");
-        set => SetSeaTwkReflecIntensTMmidDay(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetSeaTwkReflecIntensTMmidDayAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSeaTwkReflecIntensTMmidDay(float value)
     {
@@ -565,7 +497,7 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public float SeaTwkReflecIntensTMmidNight
     {
         get => state.Get<float>("SeaTwkReflecIntensTMmidNight");
-        set => SetSeaTwkReflecIntensTMmidNight(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetSeaTwkReflecIntensTMmidNightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSeaTwkReflecIntensTMmidNight(float value)
     {
@@ -575,7 +507,7 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public Vec3 SeaTwkWaterColor_Day
     {
         get => state.Get<Vec3>("SeaTwkWaterColor_Day");
-        set => SetSeaTwkWaterColor_Day(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetSeaTwkWaterColor_DayAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSeaTwkWaterColor_Day(Vec3 value)
     {
@@ -585,7 +517,7 @@ public abstract class CPlugWeatherBuilderBase<TSelf> where TSelf : CPlugWeatherB
     public Vec3 SeaTwkWaterColor_Night
     {
         get => state.Get<Vec3>("SeaTwkWaterColor_Night");
-        set => SetSeaTwkWaterColor_Night(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetSeaTwkWaterColor_NightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSeaTwkWaterColor_Night(Vec3 value)
     {
@@ -599,7 +531,7 @@ public abstract class CPlugWeatherBuilderMembers1<TSelf> : CPlugWeatherBuilderBa
     public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapSkyGradV
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapSkyGradV");
-        set => SetBitmapSkyGradV(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetBitmapSkyGradVAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBitmapSkyGradV(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -609,13 +541,13 @@ public abstract class CPlugWeatherBuilderMembers1<TSelf> : CPlugWeatherBuilderBa
     public TSelf WithBitmapSkyGradVReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBitmapSkyGradVReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetBitmapSkyGradVReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugClouds? Clouds
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugClouds?>("Clouds");
-        set => SetClouds(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetCloudsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithClouds(global::GBX.NET.Engines.Plug.CPlugClouds? value)
     {
@@ -625,13 +557,13 @@ public abstract class CPlugWeatherBuilderMembers1<TSelf> : CPlugWeatherBuilderBa
     public TSelf WithCloudsReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugClouds> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetCloudsReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetCloudsReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugFileImg? ImageFogColor
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugFileImg?>("ImageFogColor");
-        set => SetImageFogColor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetImageFogColorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithImageFogColor(global::GBX.NET.Engines.Plug.CPlugFileImg? value)
     {
@@ -641,13 +573,13 @@ public abstract class CPlugWeatherBuilderMembers1<TSelf> : CPlugWeatherBuilderBa
     public TSelf WithImageFogColorReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetImageFogColorReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetImageFogColorReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugFileImg? ImageLightDirDblSided
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugFileImg?>("ImageLightDirDblSided");
-        set => SetImageLightDirDblSided(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetImageLightDirDblSidedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithImageLightDirDblSided(global::GBX.NET.Engines.Plug.CPlugFileImg? value)
     {
@@ -657,13 +589,13 @@ public abstract class CPlugWeatherBuilderMembers1<TSelf> : CPlugWeatherBuilderBa
     public TSelf WithImageLightDirDblSidedReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetImageLightDirDblSidedReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetImageLightDirDblSidedReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugFileImg? ImageSeaColor
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugFileImg?>("ImageSeaColor");
-        set => SetImageSeaColor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetImageSeaColorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithImageSeaColor(global::GBX.NET.Engines.Plug.CPlugFileImg? value)
     {
@@ -673,7 +605,7 @@ public abstract class CPlugWeatherBuilderMembers1<TSelf> : CPlugWeatherBuilderBa
     public TSelf WithImageSeaColorReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetImageSeaColorReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetImageSeaColorReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -683,7 +615,7 @@ public abstract class CPlugWeatherBuilderMembers2<TSelf> : CPlugWeatherBuilderMe
     public global::GBX.NET.Engines.Graphic.GxFogBlender? FogBlender
     {
         get => state.Get<global::GBX.NET.Engines.Graphic.GxFogBlender?>("FogBlender");
-        set => SetFogBlender(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetFogBlenderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFogBlender(global::GBX.NET.Engines.Graphic.GxFogBlender? value)
     {
@@ -693,7 +625,7 @@ public abstract class CPlugWeatherBuilderMembers2<TSelf> : CPlugWeatherBuilderMe
     public TSelf WithFogBlenderReference(NodeRef<global::GBX.NET.Engines.Graphic.GxFogBlender> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetFogBlenderReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetFogBlenderReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -1416,7 +1348,7 @@ public partial class CPlugWeatherBuilder : CPlugWeatherBuilderBase<CPlugWeatherB
         public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? EmitterInFog
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("EmitterInFog");
-            set => SetEmitterInFog(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetEmitterInFogAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithEmitterInFog(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
         {
@@ -1426,7 +1358,7 @@ public partial class CPlugWeatherBuilder : CPlugWeatherBuilderBase<CPlugWeatherB
         public TM2020 WithEmitterInFogReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetEmitterInFogReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherBuilderAssignments.GetEmitterInFogReferenceAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithEmitterInFog(global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? value)

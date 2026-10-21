@@ -36,21 +36,10 @@ public abstract class CPlugVisualQuads2DBuilderBase<TSelf> where TSelf : CPlugVi
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state;
     private protected CPlugVisualQuads2DBuilderBase() => state = new();
     private protected CPlugVisualQuads2DBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state) => this.state = state;
-    private protected static void SetBitmapElemToPacks(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state, global::GBX.NET.Engines.Plug.CPlugVisual.BitmapElemToPack[] value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetBitmapElemToPacksAssignment(), value, GameVersion.TMF);
-    private protected static void SetFuncVisual(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFuncVisualReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIsInverse(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetIsInverseAssignment(), value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX);
-    private protected static void SetMorphs(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state, global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetMorphsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetNPatchTessLevel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetNPatchTessLevelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSplits(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state, global::GBX.NET.Engines.Plug.CPlugVisual.Split[] value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetSplitsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSubVisuals(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state, Int3[] value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetSubVisualsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetVertexStreams(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state, global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Plug.CPlugVertexStream> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetVertexStreamsAssignment(), value, GameVersion.TMSX);
-    private protected static void SetVertices2D(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state, global::GBX.NET.Engines.Plug.CPlugVisual2D.Vertex2D[] value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisual2DBuilderAssignments.GetVertices2DAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetVisualId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetVisualIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public Int3[] SubVisuals
     {
         get => state.Get<Int3[]>("SubVisuals");
-        set => SetSubVisuals(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetSubVisualsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSubVisuals(params Int3[] value)
     {
@@ -64,7 +53,7 @@ public abstract class CPlugVisualQuads2DBuilderBase<TSelf> where TSelf : CPlugVi
     public global::GBX.NET.Engines.Plug.CPlugVisual2D.Vertex2D[] Vertices2D
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisual2D.Vertex2D[]>("Vertices2D");
-        set => SetVertices2D(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisual2DBuilderAssignments.GetVertices2DAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithVertices2D(params global::GBX.NET.Engines.Plug.CPlugVisual2D.Vertex2D[] value)
     {
@@ -78,7 +67,7 @@ public abstract class CPlugVisualQuads2DBuilderBase<TSelf> where TSelf : CPlugVi
     public string? VisualId
     {
         get => state.Get<string?>("VisualId");
-        set => SetVisualId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetVisualIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithVisualId(string? value)
     {
@@ -92,7 +81,7 @@ public abstract class CPlugVisualQuads2DBuilderMembers1<TSelf> : CPlugVisualQuad
     public global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("FuncVisual");
-        set => SetFuncVisual(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFuncVisual(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
@@ -102,7 +91,7 @@ public abstract class CPlugVisualQuads2DBuilderMembers1<TSelf> : CPlugVisualQuad
     public TSelf WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetFuncVisualReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -112,7 +101,7 @@ public abstract class CPlugVisualQuads2DBuilderMembers2<TSelf> : CPlugVisualQuad
     public float NPatchTessLevel
     {
         get => state.Get<float>("NPatchTessLevel");
-        set => SetNPatchTessLevel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetNPatchTessLevelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithNPatchTessLevel(float value)
     {
@@ -126,7 +115,7 @@ public abstract class CPlugVisualQuads2DBuilderMembers3<TSelf> : CPlugVisualQuad
     public bool IsInverse
     {
         get => state.Get<bool>("IsInverse");
-        set => SetIsInverse(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetIsInverseAssignment(), value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX);
     }
     public TSelf WithIsInverse(bool value)
     {
@@ -140,7 +129,7 @@ public abstract class CPlugVisualQuads2DBuilderMembers4<TSelf> : CPlugVisualQuad
     public global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisual.Split[]>("Splits");
-        set => SetSplits(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetSplitsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSplits(params global::GBX.NET.Engines.Plug.CPlugVisual.Split[] value)
     {
@@ -158,7 +147,7 @@ public abstract class CPlugVisualQuads2DBuilderMembers5<TSelf> : CPlugVisualQuad
     public global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] Morphs
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisual.Morph[]>("Morphs");
-        set => SetMorphs(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetMorphsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMorphs(params global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] value)
     {
@@ -462,7 +451,7 @@ public partial class CPlugVisualQuads2DBuilder : CPlugVisualQuads2DBuilderBase<C
         public float NPatchTessLevel
         {
             get => state.Get<float>("NPatchTessLevel");
-            set => SetNPatchTessLevel(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetNPatchTessLevelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMPU WithNPatchTessLevel(float value)
         {
@@ -490,7 +479,7 @@ public partial class CPlugVisualQuads2DBuilder : CPlugVisualQuads2DBuilderBase<C
         public global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("FuncVisual");
-            set => SetFuncVisual(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMNESWC WithFuncVisual(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -500,7 +489,7 @@ public partial class CPlugVisualQuads2DBuilder : CPlugVisualQuads2DBuilderBase<C
         public TMNESWC WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFuncVisualReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.Plug.IPlugVisualQuads2DTMNESWC BuildInterface() => Build();
@@ -524,7 +513,7 @@ public partial class CPlugVisualQuads2DBuilder : CPlugVisualQuads2DBuilderBase<C
         public global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("FuncVisual");
-            set => SetFuncVisual(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public VSK5 WithFuncVisual(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -534,7 +523,7 @@ public partial class CPlugVisualQuads2DBuilder : CPlugVisualQuads2DBuilderBase<C
         public VSK5 WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFuncVisualReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.Plug.IPlugVisualQuads2DVSK5 BuildInterface() => Build();
@@ -558,7 +547,7 @@ public partial class CPlugVisualQuads2DBuilder : CPlugVisualQuads2DBuilderBase<C
         public global::GBX.NET.Engines.Plug.CPlugVisual.BitmapElemToPack[] BitmapElemToPacks
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisual.BitmapElemToPack[]>("BitmapElemToPacks");
-            set => SetBitmapElemToPacks(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetBitmapElemToPacksAssignment(), value, GameVersion.TMF);
         }
         public TMF WithBitmapElemToPacks(params global::GBX.NET.Engines.Plug.CPlugVisual.BitmapElemToPack[] value)
         {
@@ -572,7 +561,7 @@ public partial class CPlugVisualQuads2DBuilder : CPlugVisualQuads2DBuilderBase<C
         public global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("FuncVisual");
-            set => SetFuncVisual(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMF WithFuncVisual(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -582,7 +571,7 @@ public partial class CPlugVisualQuads2DBuilder : CPlugVisualQuads2DBuilderBase<C
         public TMF WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFuncVisualReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.Plug.IPlugVisualQuads2DTMF BuildInterface() => Build();
@@ -606,7 +595,7 @@ public partial class CPlugVisualQuads2DBuilder : CPlugVisualQuads2DBuilderBase<C
         public global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("FuncVisual");
-            set => SetFuncVisual(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP3 WithFuncVisual(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -616,7 +605,7 @@ public partial class CPlugVisualQuads2DBuilder : CPlugVisualQuads2DBuilderBase<C
         public MP3 WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFuncVisualReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.Plug.IPlugVisualQuads2DMP3 BuildInterface() => Build();
@@ -640,7 +629,7 @@ public partial class CPlugVisualQuads2DBuilder : CPlugVisualQuads2DBuilderBase<C
         public global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("FuncVisual");
-            set => SetFuncVisual(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMT WithFuncVisual(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -650,7 +639,7 @@ public partial class CPlugVisualQuads2DBuilder : CPlugVisualQuads2DBuilderBase<C
         public TMT WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFuncVisualReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.Plug.IPlugVisualQuads2DTMT BuildInterface() => Build();
@@ -674,7 +663,7 @@ public partial class CPlugVisualQuads2DBuilder : CPlugVisualQuads2DBuilderBase<C
         public global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("FuncVisual");
-            set => SetFuncVisual(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP4 WithFuncVisual(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -684,7 +673,7 @@ public partial class CPlugVisualQuads2DBuilder : CPlugVisualQuads2DBuilderBase<C
         public MP4 WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFuncVisualReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.Plug.IPlugVisualQuads2DMP4 BuildInterface() => Build();

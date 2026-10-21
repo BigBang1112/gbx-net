@@ -36,15 +36,10 @@ public abstract class CGameCtnMediaBlockCameraEffectInertialTrackingBuilderBase<
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking> state;
     private protected CGameCtnMediaBlockCameraEffectInertialTrackingBuilderBase() => state = new();
     private protected CGameCtnMediaBlockCameraEffectInertialTrackingBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking> state) => this.state = state;
-    private protected static void SetAutoFocus(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTrackingBuilderAssignments.GetAutoFocusAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAutoZoom(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTrackingBuilderAssignments.GetAutoZoomAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetEnd(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTrackingBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetStart(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTrackingBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTracking(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTrackingBuilderAssignments.GetTrackingAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public bool AutoFocus
     {
         get => state.Get<bool>("AutoFocus");
-        set => SetAutoFocus(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTrackingBuilderAssignments.GetAutoFocusAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAutoFocus(bool value)
     {
@@ -54,7 +49,7 @@ public abstract class CGameCtnMediaBlockCameraEffectInertialTrackingBuilderBase<
     public bool AutoZoom
     {
         get => state.Get<bool>("AutoZoom");
-        set => SetAutoZoom(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTrackingBuilderAssignments.GetAutoZoomAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAutoZoom(bool value)
     {
@@ -64,7 +59,7 @@ public abstract class CGameCtnMediaBlockCameraEffectInertialTrackingBuilderBase<
     public TimeSingle End
     {
         get => state.Get<TimeSingle>("End");
-        set => SetEnd(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTrackingBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEnd(TimeSingle value)
     {
@@ -74,7 +69,7 @@ public abstract class CGameCtnMediaBlockCameraEffectInertialTrackingBuilderBase<
     public TimeSingle Start
     {
         get => state.Get<TimeSingle>("Start");
-        set => SetStart(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTrackingBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStart(TimeSingle value)
     {
@@ -84,7 +79,7 @@ public abstract class CGameCtnMediaBlockCameraEffectInertialTrackingBuilderBase<
     public bool Tracking
     {
         get => state.Get<bool>("Tracking");
-        set => SetTracking(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTrackingBuilderAssignments.GetTrackingAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTracking(bool value)
     {

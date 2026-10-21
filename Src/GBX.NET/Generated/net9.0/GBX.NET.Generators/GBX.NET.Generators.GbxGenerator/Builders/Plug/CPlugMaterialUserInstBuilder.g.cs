@@ -36,26 +36,10 @@ public abstract class CPlugMaterialUserInstBuilderBase<TSelf> where TSelf : CPlu
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state;
     private protected CPlugMaterialUserInstBuilderBase() => state = new();
     private protected CPlugMaterialUserInstBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state) => this.state = state;
-    private protected static void SetBaseTexture(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetBaseTextureAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetColor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, int[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetColorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetCsts(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Cst[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetCstsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetHidingGroup(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetHidingGroupAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetIsNatural(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetIsNaturalAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetIsUsingGameMaterial(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetIsUsingGameMaterialAssignment(), value, GameVersion.TM2020);
-    private protected static void SetLink(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetLinkAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMaterialName(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetMaterialNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetModel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSurfaceGameplayId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, global::GBX.NET.Engines.Plug.CPlugSurface.GameplayId value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetSurfaceGameplayIdAssignment(), value, GameVersion.TM2020);
-    private protected static void SetSurfacePhysicId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetSurfacePhysicIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTextureSizeInMeters(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetTextureSizeInMetersAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetTilingU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetTilingUAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetTilingV(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetTilingVAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetUserTextures(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UserTexture[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetUserTexturesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetUvAnims(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UvAnim[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetUvAnimsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public string? BaseTexture
     {
         get => state.Get<string?>("BaseTexture");
-        set => SetBaseTexture(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetBaseTextureAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBaseTexture(string? value)
     {
@@ -65,7 +49,7 @@ public abstract class CPlugMaterialUserInstBuilderBase<TSelf> where TSelf : CPlu
     public int[]? Color
     {
         get => state.Get<int[]?>("Color");
-        set => SetColor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetColorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithColor(params int[]? value)
     {
@@ -79,7 +63,7 @@ public abstract class CPlugMaterialUserInstBuilderBase<TSelf> where TSelf : CPlu
     public global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Cst[]? Csts
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Cst[]?>("Csts");
-        set => SetCsts(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetCstsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCsts(params global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Cst[]? value)
     {
@@ -93,7 +77,7 @@ public abstract class CPlugMaterialUserInstBuilderBase<TSelf> where TSelf : CPlu
     public string? Link
     {
         get => state.Get<string?>("Link");
-        set => SetLink(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetLinkAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLink(string? value)
     {
@@ -103,7 +87,7 @@ public abstract class CPlugMaterialUserInstBuilderBase<TSelf> where TSelf : CPlu
     public string? MaterialName
     {
         get => state.Get<string?>("MaterialName");
-        set => SetMaterialName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetMaterialNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaterialName(string? value)
     {
@@ -113,7 +97,7 @@ public abstract class CPlugMaterialUserInstBuilderBase<TSelf> where TSelf : CPlu
     public string? Model
     {
         get => state.Get<string?>("Model");
-        set => SetModel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithModel(string? value)
     {
@@ -123,7 +107,7 @@ public abstract class CPlugMaterialUserInstBuilderBase<TSelf> where TSelf : CPlu
     public global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId SurfacePhysicId
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId>("SurfacePhysicId");
-        set => SetSurfacePhysicId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetSurfacePhysicIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSurfacePhysicId(global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId value)
     {
@@ -133,7 +117,7 @@ public abstract class CPlugMaterialUserInstBuilderBase<TSelf> where TSelf : CPlu
     public global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UvAnim[]? UvAnims
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UvAnim[]?>("UvAnims");
-        set => SetUvAnims(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetUvAnimsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithUvAnims(params global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UvAnim[]? value)
     {
@@ -151,7 +135,7 @@ public abstract class CPlugMaterialUserInstBuilderMembers1<TSelf> : CPlugMateria
     public global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UserTexture[]? UserTextures
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UserTexture[]?>("UserTextures");
-        set => SetUserTextures(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetUserTexturesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithUserTextures(params global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UserTexture[]? value)
     {
@@ -169,7 +153,7 @@ public abstract class CPlugMaterialUserInstBuilderMembers2<TSelf> : CPlugMateria
     public string? HidingGroup
     {
         get => state.Get<string?>("HidingGroup");
-        set => SetHidingGroup(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetHidingGroupAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithHidingGroup(string? value)
     {
@@ -179,7 +163,7 @@ public abstract class CPlugMaterialUserInstBuilderMembers2<TSelf> : CPlugMateria
     public bool IsNatural
     {
         get => state.Get<bool>("IsNatural");
-        set => SetIsNatural(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetIsNaturalAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithIsNatural(bool value)
     {
@@ -189,7 +173,7 @@ public abstract class CPlugMaterialUserInstBuilderMembers2<TSelf> : CPlugMateria
     public float TextureSizeInMeters
     {
         get => state.Get<float>("TextureSizeInMeters");
-        set => SetTextureSizeInMeters(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetTextureSizeInMetersAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithTextureSizeInMeters(float value)
     {
@@ -199,7 +183,7 @@ public abstract class CPlugMaterialUserInstBuilderMembers2<TSelf> : CPlugMateria
     public global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress TilingU
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress>("TilingU");
-        set => SetTilingU(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetTilingUAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithTilingU(global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress value)
     {
@@ -209,7 +193,7 @@ public abstract class CPlugMaterialUserInstBuilderMembers2<TSelf> : CPlugMateria
     public global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress TilingV
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress>("TilingV");
-        set => SetTilingV(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetTilingVAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithTilingV(global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress value)
     {
@@ -342,7 +326,7 @@ public partial class CPlugMaterialUserInstBuilder : CPlugMaterialUserInstBuilder
         public bool IsUsingGameMaterial
         {
             get => state.Get<bool>("IsUsingGameMaterial");
-            set => SetIsUsingGameMaterial(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetIsUsingGameMaterialAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithIsUsingGameMaterial(bool value)
         {
@@ -352,7 +336,7 @@ public partial class CPlugMaterialUserInstBuilder : CPlugMaterialUserInstBuilder
         public global::GBX.NET.Engines.Plug.CPlugSurface.GameplayId SurfaceGameplayId
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSurface.GameplayId>("SurfaceGameplayId");
-            set => SetSurfaceGameplayId(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetSurfaceGameplayIdAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithSurfaceGameplayId(global::GBX.NET.Engines.Plug.CPlugSurface.GameplayId value)
         {

@@ -36,13 +36,10 @@ public abstract class CGameCtnMediaBlockOpponentVisibilityBuilderBase<TSelf> whe
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility> state;
     private protected CGameCtnMediaBlockOpponentVisibilityBuilderBase() => state = new();
     private protected CGameCtnMediaBlockOpponentVisibilityBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility> state) => this.state = state;
-    private protected static void SetEnd(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockOpponentVisibilityBuilderAssignments.GetEndAssignment(), value, GameVersion.TM2020);
-    private protected static void SetStart(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockOpponentVisibilityBuilderAssignments.GetStartAssignment(), value, GameVersion.TM2020);
-    private protected static void SetVisibility(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility> state, global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility.EVisibility value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockOpponentVisibilityBuilderAssignments.GetVisibilityAssignment(), value, GameVersion.TM2020);
     public TimeSingle End
     {
         get => state.Get<TimeSingle>("End");
-        set => SetEnd(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockOpponentVisibilityBuilderAssignments.GetEndAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithEnd(TimeSingle value)
     {
@@ -52,7 +49,7 @@ public abstract class CGameCtnMediaBlockOpponentVisibilityBuilderBase<TSelf> whe
     public TimeSingle Start
     {
         get => state.Get<TimeSingle>("Start");
-        set => SetStart(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockOpponentVisibilityBuilderAssignments.GetStartAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithStart(TimeSingle value)
     {
@@ -62,7 +59,7 @@ public abstract class CGameCtnMediaBlockOpponentVisibilityBuilderBase<TSelf> whe
     public global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility.EVisibility Visibility
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility.EVisibility>("Visibility");
-        set => SetVisibility(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockOpponentVisibilityBuilderAssignments.GetVisibilityAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithVisibility(global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility.EVisibility value)
     {

@@ -36,12 +36,10 @@ public abstract class CGameCampaignPlayerScoresBuilderBase<TSelf> where TSelf : 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCampaignPlayerScores> state;
     private protected CGameCampaignPlayerScoresBuilderBase() => state = new();
     private protected CGameCampaignPlayerScoresBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCampaignPlayerScores> state) => this.state = state;
-    private protected static void SetCampaignId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCampaignPlayerScores> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCampaignPlayerScoresBuilderAssignments.GetCampaignIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetGameModeScores(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCampaignPlayerScores> state, global::GBX.NET.Engines.Game.CGameCampaignPlayerScores.SGameModeScores[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCampaignPlayerScoresBuilderAssignments.GetGameModeScoresAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT);
     public string? CampaignId
     {
         get => state.Get<string?>("CampaignId");
-        set => SetCampaignId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCampaignPlayerScoresBuilderAssignments.GetCampaignIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithCampaignId(string? value)
     {
@@ -51,7 +49,7 @@ public abstract class CGameCampaignPlayerScoresBuilderBase<TSelf> where TSelf : 
     public global::GBX.NET.Engines.Game.CGameCampaignPlayerScores.SGameModeScores[]? GameModeScores
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCampaignPlayerScores.SGameModeScores[]?>("GameModeScores");
-        set => SetGameModeScores(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCampaignPlayerScoresBuilderAssignments.GetGameModeScoresAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithGameModeScores(params global::GBX.NET.Engines.Game.CGameCampaignPlayerScores.SGameModeScores[]? value)
     {

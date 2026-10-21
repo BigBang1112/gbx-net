@@ -36,17 +36,10 @@ public abstract class CGameCtnMediaTrackBuilderBase<TSelf> where TSelf : CGameCt
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaTrack> state;
     private protected CGameCtnMediaTrackBuilderBase() => state = new();
     private protected CGameCtnMediaTrackBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaTrack> state) => this.state = state;
-    private protected static void SetBlocks(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaTrack> state, global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaBlock> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaTrackBuilderAssignments.GetBlocksAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetIsCycling(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaTrack> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaTrackBuilderAssignments.GetIsCyclingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetIsKeepPlaying(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaTrack> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaTrackBuilderAssignments.GetIsKeepPlayingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetIsReadOnly(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaTrack> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaTrackBuilderAssignments.GetIsReadOnlyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaTrack> state, string value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaTrackBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetRepeatingSegmentEnd(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaTrack> state, TimeSingle? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaTrackBuilderAssignments.GetRepeatingSegmentEndAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetRepeatingSegmentStart(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaTrack> state, TimeSingle? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaTrackBuilderAssignments.GetRepeatingSegmentStartAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaBlock> Blocks
     {
         get => state.Get<global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaBlock>>("Blocks");
-        set => SetBlocks(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaTrackBuilderAssignments.GetBlocksAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithBlocks(global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaBlock> value)
     {
@@ -64,7 +57,7 @@ public abstract class CGameCtnMediaTrackBuilderBase<TSelf> where TSelf : CGameCt
     public bool IsKeepPlaying
     {
         get => state.Get<bool>("IsKeepPlaying");
-        set => SetIsKeepPlaying(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaTrackBuilderAssignments.GetIsKeepPlayingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithIsKeepPlaying(bool value)
     {
@@ -74,7 +67,7 @@ public abstract class CGameCtnMediaTrackBuilderBase<TSelf> where TSelf : CGameCt
     public bool IsReadOnly
     {
         get => state.Get<bool>("IsReadOnly");
-        set => SetIsReadOnly(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaTrackBuilderAssignments.GetIsReadOnlyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithIsReadOnly(bool value)
     {
@@ -84,7 +77,7 @@ public abstract class CGameCtnMediaTrackBuilderBase<TSelf> where TSelf : CGameCt
     public string Name
     {
         get => state.Get<string>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaTrackBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithName(string value)
     {
@@ -98,7 +91,7 @@ public abstract class CGameCtnMediaTrackBuilderMembers1<TSelf> : CGameCtnMediaTr
     public bool IsCycling
     {
         get => state.Get<bool>("IsCycling");
-        set => SetIsCycling(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaTrackBuilderAssignments.GetIsCyclingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIsCycling(bool value)
     {
@@ -108,7 +101,7 @@ public abstract class CGameCtnMediaTrackBuilderMembers1<TSelf> : CGameCtnMediaTr
     public TimeSingle? RepeatingSegmentEnd
     {
         get => state.Get<TimeSingle?>("RepeatingSegmentEnd");
-        set => SetRepeatingSegmentEnd(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaTrackBuilderAssignments.GetRepeatingSegmentEndAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRepeatingSegmentEnd(TimeSingle? value)
     {
@@ -118,7 +111,7 @@ public abstract class CGameCtnMediaTrackBuilderMembers1<TSelf> : CGameCtnMediaTr
     public TimeSingle? RepeatingSegmentStart
     {
         get => state.Get<TimeSingle?>("RepeatingSegmentStart");
-        set => SetRepeatingSegmentStart(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaTrackBuilderAssignments.GetRepeatingSegmentStartAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRepeatingSegmentStart(TimeSingle? value)
     {

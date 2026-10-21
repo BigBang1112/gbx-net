@@ -36,14 +36,10 @@ public abstract class CPlugTrafficPathSquaresBuilderBase<TSelf> where TSelf : CP
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares> state;
     private protected CPlugTrafficPathSquaresBuilderBase() => state = new();
     private protected CPlugTrafficPathSquaresBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares> state) => this.state = state;
-    private protected static void SetBaseHeight(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficPathSquaresBuilderAssignments.GetBaseHeightAssignment(), value, GameVersion.TMT);
-    private protected static void SetPathId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares> state, string value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficPathSquaresBuilderAssignments.GetPathIdAssignment(), value, GameVersion.TMT);
-    private protected static void SetSquareSize(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficPathSquaresBuilderAssignments.GetSquareSizeAssignment(), value, GameVersion.TMT);
-    private protected static void SetSquares(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares> state, Int3[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficPathSquaresBuilderAssignments.GetSquaresAssignment(), value, GameVersion.TMT);
     public float BaseHeight
     {
         get => state.Get<float>("BaseHeight");
-        set => SetBaseHeight(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficPathSquaresBuilderAssignments.GetBaseHeightAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithBaseHeight(float value)
     {
@@ -53,7 +49,7 @@ public abstract class CPlugTrafficPathSquaresBuilderBase<TSelf> where TSelf : CP
     public string PathId
     {
         get => state.Get<string>("PathId");
-        set => SetPathId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficPathSquaresBuilderAssignments.GetPathIdAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithPathId(string value)
     {
@@ -63,7 +59,7 @@ public abstract class CPlugTrafficPathSquaresBuilderBase<TSelf> where TSelf : CP
     public Vec3 SquareSize
     {
         get => state.Get<Vec3>("SquareSize");
-        set => SetSquareSize(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficPathSquaresBuilderAssignments.GetSquareSizeAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithSquareSize(Vec3 value)
     {
@@ -73,7 +69,7 @@ public abstract class CPlugTrafficPathSquaresBuilderBase<TSelf> where TSelf : CP
     public Int3[]? Squares
     {
         get => state.Get<Int3[]?>("Squares");
-        set => SetSquares(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficPathSquaresBuilderAssignments.GetSquaresAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithSquares(params Int3[]? value)
     {

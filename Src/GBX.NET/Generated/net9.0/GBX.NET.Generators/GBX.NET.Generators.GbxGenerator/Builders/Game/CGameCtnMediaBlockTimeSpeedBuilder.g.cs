@@ -36,11 +36,10 @@ public abstract class CGameCtnMediaBlockTimeSpeedBuilderBase<TSelf> where TSelf 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTimeSpeed> state;
     private protected CGameCtnMediaBlockTimeSpeedBuilderBase() => state = new();
     private protected CGameCtnMediaBlockTimeSpeedBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTimeSpeed> state) => this.state = state;
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTimeSpeed> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTimeSpeed.Key>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTimeSpeedBuilderAssignments.GetKeysAssignment(), value, GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     public List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTimeSpeed.Key>? Keys
     {
         get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTimeSpeed.Key>?>("Keys");
-        set => SetKeys(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTimeSpeedBuilderAssignments.GetKeysAssignment(), value, GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTimeSpeed.Key>? value)
     {

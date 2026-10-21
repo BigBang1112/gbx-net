@@ -36,30 +36,10 @@ public abstract class CPlugBitmapRenderLightOccBuilderBase<TSelf> where TSelf : 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightOcc> state;
     private protected CPlugBitmapRenderLightOccBuilderBase() => state = new();
     private protected CPlugBitmapRenderLightOccBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightOcc> state) => this.state = state;
-    private protected static void SetBitmapClear(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightOcc> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetBitmapClearAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBitmapClearReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightOcc> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetBitmapClearReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBitmapClearUV(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightOcc> state, Vec2? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetBitmapClearUVAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBitmapToModulate(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightOcc> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetBitmapToModulateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBitmapToModulateReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightOcc> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetBitmapToModulateReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetClearColor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightOcc> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetClearColorAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFogCustomFarZ(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightOcc> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetFogCustomFarZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFovY(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightOcc> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetFovYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIVIdMask(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightOcc> state, ushort value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetIVIdMaskAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIVIdRef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightOcc> state, ushort value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetIVIdRefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLegacyRenderFlags(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightOcc> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetLegacyRenderFlagsAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
-    private protected static void SetOpacity(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightOcc> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetOpacityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRenderFlags(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightOcc> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderFlagsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRenderFlags2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightOcc> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderFlags2Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRenderPath(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightOcc> state, global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPath value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderPathAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRenderPathFails(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightOcc> state, global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPathFails value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderPathFailsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRenderSub(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightOcc> state, global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderSubAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRenderSubReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightOcc> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderSubReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSVIdMask(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightOcc> state, ushort value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetSVIdMaskAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSVIdRef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightOcc> state, ushort value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetSVIdRefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public ushort IVIdMask
     {
         get => state.Get<ushort>("IVIdMask");
-        set => SetIVIdMask(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetIVIdMaskAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIVIdMask(ushort value)
     {
@@ -69,7 +49,7 @@ public abstract class CPlugBitmapRenderLightOccBuilderBase<TSelf> where TSelf : 
     public ushort IVIdRef
     {
         get => state.Get<ushort>("IVIdRef");
-        set => SetIVIdRef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetIVIdRefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIVIdRef(ushort value)
     {
@@ -79,7 +59,7 @@ public abstract class CPlugBitmapRenderLightOccBuilderBase<TSelf> where TSelf : 
     public ushort SVIdMask
     {
         get => state.Get<ushort>("SVIdMask");
-        set => SetSVIdMask(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetSVIdMaskAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSVIdMask(ushort value)
     {
@@ -89,7 +69,7 @@ public abstract class CPlugBitmapRenderLightOccBuilderBase<TSelf> where TSelf : 
     public ushort SVIdRef
     {
         get => state.Get<ushort>("SVIdRef");
-        set => SetSVIdRef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetSVIdRefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSVIdRef(ushort value)
     {
@@ -103,7 +83,7 @@ public abstract class CPlugBitmapRenderLightOccBuilderMembers1<TSelf> : CPlugBit
     public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapClear
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapClear");
-        set => SetBitmapClear(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetBitmapClearAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBitmapClear(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -113,13 +93,13 @@ public abstract class CPlugBitmapRenderLightOccBuilderMembers1<TSelf> : CPlugBit
     public TSelf WithBitmapClearReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBitmapClearReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetBitmapClearReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public Vec2? BitmapClearUV
     {
         get => state.Get<Vec2?>("BitmapClearUV");
-        set => SetBitmapClearUV(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetBitmapClearUVAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBitmapClearUV(Vec2? value)
     {
@@ -129,7 +109,7 @@ public abstract class CPlugBitmapRenderLightOccBuilderMembers1<TSelf> : CPlugBit
     public uint ClearColor
     {
         get => state.Get<uint>("ClearColor");
-        set => SetClearColor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetClearColorAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithClearColor(uint value)
     {
@@ -143,7 +123,7 @@ public abstract class CPlugBitmapRenderLightOccBuilderMembers2<TSelf> : CPlugBit
     public global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPath RenderPath
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPath>("RenderPath");
-        set => SetRenderPath(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderPathAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRenderPath(global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPath value)
     {
@@ -153,7 +133,7 @@ public abstract class CPlugBitmapRenderLightOccBuilderMembers2<TSelf> : CPlugBit
     public global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPathFails RenderPathFails
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPathFails>("RenderPathFails");
-        set => SetRenderPathFails(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderPathFailsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRenderPathFails(global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPathFails value)
     {
@@ -167,7 +147,7 @@ public abstract class CPlugBitmapRenderLightOccBuilderMembers3<TSelf> : CPlugBit
     public float FogCustomFarZ
     {
         get => state.Get<float>("FogCustomFarZ");
-        set => SetFogCustomFarZ(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetFogCustomFarZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFogCustomFarZ(float value)
     {
@@ -177,7 +157,7 @@ public abstract class CPlugBitmapRenderLightOccBuilderMembers3<TSelf> : CPlugBit
     public uint RenderFlags
     {
         get => state.Get<uint>("RenderFlags");
-        set => SetRenderFlags(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderFlagsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRenderFlags(uint value)
     {
@@ -191,7 +171,7 @@ public abstract class CPlugBitmapRenderLightOccBuilderMembers4<TSelf> : CPlugBit
     public uint RenderFlags2
     {
         get => state.Get<uint>("RenderFlags2");
-        set => SetRenderFlags2(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderFlags2Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRenderFlags2(uint value)
     {
@@ -201,7 +181,7 @@ public abstract class CPlugBitmapRenderLightOccBuilderMembers4<TSelf> : CPlugBit
     public global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub? RenderSub
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub?>("RenderSub");
-        set => SetRenderSub(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderSubAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRenderSub(global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub? value)
     {
@@ -211,7 +191,7 @@ public abstract class CPlugBitmapRenderLightOccBuilderMembers4<TSelf> : CPlugBit
     public TSelf WithRenderSubReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetRenderSubReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderSubReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -429,7 +409,7 @@ public partial class CPlugBitmapRenderLightOccBuilder : CPlugBitmapRenderLightOc
         public uint LegacyRenderFlags
         {
             get => state.Get<uint>("LegacyRenderFlags");
-            set => SetLegacyRenderFlags(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetLegacyRenderFlagsAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
         }
         public TM10 WithLegacyRenderFlags(uint value)
         {
@@ -461,7 +441,7 @@ public partial class CPlugBitmapRenderLightOccBuilder : CPlugBitmapRenderLightOc
         public uint LegacyRenderFlags
         {
             get => state.Get<uint>("LegacyRenderFlags");
-            set => SetLegacyRenderFlags(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetLegacyRenderFlagsAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
         }
         public TMPU WithLegacyRenderFlags(uint value)
         {
@@ -493,7 +473,7 @@ public partial class CPlugBitmapRenderLightOccBuilder : CPlugBitmapRenderLightOc
         public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapToModulate
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapToModulate");
-            set => SetBitmapToModulate(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetBitmapToModulateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMSX WithBitmapToModulate(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
         {
@@ -503,7 +483,7 @@ public partial class CPlugBitmapRenderLightOccBuilder : CPlugBitmapRenderLightOc
         public TMSX WithBitmapToModulateReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetBitmapToModulateReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetBitmapToModulateReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public TMSX WithBitmapToModulate(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? value)
@@ -513,7 +493,7 @@ public partial class CPlugBitmapRenderLightOccBuilder : CPlugBitmapRenderLightOc
         public float FovY
         {
             get => state.Get<float>("FovY");
-            set => SetFovY(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetFovYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMSX WithFovY(float value)
         {
@@ -523,7 +503,7 @@ public partial class CPlugBitmapRenderLightOccBuilder : CPlugBitmapRenderLightOc
         public float Opacity
         {
             get => state.Get<float>("Opacity");
-            set => SetOpacity(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetOpacityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMSX WithOpacity(float value)
         {
@@ -555,7 +535,7 @@ public partial class CPlugBitmapRenderLightOccBuilder : CPlugBitmapRenderLightOc
         public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapToModulate
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapToModulate");
-            set => SetBitmapToModulate(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetBitmapToModulateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMNESWC WithBitmapToModulate(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
         {
@@ -565,7 +545,7 @@ public partial class CPlugBitmapRenderLightOccBuilder : CPlugBitmapRenderLightOc
         public TMNESWC WithBitmapToModulateReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetBitmapToModulateReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetBitmapToModulateReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public TMNESWC WithBitmapToModulate(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? value)
@@ -575,7 +555,7 @@ public partial class CPlugBitmapRenderLightOccBuilder : CPlugBitmapRenderLightOc
         public float FovY
         {
             get => state.Get<float>("FovY");
-            set => SetFovY(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetFovYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMNESWC WithFovY(float value)
         {
@@ -585,7 +565,7 @@ public partial class CPlugBitmapRenderLightOccBuilder : CPlugBitmapRenderLightOc
         public float Opacity
         {
             get => state.Get<float>("Opacity");
-            set => SetOpacity(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetOpacityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMNESWC WithOpacity(float value)
         {
@@ -621,7 +601,7 @@ public partial class CPlugBitmapRenderLightOccBuilder : CPlugBitmapRenderLightOc
         public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapToModulate
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapToModulate");
-            set => SetBitmapToModulate(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetBitmapToModulateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public VSK5 WithBitmapToModulate(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
         {
@@ -631,7 +611,7 @@ public partial class CPlugBitmapRenderLightOccBuilder : CPlugBitmapRenderLightOc
         public VSK5 WithBitmapToModulateReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetBitmapToModulateReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetBitmapToModulateReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public VSK5 WithBitmapToModulate(global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? value)
@@ -641,7 +621,7 @@ public partial class CPlugBitmapRenderLightOccBuilder : CPlugBitmapRenderLightOc
         public float FovY
         {
             get => state.Get<float>("FovY");
-            set => SetFovY(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetFovYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public VSK5 WithFovY(float value)
         {
@@ -651,7 +631,7 @@ public partial class CPlugBitmapRenderLightOccBuilder : CPlugBitmapRenderLightOc
         public float Opacity
         {
             get => state.Get<float>("Opacity");
-            set => SetOpacity(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetOpacityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public VSK5 WithOpacity(float value)
         {
@@ -687,7 +667,7 @@ public partial class CPlugBitmapRenderLightOccBuilder : CPlugBitmapRenderLightOc
         public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapToModulate
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapToModulate");
-            set => SetBitmapToModulate(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetBitmapToModulateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMF WithBitmapToModulate(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
         {
@@ -697,7 +677,7 @@ public partial class CPlugBitmapRenderLightOccBuilder : CPlugBitmapRenderLightOc
         public TMF WithBitmapToModulateReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetBitmapToModulateReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetBitmapToModulateReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public TMF WithBitmapToModulate(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? value)
@@ -707,7 +687,7 @@ public partial class CPlugBitmapRenderLightOccBuilder : CPlugBitmapRenderLightOc
         public float FovY
         {
             get => state.Get<float>("FovY");
-            set => SetFovY(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetFovYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMF WithFovY(float value)
         {
@@ -717,7 +697,7 @@ public partial class CPlugBitmapRenderLightOccBuilder : CPlugBitmapRenderLightOc
         public float Opacity
         {
             get => state.Get<float>("Opacity");
-            set => SetOpacity(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetOpacityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMF WithOpacity(float value)
         {
@@ -749,7 +729,7 @@ public partial class CPlugBitmapRenderLightOccBuilder : CPlugBitmapRenderLightOc
         public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapToModulate
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapToModulate");
-            set => SetBitmapToModulate(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetBitmapToModulateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP3 WithBitmapToModulate(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
         {
@@ -759,7 +739,7 @@ public partial class CPlugBitmapRenderLightOccBuilder : CPlugBitmapRenderLightOc
         public MP3 WithBitmapToModulateReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetBitmapToModulateReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetBitmapToModulateReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public MP3 WithBitmapToModulate(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? value)
@@ -769,7 +749,7 @@ public partial class CPlugBitmapRenderLightOccBuilder : CPlugBitmapRenderLightOc
         public float FogCustomFarZ
         {
             get => state.Get<float>("FogCustomFarZ");
-            set => SetFogCustomFarZ(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetFogCustomFarZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP3 WithFogCustomFarZ(float value)
         {
@@ -779,7 +759,7 @@ public partial class CPlugBitmapRenderLightOccBuilder : CPlugBitmapRenderLightOc
         public float FovY
         {
             get => state.Get<float>("FovY");
-            set => SetFovY(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetFovYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP3 WithFovY(float value)
         {
@@ -789,7 +769,7 @@ public partial class CPlugBitmapRenderLightOccBuilder : CPlugBitmapRenderLightOc
         public float Opacity
         {
             get => state.Get<float>("Opacity");
-            set => SetOpacity(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetOpacityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP3 WithOpacity(float value)
         {
@@ -799,7 +779,7 @@ public partial class CPlugBitmapRenderLightOccBuilder : CPlugBitmapRenderLightOc
         public global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub? RenderSub
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub?>("RenderSub");
-            set => SetRenderSub(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderSubAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP3 WithRenderSub(global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub? value)
         {
@@ -809,7 +789,7 @@ public partial class CPlugBitmapRenderLightOccBuilder : CPlugBitmapRenderLightOc
         public MP3 WithRenderSubReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetRenderSubReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderSubReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public MP3 WithRenderSub(global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubMP3? value)
@@ -841,7 +821,7 @@ public partial class CPlugBitmapRenderLightOccBuilder : CPlugBitmapRenderLightOc
         public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapToModulate
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapToModulate");
-            set => SetBitmapToModulate(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetBitmapToModulateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMT WithBitmapToModulate(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
         {
@@ -851,7 +831,7 @@ public partial class CPlugBitmapRenderLightOccBuilder : CPlugBitmapRenderLightOc
         public TMT WithBitmapToModulateReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetBitmapToModulateReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetBitmapToModulateReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public TMT WithBitmapToModulate(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? value)
@@ -861,7 +841,7 @@ public partial class CPlugBitmapRenderLightOccBuilder : CPlugBitmapRenderLightOc
         public float FovY
         {
             get => state.Get<float>("FovY");
-            set => SetFovY(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetFovYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMT WithFovY(float value)
         {
@@ -871,7 +851,7 @@ public partial class CPlugBitmapRenderLightOccBuilder : CPlugBitmapRenderLightOc
         public float Opacity
         {
             get => state.Get<float>("Opacity");
-            set => SetOpacity(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetOpacityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMT WithOpacity(float value)
         {
@@ -907,7 +887,7 @@ public partial class CPlugBitmapRenderLightOccBuilder : CPlugBitmapRenderLightOc
         public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapToModulate
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapToModulate");
-            set => SetBitmapToModulate(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetBitmapToModulateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP4 WithBitmapToModulate(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
         {
@@ -917,7 +897,7 @@ public partial class CPlugBitmapRenderLightOccBuilder : CPlugBitmapRenderLightOc
         public MP4 WithBitmapToModulateReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetBitmapToModulateReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetBitmapToModulateReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public MP4 WithBitmapToModulate(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value)
@@ -927,7 +907,7 @@ public partial class CPlugBitmapRenderLightOccBuilder : CPlugBitmapRenderLightOc
         public float FovY
         {
             get => state.Get<float>("FovY");
-            set => SetFovY(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetFovYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP4 WithFovY(float value)
         {
@@ -937,7 +917,7 @@ public partial class CPlugBitmapRenderLightOccBuilder : CPlugBitmapRenderLightOc
         public float Opacity
         {
             get => state.Get<float>("Opacity");
-            set => SetOpacity(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetOpacityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP4 WithOpacity(float value)
         {

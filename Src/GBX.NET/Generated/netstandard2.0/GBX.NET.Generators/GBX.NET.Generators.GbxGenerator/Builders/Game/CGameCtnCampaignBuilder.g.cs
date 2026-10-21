@@ -36,31 +36,10 @@ public abstract class CGameCtnCampaignBuilderBase<TSelf> where TSelf : CGameCtnC
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCampaign> state;
     private protected CGameCtnCampaignBuilderBase() => state = new();
     private protected CGameCtnCampaignBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCampaign> state) => this.state = state;
-    private protected static void SetBronzeCompleteValue(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCampaign> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetBronzeCompleteValueAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetBronzeMedalValue(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCampaign> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetBronzeMedalValueAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetCampaignId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCampaign> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetCampaignIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetChallengeGroups(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCampaign> state, NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetChallengeGroupsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetCollectionId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCampaign> state, global::GBX.NET.Id value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetCollectionIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetCollectorUnlockers(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCampaign> state, NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetCollectorUnlockersAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
-    private protected static void SetGoldCompleteValue(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCampaign> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetGoldCompleteValueAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetGoldMedalValue(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCampaign> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetGoldMedalValueAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetIconId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCampaign> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetIconIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetIndex(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCampaign> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIsInternal(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCampaign> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetIsInternalAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetModeScriptName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCampaign> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetModeScriptNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCampaign> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetOfficialRecordEnabled(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCampaign> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetOfficialRecordEnabledAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetRequiredPlayersCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCampaign> state, global::GBX.NET.Engines.Game.CGameCtnCampaign.ERequiredPlayersCount value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetRequiredPlayersCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetScoreContext(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCampaign> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetScoreContextAssignment(), value, GameVersion.MP4);
-    private protected static void SetSilverCompleteValue(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCampaign> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetSilverCompleteValueAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSilverMedalValue(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCampaign> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetSilverMedalValueAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetType(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCampaign> state, global::GBX.NET.Engines.Game.CGameCtnCampaign.EType value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetUnlockType(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCampaign> state, global::GBX.NET.Engines.Game.CGameCtnCampaign.EUnlockType value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetUnlockTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetUnlockedByCampaign(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCampaign> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetUnlockedByCampaignAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     public NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup>? ChallengeGroups
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup>?>("ChallengeGroups");
-        set => SetChallengeGroups(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetChallengeGroupsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithChallengeGroups(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup>? value)
     {
@@ -82,7 +61,7 @@ public abstract class CGameCtnCampaignBuilderMembers1<TSelf> : CGameCtnCampaignB
     public string? CampaignId
     {
         get => state.Get<string?>("CampaignId");
-        set => SetCampaignId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetCampaignIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithCampaignId(string? value)
     {
@@ -92,7 +71,7 @@ public abstract class CGameCtnCampaignBuilderMembers1<TSelf> : CGameCtnCampaignB
     public string? Name
     {
         get => state.Get<string?>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithName(string? value)
     {
@@ -102,7 +81,7 @@ public abstract class CGameCtnCampaignBuilderMembers1<TSelf> : CGameCtnCampaignB
     public global::GBX.NET.Engines.Game.CGameCtnCampaign.EType Type
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnCampaign.EType>("Type");
-        set => SetType(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithType(global::GBX.NET.Engines.Game.CGameCtnCampaign.EType value)
     {
@@ -116,7 +95,7 @@ public abstract class CGameCtnCampaignBuilderMembers2<TSelf> : CGameCtnCampaignB
     public int BronzeCompleteValue
     {
         get => state.Get<int>("BronzeCompleteValue");
-        set => SetBronzeCompleteValue(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetBronzeCompleteValueAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithBronzeCompleteValue(int value)
     {
@@ -126,7 +105,7 @@ public abstract class CGameCtnCampaignBuilderMembers2<TSelf> : CGameCtnCampaignB
     public int BronzeMedalValue
     {
         get => state.Get<int>("BronzeMedalValue");
-        set => SetBronzeMedalValue(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetBronzeMedalValueAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithBronzeMedalValue(int value)
     {
@@ -136,7 +115,7 @@ public abstract class CGameCtnCampaignBuilderMembers2<TSelf> : CGameCtnCampaignB
     public int GoldCompleteValue
     {
         get => state.Get<int>("GoldCompleteValue");
-        set => SetGoldCompleteValue(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetGoldCompleteValueAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithGoldCompleteValue(int value)
     {
@@ -146,7 +125,7 @@ public abstract class CGameCtnCampaignBuilderMembers2<TSelf> : CGameCtnCampaignB
     public int GoldMedalValue
     {
         get => state.Get<int>("GoldMedalValue");
-        set => SetGoldMedalValue(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetGoldMedalValueAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithGoldMedalValue(int value)
     {
@@ -156,7 +135,7 @@ public abstract class CGameCtnCampaignBuilderMembers2<TSelf> : CGameCtnCampaignB
     public int SilverCompleteValue
     {
         get => state.Get<int>("SilverCompleteValue");
-        set => SetSilverCompleteValue(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetSilverCompleteValueAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSilverCompleteValue(int value)
     {
@@ -166,7 +145,7 @@ public abstract class CGameCtnCampaignBuilderMembers2<TSelf> : CGameCtnCampaignB
     public int SilverMedalValue
     {
         get => state.Get<int>("SilverMedalValue");
-        set => SetSilverMedalValue(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetSilverMedalValueAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSilverMedalValue(int value)
     {
@@ -180,7 +159,7 @@ public abstract class CGameCtnCampaignBuilderMembers3<TSelf> : CGameCtnCampaignB
     public global::GBX.NET.Id CollectionId
     {
         get => state.Get<global::GBX.NET.Id>("CollectionId");
-        set => SetCollectionId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetCollectionIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithCollectionId(global::GBX.NET.Id value)
     {
@@ -190,7 +169,7 @@ public abstract class CGameCtnCampaignBuilderMembers3<TSelf> : CGameCtnCampaignB
     public int Index
     {
         get => state.Get<int>("Index");
-        set => SetIndex(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIndex(int value)
     {
@@ -200,7 +179,7 @@ public abstract class CGameCtnCampaignBuilderMembers3<TSelf> : CGameCtnCampaignB
     public string? UnlockedByCampaign
     {
         get => state.Get<string?>("UnlockedByCampaign");
-        set => SetUnlockedByCampaign(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetUnlockedByCampaignAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithUnlockedByCampaign(string? value)
     {
@@ -214,7 +193,7 @@ public abstract class CGameCtnCampaignBuilderMembers4<TSelf> : CGameCtnCampaignB
     public NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? CollectorUnlockers
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>?>("CollectorUnlockers");
-        set => SetCollectorUnlockers(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetCollectorUnlockersAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
     }
     public TSelf WithCollectorUnlockers(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value)
     {
@@ -236,7 +215,7 @@ public abstract class CGameCtnCampaignBuilderMembers5<TSelf> : CGameCtnCampaignB
     public string? IconId
     {
         get => state.Get<string?>("IconId");
-        set => SetIconId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetIconIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithIconId(string? value)
     {
@@ -246,7 +225,7 @@ public abstract class CGameCtnCampaignBuilderMembers5<TSelf> : CGameCtnCampaignB
     public global::GBX.NET.Engines.Game.CGameCtnCampaign.EUnlockType UnlockType
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnCampaign.EUnlockType>("UnlockType");
-        set => SetUnlockType(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetUnlockTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithUnlockType(global::GBX.NET.Engines.Game.CGameCtnCampaign.EUnlockType value)
     {
@@ -260,7 +239,7 @@ public abstract class CGameCtnCampaignBuilderMembers6<TSelf> : CGameCtnCampaignB
     public string? ModeScriptName
     {
         get => state.Get<string?>("ModeScriptName");
-        set => SetModeScriptName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetModeScriptNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithModeScriptName(string? value)
     {
@@ -270,7 +249,7 @@ public abstract class CGameCtnCampaignBuilderMembers6<TSelf> : CGameCtnCampaignB
     public global::GBX.NET.Engines.Game.CGameCtnCampaign.ERequiredPlayersCount RequiredPlayersCount
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnCampaign.ERequiredPlayersCount>("RequiredPlayersCount");
-        set => SetRequiredPlayersCount(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetRequiredPlayersCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRequiredPlayersCount(global::GBX.NET.Engines.Game.CGameCtnCampaign.ERequiredPlayersCount value)
     {
@@ -284,7 +263,7 @@ public abstract class CGameCtnCampaignBuilderMembers7<TSelf> : CGameCtnCampaignB
     public bool OfficialRecordEnabled
     {
         get => state.Get<bool>("OfficialRecordEnabled");
-        set => SetOfficialRecordEnabled(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetOfficialRecordEnabledAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithOfficialRecordEnabled(bool value)
     {
@@ -638,7 +617,7 @@ public partial class CGameCtnCampaignBuilder : CGameCtnCampaignBuilderBase<CGame
         public string? CampaignId
         {
             get => state.Get<string?>("CampaignId");
-            set => SetCampaignId(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetCampaignIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMSX WithCampaignId(string? value)
         {
@@ -656,7 +635,7 @@ public partial class CGameCtnCampaignBuilder : CGameCtnCampaignBuilderBase<CGame
         public bool IsInternal
         {
             get => state.Get<bool>("IsInternal");
-            set => SetIsInternal(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetIsInternalAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMSX WithIsInternal(bool value)
         {
@@ -666,7 +645,7 @@ public partial class CGameCtnCampaignBuilder : CGameCtnCampaignBuilderBase<CGame
         public string? Name
         {
             get => state.Get<string?>("Name");
-            set => SetName(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMSX WithName(string? value)
         {
@@ -676,7 +655,7 @@ public partial class CGameCtnCampaignBuilder : CGameCtnCampaignBuilderBase<CGame
         public global::GBX.NET.Engines.Game.CGameCtnCampaign.EType Type
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameCtnCampaign.EType>("Type");
-            set => SetType(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMSX WithType(global::GBX.NET.Engines.Game.CGameCtnCampaign.EType value)
         {
@@ -704,7 +683,7 @@ public partial class CGameCtnCampaignBuilder : CGameCtnCampaignBuilderBase<CGame
         public string? CampaignId
         {
             get => state.Get<string?>("CampaignId");
-            set => SetCampaignId(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetCampaignIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMNESWC WithCampaignId(string? value)
         {
@@ -722,7 +701,7 @@ public partial class CGameCtnCampaignBuilder : CGameCtnCampaignBuilderBase<CGame
         public bool IsInternal
         {
             get => state.Get<bool>("IsInternal");
-            set => SetIsInternal(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetIsInternalAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMNESWC WithIsInternal(bool value)
         {
@@ -732,7 +711,7 @@ public partial class CGameCtnCampaignBuilder : CGameCtnCampaignBuilderBase<CGame
         public string? Name
         {
             get => state.Get<string?>("Name");
-            set => SetName(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMNESWC WithName(string? value)
         {
@@ -742,7 +721,7 @@ public partial class CGameCtnCampaignBuilder : CGameCtnCampaignBuilderBase<CGame
         public global::GBX.NET.Engines.Game.CGameCtnCampaign.EType Type
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameCtnCampaign.EType>("Type");
-            set => SetType(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMNESWC WithType(global::GBX.NET.Engines.Game.CGameCtnCampaign.EType value)
         {
@@ -770,7 +749,7 @@ public partial class CGameCtnCampaignBuilder : CGameCtnCampaignBuilderBase<CGame
         public int BronzeCompleteValue
         {
             get => state.Get<int>("BronzeCompleteValue");
-            set => SetBronzeCompleteValue(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetBronzeCompleteValueAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public VSK5 WithBronzeCompleteValue(int value)
         {
@@ -780,7 +759,7 @@ public partial class CGameCtnCampaignBuilder : CGameCtnCampaignBuilderBase<CGame
         public int BronzeMedalValue
         {
             get => state.Get<int>("BronzeMedalValue");
-            set => SetBronzeMedalValue(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetBronzeMedalValueAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public VSK5 WithBronzeMedalValue(int value)
         {
@@ -798,7 +777,7 @@ public partial class CGameCtnCampaignBuilder : CGameCtnCampaignBuilderBase<CGame
         public int GoldCompleteValue
         {
             get => state.Get<int>("GoldCompleteValue");
-            set => SetGoldCompleteValue(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetGoldCompleteValueAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public VSK5 WithGoldCompleteValue(int value)
         {
@@ -808,7 +787,7 @@ public partial class CGameCtnCampaignBuilder : CGameCtnCampaignBuilderBase<CGame
         public int GoldMedalValue
         {
             get => state.Get<int>("GoldMedalValue");
-            set => SetGoldMedalValue(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetGoldMedalValueAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public VSK5 WithGoldMedalValue(int value)
         {
@@ -818,7 +797,7 @@ public partial class CGameCtnCampaignBuilder : CGameCtnCampaignBuilderBase<CGame
         public bool IsInternal
         {
             get => state.Get<bool>("IsInternal");
-            set => SetIsInternal(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetIsInternalAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         }
         public VSK5 WithIsInternal(bool value)
         {
@@ -828,7 +807,7 @@ public partial class CGameCtnCampaignBuilder : CGameCtnCampaignBuilderBase<CGame
         public int SilverCompleteValue
         {
             get => state.Get<int>("SilverCompleteValue");
-            set => SetSilverCompleteValue(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetSilverCompleteValueAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public VSK5 WithSilverCompleteValue(int value)
         {
@@ -838,7 +817,7 @@ public partial class CGameCtnCampaignBuilder : CGameCtnCampaignBuilderBase<CGame
         public int SilverMedalValue
         {
             get => state.Get<int>("SilverMedalValue");
-            set => SetSilverMedalValue(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetSilverMedalValueAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public VSK5 WithSilverMedalValue(int value)
         {
@@ -874,7 +853,7 @@ public partial class CGameCtnCampaignBuilder : CGameCtnCampaignBuilderBase<CGame
         public bool IsInternal
         {
             get => state.Get<bool>("IsInternal");
-            set => SetIsInternal(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetIsInternalAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMF WithIsInternal(bool value)
         {
@@ -962,7 +941,7 @@ public partial class CGameCtnCampaignBuilder : CGameCtnCampaignBuilderBase<CGame
         public string? ScoreContext
         {
             get => state.Get<string?>("ScoreContext");
-            set => SetScoreContext(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetScoreContextAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithScoreContext(string? value)
         {

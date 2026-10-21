@@ -36,73 +36,10 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state;
     private protected CPlugBeamEmitterSubModelBuilderBase() => state = new();
     private protected CPlugBeamEmitterSubModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state) => this.state = state;
-    private protected static void SetAdditionalMaterialPaths(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, string[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetAdditionalMaterialPathsAssignment(), value, GameVersion.MP4);
-    private protected static void SetAdditionalMaterials(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetAdditionalMaterialsAssignment(), value, GameVersion.MP4);
-    private protected static void SetBackFace(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBackFaceAssignment(), value, GameVersion.MP4);
-    private protected static void SetBeamWithCylinders_FadeSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithCylinders_FadeSpeedAssignment(), value, GameVersion.MP4);
-    private protected static void SetBeamWithCylinders_HalfWidth(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithCylinders_HalfWidthAssignment(), value, GameVersion.MP4);
-    private protected static void SetBeamWithCylinders_InnerRadius(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithCylinders_InnerRadiusAssignment(), value, GameVersion.MP4);
-    private protected static void SetBeamWithCylinders_NbSubDiv(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithCylinders_NbSubDivAssignment(), value, GameVersion.MP4);
-    private protected static void SetBeamWithCylinders_OutterRadius(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithCylinders_OutterRadiusAssignment(), value, GameVersion.MP4);
-    private protected static void SetBeamWithCylinders_StepSize(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithCylinders_StepSizeAssignment(), value, GameVersion.MP4);
-    private protected static void SetBeamWithCylinders_TimeStartFade(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithCylinders_TimeStartFadeAssignment(), value, GameVersion.MP4);
-    private protected static void SetBeamWithSpheres_EndDistance(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithSpheres_EndDistanceAssignment(), value, GameVersion.MP4);
-    private protected static void SetBeamWithSpheres_NbSpheresPerMeter(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithSpheres_NbSpheresPerMeterAssignment(), value, GameVersion.MP4);
-    private protected static void SetBeamWithSpheres_NbVerticalSubDiv(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithSpheres_NbVerticalSubDivAssignment(), value, GameVersion.MP4);
-    private protected static void SetBeamWithSpheres_Radius(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithSpheres_RadiusAssignment(), value, GameVersion.MP4);
-    private protected static void SetBeamWithSpheres_Speed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithSpheres_SpeedAssignment(), value, GameVersion.MP4);
-    private protected static void SetBeamWithSpheres_StartDistance(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithSpheres_StartDistanceAssignment(), value, GameVersion.MP4);
-    private protected static void SetBloomEnabled(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBloomEnabledAssignment(), value, GameVersion.MP4);
-    private protected static void SetBloomEnergy(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBloomEnergyAssignment(), value, GameVersion.MP4);
-    private protected static void SetBloomFadeEndAtEndLife(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBloomFadeEndAtEndLifeAssignment(), value, GameVersion.MP4);
-    private protected static void SetBloomFadeOut(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBloomFadeOutAssignment(), value, GameVersion.MP4);
-    private protected static void SetBloomIntensity(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBloomIntensityAssignment(), value, GameVersion.MP4);
-    private protected static void SetBloomScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBloomScaleAssignment(), value, GameVersion.MP4);
-    private protected static void SetBloomShrinkOverLife(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBloomShrinkOverLifeAssignment(), value, GameVersion.MP4);
-    private protected static void SetBloomStartOffset(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBloomStartOffsetAssignment(), value, GameVersion.MP4);
-    private protected static void SetCylinderSideCount(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetCylinderSideCountAssignment(), value, GameVersion.MP4);
-    private protected static void SetDisplayType(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetDisplayTypeAssignment(), value, GameVersion.MP4);
-    private protected static void SetDoubleHelix_ClockWise(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetDoubleHelix_ClockWiseAssignment(), value, GameVersion.MP4);
-    private protected static void SetDoubleHelix_StartAngle(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetDoubleHelix_StartAngleAssignment(), value, GameVersion.MP4);
-    private protected static void SetDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetDurationAssignment(), value, GameVersion.MP4);
-    private protected static void SetEnableCenterLaser(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetEnableCenterLaserAssignment(), value, GameVersion.MP4);
-    private protected static void SetEnableTriLaser(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetEnableTriLaserAssignment(), value, GameVersion.MP4);
-    private protected static void SetFadeTimeOffset(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetFadeTimeOffsetAssignment(), value, GameVersion.MP4);
-    private protected static void SetFadeTimeScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetFadeTimeScaleAssignment(), value, GameVersion.MP4);
-    private protected static void SetHelix_CoeffLowDef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetHelix_CoeffLowDefAssignment(), value, GameVersion.MP4);
-    private protected static void SetHelix_DistLOD(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetHelix_DistLODAssignment(), value, GameVersion.MP4);
-    private protected static void SetHelix_InnerRadius(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetHelix_InnerRadiusAssignment(), value, GameVersion.MP4);
-    private protected static void SetHelix_MaxHelixCount(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetHelix_MaxHelixCountAssignment(), value, GameVersion.MP4);
-    private protected static void SetHelix_OutterRadius(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetHelix_OutterRadiusAssignment(), value, GameVersion.MP4);
-    private protected static void SetHelix_TurnLength(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetHelix_TurnLengthAssignment(), value, GameVersion.MP4);
-    private protected static void SetHelix_VerticesCountPerTurn(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetHelix_VerticesCountPerTurnAssignment(), value, GameVersion.MP4);
-    private protected static void SetLaserRadius(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetLaserRadiusAssignment(), value, GameVersion.MP4);
-    private protected static void SetLightningBeamCount(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetLightningBeamCountAssignment(), value, GameVersion.MP4);
-    private protected static void SetLightningDistStep(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetLightningDistStepAssignment(), value, GameVersion.MP4);
-    private protected static void SetLightningJitterRadius(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetLightningJitterRadiusAssignment(), value, GameVersion.MP4);
-    private protected static void SetLightningLenMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetLightningLenMaxAssignment(), value, GameVersion.MP4);
-    private protected static void SetLightningMaxJitterDistPerStep(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetLightningMaxJitterDistPerStepAssignment(), value, GameVersion.MP4);
-    private protected static void SetMaterial(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, global::GBX.NET.Engines.Plug.CPlugMaterial? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetMaterialAssignment(), value, GameVersion.MP4);
-    private protected static void SetMaterialReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetMaterialReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetMaterialPath(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetMaterialPathAssignment(), value, GameVersion.MP4);
-    private protected static void SetMaterialsAsStrings(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetMaterialsAsStringsAssignment(), value, GameVersion.MP4);
-    private protected static void SetRadius(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetRadiusAssignment(), value, GameVersion.MP4);
-    private protected static void SetSharpEnabled(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetSharpEnabledAssignment(), value, GameVersion.MP4);
-    private protected static void SetSharpEnergy(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetSharpEnergyAssignment(), value, GameVersion.MP4);
-    private protected static void SetSharpFadeEndAtEndLife(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetSharpFadeEndAtEndLifeAssignment(), value, GameVersion.MP4);
-    private protected static void SetSharpFadeOut(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetSharpFadeOutAssignment(), value, GameVersion.MP4);
-    private protected static void SetSharpIntensity(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetSharpIntensityAssignment(), value, GameVersion.MP4);
-    private protected static void SetSharpScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetSharpScaleAssignment(), value, GameVersion.MP4);
-    private protected static void SetSharpShrinkOverLife(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetSharpShrinkOverLifeAssignment(), value, GameVersion.MP4);
-    private protected static void SetSharpStartOffset(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetSharpStartOffsetAssignment(), value, GameVersion.MP4);
-    private protected static void SetStartOffsetAtEndLife(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetStartOffsetAtEndLifeAssignment(), value, GameVersion.MP4);
-    private protected static void SetUSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetUSpeedAssignment(), value, GameVersion.MP4);
-    private protected static void SetUVScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetUVScaleAssignment(), value, GameVersion.MP4);
-    private protected static void SetVSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetVSpeedAssignment(), value, GameVersion.MP4);
     public string[]? AdditionalMaterialPaths
     {
         get => state.Get<string[]?>("AdditionalMaterialPaths");
-        set => SetAdditionalMaterialPaths(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetAdditionalMaterialPathsAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithAdditionalMaterialPaths(params string[]? value)
     {
@@ -116,7 +53,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>? AdditionalMaterials
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>?>("AdditionalMaterials");
-        set => SetAdditionalMaterials(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetAdditionalMaterialsAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithAdditionalMaterials(NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>? value)
     {
@@ -134,7 +71,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public bool BackFace
     {
         get => state.Get<bool>("BackFace");
-        set => SetBackFace(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBackFaceAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithBackFace(bool value)
     {
@@ -144,7 +81,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float BeamWithCylinders_FadeSpeed
     {
         get => state.Get<float>("BeamWithCylinders_FadeSpeed");
-        set => SetBeamWithCylinders_FadeSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithCylinders_FadeSpeedAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithBeamWithCylinders_FadeSpeed(float value)
     {
@@ -154,7 +91,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float BeamWithCylinders_HalfWidth
     {
         get => state.Get<float>("BeamWithCylinders_HalfWidth");
-        set => SetBeamWithCylinders_HalfWidth(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithCylinders_HalfWidthAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithBeamWithCylinders_HalfWidth(float value)
     {
@@ -164,7 +101,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float BeamWithCylinders_InnerRadius
     {
         get => state.Get<float>("BeamWithCylinders_InnerRadius");
-        set => SetBeamWithCylinders_InnerRadius(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithCylinders_InnerRadiusAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithBeamWithCylinders_InnerRadius(float value)
     {
@@ -174,7 +111,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public int BeamWithCylinders_NbSubDiv
     {
         get => state.Get<int>("BeamWithCylinders_NbSubDiv");
-        set => SetBeamWithCylinders_NbSubDiv(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithCylinders_NbSubDivAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithBeamWithCylinders_NbSubDiv(int value)
     {
@@ -184,7 +121,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float BeamWithCylinders_OutterRadius
     {
         get => state.Get<float>("BeamWithCylinders_OutterRadius");
-        set => SetBeamWithCylinders_OutterRadius(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithCylinders_OutterRadiusAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithBeamWithCylinders_OutterRadius(float value)
     {
@@ -194,7 +131,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float BeamWithCylinders_StepSize
     {
         get => state.Get<float>("BeamWithCylinders_StepSize");
-        set => SetBeamWithCylinders_StepSize(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithCylinders_StepSizeAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithBeamWithCylinders_StepSize(float value)
     {
@@ -204,7 +141,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float BeamWithCylinders_TimeStartFade
     {
         get => state.Get<float>("BeamWithCylinders_TimeStartFade");
-        set => SetBeamWithCylinders_TimeStartFade(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithCylinders_TimeStartFadeAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithBeamWithCylinders_TimeStartFade(float value)
     {
@@ -214,7 +151,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float BeamWithSpheres_EndDistance
     {
         get => state.Get<float>("BeamWithSpheres_EndDistance");
-        set => SetBeamWithSpheres_EndDistance(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithSpheres_EndDistanceAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithBeamWithSpheres_EndDistance(float value)
     {
@@ -224,7 +161,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public int BeamWithSpheres_NbSpheresPerMeter
     {
         get => state.Get<int>("BeamWithSpheres_NbSpheresPerMeter");
-        set => SetBeamWithSpheres_NbSpheresPerMeter(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithSpheres_NbSpheresPerMeterAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithBeamWithSpheres_NbSpheresPerMeter(int value)
     {
@@ -234,7 +171,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public int BeamWithSpheres_NbVerticalSubDiv
     {
         get => state.Get<int>("BeamWithSpheres_NbVerticalSubDiv");
-        set => SetBeamWithSpheres_NbVerticalSubDiv(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithSpheres_NbVerticalSubDivAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithBeamWithSpheres_NbVerticalSubDiv(int value)
     {
@@ -244,7 +181,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float BeamWithSpheres_Radius
     {
         get => state.Get<float>("BeamWithSpheres_Radius");
-        set => SetBeamWithSpheres_Radius(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithSpheres_RadiusAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithBeamWithSpheres_Radius(float value)
     {
@@ -254,7 +191,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float BeamWithSpheres_Speed
     {
         get => state.Get<float>("BeamWithSpheres_Speed");
-        set => SetBeamWithSpheres_Speed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithSpheres_SpeedAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithBeamWithSpheres_Speed(float value)
     {
@@ -264,7 +201,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float BeamWithSpheres_StartDistance
     {
         get => state.Get<float>("BeamWithSpheres_StartDistance");
-        set => SetBeamWithSpheres_StartDistance(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithSpheres_StartDistanceAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithBeamWithSpheres_StartDistance(float value)
     {
@@ -274,7 +211,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public bool BloomEnabled
     {
         get => state.Get<bool>("BloomEnabled");
-        set => SetBloomEnabled(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBloomEnabledAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithBloomEnabled(bool value)
     {
@@ -284,7 +221,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float BloomEnergy
     {
         get => state.Get<float>("BloomEnergy");
-        set => SetBloomEnergy(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBloomEnergyAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithBloomEnergy(float value)
     {
@@ -294,7 +231,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float BloomFadeEndAtEndLife
     {
         get => state.Get<float>("BloomFadeEndAtEndLife");
-        set => SetBloomFadeEndAtEndLife(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBloomFadeEndAtEndLifeAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithBloomFadeEndAtEndLife(float value)
     {
@@ -304,7 +241,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public bool BloomFadeOut
     {
         get => state.Get<bool>("BloomFadeOut");
-        set => SetBloomFadeOut(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBloomFadeOutAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithBloomFadeOut(bool value)
     {
@@ -314,7 +251,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float BloomIntensity
     {
         get => state.Get<float>("BloomIntensity");
-        set => SetBloomIntensity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBloomIntensityAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithBloomIntensity(float value)
     {
@@ -324,7 +261,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float BloomScale
     {
         get => state.Get<float>("BloomScale");
-        set => SetBloomScale(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBloomScaleAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithBloomScale(float value)
     {
@@ -334,7 +271,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public bool BloomShrinkOverLife
     {
         get => state.Get<bool>("BloomShrinkOverLife");
-        set => SetBloomShrinkOverLife(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBloomShrinkOverLifeAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithBloomShrinkOverLife(bool value)
     {
@@ -344,7 +281,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float BloomStartOffset
     {
         get => state.Get<float>("BloomStartOffset");
-        set => SetBloomStartOffset(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBloomStartOffsetAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithBloomStartOffset(float value)
     {
@@ -354,7 +291,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public int CylinderSideCount
     {
         get => state.Get<int>("CylinderSideCount");
-        set => SetCylinderSideCount(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetCylinderSideCountAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithCylinderSideCount(int value)
     {
@@ -364,7 +301,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public int DisplayType
     {
         get => state.Get<int>("DisplayType");
-        set => SetDisplayType(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetDisplayTypeAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithDisplayType(int value)
     {
@@ -374,7 +311,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public bool DoubleHelix_ClockWise
     {
         get => state.Get<bool>("DoubleHelix_ClockWise");
-        set => SetDoubleHelix_ClockWise(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetDoubleHelix_ClockWiseAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithDoubleHelix_ClockWise(bool value)
     {
@@ -384,7 +321,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float DoubleHelix_StartAngle
     {
         get => state.Get<float>("DoubleHelix_StartAngle");
-        set => SetDoubleHelix_StartAngle(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetDoubleHelix_StartAngleAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithDoubleHelix_StartAngle(float value)
     {
@@ -394,7 +331,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public int Duration
     {
         get => state.Get<int>("Duration");
-        set => SetDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetDurationAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithDuration(int value)
     {
@@ -404,7 +341,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public bool EnableCenterLaser
     {
         get => state.Get<bool>("EnableCenterLaser");
-        set => SetEnableCenterLaser(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetEnableCenterLaserAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithEnableCenterLaser(bool value)
     {
@@ -414,7 +351,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public bool EnableTriLaser
     {
         get => state.Get<bool>("EnableTriLaser");
-        set => SetEnableTriLaser(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetEnableTriLaserAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithEnableTriLaser(bool value)
     {
@@ -424,7 +361,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float FadeTimeOffset
     {
         get => state.Get<float>("FadeTimeOffset");
-        set => SetFadeTimeOffset(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetFadeTimeOffsetAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithFadeTimeOffset(float value)
     {
@@ -434,7 +371,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float FadeTimeScale
     {
         get => state.Get<float>("FadeTimeScale");
-        set => SetFadeTimeScale(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetFadeTimeScaleAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithFadeTimeScale(float value)
     {
@@ -444,7 +381,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float Helix_CoeffLowDef
     {
         get => state.Get<float>("Helix_CoeffLowDef");
-        set => SetHelix_CoeffLowDef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetHelix_CoeffLowDefAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithHelix_CoeffLowDef(float value)
     {
@@ -454,7 +391,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float Helix_DistLOD
     {
         get => state.Get<float>("Helix_DistLOD");
-        set => SetHelix_DistLOD(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetHelix_DistLODAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithHelix_DistLOD(float value)
     {
@@ -464,7 +401,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float Helix_InnerRadius
     {
         get => state.Get<float>("Helix_InnerRadius");
-        set => SetHelix_InnerRadius(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetHelix_InnerRadiusAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithHelix_InnerRadius(float value)
     {
@@ -474,7 +411,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public int Helix_MaxHelixCount
     {
         get => state.Get<int>("Helix_MaxHelixCount");
-        set => SetHelix_MaxHelixCount(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetHelix_MaxHelixCountAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithHelix_MaxHelixCount(int value)
     {
@@ -484,7 +421,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float Helix_OutterRadius
     {
         get => state.Get<float>("Helix_OutterRadius");
-        set => SetHelix_OutterRadius(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetHelix_OutterRadiusAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithHelix_OutterRadius(float value)
     {
@@ -494,7 +431,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float Helix_TurnLength
     {
         get => state.Get<float>("Helix_TurnLength");
-        set => SetHelix_TurnLength(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetHelix_TurnLengthAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithHelix_TurnLength(float value)
     {
@@ -504,7 +441,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public int Helix_VerticesCountPerTurn
     {
         get => state.Get<int>("Helix_VerticesCountPerTurn");
-        set => SetHelix_VerticesCountPerTurn(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetHelix_VerticesCountPerTurnAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithHelix_VerticesCountPerTurn(int value)
     {
@@ -514,7 +451,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float LaserRadius
     {
         get => state.Get<float>("LaserRadius");
-        set => SetLaserRadius(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetLaserRadiusAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithLaserRadius(float value)
     {
@@ -524,7 +461,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public int LightningBeamCount
     {
         get => state.Get<int>("LightningBeamCount");
-        set => SetLightningBeamCount(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetLightningBeamCountAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithLightningBeamCount(int value)
     {
@@ -534,7 +471,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float LightningDistStep
     {
         get => state.Get<float>("LightningDistStep");
-        set => SetLightningDistStep(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetLightningDistStepAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithLightningDistStep(float value)
     {
@@ -544,7 +481,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float LightningJitterRadius
     {
         get => state.Get<float>("LightningJitterRadius");
-        set => SetLightningJitterRadius(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetLightningJitterRadiusAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithLightningJitterRadius(float value)
     {
@@ -554,7 +491,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float LightningLenMax
     {
         get => state.Get<float>("LightningLenMax");
-        set => SetLightningLenMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetLightningLenMaxAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithLightningLenMax(float value)
     {
@@ -564,7 +501,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float LightningMaxJitterDistPerStep
     {
         get => state.Get<float>("LightningMaxJitterDistPerStep");
-        set => SetLightningMaxJitterDistPerStep(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetLightningMaxJitterDistPerStepAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithLightningMaxJitterDistPerStep(float value)
     {
@@ -574,7 +511,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public global::GBX.NET.Engines.Plug.CPlugMaterial? Material
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("Material");
-        set => SetMaterial(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetMaterialAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithMaterial(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
     {
@@ -584,13 +521,13 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public TSelf WithMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetMaterialReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetMaterialReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public string? MaterialPath
     {
         get => state.Get<string?>("MaterialPath");
-        set => SetMaterialPath(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetMaterialPathAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithMaterialPath(string? value)
     {
@@ -600,7 +537,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public bool MaterialsAsStrings
     {
         get => state.Get<bool>("MaterialsAsStrings");
-        set => SetMaterialsAsStrings(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetMaterialsAsStringsAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithMaterialsAsStrings(bool value)
     {
@@ -610,7 +547,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float Radius
     {
         get => state.Get<float>("Radius");
-        set => SetRadius(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetRadiusAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithRadius(float value)
     {
@@ -620,7 +557,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public bool SharpEnabled
     {
         get => state.Get<bool>("SharpEnabled");
-        set => SetSharpEnabled(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetSharpEnabledAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSharpEnabled(bool value)
     {
@@ -630,7 +567,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float SharpEnergy
     {
         get => state.Get<float>("SharpEnergy");
-        set => SetSharpEnergy(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetSharpEnergyAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSharpEnergy(float value)
     {
@@ -640,7 +577,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float SharpFadeEndAtEndLife
     {
         get => state.Get<float>("SharpFadeEndAtEndLife");
-        set => SetSharpFadeEndAtEndLife(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetSharpFadeEndAtEndLifeAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSharpFadeEndAtEndLife(float value)
     {
@@ -650,7 +587,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public bool SharpFadeOut
     {
         get => state.Get<bool>("SharpFadeOut");
-        set => SetSharpFadeOut(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetSharpFadeOutAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSharpFadeOut(bool value)
     {
@@ -660,7 +597,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float SharpIntensity
     {
         get => state.Get<float>("SharpIntensity");
-        set => SetSharpIntensity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetSharpIntensityAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSharpIntensity(float value)
     {
@@ -670,7 +607,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float SharpScale
     {
         get => state.Get<float>("SharpScale");
-        set => SetSharpScale(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetSharpScaleAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSharpScale(float value)
     {
@@ -680,7 +617,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public bool SharpShrinkOverLife
     {
         get => state.Get<bool>("SharpShrinkOverLife");
-        set => SetSharpShrinkOverLife(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetSharpShrinkOverLifeAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSharpShrinkOverLife(bool value)
     {
@@ -690,7 +627,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float SharpStartOffset
     {
         get => state.Get<float>("SharpStartOffset");
-        set => SetSharpStartOffset(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetSharpStartOffsetAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSharpStartOffset(float value)
     {
@@ -700,7 +637,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float StartOffsetAtEndLife
     {
         get => state.Get<float>("StartOffsetAtEndLife");
-        set => SetStartOffsetAtEndLife(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetStartOffsetAtEndLifeAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithStartOffsetAtEndLife(float value)
     {
@@ -710,7 +647,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float USpeed
     {
         get => state.Get<float>("USpeed");
-        set => SetUSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetUSpeedAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithUSpeed(float value)
     {
@@ -720,7 +657,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float UVScale
     {
         get => state.Get<float>("UVScale");
-        set => SetUVScale(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetUVScaleAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithUVScale(float value)
     {
@@ -730,7 +667,7 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : C
     public float VSpeed
     {
         get => state.Get<float>("VSpeed");
-        set => SetVSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetVSpeedAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithVSpeed(float value)
     {

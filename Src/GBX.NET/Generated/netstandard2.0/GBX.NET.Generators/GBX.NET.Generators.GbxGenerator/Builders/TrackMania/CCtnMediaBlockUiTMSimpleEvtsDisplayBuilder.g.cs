@@ -36,18 +36,10 @@ public abstract class CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderBase<TSelf> wher
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay> state;
     private protected CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderBase() => state = new();
     private protected CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderBase(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay> state) => this.state = state;
-    private protected static void SetCheckpoints(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderAssignments.GetCheckpointsAssignment(), value, GameVersion.TMNESWC | GameVersion.VSK5);
-    private protected static void SetDisplayMode(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay> state, global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay.EDisplayMode value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderAssignments.GetDisplayModeAssignment(), value, GameVersion.TMNESWC | GameVersion.VSK5);
-    private protected static void SetEnd(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockUiBuilderAssignments.GetEndAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetEndOfLaps(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderAssignments.GetEndOfLapsAssignment(), value, GameVersion.TMNESWC | GameVersion.VSK5);
-    private protected static void SetEndOfRace(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderAssignments.GetEndOfRaceAssignment(), value, GameVersion.TMNESWC | GameVersion.VSK5);
-    private protected static void SetGhostsName(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderAssignments.GetGhostsNameAssignment(), value, GameVersion.TMNESWC | GameVersion.VSK5);
-    private protected static void SetStart(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockUiBuilderAssignments.GetStartAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetStuntFigures(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderAssignments.GetStuntFiguresAssignment(), value, GameVersion.TMNESWC | GameVersion.VSK5);
     public TimeSingle End
     {
         get => state.Get<TimeSingle>("End");
-        set => SetEnd(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockUiBuilderAssignments.GetEndAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEnd(TimeSingle value)
     {
@@ -57,7 +49,7 @@ public abstract class CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderBase<TSelf> wher
     public TimeSingle Start
     {
         get => state.Get<TimeSingle>("Start");
-        set => SetStart(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockUiBuilderAssignments.GetStartAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithStart(TimeSingle value)
     {
@@ -71,7 +63,7 @@ public abstract class CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderMembers1<TSelf> 
     public bool Checkpoints
     {
         get => state.Get<bool>("Checkpoints");
-        set => SetCheckpoints(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderAssignments.GetCheckpointsAssignment(), value, GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithCheckpoints(bool value)
     {
@@ -81,7 +73,7 @@ public abstract class CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderMembers1<TSelf> 
     public global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay.EDisplayMode DisplayMode
     {
         get => state.Get<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay.EDisplayMode>("DisplayMode");
-        set => SetDisplayMode(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderAssignments.GetDisplayModeAssignment(), value, GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithDisplayMode(global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay.EDisplayMode value)
     {
@@ -91,7 +83,7 @@ public abstract class CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderMembers1<TSelf> 
     public bool EndOfLaps
     {
         get => state.Get<bool>("EndOfLaps");
-        set => SetEndOfLaps(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderAssignments.GetEndOfLapsAssignment(), value, GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithEndOfLaps(bool value)
     {
@@ -101,7 +93,7 @@ public abstract class CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderMembers1<TSelf> 
     public bool EndOfRace
     {
         get => state.Get<bool>("EndOfRace");
-        set => SetEndOfRace(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderAssignments.GetEndOfRaceAssignment(), value, GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithEndOfRace(bool value)
     {
@@ -111,7 +103,7 @@ public abstract class CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderMembers1<TSelf> 
     public bool GhostsName
     {
         get => state.Get<bool>("GhostsName");
-        set => SetGhostsName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderAssignments.GetGhostsNameAssignment(), value, GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithGhostsName(bool value)
     {
@@ -121,7 +113,7 @@ public abstract class CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderMembers1<TSelf> 
     public bool StuntFigures
     {
         get => state.Get<bool>("StuntFigures");
-        set => SetStuntFigures(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderAssignments.GetStuntFiguresAssignment(), value, GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithStuntFigures(bool value)
     {

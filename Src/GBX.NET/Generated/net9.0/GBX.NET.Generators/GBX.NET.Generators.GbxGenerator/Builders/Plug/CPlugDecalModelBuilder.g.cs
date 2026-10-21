@@ -36,44 +36,10 @@ public abstract class CPlugDecalModelBuilderBase<TSelf> where TSelf : CPlugDecal
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state;
     private protected CPlugDecalModelBuilderBase() => state = new();
     private protected CPlugDecalModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state) => this.state = state;
-    private protected static void SetDecalModels(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecalModel>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetDecalModelsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetDiffuseA(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetDiffuseAAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDiffuseAReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetDiffuseAReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDiffuseARef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state, string value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetDiffuseARefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFadeNormalAndZ(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetFadeNormalAndZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetFlags(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetIcon(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetIconAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetIconReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetIconReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetIsObsolete(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetIsObsoleteAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMacroDecalSets(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state, global::GBX.NET.Engines.Plug.CPlugDecalModel.MacroDecalSet[] value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetMacroDecalSetsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetMaxAngleN3dCos(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetMaxAngleN3dCosAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMaxAngleNCos(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetMaxAngleNCosAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMinAngleN3d(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetMinAngleN3dAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetNormal(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetNormalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetNormalReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetNormalReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetNormalRef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state, string value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetNormalRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetRandomInstances(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetRandomInstancesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetRoughness(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetRoughnessAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetRoughnessReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetRoughnessReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetRoughnessRef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state, string value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetRoughnessRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSolid(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state, global::GBX.NET.Engines.Plug.CPlugSolid? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSolidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSolidReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSolidReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSpecular(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSpecularAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSpecularReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSpecularReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSpecularRef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state, string value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSpecularRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSprite3dBitmap(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSprite3dBitmapAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSprite3dBitmapReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSprite3dBitmapReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSprite3dGroupId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSprite3dGroupIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSvg(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSvgAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSvgReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSvgReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSvgAlpha(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSvgAlphaAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSvgRef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state, string value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSvgRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSvgSize(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSvgSizeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTexelByMeter(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetTexelByMeterAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public global::GBX.NET.Engines.Plug.CPlugBitmap? DiffuseA
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("DiffuseA");
-        set => SetDiffuseA(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetDiffuseAAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDiffuseA(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -83,13 +49,13 @@ public abstract class CPlugDecalModelBuilderBase<TSelf> where TSelf : CPlugDecal
     public TSelf WithDiffuseAReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetDiffuseAReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetDiffuseAReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public bool FadeNormalAndZ
     {
         get => state.Get<bool>("FadeNormalAndZ");
-        set => SetFadeNormalAndZ(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetFadeNormalAndZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFadeNormalAndZ(bool value)
     {
@@ -99,7 +65,7 @@ public abstract class CPlugDecalModelBuilderBase<TSelf> where TSelf : CPlugDecal
     public uint Flags
     {
         get => state.Get<uint>("Flags");
-        set => SetFlags(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFlags(uint value)
     {
@@ -109,7 +75,7 @@ public abstract class CPlugDecalModelBuilderBase<TSelf> where TSelf : CPlugDecal
     public global::GBX.NET.Engines.Plug.CPlugBitmap? Icon
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("Icon");
-        set => SetIcon(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetIconAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIcon(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -119,13 +85,13 @@ public abstract class CPlugDecalModelBuilderBase<TSelf> where TSelf : CPlugDecal
     public TSelf WithIconReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetIconReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetIconReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public bool IsObsolete
     {
         get => state.Get<bool>("IsObsolete");
-        set => SetIsObsolete(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetIsObsoleteAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIsObsolete(bool value)
     {
@@ -135,7 +101,7 @@ public abstract class CPlugDecalModelBuilderBase<TSelf> where TSelf : CPlugDecal
     public float MaxAngleN3dCos
     {
         get => state.Get<float>("MaxAngleN3dCos");
-        set => SetMaxAngleN3dCos(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetMaxAngleN3dCosAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaxAngleN3dCos(float value)
     {
@@ -145,7 +111,7 @@ public abstract class CPlugDecalModelBuilderBase<TSelf> where TSelf : CPlugDecal
     public float MaxAngleNCos
     {
         get => state.Get<float>("MaxAngleNCos");
-        set => SetMaxAngleNCos(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetMaxAngleNCosAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaxAngleNCos(float value)
     {
@@ -155,7 +121,7 @@ public abstract class CPlugDecalModelBuilderBase<TSelf> where TSelf : CPlugDecal
     public global::GBX.NET.Engines.Plug.CPlugBitmap? Normal
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("Normal");
-        set => SetNormal(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetNormalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNormal(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -165,13 +131,13 @@ public abstract class CPlugDecalModelBuilderBase<TSelf> where TSelf : CPlugDecal
     public TSelf WithNormalReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetNormalReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetNormalReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public bool RandomInstances
     {
         get => state.Get<bool>("RandomInstances");
-        set => SetRandomInstances(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetRandomInstancesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRandomInstances(bool value)
     {
@@ -181,7 +147,7 @@ public abstract class CPlugDecalModelBuilderBase<TSelf> where TSelf : CPlugDecal
     public global::GBX.NET.Engines.Plug.CPlugSolid? Solid
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSolid?>("Solid");
-        set => SetSolid(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSolidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSolid(global::GBX.NET.Engines.Plug.CPlugSolid? value)
     {
@@ -191,13 +157,13 @@ public abstract class CPlugDecalModelBuilderBase<TSelf> where TSelf : CPlugDecal
     public TSelf WithSolidReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSolidReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSolidReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugBitmap? Specular
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("Specular");
-        set => SetSpecular(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSpecularAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSpecular(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -207,13 +173,13 @@ public abstract class CPlugDecalModelBuilderBase<TSelf> where TSelf : CPlugDecal
     public TSelf WithSpecularReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSpecularReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSpecularReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugBitmap? Sprite3dBitmap
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("Sprite3dBitmap");
-        set => SetSprite3dBitmap(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSprite3dBitmapAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSprite3dBitmap(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -223,13 +189,13 @@ public abstract class CPlugDecalModelBuilderBase<TSelf> where TSelf : CPlugDecal
     public TSelf WithSprite3dBitmapReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSprite3dBitmapReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSprite3dBitmapReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public string? Sprite3dGroupId
     {
         get => state.Get<string?>("Sprite3dGroupId");
-        set => SetSprite3dGroupId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSprite3dGroupIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSprite3dGroupId(string? value)
     {
@@ -239,7 +205,7 @@ public abstract class CPlugDecalModelBuilderBase<TSelf> where TSelf : CPlugDecal
     public float TexelByMeter
     {
         get => state.Get<float>("TexelByMeter");
-        set => SetTexelByMeter(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetTexelByMeterAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTexelByMeter(float value)
     {
@@ -253,7 +219,7 @@ public abstract class CPlugDecalModelBuilderMembers1<TSelf> : CPlugDecalModelBui
     public string DiffuseARef
     {
         get => state.Get<string>("DiffuseARef");
-        set => SetDiffuseARef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetDiffuseARefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDiffuseARef(string value)
     {
@@ -263,7 +229,7 @@ public abstract class CPlugDecalModelBuilderMembers1<TSelf> : CPlugDecalModelBui
     public int MinAngleN3d
     {
         get => state.Get<int>("MinAngleN3d");
-        set => SetMinAngleN3d(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetMinAngleN3dAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMinAngleN3d(int value)
     {
@@ -273,7 +239,7 @@ public abstract class CPlugDecalModelBuilderMembers1<TSelf> : CPlugDecalModelBui
     public string NormalRef
     {
         get => state.Get<string>("NormalRef");
-        set => SetNormalRef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetNormalRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNormalRef(string value)
     {
@@ -283,7 +249,7 @@ public abstract class CPlugDecalModelBuilderMembers1<TSelf> : CPlugDecalModelBui
     public string SpecularRef
     {
         get => state.Get<string>("SpecularRef");
-        set => SetSpecularRef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSpecularRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSpecularRef(string value)
     {
@@ -293,7 +259,7 @@ public abstract class CPlugDecalModelBuilderMembers1<TSelf> : CPlugDecalModelBui
     public global::GBX.NET.Engines.MwFoundations.CMwNod? Svg
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("Svg");
-        set => SetSvg(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSvgAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSvg(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
@@ -303,13 +269,13 @@ public abstract class CPlugDecalModelBuilderMembers1<TSelf> : CPlugDecalModelBui
     public TSelf WithSvgReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSvgReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSvgReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public float SvgAlpha
     {
         get => state.Get<float>("SvgAlpha");
-        set => SetSvgAlpha(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSvgAlphaAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSvgAlpha(float value)
     {
@@ -319,7 +285,7 @@ public abstract class CPlugDecalModelBuilderMembers1<TSelf> : CPlugDecalModelBui
     public string SvgRef
     {
         get => state.Get<string>("SvgRef");
-        set => SetSvgRef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSvgRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSvgRef(string value)
     {
@@ -329,7 +295,7 @@ public abstract class CPlugDecalModelBuilderMembers1<TSelf> : CPlugDecalModelBui
     public float SvgSize
     {
         get => state.Get<float>("SvgSize");
-        set => SetSvgSize(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSvgSizeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSvgSize(float value)
     {
@@ -343,7 +309,7 @@ public abstract class CPlugDecalModelBuilderMembers2<TSelf> : CPlugDecalModelBui
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecalModel>? DecalModels
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecalModel>?>("DecalModels");
-        set => SetDecalModels(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetDecalModelsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithDecalModels(NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecalModel>? value)
     {
@@ -361,7 +327,7 @@ public abstract class CPlugDecalModelBuilderMembers2<TSelf> : CPlugDecalModelBui
     public global::GBX.NET.Engines.Plug.CPlugDecalModel.MacroDecalSet[] MacroDecalSets
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugDecalModel.MacroDecalSet[]>("MacroDecalSets");
-        set => SetMacroDecalSets(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetMacroDecalSetsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithMacroDecalSets(params global::GBX.NET.Engines.Plug.CPlugDecalModel.MacroDecalSet[] value)
     {
@@ -375,7 +341,7 @@ public abstract class CPlugDecalModelBuilderMembers2<TSelf> : CPlugDecalModelBui
     public global::GBX.NET.Engines.Plug.CPlugBitmap? Roughness
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("Roughness");
-        set => SetRoughness(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetRoughnessAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithRoughness(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -385,13 +351,13 @@ public abstract class CPlugDecalModelBuilderMembers2<TSelf> : CPlugDecalModelBui
     public TSelf WithRoughnessReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetRoughnessReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetRoughnessReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public string RoughnessRef
     {
         get => state.Get<string>("RoughnessRef");
-        set => SetRoughnessRef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetRoughnessRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithRoughnessRef(string value)
     {

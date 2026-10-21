@@ -36,43 +36,10 @@ public abstract class CGameCtnBlockUnitInfoBuilderBase<TSelf> where TSelf : CGam
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state;
     private protected CGameCtnBlockUnitInfoBuilderBase() => state = new();
     private protected CGameCtnBlockUnitInfoBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state) => this.state = state;
-    private protected static void SetAcceptPylons(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetAcceptPylonsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBottomClip(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state, global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetBottomClipAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
-    private protected static void SetBottomClipReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetBottomClipReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
-    private protected static void SetBottomClipDir(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state, Direction? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetBottomClipDirAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
-    private protected static void SetClips(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state, NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetClipsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetClipsBottom(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state, NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetClipsBottomAssignment(), value, GameVersion.TM2020);
-    private protected static void SetClipsEast(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state, NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetClipsEastAssignment(), value, GameVersion.TM2020);
-    private protected static void SetClipsNorth(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state, NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetClipsNorthAssignment(), value, GameVersion.TM2020);
-    private protected static void SetClipsSouth(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state, NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetClipsSouthAssignment(), value, GameVersion.TM2020);
-    private protected static void SetClipsTop(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state, NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetClipsTopAssignment(), value, GameVersion.TM2020);
-    private protected static void SetClipsWest(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state, NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetClipsWestAssignment(), value, GameVersion.TM2020);
-    private protected static void SetDir(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state, Direction value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetDirAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFrontier(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetFrontierAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMultiDir(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state, global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo.ReplacementDir value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetMultiDirAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetPlacePylons(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetPlacePylonsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetPylonEast(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state, global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetPylonEastAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetPylonEastReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetPylonEastReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetPylonNorth(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state, global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetPylonNorthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetPylonNorthReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetPylonNorthReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetPylonSouth(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state, global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetPylonSouthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetPylonSouthReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetPylonSouthReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetPylonWest(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state, global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetPylonWestAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetPylonWestReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetPylonWestReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetRelativeOffset(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state, Int3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetRelativeOffsetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetReplacementBlockInfo(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state, global::GBX.NET.Engines.Game.CGameCtnBlockInfo? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetReplacementBlockInfoAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetReplacementBlockInfoReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockInfo> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetReplacementBlockInfoReferenceAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetReplacementId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetReplacementIdAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSurface(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetSurfaceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetTerrainModifierId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetTerrainModifierIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetTopClip(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state, global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetTopClipAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
-    private protected static void SetTopClipReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetTopClipReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
-    private protected static void SetTopClipDir(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state, Direction? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetTopClipDirAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
-    private protected static void SetUnderground(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetUndergroundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>? Clips
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>?>("Clips");
-        set => SetClips(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetClipsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithClips(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>? value)
     {
@@ -90,7 +57,7 @@ public abstract class CGameCtnBlockUnitInfoBuilderBase<TSelf> where TSelf : CGam
     public Direction Dir
     {
         get => state.Get<Direction>("Dir");
-        set => SetDir(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetDirAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDir(Direction value)
     {
@@ -100,7 +67,7 @@ public abstract class CGameCtnBlockUnitInfoBuilderBase<TSelf> where TSelf : CGam
     public int Frontier
     {
         get => state.Get<int>("Frontier");
-        set => SetFrontier(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetFrontierAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFrontier(int value)
     {
@@ -110,7 +77,7 @@ public abstract class CGameCtnBlockUnitInfoBuilderBase<TSelf> where TSelf : CGam
     public int PlacePylons
     {
         get => state.Get<int>("PlacePylons");
-        set => SetPlacePylons(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetPlacePylonsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPlacePylons(int value)
     {
@@ -120,7 +87,7 @@ public abstract class CGameCtnBlockUnitInfoBuilderBase<TSelf> where TSelf : CGam
     public Int3 RelativeOffset
     {
         get => state.Get<Int3>("RelativeOffset");
-        set => SetRelativeOffset(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetRelativeOffsetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRelativeOffset(Int3 value)
     {
@@ -130,7 +97,7 @@ public abstract class CGameCtnBlockUnitInfoBuilderBase<TSelf> where TSelf : CGam
     public string? Surface
     {
         get => state.Get<string?>("Surface");
-        set => SetSurface(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetSurfaceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSurface(string? value)
     {
@@ -144,7 +111,7 @@ public abstract class CGameCtnBlockUnitInfoBuilderMembers1<TSelf> : CGameCtnBloc
     public bool Underground
     {
         get => state.Get<bool>("Underground");
-        set => SetUnderground(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetUndergroundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithUnderground(bool value)
     {
@@ -158,7 +125,7 @@ public abstract class CGameCtnBlockUnitInfoBuilderMembers2<TSelf> : CGameCtnBloc
     public int AcceptPylons
     {
         get => state.Get<int>("AcceptPylons");
-        set => SetAcceptPylons(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetAcceptPylonsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithAcceptPylons(int value)
     {
@@ -172,7 +139,7 @@ public abstract class CGameCtnBlockUnitInfoBuilderMembers3<TSelf> : CGameCtnBloc
     public string? TerrainModifierId
     {
         get => state.Get<string?>("TerrainModifierId");
-        set => SetTerrainModifierId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetTerrainModifierIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithTerrainModifierId(string? value)
     {
@@ -186,7 +153,7 @@ public abstract class CGameCtnBlockUnitInfoBuilderMembers4<TSelf> : CGameCtnBloc
     public global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo.ReplacementDir MultiDir
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo.ReplacementDir>("MultiDir");
-        set => SetMultiDir(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetMultiDirAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithMultiDir(global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo.ReplacementDir value)
     {
@@ -196,7 +163,7 @@ public abstract class CGameCtnBlockUnitInfoBuilderMembers4<TSelf> : CGameCtnBloc
     public global::GBX.NET.Engines.Game.CGameCtnBlockInfo? ReplacementBlockInfo
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnBlockInfo?>("ReplacementBlockInfo");
-        set => SetReplacementBlockInfo(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetReplacementBlockInfoAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithReplacementBlockInfo(global::GBX.NET.Engines.Game.CGameCtnBlockInfo? value)
     {
@@ -206,13 +173,13 @@ public abstract class CGameCtnBlockUnitInfoBuilderMembers4<TSelf> : CGameCtnBloc
     public TSelf WithReplacementBlockInfoReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockInfo> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetReplacementBlockInfoReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetReplacementBlockInfoReferenceAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public string? ReplacementId
     {
         get => state.Get<string?>("ReplacementId");
-        set => SetReplacementId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetReplacementIdAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithReplacementId(string? value)
     {
@@ -226,7 +193,7 @@ public abstract class CGameCtnBlockUnitInfoBuilderMembers5<TSelf> : CGameCtnBloc
     public global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon? PylonEast
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon?>("PylonEast");
-        set => SetPylonEast(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetPylonEastAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithPylonEast(global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon? value)
     {
@@ -236,13 +203,13 @@ public abstract class CGameCtnBlockUnitInfoBuilderMembers5<TSelf> : CGameCtnBloc
     public TSelf WithPylonEastReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetPylonEastReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetPylonEastReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon? PylonNorth
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon?>("PylonNorth");
-        set => SetPylonNorth(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetPylonNorthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithPylonNorth(global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon? value)
     {
@@ -252,13 +219,13 @@ public abstract class CGameCtnBlockUnitInfoBuilderMembers5<TSelf> : CGameCtnBloc
     public TSelf WithPylonNorthReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetPylonNorthReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetPylonNorthReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon? PylonSouth
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon?>("PylonSouth");
-        set => SetPylonSouth(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetPylonSouthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithPylonSouth(global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon? value)
     {
@@ -268,13 +235,13 @@ public abstract class CGameCtnBlockUnitInfoBuilderMembers5<TSelf> : CGameCtnBloc
     public TSelf WithPylonSouthReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetPylonSouthReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetPylonSouthReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon? PylonWest
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon?>("PylonWest");
-        set => SetPylonWest(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetPylonWestAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithPylonWest(global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon? value)
     {
@@ -284,7 +251,7 @@ public abstract class CGameCtnBlockUnitInfoBuilderMembers5<TSelf> : CGameCtnBloc
     public TSelf WithPylonWestReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetPylonWestReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetPylonWestReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -294,7 +261,7 @@ public abstract class CGameCtnBlockUnitInfoBuilderMembers6<TSelf> : CGameCtnBloc
     public global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip? BottomClip
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip?>("BottomClip");
-        set => SetBottomClip(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetBottomClipAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithBottomClip(global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip? value)
     {
@@ -304,13 +271,13 @@ public abstract class CGameCtnBlockUnitInfoBuilderMembers6<TSelf> : CGameCtnBloc
     public TSelf WithBottomClipReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBottomClipReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetBottomClipReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
         return (TSelf)this;
     }
     public Direction? BottomClipDir
     {
         get => state.Get<Direction?>("BottomClipDir");
-        set => SetBottomClipDir(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetBottomClipDirAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithBottomClipDir(Direction? value)
     {
@@ -320,7 +287,7 @@ public abstract class CGameCtnBlockUnitInfoBuilderMembers6<TSelf> : CGameCtnBloc
     public global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip? TopClip
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip?>("TopClip");
-        set => SetTopClip(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetTopClipAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithTopClip(global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip? value)
     {
@@ -330,13 +297,13 @@ public abstract class CGameCtnBlockUnitInfoBuilderMembers6<TSelf> : CGameCtnBloc
     public TSelf WithTopClipReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetTopClipReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetTopClipReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
         return (TSelf)this;
     }
     public Direction? TopClipDir
     {
         get => state.Get<Direction?>("TopClipDir");
-        set => SetTopClipDir(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetTopClipDirAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithTopClipDir(Direction? value)
     {
@@ -656,7 +623,7 @@ public partial class CGameCtnBlockUnitInfoBuilder : CGameCtnBlockUnitInfoBuilder
         public int AcceptPylons
         {
             get => state.Get<int>("AcceptPylons");
-            set => SetAcceptPylons(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetAcceptPylonsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMNESWC WithAcceptPylons(int value)
         {
@@ -696,7 +663,7 @@ public partial class CGameCtnBlockUnitInfoBuilder : CGameCtnBlockUnitInfoBuilder
         public int AcceptPylons
         {
             get => state.Get<int>("AcceptPylons");
-            set => SetAcceptPylons(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetAcceptPylonsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
         }
         public VSK5 WithAcceptPylons(int value)
         {
@@ -718,7 +685,7 @@ public partial class CGameCtnBlockUnitInfoBuilder : CGameCtnBlockUnitInfoBuilder
         public string? TerrainModifierId
         {
             get => state.Get<string?>("TerrainModifierId");
-            set => SetTerrainModifierId(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetTerrainModifierIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         }
         public VSK5 WithTerrainModifierId(string? value)
         {
@@ -746,7 +713,7 @@ public partial class CGameCtnBlockUnitInfoBuilder : CGameCtnBlockUnitInfoBuilder
         public int AcceptPylons
         {
             get => state.Get<int>("AcceptPylons");
-            set => SetAcceptPylons(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetAcceptPylonsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMF WithAcceptPylons(int value)
         {
@@ -768,7 +735,7 @@ public partial class CGameCtnBlockUnitInfoBuilder : CGameCtnBlockUnitInfoBuilder
         public string? TerrainModifierId
         {
             get => state.Get<string?>("TerrainModifierId");
-            set => SetTerrainModifierId(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetTerrainModifierIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMF WithTerrainModifierId(string? value)
         {
@@ -954,7 +921,7 @@ public partial class CGameCtnBlockUnitInfoBuilder : CGameCtnBlockUnitInfoBuilder
         public NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>? ClipsBottom
         {
             get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>?>("ClipsBottom");
-            set => SetClipsBottom(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetClipsBottomAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithClipsBottom(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>? value)
         {
@@ -980,7 +947,7 @@ public partial class CGameCtnBlockUnitInfoBuilder : CGameCtnBlockUnitInfoBuilder
         public NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>? ClipsEast
         {
             get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>?>("ClipsEast");
-            set => SetClipsEast(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetClipsEastAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithClipsEast(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>? value)
         {
@@ -1006,7 +973,7 @@ public partial class CGameCtnBlockUnitInfoBuilder : CGameCtnBlockUnitInfoBuilder
         public NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>? ClipsNorth
         {
             get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>?>("ClipsNorth");
-            set => SetClipsNorth(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetClipsNorthAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithClipsNorth(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>? value)
         {
@@ -1032,7 +999,7 @@ public partial class CGameCtnBlockUnitInfoBuilder : CGameCtnBlockUnitInfoBuilder
         public NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>? ClipsSouth
         {
             get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>?>("ClipsSouth");
-            set => SetClipsSouth(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetClipsSouthAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithClipsSouth(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>? value)
         {
@@ -1058,7 +1025,7 @@ public partial class CGameCtnBlockUnitInfoBuilder : CGameCtnBlockUnitInfoBuilder
         public NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>? ClipsTop
         {
             get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>?>("ClipsTop");
-            set => SetClipsTop(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetClipsTopAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithClipsTop(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>? value)
         {
@@ -1084,7 +1051,7 @@ public partial class CGameCtnBlockUnitInfoBuilder : CGameCtnBlockUnitInfoBuilder
         public NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>? ClipsWest
         {
             get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>?>("ClipsWest");
-            set => SetClipsWest(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetClipsWestAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithClipsWest(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>? value)
         {

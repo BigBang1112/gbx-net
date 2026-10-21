@@ -36,16 +36,10 @@ public abstract class CPlugVertexStreamBuilderBase<TSelf> where TSelf : CPlugVer
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVertexStream> state;
     private protected CPlugVertexStreamBuilderBase() => state = new();
     private protected CPlugVertexStreamBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVertexStream> state) => this.state = state;
-    private protected static void SetCompressLocalFloat3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVertexStream> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVertexStreamBuilderAssignments.GetCompressLocalFloat3Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetDataDecls(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVertexStream> state, global::GBX.NET.Engines.Plug.CPlugVertexStream.DataDecl[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVertexStreamBuilderAssignments.GetDataDeclsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFlags(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVertexStream> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVertexStreamBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetStreamModel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVertexStream> state, global::GBX.NET.Engines.Plug.CPlugVertexStream? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVertexStreamBuilderAssignments.GetStreamModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetStreamModelReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVertexStream> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugVertexStream> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVertexStreamBuilderAssignments.GetStreamModelReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetVertexCount(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVertexStream> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVertexStreamBuilderAssignments.GetVertexCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public global::GBX.NET.Engines.Plug.CPlugVertexStream.DataDecl[]? DataDecls
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugVertexStream.DataDecl[]?>("DataDecls");
-        set => SetDataDecls(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVertexStreamBuilderAssignments.GetDataDeclsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDataDecls(params global::GBX.NET.Engines.Plug.CPlugVertexStream.DataDecl[]? value)
     {
@@ -59,7 +53,7 @@ public abstract class CPlugVertexStreamBuilderBase<TSelf> where TSelf : CPlugVer
     public uint Flags
     {
         get => state.Get<uint>("Flags");
-        set => SetFlags(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVertexStreamBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFlags(uint value)
     {
@@ -69,7 +63,7 @@ public abstract class CPlugVertexStreamBuilderBase<TSelf> where TSelf : CPlugVer
     public global::GBX.NET.Engines.Plug.CPlugVertexStream? StreamModel
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugVertexStream?>("StreamModel");
-        set => SetStreamModel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVertexStreamBuilderAssignments.GetStreamModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithStreamModel(global::GBX.NET.Engines.Plug.CPlugVertexStream? value)
     {
@@ -79,13 +73,13 @@ public abstract class CPlugVertexStreamBuilderBase<TSelf> where TSelf : CPlugVer
     public TSelf WithStreamModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugVertexStream> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetStreamModelReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVertexStreamBuilderAssignments.GetStreamModelReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public int VertexCount
     {
         get => state.Get<int>("VertexCount");
-        set => SetVertexCount(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVertexStreamBuilderAssignments.GetVertexCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithVertexCount(int value)
     {
@@ -99,7 +93,7 @@ public abstract class CPlugVertexStreamBuilderMembers1<TSelf> : CPlugVertexStrea
     public bool CompressLocalFloat3
     {
         get => state.Get<bool>("CompressLocalFloat3");
-        set => SetCompressLocalFloat3(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVertexStreamBuilderAssignments.GetCompressLocalFloat3Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithCompressLocalFloat3(bool value)
     {

@@ -36,16 +36,10 @@ public abstract class CPlugParticleImpactModelBuilderBase<TSelf> where TSelf : C
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel> state;
     private protected CPlugParticleImpactModelBuilderBase() => state = new();
     private protected CPlugParticleImpactModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel> state) => this.state = state;
-    private protected static void SetDecalModel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel> state, global::GBX.NET.Engines.Plug.CPlugDecalModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleImpactModelBuilderAssignments.GetDecalModelAssignment(), value, GameVersion.MP4);
-    private protected static void SetDecalModelReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugDecalModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleImpactModelBuilderAssignments.GetDecalModelReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetParticleEmitterModel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleImpactModelBuilderAssignments.GetParticleEmitterModelAssignment(), value, GameVersion.MP4);
-    private protected static void SetParticleEmitterModelReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleImpactModelBuilderAssignments.GetParticleEmitterModelReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetSound(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleImpactModelBuilderAssignments.GetSoundAssignment(), value, GameVersion.MP4);
-    private protected static void SetSoundReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleImpactModelBuilderAssignments.GetSoundReferenceAssignment(), value, GameVersion.MP4);
     public global::GBX.NET.Engines.Plug.CPlugDecalModel? DecalModel
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugDecalModel?>("DecalModel");
-        set => SetDecalModel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleImpactModelBuilderAssignments.GetDecalModelAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithDecalModel(global::GBX.NET.Engines.Plug.CPlugDecalModel? value)
     {
@@ -55,13 +49,13 @@ public abstract class CPlugParticleImpactModelBuilderBase<TSelf> where TSelf : C
     public TSelf WithDecalModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugDecalModel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetDecalModelReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleImpactModelBuilderAssignments.GetDecalModelReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? ParticleEmitterModel
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("ParticleEmitterModel");
-        set => SetParticleEmitterModel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleImpactModelBuilderAssignments.GetParticleEmitterModelAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithParticleEmitterModel(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
     {
@@ -71,13 +65,13 @@ public abstract class CPlugParticleImpactModelBuilderBase<TSelf> where TSelf : C
     public TSelf WithParticleEmitterModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetParticleEmitterModelReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleImpactModelBuilderAssignments.GetParticleEmitterModelReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugSound? Sound
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound");
-        set => SetSound(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleImpactModelBuilderAssignments.GetSoundAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSound(global::GBX.NET.Engines.Plug.CPlugSound? value)
     {
@@ -87,7 +81,7 @@ public abstract class CPlugParticleImpactModelBuilderBase<TSelf> where TSelf : C
     public TSelf WithSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSoundReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleImpactModelBuilderAssignments.GetSoundReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
 }

@@ -36,12 +36,10 @@ public abstract class CGameCtnMediaBlockColorGradingBuilderBase<TSelf> where TSe
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading> state;
     private protected CGameCtnMediaBlockColorGradingBuilderBase() => state = new();
     private protected CGameCtnMediaBlockColorGradingBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading> state) => this.state = state;
-    private protected static void SetImage(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading> state, PackDesc? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockColorGradingBuilderAssignments.GetImageAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading.Key>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockColorGradingBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public PackDesc? Image
     {
         get => state.Get<PackDesc?>("Image");
-        set => SetImage(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockColorGradingBuilderAssignments.GetImageAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithImage(PackDesc? value)
     {
@@ -51,7 +49,7 @@ public abstract class CGameCtnMediaBlockColorGradingBuilderBase<TSelf> where TSe
     public List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading.Key>? Keys
     {
         get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading.Key>?>("Keys");
-        set => SetKeys(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockColorGradingBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading.Key>? value)
     {

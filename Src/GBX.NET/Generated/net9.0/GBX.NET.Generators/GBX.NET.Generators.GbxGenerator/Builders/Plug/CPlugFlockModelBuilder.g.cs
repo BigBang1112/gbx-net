@@ -36,45 +36,10 @@ public abstract class CPlugFlockModelBuilderBase<TSelf> where TSelf : CPlugFlock
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state;
     private protected CPlugFlockModelBuilderBase() => state = new();
     private protected CPlugFlockModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state) => this.state = state;
-    private protected static void SetAnimFileFid(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimFileFidAssignment(), value, GameVersion.MP4);
-    private protected static void SetAnimFileFidReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimFileFidReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetAnimFlappingEnd(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimFlappingEndAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAnimFlappingStart(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimFlappingStartAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAnimGlidingEnd(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimGlidingEndAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAnimGlidingStart(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimGlidingStartAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAnimPeriod(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimPeriodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetAnimStandingEnd(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimStandingEndAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAnimStandingStart(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimStandingStartAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBirdModel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetBirdModelAssignment(), value, GameVersion.MP4);
-    private protected static void SetBirdModelReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetBirdModelReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetBirdModelFid(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetBirdModelFidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBirdModelFidReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetBirdModelFidReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetCosViewAngle(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetCosViewAngleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetDefSpawnCount(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetDefSpawnCountAssignment(), value, GameVersion.MP4);
-    private protected static void SetFlockType(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, global::GBX.NET.Engines.Plug.CPlugFlockModel.EFlockType value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetFlockTypeAssignment(), value, GameVersion.MP4);
-    private protected static void SetKAvoidance(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetKAvoidanceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetKGroundAvoid(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetKGroundAvoidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetKGrouping(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetKGroupingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetKMatching(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetKMatchingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMaxSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetMaxSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMinSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetMinSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRange(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetRangeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSoundEventTakeOff(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetSoundEventTakeOffAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSoundEventTakeOffReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetSoundEventTakeOffReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSoundLoop(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetSoundLoopAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSoundLoopReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetSoundLoopReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetStandingDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetStandingDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetUpdateFrequency(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetUpdateFrequencyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetVAvoidance(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetVAvoidanceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetVGroundAvoid(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetVGroundAvoidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetVGrouping(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetVGroupingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetVMatching(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetVMatchingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetVariance(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetVarianceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetVolatility(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetVolatilityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public int AnimPeriod
     {
         get => state.Get<int>("AnimPeriod");
-        set => SetAnimPeriod(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimPeriodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithAnimPeriod(int value)
     {
@@ -84,7 +49,7 @@ public abstract class CPlugFlockModelBuilderBase<TSelf> where TSelf : CPlugFlock
     public global::GBX.NET.Engines.MwFoundations.CMwNod? BirdModelFid
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("BirdModelFid");
-        set => SetBirdModelFid(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetBirdModelFidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBirdModelFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
@@ -94,7 +59,7 @@ public abstract class CPlugFlockModelBuilderBase<TSelf> where TSelf : CPlugFlock
     public TSelf WithBirdModelFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBirdModelFidReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetBirdModelFidReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -104,7 +69,7 @@ public abstract class CPlugFlockModelBuilderMembers1<TSelf> : CPlugFlockModelBui
     public float CosViewAngle
     {
         get => state.Get<float>("CosViewAngle");
-        set => SetCosViewAngle(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetCosViewAngleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithCosViewAngle(float value)
     {
@@ -114,7 +79,7 @@ public abstract class CPlugFlockModelBuilderMembers1<TSelf> : CPlugFlockModelBui
     public float KAvoidance
     {
         get => state.Get<float>("KAvoidance");
-        set => SetKAvoidance(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetKAvoidanceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithKAvoidance(float value)
     {
@@ -124,7 +89,7 @@ public abstract class CPlugFlockModelBuilderMembers1<TSelf> : CPlugFlockModelBui
     public float KGroundAvoid
     {
         get => state.Get<float>("KGroundAvoid");
-        set => SetKGroundAvoid(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetKGroundAvoidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithKGroundAvoid(float value)
     {
@@ -134,7 +99,7 @@ public abstract class CPlugFlockModelBuilderMembers1<TSelf> : CPlugFlockModelBui
     public float KGrouping
     {
         get => state.Get<float>("KGrouping");
-        set => SetKGrouping(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetKGroupingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithKGrouping(float value)
     {
@@ -144,7 +109,7 @@ public abstract class CPlugFlockModelBuilderMembers1<TSelf> : CPlugFlockModelBui
     public float KMatching
     {
         get => state.Get<float>("KMatching");
-        set => SetKMatching(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetKMatchingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithKMatching(float value)
     {
@@ -154,7 +119,7 @@ public abstract class CPlugFlockModelBuilderMembers1<TSelf> : CPlugFlockModelBui
     public float MaxSpeed
     {
         get => state.Get<float>("MaxSpeed");
-        set => SetMaxSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetMaxSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMaxSpeed(float value)
     {
@@ -164,7 +129,7 @@ public abstract class CPlugFlockModelBuilderMembers1<TSelf> : CPlugFlockModelBui
     public float MinSpeed
     {
         get => state.Get<float>("MinSpeed");
-        set => SetMinSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetMinSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMinSpeed(float value)
     {
@@ -174,7 +139,7 @@ public abstract class CPlugFlockModelBuilderMembers1<TSelf> : CPlugFlockModelBui
     public float Range
     {
         get => state.Get<float>("Range");
-        set => SetRange(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetRangeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRange(float value)
     {
@@ -184,7 +149,7 @@ public abstract class CPlugFlockModelBuilderMembers1<TSelf> : CPlugFlockModelBui
     public int StandingDuration
     {
         get => state.Get<int>("StandingDuration");
-        set => SetStandingDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetStandingDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithStandingDuration(int value)
     {
@@ -194,7 +159,7 @@ public abstract class CPlugFlockModelBuilderMembers1<TSelf> : CPlugFlockModelBui
     public int UpdateFrequency
     {
         get => state.Get<int>("UpdateFrequency");
-        set => SetUpdateFrequency(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetUpdateFrequencyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithUpdateFrequency(int value)
     {
@@ -204,7 +169,7 @@ public abstract class CPlugFlockModelBuilderMembers1<TSelf> : CPlugFlockModelBui
     public float VAvoidance
     {
         get => state.Get<float>("VAvoidance");
-        set => SetVAvoidance(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetVAvoidanceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithVAvoidance(float value)
     {
@@ -214,7 +179,7 @@ public abstract class CPlugFlockModelBuilderMembers1<TSelf> : CPlugFlockModelBui
     public float VGroundAvoid
     {
         get => state.Get<float>("VGroundAvoid");
-        set => SetVGroundAvoid(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetVGroundAvoidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithVGroundAvoid(float value)
     {
@@ -224,7 +189,7 @@ public abstract class CPlugFlockModelBuilderMembers1<TSelf> : CPlugFlockModelBui
     public float VGrouping
     {
         get => state.Get<float>("VGrouping");
-        set => SetVGrouping(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetVGroupingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithVGrouping(float value)
     {
@@ -234,7 +199,7 @@ public abstract class CPlugFlockModelBuilderMembers1<TSelf> : CPlugFlockModelBui
     public float VMatching
     {
         get => state.Get<float>("VMatching");
-        set => SetVMatching(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetVMatchingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithVMatching(float value)
     {
@@ -244,7 +209,7 @@ public abstract class CPlugFlockModelBuilderMembers1<TSelf> : CPlugFlockModelBui
     public float Variance
     {
         get => state.Get<float>("Variance");
-        set => SetVariance(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetVarianceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithVariance(float value)
     {
@@ -254,7 +219,7 @@ public abstract class CPlugFlockModelBuilderMembers1<TSelf> : CPlugFlockModelBui
     public float Volatility
     {
         get => state.Get<float>("Volatility");
-        set => SetVolatility(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetVolatilityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithVolatility(float value)
     {
@@ -458,7 +423,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public int AnimFlappingEnd
         {
             get => state.Get<int>("AnimFlappingEnd");
-            set => SetAnimFlappingEnd(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimFlappingEndAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public MP3 WithAnimFlappingEnd(int value)
         {
@@ -468,7 +433,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public int AnimFlappingStart
         {
             get => state.Get<int>("AnimFlappingStart");
-            set => SetAnimFlappingStart(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimFlappingStartAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public MP3 WithAnimFlappingStart(int value)
         {
@@ -478,7 +443,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public int AnimGlidingEnd
         {
             get => state.Get<int>("AnimGlidingEnd");
-            set => SetAnimGlidingEnd(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimGlidingEndAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public MP3 WithAnimGlidingEnd(int value)
         {
@@ -488,7 +453,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public int AnimGlidingStart
         {
             get => state.Get<int>("AnimGlidingStart");
-            set => SetAnimGlidingStart(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimGlidingStartAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public MP3 WithAnimGlidingStart(int value)
         {
@@ -498,7 +463,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public int AnimStandingEnd
         {
             get => state.Get<int>("AnimStandingEnd");
-            set => SetAnimStandingEnd(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimStandingEndAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public MP3 WithAnimStandingEnd(int value)
         {
@@ -508,7 +473,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public int AnimStandingStart
         {
             get => state.Get<int>("AnimStandingStart");
-            set => SetAnimStandingStart(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimStandingStartAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public MP3 WithAnimStandingStart(int value)
         {
@@ -518,7 +483,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public global::GBX.NET.Engines.Plug.CPlugSound? SoundEventTakeOff
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("SoundEventTakeOff");
-            set => SetSoundEventTakeOff(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetSoundEventTakeOffAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public MP3 WithSoundEventTakeOff(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -528,7 +493,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public MP3 WithSoundEventTakeOffReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSoundEventTakeOffReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetSoundEventTakeOffReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
             return this;
         }
         public MP3 WithSoundEventTakeOff(global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? value)
@@ -538,7 +503,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public global::GBX.NET.Engines.Plug.CPlugSound? SoundLoop
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("SoundLoop");
-            set => SetSoundLoop(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetSoundLoopAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public MP3 WithSoundLoop(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -548,7 +513,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public MP3 WithSoundLoopReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSoundLoopReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetSoundLoopReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
             return this;
         }
         public MP3 WithSoundLoop(global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? value)
@@ -576,7 +541,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public int AnimFlappingEnd
         {
             get => state.Get<int>("AnimFlappingEnd");
-            set => SetAnimFlappingEnd(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimFlappingEndAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public TMT WithAnimFlappingEnd(int value)
         {
@@ -586,7 +551,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public int AnimFlappingStart
         {
             get => state.Get<int>("AnimFlappingStart");
-            set => SetAnimFlappingStart(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimFlappingStartAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public TMT WithAnimFlappingStart(int value)
         {
@@ -596,7 +561,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public int AnimGlidingEnd
         {
             get => state.Get<int>("AnimGlidingEnd");
-            set => SetAnimGlidingEnd(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimGlidingEndAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public TMT WithAnimGlidingEnd(int value)
         {
@@ -606,7 +571,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public int AnimGlidingStart
         {
             get => state.Get<int>("AnimGlidingStart");
-            set => SetAnimGlidingStart(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimGlidingStartAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public TMT WithAnimGlidingStart(int value)
         {
@@ -616,7 +581,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public int AnimStandingEnd
         {
             get => state.Get<int>("AnimStandingEnd");
-            set => SetAnimStandingEnd(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimStandingEndAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public TMT WithAnimStandingEnd(int value)
         {
@@ -626,7 +591,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public int AnimStandingStart
         {
             get => state.Get<int>("AnimStandingStart");
-            set => SetAnimStandingStart(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimStandingStartAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public TMT WithAnimStandingStart(int value)
         {
@@ -636,7 +601,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public global::GBX.NET.Engines.Plug.CPlugSound? SoundEventTakeOff
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("SoundEventTakeOff");
-            set => SetSoundEventTakeOff(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetSoundEventTakeOffAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public TMT WithSoundEventTakeOff(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -646,7 +611,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public TMT WithSoundEventTakeOffReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSoundEventTakeOffReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetSoundEventTakeOffReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
             return this;
         }
         public TMT WithSoundEventTakeOff(global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? value)
@@ -656,7 +621,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public global::GBX.NET.Engines.Plug.CPlugSound? SoundLoop
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("SoundLoop");
-            set => SetSoundLoop(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetSoundLoopAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public TMT WithSoundLoop(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -666,7 +631,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public TMT WithSoundLoopReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSoundLoopReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetSoundLoopReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
             return this;
         }
         public TMT WithSoundLoop(global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? value)
@@ -694,7 +659,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public global::GBX.NET.Engines.MwFoundations.CMwNod? AnimFileFid
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("AnimFileFid");
-            set => SetAnimFileFid(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimFileFidAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithAnimFileFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -704,13 +669,13 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public MP4 WithAnimFileFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetAnimFileFidReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimFileFidReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public int AnimFlappingEnd
         {
             get => state.Get<int>("AnimFlappingEnd");
-            set => SetAnimFlappingEnd(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimFlappingEndAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public MP4 WithAnimFlappingEnd(int value)
         {
@@ -720,7 +685,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public int AnimFlappingStart
         {
             get => state.Get<int>("AnimFlappingStart");
-            set => SetAnimFlappingStart(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimFlappingStartAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public MP4 WithAnimFlappingStart(int value)
         {
@@ -730,7 +695,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public int AnimGlidingEnd
         {
             get => state.Get<int>("AnimGlidingEnd");
-            set => SetAnimGlidingEnd(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimGlidingEndAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public MP4 WithAnimGlidingEnd(int value)
         {
@@ -740,7 +705,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public int AnimGlidingStart
         {
             get => state.Get<int>("AnimGlidingStart");
-            set => SetAnimGlidingStart(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimGlidingStartAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public MP4 WithAnimGlidingStart(int value)
         {
@@ -750,7 +715,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public int AnimStandingEnd
         {
             get => state.Get<int>("AnimStandingEnd");
-            set => SetAnimStandingEnd(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimStandingEndAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public MP4 WithAnimStandingEnd(int value)
         {
@@ -760,7 +725,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public int AnimStandingStart
         {
             get => state.Get<int>("AnimStandingStart");
-            set => SetAnimStandingStart(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimStandingStartAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public MP4 WithAnimStandingStart(int value)
         {
@@ -770,7 +735,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public global::GBX.NET.Engines.MwFoundations.CMwNod? BirdModel
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("BirdModel");
-            set => SetBirdModel(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetBirdModelAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithBirdModel(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
@@ -780,13 +745,13 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public MP4 WithBirdModelReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetBirdModelReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetBirdModelReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public int DefSpawnCount
         {
             get => state.Get<int>("DefSpawnCount");
-            set => SetDefSpawnCount(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetDefSpawnCountAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithDefSpawnCount(int value)
         {
@@ -796,7 +761,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public global::GBX.NET.Engines.Plug.CPlugFlockModel.EFlockType FlockType
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugFlockModel.EFlockType>("FlockType");
-            set => SetFlockType(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetFlockTypeAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithFlockType(global::GBX.NET.Engines.Plug.CPlugFlockModel.EFlockType value)
         {
@@ -806,7 +771,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public global::GBX.NET.Engines.Plug.CPlugSound? SoundEventTakeOff
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("SoundEventTakeOff");
-            set => SetSoundEventTakeOff(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetSoundEventTakeOffAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public MP4 WithSoundEventTakeOff(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -816,7 +781,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public MP4 WithSoundEventTakeOffReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSoundEventTakeOffReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetSoundEventTakeOffReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
             return this;
         }
         public MP4 WithSoundEventTakeOff(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -826,7 +791,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public global::GBX.NET.Engines.Plug.CPlugSound? SoundLoop
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("SoundLoop");
-            set => SetSoundLoop(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetSoundLoopAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public MP4 WithSoundLoop(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -836,7 +801,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public MP4 WithSoundLoopReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSoundLoopReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetSoundLoopReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
             return this;
         }
         public MP4 WithSoundLoop(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
@@ -864,7 +829,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public int AnimFlappingEnd
         {
             get => state.Get<int>("AnimFlappingEnd");
-            set => SetAnimFlappingEnd(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimFlappingEndAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public TM2020 WithAnimFlappingEnd(int value)
         {
@@ -874,7 +839,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public int AnimFlappingStart
         {
             get => state.Get<int>("AnimFlappingStart");
-            set => SetAnimFlappingStart(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimFlappingStartAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public TM2020 WithAnimFlappingStart(int value)
         {
@@ -884,7 +849,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public int AnimGlidingEnd
         {
             get => state.Get<int>("AnimGlidingEnd");
-            set => SetAnimGlidingEnd(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimGlidingEndAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public TM2020 WithAnimGlidingEnd(int value)
         {
@@ -894,7 +859,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public int AnimGlidingStart
         {
             get => state.Get<int>("AnimGlidingStart");
-            set => SetAnimGlidingStart(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimGlidingStartAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public TM2020 WithAnimGlidingStart(int value)
         {
@@ -904,7 +869,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public int AnimStandingEnd
         {
             get => state.Get<int>("AnimStandingEnd");
-            set => SetAnimStandingEnd(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimStandingEndAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public TM2020 WithAnimStandingEnd(int value)
         {
@@ -914,7 +879,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public int AnimStandingStart
         {
             get => state.Get<int>("AnimStandingStart");
-            set => SetAnimStandingStart(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimStandingStartAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public TM2020 WithAnimStandingStart(int value)
         {
@@ -924,7 +889,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public global::GBX.NET.Engines.Plug.CPlugSound? SoundEventTakeOff
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("SoundEventTakeOff");
-            set => SetSoundEventTakeOff(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetSoundEventTakeOffAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public TM2020 WithSoundEventTakeOff(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -934,7 +899,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public TM2020 WithSoundEventTakeOffReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSoundEventTakeOffReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetSoundEventTakeOffReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
             return this;
         }
         public TM2020 WithSoundEventTakeOff(global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? value)
@@ -944,7 +909,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public global::GBX.NET.Engines.Plug.CPlugSound? SoundLoop
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("SoundLoop");
-            set => SetSoundLoop(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetSoundLoopAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public TM2020 WithSoundLoop(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -954,7 +919,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public TM2020 WithSoundLoopReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSoundLoopReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetSoundLoopReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
             return this;
         }
         public TM2020 WithSoundLoop(global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? value)

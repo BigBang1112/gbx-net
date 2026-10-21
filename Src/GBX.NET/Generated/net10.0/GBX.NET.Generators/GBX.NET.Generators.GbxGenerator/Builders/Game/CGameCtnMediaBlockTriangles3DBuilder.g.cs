@@ -36,17 +36,10 @@ public abstract class CGameCtnMediaBlockTriangles3DBuilderBase<TSelf> where TSel
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles3D> state;
     private protected CGameCtnMediaBlockTriangles3DBuilderBase() => state = new();
     private protected CGameCtnMediaBlockTriangles3DBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles3D> state) => this.state = state;
-    private protected static void SetClipEntId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles3D> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrianglesBuilderAssignments.GetClipEntIdAssignment(), value, GameVersion.TM2020);
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles3D> state, global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.Key> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrianglesBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetPickMode3D(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles3D> state, global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.E3DPickMode value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrianglesBuilderAssignments.GetPickMode3DAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetPickPlaneNormal(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles3D> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrianglesBuilderAssignments.GetPickPlaneNormalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetPickPlanePosition(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles3D> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrianglesBuilderAssignments.GetPickPlanePositionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetTriangles(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles3D> state, global::GBX.NET.Int3[] value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrianglesBuilderAssignments.GetTrianglesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetVertices(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles3D> state, global::GBX.NET.Vec4[] value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrianglesBuilderAssignments.GetVerticesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     public global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.Key> Keys
     {
         get => state.Get<global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.Key>>("Keys");
-        set => SetKeys(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrianglesBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithKeys(global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.Key> value)
     {
@@ -64,7 +57,7 @@ public abstract class CGameCtnMediaBlockTriangles3DBuilderBase<TSelf> where TSel
     public global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.E3DPickMode PickMode3D
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.E3DPickMode>("PickMode3D");
-        set => SetPickMode3D(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrianglesBuilderAssignments.GetPickMode3DAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithPickMode3D(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.E3DPickMode value)
     {
@@ -74,7 +67,7 @@ public abstract class CGameCtnMediaBlockTriangles3DBuilderBase<TSelf> where TSel
     public Vec3 PickPlaneNormal
     {
         get => state.Get<Vec3>("PickPlaneNormal");
-        set => SetPickPlaneNormal(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrianglesBuilderAssignments.GetPickPlaneNormalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithPickPlaneNormal(Vec3 value)
     {
@@ -84,7 +77,7 @@ public abstract class CGameCtnMediaBlockTriangles3DBuilderBase<TSelf> where TSel
     public Vec3 PickPlanePosition
     {
         get => state.Get<Vec3>("PickPlanePosition");
-        set => SetPickPlanePosition(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrianglesBuilderAssignments.GetPickPlanePositionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithPickPlanePosition(Vec3 value)
     {
@@ -94,7 +87,7 @@ public abstract class CGameCtnMediaBlockTriangles3DBuilderBase<TSelf> where TSel
     public global::GBX.NET.Int3[] Triangles
     {
         get => state.Get<global::GBX.NET.Int3[]>("Triangles");
-        set => SetTriangles(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrianglesBuilderAssignments.GetTrianglesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithTriangles(params global::GBX.NET.Int3[] value)
     {
@@ -108,7 +101,7 @@ public abstract class CGameCtnMediaBlockTriangles3DBuilderBase<TSelf> where TSel
     public global::GBX.NET.Vec4[] Vertices
     {
         get => state.Get<global::GBX.NET.Vec4[]>("Vertices");
-        set => SetVertices(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrianglesBuilderAssignments.GetVerticesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithVertices(params global::GBX.NET.Vec4[] value)
     {
@@ -237,7 +230,7 @@ public partial class CGameCtnMediaBlockTriangles3DBuilder : CGameCtnMediaBlockTr
         public int ClipEntId
         {
             get => state.Get<int>("ClipEntId");
-            set => SetClipEntId(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrianglesBuilderAssignments.GetClipEntIdAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithClipEntId(int value)
         {

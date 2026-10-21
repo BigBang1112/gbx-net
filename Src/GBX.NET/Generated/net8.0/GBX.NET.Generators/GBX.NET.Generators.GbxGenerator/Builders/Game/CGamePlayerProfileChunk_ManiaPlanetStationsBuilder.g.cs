@@ -36,12 +36,10 @@ public abstract class CGamePlayerProfileChunk_ManiaPlanetStationsBuilderBase<TSe
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStations> state;
     private protected CGamePlayerProfileChunk_ManiaPlanetStationsBuilderBase() => state = new();
     private protected CGamePlayerProfileChunk_ManiaPlanetStationsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStations> state) => this.state = state;
-    private protected static void SetLatestTitleIdLoaded(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStations> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStationsBuilderAssignments.GetLatestTitleIdLoadedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetStations(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStations> state, global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStations.GameStationDesc[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStationsBuilderAssignments.GetStationsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public string? LatestTitleIdLoaded
     {
         get => state.Get<string?>("LatestTitleIdLoaded");
-        set => SetLatestTitleIdLoaded(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStationsBuilderAssignments.GetLatestTitleIdLoadedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLatestTitleIdLoaded(string? value)
     {
@@ -51,7 +49,7 @@ public abstract class CGamePlayerProfileChunk_ManiaPlanetStationsBuilderBase<TSe
     public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStations.GameStationDesc[]? Stations
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStations.GameStationDesc[]?>("Stations");
-        set => SetStations(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStationsBuilderAssignments.GetStationsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStations(params global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStations.GameStationDesc[]? value)
     {

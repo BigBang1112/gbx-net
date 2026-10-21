@@ -36,16 +36,10 @@ public abstract class CHmsLightMapMoodBuilderBase<TSelf> where TSelf : CHmsLight
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapMood> state;
     private protected CHmsLightMapMoodBuilderBase() => state = new();
     private protected CHmsLightMapMoodBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapMood> state) => this.state = state;
-    private protected static void SetAmbientRange(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapMood> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapMoodBuilderAssignments.GetAmbientRangeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBounceFactor(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapMood> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapMoodBuilderAssignments.GetBounceFactorAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDirectionalScale(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapMood> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapMoodBuilderAssignments.GetDirectionalScaleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMaxHDR(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapMood> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapMoodBuilderAssignments.GetMaxHDRAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSkyFactor(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapMood> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapMoodBuilderAssignments.GetSkyFactorAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSkyUseClouds(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapMood> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapMoodBuilderAssignments.GetSkyUseCloudsAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     public Vec2 AmbientRange
     {
         get => state.Get<Vec2>("AmbientRange");
-        set => SetAmbientRange(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapMoodBuilderAssignments.GetAmbientRangeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithAmbientRange(Vec2 value)
     {
@@ -55,7 +49,7 @@ public abstract class CHmsLightMapMoodBuilderBase<TSelf> where TSelf : CHmsLight
     public float DirectionalScale
     {
         get => state.Get<float>("DirectionalScale");
-        set => SetDirectionalScale(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapMoodBuilderAssignments.GetDirectionalScaleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDirectionalScale(float value)
     {
@@ -69,7 +63,7 @@ public abstract class CHmsLightMapMoodBuilderMembers1<TSelf> : CHmsLightMapMoodB
     public float BounceFactor
     {
         get => state.Get<float>("BounceFactor");
-        set => SetBounceFactor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapMoodBuilderAssignments.GetBounceFactorAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBounceFactor(float value)
     {
@@ -79,7 +73,7 @@ public abstract class CHmsLightMapMoodBuilderMembers1<TSelf> : CHmsLightMapMoodB
     public float MaxHDR
     {
         get => state.Get<float>("MaxHDR");
-        set => SetMaxHDR(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapMoodBuilderAssignments.GetMaxHDRAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaxHDR(float value)
     {
@@ -89,7 +83,7 @@ public abstract class CHmsLightMapMoodBuilderMembers1<TSelf> : CHmsLightMapMoodB
     public float SkyFactor
     {
         get => state.Get<float>("SkyFactor");
-        set => SetSkyFactor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapMoodBuilderAssignments.GetSkyFactorAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSkyFactor(float value)
     {
@@ -99,7 +93,7 @@ public abstract class CHmsLightMapMoodBuilderMembers1<TSelf> : CHmsLightMapMoodB
     public bool SkyUseClouds
     {
         get => state.Get<bool>("SkyUseClouds");
-        set => SetSkyUseClouds(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapMoodBuilderAssignments.GetSkyUseCloudsAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSkyUseClouds(bool value)
     {

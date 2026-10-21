@@ -36,12 +36,10 @@ public abstract class CGamePlayerProfileChunk_InputBindingsConfigBuilderBase<TSe
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfig> state;
     private protected CGamePlayerProfileChunk_InputBindingsConfigBuilderBase() => state = new();
     private protected CGamePlayerProfileChunk_InputBindingsConfigBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfig> state) => this.state = state;
-    private protected static void SetConfig(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfig> state, global::GBX.NET.Engines.Input.CInputBindingsConfig? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfigBuilderAssignments.GetConfigAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetConfigReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfig> state, NodeRef<global::GBX.NET.Engines.Input.CInputBindingsConfig> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfigBuilderAssignments.GetConfigReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public global::GBX.NET.Engines.Input.CInputBindingsConfig? Config
     {
         get => state.Get<global::GBX.NET.Engines.Input.CInputBindingsConfig?>("Config");
-        set => SetConfig(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfigBuilderAssignments.GetConfigAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithConfig(global::GBX.NET.Engines.Input.CInputBindingsConfig? value)
     {
@@ -51,7 +49,7 @@ public abstract class CGamePlayerProfileChunk_InputBindingsConfigBuilderBase<TSe
     public TSelf WithConfigReference(NodeRef<global::GBX.NET.Engines.Input.CInputBindingsConfig> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetConfigReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfigBuilderAssignments.GetConfigReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }

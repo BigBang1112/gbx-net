@@ -36,30 +36,10 @@ public abstract class CGameCtnPrecalcPartParamsBuilderBase<TSelf> where TSelf : 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams> state;
     private protected CGameCtnPrecalcPartParamsBuilderBase() => state = new();
     private protected CGameCtnPrecalcPartParamsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams> state) => this.state = state;
-    private protected static void SetCollGroupFlags(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetCollGroupFlagsAssignment(), value, GameVersion.TMT);
-    private protected static void SetCollSurf(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams> state, global::GBX.NET.Engines.Plug.CPlugSurface? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetCollSurfAssignment(), value, GameVersion.TMT);
-    private protected static void SetCollSurfReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSurface> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetCollSurfReferenceAssignment(), value, GameVersion.TMT);
-    private protected static void SetDecalBoxDepth(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetDecalBoxDepthAssignment(), value, GameVersion.TMT);
-    private protected static void SetDecalModel(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams> state, global::GBX.NET.Engines.Plug.CPlugDecalModel? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetDecalModelAssignment(), value, GameVersion.TMT);
-    private protected static void SetDecalModelReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugDecalModel> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetDecalModelReferenceAssignment(), value, GameVersion.TMT);
-    private protected static void SetDecalSizeBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetDecalSizeBaseAssignment(), value, GameVersion.TMT);
-    private protected static void SetDecalSizeVar(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetDecalSizeVarAssignment(), value, GameVersion.TMT);
-    private protected static void SetFluidFriction(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetFluidFrictionAssignment(), value, GameVersion.TMT);
-    private protected static void SetFriction(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetFrictionAssignment(), value, GameVersion.TMT);
-    private protected static void SetIterCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetIterCountAssignment(), value, GameVersion.TMT);
-    private protected static void SetLeafMotion(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetLeafMotionAssignment(), value, GameVersion.TMT);
-    private protected static void SetLeafMotionFreq(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetLeafMotionFreqAssignment(), value, GameVersion.TMT);
-    private protected static void SetLeafMotionScale(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetLeafMotionScaleAssignment(), value, GameVersion.TMT);
-    private protected static void SetMass(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetMassAssignment(), value, GameVersion.TMT);
-    private protected static void SetPhyZoneGravity(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetPhyZoneGravityAssignment(), value, GameVersion.TMT);
-    private protected static void SetPhyZoneWind(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetPhyZoneWindAssignment(), value, GameVersion.TMT);
-    private protected static void SetRandValSeed(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetRandValSeedAssignment(), value, GameVersion.TMT);
-    private protected static void SetRestitution(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetRestitutionAssignment(), value, GameVersion.TMT);
-    private protected static void SetTimeStep(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetTimeStepAssignment(), value, GameVersion.TMT);
     public uint CollGroupFlags
     {
         get => state.Get<uint>("CollGroupFlags");
-        set => SetCollGroupFlags(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetCollGroupFlagsAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithCollGroupFlags(uint value)
     {
@@ -69,7 +49,7 @@ public abstract class CGameCtnPrecalcPartParamsBuilderBase<TSelf> where TSelf : 
     public global::GBX.NET.Engines.Plug.CPlugSurface? CollSurf
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSurface?>("CollSurf");
-        set => SetCollSurf(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetCollSurfAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithCollSurf(global::GBX.NET.Engines.Plug.CPlugSurface? value)
     {
@@ -79,13 +59,13 @@ public abstract class CGameCtnPrecalcPartParamsBuilderBase<TSelf> where TSelf : 
     public TSelf WithCollSurfReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSurface> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetCollSurfReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetCollSurfReferenceAssignment(), value, GameVersion.TMT);
         return (TSelf)this;
     }
     public float DecalBoxDepth
     {
         get => state.Get<float>("DecalBoxDepth");
-        set => SetDecalBoxDepth(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetDecalBoxDepthAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithDecalBoxDepth(float value)
     {
@@ -95,7 +75,7 @@ public abstract class CGameCtnPrecalcPartParamsBuilderBase<TSelf> where TSelf : 
     public global::GBX.NET.Engines.Plug.CPlugDecalModel? DecalModel
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugDecalModel?>("DecalModel");
-        set => SetDecalModel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetDecalModelAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithDecalModel(global::GBX.NET.Engines.Plug.CPlugDecalModel? value)
     {
@@ -105,13 +85,13 @@ public abstract class CGameCtnPrecalcPartParamsBuilderBase<TSelf> where TSelf : 
     public TSelf WithDecalModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugDecalModel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetDecalModelReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetDecalModelReferenceAssignment(), value, GameVersion.TMT);
         return (TSelf)this;
     }
     public float DecalSizeBase
     {
         get => state.Get<float>("DecalSizeBase");
-        set => SetDecalSizeBase(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetDecalSizeBaseAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithDecalSizeBase(float value)
     {
@@ -121,7 +101,7 @@ public abstract class CGameCtnPrecalcPartParamsBuilderBase<TSelf> where TSelf : 
     public float DecalSizeVar
     {
         get => state.Get<float>("DecalSizeVar");
-        set => SetDecalSizeVar(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetDecalSizeVarAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithDecalSizeVar(float value)
     {
@@ -131,7 +111,7 @@ public abstract class CGameCtnPrecalcPartParamsBuilderBase<TSelf> where TSelf : 
     public float FluidFriction
     {
         get => state.Get<float>("FluidFriction");
-        set => SetFluidFriction(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetFluidFrictionAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithFluidFriction(float value)
     {
@@ -141,7 +121,7 @@ public abstract class CGameCtnPrecalcPartParamsBuilderBase<TSelf> where TSelf : 
     public float Friction
     {
         get => state.Get<float>("Friction");
-        set => SetFriction(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetFrictionAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithFriction(float value)
     {
@@ -151,7 +131,7 @@ public abstract class CGameCtnPrecalcPartParamsBuilderBase<TSelf> where TSelf : 
     public int IterCount
     {
         get => state.Get<int>("IterCount");
-        set => SetIterCount(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetIterCountAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithIterCount(int value)
     {
@@ -161,7 +141,7 @@ public abstract class CGameCtnPrecalcPartParamsBuilderBase<TSelf> where TSelf : 
     public bool LeafMotion
     {
         get => state.Get<bool>("LeafMotion");
-        set => SetLeafMotion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetLeafMotionAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithLeafMotion(bool value)
     {
@@ -171,7 +151,7 @@ public abstract class CGameCtnPrecalcPartParamsBuilderBase<TSelf> where TSelf : 
     public float LeafMotionFreq
     {
         get => state.Get<float>("LeafMotionFreq");
-        set => SetLeafMotionFreq(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetLeafMotionFreqAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithLeafMotionFreq(float value)
     {
@@ -181,7 +161,7 @@ public abstract class CGameCtnPrecalcPartParamsBuilderBase<TSelf> where TSelf : 
     public float LeafMotionScale
     {
         get => state.Get<float>("LeafMotionScale");
-        set => SetLeafMotionScale(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetLeafMotionScaleAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithLeafMotionScale(float value)
     {
@@ -191,7 +171,7 @@ public abstract class CGameCtnPrecalcPartParamsBuilderBase<TSelf> where TSelf : 
     public float Mass
     {
         get => state.Get<float>("Mass");
-        set => SetMass(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetMassAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithMass(float value)
     {
@@ -201,7 +181,7 @@ public abstract class CGameCtnPrecalcPartParamsBuilderBase<TSelf> where TSelf : 
     public Vec3 PhyZoneGravity
     {
         get => state.Get<Vec3>("PhyZoneGravity");
-        set => SetPhyZoneGravity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetPhyZoneGravityAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithPhyZoneGravity(Vec3 value)
     {
@@ -211,7 +191,7 @@ public abstract class CGameCtnPrecalcPartParamsBuilderBase<TSelf> where TSelf : 
     public Vec3 PhyZoneWind
     {
         get => state.Get<Vec3>("PhyZoneWind");
-        set => SetPhyZoneWind(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetPhyZoneWindAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithPhyZoneWind(Vec3 value)
     {
@@ -221,7 +201,7 @@ public abstract class CGameCtnPrecalcPartParamsBuilderBase<TSelf> where TSelf : 
     public int RandValSeed
     {
         get => state.Get<int>("RandValSeed");
-        set => SetRandValSeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetRandValSeedAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithRandValSeed(int value)
     {
@@ -231,7 +211,7 @@ public abstract class CGameCtnPrecalcPartParamsBuilderBase<TSelf> where TSelf : 
     public float Restitution
     {
         get => state.Get<float>("Restitution");
-        set => SetRestitution(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetRestitutionAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithRestitution(float value)
     {
@@ -241,7 +221,7 @@ public abstract class CGameCtnPrecalcPartParamsBuilderBase<TSelf> where TSelf : 
     public float TimeStep
     {
         get => state.Get<float>("TimeStep");
-        set => SetTimeStep(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPrecalcPartParamsBuilderAssignments.GetTimeStepAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithTimeStep(float value)
     {

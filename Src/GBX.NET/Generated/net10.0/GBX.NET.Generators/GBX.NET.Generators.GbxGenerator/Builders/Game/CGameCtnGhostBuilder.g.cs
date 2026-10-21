@@ -36,79 +36,10 @@ public abstract class CGameCtnGhostBuilderBase<TSelf> where TSelf : CGameCtnGhos
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state;
     private protected CGameCtnGhostBuilderBase() => state = new();
     private protected CGameCtnGhostBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state) => this.state = state;
-    private protected static void SetAppearanceVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetAppearanceVersionAssignment(), value, GameVersion.TM2020);
-    private protected static void SetBadge(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, global::GBX.NET.Engines.Game.CGameCtnGhost.SBadge? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetBadgeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetCheckpoints(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetCheckpointsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetCpuDescription(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetCpuDescriptionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetCpuKind(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetCpuKindAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetEventsDuration(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, TimeInt32 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetEventsDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetGhostAvatarName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostAvatarNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetGhostClubTag(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostClubTagAssignment(), value, GameVersion.TM2020);
-    private protected static void SetGhostCountryPath(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostCountryPathAssignment(), value, GameVersion.TM2020);
-    private protected static void SetGhostLogin(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostLoginAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetGhostNickname(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostNicknameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetGhostTrigram(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostTrigramAssignment(), value, GameVersion.TM2020);
-    private protected static void SetGhostUid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, global::GBX.NET.Id? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostUidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetGhostUid128(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, Checksum128? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostUid128Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetGhostVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, int? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetGpuCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, byte value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGpuCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetGpuDescription(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGpuDescriptionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetGpuDeviceId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGpuDeviceIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetGpuVendorId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGpuVendorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetHardwareUid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetHardwareUidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetHasBadges(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetHasBadgesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetHasHmd(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, byte value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetHasHmdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetHasInputs(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetHasInputsAssignment(), value, GameVersion.TM2020);
-    private protected static void SetInputCountLimit(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetInputCountLimitAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetInputStoreVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetInputStoreVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetInputs(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, global::System.Collections.Immutable.ImmutableArray<global::GBX.NET.Inputs.IInput> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetInputsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetLightTrailColor(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetLightTrailColorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetLoggedUserName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetLoggedUserNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMatchReplaySeparators(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, global::GBX.NET.Engines.Game.CGameCtnGhost.MatchReplaySeparator[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetMatchReplaySeparatorsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetNetworkAddress(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, global::System.Net.IPAddress? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetNetworkAddressAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetPlayerInputs(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, global::GBX.NET.Engines.Game.CGameCtnGhost.PlayerInputData[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetPlayerInputsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetPlayerModel(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, Ident? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetPlayerModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetRaceStartTime(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, TimeInt32? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetRaceStartTimeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetRaceTime(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, TimeInt32? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetRaceTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetRecordData(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, global::GBX.NET.Engines.Plug.CPlugEntRecordData? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetRecordDataAssignment(), value, GameVersion.TM2020);
-    private protected static void SetRecordDataReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugEntRecordData> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetRecordDataReferenceAssignment(), value, GameVersion.TM2020);
-    private protected static void SetRecordingContext(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetRecordingContextAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetRespawns(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, int? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetRespawnsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetSavedMobilClassId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, uint? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameGhostBuilderAssignments.GetSavedMobilClassIdAssignment(), value, GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX);
-    private protected static void SetScreenCaptureKeyframeIndices(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, int[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetScreenCaptureKeyframeIndicesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetScreenCaptures(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugTimedPixelArray>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetScreenCapturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetScreenCaptures_Difference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugTimedPixelArray>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetScreenCaptures_DifferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSecurityKey128(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, UInt128? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSecurityKey128Assignment(), value, GameVersion.TMF | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetSecurityKey256(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, UInt256? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSecurityKey256Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSettings(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, global::GBX.NET.Engines.Game.CGameCtnGhost.SettingsInfos[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSettingsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSimulationFlags(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSimulationFlagsAssignment(), value, GameVersion.TM2020);
-    private protected static void SetSkinCustomization(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSkinCustomizationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSkinFile(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSkinFileAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetSkinPackDescs(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, List<PackDesc>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSkinPackDescsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetSpawnLandmarkId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, int? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSpawnLandmarkIdAssignment(), value, GameVersion.TM2020);
-    private protected static void SetSteeringWheelSensitivity(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSteeringWheelSensitivityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetStuntScore(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, int? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetStuntScoreAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetValidate_ChallengeUid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_ChallengeUidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetValidate_CpuKind(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_CpuKindAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetValidate_ExeChecksum(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_ExeChecksumAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetValidate_ExeVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_ExeVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetValidate_GameMode(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_GameModeAssignment(), value, GameVersion.TM2020);
-    private protected static void SetValidate_GameModeCustomData(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_GameModeCustomDataAssignment(), value, GameVersion.TM2020);
-    private protected static void SetValidate_GameRules(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_GameRulesAssignment(), value, GameVersion.TM2020);
-    private protected static void SetValidate_OsKind(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_OsKindAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetValidate_RaceSettings(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_RaceSettingsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    private protected static void SetValidate_RaceStartTime(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, TimeInt32? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_RaceStartTimeAssignment(), value, GameVersion.TM2020);
-    private protected static void SetValidate_ScopeId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_ScopeIdAssignment(), value, GameVersion.TM2020);
-    private protected static void SetValidate_ScopeType(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, global::GBX.NET.Engines.Game.CGameCtnGhost.ScopeType value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_ScopeTypeAssignment(), value, GameVersion.TM2020);
-    private protected static void SetValidate_TitleChecksum(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, Checksum256? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_TitleChecksumAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetValidate_TitleId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_TitleIdAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetValidate_ValidationSeed(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, int? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_ValidationSeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetWalltimeEndTimestamp(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, DateTimeOffset? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetWalltimeEndTimestampAssignment(), value, GameVersion.TM2020);
-    private protected static void SetWalltimeStartTimestamp(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state, DateTimeOffset? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetWalltimeStartTimestampAssignment(), value, GameVersion.TM2020);
     public string? GhostNickname
     {
         get => state.Get<string?>("GhostNickname");
-        set => SetGhostNickname(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostNicknameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithGhostNickname(string? value)
     {
@@ -118,7 +49,7 @@ public abstract class CGameCtnGhostBuilderBase<TSelf> where TSelf : CGameCtnGhos
     public Ident? PlayerModel
     {
         get => state.Get<Ident?>("PlayerModel");
-        set => SetPlayerModel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetPlayerModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithPlayerModel(Ident? value)
     {
@@ -132,7 +63,7 @@ public abstract class CGameCtnGhostBuilderMembers1<TSelf> : CGameCtnGhostBuilder
     public TimeInt32? RaceTime
     {
         get => state.Get<TimeInt32?>("RaceTime");
-        set => SetRaceTime(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetRaceTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithRaceTime(TimeInt32? value)
     {
@@ -146,7 +77,7 @@ public abstract class CGameCtnGhostBuilderMembers2<TSelf> : CGameCtnGhostBuilder
     public Vec3 LightTrailColor
     {
         get => state.Get<Vec3>("LightTrailColor");
-        set => SetLightTrailColor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetLightTrailColorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithLightTrailColor(Vec3 value)
     {
@@ -156,7 +87,7 @@ public abstract class CGameCtnGhostBuilderMembers2<TSelf> : CGameCtnGhostBuilder
     public int? Respawns
     {
         get => state.Get<int?>("Respawns");
-        set => SetRespawns(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetRespawnsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithRespawns(int? value)
     {
@@ -170,7 +101,7 @@ public abstract class CGameCtnGhostBuilderMembers3<TSelf> : CGameCtnGhostBuilder
     public global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint[]? Checkpoints
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint[]?>("Checkpoints");
-        set => SetCheckpoints(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetCheckpointsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithCheckpoints(params global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint[]? value)
     {
@@ -184,7 +115,7 @@ public abstract class CGameCtnGhostBuilderMembers3<TSelf> : CGameCtnGhostBuilder
     public int? StuntScore
     {
         get => state.Get<int?>("StuntScore");
-        set => SetStuntScore(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetStuntScoreAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithStuntScore(int? value)
     {
@@ -198,7 +129,7 @@ public abstract class CGameCtnGhostBuilderMembers4<TSelf> : CGameCtnGhostBuilder
     public uint? SavedMobilClassId
     {
         get => state.Get<uint?>("SavedMobilClassId");
-        set => SetSavedMobilClassId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameGhostBuilderAssignments.GetSavedMobilClassIdAssignment(), value, GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX);
     }
     public TSelf WithSavedMobilClassId(uint? value)
     {
@@ -208,7 +139,7 @@ public abstract class CGameCtnGhostBuilderMembers4<TSelf> : CGameCtnGhostBuilder
     public string? SkinFile
     {
         get => state.Get<string?>("SkinFile");
-        set => SetSkinFile(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSkinFileAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithSkinFile(string? value)
     {
@@ -222,7 +153,7 @@ public abstract class CGameCtnGhostBuilderMembers5<TSelf> : CGameCtnGhostBuilder
     public TimeInt32 EventsDuration
     {
         get => state.Get<TimeInt32>("EventsDuration");
-        set => SetEventsDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetEventsDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithEventsDuration(TimeInt32 value)
     {
@@ -232,7 +163,7 @@ public abstract class CGameCtnGhostBuilderMembers5<TSelf> : CGameCtnGhostBuilder
     public string? GhostLogin
     {
         get => state.Get<string?>("GhostLogin");
-        set => SetGhostLogin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostLoginAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithGhostLogin(string? value)
     {
@@ -242,7 +173,7 @@ public abstract class CGameCtnGhostBuilderMembers5<TSelf> : CGameCtnGhostBuilder
     public global::GBX.NET.Id? GhostUid
     {
         get => state.Get<global::GBX.NET.Id?>("GhostUid");
-        set => SetGhostUid(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostUidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithGhostUid(global::GBX.NET.Id? value)
     {
@@ -252,7 +183,7 @@ public abstract class CGameCtnGhostBuilderMembers5<TSelf> : CGameCtnGhostBuilder
     public int InputCountLimit
     {
         get => state.Get<int>("InputCountLimit");
-        set => SetInputCountLimit(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetInputCountLimitAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithInputCountLimit(int value)
     {
@@ -262,7 +193,7 @@ public abstract class CGameCtnGhostBuilderMembers5<TSelf> : CGameCtnGhostBuilder
     public int InputStoreVersion
     {
         get => state.Get<int>("InputStoreVersion");
-        set => SetInputStoreVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetInputStoreVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithInputStoreVersion(int value)
     {
@@ -272,7 +203,7 @@ public abstract class CGameCtnGhostBuilderMembers5<TSelf> : CGameCtnGhostBuilder
     public global::System.Collections.Immutable.ImmutableArray<global::GBX.NET.Inputs.IInput> Inputs
     {
         get => state.Get<global::System.Collections.Immutable.ImmutableArray<global::GBX.NET.Inputs.IInput>>("Inputs");
-        set => SetInputs(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetInputsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithInputs(global::System.Collections.Immutable.ImmutableArray<global::GBX.NET.Inputs.IInput> value)
     {
@@ -282,7 +213,7 @@ public abstract class CGameCtnGhostBuilderMembers5<TSelf> : CGameCtnGhostBuilder
     public string? Validate_ChallengeUid
     {
         get => state.Get<string?>("Validate_ChallengeUid");
-        set => SetValidate_ChallengeUid(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_ChallengeUidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithValidate_ChallengeUid(string? value)
     {
@@ -292,7 +223,7 @@ public abstract class CGameCtnGhostBuilderMembers5<TSelf> : CGameCtnGhostBuilder
     public int Validate_CpuKind
     {
         get => state.Get<int>("Validate_CpuKind");
-        set => SetValidate_CpuKind(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_CpuKindAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithValidate_CpuKind(int value)
     {
@@ -302,7 +233,7 @@ public abstract class CGameCtnGhostBuilderMembers5<TSelf> : CGameCtnGhostBuilder
     public uint Validate_ExeChecksum
     {
         get => state.Get<uint>("Validate_ExeChecksum");
-        set => SetValidate_ExeChecksum(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_ExeChecksumAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithValidate_ExeChecksum(uint value)
     {
@@ -312,7 +243,7 @@ public abstract class CGameCtnGhostBuilderMembers5<TSelf> : CGameCtnGhostBuilder
     public string? Validate_ExeVersion
     {
         get => state.Get<string?>("Validate_ExeVersion");
-        set => SetValidate_ExeVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_ExeVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithValidate_ExeVersion(string? value)
     {
@@ -322,7 +253,7 @@ public abstract class CGameCtnGhostBuilderMembers5<TSelf> : CGameCtnGhostBuilder
     public int Validate_OsKind
     {
         get => state.Get<int>("Validate_OsKind");
-        set => SetValidate_OsKind(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_OsKindAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithValidate_OsKind(int value)
     {
@@ -332,7 +263,7 @@ public abstract class CGameCtnGhostBuilderMembers5<TSelf> : CGameCtnGhostBuilder
     public string? Validate_RaceSettings
     {
         get => state.Get<string?>("Validate_RaceSettings");
-        set => SetValidate_RaceSettings(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_RaceSettingsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithValidate_RaceSettings(string? value)
     {
@@ -346,7 +277,7 @@ public abstract class CGameCtnGhostBuilderMembers6<TSelf> : CGameCtnGhostBuilder
     public UInt128? SecurityKey128
     {
         get => state.Get<UInt128?>("SecurityKey128");
-        set => SetSecurityKey128(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSecurityKey128Assignment(), value, GameVersion.TMF | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithSecurityKey128(UInt128? value)
     {
@@ -356,7 +287,7 @@ public abstract class CGameCtnGhostBuilderMembers6<TSelf> : CGameCtnGhostBuilder
     public string? SkinFile
     {
         get => state.Get<string?>("SkinFile");
-        set => SetSkinFile(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSkinFileAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithSkinFile(string? value)
     {
@@ -370,7 +301,7 @@ public abstract class CGameCtnGhostBuilderMembers7<TSelf> : CGameCtnGhostBuilder
     public string? CpuDescription
     {
         get => state.Get<string?>("CpuDescription");
-        set => SetCpuDescription(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetCpuDescriptionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCpuDescription(string? value)
     {
@@ -380,7 +311,7 @@ public abstract class CGameCtnGhostBuilderMembers7<TSelf> : CGameCtnGhostBuilder
     public int CpuKind
     {
         get => state.Get<int>("CpuKind");
-        set => SetCpuKind(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetCpuKindAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCpuKind(int value)
     {
@@ -390,7 +321,7 @@ public abstract class CGameCtnGhostBuilderMembers7<TSelf> : CGameCtnGhostBuilder
     public string? GhostAvatarName
     {
         get => state.Get<string?>("GhostAvatarName");
-        set => SetGhostAvatarName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostAvatarNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithGhostAvatarName(string? value)
     {
@@ -400,7 +331,7 @@ public abstract class CGameCtnGhostBuilderMembers7<TSelf> : CGameCtnGhostBuilder
     public Checksum128? GhostUid128
     {
         get => state.Get<Checksum128?>("GhostUid128");
-        set => SetGhostUid128(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostUid128Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGhostUid128(Checksum128? value)
     {
@@ -410,7 +341,7 @@ public abstract class CGameCtnGhostBuilderMembers7<TSelf> : CGameCtnGhostBuilder
     public int? GhostVersion
     {
         get => state.Get<int?>("GhostVersion");
-        set => SetGhostVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithGhostVersion(int? value)
     {
@@ -420,7 +351,7 @@ public abstract class CGameCtnGhostBuilderMembers7<TSelf> : CGameCtnGhostBuilder
     public byte GpuCount
     {
         get => state.Get<byte>("GpuCount");
-        set => SetGpuCount(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGpuCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGpuCount(byte value)
     {
@@ -430,7 +361,7 @@ public abstract class CGameCtnGhostBuilderMembers7<TSelf> : CGameCtnGhostBuilder
     public string? GpuDescription
     {
         get => state.Get<string?>("GpuDescription");
-        set => SetGpuDescription(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGpuDescriptionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGpuDescription(string? value)
     {
@@ -440,7 +371,7 @@ public abstract class CGameCtnGhostBuilderMembers7<TSelf> : CGameCtnGhostBuilder
     public int GpuDeviceId
     {
         get => state.Get<int>("GpuDeviceId");
-        set => SetGpuDeviceId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGpuDeviceIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGpuDeviceId(int value)
     {
@@ -450,7 +381,7 @@ public abstract class CGameCtnGhostBuilderMembers7<TSelf> : CGameCtnGhostBuilder
     public int GpuVendorId
     {
         get => state.Get<int>("GpuVendorId");
-        set => SetGpuVendorId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGpuVendorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGpuVendorId(int value)
     {
@@ -460,7 +391,7 @@ public abstract class CGameCtnGhostBuilderMembers7<TSelf> : CGameCtnGhostBuilder
     public string? HardwareUid
     {
         get => state.Get<string?>("HardwareUid");
-        set => SetHardwareUid(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetHardwareUidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithHardwareUid(string? value)
     {
@@ -470,7 +401,7 @@ public abstract class CGameCtnGhostBuilderMembers7<TSelf> : CGameCtnGhostBuilder
     public byte HasHmd
     {
         get => state.Get<byte>("HasHmd");
-        set => SetHasHmd(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetHasHmdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithHasHmd(byte value)
     {
@@ -480,7 +411,7 @@ public abstract class CGameCtnGhostBuilderMembers7<TSelf> : CGameCtnGhostBuilder
     public string? LoggedUserName
     {
         get => state.Get<string?>("LoggedUserName");
-        set => SetLoggedUserName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetLoggedUserNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLoggedUserName(string? value)
     {
@@ -490,7 +421,7 @@ public abstract class CGameCtnGhostBuilderMembers7<TSelf> : CGameCtnGhostBuilder
     public global::GBX.NET.Engines.Game.CGameCtnGhost.MatchReplaySeparator[]? MatchReplaySeparators
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnGhost.MatchReplaySeparator[]?>("MatchReplaySeparators");
-        set => SetMatchReplaySeparators(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetMatchReplaySeparatorsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMatchReplaySeparators(params global::GBX.NET.Engines.Game.CGameCtnGhost.MatchReplaySeparator[]? value)
     {
@@ -504,7 +435,7 @@ public abstract class CGameCtnGhostBuilderMembers7<TSelf> : CGameCtnGhostBuilder
     public global::System.Net.IPAddress? NetworkAddress
     {
         get => state.Get<global::System.Net.IPAddress?>("NetworkAddress");
-        set => SetNetworkAddress(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetNetworkAddressAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNetworkAddress(global::System.Net.IPAddress? value)
     {
@@ -514,7 +445,7 @@ public abstract class CGameCtnGhostBuilderMembers7<TSelf> : CGameCtnGhostBuilder
     public global::GBX.NET.Engines.Game.CGameCtnGhost.PlayerInputData[]? PlayerInputs
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnGhost.PlayerInputData[]?>("PlayerInputs");
-        set => SetPlayerInputs(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetPlayerInputsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithPlayerInputs(params global::GBX.NET.Engines.Game.CGameCtnGhost.PlayerInputData[]? value)
     {
@@ -528,7 +459,7 @@ public abstract class CGameCtnGhostBuilderMembers7<TSelf> : CGameCtnGhostBuilder
     public int[]? ScreenCaptureKeyframeIndices
     {
         get => state.Get<int[]?>("ScreenCaptureKeyframeIndices");
-        set => SetScreenCaptureKeyframeIndices(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetScreenCaptureKeyframeIndicesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithScreenCaptureKeyframeIndices(params int[]? value)
     {
@@ -542,7 +473,7 @@ public abstract class CGameCtnGhostBuilderMembers7<TSelf> : CGameCtnGhostBuilder
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugTimedPixelArray>? ScreenCaptures
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugTimedPixelArray>?>("ScreenCaptures");
-        set => SetScreenCaptures(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetScreenCapturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithScreenCaptures(NodeRefList<global::GBX.NET.Engines.Plug.CPlugTimedPixelArray>? value)
     {
@@ -560,7 +491,7 @@ public abstract class CGameCtnGhostBuilderMembers7<TSelf> : CGameCtnGhostBuilder
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugTimedPixelArray>? ScreenCaptures_Difference
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugTimedPixelArray>?>("ScreenCaptures_Difference");
-        set => SetScreenCaptures_Difference(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetScreenCaptures_DifferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithScreenCaptures_Difference(NodeRefList<global::GBX.NET.Engines.Plug.CPlugTimedPixelArray>? value)
     {
@@ -578,7 +509,7 @@ public abstract class CGameCtnGhostBuilderMembers7<TSelf> : CGameCtnGhostBuilder
     public UInt256? SecurityKey256
     {
         get => state.Get<UInt256?>("SecurityKey256");
-        set => SetSecurityKey256(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSecurityKey256Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSecurityKey256(UInt256? value)
     {
@@ -588,7 +519,7 @@ public abstract class CGameCtnGhostBuilderMembers7<TSelf> : CGameCtnGhostBuilder
     public global::GBX.NET.Engines.Game.CGameCtnGhost.SettingsInfos[]? Settings
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnGhost.SettingsInfos[]?>("Settings");
-        set => SetSettings(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSettingsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSettings(params global::GBX.NET.Engines.Game.CGameCtnGhost.SettingsInfos[]? value)
     {
@@ -602,7 +533,7 @@ public abstract class CGameCtnGhostBuilderMembers7<TSelf> : CGameCtnGhostBuilder
     public List<PackDesc>? SkinPackDescs
     {
         get => state.Get<List<PackDesc>?>("SkinPackDescs");
-        set => SetSkinPackDescs(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSkinPackDescsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithSkinPackDescs(List<PackDesc>? value)
     {
@@ -620,7 +551,7 @@ public abstract class CGameCtnGhostBuilderMembers7<TSelf> : CGameCtnGhostBuilder
     public bool SteeringWheelSensitivity
     {
         get => state.Get<bool>("SteeringWheelSensitivity");
-        set => SetSteeringWheelSensitivity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSteeringWheelSensitivityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSteeringWheelSensitivity(bool value)
     {
@@ -630,7 +561,7 @@ public abstract class CGameCtnGhostBuilderMembers7<TSelf> : CGameCtnGhostBuilder
     public int? Validate_ValidationSeed
     {
         get => state.Get<int?>("Validate_ValidationSeed");
-        set => SetValidate_ValidationSeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_ValidationSeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithValidate_ValidationSeed(int? value)
     {
@@ -644,7 +575,7 @@ public abstract class CGameCtnGhostBuilderMembers8<TSelf> : CGameCtnGhostBuilder
     public global::GBX.NET.Engines.Game.CGameCtnGhost.SBadge? Badge
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnGhost.SBadge?>("Badge");
-        set => SetBadge(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetBadgeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBadge(global::GBX.NET.Engines.Game.CGameCtnGhost.SBadge? value)
     {
@@ -654,7 +585,7 @@ public abstract class CGameCtnGhostBuilderMembers8<TSelf> : CGameCtnGhostBuilder
     public bool HasBadges
     {
         get => state.Get<bool>("HasBadges");
-        set => SetHasBadges(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetHasBadgesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithHasBadges(bool value)
     {
@@ -664,7 +595,7 @@ public abstract class CGameCtnGhostBuilderMembers8<TSelf> : CGameCtnGhostBuilder
     public TimeInt32? RaceStartTime
     {
         get => state.Get<TimeInt32?>("RaceStartTime");
-        set => SetRaceStartTime(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetRaceStartTimeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRaceStartTime(TimeInt32? value)
     {
@@ -674,7 +605,7 @@ public abstract class CGameCtnGhostBuilderMembers8<TSelf> : CGameCtnGhostBuilder
     public string? RecordingContext
     {
         get => state.Get<string?>("RecordingContext");
-        set => SetRecordingContext(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetRecordingContextAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRecordingContext(string? value)
     {
@@ -684,7 +615,7 @@ public abstract class CGameCtnGhostBuilderMembers8<TSelf> : CGameCtnGhostBuilder
     public string? SkinCustomization
     {
         get => state.Get<string?>("SkinCustomization");
-        set => SetSkinCustomization(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSkinCustomizationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSkinCustomization(string? value)
     {
@@ -698,7 +629,7 @@ public abstract class CGameCtnGhostBuilderMembers9<TSelf> : CGameCtnGhostBuilder
     public Checksum256? Validate_TitleChecksum
     {
         get => state.Get<Checksum256?>("Validate_TitleChecksum");
-        set => SetValidate_TitleChecksum(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_TitleChecksumAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithValidate_TitleChecksum(Checksum256? value)
     {
@@ -708,7 +639,7 @@ public abstract class CGameCtnGhostBuilderMembers9<TSelf> : CGameCtnGhostBuilder
     public string? Validate_TitleId
     {
         get => state.Get<string?>("Validate_TitleId");
-        set => SetValidate_TitleId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_TitleIdAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithValidate_TitleId(string? value)
     {
@@ -1256,7 +1187,7 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         public string? SkinFile
         {
             get => state.Get<string?>("SkinFile");
-            set => SetSkinFile(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSkinFileAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TM10 WithSkinFile(string? value)
         {
@@ -1284,7 +1215,7 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         public global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint[]? Checkpoints
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint[]?>("Checkpoints");
-            set => SetCheckpoints(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetCheckpointsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMPU WithCheckpoints(params global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint[]? value)
         {
@@ -1298,7 +1229,7 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         public string? SkinFile
         {
             get => state.Get<string?>("SkinFile");
-            set => SetSkinFile(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSkinFileAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMPU WithSkinFile(string? value)
         {
@@ -1344,7 +1275,7 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         public global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint[]? Checkpoints
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint[]?>("Checkpoints");
-            set => SetCheckpoints(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetCheckpointsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMSX WithCheckpoints(params global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint[]? value)
         {
@@ -1358,7 +1289,7 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         public int? StuntScore
         {
             get => state.Get<int?>("StuntScore");
-            set => SetStuntScore(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetStuntScoreAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMSX WithStuntScore(int? value)
         {
@@ -1386,7 +1317,7 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         public global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint[]? Checkpoints
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint[]?>("Checkpoints");
-            set => SetCheckpoints(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetCheckpointsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMNESWC WithCheckpoints(params global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint[]? value)
         {
@@ -1400,7 +1331,7 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         public int? StuntScore
         {
             get => state.Get<int?>("StuntScore");
-            set => SetStuntScore(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetStuntScoreAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMNESWC WithStuntScore(int? value)
         {
@@ -1518,7 +1449,7 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         public int AppearanceVersion
         {
             get => state.Get<int>("AppearanceVersion");
-            set => SetAppearanceVersion(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetAppearanceVersionAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithAppearanceVersion(int value)
         {
@@ -1528,7 +1459,7 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         public string? GhostClubTag
         {
             get => state.Get<string?>("GhostClubTag");
-            set => SetGhostClubTag(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostClubTagAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithGhostClubTag(string? value)
         {
@@ -1538,7 +1469,7 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         public string? GhostCountryPath
         {
             get => state.Get<string?>("GhostCountryPath");
-            set => SetGhostCountryPath(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostCountryPathAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithGhostCountryPath(string? value)
         {
@@ -1548,7 +1479,7 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         public string? GhostTrigram
         {
             get => state.Get<string?>("GhostTrigram");
-            set => SetGhostTrigram(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostTrigramAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithGhostTrigram(string? value)
         {
@@ -1558,7 +1489,7 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         public int HasInputs
         {
             get => state.Get<int>("HasInputs");
-            set => SetHasInputs(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetHasInputsAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithHasInputs(int value)
         {
@@ -1568,7 +1499,7 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         public global::GBX.NET.Engines.Plug.CPlugEntRecordData? RecordData
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugEntRecordData?>("RecordData");
-            set => SetRecordData(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetRecordDataAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithRecordData(global::GBX.NET.Engines.Plug.CPlugEntRecordData? value)
         {
@@ -1578,7 +1509,7 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         public TM2020 WithRecordDataReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugEntRecordData> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetRecordDataReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetRecordDataReferenceAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithRecordData(global::GBX.NET.Interfaces.Plug.IPlugEntRecordDataTM2020? value)
@@ -1588,7 +1519,7 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         public int SimulationFlags
         {
             get => state.Get<int>("SimulationFlags");
-            set => SetSimulationFlags(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSimulationFlagsAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithSimulationFlags(int value)
         {
@@ -1598,7 +1529,7 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         public int? SpawnLandmarkId
         {
             get => state.Get<int?>("SpawnLandmarkId");
-            set => SetSpawnLandmarkId(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSpawnLandmarkIdAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithSpawnLandmarkId(int? value)
         {
@@ -1608,7 +1539,7 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         public string? Validate_GameMode
         {
             get => state.Get<string?>("Validate_GameMode");
-            set => SetValidate_GameMode(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_GameModeAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithValidate_GameMode(string? value)
         {
@@ -1618,7 +1549,7 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         public string? Validate_GameModeCustomData
         {
             get => state.Get<string?>("Validate_GameModeCustomData");
-            set => SetValidate_GameModeCustomData(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_GameModeCustomDataAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithValidate_GameModeCustomData(string? value)
         {
@@ -1628,7 +1559,7 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         public int Validate_GameRules
         {
             get => state.Get<int>("Validate_GameRules");
-            set => SetValidate_GameRules(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_GameRulesAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithValidate_GameRules(int value)
         {
@@ -1638,7 +1569,7 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         public TimeInt32? Validate_RaceStartTime
         {
             get => state.Get<TimeInt32?>("Validate_RaceStartTime");
-            set => SetValidate_RaceStartTime(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_RaceStartTimeAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithValidate_RaceStartTime(TimeInt32? value)
         {
@@ -1648,7 +1579,7 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         public string? Validate_ScopeId
         {
             get => state.Get<string?>("Validate_ScopeId");
-            set => SetValidate_ScopeId(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_ScopeIdAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithValidate_ScopeId(string? value)
         {
@@ -1658,7 +1589,7 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         public global::GBX.NET.Engines.Game.CGameCtnGhost.ScopeType Validate_ScopeType
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameCtnGhost.ScopeType>("Validate_ScopeType");
-            set => SetValidate_ScopeType(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_ScopeTypeAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithValidate_ScopeType(global::GBX.NET.Engines.Game.CGameCtnGhost.ScopeType value)
         {
@@ -1668,7 +1599,7 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         public DateTimeOffset? WalltimeEndTimestamp
         {
             get => state.Get<DateTimeOffset?>("WalltimeEndTimestamp");
-            set => SetWalltimeEndTimestamp(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetWalltimeEndTimestampAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithWalltimeEndTimestamp(DateTimeOffset? value)
         {
@@ -1678,7 +1609,7 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         public DateTimeOffset? WalltimeStartTimestamp
         {
             get => state.Get<DateTimeOffset?>("WalltimeStartTimestamp");
-            set => SetWalltimeStartTimestamp(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetWalltimeStartTimestampAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithWalltimeStartTimestamp(DateTimeOffset? value)
         {

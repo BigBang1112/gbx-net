@@ -36,13 +36,10 @@ public abstract class CTrackManiaCoreBuilderBase<TSelf> where TSelf : CTrackMani
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackManiaCore> state;
     private protected CTrackManiaCoreBuilderBase() => state = new();
     private protected CTrackManiaCoreBuilderBase(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackManiaCore> state) => this.state = state;
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackManiaCore> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameNodBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetResource(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackManiaCore> state, global::GBX.NET.Engines.TrackMania.CTrackManiaResource? value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CTrackManiaCoreBuilderAssignments.GetResourceAssignment(), value, GameVersion.MP4);
-    private protected static void SetResourceReference(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackManiaCore> state, NodeRef<global::GBX.NET.Engines.TrackMania.CTrackManiaResource> value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CTrackManiaCoreBuilderAssignments.GetResourceReferenceAssignment(), value, GameVersion.MP4);
     public string? Name
     {
         get => state.Get<string?>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameNodBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithName(string? value)
     {
@@ -243,7 +240,7 @@ public partial class CTrackManiaCoreBuilder : CTrackManiaCoreBuilderBase<CTrackM
         public global::GBX.NET.Engines.TrackMania.CTrackManiaResource? Resource
         {
             get => state.Get<global::GBX.NET.Engines.TrackMania.CTrackManiaResource?>("Resource");
-            set => SetResource(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CTrackManiaCoreBuilderAssignments.GetResourceAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithResource(global::GBX.NET.Engines.TrackMania.CTrackManiaResource? value)
         {
@@ -253,7 +250,7 @@ public partial class CTrackManiaCoreBuilder : CTrackManiaCoreBuilderBase<CTrackM
         public MP4 WithResourceReference(NodeRef<global::GBX.NET.Engines.TrackMania.CTrackManiaResource> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetResourceReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.TrackMania.CTrackManiaCoreBuilderAssignments.GetResourceReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreMP4 BuildInterface() => Build();

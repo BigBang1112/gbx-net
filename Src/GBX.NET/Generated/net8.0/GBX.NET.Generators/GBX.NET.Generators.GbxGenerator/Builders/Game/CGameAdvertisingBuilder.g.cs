@@ -36,15 +36,10 @@ public abstract class CGameAdvertisingBuilderBase<TSelf> where TSelf : CGameAdve
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameAdvertising> state;
     private protected CGameAdvertisingBuilderBase() => state = new();
     private protected CGameAdvertisingBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameAdvertising> state) => this.state = state;
-    private protected static void SetFiles(NodeBuilderState<global::GBX.NET.Engines.Game.CGameAdvertising> state, NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameAdvertisingBuilderAssignments.GetFilesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFilesOrig(NodeBuilderState<global::GBX.NET.Engines.Game.CGameAdvertising> state, NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameAdvertisingBuilderAssignments.GetFilesOrigAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX);
-    private protected static void SetMode(NodeBuilderState<global::GBX.NET.Engines.Game.CGameAdvertising> state, global::GBX.NET.Engines.Game.CGameAdvertising.EMode value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameAdvertisingBuilderAssignments.GetModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameAdvertising> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameNodBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRadial_Config(NodeBuilderState<global::GBX.NET.Engines.Game.CGameAdvertising> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameAdvertisingBuilderAssignments.GetRadial_ConfigAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     public string? Name
     {
         get => state.Get<string?>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameNodBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithName(string? value)
     {
@@ -58,7 +53,7 @@ public abstract class CGameAdvertisingBuilderMembers1<TSelf> : CGameAdvertisingB
     public NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? Files
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>?>("Files");
-        set => SetFiles(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameAdvertisingBuilderAssignments.GetFilesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFiles(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value)
     {
@@ -80,7 +75,7 @@ public abstract class CGameAdvertisingBuilderMembers2<TSelf> : CGameAdvertisingB
     public global::GBX.NET.Engines.Game.CGameAdvertising.EMode Mode
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameAdvertising.EMode>("Mode");
-        set => SetMode(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameAdvertisingBuilderAssignments.GetModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMode(global::GBX.NET.Engines.Game.CGameAdvertising.EMode value)
     {
@@ -90,7 +85,7 @@ public abstract class CGameAdvertisingBuilderMembers2<TSelf> : CGameAdvertisingB
     public string? Radial_Config
     {
         get => state.Get<string?>("Radial_Config");
-        set => SetRadial_Config(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameAdvertisingBuilderAssignments.GetRadial_ConfigAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRadial_Config(string? value)
     {
@@ -228,7 +223,7 @@ public partial class CGameAdvertisingBuilder : CGameAdvertisingBuilderBase<CGame
         public NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? FilesOrig
         {
             get => state.Get<NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>?>("FilesOrig");
-            set => SetFilesOrig(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameAdvertisingBuilderAssignments.GetFilesOrigAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX);
         }
         public TMSX WithFilesOrig(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value)
         {
@@ -264,7 +259,7 @@ public partial class CGameAdvertisingBuilder : CGameAdvertisingBuilderBase<CGame
         public NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? FilesOrig
         {
             get => state.Get<NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>?>("FilesOrig");
-            set => SetFilesOrig(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameAdvertisingBuilderAssignments.GetFilesOrigAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX);
         }
         public TMNESWC WithFilesOrig(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value)
         {

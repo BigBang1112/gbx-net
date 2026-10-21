@@ -36,38 +36,10 @@ public abstract class CPlugParticleGpuModelBuilderBase<TSelf> where TSelf : CPlu
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel> state;
     private protected CPlugParticleGpuModelBuilderBase() => state = new();
     private protected CPlugParticleGpuModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel> state) => this.state = state;
-    private protected static void SetBitmap(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetBitmapAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBitmapReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetBitmapReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBitmapFile(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetBitmapFileAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBitmapIsFile(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetBitmapIsFileAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBitmapOverLife(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetBitmapOverLifeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetBitmapOverLifeReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetBitmapOverLifeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetHue(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetHueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetIntensity(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetIntensityFadeIn(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetIntensityFadeInAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetIntensityFadeOut(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetIntensityFadeOutAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetIntensityPower(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetIntensityPowerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetIntensityVariation(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetIntensityVariationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetLifeMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetLifeMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetLifeVar01(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetLifeVar01Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetPersistence(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetPersistenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetRotation(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetRotationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetRotationVariation(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetRotationVariationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSizeEndScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetSizeEndScaleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSizeMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetSizeMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSizeVar01(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetSizeVar01Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTextureAtlasDimX(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetTextureAtlasDimXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTextureAtlasDimY(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetTextureAtlasDimYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetUseColorOverLife(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetUseColorOverLifeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetUseEmitterHue(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetUseEmitterHueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetUseEnergyOverLife(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetUseEnergyOverLifeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetUseHueShift(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetUseHueShiftAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetViscosity(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetViscosityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetWeight(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetWeightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public global::GBX.NET.Engines.Plug.CPlugBitmap? Bitmap
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("Bitmap");
-        set => SetBitmap(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetBitmapAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBitmap(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -77,13 +49,13 @@ public abstract class CPlugParticleGpuModelBuilderBase<TSelf> where TSelf : CPlu
     public TSelf WithBitmapReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBitmapReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetBitmapReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public string? BitmapFile
     {
         get => state.Get<string?>("BitmapFile");
-        set => SetBitmapFile(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetBitmapFileAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBitmapFile(string? value)
     {
@@ -93,7 +65,7 @@ public abstract class CPlugParticleGpuModelBuilderBase<TSelf> where TSelf : CPlu
     public bool BitmapIsFile
     {
         get => state.Get<bool>("BitmapIsFile");
-        set => SetBitmapIsFile(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetBitmapIsFileAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBitmapIsFile(bool value)
     {
@@ -103,7 +75,7 @@ public abstract class CPlugParticleGpuModelBuilderBase<TSelf> where TSelf : CPlu
     public float Hue
     {
         get => state.Get<float>("Hue");
-        set => SetHue(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetHueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithHue(float value)
     {
@@ -113,7 +85,7 @@ public abstract class CPlugParticleGpuModelBuilderBase<TSelf> where TSelf : CPlu
     public float Intensity
     {
         get => state.Get<float>("Intensity");
-        set => SetIntensity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIntensity(float value)
     {
@@ -123,7 +95,7 @@ public abstract class CPlugParticleGpuModelBuilderBase<TSelf> where TSelf : CPlu
     public float IntensityFadeIn
     {
         get => state.Get<float>("IntensityFadeIn");
-        set => SetIntensityFadeIn(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetIntensityFadeInAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIntensityFadeIn(float value)
     {
@@ -133,7 +105,7 @@ public abstract class CPlugParticleGpuModelBuilderBase<TSelf> where TSelf : CPlu
     public float IntensityFadeOut
     {
         get => state.Get<float>("IntensityFadeOut");
-        set => SetIntensityFadeOut(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetIntensityFadeOutAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIntensityFadeOut(float value)
     {
@@ -143,7 +115,7 @@ public abstract class CPlugParticleGpuModelBuilderBase<TSelf> where TSelf : CPlu
     public float IntensityPower
     {
         get => state.Get<float>("IntensityPower");
-        set => SetIntensityPower(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetIntensityPowerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIntensityPower(float value)
     {
@@ -153,7 +125,7 @@ public abstract class CPlugParticleGpuModelBuilderBase<TSelf> where TSelf : CPlu
     public float IntensityVariation
     {
         get => state.Get<float>("IntensityVariation");
-        set => SetIntensityVariation(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetIntensityVariationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIntensityVariation(float value)
     {
@@ -163,7 +135,7 @@ public abstract class CPlugParticleGpuModelBuilderBase<TSelf> where TSelf : CPlu
     public float LifeMax
     {
         get => state.Get<float>("LifeMax");
-        set => SetLifeMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetLifeMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLifeMax(float value)
     {
@@ -173,7 +145,7 @@ public abstract class CPlugParticleGpuModelBuilderBase<TSelf> where TSelf : CPlu
     public float LifeVar01
     {
         get => state.Get<float>("LifeVar01");
-        set => SetLifeVar01(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetLifeVar01Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLifeVar01(float value)
     {
@@ -183,7 +155,7 @@ public abstract class CPlugParticleGpuModelBuilderBase<TSelf> where TSelf : CPlu
     public float Persistence
     {
         get => state.Get<float>("Persistence");
-        set => SetPersistence(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetPersistenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithPersistence(float value)
     {
@@ -193,7 +165,7 @@ public abstract class CPlugParticleGpuModelBuilderBase<TSelf> where TSelf : CPlu
     public float Rotation
     {
         get => state.Get<float>("Rotation");
-        set => SetRotation(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetRotationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRotation(float value)
     {
@@ -203,7 +175,7 @@ public abstract class CPlugParticleGpuModelBuilderBase<TSelf> where TSelf : CPlu
     public float RotationVariation
     {
         get => state.Get<float>("RotationVariation");
-        set => SetRotationVariation(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetRotationVariationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRotationVariation(float value)
     {
@@ -213,7 +185,7 @@ public abstract class CPlugParticleGpuModelBuilderBase<TSelf> where TSelf : CPlu
     public float SizeEndScale
     {
         get => state.Get<float>("SizeEndScale");
-        set => SetSizeEndScale(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetSizeEndScaleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSizeEndScale(float value)
     {
@@ -223,7 +195,7 @@ public abstract class CPlugParticleGpuModelBuilderBase<TSelf> where TSelf : CPlu
     public float SizeMax
     {
         get => state.Get<float>("SizeMax");
-        set => SetSizeMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetSizeMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSizeMax(float value)
     {
@@ -233,7 +205,7 @@ public abstract class CPlugParticleGpuModelBuilderBase<TSelf> where TSelf : CPlu
     public float SizeVar01
     {
         get => state.Get<float>("SizeVar01");
-        set => SetSizeVar01(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetSizeVar01Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSizeVar01(float value)
     {
@@ -243,7 +215,7 @@ public abstract class CPlugParticleGpuModelBuilderBase<TSelf> where TSelf : CPlu
     public int TextureAtlasDimX
     {
         get => state.Get<int>("TextureAtlasDimX");
-        set => SetTextureAtlasDimX(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetTextureAtlasDimXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTextureAtlasDimX(int value)
     {
@@ -253,7 +225,7 @@ public abstract class CPlugParticleGpuModelBuilderBase<TSelf> where TSelf : CPlu
     public int TextureAtlasDimY
     {
         get => state.Get<int>("TextureAtlasDimY");
-        set => SetTextureAtlasDimY(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetTextureAtlasDimYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTextureAtlasDimY(int value)
     {
@@ -263,7 +235,7 @@ public abstract class CPlugParticleGpuModelBuilderBase<TSelf> where TSelf : CPlu
     public bool UseEmitterHue
     {
         get => state.Get<bool>("UseEmitterHue");
-        set => SetUseEmitterHue(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetUseEmitterHueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithUseEmitterHue(bool value)
     {
@@ -273,7 +245,7 @@ public abstract class CPlugParticleGpuModelBuilderBase<TSelf> where TSelf : CPlu
     public bool UseHueShift
     {
         get => state.Get<bool>("UseHueShift");
-        set => SetUseHueShift(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetUseHueShiftAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithUseHueShift(bool value)
     {
@@ -283,7 +255,7 @@ public abstract class CPlugParticleGpuModelBuilderBase<TSelf> where TSelf : CPlu
     public float Viscosity
     {
         get => state.Get<float>("Viscosity");
-        set => SetViscosity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetViscosityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithViscosity(float value)
     {
@@ -293,7 +265,7 @@ public abstract class CPlugParticleGpuModelBuilderBase<TSelf> where TSelf : CPlu
     public float Weight
     {
         get => state.Get<float>("Weight");
-        set => SetWeight(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetWeightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithWeight(float value)
     {
@@ -307,7 +279,7 @@ public abstract class CPlugParticleGpuModelBuilderMembers1<TSelf> : CPlugParticl
     public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapOverLife
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapOverLife");
-        set => SetBitmapOverLife(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetBitmapOverLifeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithBitmapOverLife(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
@@ -317,13 +289,13 @@ public abstract class CPlugParticleGpuModelBuilderMembers1<TSelf> : CPlugParticl
     public TSelf WithBitmapOverLifeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBitmapOverLifeReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetBitmapOverLifeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public bool UseColorOverLife
     {
         get => state.Get<bool>("UseColorOverLife");
-        set => SetUseColorOverLife(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetUseColorOverLifeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithUseColorOverLife(bool value)
     {
@@ -333,7 +305,7 @@ public abstract class CPlugParticleGpuModelBuilderMembers1<TSelf> : CPlugParticl
     public bool UseEnergyOverLife
     {
         get => state.Get<bool>("UseEnergyOverLife");
-        set => SetUseEnergyOverLife(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetUseEnergyOverLifeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithUseEnergyOverLife(bool value)
     {

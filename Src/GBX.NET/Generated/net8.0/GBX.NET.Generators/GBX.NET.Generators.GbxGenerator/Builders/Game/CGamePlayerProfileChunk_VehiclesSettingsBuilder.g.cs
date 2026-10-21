@@ -36,11 +36,10 @@ public abstract class CGamePlayerProfileChunk_VehiclesSettingsBuilderBase<TSelf>
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings> state;
     private protected CGamePlayerProfileChunk_VehiclesSettingsBuilderBase() => state = new();
     private protected CGamePlayerProfileChunk_VehiclesSettingsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings> state) => this.state = state;
-    private protected static void SetVehicleProfiles(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings> state, global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.VehicleProfile[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_VehiclesSettingsBuilderAssignments.GetVehicleProfilesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.VehicleProfile[]? VehicleProfiles
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.VehicleProfile[]?>("VehicleProfiles");
-        set => SetVehicleProfiles(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_VehiclesSettingsBuilderAssignments.GetVehicleProfilesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithVehicleProfiles(params global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.VehicleProfile[]? value)
     {

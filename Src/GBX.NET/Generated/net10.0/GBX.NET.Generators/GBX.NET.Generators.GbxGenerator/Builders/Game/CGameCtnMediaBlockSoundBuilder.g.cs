@@ -36,18 +36,10 @@ public abstract class CGameCtnMediaBlockSoundBuilderBase<TSelf> where TSelf : CG
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state;
     private protected CGameCtnMediaBlockSoundBuilderBase() => state = new();
     private protected CGameCtnMediaBlockSoundBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state) => this.state = state;
-    private protected static void SetAudioToSpeech(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetAudioToSpeechAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetAudioToSpeechTarget(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetAudioToSpeechTargetAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetIsLooping(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetIsLoopingAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIsMusic(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetIsMusicAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Key>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetPlayCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetPlayCountAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSound(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state, PackDesc? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetSoundAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetStopWithClip(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetStopWithClipAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public bool IsLooping
     {
         get => state.Get<bool>("IsLooping");
-        set => SetIsLooping(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetIsLoopingAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIsLooping(bool value)
     {
@@ -57,7 +49,7 @@ public abstract class CGameCtnMediaBlockSoundBuilderBase<TSelf> where TSelf : CG
     public List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Key>? Keys
     {
         get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Key>?>("Keys");
-        set => SetKeys(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Key>? value)
     {
@@ -75,7 +67,7 @@ public abstract class CGameCtnMediaBlockSoundBuilderBase<TSelf> where TSelf : CG
     public int PlayCount
     {
         get => state.Get<int>("PlayCount");
-        set => SetPlayCount(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetPlayCountAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPlayCount(int value)
     {
@@ -85,7 +77,7 @@ public abstract class CGameCtnMediaBlockSoundBuilderBase<TSelf> where TSelf : CG
     public PackDesc? Sound
     {
         get => state.Get<PackDesc?>("Sound");
-        set => SetSound(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetSoundAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSound(PackDesc? value)
     {
@@ -99,7 +91,7 @@ public abstract class CGameCtnMediaBlockSoundBuilderMembers1<TSelf> : CGameCtnMe
     public bool IsMusic
     {
         get => state.Get<bool>("IsMusic");
-        set => SetIsMusic(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetIsMusicAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithIsMusic(bool value)
     {
@@ -113,7 +105,7 @@ public abstract class CGameCtnMediaBlockSoundBuilderMembers2<TSelf> : CGameCtnMe
     public bool AudioToSpeech
     {
         get => state.Get<bool>("AudioToSpeech");
-        set => SetAudioToSpeech(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetAudioToSpeechAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAudioToSpeech(bool value)
     {
@@ -123,7 +115,7 @@ public abstract class CGameCtnMediaBlockSoundBuilderMembers2<TSelf> : CGameCtnMe
     public int AudioToSpeechTarget
     {
         get => state.Get<int>("AudioToSpeechTarget");
-        set => SetAudioToSpeechTarget(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetAudioToSpeechTargetAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAudioToSpeechTarget(int value)
     {
@@ -133,7 +125,7 @@ public abstract class CGameCtnMediaBlockSoundBuilderMembers2<TSelf> : CGameCtnMe
     public bool StopWithClip
     {
         get => state.Get<bool>("StopWithClip");
-        set => SetStopWithClip(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetStopWithClipAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStopWithClip(bool value)
     {

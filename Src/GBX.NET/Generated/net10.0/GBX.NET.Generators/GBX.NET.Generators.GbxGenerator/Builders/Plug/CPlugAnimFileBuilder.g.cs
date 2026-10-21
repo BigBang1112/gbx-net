@@ -36,51 +36,10 @@ public abstract class CPlugAnimFileBuilderBase<TSelf> where TSelf : CPlugAnimFil
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state;
     private protected CPlugAnimFileBuilderBase() => state = new();
     private protected CPlugAnimFileBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state) => this.state = state;
-    private protected static void SetBakedClips(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyBaked[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetBakedClipsAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
-    private protected static void SetBakedResources(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetBakedResourcesAssignment(), value, GameVersion.TM2020);
-    private protected static void SetBakedVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetBakedVersionAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
-    private protected static void SetClassIds(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, uint[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetClassIdsAssignment(), value, GameVersion.TM2020);
-    private protected static void SetClipFlagsVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetClipFlagsVersionAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
-    private protected static void SetClipResources(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetClipResourcesAssignment(), value, GameVersion.TM2020);
-    private protected static void SetClipVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetClipVersionAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
-    private protected static void SetClips(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimClip>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetClipsAssignment(), value, GameVersion.MP4);
-    private protected static void SetEditionClips(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyEdition[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetEditionClipsAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
-    private protected static void SetEditionPoses(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimSkelEditionPose>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetEditionPosesAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
-    private protected static void SetGraphStacks(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimGraphStack>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetGraphStacksAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetGraphVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetGraphVersionAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetGraphs(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, global::GBX.NET.Engines.Plug.CPlugAnimFile.GraphRoot[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetGraphsAssignment(), value, GameVersion.TM2020);
-    private protected static void SetImportString(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetImportStringAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetJointGroupResources(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetJointGroupResourcesAssignment(), value, GameVersion.TM2020);
-    private protected static void SetJointGroupVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetJointGroupVersionAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
-    private protected static void SetJointGroups(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyJointGroup[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetJointGroupsAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
-    private protected static void SetLegacyClips(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyClip[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetLegacyClipsAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
-    private protected static void SetLegacyEditionVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetLegacyEditionVersionAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
-    private protected static void SetLegacyGraphStacks(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyGraphStack[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetLegacyGraphStacksAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
-    private protected static void SetLegacyGraphs(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyGraph[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetLegacyGraphsAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
-    private protected static void SetLegacyResources1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetLegacyResources1Assignment(), value, GameVersion.TM2020);
-    private protected static void SetLegacyResources2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetLegacyResources2Assignment(), value, GameVersion.TM2020);
-    private protected static void SetLegacyRootMotionVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetLegacyRootMotionVersionAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
-    private protected static void SetPoseGridVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetPoseGridVersionAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
-    private protected static void SetPoseGrids(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetPoseGridsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetPoseGroupVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetPoseGroupVersionAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
-    private protected static void SetPoseGroups(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimPoseGroup>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetPoseGroupsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetResourceNames(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, string[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetResourceNamesAssignment(), value, GameVersion.TM2020);
-    private protected static void SetSkelEditionStateVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetSkelEditionStateVersionAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
-    private protected static void SetSkelEditionVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetSkelEditionVersionAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
-    private protected static void SetSkelResources(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetSkelResourcesAssignment(), value, GameVersion.TM2020);
-    private protected static void SetSkelVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetSkelVersionAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
-    private protected static void SetSkels(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, global::GBX.NET.Engines.Plug.CPlugSkel[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetSkelsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
-    private protected static void SetSpotVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetSpotVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSpots(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, global::GBX.NET.Engines.Plug.CPlugAnimSpotModel[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetSpotsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTimingFixedPeriodVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetTimingFixedPeriodVersionAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
-    private protected static void SetUpdateString(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetUpdateStringAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetVariableVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetVariableVersionAssignment(), value, GameVersion.TM2020);
-    private protected static void SetVariantGroupVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetVariantGroupVersionAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
-    private protected static void SetVariantGroups(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimVariantGroup>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetVariantGroupsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public string? ImportString
     {
         get => state.Get<string?>("ImportString");
-        set => SetImportString(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetImportStringAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithImportString(string? value)
     {
@@ -90,7 +49,7 @@ public abstract class CPlugAnimFileBuilderBase<TSelf> where TSelf : CPlugAnimFil
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid>? PoseGrids
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid>?>("PoseGrids");
-        set => SetPoseGrids(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetPoseGridsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithPoseGrids(NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid>? value)
     {
@@ -108,7 +67,7 @@ public abstract class CPlugAnimFileBuilderBase<TSelf> where TSelf : CPlugAnimFil
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimPoseGroup>? PoseGroups
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimPoseGroup>?>("PoseGroups");
-        set => SetPoseGroups(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetPoseGroupsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithPoseGroups(NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimPoseGroup>? value)
     {
@@ -126,7 +85,7 @@ public abstract class CPlugAnimFileBuilderBase<TSelf> where TSelf : CPlugAnimFil
     public int SpotVersion
     {
         get => state.Get<int>("SpotVersion");
-        set => SetSpotVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetSpotVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSpotVersion(int value)
     {
@@ -136,7 +95,7 @@ public abstract class CPlugAnimFileBuilderBase<TSelf> where TSelf : CPlugAnimFil
     public global::GBX.NET.Engines.Plug.CPlugAnimSpotModel[]? Spots
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugAnimSpotModel[]?>("Spots");
-        set => SetSpots(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetSpotsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSpots(params global::GBX.NET.Engines.Plug.CPlugAnimSpotModel[]? value)
     {
@@ -150,7 +109,7 @@ public abstract class CPlugAnimFileBuilderBase<TSelf> where TSelf : CPlugAnimFil
     public string? UpdateString
     {
         get => state.Get<string?>("UpdateString");
-        set => SetUpdateString(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetUpdateStringAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithUpdateString(string? value)
     {
@@ -160,7 +119,7 @@ public abstract class CPlugAnimFileBuilderBase<TSelf> where TSelf : CPlugAnimFil
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimVariantGroup>? VariantGroups
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimVariantGroup>?>("VariantGroups");
-        set => SetVariantGroups(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetVariantGroupsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithVariantGroups(NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimVariantGroup>? value)
     {
@@ -182,7 +141,7 @@ public abstract class CPlugAnimFileBuilderMembers1<TSelf> : CPlugAnimFileBuilder
     public global::GBX.NET.Engines.Plug.CPlugSkel[]? Skels
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSkel[]?>("Skels");
-        set => SetSkels(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetSkelsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithSkels(params global::GBX.NET.Engines.Plug.CPlugSkel[]? value)
     {
@@ -200,7 +159,7 @@ public abstract class CPlugAnimFileBuilderMembers2<TSelf> : CPlugAnimFileBuilder
     public global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyBaked[]? BakedClips
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyBaked[]?>("BakedClips");
-        set => SetBakedClips(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetBakedClipsAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
     }
     public TSelf WithBakedClips(params global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyBaked[]? value)
     {
@@ -214,7 +173,7 @@ public abstract class CPlugAnimFileBuilderMembers2<TSelf> : CPlugAnimFileBuilder
     public int BakedVersion
     {
         get => state.Get<int>("BakedVersion");
-        set => SetBakedVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetBakedVersionAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
     }
     public TSelf WithBakedVersion(int value)
     {
@@ -224,7 +183,7 @@ public abstract class CPlugAnimFileBuilderMembers2<TSelf> : CPlugAnimFileBuilder
     public int ClipFlagsVersion
     {
         get => state.Get<int>("ClipFlagsVersion");
-        set => SetClipFlagsVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetClipFlagsVersionAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
     }
     public TSelf WithClipFlagsVersion(int value)
     {
@@ -234,7 +193,7 @@ public abstract class CPlugAnimFileBuilderMembers2<TSelf> : CPlugAnimFileBuilder
     public int ClipVersion
     {
         get => state.Get<int>("ClipVersion");
-        set => SetClipVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetClipVersionAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
     }
     public TSelf WithClipVersion(int value)
     {
@@ -244,7 +203,7 @@ public abstract class CPlugAnimFileBuilderMembers2<TSelf> : CPlugAnimFileBuilder
     public global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyEdition[]? EditionClips
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyEdition[]?>("EditionClips");
-        set => SetEditionClips(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetEditionClipsAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
     }
     public TSelf WithEditionClips(params global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyEdition[]? value)
     {
@@ -258,7 +217,7 @@ public abstract class CPlugAnimFileBuilderMembers2<TSelf> : CPlugAnimFileBuilder
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimSkelEditionPose>? EditionPoses
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimSkelEditionPose>?>("EditionPoses");
-        set => SetEditionPoses(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetEditionPosesAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
     }
     public TSelf WithEditionPoses(NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimSkelEditionPose>? value)
     {
@@ -276,7 +235,7 @@ public abstract class CPlugAnimFileBuilderMembers2<TSelf> : CPlugAnimFileBuilder
     public int GraphVersion
     {
         get => state.Get<int>("GraphVersion");
-        set => SetGraphVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetGraphVersionAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGraphVersion(int value)
     {
@@ -286,7 +245,7 @@ public abstract class CPlugAnimFileBuilderMembers2<TSelf> : CPlugAnimFileBuilder
     public int JointGroupVersion
     {
         get => state.Get<int>("JointGroupVersion");
-        set => SetJointGroupVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetJointGroupVersionAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
     }
     public TSelf WithJointGroupVersion(int value)
     {
@@ -296,7 +255,7 @@ public abstract class CPlugAnimFileBuilderMembers2<TSelf> : CPlugAnimFileBuilder
     public global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyJointGroup[]? JointGroups
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyJointGroup[]?>("JointGroups");
-        set => SetJointGroups(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetJointGroupsAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
     }
     public TSelf WithJointGroups(params global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyJointGroup[]? value)
     {
@@ -310,7 +269,7 @@ public abstract class CPlugAnimFileBuilderMembers2<TSelf> : CPlugAnimFileBuilder
     public global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyClip[]? LegacyClips
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyClip[]?>("LegacyClips");
-        set => SetLegacyClips(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetLegacyClipsAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
     }
     public TSelf WithLegacyClips(params global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyClip[]? value)
     {
@@ -324,7 +283,7 @@ public abstract class CPlugAnimFileBuilderMembers2<TSelf> : CPlugAnimFileBuilder
     public int LegacyEditionVersion
     {
         get => state.Get<int>("LegacyEditionVersion");
-        set => SetLegacyEditionVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetLegacyEditionVersionAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
     }
     public TSelf WithLegacyEditionVersion(int value)
     {
@@ -334,7 +293,7 @@ public abstract class CPlugAnimFileBuilderMembers2<TSelf> : CPlugAnimFileBuilder
     public global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyGraphStack[]? LegacyGraphStacks
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyGraphStack[]?>("LegacyGraphStacks");
-        set => SetLegacyGraphStacks(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetLegacyGraphStacksAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
     }
     public TSelf WithLegacyGraphStacks(params global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyGraphStack[]? value)
     {
@@ -348,7 +307,7 @@ public abstract class CPlugAnimFileBuilderMembers2<TSelf> : CPlugAnimFileBuilder
     public global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyGraph[]? LegacyGraphs
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyGraph[]?>("LegacyGraphs");
-        set => SetLegacyGraphs(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetLegacyGraphsAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
     }
     public TSelf WithLegacyGraphs(params global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyGraph[]? value)
     {
@@ -362,7 +321,7 @@ public abstract class CPlugAnimFileBuilderMembers2<TSelf> : CPlugAnimFileBuilder
     public int LegacyRootMotionVersion
     {
         get => state.Get<int>("LegacyRootMotionVersion");
-        set => SetLegacyRootMotionVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetLegacyRootMotionVersionAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
     }
     public TSelf WithLegacyRootMotionVersion(int value)
     {
@@ -372,7 +331,7 @@ public abstract class CPlugAnimFileBuilderMembers2<TSelf> : CPlugAnimFileBuilder
     public int PoseGridVersion
     {
         get => state.Get<int>("PoseGridVersion");
-        set => SetPoseGridVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetPoseGridVersionAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
     }
     public TSelf WithPoseGridVersion(int value)
     {
@@ -382,7 +341,7 @@ public abstract class CPlugAnimFileBuilderMembers2<TSelf> : CPlugAnimFileBuilder
     public int PoseGroupVersion
     {
         get => state.Get<int>("PoseGroupVersion");
-        set => SetPoseGroupVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetPoseGroupVersionAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
     }
     public TSelf WithPoseGroupVersion(int value)
     {
@@ -392,7 +351,7 @@ public abstract class CPlugAnimFileBuilderMembers2<TSelf> : CPlugAnimFileBuilder
     public int SkelEditionStateVersion
     {
         get => state.Get<int>("SkelEditionStateVersion");
-        set => SetSkelEditionStateVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetSkelEditionStateVersionAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
     }
     public TSelf WithSkelEditionStateVersion(int value)
     {
@@ -402,7 +361,7 @@ public abstract class CPlugAnimFileBuilderMembers2<TSelf> : CPlugAnimFileBuilder
     public int SkelEditionVersion
     {
         get => state.Get<int>("SkelEditionVersion");
-        set => SetSkelEditionVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetSkelEditionVersionAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
     }
     public TSelf WithSkelEditionVersion(int value)
     {
@@ -412,7 +371,7 @@ public abstract class CPlugAnimFileBuilderMembers2<TSelf> : CPlugAnimFileBuilder
     public int SkelVersion
     {
         get => state.Get<int>("SkelVersion");
-        set => SetSkelVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetSkelVersionAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
     }
     public TSelf WithSkelVersion(int value)
     {
@@ -422,7 +381,7 @@ public abstract class CPlugAnimFileBuilderMembers2<TSelf> : CPlugAnimFileBuilder
     public int TimingFixedPeriodVersion
     {
         get => state.Get<int>("TimingFixedPeriodVersion");
-        set => SetTimingFixedPeriodVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetTimingFixedPeriodVersionAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
     }
     public TSelf WithTimingFixedPeriodVersion(int value)
     {
@@ -432,7 +391,7 @@ public abstract class CPlugAnimFileBuilderMembers2<TSelf> : CPlugAnimFileBuilder
     public int VariantGroupVersion
     {
         get => state.Get<int>("VariantGroupVersion");
-        set => SetVariantGroupVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetVariantGroupVersionAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
     }
     public TSelf WithVariantGroupVersion(int value)
     {
@@ -526,7 +485,7 @@ public partial class CPlugAnimFileBuilder : CPlugAnimFileBuilderBase<CPlugAnimFi
         public NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimClip>? Clips
         {
             get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimClip>?>("Clips");
-            set => SetClips(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetClipsAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithClips(NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimClip>? value)
         {
@@ -544,7 +503,7 @@ public partial class CPlugAnimFileBuilder : CPlugAnimFileBuilderBase<CPlugAnimFi
         public NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimGraphStack>? GraphStacks
         {
             get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimGraphStack>?>("GraphStacks");
-            set => SetGraphStacks(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetGraphStacksAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         }
         public MP4 WithGraphStacks(NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimGraphStack>? value)
         {
@@ -580,7 +539,7 @@ public partial class CPlugAnimFileBuilder : CPlugAnimFileBuilderBase<CPlugAnimFi
         public global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]? BakedResources
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]?>("BakedResources");
-            set => SetBakedResources(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetBakedResourcesAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithBakedResources(params global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]? value)
         {
@@ -594,7 +553,7 @@ public partial class CPlugAnimFileBuilder : CPlugAnimFileBuilderBase<CPlugAnimFi
         public uint[]? ClassIds
         {
             get => state.Get<uint[]?>("ClassIds");
-            set => SetClassIds(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetClassIdsAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithClassIds(params uint[]? value)
         {
@@ -608,7 +567,7 @@ public partial class CPlugAnimFileBuilder : CPlugAnimFileBuilderBase<CPlugAnimFi
         public global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]? ClipResources
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]?>("ClipResources");
-            set => SetClipResources(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetClipResourcesAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithClipResources(params global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]? value)
         {
@@ -622,7 +581,7 @@ public partial class CPlugAnimFileBuilder : CPlugAnimFileBuilderBase<CPlugAnimFi
         public NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimGraphStack>? GraphStacks
         {
             get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimGraphStack>?>("GraphStacks");
-            set => SetGraphStacks(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetGraphStacksAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         }
         public TM2020 WithGraphStacks(NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimGraphStack>? value)
         {
@@ -640,7 +599,7 @@ public partial class CPlugAnimFileBuilder : CPlugAnimFileBuilderBase<CPlugAnimFi
         public int GraphVersion
         {
             get => state.Get<int>("GraphVersion");
-            set => SetGraphVersion(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetGraphVersionAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public TM2020 WithGraphVersion(int value)
         {
@@ -650,7 +609,7 @@ public partial class CPlugAnimFileBuilder : CPlugAnimFileBuilderBase<CPlugAnimFi
         public global::GBX.NET.Engines.Plug.CPlugAnimFile.GraphRoot[]? Graphs
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugAnimFile.GraphRoot[]?>("Graphs");
-            set => SetGraphs(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetGraphsAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithGraphs(params global::GBX.NET.Engines.Plug.CPlugAnimFile.GraphRoot[]? value)
         {
@@ -664,7 +623,7 @@ public partial class CPlugAnimFileBuilder : CPlugAnimFileBuilderBase<CPlugAnimFi
         public global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]? JointGroupResources
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]?>("JointGroupResources");
-            set => SetJointGroupResources(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetJointGroupResourcesAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithJointGroupResources(params global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]? value)
         {
@@ -678,7 +637,7 @@ public partial class CPlugAnimFileBuilder : CPlugAnimFileBuilderBase<CPlugAnimFi
         public global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]? LegacyResources1
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]?>("LegacyResources1");
-            set => SetLegacyResources1(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetLegacyResources1Assignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithLegacyResources1(params global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]? value)
         {
@@ -692,7 +651,7 @@ public partial class CPlugAnimFileBuilder : CPlugAnimFileBuilderBase<CPlugAnimFi
         public global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]? LegacyResources2
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]?>("LegacyResources2");
-            set => SetLegacyResources2(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetLegacyResources2Assignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithLegacyResources2(params global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]? value)
         {
@@ -706,7 +665,7 @@ public partial class CPlugAnimFileBuilder : CPlugAnimFileBuilderBase<CPlugAnimFi
         public string[]? ResourceNames
         {
             get => state.Get<string[]?>("ResourceNames");
-            set => SetResourceNames(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetResourceNamesAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithResourceNames(params string[]? value)
         {
@@ -720,7 +679,7 @@ public partial class CPlugAnimFileBuilder : CPlugAnimFileBuilderBase<CPlugAnimFi
         public global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]? SkelResources
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]?>("SkelResources");
-            set => SetSkelResources(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetSkelResourcesAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithSkelResources(params global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]? value)
         {
@@ -734,7 +693,7 @@ public partial class CPlugAnimFileBuilder : CPlugAnimFileBuilderBase<CPlugAnimFi
         public int VariableVersion
         {
             get => state.Get<int>("VariableVersion");
-            set => SetVariableVersion(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetVariableVersionAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithVariableVersion(int value)
         {

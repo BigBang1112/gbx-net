@@ -36,58 +36,10 @@ public abstract class CGamePlayerScoreBuilderBase<TSelf> where TSelf : CGamePlay
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state;
     private protected CGamePlayerScoreBuilderBase() => state = new();
     private protected CGamePlayerScoreBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state) => this.state = state;
-    private protected static void SetCampaignPlayerScores(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, NodeRefList<global::GBX.NET.Engines.Game.CGameCampaignPlayerScores>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetCampaignPlayerScoresAssignment(), value, GameVersion.TMF);
-    private protected static void SetCampaignRecordsStateVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, byte value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetCampaignRecordsStateVersionAssignment(), value, GameVersion.TMF);
-    private protected static void SetCampaignRecordsStates(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, global::GBX.NET.Engines.Game.CGamePlayerScore.CampaignRecordsState[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetCampaignRecordsStatesAssignment(), value, GameVersion.TMF);
-    private protected static void SetFinishCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetFinishCountAssignment(), value, GameVersion.TMF);
-    private protected static void SetHotSeatTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetHotSeatTimeSecondsAssignment(), value, GameVersion.TMF);
-    private protected static void SetLadderMatchResults(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, global::GBX.NET.Engines.Game.CGamePlayerScore.LadderMatchResult[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetLadderMatchResultsAssignment(), value, GameVersion.TMF);
-    private protected static void SetManiaLinkTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetManiaLinkTimeSecondsAssignment(), value, GameVersion.TMF);
-    private protected static void SetMapCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetMapCountAssignment(), value, GameVersion.TMF);
-    private protected static void SetMapEditorTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetMapEditorTimeSecondsAssignment(), value, GameVersion.TMF);
-    private protected static void SetNetworkCupTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetNetworkCupTimeSecondsAssignment(), value, GameVersion.TMF);
-    private protected static void SetNetworkLapsTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetNetworkLapsTimeSecondsAssignment(), value, GameVersion.TMF);
-    private protected static void SetNetworkRoundsTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetNetworkRoundsTimeSecondsAssignment(), value, GameVersion.TMF);
-    private protected static void SetNetworkStuntsTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetNetworkStuntsTimeSecondsAssignment(), value, GameVersion.TMF);
-    private protected static void SetNetworkTimeAttackTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetNetworkTimeAttackTimeSecondsAssignment(), value, GameVersion.TMF);
-    private protected static void SetNickName(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetNickNameAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetPlayerId(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetPlayerIdAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetPlayerName(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetPlayerNameAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetPlayerOfficialScores(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, global::GBX.NET.Engines.Game.CGamePlayerOfficialScores? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetPlayerOfficialScoresAssignment(), value, GameVersion.TMF);
-    private protected static void SetPlayerOfficialScoresReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, NodeRef<global::GBX.NET.Engines.Game.CGamePlayerOfficialScores> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetPlayerOfficialScoresReferenceAssignment(), value, GameVersion.TMF);
-    private protected static void SetReplayEditorTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetReplayEditorTimeSecondsAssignment(), value, GameVersion.TMF);
-    private protected static void SetResetCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetResetCountAssignment(), value, GameVersion.TMF);
-    private protected static void SetScores(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, global::GBX.NET.Engines.Game.CGamePlayerScore.Score[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetScoresAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetScoresVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetScoresVersionAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSkinEditorTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSkinEditorTimeSecondsAssignment(), value, GameVersion.TMF);
-    private protected static void SetSoloPlatformTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSoloPlatformTimeSecondsAssignment(), value, GameVersion.TMF);
-    private protected static void SetSoloPuzzleTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSoloPuzzleTimeSecondsAssignment(), value, GameVersion.TMF);
-    private protected static void SetSoloRaceTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSoloRaceTimeSecondsAssignment(), value, GameVersion.TMF);
-    private protected static void SetSoloStuntsTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSoloStuntsTimeSecondsAssignment(), value, GameVersion.TMF);
-    private protected static void SetSubmittedFinishCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedFinishCountAssignment(), value, GameVersion.TMF);
-    private protected static void SetSubmittedHotSeatTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedHotSeatTimeSecondsAssignment(), value, GameVersion.TMF);
-    private protected static void SetSubmittedManiaLinkTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedManiaLinkTimeSecondsAssignment(), value, GameVersion.TMF);
-    private protected static void SetSubmittedMapCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedMapCountAssignment(), value, GameVersion.TMF);
-    private protected static void SetSubmittedMapEditorTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedMapEditorTimeSecondsAssignment(), value, GameVersion.TMF);
-    private protected static void SetSubmittedNetworkCupTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedNetworkCupTimeSecondsAssignment(), value, GameVersion.TMF);
-    private protected static void SetSubmittedNetworkLapsTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedNetworkLapsTimeSecondsAssignment(), value, GameVersion.TMF);
-    private protected static void SetSubmittedNetworkRoundsTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedNetworkRoundsTimeSecondsAssignment(), value, GameVersion.TMF);
-    private protected static void SetSubmittedNetworkStuntsTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedNetworkStuntsTimeSecondsAssignment(), value, GameVersion.TMF);
-    private protected static void SetSubmittedNetworkTimeAttackTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedNetworkTimeAttackTimeSecondsAssignment(), value, GameVersion.TMF);
-    private protected static void SetSubmittedReplayEditorTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedReplayEditorTimeSecondsAssignment(), value, GameVersion.TMF);
-    private protected static void SetSubmittedResetCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedResetCountAssignment(), value, GameVersion.TMF);
-    private protected static void SetSubmittedSkinEditorTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedSkinEditorTimeSecondsAssignment(), value, GameVersion.TMF);
-    private protected static void SetSubmittedSoloPlatformTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedSoloPlatformTimeSecondsAssignment(), value, GameVersion.TMF);
-    private protected static void SetSubmittedSoloPuzzleTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedSoloPuzzleTimeSecondsAssignment(), value, GameVersion.TMF);
-    private protected static void SetSubmittedSoloRaceTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedSoloRaceTimeSecondsAssignment(), value, GameVersion.TMF);
-    private protected static void SetSubmittedSoloStuntsTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedSoloStuntsTimeSecondsAssignment(), value, GameVersion.TMF);
-    private protected static void SetSurvivalScores(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, global::GBX.NET.Engines.Game.CGamePlayerScore.SurvivalScore[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSurvivalScoresAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSurvivalScoresVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSurvivalScoresVersionAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetTrainingMedalsScores(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, global::GBX.NET.Engines.Game.CGamePlayerScore.TrainingMedalsScore[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetTrainingMedalsScoresAssignment(), value, GameVersion.TMF);
     public string? NickName
     {
         get => state.Get<string?>("NickName");
-        set => SetNickName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetNickNameAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithNickName(string? value)
     {
@@ -97,7 +49,7 @@ public abstract class CGamePlayerScoreBuilderBase<TSelf> where TSelf : CGamePlay
     public string? PlayerId
     {
         get => state.Get<string?>("PlayerId");
-        set => SetPlayerId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetPlayerIdAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithPlayerId(string? value)
     {
@@ -107,7 +59,7 @@ public abstract class CGamePlayerScoreBuilderBase<TSelf> where TSelf : CGamePlay
     public string? PlayerName
     {
         get => state.Get<string?>("PlayerName");
-        set => SetPlayerName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetPlayerNameAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithPlayerName(string? value)
     {
@@ -117,7 +69,7 @@ public abstract class CGamePlayerScoreBuilderBase<TSelf> where TSelf : CGamePlay
     public global::GBX.NET.Engines.Game.CGamePlayerScore.Score[]? Scores
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerScore.Score[]?>("Scores");
-        set => SetScores(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetScoresAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithScores(params global::GBX.NET.Engines.Game.CGamePlayerScore.Score[]? value)
     {
@@ -131,7 +83,7 @@ public abstract class CGamePlayerScoreBuilderBase<TSelf> where TSelf : CGamePlay
     public int ScoresVersion
     {
         get => state.Get<int>("ScoresVersion");
-        set => SetScoresVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetScoresVersionAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithScoresVersion(int value)
     {
@@ -145,7 +97,7 @@ public abstract class CGamePlayerScoreBuilderMembers1<TSelf> : CGamePlayerScoreB
     public global::GBX.NET.Engines.Game.CGamePlayerScore.SurvivalScore[]? SurvivalScores
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerScore.SurvivalScore[]?>("SurvivalScores");
-        set => SetSurvivalScores(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSurvivalScoresAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSurvivalScores(params global::GBX.NET.Engines.Game.CGamePlayerScore.SurvivalScore[]? value)
     {
@@ -159,7 +111,7 @@ public abstract class CGamePlayerScoreBuilderMembers1<TSelf> : CGamePlayerScoreB
     public int SurvivalScoresVersion
     {
         get => state.Get<int>("SurvivalScoresVersion");
-        set => SetSurvivalScoresVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSurvivalScoresVersionAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSurvivalScoresVersion(int value)
     {
@@ -342,7 +294,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public NodeRefList<global::GBX.NET.Engines.Game.CGameCampaignPlayerScores>? CampaignPlayerScores
         {
             get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameCampaignPlayerScores>?>("CampaignPlayerScores");
-            set => SetCampaignPlayerScores(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetCampaignPlayerScoresAssignment(), value, GameVersion.TMF);
         }
         public TMF WithCampaignPlayerScores(NodeRefList<global::GBX.NET.Engines.Game.CGameCampaignPlayerScores>? value)
         {
@@ -368,7 +320,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public byte CampaignRecordsStateVersion
         {
             get => state.Get<byte>("CampaignRecordsStateVersion");
-            set => SetCampaignRecordsStateVersion(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetCampaignRecordsStateVersionAssignment(), value, GameVersion.TMF);
         }
         public TMF WithCampaignRecordsStateVersion(byte value)
         {
@@ -378,7 +330,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public global::GBX.NET.Engines.Game.CGamePlayerScore.CampaignRecordsState[]? CampaignRecordsStates
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerScore.CampaignRecordsState[]?>("CampaignRecordsStates");
-            set => SetCampaignRecordsStates(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetCampaignRecordsStatesAssignment(), value, GameVersion.TMF);
         }
         public TMF WithCampaignRecordsStates(params global::GBX.NET.Engines.Game.CGamePlayerScore.CampaignRecordsState[]? value)
         {
@@ -392,7 +344,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public int FinishCount
         {
             get => state.Get<int>("FinishCount");
-            set => SetFinishCount(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetFinishCountAssignment(), value, GameVersion.TMF);
         }
         public TMF WithFinishCount(int value)
         {
@@ -402,7 +354,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public int HotSeatTimeSeconds
         {
             get => state.Get<int>("HotSeatTimeSeconds");
-            set => SetHotSeatTimeSeconds(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetHotSeatTimeSecondsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithHotSeatTimeSeconds(int value)
         {
@@ -412,7 +364,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public global::GBX.NET.Engines.Game.CGamePlayerScore.LadderMatchResult[]? LadderMatchResults
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerScore.LadderMatchResult[]?>("LadderMatchResults");
-            set => SetLadderMatchResults(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetLadderMatchResultsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithLadderMatchResults(params global::GBX.NET.Engines.Game.CGamePlayerScore.LadderMatchResult[]? value)
         {
@@ -426,7 +378,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public int ManiaLinkTimeSeconds
         {
             get => state.Get<int>("ManiaLinkTimeSeconds");
-            set => SetManiaLinkTimeSeconds(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetManiaLinkTimeSecondsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithManiaLinkTimeSeconds(int value)
         {
@@ -436,7 +388,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public int MapCount
         {
             get => state.Get<int>("MapCount");
-            set => SetMapCount(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetMapCountAssignment(), value, GameVersion.TMF);
         }
         public TMF WithMapCount(int value)
         {
@@ -446,7 +398,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public int MapEditorTimeSeconds
         {
             get => state.Get<int>("MapEditorTimeSeconds");
-            set => SetMapEditorTimeSeconds(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetMapEditorTimeSecondsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithMapEditorTimeSeconds(int value)
         {
@@ -456,7 +408,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public int NetworkCupTimeSeconds
         {
             get => state.Get<int>("NetworkCupTimeSeconds");
-            set => SetNetworkCupTimeSeconds(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetNetworkCupTimeSecondsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithNetworkCupTimeSeconds(int value)
         {
@@ -466,7 +418,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public int NetworkLapsTimeSeconds
         {
             get => state.Get<int>("NetworkLapsTimeSeconds");
-            set => SetNetworkLapsTimeSeconds(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetNetworkLapsTimeSecondsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithNetworkLapsTimeSeconds(int value)
         {
@@ -476,7 +428,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public int NetworkRoundsTimeSeconds
         {
             get => state.Get<int>("NetworkRoundsTimeSeconds");
-            set => SetNetworkRoundsTimeSeconds(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetNetworkRoundsTimeSecondsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithNetworkRoundsTimeSeconds(int value)
         {
@@ -486,7 +438,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public int NetworkStuntsTimeSeconds
         {
             get => state.Get<int>("NetworkStuntsTimeSeconds");
-            set => SetNetworkStuntsTimeSeconds(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetNetworkStuntsTimeSecondsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithNetworkStuntsTimeSeconds(int value)
         {
@@ -496,7 +448,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public int NetworkTimeAttackTimeSeconds
         {
             get => state.Get<int>("NetworkTimeAttackTimeSeconds");
-            set => SetNetworkTimeAttackTimeSeconds(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetNetworkTimeAttackTimeSecondsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithNetworkTimeAttackTimeSeconds(int value)
         {
@@ -506,7 +458,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public global::GBX.NET.Engines.Game.CGamePlayerOfficialScores? PlayerOfficialScores
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerOfficialScores?>("PlayerOfficialScores");
-            set => SetPlayerOfficialScores(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetPlayerOfficialScoresAssignment(), value, GameVersion.TMF);
         }
         public TMF WithPlayerOfficialScores(global::GBX.NET.Engines.Game.CGamePlayerOfficialScores? value)
         {
@@ -516,7 +468,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public TMF WithPlayerOfficialScoresReference(NodeRef<global::GBX.NET.Engines.Game.CGamePlayerOfficialScores> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetPlayerOfficialScoresReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetPlayerOfficialScoresReferenceAssignment(), value, GameVersion.TMF);
             return this;
         }
         public TMF WithPlayerOfficialScores(global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresTMF? value)
@@ -526,7 +478,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public int ReplayEditorTimeSeconds
         {
             get => state.Get<int>("ReplayEditorTimeSeconds");
-            set => SetReplayEditorTimeSeconds(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetReplayEditorTimeSecondsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithReplayEditorTimeSeconds(int value)
         {
@@ -536,7 +488,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public int ResetCount
         {
             get => state.Get<int>("ResetCount");
-            set => SetResetCount(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetResetCountAssignment(), value, GameVersion.TMF);
         }
         public TMF WithResetCount(int value)
         {
@@ -546,7 +498,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public int SkinEditorTimeSeconds
         {
             get => state.Get<int>("SkinEditorTimeSeconds");
-            set => SetSkinEditorTimeSeconds(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSkinEditorTimeSecondsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithSkinEditorTimeSeconds(int value)
         {
@@ -556,7 +508,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public int SoloPlatformTimeSeconds
         {
             get => state.Get<int>("SoloPlatformTimeSeconds");
-            set => SetSoloPlatformTimeSeconds(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSoloPlatformTimeSecondsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithSoloPlatformTimeSeconds(int value)
         {
@@ -566,7 +518,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public int SoloPuzzleTimeSeconds
         {
             get => state.Get<int>("SoloPuzzleTimeSeconds");
-            set => SetSoloPuzzleTimeSeconds(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSoloPuzzleTimeSecondsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithSoloPuzzleTimeSeconds(int value)
         {
@@ -576,7 +528,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public int SoloRaceTimeSeconds
         {
             get => state.Get<int>("SoloRaceTimeSeconds");
-            set => SetSoloRaceTimeSeconds(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSoloRaceTimeSecondsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithSoloRaceTimeSeconds(int value)
         {
@@ -586,7 +538,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public int SoloStuntsTimeSeconds
         {
             get => state.Get<int>("SoloStuntsTimeSeconds");
-            set => SetSoloStuntsTimeSeconds(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSoloStuntsTimeSecondsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithSoloStuntsTimeSeconds(int value)
         {
@@ -596,7 +548,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public int SubmittedFinishCount
         {
             get => state.Get<int>("SubmittedFinishCount");
-            set => SetSubmittedFinishCount(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedFinishCountAssignment(), value, GameVersion.TMF);
         }
         public TMF WithSubmittedFinishCount(int value)
         {
@@ -606,7 +558,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public int SubmittedHotSeatTimeSeconds
         {
             get => state.Get<int>("SubmittedHotSeatTimeSeconds");
-            set => SetSubmittedHotSeatTimeSeconds(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedHotSeatTimeSecondsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithSubmittedHotSeatTimeSeconds(int value)
         {
@@ -616,7 +568,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public int SubmittedManiaLinkTimeSeconds
         {
             get => state.Get<int>("SubmittedManiaLinkTimeSeconds");
-            set => SetSubmittedManiaLinkTimeSeconds(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedManiaLinkTimeSecondsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithSubmittedManiaLinkTimeSeconds(int value)
         {
@@ -626,7 +578,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public int SubmittedMapCount
         {
             get => state.Get<int>("SubmittedMapCount");
-            set => SetSubmittedMapCount(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedMapCountAssignment(), value, GameVersion.TMF);
         }
         public TMF WithSubmittedMapCount(int value)
         {
@@ -636,7 +588,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public int SubmittedMapEditorTimeSeconds
         {
             get => state.Get<int>("SubmittedMapEditorTimeSeconds");
-            set => SetSubmittedMapEditorTimeSeconds(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedMapEditorTimeSecondsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithSubmittedMapEditorTimeSeconds(int value)
         {
@@ -646,7 +598,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public int SubmittedNetworkCupTimeSeconds
         {
             get => state.Get<int>("SubmittedNetworkCupTimeSeconds");
-            set => SetSubmittedNetworkCupTimeSeconds(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedNetworkCupTimeSecondsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithSubmittedNetworkCupTimeSeconds(int value)
         {
@@ -656,7 +608,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public int SubmittedNetworkLapsTimeSeconds
         {
             get => state.Get<int>("SubmittedNetworkLapsTimeSeconds");
-            set => SetSubmittedNetworkLapsTimeSeconds(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedNetworkLapsTimeSecondsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithSubmittedNetworkLapsTimeSeconds(int value)
         {
@@ -666,7 +618,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public int SubmittedNetworkRoundsTimeSeconds
         {
             get => state.Get<int>("SubmittedNetworkRoundsTimeSeconds");
-            set => SetSubmittedNetworkRoundsTimeSeconds(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedNetworkRoundsTimeSecondsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithSubmittedNetworkRoundsTimeSeconds(int value)
         {
@@ -676,7 +628,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public int SubmittedNetworkStuntsTimeSeconds
         {
             get => state.Get<int>("SubmittedNetworkStuntsTimeSeconds");
-            set => SetSubmittedNetworkStuntsTimeSeconds(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedNetworkStuntsTimeSecondsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithSubmittedNetworkStuntsTimeSeconds(int value)
         {
@@ -686,7 +638,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public int SubmittedNetworkTimeAttackTimeSeconds
         {
             get => state.Get<int>("SubmittedNetworkTimeAttackTimeSeconds");
-            set => SetSubmittedNetworkTimeAttackTimeSeconds(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedNetworkTimeAttackTimeSecondsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithSubmittedNetworkTimeAttackTimeSeconds(int value)
         {
@@ -696,7 +648,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public int SubmittedReplayEditorTimeSeconds
         {
             get => state.Get<int>("SubmittedReplayEditorTimeSeconds");
-            set => SetSubmittedReplayEditorTimeSeconds(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedReplayEditorTimeSecondsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithSubmittedReplayEditorTimeSeconds(int value)
         {
@@ -706,7 +658,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public int SubmittedResetCount
         {
             get => state.Get<int>("SubmittedResetCount");
-            set => SetSubmittedResetCount(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedResetCountAssignment(), value, GameVersion.TMF);
         }
         public TMF WithSubmittedResetCount(int value)
         {
@@ -716,7 +668,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public int SubmittedSkinEditorTimeSeconds
         {
             get => state.Get<int>("SubmittedSkinEditorTimeSeconds");
-            set => SetSubmittedSkinEditorTimeSeconds(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedSkinEditorTimeSecondsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithSubmittedSkinEditorTimeSeconds(int value)
         {
@@ -726,7 +678,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public int SubmittedSoloPlatformTimeSeconds
         {
             get => state.Get<int>("SubmittedSoloPlatformTimeSeconds");
-            set => SetSubmittedSoloPlatformTimeSeconds(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedSoloPlatformTimeSecondsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithSubmittedSoloPlatformTimeSeconds(int value)
         {
@@ -736,7 +688,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public int SubmittedSoloPuzzleTimeSeconds
         {
             get => state.Get<int>("SubmittedSoloPuzzleTimeSeconds");
-            set => SetSubmittedSoloPuzzleTimeSeconds(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedSoloPuzzleTimeSecondsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithSubmittedSoloPuzzleTimeSeconds(int value)
         {
@@ -746,7 +698,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public int SubmittedSoloRaceTimeSeconds
         {
             get => state.Get<int>("SubmittedSoloRaceTimeSeconds");
-            set => SetSubmittedSoloRaceTimeSeconds(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedSoloRaceTimeSecondsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithSubmittedSoloRaceTimeSeconds(int value)
         {
@@ -756,7 +708,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public int SubmittedSoloStuntsTimeSeconds
         {
             get => state.Get<int>("SubmittedSoloStuntsTimeSeconds");
-            set => SetSubmittedSoloStuntsTimeSeconds(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedSoloStuntsTimeSecondsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithSubmittedSoloStuntsTimeSeconds(int value)
         {
@@ -766,7 +718,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public global::GBX.NET.Engines.Game.CGamePlayerScore.TrainingMedalsScore[]? TrainingMedalsScores
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerScore.TrainingMedalsScore[]?>("TrainingMedalsScores");
-            set => SetTrainingMedalsScores(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetTrainingMedalsScoresAssignment(), value, GameVersion.TMF);
         }
         public TMF WithTrainingMedalsScores(params global::GBX.NET.Engines.Game.CGamePlayerScore.TrainingMedalsScore[]? value)
         {

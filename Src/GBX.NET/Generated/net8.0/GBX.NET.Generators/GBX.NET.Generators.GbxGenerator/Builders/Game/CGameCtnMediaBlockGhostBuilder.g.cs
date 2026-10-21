@@ -36,20 +36,10 @@ public abstract class CGameCtnMediaBlockGhostBuilderBase<TSelf> where TSelf : CG
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost> state;
     private protected CGameCtnMediaBlockGhostBuilderBase() => state = new();
     private protected CGameCtnMediaBlockGhostBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost> state) => this.state = state;
-    private protected static void SetEnd(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetEndAssignment(), value, GameVersion.TMF);
-    private protected static void SetForceHue(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetForceHueAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetForceLight(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetForceLightAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetGhostModel(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost> state, global::GBX.NET.Engines.Game.CGameCtnGhost? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetGhostModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetGhostModelReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnGhost> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetGhostModelReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost.Key>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetNoDamage(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetNoDamageAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetStart(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetStartAssignment(), value, GameVersion.TMF);
-    private protected static void SetStartOffset(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetStartOffsetAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetTrailIntensity(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetTrailIntensityAssignment(), value, GameVersion.TM2020);
     public global::GBX.NET.Engines.Game.CGameCtnGhost? GhostModel
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnGhost?>("GhostModel");
-        set => SetGhostModel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetGhostModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithGhostModel(global::GBX.NET.Engines.Game.CGameCtnGhost? value)
     {
@@ -59,13 +49,13 @@ public abstract class CGameCtnMediaBlockGhostBuilderBase<TSelf> where TSelf : CG
     public TSelf WithGhostModelReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnGhost> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetGhostModelReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetGhostModelReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
     }
     public float StartOffset
     {
         get => state.Get<float>("StartOffset");
-        set => SetStartOffset(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetStartOffsetAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithStartOffset(float value)
     {
@@ -79,7 +69,7 @@ public abstract class CGameCtnMediaBlockGhostBuilderMembers1<TSelf> : CGameCtnMe
     public bool ForceHue
     {
         get => state.Get<bool>("ForceHue");
-        set => SetForceHue(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetForceHueAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithForceHue(bool value)
     {
@@ -89,7 +79,7 @@ public abstract class CGameCtnMediaBlockGhostBuilderMembers1<TSelf> : CGameCtnMe
     public bool ForceLight
     {
         get => state.Get<bool>("ForceLight");
-        set => SetForceLight(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetForceLightAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithForceLight(bool value)
     {
@@ -99,7 +89,7 @@ public abstract class CGameCtnMediaBlockGhostBuilderMembers1<TSelf> : CGameCtnMe
     public List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost.Key>? Keys
     {
         get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost.Key>?>("Keys");
-        set => SetKeys(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost.Key>? value)
     {
@@ -117,7 +107,7 @@ public abstract class CGameCtnMediaBlockGhostBuilderMembers1<TSelf> : CGameCtnMe
     public bool NoDamage
     {
         get => state.Get<bool>("NoDamage");
-        set => SetNoDamage(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetNoDamageAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNoDamage(bool value)
     {
@@ -175,7 +165,7 @@ public partial class CGameCtnMediaBlockGhostBuilder : CGameCtnMediaBlockGhostBui
         public TimeSingle End
         {
             get => state.Get<TimeSingle>("End");
-            set => SetEnd(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetEndAssignment(), value, GameVersion.TMF);
         }
         public TMF WithEnd(TimeSingle value)
         {
@@ -189,7 +179,7 @@ public partial class CGameCtnMediaBlockGhostBuilder : CGameCtnMediaBlockGhostBui
         public TimeSingle Start
         {
             get => state.Get<TimeSingle>("Start");
-            set => SetStart(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetStartAssignment(), value, GameVersion.TMF);
         }
         public TMF WithStart(TimeSingle value)
         {
@@ -265,7 +255,7 @@ public partial class CGameCtnMediaBlockGhostBuilder : CGameCtnMediaBlockGhostBui
         public float TrailIntensity
         {
             get => state.Get<float>("TrailIntensity");
-            set => SetTrailIntensity(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetTrailIntensityAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithTrailIntensity(float value)
         {

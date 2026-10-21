@@ -31,6 +31,6 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Scene;
 
-public partial class CSceneFx : global::GBX.NET.Interfaces.Scene.ISceneFx, global::GBX.NET.Interfaces.Scene.ISceneFxTM2020, global::GBX.NET.Interfaces.Scene.ISceneFxTMF
+public partial class CSceneFx : global::GBX.NET.Interfaces.Scene.ISceneFx, global::GBX.NET.Interfaces.Scene.ISceneFxTMF, global::GBX.NET.Interfaces.Scene.ISceneFxTM2020
 {
 }

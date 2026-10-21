@@ -36,15 +36,10 @@ public abstract class CGameCtnSolidDecalsBuilderBase<TSelf> where TSelf : CGameC
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnSolidDecals> state;
     private protected CGameCtnSolidDecalsBuilderBase() => state = new();
     private protected CGameCtnSolidDecalsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnSolidDecals> state) => this.state = state;
-    private protected static void SetDecalFrequency(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnSolidDecals> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnSolidDecalsBuilderAssignments.GetDecalFrequencyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnSolidDecals> state, string value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnSolidDecalsBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSceneDecals(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnSolidDecals> state, byte[] value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnSolidDecalsBuilderAssignments.GetSceneDecalsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTypeId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnSolidDecals> state, string value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnSolidDecalsBuilderAssignments.GetTypeIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTypeIntensity(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnSolidDecals> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnSolidDecalsBuilderAssignments.GetTypeIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public uint DecalFrequency
     {
         get => state.Get<uint>("DecalFrequency");
-        set => SetDecalFrequency(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnSolidDecalsBuilderAssignments.GetDecalFrequencyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDecalFrequency(uint value)
     {
@@ -54,7 +49,7 @@ public abstract class CGameCtnSolidDecalsBuilderBase<TSelf> where TSelf : CGameC
     public string Name
     {
         get => state.Get<string>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnSolidDecalsBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithName(string value)
     {
@@ -64,7 +59,7 @@ public abstract class CGameCtnSolidDecalsBuilderBase<TSelf> where TSelf : CGameC
     public byte[] SceneDecals
     {
         get => state.Get<byte[]>("SceneDecals");
-        set => SetSceneDecals(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnSolidDecalsBuilderAssignments.GetSceneDecalsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSceneDecals(params byte[] value)
     {
@@ -78,7 +73,7 @@ public abstract class CGameCtnSolidDecalsBuilderBase<TSelf> where TSelf : CGameC
     public string TypeId
     {
         get => state.Get<string>("TypeId");
-        set => SetTypeId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnSolidDecalsBuilderAssignments.GetTypeIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTypeId(string value)
     {
@@ -88,7 +83,7 @@ public abstract class CGameCtnSolidDecalsBuilderBase<TSelf> where TSelf : CGameC
     public uint TypeIntensity
     {
         get => state.Get<uint>("TypeIntensity");
-        set => SetTypeIntensity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnSolidDecalsBuilderAssignments.GetTypeIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTypeIntensity(uint value)
     {

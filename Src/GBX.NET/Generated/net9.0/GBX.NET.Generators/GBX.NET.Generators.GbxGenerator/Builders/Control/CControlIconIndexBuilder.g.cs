@@ -36,20 +36,10 @@ public abstract class CControlIconIndexBuilderBase<TSelf> where TSelf : CControl
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state;
     private protected CControlIconIndexBuilderBase() => state = new();
     private protected CControlIconIndexBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state) => this.state = state;
-    private protected static void SetIndexOff(NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetIndexOffAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetIndexOffFocused(NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetIndexOffFocusedAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetIndexOffGrayed(NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetIndexOffGrayedAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetIndexOn(NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetIndexOnAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetIndexOnFocused(NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetIndexOnFocusedAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetIndexOnGrayed(NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetIndexOnGrayedAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetMarginPercentU(NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetMarginPercentUAssignment(), value, GameVersion.TMF);
-    private protected static void SetMarginPercentV(NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetMarginPercentVAssignment(), value, GameVersion.TMF);
-    private protected static void SetMarginSize(NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetMarginSizeAssignment(), value, GameVersion.TMF);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetNameAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     public int IndexOff
     {
         get => state.Get<int>("IndexOff");
-        set => SetIndexOff(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetIndexOffAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithIndexOff(int value)
     {
@@ -59,7 +49,7 @@ public abstract class CControlIconIndexBuilderBase<TSelf> where TSelf : CControl
     public int IndexOffFocused
     {
         get => state.Get<int>("IndexOffFocused");
-        set => SetIndexOffFocused(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetIndexOffFocusedAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithIndexOffFocused(int value)
     {
@@ -69,7 +59,7 @@ public abstract class CControlIconIndexBuilderBase<TSelf> where TSelf : CControl
     public int IndexOffGrayed
     {
         get => state.Get<int>("IndexOffGrayed");
-        set => SetIndexOffGrayed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetIndexOffGrayedAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithIndexOffGrayed(int value)
     {
@@ -79,7 +69,7 @@ public abstract class CControlIconIndexBuilderBase<TSelf> where TSelf : CControl
     public int IndexOn
     {
         get => state.Get<int>("IndexOn");
-        set => SetIndexOn(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetIndexOnAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithIndexOn(int value)
     {
@@ -89,7 +79,7 @@ public abstract class CControlIconIndexBuilderBase<TSelf> where TSelf : CControl
     public int IndexOnFocused
     {
         get => state.Get<int>("IndexOnFocused");
-        set => SetIndexOnFocused(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetIndexOnFocusedAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithIndexOnFocused(int value)
     {
@@ -99,7 +89,7 @@ public abstract class CControlIconIndexBuilderBase<TSelf> where TSelf : CControl
     public int IndexOnGrayed
     {
         get => state.Get<int>("IndexOnGrayed");
-        set => SetIndexOnGrayed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetIndexOnGrayedAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithIndexOnGrayed(int value)
     {
@@ -109,7 +99,7 @@ public abstract class CControlIconIndexBuilderBase<TSelf> where TSelf : CControl
     public string? Name
     {
         get => state.Get<string?>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetNameAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithName(string? value)
     {
@@ -170,7 +160,7 @@ public partial class CControlIconIndexBuilder : CControlIconIndexBuilderBase<CCo
         public int MarginPercentU
         {
             get => state.Get<int>("MarginPercentU");
-            set => SetMarginPercentU(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetMarginPercentUAssignment(), value, GameVersion.TMF);
         }
         public TMF WithMarginPercentU(int value)
         {
@@ -180,7 +170,7 @@ public partial class CControlIconIndexBuilder : CControlIconIndexBuilderBase<CCo
         public int MarginPercentV
         {
             get => state.Get<int>("MarginPercentV");
-            set => SetMarginPercentV(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetMarginPercentVAssignment(), value, GameVersion.TMF);
         }
         public TMF WithMarginPercentV(int value)
         {
@@ -190,7 +180,7 @@ public partial class CControlIconIndexBuilder : CControlIconIndexBuilderBase<CCo
         public Vec2 MarginSize
         {
             get => state.Get<Vec2>("MarginSize");
-            set => SetMarginSize(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetMarginSizeAssignment(), value, GameVersion.TMF);
         }
         public TMF WithMarginSize(Vec2 value)
         {

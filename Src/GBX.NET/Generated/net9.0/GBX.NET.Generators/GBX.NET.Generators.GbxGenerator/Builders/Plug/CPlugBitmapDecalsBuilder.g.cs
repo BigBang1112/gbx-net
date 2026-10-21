@@ -36,13 +36,10 @@ public abstract class CPlugBitmapDecalsBuilderBase<TSelf> where TSelf : CPlugBit
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapDecals> state;
     private protected CPlugBitmapDecalsBuilderBase() => state = new();
     private protected CPlugBitmapDecalsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapDecals> state) => this.state = state;
-    private protected static void SetDecalModels(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapDecals> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecalModel>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapDecalsBuilderAssignments.GetDecalModelsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDecalSets(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapDecals> state, global::GBX.NET.Engines.Plug.CPlugBitmapDecals.DecalSet[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapDecalsBuilderAssignments.GetDecalSetsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMatterId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapDecals> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapDecalsBuilderAssignments.GetMatterIdAssignment(), value, GameVersion.TM2020);
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecalModel>? DecalModels
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecalModel>?>("DecalModels");
-        set => SetDecalModels(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapDecalsBuilderAssignments.GetDecalModelsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDecalModels(NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecalModel>? value)
     {
@@ -60,7 +57,7 @@ public abstract class CPlugBitmapDecalsBuilderBase<TSelf> where TSelf : CPlugBit
     public global::GBX.NET.Engines.Plug.CPlugBitmapDecals.DecalSet[]? DecalSets
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmapDecals.DecalSet[]?>("DecalSets");
-        set => SetDecalSets(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapDecalsBuilderAssignments.GetDecalSetsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDecalSets(params global::GBX.NET.Engines.Plug.CPlugBitmapDecals.DecalSet[]? value)
     {
@@ -217,7 +214,7 @@ public partial class CPlugBitmapDecalsBuilder : CPlugBitmapDecalsBuilderBase<CPl
         public string? MatterId
         {
             get => state.Get<string?>("MatterId");
-            set => SetMatterId(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapDecalsBuilderAssignments.GetMatterIdAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithMatterId(string? value)
         {

@@ -36,17 +36,10 @@ public abstract class CFuncKeysRealBuilderBase<TSelf> where TSelf : CFuncKeysRea
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysReal> state;
     private protected CFuncKeysRealBuilderBase() => state = new();
     private protected CFuncKeysRealBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysReal> state) => this.state = state;
-    private protected static void SetForceTangentMaxX(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysReal> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetForceTangentMaxXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
-    private protected static void SetForceTangentMinX(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysReal> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetForceTangentMinXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
-    private protected static void SetForcedTangentMaxX(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysReal> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetForcedTangentMaxXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
-    private protected static void SetForcedTangentMinX(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysReal> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetForcedTangentMinXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
-    private protected static void SetRealInterp(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysReal> state, global::GBX.NET.Engines.Function.CFuncKeysReal.ERealInterp value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetRealInterpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetXs(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysReal> state, float[]? value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysBuilderAssignments.GetXsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetYs(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysReal> state, float[]? value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetYsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public float[]? Xs
     {
         get => state.Get<float[]?>("Xs");
-        set => SetXs(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysBuilderAssignments.GetXsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithXs(params float[]? value)
     {
@@ -64,7 +57,7 @@ public abstract class CFuncKeysRealBuilderMembers1<TSelf> : CFuncKeysRealBuilder
     public float[]? Ys
     {
         get => state.Get<float[]?>("Ys");
-        set => SetYs(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetYsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithYs(params float[]? value)
     {
@@ -82,7 +75,7 @@ public abstract class CFuncKeysRealBuilderMembers2<TSelf> : CFuncKeysRealBuilder
     public global::GBX.NET.Engines.Function.CFuncKeysReal.ERealInterp RealInterp
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal.ERealInterp>("RealInterp");
-        set => SetRealInterp(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetRealInterpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRealInterp(global::GBX.NET.Engines.Function.CFuncKeysReal.ERealInterp value)
     {
@@ -96,7 +89,7 @@ public abstract class CFuncKeysRealBuilderMembers3<TSelf> : CFuncKeysRealBuilder
     public bool ForceTangentMaxX
     {
         get => state.Get<bool>("ForceTangentMaxX");
-        set => SetForceTangentMaxX(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetForceTangentMaxXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithForceTangentMaxX(bool value)
     {
@@ -106,7 +99,7 @@ public abstract class CFuncKeysRealBuilderMembers3<TSelf> : CFuncKeysRealBuilder
     public bool ForceTangentMinX
     {
         get => state.Get<bool>("ForceTangentMinX");
-        set => SetForceTangentMinX(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetForceTangentMinXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithForceTangentMinX(bool value)
     {
@@ -116,7 +109,7 @@ public abstract class CFuncKeysRealBuilderMembers3<TSelf> : CFuncKeysRealBuilder
     public float ForcedTangentMaxX
     {
         get => state.Get<float>("ForcedTangentMaxX");
-        set => SetForcedTangentMaxX(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetForcedTangentMaxXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithForcedTangentMaxX(float value)
     {
@@ -126,7 +119,7 @@ public abstract class CFuncKeysRealBuilderMembers3<TSelf> : CFuncKeysRealBuilder
     public float ForcedTangentMinX
     {
         get => state.Get<float>("ForcedTangentMinX");
-        set => SetForcedTangentMinX(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetForcedTangentMinXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithForcedTangentMinX(float value)
     {

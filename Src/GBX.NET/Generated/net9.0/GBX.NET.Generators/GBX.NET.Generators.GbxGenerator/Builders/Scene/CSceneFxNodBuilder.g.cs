@@ -36,16 +36,10 @@ public abstract class CSceneFxNodBuilderBase<TSelf> where TSelf : CSceneFxNodBui
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxNod> state;
     private protected CSceneFxNodBuilderBase() => state = new();
     private protected CSceneFxNodBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxNod> state) => this.state = state;
-    private protected static void SetFx(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxNod> state, global::GBX.NET.Engines.Scene.CSceneFx? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxNodBuilderAssignments.GetFxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFxReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxNod> state, NodeRef<global::GBX.NET.Engines.Scene.CSceneFx> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxNodBuilderAssignments.GetFxReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFxIndex(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxNod> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxNodBuilderAssignments.GetFxIndexAssignment(), value, GameVersion.TM2020);
-    private protected static void SetNodInput(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxNod> state, global::GBX.NET.Engines.Scene.CSceneFxNod? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxNodBuilderAssignments.GetNodInputAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetNodInputReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxNod> state, NodeRef<global::GBX.NET.Engines.Scene.CSceneFxNod> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxNodBuilderAssignments.GetNodInputReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetNodInputs(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxNod> state, NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxNod>? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxNodBuilderAssignments.GetNodInputsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
     public global::GBX.NET.Engines.Scene.CSceneFx? Fx
     {
         get => state.Get<global::GBX.NET.Engines.Scene.CSceneFx?>("Fx");
-        set => SetFx(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxNodBuilderAssignments.GetFxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFx(global::GBX.NET.Engines.Scene.CSceneFx? value)
     {
@@ -55,7 +49,7 @@ public abstract class CSceneFxNodBuilderBase<TSelf> where TSelf : CSceneFxNodBui
     public TSelf WithFxReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneFx> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetFxReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxNodBuilderAssignments.GetFxReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -65,7 +59,7 @@ public abstract class CSceneFxNodBuilderMembers1<TSelf> : CSceneFxNodBuilderBase
     public global::GBX.NET.Engines.Scene.CSceneFxNod? NodInput
     {
         get => state.Get<global::GBX.NET.Engines.Scene.CSceneFxNod?>("NodInput");
-        set => SetNodInput(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxNodBuilderAssignments.GetNodInputAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNodInput(global::GBX.NET.Engines.Scene.CSceneFxNod? value)
     {
@@ -75,7 +69,7 @@ public abstract class CSceneFxNodBuilderMembers1<TSelf> : CSceneFxNodBuilderBase
     public TSelf WithNodInputReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneFxNod> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetNodInputReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxNodBuilderAssignments.GetNodInputReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -85,7 +79,7 @@ public abstract class CSceneFxNodBuilderMembers2<TSelf> : CSceneFxNodBuilderBase
     public NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxNod>? NodInputs
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxNod>?>("NodInputs");
-        set => SetNodInputs(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxNodBuilderAssignments.GetNodInputsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithNodInputs(NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxNod>? value)
     {
@@ -309,7 +303,7 @@ public partial class CSceneFxNodBuilder : CSceneFxNodBuilderBase<CSceneFxNodBuil
         public int FxIndex
         {
             get => state.Get<int>("FxIndex");
-            set => SetFxIndex(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxNodBuilderAssignments.GetFxIndexAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithFxIndex(int value)
         {

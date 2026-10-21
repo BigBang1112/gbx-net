@@ -36,50 +36,10 @@ public abstract class CGameObjectPhyModelBuilderBase<TSelf> where TSelf : CGameO
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state;
     private protected CGameObjectPhyModelBuilderBase() => state = new();
     private protected CGameObjectPhyModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state) => this.state = state;
-    private protected static void SetActionModel(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetActionModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetActions(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, global::GBX.NET.Engines.GameData.CGameActionModel?[]? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetActionsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetArmor(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetArmorAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetBumperEnabled(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetBumperEnabledAssignment(), value, GameVersion.TM2020);
-    private protected static void SetCanStopEnemy(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetCanStopEnemyAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetCanStopEnemyBullet(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetCanStopEnemyBulletAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetDynaModel(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, global::GBX.NET.Engines.Plug.CPlugDynaModel? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetDynaModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetDynaPointModel(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, global::GBX.NET.Engines.Plug.CPlugDynaPointModel? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetDynaPointModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetHasALifeTime(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetHasALifeTimeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetHealArmorGainPerSecond(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetHealArmorGainPerSecondAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetHealEnabled(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetHealEnabledAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetHitShape(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetHitShapeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetHitShapeFid(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, global::GBX.NET.Engines.Plug.CPlugSurface? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetHitShapeFidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetHitShapeFidReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSurface> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetHitShapeFidReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetLifeTimeDuration(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetLifeTimeDurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetMagnetEnabled(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetMagnetEnabledAssignment(), value, GameVersion.TM2020);
-    private protected static void SetMoveShape(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetMoveShapeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMoveShapeFid(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, global::GBX.NET.Engines.Plug.CPlugSurface? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetMoveShapeFidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMoveShapeFidReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSurface> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetMoveShapeFidReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetPersistence(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, global::GBX.NET.Engines.GameData.CGameObjectPhyModel.EPersistence? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetPersistenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetProgram(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, global::GBX.NET.Engines.GameData.CGameObjectPhyModel.EProgram? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetProgramAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetScaleCoefMax(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetScaleCoefMaxAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetShieldDomeArmor(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetShieldDomeArmorAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetShieldEnabled(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetShieldEnabledAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSpecialProperties(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetSpecialPropertiesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSpecialPropertiesReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetSpecialPropertiesReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetStaminaSpawnCoef(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetStaminaSpawnCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetStaminaThrowCost(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetStaminaThrowCostAssignment(), value, GameVersion.TM2020);
-    private protected static void SetThrowAngularSpeed(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetThrowAngularSpeedAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetThrowSpeed(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetThrowSpeedAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetThrowableCooldownBetweenTakeAndThrow(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetThrowableCooldownBetweenTakeAndThrowAssignment(), value, GameVersion.TM2020);
-    private protected static void SetThrowableDamageCoef(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetThrowableDamageCoefAssignment(), value, GameVersion.TM2020);
-    private protected static void SetThrowableEnabled(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetThrowableEnabledAssignment(), value, GameVersion.TM2020);
-    private protected static void SetThrowableStunnedDuration(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetThrowableStunnedDurationAssignment(), value, GameVersion.TM2020);
-    private protected static void SetTimeBeforeDome(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetTimeBeforeDomeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetTriggerActionVersion(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetTriggerActionVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTriggerShape(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetTriggerShapeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTriggerShapeFid(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, global::GBX.NET.Engines.Plug.CPlugSurface? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetTriggerShapeFidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTriggerShapeFidReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSurface> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetTriggerShapeFidReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTriggers(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameObjectPhyModel> state, global::GBX.NET.Engines.Plug.CPlugTriggerAction[]? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetTriggersAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public global::GBX.NET.Engines.GameData.CGameActionModel?[]? Actions
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameActionModel?[]?>("Actions");
-        set => SetActions(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetActionsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithActions(params global::GBX.NET.Engines.GameData.CGameActionModel?[]? value)
     {
@@ -93,7 +53,7 @@ public abstract class CGameObjectPhyModelBuilderBase<TSelf> where TSelf : CGameO
     public global::GBX.NET.Engines.Plug.CPlugDynaPointModel? DynaPointModel
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugDynaPointModel?>("DynaPointModel");
-        set => SetDynaPointModel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetDynaPointModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDynaPointModel(global::GBX.NET.Engines.Plug.CPlugDynaPointModel? value)
     {
@@ -103,7 +63,7 @@ public abstract class CGameObjectPhyModelBuilderBase<TSelf> where TSelf : CGameO
     public string? HitShape
     {
         get => state.Get<string?>("HitShape");
-        set => SetHitShape(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetHitShapeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithHitShape(string? value)
     {
@@ -113,7 +73,7 @@ public abstract class CGameObjectPhyModelBuilderBase<TSelf> where TSelf : CGameO
     public global::GBX.NET.Engines.Plug.CPlugSurface? HitShapeFid
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSurface?>("HitShapeFid");
-        set => SetHitShapeFid(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetHitShapeFidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithHitShapeFid(global::GBX.NET.Engines.Plug.CPlugSurface? value)
     {
@@ -123,13 +83,13 @@ public abstract class CGameObjectPhyModelBuilderBase<TSelf> where TSelf : CGameO
     public TSelf WithHitShapeFidReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSurface> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetHitShapeFidReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetHitShapeFidReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public string? MoveShape
     {
         get => state.Get<string?>("MoveShape");
-        set => SetMoveShape(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetMoveShapeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMoveShape(string? value)
     {
@@ -139,7 +99,7 @@ public abstract class CGameObjectPhyModelBuilderBase<TSelf> where TSelf : CGameO
     public global::GBX.NET.Engines.Plug.CPlugSurface? MoveShapeFid
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSurface?>("MoveShapeFid");
-        set => SetMoveShapeFid(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetMoveShapeFidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMoveShapeFid(global::GBX.NET.Engines.Plug.CPlugSurface? value)
     {
@@ -149,13 +109,13 @@ public abstract class CGameObjectPhyModelBuilderBase<TSelf> where TSelf : CGameO
     public TSelf WithMoveShapeFidReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSurface> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetMoveShapeFidReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetMoveShapeFidReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.GameData.CGameObjectPhyModel.EProgram? Program
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameObjectPhyModel.EProgram?>("Program");
-        set => SetProgram(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetProgramAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithProgram(global::GBX.NET.Engines.GameData.CGameObjectPhyModel.EProgram? value)
     {
@@ -165,7 +125,7 @@ public abstract class CGameObjectPhyModelBuilderBase<TSelf> where TSelf : CGameO
     public int TriggerActionVersion
     {
         get => state.Get<int>("TriggerActionVersion");
-        set => SetTriggerActionVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetTriggerActionVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTriggerActionVersion(int value)
     {
@@ -175,7 +135,7 @@ public abstract class CGameObjectPhyModelBuilderBase<TSelf> where TSelf : CGameO
     public string? TriggerShape
     {
         get => state.Get<string?>("TriggerShape");
-        set => SetTriggerShape(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetTriggerShapeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTriggerShape(string? value)
     {
@@ -185,7 +145,7 @@ public abstract class CGameObjectPhyModelBuilderBase<TSelf> where TSelf : CGameO
     public global::GBX.NET.Engines.Plug.CPlugSurface? TriggerShapeFid
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSurface?>("TriggerShapeFid");
-        set => SetTriggerShapeFid(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetTriggerShapeFidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTriggerShapeFid(global::GBX.NET.Engines.Plug.CPlugSurface? value)
     {
@@ -195,13 +155,13 @@ public abstract class CGameObjectPhyModelBuilderBase<TSelf> where TSelf : CGameO
     public TSelf WithTriggerShapeFidReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSurface> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetTriggerShapeFidReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetTriggerShapeFidReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugTriggerAction[]? Triggers
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugTriggerAction[]?>("Triggers");
-        set => SetTriggers(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetTriggersAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTriggers(params global::GBX.NET.Engines.Plug.CPlugTriggerAction[]? value)
     {
@@ -219,7 +179,7 @@ public abstract class CGameObjectPhyModelBuilderMembers1<TSelf> : CGameObjectPhy
     public string? ActionModel
     {
         get => state.Get<string?>("ActionModel");
-        set => SetActionModel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetActionModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithActionModel(string? value)
     {
@@ -229,7 +189,7 @@ public abstract class CGameObjectPhyModelBuilderMembers1<TSelf> : CGameObjectPhy
     public int Armor
     {
         get => state.Get<int>("Armor");
-        set => SetArmor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetArmorAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithArmor(int value)
     {
@@ -239,7 +199,7 @@ public abstract class CGameObjectPhyModelBuilderMembers1<TSelf> : CGameObjectPhy
     public bool CanStopEnemy
     {
         get => state.Get<bool>("CanStopEnemy");
-        set => SetCanStopEnemy(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetCanStopEnemyAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithCanStopEnemy(bool value)
     {
@@ -249,7 +209,7 @@ public abstract class CGameObjectPhyModelBuilderMembers1<TSelf> : CGameObjectPhy
     public bool CanStopEnemyBullet
     {
         get => state.Get<bool>("CanStopEnemyBullet");
-        set => SetCanStopEnemyBullet(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetCanStopEnemyBulletAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithCanStopEnemyBullet(bool value)
     {
@@ -259,7 +219,7 @@ public abstract class CGameObjectPhyModelBuilderMembers1<TSelf> : CGameObjectPhy
     public global::GBX.NET.Engines.Plug.CPlugDynaModel? DynaModel
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugDynaModel?>("DynaModel");
-        set => SetDynaModel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetDynaModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithDynaModel(global::GBX.NET.Engines.Plug.CPlugDynaModel? value)
     {
@@ -269,7 +229,7 @@ public abstract class CGameObjectPhyModelBuilderMembers1<TSelf> : CGameObjectPhy
     public bool HasALifeTime
     {
         get => state.Get<bool>("HasALifeTime");
-        set => SetHasALifeTime(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetHasALifeTimeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithHasALifeTime(bool value)
     {
@@ -279,7 +239,7 @@ public abstract class CGameObjectPhyModelBuilderMembers1<TSelf> : CGameObjectPhy
     public int HealArmorGainPerSecond
     {
         get => state.Get<int>("HealArmorGainPerSecond");
-        set => SetHealArmorGainPerSecond(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetHealArmorGainPerSecondAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithHealArmorGainPerSecond(int value)
     {
@@ -289,7 +249,7 @@ public abstract class CGameObjectPhyModelBuilderMembers1<TSelf> : CGameObjectPhy
     public bool HealEnabled
     {
         get => state.Get<bool>("HealEnabled");
-        set => SetHealEnabled(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetHealEnabledAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithHealEnabled(bool value)
     {
@@ -299,7 +259,7 @@ public abstract class CGameObjectPhyModelBuilderMembers1<TSelf> : CGameObjectPhy
     public int LifeTimeDuration
     {
         get => state.Get<int>("LifeTimeDuration");
-        set => SetLifeTimeDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetLifeTimeDurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLifeTimeDuration(int value)
     {
@@ -309,7 +269,7 @@ public abstract class CGameObjectPhyModelBuilderMembers1<TSelf> : CGameObjectPhy
     public global::GBX.NET.Engines.GameData.CGameObjectPhyModel.EPersistence? Persistence
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameObjectPhyModel.EPersistence?>("Persistence");
-        set => SetPersistence(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetPersistenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithPersistence(global::GBX.NET.Engines.GameData.CGameObjectPhyModel.EPersistence? value)
     {
@@ -319,7 +279,7 @@ public abstract class CGameObjectPhyModelBuilderMembers1<TSelf> : CGameObjectPhy
     public float ScaleCoefMax
     {
         get => state.Get<float>("ScaleCoefMax");
-        set => SetScaleCoefMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetScaleCoefMaxAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithScaleCoefMax(float value)
     {
@@ -329,7 +289,7 @@ public abstract class CGameObjectPhyModelBuilderMembers1<TSelf> : CGameObjectPhy
     public int ShieldDomeArmor
     {
         get => state.Get<int>("ShieldDomeArmor");
-        set => SetShieldDomeArmor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetShieldDomeArmorAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithShieldDomeArmor(int value)
     {
@@ -339,7 +299,7 @@ public abstract class CGameObjectPhyModelBuilderMembers1<TSelf> : CGameObjectPhy
     public bool ShieldEnabled
     {
         get => state.Get<bool>("ShieldEnabled");
-        set => SetShieldEnabled(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetShieldEnabledAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithShieldEnabled(bool value)
     {
@@ -349,7 +309,7 @@ public abstract class CGameObjectPhyModelBuilderMembers1<TSelf> : CGameObjectPhy
     public global::GBX.NET.Engines.MwFoundations.CMwNod? SpecialProperties
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("SpecialProperties");
-        set => SetSpecialProperties(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetSpecialPropertiesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithSpecialProperties(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
@@ -359,13 +319,13 @@ public abstract class CGameObjectPhyModelBuilderMembers1<TSelf> : CGameObjectPhy
     public TSelf WithSpecialPropertiesReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSpecialPropertiesReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetSpecialPropertiesReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public float StaminaSpawnCoef
     {
         get => state.Get<float>("StaminaSpawnCoef");
-        set => SetStaminaSpawnCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetStaminaSpawnCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithStaminaSpawnCoef(float value)
     {
@@ -375,7 +335,7 @@ public abstract class CGameObjectPhyModelBuilderMembers1<TSelf> : CGameObjectPhy
     public float ThrowAngularSpeed
     {
         get => state.Get<float>("ThrowAngularSpeed");
-        set => SetThrowAngularSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetThrowAngularSpeedAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithThrowAngularSpeed(float value)
     {
@@ -385,7 +345,7 @@ public abstract class CGameObjectPhyModelBuilderMembers1<TSelf> : CGameObjectPhy
     public float ThrowSpeed
     {
         get => state.Get<float>("ThrowSpeed");
-        set => SetThrowSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetThrowSpeedAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithThrowSpeed(float value)
     {
@@ -395,7 +355,7 @@ public abstract class CGameObjectPhyModelBuilderMembers1<TSelf> : CGameObjectPhy
     public int TimeBeforeDome
     {
         get => state.Get<int>("TimeBeforeDome");
-        set => SetTimeBeforeDome(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetTimeBeforeDomeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithTimeBeforeDome(int value)
     {
@@ -563,7 +523,7 @@ public partial class CGameObjectPhyModelBuilder : CGameObjectPhyModelBuilderBase
         public bool BumperEnabled
         {
             get => state.Get<bool>("BumperEnabled");
-            set => SetBumperEnabled(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetBumperEnabledAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithBumperEnabled(bool value)
         {
@@ -577,7 +537,7 @@ public partial class CGameObjectPhyModelBuilder : CGameObjectPhyModelBuilderBase
         public bool MagnetEnabled
         {
             get => state.Get<bool>("MagnetEnabled");
-            set => SetMagnetEnabled(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetMagnetEnabledAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithMagnetEnabled(bool value)
         {
@@ -591,7 +551,7 @@ public partial class CGameObjectPhyModelBuilder : CGameObjectPhyModelBuilderBase
         public float StaminaThrowCost
         {
             get => state.Get<float>("StaminaThrowCost");
-            set => SetStaminaThrowCost(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetStaminaThrowCostAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithStaminaThrowCost(float value)
         {
@@ -601,7 +561,7 @@ public partial class CGameObjectPhyModelBuilder : CGameObjectPhyModelBuilderBase
         public int ThrowableCooldownBetweenTakeAndThrow
         {
             get => state.Get<int>("ThrowableCooldownBetweenTakeAndThrow");
-            set => SetThrowableCooldownBetweenTakeAndThrow(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetThrowableCooldownBetweenTakeAndThrowAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithThrowableCooldownBetweenTakeAndThrow(int value)
         {
@@ -611,7 +571,7 @@ public partial class CGameObjectPhyModelBuilder : CGameObjectPhyModelBuilderBase
         public float ThrowableDamageCoef
         {
             get => state.Get<float>("ThrowableDamageCoef");
-            set => SetThrowableDamageCoef(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetThrowableDamageCoefAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithThrowableDamageCoef(float value)
         {
@@ -621,7 +581,7 @@ public partial class CGameObjectPhyModelBuilder : CGameObjectPhyModelBuilderBase
         public bool ThrowableEnabled
         {
             get => state.Get<bool>("ThrowableEnabled");
-            set => SetThrowableEnabled(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetThrowableEnabledAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithThrowableEnabled(bool value)
         {
@@ -631,7 +591,7 @@ public partial class CGameObjectPhyModelBuilder : CGameObjectPhyModelBuilderBase
         public int ThrowableStunnedDuration
         {
             get => state.Get<int>("ThrowableStunnedDuration");
-            set => SetThrowableStunnedDuration(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetThrowableStunnedDurationAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithThrowableStunnedDuration(int value)
         {

@@ -36,80 +36,10 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state;
     private protected CPlugVehicleCameraRace2ModelBuilderBase() => state = new();
     private protected CPlugVehicleCameraRace2ModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state) => this.state = state;
-    private protected static void SetDefaultFov(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetDefaultFovAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDeltaDistDamperKa(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetDeltaDistDamperKaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDeltaDistDamperKi(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetDeltaDistDamperKiAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDeltaLookAtFactorDamperKa(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetDeltaLookAtFactorDamperKaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDeltaLookAtFactorDamperKi(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetDeltaLookAtFactorDamperKiAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetEventBurningDistDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventBurningDistDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetEventBurningDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventBurningDistTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetEventBurningDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventBurningDistTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetEventBurningLookAtFactorDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventBurningLookAtFactorDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetEventBurningLookAtFactorTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventBurningLookAtFactorTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetEventBurningLookAtFactorTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventBurningLookAtFactorTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetEventChangeGearDistDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventChangeGearDistDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetEventChangeGearDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventChangeGearDistTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetEventChangeGearDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventChangeGearDistTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetEventTurboDistDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventTurboDistDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetEventTurboDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventTurboDistTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetEventTurboDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventTurboDistTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetEventTurboFovDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventTurboFovDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetEventTurboFovTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventTurboFovTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetEventTurboFovTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventTurboFovTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetInputBrakeDistDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputBrakeDistDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetInputBrakeDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputBrakeDistTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetInputBrakeDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputBrakeDistTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetInputGasDistDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputGasDistDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetInputGasDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputGasDistTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetInputGasDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputGasDistTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetInputLeftSteerRollDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputLeftSteerRollDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetInputLeftSteerRollTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputLeftSteerRollTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetInputLeftSteerRollTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputLeftSteerRollTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetInputLeftSteerYawDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputLeftSteerYawDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetInputLeftSteerYawTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputLeftSteerYawTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetInputLeftSteerYawTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputLeftSteerYawTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetInputNoSteerDurationBeforeReset(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputNoSteerDurationBeforeResetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetInputRightSteerRollDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputRightSteerRollDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetInputRightSteerRollTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputRightSteerRollTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetInputRightSteerRollTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputRightSteerRollTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetInputRightSteerYawDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputRightSteerYawDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetInputRightSteerYawTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputRightSteerYawTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetInputRightSteerYawTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputRightSteerYawTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetInputSteerDistDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputSteerDistDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetInputSteerDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputSteerDistTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetInputSteerDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputSteerDistTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetInputSteerDurationBeforeAnticipatingTurnTriggered(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputSteerDurationBeforeAnticipatingTurnTriggeredAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetInputSteerDurationBeforeBurnoutShowView(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputSteerDurationBeforeBurnoutShowViewAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetInputSteerDurationBeforeRollTriggered(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputSteerDurationBeforeRollTriggeredAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetIsRollFromInput(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetIsRollFromInputAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetLookAtFactor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetLookAtFactorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetLookAtFactorFromUpSpeedRatio(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetLookAtFactorFromUpSpeedRatioAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMaxDeltaFovStep(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetMaxDeltaFovStepAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMaxDeltaPlaneDistStep(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetMaxDeltaPlaneDistStepAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMaxDist(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetMaxDistAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMinDist(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetMinDistAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMinSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetMinSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetPlaneDist(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetPlaneDistAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetRollFromSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetRollFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetShake(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, global::GBX.NET.Engines.Plug.CPlugCamShakeModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCamControlModelBuilderAssignments.GetShakeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetShakeReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugCamShakeModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCamControlModelBuilderAssignments.GetShakeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetStateFlyingDistDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetStateFlyingDistDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetStateFlyingDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetStateFlyingDistTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetStateFlyingDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetStateFlyingDistTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetStateFlyingDurationBeforeCameraMove(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetStateFlyingDurationBeforeCameraMoveAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetStateFlyingDurationBeforeFlyingMode(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetStateFlyingDurationBeforeFlyingModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetStateFlyingLookAtFactorDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetStateFlyingLookAtFactorDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetStateFlyingLookAtFactorTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetStateFlyingLookAtFactorTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetStateFlyingLookAtFactorTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetStateFlyingLookAtFactorTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetStateFlyingLookAtStep(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetStateFlyingLookAtStepAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetStateFlyingPlaneDistDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetStateFlyingPlaneDistDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetStateFlyingPlaneDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetStateFlyingPlaneDistTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetStateFlyingPlaneDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetStateFlyingPlaneDistTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetYawFromSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetYawFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public float DefaultFov
     {
         get => state.Get<float>("DefaultFov");
-        set => SetDefaultFov(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetDefaultFovAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDefaultFov(float value)
     {
@@ -119,7 +49,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public float DeltaDistDamperKa
     {
         get => state.Get<float>("DeltaDistDamperKa");
-        set => SetDeltaDistDamperKa(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetDeltaDistDamperKaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDeltaDistDamperKa(float value)
     {
@@ -129,7 +59,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public float DeltaDistDamperKi
     {
         get => state.Get<float>("DeltaDistDamperKi");
-        set => SetDeltaDistDamperKi(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetDeltaDistDamperKiAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDeltaDistDamperKi(float value)
     {
@@ -139,7 +69,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public float DeltaLookAtFactorDamperKa
     {
         get => state.Get<float>("DeltaLookAtFactorDamperKa");
-        set => SetDeltaLookAtFactorDamperKa(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetDeltaLookAtFactorDamperKaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDeltaLookAtFactorDamperKa(float value)
     {
@@ -149,7 +79,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public float DeltaLookAtFactorDamperKi
     {
         get => state.Get<float>("DeltaLookAtFactorDamperKi");
-        set => SetDeltaLookAtFactorDamperKi(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetDeltaLookAtFactorDamperKiAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDeltaLookAtFactorDamperKi(float value)
     {
@@ -159,7 +89,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public float EventBurningDistDelta
     {
         get => state.Get<float>("EventBurningDistDelta");
-        set => SetEventBurningDistDelta(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventBurningDistDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEventBurningDistDelta(float value)
     {
@@ -169,7 +99,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public int EventBurningDistTimeDown
     {
         get => state.Get<int>("EventBurningDistTimeDown");
-        set => SetEventBurningDistTimeDown(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventBurningDistTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEventBurningDistTimeDown(int value)
     {
@@ -179,7 +109,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public int EventBurningDistTimeUp
     {
         get => state.Get<int>("EventBurningDistTimeUp");
-        set => SetEventBurningDistTimeUp(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventBurningDistTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEventBurningDistTimeUp(int value)
     {
@@ -189,7 +119,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public float EventBurningLookAtFactorDelta
     {
         get => state.Get<float>("EventBurningLookAtFactorDelta");
-        set => SetEventBurningLookAtFactorDelta(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventBurningLookAtFactorDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEventBurningLookAtFactorDelta(float value)
     {
@@ -199,7 +129,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public int EventBurningLookAtFactorTimeDown
     {
         get => state.Get<int>("EventBurningLookAtFactorTimeDown");
-        set => SetEventBurningLookAtFactorTimeDown(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventBurningLookAtFactorTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEventBurningLookAtFactorTimeDown(int value)
     {
@@ -209,7 +139,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public int EventBurningLookAtFactorTimeUp
     {
         get => state.Get<int>("EventBurningLookAtFactorTimeUp");
-        set => SetEventBurningLookAtFactorTimeUp(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventBurningLookAtFactorTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEventBurningLookAtFactorTimeUp(int value)
     {
@@ -219,7 +149,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public float EventChangeGearDistDelta
     {
         get => state.Get<float>("EventChangeGearDistDelta");
-        set => SetEventChangeGearDistDelta(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventChangeGearDistDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEventChangeGearDistDelta(float value)
     {
@@ -229,7 +159,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public int EventChangeGearDistTimeDown
     {
         get => state.Get<int>("EventChangeGearDistTimeDown");
-        set => SetEventChangeGearDistTimeDown(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventChangeGearDistTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEventChangeGearDistTimeDown(int value)
     {
@@ -239,7 +169,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public int EventChangeGearDistTimeUp
     {
         get => state.Get<int>("EventChangeGearDistTimeUp");
-        set => SetEventChangeGearDistTimeUp(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventChangeGearDistTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEventChangeGearDistTimeUp(int value)
     {
@@ -249,7 +179,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public float EventTurboDistDelta
     {
         get => state.Get<float>("EventTurboDistDelta");
-        set => SetEventTurboDistDelta(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventTurboDistDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEventTurboDistDelta(float value)
     {
@@ -259,7 +189,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public int EventTurboDistTimeDown
     {
         get => state.Get<int>("EventTurboDistTimeDown");
-        set => SetEventTurboDistTimeDown(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventTurboDistTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEventTurboDistTimeDown(int value)
     {
@@ -269,7 +199,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public int EventTurboDistTimeUp
     {
         get => state.Get<int>("EventTurboDistTimeUp");
-        set => SetEventTurboDistTimeUp(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventTurboDistTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEventTurboDistTimeUp(int value)
     {
@@ -279,7 +209,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public float EventTurboFovDelta
     {
         get => state.Get<float>("EventTurboFovDelta");
-        set => SetEventTurboFovDelta(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventTurboFovDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEventTurboFovDelta(float value)
     {
@@ -289,7 +219,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public int EventTurboFovTimeDown
     {
         get => state.Get<int>("EventTurboFovTimeDown");
-        set => SetEventTurboFovTimeDown(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventTurboFovTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEventTurboFovTimeDown(int value)
     {
@@ -299,7 +229,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public int EventTurboFovTimeUp
     {
         get => state.Get<int>("EventTurboFovTimeUp");
-        set => SetEventTurboFovTimeUp(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventTurboFovTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEventTurboFovTimeUp(int value)
     {
@@ -309,7 +239,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public float InputBrakeDistDelta
     {
         get => state.Get<float>("InputBrakeDistDelta");
-        set => SetInputBrakeDistDelta(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputBrakeDistDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputBrakeDistDelta(float value)
     {
@@ -319,7 +249,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public int InputBrakeDistTimeDown
     {
         get => state.Get<int>("InputBrakeDistTimeDown");
-        set => SetInputBrakeDistTimeDown(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputBrakeDistTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputBrakeDistTimeDown(int value)
     {
@@ -329,7 +259,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public int InputBrakeDistTimeUp
     {
         get => state.Get<int>("InputBrakeDistTimeUp");
-        set => SetInputBrakeDistTimeUp(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputBrakeDistTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputBrakeDistTimeUp(int value)
     {
@@ -339,7 +269,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public float InputGasDistDelta
     {
         get => state.Get<float>("InputGasDistDelta");
-        set => SetInputGasDistDelta(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputGasDistDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputGasDistDelta(float value)
     {
@@ -349,7 +279,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public int InputGasDistTimeDown
     {
         get => state.Get<int>("InputGasDistTimeDown");
-        set => SetInputGasDistTimeDown(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputGasDistTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputGasDistTimeDown(int value)
     {
@@ -359,7 +289,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public int InputGasDistTimeUp
     {
         get => state.Get<int>("InputGasDistTimeUp");
-        set => SetInputGasDistTimeUp(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputGasDistTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputGasDistTimeUp(int value)
     {
@@ -369,7 +299,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public float InputLeftSteerRollDelta
     {
         get => state.Get<float>("InputLeftSteerRollDelta");
-        set => SetInputLeftSteerRollDelta(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputLeftSteerRollDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputLeftSteerRollDelta(float value)
     {
@@ -379,7 +309,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public int InputLeftSteerRollTimeDown
     {
         get => state.Get<int>("InputLeftSteerRollTimeDown");
-        set => SetInputLeftSteerRollTimeDown(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputLeftSteerRollTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputLeftSteerRollTimeDown(int value)
     {
@@ -389,7 +319,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public int InputLeftSteerRollTimeUp
     {
         get => state.Get<int>("InputLeftSteerRollTimeUp");
-        set => SetInputLeftSteerRollTimeUp(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputLeftSteerRollTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputLeftSteerRollTimeUp(int value)
     {
@@ -399,7 +329,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public float InputLeftSteerYawDelta
     {
         get => state.Get<float>("InputLeftSteerYawDelta");
-        set => SetInputLeftSteerYawDelta(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputLeftSteerYawDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputLeftSteerYawDelta(float value)
     {
@@ -409,7 +339,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public int InputLeftSteerYawTimeDown
     {
         get => state.Get<int>("InputLeftSteerYawTimeDown");
-        set => SetInputLeftSteerYawTimeDown(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputLeftSteerYawTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputLeftSteerYawTimeDown(int value)
     {
@@ -419,7 +349,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public int InputLeftSteerYawTimeUp
     {
         get => state.Get<int>("InputLeftSteerYawTimeUp");
-        set => SetInputLeftSteerYawTimeUp(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputLeftSteerYawTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputLeftSteerYawTimeUp(int value)
     {
@@ -429,7 +359,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public int InputNoSteerDurationBeforeReset
     {
         get => state.Get<int>("InputNoSteerDurationBeforeReset");
-        set => SetInputNoSteerDurationBeforeReset(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputNoSteerDurationBeforeResetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputNoSteerDurationBeforeReset(int value)
     {
@@ -439,7 +369,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public float InputRightSteerRollDelta
     {
         get => state.Get<float>("InputRightSteerRollDelta");
-        set => SetInputRightSteerRollDelta(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputRightSteerRollDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputRightSteerRollDelta(float value)
     {
@@ -449,7 +379,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public int InputRightSteerRollTimeDown
     {
         get => state.Get<int>("InputRightSteerRollTimeDown");
-        set => SetInputRightSteerRollTimeDown(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputRightSteerRollTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputRightSteerRollTimeDown(int value)
     {
@@ -459,7 +389,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public int InputRightSteerRollTimeUp
     {
         get => state.Get<int>("InputRightSteerRollTimeUp");
-        set => SetInputRightSteerRollTimeUp(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputRightSteerRollTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputRightSteerRollTimeUp(int value)
     {
@@ -469,7 +399,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public float InputRightSteerYawDelta
     {
         get => state.Get<float>("InputRightSteerYawDelta");
-        set => SetInputRightSteerYawDelta(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputRightSteerYawDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputRightSteerYawDelta(float value)
     {
@@ -479,7 +409,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public int InputRightSteerYawTimeDown
     {
         get => state.Get<int>("InputRightSteerYawTimeDown");
-        set => SetInputRightSteerYawTimeDown(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputRightSteerYawTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputRightSteerYawTimeDown(int value)
     {
@@ -489,7 +419,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public int InputRightSteerYawTimeUp
     {
         get => state.Get<int>("InputRightSteerYawTimeUp");
-        set => SetInputRightSteerYawTimeUp(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputRightSteerYawTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputRightSteerYawTimeUp(int value)
     {
@@ -499,7 +429,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public float InputSteerDistDelta
     {
         get => state.Get<float>("InputSteerDistDelta");
-        set => SetInputSteerDistDelta(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputSteerDistDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputSteerDistDelta(float value)
     {
@@ -509,7 +439,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public int InputSteerDistTimeDown
     {
         get => state.Get<int>("InputSteerDistTimeDown");
-        set => SetInputSteerDistTimeDown(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputSteerDistTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputSteerDistTimeDown(int value)
     {
@@ -519,7 +449,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public int InputSteerDistTimeUp
     {
         get => state.Get<int>("InputSteerDistTimeUp");
-        set => SetInputSteerDistTimeUp(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputSteerDistTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputSteerDistTimeUp(int value)
     {
@@ -529,7 +459,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public int InputSteerDurationBeforeAnticipatingTurnTriggered
     {
         get => state.Get<int>("InputSteerDurationBeforeAnticipatingTurnTriggered");
-        set => SetInputSteerDurationBeforeAnticipatingTurnTriggered(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputSteerDurationBeforeAnticipatingTurnTriggeredAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputSteerDurationBeforeAnticipatingTurnTriggered(int value)
     {
@@ -539,7 +469,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public int InputSteerDurationBeforeBurnoutShowView
     {
         get => state.Get<int>("InputSteerDurationBeforeBurnoutShowView");
-        set => SetInputSteerDurationBeforeBurnoutShowView(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputSteerDurationBeforeBurnoutShowViewAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputSteerDurationBeforeBurnoutShowView(int value)
     {
@@ -549,7 +479,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public int InputSteerDurationBeforeRollTriggered
     {
         get => state.Get<int>("InputSteerDurationBeforeRollTriggered");
-        set => SetInputSteerDurationBeforeRollTriggered(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputSteerDurationBeforeRollTriggeredAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputSteerDurationBeforeRollTriggered(int value)
     {
@@ -559,7 +489,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public bool IsRollFromInput
     {
         get => state.Get<bool>("IsRollFromInput");
-        set => SetIsRollFromInput(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetIsRollFromInputAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIsRollFromInput(bool value)
     {
@@ -569,7 +499,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public float LookAtFactor
     {
         get => state.Get<float>("LookAtFactor");
-        set => SetLookAtFactor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetLookAtFactorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLookAtFactor(float value)
     {
@@ -579,7 +509,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public PlugCurve? LookAtFactorFromUpSpeedRatio
     {
         get => state.Get<PlugCurve?>("LookAtFactorFromUpSpeedRatio");
-        set => SetLookAtFactorFromUpSpeedRatio(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetLookAtFactorFromUpSpeedRatioAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLookAtFactorFromUpSpeedRatio(PlugCurve? value)
     {
@@ -589,7 +519,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public float MaxDeltaFovStep
     {
         get => state.Get<float>("MaxDeltaFovStep");
-        set => SetMaxDeltaFovStep(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetMaxDeltaFovStepAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaxDeltaFovStep(float value)
     {
@@ -599,7 +529,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public float MaxDeltaPlaneDistStep
     {
         get => state.Get<float>("MaxDeltaPlaneDistStep");
-        set => SetMaxDeltaPlaneDistStep(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetMaxDeltaPlaneDistStepAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaxDeltaPlaneDistStep(float value)
     {
@@ -609,7 +539,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public float MaxDist
     {
         get => state.Get<float>("MaxDist");
-        set => SetMaxDist(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetMaxDistAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaxDist(float value)
     {
@@ -619,7 +549,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public float MinDist
     {
         get => state.Get<float>("MinDist");
-        set => SetMinDist(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetMinDistAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMinDist(float value)
     {
@@ -629,7 +559,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public float MinSpeed
     {
         get => state.Get<float>("MinSpeed");
-        set => SetMinSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetMinSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMinSpeed(float value)
     {
@@ -639,7 +569,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public float PlaneDist
     {
         get => state.Get<float>("PlaneDist");
-        set => SetPlaneDist(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetPlaneDistAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithPlaneDist(float value)
     {
@@ -649,7 +579,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public PlugCurve? RollFromSpeed
     {
         get => state.Get<PlugCurve?>("RollFromSpeed");
-        set => SetRollFromSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetRollFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRollFromSpeed(PlugCurve? value)
     {
@@ -659,7 +589,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public float StateFlyingDistDelta
     {
         get => state.Get<float>("StateFlyingDistDelta");
-        set => SetStateFlyingDistDelta(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetStateFlyingDistDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStateFlyingDistDelta(float value)
     {
@@ -669,7 +599,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public int StateFlyingDistTimeDown
     {
         get => state.Get<int>("StateFlyingDistTimeDown");
-        set => SetStateFlyingDistTimeDown(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetStateFlyingDistTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStateFlyingDistTimeDown(int value)
     {
@@ -679,7 +609,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public int StateFlyingDistTimeUp
     {
         get => state.Get<int>("StateFlyingDistTimeUp");
-        set => SetStateFlyingDistTimeUp(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetStateFlyingDistTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStateFlyingDistTimeUp(int value)
     {
@@ -689,7 +619,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public int StateFlyingDurationBeforeCameraMove
     {
         get => state.Get<int>("StateFlyingDurationBeforeCameraMove");
-        set => SetStateFlyingDurationBeforeCameraMove(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetStateFlyingDurationBeforeCameraMoveAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStateFlyingDurationBeforeCameraMove(int value)
     {
@@ -699,7 +629,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public int StateFlyingDurationBeforeFlyingMode
     {
         get => state.Get<int>("StateFlyingDurationBeforeFlyingMode");
-        set => SetStateFlyingDurationBeforeFlyingMode(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetStateFlyingDurationBeforeFlyingModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStateFlyingDurationBeforeFlyingMode(int value)
     {
@@ -709,7 +639,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public float StateFlyingLookAtFactorDelta
     {
         get => state.Get<float>("StateFlyingLookAtFactorDelta");
-        set => SetStateFlyingLookAtFactorDelta(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetStateFlyingLookAtFactorDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStateFlyingLookAtFactorDelta(float value)
     {
@@ -719,7 +649,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public int StateFlyingLookAtFactorTimeDown
     {
         get => state.Get<int>("StateFlyingLookAtFactorTimeDown");
-        set => SetStateFlyingLookAtFactorTimeDown(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetStateFlyingLookAtFactorTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStateFlyingLookAtFactorTimeDown(int value)
     {
@@ -729,7 +659,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public int StateFlyingLookAtFactorTimeUp
     {
         get => state.Get<int>("StateFlyingLookAtFactorTimeUp");
-        set => SetStateFlyingLookAtFactorTimeUp(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetStateFlyingLookAtFactorTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStateFlyingLookAtFactorTimeUp(int value)
     {
@@ -739,7 +669,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public float StateFlyingLookAtStep
     {
         get => state.Get<float>("StateFlyingLookAtStep");
-        set => SetStateFlyingLookAtStep(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetStateFlyingLookAtStepAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStateFlyingLookAtStep(float value)
     {
@@ -749,7 +679,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public float StateFlyingPlaneDistDelta
     {
         get => state.Get<float>("StateFlyingPlaneDistDelta");
-        set => SetStateFlyingPlaneDistDelta(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetStateFlyingPlaneDistDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStateFlyingPlaneDistDelta(float value)
     {
@@ -759,7 +689,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public int StateFlyingPlaneDistTimeDown
     {
         get => state.Get<int>("StateFlyingPlaneDistTimeDown");
-        set => SetStateFlyingPlaneDistTimeDown(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetStateFlyingPlaneDistTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStateFlyingPlaneDistTimeDown(int value)
     {
@@ -769,7 +699,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public int StateFlyingPlaneDistTimeUp
     {
         get => state.Get<int>("StateFlyingPlaneDistTimeUp");
-        set => SetStateFlyingPlaneDistTimeUp(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetStateFlyingPlaneDistTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStateFlyingPlaneDistTimeUp(int value)
     {
@@ -779,7 +709,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     public PlugCurve? YawFromSpeed
     {
         get => state.Get<PlugCurve?>("YawFromSpeed");
-        set => SetYawFromSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetYawFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithYawFromSpeed(PlugCurve? value)
     {
@@ -793,7 +723,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderMembers1<TSelf> : CPlug
     public global::GBX.NET.Engines.Plug.CPlugCamShakeModel? Shake
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugCamShakeModel?>("Shake");
-        set => SetShake(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCamControlModelBuilderAssignments.GetShakeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithShake(global::GBX.NET.Engines.Plug.CPlugCamShakeModel? value)
     {
@@ -803,7 +733,7 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderMembers1<TSelf> : CPlug
     public TSelf WithShakeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugCamShakeModel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetShakeReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCamControlModelBuilderAssignments.GetShakeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }

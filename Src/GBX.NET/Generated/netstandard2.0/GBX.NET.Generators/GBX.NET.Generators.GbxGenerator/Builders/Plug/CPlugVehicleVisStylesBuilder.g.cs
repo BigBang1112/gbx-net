@@ -36,12 +36,10 @@ public abstract class CPlugVehicleVisStylesBuilderBase<TSelf> where TSelf : CPlu
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyles> state;
     private protected CPlugVehicleVisStylesBuilderBase() => state = new();
     private protected CPlugVehicleVisStylesBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyles> state) => this.state = state;
-    private protected static void SetRandomGroups(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyles> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisStylesBuilderAssignments.GetRandomGroupsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetUnwantedTrafficVehiclesMatchName(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyles> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisStylesBuilderAssignments.GetUnwantedTrafficVehiclesMatchNameAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup>? RandomGroups
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup>?>("RandomGroups");
-        set => SetRandomGroups(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisStylesBuilderAssignments.GetRandomGroupsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithRandomGroups(NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup>? value)
     {
@@ -59,7 +57,7 @@ public abstract class CPlugVehicleVisStylesBuilderBase<TSelf> where TSelf : CPlu
     public string? UnwantedTrafficVehiclesMatchName
     {
         get => state.Get<string?>("UnwantedTrafficVehiclesMatchName");
-        set => SetUnwantedTrafficVehiclesMatchName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisStylesBuilderAssignments.GetUnwantedTrafficVehiclesMatchNameAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithUnwantedTrafficVehiclesMatchName(string? value)
     {

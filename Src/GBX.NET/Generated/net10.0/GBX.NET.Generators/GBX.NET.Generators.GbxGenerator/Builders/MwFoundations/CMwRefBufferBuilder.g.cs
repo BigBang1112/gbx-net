@@ -36,10 +36,6 @@ public abstract class CMwRefBufferBuilderBase<TSelf> where TSelf : CMwRefBufferB
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> state;
     private protected CMwRefBufferBuilderBase() => state = new();
     private protected CMwRefBufferBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> state) => this.state = state;
-    private protected static void SetBufferId(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwRefBufferBuilderAssignments.GetBufferIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetNodClassId(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwRefBufferBuilderAssignments.GetNodClassIdAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetNods(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> state, NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwRefBufferBuilderAssignments.GetNodsAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetUseAddRefRelease(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwRefBufferBuilderAssignments.GetUseAddRefReleaseAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
 }
 public abstract class CMwRefBufferBuilderMembers1<TSelf> : CMwRefBufferBuilderBase<TSelf> where TSelf : CMwRefBufferBuilderMembers1<TSelf>
 {
@@ -47,7 +43,7 @@ public abstract class CMwRefBufferBuilderMembers1<TSelf> : CMwRefBufferBuilderBa
     public uint NodClassId
     {
         get => state.Get<uint>("NodClassId");
-        set => SetNodClassId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwRefBufferBuilderAssignments.GetNodClassIdAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithNodClassId(uint value)
     {
@@ -57,7 +53,7 @@ public abstract class CMwRefBufferBuilderMembers1<TSelf> : CMwRefBufferBuilderBa
     public NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? Nods
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>?>("Nods");
-        set => SetNods(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwRefBufferBuilderAssignments.GetNodsAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithNods(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value)
     {
@@ -75,7 +71,7 @@ public abstract class CMwRefBufferBuilderMembers1<TSelf> : CMwRefBufferBuilderBa
     public bool UseAddRefRelease
     {
         get => state.Get<bool>("UseAddRefRelease");
-        set => SetUseAddRefRelease(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwRefBufferBuilderAssignments.GetUseAddRefReleaseAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithUseAddRefRelease(bool value)
     {
@@ -250,7 +246,7 @@ public partial class CMwRefBufferBuilder : CMwRefBufferBuilderBase<CMwRefBufferB
         public string? BufferId
         {
             get => state.Get<string?>("BufferId");
-            set => SetBufferId(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwRefBufferBuilderAssignments.GetBufferIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public MP3 WithBufferId(string? value)
         {
@@ -278,7 +274,7 @@ public partial class CMwRefBufferBuilder : CMwRefBufferBuilderBase<CMwRefBufferB
         public string? BufferId
         {
             get => state.Get<string?>("BufferId");
-            set => SetBufferId(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwRefBufferBuilderAssignments.GetBufferIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public TMT WithBufferId(string? value)
         {
@@ -306,7 +302,7 @@ public partial class CMwRefBufferBuilder : CMwRefBufferBuilderBase<CMwRefBufferB
         public string? BufferId
         {
             get => state.Get<string?>("BufferId");
-            set => SetBufferId(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwRefBufferBuilderAssignments.GetBufferIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public MP4 WithBufferId(string? value)
         {
@@ -334,7 +330,7 @@ public partial class CMwRefBufferBuilder : CMwRefBufferBuilderBase<CMwRefBufferB
         public string? BufferId
         {
             get => state.Get<string?>("BufferId");
-            set => SetBufferId(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwRefBufferBuilderAssignments.GetBufferIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         }
         public TM2020 WithBufferId(string? value)
         {

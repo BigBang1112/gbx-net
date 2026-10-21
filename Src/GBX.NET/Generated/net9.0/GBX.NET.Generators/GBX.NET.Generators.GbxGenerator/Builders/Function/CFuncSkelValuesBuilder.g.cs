@@ -36,13 +36,10 @@ public abstract class CFuncSkelValuesBuilderBase<TSelf> where TSelf : CFuncSkelV
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Function.CFuncSkelValues> state;
     private protected CFuncSkelValuesBuilderBase() => state = new();
     private protected CFuncSkelValuesBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncSkelValues> state) => this.state = state;
-    private protected static void SetLocations(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncSkelValues> state, global::GBX.NET.Engines.Function.CFuncKeysSkel.Loc[]? value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncSkelValuesBuilderAssignments.GetLocationsAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSkel(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncSkelValues> state, global::GBX.NET.Engines.Function.CFuncSkel? value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncSkelValuesBuilderAssignments.GetSkelAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetSkelReference(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncSkelValues> state, NodeRef<global::GBX.NET.Engines.Function.CFuncSkel> value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncSkelValuesBuilderAssignments.GetSkelReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     public global::GBX.NET.Engines.Function.CFuncKeysSkel.Loc[]? Locations
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysSkel.Loc[]?>("Locations");
-        set => SetLocations(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncSkelValuesBuilderAssignments.GetLocationsAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithLocations(params global::GBX.NET.Engines.Function.CFuncKeysSkel.Loc[]? value)
     {
@@ -56,7 +53,7 @@ public abstract class CFuncSkelValuesBuilderBase<TSelf> where TSelf : CFuncSkelV
     public global::GBX.NET.Engines.Function.CFuncSkel? Skel
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncSkel?>("Skel");
-        set => SetSkel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncSkelValuesBuilderAssignments.GetSkelAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSkel(global::GBX.NET.Engines.Function.CFuncSkel? value)
     {
@@ -66,7 +63,7 @@ public abstract class CFuncSkelValuesBuilderBase<TSelf> where TSelf : CFuncSkelV
     public TSelf WithSkelReference(NodeRef<global::GBX.NET.Engines.Function.CFuncSkel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSkelReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncSkelValuesBuilderAssignments.GetSkelReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
 }

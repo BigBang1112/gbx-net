@@ -36,94 +36,10 @@ public abstract class CGamePlayerProfileBuilderBase<TSelf> where TSelf : CGamePl
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state;
     private protected CGamePlayerProfileBuilderBase() => state = new();
     private protected CGamePlayerProfileBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state) => this.state = state;
-    private protected static void SetAllowDownload(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetAllowDownloadAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetAskForAccountConversion(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetAskForAccountConversionAssignment(), value, GameVersion.TMF);
-    private protected static void SetAskOpponents(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetAskOpponentsAssignment(), value, GameVersion.TMF);
-    private protected static void SetAutoConnect(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetAutoConnectAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetAvatarName(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetAvatarNameAssignment(), value, GameVersion.TMF);
-    private protected static void SetBindingsConfig(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, global::GBX.NET.Engines.Input.CInputBindingsConfig? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetBindingsConfigAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetBindingsConfigReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, NodeRef<global::GBX.NET.Engines.Input.CInputBindingsConfig> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetBindingsConfigReferenceAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetBindingsForCompatConfig(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, global::GBX.NET.Engines.Input.CInputBindingsConfig? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetBindingsForCompatConfigAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetBindingsForCompatConfigReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, NodeRef<global::GBX.NET.Engines.Input.CInputBindingsConfig> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetBindingsForCompatConfigReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetBindingsForCompatVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetBindingsForCompatVersionAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetBuddies(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, global::GBX.NET.Engines.Game.CGameBuddy[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetBuddiesAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
-    private protected static void SetCampaignUnlocks(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, global::GBX.NET.Engines.Game.CGamePlayerProfile.CampaignUnlock[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetCampaignUnlocksAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetChallengeOpponents(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, global::GBX.NET.Engines.Game.CGamePlayerProfile.ChallengeOpponent[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetChallengeOpponentsAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetClickedOnShare(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetClickedOnShareAssignment(), value, GameVersion.TMF);
-    private protected static void SetCryptedPassword(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, Checksum128 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetCryptedPasswordAssignment(), value, GameVersion.TMF);
-    private protected static void SetCurrentSoloPlaylistName(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetCurrentSoloPlaylistNameAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
-    private protected static void SetCurrentSoloPlaylistPath(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetCurrentSoloPlaylistPathAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
-    private protected static void SetCustomCampaigns(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, NodeRefList<global::GBX.NET.Engines.Game.CGameCtnCampaign>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetCustomCampaignsAssignment(), value, GameVersion.TMF);
-    private protected static void SetDescription(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetDescriptionAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetDynamicLoadScreenIndex(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetDynamicLoadScreenIndexAssignment(), value, GameVersion.TMF);
-    private protected static void SetEnableAvatars(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetEnableAvatarsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetEnableCarSkinGeom(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetEnableCarSkinGeomAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetEnableChat(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetEnableChatAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetEnableUnlimitedHorns(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetEnableUnlimitedHornsAssignment(), value, GameVersion.TMF);
-    private protected static void SetEncryptedPassword(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, byte[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetEncryptedPasswordAssignment(), value, GameVersion.TMF);
-    private protected static void SetEncryptedPasswordLength(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetEncryptedPasswordLengthAssignment(), value, GameVersion.TMF);
-    private protected static void SetHasLeagueCache(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetHasLeagueCacheAssignment(), value, GameVersion.TMF);
-    private protected static void SetHornName(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetHornNameAssignment(), value, GameVersion.TMF);
-    private protected static void SetInboxMessages(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetInboxMessagesAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetIsShowPlayerGhost(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetIsShowPlayerGhostAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetLadderMode(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetLadderModeAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetLastUsedMSAddress(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetLastUsedMSAddressAssignment(), value, GameVersion.TMF);
-    private protected static void SetLastUsedMSPath(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetLastUsedMSPathAssignment(), value, GameVersion.TMF);
-    private protected static void SetLeagueCacheDuration(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetLeagueCacheDurationAssignment(), value, GameVersion.TMF);
-    private protected static void SetLeagueCacheUpdatedAt(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, DateTime? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetLeagueCacheUpdatedAtAssignment(), value, GameVersion.TMF);
-    private protected static void SetLeaguePath(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetLeaguePathAssignment(), value, GameVersion.TMF);
-    private protected static void SetLeagues(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, NodeRefList<global::GBX.NET.Engines.Game.CGameLeague>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetLeaguesAssignment(), value, GameVersion.TMF);
-    private protected static void SetLegacyOnlineValidationCode(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetLegacyOnlineValidationCodeAssignment(), value, GameVersion.VSK5);
-    private protected static void SetLockHigherDifficulties(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetLockHigherDifficultiesAssignment(), value, GameVersion.TMF);
-    private protected static void SetLoginValidated(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetLoginValidatedAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
-    private protected static void SetMaxPlayerCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, byte value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetMaxPlayerCountAssignment(), value, GameVersion.TMF | GameVersion.TMPU | GameVersion.VSK5);
-    private protected static void SetMaxSpectatorCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, byte value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetMaxSpectatorCountAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetMenuInternetView(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetMenuInternetViewAssignment(), value, GameVersion.TMF);
-    private protected static void SetMenuLeagueFilter(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetMenuLeagueFilterAssignment(), value, GameVersion.TMF);
-    private protected static void SetMultiLocalProfileHeaders(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, global::GBX.NET.Engines.Game.CGamePlayerProfile.MultiLocalProfileHeader[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetMultiLocalProfileHeadersAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetNetworkGameMode(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetNetworkGameModeAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetNickName(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetNickNameAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetOldProfileChunks(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, global::GBX.NET.Engines.Game.CGamePlayerProfileChunk[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetOldProfileChunksAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetOnlineLogin(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetOnlineLoginAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
-    private protected static void SetOnlinePassword(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetOnlinePasswordAssignment(), value, GameVersion.TMNESWC);
-    private protected static void SetOnlineRemainingNickNamesChangesCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, int? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetOnlineRemainingNickNamesChangesCountAssignment(), value, GameVersion.TMF);
-    private protected static void SetOnlineSupportKeyHexa(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetOnlineSupportKeyHexaAssignment(), value, GameVersion.TMF);
-    private protected static void SetOnlineValidationKeyHexa(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetOnlineValidationKeyHexaAssignment(), value, GameVersion.TMF);
-    private protected static void SetOutboxMessages(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetOutboxMessagesAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetPainterCustomColor1(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetPainterCustomColor1Assignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetPainterCustomColor2(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetPainterCustomColor2Assignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetPainterCustomColor3(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetPainterCustomColor3Assignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetPainterCustomColor4(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetPainterCustomColor4Assignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetPainterCustomColor5(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetPainterCustomColor5Assignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetPlayTime(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetPlayTimeAssignment(), value, GameVersion.TMF);
-    private protected static void SetPlayerTags(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, global::GBX.NET.Engines.Game.CGamePlayerProfile.PlayerTagConfig[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetPlayerTagsAssignment(), value, GameVersion.TMF);
-    private protected static void SetProfileChunks(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, global::GBX.NET.Engines.Game.CGamePlayerProfileChunk[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetProfileChunksAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetProfileId(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetProfileIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetProfileName(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetProfileNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetReadMessages(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetReadMessagesAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetReceiveNews(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetReceiveNewsAssignment(), value, GameVersion.TMF);
-    private protected static void SetReceivedMessagesAt(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, DateTime? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetReceivedMessagesAtAssignment(), value, GameVersion.TMF);
-    private protected static void SetRememberOnlinePassword(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetRememberOnlinePasswordAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
-    private protected static void SetRumbleIntensity(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetRumbleIntensityAssignment(), value, GameVersion.TMF);
-    private protected static void SetServerComment(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetServerCommentAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetServerName(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetServerNameAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetShootParams(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, global::GBX.NET.Engines.Game.CGameCtnMediaShootParams? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetShootParamsAssignment(), value, GameVersion.TMF);
-    private protected static void SetShootParamsReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetShootParamsReferenceAssignment(), value, GameVersion.TMF);
-    private protected static void SetShowAdvancedServerSettings(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetShowAdvancedServerSettingsAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetShowEditorHelp(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetShowEditorHelpAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetStereoscopyAdvancedScreenDist(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetStereoscopyAdvancedScreenDistAssignment(), value, GameVersion.TMF);
-    private protected static void SetStereoscopyAdvancedSeparation(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetStereoscopyAdvancedSeparationAssignment(), value, GameVersion.TMF);
-    private protected static void SetStereoscopyStrength01(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetStereoscopyStrength01Assignment(), value, GameVersion.TMF);
-    private protected static void SetTagDisplayList(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, int[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetTagDisplayListAssignment(), value, GameVersion.TMF);
-    private protected static void SetTrailColor(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetTrailColorAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetUnlockAllCheat(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetUnlockAllCheatAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetUpdatedAt(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, DateTime? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetUpdatedAtAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetVehicleNetQuality(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetVehicleNetQualityAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetVehicleProfiles(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state, global::GBX.NET.Engines.Game.CGamePlayerProfile.VehicleProfile[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetVehicleProfilesAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     public string? ProfileId
     {
         get => state.Get<string?>("ProfileId");
-        set => SetProfileId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetProfileIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithProfileId(string? value)
     {
@@ -133,7 +49,7 @@ public abstract class CGamePlayerProfileBuilderBase<TSelf> where TSelf : CGamePl
     public string? ProfileName
     {
         get => state.Get<string?>("ProfileName");
-        set => SetProfileName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetProfileNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithProfileName(string? value)
     {
@@ -147,7 +63,7 @@ public abstract class CGamePlayerProfileBuilderMembers1<TSelf> : CGamePlayerProf
     public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk[]? OldProfileChunks
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk[]?>("OldProfileChunks");
-        set => SetOldProfileChunks(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetOldProfileChunksAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithOldProfileChunks(params global::GBX.NET.Engines.Game.CGamePlayerProfileChunk[]? value)
     {
@@ -161,7 +77,7 @@ public abstract class CGamePlayerProfileBuilderMembers1<TSelf> : CGamePlayerProf
     public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk[]? ProfileChunks
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk[]?>("ProfileChunks");
-        set => SetProfileChunks(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetProfileChunksAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithProfileChunks(params global::GBX.NET.Engines.Game.CGamePlayerProfileChunk[]? value)
     {
@@ -179,7 +95,7 @@ public abstract class CGamePlayerProfileBuilderMembers2<TSelf> : CGamePlayerProf
     public global::GBX.NET.Engines.Input.CInputBindingsConfig? BindingsForCompatConfig
     {
         get => state.Get<global::GBX.NET.Engines.Input.CInputBindingsConfig?>("BindingsForCompatConfig");
-        set => SetBindingsForCompatConfig(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetBindingsForCompatConfigAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithBindingsForCompatConfig(global::GBX.NET.Engines.Input.CInputBindingsConfig? value)
     {
@@ -189,13 +105,13 @@ public abstract class CGamePlayerProfileBuilderMembers2<TSelf> : CGamePlayerProf
     public TSelf WithBindingsForCompatConfigReference(NodeRef<global::GBX.NET.Engines.Input.CInputBindingsConfig> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBindingsForCompatConfigReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetBindingsForCompatConfigReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public string? NickName
     {
         get => state.Get<string?>("NickName");
-        set => SetNickName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetNickNameAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithNickName(string? value)
     {
@@ -205,7 +121,7 @@ public abstract class CGamePlayerProfileBuilderMembers2<TSelf> : CGamePlayerProf
     public bool UnlockAllCheat
     {
         get => state.Get<bool>("UnlockAllCheat");
-        set => SetUnlockAllCheat(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetUnlockAllCheatAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithUnlockAllCheat(bool value)
     {
@@ -219,7 +135,7 @@ public abstract class CGamePlayerProfileBuilderMembers3<TSelf> : CGamePlayerProf
     public bool AllowDownload
     {
         get => state.Get<bool>("AllowDownload");
-        set => SetAllowDownload(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetAllowDownloadAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithAllowDownload(bool value)
     {
@@ -229,7 +145,7 @@ public abstract class CGamePlayerProfileBuilderMembers3<TSelf> : CGamePlayerProf
     public bool EnableAvatars
     {
         get => state.Get<bool>("EnableAvatars");
-        set => SetEnableAvatars(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetEnableAvatarsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithEnableAvatars(bool value)
     {
@@ -239,7 +155,7 @@ public abstract class CGamePlayerProfileBuilderMembers3<TSelf> : CGamePlayerProf
     public string? ServerName
     {
         get => state.Get<string?>("ServerName");
-        set => SetServerName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetServerNameAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithServerName(string? value)
     {
@@ -249,7 +165,7 @@ public abstract class CGamePlayerProfileBuilderMembers3<TSelf> : CGamePlayerProf
     public bool ShowEditorHelp
     {
         get => state.Get<bool>("ShowEditorHelp");
-        set => SetShowEditorHelp(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetShowEditorHelpAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithShowEditorHelp(bool value)
     {
@@ -263,7 +179,7 @@ public abstract class CGamePlayerProfileBuilderMembers4<TSelf> : CGamePlayerProf
     public int BindingsForCompatVersion
     {
         get => state.Get<int>("BindingsForCompatVersion");
-        set => SetBindingsForCompatVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetBindingsForCompatVersionAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithBindingsForCompatVersion(int value)
     {
@@ -273,7 +189,7 @@ public abstract class CGamePlayerProfileBuilderMembers4<TSelf> : CGamePlayerProf
     public string? Description
     {
         get => state.Get<string?>("Description");
-        set => SetDescription(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetDescriptionAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithDescription(string? value)
     {
@@ -283,7 +199,7 @@ public abstract class CGamePlayerProfileBuilderMembers4<TSelf> : CGamePlayerProf
     public bool EnableCarSkinGeom
     {
         get => state.Get<bool>("EnableCarSkinGeom");
-        set => SetEnableCarSkinGeom(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetEnableCarSkinGeomAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithEnableCarSkinGeom(bool value)
     {
@@ -293,7 +209,7 @@ public abstract class CGamePlayerProfileBuilderMembers4<TSelf> : CGamePlayerProf
     public Vec3 PainterCustomColor1
     {
         get => state.Get<Vec3>("PainterCustomColor1");
-        set => SetPainterCustomColor1(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetPainterCustomColor1Assignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithPainterCustomColor1(Vec3 value)
     {
@@ -303,7 +219,7 @@ public abstract class CGamePlayerProfileBuilderMembers4<TSelf> : CGamePlayerProf
     public Vec3 PainterCustomColor2
     {
         get => state.Get<Vec3>("PainterCustomColor2");
-        set => SetPainterCustomColor2(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetPainterCustomColor2Assignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithPainterCustomColor2(Vec3 value)
     {
@@ -313,7 +229,7 @@ public abstract class CGamePlayerProfileBuilderMembers4<TSelf> : CGamePlayerProf
     public Vec3 PainterCustomColor3
     {
         get => state.Get<Vec3>("PainterCustomColor3");
-        set => SetPainterCustomColor3(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetPainterCustomColor3Assignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithPainterCustomColor3(Vec3 value)
     {
@@ -323,7 +239,7 @@ public abstract class CGamePlayerProfileBuilderMembers4<TSelf> : CGamePlayerProf
     public Vec3 PainterCustomColor4
     {
         get => state.Get<Vec3>("PainterCustomColor4");
-        set => SetPainterCustomColor4(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetPainterCustomColor4Assignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithPainterCustomColor4(Vec3 value)
     {
@@ -333,7 +249,7 @@ public abstract class CGamePlayerProfileBuilderMembers4<TSelf> : CGamePlayerProf
     public Vec3 PainterCustomColor5
     {
         get => state.Get<Vec3>("PainterCustomColor5");
-        set => SetPainterCustomColor5(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetPainterCustomColor5Assignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithPainterCustomColor5(Vec3 value)
     {
@@ -343,7 +259,7 @@ public abstract class CGamePlayerProfileBuilderMembers4<TSelf> : CGamePlayerProf
     public Vec3 TrailColor
     {
         get => state.Get<Vec3>("TrailColor");
-        set => SetTrailColor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetTrailColorAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithTrailColor(Vec3 value)
     {
@@ -357,7 +273,7 @@ public abstract class CGamePlayerProfileBuilderMembers5<TSelf> : CGamePlayerProf
     public global::GBX.NET.Engines.Game.CGameBuddy[]? Buddies
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameBuddy[]?>("Buddies");
-        set => SetBuddies(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetBuddiesAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithBuddies(params global::GBX.NET.Engines.Game.CGameBuddy[]? value)
     {
@@ -371,7 +287,7 @@ public abstract class CGamePlayerProfileBuilderMembers5<TSelf> : CGamePlayerProf
     public string? CurrentSoloPlaylistName
     {
         get => state.Get<string?>("CurrentSoloPlaylistName");
-        set => SetCurrentSoloPlaylistName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetCurrentSoloPlaylistNameAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithCurrentSoloPlaylistName(string? value)
     {
@@ -381,7 +297,7 @@ public abstract class CGamePlayerProfileBuilderMembers5<TSelf> : CGamePlayerProf
     public string? CurrentSoloPlaylistPath
     {
         get => state.Get<string?>("CurrentSoloPlaylistPath");
-        set => SetCurrentSoloPlaylistPath(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetCurrentSoloPlaylistPathAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithCurrentSoloPlaylistPath(string? value)
     {
@@ -391,7 +307,7 @@ public abstract class CGamePlayerProfileBuilderMembers5<TSelf> : CGamePlayerProf
     public bool LoginValidated
     {
         get => state.Get<bool>("LoginValidated");
-        set => SetLoginValidated(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetLoginValidatedAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithLoginValidated(bool value)
     {
@@ -401,7 +317,7 @@ public abstract class CGamePlayerProfileBuilderMembers5<TSelf> : CGamePlayerProf
     public string? OnlineLogin
     {
         get => state.Get<string?>("OnlineLogin");
-        set => SetOnlineLogin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetOnlineLoginAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithOnlineLogin(string? value)
     {
@@ -411,7 +327,7 @@ public abstract class CGamePlayerProfileBuilderMembers5<TSelf> : CGamePlayerProf
     public bool RememberOnlinePassword
     {
         get => state.Get<bool>("RememberOnlinePassword");
-        set => SetRememberOnlinePassword(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetRememberOnlinePasswordAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithRememberOnlinePassword(bool value)
     {
@@ -425,7 +341,7 @@ public abstract class CGamePlayerProfileBuilderMembers6<TSelf> : CGamePlayerProf
     public bool AutoConnect
     {
         get => state.Get<bool>("AutoConnect");
-        set => SetAutoConnect(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetAutoConnectAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithAutoConnect(bool value)
     {
@@ -435,7 +351,7 @@ public abstract class CGamePlayerProfileBuilderMembers6<TSelf> : CGamePlayerProf
     public global::GBX.NET.Engines.Input.CInputBindingsConfig? BindingsConfig
     {
         get => state.Get<global::GBX.NET.Engines.Input.CInputBindingsConfig?>("BindingsConfig");
-        set => SetBindingsConfig(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetBindingsConfigAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithBindingsConfig(global::GBX.NET.Engines.Input.CInputBindingsConfig? value)
     {
@@ -445,13 +361,13 @@ public abstract class CGamePlayerProfileBuilderMembers6<TSelf> : CGamePlayerProf
     public TSelf WithBindingsConfigReference(NodeRef<global::GBX.NET.Engines.Input.CInputBindingsConfig> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBindingsConfigReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetBindingsConfigReferenceAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Game.CGamePlayerProfile.CampaignUnlock[]? CampaignUnlocks
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerProfile.CampaignUnlock[]?>("CampaignUnlocks");
-        set => SetCampaignUnlocks(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetCampaignUnlocksAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithCampaignUnlocks(params global::GBX.NET.Engines.Game.CGamePlayerProfile.CampaignUnlock[]? value)
     {
@@ -465,7 +381,7 @@ public abstract class CGamePlayerProfileBuilderMembers6<TSelf> : CGamePlayerProf
     public global::GBX.NET.Engines.Game.CGamePlayerProfile.ChallengeOpponent[]? ChallengeOpponents
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerProfile.ChallengeOpponent[]?>("ChallengeOpponents");
-        set => SetChallengeOpponents(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetChallengeOpponentsAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithChallengeOpponents(params global::GBX.NET.Engines.Game.CGamePlayerProfile.ChallengeOpponent[]? value)
     {
@@ -479,7 +395,7 @@ public abstract class CGamePlayerProfileBuilderMembers6<TSelf> : CGamePlayerProf
     public bool EnableChat
     {
         get => state.Get<bool>("EnableChat");
-        set => SetEnableChat(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetEnableChatAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithEnableChat(bool value)
     {
@@ -489,7 +405,7 @@ public abstract class CGamePlayerProfileBuilderMembers6<TSelf> : CGamePlayerProf
     public NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>? InboxMessages
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>?>("InboxMessages");
-        set => SetInboxMessages(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetInboxMessagesAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithInboxMessages(NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>? value)
     {
@@ -507,7 +423,7 @@ public abstract class CGamePlayerProfileBuilderMembers6<TSelf> : CGamePlayerProf
     public bool IsShowPlayerGhost
     {
         get => state.Get<bool>("IsShowPlayerGhost");
-        set => SetIsShowPlayerGhost(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetIsShowPlayerGhostAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithIsShowPlayerGhost(bool value)
     {
@@ -517,7 +433,7 @@ public abstract class CGamePlayerProfileBuilderMembers6<TSelf> : CGamePlayerProf
     public int LadderMode
     {
         get => state.Get<int>("LadderMode");
-        set => SetLadderMode(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetLadderModeAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithLadderMode(int value)
     {
@@ -527,7 +443,7 @@ public abstract class CGamePlayerProfileBuilderMembers6<TSelf> : CGamePlayerProf
     public byte MaxPlayerCount
     {
         get => state.Get<byte>("MaxPlayerCount");
-        set => SetMaxPlayerCount(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetMaxPlayerCountAssignment(), value, GameVersion.TMF | GameVersion.TMPU | GameVersion.VSK5);
     }
     public TSelf WithMaxPlayerCount(byte value)
     {
@@ -537,7 +453,7 @@ public abstract class CGamePlayerProfileBuilderMembers6<TSelf> : CGamePlayerProf
     public byte MaxSpectatorCount
     {
         get => state.Get<byte>("MaxSpectatorCount");
-        set => SetMaxSpectatorCount(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetMaxSpectatorCountAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithMaxSpectatorCount(byte value)
     {
@@ -547,7 +463,7 @@ public abstract class CGamePlayerProfileBuilderMembers6<TSelf> : CGamePlayerProf
     public global::GBX.NET.Engines.Game.CGamePlayerProfile.MultiLocalProfileHeader[]? MultiLocalProfileHeaders
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerProfile.MultiLocalProfileHeader[]?>("MultiLocalProfileHeaders");
-        set => SetMultiLocalProfileHeaders(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetMultiLocalProfileHeadersAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithMultiLocalProfileHeaders(params global::GBX.NET.Engines.Game.CGamePlayerProfile.MultiLocalProfileHeader[]? value)
     {
@@ -561,7 +477,7 @@ public abstract class CGamePlayerProfileBuilderMembers6<TSelf> : CGamePlayerProf
     public int NetworkGameMode
     {
         get => state.Get<int>("NetworkGameMode");
-        set => SetNetworkGameMode(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetNetworkGameModeAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithNetworkGameMode(int value)
     {
@@ -571,7 +487,7 @@ public abstract class CGamePlayerProfileBuilderMembers6<TSelf> : CGamePlayerProf
     public NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>? OutboxMessages
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>?>("OutboxMessages");
-        set => SetOutboxMessages(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetOutboxMessagesAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithOutboxMessages(NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>? value)
     {
@@ -589,7 +505,7 @@ public abstract class CGamePlayerProfileBuilderMembers6<TSelf> : CGamePlayerProf
     public NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>? ReadMessages
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>?>("ReadMessages");
-        set => SetReadMessages(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetReadMessagesAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithReadMessages(NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>? value)
     {
@@ -607,7 +523,7 @@ public abstract class CGamePlayerProfileBuilderMembers6<TSelf> : CGamePlayerProf
     public string? ServerComment
     {
         get => state.Get<string?>("ServerComment");
-        set => SetServerComment(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetServerCommentAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithServerComment(string? value)
     {
@@ -617,7 +533,7 @@ public abstract class CGamePlayerProfileBuilderMembers6<TSelf> : CGamePlayerProf
     public bool ShowAdvancedServerSettings
     {
         get => state.Get<bool>("ShowAdvancedServerSettings");
-        set => SetShowAdvancedServerSettings(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetShowAdvancedServerSettingsAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithShowAdvancedServerSettings(bool value)
     {
@@ -627,7 +543,7 @@ public abstract class CGamePlayerProfileBuilderMembers6<TSelf> : CGamePlayerProf
     public DateTime? UpdatedAt
     {
         get => state.Get<DateTime?>("UpdatedAt");
-        set => SetUpdatedAt(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetUpdatedAtAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithUpdatedAt(DateTime? value)
     {
@@ -637,7 +553,7 @@ public abstract class CGamePlayerProfileBuilderMembers6<TSelf> : CGamePlayerProf
     public int VehicleNetQuality
     {
         get => state.Get<int>("VehicleNetQuality");
-        set => SetVehicleNetQuality(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetVehicleNetQualityAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithVehicleNetQuality(int value)
     {
@@ -647,7 +563,7 @@ public abstract class CGamePlayerProfileBuilderMembers6<TSelf> : CGamePlayerProf
     public global::GBX.NET.Engines.Game.CGamePlayerProfile.VehicleProfile[]? VehicleProfiles
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerProfile.VehicleProfile[]?>("VehicleProfiles");
-        set => SetVehicleProfiles(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetVehicleProfilesAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithVehicleProfiles(params global::GBX.NET.Engines.Game.CGamePlayerProfile.VehicleProfile[]? value)
     {
@@ -1185,7 +1101,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public byte MaxPlayerCount
         {
             get => state.Get<byte>("MaxPlayerCount");
-            set => SetMaxPlayerCount(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetMaxPlayerCountAssignment(), value, GameVersion.TMF | GameVersion.TMPU | GameVersion.VSK5);
         }
         public TMPU WithMaxPlayerCount(byte value)
         {
@@ -1239,7 +1155,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public string? OnlinePassword
         {
             get => state.Get<string?>("OnlinePassword");
-            set => SetOnlinePassword(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetOnlinePasswordAssignment(), value, GameVersion.TMNESWC);
         }
         public TMNESWC WithOnlinePassword(string? value)
         {
@@ -1283,7 +1199,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public string? LegacyOnlineValidationCode
         {
             get => state.Get<string?>("LegacyOnlineValidationCode");
-            set => SetLegacyOnlineValidationCode(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetLegacyOnlineValidationCodeAssignment(), value, GameVersion.VSK5);
         }
         public VSK5 WithLegacyOnlineValidationCode(string? value)
         {
@@ -1327,7 +1243,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public bool AskForAccountConversion
         {
             get => state.Get<bool>("AskForAccountConversion");
-            set => SetAskForAccountConversion(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetAskForAccountConversionAssignment(), value, GameVersion.TMF);
         }
         public TMF WithAskForAccountConversion(bool value)
         {
@@ -1337,7 +1253,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public bool AskOpponents
         {
             get => state.Get<bool>("AskOpponents");
-            set => SetAskOpponents(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetAskOpponentsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithAskOpponents(bool value)
         {
@@ -1347,7 +1263,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public string? AvatarName
         {
             get => state.Get<string?>("AvatarName");
-            set => SetAvatarName(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetAvatarNameAssignment(), value, GameVersion.TMF);
         }
         public TMF WithAvatarName(string? value)
         {
@@ -1365,7 +1281,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public bool ClickedOnShare
         {
             get => state.Get<bool>("ClickedOnShare");
-            set => SetClickedOnShare(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetClickedOnShareAssignment(), value, GameVersion.TMF);
         }
         public TMF WithClickedOnShare(bool value)
         {
@@ -1375,7 +1291,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public Checksum128 CryptedPassword
         {
             get => state.Get<Checksum128>("CryptedPassword");
-            set => SetCryptedPassword(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetCryptedPasswordAssignment(), value, GameVersion.TMF);
         }
         public TMF WithCryptedPassword(Checksum128 value)
         {
@@ -1385,7 +1301,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public NodeRefList<global::GBX.NET.Engines.Game.CGameCtnCampaign>? CustomCampaigns
         {
             get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameCtnCampaign>?>("CustomCampaigns");
-            set => SetCustomCampaigns(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetCustomCampaignsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithCustomCampaigns(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnCampaign>? value)
         {
@@ -1411,7 +1327,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public int DynamicLoadScreenIndex
         {
             get => state.Get<int>("DynamicLoadScreenIndex");
-            set => SetDynamicLoadScreenIndex(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetDynamicLoadScreenIndexAssignment(), value, GameVersion.TMF);
         }
         public TMF WithDynamicLoadScreenIndex(int value)
         {
@@ -1421,7 +1337,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public bool EnableUnlimitedHorns
         {
             get => state.Get<bool>("EnableUnlimitedHorns");
-            set => SetEnableUnlimitedHorns(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetEnableUnlimitedHornsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithEnableUnlimitedHorns(bool value)
         {
@@ -1431,7 +1347,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public byte[]? EncryptedPassword
         {
             get => state.Get<byte[]?>("EncryptedPassword");
-            set => SetEncryptedPassword(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetEncryptedPasswordAssignment(), value, GameVersion.TMF);
         }
         public TMF WithEncryptedPassword(params byte[]? value)
         {
@@ -1445,7 +1361,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public int EncryptedPasswordLength
         {
             get => state.Get<int>("EncryptedPasswordLength");
-            set => SetEncryptedPasswordLength(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetEncryptedPasswordLengthAssignment(), value, GameVersion.TMF);
         }
         public TMF WithEncryptedPasswordLength(int value)
         {
@@ -1455,7 +1371,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public bool HasLeagueCache
         {
             get => state.Get<bool>("HasLeagueCache");
-            set => SetHasLeagueCache(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetHasLeagueCacheAssignment(), value, GameVersion.TMF);
         }
         public TMF WithHasLeagueCache(bool value)
         {
@@ -1465,7 +1381,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public string? HornName
         {
             get => state.Get<string?>("HornName");
-            set => SetHornName(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetHornNameAssignment(), value, GameVersion.TMF);
         }
         public TMF WithHornName(string? value)
         {
@@ -1483,7 +1399,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public string? LastUsedMSAddress
         {
             get => state.Get<string?>("LastUsedMSAddress");
-            set => SetLastUsedMSAddress(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetLastUsedMSAddressAssignment(), value, GameVersion.TMF);
         }
         public TMF WithLastUsedMSAddress(string? value)
         {
@@ -1493,7 +1409,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public string? LastUsedMSPath
         {
             get => state.Get<string?>("LastUsedMSPath");
-            set => SetLastUsedMSPath(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetLastUsedMSPathAssignment(), value, GameVersion.TMF);
         }
         public TMF WithLastUsedMSPath(string? value)
         {
@@ -1503,7 +1419,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public int LeagueCacheDuration
         {
             get => state.Get<int>("LeagueCacheDuration");
-            set => SetLeagueCacheDuration(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetLeagueCacheDurationAssignment(), value, GameVersion.TMF);
         }
         public TMF WithLeagueCacheDuration(int value)
         {
@@ -1513,7 +1429,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public DateTime? LeagueCacheUpdatedAt
         {
             get => state.Get<DateTime?>("LeagueCacheUpdatedAt");
-            set => SetLeagueCacheUpdatedAt(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetLeagueCacheUpdatedAtAssignment(), value, GameVersion.TMF);
         }
         public TMF WithLeagueCacheUpdatedAt(DateTime? value)
         {
@@ -1523,7 +1439,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public string? LeaguePath
         {
             get => state.Get<string?>("LeaguePath");
-            set => SetLeaguePath(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetLeaguePathAssignment(), value, GameVersion.TMF);
         }
         public TMF WithLeaguePath(string? value)
         {
@@ -1533,7 +1449,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public NodeRefList<global::GBX.NET.Engines.Game.CGameLeague>? Leagues
         {
             get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameLeague>?>("Leagues");
-            set => SetLeagues(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetLeaguesAssignment(), value, GameVersion.TMF);
         }
         public TMF WithLeagues(NodeRefList<global::GBX.NET.Engines.Game.CGameLeague>? value)
         {
@@ -1559,7 +1475,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public bool LockHigherDifficulties
         {
             get => state.Get<bool>("LockHigherDifficulties");
-            set => SetLockHigherDifficulties(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetLockHigherDifficultiesAssignment(), value, GameVersion.TMF);
         }
         public TMF WithLockHigherDifficulties(bool value)
         {
@@ -1569,7 +1485,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public int MenuInternetView
         {
             get => state.Get<int>("MenuInternetView");
-            set => SetMenuInternetView(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetMenuInternetViewAssignment(), value, GameVersion.TMF);
         }
         public TMF WithMenuInternetView(int value)
         {
@@ -1579,7 +1495,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public string? MenuLeagueFilter
         {
             get => state.Get<string?>("MenuLeagueFilter");
-            set => SetMenuLeagueFilter(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetMenuLeagueFilterAssignment(), value, GameVersion.TMF);
         }
         public TMF WithMenuLeagueFilter(string? value)
         {
@@ -1589,7 +1505,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public int? OnlineRemainingNickNamesChangesCount
         {
             get => state.Get<int?>("OnlineRemainingNickNamesChangesCount");
-            set => SetOnlineRemainingNickNamesChangesCount(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetOnlineRemainingNickNamesChangesCountAssignment(), value, GameVersion.TMF);
         }
         public TMF WithOnlineRemainingNickNamesChangesCount(int? value)
         {
@@ -1599,7 +1515,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public string? OnlineSupportKeyHexa
         {
             get => state.Get<string?>("OnlineSupportKeyHexa");
-            set => SetOnlineSupportKeyHexa(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetOnlineSupportKeyHexaAssignment(), value, GameVersion.TMF);
         }
         public TMF WithOnlineSupportKeyHexa(string? value)
         {
@@ -1609,7 +1525,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public string? OnlineValidationKeyHexa
         {
             get => state.Get<string?>("OnlineValidationKeyHexa");
-            set => SetOnlineValidationKeyHexa(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetOnlineValidationKeyHexaAssignment(), value, GameVersion.TMF);
         }
         public TMF WithOnlineValidationKeyHexa(string? value)
         {
@@ -1627,7 +1543,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public int PlayTime
         {
             get => state.Get<int>("PlayTime");
-            set => SetPlayTime(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetPlayTimeAssignment(), value, GameVersion.TMF);
         }
         public TMF WithPlayTime(int value)
         {
@@ -1637,7 +1553,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public global::GBX.NET.Engines.Game.CGamePlayerProfile.PlayerTagConfig[]? PlayerTags
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerProfile.PlayerTagConfig[]?>("PlayerTags");
-            set => SetPlayerTags(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetPlayerTagsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithPlayerTags(params global::GBX.NET.Engines.Game.CGamePlayerProfile.PlayerTagConfig[]? value)
         {
@@ -1659,7 +1575,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public bool ReceiveNews
         {
             get => state.Get<bool>("ReceiveNews");
-            set => SetReceiveNews(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetReceiveNewsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithReceiveNews(bool value)
         {
@@ -1669,7 +1585,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public DateTime? ReceivedMessagesAt
         {
             get => state.Get<DateTime?>("ReceivedMessagesAt");
-            set => SetReceivedMessagesAt(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetReceivedMessagesAtAssignment(), value, GameVersion.TMF);
         }
         public TMF WithReceivedMessagesAt(DateTime? value)
         {
@@ -1679,7 +1595,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public float RumbleIntensity
         {
             get => state.Get<float>("RumbleIntensity");
-            set => SetRumbleIntensity(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetRumbleIntensityAssignment(), value, GameVersion.TMF);
         }
         public TMF WithRumbleIntensity(float value)
         {
@@ -1689,7 +1605,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public global::GBX.NET.Engines.Game.CGameCtnMediaShootParams? ShootParams
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams?>("ShootParams");
-            set => SetShootParams(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetShootParamsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithShootParams(global::GBX.NET.Engines.Game.CGameCtnMediaShootParams? value)
         {
@@ -1699,7 +1615,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public TMF WithShootParamsReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetShootParamsReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetShootParamsReferenceAssignment(), value, GameVersion.TMF);
             return this;
         }
         public TMF WithShootParams(global::GBX.NET.Interfaces.Game.IGameCtnMediaShootParamsTMF? value)
@@ -1709,7 +1625,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public float StereoscopyAdvancedScreenDist
         {
             get => state.Get<float>("StereoscopyAdvancedScreenDist");
-            set => SetStereoscopyAdvancedScreenDist(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetStereoscopyAdvancedScreenDistAssignment(), value, GameVersion.TMF);
         }
         public TMF WithStereoscopyAdvancedScreenDist(float value)
         {
@@ -1719,7 +1635,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public float StereoscopyAdvancedSeparation
         {
             get => state.Get<float>("StereoscopyAdvancedSeparation");
-            set => SetStereoscopyAdvancedSeparation(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetStereoscopyAdvancedSeparationAssignment(), value, GameVersion.TMF);
         }
         public TMF WithStereoscopyAdvancedSeparation(float value)
         {
@@ -1729,7 +1645,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public float StereoscopyStrength01
         {
             get => state.Get<float>("StereoscopyStrength01");
-            set => SetStereoscopyStrength01(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetStereoscopyStrength01Assignment(), value, GameVersion.TMF);
         }
         public TMF WithStereoscopyStrength01(float value)
         {
@@ -1739,7 +1655,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public int[]? TagDisplayList
         {
             get => state.Get<int[]?>("TagDisplayList");
-            set => SetTagDisplayList(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetTagDisplayListAssignment(), value, GameVersion.TMF);
         }
         public TMF WithTagDisplayList(params int[]? value)
         {

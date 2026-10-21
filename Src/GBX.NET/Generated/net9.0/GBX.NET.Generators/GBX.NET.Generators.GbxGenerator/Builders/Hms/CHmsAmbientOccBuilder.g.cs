@@ -36,13 +36,10 @@ public abstract class CHmsAmbientOccBuilderBase<TSelf> where TSelf : CHmsAmbient
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsAmbientOcc> state;
     private protected CHmsAmbientOccBuilderBase() => state = new();
     private protected CHmsAmbientOccBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsAmbientOcc> state) => this.state = state;
-    private protected static void SetBlurPower(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsAmbientOcc> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsAmbientOccBuilderAssignments.GetBlurPowerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetBlurTexelCount(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsAmbientOcc> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsAmbientOccBuilderAssignments.GetBlurTexelCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetImageRadius(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsAmbientOcc> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsAmbientOccBuilderAssignments.GetImageRadiusAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     public float BlurPower
     {
         get => state.Get<float>("BlurPower");
-        set => SetBlurPower(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsAmbientOccBuilderAssignments.GetBlurPowerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithBlurPower(float value)
     {
@@ -52,7 +49,7 @@ public abstract class CHmsAmbientOccBuilderBase<TSelf> where TSelf : CHmsAmbient
     public uint BlurTexelCount
     {
         get => state.Get<uint>("BlurTexelCount");
-        set => SetBlurTexelCount(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsAmbientOccBuilderAssignments.GetBlurTexelCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithBlurTexelCount(uint value)
     {
@@ -62,7 +59,7 @@ public abstract class CHmsAmbientOccBuilderBase<TSelf> where TSelf : CHmsAmbient
     public float ImageRadius
     {
         get => state.Get<float>("ImageRadius");
-        set => SetImageRadius(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsAmbientOccBuilderAssignments.GetImageRadiusAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithImageRadius(float value)
     {

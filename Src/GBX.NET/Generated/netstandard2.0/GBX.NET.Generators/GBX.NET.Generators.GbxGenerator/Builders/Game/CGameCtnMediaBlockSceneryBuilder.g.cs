@@ -36,14 +36,10 @@ public abstract class CGameCtnMediaBlockSceneryBuilderBase<TSelf> where TSelf : 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockScenery> state;
     private protected CGameCtnMediaBlockSceneryBuilderBase() => state = new();
     private protected CGameCtnMediaBlockSceneryBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockScenery> state) => this.state = state;
-    private protected static void SetCapturableCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockScenery> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSceneryBuilderAssignments.GetCapturableCountAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDataTape(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockScenery> state, global::GBX.NET.Engines.Plug.CPlugDataTape? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSceneryBuilderAssignments.GetDataTapeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetDataTapeReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockScenery> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugDataTape> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSceneryBuilderAssignments.GetDataTapeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockScenery> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockScenery.Key>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSceneryBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public int CapturableCount
     {
         get => state.Get<int>("CapturableCount");
-        set => SetCapturableCount(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSceneryBuilderAssignments.GetCapturableCountAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCapturableCount(int value)
     {
@@ -53,7 +49,7 @@ public abstract class CGameCtnMediaBlockSceneryBuilderBase<TSelf> where TSelf : 
     public global::GBX.NET.Engines.Plug.CPlugDataTape? DataTape
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugDataTape?>("DataTape");
-        set => SetDataTape(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSceneryBuilderAssignments.GetDataTapeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDataTape(global::GBX.NET.Engines.Plug.CPlugDataTape? value)
     {
@@ -63,13 +59,13 @@ public abstract class CGameCtnMediaBlockSceneryBuilderBase<TSelf> where TSelf : 
     public TSelf WithDataTapeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugDataTape> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetDataTapeReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSceneryBuilderAssignments.GetDataTapeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockScenery.Key>? Keys
     {
         get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockScenery.Key>?>("Keys");
-        set => SetKeys(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSceneryBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockScenery.Key>? value)
     {

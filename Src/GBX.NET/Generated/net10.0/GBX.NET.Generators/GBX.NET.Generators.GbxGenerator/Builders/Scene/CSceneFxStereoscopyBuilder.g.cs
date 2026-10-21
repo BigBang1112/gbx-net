@@ -36,14 +36,10 @@ public abstract class CSceneFxStereoscopyBuilderBase<TSelf> where TSelf : CScene
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxStereoscopy> state;
     private protected CSceneFxStereoscopyBuilderBase() => state = new();
     private protected CSceneFxStereoscopyBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxStereoscopy> state) => this.state = state;
-    private protected static void SetShader_DebugBlend(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxStereoscopy> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxStereoscopyBuilderAssignments.GetShader_DebugBlendAssignment(), value, GameVersion.TM2020);
-    private protected static void SetShader_DebugBlendReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxStereoscopy> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxStereoscopyBuilderAssignments.GetShader_DebugBlendReferenceAssignment(), value, GameVersion.TM2020);
-    private protected static void SetShader_Interlaced(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxStereoscopy> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxStereoscopyBuilderAssignments.GetShader_InterlacedAssignment(), value, GameVersion.TM2020);
-    private protected static void SetShader_InterlacedReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxStereoscopy> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxStereoscopyBuilderAssignments.GetShader_InterlacedReferenceAssignment(), value, GameVersion.TM2020);
     public global::GBX.NET.Engines.MwFoundations.CMwNod? Shader_DebugBlend
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("Shader_DebugBlend");
-        set => SetShader_DebugBlend(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxStereoscopyBuilderAssignments.GetShader_DebugBlendAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithShader_DebugBlend(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
@@ -53,13 +49,13 @@ public abstract class CSceneFxStereoscopyBuilderBase<TSelf> where TSelf : CScene
     public TSelf WithShader_DebugBlendReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetShader_DebugBlendReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxStereoscopyBuilderAssignments.GetShader_DebugBlendReferenceAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.MwFoundations.CMwNod? Shader_Interlaced
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("Shader_Interlaced");
-        set => SetShader_Interlaced(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxStereoscopyBuilderAssignments.GetShader_InterlacedAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithShader_Interlaced(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
@@ -69,7 +65,7 @@ public abstract class CSceneFxStereoscopyBuilderBase<TSelf> where TSelf : CScene
     public TSelf WithShader_InterlacedReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetShader_InterlacedReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxStereoscopyBuilderAssignments.GetShader_InterlacedReferenceAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
     }
 }

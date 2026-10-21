@@ -36,18 +36,10 @@ public abstract class CFuncTreeRotateBuilderBase<TSelf> where TSelf : CFuncTreeR
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state;
     private protected CFuncTreeRotateBuilderBase() => state = new();
     private protected CFuncTreeRotateBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state) => this.state = state;
-    private protected static void SetAngleMax(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncTreeRotateBuilderAssignments.GetAngleMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetAngleMin(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncTreeRotateBuilderAssignments.GetAngleMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetAutoCreateMotion(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetAutoCreateMotionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetAxis(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncTreeRotateBuilderAssignments.GetAxisAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetInputValId(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetInputValIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetPeriod(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetPeriodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetPhase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetPhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRandomizePhase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public float AngleMax
     {
         get => state.Get<float>("AngleMax");
-        set => SetAngleMax(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncTreeRotateBuilderAssignments.GetAngleMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithAngleMax(float value)
     {
@@ -57,7 +49,7 @@ public abstract class CFuncTreeRotateBuilderBase<TSelf> where TSelf : CFuncTreeR
     public float AngleMin
     {
         get => state.Get<float>("AngleMin");
-        set => SetAngleMin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncTreeRotateBuilderAssignments.GetAngleMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithAngleMin(float value)
     {
@@ -67,7 +59,7 @@ public abstract class CFuncTreeRotateBuilderBase<TSelf> where TSelf : CFuncTreeR
     public bool AutoCreateMotion
     {
         get => state.Get<bool>("AutoCreateMotion");
-        set => SetAutoCreateMotion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetAutoCreateMotionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithAutoCreateMotion(bool value)
     {
@@ -77,7 +69,7 @@ public abstract class CFuncTreeRotateBuilderBase<TSelf> where TSelf : CFuncTreeR
     public Vec3 Axis
     {
         get => state.Get<Vec3>("Axis");
-        set => SetAxis(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncTreeRotateBuilderAssignments.GetAxisAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithAxis(Vec3 value)
     {
@@ -87,7 +79,7 @@ public abstract class CFuncTreeRotateBuilderBase<TSelf> where TSelf : CFuncTreeR
     public float Period
     {
         get => state.Get<float>("Period");
-        set => SetPeriod(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetPeriodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPeriod(float value)
     {
@@ -97,7 +89,7 @@ public abstract class CFuncTreeRotateBuilderBase<TSelf> where TSelf : CFuncTreeR
     public float Phase
     {
         get => state.Get<float>("Phase");
-        set => SetPhase(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetPhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPhase(float value)
     {
@@ -111,7 +103,7 @@ public abstract class CFuncTreeRotateBuilderMembers1<TSelf> : CFuncTreeRotateBui
     public bool RandomizePhase
     {
         get => state.Get<bool>("RandomizePhase");
-        set => SetRandomizePhase(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRandomizePhase(bool value)
     {
@@ -125,7 +117,7 @@ public abstract class CFuncTreeRotateBuilderMembers2<TSelf> : CFuncTreeRotateBui
     public string? InputValId
     {
         get => state.Get<string?>("InputValId");
-        set => SetInputValId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetInputValIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithInputValId(string? value)
     {

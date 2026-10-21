@@ -36,19 +36,10 @@ public abstract class CMotionTrackMobilPitchinBuilderBase<TSelf> where TSelf : C
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin> state;
     private protected CMotionTrackMobilPitchinBuilderBase() => state = new();
     private protected CMotionTrackMobilPitchinBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin> state) => this.state = state;
-    private protected static void SetFlottaison(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetFlottaisonAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMaxAngle(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetMaxAngleAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetOffsetHauteur(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetOffsetHauteurAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetPeriodDelta(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetPeriodDeltaAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetPitchinMode(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin> state, global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin.EPitchinMode value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetPitchinModeAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetRoulis(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetRoulisAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSea(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetSeaAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSeaReference(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetSeaReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetTangage(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetTangageAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public float Flottaison
     {
         get => state.Get<float>("Flottaison");
-        set => SetFlottaison(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetFlottaisonAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFlottaison(float value)
     {
@@ -58,7 +49,7 @@ public abstract class CMotionTrackMobilPitchinBuilderBase<TSelf> where TSelf : C
     public float MaxAngle
     {
         get => state.Get<float>("MaxAngle");
-        set => SetMaxAngle(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetMaxAngleAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMaxAngle(float value)
     {
@@ -68,7 +59,7 @@ public abstract class CMotionTrackMobilPitchinBuilderBase<TSelf> where TSelf : C
     public float OffsetHauteur
     {
         get => state.Get<float>("OffsetHauteur");
-        set => SetOffsetHauteur(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetOffsetHauteurAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithOffsetHauteur(float value)
     {
@@ -78,7 +69,7 @@ public abstract class CMotionTrackMobilPitchinBuilderBase<TSelf> where TSelf : C
     public float PeriodDelta
     {
         get => state.Get<float>("PeriodDelta");
-        set => SetPeriodDelta(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetPeriodDeltaAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPeriodDelta(float value)
     {
@@ -88,7 +79,7 @@ public abstract class CMotionTrackMobilPitchinBuilderBase<TSelf> where TSelf : C
     public global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin.EPitchinMode PitchinMode
     {
         get => state.Get<global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin.EPitchinMode>("PitchinMode");
-        set => SetPitchinMode(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetPitchinModeAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPitchinMode(global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin.EPitchinMode value)
     {
@@ -98,7 +89,7 @@ public abstract class CMotionTrackMobilPitchinBuilderBase<TSelf> where TSelf : C
     public float Roulis
     {
         get => state.Get<float>("Roulis");
-        set => SetRoulis(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetRoulisAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRoulis(float value)
     {
@@ -108,7 +99,7 @@ public abstract class CMotionTrackMobilPitchinBuilderBase<TSelf> where TSelf : C
     public global::GBX.NET.Engines.MwFoundations.CMwNod? Sea
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("Sea");
-        set => SetSea(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetSeaAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSea(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
@@ -118,13 +109,13 @@ public abstract class CMotionTrackMobilPitchinBuilderBase<TSelf> where TSelf : C
     public TSelf WithSeaReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSeaReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetSeaReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public float Tangage
     {
         get => state.Get<float>("Tangage");
-        set => SetTangage(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetTangageAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithTangage(float value)
     {

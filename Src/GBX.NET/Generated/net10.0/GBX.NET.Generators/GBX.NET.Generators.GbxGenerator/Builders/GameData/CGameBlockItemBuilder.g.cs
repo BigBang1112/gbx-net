@@ -36,13 +36,10 @@ public abstract class CGameBlockItemBuilderBase<TSelf> where TSelf : CGameBlockI
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.GameData.CGameBlockItem> state;
     private protected CGameBlockItemBuilderBase() => state = new();
     private protected CGameBlockItemBuilderBase(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameBlockItem> state) => this.state = state;
-    private protected static void SetArchetypeBlockInfoCollectionId(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameBlockItem> state, global::GBX.NET.Id value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameBlockItemBuilderAssignments.GetArchetypeBlockInfoCollectionIdAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetArchetypeBlockInfoId(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameBlockItem> state, string value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameBlockItemBuilderAssignments.GetArchetypeBlockInfoIdAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetCustomizedVariants(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameBlockItem> state, global::System.Collections.Generic.List<global::GBX.NET.Engines.GameData.CGameBlockItem.Mobil> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameBlockItemBuilderAssignments.GetCustomizedVariantsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     public global::GBX.NET.Id ArchetypeBlockInfoCollectionId
     {
         get => state.Get<global::GBX.NET.Id>("ArchetypeBlockInfoCollectionId");
-        set => SetArchetypeBlockInfoCollectionId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameBlockItemBuilderAssignments.GetArchetypeBlockInfoCollectionIdAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithArchetypeBlockInfoCollectionId(global::GBX.NET.Id value)
     {
@@ -52,7 +49,7 @@ public abstract class CGameBlockItemBuilderBase<TSelf> where TSelf : CGameBlockI
     public string ArchetypeBlockInfoId
     {
         get => state.Get<string>("ArchetypeBlockInfoId");
-        set => SetArchetypeBlockInfoId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameBlockItemBuilderAssignments.GetArchetypeBlockInfoIdAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithArchetypeBlockInfoId(string value)
     {
@@ -62,7 +59,7 @@ public abstract class CGameBlockItemBuilderBase<TSelf> where TSelf : CGameBlockI
     public global::System.Collections.Generic.List<global::GBX.NET.Engines.GameData.CGameBlockItem.Mobil> CustomizedVariants
     {
         get => state.Get<global::System.Collections.Generic.List<global::GBX.NET.Engines.GameData.CGameBlockItem.Mobil>>("CustomizedVariants");
-        set => SetCustomizedVariants(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameBlockItemBuilderAssignments.GetCustomizedVariantsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithCustomizedVariants(global::System.Collections.Generic.List<global::GBX.NET.Engines.GameData.CGameBlockItem.Mobil> value)
     {

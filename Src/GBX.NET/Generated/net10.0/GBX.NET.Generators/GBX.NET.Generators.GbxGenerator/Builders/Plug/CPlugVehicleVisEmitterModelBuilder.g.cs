@@ -36,35 +36,10 @@ public abstract class CPlugVehicleVisEmitterModelBuilderBase<TSelf> where TSelf 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state;
     private protected CPlugVehicleVisEmitterModelBuilderBase() => state = new();
     private protected CPlugVehicleVisEmitterModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state) => this.state = state;
-    private protected static void SetEmitIntensity(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetEmitIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetEmitIntensityBySpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetEmitIntensityBySpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetEmitIntensityOnTurbo(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetEmitIntensityOnTurboAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetEmitSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetEmitSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetEmitSpeedBySpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetEmitSpeedBySpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetEmitSpeedBySpeedOnTurbo(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetEmitSpeedBySpeedOnTurboAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIsEventMode(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetIsEventModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLoc(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, Iso4 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetLocAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMaterialGroupIndex(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetMaterialGroupIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetOnlyWhenAllWheelsSliding(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetOnlyWhenAllWheelsSlidingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetOnlyWhenSliding(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetOnlyWhenSlidingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetOrientWithVelocity(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetOrientWithVelocityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetParticleEmitterModel0(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetParticleEmitterModel0Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetParticleEmitterModel0Reference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetParticleEmitterModel0ReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetParticleEmitterModel1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetParticleEmitterModel1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetParticleEmitterModel1Reference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetParticleEmitterModel1ReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetParticleEmitterModel2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetParticleEmitterModel2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetParticleEmitterModel2Reference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetParticleEmitterModel2ReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetParticleEmitterModelShoot(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetParticleEmitterModelShootAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetParticleEmitterModelShootReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetParticleEmitterModelShootReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetPitchYawRoll(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetPitchYawRollAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetPosition(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetPositionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetUseOwnerLoc(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetUseOwnerLocAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetVisualHandlerIndex(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetVisualHandlerIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetWheelIndex(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetWheelIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     public float EmitIntensity
     {
         get => state.Get<float>("EmitIntensity");
-        set => SetEmitIntensity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetEmitIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEmitIntensity(float value)
     {
@@ -74,7 +49,7 @@ public abstract class CPlugVehicleVisEmitterModelBuilderBase<TSelf> where TSelf 
     public Vec3 EmitIntensityBySpeed
     {
         get => state.Get<Vec3>("EmitIntensityBySpeed");
-        set => SetEmitIntensityBySpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetEmitIntensityBySpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEmitIntensityBySpeed(Vec3 value)
     {
@@ -84,7 +59,7 @@ public abstract class CPlugVehicleVisEmitterModelBuilderBase<TSelf> where TSelf 
     public float EmitIntensityOnTurbo
     {
         get => state.Get<float>("EmitIntensityOnTurbo");
-        set => SetEmitIntensityOnTurbo(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetEmitIntensityOnTurboAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEmitIntensityOnTurbo(float value)
     {
@@ -94,7 +69,7 @@ public abstract class CPlugVehicleVisEmitterModelBuilderBase<TSelf> where TSelf 
     public Vec3 EmitSpeed
     {
         get => state.Get<Vec3>("EmitSpeed");
-        set => SetEmitSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetEmitSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEmitSpeed(Vec3 value)
     {
@@ -104,7 +79,7 @@ public abstract class CPlugVehicleVisEmitterModelBuilderBase<TSelf> where TSelf 
     public Vec3 EmitSpeedBySpeed
     {
         get => state.Get<Vec3>("EmitSpeedBySpeed");
-        set => SetEmitSpeedBySpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetEmitSpeedBySpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEmitSpeedBySpeed(Vec3 value)
     {
@@ -114,7 +89,7 @@ public abstract class CPlugVehicleVisEmitterModelBuilderBase<TSelf> where TSelf 
     public Vec3 EmitSpeedBySpeedOnTurbo
     {
         get => state.Get<Vec3>("EmitSpeedBySpeedOnTurbo");
-        set => SetEmitSpeedBySpeedOnTurbo(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetEmitSpeedBySpeedOnTurboAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEmitSpeedBySpeedOnTurbo(Vec3 value)
     {
@@ -124,7 +99,7 @@ public abstract class CPlugVehicleVisEmitterModelBuilderBase<TSelf> where TSelf 
     public bool IsEventMode
     {
         get => state.Get<bool>("IsEventMode");
-        set => SetIsEventMode(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetIsEventModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIsEventMode(bool value)
     {
@@ -134,7 +109,7 @@ public abstract class CPlugVehicleVisEmitterModelBuilderBase<TSelf> where TSelf 
     public Iso4 Loc
     {
         get => state.Get<Iso4>("Loc");
-        set => SetLoc(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetLocAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLoc(Iso4 value)
     {
@@ -144,7 +119,7 @@ public abstract class CPlugVehicleVisEmitterModelBuilderBase<TSelf> where TSelf 
     public int MaterialGroupIndex
     {
         get => state.Get<int>("MaterialGroupIndex");
-        set => SetMaterialGroupIndex(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetMaterialGroupIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMaterialGroupIndex(int value)
     {
@@ -154,7 +129,7 @@ public abstract class CPlugVehicleVisEmitterModelBuilderBase<TSelf> where TSelf 
     public bool OnlyWhenAllWheelsSliding
     {
         get => state.Get<bool>("OnlyWhenAllWheelsSliding");
-        set => SetOnlyWhenAllWheelsSliding(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetOnlyWhenAllWheelsSlidingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithOnlyWhenAllWheelsSliding(bool value)
     {
@@ -164,7 +139,7 @@ public abstract class CPlugVehicleVisEmitterModelBuilderBase<TSelf> where TSelf 
     public bool OnlyWhenSliding
     {
         get => state.Get<bool>("OnlyWhenSliding");
-        set => SetOnlyWhenSliding(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetOnlyWhenSlidingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithOnlyWhenSliding(bool value)
     {
@@ -174,7 +149,7 @@ public abstract class CPlugVehicleVisEmitterModelBuilderBase<TSelf> where TSelf 
     public bool OrientWithVelocity
     {
         get => state.Get<bool>("OrientWithVelocity");
-        set => SetOrientWithVelocity(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetOrientWithVelocityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithOrientWithVelocity(bool value)
     {
@@ -184,7 +159,7 @@ public abstract class CPlugVehicleVisEmitterModelBuilderBase<TSelf> where TSelf 
     public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? ParticleEmitterModel0
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("ParticleEmitterModel0");
-        set => SetParticleEmitterModel0(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetParticleEmitterModel0Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithParticleEmitterModel0(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
     {
@@ -194,13 +169,13 @@ public abstract class CPlugVehicleVisEmitterModelBuilderBase<TSelf> where TSelf 
     public TSelf WithParticleEmitterModel0Reference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetParticleEmitterModel0Reference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetParticleEmitterModel0ReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? ParticleEmitterModel1
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("ParticleEmitterModel1");
-        set => SetParticleEmitterModel1(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetParticleEmitterModel1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithParticleEmitterModel1(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
     {
@@ -210,13 +185,13 @@ public abstract class CPlugVehicleVisEmitterModelBuilderBase<TSelf> where TSelf 
     public TSelf WithParticleEmitterModel1Reference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetParticleEmitterModel1Reference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetParticleEmitterModel1ReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? ParticleEmitterModel2
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("ParticleEmitterModel2");
-        set => SetParticleEmitterModel2(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetParticleEmitterModel2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithParticleEmitterModel2(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
     {
@@ -226,13 +201,13 @@ public abstract class CPlugVehicleVisEmitterModelBuilderBase<TSelf> where TSelf 
     public TSelf WithParticleEmitterModel2Reference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetParticleEmitterModel2Reference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetParticleEmitterModel2ReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public Vec3 PitchYawRoll
     {
         get => state.Get<Vec3>("PitchYawRoll");
-        set => SetPitchYawRoll(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetPitchYawRollAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPitchYawRoll(Vec3 value)
     {
@@ -242,7 +217,7 @@ public abstract class CPlugVehicleVisEmitterModelBuilderBase<TSelf> where TSelf 
     public Vec3 Position
     {
         get => state.Get<Vec3>("Position");
-        set => SetPosition(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetPositionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPosition(Vec3 value)
     {
@@ -252,7 +227,7 @@ public abstract class CPlugVehicleVisEmitterModelBuilderBase<TSelf> where TSelf 
     public bool UseOwnerLoc
     {
         get => state.Get<bool>("UseOwnerLoc");
-        set => SetUseOwnerLoc(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetUseOwnerLocAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithUseOwnerLoc(bool value)
     {
@@ -262,7 +237,7 @@ public abstract class CPlugVehicleVisEmitterModelBuilderBase<TSelf> where TSelf 
     public int VisualHandlerIndex
     {
         get => state.Get<int>("VisualHandlerIndex");
-        set => SetVisualHandlerIndex(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetVisualHandlerIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithVisualHandlerIndex(int value)
     {
@@ -272,7 +247,7 @@ public abstract class CPlugVehicleVisEmitterModelBuilderBase<TSelf> where TSelf 
     public int WheelIndex
     {
         get => state.Get<int>("WheelIndex");
-        set => SetWheelIndex(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetWheelIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithWheelIndex(int value)
     {
@@ -286,7 +261,7 @@ public abstract class CPlugVehicleVisEmitterModelBuilderMembers1<TSelf> : CPlugV
     public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? ParticleEmitterModelShoot
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("ParticleEmitterModelShoot");
-        set => SetParticleEmitterModelShoot(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetParticleEmitterModelShootAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithParticleEmitterModelShoot(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
     {
@@ -296,7 +271,7 @@ public abstract class CPlugVehicleVisEmitterModelBuilderMembers1<TSelf> : CPlugV
     public TSelf WithParticleEmitterModelShootReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetParticleEmitterModelShootReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetParticleEmitterModelShootReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }

@@ -36,16 +36,10 @@ public abstract class CPlugAnimSkelJointGroupBuilderBase<TSelf> where TSelf : CP
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup> state;
     private protected CPlugAnimSkelJointGroupBuilderBase() => state = new();
     private protected CPlugAnimSkelJointGroupBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup> state) => this.state = state;
-    private protected static void SetHash(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup> state, ulong value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelJointGroupBuilderAssignments.GetHashAssignment(), value, GameVersion.TM2020);
-    private protected static void SetJointCount(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelJointGroupBuilderAssignments.GetJointCountAssignment(), value, GameVersion.TM2020);
-    private protected static void SetJointNames(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup> state, string[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelJointGroupBuilderAssignments.GetJointNamesAssignment(), value, GameVersion.TM2020);
-    private protected static void SetJointWeights(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup> state, float[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelJointGroupBuilderAssignments.GetJointWeightsAssignment(), value, GameVersion.TM2020);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelJointGroupBuilderAssignments.GetNameAssignment(), value, GameVersion.TM2020);
-    private protected static void SetRanges(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup> state, Int2[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelJointGroupBuilderAssignments.GetRangesAssignment(), value, GameVersion.TM2020);
     public ulong Hash
     {
         get => state.Get<ulong>("Hash");
-        set => SetHash(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelJointGroupBuilderAssignments.GetHashAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithHash(ulong value)
     {
@@ -55,7 +49,7 @@ public abstract class CPlugAnimSkelJointGroupBuilderBase<TSelf> where TSelf : CP
     public int JointCount
     {
         get => state.Get<int>("JointCount");
-        set => SetJointCount(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelJointGroupBuilderAssignments.GetJointCountAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithJointCount(int value)
     {
@@ -65,7 +59,7 @@ public abstract class CPlugAnimSkelJointGroupBuilderBase<TSelf> where TSelf : CP
     public string[]? JointNames
     {
         get => state.Get<string[]?>("JointNames");
-        set => SetJointNames(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelJointGroupBuilderAssignments.GetJointNamesAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithJointNames(params string[]? value)
     {
@@ -79,7 +73,7 @@ public abstract class CPlugAnimSkelJointGroupBuilderBase<TSelf> where TSelf : CP
     public float[]? JointWeights
     {
         get => state.Get<float[]?>("JointWeights");
-        set => SetJointWeights(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelJointGroupBuilderAssignments.GetJointWeightsAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithJointWeights(params float[]? value)
     {
@@ -93,7 +87,7 @@ public abstract class CPlugAnimSkelJointGroupBuilderBase<TSelf> where TSelf : CP
     public string? Name
     {
         get => state.Get<string?>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelJointGroupBuilderAssignments.GetNameAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithName(string? value)
     {
@@ -103,7 +97,7 @@ public abstract class CPlugAnimSkelJointGroupBuilderBase<TSelf> where TSelf : CP
     public Int2[]? Ranges
     {
         get => state.Get<Int2[]?>("Ranges");
-        set => SetRanges(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelJointGroupBuilderAssignments.GetRangesAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithRanges(params Int2[]? value)
     {

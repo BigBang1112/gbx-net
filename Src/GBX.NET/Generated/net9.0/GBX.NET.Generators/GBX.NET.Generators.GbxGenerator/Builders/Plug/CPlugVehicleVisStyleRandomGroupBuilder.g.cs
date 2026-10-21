@@ -36,14 +36,10 @@ public abstract class CPlugVehicleVisStyleRandomGroupBuilderBase<TSelf> where TS
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup> state;
     private protected CPlugVehicleVisStyleRandomGroupBuilderBase() => state = new();
     private protected CPlugVehicleVisStyleRandomGroupBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup> state) => this.state = state;
-    private protected static void SetGroupProba(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisStyleRandomGroupBuilderAssignments.GetGroupProbaAssignment(), value, GameVersion.TM2020);
-    private protected static void SetMatchName(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisStyleRandomGroupBuilderAssignments.GetMatchNameAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisStyleRandomGroupBuilderAssignments.GetNameAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetStyles(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup> state, global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup.SPlugVehicleVisStyle[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisStyleRandomGroupBuilderAssignments.GetStylesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     public string? MatchName
     {
         get => state.Get<string?>("MatchName");
-        set => SetMatchName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisStyleRandomGroupBuilderAssignments.GetMatchNameAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithMatchName(string? value)
     {
@@ -53,7 +49,7 @@ public abstract class CPlugVehicleVisStyleRandomGroupBuilderBase<TSelf> where TS
     public string? Name
     {
         get => state.Get<string?>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisStyleRandomGroupBuilderAssignments.GetNameAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithName(string? value)
     {
@@ -63,7 +59,7 @@ public abstract class CPlugVehicleVisStyleRandomGroupBuilderBase<TSelf> where TS
     public global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup.SPlugVehicleVisStyle[]? Styles
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup.SPlugVehicleVisStyle[]?>("Styles");
-        set => SetStyles(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisStyleRandomGroupBuilderAssignments.GetStylesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithStyles(params global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup.SPlugVehicleVisStyle[]? value)
     {
@@ -130,7 +126,7 @@ public partial class CPlugVehicleVisStyleRandomGroupBuilder : CPlugVehicleVisSty
         public float GroupProba
         {
             get => state.Get<float>("GroupProba");
-            set => SetGroupProba(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisStyleRandomGroupBuilderAssignments.GetGroupProbaAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithGroupProba(float value)
         {

@@ -36,17 +36,10 @@ public abstract class CMotionCmdBaseBuilderBase<TSelf> where TSelf : CMotionCmdB
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionCmdBase> state;
     private protected CMotionCmdBaseBuilderBase() => state = new();
     private protected CMotionCmdBaseBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionCmdBase> state) => this.state = state;
-    private protected static void SetCmdBaseParams(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionCmdBase> state, global::GBX.NET.Engines.Motion.CMotionCmdBaseParams? value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionCmdBaseBuilderAssignments.GetCmdBaseParamsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetCmdBaseParamsReference(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionCmdBase> state, NodeRef<global::GBX.NET.Engines.Motion.CMotionCmdBaseParams> value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionCmdBaseBuilderAssignments.GetCmdBaseParamsReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIsAbsolutePhase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionCmdBase> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionCmdBaseBuilderAssignments.GetIsAbsolutePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIsOnce(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionCmdBase> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionCmdBaseBuilderAssignments.GetIsOnceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetPeriod(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionCmdBase> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionCmdBaseBuilderAssignments.GetPeriodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetPhase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionCmdBase> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionCmdBaseBuilderAssignments.GetPhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetWaveType(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionCmdBase> state, global::GBX.NET.Engines.Motion.CMotionCmdBase.EWaveType value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionCmdBaseBuilderAssignments.GetWaveTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public global::GBX.NET.Engines.Motion.CMotionCmdBaseParams? CmdBaseParams
     {
         get => state.Get<global::GBX.NET.Engines.Motion.CMotionCmdBaseParams?>("CmdBaseParams");
-        set => SetCmdBaseParams(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionCmdBaseBuilderAssignments.GetCmdBaseParamsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithCmdBaseParams(global::GBX.NET.Engines.Motion.CMotionCmdBaseParams? value)
     {
@@ -56,13 +49,13 @@ public abstract class CMotionCmdBaseBuilderBase<TSelf> where TSelf : CMotionCmdB
     public TSelf WithCmdBaseParamsReference(NodeRef<global::GBX.NET.Engines.Motion.CMotionCmdBaseParams> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetCmdBaseParamsReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionCmdBaseBuilderAssignments.GetCmdBaseParamsReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public bool IsAbsolutePhase
     {
         get => state.Get<bool>("IsAbsolutePhase");
-        set => SetIsAbsolutePhase(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionCmdBaseBuilderAssignments.GetIsAbsolutePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIsAbsolutePhase(bool value)
     {
@@ -72,7 +65,7 @@ public abstract class CMotionCmdBaseBuilderBase<TSelf> where TSelf : CMotionCmdB
     public bool IsOnce
     {
         get => state.Get<bool>("IsOnce");
-        set => SetIsOnce(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionCmdBaseBuilderAssignments.GetIsOnceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIsOnce(bool value)
     {
@@ -82,7 +75,7 @@ public abstract class CMotionCmdBaseBuilderBase<TSelf> where TSelf : CMotionCmdB
     public uint Period
     {
         get => state.Get<uint>("Period");
-        set => SetPeriod(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionCmdBaseBuilderAssignments.GetPeriodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPeriod(uint value)
     {
@@ -92,7 +85,7 @@ public abstract class CMotionCmdBaseBuilderBase<TSelf> where TSelf : CMotionCmdB
     public float Phase
     {
         get => state.Get<float>("Phase");
-        set => SetPhase(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionCmdBaseBuilderAssignments.GetPhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPhase(float value)
     {
@@ -102,7 +95,7 @@ public abstract class CMotionCmdBaseBuilderBase<TSelf> where TSelf : CMotionCmdB
     public global::GBX.NET.Engines.Motion.CMotionCmdBase.EWaveType WaveType
     {
         get => state.Get<global::GBX.NET.Engines.Motion.CMotionCmdBase.EWaveType>("WaveType");
-        set => SetWaveType(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionCmdBaseBuilderAssignments.GetWaveTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithWaveType(global::GBX.NET.Engines.Motion.CMotionCmdBase.EWaveType value)
     {

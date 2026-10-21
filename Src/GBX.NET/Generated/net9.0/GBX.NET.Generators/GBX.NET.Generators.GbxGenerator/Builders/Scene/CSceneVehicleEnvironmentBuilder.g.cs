@@ -36,11 +36,10 @@ public abstract class CSceneVehicleEnvironmentBuilderBase<TSelf> where TSelf : C
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment> state;
     private protected CSceneVehicleEnvironmentBuilderBase() => state = new();
     private protected CSceneVehicleEnvironmentBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment> state) => this.state = state;
-    private protected static void SetMaterials(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleEnvironmentBuilderAssignments.GetMaterialsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>? Materials
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>?>("Materials");
-        set => SetMaterials(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleEnvironmentBuilderAssignments.GetMaterialsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithMaterials(NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>? value)
     {

@@ -36,15 +36,10 @@ public abstract class CGameLeagueBuilderBase<TSelf> where TSelf : CGameLeagueBui
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameLeague> state;
     private protected CGameLeagueBuilderBase() => state = new();
     private protected CGameLeagueBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameLeague> state) => this.state = state;
-    private protected static void SetDescription(NodeBuilderState<global::GBX.NET.Engines.Game.CGameLeague> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameLeagueBuilderAssignments.GetDescriptionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetFlagUrl(NodeBuilderState<global::GBX.NET.Engines.Game.CGameLeague> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameLeagueBuilderAssignments.GetFlagUrlAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetLogin(NodeBuilderState<global::GBX.NET.Engines.Game.CGameLeague> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameLeagueBuilderAssignments.GetLoginAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameLeague> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameLeagueBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetPath(NodeBuilderState<global::GBX.NET.Engines.Game.CGameLeague> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameLeagueBuilderAssignments.GetPathAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     public string? Description
     {
         get => state.Get<string?>("Description");
-        set => SetDescription(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameLeagueBuilderAssignments.GetDescriptionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithDescription(string? value)
     {
@@ -54,7 +49,7 @@ public abstract class CGameLeagueBuilderBase<TSelf> where TSelf : CGameLeagueBui
     public string? FlagUrl
     {
         get => state.Get<string?>("FlagUrl");
-        set => SetFlagUrl(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameLeagueBuilderAssignments.GetFlagUrlAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithFlagUrl(string? value)
     {
@@ -64,7 +59,7 @@ public abstract class CGameLeagueBuilderBase<TSelf> where TSelf : CGameLeagueBui
     public string? Login
     {
         get => state.Get<string?>("Login");
-        set => SetLogin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameLeagueBuilderAssignments.GetLoginAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithLogin(string? value)
     {
@@ -74,7 +69,7 @@ public abstract class CGameLeagueBuilderBase<TSelf> where TSelf : CGameLeagueBui
     public string? Name
     {
         get => state.Get<string?>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameLeagueBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithName(string? value)
     {
@@ -84,7 +79,7 @@ public abstract class CGameLeagueBuilderBase<TSelf> where TSelf : CGameLeagueBui
     public string? Path
     {
         get => state.Get<string?>("Path");
-        set => SetPath(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameLeagueBuilderAssignments.GetPathAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithPath(string? value)
     {

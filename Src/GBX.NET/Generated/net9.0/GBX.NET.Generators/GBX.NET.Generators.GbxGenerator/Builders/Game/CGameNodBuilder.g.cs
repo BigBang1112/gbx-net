@@ -36,11 +36,10 @@ public abstract class CGameNodBuilderBase<TSelf> where TSelf : CGameNodBuilderBa
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameNod> state;
     private protected CGameNodBuilderBase() => state = new();
     private protected CGameNodBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameNod> state) => this.state = state;
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameNod> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameNodBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public string? Name
     {
         get => state.Get<string?>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameNodBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithName(string? value)
     {

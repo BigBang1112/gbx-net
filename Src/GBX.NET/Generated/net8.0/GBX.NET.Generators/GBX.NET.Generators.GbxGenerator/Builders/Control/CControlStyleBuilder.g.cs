@@ -36,82 +36,10 @@ public abstract class CControlStyleBuilderBase<TSelf> where TSelf : CControlStyl
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state;
     private protected CControlStyleBuilderBase() => state = new();
     private protected CControlStyleBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state) => this.state = state;
-    private protected static void SetActionBackSound(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionBackSoundAssignment(), value, GameVersion.MP4);
-    private protected static void SetActionBackSoundReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionBackSoundReferenceAssignment(), value, GameVersion.MP4);
-    private protected static void SetActionSound(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionSoundAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetActionSoundReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionSoundReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetButtonDefaultIconId(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonDefaultIconIdAssignment(), value, GameVersion.MP4 | GameVersion.TMF);
-    private protected static void SetButtonDefaultIcons(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Function.CFuncEnum? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonDefaultIconsAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetButtonDefaultIconsReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonDefaultIconsReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetButtonIconHeight(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonIconHeightAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetButtonIconWidth(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonIconWidthAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetDefaultShader(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugShader? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetDefaultShaderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetDefaultShaderReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetDefaultShaderReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetEffectMaster(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Control.CControlEffectMaster? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEffectMasterAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetEffectMasterReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Control.CControlEffectMaster> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEffectMasterReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetEntrySound(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEntrySoundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetEntrySoundReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEntrySoundReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetEnumForceDisplayType(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEnumForceDisplayTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetEnumForceIcons(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Function.CFuncEnum? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEnumForceIconsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetEnumForceIconsReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEnumForceIconsReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetEnumIconHeight(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEnumIconHeightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetEnumIconWidth(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEnumIconWidthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetEnumListShader(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugShader? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEnumListShaderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetEnumListShaderReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEnumListShaderReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetEnumMaxElemCount(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEnumMaxElemCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetEnumSound(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEnumSoundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetEnumSoundReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEnumSoundReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFitTextSize(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFitTextSizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFocusAreaEnable(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaEnableAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFocusAreaMaterial(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugMaterial? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaMaterialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFocusAreaMaterialReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaMaterialReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFocusAreaMaterialFocused(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugMaterial? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaMaterialFocusedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFocusAreaMaterialFocusedReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaMaterialFocusedReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFocusAreaMaterialReadOnly(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugMaterial? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaMaterialReadOnlyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFocusAreaMaterialReadOnlyReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaMaterialReadOnlyReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFocusAreaMaterialSelected(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugMaterial? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaMaterialSelectedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFocusAreaMaterialSelectedReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaMaterialSelectedReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFocusAreaMinHeight(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaMinHeightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFocusAreaMinWidth(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaMinWidthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFocusAreaSolid(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugSolid? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaSolidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFocusAreaSolidReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaSolidReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFocusAreaXMargin(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaXMarginAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFocusAreaYMargin(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaYMarginAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFocusAreaZOffset(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaZOffsetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFocusGainedScript(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusGainedScriptAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFocusGainedScriptReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusGainedScriptReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFocusLostScript(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusLostScriptAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFocusLostScriptReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusLostScriptReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFocusSound(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusSoundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFocusSoundReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusSoundReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFont(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugFont? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFontAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetFontReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFont> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFontReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLineGradientColor0(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, Vec4 value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetLineGradientColor0Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLineGradientColor1(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, Vec4 value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetLineGradientColor1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetQuadGradientColor0(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, Vec4 value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetQuadGradientColor0Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetQuadGradientColor1(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, Vec4 value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetQuadGradientColor1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetQuadIsFill(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetQuadIsFillAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetQuadIsLines(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetQuadIsLinesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetQuadLinesColor(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, Vec4 value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetQuadLinesColorAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetQuadZ(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetQuadZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetQuadZLines(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetQuadZLinesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetQuad_UvBottomRight(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetQuad_UvBottomRightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetQuad_UvTopLeft(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetQuad_UvTopLeftAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSkew(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetSkewAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSliderBarHeight(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetSliderBarHeightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSliderBarIcons(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Function.CFuncEnum? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetSliderBarIconsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSliderBarIconsReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetSliderBarIconsReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSliderBarWidth(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetSliderBarWidthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSliderCursorHeight(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetSliderCursorHeightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSliderCursorIcons(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Function.CFuncEnum? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetSliderCursorIconsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSliderCursorIconsReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetSliderCursorIconsReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSliderCursorWidth(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetSliderCursorWidthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSliderSound(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetSliderSoundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSliderSoundReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetSliderSoundReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     public global::GBX.NET.Engines.Plug.CPlugShader? DefaultShader
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugShader?>("DefaultShader");
-        set => SetDefaultShader(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetDefaultShaderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDefaultShader(global::GBX.NET.Engines.Plug.CPlugShader? value)
     {
@@ -121,13 +49,13 @@ public abstract class CControlStyleBuilderBase<TSelf> where TSelf : CControlStyl
     public TSelf WithDefaultShaderReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetDefaultShaderReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetDefaultShaderReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugSound? EntrySound
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("EntrySound");
-        set => SetEntrySound(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEntrySoundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEntrySound(global::GBX.NET.Engines.Plug.CPlugSound? value)
     {
@@ -137,13 +65,13 @@ public abstract class CControlStyleBuilderBase<TSelf> where TSelf : CControlStyl
     public TSelf WithEntrySoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetEntrySoundReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEntrySoundReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public int EnumForceDisplayType
     {
         get => state.Get<int>("EnumForceDisplayType");
-        set => SetEnumForceDisplayType(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEnumForceDisplayTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEnumForceDisplayType(int value)
     {
@@ -153,7 +81,7 @@ public abstract class CControlStyleBuilderBase<TSelf> where TSelf : CControlStyl
     public global::GBX.NET.Engines.Function.CFuncEnum? EnumForceIcons
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncEnum?>("EnumForceIcons");
-        set => SetEnumForceIcons(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEnumForceIconsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEnumForceIcons(global::GBX.NET.Engines.Function.CFuncEnum? value)
     {
@@ -163,13 +91,13 @@ public abstract class CControlStyleBuilderBase<TSelf> where TSelf : CControlStyl
     public TSelf WithEnumForceIconsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetEnumForceIconsReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEnumForceIconsReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public float EnumIconHeight
     {
         get => state.Get<float>("EnumIconHeight");
-        set => SetEnumIconHeight(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEnumIconHeightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEnumIconHeight(float value)
     {
@@ -179,7 +107,7 @@ public abstract class CControlStyleBuilderBase<TSelf> where TSelf : CControlStyl
     public float EnumIconWidth
     {
         get => state.Get<float>("EnumIconWidth");
-        set => SetEnumIconWidth(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEnumIconWidthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEnumIconWidth(float value)
     {
@@ -189,7 +117,7 @@ public abstract class CControlStyleBuilderBase<TSelf> where TSelf : CControlStyl
     public global::GBX.NET.Engines.Plug.CPlugShader? EnumListShader
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugShader?>("EnumListShader");
-        set => SetEnumListShader(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEnumListShaderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEnumListShader(global::GBX.NET.Engines.Plug.CPlugShader? value)
     {
@@ -199,13 +127,13 @@ public abstract class CControlStyleBuilderBase<TSelf> where TSelf : CControlStyl
     public TSelf WithEnumListShaderReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetEnumListShaderReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEnumListShaderReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public int EnumMaxElemCount
     {
         get => state.Get<int>("EnumMaxElemCount");
-        set => SetEnumMaxElemCount(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEnumMaxElemCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEnumMaxElemCount(int value)
     {
@@ -215,7 +143,7 @@ public abstract class CControlStyleBuilderBase<TSelf> where TSelf : CControlStyl
     public global::GBX.NET.Engines.Plug.CPlugSound? EnumSound
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("EnumSound");
-        set => SetEnumSound(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEnumSoundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEnumSound(global::GBX.NET.Engines.Plug.CPlugSound? value)
     {
@@ -225,13 +153,13 @@ public abstract class CControlStyleBuilderBase<TSelf> where TSelf : CControlStyl
     public TSelf WithEnumSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetEnumSoundReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEnumSoundReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public bool FitTextSize
     {
         get => state.Get<bool>("FitTextSize");
-        set => SetFitTextSize(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFitTextSizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFitTextSize(bool value)
     {
@@ -241,7 +169,7 @@ public abstract class CControlStyleBuilderBase<TSelf> where TSelf : CControlStyl
     public global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? FocusGainedScript
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain?>("FocusGainedScript");
-        set => SetFocusGainedScript(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusGainedScriptAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFocusGainedScript(global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? value)
     {
@@ -251,13 +179,13 @@ public abstract class CControlStyleBuilderBase<TSelf> where TSelf : CControlStyl
     public TSelf WithFocusGainedScriptReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetFocusGainedScriptReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusGainedScriptReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? FocusLostScript
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain?>("FocusLostScript");
-        set => SetFocusLostScript(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusLostScriptAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFocusLostScript(global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? value)
     {
@@ -267,13 +195,13 @@ public abstract class CControlStyleBuilderBase<TSelf> where TSelf : CControlStyl
     public TSelf WithFocusLostScriptReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetFocusLostScriptReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusLostScriptReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugSound? FocusSound
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("FocusSound");
-        set => SetFocusSound(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusSoundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFocusSound(global::GBX.NET.Engines.Plug.CPlugSound? value)
     {
@@ -283,7 +211,7 @@ public abstract class CControlStyleBuilderBase<TSelf> where TSelf : CControlStyl
     public TSelf WithFocusSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetFocusSoundReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusSoundReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -293,7 +221,7 @@ public abstract class CControlStyleBuilderMembers1<TSelf> : CControlStyleBuilder
     public Vec4 QuadGradientColor0
     {
         get => state.Get<Vec4>("QuadGradientColor0");
-        set => SetQuadGradientColor0(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetQuadGradientColor0Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithQuadGradientColor0(Vec4 value)
     {
@@ -303,7 +231,7 @@ public abstract class CControlStyleBuilderMembers1<TSelf> : CControlStyleBuilder
     public Vec4 QuadGradientColor1
     {
         get => state.Get<Vec4>("QuadGradientColor1");
-        set => SetQuadGradientColor1(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetQuadGradientColor1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithQuadGradientColor1(Vec4 value)
     {
@@ -313,7 +241,7 @@ public abstract class CControlStyleBuilderMembers1<TSelf> : CControlStyleBuilder
     public bool QuadIsFill
     {
         get => state.Get<bool>("QuadIsFill");
-        set => SetQuadIsFill(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetQuadIsFillAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithQuadIsFill(bool value)
     {
@@ -323,7 +251,7 @@ public abstract class CControlStyleBuilderMembers1<TSelf> : CControlStyleBuilder
     public bool QuadIsLines
     {
         get => state.Get<bool>("QuadIsLines");
-        set => SetQuadIsLines(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetQuadIsLinesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithQuadIsLines(bool value)
     {
@@ -333,7 +261,7 @@ public abstract class CControlStyleBuilderMembers1<TSelf> : CControlStyleBuilder
     public float QuadZ
     {
         get => state.Get<float>("QuadZ");
-        set => SetQuadZ(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetQuadZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithQuadZ(float value)
     {
@@ -343,7 +271,7 @@ public abstract class CControlStyleBuilderMembers1<TSelf> : CControlStyleBuilder
     public float QuadZLines
     {
         get => state.Get<float>("QuadZLines");
-        set => SetQuadZLines(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetQuadZLinesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithQuadZLines(float value)
     {
@@ -353,7 +281,7 @@ public abstract class CControlStyleBuilderMembers1<TSelf> : CControlStyleBuilder
     public Vec2 Quad_UvBottomRight
     {
         get => state.Get<Vec2>("Quad_UvBottomRight");
-        set => SetQuad_UvBottomRight(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetQuad_UvBottomRightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithQuad_UvBottomRight(Vec2 value)
     {
@@ -363,7 +291,7 @@ public abstract class CControlStyleBuilderMembers1<TSelf> : CControlStyleBuilder
     public Vec2 Quad_UvTopLeft
     {
         get => state.Get<Vec2>("Quad_UvTopLeft");
-        set => SetQuad_UvTopLeft(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetQuad_UvTopLeftAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithQuad_UvTopLeft(Vec2 value)
     {
@@ -377,7 +305,7 @@ public abstract class CControlStyleBuilderMembers2<TSelf> : CControlStyleBuilder
     public global::GBX.NET.Engines.Control.CControlEffectMaster? EffectMaster
     {
         get => state.Get<global::GBX.NET.Engines.Control.CControlEffectMaster?>("EffectMaster");
-        set => SetEffectMaster(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEffectMasterAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEffectMaster(global::GBX.NET.Engines.Control.CControlEffectMaster? value)
     {
@@ -387,13 +315,13 @@ public abstract class CControlStyleBuilderMembers2<TSelf> : CControlStyleBuilder
     public TSelf WithEffectMasterReference(NodeRef<global::GBX.NET.Engines.Control.CControlEffectMaster> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetEffectMasterReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEffectMasterReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public Vec4 LineGradientColor0
     {
         get => state.Get<Vec4>("LineGradientColor0");
-        set => SetLineGradientColor0(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetLineGradientColor0Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLineGradientColor0(Vec4 value)
     {
@@ -403,7 +331,7 @@ public abstract class CControlStyleBuilderMembers2<TSelf> : CControlStyleBuilder
     public Vec4 LineGradientColor1
     {
         get => state.Get<Vec4>("LineGradientColor1");
-        set => SetLineGradientColor1(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetLineGradientColor1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLineGradientColor1(Vec4 value)
     {
@@ -413,7 +341,7 @@ public abstract class CControlStyleBuilderMembers2<TSelf> : CControlStyleBuilder
     public float Skew
     {
         get => state.Get<float>("Skew");
-        set => SetSkew(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetSkewAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSkew(float value)
     {
@@ -427,7 +355,7 @@ public abstract class CControlStyleBuilderMembers3<TSelf> : CControlStyleBuilder
     public bool FocusAreaEnable
     {
         get => state.Get<bool>("FocusAreaEnable");
-        set => SetFocusAreaEnable(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaEnableAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFocusAreaEnable(bool value)
     {
@@ -437,7 +365,7 @@ public abstract class CControlStyleBuilderMembers3<TSelf> : CControlStyleBuilder
     public global::GBX.NET.Engines.Plug.CPlugMaterial? FocusAreaMaterial
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("FocusAreaMaterial");
-        set => SetFocusAreaMaterial(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaMaterialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFocusAreaMaterial(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
     {
@@ -447,13 +375,13 @@ public abstract class CControlStyleBuilderMembers3<TSelf> : CControlStyleBuilder
     public TSelf WithFocusAreaMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetFocusAreaMaterialReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaMaterialReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugMaterial? FocusAreaMaterialFocused
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("FocusAreaMaterialFocused");
-        set => SetFocusAreaMaterialFocused(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaMaterialFocusedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFocusAreaMaterialFocused(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
     {
@@ -463,13 +391,13 @@ public abstract class CControlStyleBuilderMembers3<TSelf> : CControlStyleBuilder
     public TSelf WithFocusAreaMaterialFocusedReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetFocusAreaMaterialFocusedReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaMaterialFocusedReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugMaterial? FocusAreaMaterialReadOnly
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("FocusAreaMaterialReadOnly");
-        set => SetFocusAreaMaterialReadOnly(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaMaterialReadOnlyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFocusAreaMaterialReadOnly(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
     {
@@ -479,13 +407,13 @@ public abstract class CControlStyleBuilderMembers3<TSelf> : CControlStyleBuilder
     public TSelf WithFocusAreaMaterialReadOnlyReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetFocusAreaMaterialReadOnlyReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaMaterialReadOnlyReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugMaterial? FocusAreaMaterialSelected
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("FocusAreaMaterialSelected");
-        set => SetFocusAreaMaterialSelected(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaMaterialSelectedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFocusAreaMaterialSelected(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
     {
@@ -495,13 +423,13 @@ public abstract class CControlStyleBuilderMembers3<TSelf> : CControlStyleBuilder
     public TSelf WithFocusAreaMaterialSelectedReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetFocusAreaMaterialSelectedReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaMaterialSelectedReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public float FocusAreaMinHeight
     {
         get => state.Get<float>("FocusAreaMinHeight");
-        set => SetFocusAreaMinHeight(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaMinHeightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFocusAreaMinHeight(float value)
     {
@@ -511,7 +439,7 @@ public abstract class CControlStyleBuilderMembers3<TSelf> : CControlStyleBuilder
     public float FocusAreaMinWidth
     {
         get => state.Get<float>("FocusAreaMinWidth");
-        set => SetFocusAreaMinWidth(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaMinWidthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFocusAreaMinWidth(float value)
     {
@@ -521,7 +449,7 @@ public abstract class CControlStyleBuilderMembers3<TSelf> : CControlStyleBuilder
     public global::GBX.NET.Engines.Plug.CPlugSolid? FocusAreaSolid
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSolid?>("FocusAreaSolid");
-        set => SetFocusAreaSolid(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaSolidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFocusAreaSolid(global::GBX.NET.Engines.Plug.CPlugSolid? value)
     {
@@ -531,13 +459,13 @@ public abstract class CControlStyleBuilderMembers3<TSelf> : CControlStyleBuilder
     public TSelf WithFocusAreaSolidReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetFocusAreaSolidReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaSolidReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public float FocusAreaXMargin
     {
         get => state.Get<float>("FocusAreaXMargin");
-        set => SetFocusAreaXMargin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaXMarginAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFocusAreaXMargin(float value)
     {
@@ -547,7 +475,7 @@ public abstract class CControlStyleBuilderMembers3<TSelf> : CControlStyleBuilder
     public float FocusAreaYMargin
     {
         get => state.Get<float>("FocusAreaYMargin");
-        set => SetFocusAreaYMargin(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaYMarginAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFocusAreaYMargin(float value)
     {
@@ -557,7 +485,7 @@ public abstract class CControlStyleBuilderMembers3<TSelf> : CControlStyleBuilder
     public float FocusAreaZOffset
     {
         get => state.Get<float>("FocusAreaZOffset");
-        set => SetFocusAreaZOffset(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaZOffsetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFocusAreaZOffset(float value)
     {
@@ -567,7 +495,7 @@ public abstract class CControlStyleBuilderMembers3<TSelf> : CControlStyleBuilder
     public global::GBX.NET.Engines.Plug.CPlugFont? Font
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugFont?>("Font");
-        set => SetFont(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFontAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFont(global::GBX.NET.Engines.Plug.CPlugFont? value)
     {
@@ -577,13 +505,13 @@ public abstract class CControlStyleBuilderMembers3<TSelf> : CControlStyleBuilder
     public TSelf WithFontReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFont> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetFontReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFontReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public float SliderBarHeight
     {
         get => state.Get<float>("SliderBarHeight");
-        set => SetSliderBarHeight(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetSliderBarHeightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSliderBarHeight(float value)
     {
@@ -593,7 +521,7 @@ public abstract class CControlStyleBuilderMembers3<TSelf> : CControlStyleBuilder
     public global::GBX.NET.Engines.Function.CFuncEnum? SliderBarIcons
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncEnum?>("SliderBarIcons");
-        set => SetSliderBarIcons(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetSliderBarIconsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSliderBarIcons(global::GBX.NET.Engines.Function.CFuncEnum? value)
     {
@@ -603,13 +531,13 @@ public abstract class CControlStyleBuilderMembers3<TSelf> : CControlStyleBuilder
     public TSelf WithSliderBarIconsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSliderBarIconsReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetSliderBarIconsReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public float SliderBarWidth
     {
         get => state.Get<float>("SliderBarWidth");
-        set => SetSliderBarWidth(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetSliderBarWidthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSliderBarWidth(float value)
     {
@@ -619,7 +547,7 @@ public abstract class CControlStyleBuilderMembers3<TSelf> : CControlStyleBuilder
     public float SliderCursorHeight
     {
         get => state.Get<float>("SliderCursorHeight");
-        set => SetSliderCursorHeight(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetSliderCursorHeightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSliderCursorHeight(float value)
     {
@@ -629,7 +557,7 @@ public abstract class CControlStyleBuilderMembers3<TSelf> : CControlStyleBuilder
     public global::GBX.NET.Engines.Function.CFuncEnum? SliderCursorIcons
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncEnum?>("SliderCursorIcons");
-        set => SetSliderCursorIcons(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetSliderCursorIconsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSliderCursorIcons(global::GBX.NET.Engines.Function.CFuncEnum? value)
     {
@@ -639,13 +567,13 @@ public abstract class CControlStyleBuilderMembers3<TSelf> : CControlStyleBuilder
     public TSelf WithSliderCursorIconsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSliderCursorIconsReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetSliderCursorIconsReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public float SliderCursorWidth
     {
         get => state.Get<float>("SliderCursorWidth");
-        set => SetSliderCursorWidth(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetSliderCursorWidthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSliderCursorWidth(float value)
     {
@@ -655,7 +583,7 @@ public abstract class CControlStyleBuilderMembers3<TSelf> : CControlStyleBuilder
     public global::GBX.NET.Engines.Plug.CPlugSound? SliderSound
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("SliderSound");
-        set => SetSliderSound(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetSliderSoundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSliderSound(global::GBX.NET.Engines.Plug.CPlugSound? value)
     {
@@ -665,7 +593,7 @@ public abstract class CControlStyleBuilderMembers3<TSelf> : CControlStyleBuilder
     public TSelf WithSliderSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSliderSoundReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetSliderSoundReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -675,7 +603,7 @@ public abstract class CControlStyleBuilderMembers4<TSelf> : CControlStyleBuilder
     public global::GBX.NET.Engines.Plug.CPlugSound? ActionSound
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("ActionSound");
-        set => SetActionSound(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionSoundAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithActionSound(global::GBX.NET.Engines.Plug.CPlugSound? value)
     {
@@ -685,13 +613,13 @@ public abstract class CControlStyleBuilderMembers4<TSelf> : CControlStyleBuilder
     public TSelf WithActionSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetActionSoundReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionSoundReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public string? ButtonDefaultIconId
     {
         get => state.Get<string?>("ButtonDefaultIconId");
-        set => SetButtonDefaultIconId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonDefaultIconIdAssignment(), value, GameVersion.MP4 | GameVersion.TMF);
     }
     public TSelf WithButtonDefaultIconId(string? value)
     {
@@ -701,7 +629,7 @@ public abstract class CControlStyleBuilderMembers4<TSelf> : CControlStyleBuilder
     public global::GBX.NET.Engines.Function.CFuncEnum? ButtonDefaultIcons
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncEnum?>("ButtonDefaultIcons");
-        set => SetButtonDefaultIcons(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonDefaultIconsAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithButtonDefaultIcons(global::GBX.NET.Engines.Function.CFuncEnum? value)
     {
@@ -711,13 +639,13 @@ public abstract class CControlStyleBuilderMembers4<TSelf> : CControlStyleBuilder
     public TSelf WithButtonDefaultIconsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetButtonDefaultIconsReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonDefaultIconsReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public float ButtonIconHeight
     {
         get => state.Get<float>("ButtonIconHeight");
-        set => SetButtonIconHeight(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonIconHeightAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithButtonIconHeight(float value)
     {
@@ -727,7 +655,7 @@ public abstract class CControlStyleBuilderMembers4<TSelf> : CControlStyleBuilder
     public float ButtonIconWidth
     {
         get => state.Get<float>("ButtonIconWidth");
-        set => SetButtonIconWidth(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonIconWidthAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithButtonIconWidth(float value)
     {
@@ -1135,7 +1063,7 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public global::GBX.NET.Engines.Plug.CPlugSound? ActionSound
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("ActionSound");
-            set => SetActionSound(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionSoundAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TM10 WithActionSound(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1145,7 +1073,7 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public TM10 WithActionSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetActionSoundReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionSoundReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public TM10 WithActionSound(global::GBX.NET.Interfaces.Plug.IPlugSoundTM10? value)
@@ -1155,7 +1083,7 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public global::GBX.NET.Engines.Function.CFuncEnum? ButtonDefaultIcons
         {
             get => state.Get<global::GBX.NET.Engines.Function.CFuncEnum?>("ButtonDefaultIcons");
-            set => SetButtonDefaultIcons(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonDefaultIconsAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TM10 WithButtonDefaultIcons(global::GBX.NET.Engines.Function.CFuncEnum? value)
         {
@@ -1165,13 +1093,13 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public TM10 WithButtonDefaultIconsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetButtonDefaultIconsReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonDefaultIconsReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public float ButtonIconHeight
         {
             get => state.Get<float>("ButtonIconHeight");
-            set => SetButtonIconHeight(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonIconHeightAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TM10 WithButtonIconHeight(float value)
         {
@@ -1181,7 +1109,7 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public float ButtonIconWidth
         {
             get => state.Get<float>("ButtonIconWidth");
-            set => SetButtonIconWidth(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonIconWidthAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TM10 WithButtonIconWidth(float value)
         {
@@ -1237,7 +1165,7 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public global::GBX.NET.Engines.Plug.CPlugSound? ActionSound
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("ActionSound");
-            set => SetActionSound(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionSoundAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMPU WithActionSound(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1247,7 +1175,7 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public TMPU WithActionSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetActionSoundReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionSoundReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public TMPU WithActionSound(global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU? value)
@@ -1257,7 +1185,7 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public global::GBX.NET.Engines.Function.CFuncEnum? ButtonDefaultIcons
         {
             get => state.Get<global::GBX.NET.Engines.Function.CFuncEnum?>("ButtonDefaultIcons");
-            set => SetButtonDefaultIcons(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonDefaultIconsAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMPU WithButtonDefaultIcons(global::GBX.NET.Engines.Function.CFuncEnum? value)
         {
@@ -1267,13 +1195,13 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public TMPU WithButtonDefaultIconsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetButtonDefaultIconsReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonDefaultIconsReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public float ButtonIconHeight
         {
             get => state.Get<float>("ButtonIconHeight");
-            set => SetButtonIconHeight(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonIconHeightAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMPU WithButtonIconHeight(float value)
         {
@@ -1283,7 +1211,7 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public float ButtonIconWidth
         {
             get => state.Get<float>("ButtonIconWidth");
-            set => SetButtonIconWidth(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonIconWidthAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMPU WithButtonIconWidth(float value)
         {
@@ -1321,7 +1249,7 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public Vec4 QuadLinesColor
         {
             get => state.Get<Vec4>("QuadLinesColor");
-            set => SetQuadLinesColor(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetQuadLinesColorAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMPU WithQuadLinesColor(Vec4 value)
         {
@@ -1349,7 +1277,7 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public global::GBX.NET.Engines.Plug.CPlugSound? ActionSound
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("ActionSound");
-            set => SetActionSound(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionSoundAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMSX WithActionSound(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1359,7 +1287,7 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public TMSX WithActionSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetActionSoundReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionSoundReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public TMSX WithActionSound(global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX? value)
@@ -1369,7 +1297,7 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public global::GBX.NET.Engines.Function.CFuncEnum? ButtonDefaultIcons
         {
             get => state.Get<global::GBX.NET.Engines.Function.CFuncEnum?>("ButtonDefaultIcons");
-            set => SetButtonDefaultIcons(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonDefaultIconsAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMSX WithButtonDefaultIcons(global::GBX.NET.Engines.Function.CFuncEnum? value)
         {
@@ -1379,13 +1307,13 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public TMSX WithButtonDefaultIconsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetButtonDefaultIconsReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonDefaultIconsReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public float ButtonIconHeight
         {
             get => state.Get<float>("ButtonIconHeight");
-            set => SetButtonIconHeight(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonIconHeightAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMSX WithButtonIconHeight(float value)
         {
@@ -1395,7 +1323,7 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public float ButtonIconWidth
         {
             get => state.Get<float>("ButtonIconWidth");
-            set => SetButtonIconWidth(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonIconWidthAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMSX WithButtonIconWidth(float value)
         {
@@ -1437,7 +1365,7 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public Vec4 QuadLinesColor
         {
             get => state.Get<Vec4>("QuadLinesColor");
-            set => SetQuadLinesColor(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetQuadLinesColorAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMSX WithQuadLinesColor(Vec4 value)
         {
@@ -1465,7 +1393,7 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public global::GBX.NET.Engines.Plug.CPlugSound? ActionSound
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("ActionSound");
-            set => SetActionSound(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionSoundAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMNESWC WithActionSound(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1475,7 +1403,7 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public TMNESWC WithActionSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetActionSoundReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionSoundReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public TMNESWC WithActionSound(global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC? value)
@@ -1485,7 +1413,7 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public global::GBX.NET.Engines.Function.CFuncEnum? ButtonDefaultIcons
         {
             get => state.Get<global::GBX.NET.Engines.Function.CFuncEnum?>("ButtonDefaultIcons");
-            set => SetButtonDefaultIcons(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonDefaultIconsAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMNESWC WithButtonDefaultIcons(global::GBX.NET.Engines.Function.CFuncEnum? value)
         {
@@ -1495,7 +1423,7 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public TMNESWC WithButtonDefaultIconsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetButtonDefaultIconsReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonDefaultIconsReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public TMNESWC WithButtonDefaultIcons(global::GBX.NET.Interfaces.Function.IFuncEnumTMNESWC? value)
@@ -1505,7 +1433,7 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public float ButtonIconHeight
         {
             get => state.Get<float>("ButtonIconHeight");
-            set => SetButtonIconHeight(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonIconHeightAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMNESWC WithButtonIconHeight(float value)
         {
@@ -1515,7 +1443,7 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public float ButtonIconWidth
         {
             get => state.Get<float>("ButtonIconWidth");
-            set => SetButtonIconWidth(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonIconWidthAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMNESWC WithButtonIconWidth(float value)
         {
@@ -1561,7 +1489,7 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public Vec4 QuadLinesColor
         {
             get => state.Get<Vec4>("QuadLinesColor");
-            set => SetQuadLinesColor(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetQuadLinesColorAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMNESWC WithQuadLinesColor(Vec4 value)
         {
@@ -1589,7 +1517,7 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public global::GBX.NET.Engines.Plug.CPlugSound? ActionSound
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("ActionSound");
-            set => SetActionSound(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionSoundAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public VSK5 WithActionSound(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -1599,7 +1527,7 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public VSK5 WithActionSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetActionSoundReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionSoundReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public VSK5 WithActionSound(global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5? value)
@@ -1609,7 +1537,7 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public global::GBX.NET.Engines.Function.CFuncEnum? ButtonDefaultIcons
         {
             get => state.Get<global::GBX.NET.Engines.Function.CFuncEnum?>("ButtonDefaultIcons");
-            set => SetButtonDefaultIcons(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonDefaultIconsAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public VSK5 WithButtonDefaultIcons(global::GBX.NET.Engines.Function.CFuncEnum? value)
         {
@@ -1619,7 +1547,7 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public VSK5 WithButtonDefaultIconsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetButtonDefaultIconsReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonDefaultIconsReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public VSK5 WithButtonDefaultIcons(global::GBX.NET.Interfaces.Function.IFuncEnumVSK5? value)
@@ -1629,7 +1557,7 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public float ButtonIconHeight
         {
             get => state.Get<float>("ButtonIconHeight");
-            set => SetButtonIconHeight(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonIconHeightAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public VSK5 WithButtonIconHeight(float value)
         {
@@ -1639,7 +1567,7 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public float ButtonIconWidth
         {
             get => state.Get<float>("ButtonIconWidth");
-            set => SetButtonIconWidth(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonIconWidthAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public VSK5 WithButtonIconWidth(float value)
         {
@@ -1705,7 +1633,7 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public Vec4 QuadLinesColor
         {
             get => state.Get<Vec4>("QuadLinesColor");
-            set => SetQuadLinesColor(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetQuadLinesColorAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public VSK5 WithQuadLinesColor(Vec4 value)
         {
@@ -1809,7 +1737,7 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public Vec4 QuadLinesColor
         {
             get => state.Get<Vec4>("QuadLinesColor");
-            set => SetQuadLinesColor(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetQuadLinesColorAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMF WithQuadLinesColor(Vec4 value)
         {
@@ -1897,7 +1825,7 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public Vec4 QuadLinesColor
         {
             get => state.Get<Vec4>("QuadLinesColor");
-            set => SetQuadLinesColor(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetQuadLinesColorAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP3 WithQuadLinesColor(Vec4 value)
         {
@@ -1985,7 +1913,7 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public Vec4 QuadLinesColor
         {
             get => state.Get<Vec4>("QuadLinesColor");
-            set => SetQuadLinesColor(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetQuadLinesColorAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMT WithQuadLinesColor(Vec4 value)
         {
@@ -2025,7 +1953,7 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public global::GBX.NET.Engines.Plug.CPlugSound? ActionBackSound
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("ActionBackSound");
-            set => SetActionBackSound(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionBackSoundAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithActionBackSound(global::GBX.NET.Engines.Plug.CPlugSound? value)
         {
@@ -2035,7 +1963,7 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public MP4 WithActionBackSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetActionBackSoundReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionBackSoundReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithActionBackSound(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)

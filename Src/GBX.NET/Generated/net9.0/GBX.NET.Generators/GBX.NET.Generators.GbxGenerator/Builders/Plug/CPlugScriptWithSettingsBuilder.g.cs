@@ -36,14 +36,10 @@ public abstract class CPlugScriptWithSettingsBuilderBase<TSelf> where TSelf : CP
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugScriptWithSettings> state;
     private protected CPlugScriptWithSettingsBuilderBase() => state = new();
     private protected CPlugScriptWithSettingsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugScriptWithSettings> state) => this.state = state;
-    private protected static void SetScript(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugScriptWithSettings> state, global::GBX.NET.Engines.Plug.CPlugFileTextScript? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugScriptWithSettingsBuilderAssignments.GetScriptAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetScriptReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugScriptWithSettings> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileTextScript> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugScriptWithSettingsBuilderAssignments.GetScriptReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSettings(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugScriptWithSettings> state, global::GBX.NET.Engines.Script.CScriptSetting[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugScriptWithSettingsBuilderAssignments.GetSettingsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetSettingsVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugScriptWithSettings> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugScriptWithSettingsBuilderAssignments.GetSettingsVersionAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     public global::GBX.NET.Engines.Plug.CPlugFileTextScript? Script
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugFileTextScript?>("Script");
-        set => SetScript(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugScriptWithSettingsBuilderAssignments.GetScriptAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithScript(global::GBX.NET.Engines.Plug.CPlugFileTextScript? value)
     {
@@ -53,13 +49,13 @@ public abstract class CPlugScriptWithSettingsBuilderBase<TSelf> where TSelf : CP
     public TSelf WithScriptReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileTextScript> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetScriptReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugScriptWithSettingsBuilderAssignments.GetScriptReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Script.CScriptSetting[]? Settings
     {
         get => state.Get<global::GBX.NET.Engines.Script.CScriptSetting[]?>("Settings");
-        set => SetSettings(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugScriptWithSettingsBuilderAssignments.GetSettingsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithSettings(params global::GBX.NET.Engines.Script.CScriptSetting[]? value)
     {
@@ -73,7 +69,7 @@ public abstract class CPlugScriptWithSettingsBuilderBase<TSelf> where TSelf : CP
     public int SettingsVersion
     {
         get => state.Get<int>("SettingsVersion");
-        set => SetSettingsVersion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugScriptWithSettingsBuilderAssignments.GetSettingsVersionAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithSettingsVersion(int value)
     {

@@ -36,15 +36,10 @@ public abstract class CMwCmdExpEgalBuilderBase<TSelf> where TSelf : CMwCmdExpEga
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpEgal> state;
     private protected CMwCmdExpEgalBuilderBase() => state = new();
     private protected CMwCmdExpEgalBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpEgal> state) => this.state = state;
-    private protected static void SetBool(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpEgal> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpBoolBuilderAssignments.GetBoolAssignment(), value, GameVersion.TMF);
-    private protected static void SetValue1(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpEgal> state, global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpEgalBuilderAssignments.GetValue1Assignment(), value, GameVersion.TMF);
-    private protected static void SetValue1Reference(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpEgal> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpEgalBuilderAssignments.GetValue1ReferenceAssignment(), value, GameVersion.TMF);
-    private protected static void SetValue2(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpEgal> state, global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpEgalBuilderAssignments.GetValue2Assignment(), value, GameVersion.TMF);
-    private protected static void SetValue2Reference(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpEgal> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpEgalBuilderAssignments.GetValue2ReferenceAssignment(), value, GameVersion.TMF);
     public bool Bool
     {
         get => state.Get<bool>("Bool");
-        set => SetBool(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpBoolBuilderAssignments.GetBoolAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithBool(bool value)
     {
@@ -54,7 +49,7 @@ public abstract class CMwCmdExpEgalBuilderBase<TSelf> where TSelf : CMwCmdExpEga
     public global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Value1
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdExp?>("Value1");
-        set => SetValue1(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpEgalBuilderAssignments.GetValue1Assignment(), value, GameVersion.TMF);
     }
     public TSelf WithValue1(global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value)
     {
@@ -64,13 +59,13 @@ public abstract class CMwCmdExpEgalBuilderBase<TSelf> where TSelf : CMwCmdExpEga
     public TSelf WithValue1Reference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetValue1Reference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpEgalBuilderAssignments.GetValue1ReferenceAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Value2
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdExp?>("Value2");
-        set => SetValue2(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpEgalBuilderAssignments.GetValue2Assignment(), value, GameVersion.TMF);
     }
     public TSelf WithValue2(global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value)
     {
@@ -80,7 +75,7 @@ public abstract class CMwCmdExpEgalBuilderBase<TSelf> where TSelf : CMwCmdExpEga
     public TSelf WithValue2Reference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetValue2Reference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpEgalBuilderAssignments.GetValue2ReferenceAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
 }

@@ -36,30 +36,10 @@ public abstract class CGameCtnBlockBuilderBase<TSelf> where TSelf : CGameCtnBloc
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state;
     private protected CGameCtnBlockBuilderBase() => state = new();
     private protected CGameCtnBlockBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state) => this.state = state;
-    private protected static void SetAbsolutePositionInMap(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, global::GBX.NET.Vec3? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetAbsolutePositionInMapAssignment(), value, GameVersion.TM2020);
-    private protected static void SetBlockModel(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, global::GBX.NET.Ident value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetBlockModelAssignment(), value, GameVersion.TM10);
-    private protected static void SetColor(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, global::GBX.NET.DifficultyColor value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetColorAssignment(), value, GameVersion.TM2020);
-    private protected static void SetCoord(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, global::GBX.NET.Int3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetCoordAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX);
-    private protected static void SetDirection(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, global::GBX.NET.Direction value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetDirectionAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX);
-    private protected static void SetFlags(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX);
-    private protected static void SetIsClip(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetIsClipAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX);
-    private protected static void SetIsFree(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetIsFreeAssignment(), value, GameVersion.TM2020);
-    private protected static void SetIsGhost(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetIsGhostAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetIsGround(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetIsGroundAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX);
-    private protected static void SetLightmapQuality(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, global::GBX.NET.LightmapQuality value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetLightmapQualityAssignment(), value, GameVersion.TM2020);
-    private protected static void SetMacroblockReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, global::GBX.NET.MacroblockInstance? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetMacroblockReferenceAssignment(), value, GameVersion.TM2020);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, string value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetNameAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX);
-    private protected static void SetSkin(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, global::GBX.NET.Engines.Game.CGameCtnBlockSkin? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetSkinAssignment(), value, GameVersion.TM10);
-    private protected static void SetSkinReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockSkin> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetSkinReferenceAssignment(), value, GameVersion.TM10);
-    private protected static void SetSubVariant(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, byte value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetSubVariantAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX);
-    private protected static void SetVariant(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, byte value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetVariantAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX);
-    private protected static void SetWaypointSpecialProperty(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetWaypointSpecialPropertyAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetWaypointSpecialPropertyReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, NodeRef<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetWaypointSpecialPropertyReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetYawPitchRoll(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, global::GBX.NET.Vec3? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetYawPitchRollAssignment(), value, GameVersion.TM2020);
     public global::GBX.NET.Int3 Coord
     {
         get => state.Get<global::GBX.NET.Int3>("Coord");
-        set => SetCoord(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetCoordAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX);
     }
     public TSelf WithCoord(global::GBX.NET.Int3 value)
     {
@@ -69,7 +49,7 @@ public abstract class CGameCtnBlockBuilderBase<TSelf> where TSelf : CGameCtnBloc
     public global::GBX.NET.Direction Direction
     {
         get => state.Get<global::GBX.NET.Direction>("Direction");
-        set => SetDirection(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetDirectionAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX);
     }
     public TSelf WithDirection(global::GBX.NET.Direction value)
     {
@@ -79,7 +59,7 @@ public abstract class CGameCtnBlockBuilderBase<TSelf> where TSelf : CGameCtnBloc
     public int Flags
     {
         get => state.Get<int>("Flags");
-        set => SetFlags(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX);
     }
     public TSelf WithFlags(int value)
     {
@@ -89,7 +69,7 @@ public abstract class CGameCtnBlockBuilderBase<TSelf> where TSelf : CGameCtnBloc
     public bool IsGround
     {
         get => state.Get<bool>("IsGround");
-        set => SetIsGround(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetIsGroundAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX);
     }
     public TSelf WithIsGround(bool value)
     {
@@ -99,7 +79,7 @@ public abstract class CGameCtnBlockBuilderBase<TSelf> where TSelf : CGameCtnBloc
     public string Name
     {
         get => state.Get<string>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetNameAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX);
     }
     public TSelf WithName(string value)
     {
@@ -109,7 +89,7 @@ public abstract class CGameCtnBlockBuilderBase<TSelf> where TSelf : CGameCtnBloc
     public byte Variant
     {
         get => state.Get<byte>("Variant");
-        set => SetVariant(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetVariantAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX);
     }
     public TSelf WithVariant(byte value)
     {
@@ -123,7 +103,7 @@ public abstract class CGameCtnBlockBuilderMembers1<TSelf> : CGameCtnBlockBuilder
     public bool IsClip
     {
         get => state.Get<bool>("IsClip");
-        set => SetIsClip(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetIsClipAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX);
     }
     public TSelf WithIsClip(bool value)
     {
@@ -133,7 +113,7 @@ public abstract class CGameCtnBlockBuilderMembers1<TSelf> : CGameCtnBlockBuilder
     public byte SubVariant
     {
         get => state.Get<byte>("SubVariant");
-        set => SetSubVariant(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetSubVariantAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX);
     }
     public TSelf WithSubVariant(byte value)
     {
@@ -147,7 +127,7 @@ public abstract class CGameCtnBlockBuilderMembers2<TSelf> : CGameCtnBlockBuilder
     public bool IsGhost
     {
         get => state.Get<bool>("IsGhost");
-        set => SetIsGhost(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetIsGhostAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithIsGhost(bool value)
     {
@@ -157,7 +137,7 @@ public abstract class CGameCtnBlockBuilderMembers2<TSelf> : CGameCtnBlockBuilder
     public global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty? WaypointSpecialProperty
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty?>("WaypointSpecialProperty");
-        set => SetWaypointSpecialProperty(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetWaypointSpecialPropertyAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithWaypointSpecialProperty(global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty? value)
     {
@@ -167,7 +147,7 @@ public abstract class CGameCtnBlockBuilderMembers2<TSelf> : CGameCtnBlockBuilder
     public TSelf WithWaypointSpecialPropertyReference(NodeRef<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetWaypointSpecialPropertyReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetWaypointSpecialPropertyReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
 }
@@ -209,7 +189,7 @@ public partial class CGameCtnBlockBuilder : CGameCtnBlockBuilderBase<CGameCtnBlo
         public global::GBX.NET.Ident BlockModel
         {
             get => state.Get<global::GBX.NET.Ident>("BlockModel");
-            set => SetBlockModel(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetBlockModelAssignment(), value, GameVersion.TM10);
         }
         public TM10 WithBlockModel(global::GBX.NET.Ident value)
         {
@@ -219,7 +199,7 @@ public partial class CGameCtnBlockBuilder : CGameCtnBlockBuilderBase<CGameCtnBlo
         public global::GBX.NET.Engines.Game.CGameCtnBlockSkin? Skin
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameCtnBlockSkin?>("Skin");
-            set => SetSkin(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetSkinAssignment(), value, GameVersion.TM10);
         }
         public TM10 WithSkin(global::GBX.NET.Engines.Game.CGameCtnBlockSkin? value)
         {
@@ -229,7 +209,7 @@ public partial class CGameCtnBlockBuilder : CGameCtnBlockBuilderBase<CGameCtnBlo
         public TM10 WithSkinReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockSkin> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSkinReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetSkinReferenceAssignment(), value, GameVersion.TM10);
             return this;
         }
         public TM10 WithSkin(global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinTM10? value)
@@ -315,7 +295,7 @@ public partial class CGameCtnBlockBuilder : CGameCtnBlockBuilderBase<CGameCtnBlo
         public global::GBX.NET.Vec3? AbsolutePositionInMap
         {
             get => state.Get<global::GBX.NET.Vec3?>("AbsolutePositionInMap");
-            set => SetAbsolutePositionInMap(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetAbsolutePositionInMapAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithAbsolutePositionInMap(global::GBX.NET.Vec3? value)
         {
@@ -325,7 +305,7 @@ public partial class CGameCtnBlockBuilder : CGameCtnBlockBuilderBase<CGameCtnBlo
         public global::GBX.NET.DifficultyColor Color
         {
             get => state.Get<global::GBX.NET.DifficultyColor>("Color");
-            set => SetColor(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetColorAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithColor(global::GBX.NET.DifficultyColor value)
         {
@@ -335,7 +315,7 @@ public partial class CGameCtnBlockBuilder : CGameCtnBlockBuilderBase<CGameCtnBlo
         public bool IsFree
         {
             get => state.Get<bool>("IsFree");
-            set => SetIsFree(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetIsFreeAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithIsFree(bool value)
         {
@@ -345,7 +325,7 @@ public partial class CGameCtnBlockBuilder : CGameCtnBlockBuilderBase<CGameCtnBlo
         public global::GBX.NET.LightmapQuality LightmapQuality
         {
             get => state.Get<global::GBX.NET.LightmapQuality>("LightmapQuality");
-            set => SetLightmapQuality(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetLightmapQualityAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithLightmapQuality(global::GBX.NET.LightmapQuality value)
         {
@@ -355,7 +335,7 @@ public partial class CGameCtnBlockBuilder : CGameCtnBlockBuilderBase<CGameCtnBlo
         public global::GBX.NET.MacroblockInstance? MacroblockReference
         {
             get => state.Get<global::GBX.NET.MacroblockInstance?>("MacroblockReference");
-            set => SetMacroblockReference(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetMacroblockReferenceAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithMacroblockReference(global::GBX.NET.MacroblockInstance? value)
         {
@@ -369,7 +349,7 @@ public partial class CGameCtnBlockBuilder : CGameCtnBlockBuilderBase<CGameCtnBlo
         public global::GBX.NET.Vec3? YawPitchRoll
         {
             get => state.Get<global::GBX.NET.Vec3?>("YawPitchRoll");
-            set => SetYawPitchRoll(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetYawPitchRollAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithYawPitchRoll(global::GBX.NET.Vec3? value)
         {

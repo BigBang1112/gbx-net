@@ -36,25 +36,10 @@ public abstract class CSceneVehicleBuilderBase<TSelf> where TSelf : CSceneVehicl
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicle> state;
     private protected CSceneVehicleBuilderBase() => state = new();
     private protected CSceneVehicleBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicle> state) => this.state = state;
-    private protected static void SetEnvironment(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicle> state, global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleBuilderAssignments.GetEnvironmentAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetEnvironmentReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicle> state, NodeRef<global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleBuilderAssignments.GetEnvironmentReferenceAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetItem(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicle> state, global::GBX.NET.Engines.Hms.CHmsItem? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetItemAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMessageHandler(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicle> state, global::GBX.NET.Engines.Scene.CSceneMessageHandler? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetMessageHandlerReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicle> state, NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetMotion(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicle> state, global::GBX.NET.Engines.Motion.CMotion? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetMotionReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicle> state, NodeRef<global::GBX.NET.Engines.Motion.CMotion> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicle> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetObjectLink(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicle> state, NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetObjectLinkAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetVehicleMaterials(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicle> state, global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleBuilderAssignments.GetVehicleMaterialsAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetVehicleMaterialsReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicle> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleBuilderAssignments.GetVehicleMaterialsReferenceAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetVehicleStruct(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicle> state, global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleBuilderAssignments.GetVehicleStructAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetVehicleStructReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleBuilderAssignments.GetVehicleStructReferenceAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetVehicleTunings(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicle> state, global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleBuilderAssignments.GetVehicleTuningsAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    private protected static void SetVehicleTuningsReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleBuilderAssignments.GetVehicleTuningsReferenceAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     public global::GBX.NET.Engines.Hms.CHmsItem? Item
     {
         get => state.Get<global::GBX.NET.Engines.Hms.CHmsItem?>("Item");
-        set => SetItem(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetItemAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithItem(global::GBX.NET.Engines.Hms.CHmsItem? value)
     {
@@ -64,7 +49,7 @@ public abstract class CSceneVehicleBuilderBase<TSelf> where TSelf : CSceneVehicl
     public global::GBX.NET.Engines.Motion.CMotion? Motion
     {
         get => state.Get<global::GBX.NET.Engines.Motion.CMotion?>("Motion");
-        set => SetMotion(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMotion(global::GBX.NET.Engines.Motion.CMotion? value)
     {
@@ -74,13 +59,13 @@ public abstract class CSceneVehicleBuilderBase<TSelf> where TSelf : CSceneVehicl
     public TSelf WithMotionReference(NodeRef<global::GBX.NET.Engines.Motion.CMotion> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetMotionReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public string? Name
     {
         get => state.Get<string?>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithName(string? value)
     {
@@ -90,7 +75,7 @@ public abstract class CSceneVehicleBuilderBase<TSelf> where TSelf : CSceneVehicl
     public NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? ObjectLink
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>?>("ObjectLink");
-        set => SetObjectLink(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetObjectLinkAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithObjectLink(NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? value)
     {
@@ -112,7 +97,7 @@ public abstract class CSceneVehicleBuilderMembers1<TSelf> : CSceneVehicleBuilder
     public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
     {
         get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
-        set => SetMessageHandler(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
     {
@@ -122,7 +107,7 @@ public abstract class CSceneVehicleBuilderMembers1<TSelf> : CSceneVehicleBuilder
     public TSelf WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetMessageHandlerReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -132,7 +117,7 @@ public abstract class CSceneVehicleBuilderMembers2<TSelf> : CSceneVehicleBuilder
     public global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment? Environment
     {
         get => state.Get<global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment?>("Environment");
-        set => SetEnvironment(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleBuilderAssignments.GetEnvironmentAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithEnvironment(global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment? value)
     {
@@ -142,13 +127,13 @@ public abstract class CSceneVehicleBuilderMembers2<TSelf> : CSceneVehicleBuilder
     public TSelf WithEnvironmentReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetEnvironmentReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleBuilderAssignments.GetEnvironmentReferenceAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? VehicleMaterials
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?>("VehicleMaterials");
-        set => SetVehicleMaterials(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleBuilderAssignments.GetVehicleMaterialsAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithVehicleMaterials(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value)
     {
@@ -158,13 +143,13 @@ public abstract class CSceneVehicleBuilderMembers2<TSelf> : CSceneVehicleBuilder
     public TSelf WithVehicleMaterialsReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetVehicleMaterialsReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleBuilderAssignments.GetVehicleMaterialsReferenceAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared? VehicleStruct
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared?>("VehicleStruct");
-        set => SetVehicleStruct(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleBuilderAssignments.GetVehicleStructAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithVehicleStruct(global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared? value)
     {
@@ -174,13 +159,13 @@ public abstract class CSceneVehicleBuilderMembers2<TSelf> : CSceneVehicleBuilder
     public TSelf WithVehicleStructReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetVehicleStructReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleBuilderAssignments.GetVehicleStructReferenceAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings? VehicleTunings
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings?>("VehicleTunings");
-        set => SetVehicleTunings(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleBuilderAssignments.GetVehicleTuningsAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithVehicleTunings(global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings? value)
     {
@@ -190,7 +175,7 @@ public abstract class CSceneVehicleBuilderMembers2<TSelf> : CSceneVehicleBuilder
     public TSelf WithVehicleTuningsReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetVehicleTuningsReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleBuilderAssignments.GetVehicleTuningsReferenceAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
     }
 }

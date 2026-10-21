@@ -36,14 +36,10 @@ public abstract class CSceneMessageHandlerBuilderBase<TSelf> where TSelf : CScen
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMessageHandler> state;
     private protected CSceneMessageHandlerBuilderBase() => state = new();
     private protected CSceneMessageHandlerBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMessageHandler> state) => this.state = state;
-    private protected static void SetOnClickScript(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMessageHandler> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMessageHandlerBuilderAssignments.GetOnClickScriptAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetOnClickScriptReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMessageHandler> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMessageHandlerBuilderAssignments.GetOnClickScriptReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetOnContactScript(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMessageHandler> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMessageHandlerBuilderAssignments.GetOnContactScriptAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetOnContactScriptReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMessageHandler> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMessageHandlerBuilderAssignments.GetOnContactScriptReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     public global::GBX.NET.Engines.MwFoundations.CMwNod? OnContactScript
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("OnContactScript");
-        set => SetOnContactScript(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMessageHandlerBuilderAssignments.GetOnContactScriptAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithOnContactScript(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
@@ -53,7 +49,7 @@ public abstract class CSceneMessageHandlerBuilderBase<TSelf> where TSelf : CScen
     public TSelf WithOnContactScriptReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetOnContactScriptReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMessageHandlerBuilderAssignments.GetOnContactScriptReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -63,7 +59,7 @@ public abstract class CSceneMessageHandlerBuilderMembers1<TSelf> : CSceneMessage
     public global::GBX.NET.Engines.MwFoundations.CMwNod? OnClickScript
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("OnClickScript");
-        set => SetOnClickScript(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMessageHandlerBuilderAssignments.GetOnClickScriptAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithOnClickScript(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
@@ -73,7 +69,7 @@ public abstract class CSceneMessageHandlerBuilderMembers1<TSelf> : CSceneMessage
     public TSelf WithOnClickScriptReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetOnClickScriptReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMessageHandlerBuilderAssignments.GetOnClickScriptReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
 }

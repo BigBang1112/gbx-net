@@ -36,12 +36,10 @@ public abstract class CMwCmdExpEnumBuilderBase<TSelf> where TSelf : CMwCmdExpEnu
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpEnum> state;
     private protected CMwCmdExpEnumBuilderBase() => state = new();
     private protected CMwCmdExpEnumBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpEnum> state) => this.state = state;
-    private protected static void SetEnumValue(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpEnum> state, int value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpEnumBuilderAssignments.GetEnumValueAssignment(), value, GameVersion.TMF);
-    private protected static void SetParamId(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpEnum> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpEnumBuilderAssignments.GetParamIdAssignment(), value, GameVersion.TMF);
     public int EnumValue
     {
         get => state.Get<int>("EnumValue");
-        set => SetEnumValue(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpEnumBuilderAssignments.GetEnumValueAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithEnumValue(int value)
     {
@@ -51,7 +49,7 @@ public abstract class CMwCmdExpEnumBuilderBase<TSelf> where TSelf : CMwCmdExpEnu
     public uint ParamId
     {
         get => state.Get<uint>("ParamId");
-        set => SetParamId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpEnumBuilderAssignments.GetParamIdAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithParamId(uint value)
     {

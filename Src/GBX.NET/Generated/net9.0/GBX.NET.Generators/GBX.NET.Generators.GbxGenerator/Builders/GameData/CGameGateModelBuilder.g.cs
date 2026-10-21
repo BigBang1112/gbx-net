@@ -36,20 +36,10 @@ public abstract class CGameGateModelBuilderBase<TSelf> where TSelf : CGameGateMo
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.GameData.CGameGateModel> state;
     private protected CGameGateModelBuilderBase() => state = new();
     private protected CGameGateModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameGateModel> state) => this.state = state;
-    private protected static void SetArmor(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameGateModel> state, global::GBX.NET.Engines.GameData.CGameArmorModel? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameGateModelBuilderAssignments.GetArmorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetArmorReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameGateModel> state, NodeRef<global::GBX.NET.Engines.GameData.CGameArmorModel> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameGateModelBuilderAssignments.GetArmorReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetGateCloseSound(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameGateModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameGateModelBuilderAssignments.GetGateCloseSoundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetGateCloseSoundReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameGateModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameGateModelBuilderAssignments.GetGateCloseSoundReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetGateOpenSound(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameGateModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameGateModelBuilderAssignments.GetGateOpenSoundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetGateOpenSoundReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameGateModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameGateModelBuilderAssignments.GetGateOpenSoundReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetGateSound(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameGateModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameGateModelBuilderAssignments.GetGateSoundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetGateSoundReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameGateModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameGateModelBuilderAssignments.GetGateSoundReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetShape(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameGateModel> state, global::GBX.NET.Engines.Plug.CPlugSurface? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameGateModelBuilderAssignments.GetShapeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetShapeReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameGateModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSurface> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameGateModelBuilderAssignments.GetShapeReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public global::GBX.NET.Engines.GameData.CGameArmorModel? Armor
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameArmorModel?>("Armor");
-        set => SetArmor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameGateModelBuilderAssignments.GetArmorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithArmor(global::GBX.NET.Engines.GameData.CGameArmorModel? value)
     {
@@ -59,13 +49,13 @@ public abstract class CGameGateModelBuilderBase<TSelf> where TSelf : CGameGateMo
     public TSelf WithArmorReference(NodeRef<global::GBX.NET.Engines.GameData.CGameArmorModel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetArmorReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameGateModelBuilderAssignments.GetArmorReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugSound? GateCloseSound
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("GateCloseSound");
-        set => SetGateCloseSound(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameGateModelBuilderAssignments.GetGateCloseSoundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGateCloseSound(global::GBX.NET.Engines.Plug.CPlugSound? value)
     {
@@ -75,13 +65,13 @@ public abstract class CGameGateModelBuilderBase<TSelf> where TSelf : CGameGateMo
     public TSelf WithGateCloseSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetGateCloseSoundReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameGateModelBuilderAssignments.GetGateCloseSoundReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugSound? GateOpenSound
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("GateOpenSound");
-        set => SetGateOpenSound(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameGateModelBuilderAssignments.GetGateOpenSoundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGateOpenSound(global::GBX.NET.Engines.Plug.CPlugSound? value)
     {
@@ -91,13 +81,13 @@ public abstract class CGameGateModelBuilderBase<TSelf> where TSelf : CGameGateMo
     public TSelf WithGateOpenSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetGateOpenSoundReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameGateModelBuilderAssignments.GetGateOpenSoundReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugSound? GateSound
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("GateSound");
-        set => SetGateSound(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameGateModelBuilderAssignments.GetGateSoundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGateSound(global::GBX.NET.Engines.Plug.CPlugSound? value)
     {
@@ -107,13 +97,13 @@ public abstract class CGameGateModelBuilderBase<TSelf> where TSelf : CGameGateMo
     public TSelf WithGateSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetGateSoundReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameGateModelBuilderAssignments.GetGateSoundReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugSurface? Shape
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSurface?>("Shape");
-        set => SetShape(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameGateModelBuilderAssignments.GetShapeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithShape(global::GBX.NET.Engines.Plug.CPlugSurface? value)
     {
@@ -123,7 +113,7 @@ public abstract class CGameGateModelBuilderBase<TSelf> where TSelf : CGameGateMo
     public TSelf WithShapeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSurface> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetShapeReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameGateModelBuilderAssignments.GetShapeReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }

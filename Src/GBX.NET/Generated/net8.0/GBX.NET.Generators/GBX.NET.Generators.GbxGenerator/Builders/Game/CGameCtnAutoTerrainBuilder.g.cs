@@ -36,13 +36,10 @@ public abstract class CGameCtnAutoTerrainBuilderBase<TSelf> where TSelf : CGameC
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain> state;
     private protected CGameCtnAutoTerrainBuilderBase() => state = new();
     private protected CGameCtnAutoTerrainBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain> state) => this.state = state;
-    private protected static void SetGenealogy(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain> state, global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAutoTerrainBuilderAssignments.GetGenealogyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetGenealogyReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAutoTerrainBuilderAssignments.GetGenealogyReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetOffset(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain> state, Int3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAutoTerrainBuilderAssignments.GetOffsetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy? Genealogy
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy?>("Genealogy");
-        set => SetGenealogy(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAutoTerrainBuilderAssignments.GetGenealogyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGenealogy(global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy? value)
     {
@@ -52,13 +49,13 @@ public abstract class CGameCtnAutoTerrainBuilderBase<TSelf> where TSelf : CGameC
     public TSelf WithGenealogyReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetGenealogyReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAutoTerrainBuilderAssignments.GetGenealogyReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public Int3 Offset
     {
         get => state.Get<Int3>("Offset");
-        set => SetOffset(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAutoTerrainBuilderAssignments.GetOffsetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithOffset(Int3 value)
     {

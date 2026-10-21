@@ -36,13 +36,10 @@ public abstract class CSceneFxDistor2dBuilderBase<TSelf> where TSelf : CSceneFxD
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDistor2d> state;
     private protected CSceneFxDistor2dBuilderBase() => state = new();
     private protected CSceneFxDistor2dBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDistor2d> state) => this.state = state;
-    private protected static void SetBitmapDistor(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDistor2d> state, global::GBX.NET.Engines.Plug.CPlugShaderApply? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDistor2dBuilderAssignments.GetBitmapDistorAssignment(), value, GameVersion.TMF);
-    private protected static void SetBitmapDistorReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDistor2d> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugShaderApply> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDistor2dBuilderAssignments.GetBitmapDistorReferenceAssignment(), value, GameVersion.TMF);
-    private protected static void SetDistorScale(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDistor2d> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDistor2dBuilderAssignments.GetDistorScaleAssignment(), value, GameVersion.TMF);
     public global::GBX.NET.Engines.Plug.CPlugShaderApply? BitmapDistor
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugShaderApply?>("BitmapDistor");
-        set => SetBitmapDistor(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDistor2dBuilderAssignments.GetBitmapDistorAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithBitmapDistor(global::GBX.NET.Engines.Plug.CPlugShaderApply? value)
     {
@@ -52,13 +49,13 @@ public abstract class CSceneFxDistor2dBuilderBase<TSelf> where TSelf : CSceneFxD
     public TSelf WithBitmapDistorReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShaderApply> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBitmapDistorReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDistor2dBuilderAssignments.GetBitmapDistorReferenceAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
     public float DistorScale
     {
         get => state.Get<float>("DistorScale");
-        set => SetDistorScale(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDistor2dBuilderAssignments.GetDistorScaleAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithDistorScale(float value)
     {

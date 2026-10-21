@@ -36,17 +36,10 @@ public abstract class CPlugTrafficObjectParamsBuilderBase<TSelf> where TSelf : C
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams> state;
     private protected CPlugTrafficObjectParamsBuilderBase() => state = new();
     private protected CPlugTrafficObjectParamsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams> state) => this.state = state;
-    private protected static void SetBaseOffset(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams> state, Iso4 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficObjectParamsBuilderAssignments.GetBaseOffsetAssignment(), value, GameVersion.TMT);
-    private protected static void SetDefaultAcceleration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficObjectParamsBuilderAssignments.GetDefaultAccelerationAssignment(), value, GameVersion.TMT);
-    private protected static void SetDefaultDecceleration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficObjectParamsBuilderAssignments.GetDefaultDeccelerationAssignment(), value, GameVersion.TMT);
-    private protected static void SetDefaultSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficObjectParamsBuilderAssignments.GetDefaultSpeedAssignment(), value, GameVersion.TMT);
-    private protected static void SetPointDelay(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams> state, TimeInt32 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficObjectParamsBuilderAssignments.GetPointDelayAssignment(), value, GameVersion.TMT);
-    private protected static void SetTrafficModel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficObjectParamsBuilderAssignments.GetTrafficModelAssignment(), value, GameVersion.TMT);
-    private protected static void SetTrafficPathType(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficObjectParamsBuilderAssignments.GetTrafficPathTypeAssignment(), value, GameVersion.TMT);
     public Iso4 BaseOffset
     {
         get => state.Get<Iso4>("BaseOffset");
-        set => SetBaseOffset(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficObjectParamsBuilderAssignments.GetBaseOffsetAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithBaseOffset(Iso4 value)
     {
@@ -56,7 +49,7 @@ public abstract class CPlugTrafficObjectParamsBuilderBase<TSelf> where TSelf : C
     public float DefaultAcceleration
     {
         get => state.Get<float>("DefaultAcceleration");
-        set => SetDefaultAcceleration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficObjectParamsBuilderAssignments.GetDefaultAccelerationAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithDefaultAcceleration(float value)
     {
@@ -66,7 +59,7 @@ public abstract class CPlugTrafficObjectParamsBuilderBase<TSelf> where TSelf : C
     public float DefaultDecceleration
     {
         get => state.Get<float>("DefaultDecceleration");
-        set => SetDefaultDecceleration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficObjectParamsBuilderAssignments.GetDefaultDeccelerationAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithDefaultDecceleration(float value)
     {
@@ -76,7 +69,7 @@ public abstract class CPlugTrafficObjectParamsBuilderBase<TSelf> where TSelf : C
     public float DefaultSpeed
     {
         get => state.Get<float>("DefaultSpeed");
-        set => SetDefaultSpeed(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficObjectParamsBuilderAssignments.GetDefaultSpeedAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithDefaultSpeed(float value)
     {
@@ -86,7 +79,7 @@ public abstract class CPlugTrafficObjectParamsBuilderBase<TSelf> where TSelf : C
     public TimeInt32 PointDelay
     {
         get => state.Get<TimeInt32>("PointDelay");
-        set => SetPointDelay(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficObjectParamsBuilderAssignments.GetPointDelayAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithPointDelay(TimeInt32 value)
     {
@@ -96,7 +89,7 @@ public abstract class CPlugTrafficObjectParamsBuilderBase<TSelf> where TSelf : C
     public int TrafficModel
     {
         get => state.Get<int>("TrafficModel");
-        set => SetTrafficModel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficObjectParamsBuilderAssignments.GetTrafficModelAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithTrafficModel(int value)
     {
@@ -106,7 +99,7 @@ public abstract class CPlugTrafficObjectParamsBuilderBase<TSelf> where TSelf : C
     public int TrafficPathType
     {
         get => state.Get<int>("TrafficPathType");
-        set => SetTrafficPathType(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficObjectParamsBuilderAssignments.GetTrafficPathTypeAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithTrafficPathType(int value)
     {

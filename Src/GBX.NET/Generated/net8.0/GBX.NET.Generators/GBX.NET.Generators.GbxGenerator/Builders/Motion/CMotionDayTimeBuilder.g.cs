@@ -36,17 +36,10 @@ public abstract class CMotionDayTimeBuilderBase<TSelf> where TSelf : CMotionDayT
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionDayTime> state;
     private protected CMotionDayTimeBuilderBase() => state = new();
     private protected CMotionDayTimeBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionDayTime> state) => this.state = state;
-    private protected static void SetDayMaterial(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionDayTime> state, global::GBX.NET.Engines.Plug.CPlugMaterial? value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionDayTimeBuilderAssignments.GetDayMaterialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetDayMaterialReference(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionDayTime> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionDayTimeBuilderAssignments.GetDayMaterialReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLegacyModel(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionDayTime> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionDayTimeBuilderAssignments.GetLegacyModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLegacyModelReference(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionDayTime> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionDayTimeBuilderAssignments.GetLegacyModelReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionDayTime> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetNightMaterial(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionDayTime> state, global::GBX.NET.Engines.Plug.CPlugMaterial? value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionDayTimeBuilderAssignments.GetNightMaterialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetNightMaterialReference(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionDayTime> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionDayTimeBuilderAssignments.GetNightMaterialReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public global::GBX.NET.Engines.Plug.CPlugMaterial? DayMaterial
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("DayMaterial");
-        set => SetDayMaterial(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionDayTimeBuilderAssignments.GetDayMaterialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDayMaterial(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
     {
@@ -56,13 +49,13 @@ public abstract class CMotionDayTimeBuilderBase<TSelf> where TSelf : CMotionDayT
     public TSelf WithDayMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetDayMaterialReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionDayTimeBuilderAssignments.GetDayMaterialReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.MwFoundations.CMwNod? LegacyModel
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("LegacyModel");
-        set => SetLegacyModel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionDayTimeBuilderAssignments.GetLegacyModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLegacyModel(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
@@ -72,13 +65,13 @@ public abstract class CMotionDayTimeBuilderBase<TSelf> where TSelf : CMotionDayT
     public TSelf WithLegacyModelReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetLegacyModelReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionDayTimeBuilderAssignments.GetLegacyModelReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Plug.CPlugMaterial? NightMaterial
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("NightMaterial");
-        set => SetNightMaterial(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionDayTimeBuilderAssignments.GetNightMaterialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithNightMaterial(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
     {
@@ -88,7 +81,7 @@ public abstract class CMotionDayTimeBuilderBase<TSelf> where TSelf : CMotionDayT
     public TSelf WithNightMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetNightMaterialReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionDayTimeBuilderAssignments.GetNightMaterialReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -98,7 +91,7 @@ public abstract class CMotionDayTimeBuilderMembers1<TSelf> : CMotionDayTimeBuild
     public string? Name
     {
         get => state.Get<string?>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithName(string? value)
     {

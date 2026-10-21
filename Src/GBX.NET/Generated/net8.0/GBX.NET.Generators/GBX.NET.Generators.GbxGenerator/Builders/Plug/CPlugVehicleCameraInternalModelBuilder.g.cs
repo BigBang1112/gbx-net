@@ -36,25 +36,10 @@ public abstract class CPlugVehicleCameraInternalModelBuilderBase<TSelf> where TS
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state;
     private protected CPlugVehicleCameraInternalModelBuilderBase() => state = new();
     private protected CPlugVehicleCameraInternalModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state) => this.state = state;
-    private protected static void SetBulletTimeFovSmoothDelta_m_Delta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetBulletTimeFovSmoothDelta_m_DeltaAssignment(), value, GameVersion.TM2020);
-    private protected static void SetBulletTimeFovSmoothDelta_m_TimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetBulletTimeFovSmoothDelta_m_TimeDownAssignment(), value, GameVersion.TM2020);
-    private protected static void SetBulletTimeFovSmoothDelta_m_TimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetBulletTimeFovSmoothDelta_m_TimeUpAssignment(), value, GameVersion.TM2020);
-    private protected static void SetCamBlendEnabled(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetCamBlendEnabledAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetFov(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetFovAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetIsFirstPerson(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetIsFirstPersonAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetPilotHeadCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetPilotHeadCoefAssignment(), value, GameVersion.TM2020);
-    private protected static void SetPitchYawRoll(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetPitchYawRollAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetRelativePos(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetRelativePosAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetShake(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, global::GBX.NET.Engines.Plug.CPlugCamShakeModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCamControlModelBuilderAssignments.GetShakeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetShakeReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugCamShakeModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCamControlModelBuilderAssignments.GetShakeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSuperBulletTimeFovSmoothMultiplier(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetSuperBulletTimeFovSmoothMultiplierAssignment(), value, GameVersion.TM2020);
-    private protected static void SetSuperBulletTimeFovSmoothMultiplier_m_TimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetSuperBulletTimeFovSmoothMultiplier_m_TimeDownAssignment(), value, GameVersion.TM2020);
-    private protected static void SetSuperBulletTimeFovSmoothMultiplier_m_TimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetSuperBulletTimeFovSmoothMultiplier_m_TimeUpAssignment(), value, GameVersion.TM2020);
     public float? Fov
     {
         get => state.Get<float?>("Fov");
-        set => SetFov(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetFovAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFov(float? value)
     {
@@ -64,7 +49,7 @@ public abstract class CPlugVehicleCameraInternalModelBuilderBase<TSelf> where TS
     public string? Name
     {
         get => state.Get<string?>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithName(string? value)
     {
@@ -74,7 +59,7 @@ public abstract class CPlugVehicleCameraInternalModelBuilderBase<TSelf> where TS
     public Vec3 RelativePos
     {
         get => state.Get<Vec3>("RelativePos");
-        set => SetRelativePos(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetRelativePosAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRelativePos(Vec3 value)
     {
@@ -88,7 +73,7 @@ public abstract class CPlugVehicleCameraInternalModelBuilderMembers1<TSelf> : CP
     public bool IsFirstPerson
     {
         get => state.Get<bool>("IsFirstPerson");
-        set => SetIsFirstPerson(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetIsFirstPersonAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIsFirstPerson(bool value)
     {
@@ -98,7 +83,7 @@ public abstract class CPlugVehicleCameraInternalModelBuilderMembers1<TSelf> : CP
     public Vec3 PitchYawRoll
     {
         get => state.Get<Vec3>("PitchYawRoll");
-        set => SetPitchYawRoll(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetPitchYawRollAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithPitchYawRoll(Vec3 value)
     {
@@ -108,7 +93,7 @@ public abstract class CPlugVehicleCameraInternalModelBuilderMembers1<TSelf> : CP
     public global::GBX.NET.Engines.Plug.CPlugCamShakeModel? Shake
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugCamShakeModel?>("Shake");
-        set => SetShake(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCamControlModelBuilderAssignments.GetShakeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithShake(global::GBX.NET.Engines.Plug.CPlugCamShakeModel? value)
     {
@@ -118,7 +103,7 @@ public abstract class CPlugVehicleCameraInternalModelBuilderMembers1<TSelf> : CP
     public TSelf WithShakeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugCamShakeModel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetShakeReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCamControlModelBuilderAssignments.GetShakeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -128,7 +113,7 @@ public abstract class CPlugVehicleCameraInternalModelBuilderMembers2<TSelf> : CP
     public bool CamBlendEnabled
     {
         get => state.Get<bool>("CamBlendEnabled");
-        set => SetCamBlendEnabled(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetCamBlendEnabledAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithCamBlendEnabled(bool value)
     {
@@ -271,7 +256,7 @@ public partial class CPlugVehicleCameraInternalModelBuilder : CPlugVehicleCamera
         public float BulletTimeFovSmoothDelta_m_Delta
         {
             get => state.Get<float>("BulletTimeFovSmoothDelta_m_Delta");
-            set => SetBulletTimeFovSmoothDelta_m_Delta(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetBulletTimeFovSmoothDelta_m_DeltaAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithBulletTimeFovSmoothDelta_m_Delta(float value)
         {
@@ -281,7 +266,7 @@ public partial class CPlugVehicleCameraInternalModelBuilder : CPlugVehicleCamera
         public int BulletTimeFovSmoothDelta_m_TimeDown
         {
             get => state.Get<int>("BulletTimeFovSmoothDelta_m_TimeDown");
-            set => SetBulletTimeFovSmoothDelta_m_TimeDown(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetBulletTimeFovSmoothDelta_m_TimeDownAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithBulletTimeFovSmoothDelta_m_TimeDown(int value)
         {
@@ -291,7 +276,7 @@ public partial class CPlugVehicleCameraInternalModelBuilder : CPlugVehicleCamera
         public int BulletTimeFovSmoothDelta_m_TimeUp
         {
             get => state.Get<int>("BulletTimeFovSmoothDelta_m_TimeUp");
-            set => SetBulletTimeFovSmoothDelta_m_TimeUp(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetBulletTimeFovSmoothDelta_m_TimeUpAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithBulletTimeFovSmoothDelta_m_TimeUp(int value)
         {
@@ -301,7 +286,7 @@ public partial class CPlugVehicleCameraInternalModelBuilder : CPlugVehicleCamera
         public float PilotHeadCoef
         {
             get => state.Get<float>("PilotHeadCoef");
-            set => SetPilotHeadCoef(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetPilotHeadCoefAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithPilotHeadCoef(float value)
         {
@@ -315,7 +300,7 @@ public partial class CPlugVehicleCameraInternalModelBuilder : CPlugVehicleCamera
         public float SuperBulletTimeFovSmoothMultiplier
         {
             get => state.Get<float>("SuperBulletTimeFovSmoothMultiplier");
-            set => SetSuperBulletTimeFovSmoothMultiplier(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetSuperBulletTimeFovSmoothMultiplierAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithSuperBulletTimeFovSmoothMultiplier(float value)
         {
@@ -325,7 +310,7 @@ public partial class CPlugVehicleCameraInternalModelBuilder : CPlugVehicleCamera
         public int SuperBulletTimeFovSmoothMultiplier_m_TimeDown
         {
             get => state.Get<int>("SuperBulletTimeFovSmoothMultiplier_m_TimeDown");
-            set => SetSuperBulletTimeFovSmoothMultiplier_m_TimeDown(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetSuperBulletTimeFovSmoothMultiplier_m_TimeDownAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithSuperBulletTimeFovSmoothMultiplier_m_TimeDown(int value)
         {
@@ -335,7 +320,7 @@ public partial class CPlugVehicleCameraInternalModelBuilder : CPlugVehicleCamera
         public int SuperBulletTimeFovSmoothMultiplier_m_TimeUp
         {
             get => state.Get<int>("SuperBulletTimeFovSmoothMultiplier_m_TimeUp");
-            set => SetSuperBulletTimeFovSmoothMultiplier_m_TimeUp(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetSuperBulletTimeFovSmoothMultiplier_m_TimeUpAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithSuperBulletTimeFovSmoothMultiplier_m_TimeUp(int value)
         {

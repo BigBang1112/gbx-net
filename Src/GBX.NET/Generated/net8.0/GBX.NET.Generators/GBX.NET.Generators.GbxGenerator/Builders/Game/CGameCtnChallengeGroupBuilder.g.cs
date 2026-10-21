@@ -36,31 +36,10 @@ public abstract class CGameCtnChallengeGroupBuilderBase<TSelf> where TSelf : CGa
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup> state;
     private protected CGameCtnChallengeGroupBuilderBase() => state = new();
     private protected CGameCtnChallengeGroupBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup> state) => this.state = state;
-    private protected static void SetAllBronzeValue(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetAllBronzeValueAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetAllGoldValue(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetAllGoldValueAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetAllSilverValue(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetAllSilverValueAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetAssociatedCollection(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup> state, global::GBX.NET.Engines.Game.CGameCtnCollection? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetAssociatedCollectionAssignment(), value, GameVersion.TMSX);
-    private protected static void SetAssociatedCollectionReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnCollection> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetAssociatedCollectionReferenceAssignment(), value, GameVersion.TMSX);
-    private protected static void SetAssociatedCollectionId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetAssociatedCollectionIdAssignment(), value, GameVersion.TMNESWC | GameVersion.VSK5);
-    private protected static void SetLinkedCampaign(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup> state, global::GBX.NET.Engines.Game.CGameCtnCampaign? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetLinkedCampaignAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetLinkedCampaignReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnCampaign> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetLinkedCampaignReferenceAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetMapFiles(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup> state, NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallenge>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetMapFilesAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetMapInfos(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup> state, List<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup.MapInfo>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetMapInfosAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetNbBronzeCupRequired(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNbBronzeCupRequiredAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetNbBronzeMedalRequired(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNbBronzeMedalRequiredAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetNbBronzeRequired(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNbBronzeRequiredAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
-    private protected static void SetNbGoldCupRequired(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNbGoldCupRequiredAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetNbGoldMedalRequired(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNbGoldMedalRequiredAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetNbGoldRequired(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNbGoldRequiredAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
-    private protected static void SetNbSilverCupRequired(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNbSilverCupRequiredAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetNbSilverMedalRequired(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNbSilverMedalRequiredAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetNbSilverRequired(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNbSilverRequiredAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
-    private protected static void SetUsesMapFiles(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetUsesMapFilesAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     public List<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup.MapInfo>? MapInfos
     {
         get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup.MapInfo>?>("MapInfos");
-        set => SetMapInfos(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetMapInfosAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMapInfos(List<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup.MapInfo>? value)
     {
@@ -78,7 +57,7 @@ public abstract class CGameCtnChallengeGroupBuilderBase<TSelf> where TSelf : CGa
     public string? Name
     {
         get => state.Get<string?>("Name");
-        set => SetName(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithName(string? value)
     {
@@ -92,7 +71,7 @@ public abstract class CGameCtnChallengeGroupBuilderMembers1<TSelf> : CGameCtnCha
     public NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallenge>? MapFiles
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallenge>?>("MapFiles");
-        set => SetMapFiles(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetMapFilesAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithMapFiles(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallenge>? value)
     {
@@ -114,7 +93,7 @@ public abstract class CGameCtnChallengeGroupBuilderMembers2<TSelf> : CGameCtnCha
     public int AllBronzeValue
     {
         get => state.Get<int>("AllBronzeValue");
-        set => SetAllBronzeValue(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetAllBronzeValueAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithAllBronzeValue(int value)
     {
@@ -124,7 +103,7 @@ public abstract class CGameCtnChallengeGroupBuilderMembers2<TSelf> : CGameCtnCha
     public int AllGoldValue
     {
         get => state.Get<int>("AllGoldValue");
-        set => SetAllGoldValue(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetAllGoldValueAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithAllGoldValue(int value)
     {
@@ -134,7 +113,7 @@ public abstract class CGameCtnChallengeGroupBuilderMembers2<TSelf> : CGameCtnCha
     public int AllSilverValue
     {
         get => state.Get<int>("AllSilverValue");
-        set => SetAllSilverValue(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetAllSilverValueAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithAllSilverValue(int value)
     {
@@ -148,7 +127,7 @@ public abstract class CGameCtnChallengeGroupBuilderMembers3<TSelf> : CGameCtnCha
     public int NbBronzeRequired
     {
         get => state.Get<int>("NbBronzeRequired");
-        set => SetNbBronzeRequired(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNbBronzeRequiredAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
     }
     public TSelf WithNbBronzeRequired(int value)
     {
@@ -158,7 +137,7 @@ public abstract class CGameCtnChallengeGroupBuilderMembers3<TSelf> : CGameCtnCha
     public int NbGoldRequired
     {
         get => state.Get<int>("NbGoldRequired");
-        set => SetNbGoldRequired(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNbGoldRequiredAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
     }
     public TSelf WithNbGoldRequired(int value)
     {
@@ -168,7 +147,7 @@ public abstract class CGameCtnChallengeGroupBuilderMembers3<TSelf> : CGameCtnCha
     public int NbSilverRequired
     {
         get => state.Get<int>("NbSilverRequired");
-        set => SetNbSilverRequired(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNbSilverRequiredAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
     }
     public TSelf WithNbSilverRequired(int value)
     {
@@ -182,7 +161,7 @@ public abstract class CGameCtnChallengeGroupBuilderMembers4<TSelf> : CGameCtnCha
     public global::GBX.NET.Engines.Game.CGameCtnCampaign? LinkedCampaign
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnCampaign?>("LinkedCampaign");
-        set => SetLinkedCampaign(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetLinkedCampaignAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithLinkedCampaign(global::GBX.NET.Engines.Game.CGameCtnCampaign? value)
     {
@@ -192,13 +171,13 @@ public abstract class CGameCtnChallengeGroupBuilderMembers4<TSelf> : CGameCtnCha
     public TSelf WithLinkedCampaignReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnCampaign> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetLinkedCampaignReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetLinkedCampaignReferenceAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public int NbBronzeCupRequired
     {
         get => state.Get<int>("NbBronzeCupRequired");
-        set => SetNbBronzeCupRequired(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNbBronzeCupRequiredAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithNbBronzeCupRequired(int value)
     {
@@ -208,7 +187,7 @@ public abstract class CGameCtnChallengeGroupBuilderMembers4<TSelf> : CGameCtnCha
     public int NbBronzeMedalRequired
     {
         get => state.Get<int>("NbBronzeMedalRequired");
-        set => SetNbBronzeMedalRequired(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNbBronzeMedalRequiredAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithNbBronzeMedalRequired(int value)
     {
@@ -218,7 +197,7 @@ public abstract class CGameCtnChallengeGroupBuilderMembers4<TSelf> : CGameCtnCha
     public int NbGoldCupRequired
     {
         get => state.Get<int>("NbGoldCupRequired");
-        set => SetNbGoldCupRequired(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNbGoldCupRequiredAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithNbGoldCupRequired(int value)
     {
@@ -228,7 +207,7 @@ public abstract class CGameCtnChallengeGroupBuilderMembers4<TSelf> : CGameCtnCha
     public int NbGoldMedalRequired
     {
         get => state.Get<int>("NbGoldMedalRequired");
-        set => SetNbGoldMedalRequired(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNbGoldMedalRequiredAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithNbGoldMedalRequired(int value)
     {
@@ -238,7 +217,7 @@ public abstract class CGameCtnChallengeGroupBuilderMembers4<TSelf> : CGameCtnCha
     public int NbSilverCupRequired
     {
         get => state.Get<int>("NbSilverCupRequired");
-        set => SetNbSilverCupRequired(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNbSilverCupRequiredAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithNbSilverCupRequired(int value)
     {
@@ -248,7 +227,7 @@ public abstract class CGameCtnChallengeGroupBuilderMembers4<TSelf> : CGameCtnCha
     public int NbSilverMedalRequired
     {
         get => state.Get<int>("NbSilverMedalRequired");
-        set => SetNbSilverMedalRequired(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNbSilverMedalRequiredAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithNbSilverMedalRequired(int value)
     {
@@ -258,7 +237,7 @@ public abstract class CGameCtnChallengeGroupBuilderMembers4<TSelf> : CGameCtnCha
     public bool UsesMapFiles
     {
         get => state.Get<bool>("UsesMapFiles");
-        set => SetUsesMapFiles(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetUsesMapFilesAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithUsesMapFiles(bool value)
     {
@@ -272,7 +251,7 @@ public abstract class CGameCtnChallengeGroupBuilderMembers5<TSelf> : CGameCtnCha
     public string? AssociatedCollectionId
     {
         get => state.Get<string?>("AssociatedCollectionId");
-        set => SetAssociatedCollectionId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetAssociatedCollectionIdAssignment(), value, GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithAssociatedCollectionId(string? value)
     {
@@ -469,7 +448,7 @@ public partial class CGameCtnChallengeGroupBuilder : CGameCtnChallengeGroupBuild
         public global::GBX.NET.Engines.Game.CGameCtnCollection? AssociatedCollection
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameCtnCollection?>("AssociatedCollection");
-            set => SetAssociatedCollection(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetAssociatedCollectionAssignment(), value, GameVersion.TMSX);
         }
         public TMSX WithAssociatedCollection(global::GBX.NET.Engines.Game.CGameCtnCollection? value)
         {
@@ -479,7 +458,7 @@ public partial class CGameCtnChallengeGroupBuilder : CGameCtnChallengeGroupBuild
         public TMSX WithAssociatedCollectionReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnCollection> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetAssociatedCollectionReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetAssociatedCollectionReferenceAssignment(), value, GameVersion.TMSX);
             return this;
         }
         public TMSX WithAssociatedCollection(global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMSX? value)
@@ -587,7 +566,7 @@ public partial class CGameCtnChallengeGroupBuilder : CGameCtnChallengeGroupBuild
         public bool UsesMapFiles
         {
             get => state.Get<bool>("UsesMapFiles");
-            set => SetUsesMapFiles(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetUsesMapFilesAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMF WithUsesMapFiles(bool value)
         {

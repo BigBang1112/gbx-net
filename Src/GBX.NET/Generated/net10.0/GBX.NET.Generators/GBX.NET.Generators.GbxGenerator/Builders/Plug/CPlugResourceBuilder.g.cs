@@ -36,11 +36,10 @@ public abstract class CPlugResourceBuilderBase<TSelf> where TSelf : CPlugResourc
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugResource> state;
     private protected CPlugResourceBuilderBase() => state = new();
     private protected CPlugResourceBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugResource> state) => this.state = state;
-    private protected static void SetResources(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugResource> state, global::GBX.NET.Engines.Plug.CPlugModelShading.FidId[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugResourceBuilderAssignments.GetResourcesAssignment(), value, GameVersion.MP4);
     public global::GBX.NET.Engines.Plug.CPlugModelShading.FidId[]? Resources
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugModelShading.FidId[]?>("Resources");
-        set => SetResources(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugResourceBuilderAssignments.GetResourcesAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithResources(params global::GBX.NET.Engines.Plug.CPlugModelShading.FidId[]? value)
     {

@@ -36,18 +36,10 @@ public abstract class CPlugSolid2ModelBuilderBase<TSelf> where TSelf : CPlugSoli
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid2Model> state;
     private protected CPlugSolid2ModelBuilderBase() => state = new();
     private protected CPlugSolid2ModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid2Model> state) => this.state = state;
-    private protected static void SetFakeOccProjs(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid2Model> state, global::GBX.NET.Engines.Plug.CPlugSolid2Model.FakeOccProj[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolid2ModelBuilderAssignments.GetFakeOccProjsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetFileImageBytes(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid2Model> state, byte[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolid2ModelBuilderAssignments.GetFileImageBytesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    private protected static void SetLightUserModels(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid2Model> state, global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Plug.CPlugLightUserModel>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolid2ModelBuilderAssignments.GetLightUserModelsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMaterialInsts(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid2Model> state, global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolid2ModelBuilderAssignments.GetMaterialInstsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetMaterials(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid2Model> state, global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolid2ModelBuilderAssignments.GetMaterialsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSkel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid2Model> state, global::GBX.NET.Engines.Plug.CPlugSkel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolid2ModelBuilderAssignments.GetSkelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSkelReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid2Model> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSkel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolid2ModelBuilderAssignments.GetSkelReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetVisuals(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid2Model> state, global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Plug.CPlugVisual>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolid2ModelBuilderAssignments.GetVisualsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Plug.CPlugLightUserModel>? LightUserModels
     {
         get => state.Get<global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Plug.CPlugLightUserModel>?>("LightUserModels");
-        set => SetLightUserModels(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolid2ModelBuilderAssignments.GetLightUserModelsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLightUserModels(global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Plug.CPlugLightUserModel>? value)
     {
@@ -65,7 +57,7 @@ public abstract class CPlugSolid2ModelBuilderBase<TSelf> where TSelf : CPlugSoli
     public global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst>? MaterialInsts
     {
         get => state.Get<global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst>?>("MaterialInsts");
-        set => SetMaterialInsts(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolid2ModelBuilderAssignments.GetMaterialInstsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaterialInsts(global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst>? value)
     {
@@ -83,7 +75,7 @@ public abstract class CPlugSolid2ModelBuilderBase<TSelf> where TSelf : CPlugSoli
     public global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>? Materials
     {
         get => state.Get<global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>?>("Materials");
-        set => SetMaterials(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolid2ModelBuilderAssignments.GetMaterialsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaterials(global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>? value)
     {
@@ -101,7 +93,7 @@ public abstract class CPlugSolid2ModelBuilderBase<TSelf> where TSelf : CPlugSoli
     public global::GBX.NET.Engines.Plug.CPlugSkel? Skel
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSkel?>("Skel");
-        set => SetSkel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolid2ModelBuilderAssignments.GetSkelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSkel(global::GBX.NET.Engines.Plug.CPlugSkel? value)
     {
@@ -111,13 +103,13 @@ public abstract class CPlugSolid2ModelBuilderBase<TSelf> where TSelf : CPlugSoli
     public TSelf WithSkelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSkel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSkelReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolid2ModelBuilderAssignments.GetSkelReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Plug.CPlugVisual>? Visuals
     {
         get => state.Get<global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Plug.CPlugVisual>?>("Visuals");
-        set => SetVisuals(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolid2ModelBuilderAssignments.GetVisualsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithVisuals(global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Plug.CPlugVisual>? value)
     {
@@ -139,7 +131,7 @@ public abstract class CPlugSolid2ModelBuilderMembers1<TSelf> : CPlugSolid2ModelB
     public global::GBX.NET.Engines.Plug.CPlugSolid2Model.FakeOccProj[]? FakeOccProjs
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSolid2Model.FakeOccProj[]?>("FakeOccProjs");
-        set => SetFakeOccProjs(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolid2ModelBuilderAssignments.GetFakeOccProjsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithFakeOccProjs(params global::GBX.NET.Engines.Plug.CPlugSolid2Model.FakeOccProj[]? value)
     {
@@ -153,7 +145,7 @@ public abstract class CPlugSolid2ModelBuilderMembers1<TSelf> : CPlugSolid2ModelB
     public byte[]? FileImageBytes
     {
         get => state.Get<byte[]?>("FileImageBytes");
-        set => SetFileImageBytes(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolid2ModelBuilderAssignments.GetFileImageBytesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithFileImageBytes(params byte[]? value)
     {

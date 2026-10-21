@@ -36,11 +36,10 @@ public abstract class CPlugParticleMaterialImpactModelBuilderBase<TSelf> where T
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel> state;
     private protected CPlugParticleMaterialImpactModelBuilderBase() => state = new();
     private protected CPlugParticleMaterialImpactModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel> state) => this.state = state;
-    private protected static void SetMaterialImpacts(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel?>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleMaterialImpactModelBuilderAssignments.GetMaterialImpactsAssignment(), value, GameVersion.MP4);
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel?>? MaterialImpacts
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel?>?>("MaterialImpacts");
-        set => SetMaterialImpacts(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleMaterialImpactModelBuilderAssignments.GetMaterialImpactsAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithMaterialImpacts(NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel?>? value)
     {

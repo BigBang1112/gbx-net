@@ -36,12 +36,10 @@ public abstract class CPlugFxLightningBuilderBase<TSelf> where TSelf : CPlugFxLi
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFxLightning> state;
     private protected CPlugFxLightningBuilderBase() => state = new();
     private protected CPlugFxLightningBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFxLightning> state) => this.state = state;
-    private protected static void SetSound(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFxLightning> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFxLightningBuilderAssignments.GetSoundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSoundReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFxLightning> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFxLightningBuilderAssignments.GetSoundReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public global::GBX.NET.Engines.Plug.CPlugSound? Sound
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound");
-        set => SetSound(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFxLightningBuilderAssignments.GetSoundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSound(global::GBX.NET.Engines.Plug.CPlugSound? value)
     {
@@ -51,7 +49,7 @@ public abstract class CPlugFxLightningBuilderBase<TSelf> where TSelf : CPlugFxLi
     public TSelf WithSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSoundReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFxLightningBuilderAssignments.GetSoundReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }

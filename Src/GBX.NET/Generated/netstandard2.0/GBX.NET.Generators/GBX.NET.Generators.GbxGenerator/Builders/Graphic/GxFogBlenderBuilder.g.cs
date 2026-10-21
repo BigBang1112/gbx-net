@@ -36,13 +36,10 @@ public abstract class GxFogBlenderBuilderBase<TSelf> where TSelf : GxFogBlenderB
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Graphic.GxFogBlender> state;
     private protected GxFogBlenderBuilderBase() => state = new();
     private protected GxFogBlenderBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxFogBlender> state) => this.state = state;
-    private protected static void SetEnabled(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxFogBlender> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBlenderBuilderAssignments.GetEnabledAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxFogBlender> state, List<global::GBX.NET.Engines.Graphic.GxFogBlender.Key>? value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBlenderBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetLegacyMode(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxFogBlender> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBlenderBuilderAssignments.GetLegacyModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     public bool Enabled
     {
         get => state.Get<bool>("Enabled");
-        set => SetEnabled(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBlenderBuilderAssignments.GetEnabledAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEnabled(bool value)
     {
@@ -52,7 +49,7 @@ public abstract class GxFogBlenderBuilderBase<TSelf> where TSelf : GxFogBlenderB
     public List<global::GBX.NET.Engines.Graphic.GxFogBlender.Key>? Keys
     {
         get => state.Get<List<global::GBX.NET.Engines.Graphic.GxFogBlender.Key>?>("Keys");
-        set => SetKeys(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBlenderBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithKeys(List<global::GBX.NET.Engines.Graphic.GxFogBlender.Key>? value)
     {
@@ -70,7 +67,7 @@ public abstract class GxFogBlenderBuilderBase<TSelf> where TSelf : GxFogBlenderB
     public int LegacyMode
     {
         get => state.Get<int>("LegacyMode");
-        set => SetLegacyMode(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBlenderBuilderAssignments.GetLegacyModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLegacyMode(int value)
     {

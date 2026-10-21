@@ -42,6 +42,14 @@ public partial interface IGameCtnMediaBlockCamera : IClassVersion<global::GBX.NE
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
 }
 
+public partial interface IGameCtnMediaBlockCameraTMT : IGameCtnMediaBlockCamera, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMT
+{
+}
+
+public partial interface IGameCtnMediaBlockCameraTM2020 : IGameCtnMediaBlockCamera, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTM2020
+{
+}
+
 public partial interface IGameCtnMediaBlockCameraTMSX : IGameCtnMediaBlockCamera, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMSX
 {
 }
@@ -58,15 +66,7 @@ public partial interface IGameCtnMediaBlockCameraTMF : IGameCtnMediaBlockCamera,
 {
 }
 
-public partial interface IGameCtnMediaBlockCameraTMT : IGameCtnMediaBlockCamera, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMT
-{
-}
-
 public partial interface IGameCtnMediaBlockCameraMP4 : IGameCtnMediaBlockCamera, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMP4
-{
-}
-
-public partial interface IGameCtnMediaBlockCameraTM2020 : IGameCtnMediaBlockCamera, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTM2020
 {
 }
 

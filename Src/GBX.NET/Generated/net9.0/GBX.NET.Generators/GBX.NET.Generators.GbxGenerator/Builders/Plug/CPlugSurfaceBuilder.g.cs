@@ -36,15 +36,10 @@ public abstract class CPlugSurfaceBuilderBase<TSelf> where TSelf : CPlugSurfaceB
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurface> state;
     private protected CPlugSurfaceBuilderBase() => state = new();
     private protected CPlugSurfaceBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurface> state) => this.state = state;
-    private protected static void SetGeom(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurface> state, global::GBX.NET.Engines.Plug.CPlugSurfaceGeom? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSurfaceBuilderAssignments.GetGeomAssignment(), value, GameVersion.TMF);
-    private protected static void SetGeomReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurface> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSurfaceBuilderAssignments.GetGeomReferenceAssignment(), value, GameVersion.TMF);
-    private protected static void SetMaterials(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurface> state, global::GBX.NET.Engines.Plug.CPlugSurface.SurfMaterial[] value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSurfaceBuilderAssignments.GetMaterialsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetSkel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurface> state, global::GBX.NET.Engines.Plug.CPlugSkel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSurfaceBuilderAssignments.GetSkelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSkelReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurface> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSkel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSurfaceBuilderAssignments.GetSkelReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public global::GBX.NET.Engines.Plug.CPlugSurface.SurfMaterial[] Materials
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSurface.SurfMaterial[]>("Materials");
-        set => SetMaterials(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSurfaceBuilderAssignments.GetMaterialsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithMaterials(params global::GBX.NET.Engines.Plug.CPlugSurface.SurfMaterial[] value)
     {
@@ -62,7 +57,7 @@ public abstract class CPlugSurfaceBuilderMembers1<TSelf> : CPlugSurfaceBuilderBa
     public global::GBX.NET.Engines.Plug.CPlugSkel? Skel
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSkel?>("Skel");
-        set => SetSkel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSurfaceBuilderAssignments.GetSkelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSkel(global::GBX.NET.Engines.Plug.CPlugSkel? value)
     {
@@ -72,7 +67,7 @@ public abstract class CPlugSurfaceBuilderMembers1<TSelf> : CPlugSurfaceBuilderBa
     public TSelf WithSkelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSkel> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetSkelReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSurfaceBuilderAssignments.GetSkelReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -139,7 +134,7 @@ public partial class CPlugSurfaceBuilder : CPlugSurfaceBuilderBase<CPlugSurfaceB
         public global::GBX.NET.Engines.Plug.CPlugSurfaceGeom? Geom
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom?>("Geom");
-            set => SetGeom(state, value);
+            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSurfaceBuilderAssignments.GetGeomAssignment(), value, GameVersion.TMF);
         }
         public TMF WithGeom(global::GBX.NET.Engines.Plug.CPlugSurfaceGeom? value)
         {
@@ -149,7 +144,7 @@ public partial class CPlugSurfaceBuilder : CPlugSurfaceBuilderBase<CPlugSurfaceB
         public TMF WithGeomReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom> value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
-            SetGeomReference(state, value);
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSurfaceBuilderAssignments.GetGeomReferenceAssignment(), value, GameVersion.TMF);
             return this;
         }
         public TMF WithGeom(global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTMF? value)

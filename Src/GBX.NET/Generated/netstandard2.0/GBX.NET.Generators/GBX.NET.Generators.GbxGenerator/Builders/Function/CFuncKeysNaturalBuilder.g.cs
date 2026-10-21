@@ -36,12 +36,10 @@ public abstract class CFuncKeysNaturalBuilderBase<TSelf> where TSelf : CFuncKeys
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysNatural> state;
     private protected CFuncKeysNaturalBuilderBase() => state = new();
     private protected CFuncKeysNaturalBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysNatural> state) => this.state = state;
-    private protected static void SetNaturals(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysNatural> state, int[]? value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysNaturalBuilderAssignments.GetNaturalsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetXs(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysNatural> state, float[]? value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysBuilderAssignments.GetXsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public int[]? Naturals
     {
         get => state.Get<int[]?>("Naturals");
-        set => SetNaturals(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysNaturalBuilderAssignments.GetNaturalsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithNaturals(params int[]? value)
     {
@@ -55,7 +53,7 @@ public abstract class CFuncKeysNaturalBuilderBase<TSelf> where TSelf : CFuncKeys
     public float[]? Xs
     {
         get => state.Get<float[]?>("Xs");
-        set => SetXs(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysBuilderAssignments.GetXsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithXs(params float[]? value)
     {

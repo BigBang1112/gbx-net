@@ -36,12 +36,10 @@ public abstract class CGamePlayerOfficialScoresBuilderBase<TSelf> where TSelf : 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerOfficialScores> state;
     private protected CGamePlayerOfficialScoresBuilderBase() => state = new();
     private protected CGamePlayerOfficialScoresBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerOfficialScores> state) => this.state = state;
-    private protected static void SetFilteredPlayerRanks(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerOfficialScores> state, global::GBX.NET.Engines.Game.CGamePlayerOfficialScores.FilteredPlayerRank[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerOfficialScoresBuilderAssignments.GetFilteredPlayerRanksAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT);
-    private protected static void SetGlobalScore(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerOfficialScores> state, global::GBX.NET.Engines.Game.CGamePlayerOfficialScores.TransactionalNatural? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerOfficialScoresBuilderAssignments.GetGlobalScoreAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT);
     public global::GBX.NET.Engines.Game.CGamePlayerOfficialScores.FilteredPlayerRank[]? FilteredPlayerRanks
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerOfficialScores.FilteredPlayerRank[]?>("FilteredPlayerRanks");
-        set => SetFilteredPlayerRanks(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerOfficialScoresBuilderAssignments.GetFilteredPlayerRanksAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithFilteredPlayerRanks(params global::GBX.NET.Engines.Game.CGamePlayerOfficialScores.FilteredPlayerRank[]? value)
     {
@@ -55,7 +53,7 @@ public abstract class CGamePlayerOfficialScoresBuilderBase<TSelf> where TSelf : 
     public global::GBX.NET.Engines.Game.CGamePlayerOfficialScores.TransactionalNatural? GlobalScore
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerOfficialScores.TransactionalNatural?>("GlobalScore");
-        set => SetGlobalScore(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerOfficialScoresBuilderAssignments.GetGlobalScoreAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithGlobalScore(global::GBX.NET.Engines.Game.CGamePlayerOfficialScores.TransactionalNatural? value)
     {

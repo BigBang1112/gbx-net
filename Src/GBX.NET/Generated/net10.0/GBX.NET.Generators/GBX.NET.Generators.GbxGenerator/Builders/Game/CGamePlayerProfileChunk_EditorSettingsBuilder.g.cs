@@ -36,12 +36,10 @@ public abstract class CGamePlayerProfileChunk_EditorSettingsBuilderBase<TSelf> w
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_EditorSettings> state;
     private protected CGamePlayerProfileChunk_EditorSettingsBuilderBase() => state = new();
     private protected CGamePlayerProfileChunk_EditorSettingsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_EditorSettings> state) => this.state = state;
-    private protected static void SetMapEditorCoppersLimit(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_EditorSettings> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_EditorSettingsBuilderAssignments.GetMapEditorCoppersLimitAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetPluginInfos(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_EditorSettings> state, global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_EditorSettings.PluginInfo[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_EditorSettingsBuilderAssignments.GetPluginInfosAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public int MapEditorCoppersLimit
     {
         get => state.Get<int>("MapEditorCoppersLimit");
-        set => SetMapEditorCoppersLimit(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_EditorSettingsBuilderAssignments.GetMapEditorCoppersLimitAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMapEditorCoppersLimit(int value)
     {
@@ -51,7 +49,7 @@ public abstract class CGamePlayerProfileChunk_EditorSettingsBuilderBase<TSelf> w
     public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_EditorSettings.PluginInfo[]? PluginInfos
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_EditorSettings.PluginInfo[]?>("PluginInfos");
-        set => SetPluginInfos(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_EditorSettingsBuilderAssignments.GetPluginInfosAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithPluginInfos(params global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_EditorSettings.PluginInfo[]? value)
     {

@@ -36,21 +36,10 @@ public abstract class CPlugCharPhySpecialPropertyBuilderBase<TSelf> where TSelf 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty> state;
     private protected CPlugCharPhySpecialPropertyBuilderBase() => state = new();
     private protected CPlugCharPhySpecialPropertyBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty> state) => this.state = state;
-    private protected static void SetFreeWheelingDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty> state, TimeInt32 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetFreeWheelingDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetJumpPadCenterOnPad(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetJumpPadCenterOnPadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetJumpPadDestinationOffset(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetJumpPadDestinationOffsetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetJumpPadFixedVel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetJumpPadFixedVelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetJumpPadSize(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetJumpPadSizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetSpecialType(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty> state, global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty.ESpecialType value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetSpecialTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSpeedUpCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetSpeedUpCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSpeedUpDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty> state, TimeInt32 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetSpeedUpDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetTrajectoryCurve(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetTrajectoryCurveAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetTurboDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty> state, TimeInt32 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetTurboDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetTurboVal(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetTurboValAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public bool JumpPadFixedVel
     {
         get => state.Get<bool>("JumpPadFixedVel");
-        set => SetJumpPadFixedVel(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetJumpPadFixedVelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithJumpPadFixedVel(bool value)
     {
@@ -60,7 +49,7 @@ public abstract class CPlugCharPhySpecialPropertyBuilderBase<TSelf> where TSelf 
     public global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty.ESpecialType SpecialType
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty.ESpecialType>("SpecialType");
-        set => SetSpecialType(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetSpecialTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSpecialType(global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty.ESpecialType value)
     {
@@ -70,7 +59,7 @@ public abstract class CPlugCharPhySpecialPropertyBuilderBase<TSelf> where TSelf 
     public float SpeedUpCoef
     {
         get => state.Get<float>("SpeedUpCoef");
-        set => SetSpeedUpCoef(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetSpeedUpCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSpeedUpCoef(float value)
     {
@@ -80,7 +69,7 @@ public abstract class CPlugCharPhySpecialPropertyBuilderBase<TSelf> where TSelf 
     public TimeInt32 SpeedUpDuration
     {
         get => state.Get<TimeInt32>("SpeedUpDuration");
-        set => SetSpeedUpDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetSpeedUpDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSpeedUpDuration(TimeInt32 value)
     {
@@ -90,7 +79,7 @@ public abstract class CPlugCharPhySpecialPropertyBuilderBase<TSelf> where TSelf 
     public TimeInt32 TurboDuration
     {
         get => state.Get<TimeInt32>("TurboDuration");
-        set => SetTurboDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetTurboDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithTurboDuration(TimeInt32 value)
     {
@@ -100,7 +89,7 @@ public abstract class CPlugCharPhySpecialPropertyBuilderBase<TSelf> where TSelf 
     public float TurboVal
     {
         get => state.Get<float>("TurboVal");
-        set => SetTurboVal(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetTurboValAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithTurboVal(float value)
     {
@@ -114,7 +103,7 @@ public abstract class CPlugCharPhySpecialPropertyBuilderMembers1<TSelf> : CPlugC
     public TimeInt32 FreeWheelingDuration
     {
         get => state.Get<TimeInt32>("FreeWheelingDuration");
-        set => SetFreeWheelingDuration(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetFreeWheelingDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFreeWheelingDuration(TimeInt32 value)
     {
@@ -124,7 +113,7 @@ public abstract class CPlugCharPhySpecialPropertyBuilderMembers1<TSelf> : CPlugC
     public bool JumpPadCenterOnPad
     {
         get => state.Get<bool>("JumpPadCenterOnPad");
-        set => SetJumpPadCenterOnPad(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetJumpPadCenterOnPadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithJumpPadCenterOnPad(bool value)
     {
@@ -134,7 +123,7 @@ public abstract class CPlugCharPhySpecialPropertyBuilderMembers1<TSelf> : CPlugC
     public Vec3 JumpPadDestinationOffset
     {
         get => state.Get<Vec3>("JumpPadDestinationOffset");
-        set => SetJumpPadDestinationOffset(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetJumpPadDestinationOffsetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithJumpPadDestinationOffset(Vec3 value)
     {
@@ -144,7 +133,7 @@ public abstract class CPlugCharPhySpecialPropertyBuilderMembers1<TSelf> : CPlugC
     public int JumpPadSize
     {
         get => state.Get<int>("JumpPadSize");
-        set => SetJumpPadSize(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetJumpPadSizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithJumpPadSize(int value)
     {
@@ -154,7 +143,7 @@ public abstract class CPlugCharPhySpecialPropertyBuilderMembers1<TSelf> : CPlugC
     public float TrajectoryCurve
     {
         get => state.Get<float>("TrajectoryCurve");
-        set => SetTrajectoryCurve(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetTrajectoryCurveAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTrajectoryCurve(float value)
     {

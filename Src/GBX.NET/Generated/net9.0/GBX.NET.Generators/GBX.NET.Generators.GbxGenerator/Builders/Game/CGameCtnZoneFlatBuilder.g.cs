@@ -36,30 +36,10 @@ public abstract class CGameCtnZoneFlatBuilderBase<TSelf> where TSelf : CGameCtnZ
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFlat> state;
     private protected CGameCtnZoneFlatBuilderBase() => state = new();
     private protected CGameCtnZoneFlatBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFlat> state) => this.state = state;
-    private protected static void SetAutoSimplifyGenealogy(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFlat> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFlatBuilderAssignments.GetAutoSimplifyGenealogyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetBlockInfoClip(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFlat> state, global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFlatBuilderAssignments.GetBlockInfoClipAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBlockInfoClipReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFlat> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFlatBuilderAssignments.GetBlockInfoClipReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBlockInfoFlat(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFlat> state, global::GBX.NET.Engines.Game.CGameCtnBlockInfoFlat? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFlatBuilderAssignments.GetBlockInfoFlatAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBlockInfoFlatReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFlat> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFlat> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFlatBuilderAssignments.GetBlockInfoFlatReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBlockInfoPylon(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFlat> state, global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFlatBuilderAssignments.GetBlockInfoPylonAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBlockInfoPylonReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFlat> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFlatBuilderAssignments.GetBlockInfoPylonReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBlockInfoRoad(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFlat> state, global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFlatBuilderAssignments.GetBlockInfoRoadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetBlockInfoRoadReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFlat> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFlatBuilderAssignments.GetBlockInfoRoadReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetDepth(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFlat> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetDepthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetForcedParentZoneFrontierId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFlat> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetForcedParentZoneFrontierIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetGroundOnly(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFlat> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFlatBuilderAssignments.GetGroundOnlyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetHasWater(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFlat> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetHasWaterAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    private protected static void SetHeight(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFlat> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetHeightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetIsLargeZone(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFlat> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetIsLargeZoneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetOldZone(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFlat> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetOldZoneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetSurfaceId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFlat> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetSurfaceIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    private protected static void SetVisualTopGroundHeight(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFlat> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetVisualTopGroundHeightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetWaterId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFlat> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetWaterIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    private protected static void SetZoneId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFlat> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetZoneIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip? BlockInfoClip
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip?>("BlockInfoClip");
-        set => SetBlockInfoClip(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFlatBuilderAssignments.GetBlockInfoClipAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBlockInfoClip(global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip? value)
     {
@@ -69,13 +49,13 @@ public abstract class CGameCtnZoneFlatBuilderBase<TSelf> where TSelf : CGameCtnZ
     public TSelf WithBlockInfoClipReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBlockInfoClipReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFlatBuilderAssignments.GetBlockInfoClipReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Game.CGameCtnBlockInfoFlat? BlockInfoFlat
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFlat?>("BlockInfoFlat");
-        set => SetBlockInfoFlat(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFlatBuilderAssignments.GetBlockInfoFlatAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBlockInfoFlat(global::GBX.NET.Engines.Game.CGameCtnBlockInfoFlat? value)
     {
@@ -85,13 +65,13 @@ public abstract class CGameCtnZoneFlatBuilderBase<TSelf> where TSelf : CGameCtnZ
     public TSelf WithBlockInfoFlatReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFlat> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBlockInfoFlatReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFlatBuilderAssignments.GetBlockInfoFlatReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon? BlockInfoPylon
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon?>("BlockInfoPylon");
-        set => SetBlockInfoPylon(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFlatBuilderAssignments.GetBlockInfoPylonAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBlockInfoPylon(global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon? value)
     {
@@ -101,13 +81,13 @@ public abstract class CGameCtnZoneFlatBuilderBase<TSelf> where TSelf : CGameCtnZ
     public TSelf WithBlockInfoPylonReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBlockInfoPylonReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFlatBuilderAssignments.GetBlockInfoPylonReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad? BlockInfoRoad
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad?>("BlockInfoRoad");
-        set => SetBlockInfoRoad(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFlatBuilderAssignments.GetBlockInfoRoadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBlockInfoRoad(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad? value)
     {
@@ -117,13 +97,13 @@ public abstract class CGameCtnZoneFlatBuilderBase<TSelf> where TSelf : CGameCtnZ
     public TSelf WithBlockInfoRoadReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad> value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
-        SetBlockInfoRoadReference(state, value);
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFlatBuilderAssignments.GetBlockInfoRoadReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public int Height
     {
         get => state.Get<int>("Height");
-        set => SetHeight(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetHeightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithHeight(int value)
     {
@@ -133,7 +113,7 @@ public abstract class CGameCtnZoneFlatBuilderBase<TSelf> where TSelf : CGameCtnZ
     public string? SurfaceId
     {
         get => state.Get<string?>("SurfaceId");
-        set => SetSurfaceId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetSurfaceIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSurfaceId(string? value)
     {
@@ -143,7 +123,7 @@ public abstract class CGameCtnZoneFlatBuilderBase<TSelf> where TSelf : CGameCtnZ
     public string? ZoneId
     {
         get => state.Get<string?>("ZoneId");
-        set => SetZoneId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetZoneIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithZoneId(string? value)
     {
@@ -157,7 +137,7 @@ public abstract class CGameCtnZoneFlatBuilderMembers1<TSelf> : CGameCtnZoneFlatB
     public int Depth
     {
         get => state.Get<int>("Depth");
-        set => SetDepth(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetDepthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDepth(int value)
     {
@@ -167,7 +147,7 @@ public abstract class CGameCtnZoneFlatBuilderMembers1<TSelf> : CGameCtnZoneFlatB
     public bool GroundOnly
     {
         get => state.Get<bool>("GroundOnly");
-        set => SetGroundOnly(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFlatBuilderAssignments.GetGroundOnlyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithGroundOnly(bool value)
     {
@@ -177,7 +157,7 @@ public abstract class CGameCtnZoneFlatBuilderMembers1<TSelf> : CGameCtnZoneFlatB
     public bool OldZone
     {
         get => state.Get<bool>("OldZone");
-        set => SetOldZone(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetOldZoneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithOldZone(bool value)
     {
@@ -191,7 +171,7 @@ public abstract class CGameCtnZoneFlatBuilderMembers2<TSelf> : CGameCtnZoneFlatB
     public bool HasWater
     {
         get => state.Get<bool>("HasWater");
-        set => SetHasWater(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetHasWaterAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithHasWater(bool value)
     {
@@ -205,7 +185,7 @@ public abstract class CGameCtnZoneFlatBuilderMembers3<TSelf> : CGameCtnZoneFlatB
     public bool AutoSimplifyGenealogy
     {
         get => state.Get<bool>("AutoSimplifyGenealogy");
-        set => SetAutoSimplifyGenealogy(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFlatBuilderAssignments.GetAutoSimplifyGenealogyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAutoSimplifyGenealogy(bool value)
     {
@@ -215,7 +195,7 @@ public abstract class CGameCtnZoneFlatBuilderMembers3<TSelf> : CGameCtnZoneFlatB
     public string? ForcedParentZoneFrontierId
     {
         get => state.Get<string?>("ForcedParentZoneFrontierId");
-        set => SetForcedParentZoneFrontierId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetForcedParentZoneFrontierIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithForcedParentZoneFrontierId(string? value)
     {
@@ -225,7 +205,7 @@ public abstract class CGameCtnZoneFlatBuilderMembers3<TSelf> : CGameCtnZoneFlatB
     public bool IsLargeZone
     {
         get => state.Get<bool>("IsLargeZone");
-        set => SetIsLargeZone(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetIsLargeZoneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIsLargeZone(bool value)
     {
@@ -235,7 +215,7 @@ public abstract class CGameCtnZoneFlatBuilderMembers3<TSelf> : CGameCtnZoneFlatB
     public float VisualTopGroundHeight
     {
         get => state.Get<float>("VisualTopGroundHeight");
-        set => SetVisualTopGroundHeight(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetVisualTopGroundHeightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithVisualTopGroundHeight(float value)
     {
@@ -245,7 +225,7 @@ public abstract class CGameCtnZoneFlatBuilderMembers3<TSelf> : CGameCtnZoneFlatB
     public string? WaterId
     {
         get => state.Get<string?>("WaterId");
-        set => SetWaterId(state, value);
+        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetWaterIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithWaterId(string? value)
     {
