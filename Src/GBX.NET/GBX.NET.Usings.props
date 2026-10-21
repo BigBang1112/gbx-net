@@ -1,0 +1,31 @@
+<Project>
+
+    <!-- GBX.NET.Builders analyzes this library's sources with the same imports. -->
+    <ItemGroup>
+        <Using Include="TmEssentials" />
+        <Using Include="GBX.NET.Attributes" />
+        <Using Include="GBX.NET.Exceptions" />
+        <Using Include="GBX.NET.Serialization" />
+        <Using Include="GBX.NET.Serialization.Chunking" />
+        <Using Include="GBX.NET.Engines.MwFoundations" />
+        <Using Include="GBX.NET.Engines.Plug" />
+        <Using Include="GBX.NET.Engines.Game" />
+        <Using Include="GBX.NET.Engines.GameData" />
+        <Using Include="GBX.NET.Engines.Scene" />
+        <Using Include="GBX.NET.Engines.ShootMania" />
+        <Using Include="GBX.NET.Engines.System" />
+        <Using Include="GBX.NET.Engines.Control" />
+        <Using Include="GBX.NET.Engines.Input" />
+        <Using Include="GBX.NET.Engines.Function" />
+        <Using Include="GBX.NET.Engines.Script" />
+        <Using Include="GBX.NET.Engines.Graphic" />
+        <Using Include="GBX.NET.Engines.Motion" />
+        <Using Include="GBX.NET.Engines.Hms" />
+        <Using Include="GBX.NET.Engines.TrackMania" />
+        <Using Include="GBX.NET.Engines.VirtualSkipper" />
+        <Using Include="GBX.NET.Engines.Vision" />
+        <Using Include="GBX.NET.Engines.MetaNotPersistent" />
+        <Using Include="GBX.NET.Engines.Meta" />
+    </ItemGroup>
+
+</Project>
