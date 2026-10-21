@@ -41,82 +41,42 @@ public partial class CPlugVehiclePhyModel : global::GBX.NET.Interfaces.Plug.IPlu
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3? global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3>.RefBuffer
     {
-        get
-        {
-            var node = RefBuffer;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => RefBuffer;
         set => RefBuffer = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolidMP3? global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelMP3.SurfSolid
     {
-        get
-        {
-            var node = SurfSolid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => SurfSolid;
         set => SurfSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsMP3? global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsMP3>.Tunings
     {
-        get
-        {
-            var node = Tunings;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => Tunings;
         set => Tunings = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeMP4? global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeMP4>.PhyShape
     {
-        get
-        {
-            var node = PhyShape;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => PhyShape;
         set => PhyShape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4? global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>.RefBuffer
     {
-        get
-        {
-            var node = RefBuffer;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => RefBuffer;
         set => RefBuffer = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsMP4? global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsMP4>.Tunings
     {
-        get
-        {
-            var node = Tunings;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Tunings;
         set => Tunings = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeTM2020>.PhyShape
     {
-        get
-        {
-            var node = PhyShape;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => PhyShape;
         set => PhyShape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsTM2020>.Tunings
     {
-        get
-        {
-            var node = Tunings;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => Tunings;
         set => Tunings = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

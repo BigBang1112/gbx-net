@@ -66,112 +66,57 @@ public partial class CPlugTurret : global::GBX.NET.Interfaces.Plug.IPlugTurret, 
     }
     global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4? global::GBX.NET.Interfaces.Plug.IPlugTurretMP4.BulletModel
     {
-        get
-        {
-            var node = BulletModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => BulletModel;
         set => BulletModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBulletModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4? global::GBX.NET.Interfaces.Plug.IPlugTurretMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4, global::GBX.NET.Interfaces.Plug.IPlugSkelMP4, global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelMP4>.Mesh
     {
-        get
-        {
-            var node = Mesh;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Mesh;
         set => Mesh = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid2Model node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugTurretMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4, global::GBX.NET.Interfaces.Plug.IPlugSkelMP4, global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelMP4>.OnFireParticle
     {
-        get
-        {
-            var node = OnFireParticle;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => OnFireParticle;
         set => OnFireParticle = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4? global::GBX.NET.Interfaces.Plug.IPlugTurretMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4, global::GBX.NET.Interfaces.Plug.IPlugSkelMP4, global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelMP4>.Shape
     {
-        get
-        {
-            var node = Shape;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Shape;
         set => Shape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSkelMP4? global::GBX.NET.Interfaces.Plug.IPlugTurretMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4, global::GBX.NET.Interfaces.Plug.IPlugSkelMP4, global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelMP4>.Skel
     {
-        get
-        {
-            var node = Skel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Skel;
         set => Skel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelMP4? global::GBX.NET.Interfaces.Plug.IPlugTurretMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4, global::GBX.NET.Interfaces.Plug.IPlugSkelMP4, global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelMP4>.VisEntFx
     {
-        get
-        {
-            var node = VisEntFx;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => VisEntFx;
         set => VisEntFx = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVisEntFxModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugTurretMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020, global::GBX.NET.Interfaces.Plug.IPlugSkelTM2020, global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelTM2020>.Mesh
     {
-        get
-        {
-            var node = Mesh;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => Mesh;
         set => Mesh = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid2Model node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugTurretMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020, global::GBX.NET.Interfaces.Plug.IPlugSkelTM2020, global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelTM2020>.OnFireParticle
     {
-        get
-        {
-            var node = OnFireParticle;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => OnFireParticle;
         set => OnFireParticle = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020? global::GBX.NET.Interfaces.Plug.IPlugTurretMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020, global::GBX.NET.Interfaces.Plug.IPlugSkelTM2020, global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelTM2020>.Shape
     {
-        get
-        {
-            var node = Shape;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => Shape;
         set => Shape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSkelTM2020? global::GBX.NET.Interfaces.Plug.IPlugTurretMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020, global::GBX.NET.Interfaces.Plug.IPlugSkelTM2020, global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelTM2020>.Skel
     {
-        get
-        {
-            var node = Skel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => Skel;
         set => Skel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugTurretMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020, global::GBX.NET.Interfaces.Plug.IPlugSkelTM2020, global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelTM2020>.VisEntFx
     {
-        get
-        {
-            var node = VisEntFx;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => VisEntFx;
         set => VisEntFx = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVisEntFxModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

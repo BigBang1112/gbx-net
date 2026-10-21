@@ -36,14 +36,9 @@ public abstract class CPlugParticleGpuSpawnBuilderBase<TSelf> where TSelf : CPlu
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuSpawn> state;
     private protected CPlugParticleGpuSpawnBuilderBase() => state = new();
     private protected CPlugParticleGpuSpawnBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuSpawn> state) => this.state = state;
-    public global::GBX.NET.Engines.Plug.CPlugParticleGpuSpawn.ParticleGpuSpawn? Spawn
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleGpuSpawn.ParticleGpuSpawn?>("Spawn");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuSpawnBuilderAssignments.GetSpawnAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithSpawn(global::GBX.NET.Engines.Plug.CPlugParticleGpuSpawn.ParticleGpuSpawn? value)
     {
-        Spawn = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuSpawnBuilderAssignments.GetSpawnAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -55,13 +50,6 @@ public partial class CPlugParticleGpuSpawnBuilder : CPlugParticleGpuSpawnBuilder
         var chunk090C5000 = new global::GBX.NET.Engines.Plug.CPlugParticleGpuSpawn.Chunk090C5000(game);
         node.Chunks.Add(chunk090C5000);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugParticleGpuSpawn node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleGpuSpawn.Chunk090C5000>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C5000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugParticleGpuSpawn node, GameVersion game)
-    {
     }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -78,14 +66,9 @@ public partial class CPlugParticleGpuSpawnBuilder : CPlugParticleGpuSpawnBuilder
             var node = CPlugParticleGpuSpawnBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CPlugParticleGpuSpawnBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CPlugParticleGpuSpawnBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleGpuSpawn node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugParticleGpuSpawn node);
     }
     public partial class TMT : CPlugParticleGpuSpawnBuilderBase<TMT>
     {
@@ -96,14 +79,9 @@ public partial class CPlugParticleGpuSpawnBuilder : CPlugParticleGpuSpawnBuilder
             var node = CPlugParticleGpuSpawnBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugParticleGpuSpawnBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugParticleGpuSpawnBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleGpuSpawn node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugParticleGpuSpawn node);
     }
     public partial class MP4 : CPlugParticleGpuSpawnBuilderBase<MP4>
     {
@@ -114,14 +92,9 @@ public partial class CPlugParticleGpuSpawnBuilder : CPlugParticleGpuSpawnBuilder
             var node = CPlugParticleGpuSpawnBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugParticleGpuSpawnBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugParticleGpuSpawnBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleGpuSpawn node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugParticleGpuSpawn node);
     }
     public partial class TM2020 : CPlugParticleGpuSpawnBuilderBase<TM2020>
     {
@@ -132,13 +105,8 @@ public partial class CPlugParticleGpuSpawnBuilder : CPlugParticleGpuSpawnBuilder
             var node = CPlugParticleGpuSpawnBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugParticleGpuSpawnBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugParticleGpuSpawnBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleGpuSpawn node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugParticleGpuSpawn node);
     }
 }

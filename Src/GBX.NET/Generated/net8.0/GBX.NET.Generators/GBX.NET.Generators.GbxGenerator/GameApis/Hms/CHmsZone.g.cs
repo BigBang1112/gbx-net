@@ -36,102 +36,52 @@ public partial class CHmsZone : global::GBX.NET.Interfaces.Hms.IHmsZone, global:
     public static global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilder Create() => new();
     global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? global::GBX.NET.Interfaces.Hms.IHmsZoneMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5>.BitmapCubeReflectHardSpecA
     {
-        get
-        {
-            var node = BitmapCubeReflectHardSpecA;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => BitmapCubeReflectHardSpecA;
         set => BitmapCubeReflectHardSpecA = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? global::GBX.NET.Interfaces.Hms.IHmsZoneMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF>.BitmapCubeReflectHardSpecA
     {
-        get
-        {
-            var node = BitmapCubeReflectHardSpecA;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => BitmapCubeReflectHardSpecA;
         set => BitmapCubeReflectHardSpecA = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Hms.IHmsZoneMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>.BitmapCubeReflectHardSpecA
     {
-        get
-        {
-            var node = BitmapCubeReflectHardSpecA;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => BitmapCubeReflectHardSpecA;
         set => BitmapCubeReflectHardSpecA = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Hms.IHmsZoneMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>.BitmapCubeReflectHdrAlpha2
     {
-        get
-        {
-            var node = BitmapCubeReflectHdrAlpha2;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => BitmapCubeReflectHdrAlpha2;
         set => BitmapCubeReflectHdrAlpha2 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Hms.IHmsZoneMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>.BitmapCubeReflectHardSpecA
     {
-        get
-        {
-            var node = BitmapCubeReflectHardSpecA;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => BitmapCubeReflectHardSpecA;
         set => BitmapCubeReflectHardSpecA = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Hms.IHmsZoneMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>.BitmapCubeReflectHdrAlpha2
     {
-        get
-        {
-            var node = BitmapCubeReflectHdrAlpha2;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => BitmapCubeReflectHdrAlpha2;
         set => BitmapCubeReflectHdrAlpha2 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Hms.IHmsZoneMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>.BitmapCubeReflectHardSpecA
     {
-        get
-        {
-            var node = BitmapCubeReflectHardSpecA;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => BitmapCubeReflectHardSpecA;
         set => BitmapCubeReflectHardSpecA = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Hms.IHmsZoneMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>.BitmapCubeReflectHdrAlpha2
     {
-        get
-        {
-            var node = BitmapCubeReflectHdrAlpha2;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => BitmapCubeReflectHdrAlpha2;
         set => BitmapCubeReflectHdrAlpha2 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Hms.IHmsZoneMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>.BitmapCubeReflectHardSpecA
     {
-        get
-        {
-            var node = BitmapCubeReflectHardSpecA;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => BitmapCubeReflectHardSpecA;
         set => BitmapCubeReflectHardSpecA = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Hms.IHmsZoneMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>.BitmapCubeReflectHdrAlpha2
     {
-        get
-        {
-            var node = BitmapCubeReflectHdrAlpha2;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => BitmapCubeReflectHdrAlpha2;
         set => BitmapCubeReflectHdrAlpha2 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

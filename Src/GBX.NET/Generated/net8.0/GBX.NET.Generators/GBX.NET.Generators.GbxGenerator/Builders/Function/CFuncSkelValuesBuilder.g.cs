@@ -36,28 +36,18 @@ public abstract class CFuncSkelValuesBuilderBase<TSelf> where TSelf : CFuncSkelV
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Function.CFuncSkelValues> state;
     private protected CFuncSkelValuesBuilderBase() => state = new();
     private protected CFuncSkelValuesBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncSkelValues> state) => this.state = state;
-    public global::GBX.NET.Engines.Function.CFuncKeysSkel.Loc[]? Locations
-    {
-        get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysSkel.Loc[]?>("Locations");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncSkelValuesBuilderAssignments.GetLocationsAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithLocations(params global::GBX.NET.Engines.Function.CFuncKeysSkel.Loc[]? value)
     {
-        Locations = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncSkelValuesBuilderAssignments.GetLocationsAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithLocations(IEnumerable<global::GBX.NET.Engines.Function.CFuncKeysSkel.Loc> values)
     {
         return WithLocations(values.ToArray());
     }
-    public global::GBX.NET.Engines.Function.CFuncSkel? Skel
-    {
-        get => state.Get<global::GBX.NET.Engines.Function.CFuncSkel?>("Skel");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncSkelValuesBuilderAssignments.GetSkelAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithSkel(global::GBX.NET.Engines.Function.CFuncSkel? value)
     {
-        Skel = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncSkelValuesBuilderAssignments.GetSkelAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithSkelReference(NodeRef<global::GBX.NET.Engines.Function.CFuncSkel> value)
@@ -75,13 +65,6 @@ public partial class CFuncSkelValuesBuilder : CFuncSkelValuesBuilderBase<CFuncSk
         var chunk05007000 = new global::GBX.NET.Engines.Function.CFuncSkelValues.Chunk05007000();
         node.Chunks.Add(chunk05007000);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Function.CFuncSkelValues node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncSkelValues.Chunk05007000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05007000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Function.CFuncSkelValues node, GameVersion game)
-    {
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -102,14 +85,9 @@ public partial class CFuncSkelValuesBuilder : CFuncSkelValuesBuilderBase<CFuncSk
             var node = CFuncSkelValuesBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CFuncSkelValuesBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CFuncSkelValuesBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncSkelValues node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncSkelValues node);
     }
     public partial class TMPU : CFuncSkelValuesBuilderBase<TMPU>
     {
@@ -124,14 +102,9 @@ public partial class CFuncSkelValuesBuilder : CFuncSkelValuesBuilderBase<CFuncSk
             var node = CFuncSkelValuesBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CFuncSkelValuesBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CFuncSkelValuesBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncSkelValues node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncSkelValues node);
     }
     public partial class TMSX : CFuncSkelValuesBuilderBase<TMSX>
     {
@@ -146,14 +119,9 @@ public partial class CFuncSkelValuesBuilder : CFuncSkelValuesBuilderBase<CFuncSk
             var node = CFuncSkelValuesBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CFuncSkelValuesBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CFuncSkelValuesBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncSkelValues node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncSkelValues node);
     }
     public partial class TMNESWC : CFuncSkelValuesBuilderBase<TMNESWC>
     {
@@ -168,14 +136,9 @@ public partial class CFuncSkelValuesBuilder : CFuncSkelValuesBuilderBase<CFuncSk
             var node = CFuncSkelValuesBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CFuncSkelValuesBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CFuncSkelValuesBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncSkelValues node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncSkelValues node);
     }
     public partial class VSK5 : CFuncSkelValuesBuilderBase<VSK5>
     {
@@ -190,14 +153,9 @@ public partial class CFuncSkelValuesBuilder : CFuncSkelValuesBuilderBase<CFuncSk
             var node = CFuncSkelValuesBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CFuncSkelValuesBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CFuncSkelValuesBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncSkelValues node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncSkelValues node);
     }
     public partial class TMF : CFuncSkelValuesBuilderBase<TMF>
     {
@@ -212,13 +170,8 @@ public partial class CFuncSkelValuesBuilder : CFuncSkelValuesBuilderBase<CFuncSk
             var node = CFuncSkelValuesBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CFuncSkelValuesBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CFuncSkelValuesBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncSkelValues node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncSkelValues node);
     }
 }

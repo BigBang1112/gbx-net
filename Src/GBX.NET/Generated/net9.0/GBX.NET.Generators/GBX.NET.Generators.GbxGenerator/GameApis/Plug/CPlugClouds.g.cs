@@ -36,12 +36,12 @@ public partial class CPlugClouds : global::GBX.NET.Interfaces.Plug.IPlugClouds, 
     public static global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilder Create() => new();
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5>? global::GBX.NET.Interfaces.Plug.IPlugCloudsMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5>.SolidFids
     {
-        get => SolidFids is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5>(GetSolidFidsBuilderReferences, GameVersion.VSK5, true, "SolidFids");
+        get => SolidFids is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5>(GetSolidFidsBuilderReferences, true, "SolidFids");
         set => SolidFids = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSolid>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSolidTMF>? global::GBX.NET.Interfaces.Plug.IPlugCloudsMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolidTMF>.SolidFids
     {
-        get => SolidFids is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidTMF>(GetSolidFidsBuilderReferences, GameVersion.TMF, true, "SolidFids");
+        get => SolidFids is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidTMF>(GetSolidFidsBuilderReferences, true, "SolidFids");
         set => SolidFids = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSolid>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidTMF>(value, false));
     }
     private NodeRefList<global::GBX.NET.Engines.Plug.CPlugSolid>? GetSolidFidsBuilderReferences() => SolidFids;

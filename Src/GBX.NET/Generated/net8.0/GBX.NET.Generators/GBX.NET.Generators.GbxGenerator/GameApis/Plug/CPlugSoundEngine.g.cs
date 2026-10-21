@@ -36,17 +36,17 @@ public partial class CPlugSoundEngine : global::GBX.NET.Interfaces.Plug.IPlugSou
     public static new global::GBX.NET.Builders.Engines.Plug.CPlugSoundEngineBuilder Create() => new();
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTMF>? global::GBX.NET.Interfaces.Plug.IPlugSoundEngineMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTMF>.Components
     {
-        get => Components is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSoundComponent, global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTMF>(GetComponentsBuilderReferences, GameVersion.TMF, true, "Components");
+        get => Components is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSoundComponent, global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTMF>(GetComponentsBuilderReferences, true, "Components");
         set => Components = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSoundComponent>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSoundComponent, global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTMF>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSoundComponentMP4>? global::GBX.NET.Interfaces.Plug.IPlugSoundEngineMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundComponentMP4>.Components
     {
-        get => Components is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSoundComponent, global::GBX.NET.Interfaces.Plug.IPlugSoundComponentMP4>(GetComponentsBuilderReferences, GameVersion.MP4, true, "Components");
+        get => Components is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSoundComponent, global::GBX.NET.Interfaces.Plug.IPlugSoundComponentMP4>(GetComponentsBuilderReferences, true, "Components");
         set => Components = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSoundComponent>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSoundComponent, global::GBX.NET.Interfaces.Plug.IPlugSoundComponentMP4>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTM2020>? global::GBX.NET.Interfaces.Plug.IPlugSoundEngineMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTM2020>.Components
     {
-        get => Components is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSoundComponent, global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTM2020>(GetComponentsBuilderReferences, GameVersion.TM2020, true, "Components");
+        get => Components is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSoundComponent, global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTM2020>(GetComponentsBuilderReferences, true, "Components");
         set => Components = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSoundComponent>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSoundComponent, global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTM2020>(value, false));
     }
     private NodeRefList<global::GBX.NET.Engines.Plug.CPlugSoundComponent>? GetComponentsBuilderReferences() => Components;

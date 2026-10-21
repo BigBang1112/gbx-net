@@ -36,27 +36,17 @@ public partial class CGameUserProfile : global::GBX.NET.Interfaces.Game.IGameUse
     public static global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilder Create() => new();
     global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMT? global::GBX.NET.Interfaces.Game.IGameUserProfileMembers1<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMT>.InputBindingsConfig
     {
-        get
-        {
-            var node = InputBindingsConfig;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => InputBindingsConfig;
         set => InputBindingsConfig = value is null ? null : value is global::GBX.NET.Engines.Input.CInputBindingsConfig node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Input.IInputBindingsConfigMP4? global::GBX.NET.Interfaces.Game.IGameUserProfileMembers1<global::GBX.NET.Interfaces.Input.IInputBindingsConfigMP4>.InputBindingsConfig
     {
-        get
-        {
-            var node = InputBindingsConfig;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => InputBindingsConfig;
         set => InputBindingsConfig = value is null ? null : value is global::GBX.NET.Engines.Input.CInputBindingsConfig node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTM2020>? global::GBX.NET.Interfaces.Game.IGameUserProfileTM2020.InputBindingsConfigs
     {
-        get => InputBindingsConfigs is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Input.CInputBindingsConfig, global::GBX.NET.Interfaces.Input.IInputBindingsConfigTM2020>(GetInputBindingsConfigsBuilderReferences, GameVersion.TM2020, true, "InputBindingsConfigs");
+        get => InputBindingsConfigs is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Input.CInputBindingsConfig, global::GBX.NET.Interfaces.Input.IInputBindingsConfigTM2020>(GetInputBindingsConfigsBuilderReferences, true, "InputBindingsConfigs");
         set => InputBindingsConfigs = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Input.CInputBindingsConfig>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Input.CInputBindingsConfig, global::GBX.NET.Interfaces.Input.IInputBindingsConfigTM2020>(value, false));
     }
     private NodeRefList<global::GBX.NET.Engines.Input.CInputBindingsConfig>? GetInputBindingsConfigsBuilderReferences() => InputBindingsConfigs;

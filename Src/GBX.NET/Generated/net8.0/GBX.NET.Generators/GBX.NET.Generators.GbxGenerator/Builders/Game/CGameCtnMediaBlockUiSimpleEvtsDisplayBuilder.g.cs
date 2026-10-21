@@ -36,24 +36,14 @@ public abstract class CGameCtnMediaBlockUiSimpleEvtsDisplayBuilderBase<TSelf> wh
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockUiSimpleEvtsDisplay> state;
     private protected CGameCtnMediaBlockUiSimpleEvtsDisplayBuilderBase() => state = new();
     private protected CGameCtnMediaBlockUiSimpleEvtsDisplayBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockUiSimpleEvtsDisplay> state) => this.state = state;
-    public TimeSingle End
-    {
-        get => state.Get<TimeSingle>("End");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockUiBuilderAssignments.GetEndAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithEnd(TimeSingle value)
     {
-        End = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockUiBuilderAssignments.GetEndAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public TimeSingle Start
-    {
-        get => state.Get<TimeSingle>("Start");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockUiBuilderAssignments.GetStartAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithStart(TimeSingle value)
     {
-        Start = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockUiBuilderAssignments.GetStartAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -65,13 +55,6 @@ public partial class CGameCtnMediaBlockUiSimpleEvtsDisplayBuilder : CGameCtnMedi
         var chunk0307D001 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockUi.Chunk0307D001();
         node.Chunks.Add(chunk0307D001);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockUiSimpleEvtsDisplay node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockUi.Chunk0307D001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0307D001 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockUiSimpleEvtsDisplay node, GameVersion game)
-    {
     }
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
@@ -90,14 +73,9 @@ public partial class CGameCtnMediaBlockUiSimpleEvtsDisplayBuilder : CGameCtnMedi
             var node = CGameCtnMediaBlockUiSimpleEvtsDisplayBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CGameCtnMediaBlockUiSimpleEvtsDisplayBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CGameCtnMediaBlockUiSimpleEvtsDisplayBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockUiSimpleEvtsDisplay node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockUiSimpleEvtsDisplay node);
     }
     public partial class VSK5 : CGameCtnMediaBlockUiSimpleEvtsDisplayBuilderBase<VSK5>
     {
@@ -108,14 +86,9 @@ public partial class CGameCtnMediaBlockUiSimpleEvtsDisplayBuilder : CGameCtnMedi
             var node = CGameCtnMediaBlockUiSimpleEvtsDisplayBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CGameCtnMediaBlockUiSimpleEvtsDisplayBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CGameCtnMediaBlockUiSimpleEvtsDisplayBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockUiSimpleEvtsDisplay node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockUiSimpleEvtsDisplay node);
     }
     public partial class TMF : CGameCtnMediaBlockUiSimpleEvtsDisplayBuilderBase<TMF>
     {
@@ -126,14 +99,9 @@ public partial class CGameCtnMediaBlockUiSimpleEvtsDisplayBuilder : CGameCtnMedi
             var node = CGameCtnMediaBlockUiSimpleEvtsDisplayBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CGameCtnMediaBlockUiSimpleEvtsDisplayBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CGameCtnMediaBlockUiSimpleEvtsDisplayBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockUiSimpleEvtsDisplay node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockUiSimpleEvtsDisplay node);
     }
     public partial class MP3 : CGameCtnMediaBlockUiSimpleEvtsDisplayBuilderBase<MP3>
     {
@@ -144,14 +112,9 @@ public partial class CGameCtnMediaBlockUiSimpleEvtsDisplayBuilder : CGameCtnMedi
             var node = CGameCtnMediaBlockUiSimpleEvtsDisplayBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CGameCtnMediaBlockUiSimpleEvtsDisplayBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CGameCtnMediaBlockUiSimpleEvtsDisplayBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockUiSimpleEvtsDisplay node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockUiSimpleEvtsDisplay node);
     }
     public partial class TMT : CGameCtnMediaBlockUiSimpleEvtsDisplayBuilderBase<TMT>
     {
@@ -162,14 +125,9 @@ public partial class CGameCtnMediaBlockUiSimpleEvtsDisplayBuilder : CGameCtnMedi
             var node = CGameCtnMediaBlockUiSimpleEvtsDisplayBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameCtnMediaBlockUiSimpleEvtsDisplayBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameCtnMediaBlockUiSimpleEvtsDisplayBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockUiSimpleEvtsDisplay node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockUiSimpleEvtsDisplay node);
     }
     public partial class MP4 : CGameCtnMediaBlockUiSimpleEvtsDisplayBuilderBase<MP4>
     {
@@ -180,13 +138,8 @@ public partial class CGameCtnMediaBlockUiSimpleEvtsDisplayBuilder : CGameCtnMedi
             var node = CGameCtnMediaBlockUiSimpleEvtsDisplayBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameCtnMediaBlockUiSimpleEvtsDisplayBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameCtnMediaBlockUiSimpleEvtsDisplayBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockUiSimpleEvtsDisplay node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockUiSimpleEvtsDisplay node);
     }
 }

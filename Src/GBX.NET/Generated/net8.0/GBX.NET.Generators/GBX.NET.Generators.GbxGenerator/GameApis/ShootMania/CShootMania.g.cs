@@ -36,42 +36,22 @@ public partial class CShootMania : global::GBX.NET.Interfaces.ShootMania.IShootM
     public static new global::GBX.NET.Builders.Engines.ShootMania.CShootManiaBuilder Create() => new();
     global::GBX.NET.Interfaces.Scene.IScene2dMP4? global::GBX.NET.Interfaces.ShootMania.IShootManiaMembers1<global::GBX.NET.Interfaces.Scene.IScene2dMP4, global::GBX.NET.Interfaces.ShootMania.ISmArenaResourceMP4>.ArenaInterfaceUI
     {
-        get
-        {
-            var node = ArenaInterfaceUI;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => ArenaInterfaceUI;
         set => ArenaInterfaceUI = value is null ? null : value is global::GBX.NET.Engines.Scene.CScene2d node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.ShootMania.ISmArenaResourceMP4? global::GBX.NET.Interfaces.ShootMania.IShootManiaMembers1<global::GBX.NET.Interfaces.Scene.IScene2dMP4, global::GBX.NET.Interfaces.ShootMania.ISmArenaResourceMP4>.ArenaResources
     {
-        get
-        {
-            var node = ArenaResources;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => ArenaResources;
         set => ArenaResources = value is null ? null : value is global::GBX.NET.Engines.ShootMania.CSmArenaResource node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Scene.IScene2dTM2020? global::GBX.NET.Interfaces.ShootMania.IShootManiaMembers1<global::GBX.NET.Interfaces.Scene.IScene2dTM2020, global::GBX.NET.Interfaces.ShootMania.ISmArenaResourceTM2020>.ArenaInterfaceUI
     {
-        get
-        {
-            var node = ArenaInterfaceUI;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => ArenaInterfaceUI;
         set => ArenaInterfaceUI = value is null ? null : value is global::GBX.NET.Engines.Scene.CScene2d node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.ShootMania.ISmArenaResourceTM2020? global::GBX.NET.Interfaces.ShootMania.IShootManiaMembers1<global::GBX.NET.Interfaces.Scene.IScene2dTM2020, global::GBX.NET.Interfaces.ShootMania.ISmArenaResourceTM2020>.ArenaResources
     {
-        get
-        {
-            var node = ArenaResources;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => ArenaResources;
         set => ArenaResources = value is null ? null : value is global::GBX.NET.Engines.ShootMania.CSmArenaResource node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

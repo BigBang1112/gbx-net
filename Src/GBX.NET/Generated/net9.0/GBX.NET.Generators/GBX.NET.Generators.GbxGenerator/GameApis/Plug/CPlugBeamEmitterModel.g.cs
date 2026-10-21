@@ -36,12 +36,12 @@ public partial class CPlugBeamEmitterModel : global::GBX.NET.Interfaces.Plug.IPl
     public static global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterModelBuilder Create() => new();
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModel>? global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModel.SubModels
     {
-        get => SubModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModel>(GetSubModelsBuilderReferences, GameVersion.Unspecified, true, "SubModels");
+        get => SubModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModel>(GetSubModelsBuilderReferences, true, "SubModels");
         set => SubModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModel>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelMP4>? global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4.SubModels
     {
-        get => SubModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelMP4>(GetSubModelsBuilderReferences, GameVersion.MP4, true, "SubModels");
+        get => SubModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelMP4>(GetSubModelsBuilderReferences, true, "SubModels");
         set => SubModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelMP4>(value, false));
     }
     private NodeRefList<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel>? GetSubModelsBuilderReferences() => SubModels;

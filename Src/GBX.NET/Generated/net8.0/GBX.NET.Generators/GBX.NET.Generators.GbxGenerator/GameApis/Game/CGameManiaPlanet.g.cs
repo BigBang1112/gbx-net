@@ -36,22 +36,12 @@ public partial class CGameManiaPlanet : global::GBX.NET.Interfaces.Game.IGameMan
     public static new global::GBX.NET.Builders.Engines.Game.CGameManiaPlanetBuilder Create() => new();
     global::GBX.NET.Interfaces.Game.IGameCoverFlowDescMP4? global::GBX.NET.Interfaces.Game.IGameManiaPlanetMP4.CoverFlowDesc
     {
-        get
-        {
-            var node = CoverFlowDesc;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => CoverFlowDesc;
         set => CoverFlowDesc = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCoverFlowDesc node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlStyleSheetMP4? global::GBX.NET.Interfaces.Game.IGameManiaPlanetMP4.DefaultStyleSheet
     {
-        get
-        {
-            var node = DefaultStyleSheet;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => DefaultStyleSheet;
         set => DefaultStyleSheet = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyleSheet node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

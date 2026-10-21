@@ -41,82 +41,42 @@ public partial class CPlugVehicleVisModel : global::GBX.NET.Interfaces.Plug.IPlu
     }
     global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMP3? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMP3>.Shared
     {
-        get
-        {
-            var node = Shared;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => Shared;
         set => Shared = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMT? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMT>.AudioEnvironmentForFirstPerson
     {
-        get
-        {
-            var node = AudioEnvironmentForFirstPerson;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => AudioEnvironmentForFirstPerson;
         set => AudioEnvironmentForFirstPerson = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedTMT? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedTMT>.Shared
     {
-        get
-        {
-            var node = Shared;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => Shared;
         set => Shared = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentMP4? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentMP4>.AudioEnvironmentForFirstPerson
     {
-        get
-        {
-            var node = AudioEnvironmentForFirstPerson;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => AudioEnvironmentForFirstPerson;
         set => AudioEnvironmentForFirstPerson = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMP4? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMP4>.Shared
     {
-        get
-        {
-            var node = Shared;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Shared;
         set => Shared = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTM2020>.AudioEnvironmentForFirstPerson
     {
-        get
-        {
-            var node = AudioEnvironmentForFirstPerson;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => AudioEnvironmentForFirstPerson;
         set => AudioEnvironmentForFirstPerson = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugFxSystemTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelTM2020.FxSystem
     {
-        get
-        {
-            var node = FxSystem;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => FxSystem;
         set => FxSystem = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFxSystem node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedTM2020>.Shared
     {
-        get
-        {
-            var node = Shared;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => Shared;
         set => Shared = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

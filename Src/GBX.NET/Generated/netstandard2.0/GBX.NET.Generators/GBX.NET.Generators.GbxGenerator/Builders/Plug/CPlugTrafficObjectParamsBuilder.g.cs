@@ -36,74 +36,39 @@ public abstract class CPlugTrafficObjectParamsBuilderBase<TSelf> where TSelf : C
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams> state;
     private protected CPlugTrafficObjectParamsBuilderBase() => state = new();
     private protected CPlugTrafficObjectParamsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams> state) => this.state = state;
-    public Iso4 BaseOffset
-    {
-        get => state.Get<Iso4>("BaseOffset");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficObjectParamsBuilderAssignments.GetBaseOffsetAssignment(), value, GameVersion.TMT);
-    }
     public TSelf WithBaseOffset(Iso4 value)
     {
-        BaseOffset = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficObjectParamsBuilderAssignments.GetBaseOffsetAssignment(), value, GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float DefaultAcceleration
-    {
-        get => state.Get<float>("DefaultAcceleration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficObjectParamsBuilderAssignments.GetDefaultAccelerationAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithDefaultAcceleration(float value)
     {
-        DefaultAcceleration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficObjectParamsBuilderAssignments.GetDefaultAccelerationAssignment(), value, GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float DefaultDecceleration
-    {
-        get => state.Get<float>("DefaultDecceleration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficObjectParamsBuilderAssignments.GetDefaultDeccelerationAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithDefaultDecceleration(float value)
     {
-        DefaultDecceleration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficObjectParamsBuilderAssignments.GetDefaultDeccelerationAssignment(), value, GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float DefaultSpeed
-    {
-        get => state.Get<float>("DefaultSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficObjectParamsBuilderAssignments.GetDefaultSpeedAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithDefaultSpeed(float value)
     {
-        DefaultSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficObjectParamsBuilderAssignments.GetDefaultSpeedAssignment(), value, GameVersion.TMT);
         return (TSelf)this;
-    }
-    public TimeInt32 PointDelay
-    {
-        get => state.Get<TimeInt32>("PointDelay");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficObjectParamsBuilderAssignments.GetPointDelayAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithPointDelay(TimeInt32 value)
     {
-        PointDelay = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficObjectParamsBuilderAssignments.GetPointDelayAssignment(), value, GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int TrafficModel
-    {
-        get => state.Get<int>("TrafficModel");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficObjectParamsBuilderAssignments.GetTrafficModelAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithTrafficModel(int value)
     {
-        TrafficModel = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficObjectParamsBuilderAssignments.GetTrafficModelAssignment(), value, GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int TrafficPathType
-    {
-        get => state.Get<int>("TrafficPathType");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficObjectParamsBuilderAssignments.GetTrafficPathTypeAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithTrafficPathType(int value)
     {
-        TrafficPathType = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficObjectParamsBuilderAssignments.GetTrafficPathTypeAssignment(), value, GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -118,14 +83,6 @@ public partial class CPlugTrafficObjectParamsBuilder : CPlugTrafficObjectParamsB
         node.Chunks.Add(chunk090D1001);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams.Chunk090D1000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090D1000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams.Chunk090D1001>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk Chunk090D1001 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams node, GameVersion game)
-    {
-    }
     public TMT ForTMT() => new(state.Snapshot());
     public partial class TMT : CPlugTrafficObjectParamsBuilderBase<TMT>
     {
@@ -136,13 +93,8 @@ public partial class CPlugTrafficObjectParamsBuilder : CPlugTrafficObjectParamsB
             var node = CPlugTrafficObjectParamsBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugTrafficObjectParamsBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugTrafficObjectParamsBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams node);
     }
 }

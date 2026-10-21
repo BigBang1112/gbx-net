@@ -36,24 +36,14 @@ public abstract class CPlugLocatedSoundBuilderBase<TSelf> where TSelf : CPlugLoc
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLocatedSound> state;
     private protected CPlugLocatedSoundBuilderBase() => state = new();
     private protected CPlugLocatedSoundBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLocatedSound> state) => this.state = state;
-    public Iso4 Loc
-    {
-        get => state.Get<Iso4>("Loc");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLocatedSoundBuilderAssignments.GetLocAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithLoc(Iso4 value)
     {
-        Loc = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLocatedSoundBuilderAssignments.GetLocAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugSound? Sound
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLocatedSoundBuilderAssignments.GetSoundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSound(global::GBX.NET.Engines.Plug.CPlugSound? value)
     {
-        Sound = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLocatedSoundBuilderAssignments.GetSoundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
@@ -71,13 +61,6 @@ public partial class CPlugLocatedSoundBuilder : CPlugLocatedSoundBuilderBase<CPl
         var chunk09061000 = new global::GBX.NET.Engines.Plug.CPlugLocatedSound.Chunk09061000();
         node.Chunks.Add(chunk09061000);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugLocatedSound node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugLocatedSound.Chunk09061000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09061000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugLocatedSound node, GameVersion game)
-    {
     }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -98,14 +81,9 @@ public partial class CPlugLocatedSoundBuilder : CPlugLocatedSoundBuilderBase<CPl
             var node = CPlugLocatedSoundBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CPlugLocatedSoundBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CPlugLocatedSoundBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugLocatedSound node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugLocatedSound node);
     }
     public partial class TMT : CPlugLocatedSoundBuilderBase<TMT>
     {
@@ -120,14 +98,9 @@ public partial class CPlugLocatedSoundBuilder : CPlugLocatedSoundBuilderBase<CPl
             var node = CPlugLocatedSoundBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugLocatedSoundBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugLocatedSoundBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugLocatedSound node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugLocatedSound node);
     }
     public partial class MP4 : CPlugLocatedSoundBuilderBase<MP4>
     {
@@ -142,14 +115,9 @@ public partial class CPlugLocatedSoundBuilder : CPlugLocatedSoundBuilderBase<CPl
             var node = CPlugLocatedSoundBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugLocatedSoundBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugLocatedSoundBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugLocatedSound node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugLocatedSound node);
     }
     public partial class TM2020 : CPlugLocatedSoundBuilderBase<TM2020>
     {
@@ -164,13 +132,8 @@ public partial class CPlugLocatedSoundBuilder : CPlugLocatedSoundBuilderBase<CPl
             var node = CPlugLocatedSoundBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugLocatedSoundBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugLocatedSoundBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugLocatedSound node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugLocatedSound node);
     }
 }

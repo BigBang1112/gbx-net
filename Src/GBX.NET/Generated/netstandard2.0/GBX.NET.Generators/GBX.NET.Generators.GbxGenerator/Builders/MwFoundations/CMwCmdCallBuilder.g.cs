@@ -36,14 +36,9 @@ public abstract class CMwCmdCallBuilderBase<TSelf> where TSelf : CMwCmdCallBuild
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdCall> state;
     private protected CMwCmdCallBuilderBase() => state = new();
     private protected CMwCmdCallBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdCall> state) => this.state = state;
-    public global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive? Parameter
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive?>("Parameter");
-        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdCallBuilderAssignments.GetParameterAssignment(), value, GameVersion.TMF);
-    }
     public TSelf WithParameter(global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive? value)
     {
-        Parameter = value;
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdCallBuilderAssignments.GetParameterAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
 }
@@ -56,13 +51,6 @@ public partial class CMwCmdCallBuilder : CMwCmdCallBuilderBase<CMwCmdCallBuilder
         node.Chunks.Add(chunk01034001);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.MwFoundations.CMwCmdCall node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdCall.Chunk01034001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk01034001 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.MwFoundations.CMwCmdCall node, GameVersion game)
-    {
-    }
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TMF : CMwCmdCallBuilderBase<TMF>
     {
@@ -73,13 +61,8 @@ public partial class CMwCmdCallBuilder : CMwCmdCallBuilderBase<CMwCmdCallBuilder
             var node = CMwCmdCallBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CMwCmdCallBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CMwCmdCallBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdCall node);
-        partial void ValidateNode(global::GBX.NET.Engines.MwFoundations.CMwCmdCall node);
     }
 }

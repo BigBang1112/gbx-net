@@ -36,22 +36,22 @@ public partial class CPlugBitmapApplyArray : global::GBX.NET.Interfaces.Plug.IPl
     public static global::GBX.NET.Builders.Engines.Plug.CPlugBitmapApplyArrayBuilder Create() => new();
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapAddress>? global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyArray.BitmapAddresses
     {
-        get => BitmapAddresses is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddress>(GetBitmapAddressesBuilderReferences, GameVersion.Unspecified, true, "BitmapAddresses");
+        get => BitmapAddresses is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddress>(GetBitmapAddressesBuilderReferences, true, "BitmapAddresses");
         set => BitmapAddresses = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddress>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTMT>? global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyArrayMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTMT>.BitmapAddresses
     {
-        get => BitmapAddresses is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTMT>(GetBitmapAddressesBuilderReferences, GameVersion.TMT, true, "BitmapAddresses");
+        get => BitmapAddresses is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTMT>(GetBitmapAddressesBuilderReferences, true, "BitmapAddresses");
         set => BitmapAddresses = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTMT>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMP4>? global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyArrayMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMP4>.BitmapAddresses
     {
-        get => BitmapAddresses is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMP4>(GetBitmapAddressesBuilderReferences, GameVersion.MP4, true, "BitmapAddresses");
+        get => BitmapAddresses is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMP4>(GetBitmapAddressesBuilderReferences, true, "BitmapAddresses");
         set => BitmapAddresses = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMP4>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTM2020>? global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyArrayMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTM2020>.BitmapAddresses
     {
-        get => BitmapAddresses is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTM2020>(GetBitmapAddressesBuilderReferences, GameVersion.TM2020, true, "BitmapAddresses");
+        get => BitmapAddresses is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTM2020>(GetBitmapAddressesBuilderReferences, true, "BitmapAddresses");
         set => BitmapAddresses = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTM2020>(value, false));
     }
     private NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>? GetBitmapAddressesBuilderReferences() => BitmapAddresses;

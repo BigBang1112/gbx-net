@@ -47,13 +47,6 @@ public partial class CPlugFogVolumeBuilder : CPlugFogVolumeBuilderBase<CPlugFogV
         node.Chunks.Add(chunk090D4001);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugFogVolume node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFogVolume.Chunk090D4001>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090D4001 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugFogVolume node, GameVersion game)
-    {
-    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -69,14 +62,9 @@ public partial class CPlugFogVolumeBuilder : CPlugFogVolumeBuilderBase<CPlugFogV
             var node = CPlugFogVolumeBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CPlugFogVolumeBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CPlugFogVolumeBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugFogVolume node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugFogVolume node);
     }
     public partial class TMT : CPlugFogVolumeBuilderBase<TMT>
     {
@@ -87,14 +75,9 @@ public partial class CPlugFogVolumeBuilder : CPlugFogVolumeBuilderBase<CPlugFogV
             var node = CPlugFogVolumeBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugFogVolumeBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugFogVolumeBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugFogVolume node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugFogVolume node);
     }
     public partial class MP4 : CPlugFogVolumeBuilderBase<MP4>
     {
@@ -105,14 +88,9 @@ public partial class CPlugFogVolumeBuilder : CPlugFogVolumeBuilderBase<CPlugFogV
             var node = CPlugFogVolumeBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugFogVolumeBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugFogVolumeBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugFogVolume node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugFogVolume node);
     }
     public partial class TM2020 : CPlugFogVolumeBuilderBase<TM2020>
     {
@@ -123,13 +101,8 @@ public partial class CPlugFogVolumeBuilder : CPlugFogVolumeBuilderBase<CPlugFogV
             var node = CPlugFogVolumeBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugFogVolumeBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugFogVolumeBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugFogVolume node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugFogVolume node);
     }
 }

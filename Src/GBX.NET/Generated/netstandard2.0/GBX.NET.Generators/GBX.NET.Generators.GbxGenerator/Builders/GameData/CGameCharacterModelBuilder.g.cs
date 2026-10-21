@@ -36,14 +36,9 @@ public abstract class CGameCharacterModelBuilderBase<TSelf> where TSelf : CGameC
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCharacterModel> state;
     private protected CGameCharacterModelBuilderBase() => state = new();
     private protected CGameCharacterModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCharacterModel> state) => this.state = state;
-    public NodeRefList<global::GBX.NET.Engines.GameData.CGameObjectModel>? Objects
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.GameData.CGameObjectModel>?>("Objects");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCharacterModelBuilderAssignments.GetObjectsAssignment(), value, GameVersion.TM2020);
-    }
     public TSelf WithObjects(NodeRefList<global::GBX.NET.Engines.GameData.CGameObjectModel>? value)
     {
-        Objects = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCharacterModelBuilderAssignments.GetObjectsAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithObjects(params global::GBX.NET.Engines.GameData.CGameObjectModel[] values)
@@ -54,14 +49,9 @@ public abstract class CGameCharacterModelBuilderBase<TSelf> where TSelf : CGameC
     {
         return WithObjects(values.ToArray());
     }
-    public global::GBX.NET.Engines.Plug.CPlugCharPhyModel? PhysicsModel
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugCharPhyModel?>("PhysicsModel");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCharacterModelBuilderAssignments.GetPhysicsModelAssignment(), value, GameVersion.TM2020);
-    }
     public TSelf WithPhysicsModel(global::GBX.NET.Engines.Plug.CPlugCharPhyModel? value)
     {
-        PhysicsModel = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCharacterModelBuilderAssignments.GetPhysicsModelAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithPhysicsModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugCharPhyModel> value)
@@ -70,14 +60,9 @@ public abstract class CGameCharacterModelBuilderBase<TSelf> where TSelf : CGameC
         state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCharacterModelBuilderAssignments.GetPhysicsModelReferenceAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.MwFoundations.CMwRefBufferSelect? VisualModel
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwRefBufferSelect?>("VisualModel");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCharacterModelBuilderAssignments.GetVisualModelAssignment(), value, GameVersion.TM2020);
-    }
     public TSelf WithVisualModel(global::GBX.NET.Engines.MwFoundations.CMwRefBufferSelect? value)
     {
-        VisualModel = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCharacterModelBuilderAssignments.GetVisualModelAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithVisualModelReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBufferSelect> value)
@@ -95,13 +80,6 @@ public partial class CGameCharacterModelBuilder : CGameCharacterModelBuilderBase
         var chunk2E028000 = new global::GBX.NET.Engines.GameData.CGameCharacterModel.Chunk2E028000(game);
         node.Chunks.Add(chunk2E028000);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.GameData.CGameCharacterModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCharacterModel.Chunk2E028000>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk2E028000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.GameData.CGameCharacterModel node, GameVersion game)
-    {
     }
     public TM2020 ForTM2020() => new(state.Snapshot());
     public partial class TM2020 : CGameCharacterModelBuilderBase<TM2020>
@@ -125,13 +103,8 @@ public partial class CGameCharacterModelBuilder : CGameCharacterModelBuilderBase
             var node = CGameCharacterModelBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameCharacterModelBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameCharacterModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameCharacterModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.GameData.CGameCharacterModel node);
     }
 }

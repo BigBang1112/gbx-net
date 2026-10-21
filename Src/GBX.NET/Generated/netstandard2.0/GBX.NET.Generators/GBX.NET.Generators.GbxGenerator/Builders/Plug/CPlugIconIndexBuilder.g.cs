@@ -46,13 +46,6 @@ public partial class CPlugIconIndexBuilder : CPlugIconIndexBuilderBase<CPlugIcon
         node.Chunks.Add(chunk09093003);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugIconIndex node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugIconIndex.Chunk09093003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09093003 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugIconIndex node, GameVersion game)
-    {
-    }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
@@ -65,13 +58,8 @@ public partial class CPlugIconIndexBuilder : CPlugIconIndexBuilderBase<CPlugIcon
             var node = CPlugIconIndexBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugIconIndexBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugIconIndexBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugIconIndex node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugIconIndex node);
     }
 }

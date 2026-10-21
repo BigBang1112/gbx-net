@@ -46,142 +46,72 @@ public partial class CPlugDecoratorTree : global::GBX.NET.Interfaces.Plug.IPlugD
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMNESWC>.Material
     {
-        get
-        {
-            var node = Material;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => Material;
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMNESWC>.TreeLight
     {
-        get
-        {
-            var node = TreeLight;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => TreeLight;
         set => TreeLight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugTreeLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Plug.IPlugTreeLightVSK5>.Material
     {
-        get
-        {
-            var node = Material;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => Material;
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugTreeLightVSK5? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Plug.IPlugTreeLightVSK5>.TreeLight
     {
-        get
-        {
-            var node = TreeLight;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => TreeLight;
         set => TreeLight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugTreeLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMF>.Material
     {
-        get
-        {
-            var node = Material;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => Material;
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMF? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMF>.TreeLight
     {
-        get
-        {
-            var node = TreeLight;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => TreeLight;
         set => TreeLight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugTreeLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugTreeLightMP3>.Material
     {
-        get
-        {
-            var node = Material;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => Material;
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugTreeLightMP3? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugTreeLightMP3>.TreeLight
     {
-        get
-        {
-            var node = TreeLight;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => TreeLight;
         set => TreeLight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugTreeLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMT>.Material
     {
-        get
-        {
-            var node = Material;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => Material;
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMT? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMT>.TreeLight
     {
-        get
-        {
-            var node = TreeLight;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => TreeLight;
         set => TreeLight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugTreeLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugTreeLightMP4>.Material
     {
-        get
-        {
-            var node = Material;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Material;
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugTreeLightMP4? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugTreeLightMP4>.TreeLight
     {
-        get
-        {
-            var node = TreeLight;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => TreeLight;
         set => TreeLight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugTreeLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTM2020>.Material
     {
-        get
-        {
-            var node = Material;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => Material;
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugTreeLightTM2020? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTM2020>.TreeLight
     {
-        get
-        {
-            var node = TreeLight;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => TreeLight;
         set => TreeLight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugTreeLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

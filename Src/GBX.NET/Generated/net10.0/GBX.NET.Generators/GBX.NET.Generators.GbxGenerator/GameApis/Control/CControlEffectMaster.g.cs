@@ -91,882 +91,442 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMSX? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMSX, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX>.ActionEffect
     {
-        get
-        {
-            var node = ActionEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => ActionEffect;
         set => ActionEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMSX? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMSX, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX>.FocusEffect
     {
-        get
-        {
-            var node = FocusEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => FocusEffect;
         set => FocusEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMSX? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMSX, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX>.FocusGainedByAnotherEffect
     {
-        get
-        {
-            var node = FocusGainedByAnotherEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => FocusGainedByAnotherEffect;
         set => FocusGainedByAnotherEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMSX? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMSX, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX>.FocusGainedEffect
     {
-        get
-        {
-            var node = FocusGainedEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => FocusGainedEffect;
         set => FocusGainedEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMSX? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMSX, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX>.FocusLostByAnotherEffect
     {
-        get
-        {
-            var node = FocusLostByAnotherEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => FocusLostByAnotherEffect;
         set => FocusLostByAnotherEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMSX? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMSX, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX>.FocusLostEffect
     {
-        get
-        {
-            var node = FocusLostEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => FocusLostEffect;
         set => FocusLostEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMSX? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMSX, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX>.HidingEffect
     {
-        get
-        {
-            var node = HidingEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => HidingEffect;
         set => HidingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMSX? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMSX, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX>.ManagedEffect
     {
-        get
-        {
-            var node = ManagedEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => ManagedEffect;
         set => ManagedEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMSX? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMSX, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX>.ShowingEffect
     {
-        get
-        {
-            var node = ShowingEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => ShowingEffect;
         set => ShowingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMSX? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMSX, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX>.SleepingEffect
     {
-        get
-        {
-            var node = SleepingEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => SleepingEffect;
         set => SleepingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMSX, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX>.SpecialEffect
     {
-        get
-        {
-            var node = SpecialEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => SpecialEffect;
         set => SpecialEffect = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC>.ActionEffect
     {
-        get
-        {
-            var node = ActionEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => ActionEffect;
         set => ActionEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC>.FocusEffect
     {
-        get
-        {
-            var node = FocusEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => FocusEffect;
         set => FocusEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC>.FocusGainedByAnotherEffect
     {
-        get
-        {
-            var node = FocusGainedByAnotherEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => FocusGainedByAnotherEffect;
         set => FocusGainedByAnotherEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC>.FocusGainedEffect
     {
-        get
-        {
-            var node = FocusGainedEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => FocusGainedEffect;
         set => FocusGainedEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC>.FocusLostByAnotherEffect
     {
-        get
-        {
-            var node = FocusLostByAnotherEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => FocusLostByAnotherEffect;
         set => FocusLostByAnotherEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC>.FocusLostEffect
     {
-        get
-        {
-            var node = FocusLostEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => FocusLostEffect;
         set => FocusLostEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC>.HidingEffect
     {
-        get
-        {
-            var node = HidingEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => HidingEffect;
         set => HidingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC>.ManagedEffect
     {
-        get
-        {
-            var node = ManagedEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => ManagedEffect;
         set => ManagedEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC>.ShowingEffect
     {
-        get
-        {
-            var node = ShowingEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => ShowingEffect;
         set => ShowingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC>.SleepingEffect
     {
-        get
-        {
-            var node = SleepingEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => SleepingEffect;
         set => SleepingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC>.SpecialEffect
     {
-        get
-        {
-            var node = SpecialEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => SpecialEffect;
         set => SpecialEffect = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectVSK5? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5>.ActionEffect
     {
-        get
-        {
-            var node = ActionEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => ActionEffect;
         set => ActionEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectVSK5? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5>.FocusEffect
     {
-        get
-        {
-            var node = FocusEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => FocusEffect;
         set => FocusEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectVSK5? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5>.FocusGainedByAnotherEffect
     {
-        get
-        {
-            var node = FocusGainedByAnotherEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => FocusGainedByAnotherEffect;
         set => FocusGainedByAnotherEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectVSK5? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5>.FocusGainedEffect
     {
-        get
-        {
-            var node = FocusGainedEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => FocusGainedEffect;
         set => FocusGainedEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectVSK5? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5>.FocusLostByAnotherEffect
     {
-        get
-        {
-            var node = FocusLostByAnotherEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => FocusLostByAnotherEffect;
         set => FocusLostByAnotherEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectVSK5? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5>.FocusLostEffect
     {
-        get
-        {
-            var node = FocusLostEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => FocusLostEffect;
         set => FocusLostEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectVSK5? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5>.HidingEffect
     {
-        get
-        {
-            var node = HidingEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => HidingEffect;
         set => HidingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectVSK5? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5>.ManagedEffect
     {
-        get
-        {
-            var node = ManagedEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => ManagedEffect;
         set => ManagedEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectVSK5? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5>.ShowingEffect
     {
-        get
-        {
-            var node = ShowingEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => ShowingEffect;
         set => ShowingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectVSK5? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5>.SleepingEffect
     {
-        get
-        {
-            var node = SleepingEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => SleepingEffect;
         set => SleepingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5>.SpecialEffect
     {
-        get
-        {
-            var node = SpecialEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => SpecialEffect;
         set => SpecialEffect = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMF? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMF, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF>.ActionEffect
     {
-        get
-        {
-            var node = ActionEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => ActionEffect;
         set => ActionEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMF? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMF, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF>.FocusEffect
     {
-        get
-        {
-            var node = FocusEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => FocusEffect;
         set => FocusEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMF? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMF, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF>.FocusGainedByAnotherEffect
     {
-        get
-        {
-            var node = FocusGainedByAnotherEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => FocusGainedByAnotherEffect;
         set => FocusGainedByAnotherEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMF? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMF, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF>.FocusGainedEffect
     {
-        get
-        {
-            var node = FocusGainedEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => FocusGainedEffect;
         set => FocusGainedEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMF? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMF, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF>.FocusLostByAnotherEffect
     {
-        get
-        {
-            var node = FocusLostByAnotherEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => FocusLostByAnotherEffect;
         set => FocusLostByAnotherEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMF? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMF, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF>.FocusLostEffect
     {
-        get
-        {
-            var node = FocusLostEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => FocusLostEffect;
         set => FocusLostEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMF? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMF, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF>.HidingEffect
     {
-        get
-        {
-            var node = HidingEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => HidingEffect;
         set => HidingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMF? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMF, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF>.ManagedEffect
     {
-        get
-        {
-            var node = ManagedEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => ManagedEffect;
         set => ManagedEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMF? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMF, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF>.ShowingEffect
     {
-        get
-        {
-            var node = ShowingEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => ShowingEffect;
         set => ShowingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMF? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMF, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF>.SleepingEffect
     {
-        get
-        {
-            var node = SleepingEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => SleepingEffect;
         set => SleepingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMF, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF>.SpecialEffect
     {
-        get
-        {
-            var node = SpecialEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => SpecialEffect;
         set => SpecialEffect = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectMP3? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP3, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3>.ActionEffect
     {
-        get
-        {
-            var node = ActionEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => ActionEffect;
         set => ActionEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectMP3? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP3, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3>.FocusEffect
     {
-        get
-        {
-            var node = FocusEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => FocusEffect;
         set => FocusEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectMP3? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP3, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3>.FocusGainedByAnotherEffect
     {
-        get
-        {
-            var node = FocusGainedByAnotherEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => FocusGainedByAnotherEffect;
         set => FocusGainedByAnotherEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectMP3? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP3, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3>.FocusGainedEffect
     {
-        get
-        {
-            var node = FocusGainedEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => FocusGainedEffect;
         set => FocusGainedEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectMP3? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP3, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3>.FocusLostByAnotherEffect
     {
-        get
-        {
-            var node = FocusLostByAnotherEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => FocusLostByAnotherEffect;
         set => FocusLostByAnotherEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectMP3? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP3, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3>.FocusLostEffect
     {
-        get
-        {
-            var node = FocusLostEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => FocusLostEffect;
         set => FocusLostEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectMP3? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP3, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3>.HidingEffect
     {
-        get
-        {
-            var node = HidingEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => HidingEffect;
         set => HidingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectMP3? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP3, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3>.ManagedEffect
     {
-        get
-        {
-            var node = ManagedEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => ManagedEffect;
         set => ManagedEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectMP3? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP3, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3>.ShowingEffect
     {
-        get
-        {
-            var node = ShowingEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => ShowingEffect;
         set => ShowingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectMP3? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP3, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3>.SleepingEffect
     {
-        get
-        {
-            var node = SleepingEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => SleepingEffect;
         set => SleepingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP3, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3>.SpecialEffect
     {
-        get
-        {
-            var node = SpecialEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => SpecialEffect;
         set => SpecialEffect = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMT? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMT, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT>.ActionEffect
     {
-        get
-        {
-            var node = ActionEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => ActionEffect;
         set => ActionEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMT? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMT, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT>.FocusEffect
     {
-        get
-        {
-            var node = FocusEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => FocusEffect;
         set => FocusEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMT? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMT, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT>.FocusGainedByAnotherEffect
     {
-        get
-        {
-            var node = FocusGainedByAnotherEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => FocusGainedByAnotherEffect;
         set => FocusGainedByAnotherEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMT? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMT, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT>.FocusGainedEffect
     {
-        get
-        {
-            var node = FocusGainedEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => FocusGainedEffect;
         set => FocusGainedEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMT? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMT, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT>.FocusLostByAnotherEffect
     {
-        get
-        {
-            var node = FocusLostByAnotherEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => FocusLostByAnotherEffect;
         set => FocusLostByAnotherEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMT? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMT, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT>.FocusLostEffect
     {
-        get
-        {
-            var node = FocusLostEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => FocusLostEffect;
         set => FocusLostEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMT? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMT, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT>.HidingEffect
     {
-        get
-        {
-            var node = HidingEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => HidingEffect;
         set => HidingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMT? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMT, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT>.ManagedEffect
     {
-        get
-        {
-            var node = ManagedEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => ManagedEffect;
         set => ManagedEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMT? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMT, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT>.ShowingEffect
     {
-        get
-        {
-            var node = ShowingEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => ShowingEffect;
         set => ShowingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTMT? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMT, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT>.SleepingEffect
     {
-        get
-        {
-            var node = SleepingEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => SleepingEffect;
         set => SleepingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMT, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT>.SpecialEffect
     {
-        get
-        {
-            var node = SpecialEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => SpecialEffect;
         set => SpecialEffect = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectMP4? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP4, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>.ActionEffect
     {
-        get
-        {
-            var node = ActionEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => ActionEffect;
         set => ActionEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectMP4? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP4, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>.FocusEffect
     {
-        get
-        {
-            var node = FocusEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => FocusEffect;
         set => FocusEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectMP4? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP4, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>.FocusGainedByAnotherEffect
     {
-        get
-        {
-            var node = FocusGainedByAnotherEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => FocusGainedByAnotherEffect;
         set => FocusGainedByAnotherEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectMP4? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP4, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>.FocusGainedEffect
     {
-        get
-        {
-            var node = FocusGainedEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => FocusGainedEffect;
         set => FocusGainedEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectMP4? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP4, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>.FocusLostByAnotherEffect
     {
-        get
-        {
-            var node = FocusLostByAnotherEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => FocusLostByAnotherEffect;
         set => FocusLostByAnotherEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectMP4? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP4, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>.FocusLostEffect
     {
-        get
-        {
-            var node = FocusLostEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => FocusLostEffect;
         set => FocusLostEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectMP4? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP4, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>.HidingEffect
     {
-        get
-        {
-            var node = HidingEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => HidingEffect;
         set => HidingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectMP4? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP4, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>.ManagedEffect
     {
-        get
-        {
-            var node = ManagedEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => ManagedEffect;
         set => ManagedEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectMP4? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP4, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>.ShowingEffect
     {
-        get
-        {
-            var node = ShowingEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => ShowingEffect;
         set => ShowingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectMP4? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP4, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>.SleepingEffect
     {
-        get
-        {
-            var node = SleepingEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => SleepingEffect;
         set => SleepingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP4, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>.SpecialEffect
     {
-        get
-        {
-            var node = SpecialEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => SpecialEffect;
         set => SpecialEffect = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTM2020? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTM2020, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020>.ActionEffect
     {
-        get
-        {
-            var node = ActionEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => ActionEffect;
         set => ActionEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTM2020? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTM2020, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020>.FocusEffect
     {
-        get
-        {
-            var node = FocusEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => FocusEffect;
         set => FocusEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTM2020? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTM2020, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020>.FocusGainedByAnotherEffect
     {
-        get
-        {
-            var node = FocusGainedByAnotherEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => FocusGainedByAnotherEffect;
         set => FocusGainedByAnotherEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTM2020? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTM2020, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020>.FocusGainedEffect
     {
-        get
-        {
-            var node = FocusGainedEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => FocusGainedEffect;
         set => FocusGainedEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTM2020? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTM2020, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020>.FocusLostByAnotherEffect
     {
-        get
-        {
-            var node = FocusLostByAnotherEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => FocusLostByAnotherEffect;
         set => FocusLostByAnotherEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTM2020? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTM2020, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020>.FocusLostEffect
     {
-        get
-        {
-            var node = FocusLostEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => FocusLostEffect;
         set => FocusLostEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTM2020? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTM2020, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020>.HidingEffect
     {
-        get
-        {
-            var node = HidingEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => HidingEffect;
         set => HidingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTM2020? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTM2020, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020>.ManagedEffect
     {
-        get
-        {
-            var node = ManagedEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => ManagedEffect;
         set => ManagedEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTM2020? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTM2020, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020>.ShowingEffect
     {
-        get
-        {
-            var node = ShowingEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => ShowingEffect;
         set => ShowingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectTM2020? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTM2020, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020>.SleepingEffect
     {
-        get
-        {
-            var node = SleepingEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => SleepingEffect;
         set => SleepingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTM2020, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020>.SpecialEffect
     {
-        get
-        {
-            var node = SpecialEffect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => SpecialEffect;
         set => SpecialEffect = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

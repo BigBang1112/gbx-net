@@ -36,22 +36,12 @@ public partial class CGameCtnBlock : global::GBX.NET.Interfaces.Game.IGameCtnBlo
     public static global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilder Create() => new();
     global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinTM10? global::GBX.NET.Interfaces.Game.IGameCtnBlockTM10.Skin
     {
-        get
-        {
-            var node = Skin;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            return node;
-        }
+        get => Skin;
         set => Skin = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyTM2020? global::GBX.NET.Interfaces.Game.IGameCtnBlockTM2020.WaypointSpecialProperty
     {
-        get
-        {
-            var node = WaypointSpecialProperty;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => WaypointSpecialProperty;
         set => WaypointSpecialProperty = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

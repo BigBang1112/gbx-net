@@ -36,14 +36,9 @@ public abstract class CPlugPointsInSphereOptBuilderBase<TSelf> where TSelf : CPl
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt> state;
     private protected CPlugPointsInSphereOptBuilderBase() => state = new();
     private protected CPlugPointsInSphereOptBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt> state) => this.state = state;
-    public global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt.Pack[]? Packs
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt.Pack[]?>("Packs");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugPointsInSphereOptBuilderAssignments.GetPacksAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithPacks(params global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt.Pack[]? value)
     {
-        Packs = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugPointsInSphereOptBuilderAssignments.GetPacksAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithPacks(IEnumerable<global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt.Pack> values)
@@ -59,13 +54,6 @@ public partial class CPlugPointsInSphereOptBuilder : CPlugPointsInSphereOptBuild
         var chunk09066000 = new global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt.Chunk09066000();
         node.Chunks.Add(chunk09066000);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt.Chunk09066000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09066000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt node, GameVersion game)
-    {
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
@@ -86,14 +74,9 @@ public partial class CPlugPointsInSphereOptBuilder : CPlugPointsInSphereOptBuild
             var node = CPlugPointsInSphereOptBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CPlugPointsInSphereOptBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CPlugPointsInSphereOptBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt node);
     }
     public partial class TMNESWC : CPlugPointsInSphereOptBuilderBase<TMNESWC>
     {
@@ -104,14 +87,9 @@ public partial class CPlugPointsInSphereOptBuilder : CPlugPointsInSphereOptBuild
             var node = CPlugPointsInSphereOptBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CPlugPointsInSphereOptBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CPlugPointsInSphereOptBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt node);
     }
     public partial class VSK5 : CPlugPointsInSphereOptBuilderBase<VSK5>
     {
@@ -122,14 +100,9 @@ public partial class CPlugPointsInSphereOptBuilder : CPlugPointsInSphereOptBuild
             var node = CPlugPointsInSphereOptBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CPlugPointsInSphereOptBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CPlugPointsInSphereOptBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt node);
     }
     public partial class TMF : CPlugPointsInSphereOptBuilderBase<TMF>
     {
@@ -140,14 +113,9 @@ public partial class CPlugPointsInSphereOptBuilder : CPlugPointsInSphereOptBuild
             var node = CPlugPointsInSphereOptBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CPlugPointsInSphereOptBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CPlugPointsInSphereOptBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt node);
     }
     public partial class MP3 : CPlugPointsInSphereOptBuilderBase<MP3>
     {
@@ -158,14 +126,9 @@ public partial class CPlugPointsInSphereOptBuilder : CPlugPointsInSphereOptBuild
             var node = CPlugPointsInSphereOptBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CPlugPointsInSphereOptBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CPlugPointsInSphereOptBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt node);
     }
     public partial class TMT : CPlugPointsInSphereOptBuilderBase<TMT>
     {
@@ -176,14 +139,9 @@ public partial class CPlugPointsInSphereOptBuilder : CPlugPointsInSphereOptBuild
             var node = CPlugPointsInSphereOptBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugPointsInSphereOptBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugPointsInSphereOptBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt node);
     }
     public partial class MP4 : CPlugPointsInSphereOptBuilderBase<MP4>
     {
@@ -194,14 +152,9 @@ public partial class CPlugPointsInSphereOptBuilder : CPlugPointsInSphereOptBuild
             var node = CPlugPointsInSphereOptBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugPointsInSphereOptBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugPointsInSphereOptBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt node);
     }
     public partial class TM2020 : CPlugPointsInSphereOptBuilderBase<TM2020>
     {
@@ -212,13 +165,8 @@ public partial class CPlugPointsInSphereOptBuilder : CPlugPointsInSphereOptBuild
             var node = CPlugPointsInSphereOptBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugPointsInSphereOptBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugPointsInSphereOptBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt node);
     }
 }

@@ -36,82 +36,42 @@ public partial class CPlugMaterial : global::GBX.NET.Interfaces.Plug.IPlugMateri
     public static global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilder Create() => new();
     global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMSX? global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMSX>.CustomMaterial
     {
-        get
-        {
-            var node = CustomMaterial;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => CustomMaterial;
         set => CustomMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMNESWC>.CustomMaterial
     {
-        get
-        {
-            var node = CustomMaterial;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => CustomMaterial;
         set => CustomMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomVSK5? global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomVSK5>.CustomMaterial
     {
-        get
-        {
-            var node = CustomMaterial;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => CustomMaterial;
         set => CustomMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMF? global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMF>.CustomMaterial
     {
-        get
-        {
-            var node = CustomMaterial;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => CustomMaterial;
         set => CustomMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMP3? global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMP3>.CustomMaterial
     {
-        get
-        {
-            var node = CustomMaterial;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => CustomMaterial;
         set => CustomMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMT? global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMT>.CustomMaterial
     {
-        get
-        {
-            var node = CustomMaterial;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => CustomMaterial;
         set => CustomMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMP4? global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMP4>.CustomMaterial
     {
-        get
-        {
-            var node = CustomMaterial;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => CustomMaterial;
         set => CustomMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTM2020? global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTM2020>.CustomMaterial
     {
-        get
-        {
-            var node = CustomMaterial;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => CustomMaterial;
         set => CustomMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

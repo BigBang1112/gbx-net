@@ -36,56 +36,36 @@ public abstract class CInputBindingsConfigBuilderBase<TSelf> where TSelf : CInpu
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Input.CInputBindingsConfig> state;
     private protected CInputBindingsConfigBuilderBase() => state = new();
     private protected CInputBindingsConfigBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Input.CInputBindingsConfig> state) => this.state = state;
-    public global::GBX.NET.Engines.Input.CInputBindingsConfig.Binding[]? Bindings
-    {
-        get => state.Get<global::GBX.NET.Engines.Input.CInputBindingsConfig.Binding[]?>("Bindings");
-        set => state.Set(global::GBX.NET.Builders.Engines.Input.CInputBindingsConfigBuilderAssignments.GetBindingsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithBindings(params global::GBX.NET.Engines.Input.CInputBindingsConfig.Binding[]? value)
     {
-        Bindings = value;
+        state.Set(global::GBX.NET.Builders.Engines.Input.CInputBindingsConfigBuilderAssignments.GetBindingsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithBindings(IEnumerable<global::GBX.NET.Engines.Input.CInputBindingsConfig.Binding> values)
     {
         return WithBindings(values.ToArray());
     }
-    public string[]? ConfiguredDevices
-    {
-        get => state.Get<string[]?>("ConfiguredDevices");
-        set => state.Set(global::GBX.NET.Builders.Engines.Input.CInputBindingsConfigBuilderAssignments.GetConfiguredDevicesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithConfiguredDevices(params string[]? value)
     {
-        ConfiguredDevices = value;
+        state.Set(global::GBX.NET.Builders.Engines.Input.CInputBindingsConfigBuilderAssignments.GetConfiguredDevicesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithConfiguredDevices(IEnumerable<string> values)
     {
         return WithConfiguredDevices(values.ToArray());
     }
-    public string Name
-    {
-        get => state.Get<string>("Name");
-        set => state.Set(global::GBX.NET.Builders.Engines.Input.CInputBindingsConfigBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithName(string value)
     {
-        Name = value;
+        state.Set(global::GBX.NET.Builders.Engines.Input.CInputBindingsConfigBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CInputBindingsConfigBuilderMembers1<TSelf> : CInputBindingsConfigBuilderBase<TSelf> where TSelf : CInputBindingsConfigBuilderMembers1<TSelf>
 {
     private protected CInputBindingsConfigBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Input.CInputBindingsConfig> state) : base(state) { }
-    public int Version
-    {
-        get => state.Get<int>("Version");
-        set => state.Set(global::GBX.NET.Builders.Engines.Input.CInputBindingsConfigBuilderAssignments.GetVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithVersion(int value)
     {
-        Version = value;
+        state.Set(global::GBX.NET.Builders.Engines.Input.CInputBindingsConfigBuilderAssignments.GetVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -100,11 +80,6 @@ public partial class CInputBindingsConfigBuilder : CInputBindingsConfigBuilderBa
         node.Chunks.Add(chunk13006001);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Input.CInputBindingsConfig node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Input.CInputBindingsConfig.Chunk13006000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk13006000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Input.CInputBindingsConfig.Chunk13006001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk13006001 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Input.CInputBindingsConfig CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Input.CInputBindingsConfig();
@@ -115,12 +90,6 @@ public partial class CInputBindingsConfigBuilder : CInputBindingsConfigBuilderBa
         var chunk13006003 = new global::GBX.NET.Engines.Input.CInputBindingsConfig.Chunk13006003(game);
         node.Chunks.Add(chunk13006003);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Input.CInputBindingsConfig node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Input.CInputBindingsConfig.Chunk13006001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk13006001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Input.CInputBindingsConfig.Chunk13006002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk13006002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Input.CInputBindingsConfig.Chunk13006003>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk13006003 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Input.CInputBindingsConfig CreateRecipe2(GameVersion game)
     {
@@ -138,19 +107,6 @@ public partial class CInputBindingsConfigBuilder : CInputBindingsConfigBuilderBa
         var chunk13006006 = new global::GBX.NET.Engines.Input.CInputBindingsConfig.Chunk13006006();
         node.Chunks.Add(chunk13006006);
         return node;
-    }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Input.CInputBindingsConfig node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Input.CInputBindingsConfig.Chunk13006001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk13006001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Input.CInputBindingsConfig.Chunk13006002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk13006002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Input.CInputBindingsConfig.Chunk13006003>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk13006003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Input.CInputBindingsConfig.Chunk13006004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk13006004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Input.CInputBindingsConfig.Chunk13006005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk13006005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Input.CInputBindingsConfig.Chunk13006006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk13006006 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Input.CInputBindingsConfig node, GameVersion game)
-    {
-        if (node.Name is null) throw new MemberNullException("Name");
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -173,14 +129,9 @@ public partial class CInputBindingsConfigBuilder : CInputBindingsConfigBuilderBa
             var node = CInputBindingsConfigBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CInputBindingsConfigBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CInputBindingsConfigBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Input.CInputBindingsConfig node);
-        partial void ValidateNode(global::GBX.NET.Engines.Input.CInputBindingsConfig node);
     }
     public partial class TMPU : CInputBindingsConfigBuilderBase<TMPU>
     {
@@ -191,14 +142,9 @@ public partial class CInputBindingsConfigBuilder : CInputBindingsConfigBuilderBa
             var node = CInputBindingsConfigBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CInputBindingsConfigBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CInputBindingsConfigBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Input.CInputBindingsConfig node);
-        partial void ValidateNode(global::GBX.NET.Engines.Input.CInputBindingsConfig node);
     }
     public partial class TMSX : CInputBindingsConfigBuilderBase<TMSX>
     {
@@ -209,14 +155,9 @@ public partial class CInputBindingsConfigBuilder : CInputBindingsConfigBuilderBa
             var node = CInputBindingsConfigBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CInputBindingsConfigBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CInputBindingsConfigBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Input.CInputBindingsConfig node);
-        partial void ValidateNode(global::GBX.NET.Engines.Input.CInputBindingsConfig node);
     }
     public partial class TMNESWC : CInputBindingsConfigBuilderBase<TMNESWC>
     {
@@ -227,14 +168,9 @@ public partial class CInputBindingsConfigBuilder : CInputBindingsConfigBuilderBa
             var node = CInputBindingsConfigBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CInputBindingsConfigBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CInputBindingsConfigBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Input.CInputBindingsConfig node);
-        partial void ValidateNode(global::GBX.NET.Engines.Input.CInputBindingsConfig node);
     }
     public partial class VSK5 : CInputBindingsConfigBuilderBase<VSK5>
     {
@@ -245,14 +181,9 @@ public partial class CInputBindingsConfigBuilder : CInputBindingsConfigBuilderBa
             var node = CInputBindingsConfigBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CInputBindingsConfigBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CInputBindingsConfigBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Input.CInputBindingsConfig node);
-        partial void ValidateNode(global::GBX.NET.Engines.Input.CInputBindingsConfig node);
     }
     public partial class TMF : CInputBindingsConfigBuilderBase<TMF>
     {
@@ -263,14 +194,9 @@ public partial class CInputBindingsConfigBuilder : CInputBindingsConfigBuilderBa
             var node = CInputBindingsConfigBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CInputBindingsConfigBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CInputBindingsConfigBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Input.CInputBindingsConfig node);
-        partial void ValidateNode(global::GBX.NET.Engines.Input.CInputBindingsConfig node);
     }
     public partial class MP3 : CInputBindingsConfigBuilderMembers1<MP3>
     {
@@ -281,14 +207,9 @@ public partial class CInputBindingsConfigBuilder : CInputBindingsConfigBuilderBa
             var node = CInputBindingsConfigBuilder.CreateRecipe1(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CInputBindingsConfigBuilder.ValidateRecipe1(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CInputBindingsConfigBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Input.CInputBindingsConfig node);
-        partial void ValidateNode(global::GBX.NET.Engines.Input.CInputBindingsConfig node);
     }
     public partial class TMT : CInputBindingsConfigBuilderMembers1<TMT>
     {
@@ -299,14 +220,9 @@ public partial class CInputBindingsConfigBuilder : CInputBindingsConfigBuilderBa
             var node = CInputBindingsConfigBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CInputBindingsConfigBuilder.ValidateRecipe1(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CInputBindingsConfigBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Input.CInputBindingsConfig node);
-        partial void ValidateNode(global::GBX.NET.Engines.Input.CInputBindingsConfig node);
     }
     public partial class MP4 : CInputBindingsConfigBuilderMembers1<MP4>
     {
@@ -317,26 +233,16 @@ public partial class CInputBindingsConfigBuilder : CInputBindingsConfigBuilderBa
             var node = CInputBindingsConfigBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CInputBindingsConfigBuilder.ValidateRecipe1(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CInputBindingsConfigBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Input.CInputBindingsConfig node);
-        partial void ValidateNode(global::GBX.NET.Engines.Input.CInputBindingsConfig node);
     }
     public partial class TM2020 : CInputBindingsConfigBuilderMembers1<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Input.CInputBindingsConfig> state) : base(state) { }
-        public string[]? ConfiguredDeviceModels
-        {
-            get => state.Get<string[]?>("ConfiguredDeviceModels");
-            set => state.Set(global::GBX.NET.Builders.Engines.Input.CInputBindingsConfigBuilderAssignments.GetConfiguredDeviceModelsAssignment(), value, GameVersion.TM2020);
-        }
         public TM2020 WithConfiguredDeviceModels(params string[]? value)
         {
-            ConfiguredDeviceModels = value;
+            state.Set(global::GBX.NET.Builders.Engines.Input.CInputBindingsConfigBuilderAssignments.GetConfiguredDeviceModelsAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithConfiguredDeviceModels(IEnumerable<string> values)
@@ -349,13 +255,8 @@ public partial class CInputBindingsConfigBuilder : CInputBindingsConfigBuilderBa
             var node = CInputBindingsConfigBuilder.CreateRecipe2(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CInputBindingsConfigBuilder.ValidateRecipe2(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CInputBindingsConfigBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Input.CInputBindingsConfig node);
-        partial void ValidateNode(global::GBX.NET.Engines.Input.CInputBindingsConfig node);
     }
 }

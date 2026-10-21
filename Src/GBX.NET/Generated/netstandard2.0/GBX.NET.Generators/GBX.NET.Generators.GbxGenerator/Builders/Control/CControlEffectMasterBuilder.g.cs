@@ -36,14 +36,9 @@ public abstract class CControlEffectMasterBuilderBase<TSelf> where TSelf : CCont
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state;
     private protected CControlEffectMasterBuilderBase() => state = new();
     private protected CControlEffectMasterBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state) => this.state = state;
-    public global::GBX.NET.Engines.Control.CControlEffect? ActionEffect
-    {
-        get => state.Get<global::GBX.NET.Engines.Control.CControlEffect?>("ActionEffect");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetActionEffectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithActionEffect(global::GBX.NET.Engines.Control.CControlEffect? value)
     {
-        ActionEffect = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetActionEffectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithActionEffectReference(NodeRef<global::GBX.NET.Engines.Control.CControlEffect> value)
@@ -52,14 +47,9 @@ public abstract class CControlEffectMasterBuilderBase<TSelf> where TSelf : CCont
         state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetActionEffectReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Control.CControlEffect? FocusEffect
-    {
-        get => state.Get<global::GBX.NET.Engines.Control.CControlEffect?>("FocusEffect");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetFocusEffectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithFocusEffect(global::GBX.NET.Engines.Control.CControlEffect? value)
     {
-        FocusEffect = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetFocusEffectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithFocusEffectReference(NodeRef<global::GBX.NET.Engines.Control.CControlEffect> value)
@@ -68,14 +58,9 @@ public abstract class CControlEffectMasterBuilderBase<TSelf> where TSelf : CCont
         state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetFocusEffectReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Control.CControlEffect? FocusGainedByAnotherEffect
-    {
-        get => state.Get<global::GBX.NET.Engines.Control.CControlEffect?>("FocusGainedByAnotherEffect");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetFocusGainedByAnotherEffectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithFocusGainedByAnotherEffect(global::GBX.NET.Engines.Control.CControlEffect? value)
     {
-        FocusGainedByAnotherEffect = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetFocusGainedByAnotherEffectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithFocusGainedByAnotherEffectReference(NodeRef<global::GBX.NET.Engines.Control.CControlEffect> value)
@@ -84,14 +69,9 @@ public abstract class CControlEffectMasterBuilderBase<TSelf> where TSelf : CCont
         state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetFocusGainedByAnotherEffectReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Control.CControlEffect? FocusGainedEffect
-    {
-        get => state.Get<global::GBX.NET.Engines.Control.CControlEffect?>("FocusGainedEffect");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetFocusGainedEffectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithFocusGainedEffect(global::GBX.NET.Engines.Control.CControlEffect? value)
     {
-        FocusGainedEffect = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetFocusGainedEffectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithFocusGainedEffectReference(NodeRef<global::GBX.NET.Engines.Control.CControlEffect> value)
@@ -100,14 +80,9 @@ public abstract class CControlEffectMasterBuilderBase<TSelf> where TSelf : CCont
         state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetFocusGainedEffectReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Control.CControlEffect? FocusLostByAnotherEffect
-    {
-        get => state.Get<global::GBX.NET.Engines.Control.CControlEffect?>("FocusLostByAnotherEffect");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetFocusLostByAnotherEffectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithFocusLostByAnotherEffect(global::GBX.NET.Engines.Control.CControlEffect? value)
     {
-        FocusLostByAnotherEffect = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetFocusLostByAnotherEffectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithFocusLostByAnotherEffectReference(NodeRef<global::GBX.NET.Engines.Control.CControlEffect> value)
@@ -116,14 +91,9 @@ public abstract class CControlEffectMasterBuilderBase<TSelf> where TSelf : CCont
         state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetFocusLostByAnotherEffectReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Control.CControlEffect? FocusLostEffect
-    {
-        get => state.Get<global::GBX.NET.Engines.Control.CControlEffect?>("FocusLostEffect");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetFocusLostEffectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithFocusLostEffect(global::GBX.NET.Engines.Control.CControlEffect? value)
     {
-        FocusLostEffect = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetFocusLostEffectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithFocusLostEffectReference(NodeRef<global::GBX.NET.Engines.Control.CControlEffect> value)
@@ -132,14 +102,9 @@ public abstract class CControlEffectMasterBuilderBase<TSelf> where TSelf : CCont
         state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetFocusLostEffectReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Control.CControlEffect? HidingEffect
-    {
-        get => state.Get<global::GBX.NET.Engines.Control.CControlEffect?>("HidingEffect");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetHidingEffectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithHidingEffect(global::GBX.NET.Engines.Control.CControlEffect? value)
     {
-        HidingEffect = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetHidingEffectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithHidingEffectReference(NodeRef<global::GBX.NET.Engines.Control.CControlEffect> value)
@@ -148,14 +113,9 @@ public abstract class CControlEffectMasterBuilderBase<TSelf> where TSelf : CCont
         state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetHidingEffectReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Control.CControlEffect? ManagedEffect
-    {
-        get => state.Get<global::GBX.NET.Engines.Control.CControlEffect?>("ManagedEffect");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetManagedEffectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithManagedEffect(global::GBX.NET.Engines.Control.CControlEffect? value)
     {
-        ManagedEffect = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetManagedEffectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithManagedEffectReference(NodeRef<global::GBX.NET.Engines.Control.CControlEffect> value)
@@ -164,14 +124,9 @@ public abstract class CControlEffectMasterBuilderBase<TSelf> where TSelf : CCont
         state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetManagedEffectReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Control.CControlEffect? ShowingEffect
-    {
-        get => state.Get<global::GBX.NET.Engines.Control.CControlEffect?>("ShowingEffect");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetShowingEffectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithShowingEffect(global::GBX.NET.Engines.Control.CControlEffect? value)
     {
-        ShowingEffect = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetShowingEffectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithShowingEffectReference(NodeRef<global::GBX.NET.Engines.Control.CControlEffect> value)
@@ -180,14 +135,9 @@ public abstract class CControlEffectMasterBuilderBase<TSelf> where TSelf : CCont
         state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetShowingEffectReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Control.CControlEffect? SleepingEffect
-    {
-        get => state.Get<global::GBX.NET.Engines.Control.CControlEffect?>("SleepingEffect");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetSleepingEffectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithSleepingEffect(global::GBX.NET.Engines.Control.CControlEffect? value)
     {
-        SleepingEffect = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetSleepingEffectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithSleepingEffectReference(NodeRef<global::GBX.NET.Engines.Control.CControlEffect> value)
@@ -196,14 +146,9 @@ public abstract class CControlEffectMasterBuilderBase<TSelf> where TSelf : CCont
         state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetSleepingEffectReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? SpecialEffect
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?>("SpecialEffect");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetSpecialEffectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithSpecialEffect(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value)
     {
-        SpecialEffect = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetSpecialEffectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithSpecialEffectReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> value)
@@ -223,14 +168,6 @@ public partial class CControlEffectMasterBuilder : CControlEffectMasterBuilderBa
         var chunk0701C003 = new global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C003();
         node.Chunks.Add(chunk0701C003);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Control.CControlEffectMaster node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701C002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701C003 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Control.CControlEffectMaster node, GameVersion game)
-    {
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
@@ -295,14 +232,9 @@ public partial class CControlEffectMasterBuilder : CControlEffectMasterBuilderBa
             var node = CControlEffectMasterBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CControlEffectMasterBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CControlEffectMasterBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectMaster node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlEffectMaster node);
     }
     public partial class TMNESWC : CControlEffectMasterBuilderBase<TMNESWC>
     {
@@ -357,14 +289,9 @@ public partial class CControlEffectMasterBuilder : CControlEffectMasterBuilderBa
             var node = CControlEffectMasterBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CControlEffectMasterBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CControlEffectMasterBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectMaster node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlEffectMaster node);
     }
     public partial class VSK5 : CControlEffectMasterBuilderBase<VSK5>
     {
@@ -419,14 +346,9 @@ public partial class CControlEffectMasterBuilder : CControlEffectMasterBuilderBa
             var node = CControlEffectMasterBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CControlEffectMasterBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CControlEffectMasterBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectMaster node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlEffectMaster node);
     }
     public partial class TMF : CControlEffectMasterBuilderBase<TMF>
     {
@@ -481,14 +403,9 @@ public partial class CControlEffectMasterBuilder : CControlEffectMasterBuilderBa
             var node = CControlEffectMasterBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CControlEffectMasterBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CControlEffectMasterBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectMaster node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlEffectMaster node);
     }
     public partial class MP3 : CControlEffectMasterBuilderBase<MP3>
     {
@@ -543,14 +460,9 @@ public partial class CControlEffectMasterBuilder : CControlEffectMasterBuilderBa
             var node = CControlEffectMasterBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CControlEffectMasterBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CControlEffectMasterBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectMaster node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlEffectMaster node);
     }
     public partial class TMT : CControlEffectMasterBuilderBase<TMT>
     {
@@ -605,14 +517,9 @@ public partial class CControlEffectMasterBuilder : CControlEffectMasterBuilderBa
             var node = CControlEffectMasterBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CControlEffectMasterBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CControlEffectMasterBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectMaster node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlEffectMaster node);
     }
     public partial class MP4 : CControlEffectMasterBuilderBase<MP4>
     {
@@ -667,14 +574,9 @@ public partial class CControlEffectMasterBuilder : CControlEffectMasterBuilderBa
             var node = CControlEffectMasterBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CControlEffectMasterBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CControlEffectMasterBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectMaster node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlEffectMaster node);
     }
     public partial class TM2020 : CControlEffectMasterBuilderBase<TM2020>
     {
@@ -729,13 +631,8 @@ public partial class CControlEffectMasterBuilder : CControlEffectMasterBuilderBa
             var node = CControlEffectMasterBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CControlEffectMasterBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CControlEffectMasterBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectMaster node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlEffectMaster node);
     }
 }

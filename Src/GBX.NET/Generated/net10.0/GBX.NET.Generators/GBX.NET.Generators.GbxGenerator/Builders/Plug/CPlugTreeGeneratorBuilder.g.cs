@@ -36,34 +36,19 @@ public abstract class CPlugTreeGeneratorBuilderBase<TSelf> where TSelf : CPlugTr
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeGenerator> state;
     private protected CPlugTreeGeneratorBuilderBase() => state = new();
     private protected CPlugTreeGeneratorBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeGenerator> state) => this.state = state;
-    public uint Flags
-    {
-        get => state.Get<uint>("Flags");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeGeneratorBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithFlags(uint value)
     {
-        Flags = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeGeneratorBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool IsSaveGenerated
-    {
-        get => state.Get<bool>("IsSaveGenerated");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeGeneratorBuilderAssignments.GetIsSaveGeneratedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIsSaveGenerated(bool value)
     {
-        IsSaveGenerated = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeGeneratorBuilderAssignments.GetIsSaveGeneratedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool IsToKeepInSaveAsRelease
-    {
-        get => state.Get<bool>("IsToKeepInSaveAsRelease");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeGeneratorBuilderAssignments.GetIsToKeepInSaveAsReleaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIsToKeepInSaveAsRelease(bool value)
     {
-        IsToKeepInSaveAsRelease = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeGeneratorBuilderAssignments.GetIsToKeepInSaveAsReleaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -75,13 +60,6 @@ public partial class CPlugTreeGeneratorBuilder : CPlugTreeGeneratorBuilderBase<C
         var chunk09051000 = new global::GBX.NET.Engines.Plug.CPlugTreeGenerator.Chunk09051000();
         node.Chunks.Add(chunk09051000);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugTreeGenerator node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTreeGenerator.Chunk09051000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09051000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugTreeGenerator node, GameVersion game)
-    {
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
@@ -102,14 +80,9 @@ public partial class CPlugTreeGeneratorBuilder : CPlugTreeGeneratorBuilderBase<C
             var node = CPlugTreeGeneratorBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CPlugTreeGeneratorBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CPlugTreeGeneratorBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugTreeGenerator node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugTreeGenerator node);
     }
     public partial class TMNESWC : CPlugTreeGeneratorBuilderBase<TMNESWC>
     {
@@ -120,14 +93,9 @@ public partial class CPlugTreeGeneratorBuilder : CPlugTreeGeneratorBuilderBase<C
             var node = CPlugTreeGeneratorBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CPlugTreeGeneratorBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CPlugTreeGeneratorBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugTreeGenerator node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugTreeGenerator node);
     }
     public partial class VSK5 : CPlugTreeGeneratorBuilderBase<VSK5>
     {
@@ -138,14 +106,9 @@ public partial class CPlugTreeGeneratorBuilder : CPlugTreeGeneratorBuilderBase<C
             var node = CPlugTreeGeneratorBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CPlugTreeGeneratorBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CPlugTreeGeneratorBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugTreeGenerator node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugTreeGenerator node);
     }
     public partial class TMF : CPlugTreeGeneratorBuilderBase<TMF>
     {
@@ -156,14 +119,9 @@ public partial class CPlugTreeGeneratorBuilder : CPlugTreeGeneratorBuilderBase<C
             var node = CPlugTreeGeneratorBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CPlugTreeGeneratorBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CPlugTreeGeneratorBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugTreeGenerator node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugTreeGenerator node);
     }
     public partial class MP3 : CPlugTreeGeneratorBuilderBase<MP3>
     {
@@ -174,14 +132,9 @@ public partial class CPlugTreeGeneratorBuilder : CPlugTreeGeneratorBuilderBase<C
             var node = CPlugTreeGeneratorBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CPlugTreeGeneratorBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CPlugTreeGeneratorBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugTreeGenerator node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugTreeGenerator node);
     }
     public partial class TMT : CPlugTreeGeneratorBuilderBase<TMT>
     {
@@ -192,14 +145,9 @@ public partial class CPlugTreeGeneratorBuilder : CPlugTreeGeneratorBuilderBase<C
             var node = CPlugTreeGeneratorBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugTreeGeneratorBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugTreeGeneratorBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugTreeGenerator node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugTreeGenerator node);
     }
     public partial class MP4 : CPlugTreeGeneratorBuilderBase<MP4>
     {
@@ -210,14 +158,9 @@ public partial class CPlugTreeGeneratorBuilder : CPlugTreeGeneratorBuilderBase<C
             var node = CPlugTreeGeneratorBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugTreeGeneratorBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugTreeGeneratorBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugTreeGenerator node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugTreeGenerator node);
     }
     public partial class TM2020 : CPlugTreeGeneratorBuilderBase<TM2020>
     {
@@ -228,13 +171,8 @@ public partial class CPlugTreeGeneratorBuilder : CPlugTreeGeneratorBuilderBase<C
             var node = CPlugTreeGeneratorBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugTreeGeneratorBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugTreeGeneratorBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugTreeGenerator node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugTreeGenerator node);
     }
 }

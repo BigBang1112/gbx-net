@@ -36,48 +36,28 @@ public abstract class CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilderBase
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettings> state;
     private protected CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilderBase() => state = new();
     private protected CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettings> state) => this.state = state;
-    public bool OpenWebLinksInSteamOverlay
-    {
-        get => state.Get<bool>("OpenWebLinksInSteamOverlay");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilderAssignments.GetOpenWebLinksInSteamOverlayAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithOpenWebLinksInSteamOverlay(bool value)
     {
-        OpenWebLinksInSteamOverlay = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilderAssignments.GetOpenWebLinksInSteamOverlayAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettings.SPluginSettings[]? PluginSettings
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettings.SPluginSettings[]?>("PluginSettings");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilderAssignments.GetPluginSettingsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithPluginSettings(params global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettings.SPluginSettings[]? value)
     {
-        PluginSettings = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilderAssignments.GetPluginSettingsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithPluginSettings(IEnumerable<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettings.SPluginSettings> values)
     {
         return WithPluginSettings(values.ToArray());
     }
-    public bool PreferSteamScreenshots
-    {
-        get => state.Get<bool>("PreferSteamScreenshots");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilderAssignments.GetPreferSteamScreenshotsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithPreferSteamScreenshots(bool value)
     {
-        PreferSteamScreenshots = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilderAssignments.GetPreferSteamScreenshotsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool SynchonizeSteamWorkshopFiles
-    {
-        get => state.Get<bool>("SynchonizeSteamWorkshopFiles");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilderAssignments.GetSynchonizeSteamWorkshopFilesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSynchonizeSteamWorkshopFiles(bool value)
     {
-        SynchonizeSteamWorkshopFiles = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilderAssignments.GetSynchonizeSteamWorkshopFilesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -101,17 +81,6 @@ public partial class CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilder : CG
         node.Chunks.Add(chunk03179005);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettings node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettings.Chunk03179001>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk03179001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettings.Chunk03179002>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03179002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettings.Chunk03179003>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03179003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettings.Chunk03179004>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk03179004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettings.Chunk03179005>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03179005 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettings node, GameVersion game)
-    {
-    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -127,14 +96,9 @@ public partial class CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilder : CG
             var node = CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettings node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettings node);
     }
     public partial class TMT : CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilderBase<TMT>
     {
@@ -145,14 +109,9 @@ public partial class CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilder : CG
             var node = CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettings node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettings node);
     }
     public partial class MP4 : CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilderBase<MP4>
     {
@@ -163,14 +122,9 @@ public partial class CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilder : CG
             var node = CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettings node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettings node);
     }
     public partial class TM2020 : CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilderBase<TM2020>
     {
@@ -181,13 +135,8 @@ public partial class CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilder : CG
             var node = CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGamePlayerProfileChunk_GlobalInterfaceSettingsBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettings node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GlobalInterfaceSettings node);
     }
 }

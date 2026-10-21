@@ -36,14 +36,9 @@ public abstract class CMwCmdExpInfEgalBuilderBase<TSelf> where TSelf : CMwCmdExp
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpInfEgal> state;
     private protected CMwCmdExpInfEgalBuilderBase() => state = new();
     private protected CMwCmdExpInfEgalBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpInfEgal> state) => this.state = state;
-    public global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Value1
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdExp?>("Value1");
-        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpBoolBinBuilderAssignments.GetValue1Assignment(), value, GameVersion.TMF);
-    }
     public TSelf WithValue1(global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value)
     {
-        Value1 = value;
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpBoolBinBuilderAssignments.GetValue1Assignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
     public TSelf WithValue1Reference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value)
@@ -52,14 +47,9 @@ public abstract class CMwCmdExpInfEgalBuilderBase<TSelf> where TSelf : CMwCmdExp
         state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpBoolBinBuilderAssignments.GetValue1ReferenceAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Value2
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdExp?>("Value2");
-        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpBoolBinBuilderAssignments.GetValue2Assignment(), value, GameVersion.TMF);
-    }
     public TSelf WithValue2(global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value)
     {
-        Value2 = value;
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpBoolBinBuilderAssignments.GetValue2Assignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
     public TSelf WithValue2Reference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value)
@@ -80,14 +70,6 @@ public partial class CMwCmdExpInfEgalBuilder : CMwCmdExpInfEgalBuilderBase<CMwCm
         node.Chunks.Add(chunk01054000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.MwFoundations.CMwCmdExpInfEgal node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdExpBoolBin.Chunk0103B000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0103B000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdExpBoolBin.Chunk01054000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk01054000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.MwFoundations.CMwCmdExpInfEgal node, GameVersion game)
-    {
-    }
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TMF : CMwCmdExpInfEgalBuilderBase<TMF>
     {
@@ -98,13 +80,8 @@ public partial class CMwCmdExpInfEgalBuilder : CMwCmdExpInfEgalBuilderBase<CMwCm
             var node = CMwCmdExpInfEgalBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CMwCmdExpInfEgalBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CMwCmdExpInfEgalBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpInfEgal node);
-        partial void ValidateNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpInfEgal node);
     }
 }

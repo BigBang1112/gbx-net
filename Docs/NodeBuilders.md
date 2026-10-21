@@ -18,6 +18,8 @@ CGameCtnMediaClip clip = CGameCtnMediaClip.Create()
 
 The builder creates the game's chunks and uses the existing node and chunk defaults. Explicit assignments override those defaults. Common setters work before and after game selection. Game-specific setters are available on the corresponding stage.
 
+Configure generated builders through `With<Property>(value)` methods. Generated builder properties are omitted to reduce assembly size. Node and game interface properties remain available on the result of `Build()` or `BuildInterface()`.
+
 Selectors match `GameVersion` names. `ForTM2()` and `ForSM()` are aliases for `ForMP4()`. All three return the same MP4 stage and select the same format. The historical `ForTMUF()` selectors remain as handwritten obsolete aliases for `ForTMF()` on the migrated v1.2 builders.
 
 ## Building through a game interface
@@ -41,7 +43,7 @@ IGameCtnMediaClipTMF clip = CGameCtnMediaClip.Create()
 Console.WriteLine(clip.Tracks[0].Name);
 ```
 
-`Build()` and `BuildInterface()` perform the same construction and validation. Each call creates a fresh node. Scoped collection views follow the owner's current collection and resolve individual external references only when elements are accessed.
+`Build()` and `BuildInterface()` perform the same construction. Each call creates a fresh node. Scoped collection views follow the owner's current collection and resolve individual external references only when elements are accessed.
 
 The generated interfaces retain `IClassVersion<T>` operations such as `Save()` and `ToGbx()`. Existing handwritten game-specific methods remain available through their partial interfaces. Public methods annotated with `MethodGameVersion` can also be projected automatically when their context is unambiguous.
 
@@ -53,7 +55,7 @@ Choosing a game snapshots the common pending assignments. Changing the original 
 
 Collection inputs and reference handles are copied without resolving external files. A scalar `WithEffectReference(NodeRef<CControlEffectSimi>)` setter preserves its descriptor, while `WithEffect(CControlEffectSimi?)` assigns an embedded node. An overload accepting `NodeRefList<T>` preserves the collection's reference descriptors.
 
-Validation rejects known incompatible chunks in supplied child graphs and handles cycles by node identity. Unresolved external references retain deferred compatibility. Access through a scoped child projection validates a resolved child for that game. Validation describes the graph at the time of the check. Callers can still modify nodes afterwards.
+Callers are responsible for supplying required values and compatible children. Building and scoped child access do not scan the node graph or check chunk game compatibility. Game interfaces describe available members. Required scoped getters still throw `MemberNullException` for an absent value, and reference resolution keeps its normal error behavior.
 
 ## Customizing generated builders
 
@@ -70,7 +72,7 @@ public partial class CGameCtnMediaTrackBuilder
 
         partial void CustomizeNode(CGameCtnMediaTrack node)
         {
-            // Apply domain-specific values before final validation.
+            // Apply domain-specific values after pending assignments.
         }
     }
 }
@@ -78,13 +80,13 @@ public partial class CGameCtnMediaTrackBuilder
 
 The existing track builder already supplies `KeepsPlaying()` before game selection. This example illustrates how to add a convenience to a selected stage.
 
-`CustomizeNode` runs after pending assignments. Required chunks and their versions are checked afterwards. `ValidateNode` can add domain validation. A failed build leaves the pending state available for another build. Hooks should avoid mutating shared child nodes if those changes must not survive a failure.
+`CustomizeNode` runs after pending assignments. It is responsible for preserving valid chunks and versions when changing the recipe. A failed build leaves the pending state available for another build. Hooks should avoid mutating shared child nodes if those changes must not survive a failure.
 
 The outer builder and game stages share a generated generic base for common setters. A handwritten method replacing an inherited common setter can call `base.WithName(value)` to retain the generated assignment behavior.
 
-Stages also share bases for overlapping sets of game-specific setters. Assignment descriptors are shared by the property's declaring node, including its derived builders. Matching chunk recipes share creation and validation methods, while game-specific defaults and partial hooks still receive their selected context. Descriptors initialize on demand so an unused setter can be trimmed.
+Stages also share bases for overlapping sets of game-specific setters. Assignment descriptors are shared by the property's declaring node, including its derived builders. Matching chunk recipes share creation methods, while game-specific defaults and partial hooks still receive their selected context. Descriptors initialize on demand so an unused setter can be trimmed.
 
-Game interfaces reuse inherited members and shared member contracts. Generic contracts carry each game's child interface types. Collection adapters share conversion and validation code, follow collection replacements, and resolve references only on access. Use the named node interfaces, game interfaces, and concrete builder stages in application signatures. Generated member-group type names can change with the metadata.
+Game interfaces reuse inherited members and shared member contracts. Generic contracts carry each game's child interface types. Collection adapters share projection code, follow collection replacements, and resolve references only on access. Use the named node interfaces, game interfaces, and concrete builder stages in application signatures. Generated member-group type names can change with the metadata.
 
 If a member stops being common, an obsolete method in the outer builder partial can call `Set<Property>(state, value)` to preserve pending assignments. The generator supplies that helper when a handwritten partial references it, while at least one game supports the member. The same rule applies to `Set<Property>Reference` helpers. Ordinary generated setters call the shared assignment descriptors directly. Building for an unsupported game reports the incompatible member.
 

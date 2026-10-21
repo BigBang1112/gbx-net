@@ -5,7 +5,7 @@ public partial class CControlEffectSimiBuilder
     [Obsolete("Use ForTMF() instead.")]
     public TMF ForTMUF() => ForTMF();
 
-    public new CControlEffectSimiBuilder Centered() => WithCentered(true);
+    public CControlEffectSimiBuilder Centered() => WithCentered(true);
 
     public partial class TMF
     {

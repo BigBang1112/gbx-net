@@ -36,24 +36,14 @@ public abstract class CMwCmdExpDiffBuilderBase<TSelf> where TSelf : CMwCmdExpDif
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpDiff> state;
     private protected CMwCmdExpDiffBuilderBase() => state = new();
     private protected CMwCmdExpDiffBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpDiff> state) => this.state = state;
-    public bool Bool
-    {
-        get => state.Get<bool>("Bool");
-        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpBoolBuilderAssignments.GetBoolAssignment(), value, GameVersion.TMF);
-    }
     public TSelf WithBool(bool value)
     {
-        Bool = value;
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpBoolBuilderAssignments.GetBoolAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Value1
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdExp?>("Value1");
-        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpDiffBuilderAssignments.GetValue1Assignment(), value, GameVersion.TMF);
     }
     public TSelf WithValue1(global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value)
     {
-        Value1 = value;
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpDiffBuilderAssignments.GetValue1Assignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
     public TSelf WithValue1Reference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value)
@@ -62,14 +52,9 @@ public abstract class CMwCmdExpDiffBuilderBase<TSelf> where TSelf : CMwCmdExpDif
         state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpDiffBuilderAssignments.GetValue1ReferenceAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Value2
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdExp?>("Value2");
-        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpDiffBuilderAssignments.GetValue2Assignment(), value, GameVersion.TMF);
-    }
     public TSelf WithValue2(global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value)
     {
-        Value2 = value;
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpDiffBuilderAssignments.GetValue2Assignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
     public TSelf WithValue2Reference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value)
@@ -90,14 +75,6 @@ public partial class CMwCmdExpDiffBuilder : CMwCmdExpDiffBuilderBase<CMwCmdExpDi
         node.Chunks.Add(chunk0103B000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.MwFoundations.CMwCmdExpDiff node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdExpDiff.Chunk0103E000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0103E000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdExpBool.Chunk0103B000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0103B000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.MwFoundations.CMwCmdExpDiff node, GameVersion game)
-    {
-    }
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TMF : CMwCmdExpDiffBuilderBase<TMF>
     {
@@ -108,13 +85,8 @@ public partial class CMwCmdExpDiffBuilder : CMwCmdExpDiffBuilderBase<CMwCmdExpDi
             var node = CMwCmdExpDiffBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CMwCmdExpDiffBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CMwCmdExpDiffBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpDiff node);
-        partial void ValidateNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpDiff node);
     }
 }

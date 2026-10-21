@@ -36,24 +36,14 @@ public abstract class CHmsSoundSourceBuilderBase<TSelf> where TSelf : CHmsSoundS
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsSoundSource> state;
     private protected CHmsSoundSourceBuilderBase() => state = new();
     private protected CHmsSoundSourceBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsSoundSource> state) => this.state = state;
-    public float Pitch
-    {
-        get => state.Get<float>("Pitch");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsSoundSourceBuilderAssignments.GetPitchAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithPitch(float value)
     {
-        Pitch = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsSoundSourceBuilderAssignments.GetPitchAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugSound? PlugSound
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("PlugSound");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsSoundSourceBuilderAssignments.GetPlugSoundAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithPlugSound(global::GBX.NET.Engines.Plug.CPlugSound? value)
     {
-        PlugSound = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsSoundSourceBuilderAssignments.GetPlugSoundAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithPlugSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
@@ -62,62 +52,37 @@ public abstract class CHmsSoundSourceBuilderBase<TSelf> where TSelf : CHmsSoundS
         state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsSoundSourceBuilderAssignments.GetPlugSoundReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public float Volume
-    {
-        get => state.Get<float>("Volume");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsSoundSourceBuilderAssignments.GetVolumeAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithVolume(float value)
     {
-        Volume = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsSoundSourceBuilderAssignments.GetVolumeAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CHmsSoundSourceBuilderMembers1<TSelf> : CHmsSoundSourceBuilderBase<TSelf> where TSelf : CHmsSoundSourceBuilderMembers1<TSelf>
 {
     private protected CHmsSoundSourceBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsSoundSource> state) : base(state) { }
-    public float PriorityAdjustement
-    {
-        get => state.Get<float>("PriorityAdjustement");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsSoundSourceBuilderAssignments.GetPriorityAdjustementAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithPriorityAdjustement(float value)
     {
-        PriorityAdjustement = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsSoundSourceBuilderAssignments.GetPriorityAdjustementAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float RpmOrSpeed
-    {
-        get => state.Get<float>("RpmOrSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsSoundSourceBuilderAssignments.GetRpmOrSpeedAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithRpmOrSpeed(float value)
     {
-        RpmOrSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsSoundSourceBuilderAssignments.GetRpmOrSpeedAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool UseLowQuality
-    {
-        get => state.Get<bool>("UseLowQuality");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsSoundSourceBuilderAssignments.GetUseLowQualityAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithUseLowQuality(bool value)
     {
-        UseLowQuality = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsSoundSourceBuilderAssignments.GetUseLowQualityAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CHmsSoundSourceBuilderMembers2<TSelf> : CHmsSoundSourceBuilderMembers1<TSelf> where TSelf : CHmsSoundSourceBuilderMembers2<TSelf>
 {
     private protected CHmsSoundSourceBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsSoundSource> state) : base(state) { }
-    public Vec3 VolumicSize
-    {
-        get => state.Get<Vec3>("VolumicSize");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsSoundSourceBuilderAssignments.GetVolumicSizeAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
-    }
     public TSelf WithVolumicSize(Vec3 value)
     {
-        VolumicSize = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsSoundSourceBuilderAssignments.GetVolumicSizeAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -132,11 +97,6 @@ public partial class CHmsSoundSourceBuilder : CHmsSoundSourceBuilderBase<CHmsSou
         node.Chunks.Add(chunk0600D001);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Hms.CHmsSoundSource node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsSoundSource.Chunk0600D000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0600D000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsSoundSource.Chunk0600D001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0600D001 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Hms.CHmsSoundSource CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Hms.CHmsSoundSource();
@@ -145,11 +105,6 @@ public partial class CHmsSoundSourceBuilder : CHmsSoundSourceBuilderBase<CHmsSou
         var chunk0600D003 = new global::GBX.NET.Engines.Hms.CHmsSoundSource.Chunk0600D003();
         node.Chunks.Add(chunk0600D003);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Hms.CHmsSoundSource node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsSoundSource.Chunk0600D002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0600D002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsSoundSource.Chunk0600D003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0600D003 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Hms.CHmsSoundSource CreateRecipe2(GameVersion game)
     {
@@ -162,12 +117,6 @@ public partial class CHmsSoundSourceBuilder : CHmsSoundSourceBuilderBase<CHmsSou
         node.Chunks.Add(chunk0600D004);
         return node;
     }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Hms.CHmsSoundSource node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsSoundSource.Chunk0600D002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0600D002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsSoundSource.Chunk0600D003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0600D003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsSoundSource.Chunk0600D004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0600D004 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Hms.CHmsSoundSource CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Hms.CHmsSoundSource();
@@ -178,15 +127,6 @@ public partial class CHmsSoundSourceBuilder : CHmsSoundSourceBuilderBase<CHmsSou
         var chunk0600D005 = new global::GBX.NET.Engines.Hms.CHmsSoundSource.Chunk0600D005();
         node.Chunks.Add(chunk0600D005);
         return node;
-    }
-    private static void ValidateRecipe3(global::GBX.NET.Engines.Hms.CHmsSoundSource node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsSoundSource.Chunk0600D003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0600D003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsSoundSource.Chunk0600D004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0600D004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsSoundSource.Chunk0600D005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0600D005 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Hms.CHmsSoundSource node, GameVersion game)
-    {
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -208,14 +148,9 @@ public partial class CHmsSoundSourceBuilder : CHmsSoundSourceBuilderBase<CHmsSou
             var node = CHmsSoundSourceBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CHmsSoundSourceBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CHmsSoundSourceBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsSoundSource node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsSoundSource node);
     }
     public partial class TMPU : CHmsSoundSourceBuilderBase<TMPU>
     {
@@ -230,14 +165,9 @@ public partial class CHmsSoundSourceBuilder : CHmsSoundSourceBuilderBase<CHmsSou
             var node = CHmsSoundSourceBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CHmsSoundSourceBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CHmsSoundSourceBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsSoundSource node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsSoundSource node);
     }
     public partial class TMSX : CHmsSoundSourceBuilderMembers1<TMSX>
     {
@@ -252,14 +182,9 @@ public partial class CHmsSoundSourceBuilder : CHmsSoundSourceBuilderBase<CHmsSou
             var node = CHmsSoundSourceBuilder.CreateRecipe1(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CHmsSoundSourceBuilder.ValidateRecipe1(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CHmsSoundSourceBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsSoundSource node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsSoundSource node);
     }
     public partial class TMNESWC : CHmsSoundSourceBuilderMembers2<TMNESWC>
     {
@@ -274,14 +199,9 @@ public partial class CHmsSoundSourceBuilder : CHmsSoundSourceBuilderBase<CHmsSou
             var node = CHmsSoundSourceBuilder.CreateRecipe2(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CHmsSoundSourceBuilder.ValidateRecipe2(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CHmsSoundSourceBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsSoundSource node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsSoundSource node);
     }
     public partial class VSK5 : CHmsSoundSourceBuilderMembers2<VSK5>
     {
@@ -296,14 +216,9 @@ public partial class CHmsSoundSourceBuilder : CHmsSoundSourceBuilderBase<CHmsSou
             var node = CHmsSoundSourceBuilder.CreateRecipe2(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CHmsSoundSourceBuilder.ValidateRecipe2(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CHmsSoundSourceBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsSoundSource node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsSoundSource node);
     }
     public partial class TMF : CHmsSoundSourceBuilderMembers2<TMF>
     {
@@ -318,14 +233,9 @@ public partial class CHmsSoundSourceBuilder : CHmsSoundSourceBuilderBase<CHmsSou
             var node = CHmsSoundSourceBuilder.CreateRecipe3(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CHmsSoundSourceBuilder.ValidateRecipe3(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CHmsSoundSourceBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsSoundSource node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsSoundSource node);
     }
     public partial class MP3 : CHmsSoundSourceBuilderMembers2<MP3>
     {
@@ -340,13 +250,8 @@ public partial class CHmsSoundSourceBuilder : CHmsSoundSourceBuilderBase<CHmsSou
             var node = CHmsSoundSourceBuilder.CreateRecipe3(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CHmsSoundSourceBuilder.ValidateRecipe3(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CHmsSoundSourceBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsSoundSource node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsSoundSource node);
     }
 }

@@ -36,14 +36,9 @@ public abstract class CPlugSurfaceBuilderBase<TSelf> where TSelf : CPlugSurfaceB
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurface> state;
     private protected CPlugSurfaceBuilderBase() => state = new();
     private protected CPlugSurfaceBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurface> state) => this.state = state;
-    public global::GBX.NET.Engines.Plug.CPlugSurface.SurfMaterial[] Materials
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugSurface.SurfMaterial[]>("Materials");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSurfaceBuilderAssignments.GetMaterialsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    }
     public TSelf WithMaterials(params global::GBX.NET.Engines.Plug.CPlugSurface.SurfMaterial[] value)
     {
-        Materials = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSurfaceBuilderAssignments.GetMaterialsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithMaterials(IEnumerable<global::GBX.NET.Engines.Plug.CPlugSurface.SurfMaterial> values)
@@ -54,14 +49,9 @@ public abstract class CPlugSurfaceBuilderBase<TSelf> where TSelf : CPlugSurfaceB
 public abstract class CPlugSurfaceBuilderMembers1<TSelf> : CPlugSurfaceBuilderBase<TSelf> where TSelf : CPlugSurfaceBuilderMembers1<TSelf>
 {
     private protected CPlugSurfaceBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurface> state) : base(state) { }
-    public global::GBX.NET.Engines.Plug.CPlugSkel? Skel
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugSkel?>("Skel");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSurfaceBuilderAssignments.GetSkelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithSkel(global::GBX.NET.Engines.Plug.CPlugSkel? value)
     {
-        Skel = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSurfaceBuilderAssignments.GetSkelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithSkelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSkel> value)
@@ -80,20 +70,12 @@ public partial class CPlugSurfaceBuilder : CPlugSurfaceBuilderBase<CPlugSurfaceB
         node.Chunks.Add(chunk0900C000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugSurface node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurface.Chunk0900C000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900C000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugSurface CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugSurface();
         var chunk0900C003 = new global::GBX.NET.Engines.Plug.CPlugSurface.Chunk0900C003();
         node.Chunks.Add(chunk0900C003);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugSurface node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurface.Chunk0900C003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900C003 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Plug.CPlugSurface CreateRecipe2(GameVersion game)
     {
@@ -102,24 +84,12 @@ public partial class CPlugSurfaceBuilder : CPlugSurfaceBuilderBase<CPlugSurfaceB
         node.Chunks.Add(chunk0900C003);
         return node;
     }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Plug.CPlugSurface node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurface.Chunk0900C003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900C003 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugSurface CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugSurface();
         var chunk0900C003 = new global::GBX.NET.Engines.Plug.CPlugSurface.Chunk0900C003();
         node.Chunks.Add(chunk0900C003);
         return node;
-    }
-    private static void ValidateRecipe3(global::GBX.NET.Engines.Plug.CPlugSurface node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurface.Chunk0900C003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900C003 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugSurface node, GameVersion game)
-    {
-        if (node.Materials is null) throw new MemberNullException("Materials");
     }
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -131,14 +101,9 @@ public partial class CPlugSurfaceBuilder : CPlugSurfaceBuilderBase<CPlugSurfaceB
     public partial class TMF : CPlugSurfaceBuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurface> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugSurfaceGeom? Geom
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom?>("Geom");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSurfaceBuilderAssignments.GetGeomAssignment(), value, GameVersion.TMF);
-        }
         public TMF WithGeom(global::GBX.NET.Engines.Plug.CPlugSurfaceGeom? value)
         {
-            Geom = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSurfaceBuilderAssignments.GetGeomAssignment(), value, GameVersion.TMF);
             return this;
         }
         public TMF WithGeomReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom> value)
@@ -157,14 +122,9 @@ public partial class CPlugSurfaceBuilder : CPlugSurfaceBuilderBase<CPlugSurfaceB
             var node = CPlugSurfaceBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CPlugSurfaceBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CPlugSurfaceBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSurface node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugSurface node);
     }
     public partial class MP3 : CPlugSurfaceBuilderMembers1<MP3>
     {
@@ -179,14 +139,9 @@ public partial class CPlugSurfaceBuilder : CPlugSurfaceBuilderBase<CPlugSurfaceB
             var node = CPlugSurfaceBuilder.CreateRecipe1(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CPlugSurfaceBuilder.ValidateRecipe1(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CPlugSurfaceBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSurface node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugSurface node);
     }
     public partial class TMT : CPlugSurfaceBuilderMembers1<TMT>
     {
@@ -201,14 +156,9 @@ public partial class CPlugSurfaceBuilder : CPlugSurfaceBuilderBase<CPlugSurfaceB
             var node = CPlugSurfaceBuilder.CreateRecipe2(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugSurfaceBuilder.ValidateRecipe2(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugSurfaceBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSurface node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugSurface node);
     }
     public partial class MP4 : CPlugSurfaceBuilderMembers1<MP4>
     {
@@ -223,14 +173,9 @@ public partial class CPlugSurfaceBuilder : CPlugSurfaceBuilderBase<CPlugSurfaceB
             var node = CPlugSurfaceBuilder.CreateRecipe2(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugSurfaceBuilder.ValidateRecipe2(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugSurfaceBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSurface node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugSurface node);
     }
     public partial class TM2020 : CPlugSurfaceBuilderMembers1<TM2020>
     {
@@ -245,13 +190,8 @@ public partial class CPlugSurfaceBuilder : CPlugSurfaceBuilderBase<CPlugSurfaceB
             var node = CPlugSurfaceBuilder.CreateRecipe3(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugSurfaceBuilder.ValidateRecipe3(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugSurfaceBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSurface node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugSurface node);
     }
 }

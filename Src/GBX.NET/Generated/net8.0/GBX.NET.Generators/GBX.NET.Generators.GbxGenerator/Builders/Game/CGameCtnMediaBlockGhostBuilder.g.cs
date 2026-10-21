@@ -36,14 +36,9 @@ public abstract class CGameCtnMediaBlockGhostBuilderBase<TSelf> where TSelf : CG
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost> state;
     private protected CGameCtnMediaBlockGhostBuilderBase() => state = new();
     private protected CGameCtnMediaBlockGhostBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost> state) => this.state = state;
-    public global::GBX.NET.Engines.Game.CGameCtnGhost? GhostModel
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnGhost?>("GhostModel");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetGhostModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    }
     public TSelf WithGhostModel(global::GBX.NET.Engines.Game.CGameCtnGhost? value)
     {
-        GhostModel = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetGhostModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithGhostModelReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnGhost> value)
@@ -52,48 +47,28 @@ public abstract class CGameCtnMediaBlockGhostBuilderBase<TSelf> where TSelf : CG
         state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetGhostModelReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
     }
-    public float StartOffset
-    {
-        get => state.Get<float>("StartOffset");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetStartOffsetAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    }
     public TSelf WithStartOffset(float value)
     {
-        StartOffset = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetStartOffsetAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnMediaBlockGhostBuilderMembers1<TSelf> : CGameCtnMediaBlockGhostBuilderBase<TSelf> where TSelf : CGameCtnMediaBlockGhostBuilderMembers1<TSelf>
 {
     private protected CGameCtnMediaBlockGhostBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost> state) : base(state) { }
-    public bool ForceHue
-    {
-        get => state.Get<bool>("ForceHue");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetForceHueAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithForceHue(bool value)
     {
-        ForceHue = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetForceHueAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool ForceLight
-    {
-        get => state.Get<bool>("ForceLight");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetForceLightAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithForceLight(bool value)
     {
-        ForceLight = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetForceLightAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost.Key>? Keys
-    {
-        get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost.Key>?>("Keys");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost.Key>? value)
     {
-        Keys = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithKeys(params global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost.Key[] values)
@@ -104,14 +79,9 @@ public abstract class CGameCtnMediaBlockGhostBuilderMembers1<TSelf> : CGameCtnMe
     {
         return WithKeys(values.ToArray());
     }
-    public bool NoDamage
-    {
-        get => state.Get<bool>("NoDamage");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetNoDamageAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithNoDamage(bool value)
     {
-        NoDamage = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetNoDamageAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -124,10 +94,6 @@ public partial class CGameCtnMediaBlockGhostBuilder : CGameCtnMediaBlockGhostBui
         node.Chunks.Add(chunk030E5001);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost.Chunk030E5001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk030E5001 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost();
@@ -135,23 +101,12 @@ public partial class CGameCtnMediaBlockGhostBuilder : CGameCtnMediaBlockGhostBui
         node.Chunks.Add(chunk030E5002);
         return node;
     }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost.Chunk030E5002>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk030E5002 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost CreateRecipe2(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost();
         var chunk030E5002 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost.Chunk030E5002(game);
         node.Chunks.Add(chunk030E5002);
         return node;
-    }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost.Chunk030E5002>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk030E5002 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost node, GameVersion game)
-    {
     }
     public TMF ForTMF() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -162,28 +117,18 @@ public partial class CGameCtnMediaBlockGhostBuilder : CGameCtnMediaBlockGhostBui
     public partial class TMF : CGameCtnMediaBlockGhostBuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost> state) : base(state) { }
-        public TimeSingle End
-        {
-            get => state.Get<TimeSingle>("End");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetEndAssignment(), value, GameVersion.TMF);
-        }
         public TMF WithEnd(TimeSingle value)
         {
-            End = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetEndAssignment(), value, GameVersion.TMF);
             return this;
         }
         public TMF WithGhostModel(global::GBX.NET.Interfaces.Game.IGameCtnGhostTMF? value)
         {
             return base.WithGhostModel(value is null ? (global::GBX.NET.Engines.Game.CGameCtnGhost?)null : value is global::GBX.NET.Engines.Game.CGameCtnGhost node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public TimeSingle Start
-        {
-            get => state.Get<TimeSingle>("Start");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetStartAssignment(), value, GameVersion.TMF);
-        }
         public TMF WithStart(TimeSingle value)
         {
-            Start = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetStartAssignment(), value, GameVersion.TMF);
             return this;
         }
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockGhostTMF BuildInterface() => Build();
@@ -192,14 +137,9 @@ public partial class CGameCtnMediaBlockGhostBuilder : CGameCtnMediaBlockGhostBui
             var node = CGameCtnMediaBlockGhostBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CGameCtnMediaBlockGhostBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CGameCtnMediaBlockGhostBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost node);
     }
     public partial class TMT : CGameCtnMediaBlockGhostBuilderMembers1<TMT>
     {
@@ -214,14 +154,9 @@ public partial class CGameCtnMediaBlockGhostBuilder : CGameCtnMediaBlockGhostBui
             var node = CGameCtnMediaBlockGhostBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameCtnMediaBlockGhostBuilder.ValidateRecipe1(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameCtnMediaBlockGhostBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost node);
     }
     public partial class MP4 : CGameCtnMediaBlockGhostBuilderMembers1<MP4>
     {
@@ -236,14 +171,9 @@ public partial class CGameCtnMediaBlockGhostBuilder : CGameCtnMediaBlockGhostBui
             var node = CGameCtnMediaBlockGhostBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameCtnMediaBlockGhostBuilder.ValidateRecipe1(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameCtnMediaBlockGhostBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost node);
     }
     public partial class TM2020 : CGameCtnMediaBlockGhostBuilderMembers1<TM2020>
     {
@@ -252,14 +182,9 @@ public partial class CGameCtnMediaBlockGhostBuilder : CGameCtnMediaBlockGhostBui
         {
             return base.WithGhostModel(value is null ? (global::GBX.NET.Engines.Game.CGameCtnGhost?)null : value is global::GBX.NET.Engines.Game.CGameCtnGhost node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public float TrailIntensity
-        {
-            get => state.Get<float>("TrailIntensity");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetTrailIntensityAssignment(), value, GameVersion.TM2020);
-        }
         public TM2020 WithTrailIntensity(float value)
         {
-            TrailIntensity = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockGhostBuilderAssignments.GetTrailIntensityAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockGhostTM2020 BuildInterface() => Build();
@@ -268,13 +193,8 @@ public partial class CGameCtnMediaBlockGhostBuilder : CGameCtnMediaBlockGhostBui
             var node = CGameCtnMediaBlockGhostBuilder.CreateRecipe2(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameCtnMediaBlockGhostBuilder.ValidateRecipe2(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameCtnMediaBlockGhostBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost node);
     }
 }

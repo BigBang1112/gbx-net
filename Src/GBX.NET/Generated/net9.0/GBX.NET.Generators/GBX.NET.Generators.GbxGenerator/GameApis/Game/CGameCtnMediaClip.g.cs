@@ -36,72 +36,62 @@ public partial class CGameCtnMediaClip : global::GBX.NET.Interfaces.Game.IGameCt
     public static global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilder Create() => new();
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrack> global::GBX.NET.Interfaces.Game.IGameCtnMediaClip.Tracks
     {
-        get => new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrack>(GetTracksBuilderReferences, GameVersion.Unspecified, true, "Tracks");
+        get => new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrack>(GetTracksBuilderReferences, true, "Tracks");
         set => Tracks = value is null ? throw new ArgumentNullException(nameof(value)) : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrack>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMSX> global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers3<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMSX>.Tracks
     {
-        get => new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMSX>(GetTracksBuilderReferences, GameVersion.TMSX, true, "Tracks");
+        get => new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMSX>(GetTracksBuilderReferences, true, "Tracks");
         set => Tracks = value is null ? throw new ArgumentNullException(nameof(value)) : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMSX>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMNESWC> global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers3<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMNESWC>.Tracks
     {
-        get => new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMNESWC>(GetTracksBuilderReferences, GameVersion.TMNESWC, true, "Tracks");
+        get => new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMNESWC>(GetTracksBuilderReferences, true, "Tracks");
         set => Tracks = value is null ? throw new ArgumentNullException(nameof(value)) : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMNESWC>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMU> global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers3<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMU>.Tracks
     {
-        get => new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMU>(GetTracksBuilderReferences, GameVersion.TMU, true, "Tracks");
+        get => new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMU>(GetTracksBuilderReferences, true, "Tracks");
         set => Tracks = value is null ? throw new ArgumentNullException(nameof(value)) : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMU>(value, false));
     }
     global::GBX.NET.Interfaces.Scene.ISceneVSK5? global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers5<global::GBX.NET.Interfaces.Scene.ISceneVSK5>.Scene
     {
-        get
-        {
-            var node = Scene;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => Scene;
         set => Scene = value is null ? null : value is global::GBX.NET.Engines.Scene.CScene node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackVSK5> global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers3<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackVSK5>.Tracks
     {
-        get => new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackVSK5>(GetTracksBuilderReferences, GameVersion.VSK5, true, "Tracks");
+        get => new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackVSK5>(GetTracksBuilderReferences, true, "Tracks");
         set => Tracks = value is null ? throw new ArgumentNullException(nameof(value)) : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackVSK5>(value, false));
     }
     global::GBX.NET.Interfaces.Scene.ISceneTMF? global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers5<global::GBX.NET.Interfaces.Scene.ISceneTMF>.Scene
     {
-        get
-        {
-            var node = Scene;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => Scene;
         set => Scene = value is null ? null : value is global::GBX.NET.Engines.Scene.CScene node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMF> global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers3<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMF>.Tracks
     {
-        get => new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMF>(GetTracksBuilderReferences, GameVersion.TMF, true, "Tracks");
+        get => new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMF>(GetTracksBuilderReferences, true, "Tracks");
         set => Tracks = value is null ? throw new ArgumentNullException(nameof(value)) : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMF>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackMP3> global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers3<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackMP3>.Tracks
     {
-        get => new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackMP3>(GetTracksBuilderReferences, GameVersion.MP3, true, "Tracks");
+        get => new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackMP3>(GetTracksBuilderReferences, true, "Tracks");
         set => Tracks = value is null ? throw new ArgumentNullException(nameof(value)) : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackMP3>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMT> global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers3<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMT>.Tracks
     {
-        get => new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMT>(GetTracksBuilderReferences, GameVersion.TMT, true, "Tracks");
+        get => new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMT>(GetTracksBuilderReferences, true, "Tracks");
         set => Tracks = value is null ? throw new ArgumentNullException(nameof(value)) : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMT>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackMP4> global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers3<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackMP4>.Tracks
     {
-        get => new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackMP4>(GetTracksBuilderReferences, GameVersion.MP4, true, "Tracks");
+        get => new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackMP4>(GetTracksBuilderReferences, true, "Tracks");
         set => Tracks = value is null ? throw new ArgumentNullException(nameof(value)) : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackMP4>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTM2020> global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers3<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTM2020>.Tracks
     {
-        get => new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTM2020>(GetTracksBuilderReferences, GameVersion.TM2020, true, "Tracks");
+        get => new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTM2020>(GetTracksBuilderReferences, true, "Tracks");
         set => Tracks = value is null ? throw new ArgumentNullException(nameof(value)) : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTM2020>(value, false));
     }
     private NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack>? GetTracksBuilderReferences() => Tracks;

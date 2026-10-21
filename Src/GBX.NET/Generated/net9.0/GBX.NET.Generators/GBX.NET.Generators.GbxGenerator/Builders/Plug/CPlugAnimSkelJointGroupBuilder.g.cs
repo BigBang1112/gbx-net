@@ -36,72 +36,42 @@ public abstract class CPlugAnimSkelJointGroupBuilderBase<TSelf> where TSelf : CP
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup> state;
     private protected CPlugAnimSkelJointGroupBuilderBase() => state = new();
     private protected CPlugAnimSkelJointGroupBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup> state) => this.state = state;
-    public ulong Hash
-    {
-        get => state.Get<ulong>("Hash");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelJointGroupBuilderAssignments.GetHashAssignment(), value, GameVersion.TM2020);
-    }
     public TSelf WithHash(ulong value)
     {
-        Hash = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelJointGroupBuilderAssignments.GetHashAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public int JointCount
-    {
-        get => state.Get<int>("JointCount");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelJointGroupBuilderAssignments.GetJointCountAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithJointCount(int value)
     {
-        JointCount = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelJointGroupBuilderAssignments.GetJointCountAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public string[]? JointNames
-    {
-        get => state.Get<string[]?>("JointNames");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelJointGroupBuilderAssignments.GetJointNamesAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithJointNames(params string[]? value)
     {
-        JointNames = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelJointGroupBuilderAssignments.GetJointNamesAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithJointNames(IEnumerable<string> values)
     {
         return WithJointNames(values.ToArray());
     }
-    public float[]? JointWeights
-    {
-        get => state.Get<float[]?>("JointWeights");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelJointGroupBuilderAssignments.GetJointWeightsAssignment(), value, GameVersion.TM2020);
-    }
     public TSelf WithJointWeights(params float[]? value)
     {
-        JointWeights = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelJointGroupBuilderAssignments.GetJointWeightsAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithJointWeights(IEnumerable<float> values)
     {
         return WithJointWeights(values.ToArray());
     }
-    public string? Name
-    {
-        get => state.Get<string?>("Name");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelJointGroupBuilderAssignments.GetNameAssignment(), value, GameVersion.TM2020);
-    }
     public TSelf WithName(string? value)
     {
-        Name = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelJointGroupBuilderAssignments.GetNameAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public Int2[]? Ranges
-    {
-        get => state.Get<Int2[]?>("Ranges");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelJointGroupBuilderAssignments.GetRangesAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithRanges(params Int2[]? value)
     {
-        Ranges = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelJointGroupBuilderAssignments.GetRangesAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithRanges(IEnumerable<Int2> values)
@@ -118,13 +88,6 @@ public partial class CPlugAnimSkelJointGroupBuilder : CPlugAnimSkelJointGroupBui
         node.Chunks.Add(chunk09133000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup.Chunk09133000>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk09133000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup node, GameVersion game)
-    {
-    }
     public TM2020 ForTM2020() => new(state.Snapshot());
     public partial class TM2020 : CPlugAnimSkelJointGroupBuilderBase<TM2020>
     {
@@ -135,13 +98,8 @@ public partial class CPlugAnimSkelJointGroupBuilder : CPlugAnimSkelJointGroupBui
             var node = CPlugAnimSkelJointGroupBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugAnimSkelJointGroupBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugAnimSkelJointGroupBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup node);
     }
 }

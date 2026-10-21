@@ -36,1858 +36,953 @@ public abstract class CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : C
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state;
     private protected CPlugVehicleCarPhyTuningBuilderBase() => state = new();
     private protected CPlugVehicleCarPhyTuningBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state) => this.state = state;
-    public PlugCurve? AccelCurve
-    {
-        get => state.Get<PlugCurve?>("AccelCurve");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAccelCurveAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithAccelCurve(PlugCurve? value)
     {
-        AccelCurve = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAccelCurveAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float AirAngularFluidFrictionCoef1
-    {
-        get => state.Get<float>("AirAngularFluidFrictionCoef1");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirAngularFluidFrictionCoef1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithAirAngularFluidFrictionCoef1(float value)
     {
-        AirAngularFluidFrictionCoef1 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirAngularFluidFrictionCoef1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float AirAngularFluidFrictionCoef2
-    {
-        get => state.Get<float>("AirAngularFluidFrictionCoef2");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirAngularFluidFrictionCoef2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithAirAngularFluidFrictionCoef2(float value)
     {
-        AirAngularFluidFrictionCoef2 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirAngularFluidFrictionCoef2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int AirControlDuration
-    {
-        get => state.Get<int>("AirControlDuration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirControlDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithAirControlDuration(int value)
     {
-        AirControlDuration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirControlDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float AirControlMaxAngularSpeedY
-    {
-        get => state.Get<float>("AirControlMaxAngularSpeedY");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirControlMaxAngularSpeedYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithAirControlMaxAngularSpeedY(float value)
     {
-        AirControlMaxAngularSpeedY = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirControlMaxAngularSpeedYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float AirGravityCoef
-    {
-        get => state.Get<float>("AirGravityCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirGravityCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithAirGravityCoef(float value)
     {
-        AirGravityCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirGravityCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float AngularSpeedClamp
-    {
-        get => state.Get<float>("AngularSpeedClamp");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAngularSpeedClampAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithAngularSpeedClamp(float value)
     {
-        AngularSpeedClamp = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAngularSpeedClampAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float AngularSpeedImpulseScale
-    {
-        get => state.Get<float>("AngularSpeedImpulseScale");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAngularSpeedImpulseScaleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithAngularSpeedImpulseScale(float value)
     {
-        AngularSpeedImpulseScale = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAngularSpeedImpulseScaleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float AxialSlopeAdherenceMax
-    {
-        get => state.Get<float>("AxialSlopeAdherenceMax");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAxialSlopeAdherenceMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithAxialSlopeAdherenceMax(float value)
     {
-        AxialSlopeAdherenceMax = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAxialSlopeAdherenceMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float AxialSlopeAdherenceMin
-    {
-        get => state.Get<float>("AxialSlopeAdherenceMin");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAxialSlopeAdherenceMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithAxialSlopeAdherenceMin(float value)
     {
-        AxialSlopeAdherenceMin = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAxialSlopeAdherenceMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float BodyFrictionCoef_Concrete
-    {
-        get => state.Get<float>("BodyFrictionCoef_Concrete");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBodyFrictionCoef_ConcreteAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBodyFrictionCoef_Concrete(float value)
     {
-        BodyFrictionCoef_Concrete = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBodyFrictionCoef_ConcreteAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float BodyFrictionCoef_Metal
-    {
-        get => state.Get<float>("BodyFrictionCoef_Metal");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBodyFrictionCoef_MetalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBodyFrictionCoef_Metal(float value)
     {
-        BodyFrictionCoef_Metal = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBodyFrictionCoef_MetalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float BodyRestCoef_Concrete
-    {
-        get => state.Get<float>("BodyRestCoef_Concrete");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBodyRestCoef_ConcreteAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBodyRestCoef_Concrete(float value)
     {
-        BodyRestCoef_Concrete = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBodyRestCoef_ConcreteAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float BodyRestCoef_Metal
-    {
-        get => state.Get<float>("BodyRestCoef_Metal");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBodyRestCoef_MetalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBodyRestCoef_Metal(float value)
     {
-        BodyRestCoef_Metal = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBodyRestCoef_MetalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float BrakeBase
-    {
-        get => state.Get<float>("BrakeBase");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBrakeBaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBrakeBase(float value)
     {
-        BrakeBase = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBrakeBaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float BrakeCoef
-    {
-        get => state.Get<float>("BrakeCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBrakeCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBrakeCoef(float value)
     {
-        BrakeCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBrakeCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float BrakeMax
-    {
-        get => state.Get<float>("BrakeMax");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBrakeMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBrakeMax(float value)
     {
-        BrakeMax = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBrakeMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float BrakeMaxDynamic
-    {
-        get => state.Get<float>("BrakeMaxDynamic");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBrakeMaxDynamicAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithBrakeMaxDynamic(float value)
     {
-        BrakeMaxDynamic = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBrakeMaxDynamicAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float CenterOfMassY
-    {
-        get => state.Get<float>("CenterOfMassY");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCenterOfMassYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithCenterOfMassY(float value)
     {
-        CenterOfMassY = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCenterOfMassYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float CenterOfMassZNormed
-    {
-        get => state.Get<float>("CenterOfMassZNormed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCenterOfMassZNormedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithCenterOfMassZNormed(float value)
     {
-        CenterOfMassZNormed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCenterOfMassZNormedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float DamperKa
-    {
-        get => state.Get<float>("DamperKa");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperKaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDamperKa(float value)
     {
-        DamperKa = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperKaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float DamperKi
-    {
-        get => state.Get<float>("DamperKi");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperKiAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDamperKi(float value)
     {
-        DamperKi = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperKiAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float DamperLengthMax
-    {
-        get => state.Get<float>("DamperLengthMax");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperLengthMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDamperLengthMax(float value)
     {
-        DamperLengthMax = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperLengthMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float DamperLengthMin
-    {
-        get => state.Get<float>("DamperLengthMin");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperLengthMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDamperLengthMin(float value)
     {
-        DamperLengthMin = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperLengthMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float DamperLengthRest
-    {
-        get => state.Get<float>("DamperLengthRest");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperLengthRestAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDamperLengthRest(float value)
     {
-        DamperLengthRest = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperLengthRestAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int DamperModel
-    {
-        get => state.Get<int>("DamperModel");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDamperModel(int value)
     {
-        DamperModel = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float DamperTension
-    {
-        get => state.Get<float>("DamperTension");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperTensionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDamperTension(float value)
     {
-        DamperTension = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperTensionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float DebugAbsorbCoef
-    {
-        get => state.Get<float>("DebugAbsorbCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDebugAbsorbCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDebugAbsorbCoef(float value)
     {
-        DebugAbsorbCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDebugAbsorbCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float DecrepitudeCoef
-    {
-        get => state.Get<float>("DecrepitudeCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDecrepitudeCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDecrepitudeCoef(float value)
     {
-        DecrepitudeCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDecrepitudeCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float DecrepitudeImpactVal
-    {
-        get => state.Get<float>("DecrepitudeImpactVal");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDecrepitudeImpactValAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDecrepitudeImpactVal(float value)
     {
-        DecrepitudeImpactVal = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDecrepitudeImpactValAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int GameplayModel
-    {
-        get => state.Get<int>("GameplayModel");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGameplayModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithGameplayModel(int value)
     {
-        GameplayModel = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGameplayModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float GroundGravityCoef
-    {
-        get => state.Get<float>("GroundGravityCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGroundGravityCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithGroundGravityCoef(float value)
     {
-        GroundGravityCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGroundGravityCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float GroundSlowDownBase
-    {
-        get => state.Get<float>("GroundSlowDownBase");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGroundSlowDownBaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithGroundSlowDownBase(float value)
     {
-        GroundSlowDownBase = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGroundSlowDownBaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float GroundSlowDownCoef
-    {
-        get => state.Get<float>("GroundSlowDownCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGroundSlowDownCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithGroundSlowDownCoef(float value)
     {
-        GroundSlowDownCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGroundSlowDownCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public Vec3 InertiaHalfDiag
-    {
-        get => state.Get<Vec3>("InertiaHalfDiag");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetInertiaHalfDiagAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithInertiaHalfDiag(Vec3 value)
     {
-        InertiaHalfDiag = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetInertiaHalfDiagAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float InertiaMass
-    {
-        get => state.Get<float>("InertiaMass");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetInertiaMassAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithInertiaMass(float value)
     {
-        InertiaMass = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetInertiaMassAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public PlugCurve? LateralContactSlowDown
-    {
-        get => state.Get<PlugCurve?>("LateralContactSlowDown");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetLateralContactSlowDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLateralContactSlowDown(PlugCurve? value)
     {
-        LateralContactSlowDown = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetLateralContactSlowDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float LateralSlopeAdherenceMax
-    {
-        get => state.Get<float>("LateralSlopeAdherenceMax");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetLateralSlopeAdherenceMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLateralSlopeAdherenceMax(float value)
     {
-        LateralSlopeAdherenceMax = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetLateralSlopeAdherenceMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float LateralSlopeAdherenceMin
-    {
-        get => state.Get<float>("LateralSlopeAdherenceMin");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetLateralSlopeAdherenceMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLateralSlopeAdherenceMin(float value)
     {
-        LateralSlopeAdherenceMin = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetLateralSlopeAdherenceMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float LimitToMaxSpeedForce
-    {
-        get => state.Get<float>("LimitToMaxSpeedForce");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetLimitToMaxSpeedForceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLimitToMaxSpeedForce(float value)
     {
-        LimitToMaxSpeedForce = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetLimitToMaxSpeedForceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float LinearFluidFrictionCoef
-    {
-        get => state.Get<float>("LinearFluidFrictionCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetLinearFluidFrictionCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLinearFluidFrictionCoef(float value)
     {
-        LinearFluidFrictionCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetLinearFluidFrictionCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float LinearSpeed2PositiveDeltaMax
-    {
-        get => state.Get<float>("LinearSpeed2PositiveDeltaMax");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetLinearSpeed2PositiveDeltaMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLinearSpeed2PositiveDeltaMax(float value)
     {
-        LinearSpeed2PositiveDeltaMax = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetLinearSpeed2PositiveDeltaMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float Mass
-    {
-        get => state.Get<float>("Mass");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMassAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMass(float value)
     {
-        Mass = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMassAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public PlugCurve? MaxSideFriction
-    {
-        get => state.Get<PlugCurve?>("MaxSideFriction");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMaxSideFrictionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMaxSideFriction(PlugCurve? value)
     {
-        MaxSideFriction = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMaxSideFrictionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float MaxSideFrictionBlendCoef
-    {
-        get => state.Get<float>("MaxSideFrictionBlendCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMaxSideFrictionBlendCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMaxSideFrictionBlendCoef(float value)
     {
-        MaxSideFrictionBlendCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMaxSideFrictionBlendCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float MaxSideFrictionSliding
-    {
-        get => state.Get<float>("MaxSideFrictionSliding");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMaxSideFrictionSlidingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMaxSideFrictionSliding(float value)
     {
-        MaxSideFrictionSliding = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMaxSideFrictionSlidingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float MaxSpeed
-    {
-        get => state.Get<float>("MaxSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMaxSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMaxSpeed(float value)
     {
-        MaxSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMaxSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public string? Name
-    {
-        get => state.Get<string?>("Name");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithName(string? value)
     {
-        Name = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float RelSpeedMultCoef
-    {
-        get => state.Get<float>("RelSpeedMultCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetRelSpeedMultCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRelSpeedMultCoef(float value)
     {
-        RelSpeedMultCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetRelSpeedMultCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float ReverseMaxSpeed
-    {
-        get => state.Get<float>("ReverseMaxSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetReverseMaxSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithReverseMaxSpeed(float value)
     {
-        ReverseMaxSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetReverseMaxSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float RolloverAxial
-    {
-        get => state.Get<float>("RolloverAxial");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetRolloverAxialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRolloverAxial(float value)
     {
-        RolloverAxial = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetRolloverAxialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public PlugCurve? RolloverLateral
-    {
-        get => state.Get<PlugCurve?>("RolloverLateral");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetRolloverLateralAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRolloverLateral(PlugCurve? value)
     {
-        RolloverLateral = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetRolloverLateralAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public PlugCurve? RolloverLateralFromAngle
-    {
-        get => state.Get<PlugCurve?>("RolloverLateralFromAngle");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetRolloverLateralFromAngleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRolloverLateralFromAngle(PlugCurve? value)
     {
-        RolloverLateralFromAngle = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetRolloverLateralFromAngleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SideFriction1
-    {
-        get => state.Get<float>("SideFriction1");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSideFriction1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSideFriction1(float value)
     {
-        SideFriction1 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSideFriction1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SlipAngleForceCoef1
-    {
-        get => state.Get<float>("SlipAngleForceCoef1");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSlipAngleForceCoef1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSlipAngleForceCoef1(float value)
     {
-        SlipAngleForceCoef1 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSlipAngleForceCoef1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SlipAngleForceCoef2
-    {
-        get => state.Get<float>("SlipAngleForceCoef2");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSlipAngleForceCoef2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSlipAngleForceCoef2(float value)
     {
-        SlipAngleForceCoef2 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSlipAngleForceCoef2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SlipAngleForceMax
-    {
-        get => state.Get<float>("SlipAngleForceMax");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSlipAngleForceMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSlipAngleForceMax(float value)
     {
-        SlipAngleForceMax = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSlipAngleForceMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SlopeSpeedGainLimit
-    {
-        get => state.Get<float>("SlopeSpeedGainLimit");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSlopeSpeedGainLimitAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSlopeSpeedGainLimit(float value)
     {
-        SlopeSpeedGainLimit = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSlopeSpeedGainLimitAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SteerAngleMax
-    {
-        get => state.Get<float>("SteerAngleMax");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerAngleMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSteerAngleMax(float value)
     {
-        SteerAngleMax = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerAngleMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public PlugCurve? SteerDriveTorque
-    {
-        get => state.Get<PlugCurve?>("SteerDriveTorque");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerDriveTorqueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSteerDriveTorque(PlugCurve? value)
     {
-        SteerDriveTorque = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerDriveTorqueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SteerGroundTorque
-    {
-        get => state.Get<float>("SteerGroundTorque");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerGroundTorqueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSteerGroundTorque(float value)
     {
-        SteerGroundTorque = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerGroundTorqueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SteerGroundTorqueSlippingCoef
-    {
-        get => state.Get<float>("SteerGroundTorqueSlippingCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerGroundTorqueSlippingCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSteerGroundTorqueSlippingCoef(float value)
     {
-        SteerGroundTorqueSlippingCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerGroundTorqueSlippingCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SteerLowSpeed
-    {
-        get => state.Get<float>("SteerLowSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerLowSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSteerLowSpeed(float value)
     {
-        SteerLowSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerLowSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SteerRadiusCoef
-    {
-        get => state.Get<float>("SteerRadiusCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerRadiusCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSteerRadiusCoef(float value)
     {
-        SteerRadiusCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerRadiusCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SteerRadiusMin
-    {
-        get => state.Get<float>("SteerRadiusMin");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerRadiusMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSteerRadiusMin(float value)
     {
-        SteerRadiusMin = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerRadiusMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public PlugCurve? SteerSlowDown
-    {
-        get => state.Get<PlugCurve?>("SteerSlowDown");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSlowDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSteerSlowDown(PlugCurve? value)
     {
-        SteerSlowDown = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSlowDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SteerSlowDownCoef
-    {
-        get => state.Get<float>("SteerSlowDownCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSlowDownCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSteerSlowDownCoef(float value)
     {
-        SteerSlowDownCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSlowDownCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SteerSpeed
-    {
-        get => state.Get<float>("SteerSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSteerSpeed(float value)
     {
-        SteerSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int TireMaterial
-    {
-        get => state.Get<int>("TireMaterial");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTireMaterialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithTireMaterial(int value)
     {
-        TireMaterial = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTireMaterialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float TurboYellowAccelCoef
-    {
-        get => state.Get<float>("TurboYellowAccelCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboYellowAccelCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithTurboYellowAccelCoef(float value)
     {
-        TurboYellowAccelCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboYellowAccelCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int TurboYellowAccelCoefDuration
-    {
-        get => state.Get<int>("TurboYellowAccelCoefDuration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboYellowAccelCoefDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithTurboYellowAccelCoefDuration(int value)
     {
-        TurboYellowAccelCoefDuration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboYellowAccelCoefDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float VibrationPeriodSpeedCoef
-    {
-        get => state.Get<float>("VibrationPeriodSpeedCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetVibrationPeriodSpeedCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithVibrationPeriodSpeedCoef(float value)
     {
-        VibrationPeriodSpeedCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetVibrationPeriodSpeedCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float WheelRestCoef_Concrete
-    {
-        get => state.Get<float>("WheelRestCoef_Concrete");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWheelRestCoef_ConcreteAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithWheelRestCoef_Concrete(float value)
     {
-        WheelRestCoef_Concrete = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWheelRestCoef_ConcreteAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float WheelRestCoef_Metal
-    {
-        get => state.Get<float>("WheelRestCoef_Metal");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWheelRestCoef_MetalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithWheelRestCoef_Metal(float value)
     {
-        WheelRestCoef_Metal = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWheelRestCoef_MetalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CPlugVehicleCarPhyTuningBuilderMembers1<TSelf> : CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : CPlugVehicleCarPhyTuningBuilderMembers1<TSelf>
 {
     private protected CPlugVehicleCarPhyTuningBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state) : base(state) { }
-    public float RubberBallElasticity
-    {
-        get => state.Get<float>("RubberBallElasticity");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetRubberBallElasticityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithRubberBallElasticity(float value)
     {
-        RubberBallElasticity = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetRubberBallElasticityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SideFriction2
-    {
-        get => state.Get<float>("SideFriction2");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSideFriction2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSideFriction2(float value)
     {
-        SideFriction2 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSideFriction2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int SteerSlowDownFadeInDuration
-    {
-        get => state.Get<int>("SteerSlowDownFadeInDuration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSlowDownFadeInDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSteerSlowDownFadeInDuration(int value)
     {
-        SteerSlowDownFadeInDuration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSlowDownFadeInDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CPlugVehicleCarPhyTuningBuilderMembers2<TSelf> : CPlugVehicleCarPhyTuningBuilderMembers1<TSelf> where TSelf : CPlugVehicleCarPhyTuningBuilderMembers2<TSelf>
 {
     private protected CPlugVehicleCarPhyTuningBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state) : base(state) { }
-    public bool IsFakeEngine
-    {
-        get => state.Get<bool>("IsFakeEngine");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetIsFakeEngineAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithIsFakeEngine(bool value)
     {
-        IsFakeEngine = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetIsFakeEngineAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SoundBodyImpact_Hard_Threshold
-    {
-        get => state.Get<float>("SoundBodyImpact_Hard_Threshold");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundBodyImpact_Hard_ThresholdAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSoundBodyImpact_Hard_Threshold(float value)
     {
-        SoundBodyImpact_Hard_Threshold = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundBodyImpact_Hard_ThresholdAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SoundBodyImpact_Soft_Threshold
-    {
-        get => state.Get<float>("SoundBodyImpact_Soft_Threshold");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundBodyImpact_Soft_ThresholdAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSoundBodyImpact_Soft_Threshold(float value)
     {
-        SoundBodyImpact_Soft_Threshold = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundBodyImpact_Soft_ThresholdAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SoundEngineVolume
-    {
-        get => state.Get<float>("SoundEngineVolume");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundEngineVolumeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSoundEngineVolume(float value)
     {
-        SoundEngineVolume = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundEngineVolumeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SoundImpactVolume
-    {
-        get => state.Get<float>("SoundImpactVolume");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundImpactVolumeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSoundImpactVolume(float value)
     {
-        SoundImpactVolume = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundImpactVolumeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SoundSkidConcreteVolume
-    {
-        get => state.Get<float>("SoundSkidConcreteVolume");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundSkidConcreteVolumeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSoundSkidConcreteVolume(float value)
     {
-        SoundSkidConcreteVolume = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundSkidConcreteVolumeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SoundSkidSandVolume
-    {
-        get => state.Get<float>("SoundSkidSandVolume");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundSkidSandVolumeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSoundSkidSandVolume(float value)
     {
-        SoundSkidSandVolume = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundSkidSandVolumeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SoundWheelImpact_Hard_Threshold
-    {
-        get => state.Get<float>("SoundWheelImpact_Hard_Threshold");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundWheelImpact_Hard_ThresholdAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSoundWheelImpact_Hard_Threshold(float value)
     {
-        SoundWheelImpact_Hard_Threshold = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundWheelImpact_Hard_ThresholdAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SoundWheelImpact_Soft_Threshold
-    {
-        get => state.Get<float>("SoundWheelImpact_Soft_Threshold");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundWheelImpact_Soft_ThresholdAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSoundWheelImpact_Soft_Threshold(float value)
     {
-        SoundWheelImpact_Soft_Threshold = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundWheelImpact_Soft_ThresholdAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int SteerSlowDownFadeOutDuration
-    {
-        get => state.Get<int>("SteerSlowDownFadeOutDuration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSlowDownFadeOutDurationAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSteerSlowDownFadeOutDuration(int value)
     {
-        SteerSlowDownFadeOutDuration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSlowDownFadeOutDurationAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float WheelFrictionCoef_Concrete
-    {
-        get => state.Get<float>("WheelFrictionCoef_Concrete");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWheelFrictionCoef_ConcreteAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithWheelFrictionCoef_Concrete(float value)
     {
-        WheelFrictionCoef_Concrete = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWheelFrictionCoef_ConcreteAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float WheelFrictionCoef_Metal
-    {
-        get => state.Get<float>("WheelFrictionCoef_Metal");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWheelFrictionCoef_MetalAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithWheelFrictionCoef_Metal(float value)
     {
-        WheelFrictionCoef_Metal = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWheelFrictionCoef_MetalAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CPlugVehicleCarPhyTuningBuilderMembers3<TSelf> : CPlugVehicleCarPhyTuningBuilderMembers2<TSelf> where TSelf : CPlugVehicleCarPhyTuningBuilderMembers3<TSelf>
 {
     private protected CPlugVehicleCarPhyTuningBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state) : base(state) { }
-    public float DisplaySteerRadiusCoef
-    {
-        get => state.Get<float>("DisplaySteerRadiusCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDisplaySteerRadiusCoefAssignment(), value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX);
-    }
     public TSelf WithDisplaySteerRadiusCoef(float value)
     {
-        DisplaySteerRadiusCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDisplaySteerRadiusCoefAssignment(), value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX);
         return (TSelf)this;
-    }
-    public float DisplaySteerRadiusMin
-    {
-        get => state.Get<float>("DisplaySteerRadiusMin");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDisplaySteerRadiusMinAssignment(), value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX);
     }
     public TSelf WithDisplaySteerRadiusMin(float value)
     {
-        DisplaySteerRadiusMin = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDisplaySteerRadiusMinAssignment(), value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX);
         return (TSelf)this;
     }
 }
 public abstract class CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> : CPlugVehicleCarPhyTuningBuilderBase<TSelf> where TSelf : CPlugVehicleCarPhyTuningBuilderMembers4<TSelf>
 {
     private protected CPlugVehicleCarPhyTuningBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state) : base(state) { }
-    public PlugCurve? AccelCurveRear
-    {
-        get => state.Get<PlugCurve?>("AccelCurveRear");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAccelCurveRearAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithAccelCurveRear(PlugCurve? value)
     {
-        AccelCurveRear = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAccelCurveRearAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public PlugCurve? AirControlZCoefFromAngularSpeed
-    {
-        get => state.Get<PlugCurve?>("AirControlZCoefFromAngularSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirControlZCoefFromAngularSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithAirControlZCoefFromAngularSpeed(PlugCurve? value)
     {
-        AirControlZCoefFromAngularSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirControlZCoefFromAngularSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float[]? EngineAutoGearMaxRPMs
-    {
-        get => state.Get<float[]?>("EngineAutoGearMaxRPMs");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetEngineAutoGearMaxRPMsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEngineAutoGearMaxRPMs(params float[]? value)
     {
-        EngineAutoGearMaxRPMs = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetEngineAutoGearMaxRPMsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithEngineAutoGearMaxRPMs(IEnumerable<float> values)
     {
         return WithEngineAutoGearMaxRPMs(values.ToArray());
     }
-    public float[]? EngineAutoGearMinRPMs
-    {
-        get => state.Get<float[]?>("EngineAutoGearMinRPMs");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetEngineAutoGearMinRPMsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithEngineAutoGearMinRPMs(params float[]? value)
     {
-        EngineAutoGearMinRPMs = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetEngineAutoGearMinRPMsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithEngineAutoGearMinRPMs(IEnumerable<float> values)
     {
         return WithEngineAutoGearMinRPMs(values.ToArray());
     }
-    public float[]? EngineGearRatios
-    {
-        get => state.Get<float[]?>("EngineGearRatios");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetEngineGearRatiosAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithEngineGearRatios(params float[]? value)
     {
-        EngineGearRatios = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetEngineGearRatiosAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithEngineGearRatios(IEnumerable<float> values)
     {
         return WithEngineGearRatios(values.ToArray());
     }
-    public float M4LateralFrictionForce
-    {
-        get => state.Get<float>("M4LateralFrictionForce");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4LateralFrictionForceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithM4LateralFrictionForce(float value)
     {
-        M4LateralFrictionForce = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4LateralFrictionForceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M4LateralFrictionSquareForce
-    {
-        get => state.Get<float>("M4LateralFrictionSquareForce");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4LateralFrictionSquareForceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM4LateralFrictionSquareForce(float value)
     {
-        M4LateralFrictionSquareForce = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4LateralFrictionSquareForceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M4LateralFrictionSquareTorque
-    {
-        get => state.Get<float>("M4LateralFrictionSquareTorque");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4LateralFrictionSquareTorqueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM4LateralFrictionSquareTorque(float value)
     {
-        M4LateralFrictionSquareTorque = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4LateralFrictionSquareTorqueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M4LateralFrictionTorque
-    {
-        get => state.Get<float>("M4LateralFrictionTorque");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4LateralFrictionTorqueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM4LateralFrictionTorque(float value)
     {
-        M4LateralFrictionTorque = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4LateralFrictionTorqueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M4LeaveSlippingSpeed
-    {
-        get => state.Get<float>("M4LeaveSlippingSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4LeaveSlippingSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM4LeaveSlippingSpeed(float value)
     {
-        M4LeaveSlippingSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4LeaveSlippingSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public PlugCurve? M4MaxFrictionForceFromSpeed
-    {
-        get => state.Get<PlugCurve?>("M4MaxFrictionForceFromSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4MaxFrictionForceFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM4MaxFrictionForceFromSpeed(PlugCurve? value)
     {
-        M4MaxFrictionForceFromSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4MaxFrictionForceFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M4MaxFrictionForceWhenSlipping
-    {
-        get => state.Get<float>("M4MaxFrictionForceWhenSlipping");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4MaxFrictionForceWhenSlippingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM4MaxFrictionForceWhenSlipping(float value)
     {
-        M4MaxFrictionForceWhenSlipping = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4MaxFrictionForceWhenSlippingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public PlugCurve? M4MaxFrictionTorqueFromSpeed
-    {
-        get => state.Get<PlugCurve?>("M4MaxFrictionTorqueFromSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4MaxFrictionTorqueFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM4MaxFrictionTorqueFromSpeed(PlugCurve? value)
     {
-        M4MaxFrictionTorqueFromSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4MaxFrictionTorqueFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M4MaxFrictionTorqueWhenSlippingCoef
-    {
-        get => state.Get<float>("M4MaxFrictionTorqueWhenSlippingCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4MaxFrictionTorqueWhenSlippingCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM4MaxFrictionTorqueWhenSlippingCoef(float value)
     {
-        M4MaxFrictionTorqueWhenSlippingCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4MaxFrictionTorqueWhenSlippingCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M4SlipAngleSpeed
-    {
-        get => state.Get<float>("M4SlipAngleSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4SlipAngleSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM4SlipAngleSpeed(float value)
     {
-        M4SlipAngleSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4SlipAngleSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M4SteerAngleWhenSlippingMax
-    {
-        get => state.Get<float>("M4SteerAngleWhenSlippingMax");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4SteerAngleWhenSlippingMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM4SteerAngleWhenSlippingMax(float value)
     {
-        M4SteerAngleWhenSlippingMax = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4SteerAngleWhenSlippingMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M4SteerRadiusCoefFromSlipAngle
-    {
-        get => state.Get<float>("M4SteerRadiusCoefFromSlipAngle");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4SteerRadiusCoefFromSlipAngleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM4SteerRadiusCoefFromSlipAngle(float value)
     {
-        M4SteerRadiusCoefFromSlipAngle = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4SteerRadiusCoefFromSlipAngleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public PlugCurve? M4SteerRadiusFromSpeed
-    {
-        get => state.Get<PlugCurve?>("M4SteerRadiusFromSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4SteerRadiusFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM4SteerRadiusFromSpeed(PlugCurve? value)
     {
-        M4SteerRadiusFromSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4SteerRadiusFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M4SteerRadiusWhenSlippingCoef
-    {
-        get => state.Get<float>("M4SteerRadiusWhenSlippingCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4SteerRadiusWhenSlippingCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM4SteerRadiusWhenSlippingCoef(float value)
     {
-        M4SteerRadiusWhenSlippingCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM4SteerRadiusWhenSlippingCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M5AccelSlipCoefMax
-    {
-        get => state.Get<float>("M5AccelSlipCoefMax");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM5AccelSlipCoefMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM5AccelSlipCoefMax(float value)
     {
-        M5AccelSlipCoefMax = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM5AccelSlipCoefMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int M5KeepNoSteerSlowDownWhenSlippingDuration
-    {
-        get => state.Get<int>("M5KeepNoSteerSlowDownWhenSlippingDuration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM5KeepNoSteerSlowDownWhenSlippingDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM5KeepNoSteerSlowDownWhenSlippingDuration(int value)
     {
-        M5KeepNoSteerSlowDownWhenSlippingDuration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM5KeepNoSteerSlowDownWhenSlippingDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int M5KeepSlidingAccelDuration
-    {
-        get => state.Get<int>("M5KeepSlidingAccelDuration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM5KeepSlidingAccelDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM5KeepSlidingAccelDuration(int value)
     {
-        M5KeepSlidingAccelDuration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM5KeepSlidingAccelDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int M5KeepSteerSlowDownDurarion
-    {
-        get => state.Get<int>("M5KeepSteerSlowDownDurarion");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM5KeepSteerSlowDownDurarionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM5KeepSteerSlowDownDurarion(int value)
     {
-        M5KeepSteerSlowDownDurarion = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM5KeepSteerSlowDownDurarionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int M5LateralConstantSlowDownDuration
-    {
-        get => state.Get<int>("M5LateralConstantSlowDownDuration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM5LateralConstantSlowDownDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM5LateralConstantSlowDownDuration(int value)
     {
-        M5LateralConstantSlowDownDuration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM5LateralConstantSlowDownDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M5MaxAxialRolloverTorque
-    {
-        get => state.Get<float>("M5MaxAxialRolloverTorque");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM5MaxAxialRolloverTorqueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM5MaxAxialRolloverTorque(float value)
     {
-        M5MaxAxialRolloverTorque = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM5MaxAxialRolloverTorqueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public PlugCurve? M5SlippingAccelCurve
-    {
-        get => state.Get<PlugCurve?>("M5SlippingAccelCurve");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM5SlippingAccelCurveAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM5SlippingAccelCurve(PlugCurve? value)
     {
-        M5SlippingAccelCurve = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM5SlippingAccelCurveAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public PlugCurve? M5SmoothInputSteerDurationFromSpeed
-    {
-        get => state.Get<PlugCurve?>("M5SmoothInputSteerDurationFromSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM5SmoothInputSteerDurationFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM5SmoothInputSteerDurationFromSpeed(PlugCurve? value)
     {
-        M5SmoothInputSteerDurationFromSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM5SmoothInputSteerDurationFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public PlugCurve? M5SteerCoefFromSpeed
-    {
-        get => state.Get<PlugCurve?>("M5SteerCoefFromSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM5SteerCoefFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM5SteerCoefFromSpeed(PlugCurve? value)
     {
-        M5SteerCoefFromSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM5SteerCoefFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6AfterBurnoutAccMod
-    {
-        get => state.Get<float>("M6AfterBurnoutAccMod");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6AfterBurnoutAccModAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6AfterBurnoutAccMod(float value)
     {
-        M6AfterBurnoutAccMod = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6AfterBurnoutAccModAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int M6AfterBurnoutDuration
-    {
-        get => state.Get<int>("M6AfterBurnoutDuration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6AfterBurnoutDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6AfterBurnoutDuration(int value)
     {
-        M6AfterBurnoutDuration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6AfterBurnoutDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6AfterBurnoutImpulse
-    {
-        get => state.Get<float>("M6AfterBurnoutImpulse");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6AfterBurnoutImpulseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6AfterBurnoutImpulse(float value)
     {
-        M6AfterBurnoutImpulse = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6AfterBurnoutImpulseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6AirRpmAcc
-    {
-        get => state.Get<float>("M6AirRpmAcc");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6AirRpmAccAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6AirRpmAcc(float value)
     {
-        M6AirRpmAcc = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6AirRpmAccAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6AirRpmDeadening
-    {
-        get => state.Get<float>("M6AirRpmDeadening");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6AirRpmDeadeningAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6AirRpmDeadening(float value)
     {
-        M6AirRpmDeadening = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6AirRpmDeadeningAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6BrakeMaxDynamicRear
-    {
-        get => state.Get<float>("M6BrakeMaxDynamicRear");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BrakeMaxDynamicRearAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BrakeMaxDynamicRear(float value)
     {
-        M6BrakeMaxDynamicRear = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BrakeMaxDynamicRearAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6BrakeMaxRear
-    {
-        get => state.Get<float>("M6BrakeMaxRear");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BrakeMaxRearAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BrakeMaxRear(float value)
     {
-        M6BrakeMaxRear = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BrakeMaxRearAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6BrakeModulationWhenSlipping
-    {
-        get => state.Get<float>("M6BrakeModulationWhenSlipping");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BrakeModulationWhenSlippingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BrakeModulationWhenSlipping(float value)
     {
-        M6BrakeModulationWhenSlipping = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BrakeModulationWhenSlippingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6BrakeSmokeIntensity
-    {
-        get => state.Get<float>("M6BrakeSmokeIntensity");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BrakeSmokeIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BrakeSmokeIntensity(float value)
     {
-        M6BrakeSmokeIntensity = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BrakeSmokeIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6BurnoutAccMod
-    {
-        get => state.Get<float>("M6BurnoutAccMod");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutAccModAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BurnoutAccMod(float value)
     {
-        M6BurnoutAccMod = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutAccModAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6BurnoutCenterForceCoeff
-    {
-        get => state.Get<float>("M6BurnoutCenterForceCoeff");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutCenterForceCoeffAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BurnoutCenterForceCoeff(float value)
     {
-        M6BurnoutCenterForceCoeff = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutCenterForceCoeffAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6BurnoutCenterForceCoeff2
-    {
-        get => state.Get<float>("M6BurnoutCenterForceCoeff2");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutCenterForceCoeff2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BurnoutCenterForceCoeff2(float value)
     {
-        M6BurnoutCenterForceCoeff2 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutCenterForceCoeff2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int M6BurnoutDuration
-    {
-        get => state.Get<int>("M6BurnoutDuration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BurnoutDuration(int value)
     {
-        M6BurnoutDuration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6BurnoutFricMod
-    {
-        get => state.Get<float>("M6BurnoutFricMod");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutFricModAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BurnoutFricMod(float value)
     {
-        M6BurnoutFricMod = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutFricModAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public PlugCurve? M6BurnoutLateralSpeed
-    {
-        get => state.Get<PlugCurve?>("M6BurnoutLateralSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutLateralSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BurnoutLateralSpeed(PlugCurve? value)
     {
-        M6BurnoutLateralSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutLateralSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6BurnoutLateralSpeedCoeff
-    {
-        get => state.Get<float>("M6BurnoutLateralSpeedCoeff");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutLateralSpeedCoeffAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BurnoutLateralSpeedCoeff(float value)
     {
-        M6BurnoutLateralSpeedCoeff = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutLateralSpeedCoeffAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6BurnoutLateralSpeedMax
-    {
-        get => state.Get<float>("M6BurnoutLateralSpeedMax");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutLateralSpeedMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BurnoutLateralSpeedMax(float value)
     {
-        M6BurnoutLateralSpeedMax = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutLateralSpeedMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public PlugCurve? M6BurnoutRadius
-    {
-        get => state.Get<PlugCurve?>("M6BurnoutRadius");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutRadiusAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BurnoutRadius(PlugCurve? value)
     {
-        M6BurnoutRadius = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutRadiusAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6BurnoutRadiusMax
-    {
-        get => state.Get<float>("M6BurnoutRadiusMax");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutRadiusMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BurnoutRadiusMax(float value)
     {
-        M6BurnoutRadiusMax = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutRadiusMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public PlugCurve? M6BurnoutRolloverFromSpeed
-    {
-        get => state.Get<PlugCurve?>("M6BurnoutRolloverFromSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutRolloverFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BurnoutRolloverFromSpeed(PlugCurve? value)
     {
-        M6BurnoutRolloverFromSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutRolloverFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6BurnoutRpmAcc
-    {
-        get => state.Get<float>("M6BurnoutRpmAcc");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutRpmAccAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BurnoutRpmAcc(float value)
     {
-        M6BurnoutRpmAcc = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutRpmAccAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6BurnoutSmokeIntensity
-    {
-        get => state.Get<float>("M6BurnoutSmokeIntensity");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutSmokeIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BurnoutSmokeIntensity(float value)
     {
-        M6BurnoutSmokeIntensity = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutSmokeIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6BurnoutSmokeVelocity
-    {
-        get => state.Get<float>("M6BurnoutSmokeVelocity");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutSmokeVelocityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BurnoutSmokeVelocity(float value)
     {
-        M6BurnoutSmokeVelocity = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutSmokeVelocityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6BurnoutSteerCoeff
-    {
-        get => state.Get<float>("M6BurnoutSteerCoeff");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutSteerCoeffAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BurnoutSteerCoeff(float value)
     {
-        M6BurnoutSteerCoeff = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutSteerCoeffAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6BurnoutSteerCoeff2
-    {
-        get => state.Get<float>("M6BurnoutSteerCoeff2");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutSteerCoeff2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BurnoutSteerCoeff2(float value)
     {
-        M6BurnoutSteerCoeff2 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutSteerCoeff2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6BurnoutSteerCoeff3
-    {
-        get => state.Get<float>("M6BurnoutSteerCoeff3");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutSteerCoeff3Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BurnoutSteerCoeff3(float value)
     {
-        M6BurnoutSteerCoeff3 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutSteerCoeff3Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6BurnoutWheelAngularRotation
-    {
-        get => state.Get<float>("M6BurnoutWheelAngularRotation");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutWheelAngularRotationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BurnoutWheelAngularRotation(float value)
     {
-        M6BurnoutWheelAngularRotation = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BurnoutWheelAngularRotationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public PlugCurve? M6DonutRolloverFromSpeed
-    {
-        get => state.Get<PlugCurve?>("M6DonutRolloverFromSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6DonutRolloverFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6DonutRolloverFromSpeed(PlugCurve? value)
     {
-        M6DonutRolloverFromSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6DonutRolloverFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6ForceEpsilon
-    {
-        get => state.Get<float>("M6ForceEpsilon");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6ForceEpsilonAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6ForceEpsilon(float value)
     {
-        M6ForceEpsilon = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6ForceEpsilonAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6FrictionModulationWhenSlipNBrake
-    {
-        get => state.Get<float>("M6FrictionModulationWhenSlipNBrake");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6FrictionModulationWhenSlipNBrakeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6FrictionModulationWhenSlipNBrake(float value)
     {
-        M6FrictionModulationWhenSlipNBrake = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6FrictionModulationWhenSlipNBrakeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6InertialMass
-    {
-        get => state.Get<float>("M6InertialMass");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6InertialMassAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6InertialMass(float value)
     {
-        M6InertialMass = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6InertialMassAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6InertialTorqueModualtionX
-    {
-        get => state.Get<float>("M6InertialTorqueModualtionX");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6InertialTorqueModualtionXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6InertialTorqueModualtionX(float value)
     {
-        M6InertialTorqueModualtionX = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6InertialTorqueModualtionXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6InertialTorqueModulationZ
-    {
-        get => state.Get<float>("M6InertialTorqueModulationZ");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6InertialTorqueModulationZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6InertialTorqueModulationZ(float value)
     {
-        M6InertialTorqueModulationZ = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6InertialTorqueModulationZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6MaxDiffBtwGroundNormal
-    {
-        get => state.Get<float>("M6MaxDiffBtwGroundNormal");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6MaxDiffBtwGroundNormalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6MaxDiffBtwGroundNormal(float value)
     {
-        M6MaxDiffBtwGroundNormal = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6MaxDiffBtwGroundNormalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6MaxDiffBtwnPropulsionAndSpeed
-    {
-        get => state.Get<float>("M6MaxDiffBtwnPropulsionAndSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6MaxDiffBtwnPropulsionAndSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6MaxDiffBtwnPropulsionAndSpeed(float value)
     {
-        M6MaxDiffBtwnPropulsionAndSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6MaxDiffBtwnPropulsionAndSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6MaxNegAngle4Burnout
-    {
-        get => state.Get<float>("M6MaxNegAngle4Burnout");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6MaxNegAngle4BurnoutAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6MaxNegAngle4Burnout(float value)
     {
-        M6MaxNegAngle4Burnout = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6MaxNegAngle4BurnoutAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6MaxPosAngle4Burnout
-    {
-        get => state.Get<float>("M6MaxPosAngle4Burnout");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6MaxPosAngle4BurnoutAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6MaxPosAngle4Burnout(float value)
     {
-        M6MaxPosAngle4Burnout = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6MaxPosAngle4BurnoutAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6MaxSpeed4Burnout
-    {
-        get => state.Get<float>("M6MaxSpeed4Burnout");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6MaxSpeed4BurnoutAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6MaxSpeed4Burnout(float value)
     {
-        M6MaxSpeed4Burnout = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6MaxSpeed4BurnoutAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6MinSpeed4Burnout
-    {
-        get => state.Get<float>("M6MinSpeed4Burnout");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6MinSpeed4BurnoutAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6MinSpeed4Burnout(float value)
     {
-        M6MinSpeed4Burnout = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6MinSpeed4BurnoutAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public PlugCurve? M6RolloverLateralFromSpeedRatio
-    {
-        get => state.Get<PlugCurve?>("M6RolloverLateralFromSpeedRatio");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6RolloverLateralFromSpeedRatioAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6RolloverLateralFromSpeedRatio(PlugCurve? value)
     {
-        M6RolloverLateralFromSpeedRatio = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6RolloverLateralFromSpeedRatioAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public PlugCurve? ModulationFromWheelCompression
-    {
-        get => state.Get<PlugCurve?>("ModulationFromWheelCompression");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetModulationFromWheelCompressionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithModulationFromWheelCompression(PlugCurve? value)
     {
-        ModulationFromWheelCompression = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetModulationFromWheelCompressionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool NoSteerSlowDownWhenSlipping
-    {
-        get => state.Get<bool>("NoSteerSlowDownWhenSlipping");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNoSteerSlowDownWhenSlippingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithNoSteerSlowDownWhenSlipping(bool value)
     {
-        NoSteerSlowDownWhenSlipping = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNoSteerSlowDownWhenSlippingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float TurboRedAccelCoef
-    {
-        get => state.Get<float>("TurboRedAccelCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboRedAccelCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithTurboRedAccelCoef(float value)
     {
-        TurboRedAccelCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboRedAccelCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int TurboRedAccelCoefDuration
-    {
-        get => state.Get<int>("TurboRedAccelCoefDuration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboRedAccelCoefDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithTurboRedAccelCoefDuration(int value)
     {
-        TurboRedAccelCoefDuration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboRedAccelCoefDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float WaterAngularFriction
-    {
-        get => state.Get<float>("WaterAngularFriction");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterAngularFrictionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithWaterAngularFriction(float value)
     {
-        WaterAngularFriction = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterAngularFrictionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float WaterAngularFrictionSq
-    {
-        get => state.Get<float>("WaterAngularFrictionSq");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterAngularFrictionSqAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithWaterAngularFrictionSq(float value)
     {
-        WaterAngularFrictionSq = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterAngularFrictionSqAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float WaterBumpMinSpeed
-    {
-        get => state.Get<float>("WaterBumpMinSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterBumpMinSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithWaterBumpMinSpeed(float value)
     {
-        WaterBumpMinSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterBumpMinSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public PlugCurve? WaterBumpSlowDownFromSpeedRatio
-    {
-        get => state.Get<PlugCurve?>("WaterBumpSlowDownFromSpeedRatio");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterBumpSlowDownFromSpeedRatioAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithWaterBumpSlowDownFromSpeedRatio(PlugCurve? value)
     {
-        WaterBumpSlowDownFromSpeedRatio = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterBumpSlowDownFromSpeedRatioAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public PlugCurve? WaterFrictionFromSpeed
-    {
-        get => state.Get<PlugCurve?>("WaterFrictionFromSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterFrictionFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithWaterFrictionFromSpeed(PlugCurve? value)
     {
-        WaterFrictionFromSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterFrictionFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public PlugCurve? WaterReboundFromSpeedRatio
-    {
-        get => state.Get<PlugCurve?>("WaterReboundFromSpeedRatio");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterReboundFromSpeedRatioAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithWaterReboundFromSpeedRatio(PlugCurve? value)
     {
-        WaterReboundFromSpeedRatio = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterReboundFromSpeedRatioAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float WaterReboundMinHSpeed
-    {
-        get => state.Get<float>("WaterReboundMinHSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterReboundMinHSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithWaterReboundMinHSpeed(float value)
     {
-        WaterReboundMinHSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterReboundMinHSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CPlugVehicleCarPhyTuningBuilderMembers5<TSelf> : CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> where TSelf : CPlugVehicleCarPhyTuningBuilderMembers5<TSelf>
 {
     private protected CPlugVehicleCarPhyTuningBuilderMembers5(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state) : base(state) { }
-    public PlugCurve? VisualSteerAngleFromSpeed
-    {
-        get => state.Get<PlugCurve?>("VisualSteerAngleFromSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetVisualSteerAngleFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithVisualSteerAngleFromSpeed(PlugCurve? value)
     {
-        VisualSteerAngleFromSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetVisualSteerAngleFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CPlugVehicleCarPhyTuningBuilderMembers6<TSelf> : CPlugVehicleCarPhyTuningBuilderMembers5<TSelf> where TSelf : CPlugVehicleCarPhyTuningBuilderMembers6<TSelf>
 {
     private protected CPlugVehicleCarPhyTuningBuilderMembers6(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state) : base(state) { }
-    public float M6BrakeMaxDynamicFront
-    {
-        get => state.Get<float>("M6BrakeMaxDynamicFront");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BrakeMaxDynamicFrontAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithM6BrakeMaxDynamicFront(float value)
     {
-        M6BrakeMaxDynamicFront = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BrakeMaxDynamicFrontAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6BrakeMaxFront
-    {
-        get => state.Get<float>("M6BrakeMaxFront");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BrakeMaxFrontAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithM6BrakeMaxFront(float value)
     {
-        M6BrakeMaxFront = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BrakeMaxFrontAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CPlugVehicleCarPhyTuningBuilderMembers7<TSelf> : CPlugVehicleCarPhyTuningBuilderMembers4<TSelf> where TSelf : CPlugVehicleCarPhyTuningBuilderMembers7<TSelf>
 {
     private protected CPlugVehicleCarPhyTuningBuilderMembers7(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state) : base(state) { }
-    public float M6MaxRpm
-    {
-        get => state.Get<float>("M6MaxRpm");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6MaxRpmAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithM6MaxRpm(float value)
     {
-        M6MaxRpm = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6MaxRpmAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float RubberBallElasticity
-    {
-        get => state.Get<float>("RubberBallElasticity");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetRubberBallElasticityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRubberBallElasticity(float value)
     {
-        RubberBallElasticity = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetRubberBallElasticityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SideFriction2
-    {
-        get => state.Get<float>("SideFriction2");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSideFriction2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSideFriction2(float value)
     {
-        SideFriction2 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSideFriction2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int SteerDurationBeforeSteerSlowDown
-    {
-        get => state.Get<int>("SteerDurationBeforeSteerSlowDown");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerDurationBeforeSteerSlowDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSteerDurationBeforeSteerSlowDown(int value)
     {
-        SteerDurationBeforeSteerSlowDown = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerDurationBeforeSteerSlowDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int SteerSlowDownFadeInDuration
-    {
-        get => state.Get<int>("SteerSlowDownFadeInDuration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSlowDownFadeInDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSteerSlowDownFadeInDuration(int value)
     {
-        SteerSlowDownFadeInDuration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSlowDownFadeInDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float WaterGravity
-    {
-        get => state.Get<float>("WaterGravity");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterGravityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithWaterGravity(float value)
     {
-        WaterGravity = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterGravityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CPlugVehicleCarPhyTuningBuilderMembers8<TSelf> : CPlugVehicleCarPhyTuningBuilderMembers7<TSelf> where TSelf : CPlugVehicleCarPhyTuningBuilderMembers8<TSelf>
 {
     private protected CPlugVehicleCarPhyTuningBuilderMembers8(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state) : base(state) { }
-    public float BrakeCoolingSpeed
-    {
-        get => state.Get<float>("BrakeCoolingSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBrakeCoolingSpeedAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithBrakeCoolingSpeed(float value)
     {
-        BrakeCoolingSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBrakeCoolingSpeedAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Function.CFuncKeysReal? BrakeHeatSpeedFromFBrake
-    {
-        get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("BrakeHeatSpeedFromFBrake");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBrakeHeatSpeedFromFBrakeAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithBrakeHeatSpeedFromFBrake(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
     {
-        BrakeHeatSpeedFromFBrake = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBrakeHeatSpeedFromFBrakeAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithBrakeHeatSpeedFromFBrakeReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
@@ -1896,232 +991,122 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers8<TSelf> : CPlugVehi
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBrakeHeatSpeedFromFBrakeReferenceAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public bool IsFakeEngine
-    {
-        get => state.Get<bool>("IsFakeEngine");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetIsFakeEngineAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithIsFakeEngine(bool value)
     {
-        IsFakeEngine = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetIsFakeEngineAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6RpmGainCoefOnGearDown
-    {
-        get => state.Get<float>("M6RpmGainCoefOnGearDown");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6RpmGainCoefOnGearDownAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithM6RpmGainCoefOnGearDown(float value)
     {
-        M6RpmGainCoefOnGearDown = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6RpmGainCoefOnGearDownAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6RpmGainOnTakeOff
-    {
-        get => state.Get<float>("M6RpmGainOnTakeOff");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6RpmGainOnTakeOffAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithM6RpmGainOnTakeOff(float value)
     {
-        M6RpmGainOnTakeOff = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6RpmGainOnTakeOffAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6RpmLossCoefOnGearUp
-    {
-        get => state.Get<float>("M6RpmLossCoefOnGearUp");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6RpmLossCoefOnGearUpAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithM6RpmLossCoefOnGearUp(float value)
     {
-        M6RpmLossCoefOnGearUp = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6RpmLossCoefOnGearUpAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6RpmLossOnTakeOffFinished
-    {
-        get => state.Get<float>("M6RpmLossOnTakeOffFinished");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6RpmLossOnTakeOffFinishedAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithM6RpmLossOnTakeOffFinished(float value)
     {
-        M6RpmLossOnTakeOffFinished = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6RpmLossOnTakeOffFinishedAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float[]? M6RpmWantedOnGearUp
-    {
-        get => state.Get<float[]?>("M6RpmWantedOnGearUp");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6RpmWantedOnGearUpAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithM6RpmWantedOnGearUp(params float[]? value)
     {
-        M6RpmWantedOnGearUp = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6RpmWantedOnGearUpAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithM6RpmWantedOnGearUp(IEnumerable<float> values)
     {
         return WithM6RpmWantedOnGearUp(values.ToArray());
     }
-    public float M6SpeedLimitNegForTakeOffFront
-    {
-        get => state.Get<float>("M6SpeedLimitNegForTakeOffFront");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6SpeedLimitNegForTakeOffFrontAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithM6SpeedLimitNegForTakeOffFront(float value)
     {
-        M6SpeedLimitNegForTakeOffFront = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6SpeedLimitNegForTakeOffFrontAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6SpeedLimitNegTakeOffRear
-    {
-        get => state.Get<float>("M6SpeedLimitNegTakeOffRear");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6SpeedLimitNegTakeOffRearAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithM6SpeedLimitNegTakeOffRear(float value)
     {
-        M6SpeedLimitNegTakeOffRear = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6SpeedLimitNegTakeOffRearAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6SpeedLimitPositiveForTakeOffFront
-    {
-        get => state.Get<float>("M6SpeedLimitPositiveForTakeOffFront");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6SpeedLimitPositiveForTakeOffFrontAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithM6SpeedLimitPositiveForTakeOffFront(float value)
     {
-        M6SpeedLimitPositiveForTakeOffFront = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6SpeedLimitPositiveForTakeOffFrontAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float M6SpeedLimitPositiveForTakeOffRear
-    {
-        get => state.Get<float>("M6SpeedLimitPositiveForTakeOffRear");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6SpeedLimitPositiveForTakeOffRearAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithM6SpeedLimitPositiveForTakeOffRear(float value)
     {
-        M6SpeedLimitPositiveForTakeOffRear = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6SpeedLimitPositiveForTakeOffRearAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SoundBodyImpact_Hard_Threshold
-    {
-        get => state.Get<float>("SoundBodyImpact_Hard_Threshold");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundBodyImpact_Hard_ThresholdAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSoundBodyImpact_Hard_Threshold(float value)
     {
-        SoundBodyImpact_Hard_Threshold = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundBodyImpact_Hard_ThresholdAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SoundBodyImpact_Soft_Threshold
-    {
-        get => state.Get<float>("SoundBodyImpact_Soft_Threshold");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundBodyImpact_Soft_ThresholdAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSoundBodyImpact_Soft_Threshold(float value)
     {
-        SoundBodyImpact_Soft_Threshold = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundBodyImpact_Soft_ThresholdAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SoundEngineVolume
-    {
-        get => state.Get<float>("SoundEngineVolume");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundEngineVolumeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSoundEngineVolume(float value)
     {
-        SoundEngineVolume = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundEngineVolumeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SoundImpactVolume
-    {
-        get => state.Get<float>("SoundImpactVolume");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundImpactVolumeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSoundImpactVolume(float value)
     {
-        SoundImpactVolume = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundImpactVolumeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SoundSkidConcreteVolume
-    {
-        get => state.Get<float>("SoundSkidConcreteVolume");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundSkidConcreteVolumeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSoundSkidConcreteVolume(float value)
     {
-        SoundSkidConcreteVolume = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundSkidConcreteVolumeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SoundSkidSandVolume
-    {
-        get => state.Get<float>("SoundSkidSandVolume");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundSkidSandVolumeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSoundSkidSandVolume(float value)
     {
-        SoundSkidSandVolume = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundSkidSandVolumeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SoundWheelImpact_Hard_Threshold
-    {
-        get => state.Get<float>("SoundWheelImpact_Hard_Threshold");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundWheelImpact_Hard_ThresholdAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSoundWheelImpact_Hard_Threshold(float value)
     {
-        SoundWheelImpact_Hard_Threshold = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundWheelImpact_Hard_ThresholdAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SoundWheelImpact_Soft_Threshold
-    {
-        get => state.Get<float>("SoundWheelImpact_Soft_Threshold");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundWheelImpact_Soft_ThresholdAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSoundWheelImpact_Soft_Threshold(float value)
     {
-        SoundWheelImpact_Soft_Threshold = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSoundWheelImpact_Soft_ThresholdAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int SteerSlowDownFadeOutDuration
-    {
-        get => state.Get<int>("SteerSlowDownFadeOutDuration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSlowDownFadeOutDurationAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSteerSlowDownFadeOutDuration(int value)
     {
-        SteerSlowDownFadeOutDuration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSlowDownFadeOutDurationAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float WheelFrictionCoef_Concrete
-    {
-        get => state.Get<float>("WheelFrictionCoef_Concrete");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWheelFrictionCoef_ConcreteAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithWheelFrictionCoef_Concrete(float value)
     {
-        WheelFrictionCoef_Concrete = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWheelFrictionCoef_ConcreteAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float WheelFrictionCoef_Metal
-    {
-        get => state.Get<float>("WheelFrictionCoef_Metal");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWheelFrictionCoef_MetalAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithWheelFrictionCoef_Metal(float value)
     {
-        WheelFrictionCoef_Metal = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWheelFrictionCoef_MetalAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CPlugVehicleCarPhyTuningBuilderMembers9<TSelf> : CPlugVehicleCarPhyTuningBuilderMembers8<TSelf> where TSelf : CPlugVehicleCarPhyTuningBuilderMembers9<TSelf>
 {
     private protected CPlugVehicleCarPhyTuningBuilderMembers9(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state) : base(state) { }
-    public global::GBX.NET.Engines.Function.CFuncKeysReal? WaterSplashFromSpeed
-    {
-        get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("WaterSplashFromSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterSplashFromSpeedAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX);
-    }
     public TSelf WithWaterSplashFromSpeed(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
     {
-        WaterSplashFromSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterSplashFromSpeedAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX);
         return (TSelf)this;
     }
     public TSelf WithWaterSplashFromSpeedReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
@@ -2134,314 +1119,159 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers9<TSelf> : CPlugVehi
 public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVehicleCarPhyTuningBuilderMembers6<TSelf> where TSelf : CPlugVehicleCarPhyTuningBuilderMembers10<TSelf>
 {
     private protected CPlugVehicleCarPhyTuningBuilderMembers10(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state) : base(state) { }
-    public float AccelTorqueCoef
-    {
-        get => state.Get<float>("AccelTorqueCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAccelTorqueCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithAccelTorqueCoef(float value)
     {
-        AccelTorqueCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAccelTorqueCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float? AdherenceAccelDirYCoef
-    {
-        get => state.Get<float?>("AdherenceAccelDirYCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceAccelDirYCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAdherenceAccelDirYCoef(float? value)
     {
-        AdherenceAccelDirYCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceAccelDirYCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float? AdherenceAngleMaxDeg
-    {
-        get => state.Get<float?>("AdherenceAngleMaxDeg");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceAngleMaxDegAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAdherenceAngleMaxDeg(float? value)
     {
-        AdherenceAngleMaxDeg = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceAngleMaxDegAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float? AdherenceAngleMaxDeg_Roll
-    {
-        get => state.Get<float?>("AdherenceAngleMaxDeg_Roll");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceAngleMaxDeg_RollAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAdherenceAngleMaxDeg_Roll(float? value)
     {
-        AdherenceAngleMaxDeg_Roll = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceAngleMaxDeg_RollAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float? AdherenceAngleMinDeg
-    {
-        get => state.Get<float?>("AdherenceAngleMinDeg");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceAngleMinDegAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAdherenceAngleMinDeg(float? value)
     {
-        AdherenceAngleMinDeg = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceAngleMinDegAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float? AdherenceAngleMinDeg_AntiSteerUp
-    {
-        get => state.Get<float?>("AdherenceAngleMinDeg_AntiSteerUp");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceAngleMinDeg_AntiSteerUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAdherenceAngleMinDeg_AntiSteerUp(float? value)
     {
-        AdherenceAngleMinDeg_AntiSteerUp = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceAngleMinDeg_AntiSteerUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float? AdherenceAngleMinDeg_Roll
-    {
-        get => state.Get<float?>("AdherenceAngleMinDeg_Roll");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceAngleMinDeg_RollAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAdherenceAngleMinDeg_Roll(float? value)
     {
-        AdherenceAngleMinDeg_Roll = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceAngleMinDeg_RollAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float? AdherenceAntiSteerUpCoef
-    {
-        get => state.Get<float?>("AdherenceAntiSteerUpCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceAntiSteerUpCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAdherenceAntiSteerUpCoef(float? value)
     {
-        AdherenceAntiSteerUpCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceAntiSteerUpCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float? AdherenceMin_ForDragForce
-    {
-        get => state.Get<float?>("AdherenceMin_ForDragForce");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceMin_ForDragForceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAdherenceMin_ForDragForce(float? value)
     {
-        AdherenceMin_ForDragForce = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceMin_ForDragForceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float? AdherenceMin_ForTorque
-    {
-        get => state.Get<float?>("AdherenceMin_ForTorque");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceMin_ForTorqueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAdherenceMin_ForTorque(float? value)
     {
-        AdherenceMin_ForTorque = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceMin_ForTorqueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float? AdherenceVelMax
-    {
-        get => state.Get<float?>("AdherenceVelMax");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceVelMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAdherenceVelMax(float? value)
     {
-        AdherenceVelMax = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceVelMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float? AdherenceVel_VelHMax
-    {
-        get => state.Get<float?>("AdherenceVel_VelHMax");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceVel_VelHMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAdherenceVel_VelHMax(float? value)
     {
-        AdherenceVel_VelHMax = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceVel_VelHMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float? AdherenceVel_VelHMin
-    {
-        get => state.Get<float?>("AdherenceVel_VelHMin");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceVel_VelHMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAdherenceVel_VelHMin(float? value)
     {
-        AdherenceVel_VelHMin = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceVel_VelHMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float? AdherenceVel_VelYMax
-    {
-        get => state.Get<float?>("AdherenceVel_VelYMax");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceVel_VelYMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAdherenceVel_VelYMax(float? value)
     {
-        AdherenceVel_VelYMax = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceVel_VelYMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float? AdherenceVel_VelYMin
-    {
-        get => state.Get<float?>("AdherenceVel_VelYMin");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceVel_VelYMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAdherenceVel_VelYMin(float? value)
     {
-        AdherenceVel_VelYMin = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceVel_VelYMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float AfterJumpOrientationAngularSpeedThreshold
-    {
-        get => state.Get<float>("AfterJumpOrientationAngularSpeedThreshold");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAfterJumpOrientationAngularSpeedThresholdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAfterJumpOrientationAngularSpeedThreshold(float value)
     {
-        AfterJumpOrientationAngularSpeedThreshold = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAfterJumpOrientationAngularSpeedThresholdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float? AfterJumpOrientationForceCoef
-    {
-        get => state.Get<float?>("AfterJumpOrientationForceCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAfterJumpOrientationForceCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAfterJumpOrientationForceCoef(float? value)
     {
-        AfterJumpOrientationForceCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAfterJumpOrientationForceCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float? AfterJumpOrientationForceDuration
-    {
-        get => state.Get<float?>("AfterJumpOrientationForceDuration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAfterJumpOrientationForceDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAfterJumpOrientationForceDuration(float? value)
     {
-        AfterJumpOrientationForceDuration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAfterJumpOrientationForceDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool AirControlNewModel7
-    {
-        get => state.Get<bool>("AirControlNewModel7");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirControlNewModel7Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAirControlNewModel7(bool value)
     {
-        AirControlNewModel7 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirControlNewModel7Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float AirControlXStopFrictionCoef
-    {
-        get => state.Get<float>("AirControlXStopFrictionCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirControlXStopFrictionCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAirControlXStopFrictionCoef(float value)
     {
-        AirControlXStopFrictionCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirControlXStopFrictionCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float AirControlYKeepFrictionCoef
-    {
-        get => state.Get<float>("AirControlYKeepFrictionCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirControlYKeepFrictionCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAirControlYKeepFrictionCoef(float value)
     {
-        AirControlYKeepFrictionCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirControlYKeepFrictionCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float AirControlYStopFrictionCoef
-    {
-        get => state.Get<float>("AirControlYStopFrictionCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirControlYStopFrictionCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAirControlYStopFrictionCoef(float value)
     {
-        AirControlYStopFrictionCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirControlYStopFrictionCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public PlugCurve? AirFrictionFromSpeed
-    {
-        get => state.Get<PlugCurve?>("AirFrictionFromSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirFrictionFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAirFrictionFromSpeed(PlugCurve? value)
     {
-        AirFrictionFromSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirFrictionFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public PlugCurve? AirFrictionFromSpeed_Variable
-    {
-        get => state.Get<PlugCurve?>("AirFrictionFromSpeed_Variable");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirFrictionFromSpeed_VariableAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAirFrictionFromSpeed_Variable(PlugCurve? value)
     {
-        AirFrictionFromSpeed_Variable = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAirFrictionFromSpeed_VariableAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public PlugCurve? AntiWallHitAccelCoefFromSpeed
-    {
-        get => state.Get<PlugCurve?>("AntiWallHitAccelCoefFromSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAntiWallHitAccelCoefFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAntiWallHitAccelCoefFromSpeed(PlugCurve? value)
     {
-        AntiWallHitAccelCoefFromSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAntiWallHitAccelCoefFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public PlugCurve? AntiWallHitDurationInc_FromLateralContactRelSpeed
-    {
-        get => state.Get<PlugCurve?>("AntiWallHitDurationInc_FromLateralContactRelSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAntiWallHitDurationInc_FromLateralContactRelSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAntiWallHitDurationInc_FromLateralContactRelSpeed(PlugCurve? value)
     {
-        AntiWallHitDurationInc_FromLateralContactRelSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAntiWallHitDurationInc_FromLateralContactRelSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int AntiWallHitDurationMax
-    {
-        get => state.Get<int>("AntiWallHitDurationMax");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAntiWallHitDurationMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAntiWallHitDurationMax(int value)
     {
-        AntiWallHitDurationMax = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAntiWallHitDurationMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public PlugCurve? AntiWallHitForceFromSpeed
-    {
-        get => state.Get<PlugCurve?>("AntiWallHitForceFromSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAntiWallHitForceFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAntiWallHitForceFromSpeed(PlugCurve? value)
     {
-        AntiWallHitForceFromSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAntiWallHitForceFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float AntiWallHitSpeedTransfertCoef
-    {
-        get => state.Get<float>("AntiWallHitSpeedTransfertCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAntiWallHitSpeedTransfertCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAntiWallHitSpeedTransfertCoef(float value)
     {
-        AntiWallHitSpeedTransfertCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAntiWallHitSpeedTransfertCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float BrakeTorqueCoef
-    {
-        get => state.Get<float>("BrakeTorqueCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBrakeTorqueCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBrakeTorqueCoef(float value)
     {
-        BrakeTorqueCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBrakeTorqueCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>? CameraModels
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>?>("CameraModels");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCameraModelsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCameraModels(NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>? value)
     {
-        CameraModels = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCameraModelsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithCameraModels(params global::GBX.NET.Engines.Plug.CPlugCamControlModel[] values)
@@ -2452,878 +1282,443 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> : CPlugVeh
     {
         return WithCameraModels(values.ToArray());
     }
-    public bool DamperForceAllways
-    {
-        get => state.Get<bool>("DamperForceAllways");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperForceAllwaysAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithDamperForceAllways(bool value)
     {
-        DamperForceAllways = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperForceAllwaysAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool? DamperForceSmoothStop
-    {
-        get => state.Get<bool?>("DamperForceSmoothStop");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperForceSmoothStopAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDamperForceSmoothStop(bool? value)
     {
-        DamperForceSmoothStop = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperForceSmoothStopAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float DamperKeepContactDuration
-    {
-        get => state.Get<float>("DamperKeepContactDuration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperKeepContactDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDamperKeepContactDuration(float value)
     {
-        DamperKeepContactDuration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperKeepContactDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float DamperOffset
-    {
-        get => state.Get<float>("DamperOffset");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperOffsetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDamperOffset(float value)
     {
-        DamperOffset = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDamperOffsetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float DeclutchingDuration
-    {
-        get => state.Get<float>("DeclutchingDuration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDeclutchingDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDeclutchingDuration(float value)
     {
-        DeclutchingDuration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDeclutchingDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public PlugCurve? DragForceFromFrontSpeed
-    {
-        get => state.Get<PlugCurve?>("DragForceFromFrontSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDragForceFromFrontSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDragForceFromFrontSpeed(PlugCurve? value)
     {
-        DragForceFromFrontSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDragForceFromFrontSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int Drifting_BackCoefDisableDurationAfterLanding
-    {
-        get => state.Get<int>("Drifting_BackCoefDisableDurationAfterLanding");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_BackCoefDisableDurationAfterLandingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDrifting_BackCoefDisableDurationAfterLanding(int value)
     {
-        Drifting_BackCoefDisableDurationAfterLanding = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_BackCoefDisableDurationAfterLandingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public PlugCurve? Drifting_BackCoefFromSlipAngle
-    {
-        get => state.Get<PlugCurve?>("Drifting_BackCoefFromSlipAngle");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_BackCoefFromSlipAngleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDrifting_BackCoefFromSlipAngle(PlugCurve? value)
     {
-        Drifting_BackCoefFromSlipAngle = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_BackCoefFromSlipAngleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public PlugCurve? Drifting_BackCoefIntensityFromSpeed
-    {
-        get => state.Get<PlugCurve?>("Drifting_BackCoefIntensityFromSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_BackCoefIntensityFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDrifting_BackCoefIntensityFromSpeed(PlugCurve? value)
     {
-        Drifting_BackCoefIntensityFromSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_BackCoefIntensityFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float Drifting_BackCoefSmoothSpeed_CounterSteer
-    {
-        get => state.Get<float>("Drifting_BackCoefSmoothSpeed_CounterSteer");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_BackCoefSmoothSpeed_CounterSteerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDrifting_BackCoefSmoothSpeed_CounterSteer(float value)
     {
-        Drifting_BackCoefSmoothSpeed_CounterSteer = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_BackCoefSmoothSpeed_CounterSteerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float Drifting_BackCoefSmoothSpeed_Steer
-    {
-        get => state.Get<float>("Drifting_BackCoefSmoothSpeed_Steer");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_BackCoefSmoothSpeed_SteerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDrifting_BackCoefSmoothSpeed_Steer(float value)
     {
-        Drifting_BackCoefSmoothSpeed_Steer = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_BackCoefSmoothSpeed_SteerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float Drifting_BackCoefSmoothSpeed_StopSteer
-    {
-        get => state.Get<float>("Drifting_BackCoefSmoothSpeed_StopSteer");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_BackCoefSmoothSpeed_StopSteerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDrifting_BackCoefSmoothSpeed_StopSteer(float value)
     {
-        Drifting_BackCoefSmoothSpeed_StopSteer = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_BackCoefSmoothSpeed_StopSteerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public PlugCurve? Drifting_InputSteerAngleSmoothSpeedFromSlipAngle_CounterSteer
-    {
-        get => state.Get<PlugCurve?>("Drifting_InputSteerAngleSmoothSpeedFromSlipAngle_CounterSteer");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_InputSteerAngleSmoothSpeedFromSlipAngle_CounterSteerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDrifting_InputSteerAngleSmoothSpeedFromSlipAngle_CounterSteer(PlugCurve? value)
     {
-        Drifting_InputSteerAngleSmoothSpeedFromSlipAngle_CounterSteer = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_InputSteerAngleSmoothSpeedFromSlipAngle_CounterSteerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public PlugCurve? Drifting_InputSteerAngleSmoothSpeedFromSlipAngle_Steer
-    {
-        get => state.Get<PlugCurve?>("Drifting_InputSteerAngleSmoothSpeedFromSlipAngle_Steer");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_InputSteerAngleSmoothSpeedFromSlipAngle_SteerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDrifting_InputSteerAngleSmoothSpeedFromSlipAngle_Steer(PlugCurve? value)
     {
-        Drifting_InputSteerAngleSmoothSpeedFromSlipAngle_Steer = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_InputSteerAngleSmoothSpeedFromSlipAngle_SteerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public PlugCurve? Drifting_InputSteerAngleSmoothSpeedFromSlipAngle_StopSteer
-    {
-        get => state.Get<PlugCurve?>("Drifting_InputSteerAngleSmoothSpeedFromSlipAngle_StopSteer");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_InputSteerAngleSmoothSpeedFromSlipAngle_StopSteerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDrifting_InputSteerAngleSmoothSpeedFromSlipAngle_StopSteer(PlugCurve? value)
     {
-        Drifting_InputSteerAngleSmoothSpeedFromSlipAngle_StopSteer = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_InputSteerAngleSmoothSpeedFromSlipAngle_StopSteerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public PlugCurve? Drifting_InputSteerRadiusFromSpeed
-    {
-        get => state.Get<PlugCurve?>("Drifting_InputSteerRadiusFromSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_InputSteerRadiusFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDrifting_InputSteerRadiusFromSpeed(PlugCurve? value)
     {
-        Drifting_InputSteerRadiusFromSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_InputSteerRadiusFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float Drifting_TransfertForceCoef
-    {
-        get => state.Get<float>("Drifting_TransfertForceCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_TransfertForceCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDrifting_TransfertForceCoef(float value)
     {
-        Drifting_TransfertForceCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_TransfertForceCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public PlugCurve? Drifting_VehicleBrakeForce_FromVehicleBrakeSpeed
-    {
-        get => state.Get<PlugCurve?>("Drifting_VehicleBrakeForce_FromVehicleBrakeSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_VehicleBrakeForce_FromVehicleBrakeSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDrifting_VehicleBrakeForce_FromVehicleBrakeSpeed(PlugCurve? value)
     {
-        Drifting_VehicleBrakeForce_FromVehicleBrakeSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_VehicleBrakeForce_FromVehicleBrakeSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float Drifting_VehicleBrakeSpeedMin
-    {
-        get => state.Get<float>("Drifting_VehicleBrakeSpeedMin");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_VehicleBrakeSpeedMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDrifting_VehicleBrakeSpeedMin(float value)
     {
-        Drifting_VehicleBrakeSpeedMin = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_VehicleBrakeSpeedMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public PlugCurve? Drifting_VehicleLateralForce_FromVehicleLateralSpeed
-    {
-        get => state.Get<PlugCurve?>("Drifting_VehicleLateralForce_FromVehicleLateralSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_VehicleLateralForce_FromVehicleLateralSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDrifting_VehicleLateralForce_FromVehicleLateralSpeed(PlugCurve? value)
     {
-        Drifting_VehicleLateralForce_FromVehicleLateralSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_VehicleLateralForce_FromVehicleLateralSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float Drifting_VehicleLateralSpeedMin
-    {
-        get => state.Get<float>("Drifting_VehicleLateralSpeedMin");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_VehicleLateralSpeedMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDrifting_VehicleLateralSpeedMin(float value)
     {
-        Drifting_VehicleLateralSpeedMin = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_VehicleLateralSpeedMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public PlugCurve? Drifting_WheelLateralForce_FromWheelLateralSpeed
-    {
-        get => state.Get<PlugCurve?>("Drifting_WheelLateralForce_FromWheelLateralSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_WheelLateralForce_FromWheelLateralSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDrifting_WheelLateralForce_FromWheelLateralSpeed(PlugCurve? value)
     {
-        Drifting_WheelLateralForce_FromWheelLateralSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_WheelLateralForce_FromWheelLateralSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int DriveModel
-    {
-        get => state.Get<int>("DriveModel");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDriveModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDriveModel(int value)
     {
-        DriveModel = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDriveModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float EngineIdleRPM
-    {
-        get => state.Get<float>("EngineIdleRPM");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetEngineIdleRPMAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEngineIdleRPM(float value)
     {
-        EngineIdleRPM = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetEngineIdleRPMAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float EngineMaxRPM
-    {
-        get => state.Get<float>("EngineMaxRPM");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetEngineMaxRPMAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEngineMaxRPM(float value)
     {
-        EngineMaxRPM = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetEngineMaxRPMAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public PlugCurve? EngineSlowDownFromSpeed
-    {
-        get => state.Get<PlugCurve?>("EngineSlowDownFromSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetEngineSlowDownFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEngineSlowDownFromSpeed(PlugCurve? value)
     {
-        EngineSlowDownFromSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetEngineSlowDownFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float GroundAngularFluidFrictionCoef1
-    {
-        get => state.Get<float>("GroundAngularFluidFrictionCoef1");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGroundAngularFluidFrictionCoef1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGroundAngularFluidFrictionCoef1(float value)
     {
-        GroundAngularFluidFrictionCoef1 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGroundAngularFluidFrictionCoef1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float GroundAngularFluidFrictionCoef2
-    {
-        get => state.Get<float>("GroundAngularFluidFrictionCoef2");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGroundAngularFluidFrictionCoef2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGroundAngularFluidFrictionCoef2(float value)
     {
-        GroundAngularFluidFrictionCoef2 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGroundAngularFluidFrictionCoef2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float GroundAngularFluidFrictionSpeedMin
-    {
-        get => state.Get<float>("GroundAngularFluidFrictionSpeedMin");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGroundAngularFluidFrictionSpeedMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGroundAngularFluidFrictionSpeedMin(float value)
     {
-        GroundAngularFluidFrictionSpeedMin = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGroundAngularFluidFrictionSpeedMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public PlugCurve? GroundSlowDownFromSpeed
-    {
-        get => state.Get<PlugCurve?>("GroundSlowDownFromSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGroundSlowDownFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGroundSlowDownFromSpeed(PlugCurve? value)
     {
-        GroundSlowDownFromSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGroundSlowDownFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public PlugCurve? ImpulseDamperReduceCoef_FromLocalVelY
-    {
-        get => state.Get<PlugCurve?>("ImpulseDamperReduceCoef_FromLocalVelY");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetImpulseDamperReduceCoef_FromLocalVelYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithImpulseDamperReduceCoef_FromLocalVelY(PlugCurve? value)
     {
-        ImpulseDamperReduceCoef_FromLocalVelY = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetImpulseDamperReduceCoef_FromLocalVelYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float ImpulseFriction
-    {
-        get => state.Get<float>("ImpulseFriction");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetImpulseFrictionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithImpulseFriction(float value)
     {
-        ImpulseFriction = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetImpulseFrictionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float ImpulseGroundBodyRestCoef
-    {
-        get => state.Get<float>("ImpulseGroundBodyRestCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetImpulseGroundBodyRestCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithImpulseGroundBodyRestCoef(float value)
     {
-        ImpulseGroundBodyRestCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetImpulseGroundBodyRestCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float ImpulseGroundWheelRestCoef
-    {
-        get => state.Get<float>("ImpulseGroundWheelRestCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetImpulseGroundWheelRestCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithImpulseGroundWheelRestCoef(float value)
     {
-        ImpulseGroundWheelRestCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetImpulseGroundWheelRestCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float ImpulseRestCoef
-    {
-        get => state.Get<float>("ImpulseRestCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetImpulseRestCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithImpulseRestCoef(float value)
     {
-        ImpulseRestCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetImpulseRestCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float? ImpulseRotationCoef
-    {
-        get => state.Get<float?>("ImpulseRotationCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetImpulseRotationCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithImpulseRotationCoef(float? value)
     {
-        ImpulseRotationCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetImpulseRotationCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool InTuningCycle
-    {
-        get => state.Get<bool>("InTuningCycle");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyTuningBuilderAssignments.GetInTuningCycleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInTuningCycle(bool value)
     {
-        InTuningCycle = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyTuningBuilderAssignments.GetInTuningCycleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float InputBrakeSmoothSpeed
-    {
-        get => state.Get<float>("InputBrakeSmoothSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetInputBrakeSmoothSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputBrakeSmoothSpeed(float value)
     {
-        InputBrakeSmoothSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetInputBrakeSmoothSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int InputBrakeSwitchCountMax
-    {
-        get => state.Get<int>("InputBrakeSwitchCountMax");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetInputBrakeSwitchCountMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputBrakeSwitchCountMax(int value)
     {
-        InputBrakeSwitchCountMax = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetInputBrakeSwitchCountMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float InputGasSmoothSpeed
-    {
-        get => state.Get<float>("InputGasSmoothSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetInputGasSmoothSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputGasSmoothSpeed(float value)
     {
-        InputGasSmoothSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetInputGasSmoothSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float InputSteerAngleMaxDeg
-    {
-        get => state.Get<float>("InputSteerAngleMaxDeg");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetInputSteerAngleMaxDegAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputSteerAngleMaxDeg(float value)
     {
-        InputSteerAngleMaxDeg = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetInputSteerAngleMaxDegAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int KeepContactDuration
-    {
-        get => state.Get<int>("KeepContactDuration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetKeepContactDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithKeepContactDuration(int value)
     {
-        KeepContactDuration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetKeepContactDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int KeepDragForceDuration
-    {
-        get => state.Get<int>("KeepDragForceDuration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetKeepDragForceDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithKeepDragForceDuration(int value)
     {
-        KeepDragForceDuration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetKeepDragForceDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float LinearSpeedClamp
-    {
-        get => state.Get<float>("LinearSpeedClamp");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetLinearSpeedClampAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLinearSpeedClamp(float value)
     {
-        LinearSpeedClamp = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetLinearSpeedClampAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float MaxDistPerStep
-    {
-        get => state.Get<float>("MaxDistPerStep");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMaxDistPerStepAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaxDistPerStep(float value)
     {
-        MaxDistPerStep = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMaxDistPerStepAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool NoBodyBottomFriction
-    {
-        get => state.Get<bool>("NoBodyBottomFriction");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNoBodyBottomFrictionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNoBodyBottomFriction(bool value)
     {
-        NoBodyBottomFriction = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNoBodyBottomFrictionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool NormalEnv
-    {
-        get => state.Get<bool>("NormalEnv");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormalEnvAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNormalEnv(bool value)
     {
-        NormalEnv = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormalEnvAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float NormalEnvBody_FlatZoneYMax
-    {
-        get => state.Get<float>("NormalEnvBody_FlatZoneYMax");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormalEnvBody_FlatZoneYMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNormalEnvBody_FlatZoneYMax(float value)
     {
-        NormalEnvBody_FlatZoneYMax = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormalEnvBody_FlatZoneYMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float NormalEnvBody_FlatZoneYMin
-    {
-        get => state.Get<float>("NormalEnvBody_FlatZoneYMin");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormalEnvBody_FlatZoneYMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNormalEnvBody_FlatZoneYMin(float value)
     {
-        NormalEnvBody_FlatZoneYMin = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormalEnvBody_FlatZoneYMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float NormalEnvBody_HalfSizeX
-    {
-        get => state.Get<float>("NormalEnvBody_HalfSizeX");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormalEnvBody_HalfSizeXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNormalEnvBody_HalfSizeX(float value)
     {
-        NormalEnvBody_HalfSizeX = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormalEnvBody_HalfSizeXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float NormalEnvBody_HalfSizeZ
-    {
-        get => state.Get<float>("NormalEnvBody_HalfSizeZ");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormalEnvBody_HalfSizeZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNormalEnvBody_HalfSizeZ(float value)
     {
-        NormalEnvBody_HalfSizeZ = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormalEnvBody_HalfSizeZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float NormalEnvWheel_WidthCoef1
-    {
-        get => state.Get<float>("NormalEnvWheel_WidthCoef1");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormalEnvWheel_WidthCoef1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNormalEnvWheel_WidthCoef1(float value)
     {
-        NormalEnvWheel_WidthCoef1 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormalEnvWheel_WidthCoef1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float Normal_InputSteerAngleSmoothSpeedReset
-    {
-        get => state.Get<float>("Normal_InputSteerAngleSmoothSpeedReset");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormal_InputSteerAngleSmoothSpeedResetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNormal_InputSteerAngleSmoothSpeedReset(float value)
     {
-        Normal_InputSteerAngleSmoothSpeedReset = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormal_InputSteerAngleSmoothSpeedResetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float Normal_InputSteerAngleSmoothSpeed_OverSteer
-    {
-        get => state.Get<float>("Normal_InputSteerAngleSmoothSpeed_OverSteer");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormal_InputSteerAngleSmoothSpeed_OverSteerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNormal_InputSteerAngleSmoothSpeed_OverSteer(float value)
     {
-        Normal_InputSteerAngleSmoothSpeed_OverSteer = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormal_InputSteerAngleSmoothSpeed_OverSteerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float Normal_InputSteerAngleSmoothSpeed_Steer
-    {
-        get => state.Get<float>("Normal_InputSteerAngleSmoothSpeed_Steer");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormal_InputSteerAngleSmoothSpeed_SteerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNormal_InputSteerAngleSmoothSpeed_Steer(float value)
     {
-        Normal_InputSteerAngleSmoothSpeed_Steer = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormal_InputSteerAngleSmoothSpeed_SteerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public PlugCurve? Normal_InputSteerRadiusFromSpeed
-    {
-        get => state.Get<PlugCurve?>("Normal_InputSteerRadiusFromSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormal_InputSteerRadiusFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNormal_InputSteerRadiusFromSpeed(PlugCurve? value)
     {
-        Normal_InputSteerRadiusFromSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormal_InputSteerRadiusFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public PlugCurve? Normal_VehicleBrakeForce_FromVehicleBrakeSpeed
-    {
-        get => state.Get<PlugCurve?>("Normal_VehicleBrakeForce_FromVehicleBrakeSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormal_VehicleBrakeForce_FromVehicleBrakeSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNormal_VehicleBrakeForce_FromVehicleBrakeSpeed(PlugCurve? value)
     {
-        Normal_VehicleBrakeForce_FromVehicleBrakeSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormal_VehicleBrakeForce_FromVehicleBrakeSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float Normal_VehicleBrakeSpeedMax
-    {
-        get => state.Get<float>("Normal_VehicleBrakeSpeedMax");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormal_VehicleBrakeSpeedMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNormal_VehicleBrakeSpeedMax(float value)
     {
-        Normal_VehicleBrakeSpeedMax = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormal_VehicleBrakeSpeedMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float Normal_VehicleLateralSpeedMax
-    {
-        get => state.Get<float>("Normal_VehicleLateralSpeedMax");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormal_VehicleLateralSpeedMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNormal_VehicleLateralSpeedMax(float value)
     {
-        Normal_VehicleLateralSpeedMax = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormal_VehicleLateralSpeedMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public PlugCurve? Normal_WheelLateralForce_FromWheelLateralSpeed
-    {
-        get => state.Get<PlugCurve?>("Normal_WheelLateralForce_FromWheelLateralSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormal_WheelLateralForce_FromWheelLateralSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNormal_WheelLateralForce_FromWheelLateralSpeed(PlugCurve? value)
     {
-        Normal_WheelLateralForce_FromWheelLateralSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormal_WheelLateralForce_FromWheelLateralSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float Rollover
-    {
-        get => state.Get<float>("Rollover");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetRolloverAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRollover(float value)
     {
-        Rollover = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetRolloverAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public PlugCurve? SteerSlowDownFromSpeed
-    {
-        get => state.Get<PlugCurve?>("SteerSlowDownFromSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSlowDownFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSteerSlowDownFromSpeed(PlugCurve? value)
     {
-        SteerSlowDownFromSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSlowDownFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float SteerTorqueZMax
-    {
-        get => state.Get<float>("SteerTorqueZMax");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerTorqueZMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSteerTorqueZMax(float value)
     {
-        SteerTorqueZMax = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerTorqueZMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float TakeOffBoost
-    {
-        get => state.Get<float>("TakeOffBoost");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTakeOffBoostAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTakeOffBoost(float value)
     {
-        TakeOffBoost = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTakeOffBoostAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool TakeOffBoost_Enable
-    {
-        get => state.Get<bool>("TakeOffBoost_Enable");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTakeOffBoost_EnableAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTakeOffBoost_Enable(bool value)
     {
-        TakeOffBoost_Enable = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTakeOffBoost_EnableAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float TakeOffBoost_MaxRPMCoef
-    {
-        get => state.Get<float>("TakeOffBoost_MaxRPMCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTakeOffBoost_MaxRPMCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTakeOffBoost_MaxRPMCoef(float value)
     {
-        TakeOffBoost_MaxRPMCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTakeOffBoost_MaxRPMCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int? TurboRedConstantDuration
-    {
-        get => state.Get<int?>("TurboRedConstantDuration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboRedConstantDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTurboRedConstantDuration(int? value)
     {
-        TurboRedConstantDuration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboRedConstantDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public PlugCurve? TurboRedConstantFromSpeed
-    {
-        get => state.Get<PlugCurve?>("TurboRedConstantFromSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboRedConstantFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTurboRedConstantFromSpeed(PlugCurve? value)
     {
-        TurboRedConstantFromSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboRedConstantFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int? TurboYellowConstantDuration
-    {
-        get => state.Get<int?>("TurboYellowConstantDuration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboYellowConstantDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTurboYellowConstantDuration(int? value)
     {
-        TurboYellowConstantDuration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboYellowConstantDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public PlugCurve? TurboYellowConstantFromSpeed
-    {
-        get => state.Get<PlugCurve?>("TurboYellowConstantFromSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboYellowConstantFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTurboYellowConstantFromSpeed(PlugCurve? value)
     {
-        TurboYellowConstantFromSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboYellowConstantFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool UseRealGroundReferential
-    {
-        get => state.Get<bool>("UseRealGroundReferential");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetUseRealGroundReferentialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithUseRealGroundReferential(bool value)
     {
-        UseRealGroundReferential = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetUseRealGroundReferentialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int WheelKeepContactDuration
-    {
-        get => state.Get<int>("WheelKeepContactDuration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWheelKeepContactDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithWheelKeepContactDuration(int value)
     {
-        WheelKeepContactDuration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWheelKeepContactDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
 public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVehicleCarPhyTuningBuilderMembers10<TSelf> where TSelf : CPlugVehicleCarPhyTuningBuilderMembers11<TSelf>
 {
     private protected CPlugVehicleCarPhyTuningBuilderMembers11(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state) : base(state) { }
-    public bool? AdherenceUseMaxForAccel
-    {
-        get => state.Get<bool?>("AdherenceUseMaxForAccel");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceUseMaxForAccelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithAdherenceUseMaxForAccel(bool? value)
     {
-        AdherenceUseMaxForAccel = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAdherenceUseMaxForAccelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float AerialForce_AngleMinDeg
-    {
-        get => state.Get<float>("AerialForce_AngleMinDeg");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAerialForce_AngleMinDegAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAerialForce_AngleMinDeg(float value)
     {
-        AerialForce_AngleMinDeg = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAerialForce_AngleMinDegAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float AerialForce_Base
-    {
-        get => state.Get<float>("AerialForce_Base");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAerialForce_BaseAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAerialForce_Base(float value)
     {
-        AerialForce_Base = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAerialForce_BaseAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int AerialForce_Duration
-    {
-        get => state.Get<int>("AerialForce_Duration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAerialForce_DurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAerialForce_Duration(int value)
     {
-        AerialForce_Duration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAerialForce_DurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float AerialForce_VelYMin
-    {
-        get => state.Get<float>("AerialForce_VelYMin");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAerialForce_VelYMinAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAerialForce_VelYMin(float value)
     {
-        AerialForce_VelYMin = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAerialForce_VelYMinAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float AerialMove_Dist
-    {
-        get => state.Get<float>("AerialMove_Dist");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAerialMove_DistAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAerialMove_Dist(float value)
     {
-        AerialMove_Dist = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAerialMove_DistAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int AerialMove_Duration
-    {
-        get => state.Get<int>("AerialMove_Duration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAerialMove_DurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAerialMove_Duration(int value)
     {
-        AerialMove_Duration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAerialMove_DurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float AerialMove_SpeedMax
-    {
-        get => state.Get<float>("AerialMove_SpeedMax");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAerialMove_SpeedMaxAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAerialMove_SpeedMax(float value)
     {
-        AerialMove_SpeedMax = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAerialMove_SpeedMaxAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float AerialMove_SpeedMin
-    {
-        get => state.Get<float>("AerialMove_SpeedMin");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAerialMove_SpeedMinAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAerialMove_SpeedMin(float value)
     {
-        AerialMove_SpeedMin = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAerialMove_SpeedMinAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool AerialMove_UseVehicleUp
-    {
-        get => state.Get<bool>("AerialMove_UseVehicleUp");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAerialMove_UseVehicleUpAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAerialMove_UseVehicleUp(bool value)
     {
-        AerialMove_UseVehicleUp = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAerialMove_UseVehicleUpAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float? BigCarAccelCoef
-    {
-        get => state.Get<float?>("BigCarAccelCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBigCarAccelCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBigCarAccelCoef(float? value)
     {
-        BigCarAccelCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBigCarAccelCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float? BigCarControlCoef
-    {
-        get => state.Get<float?>("BigCarControlCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBigCarControlCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBigCarControlCoef(float? value)
     {
-        BigCarControlCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBigCarControlCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float? BigCarGravityCoef
-    {
-        get => state.Get<float?>("BigCarGravityCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBigCarGravityCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBigCarGravityCoef(float? value)
     {
-        BigCarGravityCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBigCarGravityCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float? BigCarScale
-    {
-        get => state.Get<float?>("BigCarScale");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBigCarScaleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBigCarScale(float? value)
     {
-        BigCarScale = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetBigCarScaleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>? CameraModels_Console
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>?>("CameraModels_Console");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCameraModels_ConsoleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCameraModels_Console(NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>? value)
     {
-        CameraModels_Console = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCameraModels_ConsoleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithCameraModels_Console(params global::GBX.NET.Engines.Plug.CPlugCamControlModel[] values)
@@ -3334,124 +1729,64 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
     {
         return WithCameraModels_Console(values.ToArray());
     }
-    public float? CatchUpAccelFactor0
-    {
-        get => state.Get<float?>("CatchUpAccelFactor0");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCatchUpAccelFactor0Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithCatchUpAccelFactor0(float? value)
     {
-        CatchUpAccelFactor0 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCatchUpAccelFactor0Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float? CatchUpAccelFactor1
-    {
-        get => state.Get<float?>("CatchUpAccelFactor1");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCatchUpAccelFactor1Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCatchUpAccelFactor1(float? value)
     {
-        CatchUpAccelFactor1 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCatchUpAccelFactor1Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float? CatchUpAccelFactor2
-    {
-        get => state.Get<float?>("CatchUpAccelFactor2");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCatchUpAccelFactor2Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCatchUpAccelFactor2(float? value)
     {
-        CatchUpAccelFactor2 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCatchUpAccelFactor2Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float? CatchUpAccelFactor3
-    {
-        get => state.Get<float?>("CatchUpAccelFactor3");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCatchUpAccelFactor3Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCatchUpAccelFactor3(float? value)
     {
-        CatchUpAccelFactor3 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCatchUpAccelFactor3Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float? CatchUpSpeed0
-    {
-        get => state.Get<float?>("CatchUpSpeed0");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCatchUpSpeed0Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCatchUpSpeed0(float? value)
     {
-        CatchUpSpeed0 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCatchUpSpeed0Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float? CatchUpSpeed1
-    {
-        get => state.Get<float?>("CatchUpSpeed1");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCatchUpSpeed1Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCatchUpSpeed1(float? value)
     {
-        CatchUpSpeed1 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCatchUpSpeed1Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float? CatchUpSpeed2
-    {
-        get => state.Get<float?>("CatchUpSpeed2");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCatchUpSpeed2Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCatchUpSpeed2(float? value)
     {
-        CatchUpSpeed2 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCatchUpSpeed2Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float? CatchUpSpeed3
-    {
-        get => state.Get<float?>("CatchUpSpeed3");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCatchUpSpeed3Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCatchUpSpeed3(float? value)
     {
-        CatchUpSpeed3 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCatchUpSpeed3Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float? CatchUpSpeed4
-    {
-        get => state.Get<float?>("CatchUpSpeed4");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCatchUpSpeed4Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCatchUpSpeed4(float? value)
     {
-        CatchUpSpeed4 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCatchUpSpeed4Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public PlugCurve? Drifting_InputSteerSensitivityFromSpeed
-    {
-        get => state.Get<PlugCurve?>("Drifting_InputSteerSensitivityFromSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_InputSteerSensitivityFromSpeedAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDrifting_InputSteerSensitivityFromSpeed(PlugCurve? value)
     {
-        Drifting_InputSteerSensitivityFromSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDrifting_InputSteerSensitivityFromSpeedAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float? FrictionFactor
-    {
-        get => state.Get<float?>("FrictionFactor");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetFrictionFactorAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFrictionFactor(float? value)
     {
-        FrictionFactor = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetFrictionFactorAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugVehicleGearBox? GearBox
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugVehicleGearBox?>("GearBox");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGearBoxAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGearBox(global::GBX.NET.Engines.Plug.CPlugVehicleGearBox? value)
     {
-        GearBox = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGearBoxAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithGearBoxReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugVehicleGearBox> value)
@@ -3460,184 +1795,94 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetGearBoxReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public Vec3? HookPos
-    {
-        get => state.Get<Vec3?>("HookPos");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetHookPosAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithHookPos(Vec3? value)
     {
-        HookPos = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetHookPosAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool? InputRawGasBrake
-    {
-        get => state.Get<bool?>("InputRawGasBrake");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetInputRawGasBrakeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputRawGasBrake(bool? value)
     {
-        InputRawGasBrake = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetInputRawGasBrakeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int? InputSteerAlgo
-    {
-        get => state.Get<int?>("InputSteerAlgo");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetInputSteerAlgoAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputSteerAlgo(int? value)
     {
-        InputSteerAlgo = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetInputSteerAlgoAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public PlugCurve? InputSteerPowFromSpeed
-    {
-        get => state.Get<PlugCurve?>("InputSteerPowFromSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetInputSteerPowFromSpeedAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputSteerPowFromSpeed(PlugCurve? value)
     {
-        InputSteerPowFromSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetInputSteerPowFromSpeedAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int JumpClassicDuration
-    {
-        get => state.Get<int>("JumpClassicDuration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetJumpClassicDurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithJumpClassicDuration(int value)
     {
-        JumpClassicDuration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetJumpClassicDurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float JumpClassicImpulseY
-    {
-        get => state.Get<float>("JumpClassicImpulseY");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetJumpClassicImpulseYAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithJumpClassicImpulseY(float value)
     {
-        JumpClassicImpulseY = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetJumpClassicImpulseYAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float JumpClassicImpulseZ
-    {
-        get => state.Get<float>("JumpClassicImpulseZ");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetJumpClassicImpulseZAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithJumpClassicImpulseZ(float value)
     {
-        JumpClassicImpulseZ = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetJumpClassicImpulseZAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int JumpCooldown
-    {
-        get => state.Get<int>("JumpCooldown");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetJumpCooldownAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithJumpCooldown(int value)
     {
-        JumpCooldown = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetJumpCooldownAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int JumpProgressiveDuration
-    {
-        get => state.Get<int>("JumpProgressiveDuration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetJumpProgressiveDurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithJumpProgressiveDuration(int value)
     {
-        JumpProgressiveDuration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetJumpProgressiveDurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float JumpProgressiveForceY
-    {
-        get => state.Get<float>("JumpProgressiveForceY");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetJumpProgressiveForceYAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithJumpProgressiveForceY(float value)
     {
-        JumpProgressiveForceY = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetJumpProgressiveForceYAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float JumpProgressiveForceZ
-    {
-        get => state.Get<float>("JumpProgressiveForceZ");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetJumpProgressiveForceZAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithJumpProgressiveForceZ(float value)
     {
-        JumpProgressiveForceZ = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetJumpProgressiveForceZAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float JumpProgressiveImpulseY
-    {
-        get => state.Get<float>("JumpProgressiveImpulseY");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetJumpProgressiveImpulseYAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithJumpProgressiveImpulseY(float value)
     {
-        JumpProgressiveImpulseY = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetJumpProgressiveImpulseYAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float JumpProgressiveImpulseZ
-    {
-        get => state.Get<float>("JumpProgressiveImpulseZ");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetJumpProgressiveImpulseZAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithJumpProgressiveImpulseZ(float value)
     {
-        JumpProgressiveImpulseZ = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetJumpProgressiveImpulseZAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool Magnetic
-    {
-        get => state.Get<bool>("Magnetic");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMagneticAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMagnetic(bool value)
     {
-        Magnetic = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMagneticAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float MagneticForce
-    {
-        get => state.Get<float>("MagneticForce");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMagneticForceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMagneticForce(float value)
     {
-        MagneticForce = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMagneticForceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float MagneticGravity
-    {
-        get => state.Get<float>("MagneticGravity");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMagneticGravityAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMagneticGravity(float value)
     {
-        MagneticGravity = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMagneticGravityAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public PlugCurve? MagneticSuperDragForceFromSpeedKmh
-    {
-        get => state.Get<PlugCurve?>("MagneticSuperDragForceFromSpeedKmh");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMagneticSuperDragForceFromSpeedKmhAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMagneticSuperDragForceFromSpeedKmh(PlugCurve? value)
     {
-        MagneticSuperDragForceFromSpeedKmh = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMagneticSuperDragForceFromSpeedKmhAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? Materials
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?>("Materials");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMaterialsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaterials(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value)
     {
-        Materials = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMaterialsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithMaterialsReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> value)
@@ -3646,24 +1891,14 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMaterialsReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public PlugCurve? Normal_InputSteerSensitivityFromSpeed
-    {
-        get => state.Get<PlugCurve?>("Normal_InputSteerSensitivityFromSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormal_InputSteerSensitivityFromSpeedAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithNormal_InputSteerSensitivityFromSpeed(PlugCurve? value)
     {
-        Normal_InputSteerSensitivityFromSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetNormal_InputSteerSensitivityFromSpeedAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape? Shape
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape?>("Shape");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetShapeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithShape(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape? value)
     {
-        Shape = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetShapeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithShapeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape> value)
@@ -3672,108 +1907,58 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> : CPlugVeh
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetShapeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public float? TurboCheatAccelCoef
-    {
-        get => state.Get<float?>("TurboCheatAccelCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboCheatAccelCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithTurboCheatAccelCoef(float? value)
     {
-        TurboCheatAccelCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboCheatAccelCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int? TurboCheatAccelCoefDuration
-    {
-        get => state.Get<int?>("TurboCheatAccelCoefDuration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboCheatAccelCoefDurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTurboCheatAccelCoefDuration(int? value)
     {
-        TurboCheatAccelCoefDuration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboCheatAccelCoefDurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int? TurboCheatConstantDuration
-    {
-        get => state.Get<int?>("TurboCheatConstantDuration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboCheatConstantDurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTurboCheatConstantDuration(int? value)
     {
-        TurboCheatConstantDuration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboCheatConstantDurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public PlugCurve? TurboCheatConstantFromSpeed
-    {
-        get => state.Get<PlugCurve?>("TurboCheatConstantFromSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboCheatConstantFromSpeedAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTurboCheatConstantFromSpeed(PlugCurve? value)
     {
-        TurboCheatConstantFromSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboCheatConstantFromSpeedAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float? UltraCatchUpAccelFactor0
-    {
-        get => state.Get<float?>("UltraCatchUpAccelFactor0");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetUltraCatchUpAccelFactor0Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithUltraCatchUpAccelFactor0(float? value)
     {
-        UltraCatchUpAccelFactor0 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetUltraCatchUpAccelFactor0Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float? UltraCatchUpAccelFactor1
-    {
-        get => state.Get<float?>("UltraCatchUpAccelFactor1");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetUltraCatchUpAccelFactor1Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithUltraCatchUpAccelFactor1(float? value)
     {
-        UltraCatchUpAccelFactor1 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetUltraCatchUpAccelFactor1Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float? UltraCatchUpAccelFactor2
-    {
-        get => state.Get<float?>("UltraCatchUpAccelFactor2");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetUltraCatchUpAccelFactor2Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithUltraCatchUpAccelFactor2(float? value)
     {
-        UltraCatchUpAccelFactor2 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetUltraCatchUpAccelFactor2Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float? UltraCatchUpAccelFactor3
-    {
-        get => state.Get<float?>("UltraCatchUpAccelFactor3");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetUltraCatchUpAccelFactor3Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithUltraCatchUpAccelFactor3(float? value)
     {
-        UltraCatchUpAccelFactor3 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetUltraCatchUpAccelFactor3Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
 public abstract class CPlugVehicleCarPhyTuningBuilderMembers12<TSelf> : CPlugVehicleCarPhyTuningBuilderMembers11<TSelf> where TSelf : CPlugVehicleCarPhyTuningBuilderMembers12<TSelf>
 {
     private protected CPlugVehicleCarPhyTuningBuilderMembers12(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state) : base(state) { }
-    public PlugCurve? AccelCurveTargetSpeedTruck
-    {
-        get => state.Get<PlugCurve?>("AccelCurveTargetSpeedTruck");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAccelCurveTargetSpeedTruckAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithAccelCurveTargetSpeedTruck(PlugCurve? value)
     {
-        AccelCurveTargetSpeedTruck = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetAccelCurveTargetSpeedTruckAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugCamControlModel? CamModelIronSight
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugCamControlModel?>("CamModelIronSight");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCamModelIronSightAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithCamModelIronSight(global::GBX.NET.Engines.Plug.CPlugCamControlModel? value)
     {
-        CamModelIronSight = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCamModelIronSightAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithCamModelIronSightReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugCamControlModel> value)
@@ -3782,14 +1967,9 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers12<TSelf> : CPlugVeh
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCamModelIronSightReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugCamControlModel? CamModelRear
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugCamControlModel?>("CamModelRear");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCamModelRearAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithCamModelRear(global::GBX.NET.Engines.Plug.CPlugCamControlModel? value)
     {
-        CamModelRear = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCamModelRearAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithCamModelRearReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugCamControlModel> value)
@@ -3798,104 +1978,54 @@ public abstract class CPlugVehicleCarPhyTuningBuilderMembers12<TSelf> : CPlugVeh
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetCamModelRearReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
-    public float MagneticHackAccelCoef_Val
-    {
-        get => state.Get<float>("MagneticHackAccelCoef_Val");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMagneticHackAccelCoef_ValAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithMagneticHackAccelCoef_Val(float value)
     {
-        MagneticHackAccelCoef_Val = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMagneticHackAccelCoef_ValAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public bool? MagneticHackDamperForceAllways
-    {
-        get => state.Get<bool?>("MagneticHackDamperForceAllways");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMagneticHackDamperForceAllwaysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithMagneticHackDamperForceAllways(bool? value)
     {
-        MagneticHackDamperForceAllways = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMagneticHackDamperForceAllwaysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public bool MagneticHackEnabled
-    {
-        get => state.Get<bool>("MagneticHackEnabled");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMagneticHackEnabledAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithMagneticHackEnabled(bool value)
     {
-        MagneticHackEnabled = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMagneticHackEnabledAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float MagneticHackSpeedOffset_Val
-    {
-        get => state.Get<float>("MagneticHackSpeedOffset_Val");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMagneticHackSpeedOffset_ValAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithMagneticHackSpeedOffset_Val(float value)
     {
-        MagneticHackSpeedOffset_Val = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMagneticHackSpeedOffset_ValAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public int MagneticKeepContactDuration
-    {
-        get => state.Get<int>("MagneticKeepContactDuration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMagneticKeepContactDurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithMagneticKeepContactDuration(int value)
     {
-        MagneticKeepContactDuration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetMagneticKeepContactDurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public PlugCurve? TargetSpeedFromSpeedTruck
-    {
-        get => state.Get<PlugCurve?>("TargetSpeedFromSpeedTruck");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTargetSpeedFromSpeedTruckAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithTargetSpeedFromSpeedTruck(PlugCurve? value)
     {
-        TargetSpeedFromSpeedTruck = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTargetSpeedFromSpeedTruckAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public PlugCurve? TargetSpeedFromSpeedTruckRear
-    {
-        get => state.Get<PlugCurve?>("TargetSpeedFromSpeedTruckRear");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTargetSpeedFromSpeedTruckRearAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithTargetSpeedFromSpeedTruckRear(PlugCurve? value)
     {
-        TargetSpeedFromSpeedTruckRear = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTargetSpeedFromSpeedTruckRearAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float TurboBrakeCoef
-    {
-        get => state.Get<float>("TurboBrakeCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboBrakeCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithTurboBrakeCoef(float value)
     {
-        TurboBrakeCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboBrakeCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public int TurboBrakeDuration
-    {
-        get => state.Get<int>("TurboBrakeDuration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboBrakeDurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithTurboBrakeDuration(int value)
     {
-        TurboBrakeDuration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboBrakeDurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float TurboBrakeMinSpeedZKmh
-    {
-        get => state.Get<float>("TurboBrakeMinSpeedZKmh");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboBrakeMinSpeedZKmhAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithTurboBrakeMinSpeedZKmh(float value)
     {
-        TurboBrakeMinSpeedZKmh = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetTurboBrakeMinSpeedZKmhAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
 }
@@ -3987,50 +2117,6 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         var chunk090ED034 = new global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED034();
         node.Chunks.Add(chunk090ED034);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED007 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED008 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED00B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED00B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED00D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED00D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED00E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED00E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED013 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED014>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED014 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED016 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED017 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED018 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED019>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED019 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED01A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED01A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED01B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED01B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED01D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED01D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED01E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED01E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED01F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED01F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED020>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED020 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED023>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED023 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED024>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED024 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED026>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED026 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED027>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED027 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED028>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED028 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED029>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED029 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED02A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED02A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED02B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED02B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED02C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED02C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED02D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED02D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED02E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED02E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED02F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED02F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED030>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED030 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED031>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED031 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED032>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED032 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED033>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED033 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED034>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED034 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning CreateRecipe1(GameVersion game)
     {
@@ -4189,85 +2275,6 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         node.Chunks.Add(chunk090ED060);
         return node;
     }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED007 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED00B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED00B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED00D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED00D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED00E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED00E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED013 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED014>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED014 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED016 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED017 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED018 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED019>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED019 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED01A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED01A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED01B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED01B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED01D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED01D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED01E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED01E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED01F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED01F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED020>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED020 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED023>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED023 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED024>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED024 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED026>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED026 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED027>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED027 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED028>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED028 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED029>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED029 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED02A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED02A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED02B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED02B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED02C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED02C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED02D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED02D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED02E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED02E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED030>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED030 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED031>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED031 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED032>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED032 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED033>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED033 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED034>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED034 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED035>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED035 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED036>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED036 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED037>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED037 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED038>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED038 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED039>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED039 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED040>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED040 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED041>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED041 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED042>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED042 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED043>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED043 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED044>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED044 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED046>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED046 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED047>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED047 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED048>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED048 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED049>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED049 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED04D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED04D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED04E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED04E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED04F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED04F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED051>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED051 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED052>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED052 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED053>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED053 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED056>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED056 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED057>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED057 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED058>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED058 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED059>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED059 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED05A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED05A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED05B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED05B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED05C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED05C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED05D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED05D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED05E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED05E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED05F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED05F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED060>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED060 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning CreateRecipe2(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning();
@@ -4424,85 +2431,6 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         var chunk090ED061 = new global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED061();
         node.Chunks.Add(chunk090ED061);
         return node;
-    }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED007 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED00B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED00B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED00D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED00D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED00E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED00E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED013 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED014>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED014 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED017 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED018 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED019>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED019 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED01A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED01A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED01B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED01B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED01D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED01D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED01E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED01E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED01F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED01F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED020>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED020 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED023>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED023 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED024>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED024 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED026>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED026 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED027>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED027 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED028>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED028 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED029>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED029 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED02A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED02A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED02B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED02B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED02C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED02C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED02D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED02D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED02E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED02E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED030>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED030 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED031>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED031 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED032>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED032 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED033>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED033 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED034>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED034 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED035>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED035 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED036>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED036 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED037>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED037 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED038>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED038 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED039>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED039 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED040>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED040 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED041>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED041 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED042>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED042 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED043>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED043 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED044>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED044 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED046>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED046 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED047>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED047 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED048>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED048 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED049>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED049 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED04D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED04D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED04E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED04E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED04F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED04F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED051>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED051 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED052>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED052 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED053>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED053 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED056>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED056 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED057>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED057 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED058>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED058 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED059>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED059 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED05A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED05A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED05B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED05B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED05C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED05C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED05D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED05D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED05E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED05E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED05F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED05F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED060>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED060 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED061>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED061 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning CreateRecipe3(GameVersion game)
     {
@@ -4670,90 +2598,6 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         var chunk090EB000 = new global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning.Chunk090EB000();
         node.Chunks.Add(chunk090EB000);
         return node;
-    }
-    private static void ValidateRecipe3(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED007 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED00B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED00B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED00D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED00D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED00E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED00E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED013 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED014>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED014 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED017 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED018 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED019>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED019 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED01A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED01A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED01B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED01B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED01D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED01D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED01E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED01E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED01F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED01F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED020>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED020 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED023>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED023 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED024>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED024 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED026>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED026 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED027>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED027 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED028>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED028 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED029>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED029 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED02A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED02A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED02B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED02B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED02C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED02C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED02D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED02D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED02E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED02E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED030>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED030 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED031>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED031 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED032>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED032 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED033>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED033 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED034>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED034 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED035>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED035 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED036>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED036 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED037>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED037 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED038>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED038 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED039>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED039 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED040>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED040 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED041>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED041 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED042>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED042 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED043>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED043 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED044>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED044 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED046>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED046 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED047>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED047 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED049>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED049 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED04D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED04D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED04E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED04E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED04F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED04F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED051>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED051 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED052>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED052 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED053>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED053 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED056>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED056 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED057>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED057 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED058>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED058 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED059>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED059 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED05A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED05A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED05B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED05B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED05C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED05C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED05D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED05D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED05E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED05E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED05F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED05F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED060>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED060 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED061>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED061 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED062>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED062 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED063>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED063 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED064>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED064 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED065>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED065 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED066>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED066 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning.Chunk090EB000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090EB000 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning CreateRecipe4(GameVersion game)
     {
@@ -4939,99 +2783,6 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         var chunk090EB001 = new global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning.Chunk090EB001();
         node.Chunks.Add(chunk090EB001);
         return node;
-    }
-    private static void ValidateRecipe4(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED007 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED00B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED00B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED00D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED00D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED00E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED00E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED013 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED014>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED014 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED017 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED018 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED01D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED01D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED01F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED01F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED020>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED020 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED023>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED023 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED024>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED024 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED026>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED026 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED027>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED027 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED028>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED028 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED029>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED029 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED02A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED02A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED02B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED02B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED02C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED02C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED02E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED02E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED030>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED030 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED031>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED031 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED033>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED033 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED034>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED034 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED035>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED035 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED036>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED036 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED037>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED037 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED038>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED038 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED039>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED039 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED040>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED040 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED041>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED041 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED042>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED042 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED043>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED043 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED044>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED044 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED046>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED046 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED047>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED047 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED049>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED049 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED04D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED04D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED04E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED04E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED04F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED04F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED051>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED051 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED052>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED052 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED053>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED053 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED056>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED056 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED05C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED05C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED05D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED05D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED05F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED05F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED061>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED061 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED062>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED062 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED063>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED063 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED064>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED064 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED065>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED065 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED066>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED066 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED06A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED06A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED06E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED06E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED072>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED072 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED077>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED077 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED078>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED078 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED079>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED079 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED07D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED07D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED082>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED082 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED084>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED084 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED085>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED085 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED086>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED086 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED088>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED088 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED089>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED089 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED08A>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED08A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED08B>() is not { Version: 22 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED08B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED08C>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED08C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED08D>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED08D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED08E>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED08E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED094>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED094 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED095>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED095 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED096>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED096 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED097>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED097 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning.Chunk090EB000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090EB000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning.Chunk090EB001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090EB001 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning CreateRecipe5(GameVersion game)
     {
@@ -5227,103 +2978,6 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         var chunk090EB001 = new global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning.Chunk090EB001();
         node.Chunks.Add(chunk090EB001);
         return node;
-    }
-    private static void ValidateRecipe5(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED007 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED00B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED00B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED00D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED00D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED00E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED00E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED013 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED014>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED014 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED017 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED018 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED01D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED01D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED01F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED01F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED020>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED020 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED023>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED023 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED024>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED024 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED026>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED026 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED027>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED027 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED028>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED028 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED029>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED029 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED02A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED02A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED02B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED02B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED02C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED02C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED02E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED02E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED030>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED030 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED031>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED031 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED033>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED033 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED034>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED034 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED035>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED035 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED036>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED036 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED037>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED037 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED038>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED038 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED039>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED039 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED040>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED040 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED041>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED041 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED042>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED042 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED043>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED043 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED044>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED044 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED046>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED046 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED047>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED047 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED049>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED049 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED04D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED04D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED04E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED04E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED04F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED04F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED051>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED051 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED052>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED052 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED053>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED053 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED056>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED056 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED05C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED05C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED05D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED05D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED05F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED05F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED061>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED061 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED062>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED062 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED063>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED063 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED064>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED064 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED065>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED065 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED066>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED066 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED06A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED06A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED06E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED06E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED072>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED072 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED077>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED077 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED078>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED078 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED079>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED079 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED07D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED07D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED082>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED082 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED084>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED084 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED085>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED085 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED086>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED086 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED088>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED088 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED089>() is not { Version: 7 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED089 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED08A>() is not { Version: 7 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED08A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED08B>() is not { Version: 23 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED08B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED08C>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED08C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED08D>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED08D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED08E>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED08E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED094>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED094 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED095>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED095 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED096>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED096 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED097>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED097 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED098>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED098 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED099>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED099 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED09A>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED09A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED09B>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED09B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning.Chunk090EB000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090EB000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning.Chunk090EB001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090EB001 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning CreateRecipe6(GameVersion game)
     {
@@ -5530,108 +3184,6 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         node.Chunks.Add(chunk090EB001);
         return node;
     }
-    private static void ValidateRecipe6(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED007 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED00B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED00B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED00D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED00D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED00E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED00E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED013 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED014>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED014 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED017 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED018 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED01D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED01D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED01F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED01F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED020>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED020 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED023>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED023 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED024>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED024 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED026>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED026 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED027>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED027 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED028>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED028 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED029>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED029 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED02A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED02A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED02B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED02B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED02C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED02C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED02E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED02E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED030>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED030 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED031>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED031 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED033>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED033 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED034>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED034 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED035>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED035 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED036>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED036 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED037>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED037 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED038>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED038 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED039>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED039 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED040>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED040 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED041>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED041 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED042>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED042 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED043>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED043 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED044>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED044 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED046>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED046 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED047>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED047 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED049>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED049 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED04D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED04D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED04E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED04E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED04F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED04F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED051>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED051 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED052>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED052 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED053>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED053 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED056>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED056 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED05C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED05C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED05D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED05D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED05F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED05F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED061>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED061 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED062>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED062 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED063>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED063 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED064>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED064 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED065>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED065 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED066>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED066 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED06A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED06A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED06E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED06E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED072>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED072 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED077>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED077 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED078>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED078 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED079>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED079 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED07D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED07D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED082>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED082 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED084>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED084 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED085>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED085 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED086>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED086 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED088>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED088 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED089>() is not { Version: 9 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED089 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED08A>() is not { Version: 7 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED08A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED08B>() is not { Version: 34 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED08B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED08C>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED08C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED08D>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED08D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED08E>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED08E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED094>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED094 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED095>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED095 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED096>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED096 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED097>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED097 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED098>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED098 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED099>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED099 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED09A>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED09A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED09B>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED09B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED09C>() is not { Version: 20 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED09C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED09D>() is not { Version: 19 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED09D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED09E>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED09E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED09F>() is not { Version: 13 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED09F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED0A0>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED0A0 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning.Chunk090EB000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090EB000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning.Chunk090EB001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090EB001 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning CreateRecipe7(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning();
@@ -5828,105 +3380,6 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         node.Chunks.Add(chunk090EB001);
         return node;
     }
-    private static void ValidateRecipe7(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED007 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED00B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED00B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED00D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED00D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED00E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED00E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED013 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED014>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED014 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED017 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED018 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED01D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED01D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED01F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED01F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED020>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED020 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED023>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED023 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED026>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED026 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED027>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED027 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED02E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED02E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED031>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED031 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED033>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED033 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED034>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED034 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED035>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED035 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED039>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED039 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED03E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED03E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED041>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED041 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED042>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED042 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED043>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED043 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED044>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED044 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED047>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED047 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED04D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED04D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED04E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED04E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED051>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED051 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED053>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED053 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED056>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED056 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED05C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED05C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED05F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED05F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED062>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED062 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED063>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED063 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED064>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED064 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED065>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED065 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED066>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED066 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED06A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED06A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED06E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED06E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED072>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED072 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED078>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED078 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED07D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED07D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED084>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED084 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED085>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED085 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED086>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED086 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED088>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090ED088 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED089>() is not { Version: 10 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED089 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED08A>() is not { Version: 8 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED08A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED08B>() is not { Version: 37 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED08B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED08C>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED08C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED08D>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED08D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED08E>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED08E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED094>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED094 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED095>() is not { Version: 7 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED095 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED096>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED096 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED097>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED097 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED098>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED098 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED099>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED099 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED09A>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED09A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED09B>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED09B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED09C>() is not { Version: 21 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED09C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED09D>() is not { Version: 21 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED09D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED09E>() is not { Version: 8 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED09E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED09F>() is not { Version: 14 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED09F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED0A0>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED0A0 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED0A1>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED0A1 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED0A2>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED0A2 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED0A3>() is not { Version: 13 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED0A3 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED0A4>() is not { Version: 18 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED0A4 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED0A5>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED0A5 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED0A6>() is not { Version: 15 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED0A6 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED0A7>() is not { Version: 19 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED0A7 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED0A8>() is not { Version: 10 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED0A8 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED0A9>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED0A9 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED0AA>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED0AA is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED0AB>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED0AB is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED0AC>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED0AC is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED0AD>() is not { Version: 11 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED0AD is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED0AE>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED0AE is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED0AF>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED0AF is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.Chunk090ED0B0>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090ED0B0 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning.Chunk090EB000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090EB000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning.Chunk090EB001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090EB001 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning node, GameVersion game)
-    {
-    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -5948,14 +3401,9 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
             var node = CPlugVehicleCarPhyTuningBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CPlugVehicleCarPhyTuningBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CPlugVehicleCarPhyTuningBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning node);
     }
     public partial class TMPU : CPlugVehicleCarPhyTuningBuilderMembers3<TMPU>
     {
@@ -5966,14 +3414,9 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
             var node = CPlugVehicleCarPhyTuningBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CPlugVehicleCarPhyTuningBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CPlugVehicleCarPhyTuningBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning node);
     }
     public partial class TMSX : CPlugVehicleCarPhyTuningBuilderMembers9<TMSX>
     {
@@ -5982,24 +3425,14 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         {
             return base.WithBrakeHeatSpeedFromFBrake(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public float DisplaySteerRadiusCoef
-        {
-            get => state.Get<float>("DisplaySteerRadiusCoef");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDisplaySteerRadiusCoefAssignment(), value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX);
-        }
         public TMSX WithDisplaySteerRadiusCoef(float value)
         {
-            DisplaySteerRadiusCoef = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDisplaySteerRadiusCoefAssignment(), value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX);
             return this;
-        }
-        public float DisplaySteerRadiusMin
-        {
-            get => state.Get<float>("DisplaySteerRadiusMin");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDisplaySteerRadiusMinAssignment(), value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX);
         }
         public TMSX WithDisplaySteerRadiusMin(float value)
         {
-            DisplaySteerRadiusMin = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetDisplaySteerRadiusMinAssignment(), value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX);
             return this;
         }
         public TMSX WithWaterSplashFromSpeed(global::GBX.NET.Interfaces.Function.IFuncKeysRealTMSX? value)
@@ -6012,14 +3445,9 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
             var node = CPlugVehicleCarPhyTuningBuilder.CreateRecipe1(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CPlugVehicleCarPhyTuningBuilder.ValidateRecipe1(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CPlugVehicleCarPhyTuningBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning node);
     }
     public partial class TMNESWC : CPlugVehicleCarPhyTuningBuilderMembers9<TMNESWC>
     {
@@ -6028,14 +3456,9 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         {
             return base.WithBrakeHeatSpeedFromFBrake(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public PlugCurve? VisualSteerAngleFromSpeed
-        {
-            get => state.Get<PlugCurve?>("VisualSteerAngleFromSpeed");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetVisualSteerAngleFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-        }
         public TMNESWC WithVisualSteerAngleFromSpeed(PlugCurve? value)
         {
-            VisualSteerAngleFromSpeed = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetVisualSteerAngleFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public TMNESWC WithWaterSplashFromSpeed(global::GBX.NET.Interfaces.Function.IFuncKeysRealTMNESWC? value)
@@ -6048,14 +3471,9 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
             var node = CPlugVehicleCarPhyTuningBuilder.CreateRecipe2(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CPlugVehicleCarPhyTuningBuilder.ValidateRecipe2(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CPlugVehicleCarPhyTuningBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning node);
     }
     public partial class VSK5 : CPlugVehicleCarPhyTuningBuilderMembers8<VSK5>
     {
@@ -6064,34 +3482,19 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         {
             return base.WithBrakeHeatSpeedFromFBrake(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public float M6BrakeMaxDynamicFront
-        {
-            get => state.Get<float>("M6BrakeMaxDynamicFront");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BrakeMaxDynamicFrontAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-        }
         public VSK5 WithM6BrakeMaxDynamicFront(float value)
         {
-            M6BrakeMaxDynamicFront = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BrakeMaxDynamicFrontAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
             return this;
-        }
-        public float M6BrakeMaxFront
-        {
-            get => state.Get<float>("M6BrakeMaxFront");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BrakeMaxFrontAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         }
         public VSK5 WithM6BrakeMaxFront(float value)
         {
-            M6BrakeMaxFront = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BrakeMaxFrontAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
             return this;
-        }
-        public PlugCurve? VisualSteerAngleFromSpeed
-        {
-            get => state.Get<PlugCurve?>("VisualSteerAngleFromSpeed");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetVisualSteerAngleFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
         }
         public VSK5 WithVisualSteerAngleFromSpeed(PlugCurve? value)
         {
-            VisualSteerAngleFromSpeed = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetVisualSteerAngleFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningVSK5 BuildInterface() => Build();
@@ -6100,14 +3503,9 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
             var node = CPlugVehicleCarPhyTuningBuilder.CreateRecipe3(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CPlugVehicleCarPhyTuningBuilder.ValidateRecipe3(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CPlugVehicleCarPhyTuningBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning node);
     }
     public partial class TMF : CPlugVehicleCarPhyTuningBuilderMembers8<TMF>
     {
@@ -6116,34 +3514,19 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         {
             return base.WithBrakeHeatSpeedFromFBrake(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public float M6BrakeMaxDynamicFront
-        {
-            get => state.Get<float>("M6BrakeMaxDynamicFront");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BrakeMaxDynamicFrontAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-        }
         public TMF WithM6BrakeMaxDynamicFront(float value)
         {
-            M6BrakeMaxDynamicFront = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BrakeMaxDynamicFrontAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
             return this;
-        }
-        public float M6BrakeMaxFront
-        {
-            get => state.Get<float>("M6BrakeMaxFront");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BrakeMaxFrontAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMF WithM6BrakeMaxFront(float value)
         {
-            M6BrakeMaxFront = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6BrakeMaxFrontAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
             return this;
-        }
-        public PlugCurve? VisualSteerAngleFromSpeed
-        {
-            get => state.Get<PlugCurve?>("VisualSteerAngleFromSpeed");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetVisualSteerAngleFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMF WithVisualSteerAngleFromSpeed(PlugCurve? value)
         {
-            VisualSteerAngleFromSpeed = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetVisualSteerAngleFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningTMF BuildInterface() => Build();
@@ -6152,76 +3535,41 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
             var node = CPlugVehicleCarPhyTuningBuilder.CreateRecipe3(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CPlugVehicleCarPhyTuningBuilder.ValidateRecipe3(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CPlugVehicleCarPhyTuningBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning node);
     }
     public partial class MP3 : CPlugVehicleCarPhyTuningBuilderMembers10<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning> state) : base(state) { }
-        public float M6MaxRpm
-        {
-            get => state.Get<float>("M6MaxRpm");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6MaxRpmAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-        }
         public MP3 WithM6MaxRpm(float value)
         {
-            M6MaxRpm = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6MaxRpmAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
-        }
-        public float RubberBallElasticity
-        {
-            get => state.Get<float>("RubberBallElasticity");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetRubberBallElasticityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP3 WithRubberBallElasticity(float value)
         {
-            RubberBallElasticity = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetRubberBallElasticityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
-        }
-        public float SideFriction2
-        {
-            get => state.Get<float>("SideFriction2");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSideFriction2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP3 WithSideFriction2(float value)
         {
-            SideFriction2 = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSideFriction2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
-        }
-        public int SteerDurationBeforeSteerSlowDown
-        {
-            get => state.Get<int>("SteerDurationBeforeSteerSlowDown");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerDurationBeforeSteerSlowDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP3 WithSteerDurationBeforeSteerSlowDown(int value)
         {
-            SteerDurationBeforeSteerSlowDown = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerDurationBeforeSteerSlowDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
-        }
-        public int SteerSlowDownFadeInDuration
-        {
-            get => state.Get<int>("SteerSlowDownFadeInDuration");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSlowDownFadeInDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP3 WithSteerSlowDownFadeInDuration(int value)
         {
-            SteerSlowDownFadeInDuration = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSlowDownFadeInDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
-        }
-        public float WaterGravity
-        {
-            get => state.Get<float>("WaterGravity");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterGravityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP3 WithWaterGravity(float value)
         {
-            WaterGravity = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterGravityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMP3 BuildInterface() => Build();
@@ -6230,14 +3578,9 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
             var node = CPlugVehicleCarPhyTuningBuilder.CreateRecipe4(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CPlugVehicleCarPhyTuningBuilder.ValidateRecipe4(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CPlugVehicleCarPhyTuningBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning node);
     }
     public partial class TMT : CPlugVehicleCarPhyTuningBuilderMembers11<TMT>
     {
@@ -6258,68 +3601,38 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         {
             return WithCameraModels_Console(values.ToArray());
         }
-        public float M6MaxRpm
-        {
-            get => state.Get<float>("M6MaxRpm");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6MaxRpmAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-        }
         public TMT WithM6MaxRpm(float value)
         {
-            M6MaxRpm = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6MaxRpmAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public TMT WithMaterials(global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT? value)
         {
             return base.WithMaterials(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?)null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public float RubberBallElasticity
-        {
-            get => state.Get<float>("RubberBallElasticity");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetRubberBallElasticityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-        }
         public TMT WithRubberBallElasticity(float value)
         {
-            RubberBallElasticity = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetRubberBallElasticityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
-        }
-        public float SideFriction2
-        {
-            get => state.Get<float>("SideFriction2");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSideFriction2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMT WithSideFriction2(float value)
         {
-            SideFriction2 = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSideFriction2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
-        }
-        public int SteerDurationBeforeSteerSlowDown
-        {
-            get => state.Get<int>("SteerDurationBeforeSteerSlowDown");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerDurationBeforeSteerSlowDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMT WithSteerDurationBeforeSteerSlowDown(int value)
         {
-            SteerDurationBeforeSteerSlowDown = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerDurationBeforeSteerSlowDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
-        }
-        public int SteerSlowDownFadeInDuration
-        {
-            get => state.Get<int>("SteerSlowDownFadeInDuration");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSlowDownFadeInDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMT WithSteerSlowDownFadeInDuration(int value)
         {
-            SteerSlowDownFadeInDuration = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSlowDownFadeInDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
-        }
-        public float WaterGravity
-        {
-            get => state.Get<float>("WaterGravity");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterGravityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMT WithWaterGravity(float value)
         {
-            WaterGravity = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterGravityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningTMT BuildInterface() => Build();
@@ -6328,14 +3641,9 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
             var node = CPlugVehicleCarPhyTuningBuilder.CreateRecipe5(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugVehicleCarPhyTuningBuilder.ValidateRecipe5(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugVehicleCarPhyTuningBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning node);
     }
     public partial class MP4 : CPlugVehicleCarPhyTuningBuilderMembers12<MP4>
     {
@@ -6368,72 +3676,42 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
         {
             return base.WithGearBox(value is null ? (global::GBX.NET.Engines.Plug.CPlugVehicleGearBox?)null : value is global::GBX.NET.Engines.Plug.CPlugVehicleGearBox node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public float M6MaxRpm
-        {
-            get => state.Get<float>("M6MaxRpm");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6MaxRpmAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-        }
         public MP4 WithM6MaxRpm(float value)
         {
-            M6MaxRpm = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetM6MaxRpmAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public MP4 WithMaterials(global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4? value)
         {
             return base.WithMaterials(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?)null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public float RubberBallElasticity
-        {
-            get => state.Get<float>("RubberBallElasticity");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetRubberBallElasticityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-        }
         public MP4 WithRubberBallElasticity(float value)
         {
-            RubberBallElasticity = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetRubberBallElasticityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public MP4 WithShape(global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeMP4? value)
         {
             return base.WithShape(value is null ? (global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape?)null : value is global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public float SideFriction2
-        {
-            get => state.Get<float>("SideFriction2");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSideFriction2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-        }
         public MP4 WithSideFriction2(float value)
         {
-            SideFriction2 = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSideFriction2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
-        }
-        public int SteerDurationBeforeSteerSlowDown
-        {
-            get => state.Get<int>("SteerDurationBeforeSteerSlowDown");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerDurationBeforeSteerSlowDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP4 WithSteerDurationBeforeSteerSlowDown(int value)
         {
-            SteerDurationBeforeSteerSlowDown = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerDurationBeforeSteerSlowDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
-        }
-        public int SteerSlowDownFadeInDuration
-        {
-            get => state.Get<int>("SteerSlowDownFadeInDuration");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSlowDownFadeInDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP4 WithSteerSlowDownFadeInDuration(int value)
         {
-            SteerSlowDownFadeInDuration = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetSteerSlowDownFadeInDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
-        }
-        public float WaterGravity
-        {
-            get => state.Get<float>("WaterGravity");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterGravityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public MP4 WithWaterGravity(float value)
         {
-            WaterGravity = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyTuningBuilderAssignments.GetWaterGravityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMP4 BuildInterface() => Build();
@@ -6442,14 +3720,9 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
             var node = CPlugVehicleCarPhyTuningBuilder.CreateRecipe6(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugVehicleCarPhyTuningBuilder.ValidateRecipe6(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugVehicleCarPhyTuningBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning node);
     }
     public partial class TM2020 : CPlugVehicleCarPhyTuningBuilderMembers12<TM2020>
     {
@@ -6496,13 +3769,8 @@ public partial class CPlugVehicleCarPhyTuningBuilder : CPlugVehicleCarPhyTuningB
             var node = CPlugVehicleCarPhyTuningBuilder.CreateRecipe7(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugVehicleCarPhyTuningBuilder.ValidateRecipe7(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugVehicleCarPhyTuningBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning node);
     }
 }

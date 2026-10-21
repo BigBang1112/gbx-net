@@ -36,42 +36,27 @@ public abstract class CInputReplayBuilderBase<TSelf> where TSelf : CInputReplayB
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Input.CInputReplay> state;
     private protected CInputReplayBuilderBase() => state = new();
     private protected CInputReplayBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Input.CInputReplay> state) => this.state = state;
-    public string[]? ActionIds
-    {
-        get => state.Get<string[]?>("ActionIds");
-        set => state.Set(global::GBX.NET.Builders.Engines.Input.CInputReplayBuilderAssignments.GetActionIdsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithActionIds(params string[]? value)
     {
-        ActionIds = value;
+        state.Set(global::GBX.NET.Builders.Engines.Input.CInputReplayBuilderAssignments.GetActionIdsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithActionIds(IEnumerable<string> values)
     {
         return WithActionIds(values.ToArray());
     }
-    public global::GBX.NET.Engines.Input.CInputReplay.Event[]? Events
-    {
-        get => state.Get<global::GBX.NET.Engines.Input.CInputReplay.Event[]?>("Events");
-        set => state.Set(global::GBX.NET.Builders.Engines.Input.CInputReplayBuilderAssignments.GetEventsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithEvents(params global::GBX.NET.Engines.Input.CInputReplay.Event[]? value)
     {
-        Events = value;
+        state.Set(global::GBX.NET.Builders.Engines.Input.CInputReplayBuilderAssignments.GetEventsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithEvents(IEnumerable<global::GBX.NET.Engines.Input.CInputReplay.Event> values)
     {
         return WithEvents(values.ToArray());
     }
-    public uint MaxEventCount
-    {
-        get => state.Get<uint>("MaxEventCount");
-        set => state.Set(global::GBX.NET.Builders.Engines.Input.CInputReplayBuilderAssignments.GetMaxEventCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithMaxEventCount(uint value)
     {
-        MaxEventCount = value;
+        state.Set(global::GBX.NET.Builders.Engines.Input.CInputReplayBuilderAssignments.GetMaxEventCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -83,13 +68,6 @@ public partial class CInputReplayBuilder : CInputReplayBuilderBase<CInputReplayB
         var chunk1300D000 = new global::GBX.NET.Engines.Input.CInputReplay.Chunk1300D000(game);
         node.Chunks.Add(chunk1300D000);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Input.CInputReplay node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Input.CInputReplay.Chunk1300D000>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk1300D000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Input.CInputReplay node, GameVersion game)
-    {
     }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -106,14 +84,9 @@ public partial class CInputReplayBuilder : CInputReplayBuilderBase<CInputReplayB
             var node = CInputReplayBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CInputReplayBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CInputReplayBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Input.CInputReplay node);
-        partial void ValidateNode(global::GBX.NET.Engines.Input.CInputReplay node);
     }
     public partial class TMT : CInputReplayBuilderBase<TMT>
     {
@@ -124,14 +97,9 @@ public partial class CInputReplayBuilder : CInputReplayBuilderBase<CInputReplayB
             var node = CInputReplayBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CInputReplayBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CInputReplayBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Input.CInputReplay node);
-        partial void ValidateNode(global::GBX.NET.Engines.Input.CInputReplay node);
     }
     public partial class MP4 : CInputReplayBuilderBase<MP4>
     {
@@ -142,14 +110,9 @@ public partial class CInputReplayBuilder : CInputReplayBuilderBase<CInputReplayB
             var node = CInputReplayBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CInputReplayBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CInputReplayBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Input.CInputReplay node);
-        partial void ValidateNode(global::GBX.NET.Engines.Input.CInputReplay node);
     }
     public partial class TM2020 : CInputReplayBuilderBase<TM2020>
     {
@@ -160,13 +123,8 @@ public partial class CInputReplayBuilder : CInputReplayBuilderBase<CInputReplayB
             var node = CInputReplayBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CInputReplayBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CInputReplayBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Input.CInputReplay node);
-        partial void ValidateNode(global::GBX.NET.Engines.Input.CInputReplay node);
     }
 }

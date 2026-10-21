@@ -36,234 +36,129 @@ public abstract class CGameUserProfileBuilderBase<TSelf> where TSelf : CGameUser
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state;
     private protected CGameUserProfileBuilderBase() => state = new();
     private protected CGameUserProfileBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state) => this.state = state;
-    public Vec3 BadgeColor
-    {
-        get => state.Get<Vec3>("BadgeColor");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetBadgeColorAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithBadgeColor(Vec3 value)
     {
-        BadgeColor = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetBadgeColorAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float CenterSpringIntensity
-    {
-        get => state.Get<float>("CenterSpringIntensity");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetCenterSpringIntensityAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCenterSpringIntensity(float value)
     {
-        CenterSpringIntensity = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetCenterSpringIntensityAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public string[]? Layers
-    {
-        get => state.Get<string[]?>("Layers");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetLayersAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLayers(params string[]? value)
     {
-        Layers = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetLayersAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithLayers(IEnumerable<string> values)
     {
         return WithLayers(values.ToArray());
     }
-    public bool MouseAccel
-    {
-        get => state.Get<bool>("MouseAccel");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetMouseAccelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithMouseAccel(bool value)
     {
-        MouseAccel = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetMouseAccelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float MouseAccelQuantity
-    {
-        get => state.Get<float>("MouseAccelQuantity");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetMouseAccelQuantityAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMouseAccelQuantity(float value)
     {
-        MouseAccelQuantity = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetMouseAccelQuantityAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool MouseLookInvertY
-    {
-        get => state.Get<bool>("MouseLookInvertY");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetMouseLookInvertYAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMouseLookInvertY(bool value)
     {
-        MouseLookInvertY = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetMouseLookInvertYAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Game.CGameUserProfile.EMouseReleaseKey MouseReleaseKey
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameUserProfile.EMouseReleaseKey>("MouseReleaseKey");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetMouseReleaseKeyAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMouseReleaseKey(global::GBX.NET.Engines.Game.CGameUserProfile.EMouseReleaseKey value)
     {
-        MouseReleaseKey = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetMouseReleaseKeyAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float MouseScaleFreeLook
-    {
-        get => state.Get<float>("MouseScaleFreeLook");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetMouseScaleFreeLookAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMouseScaleFreeLook(float value)
     {
-        MouseScaleFreeLook = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetMouseScaleFreeLookAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float MouseScaleY
-    {
-        get => state.Get<float>("MouseScaleY");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetMouseScaleYAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMouseScaleY(float value)
     {
-        MouseScaleY = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetMouseScaleYAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool MouseSensitivities_EnableSpecific
-    {
-        get => state.Get<bool>("MouseSensitivities_EnableSpecific");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetMouseSensitivities_EnableSpecificAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMouseSensitivities_EnableSpecific(bool value)
     {
-        MouseSensitivities_EnableSpecific = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetMouseSensitivities_EnableSpecificAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float MouseSensitivity_Default
-    {
-        get => state.Get<float>("MouseSensitivity_Default");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetMouseSensitivity_DefaultAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMouseSensitivity_Default(float value)
     {
-        MouseSensitivity_Default = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetMouseSensitivity_DefaultAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float MouseSensitivity_Laser
-    {
-        get => state.Get<float>("MouseSensitivity_Laser");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetMouseSensitivity_LaserAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMouseSensitivity_Laser(float value)
     {
-        MouseSensitivity_Laser = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetMouseSensitivity_LaserAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float RumbleIntensity
-    {
-        get => state.Get<float>("RumbleIntensity");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetRumbleIntensityAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRumbleIntensity(float value)
     {
-        RumbleIntensity = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetRumbleIntensityAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Script.CScriptTraitsPersistent? ScriptPersistentTraits
-    {
-        get => state.Get<global::GBX.NET.Engines.Script.CScriptTraitsPersistent?>("ScriptPersistentTraits");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetScriptPersistentTraitsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithScriptPersistentTraits(global::GBX.NET.Engines.Script.CScriptTraitsPersistent? value)
     {
-        ScriptPersistentTraits = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetScriptPersistentTraitsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public string SkinName
-    {
-        get => state.Get<string>("SkinName");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetSkinNameAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSkinName(string value)
     {
-        SkinName = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetSkinNameAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Game.CGameUserProfile.Sticker[]? Stickers
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameUserProfile.Sticker[]?>("Stickers");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetStickersAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStickers(params global::GBX.NET.Engines.Game.CGameUserProfile.Sticker[]? value)
     {
-        Stickers = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetStickersAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithStickers(IEnumerable<global::GBX.NET.Engines.Game.CGameUserProfile.Sticker> values)
     {
         return WithStickers(values.ToArray());
     }
-    public bool UseBadge
-    {
-        get => state.Get<bool>("UseBadge");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetUseBadgeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithUseBadge(bool value)
     {
-        UseBadge = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetUseBadgeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
 public abstract class CGameUserProfileBuilderMembers1<TSelf> : CGameUserProfileBuilderBase<TSelf> where TSelf : CGameUserProfileBuilderMembers1<TSelf>
 {
     private protected CGameUserProfileBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state) : base(state) { }
-    public uint CamName
-    {
-        get => state.Get<uint>("CamName");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetCamNameAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
-    }
     public TSelf WithCamName(uint value)
     {
-        CamName = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetCamNameAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Game.CGameUserProfile.ContextMapRecordForProfile[]? ContextMapRecordsForProfile
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameUserProfile.ContextMapRecordForProfile[]?>("ContextMapRecordsForProfile");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetContextMapRecordsForProfileAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithContextMapRecordsForProfile(params global::GBX.NET.Engines.Game.CGameUserProfile.ContextMapRecordForProfile[]? value)
     {
-        ContextMapRecordsForProfile = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetContextMapRecordsForProfileAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithContextMapRecordsForProfile(IEnumerable<global::GBX.NET.Engines.Game.CGameUserProfile.ContextMapRecordForProfile> values)
     {
         return WithContextMapRecordsForProfile(values.ToArray());
     }
-    public global::GBX.NET.Engines.Game.CGameUserProfile.ContextTime[]? ContextTimes
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameUserProfile.ContextTime[]?>("ContextTimes");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetContextTimesAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
-    }
     public TSelf WithContextTimes(params global::GBX.NET.Engines.Game.CGameUserProfile.ContextTime[]? value)
     {
-        ContextTimes = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetContextTimesAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithContextTimes(IEnumerable<global::GBX.NET.Engines.Game.CGameUserProfile.ContextTime> values)
     {
         return WithContextTimes(values.ToArray());
     }
-    public global::GBX.NET.Engines.Input.CInputBindingsConfig? InputBindingsConfig
-    {
-        get => state.Get<global::GBX.NET.Engines.Input.CInputBindingsConfig?>("InputBindingsConfig");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetInputBindingsConfigAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
-    }
     public TSelf WithInputBindingsConfig(global::GBX.NET.Engines.Input.CInputBindingsConfig? value)
     {
-        InputBindingsConfig = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetInputBindingsConfigAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithInputBindingsConfigReference(NodeRef<global::GBX.NET.Engines.Input.CInputBindingsConfig> value)
@@ -272,14 +167,9 @@ public abstract class CGameUserProfileBuilderMembers1<TSelf> : CGameUserProfileB
         state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetInputBindingsConfigReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Game.CGameUserProfile.Unknown[]? LegacyVehicleSettings
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameUserProfile.Unknown[]?>("LegacyVehicleSettings");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetLegacyVehicleSettingsAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
-    }
     public TSelf WithLegacyVehicleSettings(params global::GBX.NET.Engines.Game.CGameUserProfile.Unknown[]? value)
     {
-        LegacyVehicleSettings = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetLegacyVehicleSettingsAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithLegacyVehicleSettings(IEnumerable<global::GBX.NET.Engines.Game.CGameUserProfile.Unknown> values)
@@ -312,18 +202,6 @@ public partial class CGameUserProfileBuilder : CGameUserProfileBuilderBase<CGame
         node.Chunks.Add(chunk031CC008);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameUserProfile node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC000>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC001>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC002>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC003>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC004>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC005>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC006>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC007>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC007 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC008>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC008 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameUserProfile CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameUserProfile();
@@ -348,19 +226,6 @@ public partial class CGameUserProfileBuilder : CGameUserProfileBuilderBase<CGame
         var chunk031CC009 = new global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC009();
         node.Chunks.Add(chunk031CC009);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameUserProfile node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC000>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC001>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC002>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC003>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC004>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC005>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC006>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC007>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC007 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC008>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC008 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk031CC009 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Game.CGameUserProfile CreateRecipe2(GameVersion game)
     {
@@ -434,44 +299,6 @@ public partial class CGameUserProfileBuilder : CGameUserProfileBuilderBase<CGame
         node.Chunks.Add(chunk031CC024);
         return node;
     }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Game.CGameUserProfile node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC000>() is not { Version: 16 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC001>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC002>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC003>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC005>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC007>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC007 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk031CC009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC00A>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC00A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC00B>() is not { Version: 8 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC00B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC00C>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC00C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC00D>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC00D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC00E>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC00E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC00F>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC00F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC010>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC011>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC011 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC012>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC012 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC016>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC016 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC017>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC017 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC018>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC018 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC019>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC019 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC01A>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC01A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC01B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk031CC01B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC01C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk031CC01C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC01D>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC01D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC01E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk031CC01E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC01F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk031CC01F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC020>() is not { Version: 8 }) throw new InvalidOperationException($"Required {game} chunk Chunk031CC020 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC021>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk031CC021 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC022>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk031CC022 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC023>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk031CC023 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC024>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk031CC024 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameUserProfile node, GameVersion game)
-    {
-        if (node.SkinName is null) throw new MemberNullException("SkinName");
-    }
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -490,14 +317,9 @@ public partial class CGameUserProfileBuilder : CGameUserProfileBuilderBase<CGame
             var node = CGameUserProfileBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameUserProfileBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameUserProfileBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameUserProfile node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameUserProfile node);
     }
     public partial class MP4 : CGameUserProfileBuilderMembers1<MP4>
     {
@@ -512,76 +334,41 @@ public partial class CGameUserProfileBuilder : CGameUserProfileBuilderBase<CGame
             var node = CGameUserProfileBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameUserProfileBuilder.ValidateRecipe1(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameUserProfileBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameUserProfile node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameUserProfile node);
     }
     public partial class TM2020 : CGameUserProfileBuilderBase<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserProfile> state) : base(state) { }
-        public uint AuthorMedalCount
-        {
-            get => state.Get<uint>("AuthorMedalCount");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetAuthorMedalCountAssignment(), value, GameVersion.TM2020);
-        }
         public TM2020 WithAuthorMedalCount(uint value)
         {
-            AuthorMedalCount = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetAuthorMedalCountAssignment(), value, GameVersion.TM2020);
             return this;
-        }
-        public uint BronzeMedalCount
-        {
-            get => state.Get<uint>("BronzeMedalCount");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetBronzeMedalCountAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithBronzeMedalCount(uint value)
         {
-            BronzeMedalCount = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetBronzeMedalCountAssignment(), value, GameVersion.TM2020);
             return this;
-        }
-        public string? ClubTag
-        {
-            get => state.Get<string?>("ClubTag");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetClubTagAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithClubTag(string? value)
         {
-            ClubTag = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetClubTagAssignment(), value, GameVersion.TM2020);
             return this;
-        }
-        public bool Editor_ShowHelp
-        {
-            get => state.Get<bool>("Editor_ShowHelp");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetEditor_ShowHelpAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithEditor_ShowHelp(bool value)
         {
-            Editor_ShowHelp = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetEditor_ShowHelpAssignment(), value, GameVersion.TM2020);
             return this;
-        }
-        public uint GoldMedalCount
-        {
-            get => state.Get<uint>("GoldMedalCount");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetGoldMedalCountAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithGoldMedalCount(uint value)
         {
-            GoldMedalCount = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetGoldMedalCountAssignment(), value, GameVersion.TM2020);
             return this;
-        }
-        public NodeRefList<global::GBX.NET.Engines.Input.CInputBindingsConfig>? InputBindingsConfigs
-        {
-            get => state.Get<NodeRefList<global::GBX.NET.Engines.Input.CInputBindingsConfig>?>("InputBindingsConfigs");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetInputBindingsConfigsAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithInputBindingsConfigs(NodeRefList<global::GBX.NET.Engines.Input.CInputBindingsConfig>? value)
         {
-            InputBindingsConfigs = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetInputBindingsConfigsAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithInputBindingsConfigs(params global::GBX.NET.Engines.Input.CInputBindingsConfig[] values)
@@ -600,54 +387,29 @@ public partial class CGameUserProfileBuilder : CGameUserProfileBuilderBase<CGame
         {
             return WithInputBindingsConfigs(values.ToArray());
         }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaShootParams? ShootParamsScreenshot
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams?>("ShootParamsScreenshot");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetShootParamsScreenshotAssignment(), value, GameVersion.TM2020);
-        }
         public TM2020 WithShootParamsScreenshot(global::GBX.NET.Engines.Game.CGameCtnMediaShootParams? value)
         {
-            ShootParamsScreenshot = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetShootParamsScreenshotAssignment(), value, GameVersion.TM2020);
             return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaShootParams? ShootParamsVideo
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams?>("ShootParamsVideo");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetShootParamsVideoAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithShootParamsVideo(global::GBX.NET.Engines.Game.CGameCtnMediaShootParams? value)
         {
-            ShootParamsVideo = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetShootParamsVideoAssignment(), value, GameVersion.TM2020);
             return this;
-        }
-        public uint SilverMedalCount
-        {
-            get => state.Get<uint>("SilverMedalCount");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetSilverMedalCountAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithSilverMedalCount(uint value)
         {
-            SilverMedalCount = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetSilverMedalCountAssignment(), value, GameVersion.TM2020);
             return this;
-        }
-        public uint TotalMedals
-        {
-            get => state.Get<uint>("TotalMedals");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetTotalMedalsAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithTotalMedals(uint value)
         {
-            TotalMedals = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetTotalMedalsAssignment(), value, GameVersion.TM2020);
             return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameUserProfile.DeviceSettings[]? VehicleSettings
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameUserProfile.DeviceSettings[]?>("VehicleSettings");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetVehicleSettingsAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithVehicleSettings(params global::GBX.NET.Engines.Game.CGameUserProfile.DeviceSettings[]? value)
         {
-            VehicleSettings = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilderAssignments.GetVehicleSettingsAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithVehicleSettings(IEnumerable<global::GBX.NET.Engines.Game.CGameUserProfile.DeviceSettings> values)
@@ -660,13 +422,8 @@ public partial class CGameUserProfileBuilder : CGameUserProfileBuilderBase<CGame
             var node = CGameUserProfileBuilder.CreateRecipe2(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameUserProfileBuilder.ValidateRecipe2(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameUserProfileBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameUserProfile node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameUserProfile node);
     }
 }

@@ -36,74 +36,39 @@ public abstract class CControlIconIndexBuilderBase<TSelf> where TSelf : CControl
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state;
     private protected CControlIconIndexBuilderBase() => state = new();
     private protected CControlIconIndexBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state) => this.state = state;
-    public int IndexOff
-    {
-        get => state.Get<int>("IndexOff");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetIndexOffAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    }
     public TSelf WithIndexOff(int value)
     {
-        IndexOff = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetIndexOffAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int IndexOffFocused
-    {
-        get => state.Get<int>("IndexOffFocused");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetIndexOffFocusedAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithIndexOffFocused(int value)
     {
-        IndexOffFocused = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetIndexOffFocusedAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int IndexOffGrayed
-    {
-        get => state.Get<int>("IndexOffGrayed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetIndexOffGrayedAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithIndexOffGrayed(int value)
     {
-        IndexOffGrayed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetIndexOffGrayedAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int IndexOn
-    {
-        get => state.Get<int>("IndexOn");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetIndexOnAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithIndexOn(int value)
     {
-        IndexOn = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetIndexOnAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int IndexOnFocused
-    {
-        get => state.Get<int>("IndexOnFocused");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetIndexOnFocusedAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithIndexOnFocused(int value)
     {
-        IndexOnFocused = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetIndexOnFocusedAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int IndexOnGrayed
-    {
-        get => state.Get<int>("IndexOnGrayed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetIndexOnGrayedAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithIndexOnGrayed(int value)
     {
-        IndexOnGrayed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetIndexOnGrayedAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public string? Name
-    {
-        get => state.Get<string?>("Name");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetNameAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithName(string? value)
     {
-        Name = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetNameAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -116,23 +81,12 @@ public partial class CControlIconIndexBuilder : CControlIconIndexBuilderBase<CCo
         node.Chunks.Add(chunk0702B000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Control.CControlIconIndex node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlIconIndex.Chunk0702B000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0702B000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Control.CControlIconIndex CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Control.CControlIconIndex();
         var chunk0702B002 = new global::GBX.NET.Engines.Control.CControlIconIndex.Chunk0702B002();
         node.Chunks.Add(chunk0702B002);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Control.CControlIconIndex node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlIconIndex.Chunk0702B002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0702B002 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Control.CControlIconIndex node, GameVersion game)
-    {
     }
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
@@ -145,46 +99,26 @@ public partial class CControlIconIndexBuilder : CControlIconIndexBuilderBase<CCo
             var node = CControlIconIndexBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CControlIconIndexBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CControlIconIndexBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlIconIndex node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlIconIndex node);
     }
     public partial class TMF : CControlIconIndexBuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state) : base(state) { }
-        public int MarginPercentU
-        {
-            get => state.Get<int>("MarginPercentU");
-            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetMarginPercentUAssignment(), value, GameVersion.TMF);
-        }
         public TMF WithMarginPercentU(int value)
         {
-            MarginPercentU = value;
+            state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetMarginPercentUAssignment(), value, GameVersion.TMF);
             return this;
-        }
-        public int MarginPercentV
-        {
-            get => state.Get<int>("MarginPercentV");
-            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetMarginPercentVAssignment(), value, GameVersion.TMF);
         }
         public TMF WithMarginPercentV(int value)
         {
-            MarginPercentV = value;
+            state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetMarginPercentVAssignment(), value, GameVersion.TMF);
             return this;
-        }
-        public Vec2 MarginSize
-        {
-            get => state.Get<Vec2>("MarginSize");
-            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetMarginSizeAssignment(), value, GameVersion.TMF);
         }
         public TMF WithMarginSize(Vec2 value)
         {
-            MarginSize = value;
+            state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetMarginSizeAssignment(), value, GameVersion.TMF);
             return this;
         }
         public global::GBX.NET.Interfaces.Control.IControlIconIndexTMF BuildInterface() => Build();
@@ -193,13 +127,8 @@ public partial class CControlIconIndexBuilder : CControlIconIndexBuilderBase<CCo
             var node = CControlIconIndexBuilder.CreateRecipe1(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CControlIconIndexBuilder.ValidateRecipe1(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CControlIconIndexBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlIconIndex node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlIconIndex node);
     }
 }

@@ -36,128 +36,68 @@ public abstract class GxFogBuilderBase<TSelf> where TSelf : GxFogBuilderBase<TSe
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Graphic.GxFog> state;
     private protected GxFogBuilderBase() => state = new();
     private protected GxFogBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxFog> state) => this.state = state;
-    public float DepthMax
-    {
-        get => state.Get<float>("DepthMax");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetDepthMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithDepthMax(float value)
     {
-        DepthMax = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetDepthMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float DepthMin
-    {
-        get => state.Get<float>("DepthMin");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetDepthMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDepthMin(float value)
     {
-        DepthMin = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetDepthMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool Enabled
-    {
-        get => state.Get<bool>("Enabled");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetEnabledAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEnabled(bool value)
     {
-        Enabled = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetEnabledAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float Exponent
-    {
-        get => state.Get<float>("Exponent");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetExponentAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithExponent(float value)
     {
-        Exponent = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetExponentAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float HeightMulBottom
-    {
-        get => state.Get<float>("HeightMulBottom");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetHeightMulBottomAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithHeightMulBottom(float value)
     {
-        HeightMulBottom = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetHeightMulBottomAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float HeightMulTop
-    {
-        get => state.Get<float>("HeightMulTop");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetHeightMulTopAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithHeightMulTop(float value)
     {
-        HeightMulTop = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetHeightMulTopAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float HeightYBottom
-    {
-        get => state.Get<float>("HeightYBottom");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetHeightYBottomAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithHeightYBottom(float value)
     {
-        HeightYBottom = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetHeightYBottomAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float HeightYTop
-    {
-        get => state.Get<float>("HeightYTop");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetHeightYTopAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithHeightYTop(float value)
     {
-        HeightYTop = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetHeightYTopAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float IntensityMax
-    {
-        get => state.Get<float>("IntensityMax");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetIntensityMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIntensityMax(float value)
     {
-        IntensityMax = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetIntensityMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float IntensityMin
-    {
-        get => state.Get<float>("IntensityMin");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetIntensityMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIntensityMin(float value)
     {
-        IntensityMin = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetIntensityMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int LegacyMode
-    {
-        get => state.Get<int>("LegacyMode");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetLegacyModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLegacyMode(int value)
     {
-        LegacyMode = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetLegacyModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class GxFogBuilderMembers1<TSelf> : GxFogBuilderBase<TSelf> where TSelf : GxFogBuilderMembers1<TSelf>
 {
     private protected GxFogBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxFog> state) : base(state) { }
-    public Vec3 Color
-    {
-        get => state.Get<Vec3>("Color");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetColorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithColor(Vec3 value)
     {
-        Color = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetColorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -170,10 +110,6 @@ public partial class GxFogBuilder : GxFogBuilderBase<GxFogBuilder>
         node.Chunks.Add(chunk04004000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Graphic.GxFog node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxFog.Chunk04004000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04004000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Graphic.GxFog CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Graphic.GxFog();
@@ -183,11 +119,6 @@ public partial class GxFogBuilder : GxFogBuilderBase<GxFogBuilder>
         chunk04004001.Version = 0;
         node.Chunks.Add(chunk04004001);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Graphic.GxFog node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxFog.Chunk04004000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04004000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxFog.Chunk04004001>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk04004001 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Graphic.GxFog CreateRecipe2(GameVersion game)
     {
@@ -201,15 +132,6 @@ public partial class GxFogBuilder : GxFogBuilderBase<GxFogBuilder>
         chunk04004002.Version = 0;
         node.Chunks.Add(chunk04004002);
         return node;
-    }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Graphic.GxFog node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxFog.Chunk04004000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04004000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxFog.Chunk04004001>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk04004001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxFog.Chunk04004002>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk04004002 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Graphic.GxFog node, GameVersion game)
-    {
     }
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
@@ -228,14 +150,9 @@ public partial class GxFogBuilder : GxFogBuilderBase<GxFogBuilder>
             var node = GxFogBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            GxFogBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            GxFogBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxFog node);
-        partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxFog node);
     }
     public partial class TMF : GxFogBuilderBase<TMF>
     {
@@ -246,14 +163,9 @@ public partial class GxFogBuilder : GxFogBuilderBase<GxFogBuilder>
             var node = GxFogBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            GxFogBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            GxFogBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxFog node);
-        partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxFog node);
     }
     public partial class MP3 : GxFogBuilderMembers1<MP3>
     {
@@ -264,14 +176,9 @@ public partial class GxFogBuilder : GxFogBuilderBase<GxFogBuilder>
             var node = GxFogBuilder.CreateRecipe1(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            GxFogBuilder.ValidateRecipe1(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            GxFogBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxFog node);
-        partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxFog node);
     }
     public partial class TMT : GxFogBuilderMembers1<TMT>
     {
@@ -282,14 +189,9 @@ public partial class GxFogBuilder : GxFogBuilderBase<GxFogBuilder>
             var node = GxFogBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            GxFogBuilder.ValidateRecipe1(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            GxFogBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxFog node);
-        partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxFog node);
     }
     public partial class MP4 : GxFogBuilderMembers1<MP4>
     {
@@ -300,26 +202,16 @@ public partial class GxFogBuilder : GxFogBuilderBase<GxFogBuilder>
             var node = GxFogBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            GxFogBuilder.ValidateRecipe1(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            GxFogBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxFog node);
-        partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxFog node);
     }
     public partial class TM2020 : GxFogBuilderMembers1<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxFog> state) : base(state) { }
-        public int FogVersion
-        {
-            get => state.Get<int>("FogVersion");
-            set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetFogVersionAssignment(), value, GameVersion.TM2020);
-        }
         public TM2020 WithFogVersion(int value)
         {
-            FogVersion = value;
+            state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBuilderAssignments.GetFogVersionAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public global::GBX.NET.Interfaces.Graphic.IGxFogTM2020 BuildInterface() => Build();
@@ -328,13 +220,8 @@ public partial class GxFogBuilder : GxFogBuilderBase<GxFogBuilder>
             var node = GxFogBuilder.CreateRecipe2(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            GxFogBuilder.ValidateRecipe2(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            GxFogBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxFog node);
-        partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxFog node);
     }
 }

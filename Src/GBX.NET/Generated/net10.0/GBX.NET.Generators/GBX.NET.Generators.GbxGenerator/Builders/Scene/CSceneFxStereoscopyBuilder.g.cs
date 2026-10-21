@@ -36,14 +36,9 @@ public abstract class CSceneFxStereoscopyBuilderBase<TSelf> where TSelf : CScene
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxStereoscopy> state;
     private protected CSceneFxStereoscopyBuilderBase() => state = new();
     private protected CSceneFxStereoscopyBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxStereoscopy> state) => this.state = state;
-    public global::GBX.NET.Engines.MwFoundations.CMwNod? Shader_DebugBlend
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("Shader_DebugBlend");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxStereoscopyBuilderAssignments.GetShader_DebugBlendAssignment(), value, GameVersion.TM2020);
-    }
     public TSelf WithShader_DebugBlend(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
-        Shader_DebugBlend = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxStereoscopyBuilderAssignments.GetShader_DebugBlendAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithShader_DebugBlendReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
@@ -52,14 +47,9 @@ public abstract class CSceneFxStereoscopyBuilderBase<TSelf> where TSelf : CScene
         state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxStereoscopyBuilderAssignments.GetShader_DebugBlendReferenceAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.MwFoundations.CMwNod? Shader_Interlaced
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("Shader_Interlaced");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxStereoscopyBuilderAssignments.GetShader_InterlacedAssignment(), value, GameVersion.TM2020);
-    }
     public TSelf WithShader_Interlaced(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
-        Shader_Interlaced = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxStereoscopyBuilderAssignments.GetShader_InterlacedAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithShader_InterlacedReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
@@ -78,13 +68,6 @@ public partial class CSceneFxStereoscopyBuilder : CSceneFxStereoscopyBuilderBase
         node.Chunks.Add(chunk0A043002);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Scene.CSceneFxStereoscopy node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneFxStereoscopy.Chunk0A043002>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0A043002 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Scene.CSceneFxStereoscopy node, GameVersion game)
-    {
-    }
     public TM2020 ForTM2020() => new(state.Snapshot());
     public partial class TM2020 : CSceneFxStereoscopyBuilderBase<TM2020>
     {
@@ -95,13 +78,8 @@ public partial class CSceneFxStereoscopyBuilder : CSceneFxStereoscopyBuilderBase
             var node = CSceneFxStereoscopyBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CSceneFxStereoscopyBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CSceneFxStereoscopyBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxStereoscopy node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneFxStereoscopy node);
     }
 }

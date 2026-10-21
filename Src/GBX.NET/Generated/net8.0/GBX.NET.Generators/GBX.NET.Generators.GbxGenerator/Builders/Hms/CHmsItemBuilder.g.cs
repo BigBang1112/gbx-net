@@ -36,164 +36,84 @@ public abstract class CHmsItemBuilderBase<TSelf> where TSelf : CHmsItemBuilderBa
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsItem> state;
     private protected CHmsItemBuilderBase() => state = new();
     private protected CHmsItemBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsItem> state) => this.state = state;
-    public bool BackgroundZClipCullBefore
-    {
-        get => state.Get<bool>("BackgroundZClipCullBefore");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetBackgroundZClipCullBeforeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithBackgroundZClipCullBefore(bool value)
     {
-        BackgroundZClipCullBefore = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetBackgroundZClipCullBeforeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool CanFakeShadow
-    {
-        get => state.Get<bool>("CanFakeShadow");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetCanFakeShadowAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithCanFakeShadow(bool value)
     {
-        CanFakeShadow = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetCanFakeShadowAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool CanSelfShadow
-    {
-        get => state.Get<bool>("CanSelfShadow");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetCanSelfShadowAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithCanSelfShadow(bool value)
     {
-        CanSelfShadow = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetCanSelfShadowAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool CopyCameraTranslationXZ
-    {
-        get => state.Get<bool>("CopyCameraTranslationXZ");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetCopyCameraTranslationXZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithCopyCameraTranslationXZ(bool value)
     {
-        CopyCameraTranslationXZ = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetCopyCameraTranslationXZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public byte CountShadowTexCasted
-    {
-        get => state.Get<byte>("CountShadowTexCasted");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetCountShadowTexCastedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithCountShadowTexCasted(byte value)
     {
-        CountShadowTexCasted = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetCountShadowTexCastedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public ulong FlagsItem
-    {
-        get => state.Get<ulong>("FlagsItem");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetFlagsItemAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFlagsItem(ulong value)
     {
-        FlagsItem = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetFlagsItemAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool IsBackground
-    {
-        get => state.Get<bool>("IsBackground");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetIsBackgroundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIsBackground(bool value)
     {
-        IsBackground = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetIsBackgroundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool IsForcePointDynamicCollisionResponse
-    {
-        get => state.Get<bool>("IsForcePointDynamicCollisionResponse");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetIsForcePointDynamicCollisionResponseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIsForcePointDynamicCollisionResponse(bool value)
     {
-        IsForcePointDynamicCollisionResponse = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetIsForcePointDynamicCollisionResponseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool IsStatic
-    {
-        get => state.Get<bool>("IsStatic");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetIsStaticAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIsStatic(bool value)
     {
-        IsStatic = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetIsStaticAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool IsVisible
-    {
-        get => state.Get<bool>("IsVisible");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetIsVisibleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIsVisible(bool value)
     {
-        IsVisible = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetIsVisibleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool IsVisionStatic
-    {
-        get => state.Get<bool>("IsVisionStatic");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetIsVisionStaticAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIsVisionStatic(bool value)
     {
-        IsVisionStatic = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetIsVisionStaticAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public uint LightEmitterGroupMask
-    {
-        get => state.Get<uint>("LightEmitterGroupMask");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetLightEmitterGroupMaskAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLightEmitterGroupMask(uint value)
     {
-        LightEmitterGroupMask = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetLightEmitterGroupMaskAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool LightLensFlareEnable
-    {
-        get => state.Get<bool>("LightLensFlareEnable");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetLightLensFlareEnableAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLightLensFlareEnable(bool value)
     {
-        LightLensFlareEnable = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetLightLensFlareEnableAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public uint ShadowCasterGroupMask
-    {
-        get => state.Get<uint>("ShadowCasterGroupMask");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetShadowCasterGroupMaskAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithShadowCasterGroupMask(uint value)
     {
-        ShadowCasterGroupMask = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetShadowCasterGroupMaskAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public uint ShadowReceiverGroupMask
-    {
-        get => state.Get<uint>("ShadowReceiverGroupMask");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetShadowReceiverGroupMaskAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithShadowReceiverGroupMask(uint value)
     {
-        ShadowReceiverGroupMask = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetShadowReceiverGroupMaskAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugSolid? Solid
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugSolid?>("Solid");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetSolidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSolid(global::GBX.NET.Engines.Plug.CPlugSolid? value)
     {
-        Solid = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetSolidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithSolidReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid> value)
@@ -202,184 +122,94 @@ public abstract class CHmsItemBuilderBase<TSelf> where TSelf : CHmsItemBuilderBa
         state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetSolidReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public bool UseAccurateBBoxTest
-    {
-        get => state.Get<bool>("UseAccurateBBoxTest");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetUseAccurateBBoxTestAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithUseAccurateBBoxTest(bool value)
     {
-        UseAccurateBBoxTest = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetUseAccurateBBoxTestAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool VIdBackground
-    {
-        get => state.Get<bool>("VIdBackground");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetVIdBackgroundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithVIdBackground(bool value)
     {
-        VIdBackground = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetVIdBackgroundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool VIdFoliage
-    {
-        get => state.Get<bool>("VIdFoliage");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetVIdFoliageAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithVIdFoliage(bool value)
     {
-        VIdFoliage = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetVIdFoliageAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool VIdGrassRGB
-    {
-        get => state.Get<bool>("VIdGrassRGB");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetVIdGrassRGBAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithVIdGrassRGB(bool value)
     {
-        VIdGrassRGB = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetVIdGrassRGBAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool VIdHideAlways
-    {
-        get => state.Get<bool>("VIdHideAlways");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetVIdHideAlwaysAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithVIdHideAlways(bool value)
     {
-        VIdHideAlways = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetVIdHideAlwaysAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool VIdHideButPick
-    {
-        get => state.Get<bool>("VIdHideButPick");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetVIdHideButPickAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithVIdHideButPick(bool value)
     {
-        VIdHideButPick = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetVIdHideButPickAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool VIdHideOnlyDirect
-    {
-        get => state.Get<bool>("VIdHideOnlyDirect");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetVIdHideOnlyDirectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithVIdHideOnlyDirect(bool value)
     {
-        VIdHideOnlyDirect = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetVIdHideOnlyDirectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool VIdHideWhenUnderground
-    {
-        get => state.Get<bool>("VIdHideWhenUnderground");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetVIdHideWhenUndergroundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithVIdHideWhenUnderground(bool value)
     {
-        VIdHideWhenUnderground = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetVIdHideWhenUndergroundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool VIdInvisibleStopBounce
-    {
-        get => state.Get<bool>("VIdInvisibleStopBounce");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetVIdInvisibleStopBounceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithVIdInvisibleStopBounce(bool value)
     {
-        VIdInvisibleStopBounce = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetVIdInvisibleStopBounceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool VIdLightGenP
-    {
-        get => state.Get<bool>("VIdLightGenP");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetVIdLightGenPAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithVIdLightGenP(bool value)
     {
-        VIdLightGenP = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetVIdLightGenPAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool VIdOnlyRefracted
-    {
-        get => state.Get<bool>("VIdOnlyRefracted");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetVIdOnlyRefractedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithVIdOnlyRefracted(bool value)
     {
-        VIdOnlyRefracted = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetVIdOnlyRefractedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool VIdReflectMirror
-    {
-        get => state.Get<bool>("VIdReflectMirror");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetVIdReflectMirrorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithVIdReflectMirror(bool value)
     {
-        VIdReflectMirror = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetVIdReflectMirrorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool VIdReflected
-    {
-        get => state.Get<bool>("VIdReflected");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetVIdReflectedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithVIdReflected(bool value)
     {
-        VIdReflected = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetVIdReflectedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool VIdRefracted
-    {
-        get => state.Get<bool>("VIdRefracted");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetVIdRefractedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithVIdRefracted(bool value)
     {
-        VIdRefracted = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetVIdRefractedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool VIdVehicle
-    {
-        get => state.Get<bool>("VIdVehicle");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetVIdVehicleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithVIdVehicle(bool value)
     {
-        VIdVehicle = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetVIdVehicleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool VIdViewDepBump
-    {
-        get => state.Get<bool>("VIdViewDepBump");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetVIdViewDepBumpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithVIdViewDepBump(bool value)
     {
-        VIdViewDepBump = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetVIdViewDepBumpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool VIdViewDepOcclusion
-    {
-        get => state.Get<bool>("VIdViewDepOcclusion");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetVIdViewDepOcclusionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithVIdViewDepOcclusion(bool value)
     {
-        VIdViewDepOcclusion = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetVIdViewDepOcclusionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public ushort VisibleId
-    {
-        get => state.Get<ushort>("VisibleId");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetVisibleIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithVisibleId(ushort value)
     {
-        VisibleId = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsItemBuilderAssignments.GetVisibleIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -394,11 +224,6 @@ public partial class CHmsItemBuilder : CHmsItemBuilderBase<CHmsItemBuilder>
         node.Chunks.Add(chunk0600300E);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Hms.CHmsItem node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsItem.Chunk06003001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06003001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsItem.Chunk0600300E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0600300E is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Hms.CHmsItem CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Hms.CHmsItem(game);
@@ -407,11 +232,6 @@ public partial class CHmsItemBuilder : CHmsItemBuilderBase<CHmsItemBuilder>
         var chunk0600300F = new global::GBX.NET.Engines.Hms.CHmsItem.Chunk0600300F();
         node.Chunks.Add(chunk0600300F);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Hms.CHmsItem node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsItem.Chunk06003001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06003001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsItem.Chunk0600300F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0600300F is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Hms.CHmsItem CreateRecipe2(GameVersion game)
     {
@@ -422,11 +242,6 @@ public partial class CHmsItemBuilder : CHmsItemBuilderBase<CHmsItemBuilder>
         node.Chunks.Add(chunk06003010);
         return node;
     }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Hms.CHmsItem node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsItem.Chunk06003001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06003001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsItem.Chunk06003010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06003010 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Hms.CHmsItem CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Hms.CHmsItem(game);
@@ -435,14 +250,6 @@ public partial class CHmsItemBuilder : CHmsItemBuilderBase<CHmsItemBuilder>
         var chunk06003011 = new global::GBX.NET.Engines.Hms.CHmsItem.Chunk06003011();
         node.Chunks.Add(chunk06003011);
         return node;
-    }
-    private static void ValidateRecipe3(global::GBX.NET.Engines.Hms.CHmsItem node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsItem.Chunk06003001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06003001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsItem.Chunk06003011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06003011 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Hms.CHmsItem node, GameVersion game)
-    {
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -469,14 +276,9 @@ public partial class CHmsItemBuilder : CHmsItemBuilderBase<CHmsItemBuilder>
             var node = CHmsItemBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CHmsItemBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CHmsItemBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsItem node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsItem node);
     }
     public partial class TMPU : CHmsItemBuilderBase<TMPU>
     {
@@ -491,14 +293,9 @@ public partial class CHmsItemBuilder : CHmsItemBuilderBase<CHmsItemBuilder>
             var node = CHmsItemBuilder.CreateRecipe1(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CHmsItemBuilder.ValidateRecipe1(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CHmsItemBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsItem node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsItem node);
     }
     public partial class TMSX : CHmsItemBuilderBase<TMSX>
     {
@@ -513,14 +310,9 @@ public partial class CHmsItemBuilder : CHmsItemBuilderBase<CHmsItemBuilder>
             var node = CHmsItemBuilder.CreateRecipe2(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CHmsItemBuilder.ValidateRecipe2(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CHmsItemBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsItem node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsItem node);
     }
     public partial class TMNESWC : CHmsItemBuilderBase<TMNESWC>
     {
@@ -535,14 +327,9 @@ public partial class CHmsItemBuilder : CHmsItemBuilderBase<CHmsItemBuilder>
             var node = CHmsItemBuilder.CreateRecipe3(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CHmsItemBuilder.ValidateRecipe3(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CHmsItemBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsItem node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsItem node);
     }
     public partial class VSK5 : CHmsItemBuilderBase<VSK5>
     {
@@ -557,14 +344,9 @@ public partial class CHmsItemBuilder : CHmsItemBuilderBase<CHmsItemBuilder>
             var node = CHmsItemBuilder.CreateRecipe3(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CHmsItemBuilder.ValidateRecipe3(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CHmsItemBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsItem node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsItem node);
     }
     public partial class TMF : CHmsItemBuilderBase<TMF>
     {
@@ -579,14 +361,9 @@ public partial class CHmsItemBuilder : CHmsItemBuilderBase<CHmsItemBuilder>
             var node = CHmsItemBuilder.CreateRecipe3(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CHmsItemBuilder.ValidateRecipe3(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CHmsItemBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsItem node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsItem node);
     }
     public partial class MP3 : CHmsItemBuilderBase<MP3>
     {
@@ -601,14 +378,9 @@ public partial class CHmsItemBuilder : CHmsItemBuilderBase<CHmsItemBuilder>
             var node = CHmsItemBuilder.CreateRecipe3(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CHmsItemBuilder.ValidateRecipe3(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CHmsItemBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsItem node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsItem node);
     }
     public partial class TMT : CHmsItemBuilderBase<TMT>
     {
@@ -623,14 +395,9 @@ public partial class CHmsItemBuilder : CHmsItemBuilderBase<CHmsItemBuilder>
             var node = CHmsItemBuilder.CreateRecipe3(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CHmsItemBuilder.ValidateRecipe3(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CHmsItemBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsItem node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsItem node);
     }
     public partial class MP4 : CHmsItemBuilderBase<MP4>
     {
@@ -645,14 +412,9 @@ public partial class CHmsItemBuilder : CHmsItemBuilderBase<CHmsItemBuilder>
             var node = CHmsItemBuilder.CreateRecipe3(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CHmsItemBuilder.ValidateRecipe3(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CHmsItemBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsItem node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsItem node);
     }
     public partial class TM2020 : CHmsItemBuilderBase<TM2020>
     {
@@ -667,13 +429,8 @@ public partial class CHmsItemBuilder : CHmsItemBuilderBase<CHmsItemBuilder>
             var node = CHmsItemBuilder.CreateRecipe3(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CHmsItemBuilder.ValidateRecipe3(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CHmsItemBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsItem node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsItem node);
     }
 }

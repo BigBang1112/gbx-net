@@ -46,10 +46,6 @@ public partial class CPlugSkelBuilder : CPlugSkelBuilderBase<CPlugSkelBuilder>
         node.Chunks.Add(chunk090BA000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugSkel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSkel.Chunk090BA000>() is not { Version: 12 }) throw new InvalidOperationException($"Required {game} chunk Chunk090BA000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugSkel CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugSkel();
@@ -57,23 +53,12 @@ public partial class CPlugSkelBuilder : CPlugSkelBuilderBase<CPlugSkelBuilder>
         node.Chunks.Add(chunk090BA000);
         return node;
     }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugSkel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSkel.Chunk090BA000>() is not { Version: 14 }) throw new InvalidOperationException($"Required {game} chunk Chunk090BA000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugSkel CreateRecipe2(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugSkel();
         var chunk090BA000 = new global::GBX.NET.Engines.Plug.CPlugSkel.Chunk090BA000(game);
         node.Chunks.Add(chunk090BA000);
         return node;
-    }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Plug.CPlugSkel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSkel.Chunk090BA000>() is not { Version: 20 }) throw new InvalidOperationException($"Required {game} chunk Chunk090BA000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugSkel node, GameVersion game)
-    {
     }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -90,14 +75,9 @@ public partial class CPlugSkelBuilder : CPlugSkelBuilderBase<CPlugSkelBuilder>
             var node = CPlugSkelBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CPlugSkelBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CPlugSkelBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSkel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugSkel node);
     }
     public partial class TMT : CPlugSkelBuilderBase<TMT>
     {
@@ -108,14 +88,9 @@ public partial class CPlugSkelBuilder : CPlugSkelBuilderBase<CPlugSkelBuilder>
             var node = CPlugSkelBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugSkelBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugSkelBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSkel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugSkel node);
     }
     public partial class MP4 : CPlugSkelBuilderBase<MP4>
     {
@@ -126,14 +101,9 @@ public partial class CPlugSkelBuilder : CPlugSkelBuilderBase<CPlugSkelBuilder>
             var node = CPlugSkelBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugSkelBuilder.ValidateRecipe1(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugSkelBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSkel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugSkel node);
     }
     public partial class TM2020 : CPlugSkelBuilderBase<TM2020>
     {
@@ -144,13 +114,8 @@ public partial class CPlugSkelBuilder : CPlugSkelBuilderBase<CPlugSkelBuilder>
             var node = CPlugSkelBuilder.CreateRecipe2(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugSkelBuilder.ValidateRecipe2(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugSkelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSkel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugSkel node);
     }
 }

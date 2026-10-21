@@ -41,92 +41,47 @@ public partial class CMotionCmdBase : global::GBX.NET.Interfaces.Motion.IMotionC
     }
     global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTM10? global::GBX.NET.Interfaces.Motion.IMotionCmdBaseMembers1<global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTM10>.CmdBaseParams
     {
-        get
-        {
-            var node = CmdBaseParams;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            return node;
-        }
+        get => CmdBaseParams;
         set => CmdBaseParams = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionCmdBaseParams node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMPU? global::GBX.NET.Interfaces.Motion.IMotionCmdBaseMembers1<global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMPU>.CmdBaseParams
     {
-        get
-        {
-            var node = CmdBaseParams;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            return node;
-        }
+        get => CmdBaseParams;
         set => CmdBaseParams = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionCmdBaseParams node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMSX? global::GBX.NET.Interfaces.Motion.IMotionCmdBaseMembers1<global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMSX>.CmdBaseParams
     {
-        get
-        {
-            var node = CmdBaseParams;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => CmdBaseParams;
         set => CmdBaseParams = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionCmdBaseParams node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMNESWC? global::GBX.NET.Interfaces.Motion.IMotionCmdBaseMembers1<global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMNESWC>.CmdBaseParams
     {
-        get
-        {
-            var node = CmdBaseParams;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => CmdBaseParams;
         set => CmdBaseParams = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionCmdBaseParams node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsVSK5? global::GBX.NET.Interfaces.Motion.IMotionCmdBaseMembers1<global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsVSK5>.CmdBaseParams
     {
-        get
-        {
-            var node = CmdBaseParams;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => CmdBaseParams;
         set => CmdBaseParams = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionCmdBaseParams node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMF? global::GBX.NET.Interfaces.Motion.IMotionCmdBaseMembers1<global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMF>.CmdBaseParams
     {
-        get
-        {
-            var node = CmdBaseParams;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => CmdBaseParams;
         set => CmdBaseParams = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionCmdBaseParams node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsMP3? global::GBX.NET.Interfaces.Motion.IMotionCmdBaseMembers1<global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsMP3>.CmdBaseParams
     {
-        get
-        {
-            var node = CmdBaseParams;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => CmdBaseParams;
         set => CmdBaseParams = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionCmdBaseParams node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMT? global::GBX.NET.Interfaces.Motion.IMotionCmdBaseMembers1<global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMT>.CmdBaseParams
     {
-        get
-        {
-            var node = CmdBaseParams;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => CmdBaseParams;
         set => CmdBaseParams = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionCmdBaseParams node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsMP4? global::GBX.NET.Interfaces.Motion.IMotionCmdBaseMembers1<global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsMP4>.CmdBaseParams
     {
-        get
-        {
-            var node = CmdBaseParams;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => CmdBaseParams;
         set => CmdBaseParams = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionCmdBaseParams node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

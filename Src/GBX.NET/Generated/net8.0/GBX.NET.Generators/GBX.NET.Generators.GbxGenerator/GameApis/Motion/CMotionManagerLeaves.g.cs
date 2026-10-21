@@ -41,82 +41,42 @@ public partial class CMotionManagerLeaves : global::GBX.NET.Interfaces.Motion.IM
     }
     global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTM10? global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTM10>.MobilLeaves
     {
-        get
-        {
-            var node = MobilLeaves;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            return node;
-        }
+        get => MobilLeaves;
         set => MobilLeaves = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobilLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMPU? global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMPU>.MobilLeaves
     {
-        get
-        {
-            var node = MobilLeaves;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            return node;
-        }
+        get => MobilLeaves;
         set => MobilLeaves = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobilLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMSX? global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMSX>.MobilLeaves
     {
-        get
-        {
-            var node = MobilLeaves;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => MobilLeaves;
         set => MobilLeaves = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobilLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMNESWC? global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMNESWC>.MobilLeaves
     {
-        get
-        {
-            var node = MobilLeaves;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => MobilLeaves;
         set => MobilLeaves = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobilLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesVSK5? global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesVSK5>.MobilLeaves
     {
-        get
-        {
-            var node = MobilLeaves;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => MobilLeaves;
         set => MobilLeaves = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobilLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMF? global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMF>.MobilLeaves
     {
-        get
-        {
-            var node = MobilLeaves;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => MobilLeaves;
         set => MobilLeaves = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobilLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesMP3? global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesMP3>.MobilLeaves
     {
-        get
-        {
-            var node = MobilLeaves;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => MobilLeaves;
         set => MobilLeaves = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobilLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMT? global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMT>.MobilLeaves
     {
-        get
-        {
-            var node = MobilLeaves;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => MobilLeaves;
         set => MobilLeaves = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobilLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

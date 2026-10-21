@@ -46,23 +46,12 @@ public partial class CGameAppBuilder : CGameAppBuilderBase<CGameAppBuilder>
         node.Chunks.Add(chunk03005009);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameApp node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameApp.Chunk03005009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03005009 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameApp CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameApp();
         var chunk0300500B = new global::GBX.NET.Engines.Game.CGameApp.Chunk0300500B();
         node.Chunks.Add(chunk0300500B);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameApp node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameApp.Chunk0300500B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0300500B is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameApp node, GameVersion game)
-    {
     }
     public TMF ForTMF() => new(state.Snapshot());
     public TM2020 ForTM2020() => new(state.Snapshot());
@@ -75,14 +64,9 @@ public partial class CGameAppBuilder : CGameAppBuilderBase<CGameAppBuilder>
             var node = CGameAppBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CGameAppBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CGameAppBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameApp node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameApp node);
     }
     public partial class TM2020 : CGameAppBuilderBase<TM2020>
     {
@@ -93,13 +77,8 @@ public partial class CGameAppBuilder : CGameAppBuilderBase<CGameAppBuilder>
             var node = CGameAppBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameAppBuilder.ValidateRecipe1(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameAppBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameApp node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameApp node);
     }
 }

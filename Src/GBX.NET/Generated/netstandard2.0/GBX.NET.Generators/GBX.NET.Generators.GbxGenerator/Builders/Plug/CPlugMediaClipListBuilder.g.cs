@@ -36,14 +36,9 @@ public abstract class CPlugMediaClipListBuilderBase<TSelf> where TSelf : CPlugMe
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMediaClipList> state;
     private protected CPlugMediaClipListBuilderBase() => state = new();
     private protected CPlugMediaClipListBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMediaClipList> state) => this.state = state;
-    public NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? MediaClipFids
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>?>("MediaClipFids");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMediaClipListBuilderAssignments.GetMediaClipFidsAssignment(), value, GameVersion.TM2020);
-    }
     public TSelf WithMediaClipFids(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value)
     {
-        MediaClipFids = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMediaClipListBuilderAssignments.GetMediaClipFidsAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithMediaClipFids(params global::GBX.NET.Engines.MwFoundations.CMwNod[] values)
@@ -65,13 +60,6 @@ public partial class CPlugMediaClipListBuilder : CPlugMediaClipListBuilderBase<C
         node.Chunks.Add(chunk09189000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugMediaClipList node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMediaClipList.Chunk09189000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk09189000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugMediaClipList node, GameVersion game)
-    {
-    }
     public TM2020 ForTM2020() => new(state.Snapshot());
     public partial class TM2020 : CPlugMediaClipListBuilderBase<TM2020>
     {
@@ -82,13 +70,8 @@ public partial class CPlugMediaClipListBuilder : CPlugMediaClipListBuilderBase<C
             var node = CPlugMediaClipListBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugMediaClipListBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugMediaClipListBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMediaClipList node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugMediaClipList node);
     }
 }

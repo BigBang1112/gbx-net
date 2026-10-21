@@ -36,24 +36,14 @@ public abstract class CGameArmorModelBuilderBase<TSelf> where TSelf : CGameArmor
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.GameData.CGameArmorModel> state;
     private protected CGameArmorModelBuilderBase() => state = new();
     private protected CGameArmorModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameArmorModel> state) => this.state = state;
-    public int ArmorMax
-    {
-        get => state.Get<int>("ArmorMax");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameArmorModelBuilderAssignments.GetArmorMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithArmorMax(int value)
     {
-        ArmorMax = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameArmorModelBuilderAssignments.GetArmorMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int ReplenishDelayAfterDamage
-    {
-        get => state.Get<int>("ReplenishDelayAfterDamage");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameArmorModelBuilderAssignments.GetReplenishDelayAfterDamageAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithReplenishDelayAfterDamage(int value)
     {
-        ReplenishDelayAfterDamage = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameArmorModelBuilderAssignments.GetReplenishDelayAfterDamageAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -66,13 +56,6 @@ public partial class CGameArmorModelBuilder : CGameArmorModelBuilderBase<CGameAr
         chunk2E00D000.Version = 0;
         node.Chunks.Add(chunk2E00D000);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.GameData.CGameArmorModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameArmorModel.Chunk2E00D000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk2E00D000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.GameData.CGameArmorModel node, GameVersion game)
-    {
     }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -89,14 +72,9 @@ public partial class CGameArmorModelBuilder : CGameArmorModelBuilderBase<CGameAr
             var node = CGameArmorModelBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CGameArmorModelBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CGameArmorModelBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameArmorModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.GameData.CGameArmorModel node);
     }
     public partial class TMT : CGameArmorModelBuilderBase<TMT>
     {
@@ -107,14 +85,9 @@ public partial class CGameArmorModelBuilder : CGameArmorModelBuilderBase<CGameAr
             var node = CGameArmorModelBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameArmorModelBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameArmorModelBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameArmorModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.GameData.CGameArmorModel node);
     }
     public partial class MP4 : CGameArmorModelBuilderBase<MP4>
     {
@@ -125,14 +98,9 @@ public partial class CGameArmorModelBuilder : CGameArmorModelBuilderBase<CGameAr
             var node = CGameArmorModelBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameArmorModelBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameArmorModelBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameArmorModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.GameData.CGameArmorModel node);
     }
     public partial class TM2020 : CGameArmorModelBuilderBase<TM2020>
     {
@@ -143,13 +111,8 @@ public partial class CGameArmorModelBuilder : CGameArmorModelBuilderBase<CGameAr
             var node = CGameArmorModelBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameArmorModelBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameArmorModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameArmorModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.GameData.CGameArmorModel node);
     }
 }

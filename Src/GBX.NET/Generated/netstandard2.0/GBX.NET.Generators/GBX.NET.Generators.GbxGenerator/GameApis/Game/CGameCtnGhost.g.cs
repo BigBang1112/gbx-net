@@ -36,12 +36,7 @@ public partial class CGameCtnGhost : global::GBX.NET.Interfaces.Game.IGameCtnGho
     public static new global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilder Create() => new();
     global::GBX.NET.Interfaces.Plug.IPlugEntRecordDataTM2020? global::GBX.NET.Interfaces.Game.IGameCtnGhostTM2020.RecordData
     {
-        get
-        {
-            var node = RecordData;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => RecordData;
         set => RecordData = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugEntRecordData node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

@@ -36,24 +36,14 @@ public abstract class CVisPostFx_MotionBlurBuilderBase<TSelf> where TSelf : CVis
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Vision.CVisPostFx_MotionBlur> state;
     private protected CVisPostFx_MotionBlurBuilderBase() => state = new();
     private protected CVisPostFx_MotionBlurBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Vision.CVisPostFx_MotionBlur> state) => this.state = state;
-    public bool T2_DelayShadows
-    {
-        get => state.Get<bool>("T2_DelayShadows");
-        set => state.Set(global::GBX.NET.Builders.Engines.Vision.CVisPostFx_MotionBlurBuilderAssignments.GetT2_DelayShadowsAssignment(), value, GameVersion.TMF);
-    }
     public TSelf WithT2_DelayShadows(bool value)
     {
-        T2_DelayShadows = value;
+        state.Set(global::GBX.NET.Builders.Engines.Vision.CVisPostFx_MotionBlurBuilderAssignments.GetT2_DelayShadowsAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.MwFoundations.CMwNod? T2_Fid_PHlsl_MotionLenCmp
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("T2_Fid_PHlsl_MotionLenCmp");
-        set => state.Set(global::GBX.NET.Builders.Engines.Vision.CVisPostFx_MotionBlurBuilderAssignments.GetT2_Fid_PHlsl_MotionLenCmpAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithT2_Fid_PHlsl_MotionLenCmp(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
-        T2_Fid_PHlsl_MotionLenCmp = value;
+        state.Set(global::GBX.NET.Builders.Engines.Vision.CVisPostFx_MotionBlurBuilderAssignments.GetT2_Fid_PHlsl_MotionLenCmpAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
     public TSelf WithT2_Fid_PHlsl_MotionLenCmpReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
@@ -62,34 +52,19 @@ public abstract class CVisPostFx_MotionBlurBuilderBase<TSelf> where TSelf : CVis
         state.Set(global::GBX.NET.Builders.Engines.Vision.CVisPostFx_MotionBlurBuilderAssignments.GetT2_Fid_PHlsl_MotionLenCmpReferenceAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
-    public float T2_MotionMaxLen
-    {
-        get => state.Get<float>("T2_MotionMaxLen");
-        set => state.Set(global::GBX.NET.Builders.Engines.Vision.CVisPostFx_MotionBlurBuilderAssignments.GetT2_MotionMaxLenAssignment(), value, GameVersion.TMF);
-    }
     public TSelf WithT2_MotionMaxLen(float value)
     {
-        T2_MotionMaxLen = value;
+        state.Set(global::GBX.NET.Builders.Engines.Vision.CVisPostFx_MotionBlurBuilderAssignments.GetT2_MotionMaxLenAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
-    }
-    public float T2_MotionScale
-    {
-        get => state.Get<float>("T2_MotionScale");
-        set => state.Set(global::GBX.NET.Builders.Engines.Vision.CVisPostFx_MotionBlurBuilderAssignments.GetT2_MotionScaleAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithT2_MotionScale(float value)
     {
-        T2_MotionScale = value;
+        state.Set(global::GBX.NET.Builders.Engines.Vision.CVisPostFx_MotionBlurBuilderAssignments.GetT2_MotionScaleAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
-    }
-    public int Technique
-    {
-        get => state.Get<int>("Technique");
-        set => state.Set(global::GBX.NET.Builders.Engines.Vision.CVisPostFx_MotionBlurBuilderAssignments.GetTechniqueAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithTechnique(int value)
     {
-        Technique = value;
+        state.Set(global::GBX.NET.Builders.Engines.Vision.CVisPostFx_MotionBlurBuilderAssignments.GetTechniqueAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
 }
@@ -104,14 +79,6 @@ public partial class CVisPostFx_MotionBlurBuilder : CVisPostFx_MotionBlurBuilder
         node.Chunks.Add(chunk0C031006);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Vision.CVisPostFx_MotionBlur node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Vision.CVisPostFx_MotionBlur.Chunk0C031005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0C031005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Vision.CVisPostFx_MotionBlur.Chunk0C031006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0C031006 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Vision.CVisPostFx_MotionBlur node, GameVersion game)
-    {
-    }
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TMF : CVisPostFx_MotionBlurBuilderBase<TMF>
     {
@@ -122,13 +89,8 @@ public partial class CVisPostFx_MotionBlurBuilder : CVisPostFx_MotionBlurBuilder
             var node = CVisPostFx_MotionBlurBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CVisPostFx_MotionBlurBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CVisPostFx_MotionBlurBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Vision.CVisPostFx_MotionBlur node);
-        partial void ValidateNode(global::GBX.NET.Engines.Vision.CVisPostFx_MotionBlur node);
     }
 }

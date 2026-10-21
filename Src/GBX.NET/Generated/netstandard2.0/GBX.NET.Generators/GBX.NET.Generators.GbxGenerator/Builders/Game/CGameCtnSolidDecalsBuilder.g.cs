@@ -36,58 +36,33 @@ public abstract class CGameCtnSolidDecalsBuilderBase<TSelf> where TSelf : CGameC
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnSolidDecals> state;
     private protected CGameCtnSolidDecalsBuilderBase() => state = new();
     private protected CGameCtnSolidDecalsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnSolidDecals> state) => this.state = state;
-    public uint DecalFrequency
-    {
-        get => state.Get<uint>("DecalFrequency");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnSolidDecalsBuilderAssignments.GetDecalFrequencyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithDecalFrequency(uint value)
     {
-        DecalFrequency = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnSolidDecalsBuilderAssignments.GetDecalFrequencyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public string Name
-    {
-        get => state.Get<string>("Name");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnSolidDecalsBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithName(string value)
     {
-        Name = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnSolidDecalsBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public byte[] SceneDecals
-    {
-        get => state.Get<byte[]>("SceneDecals");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnSolidDecalsBuilderAssignments.GetSceneDecalsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSceneDecals(params byte[] value)
     {
-        SceneDecals = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnSolidDecalsBuilderAssignments.GetSceneDecalsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithSceneDecals(IEnumerable<byte> values)
     {
         return WithSceneDecals(values.ToArray());
     }
-    public string TypeId
-    {
-        get => state.Get<string>("TypeId");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnSolidDecalsBuilderAssignments.GetTypeIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithTypeId(string value)
     {
-        TypeId = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnSolidDecalsBuilderAssignments.GetTypeIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public uint TypeIntensity
-    {
-        get => state.Get<uint>("TypeIntensity");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnSolidDecalsBuilderAssignments.GetTypeIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTypeIntensity(uint value)
     {
-        TypeIntensity = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnSolidDecalsBuilderAssignments.GetTypeIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -106,19 +81,6 @@ public partial class CGameCtnSolidDecalsBuilder : CGameCtnSolidDecalsBuilderBase
         node.Chunks.Add(chunk03121004);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnSolidDecals node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121001>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk03121001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03121002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03121003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03121004 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnSolidDecals node, GameVersion game)
-    {
-        if (node.Name is null) throw new MemberNullException("Name");
-        if (node.SceneDecals is null) throw new MemberNullException("SceneDecals");
-        if (node.TypeId is null) throw new MemberNullException("TypeId");
-    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -134,14 +96,9 @@ public partial class CGameCtnSolidDecalsBuilder : CGameCtnSolidDecalsBuilderBase
             var node = CGameCtnSolidDecalsBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CGameCtnSolidDecalsBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CGameCtnSolidDecalsBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnSolidDecals node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnSolidDecals node);
     }
     public partial class TMT : CGameCtnSolidDecalsBuilderBase<TMT>
     {
@@ -152,14 +109,9 @@ public partial class CGameCtnSolidDecalsBuilder : CGameCtnSolidDecalsBuilderBase
             var node = CGameCtnSolidDecalsBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameCtnSolidDecalsBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameCtnSolidDecalsBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnSolidDecals node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnSolidDecals node);
     }
     public partial class MP4 : CGameCtnSolidDecalsBuilderBase<MP4>
     {
@@ -170,14 +122,9 @@ public partial class CGameCtnSolidDecalsBuilder : CGameCtnSolidDecalsBuilderBase
             var node = CGameCtnSolidDecalsBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameCtnSolidDecalsBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameCtnSolidDecalsBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnSolidDecals node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnSolidDecals node);
     }
     public partial class TM2020 : CGameCtnSolidDecalsBuilderBase<TM2020>
     {
@@ -188,13 +135,8 @@ public partial class CGameCtnSolidDecalsBuilder : CGameCtnSolidDecalsBuilderBase
             var node = CGameCtnSolidDecalsBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameCtnSolidDecalsBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameCtnSolidDecalsBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnSolidDecals node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnSolidDecals node);
     }
 }

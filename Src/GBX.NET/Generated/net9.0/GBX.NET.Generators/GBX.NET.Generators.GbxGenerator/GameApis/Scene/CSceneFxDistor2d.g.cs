@@ -41,12 +41,7 @@ public partial class CSceneFxDistor2d : global::GBX.NET.Interfaces.Scene.ISceneF
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMF? global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dTMF.BitmapDistor
     {
-        get
-        {
-            var node = BitmapDistor;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => BitmapDistor;
         set => BitmapDistor = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShaderApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

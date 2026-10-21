@@ -36,74 +36,39 @@ public abstract class CMotionTrackMobilPitchinBuilderBase<TSelf> where TSelf : C
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin> state;
     private protected CMotionTrackMobilPitchinBuilderBase() => state = new();
     private protected CMotionTrackMobilPitchinBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin> state) => this.state = state;
-    public float Flottaison
-    {
-        get => state.Get<float>("Flottaison");
-        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetFlottaisonAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithFlottaison(float value)
     {
-        Flottaison = value;
+        state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetFlottaisonAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float MaxAngle
-    {
-        get => state.Get<float>("MaxAngle");
-        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetMaxAngleAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMaxAngle(float value)
     {
-        MaxAngle = value;
+        state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetMaxAngleAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float OffsetHauteur
-    {
-        get => state.Get<float>("OffsetHauteur");
-        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetOffsetHauteurAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithOffsetHauteur(float value)
     {
-        OffsetHauteur = value;
+        state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetOffsetHauteurAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float PeriodDelta
-    {
-        get => state.Get<float>("PeriodDelta");
-        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetPeriodDeltaAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPeriodDelta(float value)
     {
-        PeriodDelta = value;
+        state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetPeriodDeltaAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin.EPitchinMode PitchinMode
-    {
-        get => state.Get<global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin.EPitchinMode>("PitchinMode");
-        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetPitchinModeAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPitchinMode(global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin.EPitchinMode value)
     {
-        PitchinMode = value;
+        state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetPitchinModeAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float Roulis
-    {
-        get => state.Get<float>("Roulis");
-        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetRoulisAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRoulis(float value)
     {
-        Roulis = value;
+        state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetRoulisAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.MwFoundations.CMwNod? Sea
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("Sea");
-        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetSeaAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSea(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
-        Sea = value;
+        state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetSeaAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithSeaReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
@@ -112,14 +77,9 @@ public abstract class CMotionTrackMobilPitchinBuilderBase<TSelf> where TSelf : C
         state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetSeaReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public float Tangage
-    {
-        get => state.Get<float>("Tangage");
-        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetTangageAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithTangage(float value)
     {
-        Tangage = value;
+        state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetTangageAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -131,13 +91,6 @@ public partial class CMotionTrackMobilPitchinBuilder : CMotionTrackMobilPitchinB
         var chunk08041002 = new global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin.Chunk08041002();
         node.Chunks.Add(chunk08041002);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin.Chunk08041002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk08041002 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin node, GameVersion game)
-    {
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -156,14 +109,9 @@ public partial class CMotionTrackMobilPitchinBuilder : CMotionTrackMobilPitchinB
             var node = CMotionTrackMobilPitchinBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CMotionTrackMobilPitchinBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CMotionTrackMobilPitchinBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin node);
     }
     public partial class TMPU : CMotionTrackMobilPitchinBuilderBase<TMPU>
     {
@@ -174,14 +122,9 @@ public partial class CMotionTrackMobilPitchinBuilder : CMotionTrackMobilPitchinB
             var node = CMotionTrackMobilPitchinBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CMotionTrackMobilPitchinBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CMotionTrackMobilPitchinBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin node);
     }
     public partial class TMSX : CMotionTrackMobilPitchinBuilderBase<TMSX>
     {
@@ -192,14 +135,9 @@ public partial class CMotionTrackMobilPitchinBuilder : CMotionTrackMobilPitchinB
             var node = CMotionTrackMobilPitchinBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CMotionTrackMobilPitchinBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CMotionTrackMobilPitchinBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin node);
     }
     public partial class TMNESWC : CMotionTrackMobilPitchinBuilderBase<TMNESWC>
     {
@@ -210,14 +148,9 @@ public partial class CMotionTrackMobilPitchinBuilder : CMotionTrackMobilPitchinB
             var node = CMotionTrackMobilPitchinBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CMotionTrackMobilPitchinBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CMotionTrackMobilPitchinBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin node);
     }
     public partial class VSK5 : CMotionTrackMobilPitchinBuilderBase<VSK5>
     {
@@ -228,14 +161,9 @@ public partial class CMotionTrackMobilPitchinBuilder : CMotionTrackMobilPitchinB
             var node = CMotionTrackMobilPitchinBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CMotionTrackMobilPitchinBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CMotionTrackMobilPitchinBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin node);
     }
     public partial class TMF : CMotionTrackMobilPitchinBuilderBase<TMF>
     {
@@ -246,14 +174,9 @@ public partial class CMotionTrackMobilPitchinBuilder : CMotionTrackMobilPitchinB
             var node = CMotionTrackMobilPitchinBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CMotionTrackMobilPitchinBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CMotionTrackMobilPitchinBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin node);
     }
     public partial class MP3 : CMotionTrackMobilPitchinBuilderBase<MP3>
     {
@@ -264,14 +187,9 @@ public partial class CMotionTrackMobilPitchinBuilder : CMotionTrackMobilPitchinB
             var node = CMotionTrackMobilPitchinBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CMotionTrackMobilPitchinBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CMotionTrackMobilPitchinBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin node);
     }
     public partial class TMT : CMotionTrackMobilPitchinBuilderBase<TMT>
     {
@@ -282,13 +200,8 @@ public partial class CMotionTrackMobilPitchinBuilder : CMotionTrackMobilPitchinB
             var node = CMotionTrackMobilPitchinBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CMotionTrackMobilPitchinBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CMotionTrackMobilPitchinBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin node);
     }
 }

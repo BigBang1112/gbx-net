@@ -36,14 +36,9 @@ public abstract class CPlugShaderApplyBuilderBase<TSelf> where TSelf : CPlugShad
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state;
     private protected CPlugShaderApplyBuilderBase() => state = new();
     private protected CPlugShaderApplyBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state) => this.state = state;
-    public NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>? BitmapAddresses
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>?>("BitmapAddresses");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetBitmapAddressesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithBitmapAddresses(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>? value)
     {
-        BitmapAddresses = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetBitmapAddressesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithBitmapAddresses(params global::GBX.NET.Engines.Plug.CPlugBitmapAddress[] values)
@@ -54,14 +49,9 @@ public abstract class CPlugShaderApplyBuilderBase<TSelf> where TSelf : CPlugShad
     {
         return WithBitmapAddresses(values.ToArray());
     }
-    public global::GBX.NET.Engines.Function.CFuncShader? FuncShader
-    {
-        get => state.Get<global::GBX.NET.Engines.Function.CFuncShader?>("FuncShader");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetFuncShaderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithFuncShader(global::GBX.NET.Engines.Function.CFuncShader? value)
     {
-        FuncShader = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetFuncShaderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithFuncShaderReference(NodeRef<global::GBX.NET.Engines.Function.CFuncShader> value)
@@ -70,34 +60,19 @@ public abstract class CPlugShaderApplyBuilderBase<TSelf> where TSelf : CPlugShad
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetFuncShaderReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public float LightMapQuality
-    {
-        get => state.Get<float>("LightMapQuality");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetLightMapQualityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithLightMapQuality(float value)
     {
-        LightMapQuality = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetLightMapQualityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugShaderGeneric.SMaterial? Material
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugShaderGeneric.SMaterial?>("Material");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderGenericBuilderAssignments.GetMaterialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMaterial(global::GBX.NET.Engines.Plug.CPlugShaderGeneric.SMaterial? value)
     {
-        Material = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderGenericBuilderAssignments.GetMaterialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugMaterialFx? MaterialFx
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialFx?>("MaterialFx");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetMaterialFxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMaterialFx(global::GBX.NET.Engines.Plug.CPlugMaterialFx? value)
     {
-        MaterialFx = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetMaterialFxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithMaterialFxReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialFx> value)
@@ -106,14 +81,9 @@ public abstract class CPlugShaderApplyBuilderBase<TSelf> where TSelf : CPlugShad
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetMaterialFxReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>? Passes
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>?>("Passes");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetPassesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithPasses(NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>? value)
     {
-        Passes = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetPassesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithPasses(params global::GBX.NET.Engines.Plug.CPlugShaderPass[] values)
@@ -124,14 +94,9 @@ public abstract class CPlugShaderApplyBuilderBase<TSelf> where TSelf : CPlugShad
     {
         return WithPasses(values.ToArray());
     }
-    public global::GBX.NET.Engines.Plug.CPlugBitmapApply? SolidWiredApply
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmapApply?>("SolidWiredApply");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetSolidWiredApplyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithSolidWiredApply(global::GBX.NET.Engines.Plug.CPlugBitmapApply? value)
     {
-        SolidWiredApply = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetSolidWiredApplyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithSolidWiredApplyReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapApply> value)
@@ -140,28 +105,18 @@ public abstract class CPlugShaderApplyBuilderBase<TSelf> where TSelf : CPlugShad
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetSolidWiredApplyReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public ushort VisibleIdFlags
-    {
-        get => state.Get<ushort>("VisibleIdFlags");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetVisibleIdFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithVisibleIdFlags(ushort value)
     {
-        VisibleIdFlags = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetVisibleIdFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CPlugShaderApplyBuilderMembers1<TSelf> : CPlugShaderApplyBuilderBase<TSelf> where TSelf : CPlugShaderApplyBuilderMembers1<TSelf>
 {
     private protected CPlugShaderApplyBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state) : base(state) { }
-    public NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>? LegacyCustomShaders
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>?>("LegacyCustomShaders");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetLegacyCustomShadersAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithLegacyCustomShaders(NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>? value)
     {
-        LegacyCustomShaders = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetLegacyCustomShadersAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithLegacyCustomShaders(params global::GBX.NET.Engines.Plug.CPlugShader[] values)
@@ -176,86 +131,51 @@ public abstract class CPlugShaderApplyBuilderMembers1<TSelf> : CPlugShaderApplyB
 public abstract class CPlugShaderApplyBuilderMembers2<TSelf> : CPlugShaderApplyBuilderBase<TSelf> where TSelf : CPlugShaderApplyBuilderMembers2<TSelf>
 {
     private protected CPlugShaderApplyBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state) : base(state) { }
-    public ulong RequirementFlags
-    {
-        get => state.Get<ulong>("RequirementFlags");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetRequirementFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithRequirementFlags(ulong value)
     {
-        RequirementFlags = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetRequirementFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CPlugShaderApplyBuilderMembers3<TSelf> : CPlugShaderApplyBuilderMembers2<TSelf> where TSelf : CPlugShaderApplyBuilderMembers3<TSelf>
 {
     private protected CPlugShaderApplyBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state) : base(state) { }
-    public uint ApplyField
-    {
-        get => state.Get<uint>("ApplyField");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetApplyFieldAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithApplyField(uint value)
     {
-        ApplyField = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetApplyFieldAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public uint TexOpConstant
-    {
-        get => state.Get<uint>("TexOpConstant");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetTexOpConstantAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithTexOpConstant(uint value)
     {
-        TexOpConstant = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetTexOpConstantAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CPlugShaderApplyBuilderMembers4<TSelf> : CPlugShaderApplyBuilderMembers3<TSelf> where TSelf : CPlugShaderApplyBuilderMembers4<TSelf>
 {
     private protected CPlugShaderApplyBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state) : base(state) { }
-    public uint ApplyField2
-    {
-        get => state.Get<uint>("ApplyField2");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetApplyField2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    }
     public TSelf WithApplyField2(uint value)
     {
-        ApplyField2 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetApplyField2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
     }
 }
 public abstract class CPlugShaderApplyBuilderMembers5<TSelf> : CPlugShaderApplyBuilderMembers1<TSelf> where TSelf : CPlugShaderApplyBuilderMembers5<TSelf>
 {
     private protected CPlugShaderApplyBuilderMembers5(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state) : base(state) { }
-    public int BlendDst
-    {
-        get => state.Get<int>("BlendDst");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetBlendDstAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
-    }
     public TSelf WithBlendDst(int value)
     {
-        BlendDst = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetBlendDstAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
         return (TSelf)this;
-    }
-    public int BlendSrc
-    {
-        get => state.Get<int>("BlendSrc");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetBlendSrcAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
     }
     public TSelf WithBlendSrc(int value)
     {
-        BlendSrc = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetBlendSrcAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugBitmapAddress? BumpMap
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmapAddress?>("BumpMap");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetBumpMapAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
     }
     public TSelf WithBumpMap(global::GBX.NET.Engines.Plug.CPlugBitmapAddress? value)
     {
-        BumpMap = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetBumpMapAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
         return (TSelf)this;
     }
     public TSelf WithBumpMapReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapAddress> value)
@@ -264,14 +184,9 @@ public abstract class CPlugShaderApplyBuilderMembers5<TSelf> : CPlugShaderApplyB
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetBumpMapReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugBitmapAddress? Diffuse
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmapAddress?>("Diffuse");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetDiffuseAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
-    }
     public TSelf WithDiffuse(global::GBX.NET.Engines.Plug.CPlugBitmapAddress? value)
     {
-        Diffuse = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetDiffuseAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
         return (TSelf)this;
     }
     public TSelf WithDiffuseReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapAddress> value)
@@ -280,14 +195,9 @@ public abstract class CPlugShaderApplyBuilderMembers5<TSelf> : CPlugShaderApplyB
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetDiffuseReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugBitmapAddress? EnvMap
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmapAddress?>("EnvMap");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetEnvMapAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
-    }
     public TSelf WithEnvMap(global::GBX.NET.Engines.Plug.CPlugBitmapAddress? value)
     {
-        EnvMap = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetEnvMapAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
         return (TSelf)this;
     }
     public TSelf WithEnvMapReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapAddress> value)
@@ -296,44 +206,24 @@ public abstract class CPlugShaderApplyBuilderMembers5<TSelf> : CPlugShaderApplyB
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetEnvMapReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
         return (TSelf)this;
     }
-    public int EnvMapTexOp
-    {
-        get => state.Get<int>("EnvMapTexOp");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetEnvMapTexOpAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
-    }
     public TSelf WithEnvMapTexOp(int value)
     {
-        EnvMapTexOp = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetEnvMapTexOpAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
         return (TSelf)this;
-    }
-    public uint LegacyAlphaFlags
-    {
-        get => state.Get<uint>("LegacyAlphaFlags");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetLegacyAlphaFlagsAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
     }
     public TSelf WithLegacyAlphaFlags(uint value)
     {
-        LegacyAlphaFlags = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetLegacyAlphaFlagsAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
         return (TSelf)this;
-    }
-    public uint LegacyMaterialFlags
-    {
-        get => state.Get<uint>("LegacyMaterialFlags");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetLegacyMaterialFlagsAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
     }
     public TSelf WithLegacyMaterialFlags(uint value)
     {
-        LegacyMaterialFlags = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetLegacyMaterialFlagsAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugBitmapAddress? LightMap
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmapAddress?>("LightMap");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetLightMapAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
     }
     public TSelf WithLightMap(global::GBX.NET.Engines.Plug.CPlugBitmapAddress? value)
     {
-        LightMap = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetLightMapAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
         return (TSelf)this;
     }
     public TSelf WithLightMapReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapAddress> value)
@@ -342,14 +232,9 @@ public abstract class CPlugShaderApplyBuilderMembers5<TSelf> : CPlugShaderApplyB
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetLightMapReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugBitmapAddress? SelfIllum
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmapAddress?>("SelfIllum");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetSelfIllumAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
-    }
     public TSelf WithSelfIllum(global::GBX.NET.Engines.Plug.CPlugBitmapAddress? value)
     {
-        SelfIllum = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetSelfIllumAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
         return (TSelf)this;
     }
     public TSelf WithSelfIllumReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapAddress> value)
@@ -362,34 +247,19 @@ public abstract class CPlugShaderApplyBuilderMembers5<TSelf> : CPlugShaderApplyB
 public abstract class CPlugShaderApplyBuilderMembers6<TSelf> : CPlugShaderApplyBuilderMembers4<TSelf> where TSelf : CPlugShaderApplyBuilderMembers6<TSelf>
 {
     private protected CPlugShaderApplyBuilderMembers6(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state) : base(state) { }
-    public uint ApplyField3
-    {
-        get => state.Get<uint>("ApplyField3");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetApplyField3Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithApplyField3(uint value)
     {
-        ApplyField3 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetApplyField3Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public byte ApplyFlags
-    {
-        get => state.Get<byte>("ApplyFlags");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetApplyFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithApplyFlags(byte value)
     {
-        ApplyFlags = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetApplyFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray? BitmapApplyArray
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray?>("BitmapApplyArray");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetBitmapApplyArrayAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBitmapApplyArray(global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray? value)
     {
-        BitmapApplyArray = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetBitmapApplyArrayAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithBitmapApplyArrayReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray> value)
@@ -398,38 +268,23 @@ public abstract class CPlugShaderApplyBuilderMembers6<TSelf> : CPlugShaderApplyB
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetBitmapApplyArrayReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugShader.ShaderCustom[] CustomShaders
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugShader.ShaderCustom[]>("CustomShaders");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetCustomShadersAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithCustomShaders(params global::GBX.NET.Engines.Plug.CPlugShader.ShaderCustom[] value)
     {
-        CustomShaders = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetCustomShadersAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithCustomShaders(IEnumerable<global::GBX.NET.Engines.Plug.CPlugShader.ShaderCustom> values)
     {
         return WithCustomShaders(values.ToArray());
     }
-    public uint Flags
-    {
-        get => state.Get<uint>("Flags");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithFlags(uint value)
     {
-        Flags = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugFileGPUV? GPU
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugFileGPUV?>("GPU");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetGPUAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGPU(global::GBX.NET.Engines.Plug.CPlugFileGPUV? value)
     {
-        GPU = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetGPUAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithGPUReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileGPUV> value)
@@ -438,24 +293,14 @@ public abstract class CPlugShaderApplyBuilderMembers6<TSelf> : CPlugShaderApplyB
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetGPUReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public uint RequirementFlags2
-    {
-        get => state.Get<uint>("RequirementFlags2");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetRequirementFlags2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithRequirementFlags2(uint value)
     {
-        RequirementFlags2 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetRequirementFlags2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>? UnusedBitmapAddresses
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>?>("UnusedBitmapAddresses");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetUnusedBitmapAddressesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithUnusedBitmapAddresses(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>? value)
     {
-        UnusedBitmapAddresses = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetUnusedBitmapAddressesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithUnusedBitmapAddresses(params global::GBX.NET.Engines.Plug.CPlugBitmapAddress[] values)
@@ -466,24 +311,14 @@ public abstract class CPlugShaderApplyBuilderMembers6<TSelf> : CPlugShaderApplyB
     {
         return WithUnusedBitmapAddresses(values.ToArray());
     }
-    public float VisibleMaxDist
-    {
-        get => state.Get<float>("VisibleMaxDist");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetVisibleMaxDistAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithVisibleMaxDist(float value)
     {
-        VisibleMaxDist = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetVisibleMaxDistAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float VisibleMinScreenHeight
-    {
-        get => state.Get<float>("VisibleMinScreenHeight");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetVisibleMinScreenHeightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithVisibleMinScreenHeight(float value)
     {
-        VisibleMinScreenHeight = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetVisibleMinScreenHeightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -504,14 +339,6 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
         node.Chunks.Add(chunk09002010);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugShaderApply node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09026001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09063002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09063002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderGeneric.Chunk09004001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09004001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShader.Chunk0900200E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900200E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShader.Chunk09002010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09002010 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugShaderApply CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugShaderApply(game);
@@ -527,14 +354,6 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
         node.Chunks.Add(chunk09002014);
         return node;
     }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugShaderApply node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09026001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09063002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09063002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderGeneric.Chunk09004003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09004003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShader.Chunk0900200E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900200E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShader.Chunk09002014>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09002014 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugShaderApply CreateRecipe2(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugShaderApply(game);
@@ -549,14 +368,6 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
         var chunk09002015 = new global::GBX.NET.Engines.Plug.CPlugShader.Chunk09002015();
         node.Chunks.Add(chunk09002015);
         return node;
-    }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Plug.CPlugShaderApply node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09026001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09063002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09063002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderGeneric.Chunk09004003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09004003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShader.Chunk0900200E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900200E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShader.Chunk09002015>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09002015 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Plug.CPlugShaderApply CreateRecipe3(GameVersion game)
     {
@@ -575,15 +386,6 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
         node.Chunks.Add(chunk09002015);
         return node;
     }
-    private static void ValidateRecipe3(global::GBX.NET.Engines.Plug.CPlugShaderApply node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09026002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09026004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09026007 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderGeneric.Chunk09004003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09004003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShader.Chunk0900200E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900200E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShader.Chunk09002015>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09002015 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugShaderApply CreateRecipe4(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugShaderApply(game);
@@ -600,15 +402,6 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
         var chunk09002016 = new global::GBX.NET.Engines.Plug.CPlugShader.Chunk09002016();
         node.Chunks.Add(chunk09002016);
         return node;
-    }
-    private static void ValidateRecipe4(global::GBX.NET.Engines.Plug.CPlugShaderApply node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09026002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09026004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09026008 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderGeneric.Chunk09004003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09004003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShader.Chunk0900200E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900200E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShader.Chunk09002016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09002016 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Plug.CPlugShaderApply CreateRecipe5(GameVersion game)
     {
@@ -648,24 +441,6 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
         node.Chunks.Add(chunk0900201F);
         return node;
     }
-    private static void ValidateRecipe5(global::GBX.NET.Engines.Plug.CPlugShaderApply node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09026002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09026004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk0902600A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0902600A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk0902600C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0902600C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09026010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026011>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk09026011 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderGeneric.Chunk09004003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09004003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShader.Chunk09002007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09002007 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShader.Chunk09002016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09002016 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShader.Chunk09002018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09002018 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShader.Chunk0900201B>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0900201B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShader.Chunk0900201C>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0900201C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShader.Chunk0900201D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900201D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShader.Chunk0900201E>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0900201E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShader.Chunk0900201F>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0900201F is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugShaderApply CreateRecipe6(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugShaderApply(game);
@@ -703,24 +478,6 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
         var chunk09002020 = new global::GBX.NET.Engines.Plug.CPlugShader.Chunk09002020(game);
         node.Chunks.Add(chunk09002020);
         return node;
-    }
-    private static void ValidateRecipe6(global::GBX.NET.Engines.Plug.CPlugShaderApply node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09026002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09026004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk0902600A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0902600A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk0902600C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0902600C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09026010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026011>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk09026011 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderGeneric.Chunk09004003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09004003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShader.Chunk09002007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09002007 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShader.Chunk09002018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09002018 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShader.Chunk0900201B>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0900201B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShader.Chunk0900201C>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0900201C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShader.Chunk0900201D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900201D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShader.Chunk0900201E>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0900201E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShader.Chunk0900201F>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0900201F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShader.Chunk09002020>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk09002020 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Plug.CPlugShaderApply CreateRecipe7(GameVersion game)
     {
@@ -760,28 +517,6 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
         var chunk09002020 = new global::GBX.NET.Engines.Plug.CPlugShader.Chunk09002020(game);
         node.Chunks.Add(chunk09002020);
         return node;
-    }
-    private static void ValidateRecipe7(global::GBX.NET.Engines.Plug.CPlugShaderApply node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09026002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09026004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk0902600C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0902600C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09026010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026011>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk09026011 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026012>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk09026012 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderGeneric.Chunk09004003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09004003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShader.Chunk09002007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09002007 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShader.Chunk09002018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09002018 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShader.Chunk0900201B>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0900201B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShader.Chunk0900201C>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0900201C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShader.Chunk0900201D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900201D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShader.Chunk0900201E>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0900201E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShader.Chunk0900201F>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0900201F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShader.Chunk09002020>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk09002020 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugShaderApply node, GameVersion game)
-    {
-        if ((game & (GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT)) != 0 && node.CustomShaders is null) throw new MemberNullException("CustomShaders");
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -856,14 +591,9 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
             var node = CPlugShaderApplyBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CPlugShaderApplyBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CPlugShaderApplyBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugShaderApply node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugShaderApply node);
     }
     public partial class TMPU : CPlugShaderApplyBuilderMembers5<TMPU>
     {
@@ -926,14 +656,9 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
             var node = CPlugShaderApplyBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CPlugShaderApplyBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CPlugShaderApplyBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugShaderApply node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugShaderApply node);
     }
     public partial class TMSX : CPlugShaderApplyBuilderMembers5<TMSX>
     {
@@ -996,14 +721,9 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
             var node = CPlugShaderApplyBuilder.CreateRecipe1(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CPlugShaderApplyBuilder.ValidateRecipe1(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CPlugShaderApplyBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugShaderApply node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugShaderApply node);
     }
     public partial class TMNESWC : CPlugShaderApplyBuilderMembers5<TMNESWC>
     {
@@ -1052,14 +772,9 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
         {
             return WithPasses(values.ToArray());
         }
-        public ulong RequirementFlags
-        {
-            get => state.Get<ulong>("RequirementFlags");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetRequirementFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-        }
         public TMNESWC WithRequirementFlags(ulong value)
         {
-            RequirementFlags = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetRequirementFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public TMNESWC WithSelfIllum(global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTMNESWC? value)
@@ -1076,14 +791,9 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
             var node = CPlugShaderApplyBuilder.CreateRecipe2(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CPlugShaderApplyBuilder.ValidateRecipe2(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CPlugShaderApplyBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugShaderApply node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugShaderApply node);
     }
     public partial class VSK5 : CPlugShaderApplyBuilderMembers3<VSK5>
     {
@@ -1100,14 +810,9 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
         {
             return base.WithFuncShader(value is null ? (global::GBX.NET.Engines.Function.CFuncShader?)null : value is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>? LegacyCustomShaders
-        {
-            get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>?>("LegacyCustomShaders");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetLegacyCustomShadersAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-        }
         public VSK5 WithLegacyCustomShaders(NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>? value)
         {
-            LegacyCustomShaders = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetLegacyCustomShadersAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public VSK5 WithLegacyCustomShaders(params global::GBX.NET.Engines.Plug.CPlugShader[] values)
@@ -1144,14 +849,9 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
             var node = CPlugShaderApplyBuilder.CreateRecipe3(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CPlugShaderApplyBuilder.ValidateRecipe3(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CPlugShaderApplyBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugShaderApply node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugShaderApply node);
     }
     public partial class TMF : CPlugShaderApplyBuilderMembers4<TMF>
     {
@@ -1168,14 +868,9 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
         {
             return base.WithFuncShader(value is null ? (global::GBX.NET.Engines.Function.CFuncShader?)null : value is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>? LegacyCustomShaders
-        {
-            get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>?>("LegacyCustomShaders");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetLegacyCustomShadersAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-        }
         public TMF WithLegacyCustomShaders(NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>? value)
         {
-            LegacyCustomShaders = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetLegacyCustomShadersAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public TMF WithLegacyCustomShaders(params global::GBX.NET.Engines.Plug.CPlugShader[] values)
@@ -1212,14 +907,9 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
             var node = CPlugShaderApplyBuilder.CreateRecipe4(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CPlugShaderApplyBuilder.ValidateRecipe4(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CPlugShaderApplyBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugShaderApply node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugShaderApply node);
     }
     public partial class MP3 : CPlugShaderApplyBuilderMembers6<MP3>
     {
@@ -1262,14 +952,9 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
             var node = CPlugShaderApplyBuilder.CreateRecipe5(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CPlugShaderApplyBuilder.ValidateRecipe5(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CPlugShaderApplyBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugShaderApply node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugShaderApply node);
     }
     public partial class TMT : CPlugShaderApplyBuilderMembers6<TMT>
     {
@@ -1316,14 +1001,9 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
             var node = CPlugShaderApplyBuilder.CreateRecipe6(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugShaderApplyBuilder.ValidateRecipe6(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugShaderApplyBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugShaderApply node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugShaderApply node);
     }
     public partial class MP4 : CPlugShaderApplyBuilderMembers6<MP4>
     {
@@ -1370,14 +1050,9 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
             var node = CPlugShaderApplyBuilder.CreateRecipe6(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugShaderApplyBuilder.ValidateRecipe6(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugShaderApplyBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugShaderApply node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugShaderApply node);
     }
     public partial class TM2020 : CPlugShaderApplyBuilderMembers6<TM2020>
     {
@@ -1424,13 +1099,8 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
             var node = CPlugShaderApplyBuilder.CreateRecipe7(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugShaderApplyBuilder.ValidateRecipe7(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugShaderApplyBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugShaderApply node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugShaderApply node);
     }
 }

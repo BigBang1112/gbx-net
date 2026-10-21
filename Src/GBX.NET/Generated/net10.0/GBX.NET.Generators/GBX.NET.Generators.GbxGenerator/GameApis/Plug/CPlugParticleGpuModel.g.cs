@@ -41,62 +41,32 @@ public partial class CPlugParticleGpuModel : global::GBX.NET.Interfaces.Plug.IPl
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Plug.IPlugParticleGpuModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>.Bitmap
     {
-        get
-        {
-            var node = Bitmap;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => Bitmap;
         set => Bitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Plug.IPlugParticleGpuModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>.Bitmap
     {
-        get
-        {
-            var node = Bitmap;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => Bitmap;
         set => Bitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugParticleGpuModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>.Bitmap
     {
-        get
-        {
-            var node = Bitmap;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Bitmap;
         set => Bitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugParticleGpuModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>.BitmapOverLife
     {
-        get
-        {
-            var node = BitmapOverLife;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => BitmapOverLife;
         set => BitmapOverLife = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Plug.IPlugParticleGpuModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>.Bitmap
     {
-        get
-        {
-            var node = Bitmap;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => Bitmap;
         set => Bitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Plug.IPlugParticleGpuModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>.BitmapOverLife
     {
-        get
-        {
-            var node = BitmapOverLife;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => BitmapOverLife;
         set => BitmapOverLife = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

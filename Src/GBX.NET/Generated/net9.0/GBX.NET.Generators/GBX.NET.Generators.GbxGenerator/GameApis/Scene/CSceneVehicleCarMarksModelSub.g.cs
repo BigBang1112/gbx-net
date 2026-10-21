@@ -41,32 +41,17 @@ public partial class CSceneVehicleCarMarksModelSub : global::GBX.NET.Interfaces.
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT>.Material
     {
-        get
-        {
-            var node = Material;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => Material;
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>.Material
     {
-        get
-        {
-            var node = Material;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Material;
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020>.Material
     {
-        get
-        {
-            var node = Material;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => Material;
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

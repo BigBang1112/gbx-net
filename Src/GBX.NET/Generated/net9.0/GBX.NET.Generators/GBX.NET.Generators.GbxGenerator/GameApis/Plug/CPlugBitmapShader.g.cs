@@ -46,217 +46,117 @@ public partial class CPlugBitmapShader : global::GBX.NET.Interfaces.Plug.IPlugBi
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10? global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10, global::GBX.NET.Interfaces.Plug.IPlugShaderTM10>.BitmapToSwap
     {
-        get
-        {
-            var node = BitmapToSwap;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            return node;
-        }
+        get => BitmapToSwap;
         set => BitmapToSwap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10>? global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10>.LegacyBitmaps
     {
-        get => LegacyBitmaps is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmap, global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10>(GetLegacyBitmapsBuilderReferences, GameVersion.TM10, true, "LegacyBitmaps");
+        get => LegacyBitmaps is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmap, global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10>(GetLegacyBitmapsBuilderReferences, true, "LegacyBitmaps");
         set => LegacyBitmaps = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmap>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmap, global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10>(value, false));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTM10? global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10, global::GBX.NET.Interfaces.Plug.IPlugShaderTM10>.Shader
     {
-        get
-        {
-            var node = Shader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            return node;
-        }
+        get => Shader;
         set => Shader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU? global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU, global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU>.BitmapToSwap
     {
-        get
-        {
-            var node = BitmapToSwap;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            return node;
-        }
+        get => BitmapToSwap;
         set => BitmapToSwap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU>? global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU>.LegacyBitmaps
     {
-        get => LegacyBitmaps is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmap, global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU>(GetLegacyBitmapsBuilderReferences, GameVersion.TMPU, true, "LegacyBitmaps");
+        get => LegacyBitmaps is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmap, global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU>(GetLegacyBitmapsBuilderReferences, true, "LegacyBitmaps");
         set => LegacyBitmaps = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmap>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmap, global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU>(value, false));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU? global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU, global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU>.Shader
     {
-        get
-        {
-            var node = Shader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            return node;
-        }
+        get => Shader;
         set => Shader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX, global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX>.BitmapToSwap
     {
-        get
-        {
-            var node = BitmapToSwap;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => BitmapToSwap;
         set => BitmapToSwap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX>? global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX>.LegacyBitmaps
     {
-        get => LegacyBitmaps is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmap, global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX>(GetLegacyBitmapsBuilderReferences, GameVersion.TMSX, true, "LegacyBitmaps");
+        get => LegacyBitmaps is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmap, global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX>(GetLegacyBitmapsBuilderReferences, true, "LegacyBitmaps");
         set => LegacyBitmaps = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmap>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmap, global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX>(value, false));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX? global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX, global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX>.Shader
     {
-        get
-        {
-            var node = Shader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => Shader;
         set => Shader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC>.BitmapToSwap
     {
-        get
-        {
-            var node = BitmapToSwap;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => BitmapToSwap;
         set => BitmapToSwap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC>.Shader
     {
-        get
-        {
-            var node = Shader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => Shader;
         set => Shader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5, global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5>.BitmapToSwap
     {
-        get
-        {
-            var node = BitmapToSwap;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => BitmapToSwap;
         set => BitmapToSwap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5? global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5, global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5>.Shader
     {
-        get
-        {
-            var node = Shader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => Shader;
         set => Shader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF, global::GBX.NET.Interfaces.Plug.IPlugShaderTMF>.BitmapToSwap
     {
-        get
-        {
-            var node = BitmapToSwap;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => BitmapToSwap;
         set => BitmapToSwap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTMF? global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF, global::GBX.NET.Interfaces.Plug.IPlugShaderTMF>.Shader
     {
-        get
-        {
-            var node = Shader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => Shader;
         set => Shader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3, global::GBX.NET.Interfaces.Plug.IPlugShaderMP3>.BitmapToSwap
     {
-        get
-        {
-            var node = BitmapToSwap;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => BitmapToSwap;
         set => BitmapToSwap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderMP3? global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3, global::GBX.NET.Interfaces.Plug.IPlugShaderMP3>.Shader
     {
-        get
-        {
-            var node = Shader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => Shader;
         set => Shader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Plug.IPlugShaderTMT>.BitmapToSwap
     {
-        get
-        {
-            var node = BitmapToSwap;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => BitmapToSwap;
         set => BitmapToSwap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTMT? global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Plug.IPlugShaderTMT>.Shader
     {
-        get
-        {
-            var node = Shader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => Shader;
         set => Shader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugShaderMP4>.BitmapToSwap
     {
-        get
-        {
-            var node = BitmapToSwap;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => BitmapToSwap;
         set => BitmapToSwap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderMP4? global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugShaderMP4>.Shader
     {
-        get
-        {
-            var node = Shader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Shader;
         set => Shader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020>.BitmapToSwap
     {
-        get
-        {
-            var node = BitmapToSwap;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => BitmapToSwap;
         set => BitmapToSwap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020? global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020>.Shader
     {
-        get
-        {
-            var node = Shader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => Shader;
         set => Shader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     private NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmap>? GetLegacyBitmapsBuilderReferences() => LegacyBitmaps;

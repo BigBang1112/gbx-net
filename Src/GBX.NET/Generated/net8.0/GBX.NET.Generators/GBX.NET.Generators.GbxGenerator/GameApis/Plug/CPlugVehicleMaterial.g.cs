@@ -36,112 +36,57 @@ public partial class CPlugVehicleMaterial : global::GBX.NET.Interfaces.Plug.IPlu
     public static global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilder Create() => new();
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10? global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10>.MaterialHeightDetailBitmap
     {
-        get
-        {
-            var node = MaterialHeightDetailBitmap;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            return node;
-        }
+        get => MaterialHeightDetailBitmap;
         set => MaterialHeightDetailBitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugFlockModelTM10? global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers1<global::GBX.NET.Interfaces.Plug.IPlugFlockModelTM10, global::GBX.NET.Interfaces.Plug.IPlugShaderTM10>.TrailManagerModel
     {
-        get
-        {
-            var node = TrailManagerModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            return node;
-        }
+        get => TrailManagerModel;
         set => TrailManagerModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFlockModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTM10? global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers1<global::GBX.NET.Interfaces.Plug.IPlugFlockModelTM10, global::GBX.NET.Interfaces.Plug.IPlugShaderTM10>.TrailShader
     {
-        get
-        {
-            var node = TrailShader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            return node;
-        }
+        get => TrailShader;
         set => TrailShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU? global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU>.MaterialHeightDetailBitmap
     {
-        get
-        {
-            var node = MaterialHeightDetailBitmap;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            return node;
-        }
+        get => MaterialHeightDetailBitmap;
         set => MaterialHeightDetailBitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugFlockModelTMPU? global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers1<global::GBX.NET.Interfaces.Plug.IPlugFlockModelTMPU, global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU>.TrailManagerModel
     {
-        get
-        {
-            var node = TrailManagerModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            return node;
-        }
+        get => TrailManagerModel;
         set => TrailManagerModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFlockModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU? global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers1<global::GBX.NET.Interfaces.Plug.IPlugFlockModelTMPU, global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU>.TrailShader
     {
-        get
-        {
-            var node = TrailShader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            return node;
-        }
+        get => TrailShader;
         set => TrailShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX>.MaterialHeightDetailBitmap
     {
-        get
-        {
-            var node = MaterialHeightDetailBitmap;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => MaterialHeightDetailBitmap;
         set => MaterialHeightDetailBitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC>.MaterialHeightDetailBitmap
     {
-        get
-        {
-            var node = MaterialHeightDetailBitmap;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => MaterialHeightDetailBitmap;
         set => MaterialHeightDetailBitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5>.MaterialHeightDetailBitmap
     {
-        get
-        {
-            var node = MaterialHeightDetailBitmap;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => MaterialHeightDetailBitmap;
         set => MaterialHeightDetailBitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF>.MaterialHeightDetailBitmap
     {
-        get
-        {
-            var node = MaterialHeightDetailBitmap;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => MaterialHeightDetailBitmap;
         set => MaterialHeightDetailBitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>.MaterialHeightDetailBitmap
     {
-        get
-        {
-            var node = MaterialHeightDetailBitmap;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => MaterialHeightDetailBitmap;
         set => MaterialHeightDetailBitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

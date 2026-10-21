@@ -36,14 +36,9 @@ public abstract class CHmsLightBuilderBase<TSelf> where TSelf : CHmsLightBuilder
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLight> state;
     private protected CHmsLightBuilderBase() => state = new();
     private protected CHmsLightBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLight> state) => this.state = state;
-    public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapFlare
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapFlare");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightBuilderAssignments.GetBitmapFlareAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithBitmapFlare(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
-        BitmapFlare = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightBuilderAssignments.GetBitmapFlareAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithBitmapFlareReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
@@ -52,14 +47,9 @@ public abstract class CHmsLightBuilderBase<TSelf> where TSelf : CHmsLightBuilder
         state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightBuilderAssignments.GetBitmapFlareReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapSprite
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapSprite");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightBuilderAssignments.GetBitmapSpriteAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithBitmapSprite(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
-        BitmapSprite = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightBuilderAssignments.GetBitmapSpriteAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithBitmapSpriteReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
@@ -68,14 +58,9 @@ public abstract class CHmsLightBuilderBase<TSelf> where TSelf : CHmsLightBuilder
         state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightBuilderAssignments.GetBitmapSpriteReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Graphic.GxLight? MainGxLight
-    {
-        get => state.Get<global::GBX.NET.Engines.Graphic.GxLight?>("MainGxLight");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightBuilderAssignments.GetMainGxLightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithMainGxLight(global::GBX.NET.Engines.Graphic.GxLight? value)
     {
-        MainGxLight = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightBuilderAssignments.GetMainGxLightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithMainGxLightReference(NodeRef<global::GBX.NET.Engines.Graphic.GxLight> value)
@@ -93,13 +78,6 @@ public partial class CHmsLightBuilder : CHmsLightBuilderBase<CHmsLightBuilder>
         var chunk0600C003 = new global::GBX.NET.Engines.Hms.CHmsLight.Chunk0600C003();
         node.Chunks.Add(chunk0600C003);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Hms.CHmsLight node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLight.Chunk0600C003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0600C003 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Hms.CHmsLight node, GameVersion game)
-    {
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -134,14 +112,9 @@ public partial class CHmsLightBuilder : CHmsLightBuilderBase<CHmsLightBuilder>
             var node = CHmsLightBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CHmsLightBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CHmsLightBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLight node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsLight node);
     }
     public partial class TMPU : CHmsLightBuilderBase<TMPU>
     {
@@ -164,14 +137,9 @@ public partial class CHmsLightBuilder : CHmsLightBuilderBase<CHmsLightBuilder>
             var node = CHmsLightBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CHmsLightBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CHmsLightBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLight node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsLight node);
     }
     public partial class TMSX : CHmsLightBuilderBase<TMSX>
     {
@@ -194,14 +162,9 @@ public partial class CHmsLightBuilder : CHmsLightBuilderBase<CHmsLightBuilder>
             var node = CHmsLightBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CHmsLightBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CHmsLightBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLight node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsLight node);
     }
     public partial class TMNESWC : CHmsLightBuilderBase<TMNESWC>
     {
@@ -224,14 +187,9 @@ public partial class CHmsLightBuilder : CHmsLightBuilderBase<CHmsLightBuilder>
             var node = CHmsLightBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CHmsLightBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CHmsLightBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLight node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsLight node);
     }
     public partial class VSK5 : CHmsLightBuilderBase<VSK5>
     {
@@ -254,14 +212,9 @@ public partial class CHmsLightBuilder : CHmsLightBuilderBase<CHmsLightBuilder>
             var node = CHmsLightBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CHmsLightBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CHmsLightBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLight node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsLight node);
     }
     public partial class TMF : CHmsLightBuilderBase<TMF>
     {
@@ -284,14 +237,9 @@ public partial class CHmsLightBuilder : CHmsLightBuilderBase<CHmsLightBuilder>
             var node = CHmsLightBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CHmsLightBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CHmsLightBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLight node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsLight node);
     }
     public partial class MP3 : CHmsLightBuilderBase<MP3>
     {
@@ -314,14 +262,9 @@ public partial class CHmsLightBuilder : CHmsLightBuilderBase<CHmsLightBuilder>
             var node = CHmsLightBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CHmsLightBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CHmsLightBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLight node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsLight node);
     }
     public partial class TMT : CHmsLightBuilderBase<TMT>
     {
@@ -344,14 +287,9 @@ public partial class CHmsLightBuilder : CHmsLightBuilderBase<CHmsLightBuilder>
             var node = CHmsLightBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CHmsLightBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CHmsLightBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLight node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsLight node);
     }
     public partial class MP4 : CHmsLightBuilderBase<MP4>
     {
@@ -374,14 +312,9 @@ public partial class CHmsLightBuilder : CHmsLightBuilderBase<CHmsLightBuilder>
             var node = CHmsLightBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CHmsLightBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CHmsLightBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLight node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsLight node);
     }
     public partial class TM2020 : CHmsLightBuilderBase<TM2020>
     {
@@ -404,13 +337,8 @@ public partial class CHmsLightBuilder : CHmsLightBuilderBase<CHmsLightBuilder>
             var node = CHmsLightBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CHmsLightBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CHmsLightBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLight node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsLight node);
     }
 }

@@ -61,102 +61,52 @@ public partial class CPlugVisEntFxModel : global::GBX.NET.Interfaces.Plug.IPlugV
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Graphic.IGxLightBallMP4>.Part_Deactivated
     {
-        get
-        {
-            var node = Part_Deactivated;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Part_Deactivated;
         set => Part_Deactivated = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Graphic.IGxLightBallMP4>.Part_DeactivatedShot
     {
-        get
-        {
-            var node = Part_DeactivatedShot;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Part_DeactivatedShot;
         set => Part_DeactivatedShot = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Graphic.IGxLightBallMP4>.Part_TeleportSpawn
     {
-        get
-        {
-            var node = Part_TeleportSpawn;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Part_TeleportSpawn;
         set => Part_TeleportSpawn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Graphic.IGxLightBallMP4>.Part_TeleportUnspawn
     {
-        get
-        {
-            var node = Part_TeleportUnspawn;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Part_TeleportUnspawn;
         set => Part_TeleportUnspawn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Graphic.IGxLightBallMP4? global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Graphic.IGxLightBallMP4>.TacticalLight
     {
-        get
-        {
-            var node = TacticalLight;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => TacticalLight;
         set => TacticalLight = value is null ? null : value is global::GBX.NET.Engines.Graphic.GxLightBall node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Graphic.IGxLightBallTM2020>.Part_Deactivated
     {
-        get
-        {
-            var node = Part_Deactivated;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => Part_Deactivated;
         set => Part_Deactivated = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Graphic.IGxLightBallTM2020>.Part_DeactivatedShot
     {
-        get
-        {
-            var node = Part_DeactivatedShot;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => Part_DeactivatedShot;
         set => Part_DeactivatedShot = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Graphic.IGxLightBallTM2020>.Part_TeleportSpawn
     {
-        get
-        {
-            var node = Part_TeleportSpawn;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => Part_TeleportSpawn;
         set => Part_TeleportSpawn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Graphic.IGxLightBallTM2020>.Part_TeleportUnspawn
     {
-        get
-        {
-            var node = Part_TeleportUnspawn;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => Part_TeleportUnspawn;
         set => Part_TeleportUnspawn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Graphic.IGxLightBallTM2020? global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Graphic.IGxLightBallTM2020>.TacticalLight
     {
-        get
-        {
-            var node = TacticalLight;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => TacticalLight;
         set => TacticalLight = value is null ? null : value is global::GBX.NET.Engines.Graphic.GxLightBall node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

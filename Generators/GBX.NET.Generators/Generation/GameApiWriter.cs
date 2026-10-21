@@ -297,16 +297,7 @@ internal static partial class GameApiWriter
                 code.Open($"{projected} {PropertyContract(node, game, member, plan, nodes, sharedInterfaces)}.{property}");
                 if (scalar)
                 {
-                    if (game.Length == 0) code.Line($"get => {property};");
-                    else
-                    {
-                        code.Open("get");
-                        code.Line($"var node = {property};");
-                        if (!nullable) code.Line($"if (node is null) throw new MemberNullException({SymbolDisplay.FormatLiteral(member.Name, true)});");
-                        code.Line($"if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.{game});");
-                        code.Line("return node;");
-                        code.Close();
-                    }
+                    code.Line($"get => {property}{(game.Length > 0 && !nullable ? " ?? throw new MemberNullException(" + SymbolDisplay.FormatLiteral(member.Name, true) + ")" : "")};");
                     if (member.Writable)
                         code.Line($"set => {property} = value is null ? {(nullable ? "null" : "throw new ArgumentNullException(nameof(value))")} : value is {child.Layout.QualifiedName} node ? node : throw new ArgumentException(\"A GBX.NET node is required.\", nameof(value));");
                 }
@@ -315,8 +306,7 @@ internal static partial class GameApiWriter
                     var element = GameNodeModel.Qualify(ReferenceModel.Element(member.Field), member.Owner, plan);
                     var view = child.Interface(game) + (element.EndsWith("?", StringComparison.Ordinal) ? "?" : "");
                     var requiredElement = !element.EndsWith("?", StringComparison.Ordinal);
-                    var selected = game.Length == 0 ? "Unspecified" : game;
-                    code.Line($"get => {(nullable ? property + " is null ? null : " : "")}new ScopedNodeList<{element}, {view}>(Get{member.Name}BuilderReferences, GameVersion.{selected}, {(requiredElement ? "true" : "false")}, {SymbolDisplay.FormatLiteral(member.Name, true)});");
+                    code.Line($"get => {(nullable ? property + " is null ? null : " : "")}new ScopedNodeList<{element}, {view}>(Get{member.Name}BuilderReferences, {(requiredElement ? "true" : "false")}, {SymbolDisplay.FormatLiteral(member.Name, true)});");
                     if (member.Writable)
                         code.Line($"set => {property} = value is null ? {(nullable ? "null" : "throw new ArgumentNullException(nameof(value))")} : new NodeRefList<{element}>(NodeBuilderReferences.ToNodes<{element}, {view}>(value, {(requiredElement ? "false" : "true")}));");
                 }
@@ -401,14 +391,9 @@ internal static partial class GameApiWriter
             code.Line($"var node = {node.BuilderName}.CreateRecipe{recipes[game]}(GameVersion.{game});");
             code.Line($"state.Apply(node, GameVersion.{game});");
             code.Line("CustomizeNode(node);");
-            code.Line($"{node.BuilderName}.ValidateRecipe{recipes[game]}(node, GameVersion.{game});");
-            code.Line($"NodeBuilderValidation.Validate(node, GameVersion.{game});");
-            code.Line($"{node.BuilderName}.ValidateRequiredMembers(node, GameVersion.{game});");
-            code.Line("ValidateNode(node);");
             code.Line("return node;");
             code.Close();
             code.Line($"partial void CustomizeNode({node.Layout.QualifiedName} node);");
-            code.Line($"partial void ValidateNode({node.Layout.QualifiedName} node);");
             code.Close();
         }
         code.Close();
@@ -488,27 +473,7 @@ internal static partial class GameApiWriter
             }
             code.Line("return node;");
             code.Close();
-            code.Open($"private static void ValidateRecipe{i}({node.Layout.QualifiedName} node, GameVersion game)");
-            foreach (var candidate in node.Recipes[game])
-            {
-                var mismatch = candidate.HasVersion ? $" is not {{ Version: {candidate.Version(game)} }}" : " is null";
-                code.Line($"if (node.GetChunk<{candidate.Owner.QualifiedName}.{candidate.Chunk.Name}>(){mismatch}) throw new InvalidOperationException($\"Required {{game}} chunk {candidate.Chunk.Name} is missing or has an incompatible version.\");");
-            }
-            code.Close();
         }
-        code.Open($"private static void ValidateRequiredMembers({node.Layout.QualifiedName} node, GameVersion game)");
-        foreach (var member in node.Members.Where(static m => !m.Type.EndsWith("?", StringComparison.Ordinal)))
-        {
-            string condition;
-            if (member.IsReference && member.Field?.StorageDeclaration.Type.ArrayDimensions == 0)
-                condition = $"node.References.{SyntaxOverlap.Escape(member.Name)}.Kind == NodeRefKind.None";
-            else if (IsReferenceType(member.Type)) condition = $"node.{SyntaxOverlap.Escape(member.Name)} is null";
-            else continue;
-            var mask = string.Join(" | ", member.Games.OrderBy(static g => g, StringComparer.Ordinal).Select(static g => "GameVersion." + g));
-            var available = node.Games.All(member.Games.Contains) ? "" : $"(game & ({mask})) != 0 && ";
-            code.Line($"if ({available}{condition}) throw new MemberNullException({SymbolDisplay.FormatLiteral(member.Name, true)});");
-        }
-        code.Close();
         return result;
     }
 
@@ -536,20 +501,13 @@ internal static partial class GameApiWriter
             }
             var name = SyntaxOverlap.Escape(member.Name);
             var type = member.Type;
-            if (!SyntaxOverlap.Has(existing, member.Name))
-            {
-                code.Open($"public {type} {name}");
-                code.Line($"get => state.Get<{type}>({SymbolDisplay.FormatLiteral(member.Name, true)});");
-                code.Line($"set => {Assignment(member, "value")};");
-                code.Close();
-            }
             var method = "With" + member.Name;
             if (!SyntaxOverlap.Method(existing, method, type))
             {
                 var arrayParameter = type.TrimEnd('?').EndsWith("[]", StringComparison.Ordinal) ? "params " : "";
                 code.Open($"public {stage} {method}({arrayParameter}{type} value)");
-                code.Line(SyntaxOverlap.Has(existing, member.Name) && existing?.Properties.Any(p => p.Identifier.ValueText == member.Name) != true
-                    ? Assignment(member, "value") + ";" : $"{name} = value;");
+                code.Line(existing?.Properties.Any(p => p.Identifier.ValueText == member.Name) == true
+                    ? $"{name} = value;" : Assignment(member, "value") + ";");
                 code.Line("return " + self + ";");
                 code.Close();
             }

@@ -41,72 +41,37 @@ public partial class CHmsSoundSource : global::GBX.NET.Interfaces.Hms.IHmsSoundS
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTM10? global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTM10>.PlugSound
     {
-        get
-        {
-            var node = PlugSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            return node;
-        }
+        get => PlugSound;
         set => PlugSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU? global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU>.PlugSound
     {
-        get
-        {
-            var node = PlugSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            return node;
-        }
+        get => PlugSound;
         set => PlugSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX? global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX>.PlugSound
     {
-        get
-        {
-            var node = PlugSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => PlugSound;
         set => PlugSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC? global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC>.PlugSound
     {
-        get
-        {
-            var node = PlugSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => PlugSound;
         set => PlugSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5? global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>.PlugSound
     {
-        get
-        {
-            var node = PlugSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => PlugSound;
         set => PlugSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTMF? global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>.PlugSound
     {
-        get
-        {
-            var node = PlugSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => PlugSound;
         set => PlugSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>.PlugSound
     {
-        get
-        {
-            var node = PlugSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => PlugSound;
         set => PlugSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

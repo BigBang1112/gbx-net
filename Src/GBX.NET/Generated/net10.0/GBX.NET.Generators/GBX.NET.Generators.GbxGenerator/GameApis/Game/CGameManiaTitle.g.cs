@@ -41,52 +41,37 @@ public partial class CGameManiaTitle : global::GBX.NET.Interfaces.Game.IGameMani
     }
     global::GBX.NET.Interfaces.Game.IGameCtnChallengeMP4? global::GBX.NET.Interfaces.Game.IGameManiaTitleMembers1<global::GBX.NET.Interfaces.Game.IGameCtnChallengeMP4>.AnimEditor_DefaultChallenge
     {
-        get
-        {
-            var node = AnimEditor_DefaultChallenge;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => AnimEditor_DefaultChallenge;
         set => AnimEditor_DefaultChallenge = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnChallenge node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnCollectionMP4>? global::GBX.NET.Interfaces.Game.IGameManiaTitleMP4.Collections
     {
-        get => Collections is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnCollection, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMP4>(GetCollectionsBuilderReferences, GameVersion.MP4, true, "Collections");
+        get => Collections is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnCollection, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMP4>(GetCollectionsBuilderReferences, true, "Collections");
         set => Collections = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnCollection>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnCollection, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMP4>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeMP4>? global::GBX.NET.Interfaces.Game.IGameManiaTitleMembers1<global::GBX.NET.Interfaces.Game.IGameCtnChallengeMP4>.EditorSimpleChallenges
     {
-        get => EditorSimpleChallenges is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMP4>(GetEditorSimpleChallengesBuilderReferences, GameVersion.MP4, true, "EditorSimpleChallenges");
+        get => EditorSimpleChallenges is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMP4>(GetEditorSimpleChallengesBuilderReferences, true, "EditorSimpleChallenges");
         set => EditorSimpleChallenges = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallenge>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMP4>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>? global::GBX.NET.Interfaces.Game.IGameManiaTitleMP4.Music
     {
-        get => Music is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSound, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>(GetMusicBuilderReferences, GameVersion.MP4, true, "Music");
+        get => Music is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSound, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>(GetMusicBuilderReferences, true, "Music");
         set => Music = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSound>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSound, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>(value, false));
     }
     global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreMP4? global::GBX.NET.Interfaces.Game.IGameManiaTitleMP4.TitleCore
     {
-        get
-        {
-            var node = TitleCore;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => TitleCore;
         set => TitleCore = value is null ? null : value is global::GBX.NET.Engines.Game.CGameManiaTitleCore node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnChallengeTM2020? global::GBX.NET.Interfaces.Game.IGameManiaTitleMembers1<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTM2020>.AnimEditor_DefaultChallenge
     {
-        get
-        {
-            var node = AnimEditor_DefaultChallenge;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => AnimEditor_DefaultChallenge;
         set => AnimEditor_DefaultChallenge = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnChallenge node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTM2020>? global::GBX.NET.Interfaces.Game.IGameManiaTitleMembers1<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTM2020>.EditorSimpleChallenges
     {
-        get => EditorSimpleChallenges is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeTM2020>(GetEditorSimpleChallengesBuilderReferences, GameVersion.TM2020, true, "EditorSimpleChallenges");
+        get => EditorSimpleChallenges is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeTM2020>(GetEditorSimpleChallengesBuilderReferences, true, "EditorSimpleChallenges");
         set => EditorSimpleChallenges = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallenge>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeTM2020>(value, false));
     }
     private NodeRefList<global::GBX.NET.Engines.Game.CGameCtnCollection>? GetCollectionsBuilderReferences() => Collections;

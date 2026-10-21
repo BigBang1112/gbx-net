@@ -36,14 +36,9 @@ public abstract class CGamePlayerProfileChunk_ChallengesStatsBuilderBase<TSelf> 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesStats> state;
     private protected CGamePlayerProfileChunk_ChallengesStatsBuilderBase() => state = new();
     private protected CGamePlayerProfileChunk_ChallengesStatsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesStats> state) => this.state = state;
-    public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesStats.SChallengeStats[]? ChallengeStats
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesStats.SChallengeStats[]?>("ChallengeStats");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_ChallengesStatsBuilderAssignments.GetChallengeStatsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithChallengeStats(params global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesStats.SChallengeStats[]? value)
     {
-        ChallengeStats = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_ChallengesStatsBuilderAssignments.GetChallengeStatsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithChallengeStats(IEnumerable<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesStats.SChallengeStats> values)
@@ -62,14 +57,6 @@ public partial class CGamePlayerProfileChunk_ChallengesStatsBuilder : CGamePlaye
         node.Chunks.Add(chunk03148001);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesStats node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesStats.Chunk03148000>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk03148000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesStats.Chunk03148001>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk03148001 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesStats node, GameVersion game)
-    {
-    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -85,14 +72,9 @@ public partial class CGamePlayerProfileChunk_ChallengesStatsBuilder : CGamePlaye
             var node = CGamePlayerProfileChunk_ChallengesStatsBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CGamePlayerProfileChunk_ChallengesStatsBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CGamePlayerProfileChunk_ChallengesStatsBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesStats node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesStats node);
     }
     public partial class TMT : CGamePlayerProfileChunk_ChallengesStatsBuilderBase<TMT>
     {
@@ -103,14 +85,9 @@ public partial class CGamePlayerProfileChunk_ChallengesStatsBuilder : CGamePlaye
             var node = CGamePlayerProfileChunk_ChallengesStatsBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGamePlayerProfileChunk_ChallengesStatsBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGamePlayerProfileChunk_ChallengesStatsBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesStats node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesStats node);
     }
     public partial class MP4 : CGamePlayerProfileChunk_ChallengesStatsBuilderBase<MP4>
     {
@@ -121,14 +98,9 @@ public partial class CGamePlayerProfileChunk_ChallengesStatsBuilder : CGamePlaye
             var node = CGamePlayerProfileChunk_ChallengesStatsBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGamePlayerProfileChunk_ChallengesStatsBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGamePlayerProfileChunk_ChallengesStatsBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesStats node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesStats node);
     }
     public partial class TM2020 : CGamePlayerProfileChunk_ChallengesStatsBuilderBase<TM2020>
     {
@@ -139,13 +111,8 @@ public partial class CGamePlayerProfileChunk_ChallengesStatsBuilder : CGamePlaye
             var node = CGamePlayerProfileChunk_ChallengesStatsBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGamePlayerProfileChunk_ChallengesStatsBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGamePlayerProfileChunk_ChallengesStatsBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesStats node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesStats node);
     }
 }

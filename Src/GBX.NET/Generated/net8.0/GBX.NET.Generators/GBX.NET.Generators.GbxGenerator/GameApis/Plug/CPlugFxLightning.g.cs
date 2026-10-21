@@ -41,42 +41,22 @@ public partial class CPlugFxLightning : global::GBX.NET.Interfaces.Plug.IPlugFxL
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.Plug.IPlugFxLightningMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>.Sound
     {
-        get
-        {
-            var node = Sound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => Sound;
         set => Sound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugFxLightningMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound
     {
-        get
-        {
-            var node = Sound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => Sound;
         set => Sound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugFxLightningMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound
     {
-        get
-        {
-            var node = Sound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Sound;
         set => Sound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugFxLightningMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound
     {
-        get
-        {
-            var node = Sound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => Sound;
         set => Sound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

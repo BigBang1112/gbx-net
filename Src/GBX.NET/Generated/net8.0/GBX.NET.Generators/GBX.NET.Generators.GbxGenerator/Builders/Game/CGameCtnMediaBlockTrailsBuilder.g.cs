@@ -36,24 +36,14 @@ public abstract class CGameCtnMediaBlockTrailsBuilderBase<TSelf> where TSelf : C
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTrails> state;
     private protected CGameCtnMediaBlockTrailsBuilderBase() => state = new();
     private protected CGameCtnMediaBlockTrailsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTrails> state) => this.state = state;
-    public TimeSingle End
-    {
-        get => state.Get<TimeSingle>("End");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrailsBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithEnd(TimeSingle value)
     {
-        End = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrailsBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public TimeSingle Start
-    {
-        get => state.Get<TimeSingle>("Start");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrailsBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithStart(TimeSingle value)
     {
-        Start = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrailsBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -65,13 +55,6 @@ public partial class CGameCtnMediaBlockTrailsBuilder : CGameCtnMediaBlockTrailsB
         var chunk030A9000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockTrails.Chunk030A9000();
         node.Chunks.Add(chunk030A9000);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTrails node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTrails.Chunk030A9000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk030A9000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTrails node, GameVersion game)
-    {
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
@@ -91,14 +74,9 @@ public partial class CGameCtnMediaBlockTrailsBuilder : CGameCtnMediaBlockTrailsB
             var node = CGameCtnMediaBlockTrailsBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CGameCtnMediaBlockTrailsBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CGameCtnMediaBlockTrailsBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTrails node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTrails node);
     }
     public partial class TMNESWC : CGameCtnMediaBlockTrailsBuilderBase<TMNESWC>
     {
@@ -109,14 +87,9 @@ public partial class CGameCtnMediaBlockTrailsBuilder : CGameCtnMediaBlockTrailsB
             var node = CGameCtnMediaBlockTrailsBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CGameCtnMediaBlockTrailsBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CGameCtnMediaBlockTrailsBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTrails node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTrails node);
     }
     public partial class VSK5 : CGameCtnMediaBlockTrailsBuilderBase<VSK5>
     {
@@ -127,14 +100,9 @@ public partial class CGameCtnMediaBlockTrailsBuilder : CGameCtnMediaBlockTrailsB
             var node = CGameCtnMediaBlockTrailsBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CGameCtnMediaBlockTrailsBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CGameCtnMediaBlockTrailsBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTrails node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTrails node);
     }
     public partial class TMF : CGameCtnMediaBlockTrailsBuilderBase<TMF>
     {
@@ -145,14 +113,9 @@ public partial class CGameCtnMediaBlockTrailsBuilder : CGameCtnMediaBlockTrailsB
             var node = CGameCtnMediaBlockTrailsBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CGameCtnMediaBlockTrailsBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CGameCtnMediaBlockTrailsBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTrails node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTrails node);
     }
     public partial class TMT : CGameCtnMediaBlockTrailsBuilderBase<TMT>
     {
@@ -163,14 +126,9 @@ public partial class CGameCtnMediaBlockTrailsBuilder : CGameCtnMediaBlockTrailsB
             var node = CGameCtnMediaBlockTrailsBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameCtnMediaBlockTrailsBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameCtnMediaBlockTrailsBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTrails node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTrails node);
     }
     public partial class MP4 : CGameCtnMediaBlockTrailsBuilderBase<MP4>
     {
@@ -181,14 +139,9 @@ public partial class CGameCtnMediaBlockTrailsBuilder : CGameCtnMediaBlockTrailsB
             var node = CGameCtnMediaBlockTrailsBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameCtnMediaBlockTrailsBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameCtnMediaBlockTrailsBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTrails node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTrails node);
     }
     public partial class TM2020 : CGameCtnMediaBlockTrailsBuilderBase<TM2020>
     {
@@ -199,13 +152,8 @@ public partial class CGameCtnMediaBlockTrailsBuilder : CGameCtnMediaBlockTrailsB
             var node = CGameCtnMediaBlockTrailsBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameCtnMediaBlockTrailsBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameCtnMediaBlockTrailsBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTrails node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTrails node);
     }
 }

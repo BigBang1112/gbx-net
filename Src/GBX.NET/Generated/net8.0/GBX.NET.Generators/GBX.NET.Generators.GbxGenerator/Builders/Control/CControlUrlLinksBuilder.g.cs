@@ -36,34 +36,19 @@ public abstract class CControlUrlLinksBuilderBase<TSelf> where TSelf : CControlU
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Control.CControlUrlLinks> state;
     private protected CControlUrlLinksBuilderBase() => state = new();
     private protected CControlUrlLinksBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Control.CControlUrlLinks> state) => this.state = state;
-    public uint ControlFlags
-    {
-        get => state.Get<uint>("ControlFlags");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetControlFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithControlFlags(uint value)
     {
-        ControlFlags = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetControlFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Hms.CHmsItem? Item
-    {
-        get => state.Get<global::GBX.NET.Engines.Hms.CHmsItem?>("Item");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetItemAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithItem(global::GBX.NET.Engines.Hms.CHmsItem? value)
     {
-        Item = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetItemAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Control.CControlLayout? Layout
-    {
-        get => state.Get<global::GBX.NET.Engines.Control.CControlLayout?>("Layout");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLayoutAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLayout(global::GBX.NET.Engines.Control.CControlLayout? value)
     {
-        Layout = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLayoutAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithLayoutReference(NodeRef<global::GBX.NET.Engines.Control.CControlLayout> value)
@@ -72,14 +57,9 @@ public abstract class CControlUrlLinksBuilderBase<TSelf> where TSelf : CControlU
         state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLayoutReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Control.CControlStyle? LegacyStyle
-    {
-        get => state.Get<global::GBX.NET.Engines.Control.CControlStyle?>("LegacyStyle");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLegacyStyleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithLegacyStyle(global::GBX.NET.Engines.Control.CControlStyle? value)
     {
-        LegacyStyle = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLegacyStyleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithLegacyStyleReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value)
@@ -88,14 +68,9 @@ public abstract class CControlUrlLinksBuilderBase<TSelf> where TSelf : CControlU
         state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLegacyStyleReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Motion.CMotion? Motion
-    {
-        get => state.Get<global::GBX.NET.Engines.Motion.CMotion?>("Motion");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithMotion(global::GBX.NET.Engines.Motion.CMotion? value)
     {
-        Motion = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithMotionReference(NodeRef<global::GBX.NET.Engines.Motion.CMotion> value)
@@ -104,24 +79,14 @@ public abstract class CControlUrlLinksBuilderBase<TSelf> where TSelf : CControlU
         state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public string? Name
-    {
-        get => state.Get<string?>("Name");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithName(string? value)
     {
-        Name = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.MwFoundations.CMwNod? Nod
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("Nod");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetNodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithNod(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
-        Nod = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetNodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithNodReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
@@ -130,14 +95,9 @@ public abstract class CControlUrlLinksBuilderBase<TSelf> where TSelf : CControlU
         state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetNodReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? ObjectLink
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>?>("ObjectLink");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetObjectLinkAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithObjectLink(NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? value)
     {
-        ObjectLink = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetObjectLinkAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithObjectLink(params global::GBX.NET.Engines.Scene.CSceneObjectLink[] values)
@@ -148,28 +108,18 @@ public abstract class CControlUrlLinksBuilderBase<TSelf> where TSelf : CControlU
     {
         return WithObjectLink(values.ToArray());
     }
-    public string? StackText
-    {
-        get => state.Get<string?>("StackText");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStackTextAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithStackText(string? value)
     {
-        StackText = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStackTextAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CControlUrlLinksBuilderMembers1<TSelf> : CControlUrlLinksBuilderBase<TSelf> where TSelf : CControlUrlLinksBuilderMembers1<TSelf>
 {
     private protected CControlUrlLinksBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Control.CControlUrlLinks> state) : base(state) { }
-    public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
-    {
-        get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
     {
-        MessageHandler = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
@@ -182,14 +132,9 @@ public abstract class CControlUrlLinksBuilderMembers1<TSelf> : CControlUrlLinksB
 public abstract class CControlUrlLinksBuilderMembers2<TSelf> : CControlUrlLinksBuilderBase<TSelf> where TSelf : CControlUrlLinksBuilderMembers2<TSelf>
 {
     private protected CControlUrlLinksBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Control.CControlUrlLinks> state) : base(state) { }
-    public global::GBX.NET.Engines.Control.CControlStyle? Style
-    {
-        get => state.Get<global::GBX.NET.Engines.Control.CControlStyle?>("Style");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithStyle(global::GBX.NET.Engines.Control.CControlStyle? value)
     {
-        Style = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithStyleReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value)
@@ -198,14 +143,9 @@ public abstract class CControlUrlLinksBuilderMembers2<TSelf> : CControlUrlLinksB
         state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public string? StyleId
-    {
-        get => state.Get<string?>("StyleId");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithStyleId(string? value)
     {
-        StyleId = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -234,18 +174,6 @@ public partial class CControlUrlLinksBuilder : CControlUrlLinksBuilderBase<CCont
         node.Chunks.Add(chunk0A005004);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Control.CControlUrlLinks node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005004 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Control.CControlUrlLinks CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Control.CControlUrlLinks();
@@ -273,20 +201,6 @@ public partial class CControlUrlLinksBuilder : CControlUrlLinksBuilderBase<CCont
         node.Chunks.Add(chunk0A005004);
         return node;
     }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Control.CControlUrlLinks node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk07001010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07001010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005004 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Control.CControlUrlLinks CreateRecipe2(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Control.CControlUrlLinks();
@@ -310,18 +224,6 @@ public partial class CControlUrlLinksBuilder : CControlUrlLinksBuilderBase<CCont
         node.Chunks.Add(chunk0A005003);
         return node;
     }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Control.CControlUrlLinks node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk07001010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07001010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005003 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Control.CControlUrlLinks CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Control.CControlUrlLinks();
@@ -342,20 +244,6 @@ public partial class CControlUrlLinksBuilder : CControlUrlLinksBuilderBase<CCont
         var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
         node.Chunks.Add(chunk0A005003);
         return node;
-    }
-    private static void ValidateRecipe3(global::GBX.NET.Engines.Control.CControlUrlLinks node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk07001010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07001010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005003 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Control.CControlUrlLinks node, GameVersion game)
-    {
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -398,14 +286,9 @@ public partial class CControlUrlLinksBuilder : CControlUrlLinksBuilderBase<CCont
             var node = CControlUrlLinksBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CControlUrlLinksBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CControlUrlLinksBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlUrlLinks node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlUrlLinks node);
     }
     public partial class TMPU : CControlUrlLinksBuilderMembers1<TMPU>
     {
@@ -436,14 +319,9 @@ public partial class CControlUrlLinksBuilder : CControlUrlLinksBuilderBase<CCont
             var node = CControlUrlLinksBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CControlUrlLinksBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CControlUrlLinksBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlUrlLinks node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlUrlLinks node);
     }
     public partial class TMSX : CControlUrlLinksBuilderMembers2<TMSX>
     {
@@ -452,14 +330,9 @@ public partial class CControlUrlLinksBuilder : CControlUrlLinksBuilderBase<CCont
         {
             return base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
-        {
-            get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
-            set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-        }
         public TMSX WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
         {
-            MessageHandler = value;
+            state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public TMSX WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
@@ -494,14 +367,9 @@ public partial class CControlUrlLinksBuilder : CControlUrlLinksBuilderBase<CCont
             var node = CControlUrlLinksBuilder.CreateRecipe1(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CControlUrlLinksBuilder.ValidateRecipe1(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CControlUrlLinksBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlUrlLinks node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlUrlLinks node);
     }
     public partial class TMNESWC : CControlUrlLinksBuilderMembers2<TMNESWC>
     {
@@ -510,14 +378,9 @@ public partial class CControlUrlLinksBuilder : CControlUrlLinksBuilderBase<CCont
         {
             return base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
-        {
-            get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
-            set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-        }
         public TMNESWC WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
         {
-            MessageHandler = value;
+            state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public TMNESWC WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
@@ -552,14 +415,9 @@ public partial class CControlUrlLinksBuilder : CControlUrlLinksBuilderBase<CCont
             var node = CControlUrlLinksBuilder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CControlUrlLinksBuilder.ValidateRecipe1(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CControlUrlLinksBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlUrlLinks node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlUrlLinks node);
     }
     public partial class VSK5 : CControlUrlLinksBuilderMembers2<VSK5>
     {
@@ -568,14 +426,9 @@ public partial class CControlUrlLinksBuilder : CControlUrlLinksBuilderBase<CCont
         {
             return base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
-        {
-            get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
-            set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-        }
         public VSK5 WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
         {
-            MessageHandler = value;
+            state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public VSK5 WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
@@ -610,14 +463,9 @@ public partial class CControlUrlLinksBuilder : CControlUrlLinksBuilderBase<CCont
             var node = CControlUrlLinksBuilder.CreateRecipe2(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CControlUrlLinksBuilder.ValidateRecipe2(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CControlUrlLinksBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlUrlLinks node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlUrlLinks node);
     }
     public partial class TMF : CControlUrlLinksBuilderMembers2<TMF>
     {
@@ -630,14 +478,9 @@ public partial class CControlUrlLinksBuilder : CControlUrlLinksBuilderBase<CCont
         {
             return base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
-        {
-            get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
-            set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-        }
         public TMF WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
         {
-            MessageHandler = value;
+            state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public TMF WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
@@ -672,14 +515,9 @@ public partial class CControlUrlLinksBuilder : CControlUrlLinksBuilderBase<CCont
             var node = CControlUrlLinksBuilder.CreateRecipe2(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CControlUrlLinksBuilder.ValidateRecipe2(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CControlUrlLinksBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlUrlLinks node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlUrlLinks node);
     }
     public partial class MP3 : CControlUrlLinksBuilderMembers2<MP3>
     {
@@ -710,14 +548,9 @@ public partial class CControlUrlLinksBuilder : CControlUrlLinksBuilderBase<CCont
             var node = CControlUrlLinksBuilder.CreateRecipe3(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CControlUrlLinksBuilder.ValidateRecipe3(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CControlUrlLinksBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlUrlLinks node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlUrlLinks node);
     }
     public partial class TMT : CControlUrlLinksBuilderMembers2<TMT>
     {
@@ -748,14 +581,9 @@ public partial class CControlUrlLinksBuilder : CControlUrlLinksBuilderBase<CCont
             var node = CControlUrlLinksBuilder.CreateRecipe3(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CControlUrlLinksBuilder.ValidateRecipe3(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CControlUrlLinksBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlUrlLinks node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlUrlLinks node);
     }
     public partial class MP4 : CControlUrlLinksBuilderMembers2<MP4>
     {
@@ -790,14 +618,9 @@ public partial class CControlUrlLinksBuilder : CControlUrlLinksBuilderBase<CCont
             var node = CControlUrlLinksBuilder.CreateRecipe3(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CControlUrlLinksBuilder.ValidateRecipe3(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CControlUrlLinksBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlUrlLinks node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlUrlLinks node);
     }
     public partial class TM2020 : CControlUrlLinksBuilderMembers2<TM2020>
     {
@@ -824,13 +647,8 @@ public partial class CControlUrlLinksBuilder : CControlUrlLinksBuilderBase<CCont
             var node = CControlUrlLinksBuilder.CreateRecipe3(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CControlUrlLinksBuilder.ValidateRecipe3(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CControlUrlLinksBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlUrlLinks node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlUrlLinks node);
     }
 }

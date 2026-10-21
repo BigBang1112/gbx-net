@@ -36,14 +36,9 @@ public abstract class CPlugAdnRandomGenListBuilderBase<TSelf> where TSelf : CPlu
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAdnRandomGenList> state;
     private protected CPlugAdnRandomGenListBuilderBase() => state = new();
     private protected CPlugAdnRandomGenListBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAdnRandomGenList> state) => this.state = state;
-    public NodeRefList<global::GBX.NET.Engines.Plug.CPlugAdnRandomGen>? Datas
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugAdnRandomGen>?>("Datas");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAdnRandomGenListBuilderAssignments.GetDatasAssignment(), value, GameVersion.TM2020);
-    }
     public TSelf WithDatas(NodeRefList<global::GBX.NET.Engines.Plug.CPlugAdnRandomGen>? value)
     {
-        Datas = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAdnRandomGenListBuilderAssignments.GetDatasAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithDatas(params global::GBX.NET.Engines.Plug.CPlugAdnRandomGen[] values)
@@ -64,13 +59,6 @@ public partial class CPlugAdnRandomGenListBuilder : CPlugAdnRandomGenListBuilder
         node.Chunks.Add(chunk09157000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugAdnRandomGenList node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAdnRandomGenList.Chunk09157000>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk09157000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugAdnRandomGenList node, GameVersion game)
-    {
-    }
     public TM2020 ForTM2020() => new(state.Snapshot());
     public partial class TM2020 : CPlugAdnRandomGenListBuilderBase<TM2020>
     {
@@ -89,13 +77,8 @@ public partial class CPlugAdnRandomGenListBuilder : CPlugAdnRandomGenListBuilder
             var node = CPlugAdnRandomGenListBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugAdnRandomGenListBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugAdnRandomGenListBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAdnRandomGenList node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugAdnRandomGenList node);
     }
 }

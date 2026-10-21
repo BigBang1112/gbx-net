@@ -36,14 +36,9 @@ public abstract class CGameGateModelBuilderBase<TSelf> where TSelf : CGameGateMo
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.GameData.CGameGateModel> state;
     private protected CGameGateModelBuilderBase() => state = new();
     private protected CGameGateModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameGateModel> state) => this.state = state;
-    public global::GBX.NET.Engines.GameData.CGameArmorModel? Armor
-    {
-        get => state.Get<global::GBX.NET.Engines.GameData.CGameArmorModel?>("Armor");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameGateModelBuilderAssignments.GetArmorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithArmor(global::GBX.NET.Engines.GameData.CGameArmorModel? value)
     {
-        Armor = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameGateModelBuilderAssignments.GetArmorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithArmorReference(NodeRef<global::GBX.NET.Engines.GameData.CGameArmorModel> value)
@@ -52,14 +47,9 @@ public abstract class CGameGateModelBuilderBase<TSelf> where TSelf : CGameGateMo
         state.Set(global::GBX.NET.Builders.Engines.GameData.CGameGateModelBuilderAssignments.GetArmorReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugSound? GateCloseSound
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("GateCloseSound");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameGateModelBuilderAssignments.GetGateCloseSoundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithGateCloseSound(global::GBX.NET.Engines.Plug.CPlugSound? value)
     {
-        GateCloseSound = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameGateModelBuilderAssignments.GetGateCloseSoundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithGateCloseSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
@@ -68,14 +58,9 @@ public abstract class CGameGateModelBuilderBase<TSelf> where TSelf : CGameGateMo
         state.Set(global::GBX.NET.Builders.Engines.GameData.CGameGateModelBuilderAssignments.GetGateCloseSoundReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugSound? GateOpenSound
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("GateOpenSound");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameGateModelBuilderAssignments.GetGateOpenSoundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithGateOpenSound(global::GBX.NET.Engines.Plug.CPlugSound? value)
     {
-        GateOpenSound = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameGateModelBuilderAssignments.GetGateOpenSoundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithGateOpenSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
@@ -84,14 +69,9 @@ public abstract class CGameGateModelBuilderBase<TSelf> where TSelf : CGameGateMo
         state.Set(global::GBX.NET.Builders.Engines.GameData.CGameGateModelBuilderAssignments.GetGateOpenSoundReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugSound? GateSound
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("GateSound");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameGateModelBuilderAssignments.GetGateSoundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithGateSound(global::GBX.NET.Engines.Plug.CPlugSound? value)
     {
-        GateSound = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameGateModelBuilderAssignments.GetGateSoundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithGateSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
@@ -100,14 +80,9 @@ public abstract class CGameGateModelBuilderBase<TSelf> where TSelf : CGameGateMo
         state.Set(global::GBX.NET.Builders.Engines.GameData.CGameGateModelBuilderAssignments.GetGateSoundReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugSurface? Shape
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugSurface?>("Shape");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameGateModelBuilderAssignments.GetShapeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithShape(global::GBX.NET.Engines.Plug.CPlugSurface? value)
     {
-        Shape = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameGateModelBuilderAssignments.GetShapeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithShapeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSurface> value)
@@ -128,14 +103,6 @@ public partial class CGameGateModelBuilder : CGameGateModelBuilderBase<CGameGate
         var chunk2E00B001 = new global::GBX.NET.Engines.GameData.CGameGateModel.Chunk2E00B001(game);
         node.Chunks.Add(chunk2E00B001);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.GameData.CGameGateModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameGateModel.Chunk2E00B000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk2E00B000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameGateModel.Chunk2E00B001>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk2E00B001 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.GameData.CGameGateModel node, GameVersion game)
-    {
     }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -172,14 +139,9 @@ public partial class CGameGateModelBuilder : CGameGateModelBuilderBase<CGameGate
             var node = CGameGateModelBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CGameGateModelBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CGameGateModelBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameGateModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.GameData.CGameGateModel node);
     }
     public partial class TMT : CGameGateModelBuilderBase<TMT>
     {
@@ -210,14 +172,9 @@ public partial class CGameGateModelBuilder : CGameGateModelBuilderBase<CGameGate
             var node = CGameGateModelBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameGateModelBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameGateModelBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameGateModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.GameData.CGameGateModel node);
     }
     public partial class MP4 : CGameGateModelBuilderBase<MP4>
     {
@@ -248,14 +205,9 @@ public partial class CGameGateModelBuilder : CGameGateModelBuilderBase<CGameGate
             var node = CGameGateModelBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameGateModelBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameGateModelBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameGateModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.GameData.CGameGateModel node);
     }
     public partial class TM2020 : CGameGateModelBuilderBase<TM2020>
     {
@@ -286,13 +238,8 @@ public partial class CGameGateModelBuilder : CGameGateModelBuilderBase<CGameGate
             var node = CGameGateModelBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameGateModelBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameGateModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameGateModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.GameData.CGameGateModel node);
     }
 }

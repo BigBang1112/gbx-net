@@ -36,14 +36,9 @@ public abstract class CGameCtnAutoTerrainBuilderBase<TSelf> where TSelf : CGameC
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain> state;
     private protected CGameCtnAutoTerrainBuilderBase() => state = new();
     private protected CGameCtnAutoTerrainBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain> state) => this.state = state;
-    public global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy? Genealogy
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy?>("Genealogy");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAutoTerrainBuilderAssignments.GetGenealogyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithGenealogy(global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy? value)
     {
-        Genealogy = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAutoTerrainBuilderAssignments.GetGenealogyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithGenealogyReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy> value)
@@ -52,14 +47,9 @@ public abstract class CGameCtnAutoTerrainBuilderBase<TSelf> where TSelf : CGameC
         state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAutoTerrainBuilderAssignments.GetGenealogyReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public Int3 Offset
-    {
-        get => state.Get<Int3>("Offset");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAutoTerrainBuilderAssignments.GetOffsetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithOffset(Int3 value)
     {
-        Offset = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAutoTerrainBuilderAssignments.GetOffsetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -71,13 +61,6 @@ public partial class CGameCtnAutoTerrainBuilder : CGameCtnAutoTerrainBuilderBase
         var chunk03120001 = new global::GBX.NET.Engines.Game.CGameCtnAutoTerrain.Chunk03120001();
         node.Chunks.Add(chunk03120001);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnAutoTerrain node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain.Chunk03120001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03120001 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnAutoTerrain node, GameVersion game)
-    {
     }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -98,14 +81,9 @@ public partial class CGameCtnAutoTerrainBuilder : CGameCtnAutoTerrainBuilderBase
             var node = CGameCtnAutoTerrainBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CGameCtnAutoTerrainBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CGameCtnAutoTerrainBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnAutoTerrain node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnAutoTerrain node);
     }
     public partial class TMT : CGameCtnAutoTerrainBuilderBase<TMT>
     {
@@ -120,14 +98,9 @@ public partial class CGameCtnAutoTerrainBuilder : CGameCtnAutoTerrainBuilderBase
             var node = CGameCtnAutoTerrainBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameCtnAutoTerrainBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameCtnAutoTerrainBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnAutoTerrain node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnAutoTerrain node);
     }
     public partial class MP4 : CGameCtnAutoTerrainBuilderBase<MP4>
     {
@@ -142,14 +115,9 @@ public partial class CGameCtnAutoTerrainBuilder : CGameCtnAutoTerrainBuilderBase
             var node = CGameCtnAutoTerrainBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameCtnAutoTerrainBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameCtnAutoTerrainBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnAutoTerrain node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnAutoTerrain node);
     }
     public partial class TM2020 : CGameCtnAutoTerrainBuilderBase<TM2020>
     {
@@ -164,13 +132,8 @@ public partial class CGameCtnAutoTerrainBuilder : CGameCtnAutoTerrainBuilderBase
             var node = CGameCtnAutoTerrainBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameCtnAutoTerrainBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameCtnAutoTerrainBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnAutoTerrain node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnAutoTerrain node);
     }
 }

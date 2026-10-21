@@ -36,34 +36,19 @@ public abstract class CGameCtnMediaBlockOpponentVisibilityBuilderBase<TSelf> whe
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility> state;
     private protected CGameCtnMediaBlockOpponentVisibilityBuilderBase() => state = new();
     private protected CGameCtnMediaBlockOpponentVisibilityBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility> state) => this.state = state;
-    public TimeSingle End
-    {
-        get => state.Get<TimeSingle>("End");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockOpponentVisibilityBuilderAssignments.GetEndAssignment(), value, GameVersion.TM2020);
-    }
     public TSelf WithEnd(TimeSingle value)
     {
-        End = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockOpponentVisibilityBuilderAssignments.GetEndAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public TimeSingle Start
-    {
-        get => state.Get<TimeSingle>("Start");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockOpponentVisibilityBuilderAssignments.GetStartAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithStart(TimeSingle value)
     {
-        Start = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockOpponentVisibilityBuilderAssignments.GetStartAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility.EVisibility Visibility
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility.EVisibility>("Visibility");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockOpponentVisibilityBuilderAssignments.GetVisibilityAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithVisibility(global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility.EVisibility value)
     {
-        Visibility = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockOpponentVisibilityBuilderAssignments.GetVisibilityAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
     }
 }
@@ -78,14 +63,6 @@ public partial class CGameCtnMediaBlockOpponentVisibilityBuilder : CGameCtnMedia
         node.Chunks.Add(chunk0338B001);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility.Chunk0338B000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0338B000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility.Chunk0338B001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0338B001 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility node, GameVersion game)
-    {
-    }
     public TM2020 ForTM2020() => new(state.Snapshot());
     public partial class TM2020 : CGameCtnMediaBlockOpponentVisibilityBuilderBase<TM2020>
     {
@@ -96,13 +73,8 @@ public partial class CGameCtnMediaBlockOpponentVisibilityBuilder : CGameCtnMedia
             var node = CGameCtnMediaBlockOpponentVisibilityBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameCtnMediaBlockOpponentVisibilityBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameCtnMediaBlockOpponentVisibilityBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility node);
     }
 }

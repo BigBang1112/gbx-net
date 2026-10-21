@@ -36,12 +36,7 @@ public partial class CGameCtnApp : global::GBX.NET.Interfaces.Game.IGameCtnApp, 
     public static new global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilder Create() => new();
     global::GBX.NET.Interfaces.Game.IGameResourcesMP4? global::GBX.NET.Interfaces.Game.IGameCtnAppMP4.Resources
     {
-        get
-        {
-            var node = Resources;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Resources;
         set => Resources = value is null ? null : value is global::GBX.NET.Engines.Game.CGameResources node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

@@ -36,72 +36,42 @@ public abstract class CFuncShaderLayerUVBuilderBase<TSelf> where TSelf : CFuncSh
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderLayerUV> state;
     private protected CFuncShaderLayerUVBuilderBase() => state = new();
     private protected CFuncShaderLayerUVBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderLayerUV> state) => this.state = state;
-    public bool AutoCreateMotion
-    {
-        get => state.Get<bool>("AutoCreateMotion");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetAutoCreateMotionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithAutoCreateMotion(bool value)
     {
-        AutoCreateMotion = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetAutoCreateMotionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public string? LayerName
-    {
-        get => state.Get<string?>("LayerName");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderLayerUVBuilderAssignments.GetLayerNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLayerName(string? value)
     {
-        LayerName = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderLayerUVBuilderAssignments.GetLayerNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float Period
-    {
-        get => state.Get<float>("Period");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetPeriodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPeriod(float value)
     {
-        Period = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetPeriodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float Phase
-    {
-        get => state.Get<float>("Phase");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetPhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPhase(float value)
     {
-        Phase = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetPhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CFuncShaderLayerUVBuilderMembers1<TSelf> : CFuncShaderLayerUVBuilderBase<TSelf> where TSelf : CFuncShaderLayerUVBuilderMembers1<TSelf>
 {
     private protected CFuncShaderLayerUVBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderLayerUV> state) : base(state) { }
-    public bool RandomizePhase
-    {
-        get => state.Get<bool>("RandomizePhase");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithRandomizePhase(bool value)
     {
-        RandomizePhase = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CFuncShaderLayerUVBuilderMembers2<TSelf> : CFuncShaderLayerUVBuilderMembers1<TSelf> where TSelf : CFuncShaderLayerUVBuilderMembers2<TSelf>
 {
     private protected CFuncShaderLayerUVBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderLayerUV> state) : base(state) { }
-    public string? InputValId
-    {
-        get => state.Get<string?>("InputValId");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetInputValIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    }
     public TSelf WithInputValId(string? value)
     {
-        InputValId = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetInputValIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -130,18 +100,6 @@ public partial class CFuncShaderLayerUVBuilder : CFuncShaderLayerUVBuilderBase<C
         node.Chunks.Add(chunk0500B003);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05015005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05015009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk0501500A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0501500A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk0501500D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0501500D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05015011 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015012>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05015012 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05015013 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015014>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05015014 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0500B003 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Function.CFuncShaderLayerUV CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Function.CFuncShaderLayerUV();
@@ -164,18 +122,6 @@ public partial class CFuncShaderLayerUVBuilder : CFuncShaderLayerUVBuilderBase<C
         var chunk0500B004 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004();
         node.Chunks.Add(chunk0500B004);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05015005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05015009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk0501500A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0501500A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk0501500D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0501500D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05015011 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015012>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05015012 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05015013 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015014>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05015014 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0500B004 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Function.CFuncShaderLayerUV CreateRecipe2(GameVersion game)
     {
@@ -202,19 +148,6 @@ public partial class CFuncShaderLayerUVBuilder : CFuncShaderLayerUVBuilderBase<C
         node.Chunks.Add(chunk0500B005);
         return node;
     }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05015005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05015009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk0501500A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0501500A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk0501500D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0501500D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05015011 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05015013 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015014>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05015014 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015015>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05015015 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05015016 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0500B005 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Function.CFuncShaderLayerUV CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Function.CFuncShaderLayerUV();
@@ -227,16 +160,6 @@ public partial class CFuncShaderLayerUVBuilder : CFuncShaderLayerUVBuilderBase<C
         var chunk0500B005 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005();
         node.Chunks.Add(chunk0500B005);
         return node;
-    }
-    private static void ValidateRecipe3(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05015005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05015009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05015017 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0500B005 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node, GameVersion game)
-    {
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -259,14 +182,9 @@ public partial class CFuncShaderLayerUVBuilder : CFuncShaderLayerUVBuilderBase<C
             var node = CFuncShaderLayerUVBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CFuncShaderLayerUVBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CFuncShaderLayerUVBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
     }
     public partial class TMPU : CFuncShaderLayerUVBuilderMembers1<TMPU>
     {
@@ -277,14 +195,9 @@ public partial class CFuncShaderLayerUVBuilder : CFuncShaderLayerUVBuilderBase<C
             var node = CFuncShaderLayerUVBuilder.CreateRecipe1(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CFuncShaderLayerUVBuilder.ValidateRecipe1(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CFuncShaderLayerUVBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
     }
     public partial class TMSX : CFuncShaderLayerUVBuilderMembers1<TMSX>
     {
@@ -295,14 +208,9 @@ public partial class CFuncShaderLayerUVBuilder : CFuncShaderLayerUVBuilderBase<C
             var node = CFuncShaderLayerUVBuilder.CreateRecipe1(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CFuncShaderLayerUVBuilder.ValidateRecipe1(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CFuncShaderLayerUVBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
     }
     public partial class TMNESWC : CFuncShaderLayerUVBuilderMembers1<TMNESWC>
     {
@@ -313,14 +221,9 @@ public partial class CFuncShaderLayerUVBuilder : CFuncShaderLayerUVBuilderBase<C
             var node = CFuncShaderLayerUVBuilder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CFuncShaderLayerUVBuilder.ValidateRecipe1(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CFuncShaderLayerUVBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
     }
     public partial class VSK5 : CFuncShaderLayerUVBuilderMembers1<VSK5>
     {
@@ -331,14 +234,9 @@ public partial class CFuncShaderLayerUVBuilder : CFuncShaderLayerUVBuilderBase<C
             var node = CFuncShaderLayerUVBuilder.CreateRecipe1(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CFuncShaderLayerUVBuilder.ValidateRecipe1(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CFuncShaderLayerUVBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
     }
     public partial class TMF : CFuncShaderLayerUVBuilderMembers2<TMF>
     {
@@ -349,14 +247,9 @@ public partial class CFuncShaderLayerUVBuilder : CFuncShaderLayerUVBuilderBase<C
             var node = CFuncShaderLayerUVBuilder.CreateRecipe2(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CFuncShaderLayerUVBuilder.ValidateRecipe2(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CFuncShaderLayerUVBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
     }
     public partial class MP3 : CFuncShaderLayerUVBuilderMembers2<MP3>
     {
@@ -367,14 +260,9 @@ public partial class CFuncShaderLayerUVBuilder : CFuncShaderLayerUVBuilderBase<C
             var node = CFuncShaderLayerUVBuilder.CreateRecipe2(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CFuncShaderLayerUVBuilder.ValidateRecipe2(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CFuncShaderLayerUVBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
     }
     public partial class TMT : CFuncShaderLayerUVBuilderMembers2<TMT>
     {
@@ -385,14 +273,9 @@ public partial class CFuncShaderLayerUVBuilder : CFuncShaderLayerUVBuilderBase<C
             var node = CFuncShaderLayerUVBuilder.CreateRecipe2(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CFuncShaderLayerUVBuilder.ValidateRecipe2(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CFuncShaderLayerUVBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
     }
     public partial class MP4 : CFuncShaderLayerUVBuilderMembers2<MP4>
     {
@@ -403,14 +286,9 @@ public partial class CFuncShaderLayerUVBuilder : CFuncShaderLayerUVBuilderBase<C
             var node = CFuncShaderLayerUVBuilder.CreateRecipe3(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CFuncShaderLayerUVBuilder.ValidateRecipe3(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CFuncShaderLayerUVBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
     }
     public partial class TM2020 : CFuncShaderLayerUVBuilderMembers2<TM2020>
     {
@@ -421,13 +299,8 @@ public partial class CFuncShaderLayerUVBuilder : CFuncShaderLayerUVBuilderBase<C
             var node = CFuncShaderLayerUVBuilder.CreateRecipe3(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CFuncShaderLayerUVBuilder.ValidateRecipe3(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CFuncShaderLayerUVBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
     }
 }

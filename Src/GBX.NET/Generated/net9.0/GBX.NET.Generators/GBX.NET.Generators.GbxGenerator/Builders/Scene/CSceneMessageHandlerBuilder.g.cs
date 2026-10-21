@@ -36,14 +36,9 @@ public abstract class CSceneMessageHandlerBuilderBase<TSelf> where TSelf : CScen
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMessageHandler> state;
     private protected CSceneMessageHandlerBuilderBase() => state = new();
     private protected CSceneMessageHandlerBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMessageHandler> state) => this.state = state;
-    public global::GBX.NET.Engines.MwFoundations.CMwNod? OnContactScript
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("OnContactScript");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMessageHandlerBuilderAssignments.GetOnContactScriptAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithOnContactScript(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
-        OnContactScript = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMessageHandlerBuilderAssignments.GetOnContactScriptAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithOnContactScriptReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
@@ -56,14 +51,9 @@ public abstract class CSceneMessageHandlerBuilderBase<TSelf> where TSelf : CScen
 public abstract class CSceneMessageHandlerBuilderMembers1<TSelf> : CSceneMessageHandlerBuilderBase<TSelf> where TSelf : CSceneMessageHandlerBuilderMembers1<TSelf>
 {
     private protected CSceneMessageHandlerBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMessageHandler> state) : base(state) { }
-    public global::GBX.NET.Engines.MwFoundations.CMwNod? OnClickScript
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("OnClickScript");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMessageHandlerBuilderAssignments.GetOnClickScriptAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithOnClickScript(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
-        OnClickScript = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMessageHandlerBuilderAssignments.GetOnClickScriptAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithOnClickScriptReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
@@ -84,24 +74,12 @@ public partial class CSceneMessageHandlerBuilder : CSceneMessageHandlerBuilderBa
         node.Chunks.Add(chunk0A01F001);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Scene.CSceneMessageHandler node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMessageHandler.Chunk0A01F000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A01F000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMessageHandler.Chunk0A01F001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A01F001 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Scene.CSceneMessageHandler CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Scene.CSceneMessageHandler();
         var chunk0A01F001 = new global::GBX.NET.Engines.Scene.CSceneMessageHandler.Chunk0A01F001();
         node.Chunks.Add(chunk0A01F001);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Scene.CSceneMessageHandler node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMessageHandler.Chunk0A01F001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A01F001 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Scene.CSceneMessageHandler node, GameVersion game)
-    {
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -122,14 +100,9 @@ public partial class CSceneMessageHandlerBuilder : CSceneMessageHandlerBuilderBa
             var node = CSceneMessageHandlerBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CSceneMessageHandlerBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CSceneMessageHandlerBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMessageHandler node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneMessageHandler node);
     }
     public partial class TMPU : CSceneMessageHandlerBuilderMembers1<TMPU>
     {
@@ -140,14 +113,9 @@ public partial class CSceneMessageHandlerBuilder : CSceneMessageHandlerBuilderBa
             var node = CSceneMessageHandlerBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CSceneMessageHandlerBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CSceneMessageHandlerBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMessageHandler node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneMessageHandler node);
     }
     public partial class TMSX : CSceneMessageHandlerBuilderMembers1<TMSX>
     {
@@ -158,14 +126,9 @@ public partial class CSceneMessageHandlerBuilder : CSceneMessageHandlerBuilderBa
             var node = CSceneMessageHandlerBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CSceneMessageHandlerBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CSceneMessageHandlerBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMessageHandler node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneMessageHandler node);
     }
     public partial class TMNESWC : CSceneMessageHandlerBuilderMembers1<TMNESWC>
     {
@@ -176,14 +139,9 @@ public partial class CSceneMessageHandlerBuilder : CSceneMessageHandlerBuilderBa
             var node = CSceneMessageHandlerBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CSceneMessageHandlerBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CSceneMessageHandlerBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMessageHandler node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneMessageHandler node);
     }
     public partial class VSK5 : CSceneMessageHandlerBuilderMembers1<VSK5>
     {
@@ -194,14 +152,9 @@ public partial class CSceneMessageHandlerBuilder : CSceneMessageHandlerBuilderBa
             var node = CSceneMessageHandlerBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CSceneMessageHandlerBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CSceneMessageHandlerBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMessageHandler node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneMessageHandler node);
     }
     public partial class TMF : CSceneMessageHandlerBuilderMembers1<TMF>
     {
@@ -212,14 +165,9 @@ public partial class CSceneMessageHandlerBuilder : CSceneMessageHandlerBuilderBa
             var node = CSceneMessageHandlerBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CSceneMessageHandlerBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CSceneMessageHandlerBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMessageHandler node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneMessageHandler node);
     }
     public partial class MP4 : CSceneMessageHandlerBuilderBase<MP4>
     {
@@ -230,14 +178,9 @@ public partial class CSceneMessageHandlerBuilder : CSceneMessageHandlerBuilderBa
             var node = CSceneMessageHandlerBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CSceneMessageHandlerBuilder.ValidateRecipe1(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CSceneMessageHandlerBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMessageHandler node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneMessageHandler node);
     }
     public partial class TM2020 : CSceneMessageHandlerBuilderBase<TM2020>
     {
@@ -248,13 +191,8 @@ public partial class CSceneMessageHandlerBuilder : CSceneMessageHandlerBuilderBa
             var node = CSceneMessageHandlerBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CSceneMessageHandlerBuilder.ValidateRecipe1(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CSceneMessageHandlerBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMessageHandler node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneMessageHandler node);
     }
 }

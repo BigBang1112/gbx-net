@@ -36,118 +36,63 @@ public abstract class CPlugCharPhySpecialPropertyBuilderBase<TSelf> where TSelf 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty> state;
     private protected CPlugCharPhySpecialPropertyBuilderBase() => state = new();
     private protected CPlugCharPhySpecialPropertyBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty> state) => this.state = state;
-    public bool JumpPadFixedVel
-    {
-        get => state.Get<bool>("JumpPadFixedVel");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetJumpPadFixedVelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithJumpPadFixedVel(bool value)
     {
-        JumpPadFixedVel = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetJumpPadFixedVelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty.ESpecialType SpecialType
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty.ESpecialType>("SpecialType");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetSpecialTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSpecialType(global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty.ESpecialType value)
     {
-        SpecialType = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetSpecialTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SpeedUpCoef
-    {
-        get => state.Get<float>("SpeedUpCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetSpeedUpCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSpeedUpCoef(float value)
     {
-        SpeedUpCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetSpeedUpCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public TimeInt32 SpeedUpDuration
-    {
-        get => state.Get<TimeInt32>("SpeedUpDuration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetSpeedUpDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSpeedUpDuration(TimeInt32 value)
     {
-        SpeedUpDuration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetSpeedUpDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public TimeInt32 TurboDuration
-    {
-        get => state.Get<TimeInt32>("TurboDuration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetTurboDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithTurboDuration(TimeInt32 value)
     {
-        TurboDuration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetTurboDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float TurboVal
-    {
-        get => state.Get<float>("TurboVal");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetTurboValAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithTurboVal(float value)
     {
-        TurboVal = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetTurboValAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CPlugCharPhySpecialPropertyBuilderMembers1<TSelf> : CPlugCharPhySpecialPropertyBuilderBase<TSelf> where TSelf : CPlugCharPhySpecialPropertyBuilderMembers1<TSelf>
 {
     private protected CPlugCharPhySpecialPropertyBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty> state) : base(state) { }
-    public TimeInt32 FreeWheelingDuration
-    {
-        get => state.Get<TimeInt32>("FreeWheelingDuration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetFreeWheelingDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithFreeWheelingDuration(TimeInt32 value)
     {
-        FreeWheelingDuration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetFreeWheelingDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool JumpPadCenterOnPad
-    {
-        get => state.Get<bool>("JumpPadCenterOnPad");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetJumpPadCenterOnPadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithJumpPadCenterOnPad(bool value)
     {
-        JumpPadCenterOnPad = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetJumpPadCenterOnPadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public Vec3 JumpPadDestinationOffset
-    {
-        get => state.Get<Vec3>("JumpPadDestinationOffset");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetJumpPadDestinationOffsetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithJumpPadDestinationOffset(Vec3 value)
     {
-        JumpPadDestinationOffset = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetJumpPadDestinationOffsetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int JumpPadSize
-    {
-        get => state.Get<int>("JumpPadSize");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetJumpPadSizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithJumpPadSize(int value)
     {
-        JumpPadSize = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetJumpPadSizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float TrajectoryCurve
-    {
-        get => state.Get<float>("TrajectoryCurve");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetTrajectoryCurveAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTrajectoryCurve(float value)
     {
-        TrajectoryCurve = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetTrajectoryCurveAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -160,23 +105,12 @@ public partial class CPlugCharPhySpecialPropertyBuilder : CPlugCharPhySpecialPro
         node.Chunks.Add(chunk090F2000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty.Chunk090F2000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090F2000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty();
         var chunk090F2000 = new global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty.Chunk090F2000(game);
         node.Chunks.Add(chunk090F2000);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty.Chunk090F2000>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk090F2000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty node, GameVersion game)
-    {
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -199,14 +133,9 @@ public partial class CPlugCharPhySpecialPropertyBuilder : CPlugCharPhySpecialPro
             var node = CPlugCharPhySpecialPropertyBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CPlugCharPhySpecialPropertyBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CPlugCharPhySpecialPropertyBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty node);
     }
     public partial class TMPU : CPlugCharPhySpecialPropertyBuilderBase<TMPU>
     {
@@ -217,14 +146,9 @@ public partial class CPlugCharPhySpecialPropertyBuilder : CPlugCharPhySpecialPro
             var node = CPlugCharPhySpecialPropertyBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CPlugCharPhySpecialPropertyBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CPlugCharPhySpecialPropertyBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty node);
     }
     public partial class TMSX : CPlugCharPhySpecialPropertyBuilderBase<TMSX>
     {
@@ -235,14 +159,9 @@ public partial class CPlugCharPhySpecialPropertyBuilder : CPlugCharPhySpecialPro
             var node = CPlugCharPhySpecialPropertyBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CPlugCharPhySpecialPropertyBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CPlugCharPhySpecialPropertyBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty node);
     }
     public partial class TMNESWC : CPlugCharPhySpecialPropertyBuilderBase<TMNESWC>
     {
@@ -253,14 +172,9 @@ public partial class CPlugCharPhySpecialPropertyBuilder : CPlugCharPhySpecialPro
             var node = CPlugCharPhySpecialPropertyBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CPlugCharPhySpecialPropertyBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CPlugCharPhySpecialPropertyBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty node);
     }
     public partial class VSK5 : CPlugCharPhySpecialPropertyBuilderBase<VSK5>
     {
@@ -271,14 +185,9 @@ public partial class CPlugCharPhySpecialPropertyBuilder : CPlugCharPhySpecialPro
             var node = CPlugCharPhySpecialPropertyBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CPlugCharPhySpecialPropertyBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CPlugCharPhySpecialPropertyBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty node);
     }
     public partial class TMF : CPlugCharPhySpecialPropertyBuilderBase<TMF>
     {
@@ -289,14 +198,9 @@ public partial class CPlugCharPhySpecialPropertyBuilder : CPlugCharPhySpecialPro
             var node = CPlugCharPhySpecialPropertyBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CPlugCharPhySpecialPropertyBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CPlugCharPhySpecialPropertyBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty node);
     }
     public partial class MP3 : CPlugCharPhySpecialPropertyBuilderMembers1<MP3>
     {
@@ -307,14 +211,9 @@ public partial class CPlugCharPhySpecialPropertyBuilder : CPlugCharPhySpecialPro
             var node = CPlugCharPhySpecialPropertyBuilder.CreateRecipe1(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CPlugCharPhySpecialPropertyBuilder.ValidateRecipe1(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CPlugCharPhySpecialPropertyBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty node);
     }
     public partial class TMT : CPlugCharPhySpecialPropertyBuilderMembers1<TMT>
     {
@@ -325,14 +224,9 @@ public partial class CPlugCharPhySpecialPropertyBuilder : CPlugCharPhySpecialPro
             var node = CPlugCharPhySpecialPropertyBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugCharPhySpecialPropertyBuilder.ValidateRecipe1(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugCharPhySpecialPropertyBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty node);
     }
     public partial class MP4 : CPlugCharPhySpecialPropertyBuilderMembers1<MP4>
     {
@@ -343,14 +237,9 @@ public partial class CPlugCharPhySpecialPropertyBuilder : CPlugCharPhySpecialPro
             var node = CPlugCharPhySpecialPropertyBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugCharPhySpecialPropertyBuilder.ValidateRecipe1(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugCharPhySpecialPropertyBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty node);
     }
     public partial class TM2020 : CPlugCharPhySpecialPropertyBuilderMembers1<TM2020>
     {
@@ -361,13 +250,8 @@ public partial class CPlugCharPhySpecialPropertyBuilder : CPlugCharPhySpecialPro
             var node = CPlugCharPhySpecialPropertyBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugCharPhySpecialPropertyBuilder.ValidateRecipe1(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugCharPhySpecialPropertyBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty node);
     }
 }

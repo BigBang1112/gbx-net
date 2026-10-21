@@ -36,14 +36,9 @@ public abstract class CGameUserFileListBuilderBase<TSelf> where TSelf : CGameUse
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserFileList> state;
     private protected CGameUserFileListBuilderBase() => state = new();
     private protected CGameUserFileListBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameUserFileList> state) => this.state = state;
-    public global::GBX.NET.Engines.Game.CGameUserFileList.FileInfo[]? Files
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameUserFileList.FileInfo[]?>("Files");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserFileListBuilderAssignments.GetFilesAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
-    }
     public TSelf WithFiles(params global::GBX.NET.Engines.Game.CGameUserFileList.FileInfo[]? value)
     {
-        Files = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameUserFileListBuilderAssignments.GetFilesAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithFiles(IEnumerable<global::GBX.NET.Engines.Game.CGameUserFileList.FileInfo> values)
@@ -60,13 +55,6 @@ public partial class CGameUserFileListBuilder : CGameUserFileListBuilderBase<CGa
         node.Chunks.Add(chunk031B7000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameUserFileList node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameUserFileList.Chunk031B7000>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk031B7000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameUserFileList node, GameVersion game)
-    {
-    }
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -80,14 +68,9 @@ public partial class CGameUserFileListBuilder : CGameUserFileListBuilderBase<CGa
             var node = CGameUserFileListBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameUserFileListBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameUserFileListBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameUserFileList node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameUserFileList node);
     }
     public partial class MP4 : CGameUserFileListBuilderBase<MP4>
     {
@@ -98,13 +81,8 @@ public partial class CGameUserFileListBuilder : CGameUserFileListBuilderBase<CGa
             var node = CGameUserFileListBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameUserFileListBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameUserFileListBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameUserFileList node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameUserFileList node);
     }
 }

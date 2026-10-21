@@ -36,347 +36,217 @@ public partial class CGameCtnBlockUnitInfo : global::GBX.NET.Interfaces.Game.IGa
     public static global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilder Create() => new();
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClip>? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfo.Clips
     {
-        get => Clips is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClip>(GetClipsBuilderReferences, GameVersion.Unspecified, true, "Clips");
+        get => Clips is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClip>(GetClipsBuilderReferences, true, "Clips");
         set => Clips = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClip>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM10>? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers3<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM10>.Clips
     {
-        get => Clips is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM10>(GetClipsBuilderReferences, GameVersion.TM10, true, "Clips");
+        get => Clips is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM10>(GetClipsBuilderReferences, true, "Clips");
         set => Clips = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM10>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMPU>? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers3<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMPU>.Clips
     {
-        get => Clips is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMPU>(GetClipsBuilderReferences, GameVersion.TMPU, true, "Clips");
+        get => Clips is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMPU>(GetClipsBuilderReferences, true, "Clips");
         set => Clips = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMPU>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMSX>? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers3<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMSX>.Clips
     {
-        get => Clips is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMSX>(GetClipsBuilderReferences, GameVersion.TMSX, true, "Clips");
+        get => Clips is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMSX>(GetClipsBuilderReferences, true, "Clips");
         set => Clips = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMSX>(value, false));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMSX? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers6<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMSX>.ReplacementBlockInfo
     {
-        get
-        {
-            var node = ReplacementBlockInfo;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => ReplacementBlockInfo;
         set => ReplacementBlockInfo = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMNESWC>? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers3<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMNESWC>.Clips
     {
-        get => Clips is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMNESWC>(GetClipsBuilderReferences, GameVersion.TMNESWC, true, "Clips");
+        get => Clips is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMNESWC>(GetClipsBuilderReferences, true, "Clips");
         set => Clips = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMNESWC>(value, false));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMNESWC? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers6<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMNESWC>.ReplacementBlockInfo
     {
-        get
-        {
-            var node = ReplacementBlockInfo;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => ReplacementBlockInfo;
         set => ReplacementBlockInfo = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipVSK5>? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers3<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipVSK5>.Clips
     {
-        get => Clips is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipVSK5>(GetClipsBuilderReferences, GameVersion.VSK5, true, "Clips");
+        get => Clips is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipVSK5>(GetClipsBuilderReferences, true, "Clips");
         set => Clips = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipVSK5>(value, false));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVSK5? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers6<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVSK5>.ReplacementBlockInfo
     {
-        get
-        {
-            var node = ReplacementBlockInfo;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => ReplacementBlockInfo;
         set => ReplacementBlockInfo = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMF>? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers3<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMF>.Clips
     {
-        get => Clips is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMF>(GetClipsBuilderReferences, GameVersion.TMF, true, "Clips");
+        get => Clips is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMF>(GetClipsBuilderReferences, true, "Clips");
         set => Clips = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMF>(value, false));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMF? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers6<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMF>.ReplacementBlockInfo
     {
-        get
-        {
-            var node = ReplacementBlockInfo;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => ReplacementBlockInfo;
         set => ReplacementBlockInfo = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipMP3? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipMP3>.BottomClip
     {
-        get
-        {
-            var node = BottomClip;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => BottomClip;
         set => BottomClip = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipMP3>? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers3<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipMP3>.Clips
     {
-        get => Clips is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipMP3>(GetClipsBuilderReferences, GameVersion.MP3, true, "Clips");
+        get => Clips is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipMP3>(GetClipsBuilderReferences, true, "Clips");
         set => Clips = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipMP3>(value, false));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonMP3? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonMP3>.PylonEast
     {
-        get
-        {
-            var node = PylonEast;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => PylonEast;
         set => PylonEast = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonMP3? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonMP3>.PylonNorth
     {
-        get
-        {
-            var node = PylonNorth;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => PylonNorth;
         set => PylonNorth = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonMP3? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonMP3>.PylonSouth
     {
-        get
-        {
-            var node = PylonSouth;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => PylonSouth;
         set => PylonSouth = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonMP3? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonMP3>.PylonWest
     {
-        get
-        {
-            var node = PylonWest;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => PylonWest;
         set => PylonWest = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipMP3? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipMP3>.TopClip
     {
-        get
-        {
-            var node = TopClip;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => TopClip;
         set => TopClip = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMT? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMT>.BottomClip
     {
-        get
-        {
-            var node = BottomClip;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => BottomClip;
         set => BottomClip = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMT>? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers3<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMT>.Clips
     {
-        get => Clips is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMT>(GetClipsBuilderReferences, GameVersion.TMT, true, "Clips");
+        get => Clips is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMT>(GetClipsBuilderReferences, true, "Clips");
         set => Clips = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMT>(value, false));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTMT? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTMT>.PylonEast
     {
-        get
-        {
-            var node = PylonEast;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => PylonEast;
         set => PylonEast = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTMT? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTMT>.PylonNorth
     {
-        get
-        {
-            var node = PylonNorth;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => PylonNorth;
         set => PylonNorth = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTMT? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTMT>.PylonSouth
     {
-        get
-        {
-            var node = PylonSouth;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => PylonSouth;
         set => PylonSouth = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTMT? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTMT>.PylonWest
     {
-        get
-        {
-            var node = PylonWest;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => PylonWest;
         set => PylonWest = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMT? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMT>.TopClip
     {
-        get
-        {
-            var node = TopClip;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => TopClip;
         set => TopClip = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipMP4? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipMP4>.BottomClip
     {
-        get
-        {
-            var node = BottomClip;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => BottomClip;
         set => BottomClip = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipMP4>? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers3<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipMP4>.Clips
     {
-        get => Clips is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipMP4>(GetClipsBuilderReferences, GameVersion.MP4, true, "Clips");
+        get => Clips is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipMP4>(GetClipsBuilderReferences, true, "Clips");
         set => Clips = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipMP4>(value, false));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonMP4? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonMP4>.PylonEast
     {
-        get
-        {
-            var node = PylonEast;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => PylonEast;
         set => PylonEast = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonMP4? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonMP4>.PylonNorth
     {
-        get
-        {
-            var node = PylonNorth;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => PylonNorth;
         set => PylonNorth = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonMP4? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonMP4>.PylonSouth
     {
-        get
-        {
-            var node = PylonSouth;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => PylonSouth;
         set => PylonSouth = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonMP4? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonMP4>.PylonWest
     {
-        get
-        {
-            var node = PylonWest;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => PylonWest;
         set => PylonWest = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipMP4? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipMP4>.TopClip
     {
-        get
-        {
-            var node = TopClip;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => TopClip;
         set => TopClip = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020>? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers3<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020>.Clips
     {
-        get => Clips is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020>(GetClipsBuilderReferences, GameVersion.TM2020, true, "Clips");
+        get => Clips is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020>(GetClipsBuilderReferences, true, "Clips");
         set => Clips = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020>? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM2020.ClipsBottom
     {
-        get => ClipsBottom is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020>(GetClipsBottomBuilderReferences, GameVersion.TM2020, true, "ClipsBottom");
+        get => ClipsBottom is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020>(GetClipsBottomBuilderReferences, true, "ClipsBottom");
         set => ClipsBottom = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020>? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM2020.ClipsEast
     {
-        get => ClipsEast is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020>(GetClipsEastBuilderReferences, GameVersion.TM2020, true, "ClipsEast");
+        get => ClipsEast is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020>(GetClipsEastBuilderReferences, true, "ClipsEast");
         set => ClipsEast = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020>? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM2020.ClipsNorth
     {
-        get => ClipsNorth is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020>(GetClipsNorthBuilderReferences, GameVersion.TM2020, true, "ClipsNorth");
+        get => ClipsNorth is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020>(GetClipsNorthBuilderReferences, true, "ClipsNorth");
         set => ClipsNorth = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020>? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM2020.ClipsSouth
     {
-        get => ClipsSouth is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020>(GetClipsSouthBuilderReferences, GameVersion.TM2020, true, "ClipsSouth");
+        get => ClipsSouth is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020>(GetClipsSouthBuilderReferences, true, "ClipsSouth");
         set => ClipsSouth = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020>? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM2020.ClipsTop
     {
-        get => ClipsTop is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020>(GetClipsTopBuilderReferences, GameVersion.TM2020, true, "ClipsTop");
+        get => ClipsTop is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020>(GetClipsTopBuilderReferences, true, "ClipsTop");
         set => ClipsTop = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020>? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM2020.ClipsWest
     {
-        get => ClipsWest is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020>(GetClipsWestBuilderReferences, GameVersion.TM2020, true, "ClipsWest");
+        get => ClipsWest is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020>(GetClipsWestBuilderReferences, true, "ClipsWest");
         set => ClipsWest = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020>(value, false));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTM2020? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTM2020>.PylonEast
     {
-        get
-        {
-            var node = PylonEast;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => PylonEast;
         set => PylonEast = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTM2020? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTM2020>.PylonNorth
     {
-        get
-        {
-            var node = PylonNorth;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => PylonNorth;
         set => PylonNorth = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTM2020? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTM2020>.PylonSouth
     {
-        get
-        {
-            var node = PylonSouth;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => PylonSouth;
         set => PylonSouth = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTM2020? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTM2020>.PylonWest
     {
-        get
-        {
-            var node = PylonWest;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => PylonWest;
         set => PylonWest = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     private NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>? GetClipsBuilderReferences() => Clips;

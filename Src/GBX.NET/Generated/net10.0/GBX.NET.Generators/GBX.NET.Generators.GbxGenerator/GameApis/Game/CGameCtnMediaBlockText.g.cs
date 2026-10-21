@@ -41,72 +41,37 @@ public partial class CGameCtnMediaBlockText : global::GBX.NET.Interfaces.Game.IG
     }
     global::GBX.NET.Interfaces.Control.IControlEffectSimiTMSX? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTextMembers1<global::GBX.NET.Interfaces.Control.IControlEffectSimiTMSX>.Effect
     {
-        get
-        {
-            var node = Effect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => Effect;
         set => Effect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffectSimi node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectSimiTMNESWC? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTextMembers1<global::GBX.NET.Interfaces.Control.IControlEffectSimiTMNESWC>.Effect
     {
-        get
-        {
-            var node = Effect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => Effect;
         set => Effect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffectSimi node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectSimiVSK5? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTextMembers1<global::GBX.NET.Interfaces.Control.IControlEffectSimiVSK5>.Effect
     {
-        get
-        {
-            var node = Effect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => Effect;
         set => Effect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffectSimi node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectSimiTMF? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTextMembers1<global::GBX.NET.Interfaces.Control.IControlEffectSimiTMF>.Effect
     {
-        get
-        {
-            var node = Effect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => Effect;
         set => Effect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffectSimi node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectSimiTMT? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTextMembers1<global::GBX.NET.Interfaces.Control.IControlEffectSimiTMT>.Effect
     {
-        get
-        {
-            var node = Effect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => Effect;
         set => Effect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffectSimi node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectSimiMP4? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTextMembers1<global::GBX.NET.Interfaces.Control.IControlEffectSimiMP4>.Effect
     {
-        get
-        {
-            var node = Effect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Effect;
         set => Effect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffectSimi node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectSimiTM2020? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTextMembers1<global::GBX.NET.Interfaces.Control.IControlEffectSimiTM2020>.Effect
     {
-        get
-        {
-            var node = Effect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => Effect;
         set => Effect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffectSimi node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

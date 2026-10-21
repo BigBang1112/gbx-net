@@ -60,7 +60,7 @@ public class NodeBuilderTests
     }
 
     [Test]
-    public async Task ScopedCollection_FollowsReplacementAndValidatesChildrenWhenRead()
+    public async Task ScopedCollection_FollowsReplacementWithoutValidatingChildGames()
     {
         var node = CGameCtnMediaClip.Create().ForTMF().Build();
         IGameCtnMediaClipTMF view = node;
@@ -69,8 +69,9 @@ public class NodeBuilderTests
         view.Tracks = [replacement];
         await Assert.That(tracks[0]).IsSameReferenceAs(replacement);
 
-        node.Tracks = [CGameCtnMediaTrack.Create().ForTM2020().Build()];
-        await Assert.That(() => tracks[0]).Throws<InvalidOperationException>();
+        var otherGame = CGameCtnMediaTrack.Create().ForTM2020().Build();
+        node.Tracks = [otherGame];
+        await Assert.That(tracks[0]).IsSameReferenceAs(otherGame);
     }
 
     [Test]
@@ -118,7 +119,7 @@ public class NodeBuilderTests
         var outer = CGameCtnMediaClip.Create().WithName("Original").WithTracks(track);
         var selected = outer.ForTMF();
         outer.WithName("Changed");
-        outer.Tracks.Clear();
+        outer.WithTracks(Array.Empty<CGameCtnMediaTrack>());
 
         var first = selected.Build();
         first.Tracks.Clear();
@@ -169,11 +170,12 @@ public class NodeBuilderTests
     }
 
     [Test]
-    public async Task Build_IncompatibleChild_RejectsItWithoutConsumingTheBuilder()
+    public async Task Build_PreservesSuppliedChildrenWithoutValidatingTheirGame()
     {
         var wrong = CGameCtnMediaTrack.Create().ForTM2020().Build();
         var selected = CGameCtnMediaClip.Create().ForTMF().WithTracks(wrong);
-        await Assert.That(() => selected.Build()).Throws<InvalidOperationException>();
+        await Assert.That(selected.Build().Tracks[0]).IsSameReferenceAs(wrong);
+        await Assert.That(selected.BuildInterface().Tracks[0]).IsSameReferenceAs(wrong);
         var replacement = CGameCtnMediaTrack.Create().ForTMF().Build();
         await Assert.That(selected.WithTracks(replacement).Build().Tracks[0]).IsSameReferenceAs(replacement);
     }

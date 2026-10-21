@@ -36,22 +36,22 @@ public partial class CSceneVehicleCarMarksModel : global::GBX.NET.Interfaces.Sce
     public static global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelBuilder Create() => new();
     IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSub>? global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModel.Models
     {
-        get => Models is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSub>(GetModelsBuilderReferences, GameVersion.Unspecified, true, "Models");
+        get => Models is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSub>(GetModelsBuilderReferences, true, "Models");
         set => Models = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSub>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubTMT>? global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelMembers1<global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubTMT>.Models
     {
-        get => Models is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubTMT>(GetModelsBuilderReferences, GameVersion.TMT, true, "Models");
+        get => Models is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubTMT>(GetModelsBuilderReferences, true, "Models");
         set => Models = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubTMT>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubMP4>? global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelMembers1<global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubMP4>.Models
     {
-        get => Models is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubMP4>(GetModelsBuilderReferences, GameVersion.MP4, true, "Models");
+        get => Models is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubMP4>(GetModelsBuilderReferences, true, "Models");
         set => Models = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubMP4>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubTM2020>? global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelMembers1<global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubTM2020>.Models
     {
-        get => Models is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubTM2020>(GetModelsBuilderReferences, GameVersion.TM2020, true, "Models");
+        get => Models is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubTM2020>(GetModelsBuilderReferences, true, "Models");
         set => Models = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubTM2020>(value, false));
     }
     private NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub>? GetModelsBuilderReferences() => Models;

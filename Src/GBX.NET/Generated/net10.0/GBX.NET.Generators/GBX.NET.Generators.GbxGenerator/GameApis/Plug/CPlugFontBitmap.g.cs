@@ -46,42 +46,22 @@ public partial class CPlugFontBitmap : global::GBX.NET.Interfaces.Plug.IPlugFont
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMP4>.CustomMaterialModel
     {
-        get
-        {
-            var node = CustomMaterialModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => CustomMaterialModel;
         set => CustomMaterialModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMP4>.FallbackFont
     {
-        get
-        {
-            var node = FallbackFont;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => FallbackFont;
         set => FallbackFont = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFontBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapTM2020>.CustomMaterialModel
     {
-        get
-        {
-            var node = CustomMaterialModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => CustomMaterialModel;
         set => CustomMaterialModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugFontBitmapTM2020? global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapTM2020>.FallbackFont
     {
-        get
-        {
-            var node = FallbackFont;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => FallbackFont;
         set => FallbackFont = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFontBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

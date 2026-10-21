@@ -36,34 +36,19 @@ public abstract class CGameManialink3dMoodBuilderBase<TSelf> where TSelf : CGame
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state;
     private protected CGameManialink3dMoodBuilderBase() => state = new();
     private protected CGameManialink3dMoodBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state) => this.state = state;
-    public Vec3 CloudsRgbMaxLinear
-    {
-        get => state.Get<Vec3>("CloudsRgbMaxLinear");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetCloudsRgbMaxLinearAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithCloudsRgbMaxLinear(Vec3 value)
     {
-        CloudsRgbMaxLinear = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetCloudsRgbMaxLinearAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public Vec3 CloudsRgbMinLinear
-    {
-        get => state.Get<Vec3>("CloudsRgbMinLinear");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetCloudsRgbMinLinearAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithCloudsRgbMinLinear(Vec3 value)
     {
-        CloudsRgbMinLinear = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetCloudsRgbMinLinearAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugFileImg? FidImageCloudsMinMaxDayTime
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugFileImg?>("FidImageCloudsMinMaxDayTime");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetFidImageCloudsMinMaxDayTimeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithFidImageCloudsMinMaxDayTime(global::GBX.NET.Engines.Plug.CPlugFileImg? value)
     {
-        FidImageCloudsMinMaxDayTime = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetFidImageCloudsMinMaxDayTimeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithFidImageCloudsMinMaxDayTimeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value)
@@ -72,14 +57,9 @@ public abstract class CGameManialink3dMoodBuilderBase<TSelf> where TSelf : CGame
         state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetFidImageCloudsMinMaxDayTimeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugFileImg? FidImageSkyGradientV
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugFileImg?>("FidImageSkyGradientV");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetFidImageSkyGradientVAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithFidImageSkyGradientV(global::GBX.NET.Engines.Plug.CPlugFileImg? value)
     {
-        FidImageSkyGradientV = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetFidImageSkyGradientVAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithFidImageSkyGradientVReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value)
@@ -88,134 +68,69 @@ public abstract class CGameManialink3dMoodBuilderBase<TSelf> where TSelf : CGame
         state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetFidImageSkyGradientVReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
-    public Vec3 FogColorSrgb
-    {
-        get => state.Get<Vec3>("FogColorSrgb");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetFogColorSrgbAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithFogColorSrgb(Vec3 value)
     {
-        FogColorSrgb = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetFogColorSrgbAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public Vec3 LAmbient_LinearRgb
-    {
-        get => state.Get<Vec3>("LAmbient_LinearRgb");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLAmbient_LinearRgbAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLAmbient_LinearRgb(Vec3 value)
     {
-        LAmbient_LinearRgb = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLAmbient_LinearRgbAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float LBall_Intens
-    {
-        get => state.Get<float>("LBall_Intens");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLBall_IntensAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLBall_Intens(float value)
     {
-        LBall_Intens = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLBall_IntensAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public Vec3 LBall_LinearRgb
-    {
-        get => state.Get<Vec3>("LBall_LinearRgb");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLBall_LinearRgbAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLBall_LinearRgb(Vec3 value)
     {
-        LBall_LinearRgb = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLBall_LinearRgbAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float LBall_Radius
-    {
-        get => state.Get<float>("LBall_Radius");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLBall_RadiusAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLBall_Radius(float value)
     {
-        LBall_Radius = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLBall_RadiusAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float LDir0_DirPhi
-    {
-        get => state.Get<float>("LDir0_DirPhi");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir0_DirPhiAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLDir0_DirPhi(float value)
     {
-        LDir0_DirPhi = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir0_DirPhiAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float LDir0_DirTheta
-    {
-        get => state.Get<float>("LDir0_DirTheta");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir0_DirThetaAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLDir0_DirTheta(float value)
     {
-        LDir0_DirTheta = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir0_DirThetaAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float LDir0_Intens
-    {
-        get => state.Get<float>("LDir0_Intens");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir0_IntensAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLDir0_Intens(float value)
     {
-        LDir0_Intens = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir0_IntensAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public Vec3 LDir0_LinearRgb
-    {
-        get => state.Get<Vec3>("LDir0_LinearRgb");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir0_LinearRgbAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLDir0_LinearRgb(Vec3 value)
     {
-        LDir0_LinearRgb = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir0_LinearRgbAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float LDir1_DirPhi
-    {
-        get => state.Get<float>("LDir1_DirPhi");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir1_DirPhiAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLDir1_DirPhi(float value)
     {
-        LDir1_DirPhi = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir1_DirPhiAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float LDir1_DirTheta
-    {
-        get => state.Get<float>("LDir1_DirTheta");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir1_DirThetaAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLDir1_DirTheta(float value)
     {
-        LDir1_DirTheta = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir1_DirThetaAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float LDir1_Intens
-    {
-        get => state.Get<float>("LDir1_Intens");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir1_IntensAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLDir1_Intens(float value)
     {
-        LDir1_Intens = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir1_IntensAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public Vec3 LDir1_LinearRgb
-    {
-        get => state.Get<Vec3>("LDir1_LinearRgb");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir1_LinearRgbAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLDir1_LinearRgb(Vec3 value)
     {
-        LDir1_LinearRgb = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir1_LinearRgbAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
 }
@@ -229,10 +144,6 @@ public partial class CGameManialink3dMoodBuilder : CGameManialink3dMoodBuilderBa
         node.Chunks.Add(chunk0316F000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameManialink3dMood node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameManialink3dMood.Chunk0316F000>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0316F000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameManialink3dMood CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameManialink3dMood();
@@ -240,13 +151,6 @@ public partial class CGameManialink3dMoodBuilder : CGameManialink3dMoodBuilderBa
         chunk0317E000.Version = 1;
         node.Chunks.Add(chunk0317E000);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameManialink3dMood node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameManialink3dMood.Chunk0317E000>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0317E000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameManialink3dMood node, GameVersion game)
-    {
     }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -261,14 +165,9 @@ public partial class CGameManialink3dMoodBuilder : CGameManialink3dMoodBuilderBa
             var node = CGameManialink3dMoodBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameManialink3dMoodBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameManialink3dMoodBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameManialink3dMood node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameManialink3dMood node);
     }
     public partial class TM2020 : CGameManialink3dMoodBuilderBase<TM2020>
     {
@@ -279,13 +178,8 @@ public partial class CGameManialink3dMoodBuilder : CGameManialink3dMoodBuilderBa
             var node = CGameManialink3dMoodBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameManialink3dMoodBuilder.ValidateRecipe1(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameManialink3dMoodBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameManialink3dMood node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameManialink3dMood node);
     }
 }

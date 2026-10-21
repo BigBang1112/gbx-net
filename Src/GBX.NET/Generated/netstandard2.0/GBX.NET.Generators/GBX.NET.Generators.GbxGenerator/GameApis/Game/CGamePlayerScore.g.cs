@@ -36,17 +36,12 @@ public partial class CGamePlayerScore : global::GBX.NET.Interfaces.Game.IGamePla
     public static global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilder Create() => new();
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCampaignPlayerScoresTMF>? global::GBX.NET.Interfaces.Game.IGamePlayerScoreTMF.CampaignPlayerScores
     {
-        get => CampaignPlayerScores is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCampaignPlayerScores, global::GBX.NET.Interfaces.Game.IGameCampaignPlayerScoresTMF>(GetCampaignPlayerScoresBuilderReferences, GameVersion.TMF, true, "CampaignPlayerScores");
+        get => CampaignPlayerScores is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCampaignPlayerScores, global::GBX.NET.Interfaces.Game.IGameCampaignPlayerScoresTMF>(GetCampaignPlayerScoresBuilderReferences, true, "CampaignPlayerScores");
         set => CampaignPlayerScores = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCampaignPlayerScores>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCampaignPlayerScores, global::GBX.NET.Interfaces.Game.IGameCampaignPlayerScoresTMF>(value, false));
     }
     global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresTMF? global::GBX.NET.Interfaces.Game.IGamePlayerScoreTMF.PlayerOfficialScores
     {
-        get
-        {
-            var node = PlayerOfficialScores;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => PlayerOfficialScores;
         set => PlayerOfficialScores = value is null ? null : value is global::GBX.NET.Engines.Game.CGamePlayerOfficialScores node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     private NodeRefList<global::GBX.NET.Engines.Game.CGameCampaignPlayerScores>? GetCampaignPlayerScoresBuilderReferences() => CampaignPlayerScores;

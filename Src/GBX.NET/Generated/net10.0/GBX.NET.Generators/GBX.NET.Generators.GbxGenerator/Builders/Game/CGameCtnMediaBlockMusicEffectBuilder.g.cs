@@ -36,14 +36,9 @@ public abstract class CGameCtnMediaBlockMusicEffectBuilderBase<TSelf> where TSel
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect> state;
     private protected CGameCtnMediaBlockMusicEffectBuilderBase() => state = new();
     private protected CGameCtnMediaBlockMusicEffectBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect> state) => this.state = state;
-    public List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect.Key>? Keys
-    {
-        get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect.Key>?>("Keys");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockMusicEffectBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect.Key>? value)
     {
-        Keys = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockMusicEffectBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithKeys(params global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect.Key[] values)
@@ -64,23 +59,12 @@ public partial class CGameCtnMediaBlockMusicEffectBuilder : CGameCtnMediaBlockMu
         node.Chunks.Add(chunk030A6000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect.Chunk030A6000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk030A6000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect();
         var chunk030A6001 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect.Chunk030A6001();
         node.Chunks.Add(chunk030A6001);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect.Chunk030A6001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk030A6001 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect node, GameVersion game)
-    {
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
@@ -100,14 +84,9 @@ public partial class CGameCtnMediaBlockMusicEffectBuilder : CGameCtnMediaBlockMu
             var node = CGameCtnMediaBlockMusicEffectBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CGameCtnMediaBlockMusicEffectBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CGameCtnMediaBlockMusicEffectBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect node);
     }
     public partial class TMNESWC : CGameCtnMediaBlockMusicEffectBuilderBase<TMNESWC>
     {
@@ -118,14 +97,9 @@ public partial class CGameCtnMediaBlockMusicEffectBuilder : CGameCtnMediaBlockMu
             var node = CGameCtnMediaBlockMusicEffectBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CGameCtnMediaBlockMusicEffectBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CGameCtnMediaBlockMusicEffectBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect node);
     }
     public partial class VSK5 : CGameCtnMediaBlockMusicEffectBuilderBase<VSK5>
     {
@@ -136,14 +110,9 @@ public partial class CGameCtnMediaBlockMusicEffectBuilder : CGameCtnMediaBlockMu
             var node = CGameCtnMediaBlockMusicEffectBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CGameCtnMediaBlockMusicEffectBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CGameCtnMediaBlockMusicEffectBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect node);
     }
     public partial class TMF : CGameCtnMediaBlockMusicEffectBuilderBase<TMF>
     {
@@ -154,14 +123,9 @@ public partial class CGameCtnMediaBlockMusicEffectBuilder : CGameCtnMediaBlockMu
             var node = CGameCtnMediaBlockMusicEffectBuilder.CreateRecipe1(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CGameCtnMediaBlockMusicEffectBuilder.ValidateRecipe1(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CGameCtnMediaBlockMusicEffectBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect node);
     }
     public partial class TMT : CGameCtnMediaBlockMusicEffectBuilderBase<TMT>
     {
@@ -172,14 +136,9 @@ public partial class CGameCtnMediaBlockMusicEffectBuilder : CGameCtnMediaBlockMu
             var node = CGameCtnMediaBlockMusicEffectBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameCtnMediaBlockMusicEffectBuilder.ValidateRecipe1(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameCtnMediaBlockMusicEffectBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect node);
     }
     public partial class MP4 : CGameCtnMediaBlockMusicEffectBuilderBase<MP4>
     {
@@ -190,14 +149,9 @@ public partial class CGameCtnMediaBlockMusicEffectBuilder : CGameCtnMediaBlockMu
             var node = CGameCtnMediaBlockMusicEffectBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameCtnMediaBlockMusicEffectBuilder.ValidateRecipe1(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameCtnMediaBlockMusicEffectBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect node);
     }
     public partial class TM2020 : CGameCtnMediaBlockMusicEffectBuilderBase<TM2020>
     {
@@ -208,13 +162,8 @@ public partial class CGameCtnMediaBlockMusicEffectBuilder : CGameCtnMediaBlockMu
             var node = CGameCtnMediaBlockMusicEffectBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameCtnMediaBlockMusicEffectBuilder.ValidateRecipe1(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameCtnMediaBlockMusicEffectBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect node);
     }
 }

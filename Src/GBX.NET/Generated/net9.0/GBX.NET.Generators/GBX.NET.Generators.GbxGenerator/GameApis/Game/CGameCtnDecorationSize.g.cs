@@ -41,82 +41,42 @@ public partial class CGameCtnDecorationSize : global::GBX.NET.Interfaces.Game.IG
     }
     global::GBX.NET.Interfaces.Scene.ISceneLayoutTMSX? global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMembers2<global::GBX.NET.Interfaces.Scene.ISceneLayoutTMSX>.Scene
     {
-        get
-        {
-            var node = Scene;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => Scene;
         set => Scene = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Scene.ISceneLayoutTMNESWC? global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMembers2<global::GBX.NET.Interfaces.Scene.ISceneLayoutTMNESWC>.Scene
     {
-        get
-        {
-            var node = Scene;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => Scene;
         set => Scene = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Scene.ISceneLayoutVSK5? global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMembers2<global::GBX.NET.Interfaces.Scene.ISceneLayoutVSK5>.Scene
     {
-        get
-        {
-            var node = Scene;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => Scene;
         set => Scene = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Scene.ISceneLayoutTMF? global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMembers2<global::GBX.NET.Interfaces.Scene.ISceneLayoutTMF>.Scene
     {
-        get
-        {
-            var node = Scene;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => Scene;
         set => Scene = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Scene.ISceneLayoutMP3? global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMembers2<global::GBX.NET.Interfaces.Scene.ISceneLayoutMP3>.Scene
     {
-        get
-        {
-            var node = Scene;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => Scene;
         set => Scene = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Scene.ISceneLayoutTMT? global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMembers2<global::GBX.NET.Interfaces.Scene.ISceneLayoutTMT>.Scene
     {
-        get
-        {
-            var node = Scene;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => Scene;
         set => Scene = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Scene.ISceneLayoutMP4? global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMembers2<global::GBX.NET.Interfaces.Scene.ISceneLayoutMP4>.Scene
     {
-        get
-        {
-            var node = Scene;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Scene;
         set => Scene = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Scene.ISceneLayoutTM2020? global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMembers2<global::GBX.NET.Interfaces.Scene.ISceneLayoutTM2020>.Scene
     {
-        get
-        {
-            var node = Scene;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => Scene;
         set => Scene = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

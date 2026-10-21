@@ -36,14 +36,9 @@ public abstract class CPlugParticleImpactModelBuilderBase<TSelf> where TSelf : C
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel> state;
     private protected CPlugParticleImpactModelBuilderBase() => state = new();
     private protected CPlugParticleImpactModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel> state) => this.state = state;
-    public global::GBX.NET.Engines.Plug.CPlugDecalModel? DecalModel
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugDecalModel?>("DecalModel");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleImpactModelBuilderAssignments.GetDecalModelAssignment(), value, GameVersion.MP4);
-    }
     public TSelf WithDecalModel(global::GBX.NET.Engines.Plug.CPlugDecalModel? value)
     {
-        DecalModel = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleImpactModelBuilderAssignments.GetDecalModelAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public TSelf WithDecalModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugDecalModel> value)
@@ -52,14 +47,9 @@ public abstract class CPlugParticleImpactModelBuilderBase<TSelf> where TSelf : C
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleImpactModelBuilderAssignments.GetDecalModelReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? ParticleEmitterModel
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("ParticleEmitterModel");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleImpactModelBuilderAssignments.GetParticleEmitterModelAssignment(), value, GameVersion.MP4);
-    }
     public TSelf WithParticleEmitterModel(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
     {
-        ParticleEmitterModel = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleImpactModelBuilderAssignments.GetParticleEmitterModelAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public TSelf WithParticleEmitterModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
@@ -68,14 +58,9 @@ public abstract class CPlugParticleImpactModelBuilderBase<TSelf> where TSelf : C
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleImpactModelBuilderAssignments.GetParticleEmitterModelReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugSound? Sound
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleImpactModelBuilderAssignments.GetSoundAssignment(), value, GameVersion.MP4);
-    }
     public TSelf WithSound(global::GBX.NET.Engines.Plug.CPlugSound? value)
     {
-        Sound = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleImpactModelBuilderAssignments.GetSoundAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public TSelf WithSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
@@ -93,13 +78,6 @@ public partial class CPlugParticleImpactModelBuilder : CPlugParticleImpactModelB
         var chunk090B6000 = new global::GBX.NET.Engines.Plug.CPlugParticleImpactModel.Chunk090B6000(game);
         node.Chunks.Add(chunk090B6000);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugParticleImpactModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel.Chunk090B6000>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B6000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugParticleImpactModel node, GameVersion game)
-    {
     }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -125,13 +103,8 @@ public partial class CPlugParticleImpactModelBuilder : CPlugParticleImpactModelB
             var node = CPlugParticleImpactModelBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugParticleImpactModelBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugParticleImpactModelBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleImpactModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugParticleImpactModel node);
     }
 }

@@ -35,10 +35,6 @@ public partial interface IMwCmd : IClassVersion<global::GBX.NET.Engines.MwFounda
 {
 }
 
-public partial interface IMwCmdTMF : IMwCmd
-{
-}
-
 public partial interface IMwCmdTM10 : IMwCmd
 {
 }
@@ -56,6 +52,10 @@ public partial interface IMwCmdTMNESWC : IMwCmd
 }
 
 public partial interface IMwCmdVSK5 : IMwCmd
+{
+}
+
+public partial interface IMwCmdTMF : IMwCmd
 {
 }
 

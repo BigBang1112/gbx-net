@@ -36,134 +36,69 @@ public abstract class CPlugVehicleVisEmitterModelBuilderBase<TSelf> where TSelf 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state;
     private protected CPlugVehicleVisEmitterModelBuilderBase() => state = new();
     private protected CPlugVehicleVisEmitterModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state) => this.state = state;
-    public float EmitIntensity
-    {
-        get => state.Get<float>("EmitIntensity");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetEmitIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithEmitIntensity(float value)
     {
-        EmitIntensity = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetEmitIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public Vec3 EmitIntensityBySpeed
-    {
-        get => state.Get<Vec3>("EmitIntensityBySpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetEmitIntensityBySpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEmitIntensityBySpeed(Vec3 value)
     {
-        EmitIntensityBySpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetEmitIntensityBySpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float EmitIntensityOnTurbo
-    {
-        get => state.Get<float>("EmitIntensityOnTurbo");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetEmitIntensityOnTurboAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEmitIntensityOnTurbo(float value)
     {
-        EmitIntensityOnTurbo = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetEmitIntensityOnTurboAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public Vec3 EmitSpeed
-    {
-        get => state.Get<Vec3>("EmitSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetEmitSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEmitSpeed(Vec3 value)
     {
-        EmitSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetEmitSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public Vec3 EmitSpeedBySpeed
-    {
-        get => state.Get<Vec3>("EmitSpeedBySpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetEmitSpeedBySpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEmitSpeedBySpeed(Vec3 value)
     {
-        EmitSpeedBySpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetEmitSpeedBySpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public Vec3 EmitSpeedBySpeedOnTurbo
-    {
-        get => state.Get<Vec3>("EmitSpeedBySpeedOnTurbo");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetEmitSpeedBySpeedOnTurboAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEmitSpeedBySpeedOnTurbo(Vec3 value)
     {
-        EmitSpeedBySpeedOnTurbo = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetEmitSpeedBySpeedOnTurboAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool IsEventMode
-    {
-        get => state.Get<bool>("IsEventMode");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetIsEventModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIsEventMode(bool value)
     {
-        IsEventMode = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetIsEventModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public Iso4 Loc
-    {
-        get => state.Get<Iso4>("Loc");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetLocAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLoc(Iso4 value)
     {
-        Loc = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetLocAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int MaterialGroupIndex
-    {
-        get => state.Get<int>("MaterialGroupIndex");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetMaterialGroupIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMaterialGroupIndex(int value)
     {
-        MaterialGroupIndex = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetMaterialGroupIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool OnlyWhenAllWheelsSliding
-    {
-        get => state.Get<bool>("OnlyWhenAllWheelsSliding");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetOnlyWhenAllWheelsSlidingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithOnlyWhenAllWheelsSliding(bool value)
     {
-        OnlyWhenAllWheelsSliding = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetOnlyWhenAllWheelsSlidingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool OnlyWhenSliding
-    {
-        get => state.Get<bool>("OnlyWhenSliding");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetOnlyWhenSlidingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithOnlyWhenSliding(bool value)
     {
-        OnlyWhenSliding = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetOnlyWhenSlidingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool OrientWithVelocity
-    {
-        get => state.Get<bool>("OrientWithVelocity");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetOrientWithVelocityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithOrientWithVelocity(bool value)
     {
-        OrientWithVelocity = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetOrientWithVelocityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? ParticleEmitterModel0
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("ParticleEmitterModel0");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetParticleEmitterModel0Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithParticleEmitterModel0(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
     {
-        ParticleEmitterModel0 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetParticleEmitterModel0Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithParticleEmitterModel0Reference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
@@ -172,14 +107,9 @@ public abstract class CPlugVehicleVisEmitterModelBuilderBase<TSelf> where TSelf 
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetParticleEmitterModel0ReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? ParticleEmitterModel1
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("ParticleEmitterModel1");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetParticleEmitterModel1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithParticleEmitterModel1(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
     {
-        ParticleEmitterModel1 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetParticleEmitterModel1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithParticleEmitterModel1Reference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
@@ -188,14 +118,9 @@ public abstract class CPlugVehicleVisEmitterModelBuilderBase<TSelf> where TSelf 
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetParticleEmitterModel1ReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? ParticleEmitterModel2
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("ParticleEmitterModel2");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetParticleEmitterModel2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithParticleEmitterModel2(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
     {
-        ParticleEmitterModel2 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetParticleEmitterModel2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithParticleEmitterModel2Reference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
@@ -204,68 +129,38 @@ public abstract class CPlugVehicleVisEmitterModelBuilderBase<TSelf> where TSelf 
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetParticleEmitterModel2ReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public Vec3 PitchYawRoll
-    {
-        get => state.Get<Vec3>("PitchYawRoll");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetPitchYawRollAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithPitchYawRoll(Vec3 value)
     {
-        PitchYawRoll = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetPitchYawRollAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public Vec3 Position
-    {
-        get => state.Get<Vec3>("Position");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetPositionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPosition(Vec3 value)
     {
-        Position = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetPositionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool UseOwnerLoc
-    {
-        get => state.Get<bool>("UseOwnerLoc");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetUseOwnerLocAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithUseOwnerLoc(bool value)
     {
-        UseOwnerLoc = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetUseOwnerLocAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int VisualHandlerIndex
-    {
-        get => state.Get<int>("VisualHandlerIndex");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetVisualHandlerIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithVisualHandlerIndex(int value)
     {
-        VisualHandlerIndex = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetVisualHandlerIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int WheelIndex
-    {
-        get => state.Get<int>("WheelIndex");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetWheelIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithWheelIndex(int value)
     {
-        WheelIndex = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetWheelIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CPlugVehicleVisEmitterModelBuilderMembers1<TSelf> : CPlugVehicleVisEmitterModelBuilderBase<TSelf> where TSelf : CPlugVehicleVisEmitterModelBuilderMembers1<TSelf>
 {
     private protected CPlugVehicleVisEmitterModelBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state) : base(state) { }
-    public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? ParticleEmitterModelShoot
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("ParticleEmitterModelShoot");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetParticleEmitterModelShootAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithParticleEmitterModelShoot(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
     {
-        ParticleEmitterModelShoot = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetParticleEmitterModelShootAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithParticleEmitterModelShootReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
@@ -290,13 +185,6 @@ public partial class CPlugVehicleVisEmitterModelBuilder : CPlugVehicleVisEmitter
         node.Chunks.Add(chunk090E6005);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E6002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E6003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E6004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E6005 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel(game);
@@ -311,14 +199,6 @@ public partial class CPlugVehicleVisEmitterModelBuilder : CPlugVehicleVisEmitter
         var chunk090E6006 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6006();
         node.Chunks.Add(chunk090E6006);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E6002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E6003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E6004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E6005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E6006 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel CreateRecipe2(GameVersion game)
     {
@@ -337,18 +217,6 @@ public partial class CPlugVehicleVisEmitterModelBuilder : CPlugVehicleVisEmitter
         chunk090E6007.Version = 0;
         node.Chunks.Add(chunk090E6007);
         return node;
-    }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E6002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E6003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E6004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E6005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E6006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6007>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E6007 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel node, GameVersion game)
-    {
     }
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
@@ -379,14 +247,9 @@ public partial class CPlugVehicleVisEmitterModelBuilder : CPlugVehicleVisEmitter
             var node = CPlugVehicleVisEmitterModelBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CPlugVehicleVisEmitterModelBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CPlugVehicleVisEmitterModelBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel node);
     }
     public partial class TMF : CPlugVehicleVisEmitterModelBuilderBase<TMF>
     {
@@ -409,14 +272,9 @@ public partial class CPlugVehicleVisEmitterModelBuilder : CPlugVehicleVisEmitter
             var node = CPlugVehicleVisEmitterModelBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CPlugVehicleVisEmitterModelBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CPlugVehicleVisEmitterModelBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel node);
     }
     public partial class MP3 : CPlugVehicleVisEmitterModelBuilderMembers1<MP3>
     {
@@ -443,14 +301,9 @@ public partial class CPlugVehicleVisEmitterModelBuilder : CPlugVehicleVisEmitter
             var node = CPlugVehicleVisEmitterModelBuilder.CreateRecipe1(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CPlugVehicleVisEmitterModelBuilder.ValidateRecipe1(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CPlugVehicleVisEmitterModelBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel node);
     }
     public partial class TMT : CPlugVehicleVisEmitterModelBuilderMembers1<TMT>
     {
@@ -477,14 +330,9 @@ public partial class CPlugVehicleVisEmitterModelBuilder : CPlugVehicleVisEmitter
             var node = CPlugVehicleVisEmitterModelBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugVehicleVisEmitterModelBuilder.ValidateRecipe1(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugVehicleVisEmitterModelBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel node);
     }
     public partial class MP4 : CPlugVehicleVisEmitterModelBuilderMembers1<MP4>
     {
@@ -511,14 +359,9 @@ public partial class CPlugVehicleVisEmitterModelBuilder : CPlugVehicleVisEmitter
             var node = CPlugVehicleVisEmitterModelBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugVehicleVisEmitterModelBuilder.ValidateRecipe1(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugVehicleVisEmitterModelBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel node);
     }
     public partial class TM2020 : CPlugVehicleVisEmitterModelBuilderMembers1<TM2020>
     {
@@ -545,13 +388,8 @@ public partial class CPlugVehicleVisEmitterModelBuilder : CPlugVehicleVisEmitter
             var node = CPlugVehicleVisEmitterModelBuilder.CreateRecipe2(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugVehicleVisEmitterModelBuilder.ValidateRecipe2(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugVehicleVisEmitterModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel node);
     }
 }

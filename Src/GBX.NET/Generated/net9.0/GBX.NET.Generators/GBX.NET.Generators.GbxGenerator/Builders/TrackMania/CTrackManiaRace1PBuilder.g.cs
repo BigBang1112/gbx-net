@@ -36,14 +36,9 @@ public abstract class CTrackManiaRace1PBuilderBase<TSelf> where TSelf : CTrackMa
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P> state;
     private protected CTrackManiaRace1PBuilderBase() => state = new();
     private protected CTrackManiaRace1PBuilderBase(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P> state) => this.state = state;
-    public string? Name
-    {
-        get => state.Get<string?>("Name");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameNodBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithName(string? value)
     {
-        Name = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameNodBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -56,10 +51,6 @@ public partial class CTrackManiaRace1PBuilder : CTrackManiaRace1PBuilderBase<CTr
         node.Chunks.Add(chunk03008000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03008000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P();
@@ -70,15 +61,6 @@ public partial class CTrackManiaRace1PBuilder : CTrackManiaRace1PBuilderBase<CTr
         var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
         node.Chunks.Add(chunk03008000);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CTrackManiaRace.Chunk24014002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk24014002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameRace.Chunk03073000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03073000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03008000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P node, GameVersion game)
-    {
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -101,14 +83,9 @@ public partial class CTrackManiaRace1PBuilder : CTrackManiaRace1PBuilderBase<CTr
             var node = CTrackManiaRace1PBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CTrackManiaRace1PBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CTrackManiaRace1PBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P node);
-        partial void ValidateNode(global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P node);
     }
     public partial class TMPU : CTrackManiaRace1PBuilderBase<TMPU>
     {
@@ -119,14 +96,9 @@ public partial class CTrackManiaRace1PBuilder : CTrackManiaRace1PBuilderBase<CTr
             var node = CTrackManiaRace1PBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CTrackManiaRace1PBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CTrackManiaRace1PBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P node);
-        partial void ValidateNode(global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P node);
     }
     public partial class TMSX : CTrackManiaRace1PBuilderBase<TMSX>
     {
@@ -137,14 +109,9 @@ public partial class CTrackManiaRace1PBuilder : CTrackManiaRace1PBuilderBase<CTr
             var node = CTrackManiaRace1PBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CTrackManiaRace1PBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CTrackManiaRace1PBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P node);
-        partial void ValidateNode(global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P node);
     }
     public partial class TMNESWC : CTrackManiaRace1PBuilderBase<TMNESWC>
     {
@@ -155,14 +122,9 @@ public partial class CTrackManiaRace1PBuilder : CTrackManiaRace1PBuilderBase<CTr
             var node = CTrackManiaRace1PBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CTrackManiaRace1PBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CTrackManiaRace1PBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P node);
-        partial void ValidateNode(global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P node);
     }
     public partial class VSK5 : CTrackManiaRace1PBuilderBase<VSK5>
     {
@@ -173,26 +135,16 @@ public partial class CTrackManiaRace1PBuilder : CTrackManiaRace1PBuilderBase<CTr
             var node = CTrackManiaRace1PBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CTrackManiaRace1PBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CTrackManiaRace1PBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P node);
-        partial void ValidateNode(global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P node);
     }
     public partial class TMF : CTrackManiaRace1PBuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P> state) : base(state) { }
-        public global::GBX.NET.Engines.MwFoundations.CMwNod? InterfaceFid
-        {
-            get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("InterfaceFid");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameRaceBuilderAssignments.GetInterfaceFidAssignment(), value, GameVersion.TMF);
-        }
         public TMF WithInterfaceFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
-            InterfaceFid = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameRaceBuilderAssignments.GetInterfaceFidAssignment(), value, GameVersion.TMF);
             return this;
         }
         public TMF WithInterfaceFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
@@ -207,14 +159,9 @@ public partial class CTrackManiaRace1PBuilder : CTrackManiaRace1PBuilderBase<CTr
             var node = CTrackManiaRace1PBuilder.CreateRecipe1(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CTrackManiaRace1PBuilder.ValidateRecipe1(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CTrackManiaRace1PBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P node);
-        partial void ValidateNode(global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P node);
     }
     public partial class MP3 : CTrackManiaRace1PBuilderBase<MP3>
     {
@@ -225,14 +172,9 @@ public partial class CTrackManiaRace1PBuilder : CTrackManiaRace1PBuilderBase<CTr
             var node = CTrackManiaRace1PBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CTrackManiaRace1PBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CTrackManiaRace1PBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P node);
-        partial void ValidateNode(global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P node);
     }
     public partial class TMT : CTrackManiaRace1PBuilderBase<TMT>
     {
@@ -243,14 +185,9 @@ public partial class CTrackManiaRace1PBuilder : CTrackManiaRace1PBuilderBase<CTr
             var node = CTrackManiaRace1PBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CTrackManiaRace1PBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CTrackManiaRace1PBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P node);
-        partial void ValidateNode(global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P node);
     }
     public partial class MP4 : CTrackManiaRace1PBuilderBase<MP4>
     {
@@ -261,14 +198,9 @@ public partial class CTrackManiaRace1PBuilder : CTrackManiaRace1PBuilderBase<CTr
             var node = CTrackManiaRace1PBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CTrackManiaRace1PBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CTrackManiaRace1PBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P node);
-        partial void ValidateNode(global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P node);
     }
     public partial class TM2020 : CTrackManiaRace1PBuilderBase<TM2020>
     {
@@ -279,13 +211,8 @@ public partial class CTrackManiaRace1PBuilder : CTrackManiaRace1PBuilderBase<CTr
             var node = CTrackManiaRace1PBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CTrackManiaRace1PBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CTrackManiaRace1PBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P node);
-        partial void ValidateNode(global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P node);
     }
 }

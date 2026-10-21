@@ -36,14 +36,9 @@ public abstract class CGameCtnCollectorListBuilderBase<TSelf> where TSelf : CGam
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCollectorList> state;
     private protected CGameCtnCollectorListBuilderBase() => state = new();
     private protected CGameCtnCollectorListBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCollectorList> state) => this.state = state;
-    public List<global::GBX.NET.Engines.Game.CGameCtnCollectorList.SCollectorStock>? CollectorStock
-    {
-        get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnCollectorList.SCollectorStock>?>("CollectorStock");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCollectorListBuilderAssignments.GetCollectorStockAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithCollectorStock(List<global::GBX.NET.Engines.Game.CGameCtnCollectorList.SCollectorStock>? value)
     {
-        CollectorStock = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCollectorListBuilderAssignments.GetCollectorStockAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithCollectorStock(params global::GBX.NET.Engines.Game.CGameCtnCollectorList.SCollectorStock[] values)
@@ -63,13 +58,6 @@ public partial class CGameCtnCollectorListBuilder : CGameCtnCollectorListBuilder
         var chunk0301B000 = new global::GBX.NET.Engines.Game.CGameCtnCollectorList.Chunk0301B000();
         node.Chunks.Add(chunk0301B000);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnCollectorList node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnCollectorList.Chunk0301B000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0301B000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnCollectorList node, GameVersion game)
-    {
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -92,14 +80,9 @@ public partial class CGameCtnCollectorListBuilder : CGameCtnCollectorListBuilder
             var node = CGameCtnCollectorListBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CGameCtnCollectorListBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CGameCtnCollectorListBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnCollectorList node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnCollectorList node);
     }
     public partial class TMPU : CGameCtnCollectorListBuilderBase<TMPU>
     {
@@ -110,14 +93,9 @@ public partial class CGameCtnCollectorListBuilder : CGameCtnCollectorListBuilder
             var node = CGameCtnCollectorListBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CGameCtnCollectorListBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CGameCtnCollectorListBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnCollectorList node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnCollectorList node);
     }
     public partial class TMSX : CGameCtnCollectorListBuilderBase<TMSX>
     {
@@ -128,14 +106,9 @@ public partial class CGameCtnCollectorListBuilder : CGameCtnCollectorListBuilder
             var node = CGameCtnCollectorListBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CGameCtnCollectorListBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CGameCtnCollectorListBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnCollectorList node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnCollectorList node);
     }
     public partial class TMNESWC : CGameCtnCollectorListBuilderBase<TMNESWC>
     {
@@ -146,14 +119,9 @@ public partial class CGameCtnCollectorListBuilder : CGameCtnCollectorListBuilder
             var node = CGameCtnCollectorListBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CGameCtnCollectorListBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CGameCtnCollectorListBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnCollectorList node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnCollectorList node);
     }
     public partial class VSK5 : CGameCtnCollectorListBuilderBase<VSK5>
     {
@@ -164,14 +132,9 @@ public partial class CGameCtnCollectorListBuilder : CGameCtnCollectorListBuilder
             var node = CGameCtnCollectorListBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CGameCtnCollectorListBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CGameCtnCollectorListBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnCollectorList node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnCollectorList node);
     }
     public partial class TMF : CGameCtnCollectorListBuilderBase<TMF>
     {
@@ -182,14 +145,9 @@ public partial class CGameCtnCollectorListBuilder : CGameCtnCollectorListBuilder
             var node = CGameCtnCollectorListBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CGameCtnCollectorListBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CGameCtnCollectorListBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnCollectorList node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnCollectorList node);
     }
     public partial class MP3 : CGameCtnCollectorListBuilderBase<MP3>
     {
@@ -200,14 +158,9 @@ public partial class CGameCtnCollectorListBuilder : CGameCtnCollectorListBuilder
             var node = CGameCtnCollectorListBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CGameCtnCollectorListBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CGameCtnCollectorListBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnCollectorList node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnCollectorList node);
     }
     public partial class TMT : CGameCtnCollectorListBuilderBase<TMT>
     {
@@ -218,14 +171,9 @@ public partial class CGameCtnCollectorListBuilder : CGameCtnCollectorListBuilder
             var node = CGameCtnCollectorListBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameCtnCollectorListBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameCtnCollectorListBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnCollectorList node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnCollectorList node);
     }
     public partial class MP4 : CGameCtnCollectorListBuilderBase<MP4>
     {
@@ -236,14 +184,9 @@ public partial class CGameCtnCollectorListBuilder : CGameCtnCollectorListBuilder
             var node = CGameCtnCollectorListBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameCtnCollectorListBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameCtnCollectorListBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnCollectorList node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnCollectorList node);
     }
     public partial class TM2020 : CGameCtnCollectorListBuilderBase<TM2020>
     {
@@ -254,13 +197,8 @@ public partial class CGameCtnCollectorListBuilder : CGameCtnCollectorListBuilder
             var node = CGameCtnCollectorListBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameCtnCollectorListBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameCtnCollectorListBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnCollectorList node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnCollectorList node);
     }
 }

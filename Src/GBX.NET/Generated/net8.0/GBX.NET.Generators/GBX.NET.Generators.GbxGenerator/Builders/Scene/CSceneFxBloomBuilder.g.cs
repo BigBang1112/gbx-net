@@ -36,24 +36,14 @@ public abstract class CSceneFxBloomBuilderBase<TSelf> where TSelf : CSceneFxBloo
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxBloom> state;
     private protected CSceneFxBloomBuilderBase() => state = new();
     private protected CSceneFxBloomBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxBloom> state) => this.state = state;
-    public int BlurSize
-    {
-        get => state.Get<int>("BlurSize");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBloomBuilderAssignments.GetBlurSizeAssignment(), value, GameVersion.TMF);
-    }
     public TSelf WithBlurSize(int value)
     {
-        BlurSize = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBloomBuilderAssignments.GetBlurSizeAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
-    }
-    public NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxBloomData>? Datas
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxBloomData>?>("Datas");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBloomBuilderAssignments.GetDatasAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithDatas(NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxBloomData>? value)
     {
-        Datas = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBloomBuilderAssignments.GetDatasAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
     public TSelf WithDatas(params global::GBX.NET.Engines.Scene.CSceneFxBloomData[] values)
@@ -64,14 +54,9 @@ public abstract class CSceneFxBloomBuilderBase<TSelf> where TSelf : CSceneFxBloo
     {
         return WithDatas(values.ToArray());
     }
-    public float Intensity
-    {
-        get => state.Get<float>("Intensity");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBloomBuilderAssignments.GetIntensityAssignment(), value, GameVersion.TMF);
-    }
     public TSelf WithIntensity(float value)
     {
-        Intensity = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBloomBuilderAssignments.GetIntensityAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
 }
@@ -83,13 +68,6 @@ public partial class CSceneFxBloomBuilder : CSceneFxBloomBuilderBase<CSceneFxBlo
         var chunk0A03B002 = new global::GBX.NET.Engines.Scene.CSceneFxBloom.Chunk0A03B002();
         node.Chunks.Add(chunk0A03B002);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Scene.CSceneFxBloom node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneFxBloom.Chunk0A03B002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A03B002 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Scene.CSceneFxBloom node, GameVersion game)
-    {
     }
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TMF : CSceneFxBloomBuilderBase<TMF>
@@ -109,13 +87,8 @@ public partial class CSceneFxBloomBuilder : CSceneFxBloomBuilderBase<CSceneFxBlo
             var node = CSceneFxBloomBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CSceneFxBloomBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CSceneFxBloomBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxBloom node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneFxBloom node);
     }
 }

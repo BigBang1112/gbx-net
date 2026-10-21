@@ -36,14 +36,9 @@ public abstract class CPlugCamControlModelBuilderBase<TSelf> where TSelf : CPlug
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCamControlModel> state;
     private protected CPlugCamControlModelBuilderBase() => state = new();
     private protected CPlugCamControlModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCamControlModel> state) => this.state = state;
-    public global::GBX.NET.Engines.Plug.CPlugCamShakeModel? Shake
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugCamShakeModel?>("Shake");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCamControlModelBuilderAssignments.GetShakeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithShake(global::GBX.NET.Engines.Plug.CPlugCamShakeModel? value)
     {
-        Shake = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCamControlModelBuilderAssignments.GetShakeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithShakeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugCamShakeModel> value)
@@ -63,13 +58,6 @@ public partial class CPlugCamControlModelBuilder : CPlugCamControlModelBuilderBa
         node.Chunks.Add(chunk0910C000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugCamControlModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0910C000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugCamControlModel node, GameVersion game)
-    {
-    }
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -88,14 +76,9 @@ public partial class CPlugCamControlModelBuilder : CPlugCamControlModelBuilderBa
             var node = CPlugCamControlModelBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugCamControlModelBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugCamControlModelBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCamControlModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCamControlModel node);
     }
     public partial class MP4 : CPlugCamControlModelBuilderBase<MP4>
     {
@@ -110,14 +93,9 @@ public partial class CPlugCamControlModelBuilder : CPlugCamControlModelBuilderBa
             var node = CPlugCamControlModelBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugCamControlModelBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugCamControlModelBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCamControlModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCamControlModel node);
     }
     public partial class TM2020 : CPlugCamControlModelBuilderBase<TM2020>
     {
@@ -132,13 +110,8 @@ public partial class CPlugCamControlModelBuilder : CPlugCamControlModelBuilderBa
             var node = CPlugCamControlModelBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugCamControlModelBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugCamControlModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCamControlModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCamControlModel node);
     }
 }

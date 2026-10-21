@@ -41,12 +41,7 @@ public partial class CGameManialink3dStyle : global::GBX.NET.Interfaces.Game.IGa
     }
     global::GBX.NET.Interfaces.Game.IGameManialink3dMoodMP4? global::GBX.NET.Interfaces.Game.IGameManialink3dStyleMP4.Mood
     {
-        get
-        {
-            var node = Mood;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Mood;
         set => Mood = value is null ? null : value is global::GBX.NET.Engines.Game.CGameManialink3dMood node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

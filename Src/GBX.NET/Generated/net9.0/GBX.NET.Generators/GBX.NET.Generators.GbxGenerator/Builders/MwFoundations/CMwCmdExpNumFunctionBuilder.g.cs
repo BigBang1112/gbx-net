@@ -36,34 +36,19 @@ public abstract class CMwCmdExpNumFunctionBuilderBase<TSelf> where TSelf : CMwCm
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumFunction> state;
     private protected CMwCmdExpNumFunctionBuilderBase() => state = new();
     private protected CMwCmdExpNumFunctionBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumFunction> state) => this.state = state;
-    public global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumFunction.FunctionArchive? Function
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumFunction.FunctionArchive?>("Function");
-        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumFunctionBuilderAssignments.GetFunctionAssignment(), value, GameVersion.TMF);
-    }
     public TSelf WithFunction(global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumFunction.FunctionArchive? value)
     {
-        Function = value;
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumFunctionBuilderAssignments.GetFunctionAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
-    }
-    public int FunctionType
-    {
-        get => state.Get<int>("FunctionType");
-        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumFunctionBuilderAssignments.GetFunctionTypeAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithFunctionType(int value)
     {
-        FunctionType = value;
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumFunctionBuilderAssignments.GetFunctionTypeAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Value
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdExp?>("Value");
-        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumFunctionBuilderAssignments.GetValueAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithValue(global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value)
     {
-        Value = value;
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumFunctionBuilderAssignments.GetValueAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
     public TSelf WithValueReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value)
@@ -84,14 +69,6 @@ public partial class CMwCmdExpNumFunctionBuilder : CMwCmdExpNumFunctionBuilderBa
         node.Chunks.Add(chunk01055000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumFunction node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumFunction.Chunk01046000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk01046000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumFunction.Chunk01055000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk01055000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumFunction node, GameVersion game)
-    {
-    }
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TMF : CMwCmdExpNumFunctionBuilderBase<TMF>
     {
@@ -102,13 +79,8 @@ public partial class CMwCmdExpNumFunctionBuilder : CMwCmdExpNumFunctionBuilderBa
             var node = CMwCmdExpNumFunctionBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CMwCmdExpNumFunctionBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CMwCmdExpNumFunctionBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumFunction node);
-        partial void ValidateNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumFunction node);
     }
 }

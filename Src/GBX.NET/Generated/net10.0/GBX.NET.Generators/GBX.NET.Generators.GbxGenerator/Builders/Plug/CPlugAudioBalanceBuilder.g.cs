@@ -36,102 +36,57 @@ public abstract class CPlugAudioBalanceBuilderBase<TSelf> where TSelf : CPlugAud
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioBalance> state;
     private protected CPlugAudioBalanceBuilderBase() => state = new();
     private protected CPlugAudioBalanceBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioBalance> state) => this.state = state;
-    public string Name
-    {
-        get => state.Get<string>("Name");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithName(string value)
     {
-        Name = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CPlugAudioBalanceBuilderMembers1<TSelf> : CPlugAudioBalanceBuilderBase<TSelf> where TSelf : CPlugAudioBalanceBuilderMembers1<TSelf>
 {
     private protected CPlugAudioBalanceBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioBalance> state) : base(state) { }
-    public float AttackDuration
-    {
-        get => state.Get<float>("AttackDuration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetAttackDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithAttackDuration(float value)
     {
-        AttackDuration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetAttackDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugAudioBalance.Group[]? Groups
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugAudioBalance.Group[]?>("Groups");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetGroupsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGroups(params global::GBX.NET.Engines.Plug.CPlugAudioBalance.Group[]? value)
     {
-        Groups = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetGroupsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithGroups(IEnumerable<global::GBX.NET.Engines.Plug.CPlugAudioBalance.Group> values)
     {
         return WithGroups(values.ToArray());
     }
-    public bool IsAbsolute
-    {
-        get => state.Get<bool>("IsAbsolute");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetIsAbsoluteAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithIsAbsolute(bool value)
     {
-        IsAbsolute = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetIsAbsoluteAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float MaxDistFade_Ratio_Focused
-    {
-        get => state.Get<float>("MaxDistFade_Ratio_Focused");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetMaxDistFade_Ratio_FocusedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaxDistFade_Ratio_Focused(float value)
     {
-        MaxDistFade_Ratio_Focused = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetMaxDistFade_Ratio_FocusedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float MaxDistFade_Ratio_Others
-    {
-        get => state.Get<float>("MaxDistFade_Ratio_Others");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetMaxDistFade_Ratio_OthersAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaxDistFade_Ratio_Others(float value)
     {
-        MaxDistFade_Ratio_Others = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetMaxDistFade_Ratio_OthersAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float MaxDistFade_Rolloff_Focused
-    {
-        get => state.Get<float>("MaxDistFade_Rolloff_Focused");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetMaxDistFade_Rolloff_FocusedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaxDistFade_Rolloff_Focused(float value)
     {
-        MaxDistFade_Rolloff_Focused = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetMaxDistFade_Rolloff_FocusedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float MaxDistFade_Rolloff_Others
-    {
-        get => state.Get<float>("MaxDistFade_Rolloff_Others");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetMaxDistFade_Rolloff_OthersAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaxDistFade_Rolloff_Others(float value)
     {
-        MaxDistFade_Rolloff_Others = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetMaxDistFade_Rolloff_OthersAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Function.CFuncKeysReal? PitchFromDistance_BengsGuns_Focused
-    {
-        get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("PitchFromDistance_BengsGuns_Focused");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetPitchFromDistance_BengsGuns_FocusedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithPitchFromDistance_BengsGuns_Focused(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
     {
-        PitchFromDistance_BengsGuns_Focused = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetPitchFromDistance_BengsGuns_FocusedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithPitchFromDistance_BengsGuns_FocusedReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
@@ -140,14 +95,9 @@ public abstract class CPlugAudioBalanceBuilderMembers1<TSelf> : CPlugAudioBalanc
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetPitchFromDistance_BengsGuns_FocusedReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Function.CFuncKeysReal? PitchFromDistance_BengsGuns_Others
-    {
-        get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("PitchFromDistance_BengsGuns_Others");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetPitchFromDistance_BengsGuns_OthersAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithPitchFromDistance_BengsGuns_Others(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
     {
-        PitchFromDistance_BengsGuns_Others = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetPitchFromDistance_BengsGuns_OthersAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithPitchFromDistance_BengsGuns_OthersReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
@@ -156,14 +106,9 @@ public abstract class CPlugAudioBalanceBuilderMembers1<TSelf> : CPlugAudioBalanc
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetPitchFromDistance_BengsGuns_OthersReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Function.CFuncKeysReal? PitchFromDistance_Player_Focused
-    {
-        get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("PitchFromDistance_Player_Focused");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetPitchFromDistance_Player_FocusedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithPitchFromDistance_Player_Focused(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
     {
-        PitchFromDistance_Player_Focused = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetPitchFromDistance_Player_FocusedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithPitchFromDistance_Player_FocusedReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
@@ -172,14 +117,9 @@ public abstract class CPlugAudioBalanceBuilderMembers1<TSelf> : CPlugAudioBalanc
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetPitchFromDistance_Player_FocusedReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Function.CFuncKeysReal? PitchFromDistance_Player_Others
-    {
-        get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("PitchFromDistance_Player_Others");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetPitchFromDistance_Player_OthersAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithPitchFromDistance_Player_Others(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
     {
-        PitchFromDistance_Player_Others = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetPitchFromDistance_Player_OthersAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithPitchFromDistance_Player_OthersReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
@@ -188,44 +128,24 @@ public abstract class CPlugAudioBalanceBuilderMembers1<TSelf> : CPlugAudioBalanc
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetPitchFromDistance_Player_OthersReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public float RefDistanceFactor
-    {
-        get => state.Get<float>("RefDistanceFactor");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetRefDistanceFactorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithRefDistanceFactor(float value)
     {
-        RefDistanceFactor = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetRefDistanceFactorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float ReleaseDuration
-    {
-        get => state.Get<float>("ReleaseDuration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetReleaseDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithReleaseDuration(float value)
     {
-        ReleaseDuration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetReleaseDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float RolloffFactor
-    {
-        get => state.Get<float>("RolloffFactor");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetRolloffFactorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRolloffFactor(float value)
     {
-        RolloffFactor = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetRolloffFactorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Function.CFuncKeysReal? RolloffFromMusicVolume
-    {
-        get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("RolloffFromMusicVolume");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetRolloffFromMusicVolumeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRolloffFromMusicVolume(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
     {
-        RolloffFromMusicVolume = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetRolloffFromMusicVolumeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithRolloffFromMusicVolumeReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
@@ -234,78 +154,43 @@ public abstract class CPlugAudioBalanceBuilderMembers1<TSelf> : CPlugAudioBalanc
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetRolloffFromMusicVolumeReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public float SceneVolume
-    {
-        get => state.Get<float>("SceneVolume");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetSceneVolumeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithSceneVolume(float value)
     {
-        SceneVolume = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetSceneVolumeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
 public abstract class CPlugAudioBalanceBuilderMembers2<TSelf> : CPlugAudioBalanceBuilderMembers1<TSelf> where TSelf : CPlugAudioBalanceBuilderMembers2<TSelf>
 {
     private protected CPlugAudioBalanceBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioBalance> state) : base(state) { }
-    public float AutoRadiusFactor
-    {
-        get => state.Get<float>("AutoRadiusFactor");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetAutoRadiusFactorAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithAutoRadiusFactor(float value)
     {
-        AutoRadiusFactor = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetAutoRadiusFactorAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float GlobalLfeSend
-    {
-        get => state.Get<float>("GlobalLfeSend");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetGlobalLfeSendAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGlobalLfeSend(float value)
     {
-        GlobalLfeSend = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetGlobalLfeSendAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float MinimumDuration
-    {
-        get => state.Get<float>("MinimumDuration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetMinimumDurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMinimumDuration(float value)
     {
-        MinimumDuration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetMinimumDurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float MusicLfeSend
-    {
-        get => state.Get<float>("MusicLfeSend");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetMusicLfeSendAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMusicLfeSend(float value)
     {
-        MusicLfeSend = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetMusicLfeSendAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float SceneLfeSend
-    {
-        get => state.Get<float>("SceneLfeSend");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetSceneLfeSendAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSceneLfeSend(float value)
     {
-        SceneLfeSend = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetSceneLfeSendAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float UiVolume
-    {
-        get => state.Get<float>("UiVolume");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetUiVolumeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithUiVolume(float value)
     {
-        UiVolume = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilderAssignments.GetUiVolumeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -318,10 +203,6 @@ public partial class CPlugAudioBalanceBuilder : CPlugAudioBalanceBuilderBase<CPl
         node.Chunks.Add(chunk09001001);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugAudioBalance node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudio.Chunk09001001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09001001 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugAudioBalance CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugAudioBalance();
@@ -333,12 +214,6 @@ public partial class CPlugAudioBalanceBuilder : CPlugAudioBalanceBuilderBase<CPl
         node.Chunks.Add(chunk09001001);
         return node;
     }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugAudioBalance node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudioBalance.Chunk09034000>() is not { Version: 9 }) throw new InvalidOperationException($"Required {game} chunk Chunk09034000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudioBalance.Chunk09034001>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk09034001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudio.Chunk09001001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09001001 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugAudioBalance CreateRecipe2(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugAudioBalance();
@@ -349,16 +224,6 @@ public partial class CPlugAudioBalanceBuilder : CPlugAudioBalanceBuilderBase<CPl
         var chunk09001001 = new global::GBX.NET.Engines.Plug.CPlugAudio.Chunk09001001();
         node.Chunks.Add(chunk09001001);
         return node;
-    }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Plug.CPlugAudioBalance node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudioBalance.Chunk09034000>() is not { Version: 12 }) throw new InvalidOperationException($"Required {game} chunk Chunk09034000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudioBalance.Chunk09034001>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk09034001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudio.Chunk09001001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09001001 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugAudioBalance node, GameVersion game)
-    {
-        if (node.Name is null) throw new MemberNullException("Name");
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
@@ -379,14 +244,9 @@ public partial class CPlugAudioBalanceBuilder : CPlugAudioBalanceBuilderBase<CPl
             var node = CPlugAudioBalanceBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CPlugAudioBalanceBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CPlugAudioBalanceBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAudioBalance node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugAudioBalance node);
     }
     public partial class TMNESWC : CPlugAudioBalanceBuilderBase<TMNESWC>
     {
@@ -397,14 +257,9 @@ public partial class CPlugAudioBalanceBuilder : CPlugAudioBalanceBuilderBase<CPl
             var node = CPlugAudioBalanceBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CPlugAudioBalanceBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CPlugAudioBalanceBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAudioBalance node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugAudioBalance node);
     }
     public partial class VSK5 : CPlugAudioBalanceBuilderBase<VSK5>
     {
@@ -415,14 +270,9 @@ public partial class CPlugAudioBalanceBuilder : CPlugAudioBalanceBuilderBase<CPl
             var node = CPlugAudioBalanceBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CPlugAudioBalanceBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CPlugAudioBalanceBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAudioBalance node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugAudioBalance node);
     }
     public partial class TMF : CPlugAudioBalanceBuilderBase<TMF>
     {
@@ -433,14 +283,9 @@ public partial class CPlugAudioBalanceBuilder : CPlugAudioBalanceBuilderBase<CPl
             var node = CPlugAudioBalanceBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CPlugAudioBalanceBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CPlugAudioBalanceBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAudioBalance node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugAudioBalance node);
     }
     public partial class MP3 : CPlugAudioBalanceBuilderMembers1<MP3>
     {
@@ -471,14 +316,9 @@ public partial class CPlugAudioBalanceBuilder : CPlugAudioBalanceBuilderBase<CPl
             var node = CPlugAudioBalanceBuilder.CreateRecipe1(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CPlugAudioBalanceBuilder.ValidateRecipe1(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CPlugAudioBalanceBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAudioBalance node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugAudioBalance node);
     }
     public partial class TMT : CPlugAudioBalanceBuilderMembers2<TMT>
     {
@@ -509,14 +349,9 @@ public partial class CPlugAudioBalanceBuilder : CPlugAudioBalanceBuilderBase<CPl
             var node = CPlugAudioBalanceBuilder.CreateRecipe2(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugAudioBalanceBuilder.ValidateRecipe2(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugAudioBalanceBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAudioBalance node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugAudioBalance node);
     }
     public partial class MP4 : CPlugAudioBalanceBuilderMembers2<MP4>
     {
@@ -547,14 +382,9 @@ public partial class CPlugAudioBalanceBuilder : CPlugAudioBalanceBuilderBase<CPl
             var node = CPlugAudioBalanceBuilder.CreateRecipe2(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugAudioBalanceBuilder.ValidateRecipe2(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugAudioBalanceBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAudioBalance node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugAudioBalance node);
     }
     public partial class TM2020 : CPlugAudioBalanceBuilderMembers2<TM2020>
     {
@@ -585,13 +415,8 @@ public partial class CPlugAudioBalanceBuilder : CPlugAudioBalanceBuilderBase<CPl
             var node = CPlugAudioBalanceBuilder.CreateRecipe2(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugAudioBalanceBuilder.ValidateRecipe2(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugAudioBalanceBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAudioBalance node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugAudioBalance node);
     }
 }

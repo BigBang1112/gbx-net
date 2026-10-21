@@ -36,52 +36,52 @@ public partial class CMotions : global::GBX.NET.Interfaces.Motion.IMotions, glob
     public static global::GBX.NET.Builders.Engines.Motion.CMotionsBuilder Create() => new();
     IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotion>? global::GBX.NET.Interfaces.Motion.IMotions.Motions
     {
-        get => Motions is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotion, global::GBX.NET.Interfaces.Motion.IMotion>(GetMotionsBuilderReferences, GameVersion.Unspecified, true, "Motions");
+        get => Motions is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotion, global::GBX.NET.Interfaces.Motion.IMotion>(GetMotionsBuilderReferences, true, "Motions");
         set => Motions = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Motion.CMotion>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Motion.CMotion, global::GBX.NET.Interfaces.Motion.IMotion>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionTM10>? global::GBX.NET.Interfaces.Motion.IMotionsMembers1<global::GBX.NET.Interfaces.Motion.IMotionTM10>.Motions
     {
-        get => Motions is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotion, global::GBX.NET.Interfaces.Motion.IMotionTM10>(GetMotionsBuilderReferences, GameVersion.TM10, true, "Motions");
+        get => Motions is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotion, global::GBX.NET.Interfaces.Motion.IMotionTM10>(GetMotionsBuilderReferences, true, "Motions");
         set => Motions = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Motion.CMotion>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Motion.CMotion, global::GBX.NET.Interfaces.Motion.IMotionTM10>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionTMPU>? global::GBX.NET.Interfaces.Motion.IMotionsMembers1<global::GBX.NET.Interfaces.Motion.IMotionTMPU>.Motions
     {
-        get => Motions is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotion, global::GBX.NET.Interfaces.Motion.IMotionTMPU>(GetMotionsBuilderReferences, GameVersion.TMPU, true, "Motions");
+        get => Motions is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotion, global::GBX.NET.Interfaces.Motion.IMotionTMPU>(GetMotionsBuilderReferences, true, "Motions");
         set => Motions = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Motion.CMotion>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Motion.CMotion, global::GBX.NET.Interfaces.Motion.IMotionTMPU>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionTMSX>? global::GBX.NET.Interfaces.Motion.IMotionsMembers1<global::GBX.NET.Interfaces.Motion.IMotionTMSX>.Motions
     {
-        get => Motions is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotion, global::GBX.NET.Interfaces.Motion.IMotionTMSX>(GetMotionsBuilderReferences, GameVersion.TMSX, true, "Motions");
+        get => Motions is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotion, global::GBX.NET.Interfaces.Motion.IMotionTMSX>(GetMotionsBuilderReferences, true, "Motions");
         set => Motions = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Motion.CMotion>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Motion.CMotion, global::GBX.NET.Interfaces.Motion.IMotionTMSX>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionTMNESWC>? global::GBX.NET.Interfaces.Motion.IMotionsMembers1<global::GBX.NET.Interfaces.Motion.IMotionTMNESWC>.Motions
     {
-        get => Motions is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotion, global::GBX.NET.Interfaces.Motion.IMotionTMNESWC>(GetMotionsBuilderReferences, GameVersion.TMNESWC, true, "Motions");
+        get => Motions is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotion, global::GBX.NET.Interfaces.Motion.IMotionTMNESWC>(GetMotionsBuilderReferences, true, "Motions");
         set => Motions = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Motion.CMotion>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Motion.CMotion, global::GBX.NET.Interfaces.Motion.IMotionTMNESWC>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionVSK5>? global::GBX.NET.Interfaces.Motion.IMotionsMembers1<global::GBX.NET.Interfaces.Motion.IMotionVSK5>.Motions
     {
-        get => Motions is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotion, global::GBX.NET.Interfaces.Motion.IMotionVSK5>(GetMotionsBuilderReferences, GameVersion.VSK5, true, "Motions");
+        get => Motions is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotion, global::GBX.NET.Interfaces.Motion.IMotionVSK5>(GetMotionsBuilderReferences, true, "Motions");
         set => Motions = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Motion.CMotion>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Motion.CMotion, global::GBX.NET.Interfaces.Motion.IMotionVSK5>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionTMF>? global::GBX.NET.Interfaces.Motion.IMotionsMembers1<global::GBX.NET.Interfaces.Motion.IMotionTMF>.Motions
     {
-        get => Motions is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotion, global::GBX.NET.Interfaces.Motion.IMotionTMF>(GetMotionsBuilderReferences, GameVersion.TMF, true, "Motions");
+        get => Motions is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotion, global::GBX.NET.Interfaces.Motion.IMotionTMF>(GetMotionsBuilderReferences, true, "Motions");
         set => Motions = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Motion.CMotion>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Motion.CMotion, global::GBX.NET.Interfaces.Motion.IMotionTMF>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionMP3>? global::GBX.NET.Interfaces.Motion.IMotionsMembers1<global::GBX.NET.Interfaces.Motion.IMotionMP3>.Motions
     {
-        get => Motions is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotion, global::GBX.NET.Interfaces.Motion.IMotionMP3>(GetMotionsBuilderReferences, GameVersion.MP3, true, "Motions");
+        get => Motions is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotion, global::GBX.NET.Interfaces.Motion.IMotionMP3>(GetMotionsBuilderReferences, true, "Motions");
         set => Motions = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Motion.CMotion>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Motion.CMotion, global::GBX.NET.Interfaces.Motion.IMotionMP3>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionTMT>? global::GBX.NET.Interfaces.Motion.IMotionsMembers1<global::GBX.NET.Interfaces.Motion.IMotionTMT>.Motions
     {
-        get => Motions is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotion, global::GBX.NET.Interfaces.Motion.IMotionTMT>(GetMotionsBuilderReferences, GameVersion.TMT, true, "Motions");
+        get => Motions is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotion, global::GBX.NET.Interfaces.Motion.IMotionTMT>(GetMotionsBuilderReferences, true, "Motions");
         set => Motions = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Motion.CMotion>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Motion.CMotion, global::GBX.NET.Interfaces.Motion.IMotionTMT>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionMP4>? global::GBX.NET.Interfaces.Motion.IMotionsMembers1<global::GBX.NET.Interfaces.Motion.IMotionMP4>.Motions
     {
-        get => Motions is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotion, global::GBX.NET.Interfaces.Motion.IMotionMP4>(GetMotionsBuilderReferences, GameVersion.MP4, true, "Motions");
+        get => Motions is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotion, global::GBX.NET.Interfaces.Motion.IMotionMP4>(GetMotionsBuilderReferences, true, "Motions");
         set => Motions = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Motion.CMotion>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Motion.CMotion, global::GBX.NET.Interfaces.Motion.IMotionMP4>(value, false));
     }
     private NodeRefList<global::GBX.NET.Engines.Motion.CMotion>? GetMotionsBuilderReferences() => Motions;

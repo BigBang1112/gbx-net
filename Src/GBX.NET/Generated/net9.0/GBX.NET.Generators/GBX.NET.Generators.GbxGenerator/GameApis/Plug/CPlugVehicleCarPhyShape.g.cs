@@ -41,22 +41,12 @@ public partial class CPlugVehicleCarPhyShape : global::GBX.NET.Interfaces.Plug.I
     }
     global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeMembers1<global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4>.MoveShape
     {
-        get
-        {
-            var node = MoveShape;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => MoveShape;
         set => MoveShape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeMembers1<global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020>.MoveShape
     {
-        get
-        {
-            var node = MoveShape;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => MoveShape;
         set => MoveShape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

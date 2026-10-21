@@ -36,24 +36,14 @@ public abstract class CGameCtnMediaBlockTextBuilderBase<TSelf> where TSelf : CGa
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockText> state;
     private protected CGameCtnMediaBlockTextBuilderBase() => state = new();
     private protected CGameCtnMediaBlockTextBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockText> state) => this.state = state;
-    public Vec3 Color
-    {
-        get => state.Get<Vec3>("Color");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTextBuilderAssignments.GetColorAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithColor(Vec3 value)
     {
-        Color = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTextBuilderAssignments.GetColorAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Control.CControlEffectSimi? Effect
-    {
-        get => state.Get<global::GBX.NET.Engines.Control.CControlEffectSimi?>("Effect");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTextBuilderAssignments.GetEffectAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEffect(global::GBX.NET.Engines.Control.CControlEffectSimi? value)
     {
-        Effect = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTextBuilderAssignments.GetEffectAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithEffectReference(NodeRef<global::GBX.NET.Engines.Control.CControlEffectSimi> value)
@@ -62,14 +52,9 @@ public abstract class CGameCtnMediaBlockTextBuilderBase<TSelf> where TSelf : CGa
         state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTextBuilderAssignments.GetEffectReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public string? Text
-    {
-        get => state.Get<string?>("Text");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTextBuilderAssignments.GetTextAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithText(string? value)
     {
-        Text = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTextBuilderAssignments.GetTextAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -86,12 +71,6 @@ public partial class CGameCtnMediaBlockTextBuilder : CGameCtnMediaBlockTextBuild
         node.Chunks.Add(chunk030A8003);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockText node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockText.Chunk030A8001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk030A8001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockText.Chunk030A8002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk030A8002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockText.Chunk030A8003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk030A8003 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockText CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockText();
@@ -100,14 +79,6 @@ public partial class CGameCtnMediaBlockTextBuilder : CGameCtnMediaBlockTextBuild
         var chunk030A8002 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockText.Chunk030A8002();
         node.Chunks.Add(chunk030A8002);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameCtnMediaBlockText node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockText.Chunk030A8001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk030A8001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockText.Chunk030A8002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk030A8002 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockText node, GameVersion game)
-    {
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
@@ -131,14 +102,9 @@ public partial class CGameCtnMediaBlockTextBuilder : CGameCtnMediaBlockTextBuild
             var node = CGameCtnMediaBlockTextBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CGameCtnMediaBlockTextBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CGameCtnMediaBlockTextBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockText node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockText node);
     }
     public partial class TMNESWC : CGameCtnMediaBlockTextBuilderBase<TMNESWC>
     {
@@ -153,14 +119,9 @@ public partial class CGameCtnMediaBlockTextBuilder : CGameCtnMediaBlockTextBuild
             var node = CGameCtnMediaBlockTextBuilder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CGameCtnMediaBlockTextBuilder.ValidateRecipe1(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CGameCtnMediaBlockTextBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockText node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockText node);
     }
     public partial class VSK5 : CGameCtnMediaBlockTextBuilderBase<VSK5>
     {
@@ -175,14 +136,9 @@ public partial class CGameCtnMediaBlockTextBuilder : CGameCtnMediaBlockTextBuild
             var node = CGameCtnMediaBlockTextBuilder.CreateRecipe1(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CGameCtnMediaBlockTextBuilder.ValidateRecipe1(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CGameCtnMediaBlockTextBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockText node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockText node);
     }
     public partial class TMF : CGameCtnMediaBlockTextBuilderBase<TMF>
     {
@@ -197,14 +153,9 @@ public partial class CGameCtnMediaBlockTextBuilder : CGameCtnMediaBlockTextBuild
             var node = CGameCtnMediaBlockTextBuilder.CreateRecipe1(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CGameCtnMediaBlockTextBuilder.ValidateRecipe1(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CGameCtnMediaBlockTextBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockText node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockText node);
     }
     public partial class TMT : CGameCtnMediaBlockTextBuilderBase<TMT>
     {
@@ -219,14 +170,9 @@ public partial class CGameCtnMediaBlockTextBuilder : CGameCtnMediaBlockTextBuild
             var node = CGameCtnMediaBlockTextBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameCtnMediaBlockTextBuilder.ValidateRecipe1(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameCtnMediaBlockTextBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockText node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockText node);
     }
     public partial class MP4 : CGameCtnMediaBlockTextBuilderBase<MP4>
     {
@@ -241,14 +187,9 @@ public partial class CGameCtnMediaBlockTextBuilder : CGameCtnMediaBlockTextBuild
             var node = CGameCtnMediaBlockTextBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameCtnMediaBlockTextBuilder.ValidateRecipe1(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameCtnMediaBlockTextBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockText node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockText node);
     }
     public partial class TM2020 : CGameCtnMediaBlockTextBuilderBase<TM2020>
     {
@@ -263,13 +204,8 @@ public partial class CGameCtnMediaBlockTextBuilder : CGameCtnMediaBlockTextBuild
             var node = CGameCtnMediaBlockTextBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameCtnMediaBlockTextBuilder.ValidateRecipe1(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameCtnMediaBlockTextBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockText node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockText node);
     }
 }

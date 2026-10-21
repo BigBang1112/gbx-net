@@ -40,14 +40,9 @@ public abstract class CPlugVehicleVisModelSharedBuilderBase<TSelf> where TSelf :
 public abstract class CPlugVehicleVisModelSharedBuilderMembers1<TSelf> : CPlugVehicleVisModelSharedBuilderBase<TSelf> where TSelf : CPlugVehicleVisModelSharedBuilderMembers1<TSelf>
 {
     private protected CPlugVehicleVisModelSharedBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared> state) : base(state) { }
-    public NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup>? VehicleMaterialGroups
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup>?>("VehicleMaterialGroups");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelSharedBuilderAssignments.GetVehicleMaterialGroupsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithVehicleMaterialGroups(NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup>? value)
     {
-        VehicleMaterialGroups = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelSharedBuilderAssignments.GetVehicleMaterialGroupsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithVehicleMaterialGroups(params global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup[] values)
@@ -62,14 +57,9 @@ public abstract class CPlugVehicleVisModelSharedBuilderMembers1<TSelf> : CPlugVe
 public abstract class CPlugVehicleVisModelSharedBuilderMembers2<TSelf> : CPlugVehicleVisModelSharedBuilderMembers1<TSelf> where TSelf : CPlugVehicleVisModelSharedBuilderMembers2<TSelf>
 {
     private protected CPlugVehicleVisModelSharedBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared> state) : base(state) { }
-    public NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel>? VehicleEmitters
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel>?>("VehicleEmitters");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelSharedBuilderAssignments.GetVehicleEmittersAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.VSK5);
-    }
     public TSelf WithVehicleEmitters(NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel>? value)
     {
-        VehicleEmitters = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelSharedBuilderAssignments.GetVehicleEmittersAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithVehicleEmitters(params global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel[] values)
@@ -104,17 +94,6 @@ public partial class CPlugVehicleVisModelSharedBuilder : CPlugVehicleVisModelSha
         node.Chunks.Add(chunk090E8010);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E8005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E8006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E8009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E800A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E800A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E800C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E800C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E800D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E800D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E800F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E800F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E8010 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared();
@@ -137,18 +116,6 @@ public partial class CPlugVehicleVisModelSharedBuilder : CPlugVehicleVisModelSha
         var chunk090E8014 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8014();
         node.Chunks.Add(chunk090E8014);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E8005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E8006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E8009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E800A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E800A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E800F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E800F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E8010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8012>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E8012 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E8013 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8014>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E8014 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared CreateRecipe2(GameVersion game)
     {
@@ -181,22 +148,6 @@ public partial class CPlugVehicleVisModelSharedBuilder : CPlugVehicleVisModelSha
         node.Chunks.Add(chunk090E8021);
         return node;
     }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E8006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E8009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E800A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E800A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E8010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8012>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E8012 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8014>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E8014 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8015>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E8015 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E8016 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E8018 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E801E>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E801E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E801F>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E801F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8020>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E8020 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8021>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E8021 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared();
@@ -226,21 +177,6 @@ public partial class CPlugVehicleVisModelSharedBuilder : CPlugVehicleVisModelSha
         node.Chunks.Add(chunk090E8023);
         return node;
     }
-    private static void ValidateRecipe3(global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E8009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E800A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E800A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8012>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E8012 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8015>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E8015 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E8016 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E8018 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E801E>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E801E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E801F>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E801F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8020>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E8020 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8021>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E8021 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8022>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E8022 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8023>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E8023 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared CreateRecipe4(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared();
@@ -269,21 +205,6 @@ public partial class CPlugVehicleVisModelSharedBuilder : CPlugVehicleVisModelSha
         var chunk090E8023 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8023(game);
         node.Chunks.Add(chunk090E8023);
         return node;
-    }
-    private static void ValidateRecipe4(global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E8009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E800A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E800A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8012>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E8012 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8015>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E8015 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E8016 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E8018 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E801E>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E801E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E801F>() is not { Version: 14 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E801F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8020>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E8020 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8021>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E8021 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8022>() is not { Version: 7 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E8022 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8023>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E8023 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared CreateRecipe5(GameVersion game)
     {
@@ -316,25 +237,6 @@ public partial class CPlugVehicleVisModelSharedBuilder : CPlugVehicleVisModelSha
         node.Chunks.Add(chunk090E8025);
         return node;
     }
-    private static void ValidateRecipe5(global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E8009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E800A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E800A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8012>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E8012 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8015>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E8015 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E8018 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E801E>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E801E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E801F>() is not { Version: 19 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E801F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8020>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E8020 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8021>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E8021 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8022>() is not { Version: 12 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E8022 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8023>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E8023 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8024>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E8024 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8025>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E8025 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared node, GameVersion game)
-    {
-    }
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
@@ -347,14 +249,9 @@ public partial class CPlugVehicleVisModelSharedBuilder : CPlugVehicleVisModelSha
     public partial class TMNESWC : CPlugVehicleVisModelSharedBuilderBase<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.SimulationWheel[]? SimulationWheels
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.SimulationWheel[]?>("SimulationWheels");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelSharedBuilderAssignments.GetSimulationWheelsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
-        }
         public TMNESWC WithSimulationWheels(params global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.SimulationWheel[]? value)
         {
-            SimulationWheels = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelSharedBuilderAssignments.GetSimulationWheelsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
             return this;
         }
         public TMNESWC WithSimulationWheels(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.SimulationWheel> values)
@@ -367,26 +264,16 @@ public partial class CPlugVehicleVisModelSharedBuilder : CPlugVehicleVisModelSha
             var node = CPlugVehicleVisModelSharedBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CPlugVehicleVisModelSharedBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CPlugVehicleVisModelSharedBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared node);
     }
     public partial class VSK5 : CPlugVehicleVisModelSharedBuilderMembers2<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.SimulationWheel[]? SimulationWheels
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.SimulationWheel[]?>("SimulationWheels");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelSharedBuilderAssignments.GetSimulationWheelsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
-        }
         public VSK5 WithSimulationWheels(params global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.SimulationWheel[]? value)
         {
-            SimulationWheels = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelSharedBuilderAssignments.GetSimulationWheelsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
             return this;
         }
         public VSK5 WithSimulationWheels(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.SimulationWheel> values)
@@ -415,26 +302,16 @@ public partial class CPlugVehicleVisModelSharedBuilder : CPlugVehicleVisModelSha
             var node = CPlugVehicleVisModelSharedBuilder.CreateRecipe1(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CPlugVehicleVisModelSharedBuilder.ValidateRecipe1(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CPlugVehicleVisModelSharedBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared node);
     }
     public partial class TMF : CPlugVehicleVisModelSharedBuilderMembers2<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.SimulationWheel[]? SimulationWheels
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.SimulationWheel[]?>("SimulationWheels");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelSharedBuilderAssignments.GetSimulationWheelsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
-        }
         public TMF WithSimulationWheels(params global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.SimulationWheel[]? value)
         {
-            SimulationWheels = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelSharedBuilderAssignments.GetSimulationWheelsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
             return this;
         }
         public TMF WithSimulationWheels(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.SimulationWheel> values)
@@ -463,14 +340,9 @@ public partial class CPlugVehicleVisModelSharedBuilder : CPlugVehicleVisModelSha
             var node = CPlugVehicleVisModelSharedBuilder.CreateRecipe1(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CPlugVehicleVisModelSharedBuilder.ValidateRecipe1(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CPlugVehicleVisModelSharedBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared node);
     }
     public partial class MP3 : CPlugVehicleVisModelSharedBuilderMembers2<MP3>
     {
@@ -497,14 +369,9 @@ public partial class CPlugVehicleVisModelSharedBuilder : CPlugVehicleVisModelSha
             var node = CPlugVehicleVisModelSharedBuilder.CreateRecipe2(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CPlugVehicleVisModelSharedBuilder.ValidateRecipe2(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CPlugVehicleVisModelSharedBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared node);
     }
     public partial class TMT : CPlugVehicleVisModelSharedBuilderMembers1<TMT>
     {
@@ -523,14 +390,9 @@ public partial class CPlugVehicleVisModelSharedBuilder : CPlugVehicleVisModelSha
             var node = CPlugVehicleVisModelSharedBuilder.CreateRecipe3(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugVehicleVisModelSharedBuilder.ValidateRecipe3(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugVehicleVisModelSharedBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared node);
     }
     public partial class MP4 : CPlugVehicleVisModelSharedBuilderMembers1<MP4>
     {
@@ -549,14 +411,9 @@ public partial class CPlugVehicleVisModelSharedBuilder : CPlugVehicleVisModelSha
             var node = CPlugVehicleVisModelSharedBuilder.CreateRecipe4(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugVehicleVisModelSharedBuilder.ValidateRecipe4(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugVehicleVisModelSharedBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared node);
     }
     public partial class TM2020 : CPlugVehicleVisModelSharedBuilderMembers1<TM2020>
     {
@@ -569,28 +426,18 @@ public partial class CPlugVehicleVisModelSharedBuilder : CPlugVehicleVisModelSha
         {
             return WithVehicleMaterialGroups(values.ToArray());
         }
-        public string[]? WheelNames
-        {
-            get => state.Get<string[]?>("WheelNames");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelSharedBuilderAssignments.GetWheelNamesAssignment(), value, GameVersion.TM2020);
-        }
         public TM2020 WithWheelNames(params string[]? value)
         {
-            WheelNames = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelSharedBuilderAssignments.GetWheelNamesAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithWheelNames(IEnumerable<string> values)
         {
             return WithWheelNames(values.ToArray());
         }
-        public global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.WheelSetting[]? WheelSettings
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.WheelSetting[]?>("WheelSettings");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelSharedBuilderAssignments.GetWheelSettingsAssignment(), value, GameVersion.TM2020);
-        }
         public TM2020 WithWheelSettings(params global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.WheelSetting[]? value)
         {
-            WheelSettings = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelSharedBuilderAssignments.GetWheelSettingsAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithWheelSettings(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.WheelSetting> values)
@@ -603,13 +450,8 @@ public partial class CPlugVehicleVisModelSharedBuilder : CPlugVehicleVisModelSha
             var node = CPlugVehicleVisModelSharedBuilder.CreateRecipe5(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugVehicleVisModelSharedBuilder.ValidateRecipe5(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugVehicleVisModelSharedBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared node);
     }
 }

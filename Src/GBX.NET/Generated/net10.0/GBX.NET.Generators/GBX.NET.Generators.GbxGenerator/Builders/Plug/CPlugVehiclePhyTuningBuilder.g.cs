@@ -36,28 +36,18 @@ public abstract class CPlugVehiclePhyTuningBuilderBase<TSelf> where TSelf : CPlu
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning> state;
     private protected CPlugVehiclePhyTuningBuilderBase() => state = new();
     private protected CPlugVehiclePhyTuningBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning> state) => this.state = state;
-    public string Name
-    {
-        get => state.Get<string>("Name");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyTuningBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithName(string value)
     {
-        Name = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyTuningBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CPlugVehiclePhyTuningBuilderMembers1<TSelf> : CPlugVehiclePhyTuningBuilderBase<TSelf> where TSelf : CPlugVehiclePhyTuningBuilderMembers1<TSelf>
 {
     private protected CPlugVehiclePhyTuningBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning> state) : base(state) { }
-    public bool InTuningCycle
-    {
-        get => state.Get<bool>("InTuningCycle");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyTuningBuilderAssignments.GetInTuningCycleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithInTuningCycle(bool value)
     {
-        InTuningCycle = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyTuningBuilderAssignments.GetInTuningCycleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -70,10 +60,6 @@ public partial class CPlugVehiclePhyTuningBuilder : CPlugVehiclePhyTuningBuilder
         node.Chunks.Add(chunk090EB000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning.Chunk090EB000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090EB000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning();
@@ -82,15 +68,6 @@ public partial class CPlugVehiclePhyTuningBuilder : CPlugVehiclePhyTuningBuilder
         var chunk090EB001 = new global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning.Chunk090EB001();
         node.Chunks.Add(chunk090EB001);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning.Chunk090EB000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090EB000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning.Chunk090EB001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090EB001 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning node, GameVersion game)
-    {
-        if (node.Name is null) throw new MemberNullException("Name");
     }
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
@@ -109,14 +86,9 @@ public partial class CPlugVehiclePhyTuningBuilder : CPlugVehiclePhyTuningBuilder
             var node = CPlugVehiclePhyTuningBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CPlugVehiclePhyTuningBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CPlugVehiclePhyTuningBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning node);
     }
     public partial class TMF : CPlugVehiclePhyTuningBuilderBase<TMF>
     {
@@ -127,14 +99,9 @@ public partial class CPlugVehiclePhyTuningBuilder : CPlugVehiclePhyTuningBuilder
             var node = CPlugVehiclePhyTuningBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CPlugVehiclePhyTuningBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CPlugVehiclePhyTuningBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning node);
     }
     public partial class MP3 : CPlugVehiclePhyTuningBuilderMembers1<MP3>
     {
@@ -145,14 +112,9 @@ public partial class CPlugVehiclePhyTuningBuilder : CPlugVehiclePhyTuningBuilder
             var node = CPlugVehiclePhyTuningBuilder.CreateRecipe1(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CPlugVehiclePhyTuningBuilder.ValidateRecipe1(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CPlugVehiclePhyTuningBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning node);
     }
     public partial class TMT : CPlugVehiclePhyTuningBuilderMembers1<TMT>
     {
@@ -163,14 +125,9 @@ public partial class CPlugVehiclePhyTuningBuilder : CPlugVehiclePhyTuningBuilder
             var node = CPlugVehiclePhyTuningBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugVehiclePhyTuningBuilder.ValidateRecipe1(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugVehiclePhyTuningBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning node);
     }
     public partial class MP4 : CPlugVehiclePhyTuningBuilderMembers1<MP4>
     {
@@ -181,14 +138,9 @@ public partial class CPlugVehiclePhyTuningBuilder : CPlugVehiclePhyTuningBuilder
             var node = CPlugVehiclePhyTuningBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugVehiclePhyTuningBuilder.ValidateRecipe1(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugVehiclePhyTuningBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning node);
     }
     public partial class TM2020 : CPlugVehiclePhyTuningBuilderMembers1<TM2020>
     {
@@ -199,13 +151,8 @@ public partial class CPlugVehiclePhyTuningBuilder : CPlugVehiclePhyTuningBuilder
             var node = CPlugVehiclePhyTuningBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugVehiclePhyTuningBuilder.ValidateRecipe1(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugVehiclePhyTuningBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning node);
     }
 }

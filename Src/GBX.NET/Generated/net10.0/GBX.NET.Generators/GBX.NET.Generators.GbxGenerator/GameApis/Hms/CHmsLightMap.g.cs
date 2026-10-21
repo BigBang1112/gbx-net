@@ -46,502 +46,252 @@ public partial class CHmsLightMap : global::GBX.NET.Interfaces.Hms.IHmsLightMap,
     }
     global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodVSK5? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodVSK5, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptVSK5>.Mood
     {
-        get
-        {
-            var node = Mood;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => Mood;
         set => Mood = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsLightMapMood node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptVSK5? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodVSK5, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptVSK5>.PointsInSphereOpt
     {
-        get
-        {
-            var node = PointsInSphereOpt;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => PointsInSphereOpt;
         set => PointsInSphereOpt = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTMF? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTMF, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMF>.Mood
     {
-        get
-        {
-            var node = Mood;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => Mood;
         set => Mood = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsLightMapMood node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMF? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTMF, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMF>.PointsInSphereOpt
     {
-        get
-        {
-            var node = PointsInSphereOpt;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => PointsInSphereOpt;
         set => PointsInSphereOpt = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>.BitmapLM_ILightDir
     {
-        get
-        {
-            var node = BitmapLM_ILightDir;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => BitmapLM_ILightDir;
         set => BitmapLM_ILightDir = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>.BitmapLM_ILightInput
     {
-        get
-        {
-            var node = BitmapLM_ILightInput;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => BitmapLM_ILightInput;
         set => BitmapLM_ILightInput = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>.BitmapLM_LListUV
     {
-        get
-        {
-            var node = BitmapLM_LListUV;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => BitmapLM_LListUV;
         set => BitmapLM_LListUV = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>.BitmapLM_LListW
     {
-        get
-        {
-            var node = BitmapLM_LListW;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => BitmapLM_LListW;
         set => BitmapLM_LListW = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>.BitmapLM_LocalDirect
     {
-        get
-        {
-            var node = BitmapLM_LocalDirect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => BitmapLM_LocalDirect;
         set => BitmapLM_LocalDirect = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>.BitmapProbeGeom_BBoxInvHDiag_ThroughBounce
     {
-        get
-        {
-            var node = BitmapProbeGeom_BBoxInvHDiag_ThroughBounce;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => BitmapProbeGeom_BBoxInvHDiag_ThroughBounce;
         set => BitmapProbeGeom_BBoxInvHDiag_ThroughBounce = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>.BitmapSM_ColorPeeled
     {
-        get
-        {
-            var node = BitmapSM_ColorPeeled;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => BitmapSM_ColorPeeled;
         set => BitmapSM_ColorPeeled = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>.BitmapSM_DepthToPeel
     {
-        get
-        {
-            var node = BitmapSM_DepthToPeel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => BitmapSM_DepthToPeel;
         set => BitmapSM_DepthToPeel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>.BitmapShadow
     {
-        get
-        {
-            var node = BitmapShadow;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => BitmapShadow;
         set => BitmapShadow = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>.BitmapSprite3x3_Light
     {
-        get
-        {
-            var node = BitmapSprite3x3_Light;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => BitmapSprite3x3_Light;
         set => BitmapSprite3x3_Light = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>.BitmapSprite_ILightDir
     {
-        get
-        {
-            var node = BitmapSprite_ILightDir;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => BitmapSprite_ILightDir;
         set => BitmapSprite_ILightDir = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>.BitmapSprite_PosAndRadius
     {
-        get
-        {
-            var node = BitmapSprite_PosAndRadius;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => BitmapSprite_PosAndRadius;
         set => BitmapSprite_PosAndRadius = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodMP3? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodMP3, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptMP3>.Mood
     {
-        get
-        {
-            var node = Mood;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => Mood;
         set => Mood = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsLightMapMood node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptMP3? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodMP3, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptMP3>.PointsInSphereOpt
     {
-        get
-        {
-            var node = PointsInSphereOpt;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => PointsInSphereOpt;
         set => PointsInSphereOpt = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>.BitmapLM_ILightDir
     {
-        get
-        {
-            var node = BitmapLM_ILightDir;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => BitmapLM_ILightDir;
         set => BitmapLM_ILightDir = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>.BitmapLM_ILightInput
     {
-        get
-        {
-            var node = BitmapLM_ILightInput;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => BitmapLM_ILightInput;
         set => BitmapLM_ILightInput = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>.BitmapLM_LListUV
     {
-        get
-        {
-            var node = BitmapLM_LListUV;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => BitmapLM_LListUV;
         set => BitmapLM_LListUV = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>.BitmapLM_LListW
     {
-        get
-        {
-            var node = BitmapLM_LListW;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => BitmapLM_LListW;
         set => BitmapLM_LListW = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>.BitmapLM_LocalDirect
     {
-        get
-        {
-            var node = BitmapLM_LocalDirect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => BitmapLM_LocalDirect;
         set => BitmapLM_LocalDirect = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>.BitmapProbeGeom_BBoxInvHDiag_ThroughBounce
     {
-        get
-        {
-            var node = BitmapProbeGeom_BBoxInvHDiag_ThroughBounce;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => BitmapProbeGeom_BBoxInvHDiag_ThroughBounce;
         set => BitmapProbeGeom_BBoxInvHDiag_ThroughBounce = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>.BitmapSM_ColorPeeled
     {
-        get
-        {
-            var node = BitmapSM_ColorPeeled;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => BitmapSM_ColorPeeled;
         set => BitmapSM_ColorPeeled = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>.BitmapSM_DepthToPeel
     {
-        get
-        {
-            var node = BitmapSM_DepthToPeel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => BitmapSM_DepthToPeel;
         set => BitmapSM_DepthToPeel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>.BitmapShadow
     {
-        get
-        {
-            var node = BitmapShadow;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => BitmapShadow;
         set => BitmapShadow = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>.BitmapSprite3x3_Light
     {
-        get
-        {
-            var node = BitmapSprite3x3_Light;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => BitmapSprite3x3_Light;
         set => BitmapSprite3x3_Light = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>.BitmapSprite_ILightDir
     {
-        get
-        {
-            var node = BitmapSprite_ILightDir;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => BitmapSprite_ILightDir;
         set => BitmapSprite_ILightDir = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>.BitmapSprite_PosAndRadius
     {
-        get
-        {
-            var node = BitmapSprite_PosAndRadius;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => BitmapSprite_PosAndRadius;
         set => BitmapSprite_PosAndRadius = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTMT? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTMT, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMT>.Mood
     {
-        get
-        {
-            var node = Mood;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => Mood;
         set => Mood = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsLightMapMood node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMT? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTMT, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMT>.PointsInSphereOpt
     {
-        get
-        {
-            var node = PointsInSphereOpt;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => PointsInSphereOpt;
         set => PointsInSphereOpt = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodMP4? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodMP4, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptMP4>.Mood
     {
-        get
-        {
-            var node = Mood;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Mood;
         set => Mood = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsLightMapMood node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptMP4? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodMP4, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptMP4>.PointsInSphereOpt
     {
-        get
-        {
-            var node = PointsInSphereOpt;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => PointsInSphereOpt;
         set => PointsInSphereOpt = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>.BitmapLM_ILightDir
     {
-        get
-        {
-            var node = BitmapLM_ILightDir;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => BitmapLM_ILightDir;
         set => BitmapLM_ILightDir = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>.BitmapLM_ILightInput
     {
-        get
-        {
-            var node = BitmapLM_ILightInput;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => BitmapLM_ILightInput;
         set => BitmapLM_ILightInput = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>.BitmapLM_LListUV
     {
-        get
-        {
-            var node = BitmapLM_LListUV;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => BitmapLM_LListUV;
         set => BitmapLM_LListUV = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>.BitmapLM_LListW
     {
-        get
-        {
-            var node = BitmapLM_LListW;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => BitmapLM_LListW;
         set => BitmapLM_LListW = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>.BitmapLM_LocalDirect
     {
-        get
-        {
-            var node = BitmapLM_LocalDirect;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => BitmapLM_LocalDirect;
         set => BitmapLM_LocalDirect = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>.BitmapProbeGeom_BBoxInvHDiag_ThroughBounce
     {
-        get
-        {
-            var node = BitmapProbeGeom_BBoxInvHDiag_ThroughBounce;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => BitmapProbeGeom_BBoxInvHDiag_ThroughBounce;
         set => BitmapProbeGeom_BBoxInvHDiag_ThroughBounce = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Hms.IHmsLightMapTM2020.BitmapProbeGridAmbSV
     {
-        get
-        {
-            var node = BitmapProbeGridAmbSV;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => BitmapProbeGridAmbSV;
         set => BitmapProbeGridAmbSV = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Hms.IHmsLightMapTM2020.BitmapProbeGridAmbSV_Spread1
     {
-        get
-        {
-            var node = BitmapProbeGridAmbSV_Spread1;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => BitmapProbeGridAmbSV_Spread1;
         set => BitmapProbeGridAmbSV_Spread1 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>.BitmapSM_ColorPeeled
     {
-        get
-        {
-            var node = BitmapSM_ColorPeeled;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => BitmapSM_ColorPeeled;
         set => BitmapSM_ColorPeeled = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>.BitmapSM_DepthToPeel
     {
-        get
-        {
-            var node = BitmapSM_DepthToPeel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => BitmapSM_DepthToPeel;
         set => BitmapSM_DepthToPeel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>.BitmapShadow
     {
-        get
-        {
-            var node = BitmapShadow;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => BitmapShadow;
         set => BitmapShadow = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>.BitmapSprite3x3_Light
     {
-        get
-        {
-            var node = BitmapSprite3x3_Light;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => BitmapSprite3x3_Light;
         set => BitmapSprite3x3_Light = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>.BitmapSprite_ILightDir
     {
-        get
-        {
-            var node = BitmapSprite_ILightDir;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => BitmapSprite_ILightDir;
         set => BitmapSprite_ILightDir = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>.BitmapSprite_PosAndRadius
     {
-        get
-        {
-            var node = BitmapSprite_PosAndRadius;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => BitmapSprite_PosAndRadius;
         set => BitmapSprite_PosAndRadius = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTM2020? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTM2020, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTM2020>.Mood
     {
-        get
-        {
-            var node = Mood;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => Mood;
         set => Mood = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsLightMapMood node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTM2020? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTM2020, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTM2020>.PointsInSphereOpt
     {
-        get
-        {
-            var node = PointsInSphereOpt;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => PointsInSphereOpt;
         set => PointsInSphereOpt = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

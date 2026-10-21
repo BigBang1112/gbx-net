@@ -36,14 +36,9 @@ public abstract class CGameCtnMediaBlockSpectatorsBuilderBase<TSelf> where TSelf
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators> state;
     private protected CGameCtnMediaBlockSpectatorsBuilderBase() => state = new();
     private protected CGameCtnMediaBlockSpectatorsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators> state) => this.state = state;
-    public List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators.Key>? Keys
-    {
-        get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators.Key>?>("Keys");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSpectatorsBuilderAssignments.GetKeysAssignment(), value, GameVersion.TM2020);
-    }
     public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators.Key>? value)
     {
-        Keys = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSpectatorsBuilderAssignments.GetKeysAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithKeys(params global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators.Key[] values)
@@ -64,13 +59,6 @@ public partial class CGameCtnMediaBlockSpectatorsBuilder : CGameCtnMediaBlockSpe
         node.Chunks.Add(chunk030EB000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators.Chunk030EB000>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk030EB000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators node, GameVersion game)
-    {
-    }
     public TM2020 ForTM2020() => new(state.Snapshot());
     public partial class TM2020 : CGameCtnMediaBlockSpectatorsBuilderBase<TM2020>
     {
@@ -81,13 +69,8 @@ public partial class CGameCtnMediaBlockSpectatorsBuilder : CGameCtnMediaBlockSpe
             var node = CGameCtnMediaBlockSpectatorsBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameCtnMediaBlockSpectatorsBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameCtnMediaBlockSpectatorsBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators node);
     }
 }

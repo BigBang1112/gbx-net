@@ -36,14 +36,9 @@ public abstract class CSystemDependenciesListBuilderBase<TSelf> where TSelf : CS
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.System.CSystemDependenciesList> state;
     private protected CSystemDependenciesListBuilderBase() => state = new();
     private protected CSystemDependenciesListBuilderBase(NodeBuilderState<global::GBX.NET.Engines.System.CSystemDependenciesList> state) => this.state = state;
-    public NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? Files
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>?>("Files");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemDependenciesListBuilderAssignments.GetFilesAssignment(), value, GameVersion.TM2020);
-    }
     public TSelf WithFiles(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value)
     {
-        Files = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemDependenciesListBuilderAssignments.GetFilesAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithFiles(params global::GBX.NET.Engines.MwFoundations.CMwNod[] values)
@@ -54,14 +49,9 @@ public abstract class CSystemDependenciesListBuilderBase<TSelf> where TSelf : CS
     {
         return WithFiles(values.ToArray());
     }
-    public global::GBX.NET.Engines.System.CSystemDependenciesList.Folder[]? Folders
-    {
-        get => state.Get<global::GBX.NET.Engines.System.CSystemDependenciesList.Folder[]?>("Folders");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemDependenciesListBuilderAssignments.GetFoldersAssignment(), value, GameVersion.TM2020);
-    }
     public TSelf WithFolders(params global::GBX.NET.Engines.System.CSystemDependenciesList.Folder[]? value)
     {
-        Folders = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemDependenciesListBuilderAssignments.GetFoldersAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithFolders(IEnumerable<global::GBX.NET.Engines.System.CSystemDependenciesList.Folder> values)
@@ -78,13 +68,6 @@ public partial class CSystemDependenciesListBuilder : CSystemDependenciesListBui
         node.Chunks.Add(chunk0B010000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.System.CSystemDependenciesList node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemDependenciesList.Chunk0B010000>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0B010000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.System.CSystemDependenciesList node, GameVersion game)
-    {
-    }
     public TM2020 ForTM2020() => new(state.Snapshot());
     public partial class TM2020 : CSystemDependenciesListBuilderBase<TM2020>
     {
@@ -95,13 +78,8 @@ public partial class CSystemDependenciesListBuilder : CSystemDependenciesListBui
             var node = CSystemDependenciesListBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CSystemDependenciesListBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CSystemDependenciesListBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.System.CSystemDependenciesList node);
-        partial void ValidateNode(global::GBX.NET.Engines.System.CSystemDependenciesList node);
     }
 }

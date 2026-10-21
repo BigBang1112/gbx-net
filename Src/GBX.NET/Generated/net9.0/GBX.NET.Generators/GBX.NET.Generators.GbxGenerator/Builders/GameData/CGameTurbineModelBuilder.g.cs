@@ -36,44 +36,24 @@ public abstract class CGameTurbineModelBuilderBase<TSelf> where TSelf : CGameTur
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.GameData.CGameTurbineModel> state;
     private protected CGameTurbineModelBuilderBase() => state = new();
     private protected CGameTurbineModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameTurbineModel> state) => this.state = state;
-    public Iso4 Loc
-    {
-        get => state.Get<Iso4>("Loc");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameTurbineModelBuilderAssignments.GetLocAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithLoc(Iso4 value)
     {
-        Loc = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameTurbineModelBuilderAssignments.GetLocAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool SilencerBubble_OnlyPlayerSounds
-    {
-        get => state.Get<bool>("SilencerBubble_OnlyPlayerSounds");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameTurbineModelBuilderAssignments.GetSilencerBubble_OnlyPlayerSoundsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSilencerBubble_OnlyPlayerSounds(bool value)
     {
-        SilencerBubble_OnlyPlayerSounds = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameTurbineModelBuilderAssignments.GetSilencerBubble_OnlyPlayerSoundsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float SilencerBubble_RadiusFade
-    {
-        get => state.Get<float>("SilencerBubble_RadiusFade");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameTurbineModelBuilderAssignments.GetSilencerBubble_RadiusFadeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSilencerBubble_RadiusFade(float value)
     {
-        SilencerBubble_RadiusFade = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameTurbineModelBuilderAssignments.GetSilencerBubble_RadiusFadeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float SilencerBubble_RadiusMute
-    {
-        get => state.Get<float>("SilencerBubble_RadiusMute");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameTurbineModelBuilderAssignments.GetSilencerBubble_RadiusMuteAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSilencerBubble_RadiusMute(float value)
     {
-        SilencerBubble_RadiusMute = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameTurbineModelBuilderAssignments.GetSilencerBubble_RadiusMuteAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -86,13 +66,6 @@ public partial class CGameTurbineModelBuilder : CGameTurbineModelBuilderBase<CGa
         chunk2E010000.Version = 0;
         node.Chunks.Add(chunk2E010000);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.GameData.CGameTurbineModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameTurbineModel.Chunk2E010000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk2E010000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.GameData.CGameTurbineModel node, GameVersion game)
-    {
     }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -109,14 +82,9 @@ public partial class CGameTurbineModelBuilder : CGameTurbineModelBuilderBase<CGa
             var node = CGameTurbineModelBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CGameTurbineModelBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CGameTurbineModelBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameTurbineModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.GameData.CGameTurbineModel node);
     }
     public partial class TMT : CGameTurbineModelBuilderBase<TMT>
     {
@@ -127,14 +95,9 @@ public partial class CGameTurbineModelBuilder : CGameTurbineModelBuilderBase<CGa
             var node = CGameTurbineModelBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameTurbineModelBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameTurbineModelBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameTurbineModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.GameData.CGameTurbineModel node);
     }
     public partial class MP4 : CGameTurbineModelBuilderBase<MP4>
     {
@@ -145,14 +108,9 @@ public partial class CGameTurbineModelBuilder : CGameTurbineModelBuilderBase<CGa
             var node = CGameTurbineModelBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameTurbineModelBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameTurbineModelBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameTurbineModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.GameData.CGameTurbineModel node);
     }
     public partial class TM2020 : CGameTurbineModelBuilderBase<TM2020>
     {
@@ -163,13 +121,8 @@ public partial class CGameTurbineModelBuilder : CGameTurbineModelBuilderBase<CGa
             var node = CGameTurbineModelBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameTurbineModelBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameTurbineModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameTurbineModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.GameData.CGameTurbineModel node);
     }
 }

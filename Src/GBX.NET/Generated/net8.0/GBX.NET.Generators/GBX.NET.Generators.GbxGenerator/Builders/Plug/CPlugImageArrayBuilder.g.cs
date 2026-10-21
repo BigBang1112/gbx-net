@@ -36,48 +36,28 @@ public abstract class CPlugImageArrayBuilderBase<TSelf> where TSelf : CPlugImage
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugImageArray> state;
     private protected CPlugImageArrayBuilderBase() => state = new();
     private protected CPlugImageArrayBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugImageArray> state) => this.state = state;
-    public string? Folder
-    {
-        get => state.Get<string?>("Folder");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugImageArrayBuilderAssignments.GetFolderAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithFolder(string? value)
     {
-        Folder = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugImageArrayBuilderAssignments.GetFolderAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugImageArray.Elem[]? Layers
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugImageArray.Elem[]?>("Layers");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugImageArrayBuilderAssignments.GetLayersAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLayers(params global::GBX.NET.Engines.Plug.CPlugImageArray.Elem[]? value)
     {
-        Layers = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugImageArrayBuilderAssignments.GetLayersAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithLayers(IEnumerable<global::GBX.NET.Engines.Plug.CPlugImageArray.Elem> values)
     {
         return WithLayers(values.ToArray());
     }
-    public float MaskScale
-    {
-        get => state.Get<float>("MaskScale");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugImageArrayBuilderAssignments.GetMaskScaleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithMaskScale(float value)
     {
-        MaskScale = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugImageArrayBuilderAssignments.GetMaskScaleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.MwFoundations.CMwNod? Material_VId
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("Material_VId");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugImageArrayBuilderAssignments.GetMaterial_VIdAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithMaterial_VId(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
-        Material_VId = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugImageArrayBuilderAssignments.GetMaterial_VIdAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithMaterial_VIdReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
@@ -96,23 +76,12 @@ public partial class CPlugImageArrayBuilder : CPlugImageArrayBuilderBase<CPlugIm
         node.Chunks.Add(chunk0914C000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugImageArray node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugImageArray.Chunk0914C000>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk0914C000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugImageArray CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugImageArray();
         var chunk0914C000 = new global::GBX.NET.Engines.Plug.CPlugImageArray.Chunk0914C000(game);
         node.Chunks.Add(chunk0914C000);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugImageArray node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugImageArray.Chunk0914C000>() is not { Version: 7 }) throw new InvalidOperationException($"Required {game} chunk Chunk0914C000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugImageArray node, GameVersion game)
-    {
     }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -127,26 +96,16 @@ public partial class CPlugImageArrayBuilder : CPlugImageArrayBuilderBase<CPlugIm
             var node = CPlugImageArrayBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugImageArrayBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugImageArrayBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugImageArray node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugImageArray node);
     }
     public partial class TM2020 : CPlugImageArrayBuilderBase<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugImageArray> state) : base(state) { }
-        public string? Folder_TextureDecals
-        {
-            get => state.Get<string?>("Folder_TextureDecals");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugImageArrayBuilderAssignments.GetFolder_TextureDecalsAssignment(), value, GameVersion.TM2020);
-        }
         public TM2020 WithFolder_TextureDecals(string? value)
         {
-            Folder_TextureDecals = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugImageArrayBuilderAssignments.GetFolder_TextureDecalsAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public global::GBX.NET.Interfaces.Plug.IPlugImageArrayTM2020 BuildInterface() => Build();
@@ -155,13 +114,8 @@ public partial class CPlugImageArrayBuilder : CPlugImageArrayBuilderBase<CPlugIm
             var node = CPlugImageArrayBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugImageArrayBuilder.ValidateRecipe1(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugImageArrayBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugImageArray node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugImageArray node);
     }
 }

@@ -41,22 +41,12 @@ public partial class CGameCtnMediaBlockEntity : global::GBX.NET.Interfaces.Game.
     }
     global::GBX.NET.Interfaces.Plug.IPlugEntRecordDataMP4? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockEntityMembers1<global::GBX.NET.Interfaces.Plug.IPlugEntRecordDataMP4>.RecordData
     {
-        get
-        {
-            var node = RecordData;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => RecordData;
         set => RecordData = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugEntRecordData node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugEntRecordDataTM2020? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockEntityMembers1<global::GBX.NET.Interfaces.Plug.IPlugEntRecordDataTM2020>.RecordData
     {
-        get
-        {
-            var node = RecordData;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => RecordData;
         set => RecordData = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugEntRecordData node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

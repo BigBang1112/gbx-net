@@ -46,22 +46,12 @@ public partial class CGameCoverFlowDesc : global::GBX.NET.Interfaces.Game.IGameC
     }
     global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4? global::GBX.NET.Interfaces.Game.IGameCoverFlowDescMP4.GameSkin
     {
-        get
-        {
-            var node = GameSkin;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => GameSkin;
         set => GameSkin = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameManialink3dStyleMP4? global::GBX.NET.Interfaces.Game.IGameCoverFlowDescMP4.Style
     {
-        get
-        {
-            var node = Style;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Style;
         set => Style = value is null ? null : value is global::GBX.NET.Engines.Game.CGameManialink3dStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

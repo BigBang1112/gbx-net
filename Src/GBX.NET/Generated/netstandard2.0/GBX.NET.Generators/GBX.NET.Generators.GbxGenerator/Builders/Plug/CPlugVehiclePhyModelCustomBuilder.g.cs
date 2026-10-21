@@ -36,34 +36,19 @@ public abstract class CPlugVehiclePhyModelCustomBuilderBase<TSelf> where TSelf :
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModelCustom> state;
     private protected CPlugVehiclePhyModelCustomBuilderBase() => state = new();
     private protected CPlugVehiclePhyModelCustomBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModelCustom> state) => this.state = state;
-    public float AccelCoef
-    {
-        get => state.Get<float>("AccelCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelCustomBuilderAssignments.GetAccelCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithAccelCoef(float value)
     {
-        AccelCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelCustomBuilderAssignments.GetAccelCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float ControlCoef
-    {
-        get => state.Get<float>("ControlCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelCustomBuilderAssignments.GetControlCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithControlCoef(float value)
     {
-        ControlCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelCustomBuilderAssignments.GetControlCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float GravityCoef
-    {
-        get => state.Get<float>("GravityCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelCustomBuilderAssignments.GetGravityCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithGravityCoef(float value)
     {
-        GravityCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyModelCustomBuilderAssignments.GetGravityCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
 }
@@ -75,13 +60,6 @@ public partial class CPlugVehiclePhyModelCustomBuilder : CPlugVehiclePhyModelCus
         var chunk0911E000 = new global::GBX.NET.Engines.Plug.CPlugVehiclePhyModelCustom.Chunk0911E000(game);
         node.Chunks.Add(chunk0911E000);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugVehiclePhyModelCustom node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModelCustom.Chunk0911E000>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0911E000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugVehiclePhyModelCustom node, GameVersion game)
-    {
     }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -96,14 +74,9 @@ public partial class CPlugVehiclePhyModelCustomBuilder : CPlugVehiclePhyModelCus
             var node = CPlugVehiclePhyModelCustomBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugVehiclePhyModelCustomBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugVehiclePhyModelCustomBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehiclePhyModelCustom node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehiclePhyModelCustom node);
     }
     public partial class TM2020 : CPlugVehiclePhyModelCustomBuilderBase<TM2020>
     {
@@ -114,13 +87,8 @@ public partial class CPlugVehiclePhyModelCustomBuilder : CPlugVehiclePhyModelCus
             var node = CPlugVehiclePhyModelCustomBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugVehiclePhyModelCustomBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugVehiclePhyModelCustomBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehiclePhyModelCustom node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehiclePhyModelCustom node);
     }
 }

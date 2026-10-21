@@ -41,12 +41,7 @@ public partial class CPlugAnimSkelBaked : global::GBX.NET.Interfaces.Plug.IPlugA
     }
     global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroupTM2020? global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBakedTM2020.JointGroup
     {
-        get
-        {
-            var node = JointGroup;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => JointGroup;
         set => JointGroup = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

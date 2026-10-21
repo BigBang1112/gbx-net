@@ -36,34 +36,19 @@ public abstract class CSceneFxBloomDataBuilderBase<TSelf> where TSelf : CSceneFx
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxBloomData> state;
     private protected CSceneFxBloomDataBuilderBase() => state = new();
     private protected CSceneFxBloomDataBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxBloomData> state) => this.state = state;
-    public float FakeHdrExponent
-    {
-        get => state.Get<float>("FakeHdrExponent");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBloomDataBuilderAssignments.GetFakeHdrExponentAssignment(), value, GameVersion.TMF);
-    }
     public TSelf WithFakeHdrExponent(float value)
     {
-        FakeHdrExponent = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBloomDataBuilderAssignments.GetFakeHdrExponentAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
-    }
-    public float FakeHdrMin
-    {
-        get => state.Get<float>("FakeHdrMin");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBloomDataBuilderAssignments.GetFakeHdrMinAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithFakeHdrMin(float value)
     {
-        FakeHdrMin = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBloomDataBuilderAssignments.GetFakeHdrMinAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
-    }
-    public float HighInvExponent
-    {
-        get => state.Get<float>("HighInvExponent");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBloomDataBuilderAssignments.GetHighInvExponentAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithHighInvExponent(float value)
     {
-        HighInvExponent = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBloomDataBuilderAssignments.GetHighInvExponentAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
 }
@@ -76,13 +61,6 @@ public partial class CSceneFxBloomDataBuilder : CSceneFxBloomDataBuilderBase<CSc
         node.Chunks.Add(chunk0A03F000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Scene.CSceneFxBloomData node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneFxBloomData.Chunk0A03F000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A03F000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Scene.CSceneFxBloomData node, GameVersion game)
-    {
-    }
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TMF : CSceneFxBloomDataBuilderBase<TMF>
     {
@@ -93,13 +71,8 @@ public partial class CSceneFxBloomDataBuilder : CSceneFxBloomDataBuilderBase<CSc
             var node = CSceneFxBloomDataBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CSceneFxBloomDataBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CSceneFxBloomDataBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxBloomData node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneFxBloomData node);
     }
 }

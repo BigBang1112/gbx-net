@@ -36,14 +36,9 @@ public abstract class CMotionsBuilderBase<TSelf> where TSelf : CMotionsBuilderBa
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Motion.CMotions> state;
     private protected CMotionsBuilderBase() => state = new();
     private protected CMotionsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotions> state) => this.state = state;
-    public NodeRefList<global::GBX.NET.Engines.Motion.CMotion>? Motions
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Motion.CMotion>?>("Motions");
-        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionsBuilderAssignments.GetMotionsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithMotions(NodeRefList<global::GBX.NET.Engines.Motion.CMotion>? value)
     {
-        Motions = value;
+        state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionsBuilderAssignments.GetMotionsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithMotions(params global::GBX.NET.Engines.Motion.CMotion[] values)
@@ -58,14 +53,9 @@ public abstract class CMotionsBuilderBase<TSelf> where TSelf : CMotionsBuilderBa
 public abstract class CMotionsBuilderMembers1<TSelf> : CMotionsBuilderBase<TSelf> where TSelf : CMotionsBuilderMembers1<TSelf>
 {
     private protected CMotionsBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotions> state) : base(state) { }
-    public string? Name
-    {
-        get => state.Get<string?>("Name");
-        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithName(string? value)
     {
-        Name = value;
+        state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -78,10 +68,6 @@ public partial class CMotionsBuilder : CMotionsBuilderBase<CMotionsBuilder>
         node.Chunks.Add(chunk08028001);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Motion.CMotions node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotions.Chunk08028001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk08028001 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Motion.CMotions CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Motion.CMotions();
@@ -90,14 +76,6 @@ public partial class CMotionsBuilder : CMotionsBuilderBase<CMotionsBuilder>
         var chunk08001000 = new global::GBX.NET.Engines.Motion.CMotion.Chunk08001000();
         node.Chunks.Add(chunk08001000);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Motion.CMotions node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotions.Chunk08028001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk08028001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotion.Chunk08001000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk08001000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Motion.CMotions node, GameVersion game)
-    {
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -127,14 +105,9 @@ public partial class CMotionsBuilder : CMotionsBuilderBase<CMotionsBuilder>
             var node = CMotionsBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CMotionsBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CMotionsBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotions node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotions node);
     }
     public partial class TMPU : CMotionsBuilderBase<TMPU>
     {
@@ -153,14 +126,9 @@ public partial class CMotionsBuilder : CMotionsBuilderBase<CMotionsBuilder>
             var node = CMotionsBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CMotionsBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CMotionsBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotions node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotions node);
     }
     public partial class TMSX : CMotionsBuilderMembers1<TMSX>
     {
@@ -179,14 +147,9 @@ public partial class CMotionsBuilder : CMotionsBuilderBase<CMotionsBuilder>
             var node = CMotionsBuilder.CreateRecipe1(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CMotionsBuilder.ValidateRecipe1(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CMotionsBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotions node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotions node);
     }
     public partial class TMNESWC : CMotionsBuilderMembers1<TMNESWC>
     {
@@ -205,14 +168,9 @@ public partial class CMotionsBuilder : CMotionsBuilderBase<CMotionsBuilder>
             var node = CMotionsBuilder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CMotionsBuilder.ValidateRecipe1(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CMotionsBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotions node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotions node);
     }
     public partial class VSK5 : CMotionsBuilderMembers1<VSK5>
     {
@@ -231,14 +189,9 @@ public partial class CMotionsBuilder : CMotionsBuilderBase<CMotionsBuilder>
             var node = CMotionsBuilder.CreateRecipe1(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CMotionsBuilder.ValidateRecipe1(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CMotionsBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotions node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotions node);
     }
     public partial class TMF : CMotionsBuilderMembers1<TMF>
     {
@@ -257,14 +210,9 @@ public partial class CMotionsBuilder : CMotionsBuilderBase<CMotionsBuilder>
             var node = CMotionsBuilder.CreateRecipe1(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CMotionsBuilder.ValidateRecipe1(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CMotionsBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotions node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotions node);
     }
     public partial class MP3 : CMotionsBuilderMembers1<MP3>
     {
@@ -283,14 +231,9 @@ public partial class CMotionsBuilder : CMotionsBuilderBase<CMotionsBuilder>
             var node = CMotionsBuilder.CreateRecipe1(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CMotionsBuilder.ValidateRecipe1(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CMotionsBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotions node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotions node);
     }
     public partial class TMT : CMotionsBuilderMembers1<TMT>
     {
@@ -309,14 +252,9 @@ public partial class CMotionsBuilder : CMotionsBuilderBase<CMotionsBuilder>
             var node = CMotionsBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CMotionsBuilder.ValidateRecipe1(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CMotionsBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotions node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotions node);
     }
     public partial class MP4 : CMotionsBuilderMembers1<MP4>
     {
@@ -335,13 +273,8 @@ public partial class CMotionsBuilder : CMotionsBuilderBase<CMotionsBuilder>
             var node = CMotionsBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CMotionsBuilder.ValidateRecipe1(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CMotionsBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotions node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotions node);
     }
 }

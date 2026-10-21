@@ -36,196 +36,106 @@ public abstract class GxLightDirectionalBuilderBase<TSelf> where TSelf : GxLight
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightDirectional> state;
     private protected GxLightDirectionalBuilderBase() => state = new();
     private protected GxLightDirectionalBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightDirectional> state) => this.state = state;
-    public Vec3 BoundaryHintPos
-    {
-        get => state.Get<Vec3>("BoundaryHintPos");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightDirectionalBuilderAssignments.GetBoundaryHintPosAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithBoundaryHintPos(Vec3 value)
     {
-        BoundaryHintPos = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightDirectionalBuilderAssignments.GetBoundaryHintPosAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public Vec3 Color
-    {
-        get => state.Get<Vec3>("Color");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetColorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithColor(Vec3 value)
     {
-        Color = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetColorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float DazzleAngleMax
-    {
-        get => state.Get<float>("DazzleAngleMax");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightDirectionalBuilderAssignments.GetDazzleAngleMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDazzleAngleMax(float value)
     {
-        DazzleAngleMax = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightDirectionalBuilderAssignments.GetDazzleAngleMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float DazzleIntensity
-    {
-        get => state.Get<float>("DazzleIntensity");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightDirectionalBuilderAssignments.GetDazzleIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDazzleIntensity(float value)
     {
-        DazzleIntensity = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightDirectionalBuilderAssignments.GetDazzleIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Graphic.GxLight.EFlags Flags
-    {
-        get => state.Get<global::GBX.NET.Engines.Graphic.GxLight.EFlags>("Flags");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFlags(global::GBX.NET.Engines.Graphic.GxLight.EFlags value)
     {
-        Flags = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float FlareIntensity
-    {
-        get => state.Get<float>("FlareIntensity");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetFlareIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFlareIntensity(float value)
     {
-        FlareIntensity = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetFlareIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float Intensity
-    {
-        get => state.Get<float>("Intensity");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIntensity(float value)
     {
-        Intensity = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float ShadowIntensity
-    {
-        get => state.Get<float>("ShadowIntensity");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetShadowIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithShadowIntensity(float value)
     {
-        ShadowIntensity = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetShadowIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public Vec3 ShadowRGB
-    {
-        get => state.Get<Vec3>("ShadowRGB");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetShadowRGBAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithShadowRGB(Vec3 value)
     {
-        ShadowRGB = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetShadowRGBAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool UseBoundaryHint
-    {
-        get => state.Get<bool>("UseBoundaryHint");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightDirectionalBuilderAssignments.GetUseBoundaryHintAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithUseBoundaryHint(bool value)
     {
-        UseBoundaryHint = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightDirectionalBuilderAssignments.GetUseBoundaryHintAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class GxLightDirectionalBuilderMembers1<TSelf> : GxLightDirectionalBuilderBase<TSelf> where TSelf : GxLightDirectionalBuilderMembers1<TSelf>
 {
     private protected GxLightDirectionalBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightDirectional> state) : base(state) { }
-    public Vec3 DblSidedRGB
-    {
-        get => state.Get<Vec3>("DblSidedRGB");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightDirectionalBuilderAssignments.GetDblSidedRGBAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithDblSidedRGB(Vec3 value)
     {
-        DblSidedRGB = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightDirectionalBuilderAssignments.GetDblSidedRGBAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float EmittAngularSize
-    {
-        get => state.Get<float>("EmittAngularSize");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightDirectionalBuilderAssignments.GetEmittAngularSizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEmittAngularSize(float value)
     {
-        EmittAngularSize = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightDirectionalBuilderAssignments.GetEmittAngularSizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float FlareAngularSize
-    {
-        get => state.Get<float>("FlareAngularSize");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightDirectionalBuilderAssignments.GetFlareAngularSizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFlareAngularSize(float value)
     {
-        FlareAngularSize = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightDirectionalBuilderAssignments.GetFlareAngularSizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float ReverseIntens
-    {
-        get => state.Get<float>("ReverseIntens");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightDirectionalBuilderAssignments.GetReverseIntensAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithReverseIntens(float value)
     {
-        ReverseIntens = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightDirectionalBuilderAssignments.GetReverseIntensAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public Vec3 ReverseRGB
-    {
-        get => state.Get<Vec3>("ReverseRGB");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightDirectionalBuilderAssignments.GetReverseRGBAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithReverseRGB(Vec3 value)
     {
-        ReverseRGB = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightDirectionalBuilderAssignments.GetReverseRGBAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class GxLightDirectionalBuilderMembers2<TSelf> : GxLightDirectionalBuilderMembers1<TSelf> where TSelf : GxLightDirectionalBuilderMembers2<TSelf>
 {
     private protected GxLightDirectionalBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightDirectional> state) : base(state) { }
-    public float DiffuseIntensity
-    {
-        get => state.Get<float>("DiffuseIntensity");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetDiffuseIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithDiffuseIntensity(float value)
     {
-        DiffuseIntensity = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetDiffuseIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class GxLightDirectionalBuilderMembers3<TSelf> : GxLightDirectionalBuilderMembers2<TSelf> where TSelf : GxLightDirectionalBuilderMembers3<TSelf>
 {
     private protected GxLightDirectionalBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightDirectional> state) : base(state) { }
-    public float SpecularIntens
-    {
-        get => state.Get<float>("SpecularIntens");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetSpecularIntensAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithSpecularIntens(float value)
     {
-        SpecularIntens = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetSpecularIntensAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SpecularPower
-    {
-        get => state.Get<float>("SpecularPower");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetSpecularPowerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSpecularPower(float value)
     {
-        SpecularPower = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetSpecularPowerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -239,11 +149,6 @@ public partial class GxLightDirectionalBuilder : GxLightDirectionalBuilderBase<G
         var chunk04001008 = new global::GBX.NET.Engines.Graphic.GxLight.Chunk04001008();
         node.Chunks.Add(chunk04001008);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Graphic.GxLightDirectional node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightDirectional.Chunk04007002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04007002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLight.Chunk04001008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04001008 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Graphic.GxLightDirectional CreateRecipe1(GameVersion game)
     {
@@ -260,14 +165,6 @@ public partial class GxLightDirectionalBuilder : GxLightDirectionalBuilderBase<G
         node.Chunks.Add(chunk04001008);
         return node;
     }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Graphic.GxLightDirectional node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightDirectional.Chunk04007002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04007002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightDirectional.Chunk04007003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04007003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightDirectional.Chunk04007004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04007004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightDirectional.Chunk04007005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04007005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLight.Chunk04001008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04001008 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Graphic.GxLightDirectional CreateRecipe2(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Graphic.GxLightDirectional();
@@ -282,14 +179,6 @@ public partial class GxLightDirectionalBuilder : GxLightDirectionalBuilderBase<G
         var chunk04001009 = new global::GBX.NET.Engines.Graphic.GxLight.Chunk04001009();
         node.Chunks.Add(chunk04001009);
         return node;
-    }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Graphic.GxLightDirectional node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightDirectional.Chunk04007002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04007002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightDirectional.Chunk04007003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04007003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightDirectional.Chunk04007004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04007004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightDirectional.Chunk04007005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04007005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLight.Chunk04001009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04001009 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Graphic.GxLightDirectional CreateRecipe3(GameVersion game)
     {
@@ -306,17 +195,6 @@ public partial class GxLightDirectionalBuilder : GxLightDirectionalBuilderBase<G
         chunk0400100A.Version = 0;
         node.Chunks.Add(chunk0400100A);
         return node;
-    }
-    private static void ValidateRecipe3(global::GBX.NET.Engines.Graphic.GxLightDirectional node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightDirectional.Chunk04007002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04007002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightDirectional.Chunk04007003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04007003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightDirectional.Chunk04007004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04007004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightDirectional.Chunk04007005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04007005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLight.Chunk0400100A>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0400100A is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Graphic.GxLightDirectional node, GameVersion game)
-    {
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -339,14 +217,9 @@ public partial class GxLightDirectionalBuilder : GxLightDirectionalBuilderBase<G
             var node = GxLightDirectionalBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            GxLightDirectionalBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            GxLightDirectionalBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxLightDirectional node);
-        partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxLightDirectional node);
     }
     public partial class TMPU : GxLightDirectionalBuilderBase<TMPU>
     {
@@ -357,14 +230,9 @@ public partial class GxLightDirectionalBuilder : GxLightDirectionalBuilderBase<G
             var node = GxLightDirectionalBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            GxLightDirectionalBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            GxLightDirectionalBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxLightDirectional node);
-        partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxLightDirectional node);
     }
     public partial class TMSX : GxLightDirectionalBuilderMembers1<TMSX>
     {
@@ -375,14 +243,9 @@ public partial class GxLightDirectionalBuilder : GxLightDirectionalBuilderBase<G
             var node = GxLightDirectionalBuilder.CreateRecipe1(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            GxLightDirectionalBuilder.ValidateRecipe1(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            GxLightDirectionalBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxLightDirectional node);
-        partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxLightDirectional node);
     }
     public partial class TMNESWC : GxLightDirectionalBuilderMembers1<TMNESWC>
     {
@@ -393,14 +256,9 @@ public partial class GxLightDirectionalBuilder : GxLightDirectionalBuilderBase<G
             var node = GxLightDirectionalBuilder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            GxLightDirectionalBuilder.ValidateRecipe1(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            GxLightDirectionalBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxLightDirectional node);
-        partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxLightDirectional node);
     }
     public partial class VSK5 : GxLightDirectionalBuilderMembers3<VSK5>
     {
@@ -411,14 +269,9 @@ public partial class GxLightDirectionalBuilder : GxLightDirectionalBuilderBase<G
             var node = GxLightDirectionalBuilder.CreateRecipe2(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            GxLightDirectionalBuilder.ValidateRecipe2(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            GxLightDirectionalBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxLightDirectional node);
-        partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxLightDirectional node);
     }
     public partial class TMF : GxLightDirectionalBuilderMembers3<TMF>
     {
@@ -429,14 +282,9 @@ public partial class GxLightDirectionalBuilder : GxLightDirectionalBuilderBase<G
             var node = GxLightDirectionalBuilder.CreateRecipe2(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            GxLightDirectionalBuilder.ValidateRecipe2(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            GxLightDirectionalBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxLightDirectional node);
-        partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxLightDirectional node);
     }
     public partial class MP3 : GxLightDirectionalBuilderMembers3<MP3>
     {
@@ -447,14 +295,9 @@ public partial class GxLightDirectionalBuilder : GxLightDirectionalBuilderBase<G
             var node = GxLightDirectionalBuilder.CreateRecipe2(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            GxLightDirectionalBuilder.ValidateRecipe2(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            GxLightDirectionalBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxLightDirectional node);
-        partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxLightDirectional node);
     }
     public partial class TMT : GxLightDirectionalBuilderMembers3<TMT>
     {
@@ -465,14 +308,9 @@ public partial class GxLightDirectionalBuilder : GxLightDirectionalBuilderBase<G
             var node = GxLightDirectionalBuilder.CreateRecipe2(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            GxLightDirectionalBuilder.ValidateRecipe2(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            GxLightDirectionalBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxLightDirectional node);
-        partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxLightDirectional node);
     }
     public partial class MP4 : GxLightDirectionalBuilderMembers3<MP4>
     {
@@ -483,14 +321,9 @@ public partial class GxLightDirectionalBuilder : GxLightDirectionalBuilderBase<G
             var node = GxLightDirectionalBuilder.CreateRecipe2(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            GxLightDirectionalBuilder.ValidateRecipe2(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            GxLightDirectionalBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxLightDirectional node);
-        partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxLightDirectional node);
     }
     public partial class TM2020 : GxLightDirectionalBuilderMembers2<TM2020>
     {
@@ -501,13 +334,8 @@ public partial class GxLightDirectionalBuilder : GxLightDirectionalBuilderBase<G
             var node = GxLightDirectionalBuilder.CreateRecipe3(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            GxLightDirectionalBuilder.ValidateRecipe3(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            GxLightDirectionalBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxLightDirectional node);
-        partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxLightDirectional node);
     }
 }

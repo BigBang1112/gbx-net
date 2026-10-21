@@ -36,14 +36,9 @@ public abstract class CGameCtnMediaBlockDOFBuilderBase<TSelf> where TSelf : CGam
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockDOF> state;
     private protected CGameCtnMediaBlockDOFBuilderBase() => state = new();
     private protected CGameCtnMediaBlockDOFBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockDOF> state) => this.state = state;
-    public List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockDOF.Key>? Keys
-    {
-        get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockDOF.Key>?>("Keys");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockDOFBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockDOF.Key>? value)
     {
-        Keys = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockDOFBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithKeys(params global::GBX.NET.Engines.Game.CGameCtnMediaBlockDOF.Key[] values)
@@ -64,13 +59,6 @@ public partial class CGameCtnMediaBlockDOFBuilder : CGameCtnMediaBlockDOFBuilder
         node.Chunks.Add(chunk03126002);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockDOF node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockDOF.Chunk03126002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03126002 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockDOF node, GameVersion game)
-    {
-    }
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -85,14 +73,9 @@ public partial class CGameCtnMediaBlockDOFBuilder : CGameCtnMediaBlockDOFBuilder
             var node = CGameCtnMediaBlockDOFBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameCtnMediaBlockDOFBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameCtnMediaBlockDOFBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockDOF node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockDOF node);
     }
     public partial class MP4 : CGameCtnMediaBlockDOFBuilderBase<MP4>
     {
@@ -103,14 +86,9 @@ public partial class CGameCtnMediaBlockDOFBuilder : CGameCtnMediaBlockDOFBuilder
             var node = CGameCtnMediaBlockDOFBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameCtnMediaBlockDOFBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameCtnMediaBlockDOFBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockDOF node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockDOF node);
     }
     public partial class TM2020 : CGameCtnMediaBlockDOFBuilderBase<TM2020>
     {
@@ -121,13 +99,8 @@ public partial class CGameCtnMediaBlockDOFBuilder : CGameCtnMediaBlockDOFBuilder
             var node = CGameCtnMediaBlockDOFBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameCtnMediaBlockDOFBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameCtnMediaBlockDOFBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockDOF node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockDOF node);
     }
 }

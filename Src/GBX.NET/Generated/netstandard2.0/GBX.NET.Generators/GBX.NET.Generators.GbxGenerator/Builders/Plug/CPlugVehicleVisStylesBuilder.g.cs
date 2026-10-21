@@ -36,14 +36,9 @@ public abstract class CPlugVehicleVisStylesBuilderBase<TSelf> where TSelf : CPlu
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyles> state;
     private protected CPlugVehicleVisStylesBuilderBase() => state = new();
     private protected CPlugVehicleVisStylesBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyles> state) => this.state = state;
-    public NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup>? RandomGroups
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup>?>("RandomGroups");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisStylesBuilderAssignments.GetRandomGroupsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithRandomGroups(NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup>? value)
     {
-        RandomGroups = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisStylesBuilderAssignments.GetRandomGroupsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithRandomGroups(params global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup[] values)
@@ -54,14 +49,9 @@ public abstract class CPlugVehicleVisStylesBuilderBase<TSelf> where TSelf : CPlu
     {
         return WithRandomGroups(values.ToArray());
     }
-    public string? UnwantedTrafficVehiclesMatchName
-    {
-        get => state.Get<string?>("UnwantedTrafficVehiclesMatchName");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisStylesBuilderAssignments.GetUnwantedTrafficVehiclesMatchNameAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithUnwantedTrafficVehiclesMatchName(string? value)
     {
-        UnwantedTrafficVehiclesMatchName = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisStylesBuilderAssignments.GetUnwantedTrafficVehiclesMatchNameAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
 }
@@ -73,13 +63,6 @@ public partial class CPlugVehicleVisStylesBuilder : CPlugVehicleVisStylesBuilder
         var chunk09146000 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisStyles.Chunk09146000(game);
         node.Chunks.Add(chunk09146000);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugVehicleVisStyles node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyles.Chunk09146000>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk09146000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugVehicleVisStyles node, GameVersion game)
-    {
     }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -102,14 +85,9 @@ public partial class CPlugVehicleVisStylesBuilder : CPlugVehicleVisStylesBuilder
             var node = CPlugVehicleVisStylesBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugVehicleVisStylesBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugVehicleVisStylesBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisStyles node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisStyles node);
     }
     public partial class TM2020 : CPlugVehicleVisStylesBuilderBase<TM2020>
     {
@@ -128,13 +106,8 @@ public partial class CPlugVehicleVisStylesBuilder : CPlugVehicleVisStylesBuilder
             var node = CPlugVehicleVisStylesBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugVehicleVisStylesBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugVehicleVisStylesBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisStyles node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisStyles node);
     }
 }

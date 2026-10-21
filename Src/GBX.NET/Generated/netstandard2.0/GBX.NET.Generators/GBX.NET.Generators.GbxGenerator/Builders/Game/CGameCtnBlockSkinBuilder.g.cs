@@ -36,52 +36,32 @@ public abstract class CGameCtnBlockSkinBuilderBase<TSelf> where TSelf : CGameCtn
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockSkin> state;
     private protected CGameCtnBlockSkinBuilderBase() => state = new();
     private protected CGameCtnBlockSkinBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockSkin> state) => this.state = state;
-    public string? Text
-    {
-        get => state.Get<string?>("Text");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockSkinBuilderAssignments.GetTextAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithText(string? value)
     {
-        Text = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockSkinBuilderAssignments.GetTextAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnBlockSkinBuilderMembers1<TSelf> : CGameCtnBlockSkinBuilderBase<TSelf> where TSelf : CGameCtnBlockSkinBuilderMembers1<TSelf>
 {
     private protected CGameCtnBlockSkinBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockSkin> state) : base(state) { }
-    public string? SkinName
-    {
-        get => state.Get<string?>("SkinName");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockSkinBuilderAssignments.GetSkinNameAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
-    }
     public TSelf WithSkinName(string? value)
     {
-        SkinName = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockSkinBuilderAssignments.GetSkinNameAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnBlockSkinBuilderMembers2<TSelf> : CGameCtnBlockSkinBuilderBase<TSelf> where TSelf : CGameCtnBlockSkinBuilderMembers2<TSelf>
 {
     private protected CGameCtnBlockSkinBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockSkin> state) : base(state) { }
-    public PackDesc? PackDesc
-    {
-        get => state.Get<PackDesc?>("PackDesc");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockSkinBuilderAssignments.GetPackDescAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithPackDesc(PackDesc? value)
     {
-        PackDesc = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockSkinBuilderAssignments.GetPackDescAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public PackDesc? ParentPackDesc
-    {
-        get => state.Get<PackDesc?>("ParentPackDesc");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockSkinBuilderAssignments.GetParentPackDescAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithParentPackDesc(PackDesc? value)
     {
-        ParentPackDesc = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockSkinBuilderAssignments.GetParentPackDescAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -94,20 +74,12 @@ public partial class CGameCtnBlockSkinBuilder : CGameCtnBlockSkinBuilderBase<CGa
         node.Chunks.Add(chunk03059000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnBlockSkin node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockSkin.Chunk03059000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03059000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameCtnBlockSkin CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnBlockSkin();
         var chunk03059002 = new global::GBX.NET.Engines.Game.CGameCtnBlockSkin.Chunk03059002();
         node.Chunks.Add(chunk03059002);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameCtnBlockSkin node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockSkin.Chunk03059002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03059002 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Game.CGameCtnBlockSkin CreateRecipe2(GameVersion game)
     {
@@ -118,14 +90,6 @@ public partial class CGameCtnBlockSkinBuilder : CGameCtnBlockSkinBuilderBase<CGa
         chunk03059003.Version = 0;
         node.Chunks.Add(chunk03059003);
         return node;
-    }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Game.CGameCtnBlockSkin node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockSkin.Chunk03059002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03059002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockSkin.Chunk03059003>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03059003 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnBlockSkin node, GameVersion game)
-    {
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -148,14 +112,9 @@ public partial class CGameCtnBlockSkinBuilder : CGameCtnBlockSkinBuilderBase<CGa
             var node = CGameCtnBlockSkinBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CGameCtnBlockSkinBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CGameCtnBlockSkinBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockSkin node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnBlockSkin node);
     }
     public partial class TMPU : CGameCtnBlockSkinBuilderMembers1<TMPU>
     {
@@ -166,14 +125,9 @@ public partial class CGameCtnBlockSkinBuilder : CGameCtnBlockSkinBuilderBase<CGa
             var node = CGameCtnBlockSkinBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CGameCtnBlockSkinBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CGameCtnBlockSkinBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockSkin node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnBlockSkin node);
     }
     public partial class TMSX : CGameCtnBlockSkinBuilderMembers2<TMSX>
     {
@@ -184,14 +138,9 @@ public partial class CGameCtnBlockSkinBuilder : CGameCtnBlockSkinBuilderBase<CGa
             var node = CGameCtnBlockSkinBuilder.CreateRecipe1(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CGameCtnBlockSkinBuilder.ValidateRecipe1(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CGameCtnBlockSkinBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockSkin node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnBlockSkin node);
     }
     public partial class TMNESWC : CGameCtnBlockSkinBuilderMembers2<TMNESWC>
     {
@@ -202,14 +151,9 @@ public partial class CGameCtnBlockSkinBuilder : CGameCtnBlockSkinBuilderBase<CGa
             var node = CGameCtnBlockSkinBuilder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CGameCtnBlockSkinBuilder.ValidateRecipe1(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CGameCtnBlockSkinBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockSkin node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnBlockSkin node);
     }
     public partial class VSK5 : CGameCtnBlockSkinBuilderMembers2<VSK5>
     {
@@ -220,14 +164,9 @@ public partial class CGameCtnBlockSkinBuilder : CGameCtnBlockSkinBuilderBase<CGa
             var node = CGameCtnBlockSkinBuilder.CreateRecipe1(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CGameCtnBlockSkinBuilder.ValidateRecipe1(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CGameCtnBlockSkinBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockSkin node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnBlockSkin node);
     }
     public partial class TMF : CGameCtnBlockSkinBuilderMembers2<TMF>
     {
@@ -238,14 +177,9 @@ public partial class CGameCtnBlockSkinBuilder : CGameCtnBlockSkinBuilderBase<CGa
             var node = CGameCtnBlockSkinBuilder.CreateRecipe1(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CGameCtnBlockSkinBuilder.ValidateRecipe1(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CGameCtnBlockSkinBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockSkin node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnBlockSkin node);
     }
     public partial class MP3 : CGameCtnBlockSkinBuilderMembers2<MP3>
     {
@@ -256,14 +190,9 @@ public partial class CGameCtnBlockSkinBuilder : CGameCtnBlockSkinBuilderBase<CGa
             var node = CGameCtnBlockSkinBuilder.CreateRecipe1(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CGameCtnBlockSkinBuilder.ValidateRecipe1(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CGameCtnBlockSkinBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockSkin node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnBlockSkin node);
     }
     public partial class TMT : CGameCtnBlockSkinBuilderMembers2<TMT>
     {
@@ -274,14 +203,9 @@ public partial class CGameCtnBlockSkinBuilder : CGameCtnBlockSkinBuilderBase<CGa
             var node = CGameCtnBlockSkinBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameCtnBlockSkinBuilder.ValidateRecipe1(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameCtnBlockSkinBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockSkin node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnBlockSkin node);
     }
     public partial class MP4 : CGameCtnBlockSkinBuilderMembers2<MP4>
     {
@@ -292,26 +216,16 @@ public partial class CGameCtnBlockSkinBuilder : CGameCtnBlockSkinBuilderBase<CGa
             var node = CGameCtnBlockSkinBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameCtnBlockSkinBuilder.ValidateRecipe1(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameCtnBlockSkinBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockSkin node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnBlockSkin node);
     }
     public partial class TM2020 : CGameCtnBlockSkinBuilderMembers2<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockSkin> state) : base(state) { }
-        public PackDesc? ForegroundPackDesc
-        {
-            get => state.Get<PackDesc?>("ForegroundPackDesc");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockSkinBuilderAssignments.GetForegroundPackDescAssignment(), value, GameVersion.TM2020);
-        }
         public TM2020 WithForegroundPackDesc(PackDesc? value)
         {
-            ForegroundPackDesc = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockSkinBuilderAssignments.GetForegroundPackDescAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinTM2020 BuildInterface() => Build();
@@ -320,13 +234,8 @@ public partial class CGameCtnBlockSkinBuilder : CGameCtnBlockSkinBuilderBase<CGa
             var node = CGameCtnBlockSkinBuilder.CreateRecipe2(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameCtnBlockSkinBuilder.ValidateRecipe2(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameCtnBlockSkinBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockSkin node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnBlockSkin node);
     }
 }

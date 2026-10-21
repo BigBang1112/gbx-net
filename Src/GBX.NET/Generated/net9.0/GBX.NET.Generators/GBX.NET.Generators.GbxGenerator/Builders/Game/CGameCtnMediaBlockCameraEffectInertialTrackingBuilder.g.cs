@@ -36,54 +36,29 @@ public abstract class CGameCtnMediaBlockCameraEffectInertialTrackingBuilderBase<
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking> state;
     private protected CGameCtnMediaBlockCameraEffectInertialTrackingBuilderBase() => state = new();
     private protected CGameCtnMediaBlockCameraEffectInertialTrackingBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking> state) => this.state = state;
-    public bool AutoFocus
-    {
-        get => state.Get<bool>("AutoFocus");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTrackingBuilderAssignments.GetAutoFocusAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithAutoFocus(bool value)
     {
-        AutoFocus = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTrackingBuilderAssignments.GetAutoFocusAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool AutoZoom
-    {
-        get => state.Get<bool>("AutoZoom");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTrackingBuilderAssignments.GetAutoZoomAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAutoZoom(bool value)
     {
-        AutoZoom = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTrackingBuilderAssignments.GetAutoZoomAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public TimeSingle End
-    {
-        get => state.Get<TimeSingle>("End");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTrackingBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEnd(TimeSingle value)
     {
-        End = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTrackingBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public TimeSingle Start
-    {
-        get => state.Get<TimeSingle>("Start");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTrackingBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStart(TimeSingle value)
     {
-        Start = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTrackingBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool Tracking
-    {
-        get => state.Get<bool>("Tracking");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTrackingBuilderAssignments.GetTrackingAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTracking(bool value)
     {
-        Tracking = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTrackingBuilderAssignments.GetTrackingAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -96,13 +71,6 @@ public partial class CGameCtnMediaBlockCameraEffectInertialTrackingBuilder : CGa
         chunk03166000.Version = 0;
         node.Chunks.Add(chunk03166000);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking.Chunk03166000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03166000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking node, GameVersion game)
-    {
     }
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -118,14 +86,9 @@ public partial class CGameCtnMediaBlockCameraEffectInertialTrackingBuilder : CGa
             var node = CGameCtnMediaBlockCameraEffectInertialTrackingBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameCtnMediaBlockCameraEffectInertialTrackingBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameCtnMediaBlockCameraEffectInertialTrackingBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking node);
     }
     public partial class MP4 : CGameCtnMediaBlockCameraEffectInertialTrackingBuilderBase<MP4>
     {
@@ -136,14 +99,9 @@ public partial class CGameCtnMediaBlockCameraEffectInertialTrackingBuilder : CGa
             var node = CGameCtnMediaBlockCameraEffectInertialTrackingBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameCtnMediaBlockCameraEffectInertialTrackingBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameCtnMediaBlockCameraEffectInertialTrackingBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking node);
     }
     public partial class TM2020 : CGameCtnMediaBlockCameraEffectInertialTrackingBuilderBase<TM2020>
     {
@@ -154,13 +112,8 @@ public partial class CGameCtnMediaBlockCameraEffectInertialTrackingBuilder : CGa
             var node = CGameCtnMediaBlockCameraEffectInertialTrackingBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameCtnMediaBlockCameraEffectInertialTrackingBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameCtnMediaBlockCameraEffectInertialTrackingBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking node);
     }
 }

@@ -36,14 +36,9 @@ public abstract class CGameCtnMediaBlockTurretBuilderBase<TSelf> where TSelf : C
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret> state;
     private protected CGameCtnMediaBlockTurretBuilderBase() => state = new();
     private protected CGameCtnMediaBlockTurretBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret> state) => this.state = state;
-    public global::GBX.NET.Engines.Plug.CPlugDataTape? DataTape
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugDataTape?>("DataTape");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTurretBuilderAssignments.GetDataTapeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithDataTape(global::GBX.NET.Engines.Plug.CPlugDataTape? value)
     {
-        DataTape = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTurretBuilderAssignments.GetDataTapeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithDataTapeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugDataTape> value)
@@ -63,13 +58,6 @@ public partial class CGameCtnMediaBlockTurretBuilder : CGameCtnMediaBlockTurretB
         node.Chunks.Add(chunk03294000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret.Chunk03294000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03294000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret node, GameVersion game)
-    {
-    }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
@@ -87,14 +75,9 @@ public partial class CGameCtnMediaBlockTurretBuilder : CGameCtnMediaBlockTurretB
             var node = CGameCtnMediaBlockTurretBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameCtnMediaBlockTurretBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameCtnMediaBlockTurretBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret node);
     }
     public partial class TM2020 : CGameCtnMediaBlockTurretBuilderBase<TM2020>
     {
@@ -109,13 +92,8 @@ public partial class CGameCtnMediaBlockTurretBuilder : CGameCtnMediaBlockTurretB
             var node = CGameCtnMediaBlockTurretBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameCtnMediaBlockTurretBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameCtnMediaBlockTurretBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret node);
     }
 }

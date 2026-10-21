@@ -60,7 +60,7 @@ CGameCtnMediaClip clip = CGameCtnMediaClip.Create()
     .Build();
 ```
 
-`Build()` and `BuildInterface()` run the same construction and validation code. Only their declared return types differ. Both methods require a selected game. There is no implicit default game.
+`Build()` and `BuildInterface()` run the same construction code. Only their declared return types differ. Both methods require a selected game. There is no implicit default game.
 
 ### Builder shape
 
@@ -70,7 +70,7 @@ The outer builder exposes the intersection of writable members available in ever
 
 The implementation shares common setters through a generated `<Node>BuilderBase<TSelf>`. The outer builder and each game stage use their own type as `TSelf`, preserving fluent return types while avoiding repeated assignment code for every game.
 
-For each eligible property, generate a builder property and `With<Property>(value)`. Use the property's actual type, including nullable value types. Generate `WithIsKeepPlaying(bool)` mechanically. Names such as `KeepsPlaying()` and grouped convenience methods belong in optional partials, since English inflection and domain groupings are not layout rules.
+For each eligible property, generate `With<Property>(value)` using the property's actual type, including nullable value types. Omit builder properties and their accessors to reduce assembly size. Configure builders through fluent methods, and access node or game interface properties after building. Generate `WithIsKeepPlaying(bool)` mechanically. Names such as `KeepsPlaying()` and grouped convenience methods belong in optional partials, since English inflection and domain groupings are not layout rules.
 
 Do not require an empty handwritten builder class or an attribute opting each node into generation. Abstract node classes contribute inherited members and interfaces but have no instantiating factory. Generate factories for concrete nodes when a supported creation recipe can be established.
 
@@ -164,7 +164,7 @@ public MP4 ForTM2() => ForMP4();
 public MP4 ForSM() => ForMP4();
 ```
 
-All three selectors have identical pending-state snapshot behavior, defaults, chunks, versions, validation, and return types. `Build()` returns the concrete node, while `BuildInterface()` returns the MP4 interface, such as `IGameCtnMediaClipMP4`. Do not generate separate `TM2` or `SM` stages, interfaces, or recipe copies for these aliases.
+All three selectors have identical pending-state snapshot behavior, defaults, chunks, versions, and return types. `Build()` returns the concrete node, while `BuildInterface()` returns the MP4 interface, such as `IGameCtnMediaClipMP4`. Do not generate separate `TM2` or `SM` stages, interfaces, or recipe copies for these aliases.
 
 The aliases always select MP4. They do not choose the latest available ManiaPlanet recipe, fall back to MP3, or select a title-specific format. Callers targeting earlier ManiaPlanet formats use `ForMP1()`, `ForMP2()`, or `ForMP3()` explicitly. A shared MP4 format does not by itself guarantee that every node or value is usable in both Trackmania 2 and Shootmania.
 
@@ -178,7 +178,7 @@ Builders hold pending values, not a partially constructed node. Every slot recor
 
 Collection setters snapshot containers when called. Child node instances are shared unless cloning is explicitly requested. Mutating a supplied child can therefore affect multiple results, while adding a track to one built clip cannot change another clip's track container. Builders are not thread-safe.
 
-Apply pending assignments in caller order, including property assignments and repeated setters. This matters for related setters such as `Flags` and `IsGround`. The last assignment wins through the normal node setter. Preserve this ordering when snapshotting into a game stage.
+Apply pending assignments in caller order, including repeated setters. This matters for related setters such as `Flags` and `IsGround`. The last assignment wins through the normal node setter. Preserve this ordering when snapshotting into a game stage.
 
 ## One model for interfaces and construction
 
@@ -258,9 +258,9 @@ Generate live collection adapters and forwarding overloads. A read-only collecti
 
 Never cast `NodeRefList<TNode>` to a collection of interfaces. Mutable generic collections are invariant. Generated adapters must project elements individually and retain the owning reference handles. Optional element nullability follows the element contract.
 
-When a builder accepts a scoped child, generated conversion code checks that it is backed by a supported GBX.NET node implementation, then validates its compatibility. All game interfaces may be implemented by the same runtime class, so a successful interface cast alone is not proof of game compatibility. Unsupported user implementations produce a clear argument exception.
+When a builder accepts a scoped child, generated conversion code checks that it is backed by a supported GBX.NET node implementation. All game interfaces may be implemented by the same runtime class, so a successful interface cast alone is not proof of game compatibility. Callers are responsible for supplying compatible children. Unsupported user implementations produce a clear argument exception.
 
-Use the same compatibility checks at scoped parsing boundaries where evidence exists. Do not silently tighten existing permissive parsing in this feature. Missing game evidence and a known incompatible format are distinct outcomes that need separate diagnostics and migration decisions.
+Scoped child access projects the underlying nodes without walking their graphs or checking chunk game masks. Keep existing parsing and reference resolution behavior.
 
 ## Constructing a node for a game
 
@@ -268,7 +268,7 @@ A game qualifier means that the game writes that chunk. It does not by itself es
 
 For a node with an unambiguous ordinary chunk layout, derive the default recipe from its writable chunks for the selected game, including base node chunks. Include all unconditional recipe chunks, even when the caller did not set any corresponding property. Creating only chunks touched by setters would produce incomplete nodes.
 
-For example, the current `CGameCtnMediaClip` layout gives this candidate selection before any exceptional conditions or required-value validation:
+For example, the current `CGameCtnMediaClip` layout gives this candidate selection before any exceptional conditions:
 
 | Game | Body chunks | Version selection |
 | --- | --- | --- |
@@ -292,12 +292,11 @@ Each call to `Build()` or `BuildInterface()` performs these steps:
 2. Create the recipe's unconditional chunks with the exact game context and correct initial versions. Use typed construction and the normal node chunk collection. The existing Gbx conversion separates header chunks for header serialization.
 3. Apply pending assignments through public setters in caller order. Copy reference handles and collection containers without resolving external files.
 4. Run the optional customization hook, then evaluate conditional recipe steps and establish their dependencies. Reuse existing chunks instead of creating duplicates.
-5. Validate required values, selected versions, chunk conflicts, conditional payloads, and supplied child compatibility. Run optional domain validation as part of this phase.
-6. Return the concrete node from `Build()`, or the node through its scoped interface from `BuildInterface()`.
+5. Return the concrete node from `Build()`, or the node through its scoped interface from `BuildInterface()`.
 
-A failed build leaves the builder reusable. It does not publish a partially valid node. Generated validation runs after customization so a partial cannot accidentally bypass the normal guarantees.
+A failed build leaves the builder reusable. Recipes establish the initial chunks and versions. Customizations are responsible for preserving their validity. Callers supply required values and compatible children. Builders do not recheck recipe chunks, versions, required members, or child graphs.
 
-`CMwNod.GameVersion` is an inferred compatibility mask, not stored build intent. A node built for TMF can remain compatible with several games. Validate that the selected game is supported where the mask provides evidence, rather than requiring mask equality. `Unspecified` means insufficient or conflicting evidence and cannot prove either compatibility or incompatibility on its own. The creation recipe must supply the missing evidence or reject the build.
+`CMwNod.GameVersion` is an inferred compatibility mask, not stored build intent. A node built for TMF can remain compatible with several games. `Unspecified` means insufficient or conflicting evidence and cannot prove either compatibility or incompatibility on its own. Builders use the creation recipe to select chunks and defaults and do not gate construction on this mask.
 
 ### Defaults and required input
 
@@ -305,9 +304,9 @@ Keep defaults in the existing node and chunk initialization model. Explicit call
 
 Game selection accepts one exact `GameVersion`. Any runtime selector added later must reject `Unspecified`, unknown bits, and combined flags. Chunk versions come from the selected game's constructor rules, not from the largest version ever observed for the chunk. Signed integer version branches use `value >= 1` where applicable.
 
-Use existing fallback defaults and constructors as they are defined. Do not invent names such as `"Unnamed clip"`, create arbitrary child nodes, or substitute empty values just to satisfy a non-null contract. If a required child or required data has no valid default, the ordinary generated builder requires the caller to supply it and reports the member when building without it.
+Use existing fallback defaults and constructors as they are defined. Do not invent names such as `"Unnamed clip"`, create arbitrary child nodes, or substitute empty values just to satisfy a non-null contract. If a required child or required data has no valid default, the caller is responsible for supplying it. Building leaves omitted values at their existing defaults.
 
-Empty collections are valid defaults only where the contract allows them. A required collection of keys may also need a minimum count or domain validation. Required node defaults may be generated from an explicit construction expression, but automatic recursive creation of every non-null child risks cycles and invalid placeholder graphs.
+Callers or handwritten customizations enforce domain requirements such as a minimum key count. Required node defaults may be generated from an explicit construction expression, but automatic recursive creation of every non-null child risks cycles and invalid placeholder graphs.
 
 ## References and external files
 
@@ -318,11 +317,11 @@ Builders must preserve the [node reference model](../NodeReferences.md). Generat
 - A scalar reference overload copies a `NodeRef<T>` into the destination member's reference handle. Assigning a plain node intentionally selects an embedded reference through the existing node setter.
 - Descriptor assignment is available only where the wire operation supports external references. Inline nodes and value archives cannot acquire file descriptors through a convenience overload.
 
-Building must not perform filesystem I/O merely to validate or copy a reference. An unresolved external reference has deferred child compatibility. Validate its descriptor and wire representation during building, and validate the resolved child's contract when it is accessed. Preserve resolver failures. Do not call unresolved data a guaranteed compatible loaded child.
+Building copies reference descriptors and handles without resolving external files. Scoped access resolves references only when needed and preserves resolver failures. Callers are responsible for child compatibility, including children supplied through external references.
 
 ## Optional partial customizations
 
-Ordinary nodes need no partials. Emit stable hooks in the concrete game stage for exceptional defaults, compound values, or domain validation. For example:
+Ordinary nodes need no partials. Emit an optional customization hook in the concrete game stage for exceptional defaults and compound values. For example:
 
 ```cs
 namespace GBX.NET.Builders.Engines.Game;
@@ -335,15 +334,15 @@ public partial class CGameCtnMediaTrackBuilder
 
         partial void CustomizeNode(CGameCtnMediaTrack node)
         {
-            // Optional domain customization before final validation.
+            // Optional domain customization after pending assignments.
         }
     }
 }
 ```
 
-Generate matching optional `partial void CustomizeNode(TNode node)` and `partial void ValidateNode(TNode node)` declarations. A recipe hook for exceptional chunks runs at the same customization point. Property normalization hooks may be added where needed, but do not generate a large public extension framework by default.
+Generate an optional `partial void CustomizeNode(TNode node)` declaration. Exceptional recipe changes and any domain-specific checks belong in this hook. Property normalization hooks may be added where needed, but do not generate a large public extension framework by default.
 
-Custom methods delegate to generated setters so assignment tracking and ordering remain correct. Generate finalization and validation even when a partial exists. An arbitrary method named `Build` or `BuildInterface` must not silently replace construction logic.
+Custom methods delegate to generated setters so assignment tracking and ordering remain correct. Generate construction even when a partial exists. An arbitrary method named `Build` or `BuildInterface` must not silently replace construction logic.
 
 Partial interfaces can add domain members, with handwritten node implementations where needed. During migration, recognize existing members by full signature, including generic arity, parameter modifiers, and explicit interface ownership. Suppress an equivalent generated declaration, and diagnose an incompatible collision. A same-name method alone is not a customization contract.
 
@@ -354,7 +353,7 @@ Implement the feature inside `GBX.NET.Generators` so its outputs consume the sam
 1. Extend type inventory to include handwritten builders and interfaces. `ExistingTypeAnalysis` currently filters primarily to engine types and the root namespace, so it does not yet inventory these namespaces.
 2. Build a `GameNodeModel` and per-game creation recipes from the existing `GenerationPlan`, field mappings, and handwritten contracts.
 3. Use `GameApiWriter` to emit partial interfaces and explicit node forwarding implementations.
-4. Use the same writer for factories, pending state, common and game stages, typed construction, and validation.
+4. Use the same writer for factories, pending state, common and game stages, and typed construction.
 5. Generate diagnostics and a deterministic coverage summary from the same model.
 
 `GameNodeModel`, `GameMember`, `GameChunk`, and `GameMethod` hold the shared model. Use semantic symbols for handwritten property types and accessibility checks where syntax matching is insufficient. Generated engine members are absent from the input compilation, so derive their signatures from the normalized layout model. Do not depend on running one source generator before another or reparsing emitted source.
@@ -370,9 +369,9 @@ Keep member implementations proportional to distinct contracts and recipes rathe
 - Common setters share a generic base. Overlapping game-specific member sets share additional bases where at least two stages use them, retaining each stage's fluent return type. Handwritten replacements stay on the affected stage.
 - A property's declaring node owns its shared assignment descriptor. Derived builders supply their own availability masks, preserving setter order and snapshot behavior. Initialize descriptors lazily so using one setter does not root all setters during trimming.
 - Generated setters call those descriptors directly. Emit `Set<Property>` and `Set<Property>Reference` compatibility bridges only when a handwritten builder partial references them, including method groups and `nameof` expressions.
-- Identical ordered chunk recipes and versions share typed creation and validation methods. Pass the selected game to constructors to retain game-specific defaults. Keep optional customization and validation hooks on each concrete stage.
+- Identical ordered chunk recipes and versions share typed creation methods. Pass the selected game to constructors to retain game-specific defaults. Keep the optional customization hook on each concrete stage.
 - Derived interfaces inherit equivalent parent members. Game interfaces share member contracts, with generic parameters for scoped child interfaces. Keep existing handwritten interface declarations and their accessor slots.
-- Scoped collection views share conversion and child-validation code, while their collection getter follows replacement of the owner's collection.
+- Scoped collection views share projection code, while their collection getter follows replacement of the owner's collection.
 
 Generated member-group names are implementation details and may change when metadata changes. Preserve the named node and game interfaces, selectors, stage return types, and `Build()`/`BuildInterface()` behavior. Compare assembly size as well as generated source size when changing this structure.
 
@@ -384,10 +383,9 @@ Allocate diagnostic IDs during implementation. At minimum, distinguish:
 | --- | --- |
 | Missing game or parent archive context | Report the missing evidence and omit only the affected projection or factory. |
 | Conflicting creation alternatives or defaults | Report an error for that recipe. Do not emit a callable factory that fails inevitably. |
-| Required value has no default | Generate an ordinary input slot and a build-time error naming the missing member. |
+| Required value has no default | Generate an ordinary setter. The caller supplies the value when needed. |
 | Unsupported setter or opaque writer | Explain which member or recipe needs metadata or a partial implementation. |
 | Invalid partial, signature collision, or inaccessible constructor | Report the conflicting declaration at its source. |
-| Known incompatible supplied child | Reject building with the owner member, selected game, and child type in the message. |
 
 Diagnostics should point to the layout or handwritten declaration that can fix the problem. Metadata gaps must not force users to maintain parallel per-game builder classes.
 
@@ -401,10 +399,10 @@ Verification for implementation should cover:
 
 - Compilation of generated sources and consumer snippets. Unsupported setters and properties must fail to compile through a selected game stage or interface, except for explicitly retained obsolete compatibility members.
 - An added game shrinking the common intersection. A handwritten obsolete compatibility member preserves old calls with a warning, supports migration to game-specific setters, and rejects unsupported assignments when building.
-- Return types: `Build()` returns the concrete node and `BuildInterface()` returns the selected game's interface. Both methods apply the same construction and validation rules.
+- Return types: `Build()` returns the concrete node and `BuildInterface()` returns the selected game's interface. Both methods apply the same construction rules.
 - Selector names match `GameVersion`. `ForTM2()` and `ForSM()` return the MP4 stage and behave identically to `ForMP4()`, including scoped return types and snapshots. All three are absent when MP4 construction is unsupported.
 - Construction of the expected header and body chunks with the selected versions. Cover inherited chunks, base payload reuse, alternatives, conditional payloads, and self-archives.
-- Omitted values versus explicit `null`, `false`, zero, and empty collections. Check required-member exceptions and setter ordering for overlapping flags.
+- Omitted values versus explicit `null`, `false`, zero, and empty collections. Check that building preserves omitted required values and setter ordering for overlapping flags. Required scoped getters retain their null checks.
 - Builder reuse, game-stage snapshots, and independent collection containers. Check that build failures do not consume pending state.
 - Scoped child projections, optional values, incompatible children, and descriptor copying that does not resolve files.
 - Partial customization, signature collisions, and a new layout generating its factory, builder, and interfaces without handwritten companion files.

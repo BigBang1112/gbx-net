@@ -36,64 +36,34 @@ public abstract class CPlugSpriteParamBuilderBase<TSelf> where TSelf : CPlugSpri
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpriteParam> state;
     private protected CPlugSpriteParamBuilderBase() => state = new();
     private protected CPlugSpriteParamBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpriteParam> state) => this.state = state;
-    public float GlobalDirTiltFactor
-    {
-        get => state.Get<float>("GlobalDirTiltFactor");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpriteParamBuilderAssignments.GetGlobalDirTiltFactorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithGlobalDirTiltFactor(float value)
     {
-        GlobalDirTiltFactor = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpriteParamBuilderAssignments.GetGlobalDirTiltFactorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public Vec3 GlobalDirection
-    {
-        get => state.Get<Vec3>("GlobalDirection");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpriteParamBuilderAssignments.GetGlobalDirectionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGlobalDirection(Vec3 value)
     {
-        GlobalDirection = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpriteParamBuilderAssignments.GetGlobalDirectionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public Vec2 PivotPoint
-    {
-        get => state.Get<Vec2>("PivotPoint");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpriteParamBuilderAssignments.GetPivotPointAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithPivotPoint(Vec2 value)
     {
-        PivotPoint = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpriteParamBuilderAssignments.GetPivotPointAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float TextureHeightInWorld
-    {
-        get => state.Get<float>("TextureHeightInWorld");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpriteParamBuilderAssignments.GetTextureHeightInWorldAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTextureHeightInWorld(float value)
     {
-        TextureHeightInWorld = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpriteParamBuilderAssignments.GetTextureHeightInWorldAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float? VisibleMaxDistAtFov90
-    {
-        get => state.Get<float?>("VisibleMaxDistAtFov90");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpriteParamBuilderAssignments.GetVisibleMaxDistAtFov90Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithVisibleMaxDistAtFov90(float? value)
     {
-        VisibleMaxDistAtFov90 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpriteParamBuilderAssignments.GetVisibleMaxDistAtFov90Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float? VisibleMinScreenHeight01
-    {
-        get => state.Get<float?>("VisibleMinScreenHeight01");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpriteParamBuilderAssignments.GetVisibleMinScreenHeight01Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithVisibleMinScreenHeight01(float? value)
     {
-        VisibleMinScreenHeight01 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpriteParamBuilderAssignments.GetVisibleMinScreenHeight01Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -105,13 +75,6 @@ public partial class CPlugSpriteParamBuilder : CPlugSpriteParamBuilderBase<CPlug
         var chunk090AC001 = new global::GBX.NET.Engines.Plug.CPlugSpriteParam.Chunk090AC001(game);
         node.Chunks.Add(chunk090AC001);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugSpriteParam node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSpriteParam.Chunk090AC001>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090AC001 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugSpriteParam node, GameVersion game)
-    {
     }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -128,14 +91,9 @@ public partial class CPlugSpriteParamBuilder : CPlugSpriteParamBuilderBase<CPlug
             var node = CPlugSpriteParamBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CPlugSpriteParamBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CPlugSpriteParamBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSpriteParam node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugSpriteParam node);
     }
     public partial class TMT : CPlugSpriteParamBuilderBase<TMT>
     {
@@ -146,14 +104,9 @@ public partial class CPlugSpriteParamBuilder : CPlugSpriteParamBuilderBase<CPlug
             var node = CPlugSpriteParamBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugSpriteParamBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugSpriteParamBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSpriteParam node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugSpriteParam node);
     }
     public partial class MP4 : CPlugSpriteParamBuilderBase<MP4>
     {
@@ -164,14 +117,9 @@ public partial class CPlugSpriteParamBuilder : CPlugSpriteParamBuilderBase<CPlug
             var node = CPlugSpriteParamBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugSpriteParamBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugSpriteParamBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSpriteParam node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugSpriteParam node);
     }
     public partial class TM2020 : CPlugSpriteParamBuilderBase<TM2020>
     {
@@ -182,13 +130,8 @@ public partial class CPlugSpriteParamBuilder : CPlugSpriteParamBuilderBase<CPlug
             var node = CPlugSpriteParamBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugSpriteParamBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugSpriteParamBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSpriteParam node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugSpriteParam node);
     }
 }

@@ -36,106 +36,61 @@ public abstract class CFuncTreeSubVisualSequenceBuilderBase<TSelf> where TSelf :
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence> state;
     private protected CFuncTreeSubVisualSequenceBuilderBase() => state = new();
     private protected CFuncTreeSubVisualSequenceBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence> state) => this.state = state;
-    public bool AutoCreateMotion
-    {
-        get => state.Get<bool>("AutoCreateMotion");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetAutoCreateMotionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithAutoCreateMotion(bool value)
     {
-        AutoCreateMotion = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetAutoCreateMotionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float Period
-    {
-        get => state.Get<float>("Period");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetPeriodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPeriod(float value)
     {
-        Period = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetPeriodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float Phase
-    {
-        get => state.Get<float>("Phase");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetPhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPhase(float value)
     {
-        Phase = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetPhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Function.CFuncKeysNatural? SubKeys
-    {
-        get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysNatural?>("SubKeys");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncTreeSubVisualSequenceBuilderAssignments.GetSubKeysAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSubKeys(global::GBX.NET.Engines.Function.CFuncKeysNatural? value)
     {
-        SubKeys = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncTreeSubVisualSequenceBuilderAssignments.GetSubKeysAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CFuncTreeSubVisualSequenceBuilderMembers1<TSelf> : CFuncTreeSubVisualSequenceBuilderBase<TSelf> where TSelf : CFuncTreeSubVisualSequenceBuilderMembers1<TSelf>
 {
     private protected CFuncTreeSubVisualSequenceBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence> state) : base(state) { }
-    public bool RandomizePhase
-    {
-        get => state.Get<bool>("RandomizePhase");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithRandomizePhase(bool value)
     {
-        RandomizePhase = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CFuncTreeSubVisualSequenceBuilderMembers2<TSelf> : CFuncTreeSubVisualSequenceBuilderMembers1<TSelf> where TSelf : CFuncTreeSubVisualSequenceBuilderMembers2<TSelf>
 {
     private protected CFuncTreeSubVisualSequenceBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence> state) : base(state) { }
-    public int SimpleModeEndIndex
-    {
-        get => state.Get<int>("SimpleModeEndIndex");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncTreeSubVisualSequenceBuilderAssignments.GetSimpleModeEndIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithSimpleModeEndIndex(int value)
     {
-        SimpleModeEndIndex = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncTreeSubVisualSequenceBuilderAssignments.GetSimpleModeEndIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool SimpleModeIsLooping
-    {
-        get => state.Get<bool>("SimpleModeIsLooping");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncTreeSubVisualSequenceBuilderAssignments.GetSimpleModeIsLoopingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSimpleModeIsLooping(bool value)
     {
-        SimpleModeIsLooping = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncTreeSubVisualSequenceBuilderAssignments.GetSimpleModeIsLoopingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int SimpleModeStartIndex
-    {
-        get => state.Get<int>("SimpleModeStartIndex");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncTreeSubVisualSequenceBuilderAssignments.GetSimpleModeStartIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSimpleModeStartIndex(int value)
     {
-        SimpleModeStartIndex = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncTreeSubVisualSequenceBuilderAssignments.GetSimpleModeStartIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CFuncTreeSubVisualSequenceBuilderMembers3<TSelf> : CFuncTreeSubVisualSequenceBuilderMembers2<TSelf> where TSelf : CFuncTreeSubVisualSequenceBuilderMembers3<TSelf>
 {
     private protected CFuncTreeSubVisualSequenceBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence> state) : base(state) { }
-    public string? InputValId
-    {
-        get => state.Get<string?>("InputValId");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetInputValIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    }
     public TSelf WithInputValId(string? value)
     {
-        InputValId = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetInputValIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -152,12 +107,6 @@ public partial class CFuncTreeSubVisualSequenceBuilder : CFuncTreeSubVisualSeque
         node.Chunks.Add(chunk0500B003);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence.Chunk05031000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05031000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence.Chunk05031001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05031001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0500B003 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence();
@@ -168,12 +117,6 @@ public partial class CFuncTreeSubVisualSequenceBuilder : CFuncTreeSubVisualSeque
         var chunk0500B004 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004();
         node.Chunks.Add(chunk0500B004);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence.Chunk05031000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05031000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence.Chunk05031001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05031001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0500B004 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence CreateRecipe2(GameVersion game)
     {
@@ -188,13 +131,6 @@ public partial class CFuncTreeSubVisualSequenceBuilder : CFuncTreeSubVisualSeque
         node.Chunks.Add(chunk0500B004);
         return node;
     }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence.Chunk05031001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05031001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence.Chunk05031002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05031002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence.Chunk05031003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05031003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0500B004 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence();
@@ -207,16 +143,6 @@ public partial class CFuncTreeSubVisualSequenceBuilder : CFuncTreeSubVisualSeque
         var chunk0500B005 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005();
         node.Chunks.Add(chunk0500B005);
         return node;
-    }
-    private static void ValidateRecipe3(global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence.Chunk05031001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05031001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence.Chunk05031002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05031002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence.Chunk05031003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05031003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0500B005 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence node, GameVersion game)
-    {
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -239,14 +165,9 @@ public partial class CFuncTreeSubVisualSequenceBuilder : CFuncTreeSubVisualSeque
             var node = CFuncTreeSubVisualSequenceBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CFuncTreeSubVisualSequenceBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CFuncTreeSubVisualSequenceBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence node);
     }
     public partial class TMPU : CFuncTreeSubVisualSequenceBuilderMembers1<TMPU>
     {
@@ -257,14 +178,9 @@ public partial class CFuncTreeSubVisualSequenceBuilder : CFuncTreeSubVisualSeque
             var node = CFuncTreeSubVisualSequenceBuilder.CreateRecipe1(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CFuncTreeSubVisualSequenceBuilder.ValidateRecipe1(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CFuncTreeSubVisualSequenceBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence node);
     }
     public partial class TMSX : CFuncTreeSubVisualSequenceBuilderMembers1<TMSX>
     {
@@ -275,14 +191,9 @@ public partial class CFuncTreeSubVisualSequenceBuilder : CFuncTreeSubVisualSeque
             var node = CFuncTreeSubVisualSequenceBuilder.CreateRecipe1(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CFuncTreeSubVisualSequenceBuilder.ValidateRecipe1(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CFuncTreeSubVisualSequenceBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence node);
     }
     public partial class TMNESWC : CFuncTreeSubVisualSequenceBuilderMembers1<TMNESWC>
     {
@@ -293,14 +204,9 @@ public partial class CFuncTreeSubVisualSequenceBuilder : CFuncTreeSubVisualSeque
             var node = CFuncTreeSubVisualSequenceBuilder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CFuncTreeSubVisualSequenceBuilder.ValidateRecipe1(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CFuncTreeSubVisualSequenceBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence node);
     }
     public partial class VSK5 : CFuncTreeSubVisualSequenceBuilderMembers2<VSK5>
     {
@@ -311,14 +217,9 @@ public partial class CFuncTreeSubVisualSequenceBuilder : CFuncTreeSubVisualSeque
             var node = CFuncTreeSubVisualSequenceBuilder.CreateRecipe2(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CFuncTreeSubVisualSequenceBuilder.ValidateRecipe2(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CFuncTreeSubVisualSequenceBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence node);
     }
     public partial class TMF : CFuncTreeSubVisualSequenceBuilderMembers3<TMF>
     {
@@ -329,14 +230,9 @@ public partial class CFuncTreeSubVisualSequenceBuilder : CFuncTreeSubVisualSeque
             var node = CFuncTreeSubVisualSequenceBuilder.CreateRecipe3(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CFuncTreeSubVisualSequenceBuilder.ValidateRecipe3(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CFuncTreeSubVisualSequenceBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence node);
     }
     public partial class MP3 : CFuncTreeSubVisualSequenceBuilderMembers3<MP3>
     {
@@ -347,14 +243,9 @@ public partial class CFuncTreeSubVisualSequenceBuilder : CFuncTreeSubVisualSeque
             var node = CFuncTreeSubVisualSequenceBuilder.CreateRecipe3(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CFuncTreeSubVisualSequenceBuilder.ValidateRecipe3(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CFuncTreeSubVisualSequenceBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence node);
     }
     public partial class TMT : CFuncTreeSubVisualSequenceBuilderMembers3<TMT>
     {
@@ -365,14 +256,9 @@ public partial class CFuncTreeSubVisualSequenceBuilder : CFuncTreeSubVisualSeque
             var node = CFuncTreeSubVisualSequenceBuilder.CreateRecipe3(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CFuncTreeSubVisualSequenceBuilder.ValidateRecipe3(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CFuncTreeSubVisualSequenceBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence node);
     }
     public partial class MP4 : CFuncTreeSubVisualSequenceBuilderMembers3<MP4>
     {
@@ -383,14 +269,9 @@ public partial class CFuncTreeSubVisualSequenceBuilder : CFuncTreeSubVisualSeque
             var node = CFuncTreeSubVisualSequenceBuilder.CreateRecipe3(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CFuncTreeSubVisualSequenceBuilder.ValidateRecipe3(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CFuncTreeSubVisualSequenceBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence node);
     }
     public partial class TM2020 : CFuncTreeSubVisualSequenceBuilderMembers3<TM2020>
     {
@@ -401,13 +282,8 @@ public partial class CFuncTreeSubVisualSequenceBuilder : CFuncTreeSubVisualSeque
             var node = CFuncTreeSubVisualSequenceBuilder.CreateRecipe3(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CFuncTreeSubVisualSequenceBuilder.ValidateRecipe3(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CFuncTreeSubVisualSequenceBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence node);
     }
 }

@@ -36,38 +36,23 @@ public abstract class CPlugVertexStreamBuilderBase<TSelf> where TSelf : CPlugVer
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVertexStream> state;
     private protected CPlugVertexStreamBuilderBase() => state = new();
     private protected CPlugVertexStreamBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVertexStream> state) => this.state = state;
-    public global::GBX.NET.Engines.Plug.CPlugVertexStream.DataDecl[]? DataDecls
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugVertexStream.DataDecl[]?>("DataDecls");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVertexStreamBuilderAssignments.GetDataDeclsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithDataDecls(params global::GBX.NET.Engines.Plug.CPlugVertexStream.DataDecl[]? value)
     {
-        DataDecls = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVertexStreamBuilderAssignments.GetDataDeclsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithDataDecls(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVertexStream.DataDecl> values)
     {
         return WithDataDecls(values.ToArray());
     }
-    public uint Flags
-    {
-        get => state.Get<uint>("Flags");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVertexStreamBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithFlags(uint value)
     {
-        Flags = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVertexStreamBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugVertexStream? StreamModel
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugVertexStream?>("StreamModel");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVertexStreamBuilderAssignments.GetStreamModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithStreamModel(global::GBX.NET.Engines.Plug.CPlugVertexStream? value)
     {
-        StreamModel = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVertexStreamBuilderAssignments.GetStreamModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithStreamModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugVertexStream> value)
@@ -76,28 +61,18 @@ public abstract class CPlugVertexStreamBuilderBase<TSelf> where TSelf : CPlugVer
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVertexStreamBuilderAssignments.GetStreamModelReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public int VertexCount
-    {
-        get => state.Get<int>("VertexCount");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVertexStreamBuilderAssignments.GetVertexCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithVertexCount(int value)
     {
-        VertexCount = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVertexStreamBuilderAssignments.GetVertexCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CPlugVertexStreamBuilderMembers1<TSelf> : CPlugVertexStreamBuilderBase<TSelf> where TSelf : CPlugVertexStreamBuilderMembers1<TSelf>
 {
     private protected CPlugVertexStreamBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVertexStream> state) : base(state) { }
-    public bool CompressLocalFloat3
-    {
-        get => state.Get<bool>("CompressLocalFloat3");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVertexStreamBuilderAssignments.GetCompressLocalFloat3Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithCompressLocalFloat3(bool value)
     {
-        CompressLocalFloat3 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVertexStreamBuilderAssignments.GetCompressLocalFloat3Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
 }
@@ -110,23 +85,12 @@ public partial class CPlugVertexStreamBuilder : CPlugVertexStreamBuilderBase<CPl
         node.Chunks.Add(chunk09056000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugVertexStream node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVertexStream.Chunk09056000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk09056000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugVertexStream CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugVertexStream();
         var chunk09056000 = new global::GBX.NET.Engines.Plug.CPlugVertexStream.Chunk09056000(game);
         node.Chunks.Add(chunk09056000);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugVertexStream node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVertexStream.Chunk09056000>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk09056000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugVertexStream node, GameVersion game)
-    {
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
@@ -151,14 +115,9 @@ public partial class CPlugVertexStreamBuilder : CPlugVertexStreamBuilderBase<CPl
             var node = CPlugVertexStreamBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CPlugVertexStreamBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CPlugVertexStreamBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVertexStream node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVertexStream node);
     }
     public partial class TMNESWC : CPlugVertexStreamBuilderBase<TMNESWC>
     {
@@ -173,14 +132,9 @@ public partial class CPlugVertexStreamBuilder : CPlugVertexStreamBuilderBase<CPl
             var node = CPlugVertexStreamBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CPlugVertexStreamBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CPlugVertexStreamBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVertexStream node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVertexStream node);
     }
     public partial class VSK5 : CPlugVertexStreamBuilderBase<VSK5>
     {
@@ -195,14 +149,9 @@ public partial class CPlugVertexStreamBuilder : CPlugVertexStreamBuilderBase<CPl
             var node = CPlugVertexStreamBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CPlugVertexStreamBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CPlugVertexStreamBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVertexStream node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVertexStream node);
     }
     public partial class TMF : CPlugVertexStreamBuilderBase<TMF>
     {
@@ -217,14 +166,9 @@ public partial class CPlugVertexStreamBuilder : CPlugVertexStreamBuilderBase<CPl
             var node = CPlugVertexStreamBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CPlugVertexStreamBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CPlugVertexStreamBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVertexStream node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVertexStream node);
     }
     public partial class MP3 : CPlugVertexStreamBuilderMembers1<MP3>
     {
@@ -239,14 +183,9 @@ public partial class CPlugVertexStreamBuilder : CPlugVertexStreamBuilderBase<CPl
             var node = CPlugVertexStreamBuilder.CreateRecipe1(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CPlugVertexStreamBuilder.ValidateRecipe1(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CPlugVertexStreamBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVertexStream node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVertexStream node);
     }
     public partial class TMT : CPlugVertexStreamBuilderBase<TMT>
     {
@@ -261,14 +200,9 @@ public partial class CPlugVertexStreamBuilder : CPlugVertexStreamBuilderBase<CPl
             var node = CPlugVertexStreamBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugVertexStreamBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugVertexStreamBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVertexStream node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVertexStream node);
     }
     public partial class MP4 : CPlugVertexStreamBuilderMembers1<MP4>
     {
@@ -283,14 +217,9 @@ public partial class CPlugVertexStreamBuilder : CPlugVertexStreamBuilderBase<CPl
             var node = CPlugVertexStreamBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugVertexStreamBuilder.ValidateRecipe1(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugVertexStreamBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVertexStream node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVertexStream node);
     }
     public partial class TM2020 : CPlugVertexStreamBuilderMembers1<TM2020>
     {
@@ -305,13 +234,8 @@ public partial class CPlugVertexStreamBuilder : CPlugVertexStreamBuilderBase<CPl
             var node = CPlugVertexStreamBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugVertexStreamBuilder.ValidateRecipe1(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugVertexStreamBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVertexStream node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVertexStream node);
     }
 }

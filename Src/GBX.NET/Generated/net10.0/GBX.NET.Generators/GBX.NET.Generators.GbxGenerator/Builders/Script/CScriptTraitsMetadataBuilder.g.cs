@@ -48,11 +48,6 @@ public partial class CScriptTraitsMetadataBuilder : CScriptTraitsMetadataBuilder
         node.Chunks.Add(chunk11001000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Script.CScriptTraitsMetadata node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Script.CScriptTraitsMetadata.Chunk11002000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk11002000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Script.CScriptTraitsMetadata.Chunk11001000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk11001000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Script.CScriptTraitsMetadata CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Script.CScriptTraitsMetadata();
@@ -60,23 +55,12 @@ public partial class CScriptTraitsMetadataBuilder : CScriptTraitsMetadataBuilder
         node.Chunks.Add(chunk11002000);
         return node;
     }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Script.CScriptTraitsMetadata node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Script.CScriptTraitsMetadata.Chunk11002000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk11002000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Script.CScriptTraitsMetadata CreateRecipe2(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Script.CScriptTraitsMetadata();
         var chunk11002000 = new global::GBX.NET.Engines.Script.CScriptTraitsMetadata.Chunk11002000();
         node.Chunks.Add(chunk11002000);
         return node;
-    }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Script.CScriptTraitsMetadata node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Script.CScriptTraitsMetadata.Chunk11002000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk11002000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Script.CScriptTraitsMetadata node, GameVersion game)
-    {
     }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -93,14 +77,9 @@ public partial class CScriptTraitsMetadataBuilder : CScriptTraitsMetadataBuilder
             var node = CScriptTraitsMetadataBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CScriptTraitsMetadataBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CScriptTraitsMetadataBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Script.CScriptTraitsMetadata node);
-        partial void ValidateNode(global::GBX.NET.Engines.Script.CScriptTraitsMetadata node);
     }
     public partial class TMT : CScriptTraitsMetadataBuilderBase<TMT>
     {
@@ -111,14 +90,9 @@ public partial class CScriptTraitsMetadataBuilder : CScriptTraitsMetadataBuilder
             var node = CScriptTraitsMetadataBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CScriptTraitsMetadataBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CScriptTraitsMetadataBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Script.CScriptTraitsMetadata node);
-        partial void ValidateNode(global::GBX.NET.Engines.Script.CScriptTraitsMetadata node);
     }
     public partial class MP4 : CScriptTraitsMetadataBuilderBase<MP4>
     {
@@ -129,14 +103,9 @@ public partial class CScriptTraitsMetadataBuilder : CScriptTraitsMetadataBuilder
             var node = CScriptTraitsMetadataBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CScriptTraitsMetadataBuilder.ValidateRecipe1(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CScriptTraitsMetadataBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Script.CScriptTraitsMetadata node);
-        partial void ValidateNode(global::GBX.NET.Engines.Script.CScriptTraitsMetadata node);
     }
     public partial class TM2020 : CScriptTraitsMetadataBuilderBase<TM2020>
     {
@@ -147,13 +116,8 @@ public partial class CScriptTraitsMetadataBuilder : CScriptTraitsMetadataBuilder
             var node = CScriptTraitsMetadataBuilder.CreateRecipe2(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CScriptTraitsMetadataBuilder.ValidateRecipe2(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CScriptTraitsMetadataBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Script.CScriptTraitsMetadata node);
-        partial void ValidateNode(global::GBX.NET.Engines.Script.CScriptTraitsMetadata node);
     }
 }

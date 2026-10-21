@@ -36,28 +36,18 @@ public abstract class CShootManiaBuilderBase<TSelf> where TSelf : CShootManiaBui
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.ShootMania.CShootMania> state;
     private protected CShootManiaBuilderBase() => state = new();
     private protected CShootManiaBuilderBase(NodeBuilderState<global::GBX.NET.Engines.ShootMania.CShootMania> state) => this.state = state;
-    public string? Name
-    {
-        get => state.Get<string?>("Name");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameNodBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithName(string? value)
     {
-        Name = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameNodBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CShootManiaBuilderMembers1<TSelf> : CShootManiaBuilderBase<TSelf> where TSelf : CShootManiaBuilderMembers1<TSelf>
 {
     private protected CShootManiaBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.ShootMania.CShootMania> state) : base(state) { }
-    public global::GBX.NET.Engines.Scene.CScene2d? ArenaInterfaceUI
-    {
-        get => state.Get<global::GBX.NET.Engines.Scene.CScene2d?>("ArenaInterfaceUI");
-        set => state.Set(global::GBX.NET.Builders.Engines.ShootMania.CShootManiaBuilderAssignments.GetArenaInterfaceUIAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithArenaInterfaceUI(global::GBX.NET.Engines.Scene.CScene2d? value)
     {
-        ArenaInterfaceUI = value;
+        state.Set(global::GBX.NET.Builders.Engines.ShootMania.CShootManiaBuilderAssignments.GetArenaInterfaceUIAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithArenaInterfaceUIReference(NodeRef<global::GBX.NET.Engines.Scene.CScene2d> value)
@@ -66,14 +56,9 @@ public abstract class CShootManiaBuilderMembers1<TSelf> : CShootManiaBuilderBase
         state.Set(global::GBX.NET.Builders.Engines.ShootMania.CShootManiaBuilderAssignments.GetArenaInterfaceUIReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.ShootMania.CSmArenaResource? ArenaResources
-    {
-        get => state.Get<global::GBX.NET.Engines.ShootMania.CSmArenaResource?>("ArenaResources");
-        set => state.Set(global::GBX.NET.Builders.Engines.ShootMania.CShootManiaBuilderAssignments.GetArenaResourcesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithArenaResources(global::GBX.NET.Engines.ShootMania.CSmArenaResource? value)
     {
-        ArenaResources = value;
+        state.Set(global::GBX.NET.Builders.Engines.ShootMania.CShootManiaBuilderAssignments.GetArenaResourcesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithArenaResourcesReference(NodeRef<global::GBX.NET.Engines.ShootMania.CSmArenaResource> value)
@@ -92,10 +77,6 @@ public partial class CShootManiaBuilder : CShootManiaBuilderBase<CShootManiaBuil
         node.Chunks.Add(chunk03008000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.ShootMania.CShootMania node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03008000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.ShootMania.CShootMania CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.ShootMania.CShootMania();
@@ -104,14 +85,6 @@ public partial class CShootManiaBuilder : CShootManiaBuilderBase<CShootManiaBuil
         var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
         node.Chunks.Add(chunk03008000);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.ShootMania.CShootMania node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.ShootMania.CShootMania.Chunk2D000000>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk2D000000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03008000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.ShootMania.CShootMania node, GameVersion game)
-    {
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -134,14 +107,9 @@ public partial class CShootManiaBuilder : CShootManiaBuilderBase<CShootManiaBuil
             var node = CShootManiaBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CShootManiaBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CShootManiaBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.ShootMania.CShootMania node);
-        partial void ValidateNode(global::GBX.NET.Engines.ShootMania.CShootMania node);
     }
     public partial class TMPU : CShootManiaBuilderBase<TMPU>
     {
@@ -152,14 +120,9 @@ public partial class CShootManiaBuilder : CShootManiaBuilderBase<CShootManiaBuil
             var node = CShootManiaBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CShootManiaBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CShootManiaBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.ShootMania.CShootMania node);
-        partial void ValidateNode(global::GBX.NET.Engines.ShootMania.CShootMania node);
     }
     public partial class TMSX : CShootManiaBuilderBase<TMSX>
     {
@@ -170,14 +133,9 @@ public partial class CShootManiaBuilder : CShootManiaBuilderBase<CShootManiaBuil
             var node = CShootManiaBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CShootManiaBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CShootManiaBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.ShootMania.CShootMania node);
-        partial void ValidateNode(global::GBX.NET.Engines.ShootMania.CShootMania node);
     }
     public partial class TMNESWC : CShootManiaBuilderBase<TMNESWC>
     {
@@ -188,14 +146,9 @@ public partial class CShootManiaBuilder : CShootManiaBuilderBase<CShootManiaBuil
             var node = CShootManiaBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CShootManiaBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CShootManiaBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.ShootMania.CShootMania node);
-        partial void ValidateNode(global::GBX.NET.Engines.ShootMania.CShootMania node);
     }
     public partial class VSK5 : CShootManiaBuilderBase<VSK5>
     {
@@ -206,14 +159,9 @@ public partial class CShootManiaBuilder : CShootManiaBuilderBase<CShootManiaBuil
             var node = CShootManiaBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CShootManiaBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CShootManiaBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.ShootMania.CShootMania node);
-        partial void ValidateNode(global::GBX.NET.Engines.ShootMania.CShootMania node);
     }
     public partial class TMF : CShootManiaBuilderBase<TMF>
     {
@@ -224,14 +172,9 @@ public partial class CShootManiaBuilder : CShootManiaBuilderBase<CShootManiaBuil
             var node = CShootManiaBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CShootManiaBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CShootManiaBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.ShootMania.CShootMania node);
-        partial void ValidateNode(global::GBX.NET.Engines.ShootMania.CShootMania node);
     }
     public partial class MP3 : CShootManiaBuilderBase<MP3>
     {
@@ -242,14 +185,9 @@ public partial class CShootManiaBuilder : CShootManiaBuilderBase<CShootManiaBuil
             var node = CShootManiaBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CShootManiaBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CShootManiaBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.ShootMania.CShootMania node);
-        partial void ValidateNode(global::GBX.NET.Engines.ShootMania.CShootMania node);
     }
     public partial class TMT : CShootManiaBuilderBase<TMT>
     {
@@ -260,14 +198,9 @@ public partial class CShootManiaBuilder : CShootManiaBuilderBase<CShootManiaBuil
             var node = CShootManiaBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CShootManiaBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CShootManiaBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.ShootMania.CShootMania node);
-        partial void ValidateNode(global::GBX.NET.Engines.ShootMania.CShootMania node);
     }
     public partial class MP4 : CShootManiaBuilderMembers1<MP4>
     {
@@ -286,14 +219,9 @@ public partial class CShootManiaBuilder : CShootManiaBuilderBase<CShootManiaBuil
             var node = CShootManiaBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CShootManiaBuilder.ValidateRecipe1(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CShootManiaBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.ShootMania.CShootMania node);
-        partial void ValidateNode(global::GBX.NET.Engines.ShootMania.CShootMania node);
     }
     public partial class TM2020 : CShootManiaBuilderMembers1<TM2020>
     {
@@ -312,13 +240,8 @@ public partial class CShootManiaBuilder : CShootManiaBuilderBase<CShootManiaBuil
             var node = CShootManiaBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CShootManiaBuilder.ValidateRecipe1(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CShootManiaBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.ShootMania.CShootMania node);
-        partial void ValidateNode(global::GBX.NET.Engines.ShootMania.CShootMania node);
     }
 }

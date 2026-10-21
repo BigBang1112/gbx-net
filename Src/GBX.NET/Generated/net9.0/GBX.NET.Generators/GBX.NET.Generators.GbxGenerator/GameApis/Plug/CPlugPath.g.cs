@@ -36,17 +36,17 @@ public partial class CPlugPath : global::GBX.NET.Interfaces.Plug.IPlugPath, glob
     public static global::GBX.NET.Builders.Engines.Plug.CPlugPathBuilder Create() => new();
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugPolyLine3>? global::GBX.NET.Interfaces.Plug.IPlugPath.PolyLines
     {
-        get => PolyLines is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugPolyLine3, global::GBX.NET.Interfaces.Plug.IPlugPolyLine3>(GetPolyLinesBuilderReferences, GameVersion.Unspecified, true, "PolyLines");
+        get => PolyLines is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugPolyLine3, global::GBX.NET.Interfaces.Plug.IPlugPolyLine3>(GetPolyLinesBuilderReferences, true, "PolyLines");
         set => PolyLines = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugPolyLine3>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugPolyLine3, global::GBX.NET.Interfaces.Plug.IPlugPolyLine3>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugPolyLine3MP4>? global::GBX.NET.Interfaces.Plug.IPlugPathMembers1<global::GBX.NET.Interfaces.Plug.IPlugPolyLine3MP4>.PolyLines
     {
-        get => PolyLines is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugPolyLine3, global::GBX.NET.Interfaces.Plug.IPlugPolyLine3MP4>(GetPolyLinesBuilderReferences, GameVersion.MP4, true, "PolyLines");
+        get => PolyLines is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugPolyLine3, global::GBX.NET.Interfaces.Plug.IPlugPolyLine3MP4>(GetPolyLinesBuilderReferences, true, "PolyLines");
         set => PolyLines = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugPolyLine3>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugPolyLine3, global::GBX.NET.Interfaces.Plug.IPlugPolyLine3MP4>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugPolyLine3TM2020>? global::GBX.NET.Interfaces.Plug.IPlugPathMembers1<global::GBX.NET.Interfaces.Plug.IPlugPolyLine3TM2020>.PolyLines
     {
-        get => PolyLines is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugPolyLine3, global::GBX.NET.Interfaces.Plug.IPlugPolyLine3TM2020>(GetPolyLinesBuilderReferences, GameVersion.TM2020, true, "PolyLines");
+        get => PolyLines is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugPolyLine3, global::GBX.NET.Interfaces.Plug.IPlugPolyLine3TM2020>(GetPolyLinesBuilderReferences, true, "PolyLines");
         set => PolyLines = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugPolyLine3>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugPolyLine3, global::GBX.NET.Interfaces.Plug.IPlugPolyLine3TM2020>(value, false));
     }
     private NodeRefList<global::GBX.NET.Engines.Plug.CPlugPolyLine3>? GetPolyLinesBuilderReferences() => PolyLines;

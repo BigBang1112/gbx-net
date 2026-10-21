@@ -46,10 +46,6 @@ public partial class CVisionResourceFileBuilder : CVisionResourceFileBuilderBase
         node.Chunks.Add(chunk0C012002);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Vision.CVisionResourceFile node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Vision.CVisionResourceFile.Chunk0C012002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0C012002 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Vision.CVisionResourceFile CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Vision.CVisionResourceFile();
@@ -59,14 +55,6 @@ public partial class CVisionResourceFileBuilder : CVisionResourceFileBuilderBase
         node.Chunks.Add(chunk0C01201D);
         return node;
     }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Vision.CVisionResourceFile node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Vision.CVisionResourceFile.Chunk0C01200C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0C01200C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Vision.CVisionResourceFile.Chunk0C01201D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0C01201D is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Vision.CVisionResourceFile node, GameVersion game)
-    {
-    }
     public TMF ForTMF() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -74,14 +62,9 @@ public partial class CVisionResourceFileBuilder : CVisionResourceFileBuilderBase
     public partial class TMF : CVisionResourceFileBuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Vision.CVisionResourceFile> state) : base(state) { }
-        public global::GBX.NET.Engines.MwFoundations.CMwNod? BitmapDeferredFaceNormalInC
-        {
-            get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("BitmapDeferredFaceNormalInC");
-            set => state.Set(global::GBX.NET.Builders.Engines.Vision.CVisionResourceFileBuilderAssignments.GetBitmapDeferredFaceNormalInCAssignment(), value, GameVersion.TMF);
-        }
         public TMF WithBitmapDeferredFaceNormalInC(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
-            BitmapDeferredFaceNormalInC = value;
+            state.Set(global::GBX.NET.Builders.Engines.Vision.CVisionResourceFileBuilderAssignments.GetBitmapDeferredFaceNormalInCAssignment(), value, GameVersion.TMF);
             return this;
         }
         public TMF WithBitmapDeferredFaceNormalInCReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
@@ -90,14 +73,9 @@ public partial class CVisionResourceFileBuilder : CVisionResourceFileBuilderBase
             state.Set(global::GBX.NET.Builders.Engines.Vision.CVisionResourceFileBuilderAssignments.GetBitmapDeferredFaceNormalInCReferenceAssignment(), value, GameVersion.TMF);
             return this;
         }
-        public global::GBX.NET.Engines.MwFoundations.CMwNod? BitmapDeferredZ
-        {
-            get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("BitmapDeferredZ");
-            set => state.Set(global::GBX.NET.Builders.Engines.Vision.CVisionResourceFileBuilderAssignments.GetBitmapDeferredZAssignment(), value, GameVersion.TMF);
-        }
         public TMF WithBitmapDeferredZ(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
-            BitmapDeferredZ = value;
+            state.Set(global::GBX.NET.Builders.Engines.Vision.CVisionResourceFileBuilderAssignments.GetBitmapDeferredZAssignment(), value, GameVersion.TMF);
             return this;
         }
         public TMF WithBitmapDeferredZReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
@@ -106,14 +84,9 @@ public partial class CVisionResourceFileBuilder : CVisionResourceFileBuilderBase
             state.Set(global::GBX.NET.Builders.Engines.Vision.CVisionResourceFileBuilderAssignments.GetBitmapDeferredZReferenceAssignment(), value, GameVersion.TMF);
             return this;
         }
-        public global::GBX.NET.Engines.MwFoundations.CMwNod? PhlslBlurHV_DepthTest
-        {
-            get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("PhlslBlurHV_DepthTest");
-            set => state.Set(global::GBX.NET.Builders.Engines.Vision.CVisionResourceFileBuilderAssignments.GetPhlslBlurHV_DepthTestAssignment(), value, GameVersion.TMF);
-        }
         public TMF WithPhlslBlurHV_DepthTest(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
-            PhlslBlurHV_DepthTest = value;
+            state.Set(global::GBX.NET.Builders.Engines.Vision.CVisionResourceFileBuilderAssignments.GetPhlslBlurHV_DepthTestAssignment(), value, GameVersion.TMF);
             return this;
         }
         public TMF WithPhlslBlurHV_DepthTestReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
@@ -122,14 +95,9 @@ public partial class CVisionResourceFileBuilder : CVisionResourceFileBuilderBase
             state.Set(global::GBX.NET.Builders.Engines.Vision.CVisionResourceFileBuilderAssignments.GetPhlslBlurHV_DepthTestReferenceAssignment(), value, GameVersion.TMF);
             return this;
         }
-        public global::GBX.NET.Engines.MwFoundations.CMwNod? ShaderDeferredOccZCmp
-        {
-            get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("ShaderDeferredOccZCmp");
-            set => state.Set(global::GBX.NET.Builders.Engines.Vision.CVisionResourceFileBuilderAssignments.GetShaderDeferredOccZCmpAssignment(), value, GameVersion.TMF);
-        }
         public TMF WithShaderDeferredOccZCmp(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
-            ShaderDeferredOccZCmp = value;
+            state.Set(global::GBX.NET.Builders.Engines.Vision.CVisionResourceFileBuilderAssignments.GetShaderDeferredOccZCmpAssignment(), value, GameVersion.TMF);
             return this;
         }
         public TMF WithShaderDeferredOccZCmpReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
@@ -138,14 +106,9 @@ public partial class CVisionResourceFileBuilder : CVisionResourceFileBuilderBase
             state.Set(global::GBX.NET.Builders.Engines.Vision.CVisionResourceFileBuilderAssignments.GetShaderDeferredOccZCmpReferenceAssignment(), value, GameVersion.TMF);
             return this;
         }
-        public global::GBX.NET.Engines.MwFoundations.CMwNod? ShaderDeferredShadowPssm
-        {
-            get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("ShaderDeferredShadowPssm");
-            set => state.Set(global::GBX.NET.Builders.Engines.Vision.CVisionResourceFileBuilderAssignments.GetShaderDeferredShadowPssmAssignment(), value, GameVersion.TMF);
-        }
         public TMF WithShaderDeferredShadowPssm(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
-            ShaderDeferredShadowPssm = value;
+            state.Set(global::GBX.NET.Builders.Engines.Vision.CVisionResourceFileBuilderAssignments.GetShaderDeferredShadowPssmAssignment(), value, GameVersion.TMF);
             return this;
         }
         public TMF WithShaderDeferredShadowPssmReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
@@ -160,36 +123,21 @@ public partial class CVisionResourceFileBuilder : CVisionResourceFileBuilderBase
             var node = CVisionResourceFileBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CVisionResourceFileBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CVisionResourceFileBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Vision.CVisionResourceFile node);
-        partial void ValidateNode(global::GBX.NET.Engines.Vision.CVisionResourceFile node);
     }
     public partial class MP4 : CVisionResourceFileBuilderBase<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Vision.CVisionResourceFile> state) : base(state) { }
-        public string? FolderShaderBench
-        {
-            get => state.Get<string?>("FolderShaderBench");
-            set => state.Set(global::GBX.NET.Builders.Engines.Vision.CVisionResourceFileBuilderAssignments.GetFolderShaderBenchAssignment(), value, GameVersion.MP4);
-        }
         public MP4 WithFolderShaderBench(string? value)
         {
-            FolderShaderBench = value;
+            state.Set(global::GBX.NET.Builders.Engines.Vision.CVisionResourceFileBuilderAssignments.GetFolderShaderBenchAssignment(), value, GameVersion.MP4);
             return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugModelShading.FidId[]? Resources
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugModelShading.FidId[]?>("Resources");
-            set => state.Set(global::GBX.NET.Builders.Engines.Vision.CVisionResourceFileBuilderAssignments.GetResourcesAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithResources(params global::GBX.NET.Engines.Plug.CPlugModelShading.FidId[]? value)
         {
-            Resources = value;
+            state.Set(global::GBX.NET.Builders.Engines.Vision.CVisionResourceFileBuilderAssignments.GetResourcesAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithResources(IEnumerable<global::GBX.NET.Engines.Plug.CPlugModelShading.FidId> values)
@@ -202,13 +150,8 @@ public partial class CVisionResourceFileBuilder : CVisionResourceFileBuilderBase
             var node = CVisionResourceFileBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CVisionResourceFileBuilder.ValidateRecipe1(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CVisionResourceFileBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Vision.CVisionResourceFile node);
-        partial void ValidateNode(global::GBX.NET.Engines.Vision.CVisionResourceFile node);
     }
 }

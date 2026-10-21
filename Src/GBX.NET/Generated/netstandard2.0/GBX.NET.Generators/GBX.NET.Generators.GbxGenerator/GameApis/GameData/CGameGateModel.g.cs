@@ -61,202 +61,102 @@ public partial class CGameGateModel : global::GBX.NET.Interfaces.GameData.IGameG
     }
     global::GBX.NET.Interfaces.GameData.IGameArmorModelMP3? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3>.Armor
     {
-        get
-        {
-            var node = Armor;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => Armor;
         set => Armor = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameArmorModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3>.GateCloseSound
     {
-        get
-        {
-            var node = GateCloseSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => GateCloseSound;
         set => GateCloseSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3>.GateOpenSound
     {
-        get
-        {
-            var node = GateOpenSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => GateOpenSound;
         set => GateOpenSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3>.GateSound
     {
-        get
-        {
-            var node = GateSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => GateSound;
         set => GateSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3>.Shape
     {
-        get
-        {
-            var node = Shape;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => Shape;
         set => Shape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.GameData.IGameArmorModelTMT? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT>.Armor
     {
-        get
-        {
-            var node = Armor;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => Armor;
         set => Armor = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameArmorModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT>.GateCloseSound
     {
-        get
-        {
-            var node = GateCloseSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => GateCloseSound;
         set => GateCloseSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT>.GateOpenSound
     {
-        get
-        {
-            var node = GateOpenSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => GateOpenSound;
         set => GateOpenSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT>.GateSound
     {
-        get
-        {
-            var node = GateSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => GateSound;
         set => GateSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT>.Shape
     {
-        get
-        {
-            var node = Shape;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => Shape;
         set => Shape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.GameData.IGameArmorModelMP4? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4>.Armor
     {
-        get
-        {
-            var node = Armor;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Armor;
         set => Armor = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameArmorModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4>.GateCloseSound
     {
-        get
-        {
-            var node = GateCloseSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => GateCloseSound;
         set => GateCloseSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4>.GateOpenSound
     {
-        get
-        {
-            var node = GateOpenSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => GateOpenSound;
         set => GateOpenSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4>.GateSound
     {
-        get
-        {
-            var node = GateSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => GateSound;
         set => GateSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4>.Shape
     {
-        get
-        {
-            var node = Shape;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Shape;
         set => Shape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.GameData.IGameArmorModelTM2020? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020>.Armor
     {
-        get
-        {
-            var node = Armor;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => Armor;
         set => Armor = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameArmorModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020>.GateCloseSound
     {
-        get
-        {
-            var node = GateCloseSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => GateCloseSound;
         set => GateCloseSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020>.GateOpenSound
     {
-        get
-        {
-            var node = GateOpenSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => GateOpenSound;
         set => GateOpenSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020>.GateSound
     {
-        get
-        {
-            var node = GateSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => GateSound;
         set => GateSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020>.Shape
     {
-        get
-        {
-            var node = Shape;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => Shape;
         set => Shape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

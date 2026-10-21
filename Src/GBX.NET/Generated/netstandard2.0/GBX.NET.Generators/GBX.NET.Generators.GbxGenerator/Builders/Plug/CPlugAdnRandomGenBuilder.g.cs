@@ -46,23 +46,12 @@ public partial class CPlugAdnRandomGenBuilder : CPlugAdnRandomGenBuilderBase<CPl
         node.Chunks.Add(chunk09140000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugAdnRandomGen node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAdnRandomGen.Chunk09140000>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk09140000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugAdnRandomGen CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugAdnRandomGen();
         var chunk09140000 = new global::GBX.NET.Engines.Plug.CPlugAdnRandomGen.Chunk09140000(game);
         node.Chunks.Add(chunk09140000);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugAdnRandomGen node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAdnRandomGen.Chunk09140000>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk Chunk09140000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugAdnRandomGen node, GameVersion game)
-    {
     }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -77,14 +66,9 @@ public partial class CPlugAdnRandomGenBuilder : CPlugAdnRandomGenBuilderBase<CPl
             var node = CPlugAdnRandomGenBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugAdnRandomGenBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugAdnRandomGenBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAdnRandomGen node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugAdnRandomGen node);
     }
     public partial class TM2020 : CPlugAdnRandomGenBuilderBase<TM2020>
     {
@@ -95,13 +79,8 @@ public partial class CPlugAdnRandomGenBuilder : CPlugAdnRandomGenBuilderBase<CPl
             var node = CPlugAdnRandomGenBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugAdnRandomGenBuilder.ValidateRecipe1(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugAdnRandomGenBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAdnRandomGen node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugAdnRandomGen node);
     }
 }

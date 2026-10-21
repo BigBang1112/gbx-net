@@ -36,14 +36,9 @@ public abstract class CMotionEmitterParticlesBuilderBase<TSelf> where TSelf : CM
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterParticles> state;
     private protected CMotionEmitterParticlesBuilderBase() => state = new();
     private protected CMotionEmitterParticlesBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterParticles> state) => this.state = state;
-    public string? Name
-    {
-        get => state.Get<string?>("Name");
-        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithName(string? value)
     {
-        Name = value;
+        state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -56,10 +51,6 @@ public partial class CMotionEmitterParticlesBuilder : CMotionEmitterParticlesBui
         node.Chunks.Add(chunk08001000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Motion.CMotionEmitterParticles node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotion.Chunk08001000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk08001000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Motion.CMotionEmitterParticles CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Motion.CMotionEmitterParticles();
@@ -68,14 +59,6 @@ public partial class CMotionEmitterParticlesBuilder : CMotionEmitterParticlesBui
         var chunk08001000 = new global::GBX.NET.Engines.Motion.CMotion.Chunk08001000();
         node.Chunks.Add(chunk08001000);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Motion.CMotionEmitterParticles node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionEmitterParticles.Chunk08058002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk08058002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotion.Chunk08001000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk08001000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Motion.CMotionEmitterParticles node, GameVersion game)
-    {
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
@@ -95,14 +78,9 @@ public partial class CMotionEmitterParticlesBuilder : CMotionEmitterParticlesBui
             var node = CMotionEmitterParticlesBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CMotionEmitterParticlesBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CMotionEmitterParticlesBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionEmitterParticles node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionEmitterParticles node);
     }
     public partial class TMNESWC : CMotionEmitterParticlesBuilderBase<TMNESWC>
     {
@@ -113,14 +91,9 @@ public partial class CMotionEmitterParticlesBuilder : CMotionEmitterParticlesBui
             var node = CMotionEmitterParticlesBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CMotionEmitterParticlesBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CMotionEmitterParticlesBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionEmitterParticles node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionEmitterParticles node);
     }
     public partial class VSK5 : CMotionEmitterParticlesBuilderBase<VSK5>
     {
@@ -131,26 +104,16 @@ public partial class CMotionEmitterParticlesBuilder : CMotionEmitterParticlesBui
             var node = CMotionEmitterParticlesBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CMotionEmitterParticlesBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CMotionEmitterParticlesBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionEmitterParticles node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionEmitterParticles node);
     }
     public partial class TMF : CMotionEmitterParticlesBuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterParticles> state) : base(state) { }
-        public global::GBX.NET.Engines.MwFoundations.CMwNod? EmitterModel
-        {
-            get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("EmitterModel");
-            set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterParticlesBuilderAssignments.GetEmitterModelAssignment(), value, GameVersion.TMF);
-        }
         public TMF WithEmitterModel(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
-            EmitterModel = value;
+            state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterParticlesBuilderAssignments.GetEmitterModelAssignment(), value, GameVersion.TMF);
             return this;
         }
         public TMF WithEmitterModelReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
@@ -159,44 +122,24 @@ public partial class CMotionEmitterParticlesBuilder : CMotionEmitterParticlesBui
             state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterParticlesBuilderAssignments.GetEmitterModelReferenceAssignment(), value, GameVersion.TMF);
             return this;
         }
-        public bool IsActive
-        {
-            get => state.Get<bool>("IsActive");
-            set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterParticlesBuilderAssignments.GetIsActiveAssignment(), value, GameVersion.TMF);
-        }
         public TMF WithIsActive(bool value)
         {
-            IsActive = value;
+            state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterParticlesBuilderAssignments.GetIsActiveAssignment(), value, GameVersion.TMF);
             return this;
-        }
-        public bool IsEventMode
-        {
-            get => state.Get<bool>("IsEventMode");
-            set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterParticlesBuilderAssignments.GetIsEventModeAssignment(), value, GameVersion.TMF);
         }
         public TMF WithIsEventMode(bool value)
         {
-            IsEventMode = value;
+            state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterParticlesBuilderAssignments.GetIsEventModeAssignment(), value, GameVersion.TMF);
             return this;
-        }
-        public global::GBX.NET.Engines.Motion.CMotionEmitterParticles.EmitParams? Params
-        {
-            get => state.Get<global::GBX.NET.Engines.Motion.CMotionEmitterParticles.EmitParams?>("Params");
-            set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterParticlesBuilderAssignments.GetParamsAssignment(), value, GameVersion.TMF);
         }
         public TMF WithParams(global::GBX.NET.Engines.Motion.CMotionEmitterParticles.EmitParams? value)
         {
-            Params = value;
+            state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterParticlesBuilderAssignments.GetParamsAssignment(), value, GameVersion.TMF);
             return this;
-        }
-        public bool UseOwnerLoc
-        {
-            get => state.Get<bool>("UseOwnerLoc");
-            set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterParticlesBuilderAssignments.GetUseOwnerLocAssignment(), value, GameVersion.TMF);
         }
         public TMF WithUseOwnerLoc(bool value)
         {
-            UseOwnerLoc = value;
+            state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterParticlesBuilderAssignments.GetUseOwnerLocAssignment(), value, GameVersion.TMF);
             return this;
         }
         public global::GBX.NET.Interfaces.Motion.IMotionEmitterParticlesTMF BuildInterface() => Build();
@@ -205,14 +148,9 @@ public partial class CMotionEmitterParticlesBuilder : CMotionEmitterParticlesBui
             var node = CMotionEmitterParticlesBuilder.CreateRecipe1(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CMotionEmitterParticlesBuilder.ValidateRecipe1(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CMotionEmitterParticlesBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionEmitterParticles node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionEmitterParticles node);
     }
     public partial class MP3 : CMotionEmitterParticlesBuilderBase<MP3>
     {
@@ -223,14 +161,9 @@ public partial class CMotionEmitterParticlesBuilder : CMotionEmitterParticlesBui
             var node = CMotionEmitterParticlesBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CMotionEmitterParticlesBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CMotionEmitterParticlesBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionEmitterParticles node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionEmitterParticles node);
     }
     public partial class TMT : CMotionEmitterParticlesBuilderBase<TMT>
     {
@@ -241,14 +174,9 @@ public partial class CMotionEmitterParticlesBuilder : CMotionEmitterParticlesBui
             var node = CMotionEmitterParticlesBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CMotionEmitterParticlesBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CMotionEmitterParticlesBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionEmitterParticles node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionEmitterParticles node);
     }
     public partial class MP4 : CMotionEmitterParticlesBuilderBase<MP4>
     {
@@ -259,13 +187,8 @@ public partial class CMotionEmitterParticlesBuilder : CMotionEmitterParticlesBui
             var node = CMotionEmitterParticlesBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CMotionEmitterParticlesBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CMotionEmitterParticlesBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionEmitterParticles node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionEmitterParticles node);
     }
 }

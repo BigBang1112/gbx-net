@@ -36,34 +36,19 @@ public abstract class CControlButtonBuilderBase<TSelf> where TSelf : CControlBut
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Control.CControlButton> state;
     private protected CControlButtonBuilderBase() => state = new();
     private protected CControlButtonBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Control.CControlButton> state) => this.state = state;
-    public uint ControlFlags
-    {
-        get => state.Get<uint>("ControlFlags");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetControlFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithControlFlags(uint value)
     {
-        ControlFlags = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetControlFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Hms.CHmsItem? Item
-    {
-        get => state.Get<global::GBX.NET.Engines.Hms.CHmsItem?>("Item");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetItemAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithItem(global::GBX.NET.Engines.Hms.CHmsItem? value)
     {
-        Item = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetItemAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Control.CControlLayout? Layout
-    {
-        get => state.Get<global::GBX.NET.Engines.Control.CControlLayout?>("Layout");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLayoutAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLayout(global::GBX.NET.Engines.Control.CControlLayout? value)
     {
-        Layout = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLayoutAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithLayoutReference(NodeRef<global::GBX.NET.Engines.Control.CControlLayout> value)
@@ -72,14 +57,9 @@ public abstract class CControlButtonBuilderBase<TSelf> where TSelf : CControlBut
         state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLayoutReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Control.CControlStyle? LegacyStyle
-    {
-        get => state.Get<global::GBX.NET.Engines.Control.CControlStyle?>("LegacyStyle");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLegacyStyleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithLegacyStyle(global::GBX.NET.Engines.Control.CControlStyle? value)
     {
-        LegacyStyle = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLegacyStyleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithLegacyStyleReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value)
@@ -88,14 +68,9 @@ public abstract class CControlButtonBuilderBase<TSelf> where TSelf : CControlBut
         state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLegacyStyleReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Motion.CMotion? Motion
-    {
-        get => state.Get<global::GBX.NET.Engines.Motion.CMotion?>("Motion");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithMotion(global::GBX.NET.Engines.Motion.CMotion? value)
     {
-        Motion = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithMotionReference(NodeRef<global::GBX.NET.Engines.Motion.CMotion> value)
@@ -104,24 +79,14 @@ public abstract class CControlButtonBuilderBase<TSelf> where TSelf : CControlBut
         state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public string? Name
-    {
-        get => state.Get<string?>("Name");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithName(string? value)
     {
-        Name = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.MwFoundations.CMwNod? Nod
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("Nod");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetNodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithNod(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
-        Nod = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetNodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithNodReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
@@ -130,14 +95,9 @@ public abstract class CControlButtonBuilderBase<TSelf> where TSelf : CControlBut
         state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetNodReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? ObjectLink
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>?>("ObjectLink");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetObjectLinkAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithObjectLink(NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? value)
     {
-        ObjectLink = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetObjectLinkAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithObjectLink(params global::GBX.NET.Engines.Scene.CSceneObjectLink[] values)
@@ -148,28 +108,18 @@ public abstract class CControlButtonBuilderBase<TSelf> where TSelf : CControlBut
     {
         return WithObjectLink(values.ToArray());
     }
-    public string? StackText
-    {
-        get => state.Get<string?>("StackText");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStackTextAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithStackText(string? value)
     {
-        StackText = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStackTextAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CControlButtonBuilderMembers1<TSelf> : CControlButtonBuilderBase<TSelf> where TSelf : CControlButtonBuilderMembers1<TSelf>
 {
     private protected CControlButtonBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Control.CControlButton> state) : base(state) { }
-    public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
-    {
-        get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
     {
-        MessageHandler = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
@@ -182,14 +132,9 @@ public abstract class CControlButtonBuilderMembers1<TSelf> : CControlButtonBuild
 public abstract class CControlButtonBuilderMembers2<TSelf> : CControlButtonBuilderBase<TSelf> where TSelf : CControlButtonBuilderMembers2<TSelf>
 {
     private protected CControlButtonBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Control.CControlButton> state) : base(state) { }
-    public global::GBX.NET.Engines.Control.CControlStyle? Style
-    {
-        get => state.Get<global::GBX.NET.Engines.Control.CControlStyle?>("Style");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithStyle(global::GBX.NET.Engines.Control.CControlStyle? value)
     {
-        Style = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithStyleReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value)
@@ -198,14 +143,9 @@ public abstract class CControlButtonBuilderMembers2<TSelf> : CControlButtonBuild
         state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public string? StyleId
-    {
-        get => state.Get<string?>("StyleId");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithStyleId(string? value)
     {
-        StyleId = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -234,18 +174,6 @@ public partial class CControlButtonBuilder : CControlButtonBuilderBase<CControlB
         node.Chunks.Add(chunk0A005004);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Control.CControlButton node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005004 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Control.CControlButton CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Control.CControlButton();
@@ -273,20 +201,6 @@ public partial class CControlButtonBuilder : CControlButtonBuilderBase<CControlB
         node.Chunks.Add(chunk0A005004);
         return node;
     }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Control.CControlButton node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk07001010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07001010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005004 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Control.CControlButton CreateRecipe2(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Control.CControlButton();
@@ -310,18 +224,6 @@ public partial class CControlButtonBuilder : CControlButtonBuilderBase<CControlB
         node.Chunks.Add(chunk0A005003);
         return node;
     }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Control.CControlButton node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk07001010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07001010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005003 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Control.CControlButton CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Control.CControlButton();
@@ -342,17 +244,6 @@ public partial class CControlButtonBuilder : CControlButtonBuilderBase<CControlB
         var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
         node.Chunks.Add(chunk0A005003);
         return node;
-    }
-    private static void ValidateRecipe3(global::GBX.NET.Engines.Control.CControlButton node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk07001010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07001010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005003 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Control.CControlButton CreateRecipe4(GameVersion game)
     {
@@ -377,21 +268,6 @@ public partial class CControlButtonBuilder : CControlButtonBuilderBase<CControlB
         var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
         node.Chunks.Add(chunk0A005003);
         return node;
-    }
-    private static void ValidateRecipe4(global::GBX.NET.Engines.Control.CControlButton node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlButton.Chunk0700700D>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0700700D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk07001010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07001010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005003 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Control.CControlButton node, GameVersion game)
-    {
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -434,14 +310,9 @@ public partial class CControlButtonBuilder : CControlButtonBuilderBase<CControlB
             var node = CControlButtonBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CControlButtonBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CControlButtonBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlButton node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlButton node);
     }
     public partial class TMPU : CControlButtonBuilderMembers1<TMPU>
     {
@@ -472,14 +343,9 @@ public partial class CControlButtonBuilder : CControlButtonBuilderBase<CControlB
             var node = CControlButtonBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CControlButtonBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CControlButtonBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlButton node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlButton node);
     }
     public partial class TMSX : CControlButtonBuilderMembers2<TMSX>
     {
@@ -488,14 +354,9 @@ public partial class CControlButtonBuilder : CControlButtonBuilderBase<CControlB
         {
             return base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
-        {
-            get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
-            set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-        }
         public TMSX WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
         {
-            MessageHandler = value;
+            state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public TMSX WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
@@ -530,14 +391,9 @@ public partial class CControlButtonBuilder : CControlButtonBuilderBase<CControlB
             var node = CControlButtonBuilder.CreateRecipe1(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CControlButtonBuilder.ValidateRecipe1(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CControlButtonBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlButton node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlButton node);
     }
     public partial class TMNESWC : CControlButtonBuilderMembers2<TMNESWC>
     {
@@ -546,14 +402,9 @@ public partial class CControlButtonBuilder : CControlButtonBuilderBase<CControlB
         {
             return base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
-        {
-            get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
-            set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-        }
         public TMNESWC WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
         {
-            MessageHandler = value;
+            state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public TMNESWC WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
@@ -588,14 +439,9 @@ public partial class CControlButtonBuilder : CControlButtonBuilderBase<CControlB
             var node = CControlButtonBuilder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CControlButtonBuilder.ValidateRecipe1(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CControlButtonBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlButton node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlButton node);
     }
     public partial class VSK5 : CControlButtonBuilderMembers2<VSK5>
     {
@@ -604,14 +450,9 @@ public partial class CControlButtonBuilder : CControlButtonBuilderBase<CControlB
         {
             return base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
-        {
-            get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
-            set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-        }
         public VSK5 WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
         {
-            MessageHandler = value;
+            state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public VSK5 WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
@@ -646,14 +487,9 @@ public partial class CControlButtonBuilder : CControlButtonBuilderBase<CControlB
             var node = CControlButtonBuilder.CreateRecipe2(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CControlButtonBuilder.ValidateRecipe2(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CControlButtonBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlButton node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlButton node);
     }
     public partial class TMF : CControlButtonBuilderMembers2<TMF>
     {
@@ -666,14 +502,9 @@ public partial class CControlButtonBuilder : CControlButtonBuilderBase<CControlB
         {
             return base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
-        {
-            get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
-            set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-        }
         public TMF WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
         {
-            MessageHandler = value;
+            state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public TMF WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
@@ -708,14 +539,9 @@ public partial class CControlButtonBuilder : CControlButtonBuilderBase<CControlB
             var node = CControlButtonBuilder.CreateRecipe2(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CControlButtonBuilder.ValidateRecipe2(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CControlButtonBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlButton node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlButton node);
     }
     public partial class MP3 : CControlButtonBuilderMembers2<MP3>
     {
@@ -746,14 +572,9 @@ public partial class CControlButtonBuilder : CControlButtonBuilderBase<CControlB
             var node = CControlButtonBuilder.CreateRecipe3(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CControlButtonBuilder.ValidateRecipe3(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CControlButtonBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlButton node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlButton node);
     }
     public partial class TMT : CControlButtonBuilderMembers2<TMT>
     {
@@ -784,14 +605,9 @@ public partial class CControlButtonBuilder : CControlButtonBuilderBase<CControlB
             var node = CControlButtonBuilder.CreateRecipe3(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CControlButtonBuilder.ValidateRecipe3(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CControlButtonBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlButton node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlButton node);
     }
     public partial class MP4 : CControlButtonBuilderMembers2<MP4>
     {
@@ -826,36 +642,21 @@ public partial class CControlButtonBuilder : CControlButtonBuilderBase<CControlB
             var node = CControlButtonBuilder.CreateRecipe3(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CControlButtonBuilder.ValidateRecipe3(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CControlButtonBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlButton node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlButton node);
     }
     public partial class TM2020 : CControlButtonBuilderMembers2<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Control.CControlButton> state) : base(state) { }
-        public int DisplayType
-        {
-            get => state.Get<int>("DisplayType");
-            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlButtonBuilderAssignments.GetDisplayTypeAssignment(), value, GameVersion.TM2020);
-        }
         public TM2020 WithDisplayType(int value)
         {
-            DisplayType = value;
+            state.Set(global::GBX.NET.Builders.Engines.Control.CControlButtonBuilderAssignments.GetDisplayTypeAssignment(), value, GameVersion.TM2020);
             return this;
-        }
-        public string? Label
-        {
-            get => state.Get<string?>("Label");
-            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlButtonBuilderAssignments.GetLabelAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithLabel(string? value)
         {
-            Label = value;
+            state.Set(global::GBX.NET.Builders.Engines.Control.CControlButtonBuilderAssignments.GetLabelAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithLayout(global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? value)
@@ -880,13 +681,8 @@ public partial class CControlButtonBuilder : CControlButtonBuilderBase<CControlB
             var node = CControlButtonBuilder.CreateRecipe4(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CControlButtonBuilder.ValidateRecipe4(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CControlButtonBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlButton node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlButton node);
     }
 }

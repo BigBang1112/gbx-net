@@ -40,14 +40,9 @@ public abstract class CGameGhostBuilderBase<TSelf> where TSelf : CGameGhostBuild
 public abstract class CGameGhostBuilderMembers1<TSelf> : CGameGhostBuilderBase<TSelf> where TSelf : CGameGhostBuilderMembers1<TSelf>
 {
     private protected CGameGhostBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Game.CGameGhost> state) : base(state) { }
-    public uint? SavedMobilClassId
-    {
-        get => state.Get<uint?>("SavedMobilClassId");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameGhostBuilderAssignments.GetSavedMobilClassIdAssignment(), value, GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX);
-    }
     public TSelf WithSavedMobilClassId(uint? value)
     {
-        SavedMobilClassId = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameGhostBuilderAssignments.GetSavedMobilClassIdAssignment(), value, GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX);
         return (TSelf)this;
     }
 }
@@ -60,10 +55,6 @@ public partial class CGameGhostBuilder : CGameGhostBuilderBase<CGameGhostBuilder
         node.Chunks.Add(chunk0303F003);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameGhost node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303F003 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameGhost CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameGhost();
@@ -73,21 +64,12 @@ public partial class CGameGhostBuilder : CGameGhostBuilderBase<CGameGhostBuilder
         node.Chunks.Add(chunk0303F004);
         return node;
     }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameGhost node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303F003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303F004 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameGhost CreateRecipe2(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameGhost();
         var chunk0303F005 = new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F005();
         node.Chunks.Add(chunk0303F005);
         return node;
-    }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Game.CGameGhost node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303F005 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Game.CGameGhost CreateRecipe3(GameVersion game)
     {
@@ -97,14 +79,6 @@ public partial class CGameGhostBuilder : CGameGhostBuilderBase<CGameGhostBuilder
         var chunk0303F007 = new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F007();
         node.Chunks.Add(chunk0303F007);
         return node;
-    }
-    private static void ValidateRecipe3(global::GBX.NET.Engines.Game.CGameGhost node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F006>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0303F006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303F007 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameGhost node, GameVersion game)
-    {
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -129,14 +103,9 @@ public partial class CGameGhostBuilder : CGameGhostBuilderBase<CGameGhostBuilder
             var node = CGameGhostBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CGameGhostBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CGameGhostBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameGhost node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameGhost node);
     }
     public partial class TMPU : CGameGhostBuilderBase<TMPU>
     {
@@ -147,14 +116,9 @@ public partial class CGameGhostBuilder : CGameGhostBuilderBase<CGameGhostBuilder
             var node = CGameGhostBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CGameGhostBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CGameGhostBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameGhost node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameGhost node);
     }
     public partial class TMS : CGameGhostBuilderMembers1<TMS>
     {
@@ -165,14 +129,9 @@ public partial class CGameGhostBuilder : CGameGhostBuilderBase<CGameGhostBuilder
             var node = CGameGhostBuilder.CreateRecipe1(GameVersion.TMS);
             state.Apply(node, GameVersion.TMS);
             CustomizeNode(node);
-            CGameGhostBuilder.ValidateRecipe1(node, GameVersion.TMS);
-            NodeBuilderValidation.Validate(node, GameVersion.TMS);
-            CGameGhostBuilder.ValidateRequiredMembers(node, GameVersion.TMS);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameGhost node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameGhost node);
     }
     public partial class TMSX : CGameGhostBuilderMembers1<TMSX>
     {
@@ -183,14 +142,9 @@ public partial class CGameGhostBuilder : CGameGhostBuilderBase<CGameGhostBuilder
             var node = CGameGhostBuilder.CreateRecipe1(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CGameGhostBuilder.ValidateRecipe1(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CGameGhostBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameGhost node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameGhost node);
     }
     public partial class TMNESWC : CGameGhostBuilderMembers1<TMNESWC>
     {
@@ -201,14 +155,9 @@ public partial class CGameGhostBuilder : CGameGhostBuilderBase<CGameGhostBuilder
             var node = CGameGhostBuilder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CGameGhostBuilder.ValidateRecipe1(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CGameGhostBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameGhost node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameGhost node);
     }
     public partial class TMU : CGameGhostBuilderBase<TMU>
     {
@@ -219,14 +168,9 @@ public partial class CGameGhostBuilder : CGameGhostBuilderBase<CGameGhostBuilder
             var node = CGameGhostBuilder.CreateRecipe2(GameVersion.TMU);
             state.Apply(node, GameVersion.TMU);
             CustomizeNode(node);
-            CGameGhostBuilder.ValidateRecipe2(node, GameVersion.TMU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMU);
-            CGameGhostBuilder.ValidateRequiredMembers(node, GameVersion.TMU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameGhost node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameGhost node);
     }
     public partial class VSK5 : CGameGhostBuilderBase<VSK5>
     {
@@ -237,14 +181,9 @@ public partial class CGameGhostBuilder : CGameGhostBuilderBase<CGameGhostBuilder
             var node = CGameGhostBuilder.CreateRecipe2(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CGameGhostBuilder.ValidateRecipe2(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CGameGhostBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameGhost node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameGhost node);
     }
     public partial class TMF : CGameGhostBuilderBase<TMF>
     {
@@ -255,14 +194,9 @@ public partial class CGameGhostBuilder : CGameGhostBuilderBase<CGameGhostBuilder
             var node = CGameGhostBuilder.CreateRecipe2(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CGameGhostBuilder.ValidateRecipe2(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CGameGhostBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameGhost node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameGhost node);
     }
     public partial class MP3 : CGameGhostBuilderBase<MP3>
     {
@@ -273,14 +207,9 @@ public partial class CGameGhostBuilder : CGameGhostBuilderBase<CGameGhostBuilder
             var node = CGameGhostBuilder.CreateRecipe3(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CGameGhostBuilder.ValidateRecipe3(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CGameGhostBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameGhost node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameGhost node);
     }
     public partial class TMT : CGameGhostBuilderBase<TMT>
     {
@@ -291,14 +220,9 @@ public partial class CGameGhostBuilder : CGameGhostBuilderBase<CGameGhostBuilder
             var node = CGameGhostBuilder.CreateRecipe3(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameGhostBuilder.ValidateRecipe3(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameGhostBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameGhost node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameGhost node);
     }
     public partial class MP4 : CGameGhostBuilderBase<MP4>
     {
@@ -309,14 +233,9 @@ public partial class CGameGhostBuilder : CGameGhostBuilderBase<CGameGhostBuilder
             var node = CGameGhostBuilder.CreateRecipe3(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameGhostBuilder.ValidateRecipe3(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameGhostBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameGhost node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameGhost node);
     }
     public partial class TM2020 : CGameGhostBuilderBase<TM2020>
     {
@@ -327,13 +246,8 @@ public partial class CGameGhostBuilder : CGameGhostBuilderBase<CGameGhostBuilder
             var node = CGameGhostBuilder.CreateRecipe3(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameGhostBuilder.ValidateRecipe3(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameGhostBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameGhost node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameGhost node);
     }
 }

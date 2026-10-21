@@ -36,24 +36,14 @@ public abstract class CGameCtnBlockInfoRoadBuilderBase<TSelf> where TSelf : CGam
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad> state;
     private protected CGameCtnBlockInfoRoadBuilderBase() => state = new();
     private protected CGameCtnBlockInfoRoadBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad> state) => this.state = state;
-    public int CatalogPosition
-    {
-        get => state.Get<int>("CatalogPosition");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetCatalogPositionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithCatalogPosition(int value)
     {
-        CatalogPosition = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetCatalogPositionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.MwFoundations.CMwNod? IconFid
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("IconFid");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconFidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIconFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
-        IconFid = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconFidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithIconFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
@@ -62,54 +52,29 @@ public abstract class CGameCtnBlockInfoRoadBuilderBase<TSelf> where TSelf : CGam
         state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconFidReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public global::GBX.NET.Ident Ident
-    {
-        get => state.Get<global::GBX.NET.Ident>("Ident");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIdentAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithIdent(global::GBX.NET.Ident value)
     {
-        Ident = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIdentAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool IsInternal
-    {
-        get => state.Get<bool>("IsInternal");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIsInternalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIsInternal(bool value)
     {
-        IsInternal = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIsInternalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool IsPillar
-    {
-        get => state.Get<bool>("IsPillar");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIsPillarAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIsPillar(bool value)
     {
-        IsPillar = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIsPillarAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public string? PageName
-    {
-        get => state.Get<string?>("PageName");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetPageNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithPageName(string? value)
     {
-        PageName = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetPageNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope? Slope
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope?>("Slope");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoRoadBuilderAssignments.GetSlopeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSlope(global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope? value)
     {
-        Slope = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoRoadBuilderAssignments.GetSlopeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithSlopeReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope> value)
@@ -118,38 +83,23 @@ public abstract class CGameCtnBlockInfoRoadBuilderBase<TSelf> where TSelf : CGam
         state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoRoadBuilderAssignments.GetSlopeReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Game.CGameCtnBlockInfo.EWayPointType WayPointType
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.EWayPointType>("WayPointType");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetWayPointTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithWayPointType(global::GBX.NET.Engines.Game.CGameCtnBlockInfo.EWayPointType value)
     {
-        WayPointType = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetWayPointTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnBlockInfoRoadBuilderMembers1<TSelf> : CGameCtnBlockInfoRoadBuilderBase<TSelf> where TSelf : CGameCtnBlockInfoRoadBuilderMembers1<TSelf>
 {
     private protected CGameCtnBlockInfoRoadBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad> state) : base(state) { }
-    public global::GBX.NET.Color[,]? Icon
-    {
-        get => state.Get<global::GBX.NET.Color[,]?>("Icon");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
-    }
     public TSelf WithIcon(global::GBX.NET.Color[,]? value)
     {
-        Icon = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public byte[]? IconWebP
-    {
-        get => state.Get<byte[]?>("IconWebP");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
     }
     public TSelf WithIconWebP(params byte[]? value)
     {
-        IconWebP = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithIconWebP(IEnumerable<byte> values)
@@ -160,52 +110,32 @@ public abstract class CGameCtnBlockInfoRoadBuilderMembers1<TSelf> : CGameCtnBloc
 public abstract class CGameCtnBlockInfoRoadBuilderMembers2<TSelf> : CGameCtnBlockInfoRoadBuilderMembers1<TSelf> where TSelf : CGameCtnBlockInfoRoadBuilderMembers2<TSelf>
 {
     private protected CGameCtnBlockInfoRoadBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad> state) : base(state) { }
-    public global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags
-    {
-        get => state.Get<global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags>("Flags");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX | GameVersion.TMT);
-    }
     public TSelf WithFlags(global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags value)
     {
-        Flags = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX | GameVersion.TMT);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnBlockInfoRoadBuilderMembers3<TSelf> : CGameCtnBlockInfoRoadBuilderMembers2<TSelf> where TSelf : CGameCtnBlockInfoRoadBuilderMembers3<TSelf>
 {
     private protected CGameCtnBlockInfoRoadBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad> state) : base(state) { }
-    public bool NoRespawn
-    {
-        get => state.Get<bool>("NoRespawn");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetNoRespawnAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    }
     public TSelf WithNoRespawn(bool value)
     {
-        NoRespawn = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetNoRespawnAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public string? ParentCollectorId
-    {
-        get => state.Get<string?>("ParentCollectorId");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithParentCollectorId(string? value)
     {
-        ParentCollectorId = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnBlockInfoRoadBuilderMembers4<TSelf> : CGameCtnBlockInfoRoadBuilderBase<TSelf> where TSelf : CGameCtnBlockInfoRoadBuilderMembers4<TSelf>
 {
     private protected CGameCtnBlockInfoRoadBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad> state) : base(state) { }
-    public NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>? AirBlockUnitInfos
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>?>("AirBlockUnitInfos");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetAirBlockUnitInfosAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithAirBlockUnitInfos(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>? value)
     {
-        AirBlockUnitInfos = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetAirBlockUnitInfosAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithAirBlockUnitInfos(params global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?[] values)
@@ -216,14 +146,9 @@ public abstract class CGameCtnBlockInfoRoadBuilderMembers4<TSelf> : CGameCtnBloc
     {
         return WithAirBlockUnitInfos(values.ToArray());
     }
-    public global::GBX.NET.Engines.Scene.CSceneMobil? AirHelperMobil
-    {
-        get => state.Get<global::GBX.NET.Engines.Scene.CSceneMobil?>("AirHelperMobil");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetAirHelperMobilAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithAirHelperMobil(global::GBX.NET.Engines.Scene.CSceneMobil? value)
     {
-        AirHelperMobil = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetAirHelperMobilAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithAirHelperMobilReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMobil> value)
@@ -232,28 +157,18 @@ public abstract class CGameCtnBlockInfoRoadBuilderMembers4<TSelf> : CGameCtnBloc
         state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetAirHelperMobilReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public NodeRefList<global::GBX.NET.Engines.Scene.CSceneMobil>[]? AirMobils
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Scene.CSceneMobil>[]?>("AirMobils");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetAirMobilsAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithAirMobils(params NodeRefList<global::GBX.NET.Engines.Scene.CSceneMobil>[]? value)
     {
-        AirMobils = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetAirMobilsAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithAirMobils(IEnumerable<NodeRefList<global::GBX.NET.Engines.Scene.CSceneMobil>> values)
     {
         return WithAirMobils(values.ToArray());
     }
-    public global::GBX.NET.Engines.Scene.CSceneMobil? ConstructionModeHelperMobil
-    {
-        get => state.Get<global::GBX.NET.Engines.Scene.CSceneMobil?>("ConstructionModeHelperMobil");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetConstructionModeHelperMobilAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithConstructionModeHelperMobil(global::GBX.NET.Engines.Scene.CSceneMobil? value)
     {
-        ConstructionModeHelperMobil = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetConstructionModeHelperMobilAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithConstructionModeHelperMobilReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMobil> value)
@@ -262,24 +177,14 @@ public abstract class CGameCtnBlockInfoRoadBuilderMembers4<TSelf> : CGameCtnBloc
         state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetConstructionModeHelperMobilReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public int CopperPrice
-    {
-        get => state.Get<int>("CopperPrice");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetCopperPriceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithCopperPrice(int value)
     {
-        CopperPrice = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetCopperPriceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>? GroundBlockUnitInfos
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>?>("GroundBlockUnitInfos");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetGroundBlockUnitInfosAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithGroundBlockUnitInfos(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>? value)
     {
-        GroundBlockUnitInfos = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetGroundBlockUnitInfosAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithGroundBlockUnitInfos(params global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?[] values)
@@ -290,14 +195,9 @@ public abstract class CGameCtnBlockInfoRoadBuilderMembers4<TSelf> : CGameCtnBloc
     {
         return WithGroundBlockUnitInfos(values.ToArray());
     }
-    public global::GBX.NET.Engines.Scene.CSceneMobil? GroundHelperMobil
-    {
-        get => state.Get<global::GBX.NET.Engines.Scene.CSceneMobil?>("GroundHelperMobil");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetGroundHelperMobilAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithGroundHelperMobil(global::GBX.NET.Engines.Scene.CSceneMobil? value)
     {
-        GroundHelperMobil = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetGroundHelperMobilAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithGroundHelperMobilReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMobil> value)
@@ -306,58 +206,33 @@ public abstract class CGameCtnBlockInfoRoadBuilderMembers4<TSelf> : CGameCtnBloc
         state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetGroundHelperMobilReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public NodeRefList<global::GBX.NET.Engines.Scene.CSceneMobil>[]? GroundMobils
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Scene.CSceneMobil>[]?>("GroundMobils");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetGroundMobilsAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithGroundMobils(params NodeRefList<global::GBX.NET.Engines.Scene.CSceneMobil>[]? value)
     {
-        GroundMobils = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetGroundMobilsAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithGroundMobils(IEnumerable<NodeRefList<global::GBX.NET.Engines.Scene.CSceneMobil>> values)
     {
         return WithGroundMobils(values.ToArray());
     }
-    public int NbAvailableMax
-    {
-        get => state.Get<int>("NbAvailableMax");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNbAvailableMaxAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithNbAvailableMax(int value)
     {
-        NbAvailableMax = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNbAvailableMaxAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int NbAvailableMin
-    {
-        get => state.Get<int>("NbAvailableMin");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNbAvailableMinAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithNbAvailableMin(int value)
     {
-        NbAvailableMin = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNbAvailableMinAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool NeedUnlock
-    {
-        get => state.Get<bool>("NeedUnlock");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNeedUnlockAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithNeedUnlock(bool value)
     {
-        NeedUnlock = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNeedUnlockAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic? Pillar
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic?>("Pillar");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetPillarAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithPillar(global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic? value)
     {
-        Pillar = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetPillarAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithPillarReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic> value)
@@ -366,112 +241,62 @@ public abstract class CGameCtnBlockInfoRoadBuilderMembers4<TSelf> : CGameCtnBloc
         state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetPillarReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Game.CGameCtnBlockInfo.ESelection Selection
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.ESelection>("Selection");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSelectionAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithSelection(global::GBX.NET.Engines.Game.CGameCtnBlockInfo.ESelection value)
     {
-        Selection = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSelectionAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int SizeX
-    {
-        get => state.Get<int>("SizeX");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSizeXAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSizeX(int value)
     {
-        SizeX = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSizeXAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int SizeY
-    {
-        get => state.Get<int>("SizeY");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSizeYAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSizeY(int value)
     {
-        SizeY = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSizeYAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int SizeZ
-    {
-        get => state.Get<int>("SizeZ");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSizeZAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSizeZ(int value)
     {
-        SizeZ = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSizeZAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind SkinKind
-    {
-        get => state.Get<global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind>("SkinKind");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetSkinKindAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSkinKind(global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind value)
     {
-        SkinKind = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetSkinKindAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public Iso4? SpawnLocAir
-    {
-        get => state.Get<Iso4?>("SpawnLocAir");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSpawnLocAirAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSpawnLocAir(Iso4? value)
     {
-        SpawnLocAir = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSpawnLocAirAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public Iso4? SpawnLocGround
-    {
-        get => state.Get<Iso4?>("SpawnLocGround");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSpawnLocGroundAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSpawnLocGround(Iso4? value)
     {
-        SpawnLocGround = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSpawnLocGroundAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnBlockInfoRoadBuilderMembers5<TSelf> : CGameCtnBlockInfoRoadBuilderMembers4<TSelf> where TSelf : CGameCtnBlockInfoRoadBuilderMembers5<TSelf>
 {
     private protected CGameCtnBlockInfoRoadBuilderMembers5(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad> state) : base(state) { }
-    public bool IsReplacement
-    {
-        get => state.Get<bool>("IsReplacement");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIsReplacementAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithIsReplacement(bool value)
     {
-        IsReplacement = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIsReplacementAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public string? ParentCollectorId
-    {
-        get => state.Get<string?>("ParentCollectorId");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithParentCollectorId(string? value)
     {
-        ParentCollectorId = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnBlockInfoRoadBuilderMembers6<TSelf> : CGameCtnBlockInfoRoadBuilderMembers3<TSelf> where TSelf : CGameCtnBlockInfoRoadBuilderMembers6<TSelf>
 {
     private protected CGameCtnBlockInfoRoadBuilderMembers6(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad> state) : base(state) { }
-    public NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantAir>? AdditionalVariantsAir
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantAir>?>("AdditionalVariantsAir");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetAdditionalVariantsAirAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithAdditionalVariantsAir(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantAir>? value)
     {
-        AdditionalVariantsAir = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetAdditionalVariantsAirAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithAdditionalVariantsAir(params global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantAir[] values)
@@ -482,14 +307,9 @@ public abstract class CGameCtnBlockInfoRoadBuilderMembers6<TSelf> : CGameCtnBloc
     {
         return WithAdditionalVariantsAir(values.ToArray());
     }
-    public NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround>? AdditionalVariantsGround
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround>?>("AdditionalVariantsGround");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetAdditionalVariantsGroundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithAdditionalVariantsGround(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround>? value)
     {
-        AdditionalVariantsGround = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetAdditionalVariantsGroundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithAdditionalVariantsGround(params global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround[] values)
@@ -500,24 +320,14 @@ public abstract class CGameCtnBlockInfoRoadBuilderMembers6<TSelf> : CGameCtnBloc
     {
         return WithAdditionalVariantsGround(values.ToArray());
     }
-    public global::GBX.NET.Engines.Game.CGameCtnBlockInfo.EBaseType BaseType
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.EBaseType>("BaseType");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetBaseTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithBaseType(global::GBX.NET.Engines.Game.CGameCtnBlockInfo.EBaseType value)
     {
-        BaseType = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetBaseTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty? CharPhySpecialProperty
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty?>("CharPhySpecialProperty");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetCharPhySpecialPropertyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCharPhySpecialProperty(global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty? value)
     {
-        CharPhySpecialProperty = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetCharPhySpecialPropertyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithCharPhySpecialPropertyReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty> value)
@@ -526,24 +336,14 @@ public abstract class CGameCtnBlockInfoRoadBuilderMembers6<TSelf> : CGameCtnBloc
         state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetCharPhySpecialPropertyReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public bool CharPhySpecialPropertyCustomizable
-    {
-        get => state.Get<bool>("CharPhySpecialPropertyCustomizable");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetCharPhySpecialPropertyCustomizableAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithCharPhySpecialPropertyCustomizable(bool value)
     {
-        CharPhySpecialPropertyCustomizable = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetCharPhySpecialPropertyCustomizableAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugFileZip? DefaultSkin
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugFileZip?>("DefaultSkin");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetDefaultSkinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDefaultSkin(global::GBX.NET.Engines.Plug.CPlugFileZip? value)
     {
-        DefaultSkin = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetDefaultSkinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithDefaultSkinReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileZip> value)
@@ -552,34 +352,19 @@ public abstract class CGameCtnBlockInfoRoadBuilderMembers6<TSelf> : CGameCtnBloc
         state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetDefaultSkinReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public string? Description
-    {
-        get => state.Get<string?>("Description");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetDescriptionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithDescription(string? value)
     {
-        Description = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetDescriptionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public Direction Dir
-    {
-        get => state.Get<Direction>("Dir");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetDirAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDir(Direction value)
     {
-        Dir = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetDirAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugFogVolumeBox? FogVolumeBox
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugFogVolumeBox?>("FogVolumeBox");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetFogVolumeBoxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFogVolumeBox(global::GBX.NET.Engines.Plug.CPlugFogVolumeBox? value)
     {
-        FogVolumeBox = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetFogVolumeBoxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithFogVolumeBoxReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFogVolumeBox> value)
@@ -588,44 +373,24 @@ public abstract class CGameCtnBlockInfoRoadBuilderMembers6<TSelf> : CGameCtnBloc
         state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetFogVolumeBoxReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public bool IconAutoUseGround
-    {
-        get => state.Get<bool>("IconAutoUseGround");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIconAutoUseGroundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithIconAutoUseGround(bool value)
     {
-        IconAutoUseGround = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIconAutoUseGroundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int IconQuarterRotationY
-    {
-        get => state.Get<int>("IconQuarterRotationY");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconQuarterRotationYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIconQuarterRotationY(int value)
     {
-        IconQuarterRotationY = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconQuarterRotationYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool IconUseAutoRender
-    {
-        get => state.Get<bool>("IconUseAutoRender");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconUseAutoRenderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIconUseAutoRender(bool value)
     {
-        IconUseAutoRender = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconUseAutoRenderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.MwFoundations.CMwNod? IntroInfo
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("IntroInfo");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIntroInfoAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIntroInfo(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
-        IntroInfo = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIntroInfoAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithIntroInfoReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
@@ -634,44 +399,24 @@ public abstract class CGameCtnBlockInfoRoadBuilderMembers6<TSelf> : CGameCtnBloc
         state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIntroInfoReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public bool IsAdvanced
-    {
-        get => state.Get<bool>("IsAdvanced");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIsAdvancedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithIsAdvanced(bool value)
     {
-        IsAdvanced = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIsAdvancedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public DateTime? LightmapComputeTime
-    {
-        get => state.Get<DateTime?>("LightmapComputeTime");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLightmapComputeTime(DateTime? value)
     {
-        LightmapComputeTime = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public string? Name
-    {
-        get => state.Get<string?>("Name");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithName(string? value)
     {
-        Name = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.MwFoundations.CMwNod? PodiumInfo
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("PodiumInfo");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetPodiumInfoAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithPodiumInfo(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
-        PodiumInfo = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetPodiumInfoAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithPodiumInfoReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
@@ -680,24 +425,14 @@ public abstract class CGameCtnBlockInfoRoadBuilderMembers6<TSelf> : CGameCtnBloc
         state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetPodiumInfoReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public string? SkinDirectory
-    {
-        get => state.Get<string?>("SkinDirectory");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetSkinDirectoryAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithSkinDirectory(string? value)
     {
-        SkinDirectory = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetSkinDirectoryAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugSound? Sound1
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound1");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSound1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSound1(global::GBX.NET.Engines.Plug.CPlugSound? value)
     {
-        Sound1 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSound1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithSound1Reference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
@@ -706,24 +441,14 @@ public abstract class CGameCtnBlockInfoRoadBuilderMembers6<TSelf> : CGameCtnBloc
         state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSound1ReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public Iso4 Sound1Loc
-    {
-        get => state.Get<Iso4>("Sound1Loc");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSound1LocAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithSound1Loc(Iso4 value)
     {
-        Sound1Loc = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSound1LocAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugSound? Sound2
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound2");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSound2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSound2(global::GBX.NET.Engines.Plug.CPlugSound? value)
     {
-        Sound2 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSound2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithSound2Reference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
@@ -732,58 +457,33 @@ public abstract class CGameCtnBlockInfoRoadBuilderMembers6<TSelf> : CGameCtnBloc
         state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSound2ReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public Iso4 Sound2Loc
-    {
-        get => state.Get<Iso4>("Sound2Loc");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSound2LocAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithSound2Loc(Iso4 value)
     {
-        Sound2Loc = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSound2LocAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public string? SymmetricalBlockInfoId
-    {
-        get => state.Get<string?>("SymmetricalBlockInfoId");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSymmetricalBlockInfoIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSymmetricalBlockInfoId(string? value)
     {
-        SymmetricalBlockInfoId = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSymmetricalBlockInfoIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantAir? VariantBaseAir
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantAir?>("VariantBaseAir");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetVariantBaseAirAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithVariantBaseAir(global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantAir? value)
     {
-        VariantBaseAir = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetVariantBaseAirAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround? VariantBaseGround
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround?>("VariantBaseGround");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetVariantBaseGroundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithVariantBaseGround(global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround? value)
     {
-        VariantBaseGround = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetVariantBaseGroundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnBlockInfoRoadBuilderMembers7<TSelf> : CGameCtnBlockInfoRoadBuilderMembers6<TSelf> where TSelf : CGameCtnBlockInfoRoadBuilderMembers7<TSelf>
 {
     private protected CGameCtnBlockInfoRoadBuilderMembers7(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad> state) : base(state) { }
-    public global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo? IconMacroBlockInfo
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo?>("IconMacroBlockInfo");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIconMacroBlockInfoAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithIconMacroBlockInfo(global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo? value)
     {
-        IconMacroBlockInfo = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIconMacroBlockInfoAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithIconMacroBlockInfoReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> value)
@@ -792,52 +492,32 @@ public abstract class CGameCtnBlockInfoRoadBuilderMembers7<TSelf> : CGameCtnBloc
         state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIconMacroBlockInfoReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.GameData.CGameCtnCollector.EProdState ProdState
-    {
-        get => state.Get<global::GBX.NET.Engines.GameData.CGameCtnCollector.EProdState>("ProdState");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetProdStateAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithProdState(global::GBX.NET.Engines.GameData.CGameCtnCollector.EProdState value)
     {
-        ProdState = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetProdStateAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnBlockInfoRoadBuilderMembers8<TSelf> : CGameCtnBlockInfoRoadBuilderMembers7<TSelf> where TSelf : CGameCtnBlockInfoRoadBuilderMembers8<TSelf>
 {
     private protected CGameCtnBlockInfoRoadBuilderMembers8(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad> state) : base(state) { }
-    public global::GBX.NET.Engines.Game.CGameCtnBlockInfo.EMultiDir PillarShapeMultiDir
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.EMultiDir>("PillarShapeMultiDir");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetPillarShapeMultiDirAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithPillarShapeMultiDir(global::GBX.NET.Engines.Game.CGameCtnBlockInfo.EMultiDir value)
     {
-        PillarShapeMultiDir = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetPillarShapeMultiDirAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnBlockInfoRoadBuilderMembers9<TSelf> : CGameCtnBlockInfoRoadBuilderMembers6<TSelf> where TSelf : CGameCtnBlockInfoRoadBuilderMembers9<TSelf>
 {
     private protected CGameCtnBlockInfoRoadBuilderMembers9(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad> state) : base(state) { }
-    public Iso4 PrecalcPartLoc
-    {
-        get => state.Get<Iso4>("PrecalcPartLoc");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetPrecalcPartLocAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
-    }
     public TSelf WithPrecalcPartLoc(Iso4 value)
     {
-        PrecalcPartLoc = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetPrecalcPartLocAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams? PrecalcPartParams
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams?>("PrecalcPartParams");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetPrecalcPartParamsAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
     }
     public TSelf WithPrecalcPartParams(global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams? value)
     {
-        PrecalcPartParams = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetPrecalcPartParamsAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithPrecalcPartParamsReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams> value)
@@ -846,24 +526,14 @@ public abstract class CGameCtnBlockInfoRoadBuilderMembers9<TSelf> : CGameCtnBloc
         state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetPrecalcPartParamsReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public bool SpawnUnderground
-    {
-        get => state.Get<bool>("SpawnUnderground");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSpawnUndergroundAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
-    }
     public TSelf WithSpawnUnderground(bool value)
     {
-        SpawnUnderground = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetSpawnUndergroundAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty? WaypointSpecialProperty
-    {
-        get => state.Get<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty?>("WaypointSpecialProperty");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetWaypointSpecialPropertyAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
     }
     public TSelf WithWaypointSpecialProperty(global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty? value)
     {
-        WaypointSpecialProperty = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetWaypointSpecialPropertyAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithWaypointSpecialPropertyReference(NodeRef<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty> value)
@@ -902,20 +572,6 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         node.Chunks.Add(chunk2E001007);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad.Chunk03052000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03052000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E00B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E00C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001003>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk2E001003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001004>() is null) throw new InvalidOperationException($"Required {game} chunk HeaderChunk2E001004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E001002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E001004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E001006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E001007 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad();
@@ -938,18 +594,6 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         var chunk2E001007 = new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001007();
         node.Chunks.Add(chunk2E001007);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad.Chunk03052000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03052000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E00B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E00C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E001002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E001004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E001006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E001007 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad CreateRecipe2(GameVersion game)
     {
@@ -982,22 +626,6 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         node.Chunks.Add(chunk2E001009);
         return node;
     }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad.Chunk03052000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03052000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E00B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E00C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E00D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001003>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk2E001003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001004>() is null) throw new InvalidOperationException($"Required {game} chunk HeaderChunk2E001004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E001002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E001006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E001007 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E001008 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E001009 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad();
@@ -1024,20 +652,6 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         var chunk2E001009 = new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001009();
         node.Chunks.Add(chunk2E001009);
         return node;
-    }
-    private static void ValidateRecipe3(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad.Chunk03052000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03052000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E00B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E00C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E00D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E001002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E001006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E001007 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E001008 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E001009 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad CreateRecipe4(GameVersion game)
     {
@@ -1067,21 +681,6 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         var chunk2E00100A = new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100A();
         node.Chunks.Add(chunk2E00100A);
         return node;
-    }
-    private static void ValidateRecipe4(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad.Chunk03052000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03052000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E00B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E00C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E00D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E001002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E001006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E001007 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E001008 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E001009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E00100A is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad CreateRecipe5(GameVersion game)
     {
@@ -1117,24 +716,6 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         var chunk2E00100B = new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100B();
         node.Chunks.Add(chunk2E00100B);
         return node;
-    }
-    private static void ValidateRecipe5(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad.Chunk03052000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03052000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E00C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E00D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E00E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E00F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001003>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk2E001003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001004>() is null) throw new InvalidOperationException($"Required {game} chunk HeaderChunk2E001004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E001006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E001007 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E001008 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E001009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E00100A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E00100B is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad CreateRecipe6(GameVersion game)
     {
@@ -1196,36 +777,6 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         node.Chunks.Add(chunk2E001011);
         return node;
     }
-    private static void ValidateRecipe6(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad.Chunk03052000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03052000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E00F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E013 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E015>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E015 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E017 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E020>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304E020 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E023>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E023 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E026>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E026 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E027>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E027 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E028>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E028 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E029>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E029 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E02A>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304E02A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E02B>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304E02B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E02C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E02C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E02E>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304E02E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001003>() is not { Version: 7 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk2E001003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001004>() is null) throw new InvalidOperationException($"Required {game} chunk HeaderChunk2E001004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006>() is null) throw new InvalidOperationException($"Required {game} chunk HeaderChunk2E001006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E001008 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E001009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E00100B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E00100C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E00100D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E00100E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001010>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk2E001010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001011>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk2E001011 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad CreateRecipe7(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad();
@@ -1285,36 +836,6 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         node.Chunks.Add(chunk2E001011);
         return node;
     }
-    private static void ValidateRecipe7(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad.Chunk03052000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03052000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E00F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E013 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E015>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E015 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E017 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E020>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304E020 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E022>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E022 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E023>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E023 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E026>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E026 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E027>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E027 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E028>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E028 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E029>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E029 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E02A>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304E02A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E02B>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304E02B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E02C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E02C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001003>() is not { Version: 8 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk2E001003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001004>() is null) throw new InvalidOperationException($"Required {game} chunk HeaderChunk2E001004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006>() is null) throw new InvalidOperationException($"Required {game} chunk HeaderChunk2E001006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E001008 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E001009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E00100B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E00100C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E00100D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E00100E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001010>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk2E001010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001011>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk2E001011 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad CreateRecipe8(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad();
@@ -1371,35 +892,6 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         var chunk2E001011 = new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001011(game);
         node.Chunks.Add(chunk2E001011);
         return node;
-    }
-    private static void ValidateRecipe8(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad.Chunk03052000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03052000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E00F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E013 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E017 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E020>() is not { Version: 7 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304E020 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E022>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E022 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E023>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E023 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E026>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E026 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E027>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E027 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E028>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E028 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E029>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E029 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E02A>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304E02A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E02B>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304E02B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E02C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E02C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E02F>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304E02F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001003>() is not { Version: 8 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk2E001003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001004>() is null) throw new InvalidOperationException($"Required {game} chunk HeaderChunk2E001004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006>() is null) throw new InvalidOperationException($"Required {game} chunk HeaderChunk2E001006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E001008 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E001009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E00100B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E00100C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E00100D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E00100E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001010>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk2E001010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001011>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk2E001011 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad CreateRecipe9(GameVersion game)
     {
@@ -1464,40 +956,6 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         node.Chunks.Add(chunk2E001012);
         return node;
     }
-    private static void ValidateRecipe9(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad.Chunk03052000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03052000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E00F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E013 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E017 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E020>() is not { Version: 8 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304E020 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E022>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E022 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E023>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E023 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E026>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E026 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E027>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E027 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E028>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E028 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E029>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E029 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E02A>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304E02A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E02B>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304E02B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E02C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304E02C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E02F>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304E02F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E031>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304E031 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001003>() is not { Version: 8 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk2E001003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001004>() is null) throw new InvalidOperationException($"Required {game} chunk HeaderChunk2E001004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006>() is null) throw new InvalidOperationException($"Required {game} chunk HeaderChunk2E001006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001008>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk2E001008 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E001008 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E001009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E00100B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E00100C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E00100D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001010>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk2E001010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001011>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk2E001011 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001012>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk2E001012 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node, GameVersion game)
-    {
-    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -1529,14 +987,9 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         {
             return base.WithConstructionModeHelperMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags
-        {
-            get => state.Get<global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags>("Flags");
-            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX | GameVersion.TMT);
-        }
         public TM10 WithFlags(global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags value)
         {
-            Flags = value;
+            state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX | GameVersion.TMT);
             return this;
         }
         public TM10 WithGroundBlockUnitInfos(params global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM10?[] values)
@@ -1551,24 +1004,14 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         {
             return base.WithGroundHelperMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Color[,]? Icon
-        {
-            get => state.Get<global::GBX.NET.Color[,]?>("Icon");
-            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
-        }
         public TM10 WithIcon(global::GBX.NET.Color[,]? value)
         {
-            Icon = value;
+            state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
             return this;
-        }
-        public byte[]? IconWebP
-        {
-            get => state.Get<byte[]?>("IconWebP");
-            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
         }
         public TM10 WithIconWebP(params byte[]? value)
         {
-            IconWebP = value;
+            state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
             return this;
         }
         public TM10 WithIconWebP(IEnumerable<byte> values)
@@ -1589,14 +1032,9 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
             var node = CGameCtnBlockInfoRoadBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CGameCtnBlockInfoRoadBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CGameCtnBlockInfoRoadBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node);
     }
     public partial class TMPU : CGameCtnBlockInfoRoadBuilderMembers4<TMPU>
     {
@@ -1629,24 +1067,14 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         {
             return base.WithGroundHelperMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Color[,]? Icon
-        {
-            get => state.Get<global::GBX.NET.Color[,]?>("Icon");
-            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
-        }
         public TMPU WithIcon(global::GBX.NET.Color[,]? value)
         {
-            Icon = value;
+            state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
             return this;
-        }
-        public byte[]? IconWebP
-        {
-            get => state.Get<byte[]?>("IconWebP");
-            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
         }
         public TMPU WithIconWebP(params byte[]? value)
         {
-            IconWebP = value;
+            state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
             return this;
         }
         public TMPU WithIconWebP(IEnumerable<byte> values)
@@ -1667,14 +1095,9 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
             var node = CGameCtnBlockInfoRoadBuilder.CreateRecipe1(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CGameCtnBlockInfoRoadBuilder.ValidateRecipe1(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CGameCtnBlockInfoRoadBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node);
     }
     public partial class TMSX : CGameCtnBlockInfoRoadBuilderMembers5<TMSX>
     {
@@ -1695,14 +1118,9 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         {
             return base.WithConstructionModeHelperMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags
-        {
-            get => state.Get<global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags>("Flags");
-            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX | GameVersion.TMT);
-        }
         public TMSX WithFlags(global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags value)
         {
-            Flags = value;
+            state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX | GameVersion.TMT);
             return this;
         }
         public TMSX WithGroundBlockUnitInfos(params global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMSX?[] values)
@@ -1717,24 +1135,14 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         {
             return base.WithGroundHelperMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Color[,]? Icon
-        {
-            get => state.Get<global::GBX.NET.Color[,]?>("Icon");
-            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
-        }
         public TMSX WithIcon(global::GBX.NET.Color[,]? value)
         {
-            Icon = value;
+            state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
             return this;
-        }
-        public byte[]? IconWebP
-        {
-            get => state.Get<byte[]?>("IconWebP");
-            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
         }
         public TMSX WithIconWebP(params byte[]? value)
         {
-            IconWebP = value;
+            state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
             return this;
         }
         public TMSX WithIconWebP(IEnumerable<byte> values)
@@ -1755,14 +1163,9 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
             var node = CGameCtnBlockInfoRoadBuilder.CreateRecipe2(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CGameCtnBlockInfoRoadBuilder.ValidateRecipe2(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CGameCtnBlockInfoRoadBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node);
     }
     public partial class TMNESWC : CGameCtnBlockInfoRoadBuilderMembers5<TMNESWC>
     {
@@ -1809,14 +1212,9 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
             var node = CGameCtnBlockInfoRoadBuilder.CreateRecipe3(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CGameCtnBlockInfoRoadBuilder.ValidateRecipe3(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CGameCtnBlockInfoRoadBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node);
     }
     public partial class VSK5 : CGameCtnBlockInfoRoadBuilderMembers5<VSK5>
     {
@@ -1863,14 +1261,9 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
             var node = CGameCtnBlockInfoRoadBuilder.CreateRecipe4(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CGameCtnBlockInfoRoadBuilder.ValidateRecipe4(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CGameCtnBlockInfoRoadBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node);
     }
     public partial class TMF : CGameCtnBlockInfoRoadBuilderMembers5<TMF>
     {
@@ -1891,14 +1284,9 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         {
             return base.WithConstructionModeHelperMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags
-        {
-            get => state.Get<global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags>("Flags");
-            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX | GameVersion.TMT);
-        }
         public TMF WithFlags(global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags value)
         {
-            Flags = value;
+            state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX | GameVersion.TMT);
             return this;
         }
         public TMF WithGroundBlockUnitInfos(params global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMF?[] values)
@@ -1913,38 +1301,23 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         {
             return base.WithGroundHelperMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Color[,]? Icon
-        {
-            get => state.Get<global::GBX.NET.Color[,]?>("Icon");
-            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
-        }
         public TMF WithIcon(global::GBX.NET.Color[,]? value)
         {
-            Icon = value;
+            state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
             return this;
-        }
-        public byte[]? IconWebP
-        {
-            get => state.Get<byte[]?>("IconWebP");
-            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
         }
         public TMF WithIconWebP(params byte[]? value)
         {
-            IconWebP = value;
+            state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT);
             return this;
         }
         public TMF WithIconWebP(IEnumerable<byte> values)
         {
             return WithIconWebP(values.ToArray());
         }
-        public bool NoRespawn
-        {
-            get => state.Get<bool>("NoRespawn");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetNoRespawnAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-        }
         public TMF WithNoRespawn(bool value)
         {
-            NoRespawn = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetNoRespawnAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
             return this;
         }
         public TMF WithPillar(global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMF? value)
@@ -1961,14 +1334,9 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
             var node = CGameCtnBlockInfoRoadBuilder.CreateRecipe5(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CGameCtnBlockInfoRoadBuilder.ValidateRecipe5(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CGameCtnBlockInfoRoadBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node);
     }
     public partial class MP3 : CGameCtnBlockInfoRoadBuilderMembers9<MP3>
     {
@@ -2019,14 +1387,9 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
             var node = CGameCtnBlockInfoRoadBuilder.CreateRecipe6(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CGameCtnBlockInfoRoadBuilder.ValidateRecipe6(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CGameCtnBlockInfoRoadBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node);
     }
     public partial class TMT : CGameCtnBlockInfoRoadBuilderMembers9<TMT>
     {
@@ -2055,14 +1418,9 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         {
             return base.WithFogVolumeBox(value is null ? (global::GBX.NET.Engines.Plug.CPlugFogVolumeBox?)null : value is global::GBX.NET.Engines.Plug.CPlugFogVolumeBox node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo? IconMacroBlockInfo
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo?>("IconMacroBlockInfo");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIconMacroBlockInfoAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-        }
         public TMT WithIconMacroBlockInfo(global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo? value)
         {
-            IconMacroBlockInfo = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIconMacroBlockInfoAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
             return this;
         }
         public TMT WithIconMacroBlockInfoReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> value)
@@ -2079,14 +1437,9 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         {
             return base.WithPrecalcPartParams(value is null ? (global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams?)null : value is global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.GameData.CGameCtnCollector.EProdState ProdState
-        {
-            get => state.Get<global::GBX.NET.Engines.GameData.CGameCtnCollector.EProdState>("ProdState");
-            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetProdStateAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-        }
         public TMT WithProdState(global::GBX.NET.Engines.GameData.CGameCtnCollector.EProdState value)
         {
-            ProdState = value;
+            state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetProdStateAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
             return this;
         }
         public TMT WithSlope(global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMT? value)
@@ -2111,14 +1464,9 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
             var node = CGameCtnBlockInfoRoadBuilder.CreateRecipe7(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameCtnBlockInfoRoadBuilder.ValidateRecipe7(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameCtnBlockInfoRoadBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node);
     }
     public partial class MP4 : CGameCtnBlockInfoRoadBuilderMembers8<MP4>
     {
@@ -2169,14 +1517,9 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
             var node = CGameCtnBlockInfoRoadBuilder.CreateRecipe8(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameCtnBlockInfoRoadBuilder.ValidateRecipe8(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameCtnBlockInfoRoadBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node);
     }
     public partial class TM2020 : CGameCtnBlockInfoRoadBuilderMembers8<TM2020>
     {
@@ -2197,14 +1540,9 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         {
             return WithAdditionalVariantsGround(values.ToArray());
         }
-        public global::GBX.NET.Engines.Game.CGameCtnBlockInfo? BlockInfoModelFid
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnBlockInfo?>("BlockInfoModelFid");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetBlockInfoModelFidAssignment(), value, GameVersion.TM2020);
-        }
         public TM2020 WithBlockInfoModelFid(global::GBX.NET.Engines.Game.CGameCtnBlockInfo? value)
         {
-            BlockInfoModelFid = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetBlockInfoModelFidAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithBlockInfoModelFidReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockInfo> value)
@@ -2221,14 +1559,9 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         {
             return base.WithCharPhySpecialProperty(value is null ? (global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty?)null : value is global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public string? DefaultSkinName
-        {
-            get => state.Get<string?>("DefaultSkinName");
-            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetDefaultSkinNameAssignment(), value, GameVersion.TM2020);
-        }
         public TM2020 WithDefaultSkinName(string? value)
         {
-            DefaultSkinName = value;
+            state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetDefaultSkinNameAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithFogVolumeBox(global::GBX.NET.Interfaces.Plug.IPlugFogVolumeBoxTM2020? value)
@@ -2239,44 +1572,24 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         {
             return base.WithIconMacroBlockInfo(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo?)null : value is global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public float IconPhase01
-        {
-            get => state.Get<float>("IconPhase01");
-            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconPhase01Assignment(), value, GameVersion.TM2020);
-        }
         public TM2020 WithIconPhase01(float value)
         {
-            IconPhase01 = value;
+            state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconPhase01Assignment(), value, GameVersion.TM2020);
             return this;
-        }
-        public bool IsMultiHeightPillarOrVFC
-        {
-            get => state.Get<bool>("IsMultiHeightPillarOrVFC");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIsMultiHeightPillarOrVFCAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithIsMultiHeightPillarOrVFC(bool value)
         {
-            IsMultiHeightPillarOrVFC = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIsMultiHeightPillarOrVFCAssignment(), value, GameVersion.TM2020);
             return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnBlockInfo.MaterialModifierPlacementTag? MatModifierPlacementTag
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.MaterialModifierPlacementTag?>("MatModifierPlacementTag");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetMatModifierPlacementTagAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithMatModifierPlacementTag(global::GBX.NET.Engines.Game.CGameCtnBlockInfo.MaterialModifierPlacementTag? value)
         {
-            MatModifierPlacementTag = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetMatModifierPlacementTagAssignment(), value, GameVersion.TM2020);
             return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder? MaterialModifier
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder?>("MaterialModifier");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetMaterialModifierAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithMaterialModifier(global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder? value)
         {
-            MaterialModifier = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetMaterialModifierAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithMaterialModifierReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder> value)
@@ -2289,14 +1602,9 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         {
             return WithMaterialModifier(value is null ? (global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder?)null : value is global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder? MaterialModifier2
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder?>("MaterialModifier2");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetMaterialModifier2Assignment(), value, GameVersion.TM2020);
-        }
         public TM2020 WithMaterialModifier2(global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder? value)
         {
-            MaterialModifier2 = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetMaterialModifier2Assignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithMaterialModifier2Reference(NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder> value)
@@ -2309,14 +1617,9 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         {
             return WithMaterialModifier2(value is null ? (global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder?)null : value is global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.MwFoundations.CMwNod? ModelKitDb
-        {
-            get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("ModelKitDb");
-            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbAssignment(), value, GameVersion.TM2020);
-        }
         public TM2020 WithModelKitDb(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
-            ModelKitDb = value;
+            state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithModelKitDbReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
@@ -2325,14 +1628,9 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
             state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbReferenceAssignment(), value, GameVersion.TM2020);
             return this;
         }
-        public global::GBX.NET.Engines.MwFoundations.CMwNod? ModelKitDbRelease
-        {
-            get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("ModelKitDbRelease");
-            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbReleaseAssignment(), value, GameVersion.TM2020);
-        }
         public TM2020 WithModelKitDbRelease(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
-            ModelKitDbRelease = value;
+            state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbReleaseAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithModelKitDbReleaseReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
@@ -2359,13 +1657,8 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
             var node = CGameCtnBlockInfoRoadBuilder.CreateRecipe9(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameCtnBlockInfoRoadBuilder.ValidateRecipe9(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameCtnBlockInfoRoadBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node);
     }
 }

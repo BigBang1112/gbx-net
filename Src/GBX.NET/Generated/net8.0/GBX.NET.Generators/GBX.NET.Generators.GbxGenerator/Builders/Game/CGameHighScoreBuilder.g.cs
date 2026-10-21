@@ -36,68 +36,38 @@ public abstract class CGameHighScoreBuilderBase<TSelf> where TSelf : CGameHighSc
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameHighScore> state;
     private protected CGameHighScoreBuilderBase() => state = new();
     private protected CGameHighScoreBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameHighScore> state) => this.state = state;
-    public int Count
-    {
-        get => state.Get<int>("Count");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameHighScoreBuilderAssignments.GetCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT);
-    }
     public TSelf WithCount(int value)
     {
-        Count = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameHighScoreBuilderAssignments.GetCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public string? Name
-    {
-        get => state.Get<string?>("Name");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameHighScoreBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithName(string? value)
     {
-        Name = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameHighScoreBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int Rank
-    {
-        get => state.Get<int>("Rank");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameHighScoreBuilderAssignments.GetRankAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithRank(int value)
     {
-        Rank = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameHighScoreBuilderAssignments.GetRankAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public string? Score
-    {
-        get => state.Get<string?>("Score");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameHighScoreBuilderAssignments.GetScoreAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithScore(string? value)
     {
-        Score = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameHighScoreBuilderAssignments.GetScoreAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int Time
-    {
-        get => state.Get<int>("Time");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameHighScoreBuilderAssignments.GetTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithTime(int value)
     {
-        Time = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameHighScoreBuilderAssignments.GetTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
     }
 }
 public abstract class CGameHighScoreBuilderMembers1<TSelf> : CGameHighScoreBuilderBase<TSelf> where TSelf : CGameHighScoreBuilderMembers1<TSelf>
 {
     private protected CGameHighScoreBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Game.CGameHighScore> state) : base(state) { }
-    public string? GhostUrl
-    {
-        get => state.Get<string?>("GhostUrl");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameHighScoreBuilderAssignments.GetGhostUrlAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
-    }
     public TSelf WithGhostUrl(string? value)
     {
-        GhostUrl = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameHighScoreBuilderAssignments.GetGhostUrlAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -110,10 +80,6 @@ public partial class CGameHighScoreBuilder : CGameHighScoreBuilderBase<CGameHigh
         node.Chunks.Add(chunk03047002);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameHighScore node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameHighScore.Chunk03047002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03047002 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameHighScore CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameHighScore();
@@ -122,14 +88,6 @@ public partial class CGameHighScoreBuilder : CGameHighScoreBuilderBase<CGameHigh
         var chunk03047004 = new global::GBX.NET.Engines.Game.CGameHighScore.Chunk03047004();
         node.Chunks.Add(chunk03047004);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameHighScore node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameHighScore.Chunk03047002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03047002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameHighScore.Chunk03047004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03047004 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameHighScore node, GameVersion game)
-    {
     }
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -146,14 +104,9 @@ public partial class CGameHighScoreBuilder : CGameHighScoreBuilderBase<CGameHigh
             var node = CGameHighScoreBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CGameHighScoreBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CGameHighScoreBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameHighScore node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameHighScore node);
     }
     public partial class MP3 : CGameHighScoreBuilderMembers1<MP3>
     {
@@ -164,14 +117,9 @@ public partial class CGameHighScoreBuilder : CGameHighScoreBuilderBase<CGameHigh
             var node = CGameHighScoreBuilder.CreateRecipe1(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CGameHighScoreBuilder.ValidateRecipe1(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CGameHighScoreBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameHighScore node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameHighScore node);
     }
     public partial class TMT : CGameHighScoreBuilderMembers1<TMT>
     {
@@ -182,14 +130,9 @@ public partial class CGameHighScoreBuilder : CGameHighScoreBuilderBase<CGameHigh
             var node = CGameHighScoreBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameHighScoreBuilder.ValidateRecipe1(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameHighScoreBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameHighScore node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameHighScore node);
     }
     public partial class MP4 : CGameHighScoreBuilderMembers1<MP4>
     {
@@ -200,13 +143,8 @@ public partial class CGameHighScoreBuilder : CGameHighScoreBuilderBase<CGameHigh
             var node = CGameHighScoreBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameHighScoreBuilder.ValidateRecipe1(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameHighScoreBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameHighScore node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameHighScore node);
     }
 }

@@ -36,24 +36,14 @@ public abstract class GxFogBlenderBuilderBase<TSelf> where TSelf : GxFogBlenderB
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Graphic.GxFogBlender> state;
     private protected GxFogBlenderBuilderBase() => state = new();
     private protected GxFogBlenderBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxFogBlender> state) => this.state = state;
-    public bool Enabled
-    {
-        get => state.Get<bool>("Enabled");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBlenderBuilderAssignments.GetEnabledAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithEnabled(bool value)
     {
-        Enabled = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBlenderBuilderAssignments.GetEnabledAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public List<global::GBX.NET.Engines.Graphic.GxFogBlender.Key>? Keys
-    {
-        get => state.Get<List<global::GBX.NET.Engines.Graphic.GxFogBlender.Key>?>("Keys");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBlenderBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithKeys(List<global::GBX.NET.Engines.Graphic.GxFogBlender.Key>? value)
     {
-        Keys = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBlenderBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithKeys(params global::GBX.NET.Engines.Graphic.GxFogBlender.Key[] values)
@@ -64,14 +54,9 @@ public abstract class GxFogBlenderBuilderBase<TSelf> where TSelf : GxFogBlenderB
     {
         return WithKeys(values.ToArray());
     }
-    public int LegacyMode
-    {
-        get => state.Get<int>("LegacyMode");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBlenderBuilderAssignments.GetLegacyModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithLegacyMode(int value)
     {
-        LegacyMode = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBlenderBuilderAssignments.GetLegacyModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -83,13 +68,6 @@ public partial class GxFogBlenderBuilder : GxFogBlenderBuilderBase<GxFogBlenderB
         var chunk04008000 = new global::GBX.NET.Engines.Graphic.GxFogBlender.Chunk04008000();
         node.Chunks.Add(chunk04008000);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Graphic.GxFogBlender node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxFogBlender.Chunk04008000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04008000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Graphic.GxFogBlender node, GameVersion game)
-    {
     }
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
@@ -108,14 +86,9 @@ public partial class GxFogBlenderBuilder : GxFogBlenderBuilderBase<GxFogBlenderB
             var node = GxFogBlenderBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            GxFogBlenderBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            GxFogBlenderBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxFogBlender node);
-        partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxFogBlender node);
     }
     public partial class TMF : GxFogBlenderBuilderBase<TMF>
     {
@@ -126,14 +99,9 @@ public partial class GxFogBlenderBuilder : GxFogBlenderBuilderBase<GxFogBlenderB
             var node = GxFogBlenderBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            GxFogBlenderBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            GxFogBlenderBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxFogBlender node);
-        partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxFogBlender node);
     }
     public partial class MP3 : GxFogBlenderBuilderBase<MP3>
     {
@@ -144,14 +112,9 @@ public partial class GxFogBlenderBuilder : GxFogBlenderBuilderBase<GxFogBlenderB
             var node = GxFogBlenderBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            GxFogBlenderBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            GxFogBlenderBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxFogBlender node);
-        partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxFogBlender node);
     }
     public partial class TMT : GxFogBlenderBuilderBase<TMT>
     {
@@ -162,14 +125,9 @@ public partial class GxFogBlenderBuilder : GxFogBlenderBuilderBase<GxFogBlenderB
             var node = GxFogBlenderBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            GxFogBlenderBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            GxFogBlenderBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxFogBlender node);
-        partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxFogBlender node);
     }
     public partial class MP4 : GxFogBlenderBuilderBase<MP4>
     {
@@ -180,14 +138,9 @@ public partial class GxFogBlenderBuilder : GxFogBlenderBuilderBase<GxFogBlenderB
             var node = GxFogBlenderBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            GxFogBlenderBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            GxFogBlenderBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxFogBlender node);
-        partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxFogBlender node);
     }
     public partial class TM2020 : GxFogBlenderBuilderBase<TM2020>
     {
@@ -198,13 +151,8 @@ public partial class GxFogBlenderBuilder : GxFogBlenderBuilderBase<GxFogBlenderB
             var node = GxFogBlenderBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            GxFogBlenderBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            GxFogBlenderBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxFogBlender node);
-        partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxFogBlender node);
     }
 }

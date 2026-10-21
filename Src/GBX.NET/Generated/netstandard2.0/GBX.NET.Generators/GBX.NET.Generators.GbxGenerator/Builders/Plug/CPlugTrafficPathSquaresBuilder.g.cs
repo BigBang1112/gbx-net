@@ -36,44 +36,24 @@ public abstract class CPlugTrafficPathSquaresBuilderBase<TSelf> where TSelf : CP
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares> state;
     private protected CPlugTrafficPathSquaresBuilderBase() => state = new();
     private protected CPlugTrafficPathSquaresBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares> state) => this.state = state;
-    public float BaseHeight
-    {
-        get => state.Get<float>("BaseHeight");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficPathSquaresBuilderAssignments.GetBaseHeightAssignment(), value, GameVersion.TMT);
-    }
     public TSelf WithBaseHeight(float value)
     {
-        BaseHeight = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficPathSquaresBuilderAssignments.GetBaseHeightAssignment(), value, GameVersion.TMT);
         return (TSelf)this;
-    }
-    public string PathId
-    {
-        get => state.Get<string>("PathId");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficPathSquaresBuilderAssignments.GetPathIdAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithPathId(string value)
     {
-        PathId = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficPathSquaresBuilderAssignments.GetPathIdAssignment(), value, GameVersion.TMT);
         return (TSelf)this;
-    }
-    public Vec3 SquareSize
-    {
-        get => state.Get<Vec3>("SquareSize");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficPathSquaresBuilderAssignments.GetSquareSizeAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithSquareSize(Vec3 value)
     {
-        SquareSize = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficPathSquaresBuilderAssignments.GetSquareSizeAssignment(), value, GameVersion.TMT);
         return (TSelf)this;
-    }
-    public Int3[]? Squares
-    {
-        get => state.Get<Int3[]?>("Squares");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficPathSquaresBuilderAssignments.GetSquaresAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithSquares(params Int3[]? value)
     {
-        Squares = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficPathSquaresBuilderAssignments.GetSquaresAssignment(), value, GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithSquares(IEnumerable<Int3> values)
@@ -92,15 +72,6 @@ public partial class CPlugTrafficPathSquaresBuilder : CPlugTrafficPathSquaresBui
         node.Chunks.Add(chunk090D0001);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares.Chunk090D0000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090D0000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares.Chunk090D0001>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090D0001 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares node, GameVersion game)
-    {
-        if (node.PathId is null) throw new MemberNullException("PathId");
-    }
     public TMT ForTMT() => new(state.Snapshot());
     public partial class TMT : CPlugTrafficPathSquaresBuilderBase<TMT>
     {
@@ -111,13 +82,8 @@ public partial class CPlugTrafficPathSquaresBuilder : CPlugTrafficPathSquaresBui
             var node = CPlugTrafficPathSquaresBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugTrafficPathSquaresBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugTrafficPathSquaresBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares node);
     }
 }

@@ -36,14 +36,9 @@ public abstract class CHmsLightMapBuilderBase<TSelf> where TSelf : CHmsLightMapB
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state;
     private protected CHmsLightMapBuilderBase() => state = new();
     private protected CHmsLightMapBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state) => this.state = state;
-    public global::GBX.NET.Engines.Hms.CHmsLightMapMood? Mood
-    {
-        get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapMood?>("Mood");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetMoodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithMood(global::GBX.NET.Engines.Hms.CHmsLightMapMood? value)
     {
-        Mood = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetMoodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithMoodReference(NodeRef<global::GBX.NET.Engines.Hms.CHmsLightMapMood> value)
@@ -52,14 +47,9 @@ public abstract class CHmsLightMapBuilderBase<TSelf> where TSelf : CHmsLightMapB
         state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetMoodReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt? PointsInSphereOpt
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt?>("PointsInSphereOpt");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetPointsInSphereOptAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithPointsInSphereOpt(global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt? value)
     {
-        PointsInSphereOpt = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetPointsInSphereOptAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithPointsInSphereOptReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt> value)
@@ -72,24 +62,14 @@ public abstract class CHmsLightMapBuilderBase<TSelf> where TSelf : CHmsLightMapB
 public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBase<TSelf> where TSelf : CHmsLightMapBuilderMembers1<TSelf>
 {
     private protected CHmsLightMapBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state) : base(state) { }
-    public bool BackgroundUseClouds
-    {
-        get => state.Get<bool>("BackgroundUseClouds");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBackgroundUseCloudsAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithBackgroundUseClouds(bool value)
     {
-        BackgroundUseClouds = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBackgroundUseCloudsAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugBitmapArray? BitmapArrayLightSH
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmapArray?>("BitmapArrayLightSH");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapArrayLightSHAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBitmapArrayLightSH(global::GBX.NET.Engines.Plug.CPlugBitmapArray? value)
     {
-        BitmapArrayLightSH = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapArrayLightSHAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithBitmapArrayLightSHReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapArray> value)
@@ -98,14 +78,9 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
         state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapArrayLightSHReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapLM_ILightDir
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapLM_ILightDir");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLM_ILightDirAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithBitmapLM_ILightDir(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
-        BitmapLM_ILightDir = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLM_ILightDirAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithBitmapLM_ILightDirReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
@@ -114,14 +89,9 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
         state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLM_ILightDirReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapLM_ILightInput
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapLM_ILightInput");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLM_ILightInputAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithBitmapLM_ILightInput(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
-        BitmapLM_ILightInput = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLM_ILightInputAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithBitmapLM_ILightInputReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
@@ -130,14 +100,9 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
         state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLM_ILightInputReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapLM_LListUV
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapLM_LListUV");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLM_LListUVAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithBitmapLM_LListUV(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
-        BitmapLM_LListUV = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLM_LListUVAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithBitmapLM_LListUVReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
@@ -146,14 +111,9 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
         state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLM_LListUVReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapLM_LListW
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapLM_LListW");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLM_LListWAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithBitmapLM_LListW(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
-        BitmapLM_LListW = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLM_LListWAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithBitmapLM_LListWReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
@@ -162,14 +122,9 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
         state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLM_LListWReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapLM_LocalDirect
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapLM_LocalDirect");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLM_LocalDirectAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithBitmapLM_LocalDirect(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
-        BitmapLM_LocalDirect = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLM_LocalDirectAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithBitmapLM_LocalDirectReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
@@ -178,14 +133,9 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
         state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLM_LocalDirectReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugBitmapArray? BitmapLightSumBump
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmapArray?>("BitmapLightSumBump");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLightSumBumpAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithBitmapLightSumBump(global::GBX.NET.Engines.Plug.CPlugBitmapArray? value)
     {
-        BitmapLightSumBump = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLightSumBumpAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithBitmapLightSumBumpReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapArray> value)
@@ -194,14 +144,9 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
         state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapLightSumBumpReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapProbeGeom_BBoxInvHDiag_ThroughBounce
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapProbeGeom_BBoxInvHDiag_ThroughBounce");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapProbeGeom_BBoxInvHDiag_ThroughBounceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithBitmapProbeGeom_BBoxInvHDiag_ThroughBounce(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
-        BitmapProbeGeom_BBoxInvHDiag_ThroughBounce = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapProbeGeom_BBoxInvHDiag_ThroughBounceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithBitmapProbeGeom_BBoxInvHDiag_ThroughBounceReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
@@ -210,14 +155,9 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
         state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapProbeGeom_BBoxInvHDiag_ThroughBounceReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapSM_ColorPeeled
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapSM_ColorPeeled");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapSM_ColorPeeledAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithBitmapSM_ColorPeeled(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
-        BitmapSM_ColorPeeled = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapSM_ColorPeeledAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithBitmapSM_ColorPeeledReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
@@ -226,14 +166,9 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
         state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapSM_ColorPeeledReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapSM_DepthToPeel
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapSM_DepthToPeel");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapSM_DepthToPeelAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithBitmapSM_DepthToPeel(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
-        BitmapSM_DepthToPeel = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapSM_DepthToPeelAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithBitmapSM_DepthToPeelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
@@ -242,14 +177,9 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
         state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapSM_DepthToPeelReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapShadow
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapShadow");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapShadowAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithBitmapShadow(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
-        BitmapShadow = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapShadowAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithBitmapShadowReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
@@ -258,14 +188,9 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
         state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapShadowReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapSprite3x3_Light
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapSprite3x3_Light");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapSprite3x3_LightAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithBitmapSprite3x3_Light(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
-        BitmapSprite3x3_Light = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapSprite3x3_LightAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithBitmapSprite3x3_LightReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
@@ -274,14 +199,9 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
         state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapSprite3x3_LightReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapSprite_ILightDir
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapSprite_ILightDir");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapSprite_ILightDirAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithBitmapSprite_ILightDir(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
-        BitmapSprite_ILightDir = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapSprite_ILightDirAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithBitmapSprite_ILightDirReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
@@ -290,14 +210,9 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
         state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapSprite_ILightDirReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapSprite_PosAndRadius
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapSprite_PosAndRadius");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapSprite_PosAndRadiusAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithBitmapSprite_PosAndRadius(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
-        BitmapSprite_PosAndRadius = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapSprite_PosAndRadiusAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithBitmapSprite_PosAndRadiusReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
@@ -306,84 +221,44 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
         state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapSprite_PosAndRadiusReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public bool ClampAmb_PosY
-    {
-        get => state.Get<bool>("ClampAmb_PosY");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetClampAmb_PosYAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithClampAmb_PosY(bool value)
     {
-        ClampAmb_PosY = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetClampAmb_PosYAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool ClampDir_PosY
-    {
-        get => state.Get<bool>("ClampDir_PosY");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetClampDir_PosYAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithClampDir_PosY(bool value)
     {
-        ClampDir_PosY = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetClampDir_PosYAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Hms.CHmsLightMap.ECompressMode CompressMode
-    {
-        get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMap.ECompressMode>("CompressMode");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetCompressModeAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCompressMode(global::GBX.NET.Engines.Hms.CHmsLightMap.ECompressMode value)
     {
-        CompressMode = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetCompressModeAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public uint GameTimerSeconds
-    {
-        get => state.Get<uint>("GameTimerSeconds");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetGameTimerSecondsAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGameTimerSeconds(uint value)
     {
-        GameTimerSeconds = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetGameTimerSecondsAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool IsSpriteLDirInAlpha
-    {
-        get => state.Get<bool>("IsSpriteLDirInAlpha");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetIsSpriteLDirInAlphaAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIsSpriteLDirInAlpha(bool value)
     {
-        IsSpriteLDirInAlpha = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetIsSpriteLDirInAlphaAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool SRGB
-    {
-        get => state.Get<bool>("SRGB");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetSRGBAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSRGB(bool value)
     {
-        SRGB = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetSRGBAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Hms.CHmsLightMap.EStoreLDir0 StoreLDir0
-    {
-        get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMap.EStoreLDir0>("StoreLDir0");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetStoreLDir0Assignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStoreLDir0(global::GBX.NET.Engines.Hms.CHmsLightMap.EStoreLDir0 value)
     {
-        StoreLDir0 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetStoreLDir0Assignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool UseHDR
-    {
-        get => state.Get<bool>("UseHDR");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetUseHDRAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithUseHDR(bool value)
     {
-        UseHDR = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetUseHDRAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -402,13 +277,6 @@ public partial class CHmsLightMapBuilder : CHmsLightMapBuilderBase<CHmsLightMapB
         node.Chunks.Add(chunk06021003);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Hms.CHmsLightMap node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021003 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Hms.CHmsLightMap CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Hms.CHmsLightMap();
@@ -421,13 +289,6 @@ public partial class CHmsLightMapBuilder : CHmsLightMapBuilderBase<CHmsLightMapB
         var chunk06021004 = new global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021004();
         node.Chunks.Add(chunk06021004);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Hms.CHmsLightMap node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021004 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Hms.CHmsLightMap CreateRecipe2(GameVersion game)
     {
@@ -478,31 +339,6 @@ public partial class CHmsLightMapBuilder : CHmsLightMapBuilderBase<CHmsLightMapB
         node.Chunks.Add(chunk0602102B);
         return node;
     }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Hms.CHmsLightMap node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk0602100E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0602100E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk0602100F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0602100F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021013 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021014>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021014 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021016 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021017 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021019>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021019 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk0602101D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0602101D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk0602101F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0602101F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021022>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021022 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021023>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021023 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021024>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021024 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021025>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021025 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021027>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021027 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021028>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021028 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021029>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk06021029 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk0602102A>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk0602102A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk0602102B>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0602102B is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Hms.CHmsLightMap CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Hms.CHmsLightMap();
@@ -513,12 +349,6 @@ public partial class CHmsLightMapBuilder : CHmsLightMapBuilderBase<CHmsLightMapB
         var chunk06021003 = new global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021003();
         node.Chunks.Add(chunk06021003);
         return node;
-    }
-    private static void ValidateRecipe3(global::GBX.NET.Engines.Hms.CHmsLightMap node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021003 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Hms.CHmsLightMap CreateRecipe4(GameVersion game)
     {
@@ -561,30 +391,6 @@ public partial class CHmsLightMapBuilder : CHmsLightMapBuilderBase<CHmsLightMapB
         node.Chunks.Add(chunk0602102B);
         return node;
     }
-    private static void ValidateRecipe4(global::GBX.NET.Engines.Hms.CHmsLightMap node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk0602100E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0602100E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk0602100F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0602100F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021013 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021014>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021014 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021017 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021019>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021019 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk0602101D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0602101D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021022>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021022 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021023>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021023 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021024>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021024 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021025>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021025 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021027>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021027 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021028>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06021028 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021029>() is not { Version: 7 }) throw new InvalidOperationException($"Required {game} chunk Chunk06021029 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk0602102B>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0602102B is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Hms.CHmsLightMap node, GameVersion game)
-    {
-    }
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -610,14 +416,9 @@ public partial class CHmsLightMapBuilder : CHmsLightMapBuilderBase<CHmsLightMapB
             var node = CHmsLightMapBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CHmsLightMapBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CHmsLightMapBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLightMap node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsLightMap node);
     }
     public partial class TMF : CHmsLightMapBuilderBase<TMF>
     {
@@ -636,14 +437,9 @@ public partial class CHmsLightMapBuilder : CHmsLightMapBuilderBase<CHmsLightMapB
             var node = CHmsLightMapBuilder.CreateRecipe1(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CHmsLightMapBuilder.ValidateRecipe1(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CHmsLightMapBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLightMap node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsLightMap node);
     }
     public partial class MP3 : CHmsLightMapBuilderMembers1<MP3>
     {
@@ -710,14 +506,9 @@ public partial class CHmsLightMapBuilder : CHmsLightMapBuilderBase<CHmsLightMapB
             var node = CHmsLightMapBuilder.CreateRecipe2(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CHmsLightMapBuilder.ValidateRecipe2(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CHmsLightMapBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLightMap node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsLightMap node);
     }
     public partial class TMT : CHmsLightMapBuilderMembers1<TMT>
     {
@@ -784,14 +575,9 @@ public partial class CHmsLightMapBuilder : CHmsLightMapBuilderBase<CHmsLightMapB
             var node = CHmsLightMapBuilder.CreateRecipe2(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CHmsLightMapBuilder.ValidateRecipe2(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CHmsLightMapBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLightMap node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsLightMap node);
     }
     public partial class MP4 : CHmsLightMapBuilderBase<MP4>
     {
@@ -810,14 +596,9 @@ public partial class CHmsLightMapBuilder : CHmsLightMapBuilderBase<CHmsLightMapB
             var node = CHmsLightMapBuilder.CreateRecipe3(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CHmsLightMapBuilder.ValidateRecipe3(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CHmsLightMapBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLightMap node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsLightMap node);
     }
     public partial class TM2020 : CHmsLightMapBuilderMembers1<TM2020>
     {
@@ -846,14 +627,9 @@ public partial class CHmsLightMapBuilder : CHmsLightMapBuilderBase<CHmsLightMapB
         {
             return base.WithBitmapProbeGeom_BBoxInvHDiag_ThroughBounce(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapProbeGridAmbSV
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapProbeGridAmbSV");
-            set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapProbeGridAmbSVAssignment(), value, GameVersion.TM2020);
-        }
         public TM2020 WithBitmapProbeGridAmbSV(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
         {
-            BitmapProbeGridAmbSV = value;
+            state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapProbeGridAmbSVAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithBitmapProbeGridAmbSVReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
@@ -866,14 +642,9 @@ public partial class CHmsLightMapBuilder : CHmsLightMapBuilderBase<CHmsLightMapB
         {
             return WithBitmapProbeGridAmbSV(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapProbeGridAmbSV_Spread1
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapProbeGridAmbSV_Spread1");
-            set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapProbeGridAmbSV_Spread1Assignment(), value, GameVersion.TM2020);
-        }
         public TM2020 WithBitmapProbeGridAmbSV_Spread1(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
         {
-            BitmapProbeGridAmbSV_Spread1 = value;
+            state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapProbeGridAmbSV_Spread1Assignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithBitmapProbeGridAmbSV_Spread1Reference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
@@ -924,13 +695,8 @@ public partial class CHmsLightMapBuilder : CHmsLightMapBuilderBase<CHmsLightMapB
             var node = CHmsLightMapBuilder.CreateRecipe4(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CHmsLightMapBuilder.ValidateRecipe4(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CHmsLightMapBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLightMap node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsLightMap node);
     }
 }

@@ -36,14 +36,9 @@ public abstract class CPlugParticleEmitterModelBuilderBase<TSelf> where TSelf : 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> state;
     private protected CPlugParticleEmitterModelBuilderBase() => state = new();
     private protected CPlugParticleEmitterModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> state) => this.state = state;
-    public NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel>? ParticleEmitterSubModels
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel>?>("ParticleEmitterSubModels");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetParticleEmitterSubModelsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithParticleEmitterSubModels(NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel>? value)
     {
-        ParticleEmitterSubModels = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetParticleEmitterSubModelsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithParticleEmitterSubModels(params global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel[] values)
@@ -58,108 +53,58 @@ public abstract class CPlugParticleEmitterModelBuilderBase<TSelf> where TSelf : 
 public abstract class CPlugParticleEmitterModelBuilderMembers1<TSelf> : CPlugParticleEmitterModelBuilderBase<TSelf> where TSelf : CPlugParticleEmitterModelBuilderMembers1<TSelf>
 {
     private protected CPlugParticleEmitterModelBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> state) : base(state) { }
-    public bool IsSplashMode
-    {
-        get => state.Get<bool>("IsSplashMode");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetIsSplashModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithIsSplashMode(bool value)
     {
-        IsSplashMode = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetIsSplashModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
 public abstract class CPlugParticleEmitterModelBuilderMembers2<TSelf> : CPlugParticleEmitterModelBuilderMembers1<TSelf> where TSelf : CPlugParticleEmitterModelBuilderMembers2<TSelf>
 {
     private protected CPlugParticleEmitterModelBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> state) : base(state) { }
-    public float Coef
-    {
-        get => state.Get<float>("Coef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithCoef(float value)
     {
-        Coef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public int EmitPeriod
-    {
-        get => state.Get<int>("EmitPeriod");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetEmitPeriodAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithEmitPeriod(int value)
     {
-        EmitPeriod = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetEmitPeriodAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public bool EnableVortexEmitter
-    {
-        get => state.Get<bool>("EnableVortexEmitter");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetEnableVortexEmitterAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithEnableVortexEmitter(bool value)
     {
-        EnableVortexEmitter = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetEnableVortexEmitterAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public int LifeTime
-    {
-        get => state.Get<int>("LifeTime");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetLifeTimeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLifeTime(int value)
     {
-        LifeTime = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetLifeTimeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float Radius
-    {
-        get => state.Get<float>("Radius");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetRadiusAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithRadius(float value)
     {
-        Radius = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetRadiusAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float Randomness
-    {
-        get => state.Get<float>("Randomness");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetRandomnessAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithRandomness(float value)
     {
-        Randomness = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetRandomnessAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float ShadowMapTexelSize
-    {
-        get => state.Get<float>("ShadowMapTexelSize");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetShadowMapTexelSizeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithShadowMapTexelSize(float value)
     {
-        ShadowMapTexelSize = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetShadowMapTexelSizeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float Strength
-    {
-        get => state.Get<float>("Strength");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetStrengthAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithStrength(float value)
     {
-        Strength = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetStrengthAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public int VortexCountPerCircle
-    {
-        get => state.Get<int>("VortexCountPerCircle");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetVortexCountPerCircleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithVortexCountPerCircle(int value)
     {
-        VortexCountPerCircle = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetVortexCountPerCircleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
 }
@@ -171,10 +116,6 @@ public partial class CPlugParticleEmitterModelBuilder : CPlugParticleEmitterMode
         var chunk090B3000 = new global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel.Chunk090B3000();
         node.Chunks.Add(chunk090B3000);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel.Chunk090B3000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B3000 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel CreateRecipe1(GameVersion game)
     {
@@ -189,13 +130,6 @@ public partial class CPlugParticleEmitterModelBuilder : CPlugParticleEmitterMode
         chunk090B3003.Version = 0;
         node.Chunks.Add(chunk090B3003);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel.Chunk090B3000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B3000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel.Chunk090B3001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B3001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel.Chunk090B3002>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B3002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel.Chunk090B3003>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B3003 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel CreateRecipe2(GameVersion game)
     {
@@ -213,14 +147,6 @@ public partial class CPlugParticleEmitterModelBuilder : CPlugParticleEmitterMode
         node.Chunks.Add(chunk090B3004);
         return node;
     }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel.Chunk090B3000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B3000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel.Chunk090B3001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B3001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel.Chunk090B3002>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B3002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel.Chunk090B3003>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B3003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel.Chunk090B3004>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B3004 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel();
@@ -236,17 +162,6 @@ public partial class CPlugParticleEmitterModelBuilder : CPlugParticleEmitterMode
         var chunk090B3004 = new global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel.Chunk090B3004(game);
         node.Chunks.Add(chunk090B3004);
         return node;
-    }
-    private static void ValidateRecipe3(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel.Chunk090B3000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B3000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel.Chunk090B3001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B3001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel.Chunk090B3002>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B3002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel.Chunk090B3003>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B3003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel.Chunk090B3004>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B3004 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node, GameVersion game)
-    {
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
@@ -275,14 +190,9 @@ public partial class CPlugParticleEmitterModelBuilder : CPlugParticleEmitterMode
             var node = CPlugParticleEmitterModelBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CPlugParticleEmitterModelBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CPlugParticleEmitterModelBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node);
     }
     public partial class TMNESWC : CPlugParticleEmitterModelBuilderBase<TMNESWC>
     {
@@ -301,14 +211,9 @@ public partial class CPlugParticleEmitterModelBuilder : CPlugParticleEmitterMode
             var node = CPlugParticleEmitterModelBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CPlugParticleEmitterModelBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CPlugParticleEmitterModelBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node);
     }
     public partial class VSK5 : CPlugParticleEmitterModelBuilderBase<VSK5>
     {
@@ -327,14 +232,9 @@ public partial class CPlugParticleEmitterModelBuilder : CPlugParticleEmitterMode
             var node = CPlugParticleEmitterModelBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CPlugParticleEmitterModelBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CPlugParticleEmitterModelBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node);
     }
     public partial class TMF : CPlugParticleEmitterModelBuilderBase<TMF>
     {
@@ -353,14 +253,9 @@ public partial class CPlugParticleEmitterModelBuilder : CPlugParticleEmitterMode
             var node = CPlugParticleEmitterModelBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CPlugParticleEmitterModelBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CPlugParticleEmitterModelBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node);
     }
     public partial class MP3 : CPlugParticleEmitterModelBuilderMembers1<MP3>
     {
@@ -379,14 +274,9 @@ public partial class CPlugParticleEmitterModelBuilder : CPlugParticleEmitterMode
             var node = CPlugParticleEmitterModelBuilder.CreateRecipe1(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CPlugParticleEmitterModelBuilder.ValidateRecipe1(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CPlugParticleEmitterModelBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node);
     }
     public partial class TMT : CPlugParticleEmitterModelBuilderMembers1<TMT>
     {
@@ -405,14 +295,9 @@ public partial class CPlugParticleEmitterModelBuilder : CPlugParticleEmitterMode
             var node = CPlugParticleEmitterModelBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugParticleEmitterModelBuilder.ValidateRecipe1(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugParticleEmitterModelBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node);
     }
     public partial class MP4 : CPlugParticleEmitterModelBuilderMembers2<MP4>
     {
@@ -431,36 +316,21 @@ public partial class CPlugParticleEmitterModelBuilder : CPlugParticleEmitterMode
             var node = CPlugParticleEmitterModelBuilder.CreateRecipe2(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugParticleEmitterModelBuilder.ValidateRecipe2(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugParticleEmitterModelBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node);
     }
     public partial class TM2020 : CPlugParticleEmitterModelBuilderMembers2<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> state) : base(state) { }
-        public Vec3 CircleNormal
-        {
-            get => state.Get<Vec3>("CircleNormal");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetCircleNormalAssignment(), value, GameVersion.TM2020);
-        }
         public TM2020 WithCircleNormal(Vec3 value)
         {
-            CircleNormal = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetCircleNormalAssignment(), value, GameVersion.TM2020);
             return this;
-        }
-        public float Lod_cPixelMin
-        {
-            get => state.Get<float>("Lod_cPixelMin");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetLod_cPixelMinAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithLod_cPixelMin(float value)
         {
-            Lod_cPixelMin = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilderAssignments.GetLod_cPixelMinAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithParticleEmitterSubModels(params global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTM2020[] values)
@@ -477,13 +347,8 @@ public partial class CPlugParticleEmitterModelBuilder : CPlugParticleEmitterMode
             var node = CPlugParticleEmitterModelBuilder.CreateRecipe3(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugParticleEmitterModelBuilder.ValidateRecipe3(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugParticleEmitterModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node);
     }
 }

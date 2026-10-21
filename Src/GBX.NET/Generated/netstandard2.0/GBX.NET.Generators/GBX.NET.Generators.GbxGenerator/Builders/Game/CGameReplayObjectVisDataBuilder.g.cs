@@ -36,14 +36,9 @@ public abstract class CGameReplayObjectVisDataBuilderBase<TSelf> where TSelf : C
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameReplayObjectVisData> state;
     private protected CGameReplayObjectVisDataBuilderBase() => state = new();
     private protected CGameReplayObjectVisDataBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameReplayObjectVisData> state) => this.state = state;
-    public List<global::GBX.NET.Engines.Game.CGameReplayObjectVisData.ObjectVisKey>? Keys
-    {
-        get => state.Get<List<global::GBX.NET.Engines.Game.CGameReplayObjectVisData.ObjectVisKey>?>("Keys");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameReplayObjectVisDataBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameReplayObjectVisData.ObjectVisKey>? value)
     {
-        Keys = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameReplayObjectVisDataBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithKeys(params global::GBX.NET.Engines.Game.CGameReplayObjectVisData.ObjectVisKey[] values)
@@ -54,14 +49,9 @@ public abstract class CGameReplayObjectVisDataBuilderBase<TSelf> where TSelf : C
     {
         return WithKeys(values.ToArray());
     }
-    public List<global::GBX.NET.Engines.Game.CGameReplayObjectVisData.ObjectVis>? VisList
-    {
-        get => state.Get<List<global::GBX.NET.Engines.Game.CGameReplayObjectVisData.ObjectVis>?>("VisList");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameReplayObjectVisDataBuilderAssignments.GetVisListAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithVisList(List<global::GBX.NET.Engines.Game.CGameReplayObjectVisData.ObjectVis>? value)
     {
-        VisList = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameReplayObjectVisDataBuilderAssignments.GetVisListAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithVisList(params global::GBX.NET.Engines.Game.CGameReplayObjectVisData.ObjectVis[] values)
@@ -83,13 +73,6 @@ public partial class CGameReplayObjectVisDataBuilder : CGameReplayObjectVisDataB
         node.Chunks.Add(chunk031A8000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameReplayObjectVisData node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameReplayObjectVisData.Chunk031A8000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk031A8000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameReplayObjectVisData node, GameVersion game)
-    {
-    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -105,14 +88,9 @@ public partial class CGameReplayObjectVisDataBuilder : CGameReplayObjectVisDataB
             var node = CGameReplayObjectVisDataBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CGameReplayObjectVisDataBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CGameReplayObjectVisDataBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameReplayObjectVisData node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameReplayObjectVisData node);
     }
     public partial class TMT : CGameReplayObjectVisDataBuilderBase<TMT>
     {
@@ -123,14 +101,9 @@ public partial class CGameReplayObjectVisDataBuilder : CGameReplayObjectVisDataB
             var node = CGameReplayObjectVisDataBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameReplayObjectVisDataBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameReplayObjectVisDataBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameReplayObjectVisData node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameReplayObjectVisData node);
     }
     public partial class MP4 : CGameReplayObjectVisDataBuilderBase<MP4>
     {
@@ -141,14 +114,9 @@ public partial class CGameReplayObjectVisDataBuilder : CGameReplayObjectVisDataB
             var node = CGameReplayObjectVisDataBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameReplayObjectVisDataBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameReplayObjectVisDataBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameReplayObjectVisData node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameReplayObjectVisData node);
     }
     public partial class TM2020 : CGameReplayObjectVisDataBuilderBase<TM2020>
     {
@@ -159,13 +127,8 @@ public partial class CGameReplayObjectVisDataBuilder : CGameReplayObjectVisDataB
             var node = CGameReplayObjectVisDataBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameReplayObjectVisDataBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameReplayObjectVisDataBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameReplayObjectVisData node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameReplayObjectVisData node);
     }
 }

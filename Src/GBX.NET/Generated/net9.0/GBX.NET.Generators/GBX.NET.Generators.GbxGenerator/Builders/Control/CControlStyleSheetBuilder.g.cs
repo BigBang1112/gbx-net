@@ -36,14 +36,9 @@ public abstract class CControlStyleSheetBuilderBase<TSelf> where TSelf : CContro
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyleSheet> state;
     private protected CControlStyleSheetBuilderBase() => state = new();
     private protected CControlStyleSheetBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyleSheet> state) => this.state = state;
-    public global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? Buffer
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?>("Buffer");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetBufferAssignment(), value, GameVersion.MP4);
-    }
     public TSelf WithBuffer(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value)
     {
-        Buffer = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetBufferAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public TSelf WithBufferReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> value)
@@ -52,42 +47,27 @@ public abstract class CControlStyleSheetBuilderBase<TSelf> where TSelf : CContro
         state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetBufferReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
-    public Vec3[]? Colors
-    {
-        get => state.Get<Vec3[]?>("Colors");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetColorsAssignment(), value, GameVersion.MP4);
-    }
     public TSelf WithColors(params Vec3[]? value)
     {
-        Colors = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetColorsAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public TSelf WithColors(IEnumerable<Vec3> values)
     {
         return WithColors(values.ToArray());
     }
-    public float[]? ColorsAlpha
-    {
-        get => state.Get<float[]?>("ColorsAlpha");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetColorsAlphaAssignment(), value, GameVersion.MP4);
-    }
     public TSelf WithColorsAlpha(params float[]? value)
     {
-        ColorsAlpha = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetColorsAlphaAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public TSelf WithColorsAlpha(IEnumerable<float> values)
     {
         return WithColorsAlpha(values.ToArray());
     }
-    public global::GBX.NET.Engines.Control.CControlStyle? MasterStyle
-    {
-        get => state.Get<global::GBX.NET.Engines.Control.CControlStyle?>("MasterStyle");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetMasterStyleAssignment(), value, GameVersion.MP4);
-    }
     public TSelf WithMasterStyle(global::GBX.NET.Engines.Control.CControlStyle? value)
     {
-        MasterStyle = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetMasterStyleAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public TSelf WithMasterStyleReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value)
@@ -96,14 +76,9 @@ public abstract class CControlStyleSheetBuilderBase<TSelf> where TSelf : CContro
         state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetMasterStyleReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
-    public NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod?>? Overrides
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod?>?>("Overrides");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetOverridesAssignment(), value, GameVersion.MP4);
-    }
     public TSelf WithOverrides(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod?>? value)
     {
-        Overrides = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetOverridesAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public TSelf WithOverrides(params global::GBX.NET.Engines.MwFoundations.CMwNod?[] values)
@@ -114,14 +89,9 @@ public abstract class CControlStyleSheetBuilderBase<TSelf> where TSelf : CContro
     {
         return WithOverrides(values.ToArray());
     }
-    public global::GBX.NET.Engines.Control.CControlStyle? PagerIconStyle
-    {
-        get => state.Get<global::GBX.NET.Engines.Control.CControlStyle?>("PagerIconStyle");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetPagerIconStyleAssignment(), value, GameVersion.MP4);
-    }
     public TSelf WithPagerIconStyle(global::GBX.NET.Engines.Control.CControlStyle? value)
     {
-        PagerIconStyle = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetPagerIconStyleAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public TSelf WithPagerIconStyleReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value)
@@ -130,14 +100,9 @@ public abstract class CControlStyleSheetBuilderBase<TSelf> where TSelf : CContro
         state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetPagerIconStyleReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Control.CControlStyle? PagerTextBackgroundStyle
-    {
-        get => state.Get<global::GBX.NET.Engines.Control.CControlStyle?>("PagerTextBackgroundStyle");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetPagerTextBackgroundStyleAssignment(), value, GameVersion.MP4);
-    }
     public TSelf WithPagerTextBackgroundStyle(global::GBX.NET.Engines.Control.CControlStyle? value)
     {
-        PagerTextBackgroundStyle = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetPagerTextBackgroundStyleAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public TSelf WithPagerTextBackgroundStyleReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value)
@@ -146,14 +111,9 @@ public abstract class CControlStyleSheetBuilderBase<TSelf> where TSelf : CContro
         state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetPagerTextBackgroundStyleReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Control.CControlStyle? PagerTextStyle
-    {
-        get => state.Get<global::GBX.NET.Engines.Control.CControlStyle?>("PagerTextStyle");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetPagerTextStyleAssignment(), value, GameVersion.MP4);
-    }
     public TSelf WithPagerTextStyle(global::GBX.NET.Engines.Control.CControlStyle? value)
     {
-        PagerTextStyle = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetPagerTextStyleAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public TSelf WithPagerTextStyleReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value)
@@ -177,16 +137,6 @@ public partial class CControlStyleSheetBuilder : CControlStyleSheetBuilderBase<C
         var chunk07027007 = new global::GBX.NET.Engines.Control.CControlStyleSheet.Chunk07027007(game);
         node.Chunks.Add(chunk07027007);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Control.CControlStyleSheet node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyleSheet.Chunk07027002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07027002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyleSheet.Chunk07027003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07027003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyleSheet.Chunk07027005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07027005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyleSheet.Chunk07027007>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk07027007 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Control.CControlStyleSheet node, GameVersion game)
-    {
     }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -220,13 +170,8 @@ public partial class CControlStyleSheetBuilder : CControlStyleSheetBuilderBase<C
             var node = CControlStyleSheetBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CControlStyleSheetBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CControlStyleSheetBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlStyleSheet node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlStyleSheet node);
     }
 }

@@ -36,14 +36,9 @@ public abstract class CGameCtnChallengeGroupBuilderBase<TSelf> where TSelf : CGa
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup> state;
     private protected CGameCtnChallengeGroupBuilderBase() => state = new();
     private protected CGameCtnChallengeGroupBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup> state) => this.state = state;
-    public List<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup.MapInfo>? MapInfos
-    {
-        get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup.MapInfo>?>("MapInfos");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetMapInfosAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithMapInfos(List<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup.MapInfo>? value)
     {
-        MapInfos = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetMapInfosAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithMapInfos(params global::GBX.NET.Engines.Game.CGameCtnChallengeGroup.MapInfo[] values)
@@ -54,28 +49,18 @@ public abstract class CGameCtnChallengeGroupBuilderBase<TSelf> where TSelf : CGa
     {
         return WithMapInfos(values.ToArray());
     }
-    public string? Name
-    {
-        get => state.Get<string?>("Name");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithName(string? value)
     {
-        Name = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnChallengeGroupBuilderMembers1<TSelf> : CGameCtnChallengeGroupBuilderBase<TSelf> where TSelf : CGameCtnChallengeGroupBuilderMembers1<TSelf>
 {
     private protected CGameCtnChallengeGroupBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup> state) : base(state) { }
-    public NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallenge>? MapFiles
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallenge>?>("MapFiles");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetMapFilesAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithMapFiles(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallenge>? value)
     {
-        MapFiles = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetMapFilesAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithMapFiles(params global::GBX.NET.Engines.Game.CGameCtnChallenge[] values)
@@ -90,82 +75,47 @@ public abstract class CGameCtnChallengeGroupBuilderMembers1<TSelf> : CGameCtnCha
 public abstract class CGameCtnChallengeGroupBuilderMembers2<TSelf> : CGameCtnChallengeGroupBuilderMembers1<TSelf> where TSelf : CGameCtnChallengeGroupBuilderMembers2<TSelf>
 {
     private protected CGameCtnChallengeGroupBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup> state) : base(state) { }
-    public int AllBronzeValue
-    {
-        get => state.Get<int>("AllBronzeValue");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetAllBronzeValueAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithAllBronzeValue(int value)
     {
-        AllBronzeValue = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetAllBronzeValueAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int AllGoldValue
-    {
-        get => state.Get<int>("AllGoldValue");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetAllGoldValueAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithAllGoldValue(int value)
     {
-        AllGoldValue = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetAllGoldValueAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int AllSilverValue
-    {
-        get => state.Get<int>("AllSilverValue");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetAllSilverValueAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithAllSilverValue(int value)
     {
-        AllSilverValue = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetAllSilverValueAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnChallengeGroupBuilderMembers3<TSelf> : CGameCtnChallengeGroupBuilderMembers2<TSelf> where TSelf : CGameCtnChallengeGroupBuilderMembers3<TSelf>
 {
     private protected CGameCtnChallengeGroupBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup> state) : base(state) { }
-    public int NbBronzeRequired
-    {
-        get => state.Get<int>("NbBronzeRequired");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNbBronzeRequiredAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
-    }
     public TSelf WithNbBronzeRequired(int value)
     {
-        NbBronzeRequired = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNbBronzeRequiredAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
         return (TSelf)this;
-    }
-    public int NbGoldRequired
-    {
-        get => state.Get<int>("NbGoldRequired");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNbGoldRequiredAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
     }
     public TSelf WithNbGoldRequired(int value)
     {
-        NbGoldRequired = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNbGoldRequiredAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
         return (TSelf)this;
-    }
-    public int NbSilverRequired
-    {
-        get => state.Get<int>("NbSilverRequired");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNbSilverRequiredAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
     }
     public TSelf WithNbSilverRequired(int value)
     {
-        NbSilverRequired = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNbSilverRequiredAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnChallengeGroupBuilderMembers4<TSelf> : CGameCtnChallengeGroupBuilderMembers2<TSelf> where TSelf : CGameCtnChallengeGroupBuilderMembers4<TSelf>
 {
     private protected CGameCtnChallengeGroupBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup> state) : base(state) { }
-    public global::GBX.NET.Engines.Game.CGameCtnCampaign? LinkedCampaign
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnCampaign?>("LinkedCampaign");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetLinkedCampaignAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithLinkedCampaign(global::GBX.NET.Engines.Game.CGameCtnCampaign? value)
     {
-        LinkedCampaign = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetLinkedCampaignAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithLinkedCampaignReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnCampaign> value)
@@ -174,88 +124,48 @@ public abstract class CGameCtnChallengeGroupBuilderMembers4<TSelf> : CGameCtnCha
         state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetLinkedCampaignReferenceAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public int NbBronzeCupRequired
-    {
-        get => state.Get<int>("NbBronzeCupRequired");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNbBronzeCupRequiredAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithNbBronzeCupRequired(int value)
     {
-        NbBronzeCupRequired = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNbBronzeCupRequiredAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int NbBronzeMedalRequired
-    {
-        get => state.Get<int>("NbBronzeMedalRequired");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNbBronzeMedalRequiredAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithNbBronzeMedalRequired(int value)
     {
-        NbBronzeMedalRequired = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNbBronzeMedalRequiredAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int NbGoldCupRequired
-    {
-        get => state.Get<int>("NbGoldCupRequired");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNbGoldCupRequiredAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithNbGoldCupRequired(int value)
     {
-        NbGoldCupRequired = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNbGoldCupRequiredAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int NbGoldMedalRequired
-    {
-        get => state.Get<int>("NbGoldMedalRequired");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNbGoldMedalRequiredAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithNbGoldMedalRequired(int value)
     {
-        NbGoldMedalRequired = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNbGoldMedalRequiredAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int NbSilverCupRequired
-    {
-        get => state.Get<int>("NbSilverCupRequired");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNbSilverCupRequiredAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithNbSilverCupRequired(int value)
     {
-        NbSilverCupRequired = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNbSilverCupRequiredAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int NbSilverMedalRequired
-    {
-        get => state.Get<int>("NbSilverMedalRequired");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNbSilverMedalRequiredAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithNbSilverMedalRequired(int value)
     {
-        NbSilverMedalRequired = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetNbSilverMedalRequiredAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool UsesMapFiles
-    {
-        get => state.Get<bool>("UsesMapFiles");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetUsesMapFilesAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithUsesMapFiles(bool value)
     {
-        UsesMapFiles = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetUsesMapFilesAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnChallengeGroupBuilderMembers5<TSelf> : CGameCtnChallengeGroupBuilderMembers4<TSelf> where TSelf : CGameCtnChallengeGroupBuilderMembers5<TSelf>
 {
     private protected CGameCtnChallengeGroupBuilderMembers5(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup> state) : base(state) { }
-    public string? AssociatedCollectionId
-    {
-        get => state.Get<string?>("AssociatedCollectionId");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetAssociatedCollectionIdAssignment(), value, GameVersion.TMNESWC | GameVersion.VSK5);
-    }
     public TSelf WithAssociatedCollectionId(string? value)
     {
-        AssociatedCollectionId = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetAssociatedCollectionIdAssignment(), value, GameVersion.TMNESWC | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -274,13 +184,6 @@ public partial class CGameCtnChallengeGroupBuilder : CGameCtnChallengeGroupBuild
         node.Chunks.Add(chunk0308F003);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup.Chunk0308F000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0308F000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup.Chunk0308F001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0308F001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup.Chunk0308F002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0308F002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup.Chunk0308F003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0308F003 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameCtnChallengeGroup CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnChallengeGroup(game);
@@ -297,15 +200,6 @@ public partial class CGameCtnChallengeGroupBuilder : CGameCtnChallengeGroupBuild
         var chunk0308F008 = new global::GBX.NET.Engines.Game.CGameCtnChallengeGroup.Chunk0308F008();
         node.Chunks.Add(chunk0308F008);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup.Chunk0308F002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0308F002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup.Chunk0308F003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0308F003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup.Chunk0308F005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0308F005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup.Chunk0308F006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0308F006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup.Chunk0308F007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0308F007 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup.Chunk0308F008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0308F008 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Game.CGameCtnChallengeGroup CreateRecipe2(GameVersion game)
     {
@@ -324,15 +218,6 @@ public partial class CGameCtnChallengeGroupBuilder : CGameCtnChallengeGroupBuild
         node.Chunks.Add(chunk0308F009);
         return node;
     }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup.Chunk0308F002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0308F002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup.Chunk0308F003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0308F003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup.Chunk0308F005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0308F005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup.Chunk0308F006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0308F006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup.Chunk0308F007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0308F007 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup.Chunk0308F009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0308F009 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameCtnChallengeGroup CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnChallengeGroup(game);
@@ -341,11 +226,6 @@ public partial class CGameCtnChallengeGroupBuilder : CGameCtnChallengeGroupBuild
         var chunk0308F006 = new global::GBX.NET.Engines.Game.CGameCtnChallengeGroup.Chunk0308F006();
         node.Chunks.Add(chunk0308F006);
         return node;
-    }
-    private static void ValidateRecipe3(global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup.Chunk0308F002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0308F002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup.Chunk0308F006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0308F006 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Game.CGameCtnChallengeGroup CreateRecipe4(GameVersion game)
     {
@@ -356,11 +236,6 @@ public partial class CGameCtnChallengeGroupBuilder : CGameCtnChallengeGroupBuild
         node.Chunks.Add(chunk0308F00B);
         return node;
     }
-    private static void ValidateRecipe4(global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup.Chunk0308F002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0308F002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup.Chunk0308F00B>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0308F00B is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameCtnChallengeGroup CreateRecipe5(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnChallengeGroup(game);
@@ -369,14 +244,6 @@ public partial class CGameCtnChallengeGroupBuilder : CGameCtnChallengeGroupBuild
         var chunk0308F00B = new global::GBX.NET.Engines.Game.CGameCtnChallengeGroup.Chunk0308F00B(game);
         node.Chunks.Add(chunk0308F00B);
         return node;
-    }
-    private static void ValidateRecipe5(global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup.Chunk0308F002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0308F002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup.Chunk0308F00B>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0308F00B is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node, GameVersion game)
-    {
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -407,14 +274,9 @@ public partial class CGameCtnChallengeGroupBuilder : CGameCtnChallengeGroupBuild
             var node = CGameCtnChallengeGroupBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CGameCtnChallengeGroupBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CGameCtnChallengeGroupBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node);
     }
     public partial class TMPU : CGameCtnChallengeGroupBuilderMembers3<TMPU>
     {
@@ -433,26 +295,16 @@ public partial class CGameCtnChallengeGroupBuilder : CGameCtnChallengeGroupBuild
             var node = CGameCtnChallengeGroupBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CGameCtnChallengeGroupBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CGameCtnChallengeGroupBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node);
     }
     public partial class TMSX : CGameCtnChallengeGroupBuilderMembers4<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup> state) : base(state) { }
-        public global::GBX.NET.Engines.Game.CGameCtnCollection? AssociatedCollection
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnCollection?>("AssociatedCollection");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetAssociatedCollectionAssignment(), value, GameVersion.TMSX);
-        }
         public TMSX WithAssociatedCollection(global::GBX.NET.Engines.Game.CGameCtnCollection? value)
         {
-            AssociatedCollection = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetAssociatedCollectionAssignment(), value, GameVersion.TMSX);
             return this;
         }
         public TMSX WithAssociatedCollectionReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnCollection> value)
@@ -483,14 +335,9 @@ public partial class CGameCtnChallengeGroupBuilder : CGameCtnChallengeGroupBuild
             var node = CGameCtnChallengeGroupBuilder.CreateRecipe1(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CGameCtnChallengeGroupBuilder.ValidateRecipe1(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CGameCtnChallengeGroupBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node);
     }
     public partial class TMNESWC : CGameCtnChallengeGroupBuilderMembers5<TMNESWC>
     {
@@ -513,14 +360,9 @@ public partial class CGameCtnChallengeGroupBuilder : CGameCtnChallengeGroupBuild
             var node = CGameCtnChallengeGroupBuilder.CreateRecipe2(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CGameCtnChallengeGroupBuilder.ValidateRecipe2(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CGameCtnChallengeGroupBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node);
     }
     public partial class VSK5 : CGameCtnChallengeGroupBuilderMembers5<VSK5>
     {
@@ -543,14 +385,9 @@ public partial class CGameCtnChallengeGroupBuilder : CGameCtnChallengeGroupBuild
             var node = CGameCtnChallengeGroupBuilder.CreateRecipe2(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CGameCtnChallengeGroupBuilder.ValidateRecipe2(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CGameCtnChallengeGroupBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node);
     }
     public partial class TMF : CGameCtnChallengeGroupBuilderMembers1<TMF>
     {
@@ -563,14 +400,9 @@ public partial class CGameCtnChallengeGroupBuilder : CGameCtnChallengeGroupBuild
         {
             return WithMapFiles(values.ToArray());
         }
-        public bool UsesMapFiles
-        {
-            get => state.Get<bool>("UsesMapFiles");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetUsesMapFilesAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-        }
         public TMF WithUsesMapFiles(bool value)
         {
-            UsesMapFiles = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilderAssignments.GetUsesMapFilesAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMF BuildInterface() => Build();
@@ -579,14 +411,9 @@ public partial class CGameCtnChallengeGroupBuilder : CGameCtnChallengeGroupBuild
             var node = CGameCtnChallengeGroupBuilder.CreateRecipe3(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CGameCtnChallengeGroupBuilder.ValidateRecipe3(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CGameCtnChallengeGroupBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node);
     }
     public partial class MP3 : CGameCtnChallengeGroupBuilderBase<MP3>
     {
@@ -597,14 +424,9 @@ public partial class CGameCtnChallengeGroupBuilder : CGameCtnChallengeGroupBuild
             var node = CGameCtnChallengeGroupBuilder.CreateRecipe4(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CGameCtnChallengeGroupBuilder.ValidateRecipe4(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CGameCtnChallengeGroupBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node);
     }
     public partial class TMT : CGameCtnChallengeGroupBuilderBase<TMT>
     {
@@ -615,14 +437,9 @@ public partial class CGameCtnChallengeGroupBuilder : CGameCtnChallengeGroupBuild
             var node = CGameCtnChallengeGroupBuilder.CreateRecipe4(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameCtnChallengeGroupBuilder.ValidateRecipe4(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameCtnChallengeGroupBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node);
     }
     public partial class MP4 : CGameCtnChallengeGroupBuilderBase<MP4>
     {
@@ -633,14 +450,9 @@ public partial class CGameCtnChallengeGroupBuilder : CGameCtnChallengeGroupBuild
             var node = CGameCtnChallengeGroupBuilder.CreateRecipe5(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameCtnChallengeGroupBuilder.ValidateRecipe5(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameCtnChallengeGroupBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node);
     }
     public partial class TM2020 : CGameCtnChallengeGroupBuilderBase<TM2020>
     {
@@ -651,13 +463,8 @@ public partial class CGameCtnChallengeGroupBuilder : CGameCtnChallengeGroupBuild
             var node = CGameCtnChallengeGroupBuilder.CreateRecipe5(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameCtnChallengeGroupBuilder.ValidateRecipe5(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameCtnChallengeGroupBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node);
     }
 }

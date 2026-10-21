@@ -51,32 +51,17 @@ public partial class CPlugParticleImpactModel : global::GBX.NET.Interfaces.Plug.
     }
     global::GBX.NET.Interfaces.Plug.IPlugDecalModelMP4? global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelMP4.DecalModel
     {
-        get
-        {
-            var node = DecalModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => DecalModel;
         set => DecalModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugDecalModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelMP4.ParticleEmitterModel
     {
-        get
-        {
-            var node = ParticleEmitterModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => ParticleEmitterModel;
         set => ParticleEmitterModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelMP4.Sound
     {
-        get
-        {
-            var node = Sound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Sound;
         set => Sound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

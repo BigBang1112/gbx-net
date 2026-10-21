@@ -46,112 +46,57 @@ public partial class CGameObjectVisModel : global::GBX.NET.Interfaces.GameData.I
     }
     global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleMP3? global::GBX.NET.Interfaces.GameData.IGameObjectVisModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleMP3, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP3>.LocAnim
     {
-        get
-        {
-            var node = LocAnim;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => LocAnim;
         set => LocAnim = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAnimLocSimple node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP3? global::GBX.NET.Interfaces.GameData.IGameObjectVisModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleMP3, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP3>.MeshShaded
     {
-        get
-        {
-            var node = MeshShaded;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => MeshShaded;
         set => MeshShaded = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid2Model node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleTMT? global::GBX.NET.Interfaces.GameData.IGameObjectVisModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleTMT, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTMT>.LocAnim
     {
-        get
-        {
-            var node = LocAnim;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => LocAnim;
         set => LocAnim = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAnimLocSimple node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTMT? global::GBX.NET.Interfaces.GameData.IGameObjectVisModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleTMT, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTMT>.MeshShaded
     {
-        get
-        {
-            var node = MeshShaded;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => MeshShaded;
         set => MeshShaded = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid2Model node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolidTMT? global::GBX.NET.Interfaces.GameData.IGameObjectVisModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugSolidTMT>.Solid
     {
-        get
-        {
-            var node = Solid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => Solid;
         set => Solid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleMP4? global::GBX.NET.Interfaces.GameData.IGameObjectVisModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleMP4, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4>.LocAnim
     {
-        get
-        {
-            var node = LocAnim;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => LocAnim;
         set => LocAnim = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAnimLocSimple node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4? global::GBX.NET.Interfaces.GameData.IGameObjectVisModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleMP4, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4>.MeshShaded
     {
-        get
-        {
-            var node = MeshShaded;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => MeshShaded;
         set => MeshShaded = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid2Model node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolidMP4? global::GBX.NET.Interfaces.GameData.IGameObjectVisModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugSolidMP4>.Solid
     {
-        get
-        {
-            var node = Solid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Solid;
         set => Solid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleTM2020? global::GBX.NET.Interfaces.GameData.IGameObjectVisModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020>.LocAnim
     {
-        get
-        {
-            var node = LocAnim;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => LocAnim;
         set => LocAnim = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAnimLocSimple node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020? global::GBX.NET.Interfaces.GameData.IGameObjectVisModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020>.MeshShaded
     {
-        get
-        {
-            var node = MeshShaded;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => MeshShaded;
         set => MeshShaded = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid2Model node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020? global::GBX.NET.Interfaces.GameData.IGameObjectVisModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020>.Solid
     {
-        get
-        {
-            var node = Solid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => Solid;
         set => Solid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

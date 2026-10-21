@@ -47,13 +47,6 @@ public partial class CGameCampaignScoresBuilder : CGameCampaignScoresBuilderBase
         node.Chunks.Add(chunk03063001);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCampaignScores node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCampaignScores.Chunk03063001>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03063001 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCampaignScores node, GameVersion game)
-    {
-    }
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
     public partial class TMF : CGameCampaignScoresBuilderBase<TMF>
@@ -65,14 +58,9 @@ public partial class CGameCampaignScoresBuilder : CGameCampaignScoresBuilderBase
             var node = CGameCampaignScoresBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CGameCampaignScoresBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CGameCampaignScoresBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCampaignScores node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCampaignScores node);
     }
     public partial class MP3 : CGameCampaignScoresBuilderBase<MP3>
     {
@@ -83,13 +71,8 @@ public partial class CGameCampaignScoresBuilder : CGameCampaignScoresBuilderBase
             var node = CGameCampaignScoresBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CGameCampaignScoresBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CGameCampaignScoresBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCampaignScores node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCampaignScores node);
     }
 }

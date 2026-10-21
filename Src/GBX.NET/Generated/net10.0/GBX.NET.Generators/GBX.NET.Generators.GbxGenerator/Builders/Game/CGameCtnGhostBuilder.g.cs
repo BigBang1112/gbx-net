@@ -36,448 +36,248 @@ public abstract class CGameCtnGhostBuilderBase<TSelf> where TSelf : CGameCtnGhos
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state;
     private protected CGameCtnGhostBuilderBase() => state = new();
     private protected CGameCtnGhostBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state) => this.state = state;
-    public string? GhostNickname
-    {
-        get => state.Get<string?>("GhostNickname");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostNicknameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    }
     public TSelf WithGhostNickname(string? value)
     {
-        GhostNickname = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostNicknameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public Ident? PlayerModel
-    {
-        get => state.Get<Ident?>("PlayerModel");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetPlayerModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithPlayerModel(Ident? value)
     {
-        PlayerModel = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetPlayerModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnGhostBuilderMembers1<TSelf> : CGameCtnGhostBuilderBase<TSelf> where TSelf : CGameCtnGhostBuilderMembers1<TSelf>
 {
     private protected CGameCtnGhostBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state) : base(state) { }
-    public TimeInt32? RaceTime
-    {
-        get => state.Get<TimeInt32?>("RaceTime");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetRaceTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    }
     public TSelf WithRaceTime(TimeInt32? value)
     {
-        RaceTime = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetRaceTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnGhostBuilderMembers2<TSelf> : CGameCtnGhostBuilderMembers1<TSelf> where TSelf : CGameCtnGhostBuilderMembers2<TSelf>
 {
     private protected CGameCtnGhostBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state) : base(state) { }
-    public Vec3 LightTrailColor
-    {
-        get => state.Get<Vec3>("LightTrailColor");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetLightTrailColorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    }
     public TSelf WithLightTrailColor(Vec3 value)
     {
-        LightTrailColor = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetLightTrailColorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int? Respawns
-    {
-        get => state.Get<int?>("Respawns");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetRespawnsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithRespawns(int? value)
     {
-        Respawns = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetRespawnsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnGhostBuilderMembers3<TSelf> : CGameCtnGhostBuilderMembers2<TSelf> where TSelf : CGameCtnGhostBuilderMembers3<TSelf>
 {
     private protected CGameCtnGhostBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state) : base(state) { }
-    public global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint[]? Checkpoints
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint[]?>("Checkpoints");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetCheckpointsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    }
     public TSelf WithCheckpoints(params global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint[]? value)
     {
-        Checkpoints = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetCheckpointsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithCheckpoints(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint> values)
     {
         return WithCheckpoints(values.ToArray());
     }
-    public int? StuntScore
-    {
-        get => state.Get<int?>("StuntScore");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetStuntScoreAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    }
     public TSelf WithStuntScore(int? value)
     {
-        StuntScore = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetStuntScoreAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnGhostBuilderMembers4<TSelf> : CGameCtnGhostBuilderMembers2<TSelf> where TSelf : CGameCtnGhostBuilderMembers4<TSelf>
 {
     private protected CGameCtnGhostBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state) : base(state) { }
-    public uint? SavedMobilClassId
-    {
-        get => state.Get<uint?>("SavedMobilClassId");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameGhostBuilderAssignments.GetSavedMobilClassIdAssignment(), value, GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX);
-    }
     public TSelf WithSavedMobilClassId(uint? value)
     {
-        SavedMobilClassId = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameGhostBuilderAssignments.GetSavedMobilClassIdAssignment(), value, GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX);
         return (TSelf)this;
-    }
-    public string? SkinFile
-    {
-        get => state.Get<string?>("SkinFile");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSkinFileAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithSkinFile(string? value)
     {
-        SkinFile = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSkinFileAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnGhostBuilderMembers5<TSelf> : CGameCtnGhostBuilderMembers3<TSelf> where TSelf : CGameCtnGhostBuilderMembers5<TSelf>
 {
     private protected CGameCtnGhostBuilderMembers5(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state) : base(state) { }
-    public TimeInt32 EventsDuration
-    {
-        get => state.Get<TimeInt32>("EventsDuration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetEventsDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    }
     public TSelf WithEventsDuration(TimeInt32 value)
     {
-        EventsDuration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetEventsDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public string? GhostLogin
-    {
-        get => state.Get<string?>("GhostLogin");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostLoginAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithGhostLogin(string? value)
     {
-        GhostLogin = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostLoginAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Id? GhostUid
-    {
-        get => state.Get<global::GBX.NET.Id?>("GhostUid");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostUidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithGhostUid(global::GBX.NET.Id? value)
     {
-        GhostUid = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostUidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int InputCountLimit
-    {
-        get => state.Get<int>("InputCountLimit");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetInputCountLimitAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithInputCountLimit(int value)
     {
-        InputCountLimit = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetInputCountLimitAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int InputStoreVersion
-    {
-        get => state.Get<int>("InputStoreVersion");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetInputStoreVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithInputStoreVersion(int value)
     {
-        InputStoreVersion = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetInputStoreVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::System.Collections.Immutable.ImmutableArray<global::GBX.NET.Inputs.IInput> Inputs
-    {
-        get => state.Get<global::System.Collections.Immutable.ImmutableArray<global::GBX.NET.Inputs.IInput>>("Inputs");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetInputsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithInputs(global::System.Collections.Immutable.ImmutableArray<global::GBX.NET.Inputs.IInput> value)
     {
-        Inputs = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetInputsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public string? Validate_ChallengeUid
-    {
-        get => state.Get<string?>("Validate_ChallengeUid");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_ChallengeUidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithValidate_ChallengeUid(string? value)
     {
-        Validate_ChallengeUid = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_ChallengeUidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int Validate_CpuKind
-    {
-        get => state.Get<int>("Validate_CpuKind");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_CpuKindAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithValidate_CpuKind(int value)
     {
-        Validate_CpuKind = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_CpuKindAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public uint Validate_ExeChecksum
-    {
-        get => state.Get<uint>("Validate_ExeChecksum");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_ExeChecksumAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithValidate_ExeChecksum(uint value)
     {
-        Validate_ExeChecksum = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_ExeChecksumAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public string? Validate_ExeVersion
-    {
-        get => state.Get<string?>("Validate_ExeVersion");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_ExeVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithValidate_ExeVersion(string? value)
     {
-        Validate_ExeVersion = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_ExeVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int Validate_OsKind
-    {
-        get => state.Get<int>("Validate_OsKind");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_OsKindAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithValidate_OsKind(int value)
     {
-        Validate_OsKind = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_OsKindAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public string? Validate_RaceSettings
-    {
-        get => state.Get<string?>("Validate_RaceSettings");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_RaceSettingsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithValidate_RaceSettings(string? value)
     {
-        Validate_RaceSettings = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_RaceSettingsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnGhostBuilderMembers6<TSelf> : CGameCtnGhostBuilderMembers5<TSelf> where TSelf : CGameCtnGhostBuilderMembers6<TSelf>
 {
     private protected CGameCtnGhostBuilderMembers6(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state) : base(state) { }
-    public UInt128? SecurityKey128
-    {
-        get => state.Get<UInt128?>("SecurityKey128");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSecurityKey128Assignment(), value, GameVersion.TMF | GameVersion.TMU | GameVersion.VSK5);
-    }
     public TSelf WithSecurityKey128(UInt128? value)
     {
-        SecurityKey128 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSecurityKey128Assignment(), value, GameVersion.TMF | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public string? SkinFile
-    {
-        get => state.Get<string?>("SkinFile");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSkinFileAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithSkinFile(string? value)
     {
-        SkinFile = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSkinFileAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnGhostBuilderMembers7<TSelf> : CGameCtnGhostBuilderMembers5<TSelf> where TSelf : CGameCtnGhostBuilderMembers7<TSelf>
 {
     private protected CGameCtnGhostBuilderMembers7(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state) : base(state) { }
-    public string? CpuDescription
-    {
-        get => state.Get<string?>("CpuDescription");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetCpuDescriptionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithCpuDescription(string? value)
     {
-        CpuDescription = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetCpuDescriptionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int CpuKind
-    {
-        get => state.Get<int>("CpuKind");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetCpuKindAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCpuKind(int value)
     {
-        CpuKind = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetCpuKindAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public string? GhostAvatarName
-    {
-        get => state.Get<string?>("GhostAvatarName");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostAvatarNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithGhostAvatarName(string? value)
     {
-        GhostAvatarName = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostAvatarNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public Checksum128? GhostUid128
-    {
-        get => state.Get<Checksum128?>("GhostUid128");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostUid128Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGhostUid128(Checksum128? value)
     {
-        GhostUid128 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostUid128Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int? GhostVersion
-    {
-        get => state.Get<int?>("GhostVersion");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithGhostVersion(int? value)
     {
-        GhostVersion = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public byte GpuCount
-    {
-        get => state.Get<byte>("GpuCount");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGpuCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGpuCount(byte value)
     {
-        GpuCount = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGpuCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public string? GpuDescription
-    {
-        get => state.Get<string?>("GpuDescription");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGpuDescriptionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGpuDescription(string? value)
     {
-        GpuDescription = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGpuDescriptionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int GpuDeviceId
-    {
-        get => state.Get<int>("GpuDeviceId");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGpuDeviceIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGpuDeviceId(int value)
     {
-        GpuDeviceId = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGpuDeviceIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int GpuVendorId
-    {
-        get => state.Get<int>("GpuVendorId");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGpuVendorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGpuVendorId(int value)
     {
-        GpuVendorId = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGpuVendorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public string? HardwareUid
-    {
-        get => state.Get<string?>("HardwareUid");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetHardwareUidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithHardwareUid(string? value)
     {
-        HardwareUid = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetHardwareUidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public byte HasHmd
-    {
-        get => state.Get<byte>("HasHmd");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetHasHmdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithHasHmd(byte value)
     {
-        HasHmd = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetHasHmdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public string? LoggedUserName
-    {
-        get => state.Get<string?>("LoggedUserName");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetLoggedUserNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLoggedUserName(string? value)
     {
-        LoggedUserName = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetLoggedUserNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Game.CGameCtnGhost.MatchReplaySeparator[]? MatchReplaySeparators
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnGhost.MatchReplaySeparator[]?>("MatchReplaySeparators");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetMatchReplaySeparatorsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMatchReplaySeparators(params global::GBX.NET.Engines.Game.CGameCtnGhost.MatchReplaySeparator[]? value)
     {
-        MatchReplaySeparators = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetMatchReplaySeparatorsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithMatchReplaySeparators(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnGhost.MatchReplaySeparator> values)
     {
         return WithMatchReplaySeparators(values.ToArray());
     }
-    public global::System.Net.IPAddress? NetworkAddress
-    {
-        get => state.Get<global::System.Net.IPAddress?>("NetworkAddress");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetNetworkAddressAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithNetworkAddress(global::System.Net.IPAddress? value)
     {
-        NetworkAddress = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetNetworkAddressAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Game.CGameCtnGhost.PlayerInputData[]? PlayerInputs
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnGhost.PlayerInputData[]?>("PlayerInputs");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetPlayerInputsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithPlayerInputs(params global::GBX.NET.Engines.Game.CGameCtnGhost.PlayerInputData[]? value)
     {
-        PlayerInputs = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetPlayerInputsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithPlayerInputs(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnGhost.PlayerInputData> values)
     {
         return WithPlayerInputs(values.ToArray());
     }
-    public int[]? ScreenCaptureKeyframeIndices
-    {
-        get => state.Get<int[]?>("ScreenCaptureKeyframeIndices");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetScreenCaptureKeyframeIndicesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithScreenCaptureKeyframeIndices(params int[]? value)
     {
-        ScreenCaptureKeyframeIndices = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetScreenCaptureKeyframeIndicesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithScreenCaptureKeyframeIndices(IEnumerable<int> values)
     {
         return WithScreenCaptureKeyframeIndices(values.ToArray());
     }
-    public NodeRefList<global::GBX.NET.Engines.Plug.CPlugTimedPixelArray>? ScreenCaptures
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugTimedPixelArray>?>("ScreenCaptures");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetScreenCapturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithScreenCaptures(NodeRefList<global::GBX.NET.Engines.Plug.CPlugTimedPixelArray>? value)
     {
-        ScreenCaptures = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetScreenCapturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithScreenCaptures(params global::GBX.NET.Engines.Plug.CPlugTimedPixelArray[] values)
@@ -488,14 +288,9 @@ public abstract class CGameCtnGhostBuilderMembers7<TSelf> : CGameCtnGhostBuilder
     {
         return WithScreenCaptures(values.ToArray());
     }
-    public NodeRefList<global::GBX.NET.Engines.Plug.CPlugTimedPixelArray>? ScreenCaptures_Difference
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugTimedPixelArray>?>("ScreenCaptures_Difference");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetScreenCaptures_DifferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithScreenCaptures_Difference(NodeRefList<global::GBX.NET.Engines.Plug.CPlugTimedPixelArray>? value)
     {
-        ScreenCaptures_Difference = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetScreenCaptures_DifferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithScreenCaptures_Difference(params global::GBX.NET.Engines.Plug.CPlugTimedPixelArray[] values)
@@ -506,38 +301,23 @@ public abstract class CGameCtnGhostBuilderMembers7<TSelf> : CGameCtnGhostBuilder
     {
         return WithScreenCaptures_Difference(values.ToArray());
     }
-    public UInt256? SecurityKey256
-    {
-        get => state.Get<UInt256?>("SecurityKey256");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSecurityKey256Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithSecurityKey256(UInt256? value)
     {
-        SecurityKey256 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSecurityKey256Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Game.CGameCtnGhost.SettingsInfos[]? Settings
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnGhost.SettingsInfos[]?>("Settings");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSettingsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSettings(params global::GBX.NET.Engines.Game.CGameCtnGhost.SettingsInfos[]? value)
     {
-        Settings = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSettingsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithSettings(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnGhost.SettingsInfos> values)
     {
         return WithSettings(values.ToArray());
     }
-    public List<PackDesc>? SkinPackDescs
-    {
-        get => state.Get<List<PackDesc>?>("SkinPackDescs");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSkinPackDescsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    }
     public TSelf WithSkinPackDescs(List<PackDesc>? value)
     {
-        SkinPackDescs = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSkinPackDescsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithSkinPackDescs(params PackDesc[] values)
@@ -548,102 +328,57 @@ public abstract class CGameCtnGhostBuilderMembers7<TSelf> : CGameCtnGhostBuilder
     {
         return WithSkinPackDescs(values.ToArray());
     }
-    public bool SteeringWheelSensitivity
-    {
-        get => state.Get<bool>("SteeringWheelSensitivity");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSteeringWheelSensitivityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithSteeringWheelSensitivity(bool value)
     {
-        SteeringWheelSensitivity = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSteeringWheelSensitivityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int? Validate_ValidationSeed
-    {
-        get => state.Get<int?>("Validate_ValidationSeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_ValidationSeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithValidate_ValidationSeed(int? value)
     {
-        Validate_ValidationSeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_ValidationSeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnGhostBuilderMembers8<TSelf> : CGameCtnGhostBuilderMembers7<TSelf> where TSelf : CGameCtnGhostBuilderMembers8<TSelf>
 {
     private protected CGameCtnGhostBuilderMembers8(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state) : base(state) { }
-    public global::GBX.NET.Engines.Game.CGameCtnGhost.SBadge? Badge
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnGhost.SBadge?>("Badge");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetBadgeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithBadge(global::GBX.NET.Engines.Game.CGameCtnGhost.SBadge? value)
     {
-        Badge = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetBadgeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool HasBadges
-    {
-        get => state.Get<bool>("HasBadges");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetHasBadgesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithHasBadges(bool value)
     {
-        HasBadges = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetHasBadgesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public TimeInt32? RaceStartTime
-    {
-        get => state.Get<TimeInt32?>("RaceStartTime");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetRaceStartTimeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRaceStartTime(TimeInt32? value)
     {
-        RaceStartTime = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetRaceStartTimeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public string? RecordingContext
-    {
-        get => state.Get<string?>("RecordingContext");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetRecordingContextAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRecordingContext(string? value)
     {
-        RecordingContext = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetRecordingContextAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public string? SkinCustomization
-    {
-        get => state.Get<string?>("SkinCustomization");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSkinCustomizationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSkinCustomization(string? value)
     {
-        SkinCustomization = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSkinCustomizationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnGhostBuilderMembers9<TSelf> : CGameCtnGhostBuilderMembers8<TSelf> where TSelf : CGameCtnGhostBuilderMembers9<TSelf>
 {
     private protected CGameCtnGhostBuilderMembers9(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state) : base(state) { }
-    public Checksum256? Validate_TitleChecksum
-    {
-        get => state.Get<Checksum256?>("Validate_TitleChecksum");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_TitleChecksumAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithValidate_TitleChecksum(Checksum256? value)
     {
-        Validate_TitleChecksum = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_TitleChecksumAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public string? Validate_TitleId
-    {
-        get => state.Get<string?>("Validate_TitleId");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_TitleIdAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithValidate_TitleId(string? value)
     {
-        Validate_TitleId = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_TitleIdAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
 }
@@ -658,11 +393,6 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         node.Chunks.Add(chunk0303F003);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnGhost node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303F003 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameCtnGhost CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnGhost();
@@ -675,13 +405,6 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         var chunk0303F003 = new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F003();
         node.Chunks.Add(chunk0303F003);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameCtnGhost node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303F003 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Game.CGameCtnGhost CreateRecipe2(GameVersion game)
     {
@@ -699,15 +422,6 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         var chunk0303F004 = new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F004();
         node.Chunks.Add(chunk0303F004);
         return node;
-    }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Game.CGameCtnGhost node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092008 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303F003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303F004 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Game.CGameCtnGhost CreateRecipe3(GameVersion game)
     {
@@ -729,17 +443,6 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         var chunk0303F004 = new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F004();
         node.Chunks.Add(chunk0303F004);
         return node;
-    }
-    private static void ValidateRecipe3(global::GBX.NET.Engines.Game.CGameCtnGhost node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092008 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309200A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309200B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303F003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303F004 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Game.CGameCtnGhost CreateRecipe4(GameVersion game)
     {
@@ -763,18 +466,6 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         var chunk0303F004 = new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F004();
         node.Chunks.Add(chunk0303F004);
         return node;
-    }
-    private static void ValidateRecipe4(global::GBX.NET.Engines.Game.CGameCtnGhost node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092008 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309200A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309200B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309200C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303F003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303F004 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Game.CGameCtnGhost CreateRecipe5(GameVersion game)
     {
@@ -806,22 +497,6 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         var chunk0303F005 = new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F005();
         node.Chunks.Add(chunk0303F005);
         return node;
-    }
-    private static void ValidateRecipe5(global::GBX.NET.Engines.Game.CGameCtnGhost node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092008 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309200A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309200B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309200C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309200D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309200E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309200F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092011 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092012>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092012 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303F005 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Game.CGameCtnGhost CreateRecipe6(GameVersion game)
     {
@@ -879,34 +554,6 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         node.Chunks.Add(chunk0303F007);
         return node;
     }
-    private static void ValidateRecipe6(global::GBX.NET.Engines.Game.CGameCtnGhost node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092008 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309200A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309200B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309200C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309200E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309200F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092013 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092014>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092014 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092017 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092018 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309201A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309201A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309201B>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0309201B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309201C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309201C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309201D>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk0309201D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092022>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk03092022 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092023>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk03092023 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092024>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03092024 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092025>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03092025 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092026>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092026 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092027>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk03092027 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F006>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0303F006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303F007 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameCtnGhost CreateRecipe7(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnGhost();
@@ -958,32 +605,6 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         var chunk0303F007 = new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F007();
         node.Chunks.Add(chunk0303F007);
         return node;
-    }
-    private static void ValidateRecipe7(global::GBX.NET.Engines.Game.CGameCtnGhost node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092000>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk03092000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092008 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309200A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309200B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309200C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309200E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309200F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092013 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092014>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092014 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309201A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309201A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309201B>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk0309201B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309201C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309201C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309201D>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk0309201D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092022>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk03092022 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092023>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk03092023 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092024>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03092024 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092025>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03092025 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092026>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092026 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092027>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk03092027 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F006>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0303F006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303F007 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Game.CGameCtnGhost CreateRecipe8(GameVersion game)
     {
@@ -1038,33 +659,6 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         var chunk0303F007 = new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F007();
         node.Chunks.Add(chunk0303F007);
         return node;
-    }
-    private static void ValidateRecipe8(global::GBX.NET.Engines.Game.CGameCtnGhost node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092000>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk03092000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092008 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309200A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309200B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309200C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309200E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309200F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092013 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092014>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092014 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309201A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309201A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309201B>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk0309201B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309201C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309201C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309201D>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk0309201D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092022>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk03092022 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092023>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk03092023 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092024>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03092024 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092025>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03092025 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092026>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092026 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092027>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk03092027 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092028>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092028 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F006>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0303F006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303F007 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Game.CGameCtnGhost CreateRecipe9(GameVersion game)
     {
@@ -1132,42 +726,6 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         node.Chunks.Add(chunk0303F007);
         return node;
     }
-    private static void ValidateRecipe9(global::GBX.NET.Engines.Game.CGameCtnGhost node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092000>() is not { Version: 9 }) throw new InvalidOperationException($"Required {game} chunk Chunk03092000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092008 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309200A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309200B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309200C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309200E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309200F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092013 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092014>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092014 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309201A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309201A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309201B>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk0309201B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309201C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309201C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309201D>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk0309201D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092022>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk03092022 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092023>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk03092023 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092024>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03092024 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092025>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk03092025 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092026>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092026 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092027>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk03092027 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092028>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03092028 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092029>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk03092029 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309202A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309202A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309202B>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0309202B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309202C>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0309202C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309202D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309202D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309202E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0309202E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F006>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0303F006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303F007 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnGhost node, GameVersion game)
-    {
-    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMS ForTMS() => new(state.Snapshot());
@@ -1184,14 +742,9 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
     public partial class TM10 : CGameCtnGhostBuilderBase<TM10>
     {
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state) : base(state) { }
-        public string? SkinFile
-        {
-            get => state.Get<string?>("SkinFile");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSkinFileAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
-        }
         public TM10 WithSkinFile(string? value)
         {
-            SkinFile = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSkinFileAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.Game.IGameCtnGhostTM10 BuildInterface() => Build();
@@ -1200,40 +753,25 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
             var node = CGameCtnGhostBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CGameCtnGhostBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CGameCtnGhostBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnGhost node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnGhost node);
     }
     public partial class TMPU : CGameCtnGhostBuilderMembers1<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state) : base(state) { }
-        public global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint[]? Checkpoints
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint[]?>("Checkpoints");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetCheckpointsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-        }
         public TMPU WithCheckpoints(params global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint[]? value)
         {
-            Checkpoints = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetCheckpointsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
             return this;
         }
         public TMPU WithCheckpoints(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint> values)
         {
             return WithCheckpoints(values.ToArray());
         }
-        public string? SkinFile
-        {
-            get => state.Get<string?>("SkinFile");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSkinFileAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
-        }
         public TMPU WithSkinFile(string? value)
         {
-            SkinFile = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSkinFileAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.Game.IGameCtnGhostTMPU BuildInterface() => Build();
@@ -1242,14 +780,9 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
             var node = CGameCtnGhostBuilder.CreateRecipe1(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CGameCtnGhostBuilder.ValidateRecipe1(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CGameCtnGhostBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnGhost node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnGhost node);
     }
     public partial class TMS : CGameCtnGhostBuilderMembers4<TMS>
     {
@@ -1260,40 +793,25 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
             var node = CGameCtnGhostBuilder.CreateRecipe2(GameVersion.TMS);
             state.Apply(node, GameVersion.TMS);
             CustomizeNode(node);
-            CGameCtnGhostBuilder.ValidateRecipe2(node, GameVersion.TMS);
-            NodeBuilderValidation.Validate(node, GameVersion.TMS);
-            CGameCtnGhostBuilder.ValidateRequiredMembers(node, GameVersion.TMS);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnGhost node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnGhost node);
     }
     public partial class TMSX : CGameCtnGhostBuilderMembers4<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state) : base(state) { }
-        public global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint[]? Checkpoints
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint[]?>("Checkpoints");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetCheckpointsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-        }
         public TMSX WithCheckpoints(params global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint[]? value)
         {
-            Checkpoints = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetCheckpointsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
             return this;
         }
         public TMSX WithCheckpoints(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint> values)
         {
             return WithCheckpoints(values.ToArray());
         }
-        public int? StuntScore
-        {
-            get => state.Get<int?>("StuntScore");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetStuntScoreAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-        }
         public TMSX WithStuntScore(int? value)
         {
-            StuntScore = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetStuntScoreAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.Game.IGameCtnGhostTMSX BuildInterface() => Build();
@@ -1302,40 +820,25 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
             var node = CGameCtnGhostBuilder.CreateRecipe3(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CGameCtnGhostBuilder.ValidateRecipe3(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CGameCtnGhostBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnGhost node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnGhost node);
     }
     public partial class TMNESWC : CGameCtnGhostBuilderMembers4<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state) : base(state) { }
-        public global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint[]? Checkpoints
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint[]?>("Checkpoints");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetCheckpointsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-        }
         public TMNESWC WithCheckpoints(params global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint[]? value)
         {
-            Checkpoints = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetCheckpointsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
             return this;
         }
         public TMNESWC WithCheckpoints(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint> values)
         {
             return WithCheckpoints(values.ToArray());
         }
-        public int? StuntScore
-        {
-            get => state.Get<int?>("StuntScore");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetStuntScoreAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-        }
         public TMNESWC WithStuntScore(int? value)
         {
-            StuntScore = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetStuntScoreAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.Game.IGameCtnGhostTMNESWC BuildInterface() => Build();
@@ -1344,14 +847,9 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
             var node = CGameCtnGhostBuilder.CreateRecipe4(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CGameCtnGhostBuilder.ValidateRecipe4(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CGameCtnGhostBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnGhost node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnGhost node);
     }
     public partial class TMU : CGameCtnGhostBuilderMembers6<TMU>
     {
@@ -1362,14 +860,9 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
             var node = CGameCtnGhostBuilder.CreateRecipe5(GameVersion.TMU);
             state.Apply(node, GameVersion.TMU);
             CustomizeNode(node);
-            CGameCtnGhostBuilder.ValidateRecipe5(node, GameVersion.TMU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMU);
-            CGameCtnGhostBuilder.ValidateRequiredMembers(node, GameVersion.TMU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnGhost node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnGhost node);
     }
     public partial class VSK5 : CGameCtnGhostBuilderMembers6<VSK5>
     {
@@ -1380,14 +873,9 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
             var node = CGameCtnGhostBuilder.CreateRecipe5(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CGameCtnGhostBuilder.ValidateRecipe5(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CGameCtnGhostBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnGhost node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnGhost node);
     }
     public partial class MP3 : CGameCtnGhostBuilderMembers7<MP3>
     {
@@ -1398,14 +886,9 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
             var node = CGameCtnGhostBuilder.CreateRecipe6(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CGameCtnGhostBuilder.ValidateRecipe6(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CGameCtnGhostBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnGhost node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnGhost node);
     }
     public partial class TMT : CGameCtnGhostBuilderMembers8<TMT>
     {
@@ -1416,14 +899,9 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
             var node = CGameCtnGhostBuilder.CreateRecipe7(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameCtnGhostBuilder.ValidateRecipe7(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameCtnGhostBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnGhost node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnGhost node);
     }
     public partial class MP4 : CGameCtnGhostBuilderMembers9<MP4>
     {
@@ -1434,76 +912,41 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
             var node = CGameCtnGhostBuilder.CreateRecipe8(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameCtnGhostBuilder.ValidateRecipe8(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameCtnGhostBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnGhost node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnGhost node);
     }
     public partial class TM2020 : CGameCtnGhostBuilderMembers9<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state) : base(state) { }
-        public int AppearanceVersion
-        {
-            get => state.Get<int>("AppearanceVersion");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetAppearanceVersionAssignment(), value, GameVersion.TM2020);
-        }
         public TM2020 WithAppearanceVersion(int value)
         {
-            AppearanceVersion = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetAppearanceVersionAssignment(), value, GameVersion.TM2020);
             return this;
-        }
-        public string? GhostClubTag
-        {
-            get => state.Get<string?>("GhostClubTag");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostClubTagAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithGhostClubTag(string? value)
         {
-            GhostClubTag = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostClubTagAssignment(), value, GameVersion.TM2020);
             return this;
-        }
-        public string? GhostCountryPath
-        {
-            get => state.Get<string?>("GhostCountryPath");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostCountryPathAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithGhostCountryPath(string? value)
         {
-            GhostCountryPath = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostCountryPathAssignment(), value, GameVersion.TM2020);
             return this;
-        }
-        public string? GhostTrigram
-        {
-            get => state.Get<string?>("GhostTrigram");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostTrigramAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithGhostTrigram(string? value)
         {
-            GhostTrigram = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostTrigramAssignment(), value, GameVersion.TM2020);
             return this;
-        }
-        public int HasInputs
-        {
-            get => state.Get<int>("HasInputs");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetHasInputsAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithHasInputs(int value)
         {
-            HasInputs = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetHasInputsAssignment(), value, GameVersion.TM2020);
             return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugEntRecordData? RecordData
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugEntRecordData?>("RecordData");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetRecordDataAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithRecordData(global::GBX.NET.Engines.Plug.CPlugEntRecordData? value)
         {
-            RecordData = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetRecordDataAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithRecordDataReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugEntRecordData> value)
@@ -1516,104 +959,54 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         {
             return WithRecordData(value is null ? (global::GBX.NET.Engines.Plug.CPlugEntRecordData?)null : value is global::GBX.NET.Engines.Plug.CPlugEntRecordData node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public int SimulationFlags
-        {
-            get => state.Get<int>("SimulationFlags");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSimulationFlagsAssignment(), value, GameVersion.TM2020);
-        }
         public TM2020 WithSimulationFlags(int value)
         {
-            SimulationFlags = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSimulationFlagsAssignment(), value, GameVersion.TM2020);
             return this;
-        }
-        public int? SpawnLandmarkId
-        {
-            get => state.Get<int?>("SpawnLandmarkId");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSpawnLandmarkIdAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithSpawnLandmarkId(int? value)
         {
-            SpawnLandmarkId = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSpawnLandmarkIdAssignment(), value, GameVersion.TM2020);
             return this;
-        }
-        public string? Validate_GameMode
-        {
-            get => state.Get<string?>("Validate_GameMode");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_GameModeAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithValidate_GameMode(string? value)
         {
-            Validate_GameMode = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_GameModeAssignment(), value, GameVersion.TM2020);
             return this;
-        }
-        public string? Validate_GameModeCustomData
-        {
-            get => state.Get<string?>("Validate_GameModeCustomData");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_GameModeCustomDataAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithValidate_GameModeCustomData(string? value)
         {
-            Validate_GameModeCustomData = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_GameModeCustomDataAssignment(), value, GameVersion.TM2020);
             return this;
-        }
-        public int Validate_GameRules
-        {
-            get => state.Get<int>("Validate_GameRules");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_GameRulesAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithValidate_GameRules(int value)
         {
-            Validate_GameRules = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_GameRulesAssignment(), value, GameVersion.TM2020);
             return this;
-        }
-        public TimeInt32? Validate_RaceStartTime
-        {
-            get => state.Get<TimeInt32?>("Validate_RaceStartTime");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_RaceStartTimeAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithValidate_RaceStartTime(TimeInt32? value)
         {
-            Validate_RaceStartTime = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_RaceStartTimeAssignment(), value, GameVersion.TM2020);
             return this;
-        }
-        public string? Validate_ScopeId
-        {
-            get => state.Get<string?>("Validate_ScopeId");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_ScopeIdAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithValidate_ScopeId(string? value)
         {
-            Validate_ScopeId = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_ScopeIdAssignment(), value, GameVersion.TM2020);
             return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnGhost.ScopeType Validate_ScopeType
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnGhost.ScopeType>("Validate_ScopeType");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_ScopeTypeAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithValidate_ScopeType(global::GBX.NET.Engines.Game.CGameCtnGhost.ScopeType value)
         {
-            Validate_ScopeType = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_ScopeTypeAssignment(), value, GameVersion.TM2020);
             return this;
-        }
-        public DateTimeOffset? WalltimeEndTimestamp
-        {
-            get => state.Get<DateTimeOffset?>("WalltimeEndTimestamp");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetWalltimeEndTimestampAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithWalltimeEndTimestamp(DateTimeOffset? value)
         {
-            WalltimeEndTimestamp = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetWalltimeEndTimestampAssignment(), value, GameVersion.TM2020);
             return this;
-        }
-        public DateTimeOffset? WalltimeStartTimestamp
-        {
-            get => state.Get<DateTimeOffset?>("WalltimeStartTimestamp");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetWalltimeStartTimestampAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithWalltimeStartTimestamp(DateTimeOffset? value)
         {
-            WalltimeStartTimestamp = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetWalltimeStartTimestampAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public global::GBX.NET.Interfaces.Game.IGameCtnGhostTM2020 BuildInterface() => Build();
@@ -1622,13 +1015,8 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
             var node = CGameCtnGhostBuilder.CreateRecipe9(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameCtnGhostBuilder.ValidateRecipe9(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameCtnGhostBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnGhost node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnGhost node);
     }
 }

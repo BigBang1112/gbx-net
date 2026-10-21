@@ -36,34 +36,19 @@ public abstract class CPlugVehicleVisStyleRandomGroupBuilderBase<TSelf> where TS
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup> state;
     private protected CPlugVehicleVisStyleRandomGroupBuilderBase() => state = new();
     private protected CPlugVehicleVisStyleRandomGroupBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup> state) => this.state = state;
-    public string? MatchName
-    {
-        get => state.Get<string?>("MatchName");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisStyleRandomGroupBuilderAssignments.GetMatchNameAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithMatchName(string? value)
     {
-        MatchName = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisStyleRandomGroupBuilderAssignments.GetMatchNameAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public string? Name
-    {
-        get => state.Get<string?>("Name");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisStyleRandomGroupBuilderAssignments.GetNameAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithName(string? value)
     {
-        Name = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisStyleRandomGroupBuilderAssignments.GetNameAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup.SPlugVehicleVisStyle[]? Styles
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup.SPlugVehicleVisStyle[]?>("Styles");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisStyleRandomGroupBuilderAssignments.GetStylesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithStyles(params global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup.SPlugVehicleVisStyle[]? value)
     {
-        Styles = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisStyleRandomGroupBuilderAssignments.GetStylesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithStyles(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup.SPlugVehicleVisStyle> values)
@@ -80,23 +65,12 @@ public partial class CPlugVehicleVisStyleRandomGroupBuilder : CPlugVehicleVisSty
         node.Chunks.Add(chunk09147000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup.Chunk09147000>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk09147000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup();
         var chunk09147000 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup.Chunk09147000(game);
         node.Chunks.Add(chunk09147000);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup.Chunk09147000>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk09147000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup node, GameVersion game)
-    {
     }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -111,26 +85,16 @@ public partial class CPlugVehicleVisStyleRandomGroupBuilder : CPlugVehicleVisSty
             var node = CPlugVehicleVisStyleRandomGroupBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugVehicleVisStyleRandomGroupBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugVehicleVisStyleRandomGroupBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup node);
     }
     public partial class TM2020 : CPlugVehicleVisStyleRandomGroupBuilderBase<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup> state) : base(state) { }
-        public float GroupProba
-        {
-            get => state.Get<float>("GroupProba");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisStyleRandomGroupBuilderAssignments.GetGroupProbaAssignment(), value, GameVersion.TM2020);
-        }
         public TM2020 WithGroupProba(float value)
         {
-            GroupProba = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisStyleRandomGroupBuilderAssignments.GetGroupProbaAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleVisStyleRandomGroupTM2020 BuildInterface() => Build();
@@ -139,13 +103,8 @@ public partial class CPlugVehicleVisStyleRandomGroupBuilder : CPlugVehicleVisSty
             var node = CPlugVehicleVisStyleRandomGroupBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugVehicleVisStyleRandomGroupBuilder.ValidateRecipe1(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugVehicleVisStyleRandomGroupBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup node);
     }
 }

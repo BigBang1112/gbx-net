@@ -36,14 +36,9 @@ public abstract class CGameManialink3dStyleBuilderBase<TSelf> where TSelf : CGam
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dStyle> state;
     private protected CGameManialink3dStyleBuilderBase() => state = new();
     private protected CGameManialink3dStyleBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dStyle> state) => this.state = state;
-    public global::GBX.NET.Engines.Game.CGameManialink3dMood? Mood
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameManialink3dMood?>("Mood");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dStyleBuilderAssignments.GetMoodAssignment(), value, GameVersion.MP4);
-    }
     public TSelf WithMood(global::GBX.NET.Engines.Game.CGameManialink3dMood? value)
     {
-        Mood = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dStyleBuilderAssignments.GetMoodAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public TSelf WithMoodReference(NodeRef<global::GBX.NET.Engines.Game.CGameManialink3dMood> value)
@@ -63,13 +58,6 @@ public partial class CGameManialink3dStyleBuilder : CGameManialink3dStyleBuilder
         node.Chunks.Add(chunk03181000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameManialink3dStyle node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameManialink3dStyle.Chunk03181000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03181000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameManialink3dStyle node, GameVersion game)
-    {
-    }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
@@ -86,13 +74,8 @@ public partial class CGameManialink3dStyleBuilder : CGameManialink3dStyleBuilder
             var node = CGameManialink3dStyleBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameManialink3dStyleBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameManialink3dStyleBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameManialink3dStyle node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameManialink3dStyle node);
     }
 }

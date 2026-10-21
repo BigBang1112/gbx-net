@@ -36,47 +36,47 @@ public partial class CPlugParticleEmitterModel : global::GBX.NET.Interfaces.Plug
     public static global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterModelBuilder Create() => new();
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModel>? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel.ParticleEmitterSubModels
     {
-        get => ParticleEmitterSubModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModel>(GetParticleEmitterSubModelsBuilderReferences, GameVersion.Unspecified, true, "ParticleEmitterSubModels");
+        get => ParticleEmitterSubModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModel>(GetParticleEmitterSubModelsBuilderReferences, true, "ParticleEmitterSubModels");
         set => ParticleEmitterSubModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModel>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMSX>? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMSX>.ParticleEmitterSubModels
     {
-        get => ParticleEmitterSubModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMSX>(GetParticleEmitterSubModelsBuilderReferences, GameVersion.TMSX, true, "ParticleEmitterSubModels");
+        get => ParticleEmitterSubModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMSX>(GetParticleEmitterSubModelsBuilderReferences, true, "ParticleEmitterSubModels");
         set => ParticleEmitterSubModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMSX>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMNESWC>? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMNESWC>.ParticleEmitterSubModels
     {
-        get => ParticleEmitterSubModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMNESWC>(GetParticleEmitterSubModelsBuilderReferences, GameVersion.TMNESWC, true, "ParticleEmitterSubModels");
+        get => ParticleEmitterSubModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMNESWC>(GetParticleEmitterSubModelsBuilderReferences, true, "ParticleEmitterSubModels");
         set => ParticleEmitterSubModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMNESWC>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelVSK5>? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelVSK5>.ParticleEmitterSubModels
     {
-        get => ParticleEmitterSubModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelVSK5>(GetParticleEmitterSubModelsBuilderReferences, GameVersion.VSK5, true, "ParticleEmitterSubModels");
+        get => ParticleEmitterSubModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelVSK5>(GetParticleEmitterSubModelsBuilderReferences, true, "ParticleEmitterSubModels");
         set => ParticleEmitterSubModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelVSK5>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMF>? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMF>.ParticleEmitterSubModels
     {
-        get => ParticleEmitterSubModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMF>(GetParticleEmitterSubModelsBuilderReferences, GameVersion.TMF, true, "ParticleEmitterSubModels");
+        get => ParticleEmitterSubModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMF>(GetParticleEmitterSubModelsBuilderReferences, true, "ParticleEmitterSubModels");
         set => ParticleEmitterSubModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMF>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMP3>? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMP3>.ParticleEmitterSubModels
     {
-        get => ParticleEmitterSubModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMP3>(GetParticleEmitterSubModelsBuilderReferences, GameVersion.MP3, true, "ParticleEmitterSubModels");
+        get => ParticleEmitterSubModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMP3>(GetParticleEmitterSubModelsBuilderReferences, true, "ParticleEmitterSubModels");
         set => ParticleEmitterSubModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMP3>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMT>? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMT>.ParticleEmitterSubModels
     {
-        get => ParticleEmitterSubModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMT>(GetParticleEmitterSubModelsBuilderReferences, GameVersion.TMT, true, "ParticleEmitterSubModels");
+        get => ParticleEmitterSubModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMT>(GetParticleEmitterSubModelsBuilderReferences, true, "ParticleEmitterSubModels");
         set => ParticleEmitterSubModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMT>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMP4>? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMP4>.ParticleEmitterSubModels
     {
-        get => ParticleEmitterSubModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMP4>(GetParticleEmitterSubModelsBuilderReferences, GameVersion.MP4, true, "ParticleEmitterSubModels");
+        get => ParticleEmitterSubModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMP4>(GetParticleEmitterSubModelsBuilderReferences, true, "ParticleEmitterSubModels");
         set => ParticleEmitterSubModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMP4>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTM2020>? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTM2020>.ParticleEmitterSubModels
     {
-        get => ParticleEmitterSubModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTM2020>(GetParticleEmitterSubModelsBuilderReferences, GameVersion.TM2020, true, "ParticleEmitterSubModels");
+        get => ParticleEmitterSubModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTM2020>(GetParticleEmitterSubModelsBuilderReferences, true, "ParticleEmitterSubModels");
         set => ParticleEmitterSubModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTM2020>(value, false));
     }
     private NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel>? GetParticleEmitterSubModelsBuilderReferences() => ParticleEmitterSubModels;

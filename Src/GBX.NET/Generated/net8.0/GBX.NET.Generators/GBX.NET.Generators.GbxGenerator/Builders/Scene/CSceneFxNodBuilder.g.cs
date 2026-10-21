@@ -36,14 +36,9 @@ public abstract class CSceneFxNodBuilderBase<TSelf> where TSelf : CSceneFxNodBui
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxNod> state;
     private protected CSceneFxNodBuilderBase() => state = new();
     private protected CSceneFxNodBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxNod> state) => this.state = state;
-    public global::GBX.NET.Engines.Scene.CSceneFx? Fx
-    {
-        get => state.Get<global::GBX.NET.Engines.Scene.CSceneFx?>("Fx");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxNodBuilderAssignments.GetFxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithFx(global::GBX.NET.Engines.Scene.CSceneFx? value)
     {
-        Fx = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxNodBuilderAssignments.GetFxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithFxReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneFx> value)
@@ -56,14 +51,9 @@ public abstract class CSceneFxNodBuilderBase<TSelf> where TSelf : CSceneFxNodBui
 public abstract class CSceneFxNodBuilderMembers1<TSelf> : CSceneFxNodBuilderBase<TSelf> where TSelf : CSceneFxNodBuilderMembers1<TSelf>
 {
     private protected CSceneFxNodBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxNod> state) : base(state) { }
-    public global::GBX.NET.Engines.Scene.CSceneFxNod? NodInput
-    {
-        get => state.Get<global::GBX.NET.Engines.Scene.CSceneFxNod?>("NodInput");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxNodBuilderAssignments.GetNodInputAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithNodInput(global::GBX.NET.Engines.Scene.CSceneFxNod? value)
     {
-        NodInput = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxNodBuilderAssignments.GetNodInputAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithNodInputReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneFxNod> value)
@@ -76,14 +66,9 @@ public abstract class CSceneFxNodBuilderMembers1<TSelf> : CSceneFxNodBuilderBase
 public abstract class CSceneFxNodBuilderMembers2<TSelf> : CSceneFxNodBuilderBase<TSelf> where TSelf : CSceneFxNodBuilderMembers2<TSelf>
 {
     private protected CSceneFxNodBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxNod> state) : base(state) { }
-    public NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxNod>? NodInputs
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxNod>?>("NodInputs");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxNodBuilderAssignments.GetNodInputsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
-    }
     public TSelf WithNodInputs(NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxNod>? value)
     {
-        NodInputs = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxNodBuilderAssignments.GetNodInputsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithNodInputs(params global::GBX.NET.Engines.Scene.CSceneFxNod[] values)
@@ -106,11 +91,6 @@ public partial class CSceneFxNodBuilder : CSceneFxNodBuilderBase<CSceneFxNodBuil
         node.Chunks.Add(chunk0A03A001);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Scene.CSceneFxNod node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneFxNod.Chunk0A03A000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A03A000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneFxNod.Chunk0A03A001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A03A001 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Scene.CSceneFxNod CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Scene.CSceneFxNod();
@@ -118,23 +98,12 @@ public partial class CSceneFxNodBuilder : CSceneFxNodBuilderBase<CSceneFxNodBuil
         node.Chunks.Add(chunk0A03A002);
         return node;
     }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Scene.CSceneFxNod node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneFxNod.Chunk0A03A002>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0A03A002 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Scene.CSceneFxNod CreateRecipe2(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Scene.CSceneFxNod();
         var chunk0A03A002 = new global::GBX.NET.Engines.Scene.CSceneFxNod.Chunk0A03A002(game);
         node.Chunks.Add(chunk0A03A002);
         return node;
-    }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Scene.CSceneFxNod node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneFxNod.Chunk0A03A002>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0A03A002 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Scene.CSceneFxNod node, GameVersion game)
-    {
     }
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
@@ -162,14 +131,9 @@ public partial class CSceneFxNodBuilder : CSceneFxNodBuilderBase<CSceneFxNodBuil
             var node = CSceneFxNodBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CSceneFxNodBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CSceneFxNodBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxNod node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneFxNod node);
     }
     public partial class VSK5 : CSceneFxNodBuilderMembers2<VSK5>
     {
@@ -188,14 +152,9 @@ public partial class CSceneFxNodBuilder : CSceneFxNodBuilderBase<CSceneFxNodBuil
             var node = CSceneFxNodBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CSceneFxNodBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CSceneFxNodBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxNod node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneFxNod node);
     }
     public partial class TMF : CSceneFxNodBuilderMembers2<TMF>
     {
@@ -218,14 +177,9 @@ public partial class CSceneFxNodBuilder : CSceneFxNodBuilderBase<CSceneFxNodBuil
             var node = CSceneFxNodBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CSceneFxNodBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CSceneFxNodBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxNod node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneFxNod node);
     }
     public partial class MP3 : CSceneFxNodBuilderMembers1<MP3>
     {
@@ -240,14 +194,9 @@ public partial class CSceneFxNodBuilder : CSceneFxNodBuilderBase<CSceneFxNodBuil
             var node = CSceneFxNodBuilder.CreateRecipe1(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CSceneFxNodBuilder.ValidateRecipe1(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CSceneFxNodBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxNod node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneFxNod node);
     }
     public partial class TMT : CSceneFxNodBuilderMembers1<TMT>
     {
@@ -262,14 +211,9 @@ public partial class CSceneFxNodBuilder : CSceneFxNodBuilderBase<CSceneFxNodBuil
             var node = CSceneFxNodBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CSceneFxNodBuilder.ValidateRecipe1(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CSceneFxNodBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxNod node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneFxNod node);
     }
     public partial class MP4 : CSceneFxNodBuilderMembers1<MP4>
     {
@@ -284,14 +228,9 @@ public partial class CSceneFxNodBuilder : CSceneFxNodBuilderBase<CSceneFxNodBuil
             var node = CSceneFxNodBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CSceneFxNodBuilder.ValidateRecipe1(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CSceneFxNodBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxNod node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneFxNod node);
     }
     public partial class TM2020 : CSceneFxNodBuilderMembers1<TM2020>
     {
@@ -300,14 +239,9 @@ public partial class CSceneFxNodBuilder : CSceneFxNodBuilderBase<CSceneFxNodBuil
         {
             return base.WithFx(value is null ? (global::GBX.NET.Engines.Scene.CSceneFx?)null : value is global::GBX.NET.Engines.Scene.CSceneFx node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public int FxIndex
-        {
-            get => state.Get<int>("FxIndex");
-            set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxNodBuilderAssignments.GetFxIndexAssignment(), value, GameVersion.TM2020);
-        }
         public TM2020 WithFxIndex(int value)
         {
-            FxIndex = value;
+            state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxNodBuilderAssignments.GetFxIndexAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithNodInput(global::GBX.NET.Interfaces.Scene.ISceneFxNodTM2020? value)
@@ -320,13 +254,8 @@ public partial class CSceneFxNodBuilder : CSceneFxNodBuilderBase<CSceneFxNodBuil
             var node = CSceneFxNodBuilder.CreateRecipe2(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CSceneFxNodBuilder.ValidateRecipe2(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CSceneFxNodBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxNod node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneFxNod node);
     }
 }

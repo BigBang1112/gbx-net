@@ -36,24 +36,14 @@ public abstract class CGameCtnMediaBlockTransitionFadeBuilderBase<TSelf> where T
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade> state;
     private protected CGameCtnMediaBlockTransitionFadeBuilderBase() => state = new();
     private protected CGameCtnMediaBlockTransitionFadeBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade> state) => this.state = state;
-    public Vec4 Color
-    {
-        get => state.Get<Vec4>("Color");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTransitionFadeBuilderAssignments.GetColorAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithColor(Vec4 value)
     {
-        Color = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTransitionFadeBuilderAssignments.GetColorAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade.Key>? Keys
-    {
-        get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade.Key>?>("Keys");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTransitionFadeBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade.Key>? value)
     {
-        Keys = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTransitionFadeBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithKeys(params global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade.Key[] values)
@@ -74,13 +64,6 @@ public partial class CGameCtnMediaBlockTransitionFadeBuilder : CGameCtnMediaBloc
         node.Chunks.Add(chunk030AB000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade.Chunk030AB000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk030AB000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade node, GameVersion game)
-    {
-    }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
@@ -99,14 +82,9 @@ public partial class CGameCtnMediaBlockTransitionFadeBuilder : CGameCtnMediaBloc
             var node = CGameCtnMediaBlockTransitionFadeBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CGameCtnMediaBlockTransitionFadeBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CGameCtnMediaBlockTransitionFadeBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade node);
     }
     public partial class TMNESWC : CGameCtnMediaBlockTransitionFadeBuilderBase<TMNESWC>
     {
@@ -117,14 +95,9 @@ public partial class CGameCtnMediaBlockTransitionFadeBuilder : CGameCtnMediaBloc
             var node = CGameCtnMediaBlockTransitionFadeBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CGameCtnMediaBlockTransitionFadeBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CGameCtnMediaBlockTransitionFadeBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade node);
     }
     public partial class VSK5 : CGameCtnMediaBlockTransitionFadeBuilderBase<VSK5>
     {
@@ -135,14 +108,9 @@ public partial class CGameCtnMediaBlockTransitionFadeBuilder : CGameCtnMediaBloc
             var node = CGameCtnMediaBlockTransitionFadeBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CGameCtnMediaBlockTransitionFadeBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CGameCtnMediaBlockTransitionFadeBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade node);
     }
     public partial class TMF : CGameCtnMediaBlockTransitionFadeBuilderBase<TMF>
     {
@@ -153,14 +121,9 @@ public partial class CGameCtnMediaBlockTransitionFadeBuilder : CGameCtnMediaBloc
             var node = CGameCtnMediaBlockTransitionFadeBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CGameCtnMediaBlockTransitionFadeBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CGameCtnMediaBlockTransitionFadeBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade node);
     }
     public partial class TMT : CGameCtnMediaBlockTransitionFadeBuilderBase<TMT>
     {
@@ -171,14 +134,9 @@ public partial class CGameCtnMediaBlockTransitionFadeBuilder : CGameCtnMediaBloc
             var node = CGameCtnMediaBlockTransitionFadeBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameCtnMediaBlockTransitionFadeBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameCtnMediaBlockTransitionFadeBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade node);
     }
     public partial class MP4 : CGameCtnMediaBlockTransitionFadeBuilderBase<MP4>
     {
@@ -189,14 +147,9 @@ public partial class CGameCtnMediaBlockTransitionFadeBuilder : CGameCtnMediaBloc
             var node = CGameCtnMediaBlockTransitionFadeBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameCtnMediaBlockTransitionFadeBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameCtnMediaBlockTransitionFadeBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade node);
     }
     public partial class TM2020 : CGameCtnMediaBlockTransitionFadeBuilderBase<TM2020>
     {
@@ -207,13 +160,8 @@ public partial class CGameCtnMediaBlockTransitionFadeBuilder : CGameCtnMediaBloc
             var node = CGameCtnMediaBlockTransitionFadeBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameCtnMediaBlockTransitionFadeBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameCtnMediaBlockTransitionFadeBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade node);
     }
 }

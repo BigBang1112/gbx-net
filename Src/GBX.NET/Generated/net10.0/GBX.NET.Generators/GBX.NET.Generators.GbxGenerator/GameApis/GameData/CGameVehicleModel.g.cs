@@ -46,42 +46,22 @@ public partial class CGameVehicleModel : global::GBX.NET.Interfaces.GameData.IGa
     }
     global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelMP4? global::GBX.NET.Interfaces.GameData.IGameVehicleModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelMP4, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelMP4>.PhyModel
     {
-        get
-        {
-            var node = PhyModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => PhyModel;
         set => PhyModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelMP4? global::GBX.NET.Interfaces.GameData.IGameVehicleModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelMP4, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelMP4>.VisModel
     {
-        get
-        {
-            var node = VisModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => VisModel;
         set => VisModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehicleVisModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelTM2020? global::GBX.NET.Interfaces.GameData.IGameVehicleModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelTM2020>.PhyModel
     {
-        get
-        {
-            var node = PhyModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => PhyModel;
         set => PhyModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelTM2020? global::GBX.NET.Interfaces.GameData.IGameVehicleModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelTM2020>.VisModel
     {
-        get
-        {
-            var node = VisModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => VisModel;
         set => VisModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehicleVisModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

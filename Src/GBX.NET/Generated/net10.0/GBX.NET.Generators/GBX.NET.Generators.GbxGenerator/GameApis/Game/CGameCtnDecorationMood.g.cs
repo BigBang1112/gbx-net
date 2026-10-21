@@ -41,352 +41,177 @@ public partial class CGameCtnDecorationMood : global::GBX.NET.Interfaces.Game.IG
     }
     global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMSX? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers5<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMSX>.Remapping
     {
-        get
-        {
-            var node = Remapping;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => Remapping;
         set => Remapping = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMNESWC? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers5<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMNESWC>.Remapping
     {
-        get
-        {
-            var node = Remapping;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => Remapping;
         set => Remapping = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Hms.IHmsLightMapVSK5? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers6<global::GBX.NET.Interfaces.Hms.IHmsLightMapVSK5>.HmsLightMap
     {
-        get
-        {
-            var node = HmsLightMap;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => HmsLightMap;
         set => HmsLightMap = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsLightMap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugGameSkinVSK5? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers5<global::GBX.NET.Interfaces.Plug.IPlugGameSkinVSK5>.Remapping
     {
-        get
-        {
-            var node = Remapping;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => Remapping;
         set => Remapping = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Hms.IHmsAmbientOccTMF? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers3<global::GBX.NET.Interfaces.Hms.IHmsAmbientOccTMF>.HmsAmbientOcc
     {
-        get
-        {
-            var node = HmsAmbientOcc;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => HmsAmbientOcc;
         set => HmsAmbientOcc = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsAmbientOcc node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Hms.IHmsLightMapTMF? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers6<global::GBX.NET.Interfaces.Hms.IHmsLightMapTMF>.HmsLightMap
     {
-        get
-        {
-            var node = HmsLightMap;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => HmsLightMap;
         set => HmsLightMap = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsLightMap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMF? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers5<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMF>.Remapping
     {
-        get
-        {
-            var node = Remapping;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => Remapping;
         set => Remapping = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3, global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3MP3, global::GBX.NET.Interfaces.Plug.IPlugFxLightningMP3>.FxBloom_FidFuncIntensAtHdrNorm
     {
-        get
-        {
-            var node = FxBloom_FidFuncIntensAtHdrNorm;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => FxBloom_FidFuncIntensAtHdrNorm;
         set => FxBloom_FidFuncIntensAtHdrNorm = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3MP3? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3, global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3MP3, global::GBX.NET.Interfaces.Plug.IPlugFxLightningMP3>.FxHdrScalesT3
     {
-        get
-        {
-            var node = FxHdrScalesT3;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => FxHdrScalesT3;
         set => FxHdrScalesT3 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3 node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugFxLightningMP3? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3, global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3MP3, global::GBX.NET.Interfaces.Plug.IPlugFxLightningMP3>.FxLightning
     {
-        get
-        {
-            var node = FxLightning;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => FxLightning;
         set => FxLightning = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFxLightning node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Hms.IHmsAmbientOccMP3? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers3<global::GBX.NET.Interfaces.Hms.IHmsAmbientOccMP3>.HmsAmbientOcc
     {
-        get
-        {
-            var node = HmsAmbientOcc;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => HmsAmbientOcc;
         set => HmsAmbientOcc = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsAmbientOcc node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Hms.IHmsLightMapMP3? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers6<global::GBX.NET.Interfaces.Hms.IHmsLightMapMP3>.HmsLightMap
     {
-        get
-        {
-            var node = HmsLightMap;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => HmsLightMap;
         set => HmsLightMap = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsLightMap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP3? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers5<global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP3>.Remapping
     {
-        get
-        {
-            var node = Remapping;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => Remapping;
         set => Remapping = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3, global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3MP3, global::GBX.NET.Interfaces.Plug.IPlugFxLightningMP3>.ToneMapAutoExp_FidAvgLumiToKeyValue
     {
-        get
-        {
-            var node = ToneMapAutoExp_FidAvgLumiToKeyValue;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => ToneMapAutoExp_FidAvgLumiToKeyValue;
         set => ToneMapAutoExp_FidAvgLumiToKeyValue = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT, global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3TMT, global::GBX.NET.Interfaces.Plug.IPlugFxLightningTMT>.FxBloom_FidFuncIntensAtHdrNorm
     {
-        get
-        {
-            var node = FxBloom_FidFuncIntensAtHdrNorm;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => FxBloom_FidFuncIntensAtHdrNorm;
         set => FxBloom_FidFuncIntensAtHdrNorm = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3TMT? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT, global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3TMT, global::GBX.NET.Interfaces.Plug.IPlugFxLightningTMT>.FxHdrScalesT3
     {
-        get
-        {
-            var node = FxHdrScalesT3;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => FxHdrScalesT3;
         set => FxHdrScalesT3 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3 node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugFxLightningTMT? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT, global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3TMT, global::GBX.NET.Interfaces.Plug.IPlugFxLightningTMT>.FxLightning
     {
-        get
-        {
-            var node = FxLightning;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => FxLightning;
         set => FxLightning = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFxLightning node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Hms.IHmsAmbientOccTMT? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers3<global::GBX.NET.Interfaces.Hms.IHmsAmbientOccTMT>.HmsAmbientOcc
     {
-        get
-        {
-            var node = HmsAmbientOcc;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => HmsAmbientOcc;
         set => HmsAmbientOcc = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsAmbientOcc node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Hms.IHmsLightMapTMT? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers6<global::GBX.NET.Interfaces.Hms.IHmsLightMapTMT>.HmsLightMap
     {
-        get
-        {
-            var node = HmsLightMap;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => HmsLightMap;
         set => HmsLightMap = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsLightMap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMT? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers5<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMT>.Remapping
     {
-        get
-        {
-            var node = Remapping;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => Remapping;
         set => Remapping = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT, global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3TMT, global::GBX.NET.Interfaces.Plug.IPlugFxLightningTMT>.ToneMapAutoExp_FidAvgLumiToKeyValue
     {
-        get
-        {
-            var node = ToneMapAutoExp_FidAvgLumiToKeyValue;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => ToneMapAutoExp_FidAvgLumiToKeyValue;
         set => ToneMapAutoExp_FidAvgLumiToKeyValue = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4, global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3MP4, global::GBX.NET.Interfaces.Plug.IPlugFxLightningMP4>.FxBloom_FidFuncIntensAtHdrNorm
     {
-        get
-        {
-            var node = FxBloom_FidFuncIntensAtHdrNorm;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => FxBloom_FidFuncIntensAtHdrNorm;
         set => FxBloom_FidFuncIntensAtHdrNorm = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3MP4? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4, global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3MP4, global::GBX.NET.Interfaces.Plug.IPlugFxLightningMP4>.FxHdrScalesT3
     {
-        get
-        {
-            var node = FxHdrScalesT3;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => FxHdrScalesT3;
         set => FxHdrScalesT3 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3 node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugFxLightningMP4? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4, global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3MP4, global::GBX.NET.Interfaces.Plug.IPlugFxLightningMP4>.FxLightning
     {
-        get
-        {
-            var node = FxLightning;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => FxLightning;
         set => FxLightning = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFxLightning node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Hms.IHmsAmbientOccMP4? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers3<global::GBX.NET.Interfaces.Hms.IHmsAmbientOccMP4>.HmsAmbientOcc
     {
-        get
-        {
-            var node = HmsAmbientOcc;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => HmsAmbientOcc;
         set => HmsAmbientOcc = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsAmbientOcc node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Hms.IHmsLightMapMP4? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers6<global::GBX.NET.Interfaces.Hms.IHmsLightMapMP4>.HmsLightMap
     {
-        get
-        {
-            var node = HmsLightMap;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => HmsLightMap;
         set => HmsLightMap = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsLightMap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers5<global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4>.Remapping
     {
-        get
-        {
-            var node = Remapping;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Remapping;
         set => Remapping = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4, global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3MP4, global::GBX.NET.Interfaces.Plug.IPlugFxLightningMP4>.ToneMapAutoExp_FidAvgLumiToKeyValue
     {
-        get
-        {
-            var node = ToneMapAutoExp_FidAvgLumiToKeyValue;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => ToneMapAutoExp_FidAvgLumiToKeyValue;
         set => ToneMapAutoExp_FidAvgLumiToKeyValue = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020, global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3TM2020, global::GBX.NET.Interfaces.Plug.IPlugFxLightningTM2020>.FxBloom_FidFuncIntensAtHdrNorm
     {
-        get
-        {
-            var node = FxBloom_FidFuncIntensAtHdrNorm;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => FxBloom_FidFuncIntensAtHdrNorm;
         set => FxBloom_FidFuncIntensAtHdrNorm = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3TM2020? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020, global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3TM2020, global::GBX.NET.Interfaces.Plug.IPlugFxLightningTM2020>.FxHdrScalesT3
     {
-        get
-        {
-            var node = FxHdrScalesT3;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => FxHdrScalesT3;
         set => FxHdrScalesT3 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3 node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugFxLightningTM2020? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020, global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3TM2020, global::GBX.NET.Interfaces.Plug.IPlugFxLightningTM2020>.FxLightning
     {
-        get
-        {
-            var node = FxLightning;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => FxLightning;
         set => FxLightning = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFxLightning node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Hms.IHmsAmbientOccTM2020? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers3<global::GBX.NET.Interfaces.Hms.IHmsAmbientOccTM2020>.HmsAmbientOcc
     {
-        get
-        {
-            var node = HmsAmbientOcc;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => HmsAmbientOcc;
         set => HmsAmbientOcc = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsAmbientOcc node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Hms.IHmsLightMapTM2020? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers6<global::GBX.NET.Interfaces.Hms.IHmsLightMapTM2020>.HmsLightMap
     {
-        get
-        {
-            var node = HmsLightMap;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => HmsLightMap;
         set => HmsLightMap = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsLightMap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM2020? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers5<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM2020>.Remapping
     {
-        get
-        {
-            var node = Remapping;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => Remapping;
         set => Remapping = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020, global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3TM2020, global::GBX.NET.Interfaces.Plug.IPlugFxLightningTM2020>.ToneMapAutoExp_FidAvgLumiToKeyValue
     {
-        get
-        {
-            var node = ToneMapAutoExp_FidAvgLumiToKeyValue;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => ToneMapAutoExp_FidAvgLumiToKeyValue;
         set => ToneMapAutoExp_FidAvgLumiToKeyValue = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

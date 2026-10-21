@@ -36,34 +36,19 @@ public abstract class CGameCtnZoneFusionInfoBuilderBase<TSelf> where TSelf : CGa
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo> state;
     private protected CGameCtnZoneFusionInfoBuilderBase() => state = new();
     private protected CGameCtnZoneFusionInfoBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo> state) => this.state = state;
-    public string? CompatibleZoneId
-    {
-        get => state.Get<string?>("CompatibleZoneId");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFusionInfoBuilderAssignments.GetCompatibleZoneIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithCompatibleZoneId(string? value)
     {
-        CompatibleZoneId = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFusionInfoBuilderAssignments.GetCompatibleZoneIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int FusionType
-    {
-        get => state.Get<int>("FusionType");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFusionInfoBuilderAssignments.GetFusionTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFusionType(int value)
     {
-        FusionType = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFusionInfoBuilderAssignments.GetFusionTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public string? MergedZoneId
-    {
-        get => state.Get<string?>("MergedZoneId");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFusionInfoBuilderAssignments.GetMergedZoneIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMergedZoneId(string? value)
     {
-        MergedZoneId = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFusionInfoBuilderAssignments.GetMergedZoneIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -78,14 +63,6 @@ public partial class CGameCtnZoneFusionInfoBuilder : CGameCtnZoneFusionInfoBuild
         chunk03151001.Version = 0;
         node.Chunks.Add(chunk03151001);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo.Chunk03151000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03151000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo.Chunk03151001>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03151001 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo node, GameVersion game)
-    {
     }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -102,14 +79,9 @@ public partial class CGameCtnZoneFusionInfoBuilder : CGameCtnZoneFusionInfoBuild
             var node = CGameCtnZoneFusionInfoBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CGameCtnZoneFusionInfoBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CGameCtnZoneFusionInfoBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo node);
     }
     public partial class TMT : CGameCtnZoneFusionInfoBuilderBase<TMT>
     {
@@ -120,14 +92,9 @@ public partial class CGameCtnZoneFusionInfoBuilder : CGameCtnZoneFusionInfoBuild
             var node = CGameCtnZoneFusionInfoBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameCtnZoneFusionInfoBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameCtnZoneFusionInfoBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo node);
     }
     public partial class MP4 : CGameCtnZoneFusionInfoBuilderBase<MP4>
     {
@@ -138,14 +105,9 @@ public partial class CGameCtnZoneFusionInfoBuilder : CGameCtnZoneFusionInfoBuild
             var node = CGameCtnZoneFusionInfoBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameCtnZoneFusionInfoBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameCtnZoneFusionInfoBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo node);
     }
     public partial class TM2020 : CGameCtnZoneFusionInfoBuilderBase<TM2020>
     {
@@ -156,13 +118,8 @@ public partial class CGameCtnZoneFusionInfoBuilder : CGameCtnZoneFusionInfoBuild
             var node = CGameCtnZoneFusionInfoBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameCtnZoneFusionInfoBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameCtnZoneFusionInfoBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo node);
     }
 }

@@ -36,132 +36,72 @@ public abstract class CGameItemPlacementParamBuilderBase<TSelf> where TSelf : CG
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.GameData.CGameItemPlacementParam> state;
     private protected CGameItemPlacementParamBuilderBase() => state = new();
     private protected CGameItemPlacementParamBuilderBase(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameItemPlacementParam> state) => this.state = state;
-    public Vec3 CubeCenter
-    {
-        get => state.Get<Vec3>("CubeCenter");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameItemPlacementParamBuilderAssignments.GetCubeCenterAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithCubeCenter(Vec3 value)
     {
-        CubeCenter = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameItemPlacementParamBuilderAssignments.GetCubeCenterAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float CubeSize
-    {
-        get => state.Get<float>("CubeSize");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameItemPlacementParamBuilderAssignments.GetCubeSizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCubeSize(float value)
     {
-        CubeSize = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameItemPlacementParamBuilderAssignments.GetCubeSizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public short Flags
-    {
-        get => state.Get<short>("Flags");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameItemPlacementParamBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFlags(short value)
     {
-        Flags = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameItemPlacementParamBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float FlyVOffset
-    {
-        get => state.Get<float>("FlyVOffset");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameItemPlacementParamBuilderAssignments.GetFlyVOffsetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFlyVOffset(float value)
     {
-        FlyVOffset = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameItemPlacementParamBuilderAssignments.GetFlyVOffsetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float FlyVStep
-    {
-        get => state.Get<float>("FlyVStep");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameItemPlacementParamBuilderAssignments.GetFlyVStepAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFlyVStep(float value)
     {
-        FlyVStep = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameItemPlacementParamBuilderAssignments.GetFlyVStepAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float GridSnapHOffset
-    {
-        get => state.Get<float>("GridSnapHOffset");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameItemPlacementParamBuilderAssignments.GetGridSnapHOffsetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGridSnapHOffset(float value)
     {
-        GridSnapHOffset = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameItemPlacementParamBuilderAssignments.GetGridSnapHOffsetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float GridSnapHStep
-    {
-        get => state.Get<float>("GridSnapHStep");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameItemPlacementParamBuilderAssignments.GetGridSnapHStepAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGridSnapHStep(float value)
     {
-        GridSnapHStep = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameItemPlacementParamBuilderAssignments.GetGridSnapHStepAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float GridSnapVOffset
-    {
-        get => state.Get<float>("GridSnapVOffset");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameItemPlacementParamBuilderAssignments.GetGridSnapVOffsetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGridSnapVOffset(float value)
     {
-        GridSnapVOffset = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameItemPlacementParamBuilderAssignments.GetGridSnapVOffsetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float GridSnapVStep
-    {
-        get => state.Get<float>("GridSnapVStep");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameItemPlacementParamBuilderAssignments.GetGridSnapVStepAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGridSnapVStep(float value)
     {
-        GridSnapVStep = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameItemPlacementParamBuilderAssignments.GetGridSnapVStepAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public Vec3[]? PivotPositions
-    {
-        get => state.Get<Vec3[]?>("PivotPositions");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameItemPlacementParamBuilderAssignments.GetPivotPositionsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithPivotPositions(params Vec3[]? value)
     {
-        PivotPositions = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameItemPlacementParamBuilderAssignments.GetPivotPositionsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithPivotPositions(IEnumerable<Vec3> values)
     {
         return WithPivotPositions(values.ToArray());
     }
-    public Quat[]? PivotRotations
-    {
-        get => state.Get<Quat[]?>("PivotRotations");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameItemPlacementParamBuilderAssignments.GetPivotRotationsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithPivotRotations(params Quat[]? value)
     {
-        PivotRotations = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameItemPlacementParamBuilderAssignments.GetPivotRotationsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithPivotRotations(IEnumerable<Quat> values)
     {
         return WithPivotRotations(values.ToArray());
     }
-    public float PivotSnapDistance
-    {
-        get => state.Get<float>("PivotSnapDistance");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameItemPlacementParamBuilderAssignments.GetPivotSnapDistanceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithPivotSnapDistance(float value)
     {
-        PivotSnapDistance = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameItemPlacementParamBuilderAssignments.GetPivotSnapDistanceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -176,11 +116,6 @@ public partial class CGameItemPlacementParamBuilder : CGameItemPlacementParamBui
         var chunk2E020001 = new global::GBX.NET.Engines.GameData.CGameItemPlacementParam.Chunk2E020001();
         node.Chunks.Add(chunk2E020001);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.GameData.CGameItemPlacementParam node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameItemPlacementParam.Chunk2E020000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk2E020000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameItemPlacementParam.Chunk2E020001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E020001 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.GameData.CGameItemPlacementParam CreateRecipe1(GameVersion game)
     {
@@ -197,16 +132,6 @@ public partial class CGameItemPlacementParamBuilder : CGameItemPlacementParamBui
         node.Chunks.Add(chunk2E020005);
         return node;
     }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.GameData.CGameItemPlacementParam node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameItemPlacementParam.Chunk2E020000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk2E020000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameItemPlacementParam.Chunk2E020001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E020001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameItemPlacementParam.Chunk2E020004>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk2E020004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameItemPlacementParam.Chunk2E020005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E020005 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.GameData.CGameItemPlacementParam node, GameVersion game)
-    {
-    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -222,14 +147,9 @@ public partial class CGameItemPlacementParamBuilder : CGameItemPlacementParamBui
             var node = CGameItemPlacementParamBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CGameItemPlacementParamBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CGameItemPlacementParamBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameItemPlacementParam node);
-        partial void ValidateNode(global::GBX.NET.Engines.GameData.CGameItemPlacementParam node);
     }
     public partial class TMT : CGameItemPlacementParamBuilderBase<TMT>
     {
@@ -240,14 +160,9 @@ public partial class CGameItemPlacementParamBuilder : CGameItemPlacementParamBui
             var node = CGameItemPlacementParamBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameItemPlacementParamBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameItemPlacementParamBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameItemPlacementParam node);
-        partial void ValidateNode(global::GBX.NET.Engines.GameData.CGameItemPlacementParam node);
     }
     public partial class MP4 : CGameItemPlacementParamBuilderBase<MP4>
     {
@@ -258,40 +173,25 @@ public partial class CGameItemPlacementParamBuilder : CGameItemPlacementParamBui
             var node = CGameItemPlacementParamBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameItemPlacementParamBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameItemPlacementParamBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameItemPlacementParam node);
-        partial void ValidateNode(global::GBX.NET.Engines.GameData.CGameItemPlacementParam node);
     }
     public partial class TM2020 : CGameItemPlacementParamBuilderBase<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameItemPlacementParam> state) : base(state) { }
-        public global::GBX.NET.Engines.GameData.CGameItemPlacementParam.MagnetLoc[]? MagnetLocs
-        {
-            get => state.Get<global::GBX.NET.Engines.GameData.CGameItemPlacementParam.MagnetLoc[]?>("MagnetLocs");
-            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameItemPlacementParamBuilderAssignments.GetMagnetLocsAssignment(), value, GameVersion.TM2020);
-        }
         public TM2020 WithMagnetLocs(params global::GBX.NET.Engines.GameData.CGameItemPlacementParam.MagnetLoc[]? value)
         {
-            MagnetLocs = value;
+            state.Set(global::GBX.NET.Builders.Engines.GameData.CGameItemPlacementParamBuilderAssignments.GetMagnetLocsAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithMagnetLocs(IEnumerable<global::GBX.NET.Engines.GameData.CGameItemPlacementParam.MagnetLoc> values)
         {
             return WithMagnetLocs(values.ToArray());
         }
-        public global::GBX.NET.Engines.Plug.NPlugItemPlacement_SClass? PlacementClass
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.NPlugItemPlacement_SClass?>("PlacementClass");
-            set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameItemPlacementParamBuilderAssignments.GetPlacementClassAssignment(), value, GameVersion.TM2020);
-        }
         public TM2020 WithPlacementClass(global::GBX.NET.Engines.Plug.NPlugItemPlacement_SClass? value)
         {
-            PlacementClass = value;
+            state.Set(global::GBX.NET.Builders.Engines.GameData.CGameItemPlacementParamBuilderAssignments.GetPlacementClassAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithPlacementClassReference(NodeRef<global::GBX.NET.Engines.Plug.NPlugItemPlacement_SClass> value)
@@ -306,13 +206,8 @@ public partial class CGameItemPlacementParamBuilder : CGameItemPlacementParamBui
             var node = CGameItemPlacementParamBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameItemPlacementParamBuilder.ValidateRecipe1(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameItemPlacementParamBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameItemPlacementParam node);
-        partial void ValidateNode(global::GBX.NET.Engines.GameData.CGameItemPlacementParam node);
     }
 }

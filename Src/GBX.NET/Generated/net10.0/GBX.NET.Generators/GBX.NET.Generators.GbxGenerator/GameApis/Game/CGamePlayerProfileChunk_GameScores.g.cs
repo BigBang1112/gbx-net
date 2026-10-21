@@ -46,62 +46,32 @@ public partial class CGamePlayerProfileChunk_GameScores : global::GBX.NET.Interf
     }
     global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresMP3? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_GameScoresMembers1<global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresMP3>.OfficialScores1
     {
-        get
-        {
-            var node = OfficialScores1;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => OfficialScores1;
         set => OfficialScores1 = value is null ? null : value is global::GBX.NET.Engines.Game.CGamePlayerOfficialScores node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresMP3? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_GameScoresMembers1<global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresMP3>.OfficialScores2
     {
-        get
-        {
-            var node = OfficialScores2;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => OfficialScores2;
         set => OfficialScores2 = value is null ? null : value is global::GBX.NET.Engines.Game.CGamePlayerOfficialScores node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresTMT? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_GameScoresMembers1<global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresTMT>.OfficialScores1
     {
-        get
-        {
-            var node = OfficialScores1;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => OfficialScores1;
         set => OfficialScores1 = value is null ? null : value is global::GBX.NET.Engines.Game.CGamePlayerOfficialScores node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresTMT? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_GameScoresMembers1<global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresTMT>.OfficialScores2
     {
-        get
-        {
-            var node = OfficialScores2;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => OfficialScores2;
         set => OfficialScores2 = value is null ? null : value is global::GBX.NET.Engines.Game.CGamePlayerOfficialScores node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresMP4? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_GameScoresMembers1<global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresMP4>.OfficialScores1
     {
-        get
-        {
-            var node = OfficialScores1;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => OfficialScores1;
         set => OfficialScores1 = value is null ? null : value is global::GBX.NET.Engines.Game.CGamePlayerOfficialScores node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresMP4? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_GameScoresMembers1<global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresMP4>.OfficialScores2
     {
-        get
-        {
-            var node = OfficialScores2;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => OfficialScores2;
         set => OfficialScores2 = value is null ? null : value is global::GBX.NET.Engines.Game.CGamePlayerOfficialScores node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

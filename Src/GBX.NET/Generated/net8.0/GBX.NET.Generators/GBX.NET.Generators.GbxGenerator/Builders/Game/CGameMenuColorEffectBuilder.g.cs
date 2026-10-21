@@ -36,118 +36,63 @@ public abstract class CGameMenuColorEffectBuilderBase<TSelf> where TSelf : CGame
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state;
     private protected CGameMenuColorEffectBuilderBase() => state = new();
     private protected CGameMenuColorEffectBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state) => this.state = state;
-    public global::GBX.NET.Engines.Game.CGameMenuColorEffect.ColorBeam[]? ColorBeams
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameMenuColorEffect.ColorBeam[]?>("ColorBeams");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetColorBeamsAssignment(), value, GameVersion.TMF);
-    }
     public TSelf WithColorBeams(params global::GBX.NET.Engines.Game.CGameMenuColorEffect.ColorBeam[]? value)
     {
-        ColorBeams = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetColorBeamsAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
     public TSelf WithColorBeams(IEnumerable<global::GBX.NET.Engines.Game.CGameMenuColorEffect.ColorBeam> values)
     {
         return WithColorBeams(values.ToArray());
     }
-    public bool ForceFirstColorWord
-    {
-        get => state.Get<bool>("ForceFirstColorWord");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetForceFirstColorWordAssignment(), value, GameVersion.TMF);
-    }
     public TSelf WithForceFirstColorWord(bool value)
     {
-        ForceFirstColorWord = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetForceFirstColorWordAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
-    }
-    public bool ForceNoMove
-    {
-        get => state.Get<bool>("ForceNoMove");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetForceNoMoveAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithForceNoMove(bool value)
     {
-        ForceNoMove = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetForceNoMoveAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
-    }
-    public bool IsBeamColorEvolving
-    {
-        get => state.Get<bool>("IsBeamColorEvolving");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetIsBeamColorEvolvingAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithIsBeamColorEvolving(bool value)
     {
-        IsBeamColorEvolving = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetIsBeamColorEvolvingAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
-    }
-    public bool IsBeamMoving
-    {
-        get => state.Get<bool>("IsBeamMoving");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetIsBeamMovingAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithIsBeamMoving(bool value)
     {
-        IsBeamMoving = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetIsBeamMovingAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
-    }
-    public bool IsColorEvolveHalf
-    {
-        get => state.Get<bool>("IsColorEvolveHalf");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetIsColorEvolveHalfAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithIsColorEvolveHalf(bool value)
     {
-        IsColorEvolveHalf = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetIsColorEvolveHalfAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
-    }
-    public bool IsColorEvolveInverse
-    {
-        get => state.Get<bool>("IsColorEvolveInverse");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetIsColorEvolveInverseAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithIsColorEvolveInverse(bool value)
     {
-        IsColorEvolveInverse = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetIsColorEvolveInverseAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
-    }
-    public bool IsMoveHalf
-    {
-        get => state.Get<bool>("IsMoveHalf");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetIsMoveHalfAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithIsMoveHalf(bool value)
     {
-        IsMoveHalf = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetIsMoveHalfAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
-    }
-    public bool IsMoveInverse
-    {
-        get => state.Get<bool>("IsMoveInverse");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetIsMoveInverseAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithIsMoveInverse(bool value)
     {
-        IsMoveInverse = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetIsMoveInverseAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
-    }
-    public float LastInterWidth
-    {
-        get => state.Get<float>("LastInterWidth");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetLastInterWidthAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithLastInterWidth(float value)
     {
-        LastInterWidth = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetLastInterWidthAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
-    }
-    public int PeriodMs
-    {
-        get => state.Get<int>("PeriodMs");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetPeriodMsAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithPeriodMs(int value)
     {
-        PeriodMs = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetPeriodMsAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
 }
@@ -160,13 +105,6 @@ public partial class CGameMenuColorEffectBuilder : CGameMenuColorEffectBuilderBa
         node.Chunks.Add(chunk03019000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameMenuColorEffect node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameMenuColorEffect.Chunk03019000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03019000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameMenuColorEffect node, GameVersion game)
-    {
-    }
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TMF : CGameMenuColorEffectBuilderBase<TMF>
     {
@@ -177,13 +115,8 @@ public partial class CGameMenuColorEffectBuilder : CGameMenuColorEffectBuilderBa
             var node = CGameMenuColorEffectBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CGameMenuColorEffectBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CGameMenuColorEffectBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameMenuColorEffect node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameMenuColorEffect node);
     }
 }

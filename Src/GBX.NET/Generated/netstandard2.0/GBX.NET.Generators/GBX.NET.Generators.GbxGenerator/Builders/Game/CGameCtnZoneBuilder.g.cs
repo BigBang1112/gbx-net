@@ -36,116 +36,66 @@ public abstract class CGameCtnZoneBuilderBase<TSelf> where TSelf : CGameCtnZoneB
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZone> state;
     private protected CGameCtnZoneBuilderBase() => state = new();
     private protected CGameCtnZoneBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZone> state) => this.state = state;
-    public int Height
-    {
-        get => state.Get<int>("Height");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetHeightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithHeight(int value)
     {
-        Height = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetHeightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public string? SurfaceId
-    {
-        get => state.Get<string?>("SurfaceId");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetSurfaceIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSurfaceId(string? value)
     {
-        SurfaceId = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetSurfaceIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public string? ZoneId
-    {
-        get => state.Get<string?>("ZoneId");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetZoneIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithZoneId(string? value)
     {
-        ZoneId = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetZoneIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnZoneBuilderMembers1<TSelf> : CGameCtnZoneBuilderBase<TSelf> where TSelf : CGameCtnZoneBuilderMembers1<TSelf>
 {
     private protected CGameCtnZoneBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZone> state) : base(state) { }
-    public int Depth
-    {
-        get => state.Get<int>("Depth");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetDepthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithDepth(int value)
     {
-        Depth = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetDepthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool OldZone
-    {
-        get => state.Get<bool>("OldZone");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetOldZoneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithOldZone(bool value)
     {
-        OldZone = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetOldZoneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnZoneBuilderMembers2<TSelf> : CGameCtnZoneBuilderMembers1<TSelf> where TSelf : CGameCtnZoneBuilderMembers2<TSelf>
 {
     private protected CGameCtnZoneBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZone> state) : base(state) { }
-    public bool HasWater
-    {
-        get => state.Get<bool>("HasWater");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetHasWaterAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithHasWater(bool value)
     {
-        HasWater = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetHasWaterAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnZoneBuilderMembers3<TSelf> : CGameCtnZoneBuilderMembers1<TSelf> where TSelf : CGameCtnZoneBuilderMembers3<TSelf>
 {
     private protected CGameCtnZoneBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZone> state) : base(state) { }
-    public string? ForcedParentZoneFrontierId
-    {
-        get => state.Get<string?>("ForcedParentZoneFrontierId");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetForcedParentZoneFrontierIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithForcedParentZoneFrontierId(string? value)
     {
-        ForcedParentZoneFrontierId = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetForcedParentZoneFrontierIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool IsLargeZone
-    {
-        get => state.Get<bool>("IsLargeZone");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetIsLargeZoneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIsLargeZone(bool value)
     {
-        IsLargeZone = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetIsLargeZoneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float VisualTopGroundHeight
-    {
-        get => state.Get<float>("VisualTopGroundHeight");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetVisualTopGroundHeightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithVisualTopGroundHeight(float value)
     {
-        VisualTopGroundHeight = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetVisualTopGroundHeightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public string? WaterId
-    {
-        get => state.Get<string?>("WaterId");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetWaterIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithWaterId(string? value)
     {
-        WaterId = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetWaterIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -158,10 +108,6 @@ public partial class CGameCtnZoneBuilder : CGameCtnZoneBuilderBase<CGameCtnZoneB
         node.Chunks.Add(chunk0305C003);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnZone node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnZone.Chunk0305C003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0305C003 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameCtnZone CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnZone();
@@ -172,12 +118,6 @@ public partial class CGameCtnZoneBuilder : CGameCtnZoneBuilderBase<CGameCtnZoneB
         var chunk0305C005 = new global::GBX.NET.Engines.Game.CGameCtnZone.Chunk0305C005();
         node.Chunks.Add(chunk0305C005);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameCtnZone node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnZone.Chunk0305C003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0305C003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnZone.Chunk0305C004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0305C004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnZone.Chunk0305C005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0305C005 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Game.CGameCtnZone CreateRecipe2(GameVersion game)
     {
@@ -195,18 +135,6 @@ public partial class CGameCtnZoneBuilder : CGameCtnZoneBuilderBase<CGameCtnZoneB
         var chunk0305C00C = new global::GBX.NET.Engines.Game.CGameCtnZone.Chunk0305C00C();
         node.Chunks.Add(chunk0305C00C);
         return node;
-    }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Game.CGameCtnZone node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnZone.Chunk0305C003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0305C003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnZone.Chunk0305C004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0305C004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnZone.Chunk0305C006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0305C006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnZone.Chunk0305C007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0305C007 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnZone.Chunk0305C00B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0305C00B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnZone.Chunk0305C00C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0305C00C is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnZone node, GameVersion game)
-    {
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -229,14 +157,9 @@ public partial class CGameCtnZoneBuilder : CGameCtnZoneBuilderBase<CGameCtnZoneB
             var node = CGameCtnZoneBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CGameCtnZoneBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CGameCtnZoneBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnZone node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnZone node);
     }
     public partial class TMPU : CGameCtnZoneBuilderBase<TMPU>
     {
@@ -247,14 +170,9 @@ public partial class CGameCtnZoneBuilder : CGameCtnZoneBuilderBase<CGameCtnZoneB
             var node = CGameCtnZoneBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CGameCtnZoneBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CGameCtnZoneBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnZone node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnZone node);
     }
     public partial class TMSX : CGameCtnZoneBuilderMembers2<TMSX>
     {
@@ -265,14 +183,9 @@ public partial class CGameCtnZoneBuilder : CGameCtnZoneBuilderBase<CGameCtnZoneB
             var node = CGameCtnZoneBuilder.CreateRecipe1(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CGameCtnZoneBuilder.ValidateRecipe1(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CGameCtnZoneBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnZone node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnZone node);
     }
     public partial class TMNESWC : CGameCtnZoneBuilderMembers2<TMNESWC>
     {
@@ -283,14 +196,9 @@ public partial class CGameCtnZoneBuilder : CGameCtnZoneBuilderBase<CGameCtnZoneB
             var node = CGameCtnZoneBuilder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CGameCtnZoneBuilder.ValidateRecipe1(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CGameCtnZoneBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnZone node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnZone node);
     }
     public partial class VSK5 : CGameCtnZoneBuilderMembers2<VSK5>
     {
@@ -301,14 +209,9 @@ public partial class CGameCtnZoneBuilder : CGameCtnZoneBuilderBase<CGameCtnZoneB
             var node = CGameCtnZoneBuilder.CreateRecipe1(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CGameCtnZoneBuilder.ValidateRecipe1(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CGameCtnZoneBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnZone node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnZone node);
     }
     public partial class TMF : CGameCtnZoneBuilderMembers2<TMF>
     {
@@ -319,14 +222,9 @@ public partial class CGameCtnZoneBuilder : CGameCtnZoneBuilderBase<CGameCtnZoneB
             var node = CGameCtnZoneBuilder.CreateRecipe1(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CGameCtnZoneBuilder.ValidateRecipe1(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CGameCtnZoneBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnZone node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnZone node);
     }
     public partial class MP3 : CGameCtnZoneBuilderMembers3<MP3>
     {
@@ -337,14 +235,9 @@ public partial class CGameCtnZoneBuilder : CGameCtnZoneBuilderBase<CGameCtnZoneB
             var node = CGameCtnZoneBuilder.CreateRecipe2(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CGameCtnZoneBuilder.ValidateRecipe2(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CGameCtnZoneBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnZone node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnZone node);
     }
     public partial class TMT : CGameCtnZoneBuilderMembers3<TMT>
     {
@@ -355,14 +248,9 @@ public partial class CGameCtnZoneBuilder : CGameCtnZoneBuilderBase<CGameCtnZoneB
             var node = CGameCtnZoneBuilder.CreateRecipe2(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameCtnZoneBuilder.ValidateRecipe2(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameCtnZoneBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnZone node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnZone node);
     }
     public partial class MP4 : CGameCtnZoneBuilderMembers3<MP4>
     {
@@ -373,14 +261,9 @@ public partial class CGameCtnZoneBuilder : CGameCtnZoneBuilderBase<CGameCtnZoneB
             var node = CGameCtnZoneBuilder.CreateRecipe2(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameCtnZoneBuilder.ValidateRecipe2(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameCtnZoneBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnZone node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnZone node);
     }
     public partial class TM2020 : CGameCtnZoneBuilderMembers3<TM2020>
     {
@@ -391,13 +274,8 @@ public partial class CGameCtnZoneBuilder : CGameCtnZoneBuilderBase<CGameCtnZoneB
             var node = CGameCtnZoneBuilder.CreateRecipe2(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameCtnZoneBuilder.ValidateRecipe2(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameCtnZoneBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnZone node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnZone node);
     }
 }

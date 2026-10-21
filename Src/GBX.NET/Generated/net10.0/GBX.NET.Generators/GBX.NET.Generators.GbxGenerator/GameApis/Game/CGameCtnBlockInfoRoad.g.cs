@@ -41,102 +41,52 @@ public partial class CGameCtnBlockInfoRoad : global::GBX.NET.Interfaces.Game.IGa
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTM10? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTM10>.Slope
     {
-        get
-        {
-            var node = Slope;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            return node;
-        }
+        get => Slope;
         set => Slope = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMPU? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMPU>.Slope
     {
-        get
-        {
-            var node = Slope;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            return node;
-        }
+        get => Slope;
         set => Slope = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMSX? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMSX>.Slope
     {
-        get
-        {
-            var node = Slope;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => Slope;
         set => Slope = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMNESWC? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMNESWC>.Slope
     {
-        get
-        {
-            var node = Slope;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => Slope;
         set => Slope = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeVSK5? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeVSK5>.Slope
     {
-        get
-        {
-            var node = Slope;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => Slope;
         set => Slope = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMF? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMF>.Slope
     {
-        get
-        {
-            var node = Slope;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => Slope;
         set => Slope = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeMP3? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeMP3>.Slope
     {
-        get
-        {
-            var node = Slope;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => Slope;
         set => Slope = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMT? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMT>.Slope
     {
-        get
-        {
-            var node = Slope;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => Slope;
         set => Slope = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeMP4? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeMP4>.Slope
     {
-        get
-        {
-            var node = Slope;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Slope;
         set => Slope = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTM2020? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTM2020>.Slope
     {
-        get
-        {
-            var node = Slope;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => Slope;
         set => Slope = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

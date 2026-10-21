@@ -46,13 +46,6 @@ public partial class CSceneTrafficGraphBuilder : CSceneTrafficGraphBuilderBase<C
         node.Chunks.Add(chunk0A062004);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Scene.CSceneTrafficGraph node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneTrafficGraph.Chunk0A062004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A062004 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Scene.CSceneTrafficGraph node, GameVersion game)
-    {
-    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -68,14 +61,9 @@ public partial class CSceneTrafficGraphBuilder : CSceneTrafficGraphBuilderBase<C
             var node = CSceneTrafficGraphBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CSceneTrafficGraphBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CSceneTrafficGraphBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneTrafficGraph node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneTrafficGraph node);
     }
     public partial class TMPU : CSceneTrafficGraphBuilderBase<TMPU>
     {
@@ -86,14 +74,9 @@ public partial class CSceneTrafficGraphBuilder : CSceneTrafficGraphBuilderBase<C
             var node = CSceneTrafficGraphBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CSceneTrafficGraphBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CSceneTrafficGraphBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneTrafficGraph node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneTrafficGraph node);
     }
     public partial class TMSX : CSceneTrafficGraphBuilderBase<TMSX>
     {
@@ -104,14 +87,9 @@ public partial class CSceneTrafficGraphBuilder : CSceneTrafficGraphBuilderBase<C
             var node = CSceneTrafficGraphBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CSceneTrafficGraphBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CSceneTrafficGraphBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneTrafficGraph node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneTrafficGraph node);
     }
     public partial class TMNESWC : CSceneTrafficGraphBuilderBase<TMNESWC>
     {
@@ -122,14 +100,9 @@ public partial class CSceneTrafficGraphBuilder : CSceneTrafficGraphBuilderBase<C
             var node = CSceneTrafficGraphBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CSceneTrafficGraphBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CSceneTrafficGraphBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneTrafficGraph node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneTrafficGraph node);
     }
     public partial class VSK5 : CSceneTrafficGraphBuilderBase<VSK5>
     {
@@ -140,14 +113,9 @@ public partial class CSceneTrafficGraphBuilder : CSceneTrafficGraphBuilderBase<C
             var node = CSceneTrafficGraphBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CSceneTrafficGraphBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CSceneTrafficGraphBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneTrafficGraph node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneTrafficGraph node);
     }
     public partial class TMF : CSceneTrafficGraphBuilderBase<TMF>
     {
@@ -158,13 +126,8 @@ public partial class CSceneTrafficGraphBuilder : CSceneTrafficGraphBuilderBase<C
             var node = CSceneTrafficGraphBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CSceneTrafficGraphBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CSceneTrafficGraphBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneTrafficGraph node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneTrafficGraph node);
     }
 }

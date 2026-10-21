@@ -36,28 +36,18 @@ public abstract class CPlugPathBuilderBase<TSelf> where TSelf : CPlugPathBuilder
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugPath> state;
     private protected CPlugPathBuilderBase() => state = new();
     private protected CPlugPathBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugPath> state) => this.state = state;
-    public byte[]? LineGroups
-    {
-        get => state.Get<byte[]?>("LineGroups");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugPathBuilderAssignments.GetLineGroupsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithLineGroups(params byte[]? value)
     {
-        LineGroups = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugPathBuilderAssignments.GetLineGroupsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithLineGroups(IEnumerable<byte> values)
     {
         return WithLineGroups(values.ToArray());
     }
-    public NodeRefList<global::GBX.NET.Engines.Plug.CPlugPolyLine3>? PolyLines
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugPolyLine3>?>("PolyLines");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugPathBuilderAssignments.GetPolyLinesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithPolyLines(NodeRefList<global::GBX.NET.Engines.Plug.CPlugPolyLine3>? value)
     {
-        PolyLines = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugPathBuilderAssignments.GetPolyLinesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithPolyLines(params global::GBX.NET.Engines.Plug.CPlugPolyLine3[] values)
@@ -78,23 +68,12 @@ public partial class CPlugPathBuilder : CPlugPathBuilderBase<CPlugPathBuilder>
         node.Chunks.Add(chunk09119000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugPath node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugPath.Chunk09119000>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk09119000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugPath CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugPath();
         var chunk09119000 = new global::GBX.NET.Engines.Plug.CPlugPath.Chunk09119000(game);
         node.Chunks.Add(chunk09119000);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugPath node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugPath.Chunk09119000>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk09119000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugPath node, GameVersion game)
-    {
     }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -117,14 +96,9 @@ public partial class CPlugPathBuilder : CPlugPathBuilderBase<CPlugPathBuilder>
             var node = CPlugPathBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugPathBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugPathBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugPath node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugPath node);
     }
     public partial class TM2020 : CPlugPathBuilderBase<TM2020>
     {
@@ -143,13 +117,8 @@ public partial class CPlugPathBuilder : CPlugPathBuilderBase<CPlugPathBuilder>
             var node = CPlugPathBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugPathBuilder.ValidateRecipe1(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugPathBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugPath node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugPath node);
     }
 }

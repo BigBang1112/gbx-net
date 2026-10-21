@@ -36,126 +36,71 @@ public abstract class GxLightAmbientBuilderBase<TSelf> where TSelf : GxLightAmbi
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightAmbient> state;
     private protected GxLightAmbientBuilderBase() => state = new();
     private protected GxLightAmbientBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightAmbient> state) => this.state = state;
-    public Vec3 Color
-    {
-        get => state.Get<Vec3>("Color");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetColorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithColor(Vec3 value)
     {
-        Color = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetColorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Graphic.GxLight.EFlags Flags
-    {
-        get => state.Get<global::GBX.NET.Engines.Graphic.GxLight.EFlags>("Flags");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFlags(global::GBX.NET.Engines.Graphic.GxLight.EFlags value)
     {
-        Flags = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float FlareIntensity
-    {
-        get => state.Get<float>("FlareIntensity");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetFlareIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFlareIntensity(float value)
     {
-        FlareIntensity = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetFlareIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float Intensity
-    {
-        get => state.Get<float>("Intensity");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIntensity(float value)
     {
-        Intensity = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float ShadowIntensity
-    {
-        get => state.Get<float>("ShadowIntensity");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetShadowIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithShadowIntensity(float value)
     {
-        ShadowIntensity = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetShadowIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public Vec3 ShadowRGB
-    {
-        get => state.Get<Vec3>("ShadowRGB");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetShadowRGBAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithShadowRGB(Vec3 value)
     {
-        ShadowRGB = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetShadowRGBAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class GxLightAmbientBuilderMembers1<TSelf> : GxLightAmbientBuilderBase<TSelf> where TSelf : GxLightAmbientBuilderMembers1<TSelf>
 {
     private protected GxLightAmbientBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightAmbient> state) : base(state) { }
-    public float ShadeMaxY
-    {
-        get => state.Get<float>("ShadeMaxY");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightAmbientBuilderAssignments.GetShadeMaxYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithShadeMaxY(float value)
     {
-        ShadeMaxY = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightAmbientBuilderAssignments.GetShadeMaxYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float ShadeMinY
-    {
-        get => state.Get<float>("ShadeMinY");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightAmbientBuilderAssignments.GetShadeMinYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithShadeMinY(float value)
     {
-        ShadeMinY = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightAmbientBuilderAssignments.GetShadeMinYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class GxLightAmbientBuilderMembers2<TSelf> : GxLightAmbientBuilderMembers1<TSelf> where TSelf : GxLightAmbientBuilderMembers2<TSelf>
 {
     private protected GxLightAmbientBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightAmbient> state) : base(state) { }
-    public float DiffuseIntensity
-    {
-        get => state.Get<float>("DiffuseIntensity");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetDiffuseIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithDiffuseIntensity(float value)
     {
-        DiffuseIntensity = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetDiffuseIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class GxLightAmbientBuilderMembers3<TSelf> : GxLightAmbientBuilderMembers2<TSelf> where TSelf : GxLightAmbientBuilderMembers3<TSelf>
 {
     private protected GxLightAmbientBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightAmbient> state) : base(state) { }
-    public float SpecularIntens
-    {
-        get => state.Get<float>("SpecularIntens");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetSpecularIntensAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithSpecularIntens(float value)
     {
-        SpecularIntens = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetSpecularIntensAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SpecularPower
-    {
-        get => state.Get<float>("SpecularPower");
-        set => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetSpecularPowerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSpecularPower(float value)
     {
-        SpecularPower = value;
+        state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetSpecularPowerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -168,10 +113,6 @@ public partial class GxLightAmbientBuilder : GxLightAmbientBuilderBase<GxLightAm
         node.Chunks.Add(chunk04001008);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Graphic.GxLightAmbient node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLight.Chunk04001008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04001008 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Graphic.GxLightAmbient CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Graphic.GxLightAmbient();
@@ -180,11 +121,6 @@ public partial class GxLightAmbientBuilder : GxLightAmbientBuilderBase<GxLightAm
         var chunk04001008 = new global::GBX.NET.Engines.Graphic.GxLight.Chunk04001008();
         node.Chunks.Add(chunk04001008);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Graphic.GxLightAmbient node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightAmbient.Chunk04005000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04005000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLight.Chunk04001008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04001008 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Graphic.GxLightAmbient CreateRecipe2(GameVersion game)
     {
@@ -195,11 +131,6 @@ public partial class GxLightAmbientBuilder : GxLightAmbientBuilderBase<GxLightAm
         node.Chunks.Add(chunk04001009);
         return node;
     }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Graphic.GxLightAmbient node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightAmbient.Chunk04005000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04005000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLight.Chunk04001009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04001009 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Graphic.GxLightAmbient CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Graphic.GxLightAmbient();
@@ -209,14 +140,6 @@ public partial class GxLightAmbientBuilder : GxLightAmbientBuilderBase<GxLightAm
         chunk0400100A.Version = 0;
         node.Chunks.Add(chunk0400100A);
         return node;
-    }
-    private static void ValidateRecipe3(global::GBX.NET.Engines.Graphic.GxLightAmbient node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightAmbient.Chunk04005000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04005000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLight.Chunk0400100A>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0400100A is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Graphic.GxLightAmbient node, GameVersion game)
-    {
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -239,14 +162,9 @@ public partial class GxLightAmbientBuilder : GxLightAmbientBuilderBase<GxLightAm
             var node = GxLightAmbientBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            GxLightAmbientBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            GxLightAmbientBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxLightAmbient node);
-        partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxLightAmbient node);
     }
     public partial class TMPU : GxLightAmbientBuilderBase<TMPU>
     {
@@ -257,14 +175,9 @@ public partial class GxLightAmbientBuilder : GxLightAmbientBuilderBase<GxLightAm
             var node = GxLightAmbientBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            GxLightAmbientBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            GxLightAmbientBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxLightAmbient node);
-        partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxLightAmbient node);
     }
     public partial class TMSX : GxLightAmbientBuilderMembers1<TMSX>
     {
@@ -275,14 +188,9 @@ public partial class GxLightAmbientBuilder : GxLightAmbientBuilderBase<GxLightAm
             var node = GxLightAmbientBuilder.CreateRecipe1(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            GxLightAmbientBuilder.ValidateRecipe1(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            GxLightAmbientBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxLightAmbient node);
-        partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxLightAmbient node);
     }
     public partial class TMNESWC : GxLightAmbientBuilderMembers1<TMNESWC>
     {
@@ -293,14 +201,9 @@ public partial class GxLightAmbientBuilder : GxLightAmbientBuilderBase<GxLightAm
             var node = GxLightAmbientBuilder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            GxLightAmbientBuilder.ValidateRecipe1(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            GxLightAmbientBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxLightAmbient node);
-        partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxLightAmbient node);
     }
     public partial class VSK5 : GxLightAmbientBuilderMembers3<VSK5>
     {
@@ -311,14 +214,9 @@ public partial class GxLightAmbientBuilder : GxLightAmbientBuilderBase<GxLightAm
             var node = GxLightAmbientBuilder.CreateRecipe2(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            GxLightAmbientBuilder.ValidateRecipe2(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            GxLightAmbientBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxLightAmbient node);
-        partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxLightAmbient node);
     }
     public partial class TMF : GxLightAmbientBuilderMembers3<TMF>
     {
@@ -329,14 +227,9 @@ public partial class GxLightAmbientBuilder : GxLightAmbientBuilderBase<GxLightAm
             var node = GxLightAmbientBuilder.CreateRecipe2(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            GxLightAmbientBuilder.ValidateRecipe2(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            GxLightAmbientBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxLightAmbient node);
-        partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxLightAmbient node);
     }
     public partial class MP3 : GxLightAmbientBuilderMembers3<MP3>
     {
@@ -347,14 +240,9 @@ public partial class GxLightAmbientBuilder : GxLightAmbientBuilderBase<GxLightAm
             var node = GxLightAmbientBuilder.CreateRecipe2(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            GxLightAmbientBuilder.ValidateRecipe2(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            GxLightAmbientBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxLightAmbient node);
-        partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxLightAmbient node);
     }
     public partial class TMT : GxLightAmbientBuilderMembers3<TMT>
     {
@@ -365,14 +253,9 @@ public partial class GxLightAmbientBuilder : GxLightAmbientBuilderBase<GxLightAm
             var node = GxLightAmbientBuilder.CreateRecipe2(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            GxLightAmbientBuilder.ValidateRecipe2(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            GxLightAmbientBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxLightAmbient node);
-        partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxLightAmbient node);
     }
     public partial class MP4 : GxLightAmbientBuilderMembers3<MP4>
     {
@@ -383,14 +266,9 @@ public partial class GxLightAmbientBuilder : GxLightAmbientBuilderBase<GxLightAm
             var node = GxLightAmbientBuilder.CreateRecipe2(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            GxLightAmbientBuilder.ValidateRecipe2(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            GxLightAmbientBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxLightAmbient node);
-        partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxLightAmbient node);
     }
     public partial class TM2020 : GxLightAmbientBuilderMembers2<TM2020>
     {
@@ -401,13 +279,8 @@ public partial class GxLightAmbientBuilder : GxLightAmbientBuilderBase<GxLightAm
             var node = GxLightAmbientBuilder.CreateRecipe3(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            GxLightAmbientBuilder.ValidateRecipe3(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            GxLightAmbientBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxLightAmbient node);
-        partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxLightAmbient node);
     }
 }

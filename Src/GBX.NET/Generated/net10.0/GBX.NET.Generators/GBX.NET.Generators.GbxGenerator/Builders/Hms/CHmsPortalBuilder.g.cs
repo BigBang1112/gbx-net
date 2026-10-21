@@ -36,174 +36,89 @@ public abstract class CHmsPortalBuilderBase<TSelf> where TSelf : CHmsPortalBuild
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state;
     private protected CHmsPortalBuilderBase() => state = new();
     private protected CHmsPortalBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state) => this.state = state;
-    public bool CanPassThrough
-    {
-        get => state.Get<bool>("CanPassThrough");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetCanPassThroughAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithCanPassThrough(bool value)
     {
-        CanPassThrough = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetCanPassThroughAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool CanSeeThrough
-    {
-        get => state.Get<bool>("CanSeeThrough");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetCanSeeThroughAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithCanSeeThrough(bool value)
     {
-        CanSeeThrough = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetCanSeeThroughAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int DirectOcclusion
-    {
-        get => state.Get<int>("DirectOcclusion");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetDirectOcclusionAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDirectOcclusion(int value)
     {
-        DirectOcclusion = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetDirectOcclusionAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float DirectOcclusionRatio
-    {
-        get => state.Get<float>("DirectOcclusionRatio");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetDirectOcclusionRatioAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDirectOcclusionRatio(float value)
     {
-        DirectOcclusionRatio = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetDirectOcclusionRatioAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float DirectOcclusionSpectralRatio
-    {
-        get => state.Get<float>("DirectOcclusionSpectralRatio");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetDirectOcclusionSpectralRatioAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDirectOcclusionSpectralRatio(float value)
     {
-        DirectOcclusionSpectralRatio = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetDirectOcclusionSpectralRatioAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int IndirectObstruction
-    {
-        get => state.Get<int>("IndirectObstruction");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIndirectObstructionAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIndirectObstruction(int value)
     {
-        IndirectObstruction = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIndirectObstructionAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float IndirectObstructionSpectralRatio
-    {
-        get => state.Get<float>("IndirectObstructionSpectralRatio");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIndirectObstructionSpectralRatioAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIndirectObstructionSpectralRatio(float value)
     {
-        IndirectObstructionSpectralRatio = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIndirectObstructionSpectralRatioAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int IndirectOcclusion
-    {
-        get => state.Get<int>("IndirectOcclusion");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIndirectOcclusionAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIndirectOcclusion(int value)
     {
-        IndirectOcclusion = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIndirectOcclusionAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float IndirectOcclusionRatio
-    {
-        get => state.Get<float>("IndirectOcclusionRatio");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIndirectOcclusionRatioAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIndirectOcclusionRatio(float value)
     {
-        IndirectOcclusionRatio = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIndirectOcclusionRatioAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float IndirectOcclusionSpectralRatio
-    {
-        get => state.Get<float>("IndirectOcclusionSpectralRatio");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIndirectOcclusionSpectralRatioAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIndirectOcclusionSpectralRatio(float value)
     {
-        IndirectOcclusionSpectralRatio = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIndirectOcclusionSpectralRatioAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool IsDirectPathSet
-    {
-        get => state.Get<bool>("IsDirectPathSet");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIsDirectPathSetAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIsDirectPathSet(bool value)
     {
-        IsDirectPathSet = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIsDirectPathSetAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool IsPickingPossible
-    {
-        get => state.Get<bool>("IsPickingPossible");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIsPickingPossibleAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIsPickingPossible(bool value)
     {
-        IsPickingPossible = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIsPickingPossibleAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool IsVisualVisible
-    {
-        get => state.Get<bool>("IsVisualVisible");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIsVisualVisibleAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIsVisualVisible(bool value)
     {
-        IsVisualVisible = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIsVisualVisibleAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool NeedClipping2D
-    {
-        get => state.Get<bool>("NeedClipping2D");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetNeedClipping2DAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithNeedClipping2D(bool value)
     {
-        NeedClipping2D = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetNeedClipping2DAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool NeedClipping3D
-    {
-        get => state.Get<bool>("NeedClipping3D");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetNeedClipping3DAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithNeedClipping3D(bool value)
     {
-        NeedClipping3D = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetNeedClipping3DAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SeeThroughOpacity
-    {
-        get => state.Get<float>("SeeThroughOpacity");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetSeeThroughOpacityAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSeeThroughOpacity(float value)
     {
-        SeeThroughOpacity = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetSeeThroughOpacityAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool SoundCanPassThrough
-    {
-        get => state.Get<bool>("SoundCanPassThrough");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetSoundCanPassThroughAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSoundCanPassThrough(bool value)
     {
-        SoundCanPassThrough = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetSoundCanPassThroughAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -217,14 +132,6 @@ public partial class CHmsPortalBuilder : CHmsPortalBuilderBase<CHmsPortalBuilder
         var chunk06006002 = new global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006002();
         node.Chunks.Add(chunk06006002);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Hms.CHmsPortal node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06006001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06006002 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Hms.CHmsPortal node, GameVersion game)
-    {
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -243,14 +150,9 @@ public partial class CHmsPortalBuilder : CHmsPortalBuilderBase<CHmsPortalBuilder
             var node = CHmsPortalBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CHmsPortalBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CHmsPortalBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsPortal node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsPortal node);
     }
     public partial class TMPU : CHmsPortalBuilderBase<TMPU>
     {
@@ -261,14 +163,9 @@ public partial class CHmsPortalBuilder : CHmsPortalBuilderBase<CHmsPortalBuilder
             var node = CHmsPortalBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CHmsPortalBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CHmsPortalBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsPortal node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsPortal node);
     }
     public partial class TMSX : CHmsPortalBuilderBase<TMSX>
     {
@@ -279,14 +176,9 @@ public partial class CHmsPortalBuilder : CHmsPortalBuilderBase<CHmsPortalBuilder
             var node = CHmsPortalBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CHmsPortalBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CHmsPortalBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsPortal node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsPortal node);
     }
     public partial class TMNESWC : CHmsPortalBuilderBase<TMNESWC>
     {
@@ -297,14 +189,9 @@ public partial class CHmsPortalBuilder : CHmsPortalBuilderBase<CHmsPortalBuilder
             var node = CHmsPortalBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CHmsPortalBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CHmsPortalBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsPortal node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsPortal node);
     }
     public partial class VSK5 : CHmsPortalBuilderBase<VSK5>
     {
@@ -315,14 +202,9 @@ public partial class CHmsPortalBuilder : CHmsPortalBuilderBase<CHmsPortalBuilder
             var node = CHmsPortalBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CHmsPortalBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CHmsPortalBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsPortal node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsPortal node);
     }
     public partial class TMF : CHmsPortalBuilderBase<TMF>
     {
@@ -333,14 +215,9 @@ public partial class CHmsPortalBuilder : CHmsPortalBuilderBase<CHmsPortalBuilder
             var node = CHmsPortalBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CHmsPortalBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CHmsPortalBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsPortal node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsPortal node);
     }
     public partial class MP3 : CHmsPortalBuilderBase<MP3>
     {
@@ -351,14 +228,9 @@ public partial class CHmsPortalBuilder : CHmsPortalBuilderBase<CHmsPortalBuilder
             var node = CHmsPortalBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CHmsPortalBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CHmsPortalBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsPortal node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsPortal node);
     }
     public partial class TMT : CHmsPortalBuilderBase<TMT>
     {
@@ -369,13 +241,8 @@ public partial class CHmsPortalBuilder : CHmsPortalBuilderBase<CHmsPortalBuilder
             var node = CHmsPortalBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CHmsPortalBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CHmsPortalBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsPortal node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsPortal node);
     }
 }

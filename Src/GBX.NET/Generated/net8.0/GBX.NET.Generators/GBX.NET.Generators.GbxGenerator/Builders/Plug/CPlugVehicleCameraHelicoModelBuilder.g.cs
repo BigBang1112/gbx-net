@@ -36,14 +36,9 @@ public abstract class CPlugVehicleCameraHelicoModelBuilderBase<TSelf> where TSel
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraHelicoModel> state;
     private protected CPlugVehicleCameraHelicoModelBuilderBase() => state = new();
     private protected CPlugVehicleCameraHelicoModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraHelicoModel> state) => this.state = state;
-    public global::GBX.NET.Engines.Plug.CPlugCamShakeModel? Shake
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugCamShakeModel?>("Shake");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCamControlModelBuilderAssignments.GetShakeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithShake(global::GBX.NET.Engines.Plug.CPlugCamShakeModel? value)
     {
-        Shake = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCamControlModelBuilderAssignments.GetShakeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithShakeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugCamShakeModel> value)
@@ -63,10 +58,6 @@ public partial class CPlugVehicleCameraHelicoModelBuilder : CPlugVehicleCameraHe
         node.Chunks.Add(chunk0910C000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugVehicleCameraHelicoModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0910C000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugVehicleCameraHelicoModel CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraHelicoModel();
@@ -76,14 +67,6 @@ public partial class CPlugVehicleCameraHelicoModelBuilder : CPlugVehicleCameraHe
         chunk0910C000.Version = 0;
         node.Chunks.Add(chunk0910C000);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugVehicleCameraHelicoModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraHelicoModel.Chunk0914D000>() is not { Version: 9 }) throw new InvalidOperationException($"Required {game} chunk Chunk0914D000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0910C000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugVehicleCameraHelicoModel node, GameVersion game)
-    {
     }
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -103,14 +86,9 @@ public partial class CPlugVehicleCameraHelicoModelBuilder : CPlugVehicleCameraHe
             var node = CPlugVehicleCameraHelicoModelBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugVehicleCameraHelicoModelBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugVehicleCameraHelicoModelBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleCameraHelicoModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleCameraHelicoModel node);
     }
     public partial class MP4 : CPlugVehicleCameraHelicoModelBuilderBase<MP4>
     {
@@ -125,14 +103,9 @@ public partial class CPlugVehicleCameraHelicoModelBuilder : CPlugVehicleCameraHe
             var node = CPlugVehicleCameraHelicoModelBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugVehicleCameraHelicoModelBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugVehicleCameraHelicoModelBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleCameraHelicoModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleCameraHelicoModel node);
     }
     public partial class TM2020 : CPlugVehicleCameraHelicoModelBuilderBase<TM2020>
     {
@@ -147,13 +120,8 @@ public partial class CPlugVehicleCameraHelicoModelBuilder : CPlugVehicleCameraHe
             var node = CPlugVehicleCameraHelicoModelBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugVehicleCameraHelicoModelBuilder.ValidateRecipe1(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugVehicleCameraHelicoModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleCameraHelicoModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleCameraHelicoModel node);
     }
 }

@@ -36,14 +36,9 @@ public abstract class CPlugDecoratorSolidBuilderBase<TSelf> where TSelf : CPlugD
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorSolid> state;
     private protected CPlugDecoratorSolidBuilderBase() => state = new();
     private protected CPlugDecoratorSolidBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorSolid> state) => this.state = state;
-    public NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree>? TreeDecorators
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree>?>("TreeDecorators");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorSolidBuilderAssignments.GetTreeDecoratorsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithTreeDecorators(NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree>? value)
     {
-        TreeDecorators = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorSolidBuilderAssignments.GetTreeDecoratorsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithTreeDecorators(params global::GBX.NET.Engines.Plug.CPlugDecoratorTree[] values)
@@ -63,13 +58,6 @@ public partial class CPlugDecoratorSolidBuilder : CPlugDecoratorSolidBuilderBase
         var chunk090A3000 = new global::GBX.NET.Engines.Plug.CPlugDecoratorSolid.Chunk090A3000();
         node.Chunks.Add(chunk090A3000);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugDecoratorSolid node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugDecoratorSolid.Chunk090A3000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090A3000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugDecoratorSolid node, GameVersion game)
-    {
     }
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
@@ -97,14 +85,9 @@ public partial class CPlugDecoratorSolidBuilder : CPlugDecoratorSolidBuilderBase
             var node = CPlugDecoratorSolidBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CPlugDecoratorSolidBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CPlugDecoratorSolidBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugDecoratorSolid node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugDecoratorSolid node);
     }
     public partial class VSK5 : CPlugDecoratorSolidBuilderBase<VSK5>
     {
@@ -123,14 +106,9 @@ public partial class CPlugDecoratorSolidBuilder : CPlugDecoratorSolidBuilderBase
             var node = CPlugDecoratorSolidBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CPlugDecoratorSolidBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CPlugDecoratorSolidBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugDecoratorSolid node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugDecoratorSolid node);
     }
     public partial class TMF : CPlugDecoratorSolidBuilderBase<TMF>
     {
@@ -149,14 +127,9 @@ public partial class CPlugDecoratorSolidBuilder : CPlugDecoratorSolidBuilderBase
             var node = CPlugDecoratorSolidBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CPlugDecoratorSolidBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CPlugDecoratorSolidBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugDecoratorSolid node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugDecoratorSolid node);
     }
     public partial class MP3 : CPlugDecoratorSolidBuilderBase<MP3>
     {
@@ -175,14 +148,9 @@ public partial class CPlugDecoratorSolidBuilder : CPlugDecoratorSolidBuilderBase
             var node = CPlugDecoratorSolidBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CPlugDecoratorSolidBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CPlugDecoratorSolidBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugDecoratorSolid node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugDecoratorSolid node);
     }
     public partial class TMT : CPlugDecoratorSolidBuilderBase<TMT>
     {
@@ -201,14 +169,9 @@ public partial class CPlugDecoratorSolidBuilder : CPlugDecoratorSolidBuilderBase
             var node = CPlugDecoratorSolidBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugDecoratorSolidBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugDecoratorSolidBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugDecoratorSolid node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugDecoratorSolid node);
     }
     public partial class MP4 : CPlugDecoratorSolidBuilderBase<MP4>
     {
@@ -227,14 +190,9 @@ public partial class CPlugDecoratorSolidBuilder : CPlugDecoratorSolidBuilderBase
             var node = CPlugDecoratorSolidBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugDecoratorSolidBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugDecoratorSolidBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugDecoratorSolid node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugDecoratorSolid node);
     }
     public partial class TM2020 : CPlugDecoratorSolidBuilderBase<TM2020>
     {
@@ -253,13 +211,8 @@ public partial class CPlugDecoratorSolidBuilder : CPlugDecoratorSolidBuilderBase
             var node = CPlugDecoratorSolidBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugDecoratorSolidBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugDecoratorSolidBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugDecoratorSolid node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugDecoratorSolid node);
     }
 }

@@ -36,48 +36,28 @@ public abstract class CControlColorChooserBuilderBase<TSelf> where TSelf : CCont
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Control.CControlColorChooser> state;
     private protected CControlColorChooserBuilderBase() => state = new();
     private protected CControlColorChooserBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Control.CControlColorChooser> state) => this.state = state;
-    public bool AcceptOwnControls
-    {
-        get => state.Get<bool>("AcceptOwnControls");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlContainerBuilderAssignments.GetAcceptOwnControlsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithAcceptOwnControls(bool value)
     {
-        AcceptOwnControls = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlContainerBuilderAssignments.GetAcceptOwnControlsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Control.CControlContainer.Child[] Childs
-    {
-        get => state.Get<global::GBX.NET.Engines.Control.CControlContainer.Child[]>("Childs");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlContainerBuilderAssignments.GetChildsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithChilds(params global::GBX.NET.Engines.Control.CControlContainer.Child[] value)
     {
-        Childs = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlContainerBuilderAssignments.GetChildsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithChilds(IEnumerable<global::GBX.NET.Engines.Control.CControlContainer.Child> values)
     {
         return WithChilds(values.ToArray());
     }
-    public uint ControlFlags
-    {
-        get => state.Get<uint>("ControlFlags");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetControlFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithControlFlags(uint value)
     {
-        ControlFlags = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetControlFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain?>("CreateScript");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlContainerBuilderAssignments.GetCreateScriptAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithCreateScript(global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? value)
     {
-        CreateScript = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlContainerBuilderAssignments.GetCreateScriptAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithCreateScriptReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain> value)
@@ -86,24 +66,14 @@ public abstract class CControlColorChooserBuilderBase<TSelf> where TSelf : CCont
         state.Set(global::GBX.NET.Builders.Engines.Control.CControlContainerBuilderAssignments.GetCreateScriptReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Hms.CHmsItem? Item
-    {
-        get => state.Get<global::GBX.NET.Engines.Hms.CHmsItem?>("Item");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetItemAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithItem(global::GBX.NET.Engines.Hms.CHmsItem? value)
     {
-        Item = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetItemAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Control.CControlLayout? Layout
-    {
-        get => state.Get<global::GBX.NET.Engines.Control.CControlLayout?>("Layout");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLayoutAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLayout(global::GBX.NET.Engines.Control.CControlLayout? value)
     {
-        Layout = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLayoutAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithLayoutReference(NodeRef<global::GBX.NET.Engines.Control.CControlLayout> value)
@@ -112,14 +82,9 @@ public abstract class CControlColorChooserBuilderBase<TSelf> where TSelf : CCont
         state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLayoutReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Control.CControlStyle? LegacyStyle
-    {
-        get => state.Get<global::GBX.NET.Engines.Control.CControlStyle?>("LegacyStyle");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLegacyStyleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithLegacyStyle(global::GBX.NET.Engines.Control.CControlStyle? value)
     {
-        LegacyStyle = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLegacyStyleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithLegacyStyleReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value)
@@ -128,14 +93,9 @@ public abstract class CControlColorChooserBuilderBase<TSelf> where TSelf : CCont
         state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLegacyStyleReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Motion.CMotion? Motion
-    {
-        get => state.Get<global::GBX.NET.Engines.Motion.CMotion?>("Motion");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithMotion(global::GBX.NET.Engines.Motion.CMotion? value)
     {
-        Motion = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithMotionReference(NodeRef<global::GBX.NET.Engines.Motion.CMotion> value)
@@ -144,24 +104,14 @@ public abstract class CControlColorChooserBuilderBase<TSelf> where TSelf : CCont
         state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public string? Name
-    {
-        get => state.Get<string?>("Name");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithName(string? value)
     {
-        Name = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.MwFoundations.CMwNod? Nod
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("Nod");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetNodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithNod(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
-        Nod = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetNodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithNodReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
@@ -170,14 +120,9 @@ public abstract class CControlColorChooserBuilderBase<TSelf> where TSelf : CCont
         state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetNodReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? ObjectLink
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>?>("ObjectLink");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetObjectLinkAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithObjectLink(NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? value)
     {
-        ObjectLink = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetObjectLinkAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithObjectLink(params global::GBX.NET.Engines.Scene.CSceneObjectLink[] values)
@@ -188,38 +133,23 @@ public abstract class CControlColorChooserBuilderBase<TSelf> where TSelf : CCont
     {
         return WithObjectLink(values.ToArray());
     }
-    public string? StackText
-    {
-        get => state.Get<string?>("StackText");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStackTextAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithStackText(string? value)
     {
-        StackText = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStackTextAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool UseScript
-    {
-        get => state.Get<bool>("UseScript");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlContainerBuilderAssignments.GetUseScriptAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithUseScript(bool value)
     {
-        UseScript = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlContainerBuilderAssignments.GetUseScriptAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CControlColorChooserBuilderMembers1<TSelf> : CControlColorChooserBuilderBase<TSelf> where TSelf : CControlColorChooserBuilderMembers1<TSelf>
 {
     private protected CControlColorChooserBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Control.CControlColorChooser> state) : base(state) { }
-    public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
-    {
-        get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
     {
-        MessageHandler = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
@@ -232,14 +162,9 @@ public abstract class CControlColorChooserBuilderMembers1<TSelf> : CControlColor
 public abstract class CControlColorChooserBuilderMembers2<TSelf> : CControlColorChooserBuilderBase<TSelf> where TSelf : CControlColorChooserBuilderMembers2<TSelf>
 {
     private protected CControlColorChooserBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Control.CControlColorChooser> state) : base(state) { }
-    public global::GBX.NET.Engines.Control.CControlStyle? Style
-    {
-        get => state.Get<global::GBX.NET.Engines.Control.CControlStyle?>("Style");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithStyle(global::GBX.NET.Engines.Control.CControlStyle? value)
     {
-        Style = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithStyleReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value)
@@ -248,38 +173,23 @@ public abstract class CControlColorChooserBuilderMembers2<TSelf> : CControlColor
         state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public string? StyleId
-    {
-        get => state.Get<string?>("StyleId");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithStyleId(string? value)
     {
-        StyleId = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CControlColorChooserBuilderMembers3<TSelf> : CControlColorChooserBuilderMembers2<TSelf> where TSelf : CControlColorChooserBuilderMembers3<TSelf>
 {
     private protected CControlColorChooserBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Control.CControlColorChooser> state) : base(state) { }
-    public Vec2 ColorChooserSize
-    {
-        get => state.Get<Vec2>("ColorChooserSize");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlColorChooserBuilderAssignments.GetColorChooserSizeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithColorChooserSize(Vec2 value)
     {
-        ColorChooserSize = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlColorChooserBuilderAssignments.GetColorChooserSizeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public int StyleType
-    {
-        get => state.Get<int>("StyleType");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlColorChooserBuilderAssignments.GetStyleTypeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithStyleType(int value)
     {
-        StyleType = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlColorChooserBuilderAssignments.GetStyleTypeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
 }
@@ -310,19 +220,6 @@ public partial class CControlColorChooserBuilder : CControlColorChooserBuilderBa
         node.Chunks.Add(chunk0A005004);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Control.CControlColorChooser node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlContainer.Chunk07002005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07002005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005004 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Control.CControlColorChooser CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Control.CControlColorChooser();
@@ -352,21 +249,6 @@ public partial class CControlColorChooserBuilder : CControlColorChooserBuilderBa
         node.Chunks.Add(chunk0A005004);
         return node;
     }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Control.CControlColorChooser node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlContainer.Chunk07002005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07002005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk07001010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07001010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005004 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Control.CControlColorChooser CreateRecipe2(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Control.CControlColorChooser();
@@ -392,19 +274,6 @@ public partial class CControlColorChooserBuilder : CControlColorChooserBuilderBa
         node.Chunks.Add(chunk0A005003);
         return node;
     }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Control.CControlColorChooser node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlContainer.Chunk07002005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07002005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk07001010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07001010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005003 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Control.CControlColorChooser CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Control.CControlColorChooser();
@@ -427,18 +296,6 @@ public partial class CControlColorChooserBuilder : CControlColorChooserBuilderBa
         var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
         node.Chunks.Add(chunk0A005003);
         return node;
-    }
-    private static void ValidateRecipe3(global::GBX.NET.Engines.Control.CControlColorChooser node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlContainer.Chunk07002005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07002005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk07001010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07001010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005003 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Control.CControlColorChooser CreateRecipe4(GameVersion game)
     {
@@ -469,21 +326,6 @@ public partial class CControlColorChooserBuilder : CControlColorChooserBuilderBa
         node.Chunks.Add(chunk0A005003);
         return node;
     }
-    private static void ValidateRecipe4(global::GBX.NET.Engines.Control.CControlColorChooser node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlColorChooser.Chunk0701E001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701E001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlColorChooser.Chunk0701E002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701E002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlColorChooser.Chunk0701E003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701E003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlContainer.Chunk07002005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07002005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk07001010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07001010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005003 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Control.CControlColorChooser CreateRecipe5(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Control.CControlColorChooser();
@@ -509,23 +351,6 @@ public partial class CControlColorChooserBuilder : CControlColorChooserBuilderBa
         var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
         node.Chunks.Add(chunk0A005003);
         return node;
-    }
-    private static void ValidateRecipe5(global::GBX.NET.Engines.Control.CControlColorChooser node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlColorChooser.Chunk0701E004>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0701E004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlContainer.Chunk07002005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07002005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk07001010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07001010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005003 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Control.CControlColorChooser node, GameVersion game)
-    {
-        if (node.Childs is null) throw new MemberNullException("Childs");
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -572,14 +397,9 @@ public partial class CControlColorChooserBuilder : CControlColorChooserBuilderBa
             var node = CControlColorChooserBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CControlColorChooserBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CControlColorChooserBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlColorChooser node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlColorChooser node);
     }
     public partial class TMPU : CControlColorChooserBuilderMembers1<TMPU>
     {
@@ -614,14 +434,9 @@ public partial class CControlColorChooserBuilder : CControlColorChooserBuilderBa
             var node = CControlColorChooserBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CControlColorChooserBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CControlColorChooserBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlColorChooser node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlColorChooser node);
     }
     public partial class TMSX : CControlColorChooserBuilderMembers2<TMSX>
     {
@@ -634,14 +449,9 @@ public partial class CControlColorChooserBuilder : CControlColorChooserBuilderBa
         {
             return base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
-        {
-            get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
-            set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-        }
         public TMSX WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
         {
-            MessageHandler = value;
+            state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public TMSX WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
@@ -676,14 +486,9 @@ public partial class CControlColorChooserBuilder : CControlColorChooserBuilderBa
             var node = CControlColorChooserBuilder.CreateRecipe1(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CControlColorChooserBuilder.ValidateRecipe1(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CControlColorChooserBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlColorChooser node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlColorChooser node);
     }
     public partial class TMNESWC : CControlColorChooserBuilderMembers2<TMNESWC>
     {
@@ -696,14 +501,9 @@ public partial class CControlColorChooserBuilder : CControlColorChooserBuilderBa
         {
             return base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
-        {
-            get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
-            set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-        }
         public TMNESWC WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
         {
-            MessageHandler = value;
+            state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public TMNESWC WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
@@ -738,14 +538,9 @@ public partial class CControlColorChooserBuilder : CControlColorChooserBuilderBa
             var node = CControlColorChooserBuilder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CControlColorChooserBuilder.ValidateRecipe1(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CControlColorChooserBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlColorChooser node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlColorChooser node);
     }
     public partial class VSK5 : CControlColorChooserBuilderMembers2<VSK5>
     {
@@ -758,14 +553,9 @@ public partial class CControlColorChooserBuilder : CControlColorChooserBuilderBa
         {
             return base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
-        {
-            get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
-            set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-        }
         public VSK5 WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
         {
-            MessageHandler = value;
+            state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public VSK5 WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
@@ -800,14 +590,9 @@ public partial class CControlColorChooserBuilder : CControlColorChooserBuilderBa
             var node = CControlColorChooserBuilder.CreateRecipe2(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CControlColorChooserBuilder.ValidateRecipe2(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CControlColorChooserBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlColorChooser node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlColorChooser node);
     }
     public partial class TMF : CControlColorChooserBuilderMembers2<TMF>
     {
@@ -824,14 +609,9 @@ public partial class CControlColorChooserBuilder : CControlColorChooserBuilderBa
         {
             return base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
-        {
-            get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
-            set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-        }
         public TMF WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
         {
-            MessageHandler = value;
+            state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public TMF WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
@@ -866,14 +646,9 @@ public partial class CControlColorChooserBuilder : CControlColorChooserBuilderBa
             var node = CControlColorChooserBuilder.CreateRecipe2(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CControlColorChooserBuilder.ValidateRecipe2(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CControlColorChooserBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlColorChooser node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlColorChooser node);
     }
     public partial class MP3 : CControlColorChooserBuilderMembers2<MP3>
     {
@@ -904,14 +679,9 @@ public partial class CControlColorChooserBuilder : CControlColorChooserBuilderBa
             var node = CControlColorChooserBuilder.CreateRecipe3(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CControlColorChooserBuilder.ValidateRecipe3(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CControlColorChooserBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlColorChooser node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlColorChooser node);
     }
     public partial class TMT : CControlColorChooserBuilderMembers2<TMT>
     {
@@ -942,26 +712,16 @@ public partial class CControlColorChooserBuilder : CControlColorChooserBuilderBa
             var node = CControlColorChooserBuilder.CreateRecipe3(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CControlColorChooserBuilder.ValidateRecipe3(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CControlColorChooserBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlColorChooser node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlColorChooser node);
     }
     public partial class MP4 : CControlColorChooserBuilderMembers3<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Control.CControlColorChooser> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugShader? ColorChooserShader
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugShader?>("ColorChooserShader");
-            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlColorChooserBuilderAssignments.GetColorChooserShaderAssignment(), value, GameVersion.MP4);
-        }
         public MP4 WithColorChooserShader(global::GBX.NET.Engines.Plug.CPlugShader? value)
         {
-            ColorChooserShader = value;
+            state.Set(global::GBX.NET.Builders.Engines.Control.CControlColorChooserBuilderAssignments.GetColorChooserShaderAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithColorChooserShaderReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value)
@@ -1004,14 +764,9 @@ public partial class CControlColorChooserBuilder : CControlColorChooserBuilderBa
             var node = CControlColorChooserBuilder.CreateRecipe4(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CControlColorChooserBuilder.ValidateRecipe4(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CControlColorChooserBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlColorChooser node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlColorChooser node);
     }
     public partial class TM2020 : CControlColorChooserBuilderMembers3<TM2020>
     {
@@ -1038,13 +793,8 @@ public partial class CControlColorChooserBuilder : CControlColorChooserBuilderBa
             var node = CControlColorChooserBuilder.CreateRecipe5(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CControlColorChooserBuilder.ValidateRecipe5(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CControlColorChooserBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlColorChooser node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlColorChooser node);
     }
 }

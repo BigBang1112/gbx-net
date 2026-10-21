@@ -36,14 +36,9 @@ public abstract class CPlugLightBuilderBase<TSelf> where TSelf : CPlugLightBuild
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLight> state;
     private protected CPlugLightBuilderBase() => state = new();
     private protected CPlugLightBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLight> state) => this.state = state;
-    public global::GBX.NET.Engines.Graphic.GxLight? Light
-    {
-        get => state.Get<global::GBX.NET.Engines.Graphic.GxLight?>("Light");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetLightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithLight(global::GBX.NET.Engines.Graphic.GxLight? value)
     {
-        Light = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetLightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithLightReference(NodeRef<global::GBX.NET.Engines.Graphic.GxLight> value)
@@ -56,14 +51,9 @@ public abstract class CPlugLightBuilderBase<TSelf> where TSelf : CPlugLightBuild
 public abstract class CPlugLightBuilderMembers1<TSelf> : CPlugLightBuilderBase<TSelf> where TSelf : CPlugLightBuilderMembers1<TSelf>
 {
     private protected CPlugLightBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLight> state) : base(state) { }
-    public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapFlare
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapFlare");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetBitmapFlareAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithBitmapFlare(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
-        BitmapFlare = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetBitmapFlareAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithBitmapFlareReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
@@ -72,14 +62,9 @@ public abstract class CPlugLightBuilderMembers1<TSelf> : CPlugLightBuilderBase<T
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetBitmapFlareReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapProjector
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapProjector");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetBitmapProjectorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithBitmapProjector(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
-        BitmapProjector = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetBitmapProjectorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithBitmapProjectorReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
@@ -88,14 +73,9 @@ public abstract class CPlugLightBuilderMembers1<TSelf> : CPlugLightBuilderBase<T
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetBitmapProjectorReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Function.CFuncLight? FuncLight
-    {
-        get => state.Get<global::GBX.NET.Engines.Function.CFuncLight?>("FuncLight");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetFuncLightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithFuncLight(global::GBX.NET.Engines.Function.CFuncLight? value)
     {
-        FuncLight = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetFuncLightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithFuncLightReference(NodeRef<global::GBX.NET.Engines.Function.CFuncLight> value)
@@ -108,14 +88,9 @@ public abstract class CPlugLightBuilderMembers1<TSelf> : CPlugLightBuilderBase<T
 public abstract class CPlugLightBuilderMembers2<TSelf> : CPlugLightBuilderMembers1<TSelf> where TSelf : CPlugLightBuilderMembers2<TSelf>
 {
     private protected CPlugLightBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLight> state) : base(state) { }
-    public global::GBX.NET.Engines.Plug.CPlugLight.EFlags Flags
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugLight.EFlags>("Flags");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithFlags(global::GBX.NET.Engines.Plug.CPlugLight.EFlags value)
     {
-        Flags = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -128,20 +103,12 @@ public partial class CPlugLightBuilder : CPlugLightBuilderBase<CPlugLightBuilder
         node.Chunks.Add(chunk0901D000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugLight node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugLight.Chunk0901D000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0901D000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugLight CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugLight();
         var chunk0901D002 = new global::GBX.NET.Engines.Plug.CPlugLight.Chunk0901D002();
         node.Chunks.Add(chunk0901D002);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugLight node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugLight.Chunk0901D002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0901D002 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Plug.CPlugLight CreateRecipe2(GameVersion game)
     {
@@ -152,14 +119,6 @@ public partial class CPlugLightBuilder : CPlugLightBuilderBase<CPlugLightBuilder
         chunk0901D004.Version = 0;
         node.Chunks.Add(chunk0901D004);
         return node;
-    }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Plug.CPlugLight node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugLight.Chunk0901D003>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0901D003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugLight.Chunk0901D004>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0901D004 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugLight node, GameVersion game)
-    {
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -198,14 +157,9 @@ public partial class CPlugLightBuilder : CPlugLightBuilderBase<CPlugLightBuilder
             var node = CPlugLightBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CPlugLightBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CPlugLightBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugLight node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugLight node);
     }
     public partial class TMPU : CPlugLightBuilderMembers1<TMPU>
     {
@@ -232,14 +186,9 @@ public partial class CPlugLightBuilder : CPlugLightBuilderBase<CPlugLightBuilder
             var node = CPlugLightBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CPlugLightBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CPlugLightBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugLight node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugLight node);
     }
     public partial class TMSX : CPlugLightBuilderMembers2<TMSX>
     {
@@ -266,14 +215,9 @@ public partial class CPlugLightBuilder : CPlugLightBuilderBase<CPlugLightBuilder
             var node = CPlugLightBuilder.CreateRecipe1(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CPlugLightBuilder.ValidateRecipe1(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CPlugLightBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugLight node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugLight node);
     }
     public partial class TMNESWC : CPlugLightBuilderMembers2<TMNESWC>
     {
@@ -300,14 +244,9 @@ public partial class CPlugLightBuilder : CPlugLightBuilderBase<CPlugLightBuilder
             var node = CPlugLightBuilder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CPlugLightBuilder.ValidateRecipe1(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CPlugLightBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugLight node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugLight node);
     }
     public partial class VSK5 : CPlugLightBuilderMembers2<VSK5>
     {
@@ -334,14 +273,9 @@ public partial class CPlugLightBuilder : CPlugLightBuilderBase<CPlugLightBuilder
             var node = CPlugLightBuilder.CreateRecipe1(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CPlugLightBuilder.ValidateRecipe1(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CPlugLightBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugLight node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugLight node);
     }
     public partial class TMF : CPlugLightBuilderMembers2<TMF>
     {
@@ -368,14 +302,9 @@ public partial class CPlugLightBuilder : CPlugLightBuilderBase<CPlugLightBuilder
             var node = CPlugLightBuilder.CreateRecipe1(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CPlugLightBuilder.ValidateRecipe1(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CPlugLightBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugLight node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugLight node);
     }
     public partial class MP3 : CPlugLightBuilderMembers2<MP3>
     {
@@ -402,14 +331,9 @@ public partial class CPlugLightBuilder : CPlugLightBuilderBase<CPlugLightBuilder
             var node = CPlugLightBuilder.CreateRecipe1(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CPlugLightBuilder.ValidateRecipe1(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CPlugLightBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugLight node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugLight node);
     }
     public partial class TMT : CPlugLightBuilderMembers2<TMT>
     {
@@ -436,14 +360,9 @@ public partial class CPlugLightBuilder : CPlugLightBuilderBase<CPlugLightBuilder
             var node = CPlugLightBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugLightBuilder.ValidateRecipe1(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugLightBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugLight node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugLight node);
     }
     public partial class MP4 : CPlugLightBuilderMembers2<MP4>
     {
@@ -470,56 +389,31 @@ public partial class CPlugLightBuilder : CPlugLightBuilderBase<CPlugLightBuilder
             var node = CPlugLightBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugLightBuilder.ValidateRecipe1(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugLightBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugLight node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugLight node);
     }
     public partial class TM2020 : CPlugLightBuilderBase<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLight> state) : base(state) { }
-        public float AnimPeriodMax
-        {
-            get => state.Get<float>("AnimPeriodMax");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetAnimPeriodMaxAssignment(), value, GameVersion.TM2020);
-        }
         public TM2020 WithAnimPeriodMax(float value)
         {
-            AnimPeriodMax = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetAnimPeriodMaxAssignment(), value, GameVersion.TM2020);
             return this;
-        }
-        public float AnimPeriodMin
-        {
-            get => state.Get<float>("AnimPeriodMin");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetAnimPeriodMinAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithAnimPeriodMin(float value)
         {
-            AnimPeriodMin = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetAnimPeriodMinAssignment(), value, GameVersion.TM2020);
             return this;
-        }
-        public string? AnimTimerName
-        {
-            get => state.Get<string?>("AnimTimerName");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetAnimTimerNameAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithAnimTimerName(string? value)
         {
-            AnimTimerName = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetAnimTimerNameAssignment(), value, GameVersion.TM2020);
             return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugFileImg? ImageAnim
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugFileImg?>("ImageAnim");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetImageAnimAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithImageAnim(global::GBX.NET.Engines.Plug.CPlugFileImg? value)
         {
-            ImageAnim = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetImageAnimAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithImageAnimReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value)
@@ -538,13 +432,8 @@ public partial class CPlugLightBuilder : CPlugLightBuilderBase<CPlugLightBuilder
             var node = CPlugLightBuilder.CreateRecipe2(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugLightBuilder.ValidateRecipe2(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugLightBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugLight node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugLight node);
     }
 }

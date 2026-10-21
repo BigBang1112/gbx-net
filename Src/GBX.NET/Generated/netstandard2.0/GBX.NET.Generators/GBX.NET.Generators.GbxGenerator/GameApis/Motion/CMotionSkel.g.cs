@@ -41,122 +41,62 @@ public partial class CMotionSkel : global::GBX.NET.Interfaces.Motion.IMotionSkel
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysSkelTM10? global::GBX.NET.Interfaces.Motion.IMotionSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysSkelTM10>.KeysSkel
     {
-        get
-        {
-            var node = KeysSkel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            return node;
-        }
+        get => KeysSkel;
         set => KeysSkel = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncSkelValuesTM10? global::GBX.NET.Interfaces.Motion.IMotionSkelTM10.SkelValues
     {
-        get
-        {
-            var node = SkelValues;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            return node;
-        }
+        get => SkelValues;
         set => SkelValues = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkelValues node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMPU? global::GBX.NET.Interfaces.Motion.IMotionSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMPU>.KeysSkel
     {
-        get
-        {
-            var node = KeysSkel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            return node;
-        }
+        get => KeysSkel;
         set => KeysSkel = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMPU? global::GBX.NET.Interfaces.Motion.IMotionSkelTMPU.SkelValues
     {
-        get
-        {
-            var node = SkelValues;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            return node;
-        }
+        get => SkelValues;
         set => SkelValues = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkelValues node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMSX? global::GBX.NET.Interfaces.Motion.IMotionSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMSX>.KeysSkel
     {
-        get
-        {
-            var node = KeysSkel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => KeysSkel;
         set => KeysSkel = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMSX? global::GBX.NET.Interfaces.Motion.IMotionSkelTMSX.SkelValues
     {
-        get
-        {
-            var node = SkelValues;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => SkelValues;
         set => SkelValues = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkelValues node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMNESWC? global::GBX.NET.Interfaces.Motion.IMotionSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMNESWC>.KeysSkel
     {
-        get
-        {
-            var node = KeysSkel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => KeysSkel;
         set => KeysSkel = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMNESWC? global::GBX.NET.Interfaces.Motion.IMotionSkelTMNESWC.SkelValues
     {
-        get
-        {
-            var node = SkelValues;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => SkelValues;
         set => SkelValues = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkelValues node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysSkelVSK5? global::GBX.NET.Interfaces.Motion.IMotionSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysSkelVSK5>.KeysSkel
     {
-        get
-        {
-            var node = KeysSkel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => KeysSkel;
         set => KeysSkel = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncSkelValuesVSK5? global::GBX.NET.Interfaces.Motion.IMotionSkelVSK5.SkelValues
     {
-        get
-        {
-            var node = SkelValues;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => SkelValues;
         set => SkelValues = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkelValues node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMF? global::GBX.NET.Interfaces.Motion.IMotionSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMF>.KeysSkel
     {
-        get
-        {
-            var node = KeysSkel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => KeysSkel;
         set => KeysSkel = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMF? global::GBX.NET.Interfaces.Motion.IMotionSkelTMF.SkelValues
     {
-        get
-        {
-            var node = SkelValues;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => SkelValues;
         set => SkelValues = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkelValues node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

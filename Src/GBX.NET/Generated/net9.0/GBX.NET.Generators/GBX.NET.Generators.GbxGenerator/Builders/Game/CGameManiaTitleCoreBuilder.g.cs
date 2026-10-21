@@ -36,14 +36,9 @@ public abstract class CGameManiaTitleCoreBuilderBase<TSelf> where TSelf : CGameM
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameManiaTitleCore> state;
     private protected CGameManiaTitleCoreBuilderBase() => state = new();
     private protected CGameManiaTitleCoreBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManiaTitleCore> state) => this.state = state;
-    public string? Name
-    {
-        get => state.Get<string?>("Name");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameNodBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithName(string? value)
     {
-        Name = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameNodBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -55,13 +50,6 @@ public partial class CGameManiaTitleCoreBuilder : CGameManiaTitleCoreBuilderBase
         var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
         node.Chunks.Add(chunk03008000);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameManiaTitleCore node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03008000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameManiaTitleCore node, GameVersion game)
-    {
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -84,14 +72,9 @@ public partial class CGameManiaTitleCoreBuilder : CGameManiaTitleCoreBuilderBase
             var node = CGameManiaTitleCoreBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CGameManiaTitleCoreBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CGameManiaTitleCoreBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameManiaTitleCore node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameManiaTitleCore node);
     }
     public partial class TMPU : CGameManiaTitleCoreBuilderBase<TMPU>
     {
@@ -102,14 +85,9 @@ public partial class CGameManiaTitleCoreBuilder : CGameManiaTitleCoreBuilderBase
             var node = CGameManiaTitleCoreBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CGameManiaTitleCoreBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CGameManiaTitleCoreBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameManiaTitleCore node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameManiaTitleCore node);
     }
     public partial class TMSX : CGameManiaTitleCoreBuilderBase<TMSX>
     {
@@ -120,14 +98,9 @@ public partial class CGameManiaTitleCoreBuilder : CGameManiaTitleCoreBuilderBase
             var node = CGameManiaTitleCoreBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CGameManiaTitleCoreBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CGameManiaTitleCoreBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameManiaTitleCore node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameManiaTitleCore node);
     }
     public partial class TMNESWC : CGameManiaTitleCoreBuilderBase<TMNESWC>
     {
@@ -138,14 +111,9 @@ public partial class CGameManiaTitleCoreBuilder : CGameManiaTitleCoreBuilderBase
             var node = CGameManiaTitleCoreBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CGameManiaTitleCoreBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CGameManiaTitleCoreBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameManiaTitleCore node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameManiaTitleCore node);
     }
     public partial class VSK5 : CGameManiaTitleCoreBuilderBase<VSK5>
     {
@@ -156,14 +124,9 @@ public partial class CGameManiaTitleCoreBuilder : CGameManiaTitleCoreBuilderBase
             var node = CGameManiaTitleCoreBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CGameManiaTitleCoreBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CGameManiaTitleCoreBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameManiaTitleCore node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameManiaTitleCore node);
     }
     public partial class TMF : CGameManiaTitleCoreBuilderBase<TMF>
     {
@@ -174,14 +137,9 @@ public partial class CGameManiaTitleCoreBuilder : CGameManiaTitleCoreBuilderBase
             var node = CGameManiaTitleCoreBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CGameManiaTitleCoreBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CGameManiaTitleCoreBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameManiaTitleCore node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameManiaTitleCore node);
     }
     public partial class MP3 : CGameManiaTitleCoreBuilderBase<MP3>
     {
@@ -192,14 +150,9 @@ public partial class CGameManiaTitleCoreBuilder : CGameManiaTitleCoreBuilderBase
             var node = CGameManiaTitleCoreBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CGameManiaTitleCoreBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CGameManiaTitleCoreBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameManiaTitleCore node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameManiaTitleCore node);
     }
     public partial class TMT : CGameManiaTitleCoreBuilderBase<TMT>
     {
@@ -210,14 +163,9 @@ public partial class CGameManiaTitleCoreBuilder : CGameManiaTitleCoreBuilderBase
             var node = CGameManiaTitleCoreBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameManiaTitleCoreBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameManiaTitleCoreBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameManiaTitleCore node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameManiaTitleCore node);
     }
     public partial class MP4 : CGameManiaTitleCoreBuilderBase<MP4>
     {
@@ -228,14 +176,9 @@ public partial class CGameManiaTitleCoreBuilder : CGameManiaTitleCoreBuilderBase
             var node = CGameManiaTitleCoreBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameManiaTitleCoreBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameManiaTitleCoreBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameManiaTitleCore node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameManiaTitleCore node);
     }
     public partial class TM2020 : CGameManiaTitleCoreBuilderBase<TM2020>
     {
@@ -246,13 +189,8 @@ public partial class CGameManiaTitleCoreBuilder : CGameManiaTitleCoreBuilderBase
             var node = CGameManiaTitleCoreBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameManiaTitleCoreBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameManiaTitleCoreBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameManiaTitleCore node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameManiaTitleCore node);
     }
 }

@@ -36,32 +36,17 @@ public partial class CPlugVehicleCameraRaceModel : global::GBX.NET.Interfaces.Pl
     public static new global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRaceModelBuilder Create() => new();
     global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTMT? global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraRaceModelTMT.Shake
     {
-        get
-        {
-            var node = Shake;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => Shake;
         set => Shake = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCamShakeModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelMP4? global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraRaceModelMP4.Shake
     {
-        get
-        {
-            var node = Shake;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Shake;
         set => Shake = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCamShakeModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraRaceModelTM2020.Shake
     {
-        get
-        {
-            var node = Shake;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => Shake;
         set => Shake = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCamShakeModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

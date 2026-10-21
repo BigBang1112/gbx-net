@@ -46,23 +46,12 @@ public partial class CPlugIndexBufferBuilder : CPlugIndexBufferBuilderBase<CPlug
         node.Chunks.Add(chunk09057000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugIndexBuffer node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugIndexBuffer.Chunk09057000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09057000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugIndexBuffer CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugIndexBuffer();
         var chunk09057001 = new global::GBX.NET.Engines.Plug.CPlugIndexBuffer.Chunk09057001();
         node.Chunks.Add(chunk09057001);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugIndexBuffer node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugIndexBuffer.Chunk09057001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09057001 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugIndexBuffer node, GameVersion game)
-    {
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
@@ -83,14 +72,9 @@ public partial class CPlugIndexBufferBuilder : CPlugIndexBufferBuilderBase<CPlug
             var node = CPlugIndexBufferBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CPlugIndexBufferBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CPlugIndexBufferBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugIndexBuffer node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugIndexBuffer node);
     }
     public partial class TMNESWC : CPlugIndexBufferBuilderBase<TMNESWC>
     {
@@ -101,14 +85,9 @@ public partial class CPlugIndexBufferBuilder : CPlugIndexBufferBuilderBase<CPlug
             var node = CPlugIndexBufferBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CPlugIndexBufferBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CPlugIndexBufferBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugIndexBuffer node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugIndexBuffer node);
     }
     public partial class VSK5 : CPlugIndexBufferBuilderBase<VSK5>
     {
@@ -119,14 +98,9 @@ public partial class CPlugIndexBufferBuilder : CPlugIndexBufferBuilderBase<CPlug
             var node = CPlugIndexBufferBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CPlugIndexBufferBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CPlugIndexBufferBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugIndexBuffer node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugIndexBuffer node);
     }
     public partial class TMF : CPlugIndexBufferBuilderBase<TMF>
     {
@@ -137,14 +111,9 @@ public partial class CPlugIndexBufferBuilder : CPlugIndexBufferBuilderBase<CPlug
             var node = CPlugIndexBufferBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CPlugIndexBufferBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CPlugIndexBufferBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugIndexBuffer node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugIndexBuffer node);
     }
     public partial class MP3 : CPlugIndexBufferBuilderBase<MP3>
     {
@@ -155,14 +124,9 @@ public partial class CPlugIndexBufferBuilder : CPlugIndexBufferBuilderBase<CPlug
             var node = CPlugIndexBufferBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CPlugIndexBufferBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CPlugIndexBufferBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugIndexBuffer node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugIndexBuffer node);
     }
     public partial class TMT : CPlugIndexBufferBuilderBase<TMT>
     {
@@ -173,14 +137,9 @@ public partial class CPlugIndexBufferBuilder : CPlugIndexBufferBuilderBase<CPlug
             var node = CPlugIndexBufferBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugIndexBufferBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugIndexBufferBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugIndexBuffer node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugIndexBuffer node);
     }
     public partial class MP4 : CPlugIndexBufferBuilderBase<MP4>
     {
@@ -191,14 +150,9 @@ public partial class CPlugIndexBufferBuilder : CPlugIndexBufferBuilderBase<CPlug
             var node = CPlugIndexBufferBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugIndexBufferBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugIndexBufferBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugIndexBuffer node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugIndexBuffer node);
     }
     public partial class TM2020 : CPlugIndexBufferBuilderBase<TM2020>
     {
@@ -209,13 +163,8 @@ public partial class CPlugIndexBufferBuilder : CPlugIndexBufferBuilderBase<CPlug
             var node = CPlugIndexBufferBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugIndexBufferBuilder.ValidateRecipe1(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugIndexBufferBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugIndexBuffer node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugIndexBuffer node);
     }
 }

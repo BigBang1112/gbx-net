@@ -41,12 +41,7 @@ public partial class CGameCtnChallengeTrafficElemDesc : global::GBX.NET.Interfac
     }
     global::GBX.NET.Interfaces.Plug.IPlugTrafficObjectParamsTMT? global::GBX.NET.Interfaces.Game.IGameCtnChallengeTrafficElemDescTMT.Model
     {
-        get
-        {
-            var node = Model;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => Model;
         set => Model = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

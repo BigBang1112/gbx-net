@@ -41,102 +41,52 @@ public partial class CSceneSector : global::GBX.NET.Interfaces.Scene.ISceneSecto
     }
     global::GBX.NET.Interfaces.Hms.IHmsZoneTM10? global::GBX.NET.Interfaces.Scene.ISceneSectorMembers1<global::GBX.NET.Interfaces.Hms.IHmsZoneTM10>.Zone
     {
-        get
-        {
-            var node = Zone;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            return node;
-        }
+        get => Zone;
         set => Zone = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Hms.IHmsZoneTMPU? global::GBX.NET.Interfaces.Scene.ISceneSectorMembers1<global::GBX.NET.Interfaces.Hms.IHmsZoneTMPU>.Zone
     {
-        get
-        {
-            var node = Zone;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            return node;
-        }
+        get => Zone;
         set => Zone = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Hms.IHmsZoneTMSX? global::GBX.NET.Interfaces.Scene.ISceneSectorMembers1<global::GBX.NET.Interfaces.Hms.IHmsZoneTMSX>.Zone
     {
-        get
-        {
-            var node = Zone;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => Zone;
         set => Zone = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Hms.IHmsZoneTMNESWC? global::GBX.NET.Interfaces.Scene.ISceneSectorMembers1<global::GBX.NET.Interfaces.Hms.IHmsZoneTMNESWC>.Zone
     {
-        get
-        {
-            var node = Zone;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => Zone;
         set => Zone = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Hms.IHmsZoneVSK5? global::GBX.NET.Interfaces.Scene.ISceneSectorMembers1<global::GBX.NET.Interfaces.Hms.IHmsZoneVSK5>.Zone
     {
-        get
-        {
-            var node = Zone;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => Zone;
         set => Zone = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Hms.IHmsZoneTMF? global::GBX.NET.Interfaces.Scene.ISceneSectorMembers1<global::GBX.NET.Interfaces.Hms.IHmsZoneTMF>.Zone
     {
-        get
-        {
-            var node = Zone;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => Zone;
         set => Zone = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Hms.IHmsZoneMP3? global::GBX.NET.Interfaces.Scene.ISceneSectorMembers1<global::GBX.NET.Interfaces.Hms.IHmsZoneMP3>.Zone
     {
-        get
-        {
-            var node = Zone;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => Zone;
         set => Zone = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Hms.IHmsZoneTMT? global::GBX.NET.Interfaces.Scene.ISceneSectorMembers1<global::GBX.NET.Interfaces.Hms.IHmsZoneTMT>.Zone
     {
-        get
-        {
-            var node = Zone;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => Zone;
         set => Zone = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Hms.IHmsZoneMP4? global::GBX.NET.Interfaces.Scene.ISceneSectorMembers1<global::GBX.NET.Interfaces.Hms.IHmsZoneMP4>.Zone
     {
-        get
-        {
-            var node = Zone;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Zone;
         set => Zone = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Hms.IHmsZoneTM2020? global::GBX.NET.Interfaces.Scene.ISceneSectorMembers1<global::GBX.NET.Interfaces.Hms.IHmsZoneTM2020>.Zone
     {
-        get
-        {
-            var node = Zone;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => Zone;
         set => Zone = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

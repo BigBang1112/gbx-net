@@ -36,38 +36,23 @@ public abstract class CGameCoverFlowDescBuilderBase<TSelf> where TSelf : CGameCo
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCoverFlowDesc> state;
     private protected CGameCoverFlowDescBuilderBase() => state = new();
     private protected CGameCoverFlowDescBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCoverFlowDesc> state) => this.state = state;
-    public Iso4 BoxesGroup_RelLoc
-    {
-        get => state.Get<Iso4>("BoxesGroup_RelLoc");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCoverFlowDescBuilderAssignments.GetBoxesGroup_RelLocAssignment(), value, GameVersion.MP4);
-    }
     public TSelf WithBoxesGroup_RelLoc(Iso4 value)
     {
-        BoxesGroup_RelLoc = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCoverFlowDescBuilderAssignments.GetBoxesGroup_RelLocAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Game.CGameCoverFlowDesc.Camera[]? Cameras
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameCoverFlowDesc.Camera[]?>("Cameras");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCoverFlowDescBuilderAssignments.GetCamerasAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithCameras(params global::GBX.NET.Engines.Game.CGameCoverFlowDesc.Camera[]? value)
     {
-        Cameras = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCoverFlowDescBuilderAssignments.GetCamerasAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public TSelf WithCameras(IEnumerable<global::GBX.NET.Engines.Game.CGameCoverFlowDesc.Camera> values)
     {
         return WithCameras(values.ToArray());
     }
-    public global::GBX.NET.Engines.Plug.CPlugGameSkin? GameSkin
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugGameSkin?>("GameSkin");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCoverFlowDescBuilderAssignments.GetGameSkinAssignment(), value, GameVersion.MP4);
-    }
     public TSelf WithGameSkin(global::GBX.NET.Engines.Plug.CPlugGameSkin? value)
     {
-        GameSkin = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCoverFlowDescBuilderAssignments.GetGameSkinAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public TSelf WithGameSkinReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin> value)
@@ -76,52 +61,32 @@ public abstract class CGameCoverFlowDescBuilderBase<TSelf> where TSelf : CGameCo
         state.Set(global::GBX.NET.Builders.Engines.Game.CGameCoverFlowDescBuilderAssignments.GetGameSkinReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
-    public string? GameSkinFolder
-    {
-        get => state.Get<string?>("GameSkinFolder");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCoverFlowDescBuilderAssignments.GetGameSkinFolderAssignment(), value, GameVersion.MP4);
-    }
     public TSelf WithGameSkinFolder(string? value)
     {
-        GameSkinFolder = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCoverFlowDescBuilderAssignments.GetGameSkinFolderAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Game.CGameCoverFlowDesc.LinearGroup[]? LinearGroups
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameCoverFlowDesc.LinearGroup[]?>("LinearGroups");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCoverFlowDescBuilderAssignments.GetLinearGroupsAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithLinearGroups(params global::GBX.NET.Engines.Game.CGameCoverFlowDesc.LinearGroup[]? value)
     {
-        LinearGroups = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCoverFlowDescBuilderAssignments.GetLinearGroupsAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public TSelf WithLinearGroups(IEnumerable<global::GBX.NET.Engines.Game.CGameCoverFlowDesc.LinearGroup> values)
     {
         return WithLinearGroups(values.ToArray());
     }
-    public global::GBX.NET.Engines.Game.CGameCoverFlowDesc.LinearSoundSet[]? LinearSounds
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameCoverFlowDesc.LinearSoundSet[]?>("LinearSounds");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCoverFlowDescBuilderAssignments.GetLinearSoundsAssignment(), value, GameVersion.MP4);
-    }
     public TSelf WithLinearSounds(params global::GBX.NET.Engines.Game.CGameCoverFlowDesc.LinearSoundSet[]? value)
     {
-        LinearSounds = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCoverFlowDescBuilderAssignments.GetLinearSoundsAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public TSelf WithLinearSounds(IEnumerable<global::GBX.NET.Engines.Game.CGameCoverFlowDesc.LinearSoundSet> values)
     {
         return WithLinearSounds(values.ToArray());
     }
-    public global::GBX.NET.Engines.MwFoundations.CMwNod? SceneFid
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("SceneFid");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCoverFlowDescBuilderAssignments.GetSceneFidAssignment(), value, GameVersion.MP4);
-    }
     public TSelf WithSceneFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
-        SceneFid = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCoverFlowDescBuilderAssignments.GetSceneFidAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public TSelf WithSceneFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
@@ -130,64 +95,34 @@ public abstract class CGameCoverFlowDescBuilderBase<TSelf> where TSelf : CGameCo
         state.Set(global::GBX.NET.Builders.Engines.Game.CGameCoverFlowDescBuilderAssignments.GetSceneFidReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
-    public float SpeedChangeGroup
-    {
-        get => state.Get<float>("SpeedChangeGroup");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCoverFlowDescBuilderAssignments.GetSpeedChangeGroupAssignment(), value, GameVersion.MP4);
-    }
     public TSelf WithSpeedChangeGroup(float value)
     {
-        SpeedChangeGroup = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCoverFlowDescBuilderAssignments.GetSpeedChangeGroupAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
-    }
-    public float SpeedZ
-    {
-        get => state.Get<float>("SpeedZ");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCoverFlowDescBuilderAssignments.GetSpeedZAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithSpeedZ(float value)
     {
-        SpeedZ = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCoverFlowDescBuilderAssignments.GetSpeedZAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
-    }
-    public Iso4 StationsGroup_HomeManialinkRelLoc
-    {
-        get => state.Get<Iso4>("StationsGroup_HomeManialinkRelLoc");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCoverFlowDescBuilderAssignments.GetStationsGroup_HomeManialinkRelLocAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithStationsGroup_HomeManialinkRelLoc(Iso4 value)
     {
-        StationsGroup_HomeManialinkRelLoc = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCoverFlowDescBuilderAssignments.GetStationsGroup_HomeManialinkRelLocAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
-    }
-    public Iso4 StationsGroup_ListRelLoc
-    {
-        get => state.Get<Iso4>("StationsGroup_ListRelLoc");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCoverFlowDescBuilderAssignments.GetStationsGroup_ListRelLocAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithStationsGroup_ListRelLoc(Iso4 value)
     {
-        StationsGroup_ListRelLoc = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCoverFlowDescBuilderAssignments.GetStationsGroup_ListRelLocAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
-    }
-    public Iso4 StationsGroup_MainRelLoc
-    {
-        get => state.Get<Iso4>("StationsGroup_MainRelLoc");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCoverFlowDescBuilderAssignments.GetStationsGroup_MainRelLocAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithStationsGroup_MainRelLoc(Iso4 value)
     {
-        StationsGroup_MainRelLoc = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCoverFlowDescBuilderAssignments.GetStationsGroup_MainRelLocAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Game.CGameManialink3dStyle? Style
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameManialink3dStyle?>("Style");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCoverFlowDescBuilderAssignments.GetStyleAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithStyle(global::GBX.NET.Engines.Game.CGameManialink3dStyle? value)
     {
-        Style = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCoverFlowDescBuilderAssignments.GetStyleAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public TSelf WithStyleReference(NodeRef<global::GBX.NET.Engines.Game.CGameManialink3dStyle> value)
@@ -196,34 +131,19 @@ public abstract class CGameCoverFlowDescBuilderBase<TSelf> where TSelf : CGameCo
         state.Set(global::GBX.NET.Builders.Engines.Game.CGameCoverFlowDescBuilderAssignments.GetStyleReferenceAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
-    public float TimeRemapped
-    {
-        get => state.Get<float>("TimeRemapped");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCoverFlowDescBuilderAssignments.GetTimeRemappedAssignment(), value, GameVersion.MP4);
-    }
     public TSelf WithTimeRemapped(float value)
     {
-        TimeRemapped = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCoverFlowDescBuilderAssignments.GetTimeRemappedAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
-    }
-    public float TransitionRotateAngleDegNext
-    {
-        get => state.Get<float>("TransitionRotateAngleDegNext");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCoverFlowDescBuilderAssignments.GetTransitionRotateAngleDegNextAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithTransitionRotateAngleDegNext(float value)
     {
-        TransitionRotateAngleDegNext = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCoverFlowDescBuilderAssignments.GetTransitionRotateAngleDegNextAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
-    }
-    public float TransitionRotateAngleDegPrev
-    {
-        get => state.Get<float>("TransitionRotateAngleDegPrev");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCoverFlowDescBuilderAssignments.GetTransitionRotateAngleDegPrevAssignment(), value, GameVersion.MP4);
     }
     public TSelf WithTransitionRotateAngleDegPrev(float value)
     {
-        TransitionRotateAngleDegPrev = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCoverFlowDescBuilderAssignments.GetTransitionRotateAngleDegPrevAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
 }
@@ -246,16 +166,6 @@ public partial class CGameCoverFlowDescBuilder : CGameCoverFlowDescBuilderBase<C
         node.Chunks.Add(chunk0316F004);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCoverFlowDesc node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCoverFlowDesc.Chunk0316F000>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk0316F000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCoverFlowDesc.Chunk0316F002>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk0316F002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCoverFlowDesc.Chunk0316F003>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0316F003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCoverFlowDesc.Chunk0316F004>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk0316F004 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCoverFlowDesc node, GameVersion game)
-    {
-    }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
@@ -276,13 +186,8 @@ public partial class CGameCoverFlowDescBuilder : CGameCoverFlowDescBuilderBase<C
             var node = CGameCoverFlowDescBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameCoverFlowDescBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameCoverFlowDescBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCoverFlowDesc node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCoverFlowDesc node);
     }
 }

@@ -36,14 +36,9 @@ public abstract class CPlugParticleMaterialImpactModelBuilderBase<TSelf> where T
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel> state;
     private protected CPlugParticleMaterialImpactModelBuilderBase() => state = new();
     private protected CPlugParticleMaterialImpactModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel> state) => this.state = state;
-    public NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel?>? MaterialImpacts
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel?>?>("MaterialImpacts");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleMaterialImpactModelBuilderAssignments.GetMaterialImpactsAssignment(), value, GameVersion.MP4);
-    }
     public TSelf WithMaterialImpacts(NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel?>? value)
     {
-        MaterialImpacts = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleMaterialImpactModelBuilderAssignments.GetMaterialImpactsAssignment(), value, GameVersion.MP4);
         return (TSelf)this;
     }
     public TSelf WithMaterialImpacts(params global::GBX.NET.Engines.Plug.CPlugParticleImpactModel?[] values)
@@ -63,13 +58,6 @@ public partial class CPlugParticleMaterialImpactModelBuilder : CPlugParticleMate
         var chunk090B7000 = new global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel.Chunk090B7000(game);
         node.Chunks.Add(chunk090B7000);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel.Chunk090B7000>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B7000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node, GameVersion game)
-    {
     }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -91,13 +79,8 @@ public partial class CPlugParticleMaterialImpactModelBuilder : CPlugParticleMate
             var node = CPlugParticleMaterialImpactModelBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugParticleMaterialImpactModelBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugParticleMaterialImpactModelBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node);
     }
 }

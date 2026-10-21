@@ -36,134 +36,69 @@ public abstract class CSceneVehicleCarMarksModelSubBuilderBase<TSelf> where TSel
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state;
     private protected CSceneVehicleCarMarksModelSubBuilderBase() => state = new();
     private protected CSceneVehicleCarMarksModelSubBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state) => this.state = state;
-    public float Alpha
-    {
-        get => state.Get<float>("Alpha");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetAlphaAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithAlpha(float value)
     {
-        Alpha = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetAlphaAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float AlphaCoefForceX
-    {
-        get => state.Get<float>("AlphaCoefForceX");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetAlphaCoefForceXAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAlphaCoefForceX(float value)
     {
-        AlphaCoefForceX = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetAlphaCoefForceXAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float AlphaCoefForceZ
-    {
-        get => state.Get<float>("AlphaCoefForceZ");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetAlphaCoefForceZAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAlphaCoefForceZ(float value)
     {
-        AlphaCoefForceZ = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetAlphaCoefForceZAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float AlphaMax
-    {
-        get => state.Get<float>("AlphaMax");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetAlphaMaxAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAlphaMax(float value)
     {
-        AlphaMax = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetAlphaMaxAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float CondForceXGreaterThan
-    {
-        get => state.Get<float>("CondForceXGreaterThan");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetCondForceXGreaterThanAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCondForceXGreaterThan(float value)
     {
-        CondForceXGreaterThan = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetCondForceXGreaterThanAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float CondForceZGreaterThan
-    {
-        get => state.Get<float>("CondForceZGreaterThan");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetCondForceZGreaterThanAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCondForceZGreaterThan(float value)
     {
-        CondForceZGreaterThan = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetCondForceZGreaterThanAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool CondGroundContact
-    {
-        get => state.Get<bool>("CondGroundContact");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetCondGroundContactAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCondGroundContact(bool value)
     {
-        CondGroundContact = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetCondGroundContactAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public byte CondMaterialId
-    {
-        get => state.Get<byte>("CondMaterialId");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetCondMaterialIdAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCondMaterialId(byte value)
     {
-        CondMaterialId = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetCondMaterialIdAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool CondSliding
-    {
-        get => state.Get<bool>("CondSliding");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetCondSlidingAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCondSliding(bool value)
     {
-        CondSliding = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetCondSlidingAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float FadeDist
-    {
-        get => state.Get<float>("FadeDist");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetFadeDistAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFadeDist(float value)
     {
-        FadeDist = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetFadeDistAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float GroundOffset
-    {
-        get => state.Get<float>("GroundOffset");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetGroundOffsetAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGroundOffset(float value)
     {
-        GroundOffset = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetGroundOffsetAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool LegacyFlag
-    {
-        get => state.Get<bool>("LegacyFlag");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetLegacyFlagAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLegacyFlag(bool value)
     {
-        LegacyFlag = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetLegacyFlagAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugMaterial? Material
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("Material");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetMaterialAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaterial(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
     {
-        Material = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetMaterialAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
@@ -172,64 +107,34 @@ public abstract class CSceneVehicleCarMarksModelSubBuilderBase<TSelf> where TSel
         state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetMaterialReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public float SampleMinDist
-    {
-        get => state.Get<float>("SampleMinDist");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetSampleMinDistAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithSampleMinDist(float value)
     {
-        SampleMinDist = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetSampleMinDistAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float TexVPerMeter
-    {
-        get => state.Get<float>("TexVPerMeter");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetTexVPerMeterAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTexVPerMeter(float value)
     {
-        TexVPerMeter = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetTexVPerMeterAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float Width
-    {
-        get => state.Get<float>("Width");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetWidthAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithWidth(float value)
     {
-        Width = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetWidthAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float WidthCoefForceX
-    {
-        get => state.Get<float>("WidthCoefForceX");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetWidthCoefForceXAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithWidthCoefForceX(float value)
     {
-        WidthCoefForceX = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetWidthCoefForceXAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float WidthCoefForceZ
-    {
-        get => state.Get<float>("WidthCoefForceZ");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetWidthCoefForceZAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithWidthCoefForceZ(float value)
     {
-        WidthCoefForceZ = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetWidthCoefForceZAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float WidthMax
-    {
-        get => state.Get<float>("WidthMax");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetWidthMaxAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithWidthMax(float value)
     {
-        WidthMax = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetWidthMaxAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -241,13 +146,6 @@ public partial class CSceneVehicleCarMarksModelSubBuilder : CSceneVehicleCarMark
         var chunk0A082003 = new global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub.Chunk0A082003();
         node.Chunks.Add(chunk0A082003);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub.Chunk0A082003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A082003 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub node, GameVersion game)
-    {
     }
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -267,14 +165,9 @@ public partial class CSceneVehicleCarMarksModelSubBuilder : CSceneVehicleCarMark
             var node = CSceneVehicleCarMarksModelSubBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CSceneVehicleCarMarksModelSubBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CSceneVehicleCarMarksModelSubBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub node);
     }
     public partial class MP4 : CSceneVehicleCarMarksModelSubBuilderBase<MP4>
     {
@@ -289,14 +182,9 @@ public partial class CSceneVehicleCarMarksModelSubBuilder : CSceneVehicleCarMark
             var node = CSceneVehicleCarMarksModelSubBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CSceneVehicleCarMarksModelSubBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CSceneVehicleCarMarksModelSubBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub node);
     }
     public partial class TM2020 : CSceneVehicleCarMarksModelSubBuilderBase<TM2020>
     {
@@ -311,13 +199,8 @@ public partial class CSceneVehicleCarMarksModelSubBuilder : CSceneVehicleCarMark
             var node = CSceneVehicleCarMarksModelSubBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CSceneVehicleCarMarksModelSubBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CSceneVehicleCarMarksModelSubBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub node);
     }
 }

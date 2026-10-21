@@ -36,186 +36,101 @@ public abstract class CGameCtnMediaBlockCameraGameBuilderBase<TSelf> where TSelf
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame> state;
     private protected CGameCtnMediaBlockCameraGameBuilderBase() => state = new();
     private protected CGameCtnMediaBlockCameraGameBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame> state) => this.state = state;
-    public int ClipEntId
-    {
-        get => state.Get<int>("ClipEntId");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetClipEntIdAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithClipEntId(int value)
     {
-        ClipEntId = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetClipEntIdAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public TimeSingle End
-    {
-        get => state.Get<TimeSingle>("End");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithEnd(TimeSingle value)
     {
-        End = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public TimeSingle Start
-    {
-        get => state.Get<TimeSingle>("Start");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithStart(TimeSingle value)
     {
-        Start = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnMediaBlockCameraGameBuilderMembers1<TSelf> : CGameCtnMediaBlockCameraGameBuilderBase<TSelf> where TSelf : CGameCtnMediaBlockCameraGameBuilderMembers1<TSelf>
 {
     private protected CGameCtnMediaBlockCameraGameBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame> state) : base(state) { }
-    public global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame.EGameCamOld? GameCamOld
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame.EGameCamOld?>("GameCamOld");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetGameCamOldAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithGameCamOld(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame.EGameCamOld? value)
     {
-        GameCamOld = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetGameCamOldAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnMediaBlockCameraGameBuilderMembers2<TSelf> : CGameCtnMediaBlockCameraGameBuilderBase<TSelf> where TSelf : CGameCtnMediaBlockCameraGameBuilderMembers2<TSelf>
 {
     private protected CGameCtnMediaBlockCameraGameBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame> state) : base(state) { }
-    public float CamFarClipPlane
-    {
-        get => state.Get<float>("CamFarClipPlane");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetCamFarClipPlaneAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithCamFarClipPlane(float value)
     {
-        CamFarClipPlane = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetCamFarClipPlaneAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float CamFov
-    {
-        get => state.Get<float>("CamFov");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetCamFovAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCamFov(float value)
     {
-        CamFov = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetCamFovAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float CamNearClipPlane
-    {
-        get => state.Get<float>("CamNearClipPlane");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetCamNearClipPlaneAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCamNearClipPlane(float value)
     {
-        CamNearClipPlane = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetCamNearClipPlaneAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public Vec3 CamPitchYawRoll
-    {
-        get => state.Get<Vec3>("CamPitchYawRoll");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetCamPitchYawRollAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCamPitchYawRoll(Vec3 value)
     {
-        CamPitchYawRoll = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetCamPitchYawRollAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public Vec3 CamPosition
-    {
-        get => state.Get<Vec3>("CamPosition");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetCamPositionAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCamPosition(Vec3 value)
     {
-        CamPosition = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetCamPositionAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float CrossHairSizeScale
-    {
-        get => state.Get<float>("CrossHairSizeScale");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetCrossHairSizeScaleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCrossHairSizeScale(float value)
     {
-        CrossHairSizeScale = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetCrossHairSizeScaleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float FocusZ
-    {
-        get => state.Get<float>("FocusZ");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetFocusZAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFocusZ(float value)
     {
-        FocusZ = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetFocusZAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame.EGameCam GameCam
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame.EGameCam>("GameCam");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetGameCamAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGameCam(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame.EGameCam value)
     {
-        GameCam = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetGameCamAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float LensSize
-    {
-        get => state.Get<float>("LensSize");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetLensSizeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLensSize(float value)
     {
-        LensSize = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetLensSizeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool ShowCrossHair
-    {
-        get => state.Get<bool>("ShowCrossHair");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetShowCrossHairAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithShowCrossHair(bool value)
     {
-        ShowCrossHair = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetShowCrossHairAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool ShowHUD
-    {
-        get => state.Get<bool>("ShowHUD");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetShowHUDAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithShowHUD(bool value)
     {
-        ShowHUD = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetShowHUDAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool ShowPing
-    {
-        get => state.Get<bool>("ShowPing");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetShowPingAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithShowPing(bool value)
     {
-        ShowPing = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetShowPingAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnMediaBlockCameraGameBuilderMembers3<TSelf> : CGameCtnMediaBlockCameraGameBuilderMembers2<TSelf> where TSelf : CGameCtnMediaBlockCameraGameBuilderMembers3<TSelf>
 {
     private protected CGameCtnMediaBlockCameraGameBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame> state) : base(state) { }
-    public int LegacySceneUId
-    {
-        get => state.Get<int>("LegacySceneUId");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetLegacySceneUIdAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithLegacySceneUId(int value)
     {
-        LegacySceneUId = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetLegacySceneUIdAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
 }
@@ -228,20 +143,12 @@ public partial class CGameCtnMediaBlockCameraGameBuilder : CGameCtnMediaBlockCam
         node.Chunks.Add(chunk03084001);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame.Chunk03084001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03084001 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame();
         var chunk03084003 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame.Chunk03084003();
         node.Chunks.Add(chunk03084003);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame.Chunk03084003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03084003 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame CreateRecipe2(GameVersion game)
     {
@@ -250,23 +157,12 @@ public partial class CGameCtnMediaBlockCameraGameBuilder : CGameCtnMediaBlockCam
         node.Chunks.Add(chunk03084007);
         return node;
     }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame.Chunk03084007>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk03084007 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame();
         var chunk03084007 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame.Chunk03084007(game);
         node.Chunks.Add(chunk03084007);
         return node;
-    }
-    private static void ValidateRecipe3(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame.Chunk03084007>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk03084007 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame node, GameVersion game)
-    {
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
@@ -286,14 +182,9 @@ public partial class CGameCtnMediaBlockCameraGameBuilder : CGameCtnMediaBlockCam
             var node = CGameCtnMediaBlockCameraGameBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CGameCtnMediaBlockCameraGameBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CGameCtnMediaBlockCameraGameBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame node);
     }
     public partial class TMNESWC : CGameCtnMediaBlockCameraGameBuilderMembers1<TMNESWC>
     {
@@ -304,14 +195,9 @@ public partial class CGameCtnMediaBlockCameraGameBuilder : CGameCtnMediaBlockCam
             var node = CGameCtnMediaBlockCameraGameBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CGameCtnMediaBlockCameraGameBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CGameCtnMediaBlockCameraGameBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame node);
     }
     public partial class VSK5 : CGameCtnMediaBlockCameraGameBuilderMembers1<VSK5>
     {
@@ -322,26 +208,16 @@ public partial class CGameCtnMediaBlockCameraGameBuilder : CGameCtnMediaBlockCam
             var node = CGameCtnMediaBlockCameraGameBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CGameCtnMediaBlockCameraGameBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CGameCtnMediaBlockCameraGameBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame node);
     }
     public partial class TMF : CGameCtnMediaBlockCameraGameBuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame> state) : base(state) { }
-        public string? GameCamId
-        {
-            get => state.Get<string?>("GameCamId");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetGameCamIdAssignment(), value, GameVersion.TMF);
-        }
         public TMF WithGameCamId(string? value)
         {
-            GameCamId = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetGameCamIdAssignment(), value, GameVersion.TMF);
             return this;
         }
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraGameTMF BuildInterface() => Build();
@@ -350,14 +226,9 @@ public partial class CGameCtnMediaBlockCameraGameBuilder : CGameCtnMediaBlockCam
             var node = CGameCtnMediaBlockCameraGameBuilder.CreateRecipe1(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CGameCtnMediaBlockCameraGameBuilder.ValidateRecipe1(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CGameCtnMediaBlockCameraGameBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame node);
     }
     public partial class TMT : CGameCtnMediaBlockCameraGameBuilderMembers2<TMT>
     {
@@ -368,14 +239,9 @@ public partial class CGameCtnMediaBlockCameraGameBuilder : CGameCtnMediaBlockCam
             var node = CGameCtnMediaBlockCameraGameBuilder.CreateRecipe2(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameCtnMediaBlockCameraGameBuilder.ValidateRecipe2(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameCtnMediaBlockCameraGameBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame node);
     }
     public partial class MP4 : CGameCtnMediaBlockCameraGameBuilderMembers3<MP4>
     {
@@ -386,14 +252,9 @@ public partial class CGameCtnMediaBlockCameraGameBuilder : CGameCtnMediaBlockCam
             var node = CGameCtnMediaBlockCameraGameBuilder.CreateRecipe3(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameCtnMediaBlockCameraGameBuilder.ValidateRecipe3(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameCtnMediaBlockCameraGameBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame node);
     }
     public partial class TM2020 : CGameCtnMediaBlockCameraGameBuilderMembers3<TM2020>
     {
@@ -404,13 +265,8 @@ public partial class CGameCtnMediaBlockCameraGameBuilder : CGameCtnMediaBlockCam
             var node = CGameCtnMediaBlockCameraGameBuilder.CreateRecipe3(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameCtnMediaBlockCameraGameBuilder.ValidateRecipe3(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameCtnMediaBlockCameraGameBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame node);
     }
 }

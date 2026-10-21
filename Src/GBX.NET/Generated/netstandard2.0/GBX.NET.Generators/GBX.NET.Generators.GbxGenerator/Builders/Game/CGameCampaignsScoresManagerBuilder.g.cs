@@ -36,14 +36,9 @@ public abstract class CGameCampaignsScoresManagerBuilderBase<TSelf> where TSelf 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCampaignsScoresManager> state;
     private protected CGameCampaignsScoresManagerBuilderBase() => state = new();
     private protected CGameCampaignsScoresManagerBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCampaignsScoresManager> state) => this.state = state;
-    public NodeRefList<global::GBX.NET.Engines.Game.CGameCampaignScores>? CampaignScores
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameCampaignScores>?>("CampaignScores");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCampaignsScoresManagerBuilderAssignments.GetCampaignScoresAssignment(), value, GameVersion.MP3 | GameVersion.TMF);
-    }
     public TSelf WithCampaignScores(NodeRefList<global::GBX.NET.Engines.Game.CGameCampaignScores>? value)
     {
-        CampaignScores = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCampaignsScoresManagerBuilderAssignments.GetCampaignScoresAssignment(), value, GameVersion.MP3 | GameVersion.TMF);
         return (TSelf)this;
     }
     public TSelf WithCampaignScores(params global::GBX.NET.Engines.Game.CGameCampaignScores[] values)
@@ -54,14 +49,9 @@ public abstract class CGameCampaignsScoresManagerBuilderBase<TSelf> where TSelf 
     {
         return WithCampaignScores(values.ToArray());
     }
-    public NodeRefList<global::GBX.NET.Engines.Game.CGameChallengeScores>? ChallengeScores
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameChallengeScores>?>("ChallengeScores");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCampaignsScoresManagerBuilderAssignments.GetChallengeScoresAssignment(), value, GameVersion.MP3 | GameVersion.TMF);
-    }
     public TSelf WithChallengeScores(NodeRefList<global::GBX.NET.Engines.Game.CGameChallengeScores>? value)
     {
-        ChallengeScores = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCampaignsScoresManagerBuilderAssignments.GetChallengeScoresAssignment(), value, GameVersion.MP3 | GameVersion.TMF);
         return (TSelf)this;
     }
     public TSelf WithChallengeScores(params global::GBX.NET.Engines.Game.CGameChallengeScores[] values)
@@ -72,14 +62,9 @@ public abstract class CGameCampaignsScoresManagerBuilderBase<TSelf> where TSelf 
     {
         return WithChallengeScores(values.ToArray());
     }
-    public global::GBX.NET.Engines.Game.CGameGeneralScores? GeneralScores
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameGeneralScores?>("GeneralScores");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCampaignsScoresManagerBuilderAssignments.GetGeneralScoresAssignment(), value, GameVersion.MP3 | GameVersion.TMF);
-    }
     public TSelf WithGeneralScores(global::GBX.NET.Engines.Game.CGameGeneralScores? value)
     {
-        GeneralScores = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCampaignsScoresManagerBuilderAssignments.GetGeneralScoresAssignment(), value, GameVersion.MP3 | GameVersion.TMF);
         return (TSelf)this;
     }
     public TSelf WithGeneralScoresReference(NodeRef<global::GBX.NET.Engines.Game.CGameGeneralScores> value)
@@ -88,14 +73,9 @@ public abstract class CGameCampaignsScoresManagerBuilderBase<TSelf> where TSelf 
         state.Set(global::GBX.NET.Builders.Engines.Game.CGameCampaignsScoresManagerBuilderAssignments.GetGeneralScoresReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TMF);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Game.CGameSkillScoreComputer? SkillScoreComputer
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameSkillScoreComputer?>("SkillScoreComputer");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCampaignsScoresManagerBuilderAssignments.GetSkillScoreComputerAssignment(), value, GameVersion.MP3 | GameVersion.TMF);
-    }
     public TSelf WithSkillScoreComputer(global::GBX.NET.Engines.Game.CGameSkillScoreComputer? value)
     {
-        SkillScoreComputer = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCampaignsScoresManagerBuilderAssignments.GetSkillScoreComputerAssignment(), value, GameVersion.MP3 | GameVersion.TMF);
         return (TSelf)this;
     }
     public TSelf WithSkillScoreComputerReference(NodeRef<global::GBX.NET.Engines.Game.CGameSkillScoreComputer> value)
@@ -114,10 +94,6 @@ public partial class CGameCampaignsScoresManagerBuilder : CGameCampaignsScoresMa
         node.Chunks.Add(chunk03061000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCampaignsScoresManager node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCampaignsScoresManager.Chunk03061000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03061000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameCampaignsScoresManager CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCampaignsScoresManager();
@@ -126,14 +102,6 @@ public partial class CGameCampaignsScoresManagerBuilder : CGameCampaignsScoresMa
         var chunk03061001 = new global::GBX.NET.Engines.Game.CGameCampaignsScoresManager.Chunk03061001();
         node.Chunks.Add(chunk03061001);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameCampaignsScoresManager node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCampaignsScoresManager.Chunk03061000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03061000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCampaignsScoresManager.Chunk03061001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03061001 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCampaignsScoresManager node, GameVersion game)
-    {
     }
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -170,14 +138,9 @@ public partial class CGameCampaignsScoresManagerBuilder : CGameCampaignsScoresMa
             var node = CGameCampaignsScoresManagerBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CGameCampaignsScoresManagerBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CGameCampaignsScoresManagerBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCampaignsScoresManager node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCampaignsScoresManager node);
     }
     public partial class MP3 : CGameCampaignsScoresManagerBuilderBase<MP3>
     {
@@ -212,13 +175,8 @@ public partial class CGameCampaignsScoresManagerBuilder : CGameCampaignsScoresMa
             var node = CGameCampaignsScoresManagerBuilder.CreateRecipe1(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CGameCampaignsScoresManagerBuilder.ValidateRecipe1(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CGameCampaignsScoresManagerBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCampaignsScoresManager node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCampaignsScoresManager node);
     }
 }

@@ -36,47 +36,47 @@ public partial class CPlugVehicleVisModelShared : global::GBX.NET.Interfaces.Plu
     public static global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelSharedBuilder Create() => new();
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelVSK5>? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers2<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelVSK5>.VehicleEmitters
     {
-        get => VehicleEmitters is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelVSK5>(GetVehicleEmittersBuilderReferences, GameVersion.VSK5, true, "VehicleEmitters");
+        get => VehicleEmitters is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelVSK5>(GetVehicleEmittersBuilderReferences, true, "VehicleEmitters");
         set => VehicleEmitters = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelVSK5>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupVSK5>? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers3<global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupVSK5>.VehicleMaterialGroups
     {
-        get => VehicleMaterialGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupVSK5>(GetVehicleMaterialGroupsBuilderReferences, GameVersion.VSK5, true, "VehicleMaterialGroups");
+        get => VehicleMaterialGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupVSK5>(GetVehicleMaterialGroupsBuilderReferences, true, "VehicleMaterialGroups");
         set => VehicleMaterialGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupVSK5>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelTMF>? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers2<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelTMF>.VehicleEmitters
     {
-        get => VehicleEmitters is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelTMF>(GetVehicleEmittersBuilderReferences, GameVersion.TMF, true, "VehicleEmitters");
+        get => VehicleEmitters is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelTMF>(GetVehicleEmittersBuilderReferences, true, "VehicleEmitters");
         set => VehicleEmitters = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelTMF>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupTMF>? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers3<global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupTMF>.VehicleMaterialGroups
     {
-        get => VehicleMaterialGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupTMF>(GetVehicleMaterialGroupsBuilderReferences, GameVersion.TMF, true, "VehicleMaterialGroups");
+        get => VehicleMaterialGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupTMF>(GetVehicleMaterialGroupsBuilderReferences, true, "VehicleMaterialGroups");
         set => VehicleMaterialGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupTMF>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMP3>? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers2<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMP3>.VehicleEmitters
     {
-        get => VehicleEmitters is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMP3>(GetVehicleEmittersBuilderReferences, GameVersion.MP3, true, "VehicleEmitters");
+        get => VehicleEmitters is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMP3>(GetVehicleEmittersBuilderReferences, true, "VehicleEmitters");
         set => VehicleEmitters = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMP3>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupMP3>? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers3<global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupMP3>.VehicleMaterialGroups
     {
-        get => VehicleMaterialGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupMP3>(GetVehicleMaterialGroupsBuilderReferences, GameVersion.MP3, true, "VehicleMaterialGroups");
+        get => VehicleMaterialGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupMP3>(GetVehicleMaterialGroupsBuilderReferences, true, "VehicleMaterialGroups");
         set => VehicleMaterialGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupMP3>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupTMT>? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers3<global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupTMT>.VehicleMaterialGroups
     {
-        get => VehicleMaterialGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupTMT>(GetVehicleMaterialGroupsBuilderReferences, GameVersion.TMT, true, "VehicleMaterialGroups");
+        get => VehicleMaterialGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupTMT>(GetVehicleMaterialGroupsBuilderReferences, true, "VehicleMaterialGroups");
         set => VehicleMaterialGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupTMT>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupMP4>? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers3<global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupMP4>.VehicleMaterialGroups
     {
-        get => VehicleMaterialGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupMP4>(GetVehicleMaterialGroupsBuilderReferences, GameVersion.MP4, true, "VehicleMaterialGroups");
+        get => VehicleMaterialGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupMP4>(GetVehicleMaterialGroupsBuilderReferences, true, "VehicleMaterialGroups");
         set => VehicleMaterialGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupMP4>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupTM2020>? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers3<global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupTM2020>.VehicleMaterialGroups
     {
-        get => VehicleMaterialGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupTM2020>(GetVehicleMaterialGroupsBuilderReferences, GameVersion.TM2020, true, "VehicleMaterialGroups");
+        get => VehicleMaterialGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupTM2020>(GetVehicleMaterialGroupsBuilderReferences, true, "VehicleMaterialGroups");
         set => VehicleMaterialGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupTM2020>(value, false));
     }
     private NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel>? GetVehicleEmittersBuilderReferences() => VehicleEmitters;

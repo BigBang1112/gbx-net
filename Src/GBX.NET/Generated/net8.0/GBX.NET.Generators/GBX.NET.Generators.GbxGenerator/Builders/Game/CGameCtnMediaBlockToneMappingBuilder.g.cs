@@ -36,14 +36,9 @@ public abstract class CGameCtnMediaBlockToneMappingBuilderBase<TSelf> where TSel
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockToneMapping> state;
     private protected CGameCtnMediaBlockToneMappingBuilderBase() => state = new();
     private protected CGameCtnMediaBlockToneMappingBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockToneMapping> state) => this.state = state;
-    public List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockToneMapping.Key>? Keys
-    {
-        get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockToneMapping.Key>?>("Keys");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockToneMappingBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockToneMapping.Key>? value)
     {
-        Keys = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockToneMappingBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithKeys(params global::GBX.NET.Engines.Game.CGameCtnMediaBlockToneMapping.Key[] values)
@@ -64,13 +59,6 @@ public partial class CGameCtnMediaBlockToneMappingBuilder : CGameCtnMediaBlockTo
         node.Chunks.Add(chunk03127004);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockToneMapping node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockToneMapping.Chunk03127004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03127004 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockToneMapping node, GameVersion game)
-    {
-    }
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -85,14 +73,9 @@ public partial class CGameCtnMediaBlockToneMappingBuilder : CGameCtnMediaBlockTo
             var node = CGameCtnMediaBlockToneMappingBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameCtnMediaBlockToneMappingBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameCtnMediaBlockToneMappingBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockToneMapping node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockToneMapping node);
     }
     public partial class MP4 : CGameCtnMediaBlockToneMappingBuilderBase<MP4>
     {
@@ -103,14 +86,9 @@ public partial class CGameCtnMediaBlockToneMappingBuilder : CGameCtnMediaBlockTo
             var node = CGameCtnMediaBlockToneMappingBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameCtnMediaBlockToneMappingBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameCtnMediaBlockToneMappingBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockToneMapping node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockToneMapping node);
     }
     public partial class TM2020 : CGameCtnMediaBlockToneMappingBuilderBase<TM2020>
     {
@@ -121,13 +99,8 @@ public partial class CGameCtnMediaBlockToneMappingBuilder : CGameCtnMediaBlockTo
             var node = CGameCtnMediaBlockToneMappingBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameCtnMediaBlockToneMappingBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameCtnMediaBlockToneMappingBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockToneMapping node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockToneMapping node);
     }
 }

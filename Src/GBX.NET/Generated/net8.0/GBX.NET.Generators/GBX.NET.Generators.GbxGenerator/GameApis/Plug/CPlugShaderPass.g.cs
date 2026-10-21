@@ -36,32 +36,32 @@ public partial class CPlugShaderPass : global::GBX.NET.Interfaces.Plug.IPlugShad
     public static global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilder Create() => new();
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMSX>? global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers5<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMSX>.VertexTextures
     {
-        get => VertexTextures is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMSX>(GetVertexTexturesBuilderReferences, GameVersion.TMSX, true, "VertexTextures");
+        get => VertexTextures is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMSX>(GetVertexTexturesBuilderReferences, true, "VertexTextures");
         set => VertexTextures = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMSX>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMNESWC>? global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers5<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMNESWC>.VertexTextures
     {
-        get => VertexTextures is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMNESWC>(GetVertexTexturesBuilderReferences, GameVersion.TMNESWC, true, "VertexTextures");
+        get => VertexTextures is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMNESWC>(GetVertexTexturesBuilderReferences, true, "VertexTextures");
         set => VertexTextures = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMNESWC>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerVSK5>? global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers5<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerVSK5>.VertexTextures
     {
-        get => VertexTextures is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerVSK5>(GetVertexTexturesBuilderReferences, GameVersion.VSK5, true, "VertexTextures");
+        get => VertexTextures is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerVSK5>(GetVertexTexturesBuilderReferences, true, "VertexTextures");
         set => VertexTextures = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerVSK5>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMF>? global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers5<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMF>.VertexTextures
     {
-        get => VertexTextures is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMF>(GetVertexTexturesBuilderReferences, GameVersion.TMF, true, "VertexTextures");
+        get => VertexTextures is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMF>(GetVertexTexturesBuilderReferences, true, "VertexTextures");
         set => VertexTextures = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMF>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMT>? global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers5<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMT>.VertexTextures
     {
-        get => VertexTextures is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMT>(GetVertexTexturesBuilderReferences, GameVersion.TMT, true, "VertexTextures");
+        get => VertexTextures is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMT>(GetVertexTexturesBuilderReferences, true, "VertexTextures");
         set => VertexTextures = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMT>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMP4>? global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers5<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMP4>.VertexTextures
     {
-        get => VertexTextures is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMP4>(GetVertexTexturesBuilderReferences, GameVersion.MP4, true, "VertexTextures");
+        get => VertexTextures is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMP4>(GetVertexTexturesBuilderReferences, true, "VertexTextures");
         set => VertexTextures = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMP4>(value, false));
     }
     private NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>? GetVertexTexturesBuilderReferences() => VertexTextures;

@@ -41,192 +41,117 @@ public partial class CGameCtnBlockInfoMobil : global::GBX.NET.Interfaces.Game.IG
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnSolidDecals>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobil.SolidDecals
     {
-        get => SolidDecals is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnSolidDecals, global::GBX.NET.Interfaces.Game.IGameCtnSolidDecals>(GetSolidDecalsBuilderReferences, GameVersion.Unspecified, true, "SolidDecals");
+        get => SolidDecals is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnSolidDecals, global::GBX.NET.Interfaces.Game.IGameCtnSolidDecals>(GetSolidDecalsBuilderReferences, true, "SolidDecals");
         set => SolidDecals = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnSolidDecals>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnSolidDecals, global::GBX.NET.Interfaces.Game.IGameCtnSolidDecals>(value, false));
     }
     global::GBX.NET.Interfaces.Scene.ISceneMobilMP3? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobilMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilMP3, global::GBX.NET.Interfaces.Game.IGameCtnSolidDecalsMP3>.OldMobil
     {
-        get
-        {
-            var node = OldMobil;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => OldMobil;
         set => OldMobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnSolidDecalsMP3>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobilMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilMP3, global::GBX.NET.Interfaces.Game.IGameCtnSolidDecalsMP3>.SolidDecals
     {
-        get => SolidDecals is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnSolidDecals, global::GBX.NET.Interfaces.Game.IGameCtnSolidDecalsMP3>(GetSolidDecalsBuilderReferences, GameVersion.MP3, true, "SolidDecals");
+        get => SolidDecals is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnSolidDecals, global::GBX.NET.Interfaces.Game.IGameCtnSolidDecalsMP3>(GetSolidDecalsBuilderReferences, true, "SolidDecals");
         set => SolidDecals = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnSolidDecals>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnSolidDecals, global::GBX.NET.Interfaces.Game.IGameCtnSolidDecalsMP3>(value, false));
     }
     global::GBX.NET.Interfaces.Scene.ISceneMobilTMT? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobilMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTMT, global::GBX.NET.Interfaces.Game.IGameCtnSolidDecalsTMT>.OldMobil
     {
-        get
-        {
-            var node = OldMobil;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => OldMobil;
         set => OldMobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolidTMT? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobilMembers3<global::GBX.NET.Interfaces.Plug.IPlugSolidTMT>.OldSolidAggreg
     {
-        get
-        {
-            var node = OldSolidAggreg;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => OldSolidAggreg;
         set => OldSolidAggreg = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnSolidDecalsTMT>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobilMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTMT, global::GBX.NET.Interfaces.Game.IGameCtnSolidDecalsTMT>.SolidDecals
     {
-        get => SolidDecals is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnSolidDecals, global::GBX.NET.Interfaces.Game.IGameCtnSolidDecalsTMT>(GetSolidDecalsBuilderReferences, GameVersion.TMT, true, "SolidDecals");
+        get => SolidDecals is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnSolidDecals, global::GBX.NET.Interfaces.Game.IGameCtnSolidDecalsTMT>(GetSolidDecalsBuilderReferences, true, "SolidDecals");
         set => SolidDecals = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnSolidDecals>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnSolidDecals, global::GBX.NET.Interfaces.Game.IGameCtnSolidDecalsTMT>(value, false));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolidTMT? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobilMembers3<global::GBX.NET.Interfaces.Plug.IPlugSolidTMT>.SolidFid
     {
-        get
-        {
-            var node = SolidFid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => SolidFid;
         set => SolidFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Scene.ISceneMobilMP4? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobilMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilMP4, global::GBX.NET.Interfaces.Game.IGameCtnSolidDecalsMP4>.OldMobil
     {
-        get
-        {
-            var node = OldMobil;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => OldMobil;
         set => OldMobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolidMP4? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobilMembers3<global::GBX.NET.Interfaces.Plug.IPlugSolidMP4>.OldSolidAggreg
     {
-        get
-        {
-            var node = OldSolidAggreg;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => OldSolidAggreg;
         set => OldSolidAggreg = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugPathMP4? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobilMembers2<global::GBX.NET.Interfaces.Plug.IPlugPathMP4>.RailPath
     {
-        get
-        {
-            var node = RailPath;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => RailPath;
         set => RailPath = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugPath node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnSolidDecalsMP4>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobilMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilMP4, global::GBX.NET.Interfaces.Game.IGameCtnSolidDecalsMP4>.SolidDecals
     {
-        get => SolidDecals is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnSolidDecals, global::GBX.NET.Interfaces.Game.IGameCtnSolidDecalsMP4>(GetSolidDecalsBuilderReferences, GameVersion.MP4, true, "SolidDecals");
+        get => SolidDecals is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnSolidDecals, global::GBX.NET.Interfaces.Game.IGameCtnSolidDecalsMP4>(GetSolidDecalsBuilderReferences, true, "SolidDecals");
         set => SolidDecals = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnSolidDecals>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnSolidDecals, global::GBX.NET.Interfaces.Game.IGameCtnSolidDecalsMP4>(value, false));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolidMP4? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobilMembers3<global::GBX.NET.Interfaces.Plug.IPlugSolidMP4>.SolidFid
     {
-        get
-        {
-            var node = SolidFid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => SolidFid;
         set => SolidFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugPathMP4? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobilMP4.TrafficPath
     {
-        get
-        {
-            var node = TrafficPath;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => TrafficPath;
         set => TrafficPath = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugPath node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugRoadChunkCitizenTM2020>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobilTM2020.CitizenRoadChunks
     {
-        get => CitizenRoadChunks is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugRoadChunkCitizen, global::GBX.NET.Interfaces.Plug.IPlugRoadChunkCitizenTM2020>(GetCitizenRoadChunksBuilderReferences, GameVersion.TM2020, true, "CitizenRoadChunks");
+        get => CitizenRoadChunks is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugRoadChunkCitizen, global::GBX.NET.Interfaces.Plug.IPlugRoadChunkCitizenTM2020>(GetCitizenRoadChunksBuilderReferences, true, "CitizenRoadChunks");
         set => CitizenRoadChunks = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugRoadChunkCitizen>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugRoadChunkCitizen, global::GBX.NET.Interfaces.Plug.IPlugRoadChunkCitizenTM2020>(value, false));
     }
     global::GBX.NET.Interfaces.Scene.ISceneMobilTM2020? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobilMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTM2020, global::GBX.NET.Interfaces.Game.IGameCtnSolidDecalsTM2020>.OldMobil
     {
-        get
-        {
-            var node = OldMobil;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => OldMobil;
         set => OldMobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobilMembers3<global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020>.OldSolidAggreg
     {
-        get
-        {
-            var node = OldSolidAggreg;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => OldSolidAggreg;
         set => OldSolidAggreg = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugPlacementPatchTM2020>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobilTM2020.PlacementPatches
     {
-        get => PlacementPatches is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugPlacementPatch, global::GBX.NET.Interfaces.Plug.IPlugPlacementPatchTM2020>(GetPlacementPatchesBuilderReferences, GameVersion.TM2020, true, "PlacementPatches");
+        get => PlacementPatches is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugPlacementPatch, global::GBX.NET.Interfaces.Plug.IPlugPlacementPatchTM2020>(GetPlacementPatchesBuilderReferences, true, "PlacementPatches");
         set => PlacementPatches = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugPlacementPatch>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugPlacementPatch, global::GBX.NET.Interfaces.Plug.IPlugPlacementPatchTM2020>(value, false));
     }
     global::GBX.NET.Interfaces.Plug.IPlugPathTM2020? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobilMembers2<global::GBX.NET.Interfaces.Plug.IPlugPathTM2020>.RailPath
     {
-        get
-        {
-            var node = RailPath;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => RailPath;
         set => RailPath = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugPath node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugRecastPolyMeshDataTM2020? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobilTM2020.RecastPolyMeshData
     {
-        get
-        {
-            var node = RecastPolyMeshData;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => RecastPolyMeshData;
         set => RecastPolyMeshData = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugRoadChunkTrafficTM2020>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobilTM2020.RoadChunks
     {
-        get => RoadChunks is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugRoadChunkTraffic, global::GBX.NET.Interfaces.Plug.IPlugRoadChunkTrafficTM2020>(GetRoadChunksBuilderReferences, GameVersion.TM2020, true, "RoadChunks");
+        get => RoadChunks is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugRoadChunkTraffic, global::GBX.NET.Interfaces.Plug.IPlugRoadChunkTrafficTM2020>(GetRoadChunksBuilderReferences, true, "RoadChunks");
         set => RoadChunks = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugRoadChunkTraffic>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugRoadChunkTraffic, global::GBX.NET.Interfaces.Plug.IPlugRoadChunkTrafficTM2020>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnSolidDecalsTM2020>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobilMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTM2020, global::GBX.NET.Interfaces.Game.IGameCtnSolidDecalsTM2020>.SolidDecals
     {
-        get => SolidDecals is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnSolidDecals, global::GBX.NET.Interfaces.Game.IGameCtnSolidDecalsTM2020>(GetSolidDecalsBuilderReferences, GameVersion.TM2020, true, "SolidDecals");
+        get => SolidDecals is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnSolidDecals, global::GBX.NET.Interfaces.Game.IGameCtnSolidDecalsTM2020>(GetSolidDecalsBuilderReferences, true, "SolidDecals");
         set => SolidDecals = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnSolidDecals>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnSolidDecals, global::GBX.NET.Interfaces.Game.IGameCtnSolidDecalsTM2020>(value, false));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobilMembers3<global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020>.SolidFid
     {
-        get
-        {
-            var node = SolidFid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => SolidFid;
         set => SolidFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugVFXFileTM2020? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobilTM2020.VFXs
     {
-        get
-        {
-            var node = VFXs;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => VFXs;
         set => VFXs = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVFXFile node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     private NodeRefList<global::GBX.NET.Engines.Plug.CPlugRoadChunkCitizen>? GetCitizenRoadChunksBuilderReferences() => CitizenRoadChunks;

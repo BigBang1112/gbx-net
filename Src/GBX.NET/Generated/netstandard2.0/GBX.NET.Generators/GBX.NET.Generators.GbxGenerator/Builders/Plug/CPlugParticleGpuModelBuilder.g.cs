@@ -36,14 +36,9 @@ public abstract class CPlugParticleGpuModelBuilderBase<TSelf> where TSelf : CPlu
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel> state;
     private protected CPlugParticleGpuModelBuilderBase() => state = new();
     private protected CPlugParticleGpuModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel> state) => this.state = state;
-    public global::GBX.NET.Engines.Plug.CPlugBitmap? Bitmap
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("Bitmap");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetBitmapAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithBitmap(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
-        Bitmap = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetBitmapAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithBitmapReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
@@ -52,238 +47,123 @@ public abstract class CPlugParticleGpuModelBuilderBase<TSelf> where TSelf : CPlu
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetBitmapReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public string? BitmapFile
-    {
-        get => state.Get<string?>("BitmapFile");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetBitmapFileAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithBitmapFile(string? value)
     {
-        BitmapFile = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetBitmapFileAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool BitmapIsFile
-    {
-        get => state.Get<bool>("BitmapIsFile");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetBitmapIsFileAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBitmapIsFile(bool value)
     {
-        BitmapIsFile = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetBitmapIsFileAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float Hue
-    {
-        get => state.Get<float>("Hue");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetHueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithHue(float value)
     {
-        Hue = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetHueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float Intensity
-    {
-        get => state.Get<float>("Intensity");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIntensity(float value)
     {
-        Intensity = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float IntensityFadeIn
-    {
-        get => state.Get<float>("IntensityFadeIn");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetIntensityFadeInAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIntensityFadeIn(float value)
     {
-        IntensityFadeIn = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetIntensityFadeInAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float IntensityFadeOut
-    {
-        get => state.Get<float>("IntensityFadeOut");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetIntensityFadeOutAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIntensityFadeOut(float value)
     {
-        IntensityFadeOut = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetIntensityFadeOutAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float IntensityPower
-    {
-        get => state.Get<float>("IntensityPower");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetIntensityPowerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIntensityPower(float value)
     {
-        IntensityPower = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetIntensityPowerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float IntensityVariation
-    {
-        get => state.Get<float>("IntensityVariation");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetIntensityVariationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIntensityVariation(float value)
     {
-        IntensityVariation = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetIntensityVariationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float LifeMax
-    {
-        get => state.Get<float>("LifeMax");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetLifeMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLifeMax(float value)
     {
-        LifeMax = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetLifeMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float LifeVar01
-    {
-        get => state.Get<float>("LifeVar01");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetLifeVar01Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLifeVar01(float value)
     {
-        LifeVar01 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetLifeVar01Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float Persistence
-    {
-        get => state.Get<float>("Persistence");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetPersistenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithPersistence(float value)
     {
-        Persistence = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetPersistenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float Rotation
-    {
-        get => state.Get<float>("Rotation");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetRotationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRotation(float value)
     {
-        Rotation = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetRotationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float RotationVariation
-    {
-        get => state.Get<float>("RotationVariation");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetRotationVariationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRotationVariation(float value)
     {
-        RotationVariation = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetRotationVariationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float SizeEndScale
-    {
-        get => state.Get<float>("SizeEndScale");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetSizeEndScaleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSizeEndScale(float value)
     {
-        SizeEndScale = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetSizeEndScaleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float SizeMax
-    {
-        get => state.Get<float>("SizeMax");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetSizeMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSizeMax(float value)
     {
-        SizeMax = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetSizeMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float SizeVar01
-    {
-        get => state.Get<float>("SizeVar01");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetSizeVar01Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSizeVar01(float value)
     {
-        SizeVar01 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetSizeVar01Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int TextureAtlasDimX
-    {
-        get => state.Get<int>("TextureAtlasDimX");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetTextureAtlasDimXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTextureAtlasDimX(int value)
     {
-        TextureAtlasDimX = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetTextureAtlasDimXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int TextureAtlasDimY
-    {
-        get => state.Get<int>("TextureAtlasDimY");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetTextureAtlasDimYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTextureAtlasDimY(int value)
     {
-        TextureAtlasDimY = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetTextureAtlasDimYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool UseEmitterHue
-    {
-        get => state.Get<bool>("UseEmitterHue");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetUseEmitterHueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithUseEmitterHue(bool value)
     {
-        UseEmitterHue = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetUseEmitterHueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool UseHueShift
-    {
-        get => state.Get<bool>("UseHueShift");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetUseHueShiftAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithUseHueShift(bool value)
     {
-        UseHueShift = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetUseHueShiftAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float Viscosity
-    {
-        get => state.Get<float>("Viscosity");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetViscosityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithViscosity(float value)
     {
-        Viscosity = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetViscosityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float Weight
-    {
-        get => state.Get<float>("Weight");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetWeightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithWeight(float value)
     {
-        Weight = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetWeightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
 public abstract class CPlugParticleGpuModelBuilderMembers1<TSelf> : CPlugParticleGpuModelBuilderBase<TSelf> where TSelf : CPlugParticleGpuModelBuilderMembers1<TSelf>
 {
     private protected CPlugParticleGpuModelBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel> state) : base(state) { }
-    public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapOverLife
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapOverLife");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetBitmapOverLifeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithBitmapOverLife(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
-        BitmapOverLife = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetBitmapOverLifeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithBitmapOverLifeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
@@ -292,24 +172,14 @@ public abstract class CPlugParticleGpuModelBuilderMembers1<TSelf> : CPlugParticl
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetBitmapOverLifeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
-    public bool UseColorOverLife
-    {
-        get => state.Get<bool>("UseColorOverLife");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetUseColorOverLifeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithUseColorOverLife(bool value)
     {
-        UseColorOverLife = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetUseColorOverLifeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public bool UseEnergyOverLife
-    {
-        get => state.Get<bool>("UseEnergyOverLife");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetUseEnergyOverLifeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithUseEnergyOverLife(bool value)
     {
-        UseEnergyOverLife = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleGpuModelBuilderAssignments.GetUseEnergyOverLifeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
 }
@@ -328,13 +198,6 @@ public partial class CPlugParticleGpuModelBuilder : CPlugParticleGpuModelBuilder
         node.Chunks.Add(chunk090C6003);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugParticleGpuModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel.Chunk090C6000>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C6000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel.Chunk090C6001>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C6001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel.Chunk090C6002>() is not { Version: 7 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C6002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel.Chunk090C6003>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C6003 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugParticleGpuModel CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugParticleGpuModel();
@@ -347,13 +210,6 @@ public partial class CPlugParticleGpuModelBuilder : CPlugParticleGpuModelBuilder
         var chunk090C6003 = new global::GBX.NET.Engines.Plug.CPlugParticleGpuModel.Chunk090C6003(game);
         node.Chunks.Add(chunk090C6003);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugParticleGpuModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel.Chunk090C6000>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C6000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel.Chunk090C6001>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C6001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel.Chunk090C6002>() is not { Version: 7 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C6002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel.Chunk090C6003>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C6003 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Plug.CPlugParticleGpuModel CreateRecipe2(GameVersion game)
     {
@@ -368,13 +224,6 @@ public partial class CPlugParticleGpuModelBuilder : CPlugParticleGpuModelBuilder
         node.Chunks.Add(chunk090C6003);
         return node;
     }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Plug.CPlugParticleGpuModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel.Chunk090C6000>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C6000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel.Chunk090C6001>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C6001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel.Chunk090C6002>() is not { Version: 11 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C6002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel.Chunk090C6003>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C6003 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugParticleGpuModel CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugParticleGpuModel();
@@ -387,16 +236,6 @@ public partial class CPlugParticleGpuModelBuilder : CPlugParticleGpuModelBuilder
         var chunk090C6003 = new global::GBX.NET.Engines.Plug.CPlugParticleGpuModel.Chunk090C6003(game);
         node.Chunks.Add(chunk090C6003);
         return node;
-    }
-    private static void ValidateRecipe3(global::GBX.NET.Engines.Plug.CPlugParticleGpuModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel.Chunk090C6000>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C6000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel.Chunk090C6001>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C6001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel.Chunk090C6002>() is not { Version: 22 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C6002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel.Chunk090C6003>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C6003 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugParticleGpuModel node, GameVersion game)
-    {
     }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -417,14 +256,9 @@ public partial class CPlugParticleGpuModelBuilder : CPlugParticleGpuModelBuilder
             var node = CPlugParticleGpuModelBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CPlugParticleGpuModelBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CPlugParticleGpuModelBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleGpuModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugParticleGpuModel node);
     }
     public partial class TMT : CPlugParticleGpuModelBuilderBase<TMT>
     {
@@ -439,14 +273,9 @@ public partial class CPlugParticleGpuModelBuilder : CPlugParticleGpuModelBuilder
             var node = CPlugParticleGpuModelBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugParticleGpuModelBuilder.ValidateRecipe1(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugParticleGpuModelBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleGpuModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugParticleGpuModel node);
     }
     public partial class MP4 : CPlugParticleGpuModelBuilderMembers1<MP4>
     {
@@ -465,14 +294,9 @@ public partial class CPlugParticleGpuModelBuilder : CPlugParticleGpuModelBuilder
             var node = CPlugParticleGpuModelBuilder.CreateRecipe2(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugParticleGpuModelBuilder.ValidateRecipe2(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugParticleGpuModelBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleGpuModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugParticleGpuModel node);
     }
     public partial class TM2020 : CPlugParticleGpuModelBuilderMembers1<TM2020>
     {
@@ -491,13 +315,8 @@ public partial class CPlugParticleGpuModelBuilder : CPlugParticleGpuModelBuilder
             var node = CPlugParticleGpuModelBuilder.CreateRecipe3(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugParticleGpuModelBuilder.ValidateRecipe3(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugParticleGpuModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleGpuModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugParticleGpuModel node);
     }
 }

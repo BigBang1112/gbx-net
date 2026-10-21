@@ -36,14 +36,9 @@ public abstract class CGameCtnMediaTrackBuilderBase<TSelf> where TSelf : CGameCt
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaTrack> state;
     private protected CGameCtnMediaTrackBuilderBase() => state = new();
     private protected CGameCtnMediaTrackBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaTrack> state) => this.state = state;
-    public global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaBlock> Blocks
-    {
-        get => state.Get<global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaBlock>>("Blocks");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaTrackBuilderAssignments.GetBlocksAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    }
     public TSelf WithBlocks(global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaBlock> value)
     {
-        Blocks = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaTrackBuilderAssignments.GetBlocksAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithBlocks(params global::GBX.NET.Engines.Game.CGameCtnMediaBlock[] values)
@@ -54,68 +49,38 @@ public abstract class CGameCtnMediaTrackBuilderBase<TSelf> where TSelf : CGameCt
     {
         return WithBlocks(values.ToArray());
     }
-    public bool IsKeepPlaying
-    {
-        get => state.Get<bool>("IsKeepPlaying");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaTrackBuilderAssignments.GetIsKeepPlayingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    }
     public TSelf WithIsKeepPlaying(bool value)
     {
-        IsKeepPlaying = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaTrackBuilderAssignments.GetIsKeepPlayingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool IsReadOnly
-    {
-        get => state.Get<bool>("IsReadOnly");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaTrackBuilderAssignments.GetIsReadOnlyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithIsReadOnly(bool value)
     {
-        IsReadOnly = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaTrackBuilderAssignments.GetIsReadOnlyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public string Name
-    {
-        get => state.Get<string>("Name");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaTrackBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithName(string value)
     {
-        Name = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaTrackBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnMediaTrackBuilderMembers1<TSelf> : CGameCtnMediaTrackBuilderBase<TSelf> where TSelf : CGameCtnMediaTrackBuilderMembers1<TSelf>
 {
     private protected CGameCtnMediaTrackBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaTrack> state) : base(state) { }
-    public bool IsCycling
-    {
-        get => state.Get<bool>("IsCycling");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaTrackBuilderAssignments.GetIsCyclingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithIsCycling(bool value)
     {
-        IsCycling = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaTrackBuilderAssignments.GetIsCyclingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public TimeSingle? RepeatingSegmentEnd
-    {
-        get => state.Get<TimeSingle?>("RepeatingSegmentEnd");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaTrackBuilderAssignments.GetRepeatingSegmentEndAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRepeatingSegmentEnd(TimeSingle? value)
     {
-        RepeatingSegmentEnd = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaTrackBuilderAssignments.GetRepeatingSegmentEndAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public TimeSingle? RepeatingSegmentStart
-    {
-        get => state.Get<TimeSingle?>("RepeatingSegmentStart");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaTrackBuilderAssignments.GetRepeatingSegmentStartAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRepeatingSegmentStart(TimeSingle? value)
     {
-        RepeatingSegmentStart = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaTrackBuilderAssignments.GetRepeatingSegmentStartAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -134,13 +99,6 @@ public partial class CGameCtnMediaTrackBuilder : CGameCtnMediaTrackBuilderBase<C
         node.Chunks.Add(chunk24062000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaTrack node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaTrack.Chunk03078001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03078001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaTrack.Chunk03078002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03078002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaTrack.Chunk03078003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03078003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaTrack.Chunk24062000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk24062000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameCtnMediaTrack CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnMediaTrack();
@@ -152,12 +110,6 @@ public partial class CGameCtnMediaTrackBuilder : CGameCtnMediaTrackBuilderBase<C
         node.Chunks.Add(chunk03078003);
         return node;
     }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameCtnMediaTrack node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaTrack.Chunk03078001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03078001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaTrack.Chunk03078002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03078002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaTrack.Chunk03078003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03078003 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameCtnMediaTrack CreateRecipe2(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnMediaTrack();
@@ -167,11 +119,6 @@ public partial class CGameCtnMediaTrackBuilder : CGameCtnMediaTrackBuilderBase<C
         node.Chunks.Add(chunk03078004);
         return node;
     }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Game.CGameCtnMediaTrack node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaTrack.Chunk03078001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03078001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaTrack.Chunk03078004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03078004 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameCtnMediaTrack CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnMediaTrack();
@@ -180,15 +127,6 @@ public partial class CGameCtnMediaTrackBuilder : CGameCtnMediaTrackBuilderBase<C
         var chunk03078005 = new global::GBX.NET.Engines.Game.CGameCtnMediaTrack.Chunk03078005(game);
         node.Chunks.Add(chunk03078005);
         return node;
-    }
-    private static void ValidateRecipe3(global::GBX.NET.Engines.Game.CGameCtnMediaTrack node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaTrack.Chunk03078001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03078001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaTrack.Chunk03078005>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk03078005 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaTrack node, GameVersion game)
-    {
-        if (node.Name is null) throw new MemberNullException("Name");
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
@@ -218,14 +156,9 @@ public partial class CGameCtnMediaTrackBuilder : CGameCtnMediaTrackBuilderBase<C
             var node = CGameCtnMediaTrackBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CGameCtnMediaTrackBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CGameCtnMediaTrackBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaTrack node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaTrack node);
     }
     public partial class TMNESWC : CGameCtnMediaTrackBuilderBase<TMNESWC>
     {
@@ -244,14 +177,9 @@ public partial class CGameCtnMediaTrackBuilder : CGameCtnMediaTrackBuilderBase<C
             var node = CGameCtnMediaTrackBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CGameCtnMediaTrackBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CGameCtnMediaTrackBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaTrack node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaTrack node);
     }
     public partial class TMU : CGameCtnMediaTrackBuilderBase<TMU>
     {
@@ -262,14 +190,9 @@ public partial class CGameCtnMediaTrackBuilder : CGameCtnMediaTrackBuilderBase<C
             var node = CGameCtnMediaTrackBuilder.CreateRecipe1(GameVersion.TMU);
             state.Apply(node, GameVersion.TMU);
             CustomizeNode(node);
-            CGameCtnMediaTrackBuilder.ValidateRecipe1(node, GameVersion.TMU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMU);
-            CGameCtnMediaTrackBuilder.ValidateRequiredMembers(node, GameVersion.TMU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaTrack node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaTrack node);
     }
     public partial class VSK5 : CGameCtnMediaTrackBuilderBase<VSK5>
     {
@@ -288,14 +211,9 @@ public partial class CGameCtnMediaTrackBuilder : CGameCtnMediaTrackBuilderBase<C
             var node = CGameCtnMediaTrackBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CGameCtnMediaTrackBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CGameCtnMediaTrackBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaTrack node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaTrack node);
     }
     public partial class TMF : CGameCtnMediaTrackBuilderBase<TMF>
     {
@@ -314,14 +232,9 @@ public partial class CGameCtnMediaTrackBuilder : CGameCtnMediaTrackBuilderBase<C
             var node = CGameCtnMediaTrackBuilder.CreateRecipe2(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CGameCtnMediaTrackBuilder.ValidateRecipe2(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CGameCtnMediaTrackBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaTrack node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaTrack node);
     }
     public partial class MP3 : CGameCtnMediaTrackBuilderMembers1<MP3>
     {
@@ -340,14 +253,9 @@ public partial class CGameCtnMediaTrackBuilder : CGameCtnMediaTrackBuilderBase<C
             var node = CGameCtnMediaTrackBuilder.CreateRecipe3(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CGameCtnMediaTrackBuilder.ValidateRecipe3(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CGameCtnMediaTrackBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaTrack node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaTrack node);
     }
     public partial class TMT : CGameCtnMediaTrackBuilderMembers1<TMT>
     {
@@ -366,14 +274,9 @@ public partial class CGameCtnMediaTrackBuilder : CGameCtnMediaTrackBuilderBase<C
             var node = CGameCtnMediaTrackBuilder.CreateRecipe3(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameCtnMediaTrackBuilder.ValidateRecipe3(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameCtnMediaTrackBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaTrack node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaTrack node);
     }
     public partial class MP4 : CGameCtnMediaTrackBuilderMembers1<MP4>
     {
@@ -392,14 +295,9 @@ public partial class CGameCtnMediaTrackBuilder : CGameCtnMediaTrackBuilderBase<C
             var node = CGameCtnMediaTrackBuilder.CreateRecipe3(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameCtnMediaTrackBuilder.ValidateRecipe3(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameCtnMediaTrackBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaTrack node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaTrack node);
     }
     public partial class TM2020 : CGameCtnMediaTrackBuilderMembers1<TM2020>
     {
@@ -418,13 +316,8 @@ public partial class CGameCtnMediaTrackBuilder : CGameCtnMediaTrackBuilderBase<C
             var node = CGameCtnMediaTrackBuilder.CreateRecipe3(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameCtnMediaTrackBuilder.ValidateRecipe3(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameCtnMediaTrackBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaTrack node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaTrack node);
     }
 }

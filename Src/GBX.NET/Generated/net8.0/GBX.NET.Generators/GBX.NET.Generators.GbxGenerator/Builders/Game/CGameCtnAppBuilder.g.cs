@@ -46,10 +46,6 @@ public partial class CGameCtnAppBuilder : CGameCtnAppBuilderBase<CGameCtnAppBuil
         node.Chunks.Add(chunk03005009);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnApp node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameApp.Chunk03005009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03005009 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameCtnApp CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnApp();
@@ -71,30 +67,12 @@ public partial class CGameCtnAppBuilder : CGameCtnAppBuilderBase<CGameCtnAppBuil
         node.Chunks.Add(chunk030D3013);
         return node;
     }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameCtnApp node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk030D3000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk030D3007 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D300C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk030D300C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D300E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk030D300E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D300F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk030D300F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk030D3010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3012>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk030D3012 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk030D3013 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameCtnApp CreateRecipe2(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnApp();
         var chunk0300500B = new global::GBX.NET.Engines.Game.CGameApp.Chunk0300500B();
         node.Chunks.Add(chunk0300500B);
         return node;
-    }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Game.CGameCtnApp node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameApp.Chunk0300500B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0300500B is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnApp node, GameVersion game)
-    {
     }
     public TMF ForTMF() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -110,26 +88,16 @@ public partial class CGameCtnAppBuilder : CGameCtnAppBuilderBase<CGameCtnAppBuil
             var node = CGameCtnAppBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CGameCtnAppBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CGameCtnAppBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnApp node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnApp node);
     }
     public partial class MP4 : CGameCtnAppBuilderBase<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state) : base(state) { }
-        public NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? AdditionalSkinsFids
-        {
-            get => state.Get<NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>?>("AdditionalSkinsFids");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdditionalSkinsFidsAssignment(), value, GameVersion.MP4);
-        }
         public MP4 WithAdditionalSkinsFids(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value)
         {
-            AdditionalSkinsFids = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdditionalSkinsFidsAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithAdditionalSkinsFids(params global::GBX.NET.Engines.MwFoundations.CMwNod[] values)
@@ -140,14 +108,9 @@ public partial class CGameCtnAppBuilder : CGameCtnAppBuilderBase<CGameCtnAppBuil
         {
             return WithAdditionalSkinsFids(values.ToArray());
         }
-        public global::GBX.NET.Engines.MwFoundations.CMwNod? Advertising
-        {
-            get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("Advertising");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdvertisingAssignment(), value, GameVersion.MP4);
-        }
         public MP4 WithAdvertising(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
         {
-            Advertising = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdvertisingAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithAdvertisingReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
@@ -156,24 +119,14 @@ public partial class CGameCtnAppBuilder : CGameCtnAppBuilderBase<CGameCtnAppBuil
             state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdvertisingReferenceAssignment(), value, GameVersion.MP4);
             return this;
         }
-        public bool MenuBackground_MustLoopIntro
-        {
-            get => state.Get<bool>("MenuBackground_MustLoopIntro");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetMenuBackground_MustLoopIntroAssignment(), value, GameVersion.MP4);
-        }
         public MP4 WithMenuBackground_MustLoopIntro(bool value)
         {
-            MenuBackground_MustLoopIntro = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetMenuBackground_MustLoopIntroAssignment(), value, GameVersion.MP4);
             return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameResources? Resources
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameResources?>("Resources");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetResourcesAssignment(), value, GameVersion.MP4);
         }
         public MP4 WithResources(global::GBX.NET.Engines.Game.CGameResources? value)
         {
-            Resources = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetResourcesAssignment(), value, GameVersion.MP4);
             return this;
         }
         public MP4 WithResourcesReference(NodeRef<global::GBX.NET.Engines.Game.CGameResources> value)
@@ -192,14 +145,9 @@ public partial class CGameCtnAppBuilder : CGameCtnAppBuilderBase<CGameCtnAppBuil
             var node = CGameCtnAppBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameCtnAppBuilder.ValidateRecipe1(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameCtnAppBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnApp node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnApp node);
     }
     public partial class TM2020 : CGameCtnAppBuilderBase<TM2020>
     {
@@ -210,13 +158,8 @@ public partial class CGameCtnAppBuilder : CGameCtnAppBuilderBase<CGameCtnAppBuil
             var node = CGameCtnAppBuilder.CreateRecipe2(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameCtnAppBuilder.ValidateRecipe2(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameCtnAppBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnApp node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnApp node);
     }
 }

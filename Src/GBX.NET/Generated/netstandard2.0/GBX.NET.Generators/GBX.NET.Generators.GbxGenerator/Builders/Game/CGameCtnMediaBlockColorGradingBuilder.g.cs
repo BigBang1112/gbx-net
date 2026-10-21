@@ -36,24 +36,14 @@ public abstract class CGameCtnMediaBlockColorGradingBuilderBase<TSelf> where TSe
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading> state;
     private protected CGameCtnMediaBlockColorGradingBuilderBase() => state = new();
     private protected CGameCtnMediaBlockColorGradingBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading> state) => this.state = state;
-    public PackDesc? Image
-    {
-        get => state.Get<PackDesc?>("Image");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockColorGradingBuilderAssignments.GetImageAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithImage(PackDesc? value)
     {
-        Image = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockColorGradingBuilderAssignments.GetImageAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading.Key>? Keys
-    {
-        get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading.Key>?>("Keys");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockColorGradingBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading.Key>? value)
     {
-        Keys = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockColorGradingBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithKeys(params global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading.Key[] values)
@@ -76,14 +66,6 @@ public partial class CGameCtnMediaBlockColorGradingBuilder : CGameCtnMediaBlockC
         node.Chunks.Add(chunk03186001);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading.Chunk03186000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03186000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading.Chunk03186001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03186001 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading node, GameVersion game)
-    {
-    }
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -98,14 +80,9 @@ public partial class CGameCtnMediaBlockColorGradingBuilder : CGameCtnMediaBlockC
             var node = CGameCtnMediaBlockColorGradingBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameCtnMediaBlockColorGradingBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameCtnMediaBlockColorGradingBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading node);
     }
     public partial class MP4 : CGameCtnMediaBlockColorGradingBuilderBase<MP4>
     {
@@ -116,14 +93,9 @@ public partial class CGameCtnMediaBlockColorGradingBuilder : CGameCtnMediaBlockC
             var node = CGameCtnMediaBlockColorGradingBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameCtnMediaBlockColorGradingBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameCtnMediaBlockColorGradingBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading node);
     }
     public partial class TM2020 : CGameCtnMediaBlockColorGradingBuilderBase<TM2020>
     {
@@ -134,13 +106,8 @@ public partial class CGameCtnMediaBlockColorGradingBuilder : CGameCtnMediaBlockC
             var node = CGameCtnMediaBlockColorGradingBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameCtnMediaBlockColorGradingBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameCtnMediaBlockColorGradingBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading node);
     }
 }

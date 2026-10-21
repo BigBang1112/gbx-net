@@ -40,24 +40,14 @@ public abstract class CMwRefBufferBuilderBase<TSelf> where TSelf : CMwRefBufferB
 public abstract class CMwRefBufferBuilderMembers1<TSelf> : CMwRefBufferBuilderBase<TSelf> where TSelf : CMwRefBufferBuilderMembers1<TSelf>
 {
     private protected CMwRefBufferBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> state) : base(state) { }
-    public uint NodClassId
-    {
-        get => state.Get<uint>("NodClassId");
-        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwRefBufferBuilderAssignments.GetNodClassIdAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithNodClassId(uint value)
     {
-        NodClassId = value;
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwRefBufferBuilderAssignments.GetNodClassIdAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? Nods
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>?>("Nods");
-        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwRefBufferBuilderAssignments.GetNodsAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithNods(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value)
     {
-        Nods = value;
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwRefBufferBuilderAssignments.GetNodsAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithNods(params global::GBX.NET.Engines.MwFoundations.CMwNod[] values)
@@ -68,14 +58,9 @@ public abstract class CMwRefBufferBuilderMembers1<TSelf> : CMwRefBufferBuilderBa
     {
         return WithNods(values.ToArray());
     }
-    public bool UseAddRefRelease
-    {
-        get => state.Get<bool>("UseAddRefRelease");
-        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwRefBufferBuilderAssignments.GetUseAddRefReleaseAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithUseAddRefRelease(bool value)
     {
-        UseAddRefRelease = value;
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwRefBufferBuilderAssignments.GetUseAddRefReleaseAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -88,20 +73,12 @@ public partial class CMwRefBufferBuilder : CMwRefBufferBuilderBase<CMwRefBufferB
         node.Chunks.Add(chunk01026000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer.Chunk01026000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk01026000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.MwFoundations.CMwRefBuffer CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.MwFoundations.CMwRefBuffer();
         var chunk01026001 = new global::GBX.NET.Engines.MwFoundations.CMwRefBuffer.Chunk01026001();
         node.Chunks.Add(chunk01026001);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer.Chunk01026001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk01026001 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.MwFoundations.CMwRefBuffer CreateRecipe2(GameVersion game)
     {
@@ -111,14 +88,6 @@ public partial class CMwRefBufferBuilder : CMwRefBufferBuilderBase<CMwRefBufferB
         var chunk01026001 = new global::GBX.NET.Engines.MwFoundations.CMwRefBuffer.Chunk01026001();
         node.Chunks.Add(chunk01026001);
         return node;
-    }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer.Chunk01026000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk01026000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer.Chunk01026001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk01026001 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node, GameVersion game)
-    {
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -141,14 +110,9 @@ public partial class CMwRefBufferBuilder : CMwRefBufferBuilderBase<CMwRefBufferB
             var node = CMwRefBufferBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CMwRefBufferBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CMwRefBufferBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node);
-        partial void ValidateNode(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node);
     }
     public partial class TMPU : CMwRefBufferBuilderMembers1<TMPU>
     {
@@ -159,14 +123,9 @@ public partial class CMwRefBufferBuilder : CMwRefBufferBuilderBase<CMwRefBufferB
             var node = CMwRefBufferBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CMwRefBufferBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CMwRefBufferBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node);
-        partial void ValidateNode(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node);
     }
     public partial class TMSX : CMwRefBufferBuilderMembers1<TMSX>
     {
@@ -177,14 +136,9 @@ public partial class CMwRefBufferBuilder : CMwRefBufferBuilderBase<CMwRefBufferB
             var node = CMwRefBufferBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CMwRefBufferBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CMwRefBufferBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node);
-        partial void ValidateNode(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node);
     }
     public partial class TMNESWC : CMwRefBufferBuilderMembers1<TMNESWC>
     {
@@ -195,14 +149,9 @@ public partial class CMwRefBufferBuilder : CMwRefBufferBuilderBase<CMwRefBufferB
             var node = CMwRefBufferBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CMwRefBufferBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CMwRefBufferBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node);
-        partial void ValidateNode(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node);
     }
     public partial class VSK5 : CMwRefBufferBuilderMembers1<VSK5>
     {
@@ -213,14 +162,9 @@ public partial class CMwRefBufferBuilder : CMwRefBufferBuilderBase<CMwRefBufferB
             var node = CMwRefBufferBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CMwRefBufferBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CMwRefBufferBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node);
-        partial void ValidateNode(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node);
     }
     public partial class TMF : CMwRefBufferBuilderMembers1<TMF>
     {
@@ -231,26 +175,16 @@ public partial class CMwRefBufferBuilder : CMwRefBufferBuilderBase<CMwRefBufferB
             var node = CMwRefBufferBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CMwRefBufferBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CMwRefBufferBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node);
-        partial void ValidateNode(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node);
     }
     public partial class MP3 : CMwRefBufferBuilderBase<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> state) : base(state) { }
-        public string? BufferId
-        {
-            get => state.Get<string?>("BufferId");
-            set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwRefBufferBuilderAssignments.GetBufferIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-        }
         public MP3 WithBufferId(string? value)
         {
-            BufferId = value;
+            state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwRefBufferBuilderAssignments.GetBufferIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
             return this;
         }
         public global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3 BuildInterface() => Build();
@@ -259,26 +193,16 @@ public partial class CMwRefBufferBuilder : CMwRefBufferBuilderBase<CMwRefBufferB
             var node = CMwRefBufferBuilder.CreateRecipe1(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CMwRefBufferBuilder.ValidateRecipe1(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CMwRefBufferBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node);
-        partial void ValidateNode(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node);
     }
     public partial class TMT : CMwRefBufferBuilderMembers1<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> state) : base(state) { }
-        public string? BufferId
-        {
-            get => state.Get<string?>("BufferId");
-            set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwRefBufferBuilderAssignments.GetBufferIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-        }
         public TMT WithBufferId(string? value)
         {
-            BufferId = value;
+            state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwRefBufferBuilderAssignments.GetBufferIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
             return this;
         }
         public global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT BuildInterface() => Build();
@@ -287,26 +211,16 @@ public partial class CMwRefBufferBuilder : CMwRefBufferBuilderBase<CMwRefBufferB
             var node = CMwRefBufferBuilder.CreateRecipe2(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CMwRefBufferBuilder.ValidateRecipe2(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CMwRefBufferBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node);
-        partial void ValidateNode(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node);
     }
     public partial class MP4 : CMwRefBufferBuilderMembers1<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> state) : base(state) { }
-        public string? BufferId
-        {
-            get => state.Get<string?>("BufferId");
-            set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwRefBufferBuilderAssignments.GetBufferIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-        }
         public MP4 WithBufferId(string? value)
         {
-            BufferId = value;
+            state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwRefBufferBuilderAssignments.GetBufferIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
             return this;
         }
         public global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4 BuildInterface() => Build();
@@ -315,26 +229,16 @@ public partial class CMwRefBufferBuilder : CMwRefBufferBuilderBase<CMwRefBufferB
             var node = CMwRefBufferBuilder.CreateRecipe2(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CMwRefBufferBuilder.ValidateRecipe2(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CMwRefBufferBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node);
-        partial void ValidateNode(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node);
     }
     public partial class TM2020 : CMwRefBufferBuilderMembers1<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> state) : base(state) { }
-        public string? BufferId
-        {
-            get => state.Get<string?>("BufferId");
-            set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwRefBufferBuilderAssignments.GetBufferIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-        }
         public TM2020 WithBufferId(string? value)
         {
-            BufferId = value;
+            state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwRefBufferBuilderAssignments.GetBufferIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
             return this;
         }
         public global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020 BuildInterface() => Build();
@@ -343,13 +247,8 @@ public partial class CMwRefBufferBuilder : CMwRefBufferBuilderBase<CMwRefBufferB
             var node = CMwRefBufferBuilder.CreateRecipe2(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CMwRefBufferBuilder.ValidateRecipe2(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CMwRefBufferBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node);
-        partial void ValidateNode(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node);
     }
 }

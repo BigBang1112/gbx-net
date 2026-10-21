@@ -41,82 +41,42 @@ public partial class CPlugVertexStream : global::GBX.NET.Interfaces.Plug.IPlugVe
     }
     global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMSX? global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMembers2<global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMSX>.StreamModel
     {
-        get
-        {
-            var node = StreamModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => StreamModel;
         set => StreamModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVertexStream node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMembers2<global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMNESWC>.StreamModel
     {
-        get
-        {
-            var node = StreamModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => StreamModel;
         set => StreamModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVertexStream node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugVertexStreamVSK5? global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMembers2<global::GBX.NET.Interfaces.Plug.IPlugVertexStreamVSK5>.StreamModel
     {
-        get
-        {
-            var node = StreamModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => StreamModel;
         set => StreamModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVertexStream node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMF? global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMembers2<global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMF>.StreamModel
     {
-        get
-        {
-            var node = StreamModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => StreamModel;
         set => StreamModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVertexStream node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMP3? global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMembers2<global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMP3>.StreamModel
     {
-        get
-        {
-            var node = StreamModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => StreamModel;
         set => StreamModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVertexStream node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMT? global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMembers2<global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMT>.StreamModel
     {
-        get
-        {
-            var node = StreamModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => StreamModel;
         set => StreamModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVertexStream node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMP4? global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMembers2<global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMP4>.StreamModel
     {
-        get
-        {
-            var node = StreamModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => StreamModel;
         set => StreamModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVertexStream node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTM2020? global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMembers2<global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTM2020>.StreamModel
     {
-        get
-        {
-            var node = StreamModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => StreamModel;
         set => StreamModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVertexStream node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

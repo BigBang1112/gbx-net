@@ -42,18 +42,6 @@ public partial interface IGameCtnMediaBlockCameraEffect : IClassVersion<global::
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
 }
 
-public partial interface IGameCtnMediaBlockCameraEffectTMT : IGameCtnMediaBlockCameraEffect, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMT
-{
-}
-
-public partial interface IGameCtnMediaBlockCameraEffectMP4 : IGameCtnMediaBlockCameraEffect, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMP4
-{
-}
-
-public partial interface IGameCtnMediaBlockCameraEffectTM2020 : IGameCtnMediaBlockCameraEffect, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTM2020
-{
-}
-
 public partial interface IGameCtnMediaBlockCameraEffectTMSX : IGameCtnMediaBlockCameraEffect, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMSX
 {
 }
@@ -67,6 +55,18 @@ public partial interface IGameCtnMediaBlockCameraEffectVSK5 : IGameCtnMediaBlock
 }
 
 public partial interface IGameCtnMediaBlockCameraEffectTMF : IGameCtnMediaBlockCameraEffect, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMF
+{
+}
+
+public partial interface IGameCtnMediaBlockCameraEffectTMT : IGameCtnMediaBlockCameraEffect, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMT
+{
+}
+
+public partial interface IGameCtnMediaBlockCameraEffectMP4 : IGameCtnMediaBlockCameraEffect, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMP4
+{
+}
+
+public partial interface IGameCtnMediaBlockCameraEffectTM2020 : IGameCtnMediaBlockCameraEffect, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTM2020
 {
 }
 

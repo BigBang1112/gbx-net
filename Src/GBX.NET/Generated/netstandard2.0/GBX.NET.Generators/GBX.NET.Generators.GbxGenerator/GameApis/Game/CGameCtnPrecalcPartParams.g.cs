@@ -46,22 +46,12 @@ public partial class CGameCtnPrecalcPartParams : global::GBX.NET.Interfaces.Game
     }
     global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT? global::GBX.NET.Interfaces.Game.IGameCtnPrecalcPartParamsTMT.CollSurf
     {
-        get
-        {
-            var node = CollSurf;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => CollSurf;
         set => CollSurf = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugDecalModelTMT? global::GBX.NET.Interfaces.Game.IGameCtnPrecalcPartParamsTMT.DecalModel
     {
-        get
-        {
-            var node = DecalModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => DecalModel;
         set => DecalModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugDecalModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

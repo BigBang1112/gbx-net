@@ -36,14 +36,9 @@ public abstract class CPlugCloudsBuilderBase<TSelf> where TSelf : CPlugCloudsBui
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugClouds> state;
     private protected CPlugCloudsBuilderBase() => state = new();
     private protected CPlugCloudsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugClouds> state) => this.state = state;
-    public Vec2[]? PointHeights
-    {
-        get => state.Get<Vec2[]?>("PointHeights");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetPointHeightsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
-    }
     public TSelf WithPointHeights(params Vec2[]? value)
     {
-        PointHeights = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetPointHeightsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithPointHeights(IEnumerable<Vec2> values)
@@ -54,54 +49,29 @@ public abstract class CPlugCloudsBuilderBase<TSelf> where TSelf : CPlugCloudsBui
 public abstract class CPlugCloudsBuilderMembers1<TSelf> : CPlugCloudsBuilderBase<TSelf> where TSelf : CPlugCloudsBuilderMembers1<TSelf>
 {
     private protected CPlugCloudsBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugClouds> state) : base(state) { }
-    public float BottomFarZ
-    {
-        get => state.Get<float>("BottomFarZ");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetBottomFarZAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    }
     public TSelf WithBottomFarZ(float value)
     {
-        BottomFarZ = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetBottomFarZAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float BottomNearZ
-    {
-        get => state.Get<float>("BottomNearZ");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetBottomNearZAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithBottomNearZ(float value)
     {
-        BottomNearZ = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetBottomNearZAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int HeightCenter
-    {
-        get => state.Get<int>("HeightCenter");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetHeightCenterAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithHeightCenter(int value)
     {
-        HeightCenter = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetHeightCenterAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public Vec2 HeightCenterXZ
-    {
-        get => state.Get<Vec2>("HeightCenterXZ");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetHeightCenterXZAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithHeightCenterXZ(Vec2 value)
     {
-        HeightCenterXZ = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetHeightCenterXZAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugFileImg? ImageColorMax
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugFileImg?>("ImageColorMax");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetImageColorMaxAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithImageColorMax(global::GBX.NET.Engines.Plug.CPlugFileImg? value)
     {
-        ImageColorMax = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetImageColorMaxAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithImageColorMaxReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value)
@@ -110,14 +80,9 @@ public abstract class CPlugCloudsBuilderMembers1<TSelf> : CPlugCloudsBuilderBase
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetImageColorMaxReferenceAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugFileImg? ImageColorMin
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugFileImg?>("ImageColorMin");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetImageColorMinAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    }
     public TSelf WithImageColorMin(global::GBX.NET.Engines.Plug.CPlugFileImg? value)
     {
-        ImageColorMin = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetImageColorMinAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithImageColorMinReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value)
@@ -126,24 +91,14 @@ public abstract class CPlugCloudsBuilderMembers1<TSelf> : CPlugCloudsBuilderBase
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetImageColorMinReferenceAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public int Lighting
-    {
-        get => state.Get<int>("Lighting");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetLightingAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    }
     public TSelf WithLighting(int value)
     {
-        Lighting = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetLightingAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public NodeRefList<global::GBX.NET.Engines.Plug.CPlugSolid>? SolidFids
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugSolid>?>("SolidFids");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetSolidFidsAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithSolidFids(NodeRefList<global::GBX.NET.Engines.Plug.CPlugSolid>? value)
     {
-        SolidFids = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetSolidFidsAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithSolidFids(params global::GBX.NET.Engines.Plug.CPlugSolid[] values)
@@ -154,14 +109,9 @@ public abstract class CPlugCloudsBuilderMembers1<TSelf> : CPlugCloudsBuilderBase
     {
         return WithSolidFids(values.ToArray());
     }
-    public float SpeedScale
-    {
-        get => state.Get<float>("SpeedScale");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetSpeedScaleAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    }
     public TSelf WithSpeedScale(float value)
     {
-        SpeedScale = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetSpeedScaleAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -174,10 +124,6 @@ public partial class CPlugCloudsBuilder : CPlugCloudsBuilderBase<CPlugCloudsBuil
         node.Chunks.Add(chunk09180002);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugClouds node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugClouds.Chunk09180002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09180002 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugClouds CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugClouds();
@@ -188,15 +134,6 @@ public partial class CPlugCloudsBuilder : CPlugCloudsBuilderBase<CPlugCloudsBuil
         var chunk09180004 = new global::GBX.NET.Engines.Plug.CPlugClouds.Chunk09180004();
         node.Chunks.Add(chunk09180004);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugClouds node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugClouds.Chunk09180002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09180002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugClouds.Chunk09180003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09180003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugClouds.Chunk09180004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09180004 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugClouds node, GameVersion game)
-    {
     }
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
@@ -210,14 +147,9 @@ public partial class CPlugCloudsBuilder : CPlugCloudsBuilderBase<CPlugCloudsBuil
             var node = CPlugCloudsBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CPlugCloudsBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CPlugCloudsBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugClouds node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugClouds node);
     }
     public partial class VSK5 : CPlugCloudsBuilderMembers1<VSK5>
     {
@@ -236,14 +168,9 @@ public partial class CPlugCloudsBuilder : CPlugCloudsBuilderBase<CPlugCloudsBuil
             var node = CPlugCloudsBuilder.CreateRecipe1(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CPlugCloudsBuilder.ValidateRecipe1(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CPlugCloudsBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugClouds node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugClouds node);
     }
     public partial class TMF : CPlugCloudsBuilderMembers1<TMF>
     {
@@ -262,13 +189,8 @@ public partial class CPlugCloudsBuilder : CPlugCloudsBuilderBase<CPlugCloudsBuil
             var node = CPlugCloudsBuilder.CreateRecipe1(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CPlugCloudsBuilder.ValidateRecipe1(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CPlugCloudsBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugClouds node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugClouds node);
     }
 }

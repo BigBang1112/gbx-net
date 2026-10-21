@@ -36,14 +36,9 @@ public abstract class CPlugCurveSimpleNodBuilderBase<TSelf> where TSelf : CPlugC
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod> state;
     private protected CPlugCurveSimpleNodBuilderBase() => state = new();
     private protected CPlugCurveSimpleNodBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod> state) => this.state = state;
-    public float[]? Xs
-    {
-        get => state.Get<float[]?>("Xs");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysBuilderAssignments.GetXsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithXs(params float[]? value)
     {
-        Xs = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysBuilderAssignments.GetXsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithXs(IEnumerable<float> values)
@@ -54,14 +49,9 @@ public abstract class CPlugCurveSimpleNodBuilderBase<TSelf> where TSelf : CPlugC
 public abstract class CPlugCurveSimpleNodBuilderMembers1<TSelf> : CPlugCurveSimpleNodBuilderBase<TSelf> where TSelf : CPlugCurveSimpleNodBuilderMembers1<TSelf>
 {
     private protected CPlugCurveSimpleNodBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod> state) : base(state) { }
-    public float[]? Ys
-    {
-        get => state.Get<float[]?>("Ys");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetYsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithYs(params float[]? value)
     {
-        Ys = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetYsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithYs(IEnumerable<float> values)
@@ -72,58 +62,33 @@ public abstract class CPlugCurveSimpleNodBuilderMembers1<TSelf> : CPlugCurveSimp
 public abstract class CPlugCurveSimpleNodBuilderMembers2<TSelf> : CPlugCurveSimpleNodBuilderMembers1<TSelf> where TSelf : CPlugCurveSimpleNodBuilderMembers2<TSelf>
 {
     private protected CPlugCurveSimpleNodBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod> state) : base(state) { }
-    public global::GBX.NET.Engines.Function.CFuncKeysReal.ERealInterp RealInterp
-    {
-        get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal.ERealInterp>("RealInterp");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetRealInterpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithRealInterp(global::GBX.NET.Engines.Function.CFuncKeysReal.ERealInterp value)
     {
-        RealInterp = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetRealInterpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CPlugCurveSimpleNodBuilderMembers3<TSelf> : CPlugCurveSimpleNodBuilderMembers2<TSelf> where TSelf : CPlugCurveSimpleNodBuilderMembers3<TSelf>
 {
     private protected CPlugCurveSimpleNodBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod> state) : base(state) { }
-    public bool ForceTangentMaxX
-    {
-        get => state.Get<bool>("ForceTangentMaxX");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetForceTangentMaxXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
-    }
     public TSelf WithForceTangentMaxX(bool value)
     {
-        ForceTangentMaxX = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetForceTangentMaxXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool ForceTangentMinX
-    {
-        get => state.Get<bool>("ForceTangentMinX");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetForceTangentMinXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithForceTangentMinX(bool value)
     {
-        ForceTangentMinX = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetForceTangentMinXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float ForcedTangentMaxX
-    {
-        get => state.Get<float>("ForcedTangentMaxX");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetForcedTangentMaxXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithForcedTangentMaxX(float value)
     {
-        ForcedTangentMaxX = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetForcedTangentMaxXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float ForcedTangentMinX
-    {
-        get => state.Get<float>("ForcedTangentMinX");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetForcedTangentMinXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithForcedTangentMinX(float value)
     {
-        ForcedTangentMinX = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetForcedTangentMinXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -140,12 +105,6 @@ public partial class CPlugCurveSimpleNodBuilder : CPlugCurveSimpleNodBuilderBase
         node.Chunks.Add(chunk05002003);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncKeysReal.Chunk0501A000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0501A000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncKeys.Chunk05002001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05002001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncKeys.Chunk05002003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05002003 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod();
@@ -156,12 +115,6 @@ public partial class CPlugCurveSimpleNodBuilder : CPlugCurveSimpleNodBuilderBase
         var chunk05002003 = new global::GBX.NET.Engines.Function.CFuncKeys.Chunk05002003();
         node.Chunks.Add(chunk05002003);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncKeysReal.Chunk0501A001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0501A001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncKeys.Chunk05002001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05002001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncKeys.Chunk05002003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05002003 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod CreateRecipe2(GameVersion game)
     {
@@ -174,12 +127,6 @@ public partial class CPlugCurveSimpleNodBuilder : CPlugCurveSimpleNodBuilderBase
         node.Chunks.Add(chunk05002003);
         return node;
     }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncKeysReal.Chunk0501A002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0501A002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncKeys.Chunk05002001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05002001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncKeys.Chunk05002003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05002003 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod();
@@ -191,15 +138,6 @@ public partial class CPlugCurveSimpleNodBuilder : CPlugCurveSimpleNodBuilderBase
         var chunk05002003 = new global::GBX.NET.Engines.Function.CFuncKeys.Chunk05002003();
         node.Chunks.Add(chunk05002003);
         return node;
-    }
-    private static void ValidateRecipe3(global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod.Chunk09185000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk09185000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncKeys.Chunk05002001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05002001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncKeys.Chunk05002003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05002003 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod node, GameVersion game)
-    {
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -222,14 +160,9 @@ public partial class CPlugCurveSimpleNodBuilder : CPlugCurveSimpleNodBuilderBase
             var node = CPlugCurveSimpleNodBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CPlugCurveSimpleNodBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CPlugCurveSimpleNodBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod node);
     }
     public partial class TMPU : CPlugCurveSimpleNodBuilderMembers1<TMPU>
     {
@@ -240,14 +173,9 @@ public partial class CPlugCurveSimpleNodBuilder : CPlugCurveSimpleNodBuilderBase
             var node = CPlugCurveSimpleNodBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CPlugCurveSimpleNodBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CPlugCurveSimpleNodBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod node);
     }
     public partial class TMSX : CPlugCurveSimpleNodBuilderMembers2<TMSX>
     {
@@ -258,14 +186,9 @@ public partial class CPlugCurveSimpleNodBuilder : CPlugCurveSimpleNodBuilderBase
             var node = CPlugCurveSimpleNodBuilder.CreateRecipe1(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CPlugCurveSimpleNodBuilder.ValidateRecipe1(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CPlugCurveSimpleNodBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod node);
     }
     public partial class TMNESWC : CPlugCurveSimpleNodBuilderMembers2<TMNESWC>
     {
@@ -276,14 +199,9 @@ public partial class CPlugCurveSimpleNodBuilder : CPlugCurveSimpleNodBuilderBase
             var node = CPlugCurveSimpleNodBuilder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CPlugCurveSimpleNodBuilder.ValidateRecipe1(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CPlugCurveSimpleNodBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod node);
     }
     public partial class VSK5 : CPlugCurveSimpleNodBuilderMembers2<VSK5>
     {
@@ -294,14 +212,9 @@ public partial class CPlugCurveSimpleNodBuilder : CPlugCurveSimpleNodBuilderBase
             var node = CPlugCurveSimpleNodBuilder.CreateRecipe1(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CPlugCurveSimpleNodBuilder.ValidateRecipe1(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CPlugCurveSimpleNodBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod node);
     }
     public partial class TMF : CPlugCurveSimpleNodBuilderMembers2<TMF>
     {
@@ -312,14 +225,9 @@ public partial class CPlugCurveSimpleNodBuilder : CPlugCurveSimpleNodBuilderBase
             var node = CPlugCurveSimpleNodBuilder.CreateRecipe1(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CPlugCurveSimpleNodBuilder.ValidateRecipe1(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CPlugCurveSimpleNodBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod node);
     }
     public partial class MP3 : CPlugCurveSimpleNodBuilderMembers3<MP3>
     {
@@ -330,14 +238,9 @@ public partial class CPlugCurveSimpleNodBuilder : CPlugCurveSimpleNodBuilderBase
             var node = CPlugCurveSimpleNodBuilder.CreateRecipe2(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CPlugCurveSimpleNodBuilder.ValidateRecipe2(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CPlugCurveSimpleNodBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod node);
     }
     public partial class TMT : CPlugCurveSimpleNodBuilderMembers3<TMT>
     {
@@ -348,14 +251,9 @@ public partial class CPlugCurveSimpleNodBuilder : CPlugCurveSimpleNodBuilderBase
             var node = CPlugCurveSimpleNodBuilder.CreateRecipe2(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugCurveSimpleNodBuilder.ValidateRecipe2(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugCurveSimpleNodBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod node);
     }
     public partial class MP4 : CPlugCurveSimpleNodBuilderMembers3<MP4>
     {
@@ -366,26 +264,16 @@ public partial class CPlugCurveSimpleNodBuilder : CPlugCurveSimpleNodBuilderBase
             var node = CPlugCurveSimpleNodBuilder.CreateRecipe2(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugCurveSimpleNodBuilder.ValidateRecipe2(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugCurveSimpleNodBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod node);
     }
     public partial class TM2020 : CPlugCurveSimpleNodBuilderBase<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod> state) : base(state) { }
-        public global::GBX.NET.PlugCurve Curve
-        {
-            get => state.Get<global::GBX.NET.PlugCurve>("Curve");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCurveSimpleNodBuilderAssignments.GetCurveAssignment(), value, GameVersion.TM2020);
-        }
         public TM2020 WithCurve(global::GBX.NET.PlugCurve value)
         {
-            Curve = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCurveSimpleNodBuilderAssignments.GetCurveAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public global::GBX.NET.Interfaces.Plug.IPlugCurveSimpleNodTM2020 BuildInterface() => Build();
@@ -394,13 +282,8 @@ public partial class CPlugCurveSimpleNodBuilder : CPlugCurveSimpleNodBuilderBase
             var node = CPlugCurveSimpleNodBuilder.CreateRecipe3(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugCurveSimpleNodBuilder.ValidateRecipe3(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugCurveSimpleNodBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod node);
     }
 }

@@ -36,14 +36,9 @@ public abstract class CMwCmdExpBoolIdentBuilderBase<TSelf> where TSelf : CMwCmdE
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpBoolIdent> state;
     private protected CMwCmdExpBoolIdentBuilderBase() => state = new();
     private protected CMwCmdExpBoolIdentBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpBoolIdent> state) => this.state = state;
-    public string? Ident
-    {
-        get => state.Get<string?>("Ident");
-        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpBoolIdentBuilderAssignments.GetIdentAssignment(), value, GameVersion.TMF);
-    }
     public TSelf WithIdent(string? value)
     {
-        Ident = value;
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpBoolIdentBuilderAssignments.GetIdentAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
 }
@@ -58,14 +53,6 @@ public partial class CMwCmdExpBoolIdentBuilder : CMwCmdExpBoolIdentBuilderBase<C
         node.Chunks.Add(chunk0103C000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.MwFoundations.CMwCmdExpBoolIdent node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdExpBoolIdent.Chunk0103B000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0103B000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdExpBoolIdent.Chunk0103C000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0103C000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.MwFoundations.CMwCmdExpBoolIdent node, GameVersion game)
-    {
-    }
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TMF : CMwCmdExpBoolIdentBuilderBase<TMF>
     {
@@ -76,13 +63,8 @@ public partial class CMwCmdExpBoolIdentBuilder : CMwCmdExpBoolIdentBuilderBase<C
             var node = CMwCmdExpBoolIdentBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CMwCmdExpBoolIdentBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CMwCmdExpBoolIdentBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpBoolIdent node);
-        partial void ValidateNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpBoolIdent node);
     }
 }

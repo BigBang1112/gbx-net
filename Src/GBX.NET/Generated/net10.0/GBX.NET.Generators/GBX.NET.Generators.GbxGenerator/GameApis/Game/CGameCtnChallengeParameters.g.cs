@@ -36,42 +36,22 @@ public partial class CGameCtnChallengeParameters : global::GBX.NET.Interfaces.Ga
     public static global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeParametersBuilder Create() => new();
     global::GBX.NET.Interfaces.Game.IGameCtnGhostMP3? global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMembers1<global::GBX.NET.Interfaces.Game.IGameCtnGhostMP3>.RaceValidateGhost
     {
-        get
-        {
-            var node = RaceValidateGhost;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => RaceValidateGhost;
         set => RaceValidateGhost = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnGhost node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnGhostTMT? global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMembers1<global::GBX.NET.Interfaces.Game.IGameCtnGhostTMT>.RaceValidateGhost
     {
-        get
-        {
-            var node = RaceValidateGhost;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => RaceValidateGhost;
         set => RaceValidateGhost = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnGhost node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnGhostMP4? global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMembers1<global::GBX.NET.Interfaces.Game.IGameCtnGhostMP4>.RaceValidateGhost
     {
-        get
-        {
-            var node = RaceValidateGhost;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => RaceValidateGhost;
         set => RaceValidateGhost = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnGhost node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnGhostTM2020? global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMembers1<global::GBX.NET.Interfaces.Game.IGameCtnGhostTM2020>.RaceValidateGhost
     {
-        get
-        {
-            var node = RaceValidateGhost;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => RaceValidateGhost;
         set => RaceValidateGhost = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnGhost node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

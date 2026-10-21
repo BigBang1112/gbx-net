@@ -36,24 +36,14 @@ public abstract class CGameCtnMediaBlockSoundBuilderBase<TSelf> where TSelf : CG
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state;
     private protected CGameCtnMediaBlockSoundBuilderBase() => state = new();
     private protected CGameCtnMediaBlockSoundBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state) => this.state = state;
-    public bool IsLooping
-    {
-        get => state.Get<bool>("IsLooping");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetIsLoopingAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithIsLooping(bool value)
     {
-        IsLooping = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetIsLoopingAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Key>? Keys
-    {
-        get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Key>?>("Keys");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Key>? value)
     {
-        Keys = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithKeys(params global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Key[] values)
@@ -64,72 +54,42 @@ public abstract class CGameCtnMediaBlockSoundBuilderBase<TSelf> where TSelf : CG
     {
         return WithKeys(values.ToArray());
     }
-    public int PlayCount
-    {
-        get => state.Get<int>("PlayCount");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetPlayCountAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithPlayCount(int value)
     {
-        PlayCount = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetPlayCountAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public PackDesc? Sound
-    {
-        get => state.Get<PackDesc?>("Sound");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetSoundAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSound(PackDesc? value)
     {
-        Sound = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetSoundAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnMediaBlockSoundBuilderMembers1<TSelf> : CGameCtnMediaBlockSoundBuilderBase<TSelf> where TSelf : CGameCtnMediaBlockSoundBuilderMembers1<TSelf>
 {
     private protected CGameCtnMediaBlockSoundBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state) : base(state) { }
-    public bool IsMusic
-    {
-        get => state.Get<bool>("IsMusic");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetIsMusicAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    }
     public TSelf WithIsMusic(bool value)
     {
-        IsMusic = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetIsMusicAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnMediaBlockSoundBuilderMembers2<TSelf> : CGameCtnMediaBlockSoundBuilderMembers1<TSelf> where TSelf : CGameCtnMediaBlockSoundBuilderMembers2<TSelf>
 {
     private protected CGameCtnMediaBlockSoundBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state) : base(state) { }
-    public bool AudioToSpeech
-    {
-        get => state.Get<bool>("AudioToSpeech");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetAudioToSpeechAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithAudioToSpeech(bool value)
     {
-        AudioToSpeech = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetAudioToSpeechAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int AudioToSpeechTarget
-    {
-        get => state.Get<int>("AudioToSpeechTarget");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetAudioToSpeechTargetAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithAudioToSpeechTarget(int value)
     {
-        AudioToSpeechTarget = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetAudioToSpeechTargetAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool StopWithClip
-    {
-        get => state.Get<bool>("StopWithClip");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetStopWithClipAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStopWithClip(bool value)
     {
-        StopWithClip = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetStopWithClipAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -144,11 +104,6 @@ public partial class CGameCtnMediaBlockSoundBuilder : CGameCtnMediaBlockSoundBui
         node.Chunks.Add(chunk030A7002);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk030A7001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk030A7002 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound();
@@ -158,11 +113,6 @@ public partial class CGameCtnMediaBlockSoundBuilder : CGameCtnMediaBlockSoundBui
         node.Chunks.Add(chunk030A7004);
         return node;
     }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7003>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk030A7003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7004>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk030A7004 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound CreateRecipe2(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound();
@@ -171,14 +121,6 @@ public partial class CGameCtnMediaBlockSoundBuilder : CGameCtnMediaBlockSoundBui
         var chunk030A7004 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7004(game);
         node.Chunks.Add(chunk030A7004);
         return node;
-    }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7003>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk030A7003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7004>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk030A7004 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound node, GameVersion game)
-    {
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
@@ -198,14 +140,9 @@ public partial class CGameCtnMediaBlockSoundBuilder : CGameCtnMediaBlockSoundBui
             var node = CGameCtnMediaBlockSoundBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CGameCtnMediaBlockSoundBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CGameCtnMediaBlockSoundBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound node);
     }
     public partial class TMNESWC : CGameCtnMediaBlockSoundBuilderBase<TMNESWC>
     {
@@ -216,14 +153,9 @@ public partial class CGameCtnMediaBlockSoundBuilder : CGameCtnMediaBlockSoundBui
             var node = CGameCtnMediaBlockSoundBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CGameCtnMediaBlockSoundBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CGameCtnMediaBlockSoundBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound node);
     }
     public partial class VSK5 : CGameCtnMediaBlockSoundBuilderBase<VSK5>
     {
@@ -234,14 +166,9 @@ public partial class CGameCtnMediaBlockSoundBuilder : CGameCtnMediaBlockSoundBui
             var node = CGameCtnMediaBlockSoundBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CGameCtnMediaBlockSoundBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CGameCtnMediaBlockSoundBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound node);
     }
     public partial class TMF : CGameCtnMediaBlockSoundBuilderMembers1<TMF>
     {
@@ -252,14 +179,9 @@ public partial class CGameCtnMediaBlockSoundBuilder : CGameCtnMediaBlockSoundBui
             var node = CGameCtnMediaBlockSoundBuilder.CreateRecipe1(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CGameCtnMediaBlockSoundBuilder.ValidateRecipe1(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CGameCtnMediaBlockSoundBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound node);
     }
     public partial class TMT : CGameCtnMediaBlockSoundBuilderMembers2<TMT>
     {
@@ -270,14 +192,9 @@ public partial class CGameCtnMediaBlockSoundBuilder : CGameCtnMediaBlockSoundBui
             var node = CGameCtnMediaBlockSoundBuilder.CreateRecipe2(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameCtnMediaBlockSoundBuilder.ValidateRecipe2(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameCtnMediaBlockSoundBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound node);
     }
     public partial class MP4 : CGameCtnMediaBlockSoundBuilderMembers2<MP4>
     {
@@ -288,14 +205,9 @@ public partial class CGameCtnMediaBlockSoundBuilder : CGameCtnMediaBlockSoundBui
             var node = CGameCtnMediaBlockSoundBuilder.CreateRecipe2(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameCtnMediaBlockSoundBuilder.ValidateRecipe2(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameCtnMediaBlockSoundBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound node);
     }
     public partial class TM2020 : CGameCtnMediaBlockSoundBuilderMembers2<TM2020>
     {
@@ -306,13 +218,8 @@ public partial class CGameCtnMediaBlockSoundBuilder : CGameCtnMediaBlockSoundBui
             var node = CGameCtnMediaBlockSoundBuilder.CreateRecipe2(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameCtnMediaBlockSoundBuilder.ValidateRecipe2(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameCtnMediaBlockSoundBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound node);
     }
 }

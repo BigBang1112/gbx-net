@@ -41,12 +41,7 @@ public partial class CPlugGameSkinAndFolder : global::GBX.NET.Interfaces.Plug.IP
     }
     global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM2020? global::GBX.NET.Interfaces.Plug.IPlugGameSkinAndFolderTM2020.Remapping
     {
-        get
-        {
-            var node = Remapping;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => Remapping;
         set => Remapping = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

@@ -36,78 +36,43 @@ public abstract class CFuncColorGradientBuilderBase<TSelf> where TSelf : CFuncCo
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Function.CFuncColorGradient> state;
     private protected CFuncColorGradientBuilderBase() => state = new();
     private protected CFuncColorGradientBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncColorGradient> state) => this.state = state;
-    public float KeyFramePos1
-    {
-        get => state.Get<float>("KeyFramePos1");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncColorGradientBuilderAssignments.GetKeyFramePos1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithKeyFramePos1(float value)
     {
-        KeyFramePos1 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncColorGradientBuilderAssignments.GetKeyFramePos1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float KeyFramePos2
-    {
-        get => state.Get<float>("KeyFramePos2");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncColorGradientBuilderAssignments.GetKeyFramePos2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithKeyFramePos2(float value)
     {
-        KeyFramePos2 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncColorGradientBuilderAssignments.GetKeyFramePos2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public Vec3 KeyFrameValue0
-    {
-        get => state.Get<Vec3>("KeyFrameValue0");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncColorGradientBuilderAssignments.GetKeyFrameValue0Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithKeyFrameValue0(Vec3 value)
     {
-        KeyFrameValue0 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncColorGradientBuilderAssignments.GetKeyFrameValue0Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public Vec3 KeyFrameValue1
-    {
-        get => state.Get<Vec3>("KeyFrameValue1");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncColorGradientBuilderAssignments.GetKeyFrameValue1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithKeyFrameValue1(Vec3 value)
     {
-        KeyFrameValue1 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncColorGradientBuilderAssignments.GetKeyFrameValue1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public Vec3 KeyFrameValue2
-    {
-        get => state.Get<Vec3>("KeyFrameValue2");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncColorGradientBuilderAssignments.GetKeyFrameValue2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithKeyFrameValue2(Vec3 value)
     {
-        KeyFrameValue2 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncColorGradientBuilderAssignments.GetKeyFrameValue2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public Vec3 KeyFrameValue3
-    {
-        get => state.Get<Vec3>("KeyFrameValue3");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncColorGradientBuilderAssignments.GetKeyFrameValue3Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithKeyFrameValue3(Vec3 value)
     {
-        KeyFrameValue3 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncColorGradientBuilderAssignments.GetKeyFrameValue3Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CFuncColorGradientBuilderMembers1<TSelf> : CFuncColorGradientBuilderBase<TSelf> where TSelf : CFuncColorGradientBuilderMembers1<TSelf>
 {
     private protected CFuncColorGradientBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncColorGradient> state) : base(state) { }
-    public global::GBX.NET.Engines.Function.CFuncColorGradient.EColorSpace ColorSpace
-    {
-        get => state.Get<global::GBX.NET.Engines.Function.CFuncColorGradient.EColorSpace>("ColorSpace");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncColorGradientBuilderAssignments.GetColorSpaceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithColorSpace(global::GBX.NET.Engines.Function.CFuncColorGradient.EColorSpace value)
     {
-        ColorSpace = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncColorGradientBuilderAssignments.GetColorSpaceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -120,23 +85,12 @@ public partial class CFuncColorGradientBuilder : CFuncColorGradientBuilderBase<C
         node.Chunks.Add(chunk05038000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Function.CFuncColorGradient node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncColorGradient.Chunk05038000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05038000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Function.CFuncColorGradient CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Function.CFuncColorGradient();
         var chunk05038001 = new global::GBX.NET.Engines.Function.CFuncColorGradient.Chunk05038001();
         node.Chunks.Add(chunk05038001);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Function.CFuncColorGradient node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncColorGradient.Chunk05038001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05038001 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Function.CFuncColorGradient node, GameVersion game)
-    {
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
@@ -157,14 +111,9 @@ public partial class CFuncColorGradientBuilder : CFuncColorGradientBuilderBase<C
             var node = CFuncColorGradientBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CFuncColorGradientBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CFuncColorGradientBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncColorGradient node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncColorGradient node);
     }
     public partial class TMNESWC : CFuncColorGradientBuilderBase<TMNESWC>
     {
@@ -175,14 +124,9 @@ public partial class CFuncColorGradientBuilder : CFuncColorGradientBuilderBase<C
             var node = CFuncColorGradientBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CFuncColorGradientBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CFuncColorGradientBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncColorGradient node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncColorGradient node);
     }
     public partial class VSK5 : CFuncColorGradientBuilderBase<VSK5>
     {
@@ -193,14 +137,9 @@ public partial class CFuncColorGradientBuilder : CFuncColorGradientBuilderBase<C
             var node = CFuncColorGradientBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CFuncColorGradientBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CFuncColorGradientBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncColorGradient node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncColorGradient node);
     }
     public partial class TMF : CFuncColorGradientBuilderBase<TMF>
     {
@@ -211,14 +150,9 @@ public partial class CFuncColorGradientBuilder : CFuncColorGradientBuilderBase<C
             var node = CFuncColorGradientBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CFuncColorGradientBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CFuncColorGradientBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncColorGradient node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncColorGradient node);
     }
     public partial class MP3 : CFuncColorGradientBuilderMembers1<MP3>
     {
@@ -229,14 +163,9 @@ public partial class CFuncColorGradientBuilder : CFuncColorGradientBuilderBase<C
             var node = CFuncColorGradientBuilder.CreateRecipe1(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CFuncColorGradientBuilder.ValidateRecipe1(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CFuncColorGradientBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncColorGradient node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncColorGradient node);
     }
     public partial class TMT : CFuncColorGradientBuilderMembers1<TMT>
     {
@@ -247,14 +176,9 @@ public partial class CFuncColorGradientBuilder : CFuncColorGradientBuilderBase<C
             var node = CFuncColorGradientBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CFuncColorGradientBuilder.ValidateRecipe1(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CFuncColorGradientBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncColorGradient node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncColorGradient node);
     }
     public partial class MP4 : CFuncColorGradientBuilderMembers1<MP4>
     {
@@ -265,14 +189,9 @@ public partial class CFuncColorGradientBuilder : CFuncColorGradientBuilderBase<C
             var node = CFuncColorGradientBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CFuncColorGradientBuilder.ValidateRecipe1(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CFuncColorGradientBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncColorGradient node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncColorGradient node);
     }
     public partial class TM2020 : CFuncColorGradientBuilderMembers1<TM2020>
     {
@@ -283,13 +202,8 @@ public partial class CFuncColorGradientBuilder : CFuncColorGradientBuilderBase<C
             var node = CFuncColorGradientBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CFuncColorGradientBuilder.ValidateRecipe1(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CFuncColorGradientBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncColorGradient node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncColorGradient node);
     }
 }

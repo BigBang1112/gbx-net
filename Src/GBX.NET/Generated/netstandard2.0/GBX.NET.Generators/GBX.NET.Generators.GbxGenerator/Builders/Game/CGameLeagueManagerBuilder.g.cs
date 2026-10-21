@@ -36,24 +36,14 @@ public abstract class CGameLeagueManagerBuilderBase<TSelf> where TSelf : CGameLe
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameLeagueManager> state;
     private protected CGameLeagueManagerBuilderBase() => state = new();
     private protected CGameLeagueManagerBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameLeagueManager> state) => this.state = state;
-    public int CacheDuration
-    {
-        get => state.Get<int>("CacheDuration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameLeagueManagerBuilderAssignments.GetCacheDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithCacheDuration(int value)
     {
-        CacheDuration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameLeagueManagerBuilderAssignments.GetCacheDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public NodeRefList<global::GBX.NET.Engines.Game.CGameLeague>? Leagues
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameLeague>?>("Leagues");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameLeagueManagerBuilderAssignments.GetLeaguesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLeagues(NodeRefList<global::GBX.NET.Engines.Game.CGameLeague>? value)
     {
-        Leagues = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameLeagueManagerBuilderAssignments.GetLeaguesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithLeagues(params global::GBX.NET.Engines.Game.CGameLeague[] values)
@@ -64,24 +54,14 @@ public abstract class CGameLeagueManagerBuilderBase<TSelf> where TSelf : CGameLe
     {
         return WithLeagues(values.ToArray());
     }
-    public DateTime? Timestamp
-    {
-        get => state.Get<DateTime?>("Timestamp");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameLeagueManagerBuilderAssignments.GetTimestampAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithTimestamp(DateTime? value)
     {
-        Timestamp = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameLeagueManagerBuilderAssignments.GetTimestampAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool Updated
-    {
-        get => state.Get<bool>("Updated");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameLeagueManagerBuilderAssignments.GetUpdatedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithUpdated(bool value)
     {
-        Updated = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameLeagueManagerBuilderAssignments.GetUpdatedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -94,13 +74,6 @@ public partial class CGameLeagueManagerBuilder : CGameLeagueManagerBuilderBase<C
         chunk03049000.Version = 0;
         node.Chunks.Add(chunk03049000);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameLeagueManager node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameLeagueManager.Chunk03049000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03049000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameLeagueManager node, GameVersion game)
-    {
     }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -125,14 +98,9 @@ public partial class CGameLeagueManagerBuilder : CGameLeagueManagerBuilderBase<C
             var node = CGameLeagueManagerBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CGameLeagueManagerBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CGameLeagueManagerBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameLeagueManager node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameLeagueManager node);
     }
     public partial class TMT : CGameLeagueManagerBuilderBase<TMT>
     {
@@ -151,14 +119,9 @@ public partial class CGameLeagueManagerBuilder : CGameLeagueManagerBuilderBase<C
             var node = CGameLeagueManagerBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameLeagueManagerBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameLeagueManagerBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameLeagueManager node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameLeagueManager node);
     }
     public partial class MP4 : CGameLeagueManagerBuilderBase<MP4>
     {
@@ -177,14 +140,9 @@ public partial class CGameLeagueManagerBuilder : CGameLeagueManagerBuilderBase<C
             var node = CGameLeagueManagerBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameLeagueManagerBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameLeagueManagerBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameLeagueManager node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameLeagueManager node);
     }
     public partial class TM2020 : CGameLeagueManagerBuilderBase<TM2020>
     {
@@ -203,13 +161,8 @@ public partial class CGameLeagueManagerBuilder : CGameLeagueManagerBuilderBase<C
             var node = CGameLeagueManagerBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameLeagueManagerBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameLeagueManagerBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameLeagueManager node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameLeagueManager node);
     }
 }

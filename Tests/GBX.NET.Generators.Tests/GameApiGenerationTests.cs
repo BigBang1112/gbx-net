@@ -42,6 +42,11 @@ public partial class GenerationTests
         var commonBase = compilation.GetTypeByMetadataName("GBX.NET.Builders.Engines.Game.ExampleBuilderBase`1")!;
         await Assert.That(commonBase.GetMembers("SetValue")).IsEmpty();
         await Assert.That(commonBase.GetMembers("SetModern")).IsEmpty();
+        foreach (var stage in new[] { builder, mp4, modern, builder.GetTypeMembers("TM10").Single() })
+        {
+            for (var type = stage; type is not null; type = type.BaseType)
+                await Assert.That(type.GetMembers().OfType<IPropertySymbol>()).IsEmpty();
+        }
         // Availability remains correct through shared contracts as well as
         // through the concrete builder stages.
         var oldView = compilation.GetTypeByMetadataName("GBX.NET.Interfaces.Game.IExampleTM10")!;
@@ -153,6 +158,40 @@ public partial class GenerationTests
         var commonBase = compilation.GetTypeByMetadataName("GBX.NET.Builders.Engines.Game.ExampleBuilderBase`1")!;
         await Assert.That(commonBase.GetMembers("SetLink")).IsEmpty();
         await Assert.That(commonBase.GetMembers("SetLinkReference").Length).IsEqualTo(1);
+        await Assert.That((bool)InvokeGame(compilation, "Verify")!).IsTrue();
+    }
+
+    [Test]
+    public async Task Generate_GameBuilders_FluentSetterHonorsAHandwrittenPropertyCustomization()
+    {
+        var (result, compilation) = RunGame("""
+            namespace GBX.NET.Builders.Engines.Game
+            {
+                public partial class ExampleBuilder
+                {
+                    public partial class MP4
+                    {
+                        private int Modern { set => SetModern(state, value + 1); }
+                    }
+                }
+            }
+            namespace GBX.NET.Engines.Game
+            {
+                public partial class Example
+                {
+                    public static bool Verify() => Create().ForMP4().WithModern(7).Build().Modern == 8
+                        && Create().ForTM2020().WithModern(7).Build().Modern == 7;
+                }
+            }
+            """, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001 [TM10, MP4, TM2020]
+              int Value
+            0x002 [MP4, TM2020]
+              int Modern
+            """));
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
         await Assert.That((bool)InvokeGame(compilation, "Verify")!).IsTrue();
     }
 
@@ -306,7 +345,7 @@ public partial class GenerationTests
                     {
                         var outer = Create().WithValues(1);
                         var selected = outer.ForTM10();
-                        outer.Values![0] = 2;
+                        outer.WithValues(2);
                         var first = selected.Build();
                         first.Values![0] = 3;
                         return selected.Build().Values![0] == 1 && outer.ForTM10().Build().Values![0] == 2;
@@ -423,7 +462,7 @@ public partial class GenerationTests
     }
 
     [Test]
-    public async Task Generate_GameBuilders_CustomizationCannotRemoveVersionGuarantees()
+    public async Task Generate_GameBuilders_CustomizationCanChangeRecipeVersions()
     {
         var (result, compilation) = RunGame("""
             namespace GBX.NET.Builders.Engines.Game
@@ -441,11 +480,7 @@ public partial class GenerationTests
             {
                 public partial class Example
                 {
-                    public static bool Verify()
-                    {
-                        try { Create().ForTM10().Build(); return false; }
-                        catch (System.InvalidOperationException) { return true; }
-                    }
+                    public static int Verify() => Create().ForTM10().Build().GetChunk<Chunk03043001>()!.Version;
                 }
             }
             """, new Text("Engines/Game/Example.chunkl", """
@@ -453,6 +488,33 @@ public partial class GenerationTests
             0x001 [TM10.v1]
               version
               int Value
+            """));
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var builder = result.GeneratedSources.Single(static s => s.HintName == "Builders/Game/ExampleBuilder.g.cs").SourceText.ToString();
+        await Assert.That(builder.Contains("ValidateRecipe", StringComparison.Ordinal)).IsFalse();
+        await Assert.That(builder.Contains("ValidateNode", StringComparison.Ordinal)).IsFalse();
+        await Assert.That((int)InvokeGame(compilation, "Verify")!).IsEqualTo(99);
+    }
+
+    [Test]
+    public async Task Generate_GameBuilders_LeavesRequiredMemberChecksToTheCaller()
+    {
+        var (result, compilation) = RunGame("""
+            namespace GBX.NET.Engines.Game
+            {
+                public partial class Example
+                {
+                    public string Required { get; set; } = null!;
+
+                    public static bool Verify() => Create().ForTM10().Build().Required is null
+                        && ((Example)Create().ForTM10().BuildInterface()).Required is null;
+                }
+            }
+            """, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001 [TM10]
+              string Required
             """));
         await Assert.That(result.Diagnostics).IsEmpty();
         await AssertNoErrors(compilation);
@@ -527,13 +589,7 @@ public partial class GenerationTests
             public partial class GbxReaderWriter
             {
                 public void Array<T>(ref T[]? values, int length) { }
-            }
-        }
-        namespace GBX.NET.Builders
-        {
-            internal static class NodeBuilderValidation
-            {
-                public static void Validate(GBX.NET.Engines.Game.CMwNod node, GBX.NET.GameVersion game) { }
+                public string? String(string? value) => value;
             }
         }
         namespace GBX.NET.Engines.Game

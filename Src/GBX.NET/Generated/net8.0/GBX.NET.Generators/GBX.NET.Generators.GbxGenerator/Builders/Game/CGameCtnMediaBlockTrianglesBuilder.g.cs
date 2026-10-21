@@ -36,14 +36,9 @@ public abstract class CGameCtnMediaBlockTrianglesBuilderBase<TSelf> where TSelf 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles> state;
     private protected CGameCtnMediaBlockTrianglesBuilderBase() => state = new();
     private protected CGameCtnMediaBlockTrianglesBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles> state) => this.state = state;
-    public global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.Key> Keys
-    {
-        get => state.Get<global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.Key>>("Keys");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrianglesBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    }
     public TSelf WithKeys(global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.Key> value)
     {
-        Keys = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrianglesBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithKeys(params global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.Key[] values)
@@ -54,58 +49,33 @@ public abstract class CGameCtnMediaBlockTrianglesBuilderBase<TSelf> where TSelf 
     {
         return WithKeys(values.ToArray());
     }
-    public global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.E3DPickMode PickMode3D
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.E3DPickMode>("PickMode3D");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrianglesBuilderAssignments.GetPickMode3DAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    }
     public TSelf WithPickMode3D(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.E3DPickMode value)
     {
-        PickMode3D = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrianglesBuilderAssignments.GetPickMode3DAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public Vec3 PickPlaneNormal
-    {
-        get => state.Get<Vec3>("PickPlaneNormal");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrianglesBuilderAssignments.GetPickPlaneNormalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithPickPlaneNormal(Vec3 value)
     {
-        PickPlaneNormal = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrianglesBuilderAssignments.GetPickPlaneNormalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public Vec3 PickPlanePosition
-    {
-        get => state.Get<Vec3>("PickPlanePosition");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrianglesBuilderAssignments.GetPickPlanePositionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithPickPlanePosition(Vec3 value)
     {
-        PickPlanePosition = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrianglesBuilderAssignments.GetPickPlanePositionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Int3[] Triangles
-    {
-        get => state.Get<global::GBX.NET.Int3[]>("Triangles");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrianglesBuilderAssignments.GetTrianglesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithTriangles(params global::GBX.NET.Int3[] value)
     {
-        Triangles = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrianglesBuilderAssignments.GetTrianglesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithTriangles(IEnumerable<global::GBX.NET.Int3> values)
     {
         return WithTriangles(values.ToArray());
     }
-    public global::GBX.NET.Vec4[] Vertices
-    {
-        get => state.Get<global::GBX.NET.Vec4[]>("Vertices");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrianglesBuilderAssignments.GetVerticesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    }
     public TSelf WithVertices(params global::GBX.NET.Vec4[] value)
     {
-        Vertices = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrianglesBuilderAssignments.GetVerticesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithVertices(IEnumerable<global::GBX.NET.Vec4> values)
@@ -122,10 +92,6 @@ public partial class CGameCtnMediaBlockTrianglesBuilder : CGameCtnMediaBlockTria
         node.Chunks.Add(chunk03029001);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.Chunk03029001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03029001 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles();
@@ -134,16 +100,6 @@ public partial class CGameCtnMediaBlockTrianglesBuilder : CGameCtnMediaBlockTria
         var chunk03029002 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.Chunk03029002();
         node.Chunks.Add(chunk03029002);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.Chunk03029001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03029001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.Chunk03029002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03029002 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles node, GameVersion game)
-    {
-        if (node.Triangles is null) throw new MemberNullException("Triangles");
-        if (node.Vertices is null) throw new MemberNullException("Vertices");
     }
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -161,14 +117,9 @@ public partial class CGameCtnMediaBlockTrianglesBuilder : CGameCtnMediaBlockTria
             var node = CGameCtnMediaBlockTrianglesBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CGameCtnMediaBlockTrianglesBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CGameCtnMediaBlockTrianglesBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles node);
     }
     public partial class MP3 : CGameCtnMediaBlockTrianglesBuilderBase<MP3>
     {
@@ -179,14 +130,9 @@ public partial class CGameCtnMediaBlockTrianglesBuilder : CGameCtnMediaBlockTria
             var node = CGameCtnMediaBlockTrianglesBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CGameCtnMediaBlockTrianglesBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CGameCtnMediaBlockTrianglesBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles node);
     }
     public partial class TMT : CGameCtnMediaBlockTrianglesBuilderBase<TMT>
     {
@@ -197,14 +143,9 @@ public partial class CGameCtnMediaBlockTrianglesBuilder : CGameCtnMediaBlockTria
             var node = CGameCtnMediaBlockTrianglesBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameCtnMediaBlockTrianglesBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameCtnMediaBlockTrianglesBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles node);
     }
     public partial class MP4 : CGameCtnMediaBlockTrianglesBuilderBase<MP4>
     {
@@ -215,26 +156,16 @@ public partial class CGameCtnMediaBlockTrianglesBuilder : CGameCtnMediaBlockTria
             var node = CGameCtnMediaBlockTrianglesBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameCtnMediaBlockTrianglesBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameCtnMediaBlockTrianglesBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles node);
     }
     public partial class TM2020 : CGameCtnMediaBlockTrianglesBuilderBase<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles> state) : base(state) { }
-        public int ClipEntId
-        {
-            get => state.Get<int>("ClipEntId");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrianglesBuilderAssignments.GetClipEntIdAssignment(), value, GameVersion.TM2020);
-        }
         public TM2020 WithClipEntId(int value)
         {
-            ClipEntId = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrianglesBuilderAssignments.GetClipEntIdAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTrianglesTM2020 BuildInterface() => Build();
@@ -243,13 +174,8 @@ public partial class CGameCtnMediaBlockTrianglesBuilder : CGameCtnMediaBlockTria
             var node = CGameCtnMediaBlockTrianglesBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameCtnMediaBlockTrianglesBuilder.ValidateRecipe1(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameCtnMediaBlockTrianglesBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles node);
     }
 }

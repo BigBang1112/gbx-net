@@ -41,32 +41,17 @@ public partial class CGameCtnMediaBlockScenery : global::GBX.NET.Interfaces.Game
     }
     global::GBX.NET.Interfaces.Plug.IPlugDataTapeTMT? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSceneryMembers1<global::GBX.NET.Interfaces.Plug.IPlugDataTapeTMT>.DataTape
     {
-        get
-        {
-            var node = DataTape;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => DataTape;
         set => DataTape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugDataTape node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugDataTapeMP4? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSceneryMembers1<global::GBX.NET.Interfaces.Plug.IPlugDataTapeMP4>.DataTape
     {
-        get
-        {
-            var node = DataTape;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => DataTape;
         set => DataTape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugDataTape node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugDataTapeTM2020? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSceneryMembers1<global::GBX.NET.Interfaces.Plug.IPlugDataTapeTM2020>.DataTape
     {
-        get
-        {
-            var node = DataTape;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => DataTape;
         set => DataTape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugDataTape node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

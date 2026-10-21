@@ -36,14 +36,9 @@ public abstract class CPlugCharPhyMaterialsBuilderBase<TSelf> where TSelf : CPlu
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials> state;
     private protected CPlugCharPhyMaterialsBuilderBase() => state = new();
     private protected CPlugCharPhyMaterialsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials> state) => this.state = state;
-    public NodeRefList<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial>? Materials
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial>?>("Materials");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyMaterialsBuilderAssignments.GetMaterialsAssignment(), value, GameVersion.TM2020);
-    }
     public TSelf WithMaterials(NodeRefList<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial>? value)
     {
-        Materials = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyMaterialsBuilderAssignments.GetMaterialsAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithMaterials(params global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial[] values)
@@ -64,13 +59,6 @@ public partial class CPlugCharPhyMaterialsBuilder : CPlugCharPhyMaterialsBuilder
         node.Chunks.Add(chunk090FB002);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials.Chunk090FB002>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090FB002 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials node, GameVersion game)
-    {
-    }
     public TM2020 ForTM2020() => new(state.Snapshot());
     public partial class TM2020 : CPlugCharPhyMaterialsBuilderBase<TM2020>
     {
@@ -81,13 +69,8 @@ public partial class CPlugCharPhyMaterialsBuilder : CPlugCharPhyMaterialsBuilder
             var node = CPlugCharPhyMaterialsBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugCharPhyMaterialsBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugCharPhyMaterialsBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials node);
     }
 }

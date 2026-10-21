@@ -36,34 +36,19 @@ public abstract class CMwCmdExpNumBuilderBase<TSelf> where TSelf : CMwCmdExpNumB
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum> state;
     private protected CMwCmdExpNumBuilderBase() => state = new();
     private protected CMwCmdExpNumBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum> state) => this.state = state;
-    public int Integer
-    {
-        get => state.Get<int>("Integer");
-        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumBuilderAssignments.GetIntegerAssignment(), value, GameVersion.TMF);
-    }
     public TSelf WithInteger(int value)
     {
-        Integer = value;
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumBuilderAssignments.GetIntegerAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
-    }
-    public float Real
-    {
-        get => state.Get<float>("Real");
-        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumBuilderAssignments.GetRealAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithReal(float value)
     {
-        Real = value;
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumBuilderAssignments.GetRealAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
-    }
-    public int Type
-    {
-        get => state.Get<int>("Type");
-        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumBuilderAssignments.GetTypeAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithType(int value)
     {
-        Type = value;
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumBuilderAssignments.GetTypeAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
 }
@@ -76,13 +61,6 @@ public partial class CMwCmdExpNumBuilder : CMwCmdExpNumBuilderBase<CMwCmdExpNumB
         node.Chunks.Add(chunk01046000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum.Chunk01046000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk01046000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum node, GameVersion game)
-    {
-    }
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TMF : CMwCmdExpNumBuilderBase<TMF>
     {
@@ -93,13 +71,8 @@ public partial class CMwCmdExpNumBuilder : CMwCmdExpNumBuilderBase<CMwCmdExpNumB
             var node = CMwCmdExpNumBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CMwCmdExpNumBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CMwCmdExpNumBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum node);
-        partial void ValidateNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum node);
     }
 }

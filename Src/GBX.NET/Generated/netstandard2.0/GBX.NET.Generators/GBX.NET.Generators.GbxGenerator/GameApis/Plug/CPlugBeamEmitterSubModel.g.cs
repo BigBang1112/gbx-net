@@ -36,7 +36,7 @@ public partial class CPlugBeamEmitterSubModel : global::GBX.NET.Interfaces.Plug.
     public static global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilder Create() => new();
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterial>? global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModel.AdditionalMaterials
     {
-        get => AdditionalMaterials is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterial>(GetAdditionalMaterialsBuilderReferences, GameVersion.Unspecified, true, "AdditionalMaterials");
+        get => AdditionalMaterials is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterial>(GetAdditionalMaterialsBuilderReferences, true, "AdditionalMaterials");
         set => AdditionalMaterials = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterial>(value, false));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterial? global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModel.Material
@@ -46,17 +46,12 @@ public partial class CPlugBeamEmitterSubModel : global::GBX.NET.Interfaces.Plug.
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>? global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelMP4.AdditionalMaterials
     {
-        get => AdditionalMaterials is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>(GetAdditionalMaterialsBuilderReferences, GameVersion.MP4, true, "AdditionalMaterials");
+        get => AdditionalMaterials is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>(GetAdditionalMaterialsBuilderReferences, true, "AdditionalMaterials");
         set => AdditionalMaterials = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>(value, false));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelMP4.Material
     {
-        get
-        {
-            var node = Material;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Material;
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     private NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>? GetAdditionalMaterialsBuilderReferences() => AdditionalMaterials;

@@ -36,64 +36,34 @@ public abstract class CControlLayoutBuilderBase<TSelf> where TSelf : CControlLay
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Control.CControlLayout> state;
     private protected CControlLayoutBuilderBase() => state = new();
     private protected CControlLayoutBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLayout> state) => this.state = state;
-    public int AlignHorizontal
-    {
-        get => state.Get<int>("AlignHorizontal");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlLayoutBuilderAssignments.GetAlignHorizontalAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF);
-    }
     public TSelf WithAlignHorizontal(int value)
     {
-        AlignHorizontal = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlLayoutBuilderAssignments.GetAlignHorizontalAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF);
         return (TSelf)this;
-    }
-    public int AlignVertical
-    {
-        get => state.Get<int>("AlignVertical");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlLayoutBuilderAssignments.GetAlignVerticalAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF);
     }
     public TSelf WithAlignVertical(int value)
     {
-        AlignVertical = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlLayoutBuilderAssignments.GetAlignVerticalAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF);
         return (TSelf)this;
-    }
-    public float PaddingHorizontal
-    {
-        get => state.Get<float>("PaddingHorizontal");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlLayoutBuilderAssignments.GetPaddingHorizontalAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF);
     }
     public TSelf WithPaddingHorizontal(float value)
     {
-        PaddingHorizontal = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlLayoutBuilderAssignments.GetPaddingHorizontalAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF);
         return (TSelf)this;
-    }
-    public float PaddingVertical
-    {
-        get => state.Get<float>("PaddingVertical");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlLayoutBuilderAssignments.GetPaddingVerticalAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF);
     }
     public TSelf WithPaddingVertical(float value)
     {
-        PaddingVertical = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlLayoutBuilderAssignments.GetPaddingVerticalAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF);
         return (TSelf)this;
-    }
-    public float RatioHorizontal
-    {
-        get => state.Get<float>("RatioHorizontal");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlLayoutBuilderAssignments.GetRatioHorizontalAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF);
     }
     public TSelf WithRatioHorizontal(float value)
     {
-        RatioHorizontal = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlLayoutBuilderAssignments.GetRatioHorizontalAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF);
         return (TSelf)this;
-    }
-    public float RatioVertical
-    {
-        get => state.Get<float>("RatioVertical");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlLayoutBuilderAssignments.GetRatioVerticalAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF);
     }
     public TSelf WithRatioVertical(float value)
     {
-        RatioVertical = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlLayoutBuilderAssignments.GetRatioVerticalAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF);
         return (TSelf)this;
     }
 }
@@ -105,13 +75,6 @@ public partial class CControlLayoutBuilder : CControlLayoutBuilderBase<CControlL
         var chunk0700C001 = new global::GBX.NET.Engines.Control.CControlLayout.Chunk0700C001();
         node.Chunks.Add(chunk0700C001);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Control.CControlLayout node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlLayout.Chunk0700C001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700C001 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Control.CControlLayout node, GameVersion game)
-    {
     }
     public TMF ForTMF() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -127,14 +90,9 @@ public partial class CControlLayoutBuilder : CControlLayoutBuilderBase<CControlL
             var node = CControlLayoutBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CControlLayoutBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CControlLayoutBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlLayout node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlLayout node);
     }
     public partial class MP4 : CControlLayoutBuilderBase<MP4>
     {
@@ -145,14 +103,9 @@ public partial class CControlLayoutBuilder : CControlLayoutBuilderBase<CControlL
             var node = CControlLayoutBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CControlLayoutBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CControlLayoutBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlLayout node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlLayout node);
     }
     public partial class TM2020 : CControlLayoutBuilderBase<TM2020>
     {
@@ -163,13 +116,8 @@ public partial class CControlLayoutBuilder : CControlLayoutBuilderBase<CControlL
             var node = CControlLayoutBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CControlLayoutBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CControlLayoutBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlLayout node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlLayout node);
     }
 }

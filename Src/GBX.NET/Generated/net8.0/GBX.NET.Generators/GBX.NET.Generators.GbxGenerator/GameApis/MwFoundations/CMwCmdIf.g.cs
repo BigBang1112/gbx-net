@@ -46,22 +46,12 @@ public partial class CMwCmdIf : global::GBX.NET.Interfaces.MwFoundations.IMwCmdI
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMF? global::GBX.NET.Interfaces.MwFoundations.IMwCmdIfTMF.ElseBlock
     {
-        get
-        {
-            var node = ElseBlock;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => ElseBlock;
         set => ElseBlock = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlock node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMF? global::GBX.NET.Interfaces.MwFoundations.IMwCmdIfTMF.IfBlock
     {
-        get
-        {
-            var node = IfBlock;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => IfBlock;
         set => IfBlock = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlock node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

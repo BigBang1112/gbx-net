@@ -36,14 +36,9 @@ public abstract class CMotionEmitterFlockBuilderBase<TSelf> where TSelf : CMotio
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterFlock> state;
     private protected CMotionEmitterFlockBuilderBase() => state = new();
     private protected CMotionEmitterFlockBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterFlock> state) => this.state = state;
-    public string? Name
-    {
-        get => state.Get<string?>("Name");
-        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithName(string? value)
     {
-        Name = value;
+        state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -56,10 +51,6 @@ public partial class CMotionEmitterFlockBuilder : CMotionEmitterFlockBuilderBase
         node.Chunks.Add(chunk08001000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Motion.CMotionEmitterFlock node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotion.Chunk08001000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk08001000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Motion.CMotionEmitterFlock CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Motion.CMotionEmitterFlock();
@@ -70,15 +61,6 @@ public partial class CMotionEmitterFlockBuilder : CMotionEmitterFlockBuilderBase
         var chunk08001000 = new global::GBX.NET.Engines.Motion.CMotion.Chunk08001000();
         node.Chunks.Add(chunk08001000);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Motion.CMotionEmitterFlock node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionEmitterFlock.Chunk0804F000>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk0804F000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionEmitterFlock.Chunk0804F001>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0804F001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotion.Chunk08001000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk08001000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Motion.CMotionEmitterFlock node, GameVersion game)
-    {
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
@@ -98,14 +80,9 @@ public partial class CMotionEmitterFlockBuilder : CMotionEmitterFlockBuilderBase
             var node = CMotionEmitterFlockBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CMotionEmitterFlockBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CMotionEmitterFlockBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionEmitterFlock node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionEmitterFlock node);
     }
     public partial class TMNESWC : CMotionEmitterFlockBuilderBase<TMNESWC>
     {
@@ -116,14 +93,9 @@ public partial class CMotionEmitterFlockBuilder : CMotionEmitterFlockBuilderBase
             var node = CMotionEmitterFlockBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CMotionEmitterFlockBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CMotionEmitterFlockBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionEmitterFlock node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionEmitterFlock node);
     }
     public partial class VSK5 : CMotionEmitterFlockBuilderBase<VSK5>
     {
@@ -134,14 +106,9 @@ public partial class CMotionEmitterFlockBuilder : CMotionEmitterFlockBuilderBase
             var node = CMotionEmitterFlockBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CMotionEmitterFlockBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CMotionEmitterFlockBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionEmitterFlock node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionEmitterFlock node);
     }
     public partial class TMF : CMotionEmitterFlockBuilderBase<TMF>
     {
@@ -152,26 +119,16 @@ public partial class CMotionEmitterFlockBuilder : CMotionEmitterFlockBuilderBase
             var node = CMotionEmitterFlockBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CMotionEmitterFlockBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CMotionEmitterFlockBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionEmitterFlock node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionEmitterFlock node);
     }
     public partial class MP3 : CMotionEmitterFlockBuilderBase<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterFlock> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugFlockModel? FlockModel
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugFlockModel?>("FlockModel");
-            set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterFlockBuilderAssignments.GetFlockModelAssignment(), value, GameVersion.MP3);
-        }
         public MP3 WithFlockModel(global::GBX.NET.Engines.Plug.CPlugFlockModel? value)
         {
-            FlockModel = value;
+            state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterFlockBuilderAssignments.GetFlockModelAssignment(), value, GameVersion.MP3);
             return this;
         }
         public MP3 WithFlockModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFlockModel> value)
@@ -184,54 +141,29 @@ public partial class CMotionEmitterFlockBuilder : CMotionEmitterFlockBuilderBase
         {
             return WithFlockModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugFlockModel?)null : value is global::GBX.NET.Engines.Plug.CPlugFlockModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public bool IsLandingArea
-        {
-            get => state.Get<bool>("IsLandingArea");
-            set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterFlockBuilderAssignments.GetIsLandingAreaAssignment(), value, GameVersion.MP3);
-        }
         public MP3 WithIsLandingArea(bool value)
         {
-            IsLandingArea = value;
+            state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterFlockBuilderAssignments.GetIsLandingAreaAssignment(), value, GameVersion.MP3);
             return this;
-        }
-        public bool IsRepulsor
-        {
-            get => state.Get<bool>("IsRepulsor");
-            set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterFlockBuilderAssignments.GetIsRepulsorAssignment(), value, GameVersion.MP3);
         }
         public MP3 WithIsRepulsor(bool value)
         {
-            IsRepulsor = value;
+            state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterFlockBuilderAssignments.GetIsRepulsorAssignment(), value, GameVersion.MP3);
             return this;
-        }
-        public float Power
-        {
-            get => state.Get<float>("Power");
-            set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterFlockBuilderAssignments.GetPowerAssignment(), value, GameVersion.MP3);
         }
         public MP3 WithPower(float value)
         {
-            Power = value;
+            state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterFlockBuilderAssignments.GetPowerAssignment(), value, GameVersion.MP3);
             return this;
-        }
-        public float Radius
-        {
-            get => state.Get<float>("Radius");
-            set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterFlockBuilderAssignments.GetRadiusAssignment(), value, GameVersion.MP3);
         }
         public MP3 WithRadius(float value)
         {
-            Radius = value;
+            state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterFlockBuilderAssignments.GetRadiusAssignment(), value, GameVersion.MP3);
             return this;
-        }
-        public int SpawnCount
-        {
-            get => state.Get<int>("SpawnCount");
-            set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterFlockBuilderAssignments.GetSpawnCountAssignment(), value, GameVersion.MP3);
         }
         public MP3 WithSpawnCount(int value)
         {
-            SpawnCount = value;
+            state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterFlockBuilderAssignments.GetSpawnCountAssignment(), value, GameVersion.MP3);
             return this;
         }
         public global::GBX.NET.Interfaces.Motion.IMotionEmitterFlockMP3 BuildInterface() => Build();
@@ -240,14 +172,9 @@ public partial class CMotionEmitterFlockBuilder : CMotionEmitterFlockBuilderBase
             var node = CMotionEmitterFlockBuilder.CreateRecipe1(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CMotionEmitterFlockBuilder.ValidateRecipe1(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CMotionEmitterFlockBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionEmitterFlock node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionEmitterFlock node);
     }
     public partial class TMT : CMotionEmitterFlockBuilderBase<TMT>
     {
@@ -258,14 +185,9 @@ public partial class CMotionEmitterFlockBuilder : CMotionEmitterFlockBuilderBase
             var node = CMotionEmitterFlockBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CMotionEmitterFlockBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CMotionEmitterFlockBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionEmitterFlock node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionEmitterFlock node);
     }
     public partial class MP4 : CMotionEmitterFlockBuilderBase<MP4>
     {
@@ -276,13 +198,8 @@ public partial class CMotionEmitterFlockBuilder : CMotionEmitterFlockBuilderBase
             var node = CMotionEmitterFlockBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CMotionEmitterFlockBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CMotionEmitterFlockBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionEmitterFlock node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionEmitterFlock node);
     }
 }

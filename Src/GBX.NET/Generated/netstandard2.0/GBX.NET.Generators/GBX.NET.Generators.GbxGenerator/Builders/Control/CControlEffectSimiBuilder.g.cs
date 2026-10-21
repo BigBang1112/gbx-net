@@ -36,24 +36,14 @@ public abstract class CControlEffectSimiBuilderBase<TSelf> where TSelf : CContro
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectSimi> state;
     private protected CControlEffectSimiBuilderBase() => state = new();
     private protected CControlEffectSimiBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectSimi> state) => this.state = state;
-    public bool Centered
-    {
-        get => state.Get<bool>("Centered");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectSimiBuilderAssignments.GetCenteredAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithCentered(bool value)
     {
-        Centered = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectSimiBuilderAssignments.GetCenteredAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public List<global::GBX.NET.Engines.Control.CControlEffectSimi.Key>? Keys
-    {
-        get => state.Get<List<global::GBX.NET.Engines.Control.CControlEffectSimi.Key>?>("Keys");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectSimiBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithKeys(List<global::GBX.NET.Engines.Control.CControlEffectSimi.Key>? value)
     {
-        Keys = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectSimiBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithKeys(params global::GBX.NET.Engines.Control.CControlEffectSimi.Key[] values)
@@ -68,28 +58,18 @@ public abstract class CControlEffectSimiBuilderBase<TSelf> where TSelf : CContro
 public abstract class CControlEffectSimiBuilderMembers1<TSelf> : CControlEffectSimiBuilderBase<TSelf> where TSelf : CControlEffectSimiBuilderMembers1<TSelf>
 {
     private protected CControlEffectSimiBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectSimi> state) : base(state) { }
-    public bool IsContinousEffect
-    {
-        get => state.Get<bool>("IsContinousEffect");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectSimiBuilderAssignments.GetIsContinousEffectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithIsContinousEffect(bool value)
     {
-        IsContinousEffect = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectSimiBuilderAssignments.GetIsContinousEffectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CControlEffectSimiBuilderMembers2<TSelf> : CControlEffectSimiBuilderMembers1<TSelf> where TSelf : CControlEffectSimiBuilderMembers2<TSelf>
 {
     private protected CControlEffectSimiBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectSimi> state) : base(state) { }
-    public bool IsInterpolated
-    {
-        get => state.Get<bool>("IsInterpolated");
-        set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectSimiBuilderAssignments.GetIsInterpolatedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    }
     public TSelf WithIsInterpolated(bool value)
     {
-        IsInterpolated = value;
+        state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectSimiBuilderAssignments.GetIsInterpolatedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -102,10 +82,6 @@ public partial class CControlEffectSimiBuilder : CControlEffectSimiBuilderBase<C
         node.Chunks.Add(chunk07010002);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Control.CControlEffectSimi node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlEffectSimi.Chunk07010002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07010002 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Control.CControlEffectSimi CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Control.CControlEffectSimi();
@@ -113,23 +89,12 @@ public partial class CControlEffectSimiBuilder : CControlEffectSimiBuilderBase<C
         node.Chunks.Add(chunk07010004);
         return node;
     }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Control.CControlEffectSimi node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlEffectSimi.Chunk07010004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07010004 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Control.CControlEffectSimi CreateRecipe2(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Control.CControlEffectSimi();
         var chunk07010005 = new global::GBX.NET.Engines.Control.CControlEffectSimi.Chunk07010005();
         node.Chunks.Add(chunk07010005);
         return node;
-    }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Control.CControlEffectSimi node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlEffectSimi.Chunk07010005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07010005 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Control.CControlEffectSimi node, GameVersion game)
-    {
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
@@ -150,26 +115,16 @@ public partial class CControlEffectSimiBuilder : CControlEffectSimiBuilderBase<C
             var node = CControlEffectSimiBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CControlEffectSimiBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CControlEffectSimiBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectSimi node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlEffectSimi node);
     }
     public partial class TMNESWC : CControlEffectSimiBuilderMembers1<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectSimi> state) : base(state) { }
-        public global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode ColorBlendMode
-        {
-            get => state.Get<global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode>("ColorBlendMode");
-            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectSimiBuilderAssignments.GetColorBlendModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-        }
         public TMNESWC WithColorBlendMode(global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode value)
         {
-            ColorBlendMode = value;
+            state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectSimiBuilderAssignments.GetColorBlendModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.Control.IControlEffectSimiTMNESWC BuildInterface() => Build();
@@ -178,26 +133,16 @@ public partial class CControlEffectSimiBuilder : CControlEffectSimiBuilderBase<C
             var node = CControlEffectSimiBuilder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CControlEffectSimiBuilder.ValidateRecipe1(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CControlEffectSimiBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectSimi node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlEffectSimi node);
     }
     public partial class VSK5 : CControlEffectSimiBuilderMembers1<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectSimi> state) : base(state) { }
-        public global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode ColorBlendMode
-        {
-            get => state.Get<global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode>("ColorBlendMode");
-            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectSimiBuilderAssignments.GetColorBlendModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-        }
         public VSK5 WithColorBlendMode(global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode value)
         {
-            ColorBlendMode = value;
+            state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectSimiBuilderAssignments.GetColorBlendModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.Control.IControlEffectSimiVSK5 BuildInterface() => Build();
@@ -206,26 +151,16 @@ public partial class CControlEffectSimiBuilder : CControlEffectSimiBuilderBase<C
             var node = CControlEffectSimiBuilder.CreateRecipe1(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CControlEffectSimiBuilder.ValidateRecipe1(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CControlEffectSimiBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectSimi node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlEffectSimi node);
     }
     public partial class TMF : CControlEffectSimiBuilderMembers2<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectSimi> state) : base(state) { }
-        public global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode ColorBlendMode
-        {
-            get => state.Get<global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode>("ColorBlendMode");
-            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectSimiBuilderAssignments.GetColorBlendModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-        }
         public TMF WithColorBlendMode(global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode value)
         {
-            ColorBlendMode = value;
+            state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectSimiBuilderAssignments.GetColorBlendModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.Control.IControlEffectSimiTMF BuildInterface() => Build();
@@ -234,26 +169,16 @@ public partial class CControlEffectSimiBuilder : CControlEffectSimiBuilderBase<C
             var node = CControlEffectSimiBuilder.CreateRecipe2(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CControlEffectSimiBuilder.ValidateRecipe2(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CControlEffectSimiBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectSimi node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlEffectSimi node);
     }
     public partial class MP3 : CControlEffectSimiBuilderMembers2<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectSimi> state) : base(state) { }
-        public global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode ColorBlendMode
-        {
-            get => state.Get<global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode>("ColorBlendMode");
-            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectSimiBuilderAssignments.GetColorBlendModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-        }
         public MP3 WithColorBlendMode(global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode value)
         {
-            ColorBlendMode = value;
+            state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectSimiBuilderAssignments.GetColorBlendModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.Control.IControlEffectSimiMP3 BuildInterface() => Build();
@@ -262,26 +187,16 @@ public partial class CControlEffectSimiBuilder : CControlEffectSimiBuilderBase<C
             var node = CControlEffectSimiBuilder.CreateRecipe2(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CControlEffectSimiBuilder.ValidateRecipe2(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CControlEffectSimiBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectSimi node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlEffectSimi node);
     }
     public partial class TMT : CControlEffectSimiBuilderMembers2<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectSimi> state) : base(state) { }
-        public global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode ColorBlendMode
-        {
-            get => state.Get<global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode>("ColorBlendMode");
-            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectSimiBuilderAssignments.GetColorBlendModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-        }
         public TMT WithColorBlendMode(global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode value)
         {
-            ColorBlendMode = value;
+            state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectSimiBuilderAssignments.GetColorBlendModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.Control.IControlEffectSimiTMT BuildInterface() => Build();
@@ -290,26 +205,16 @@ public partial class CControlEffectSimiBuilder : CControlEffectSimiBuilderBase<C
             var node = CControlEffectSimiBuilder.CreateRecipe2(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CControlEffectSimiBuilder.ValidateRecipe2(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CControlEffectSimiBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectSimi node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlEffectSimi node);
     }
     public partial class MP4 : CControlEffectSimiBuilderMembers2<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectSimi> state) : base(state) { }
-        public global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode ColorBlendMode
-        {
-            get => state.Get<global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode>("ColorBlendMode");
-            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectSimiBuilderAssignments.GetColorBlendModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-        }
         public MP4 WithColorBlendMode(global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode value)
         {
-            ColorBlendMode = value;
+            state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectSimiBuilderAssignments.GetColorBlendModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.Control.IControlEffectSimiMP4 BuildInterface() => Build();
@@ -318,26 +223,16 @@ public partial class CControlEffectSimiBuilder : CControlEffectSimiBuilderBase<C
             var node = CControlEffectSimiBuilder.CreateRecipe2(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CControlEffectSimiBuilder.ValidateRecipe2(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CControlEffectSimiBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectSimi node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlEffectSimi node);
     }
     public partial class TM2020 : CControlEffectSimiBuilderMembers2<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectSimi> state) : base(state) { }
-        public global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode ColorBlendMode
-        {
-            get => state.Get<global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode>("ColorBlendMode");
-            set => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectSimiBuilderAssignments.GetColorBlendModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-        }
         public TM2020 WithColorBlendMode(global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode value)
         {
-            ColorBlendMode = value;
+            state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectSimiBuilderAssignments.GetColorBlendModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.Control.IControlEffectSimiTM2020 BuildInterface() => Build();
@@ -346,13 +241,8 @@ public partial class CControlEffectSimiBuilder : CControlEffectSimiBuilderBase<C
             var node = CControlEffectSimiBuilder.CreateRecipe2(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CControlEffectSimiBuilder.ValidateRecipe2(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CControlEffectSimiBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectSimi node);
-        partial void ValidateNode(global::GBX.NET.Engines.Control.CControlEffectSimi node);
     }
 }

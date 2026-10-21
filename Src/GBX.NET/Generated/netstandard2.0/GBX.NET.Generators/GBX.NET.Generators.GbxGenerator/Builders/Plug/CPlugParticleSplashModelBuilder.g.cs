@@ -46,23 +46,12 @@ public partial class CPlugParticleSplashModelBuilder : CPlugParticleSplashModelB
         node.Chunks.Add(chunk090B5000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugParticleSplashModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleSplashModel.Chunk090B5000>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B5000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugParticleSplashModel CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugParticleSplashModel();
         var chunk090B5000 = new global::GBX.NET.Engines.Plug.CPlugParticleSplashModel.Chunk090B5000(game);
         node.Chunks.Add(chunk090B5000);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugParticleSplashModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleSplashModel.Chunk090B5000>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B5000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugParticleSplashModel node, GameVersion game)
-    {
     }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -79,14 +68,9 @@ public partial class CPlugParticleSplashModelBuilder : CPlugParticleSplashModelB
             var node = CPlugParticleSplashModelBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CPlugParticleSplashModelBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CPlugParticleSplashModelBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleSplashModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugParticleSplashModel node);
     }
     public partial class TMT : CPlugParticleSplashModelBuilderBase<TMT>
     {
@@ -97,14 +81,9 @@ public partial class CPlugParticleSplashModelBuilder : CPlugParticleSplashModelB
             var node = CPlugParticleSplashModelBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugParticleSplashModelBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugParticleSplashModelBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleSplashModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugParticleSplashModel node);
     }
     public partial class MP4 : CPlugParticleSplashModelBuilderBase<MP4>
     {
@@ -115,14 +94,9 @@ public partial class CPlugParticleSplashModelBuilder : CPlugParticleSplashModelB
             var node = CPlugParticleSplashModelBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugParticleSplashModelBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugParticleSplashModelBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleSplashModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugParticleSplashModel node);
     }
     public partial class TM2020 : CPlugParticleSplashModelBuilderBase<TM2020>
     {
@@ -133,13 +107,8 @@ public partial class CPlugParticleSplashModelBuilder : CPlugParticleSplashModelB
             var node = CPlugParticleSplashModelBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugParticleSplashModelBuilder.ValidateRecipe1(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugParticleSplashModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleSplashModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugParticleSplashModel node);
     }
 }

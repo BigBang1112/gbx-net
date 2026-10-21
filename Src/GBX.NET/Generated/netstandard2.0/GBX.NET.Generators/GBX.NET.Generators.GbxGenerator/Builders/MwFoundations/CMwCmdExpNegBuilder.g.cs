@@ -36,44 +36,24 @@ public abstract class CMwCmdExpNegBuilderBase<TSelf> where TSelf : CMwCmdExpNegB
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNeg> state;
     private protected CMwCmdExpNegBuilderBase() => state = new();
     private protected CMwCmdExpNegBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNeg> state) => this.state = state;
-    public int Integer
-    {
-        get => state.Get<int>("Integer");
-        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumBuilderAssignments.GetIntegerAssignment(), value, GameVersion.TMF);
-    }
     public TSelf WithInteger(int value)
     {
-        Integer = value;
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumBuilderAssignments.GetIntegerAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
-    }
-    public float Real
-    {
-        get => state.Get<float>("Real");
-        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumBuilderAssignments.GetRealAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithReal(float value)
     {
-        Real = value;
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumBuilderAssignments.GetRealAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
-    }
-    public int Type
-    {
-        get => state.Get<int>("Type");
-        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumBuilderAssignments.GetTypeAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithType(int value)
     {
-        Type = value;
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumBuilderAssignments.GetTypeAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Value
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdExp?>("Value");
-        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNegBuilderAssignments.GetValueAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithValue(global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value)
     {
-        Value = value;
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNegBuilderAssignments.GetValueAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
     public TSelf WithValueReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value)
@@ -94,14 +74,6 @@ public partial class CMwCmdExpNegBuilder : CMwCmdExpNegBuilderBase<CMwCmdExpNegB
         node.Chunks.Add(chunk01046000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.MwFoundations.CMwCmdExpNeg node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNeg.Chunk01044000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk01044000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum.Chunk01046000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk01046000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.MwFoundations.CMwCmdExpNeg node, GameVersion game)
-    {
-    }
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TMF : CMwCmdExpNegBuilderBase<TMF>
     {
@@ -112,13 +84,8 @@ public partial class CMwCmdExpNegBuilder : CMwCmdExpNegBuilderBase<CMwCmdExpNegB
             var node = CMwCmdExpNegBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CMwCmdExpNegBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CMwCmdExpNegBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpNeg node);
-        partial void ValidateNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpNeg node);
     }
 }

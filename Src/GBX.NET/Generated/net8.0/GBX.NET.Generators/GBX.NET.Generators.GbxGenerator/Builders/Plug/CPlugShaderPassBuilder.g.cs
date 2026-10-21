@@ -40,94 +40,59 @@ public abstract class CPlugShaderPassBuilderBase<TSelf> where TSelf : CPlugShade
 public abstract class CPlugShaderPassBuilderMembers1<TSelf> : CPlugShaderPassBuilderBase<TSelf> where TSelf : CPlugShaderPassBuilderMembers1<TSelf>
 {
     private protected CPlugShaderPassBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderPass> state) : base(state) { }
-    public uint Flags
-    {
-        get => state.Get<uint>("Flags");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithFlags(uint value)
     {
-        Flags = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CPlugShaderPassBuilderMembers2<TSelf> : CPlugShaderPassBuilderMembers1<TSelf> where TSelf : CPlugShaderPassBuilderMembers2<TSelf>
 {
     private protected CPlugShaderPassBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderPass> state) : base(state) { }
-    public global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu? PixelPipeline
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu?>("PixelPipeline");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetPixelPipelineAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithPixelPipeline(global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu? value)
     {
-        PixelPipeline = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetPixelPipelineAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public string[] SkipSamplers
-    {
-        get => state.Get<string[]>("SkipSamplers");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetSkipSamplersAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSkipSamplers(params string[] value)
     {
-        SkipSamplers = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetSkipSamplersAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithSkipSamplers(IEnumerable<string> values)
     {
         return WithSkipSamplers(values.ToArray());
     }
-    public global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu? VertexPipeline
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu?>("VertexPipeline");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexPipelineAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithVertexPipeline(global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu? value)
     {
-        VertexPipeline = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexPipelineAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CPlugShaderPassBuilderMembers3<TSelf> : CPlugShaderPassBuilderBase<TSelf> where TSelf : CPlugShaderPassBuilderMembers3<TSelf>
 {
     private protected CPlugShaderPassBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderPass> state) : base(state) { }
-    public Vec4[] PixelFxValues
-    {
-        get => state.Get<Vec4[]>("PixelFxValues");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetPixelFxValuesAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
-    }
     public TSelf WithPixelFxValues(params Vec4[] value)
     {
-        PixelFxValues = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetPixelFxValuesAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
         return (TSelf)this;
     }
     public TSelf WithPixelFxValues(IEnumerable<Vec4> values)
     {
         return WithPixelFxValues(values.ToArray());
     }
-    public global::GBX.NET.Engines.Plug.CPlugShaderPass.GpuLoadFx[] PixelLoadFxs
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugShaderPass.GpuLoadFx[]>("PixelLoadFxs");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetPixelLoadFxsAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
-    }
     public TSelf WithPixelLoadFxs(params global::GBX.NET.Engines.Plug.CPlugShaderPass.GpuLoadFx[] value)
     {
-        PixelLoadFxs = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetPixelLoadFxsAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
         return (TSelf)this;
     }
     public TSelf WithPixelLoadFxs(IEnumerable<global::GBX.NET.Engines.Plug.CPlugShaderPass.GpuLoadFx> values)
     {
         return WithPixelLoadFxs(values.ToArray());
     }
-    public global::GBX.NET.Engines.Plug.CPlugFileGPU? PixelShader
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugFileGPU?>("PixelShader");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetPixelShaderAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
-    }
     public TSelf WithPixelShader(global::GBX.NET.Engines.Plug.CPlugFileGPU? value)
     {
-        PixelShader = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetPixelShaderAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
         return (TSelf)this;
     }
     public TSelf WithPixelShaderReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileGPU> value)
@@ -136,42 +101,27 @@ public abstract class CPlugShaderPassBuilderMembers3<TSelf> : CPlugShaderPassBui
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetPixelShaderReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
         return (TSelf)this;
     }
-    public Vec4[] VertexFxValues
-    {
-        get => state.Get<Vec4[]>("VertexFxValues");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexFxValuesAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
-    }
     public TSelf WithVertexFxValues(params Vec4[] value)
     {
-        VertexFxValues = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexFxValuesAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
         return (TSelf)this;
     }
     public TSelf WithVertexFxValues(IEnumerable<Vec4> values)
     {
         return WithVertexFxValues(values.ToArray());
     }
-    public global::GBX.NET.Engines.Plug.CPlugShaderPass.GpuLoadFx[] VertexLoadFxs
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugShaderPass.GpuLoadFx[]>("VertexLoadFxs");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexLoadFxsAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
-    }
     public TSelf WithVertexLoadFxs(params global::GBX.NET.Engines.Plug.CPlugShaderPass.GpuLoadFx[] value)
     {
-        VertexLoadFxs = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexLoadFxsAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
         return (TSelf)this;
     }
     public TSelf WithVertexLoadFxs(IEnumerable<global::GBX.NET.Engines.Plug.CPlugShaderPass.GpuLoadFx> values)
     {
         return WithVertexLoadFxs(values.ToArray());
     }
-    public global::GBX.NET.Engines.Plug.CPlugFileGPU? VertexShader
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugFileGPU?>("VertexShader");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexShaderAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
-    }
     public TSelf WithVertexShader(global::GBX.NET.Engines.Plug.CPlugFileGPU? value)
     {
-        VertexShader = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexShaderAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
         return (TSelf)this;
     }
     public TSelf WithVertexShaderReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileGPU> value)
@@ -184,68 +134,38 @@ public abstract class CPlugShaderPassBuilderMembers3<TSelf> : CPlugShaderPassBui
 public abstract class CPlugShaderPassBuilderMembers4<TSelf> : CPlugShaderPassBuilderMembers2<TSelf> where TSelf : CPlugShaderPassBuilderMembers4<TSelf>
 {
     private protected CPlugShaderPassBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderPass> state) : base(state) { }
-    public global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu? DomainPipeline
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu?>("DomainPipeline");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetDomainPipelineAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithDomainPipeline(global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu? value)
     {
-        DomainPipeline = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetDomainPipelineAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu? GeometryPipeline
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu?>("GeometryPipeline");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetGeometryPipelineAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithGeometryPipeline(global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu? value)
     {
-        GeometryPipeline = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetGeometryPipelineAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu? HullPipeline
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu?>("HullPipeline");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetHullPipelineAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithHullPipeline(global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu? value)
     {
-        HullPipeline = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetHullPipelineAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
 }
 public abstract class CPlugShaderPassBuilderMembers5<TSelf> : CPlugShaderPassBuilderMembers3<TSelf> where TSelf : CPlugShaderPassBuilderMembers5<TSelf>
 {
     private protected CPlugShaderPassBuilderMembers5(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderPass> state) : base(state) { }
-    public int BlendDst
-    {
-        get => state.Get<int>("BlendDst");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetBlendDstAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
-    }
     public TSelf WithBlendDst(int value)
     {
-        BlendDst = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetBlendDstAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
         return (TSelf)this;
-    }
-    public int BlendSrc
-    {
-        get => state.Get<int>("BlendSrc");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetBlendSrcAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
     }
     public TSelf WithBlendSrc(int value)
     {
-        BlendSrc = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetBlendSrcAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
         return (TSelf)this;
-    }
-    public int CullMode
-    {
-        get => state.Get<int>("CullMode");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetCullModeAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
     }
     public TSelf WithCullMode(int value)
     {
-        CullMode = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetCullModeAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
         return (TSelf)this;
     }
 }
@@ -258,10 +178,6 @@ public partial class CPlugShaderPassBuilder : CPlugShaderPassBuilderBase<CPlugSh
         node.Chunks.Add(chunk09067005);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugShaderPass node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderPass.Chunk09067005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09067005 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugShaderPass CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugShaderPass();
@@ -273,12 +189,6 @@ public partial class CPlugShaderPassBuilder : CPlugShaderPassBuilderBase<CPlugSh
         node.Chunks.Add(chunk09067008);
         return node;
     }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugShaderPass node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderPass.Chunk09067006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09067006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderPass.Chunk09067007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09067007 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderPass.Chunk09067008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09067008 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugShaderPass CreateRecipe2(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugShaderPass();
@@ -289,12 +199,6 @@ public partial class CPlugShaderPassBuilder : CPlugShaderPassBuilderBase<CPlugSh
         var chunk0906700A = new global::GBX.NET.Engines.Plug.CPlugShaderPass.Chunk0906700A();
         node.Chunks.Add(chunk0906700A);
         return node;
-    }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Plug.CPlugShaderPass node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderPass.Chunk09067006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09067006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderPass.Chunk09067007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09067007 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderPass.Chunk0906700A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0906700A is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Plug.CPlugShaderPass CreateRecipe3(GameVersion game)
     {
@@ -309,13 +213,6 @@ public partial class CPlugShaderPassBuilder : CPlugShaderPassBuilderBase<CPlugSh
         node.Chunks.Add(chunk0906700C);
         return node;
     }
-    private static void ValidateRecipe3(global::GBX.NET.Engines.Plug.CPlugShaderPass node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderPass.Chunk09067006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09067006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderPass.Chunk0906700A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0906700A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderPass.Chunk0906700B>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0906700B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderPass.Chunk0906700C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0906700C is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugShaderPass CreateRecipe4(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugShaderPass();
@@ -328,26 +225,6 @@ public partial class CPlugShaderPassBuilder : CPlugShaderPassBuilderBase<CPlugSh
         var chunk0906700D = new global::GBX.NET.Engines.Plug.CPlugShaderPass.Chunk0906700D();
         node.Chunks.Add(chunk0906700D);
         return node;
-    }
-    private static void ValidateRecipe4(global::GBX.NET.Engines.Plug.CPlugShaderPass node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderPass.Chunk0906700A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0906700A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderPass.Chunk0906700B>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0906700B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderPass.Chunk0906700C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0906700C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShaderPass.Chunk0906700D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0906700D is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugShaderPass node, GameVersion game)
-    {
-        if ((game & (GameVersion.TM2020)) != 0 && node.DomainSamplers is null) throw new MemberNullException("DomainSamplers");
-        if ((game & (GameVersion.TM2020)) != 0 && node.GeometrySamplers is null) throw new MemberNullException("GeometrySamplers");
-        if ((game & (GameVersion.TM2020)) != 0 && node.HullSamplers is null) throw new MemberNullException("HullSamplers");
-        if ((game & (GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX)) != 0 && node.PixelFxValues is null) throw new MemberNullException("PixelFxValues");
-        if ((game & (GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX)) != 0 && node.PixelLoadFxs is null) throw new MemberNullException("PixelLoadFxs");
-        if ((game & (GameVersion.TM2020)) != 0 && node.PixelSamplers is null) throw new MemberNullException("PixelSamplers");
-        if ((game & (GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5)) != 0 && node.SkipSamplers is null) throw new MemberNullException("SkipSamplers");
-        if ((game & (GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX)) != 0 && node.VertexFxValues is null) throw new MemberNullException("VertexFxValues");
-        if ((game & (GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX)) != 0 && node.VertexLoadFxs is null) throw new MemberNullException("VertexLoadFxs");
-        if ((game & (GameVersion.TM2020)) != 0 && node.VertexSamplers is null) throw new MemberNullException("VertexSamplers");
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -370,14 +247,9 @@ public partial class CPlugShaderPassBuilder : CPlugShaderPassBuilderBase<CPlugSh
             var node = CPlugShaderPassBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CPlugShaderPassBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CPlugShaderPassBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugShaderPass node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugShaderPass node);
     }
     public partial class TMPU : CPlugShaderPassBuilderMembers5<TMPU>
     {
@@ -388,36 +260,21 @@ public partial class CPlugShaderPassBuilder : CPlugShaderPassBuilderBase<CPlugSh
             var node = CPlugShaderPassBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CPlugShaderPassBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CPlugShaderPassBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugShaderPass node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugShaderPass node);
     }
     public partial class TMSX : CPlugShaderPassBuilderMembers3<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderPass> state) : base(state) { }
-        public uint Flags
-        {
-            get => state.Get<uint>("Flags");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-        }
         public TMSX WithFlags(uint value)
         {
-            Flags = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
-        }
-        public NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>? VertexTextures
-        {
-            get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>?>("VertexTextures");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexTexturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMSX WithVertexTextures(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>? value)
         {
-            VertexTextures = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexTexturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public TMSX WithVertexTextures(params global::GBX.NET.Engines.Plug.CPlugBitmapSampler[] values)
@@ -442,36 +299,21 @@ public partial class CPlugShaderPassBuilder : CPlugShaderPassBuilderBase<CPlugSh
             var node = CPlugShaderPassBuilder.CreateRecipe1(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CPlugShaderPassBuilder.ValidateRecipe1(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CPlugShaderPassBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugShaderPass node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugShaderPass node);
     }
     public partial class TMNESWC : CPlugShaderPassBuilderMembers3<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderPass> state) : base(state) { }
-        public uint Flags
-        {
-            get => state.Get<uint>("Flags");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-        }
         public TMNESWC WithFlags(uint value)
         {
-            Flags = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
-        }
-        public NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>? VertexTextures
-        {
-            get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>?>("VertexTextures");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexTexturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMNESWC WithVertexTextures(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>? value)
         {
-            VertexTextures = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexTexturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public TMNESWC WithVertexTextures(params global::GBX.NET.Engines.Plug.CPlugBitmapSampler[] values)
@@ -496,26 +338,16 @@ public partial class CPlugShaderPassBuilder : CPlugShaderPassBuilderBase<CPlugSh
             var node = CPlugShaderPassBuilder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CPlugShaderPassBuilder.ValidateRecipe1(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CPlugShaderPassBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugShaderPass node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugShaderPass node);
     }
     public partial class VSK5 : CPlugShaderPassBuilderMembers2<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderPass> state) : base(state) { }
-        public NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>? VertexTextures
-        {
-            get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>?>("VertexTextures");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexTexturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-        }
         public VSK5 WithVertexTextures(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>? value)
         {
-            VertexTextures = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexTexturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public VSK5 WithVertexTextures(params global::GBX.NET.Engines.Plug.CPlugBitmapSampler[] values)
@@ -540,26 +372,16 @@ public partial class CPlugShaderPassBuilder : CPlugShaderPassBuilderBase<CPlugSh
             var node = CPlugShaderPassBuilder.CreateRecipe2(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CPlugShaderPassBuilder.ValidateRecipe2(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CPlugShaderPassBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugShaderPass node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugShaderPass node);
     }
     public partial class TMF : CPlugShaderPassBuilderMembers2<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderPass> state) : base(state) { }
-        public NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>? VertexTextures
-        {
-            get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>?>("VertexTextures");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexTexturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-        }
         public TMF WithVertexTextures(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>? value)
         {
-            VertexTextures = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexTexturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public TMF WithVertexTextures(params global::GBX.NET.Engines.Plug.CPlugBitmapSampler[] values)
@@ -584,26 +406,16 @@ public partial class CPlugShaderPassBuilder : CPlugShaderPassBuilderBase<CPlugSh
             var node = CPlugShaderPassBuilder.CreateRecipe2(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CPlugShaderPassBuilder.ValidateRecipe2(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CPlugShaderPassBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugShaderPass node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugShaderPass node);
     }
     public partial class MP3 : CPlugShaderPassBuilderMembers2<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderPass> state) : base(state) { }
-        public NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>? VertexTextures
-        {
-            get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>?>("VertexTextures");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexTexturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-        }
         public MP3 WithVertexTextures(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>? value)
         {
-            VertexTextures = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexTexturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public MP3 WithVertexTextures(params global::GBX.NET.Engines.Plug.CPlugBitmapSampler[] values)
@@ -620,26 +432,16 @@ public partial class CPlugShaderPassBuilder : CPlugShaderPassBuilderBase<CPlugSh
             var node = CPlugShaderPassBuilder.CreateRecipe2(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CPlugShaderPassBuilder.ValidateRecipe2(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CPlugShaderPassBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugShaderPass node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugShaderPass node);
     }
     public partial class TMT : CPlugShaderPassBuilderMembers2<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderPass> state) : base(state) { }
-        public NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>? VertexTextures
-        {
-            get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>?>("VertexTextures");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexTexturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-        }
         public TMT WithVertexTextures(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>? value)
         {
-            VertexTextures = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexTexturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public TMT WithVertexTextures(params global::GBX.NET.Engines.Plug.CPlugBitmapSampler[] values)
@@ -664,26 +466,16 @@ public partial class CPlugShaderPassBuilder : CPlugShaderPassBuilderBase<CPlugSh
             var node = CPlugShaderPassBuilder.CreateRecipe2(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugShaderPassBuilder.ValidateRecipe2(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugShaderPassBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugShaderPass node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugShaderPass node);
     }
     public partial class MP4 : CPlugShaderPassBuilderMembers4<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderPass> state) : base(state) { }
-        public NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>? VertexTextures
-        {
-            get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>?>("VertexTextures");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexTexturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-        }
         public MP4 WithVertexTextures(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>? value)
         {
-            VertexTextures = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexTexturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public MP4 WithVertexTextures(params global::GBX.NET.Engines.Plug.CPlugBitmapSampler[] values)
@@ -708,82 +500,52 @@ public partial class CPlugShaderPassBuilder : CPlugShaderPassBuilderBase<CPlugSh
             var node = CPlugShaderPassBuilder.CreateRecipe3(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugShaderPassBuilder.ValidateRecipe3(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugShaderPassBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugShaderPass node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugShaderPass node);
     }
     public partial class TM2020 : CPlugShaderPassBuilderMembers4<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderPass> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugShaderPass.Sampler[] DomainSamplers
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugShaderPass.Sampler[]>("DomainSamplers");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetDomainSamplersAssignment(), value, GameVersion.TM2020);
-        }
         public TM2020 WithDomainSamplers(params global::GBX.NET.Engines.Plug.CPlugShaderPass.Sampler[] value)
         {
-            DomainSamplers = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetDomainSamplersAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithDomainSamplers(IEnumerable<global::GBX.NET.Engines.Plug.CPlugShaderPass.Sampler> values)
         {
             return WithDomainSamplers(values.ToArray());
         }
-        public global::GBX.NET.Engines.Plug.CPlugShaderPass.Sampler[] GeometrySamplers
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugShaderPass.Sampler[]>("GeometrySamplers");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetGeometrySamplersAssignment(), value, GameVersion.TM2020);
-        }
         public TM2020 WithGeometrySamplers(params global::GBX.NET.Engines.Plug.CPlugShaderPass.Sampler[] value)
         {
-            GeometrySamplers = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetGeometrySamplersAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithGeometrySamplers(IEnumerable<global::GBX.NET.Engines.Plug.CPlugShaderPass.Sampler> values)
         {
             return WithGeometrySamplers(values.ToArray());
         }
-        public global::GBX.NET.Engines.Plug.CPlugShaderPass.Sampler[] HullSamplers
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugShaderPass.Sampler[]>("HullSamplers");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetHullSamplersAssignment(), value, GameVersion.TM2020);
-        }
         public TM2020 WithHullSamplers(params global::GBX.NET.Engines.Plug.CPlugShaderPass.Sampler[] value)
         {
-            HullSamplers = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetHullSamplersAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithHullSamplers(IEnumerable<global::GBX.NET.Engines.Plug.CPlugShaderPass.Sampler> values)
         {
             return WithHullSamplers(values.ToArray());
         }
-        public global::GBX.NET.Engines.Plug.CPlugShaderPass.Sampler[] PixelSamplers
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugShaderPass.Sampler[]>("PixelSamplers");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetPixelSamplersAssignment(), value, GameVersion.TM2020);
-        }
         public TM2020 WithPixelSamplers(params global::GBX.NET.Engines.Plug.CPlugShaderPass.Sampler[] value)
         {
-            PixelSamplers = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetPixelSamplersAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithPixelSamplers(IEnumerable<global::GBX.NET.Engines.Plug.CPlugShaderPass.Sampler> values)
         {
             return WithPixelSamplers(values.ToArray());
         }
-        public global::GBX.NET.Engines.Plug.CPlugShaderPass.Sampler[] VertexSamplers
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugShaderPass.Sampler[]>("VertexSamplers");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexSamplersAssignment(), value, GameVersion.TM2020);
-        }
         public TM2020 WithVertexSamplers(params global::GBX.NET.Engines.Plug.CPlugShaderPass.Sampler[] value)
         {
-            VertexSamplers = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexSamplersAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithVertexSamplers(IEnumerable<global::GBX.NET.Engines.Plug.CPlugShaderPass.Sampler> values)
@@ -796,13 +558,8 @@ public partial class CPlugShaderPassBuilder : CPlugShaderPassBuilderBase<CPlugSh
             var node = CPlugShaderPassBuilder.CreateRecipe4(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugShaderPassBuilder.ValidateRecipe4(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugShaderPassBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugShaderPass node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugShaderPass node);
     }
 }

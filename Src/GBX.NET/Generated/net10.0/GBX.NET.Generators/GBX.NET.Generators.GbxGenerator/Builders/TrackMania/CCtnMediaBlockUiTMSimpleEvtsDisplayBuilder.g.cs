@@ -36,88 +36,48 @@ public abstract class CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderBase<TSelf> wher
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay> state;
     private protected CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderBase() => state = new();
     private protected CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderBase(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay> state) => this.state = state;
-    public TimeSingle End
-    {
-        get => state.Get<TimeSingle>("End");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockUiBuilderAssignments.GetEndAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithEnd(TimeSingle value)
     {
-        End = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockUiBuilderAssignments.GetEndAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public TimeSingle Start
-    {
-        get => state.Get<TimeSingle>("Start");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockUiBuilderAssignments.GetStartAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithStart(TimeSingle value)
     {
-        Start = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockUiBuilderAssignments.GetStartAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderMembers1<TSelf> : CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderBase<TSelf> where TSelf : CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderMembers1<TSelf>
 {
     private protected CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay> state) : base(state) { }
-    public bool Checkpoints
-    {
-        get => state.Get<bool>("Checkpoints");
-        set => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderAssignments.GetCheckpointsAssignment(), value, GameVersion.TMNESWC | GameVersion.VSK5);
-    }
     public TSelf WithCheckpoints(bool value)
     {
-        Checkpoints = value;
+        state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderAssignments.GetCheckpointsAssignment(), value, GameVersion.TMNESWC | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay.EDisplayMode DisplayMode
-    {
-        get => state.Get<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay.EDisplayMode>("DisplayMode");
-        set => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderAssignments.GetDisplayModeAssignment(), value, GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithDisplayMode(global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay.EDisplayMode value)
     {
-        DisplayMode = value;
+        state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderAssignments.GetDisplayModeAssignment(), value, GameVersion.TMNESWC | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool EndOfLaps
-    {
-        get => state.Get<bool>("EndOfLaps");
-        set => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderAssignments.GetEndOfLapsAssignment(), value, GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithEndOfLaps(bool value)
     {
-        EndOfLaps = value;
+        state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderAssignments.GetEndOfLapsAssignment(), value, GameVersion.TMNESWC | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool EndOfRace
-    {
-        get => state.Get<bool>("EndOfRace");
-        set => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderAssignments.GetEndOfRaceAssignment(), value, GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithEndOfRace(bool value)
     {
-        EndOfRace = value;
+        state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderAssignments.GetEndOfRaceAssignment(), value, GameVersion.TMNESWC | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool GhostsName
-    {
-        get => state.Get<bool>("GhostsName");
-        set => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderAssignments.GetGhostsNameAssignment(), value, GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithGhostsName(bool value)
     {
-        GhostsName = value;
+        state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderAssignments.GetGhostsNameAssignment(), value, GameVersion.TMNESWC | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool StuntFigures
-    {
-        get => state.Get<bool>("StuntFigures");
-        set => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderAssignments.GetStuntFiguresAssignment(), value, GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithStuntFigures(bool value)
     {
-        StuntFigures = value;
+        state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderAssignments.GetStuntFiguresAssignment(), value, GameVersion.TMNESWC | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -136,26 +96,12 @@ public partial class CCtnMediaBlockUiTMSimpleEvtsDisplayBuilder : CCtnMediaBlock
         node.Chunks.Add(chunk0307D001);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay.Chunk24092000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk24092000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay.Chunk24092001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk24092001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay.Chunk24092002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk24092002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockUi.Chunk0307D001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0307D001 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay();
         var chunk0307D001 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockUi.Chunk0307D001();
         node.Chunks.Add(chunk0307D001);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockUi.Chunk0307D001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0307D001 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay node, GameVersion game)
-    {
     }
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
@@ -174,14 +120,9 @@ public partial class CCtnMediaBlockUiTMSimpleEvtsDisplayBuilder : CCtnMediaBlock
             var node = CCtnMediaBlockUiTMSimpleEvtsDisplayBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CCtnMediaBlockUiTMSimpleEvtsDisplayBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CCtnMediaBlockUiTMSimpleEvtsDisplayBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay node);
-        partial void ValidateNode(global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay node);
     }
     public partial class VSK5 : CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderMembers1<VSK5>
     {
@@ -192,14 +133,9 @@ public partial class CCtnMediaBlockUiTMSimpleEvtsDisplayBuilder : CCtnMediaBlock
             var node = CCtnMediaBlockUiTMSimpleEvtsDisplayBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CCtnMediaBlockUiTMSimpleEvtsDisplayBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CCtnMediaBlockUiTMSimpleEvtsDisplayBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay node);
-        partial void ValidateNode(global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay node);
     }
     public partial class TMF : CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderBase<TMF>
     {
@@ -210,14 +146,9 @@ public partial class CCtnMediaBlockUiTMSimpleEvtsDisplayBuilder : CCtnMediaBlock
             var node = CCtnMediaBlockUiTMSimpleEvtsDisplayBuilder.CreateRecipe1(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CCtnMediaBlockUiTMSimpleEvtsDisplayBuilder.ValidateRecipe1(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CCtnMediaBlockUiTMSimpleEvtsDisplayBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay node);
-        partial void ValidateNode(global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay node);
     }
     public partial class MP3 : CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderBase<MP3>
     {
@@ -228,14 +159,9 @@ public partial class CCtnMediaBlockUiTMSimpleEvtsDisplayBuilder : CCtnMediaBlock
             var node = CCtnMediaBlockUiTMSimpleEvtsDisplayBuilder.CreateRecipe1(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CCtnMediaBlockUiTMSimpleEvtsDisplayBuilder.ValidateRecipe1(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CCtnMediaBlockUiTMSimpleEvtsDisplayBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay node);
-        partial void ValidateNode(global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay node);
     }
     public partial class TMT : CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderBase<TMT>
     {
@@ -246,14 +172,9 @@ public partial class CCtnMediaBlockUiTMSimpleEvtsDisplayBuilder : CCtnMediaBlock
             var node = CCtnMediaBlockUiTMSimpleEvtsDisplayBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CCtnMediaBlockUiTMSimpleEvtsDisplayBuilder.ValidateRecipe1(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CCtnMediaBlockUiTMSimpleEvtsDisplayBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay node);
-        partial void ValidateNode(global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay node);
     }
     public partial class MP4 : CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderBase<MP4>
     {
@@ -264,13 +185,8 @@ public partial class CCtnMediaBlockUiTMSimpleEvtsDisplayBuilder : CCtnMediaBlock
             var node = CCtnMediaBlockUiTMSimpleEvtsDisplayBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CCtnMediaBlockUiTMSimpleEvtsDisplayBuilder.ValidateRecipe1(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CCtnMediaBlockUiTMSimpleEvtsDisplayBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay node);
-        partial void ValidateNode(global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay node);
     }
 }

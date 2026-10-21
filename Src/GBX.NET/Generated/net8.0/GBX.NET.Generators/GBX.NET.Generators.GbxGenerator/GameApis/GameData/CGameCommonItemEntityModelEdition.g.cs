@@ -71,157 +71,87 @@ public partial class CGameCommonItemEntityModelEdition : global::GBX.NET.Interfa
     }
     IReadOnlyList<global::GBX.NET.Interfaces.GameData.IGameActionModel>? global::GBX.NET.Interfaces.GameData.IGameCommonItemEntityModelEdition.TriggeredActions
     {
-        get => TriggeredActions is null ? null : new ScopedNodeList<global::GBX.NET.Engines.GameData.CGameActionModel, global::GBX.NET.Interfaces.GameData.IGameActionModel>(GetTriggeredActionsBuilderReferences, GameVersion.Unspecified, true, "TriggeredActions");
+        get => TriggeredActions is null ? null : new ScopedNodeList<global::GBX.NET.Engines.GameData.CGameActionModel, global::GBX.NET.Interfaces.GameData.IGameActionModel>(GetTriggeredActionsBuilderReferences, true, "TriggeredActions");
         set => TriggeredActions = value is null ? null : new NodeRefList<global::GBX.NET.Engines.GameData.CGameActionModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.GameData.CGameActionModel, global::GBX.NET.Interfaces.GameData.IGameActionModel>(value, false));
     }
     global::GBX.NET.Interfaces.Plug.IPlugCrystalMP4? global::GBX.NET.Interfaces.GameData.IGameCommonItemEntityModelEditionMembers1<global::GBX.NET.Interfaces.Plug.IPlugCrystalMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleMP4, global::GBX.NET.Interfaces.GameData.IGameActionModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSolidMP4>.CustomHitShapeCrystal
     {
-        get
-        {
-            var node = CustomHitShapeCrystal;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => CustomHitShapeCrystal;
         set => CustomHitShapeCrystal = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCrystal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugCrystalMP4? global::GBX.NET.Interfaces.GameData.IGameCommonItemEntityModelEditionMembers1<global::GBX.NET.Interfaces.Plug.IPlugCrystalMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleMP4, global::GBX.NET.Interfaces.GameData.IGameActionModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSolidMP4>.CustomTriggerShapeCrystal
     {
-        get
-        {
-            var node = CustomTriggerShapeCrystal;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => CustomTriggerShapeCrystal;
         set => CustomTriggerShapeCrystal = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCrystal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.GameData.IGameCommonItemEntityModelEditionMembers1<global::GBX.NET.Interfaces.Plug.IPlugCrystalMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleMP4, global::GBX.NET.Interfaces.GameData.IGameActionModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSolidMP4>.DestroyParticleModel
     {
-        get
-        {
-            var node = DestroyParticleModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => DestroyParticleModel;
         set => DestroyParticleModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleMP4? global::GBX.NET.Interfaces.GameData.IGameCommonItemEntityModelEditionMembers1<global::GBX.NET.Interfaces.Plug.IPlugCrystalMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleMP4, global::GBX.NET.Interfaces.GameData.IGameActionModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSolidMP4>.LocAnim
     {
-        get
-        {
-            var node = LocAnim;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => LocAnim;
         set => LocAnim = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAnimLocSimple node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugCrystalMP4? global::GBX.NET.Interfaces.GameData.IGameCommonItemEntityModelEditionMembers1<global::GBX.NET.Interfaces.Plug.IPlugCrystalMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleMP4, global::GBX.NET.Interfaces.GameData.IGameActionModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSolidMP4>.MeshCrystal
     {
-        get
-        {
-            var node = MeshCrystal;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => MeshCrystal;
         set => MeshCrystal = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCrystal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.GameData.IGameActionModelMP4? global::GBX.NET.Interfaces.GameData.IGameCommonItemEntityModelEditionMembers1<global::GBX.NET.Interfaces.Plug.IPlugCrystalMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleMP4, global::GBX.NET.Interfaces.GameData.IGameActionModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSolidMP4>.PickupActionModel
     {
-        get
-        {
-            var node = PickupActionModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => PickupActionModel;
         set => PickupActionModel = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameActionModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolidMP4? global::GBX.NET.Interfaces.GameData.IGameCommonItemEntityModelEditionMembers1<global::GBX.NET.Interfaces.Plug.IPlugCrystalMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleMP4, global::GBX.NET.Interfaces.GameData.IGameActionModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSolidMP4>.Solid
     {
-        get
-        {
-            var node = Solid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Solid;
         set => Solid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.GameData.IGameActionModelMP4>? global::GBX.NET.Interfaces.GameData.IGameCommonItemEntityModelEditionMembers1<global::GBX.NET.Interfaces.Plug.IPlugCrystalMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleMP4, global::GBX.NET.Interfaces.GameData.IGameActionModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSolidMP4>.TriggeredActions
     {
-        get => TriggeredActions is null ? null : new ScopedNodeList<global::GBX.NET.Engines.GameData.CGameActionModel, global::GBX.NET.Interfaces.GameData.IGameActionModelMP4>(GetTriggeredActionsBuilderReferences, GameVersion.MP4, true, "TriggeredActions");
+        get => TriggeredActions is null ? null : new ScopedNodeList<global::GBX.NET.Engines.GameData.CGameActionModel, global::GBX.NET.Interfaces.GameData.IGameActionModelMP4>(GetTriggeredActionsBuilderReferences, true, "TriggeredActions");
         set => TriggeredActions = value is null ? null : new NodeRefList<global::GBX.NET.Engines.GameData.CGameActionModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.GameData.CGameActionModel, global::GBX.NET.Interfaces.GameData.IGameActionModelMP4>(value, false));
     }
     global::GBX.NET.Interfaces.Plug.IPlugCrystalTM2020? global::GBX.NET.Interfaces.GameData.IGameCommonItemEntityModelEditionMembers1<global::GBX.NET.Interfaces.Plug.IPlugCrystalTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleTM2020, global::GBX.NET.Interfaces.GameData.IGameActionModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020>.CustomHitShapeCrystal
     {
-        get
-        {
-            var node = CustomHitShapeCrystal;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => CustomHitShapeCrystal;
         set => CustomHitShapeCrystal = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCrystal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugCrystalTM2020? global::GBX.NET.Interfaces.GameData.IGameCommonItemEntityModelEditionMembers1<global::GBX.NET.Interfaces.Plug.IPlugCrystalTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleTM2020, global::GBX.NET.Interfaces.GameData.IGameActionModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020>.CustomTriggerShapeCrystal
     {
-        get
-        {
-            var node = CustomTriggerShapeCrystal;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => CustomTriggerShapeCrystal;
         set => CustomTriggerShapeCrystal = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCrystal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.GameData.IGameCommonItemEntityModelEditionMembers1<global::GBX.NET.Interfaces.Plug.IPlugCrystalTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleTM2020, global::GBX.NET.Interfaces.GameData.IGameActionModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020>.DestroyParticleModel
     {
-        get
-        {
-            var node = DestroyParticleModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => DestroyParticleModel;
         set => DestroyParticleModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleTM2020? global::GBX.NET.Interfaces.GameData.IGameCommonItemEntityModelEditionMembers1<global::GBX.NET.Interfaces.Plug.IPlugCrystalTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleTM2020, global::GBX.NET.Interfaces.GameData.IGameActionModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020>.LocAnim
     {
-        get
-        {
-            var node = LocAnim;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => LocAnim;
         set => LocAnim = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAnimLocSimple node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugCrystalTM2020? global::GBX.NET.Interfaces.GameData.IGameCommonItemEntityModelEditionMembers1<global::GBX.NET.Interfaces.Plug.IPlugCrystalTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleTM2020, global::GBX.NET.Interfaces.GameData.IGameActionModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020>.MeshCrystal
     {
-        get
-        {
-            var node = MeshCrystal;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => MeshCrystal;
         set => MeshCrystal = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCrystal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.GameData.IGameActionModelTM2020? global::GBX.NET.Interfaces.GameData.IGameCommonItemEntityModelEditionMembers1<global::GBX.NET.Interfaces.Plug.IPlugCrystalTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleTM2020, global::GBX.NET.Interfaces.GameData.IGameActionModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020>.PickupActionModel
     {
-        get
-        {
-            var node = PickupActionModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => PickupActionModel;
         set => PickupActionModel = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameActionModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020? global::GBX.NET.Interfaces.GameData.IGameCommonItemEntityModelEditionMembers1<global::GBX.NET.Interfaces.Plug.IPlugCrystalTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleTM2020, global::GBX.NET.Interfaces.GameData.IGameActionModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020>.Solid
     {
-        get
-        {
-            var node = Solid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => Solid;
         set => Solid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.GameData.IGameActionModelTM2020>? global::GBX.NET.Interfaces.GameData.IGameCommonItemEntityModelEditionMembers1<global::GBX.NET.Interfaces.Plug.IPlugCrystalTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleTM2020, global::GBX.NET.Interfaces.GameData.IGameActionModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020>.TriggeredActions
     {
-        get => TriggeredActions is null ? null : new ScopedNodeList<global::GBX.NET.Engines.GameData.CGameActionModel, global::GBX.NET.Interfaces.GameData.IGameActionModelTM2020>(GetTriggeredActionsBuilderReferences, GameVersion.TM2020, true, "TriggeredActions");
+        get => TriggeredActions is null ? null : new ScopedNodeList<global::GBX.NET.Engines.GameData.CGameActionModel, global::GBX.NET.Interfaces.GameData.IGameActionModelTM2020>(GetTriggeredActionsBuilderReferences, true, "TriggeredActions");
         set => TriggeredActions = value is null ? null : new NodeRefList<global::GBX.NET.Engines.GameData.CGameActionModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.GameData.CGameActionModel, global::GBX.NET.Interfaces.GameData.IGameActionModelTM2020>(value, false));
     }
     private NodeRefList<global::GBX.NET.Engines.GameData.CGameActionModel>? GetTriggeredActionsBuilderReferences() => TriggeredActions;

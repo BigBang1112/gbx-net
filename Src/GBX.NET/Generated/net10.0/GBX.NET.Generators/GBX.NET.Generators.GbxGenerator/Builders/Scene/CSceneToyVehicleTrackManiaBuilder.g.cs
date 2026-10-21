@@ -36,24 +36,14 @@ public abstract class CSceneToyVehicleTrackManiaBuilderBase<TSelf> where TSelf :
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania> state;
     private protected CSceneToyVehicleTrackManiaBuilderBase() => state = new();
     private protected CSceneToyVehicleTrackManiaBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania> state) => this.state = state;
-    public global::GBX.NET.Engines.Hms.CHmsItem? Item
-    {
-        get => state.Get<global::GBX.NET.Engines.Hms.CHmsItem?>("Item");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetItemAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithItem(global::GBX.NET.Engines.Hms.CHmsItem? value)
     {
-        Item = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetItemAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Motion.CMotion? Motion
-    {
-        get => state.Get<global::GBX.NET.Engines.Motion.CMotion?>("Motion");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMotion(global::GBX.NET.Engines.Motion.CMotion? value)
     {
-        Motion = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithMotionReference(NodeRef<global::GBX.NET.Engines.Motion.CMotion> value)
@@ -62,24 +52,14 @@ public abstract class CSceneToyVehicleTrackManiaBuilderBase<TSelf> where TSelf :
         state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public string? Name
-    {
-        get => state.Get<string?>("Name");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithName(string? value)
     {
-        Name = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? ObjectLink
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>?>("ObjectLink");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetObjectLinkAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithObjectLink(NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? value)
     {
-        ObjectLink = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetObjectLinkAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithObjectLink(params global::GBX.NET.Engines.Scene.CSceneObjectLink[] values)
@@ -94,14 +74,9 @@ public abstract class CSceneToyVehicleTrackManiaBuilderBase<TSelf> where TSelf :
 public abstract class CSceneToyVehicleTrackManiaBuilderMembers1<TSelf> : CSceneToyVehicleTrackManiaBuilderBase<TSelf> where TSelf : CSceneToyVehicleTrackManiaBuilderMembers1<TSelf>
 {
     private protected CSceneToyVehicleTrackManiaBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania> state) : base(state) { }
-    public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
-    {
-        get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
     {
-        MessageHandler = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
@@ -114,14 +89,9 @@ public abstract class CSceneToyVehicleTrackManiaBuilderMembers1<TSelf> : CSceneT
 public abstract class CSceneToyVehicleTrackManiaBuilderMembers2<TSelf> : CSceneToyVehicleTrackManiaBuilderMembers1<TSelf> where TSelf : CSceneToyVehicleTrackManiaBuilderMembers2<TSelf>
 {
     private protected CSceneToyVehicleTrackManiaBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania> state) : base(state) { }
-    public global::GBX.NET.Engines.Scene.CSceneVehicleCar.VisualVehicle[]? VisualVehicles
-    {
-        get => state.Get<global::GBX.NET.Engines.Scene.CSceneVehicleCar.VisualVehicle[]?>("VisualVehicles");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarBuilderAssignments.GetVisualVehiclesAssignment(), value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX);
-    }
     public TSelf WithVisualVehicles(params global::GBX.NET.Engines.Scene.CSceneVehicleCar.VisualVehicle[]? value)
     {
-        VisualVehicles = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarBuilderAssignments.GetVisualVehiclesAssignment(), value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX);
         return (TSelf)this;
     }
     public TSelf WithVisualVehicles(IEnumerable<global::GBX.NET.Engines.Scene.CSceneVehicleCar.VisualVehicle> values)
@@ -132,14 +102,9 @@ public abstract class CSceneToyVehicleTrackManiaBuilderMembers2<TSelf> : CSceneT
 public abstract class CSceneToyVehicleTrackManiaBuilderMembers3<TSelf> : CSceneToyVehicleTrackManiaBuilderMembers1<TSelf> where TSelf : CSceneToyVehicleTrackManiaBuilderMembers3<TSelf>
 {
     private protected CSceneToyVehicleTrackManiaBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania> state) : base(state) { }
-    public global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment? Environment
-    {
-        get => state.Get<global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment?>("Environment");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleBuilderAssignments.GetEnvironmentAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    }
     public TSelf WithEnvironment(global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment? value)
     {
-        Environment = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleBuilderAssignments.GetEnvironmentAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithEnvironmentReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment> value)
@@ -148,14 +113,9 @@ public abstract class CSceneToyVehicleTrackManiaBuilderMembers3<TSelf> : CSceneT
         state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleBuilderAssignments.GetEnvironmentReferenceAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? VehicleMaterials
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?>("VehicleMaterials");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleBuilderAssignments.GetVehicleMaterialsAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    }
     public TSelf WithVehicleMaterials(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value)
     {
-        VehicleMaterials = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleBuilderAssignments.GetVehicleMaterialsAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithVehicleMaterialsReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> value)
@@ -164,14 +124,9 @@ public abstract class CSceneToyVehicleTrackManiaBuilderMembers3<TSelf> : CSceneT
         state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleBuilderAssignments.GetVehicleMaterialsReferenceAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared? VehicleStruct
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared?>("VehicleStruct");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleBuilderAssignments.GetVehicleStructAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    }
     public TSelf WithVehicleStruct(global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared? value)
     {
-        VehicleStruct = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleBuilderAssignments.GetVehicleStructAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithVehicleStructReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared> value)
@@ -180,14 +135,9 @@ public abstract class CSceneToyVehicleTrackManiaBuilderMembers3<TSelf> : CSceneT
         state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleBuilderAssignments.GetVehicleStructReferenceAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings? VehicleTunings
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings?>("VehicleTunings");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleBuilderAssignments.GetVehicleTuningsAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    }
     public TSelf WithVehicleTunings(global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings? value)
     {
-        VehicleTunings = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleBuilderAssignments.GetVehicleTuningsAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithVehicleTuningsReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings> value)
@@ -228,21 +178,6 @@ public partial class CSceneToyVehicleTrackManiaBuilder : CSceneToyVehicleTrackMa
         node.Chunks.Add(chunk0A005004);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCar.Chunk0A02B003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A02B003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCar.Chunk0A02B005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A02B005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCar.Chunk0A02B007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A02B007 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCar.Chunk0A02B008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A02B008 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCar.Chunk0A02B009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A02B009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005004 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania();
@@ -273,22 +208,6 @@ public partial class CSceneToyVehicleTrackManiaBuilder : CSceneToyVehicleTrackMa
         var chunk0A005004 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004();
         node.Chunks.Add(chunk0A005004);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCar.Chunk0A02B003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A02B003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCar.Chunk0A02B005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A02B005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCar.Chunk0A02B007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A02B007 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCar.Chunk0A02B008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A02B008 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCar.Chunk0A02B009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A02B009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCar.Chunk0A02B00B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A02B00B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005004 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania CreateRecipe2(GameVersion game)
     {
@@ -323,23 +242,6 @@ public partial class CSceneToyVehicleTrackManiaBuilder : CSceneToyVehicleTrackMa
         node.Chunks.Add(chunk0A005004);
         return node;
     }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCar.Chunk0A02B003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A02B003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCar.Chunk0A02B005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A02B005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCar.Chunk0A02B007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A02B007 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCar.Chunk0A02B008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A02B008 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCar.Chunk0A02B009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A02B009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCar.Chunk0A02B00B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A02B00B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCar.Chunk0A02B00C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A02B00C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005004 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania();
@@ -373,23 +275,6 @@ public partial class CSceneToyVehicleTrackManiaBuilder : CSceneToyVehicleTrackMa
         node.Chunks.Add(chunk0A005004);
         return node;
     }
-    private static void ValidateRecipe3(global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCar.Chunk0A02B003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A02B003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCar.Chunk0A02B005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A02B005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCar.Chunk0A02B007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A02B007 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCar.Chunk0A02B008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A02B008 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCar.Chunk0A02B00B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A02B00B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCar.Chunk0A02B00C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A02B00C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCar.Chunk0A02B014>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A02B014 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005004 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania CreateRecipe4(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania();
@@ -409,16 +294,6 @@ public partial class CSceneToyVehicleTrackManiaBuilder : CSceneToyVehicleTrackMa
         node.Chunks.Add(chunk0A005003);
         return node;
     }
-    private static void ValidateRecipe4(global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCar.Chunk0A02B00C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A02B00C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicle.Chunk0A060000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A060000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005003 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania CreateRecipe5(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania();
@@ -431,16 +306,6 @@ public partial class CSceneToyVehicleTrackManiaBuilder : CSceneToyVehicleTrackMa
         var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
         node.Chunks.Add(chunk0A005003);
         return node;
-    }
-    private static void ValidateRecipe5(global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005003 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania node, GameVersion game)
-    {
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -479,14 +344,9 @@ public partial class CSceneToyVehicleTrackManiaBuilder : CSceneToyVehicleTrackMa
             var node = CSceneToyVehicleTrackManiaBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CSceneToyVehicleTrackManiaBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CSceneToyVehicleTrackManiaBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania node);
     }
     public partial class TMPU : CSceneToyVehicleTrackManiaBuilderMembers2<TMPU>
     {
@@ -513,14 +373,9 @@ public partial class CSceneToyVehicleTrackManiaBuilder : CSceneToyVehicleTrackMa
             var node = CSceneToyVehicleTrackManiaBuilder.CreateRecipe1(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CSceneToyVehicleTrackManiaBuilder.ValidateRecipe1(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CSceneToyVehicleTrackManiaBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania node);
     }
     public partial class TMSX : CSceneToyVehicleTrackManiaBuilderMembers2<TMSX>
     {
@@ -547,14 +402,9 @@ public partial class CSceneToyVehicleTrackManiaBuilder : CSceneToyVehicleTrackMa
             var node = CSceneToyVehicleTrackManiaBuilder.CreateRecipe2(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CSceneToyVehicleTrackManiaBuilder.ValidateRecipe2(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CSceneToyVehicleTrackManiaBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania node);
     }
     public partial class TMNESWC : CSceneToyVehicleTrackManiaBuilderMembers1<TMNESWC>
     {
@@ -581,14 +431,9 @@ public partial class CSceneToyVehicleTrackManiaBuilder : CSceneToyVehicleTrackMa
             var node = CSceneToyVehicleTrackManiaBuilder.CreateRecipe3(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CSceneToyVehicleTrackManiaBuilder.ValidateRecipe3(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CSceneToyVehicleTrackManiaBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania node);
     }
     public partial class VSK5 : CSceneToyVehicleTrackManiaBuilderMembers3<VSK5>
     {
@@ -631,14 +476,9 @@ public partial class CSceneToyVehicleTrackManiaBuilder : CSceneToyVehicleTrackMa
             var node = CSceneToyVehicleTrackManiaBuilder.CreateRecipe4(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CSceneToyVehicleTrackManiaBuilder.ValidateRecipe4(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CSceneToyVehicleTrackManiaBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania node);
     }
     public partial class TMF : CSceneToyVehicleTrackManiaBuilderMembers3<TMF>
     {
@@ -681,14 +521,9 @@ public partial class CSceneToyVehicleTrackManiaBuilder : CSceneToyVehicleTrackMa
             var node = CSceneToyVehicleTrackManiaBuilder.CreateRecipe4(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CSceneToyVehicleTrackManiaBuilder.ValidateRecipe4(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CSceneToyVehicleTrackManiaBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania node);
     }
     public partial class MP3 : CSceneToyVehicleTrackManiaBuilderBase<MP3>
     {
@@ -711,14 +546,9 @@ public partial class CSceneToyVehicleTrackManiaBuilder : CSceneToyVehicleTrackMa
             var node = CSceneToyVehicleTrackManiaBuilder.CreateRecipe5(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CSceneToyVehicleTrackManiaBuilder.ValidateRecipe5(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CSceneToyVehicleTrackManiaBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania node);
     }
     public partial class TMT : CSceneToyVehicleTrackManiaBuilderBase<TMT>
     {
@@ -741,14 +571,9 @@ public partial class CSceneToyVehicleTrackManiaBuilder : CSceneToyVehicleTrackMa
             var node = CSceneToyVehicleTrackManiaBuilder.CreateRecipe5(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CSceneToyVehicleTrackManiaBuilder.ValidateRecipe5(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CSceneToyVehicleTrackManiaBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania node);
     }
     public partial class MP4 : CSceneToyVehicleTrackManiaBuilderBase<MP4>
     {
@@ -771,14 +596,9 @@ public partial class CSceneToyVehicleTrackManiaBuilder : CSceneToyVehicleTrackMa
             var node = CSceneToyVehicleTrackManiaBuilder.CreateRecipe5(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CSceneToyVehicleTrackManiaBuilder.ValidateRecipe5(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CSceneToyVehicleTrackManiaBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania node);
     }
     public partial class TM2020 : CSceneToyVehicleTrackManiaBuilderBase<TM2020>
     {
@@ -793,13 +613,8 @@ public partial class CSceneToyVehicleTrackManiaBuilder : CSceneToyVehicleTrackMa
             var node = CSceneToyVehicleTrackManiaBuilder.CreateRecipe5(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CSceneToyVehicleTrackManiaBuilder.ValidateRecipe5(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CSceneToyVehicleTrackManiaBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania node);
     }
 }

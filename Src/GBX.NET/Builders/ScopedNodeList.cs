@@ -5,7 +5,7 @@ namespace GBX.NET.Builders;
 
 // Resolve each element only when requested, and follow replacement of the
 // owner's collection rather than capturing an obsolete list instance.
-internal sealed class ScopedNodeList<TNode, TView>(Func<NodeRefList<TNode>?> getNodes, GameVersion game, bool required, string member)
+internal sealed class ScopedNodeList<TNode, TView>(Func<NodeRefList<TNode>?> getNodes, bool required, string member)
     : IReadOnlyList<TView> where TNode : CMwNod?
 {
     public int Count => getNodes()?.Count ?? 0;
@@ -21,7 +21,6 @@ internal sealed class ScopedNodeList<TNode, TView>(Func<NodeRefList<TNode>?> get
                 return default!;
             }
 
-            if (game != GameVersion.Unspecified) NodeBuilderValidation.Validate(node, game);
             return (TView)(object)node;
         }
     }

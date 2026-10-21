@@ -41,12 +41,7 @@ public partial class CPlugAnimClip : global::GBX.NET.Interfaces.Plug.IPlugAnimCl
     }
     global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBakedTM2020? global::GBX.NET.Interfaces.Plug.IPlugAnimClipTM2020.Baked
     {
-        get
-        {
-            var node = Baked;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => Baked;
         set => Baked = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

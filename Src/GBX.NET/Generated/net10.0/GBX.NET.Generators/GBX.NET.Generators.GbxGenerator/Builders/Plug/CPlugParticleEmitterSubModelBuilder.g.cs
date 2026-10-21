@@ -36,14 +36,9 @@ public abstract class CPlugParticleEmitterSubModelBuilderBase<TSelf> where TSelf
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state;
     private protected CPlugParticleEmitterSubModelBuilderBase() => state = new();
     private protected CPlugParticleEmitterSubModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state) => this.state = state;
-    public global::GBX.NET.Engines.Plug.CPlugMaterial? Material
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("Material");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetMaterialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithMaterial(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
     {
-        Material = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetMaterialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
@@ -52,14 +47,9 @@ public abstract class CPlugParticleEmitterSubModelBuilderBase<TSelf> where TSelf
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetMaterialReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugShader? Shader
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugShader?>("Shader");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetShaderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithShader(global::GBX.NET.Engines.Plug.CPlugShader? value)
     {
-        Shader = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetShaderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithShaderReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value)
@@ -72,24 +62,14 @@ public abstract class CPlugParticleEmitterSubModelBuilderBase<TSelf> where TSelf
 public abstract class CPlugParticleEmitterSubModelBuilderMembers1<TSelf> : CPlugParticleEmitterSubModelBuilderBase<TSelf> where TSelf : CPlugParticleEmitterSubModelBuilderMembers1<TSelf>
 {
     private protected CPlugParticleEmitterSubModelBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state) : base(state) { }
-    public string? MeshRef
-    {
-        get => state.Get<string?>("MeshRef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetMeshRefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithMeshRef(string? value)
     {
-        MeshRef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetMeshRefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugSolid2Model? Solid2Model
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugSolid2Model?>("Solid2Model");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSolid2ModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSolid2Model(global::GBX.NET.Engines.Plug.CPlugSolid2Model? value)
     {
-        Solid2Model = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSolid2ModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithSolid2ModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid2Model> value)
@@ -102,34 +82,19 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers1<TSelf> : CPlug
 public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlugParticleEmitterSubModelBuilderBase<TSelf> where TSelf : CPlugParticleEmitterSubModelBuilderMembers2<TSelf>
 {
     private protected CPlugParticleEmitterSubModelBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state) : base(state) { }
-    public int CircularTrailVertPerPartCount
-    {
-        get => state.Get<int>("CircularTrailVertPerPartCount");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetCircularTrailVertPerPartCountAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithCircularTrailVertPerPartCount(int value)
     {
-        CircularTrailVertPerPartCount = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetCircularTrailVertPerPartCountAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool ColorBirthUseIntensity
-    {
-        get => state.Get<bool>("ColorBirthUseIntensity");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetColorBirthUseIntensityAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithColorBirthUseIntensity(bool value)
     {
-        ColorBirthUseIntensity = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetColorBirthUseIntensityAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Function.CFuncColorGradient? ColorGradient
-    {
-        get => state.Get<global::GBX.NET.Engines.Function.CFuncColorGradient?>("ColorGradient");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetColorGradientAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithColorGradient(global::GBX.NET.Engines.Function.CFuncColorGradient? value)
     {
-        ColorGradient = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetColorGradientAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithColorGradientReference(NodeRef<global::GBX.NET.Engines.Function.CFuncColorGradient> value)
@@ -138,74 +103,39 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetColorGradientReferenceAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public int ColorGradientUse
-    {
-        get => state.Get<int>("ColorGradientUse");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetColorGradientUseAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithColorGradientUse(int value)
     {
-        ColorGradientUse = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetColorGradientUseAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool ColorModulateWithTransparency
-    {
-        get => state.Get<bool>("ColorModulateWithTransparency");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetColorModulateWithTransparencyAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithColorModulateWithTransparency(bool value)
     {
-        ColorModulateWithTransparency = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetColorModulateWithTransparencyAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float FluidFrictionBirth
-    {
-        get => state.Get<float>("FluidFrictionBirth");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetFluidFrictionBirthAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithFluidFrictionBirth(float value)
     {
-        FluidFrictionBirth = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetFluidFrictionBirthAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float FluidFrictionBirthIntensityBase
-    {
-        get => state.Get<float>("FluidFrictionBirthIntensityBase");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetFluidFrictionBirthIntensityBaseAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithFluidFrictionBirthIntensityBase(float value)
     {
-        FluidFrictionBirthIntensityBase = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetFluidFrictionBirthIntensityBaseAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool FluidFrictionBirthUseIntensity
-    {
-        get => state.Get<bool>("FluidFrictionBirthUseIntensity");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetFluidFrictionBirthUseIntensityAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithFluidFrictionBirthUseIntensity(bool value)
     {
-        FluidFrictionBirthUseIntensity = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetFluidFrictionBirthUseIntensityAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float FluidFrictionBirthVariation
-    {
-        get => state.Get<float>("FluidFrictionBirthVariation");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetFluidFrictionBirthVariationAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithFluidFrictionBirthVariation(float value)
     {
-        FluidFrictionBirthVariation = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetFluidFrictionBirthVariationAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Function.CFuncEnvelope? IntensityFilter
-    {
-        get => state.Get<global::GBX.NET.Engines.Function.CFuncEnvelope?>("IntensityFilter");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetIntensityFilterAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithIntensityFilter(global::GBX.NET.Engines.Function.CFuncEnvelope? value)
     {
-        IntensityFilter = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetIntensityFilterAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithIntensityFilterReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnvelope> value)
@@ -214,144 +144,74 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetIntensityFilterReferenceAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public float Life
-    {
-        get => state.Get<float>("Life");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetLifeAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithLife(float value)
     {
-        Life = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetLifeAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float LifeVariation
-    {
-        get => state.Get<float>("LifeVariation");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetLifeVariationAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithLifeVariation(float value)
     {
-        LifeVariation = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetLifeVariationAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int MaxParticleCount
-    {
-        get => state.Get<int>("MaxParticleCount");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetMaxParticleCountAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithMaxParticleCount(int value)
     {
-        MaxParticleCount = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetMaxParticleCountAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int MultiStateRenderMode
-    {
-        get => state.Get<int>("MultiStateRenderMode");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetMultiStateRenderModeAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithMultiStateRenderMode(int value)
     {
-        MultiStateRenderMode = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetMultiStateRenderModeAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.EPlugParticleEmitterSubModel ParticleEmitterSubModel
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.EPlugParticleEmitterSubModel>("ParticleEmitterSubModel");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetParticleEmitterSubModelAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithParticleEmitterSubModel(global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.EPlugParticleEmitterSubModel value)
     {
-        ParticleEmitterSubModel = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetParticleEmitterSubModelAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float RollSpeedBirth
-    {
-        get => state.Get<float>("RollSpeedBirth");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetRollSpeedBirthAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithRollSpeedBirth(float value)
     {
-        RollSpeedBirth = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetRollSpeedBirthAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float RollSpeedBirthVariation
-    {
-        get => state.Get<float>("RollSpeedBirthVariation");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetRollSpeedBirthVariationAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithRollSpeedBirthVariation(float value)
     {
-        RollSpeedBirthVariation = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetRollSpeedBirthVariationAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SizeBirth
-    {
-        get => state.Get<float>("SizeBirth");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeBirthAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSizeBirth(float value)
     {
-        SizeBirth = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeBirthAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SizeBirthEmissionZoneScale
-    {
-        get => state.Get<float>("SizeBirthEmissionZoneScale");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeBirthEmissionZoneScaleAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSizeBirthEmissionZoneScale(float value)
     {
-        SizeBirthEmissionZoneScale = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeBirthEmissionZoneScaleAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SizeBirthRatioXY
-    {
-        get => state.Get<float>("SizeBirthRatioXY");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeBirthRatioXYAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSizeBirthRatioXY(float value)
     {
-        SizeBirthRatioXY = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeBirthRatioXYAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool SizeBirthUseEmissionZone
-    {
-        get => state.Get<bool>("SizeBirthUseEmissionZone");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeBirthUseEmissionZoneAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSizeBirthUseEmissionZone(bool value)
     {
-        SizeBirthUseEmissionZone = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeBirthUseEmissionZoneAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool SizeBirthUseIntensity
-    {
-        get => state.Get<bool>("SizeBirthUseIntensity");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeBirthUseIntensityAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSizeBirthUseIntensity(bool value)
     {
-        SizeBirthUseIntensity = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeBirthUseIntensityAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SizeBirthVariation
-    {
-        get => state.Get<float>("SizeBirthVariation");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeBirthVariationAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSizeBirthVariation(float value)
     {
-        SizeBirthVariation = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeBirthVariationAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Function.CFuncEnvelope? SizeOverLife
-    {
-        get => state.Get<global::GBX.NET.Engines.Function.CFuncEnvelope?>("SizeOverLife");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeOverLifeAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSizeOverLife(global::GBX.NET.Engines.Function.CFuncEnvelope? value)
     {
-        SizeOverLife = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeOverLifeAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithSizeOverLifeReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnvelope> value)
@@ -360,24 +220,14 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeOverLifeReferenceAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public bool SizeUseSizeX
-    {
-        get => state.Get<bool>("SizeUseSizeX");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeUseSizeXAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithSizeUseSizeX(bool value)
     {
-        SizeUseSizeX = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeUseSizeXAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Function.CFuncEnvelope? SizeXOverLife
-    {
-        get => state.Get<global::GBX.NET.Engines.Function.CFuncEnvelope?>("SizeXOverLife");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeXOverLifeAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSizeXOverLife(global::GBX.NET.Engines.Function.CFuncEnvelope? value)
     {
-        SizeXOverLife = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeXOverLifeAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithSizeXOverLifeReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnvelope> value)
@@ -386,94 +236,49 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSizeXOverLifeReferenceAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public int SpawnCond
-    {
-        get => state.Get<int>("SpawnCond");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSpawnCondAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithSpawnCond(int value)
     {
-        SpawnCond = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSpawnCondAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SpawnMinDist
-    {
-        get => state.Get<float>("SpawnMinDist");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSpawnMinDistAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSpawnMinDist(float value)
     {
-        SpawnMinDist = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSpawnMinDistAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SpawnPeriod
-    {
-        get => state.Get<float>("SpawnPeriod");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSpawnPeriodAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSpawnPeriod(float value)
     {
-        SpawnPeriod = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSpawnPeriodAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public Vec2 SpritePivotPoint
-    {
-        get => state.Get<Vec2>("SpritePivotPoint");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSpritePivotPointAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSpritePivotPoint(Vec2 value)
     {
-        SpritePivotPoint = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSpritePivotPointAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int StandardRenderMode
-    {
-        get => state.Get<int>("StandardRenderMode");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetStandardRenderModeAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithStandardRenderMode(int value)
     {
-        StandardRenderMode = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetStandardRenderModeAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float TransparencyBirth
-    {
-        get => state.Get<float>("TransparencyBirth");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetTransparencyBirthAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithTransparencyBirth(float value)
     {
-        TransparencyBirth = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetTransparencyBirthAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool TransparencyBirthUseIntensity
-    {
-        get => state.Get<bool>("TransparencyBirthUseIntensity");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetTransparencyBirthUseIntensityAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithTransparencyBirthUseIntensity(bool value)
     {
-        TransparencyBirthUseIntensity = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetTransparencyBirthUseIntensityAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float TransparencyBirthVariation
-    {
-        get => state.Get<float>("TransparencyBirthVariation");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetTransparencyBirthVariationAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithTransparencyBirthVariation(float value)
     {
-        TransparencyBirthVariation = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetTransparencyBirthVariationAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Function.CFuncEnvelope? TransparencyOverLife
-    {
-        get => state.Get<global::GBX.NET.Engines.Function.CFuncEnvelope?>("TransparencyOverLife");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetTransparencyOverLifeAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithTransparencyOverLife(global::GBX.NET.Engines.Function.CFuncEnvelope? value)
     {
-        TransparencyOverLife = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetTransparencyOverLifeAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithTransparencyOverLifeReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnvelope> value)
@@ -482,192 +287,102 @@ public abstract class CPlugParticleEmitterSubModelBuilderMembers2<TSelf> : CPlug
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetTransparencyOverLifeReferenceAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public float UScaleDist
-    {
-        get => state.Get<float>("UScaleDist");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetUScaleDistAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithUScaleDist(float value)
     {
-        UScaleDist = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetUScaleDistAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float VScaleDist
-    {
-        get => state.Get<float>("VScaleDist");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetVScaleDistAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithVScaleDist(float value)
     {
-        VScaleDist = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetVScaleDistAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float WeightBirth
-    {
-        get => state.Get<float>("WeightBirth");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetWeightBirthAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithWeightBirth(float value)
     {
-        WeightBirth = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetWeightBirthAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float WeightBirthVariation
-    {
-        get => state.Get<float>("WeightBirthVariation");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetWeightBirthVariationAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithWeightBirthVariation(float value)
     {
-        WeightBirthVariation = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetWeightBirthVariationAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CPlugParticleEmitterSubModelBuilderMembers3<TSelf> : CPlugParticleEmitterSubModelBuilderMembers2<TSelf> where TSelf : CPlugParticleEmitterSubModelBuilderMembers3<TSelf>
 {
     private protected CPlugParticleEmitterSubModelBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state) : base(state) { }
-    public bool MultiState_IsAsyncLink
-    {
-        get => state.Get<bool>("MultiState_IsAsyncLink");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetMultiState_IsAsyncLinkAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
-    }
     public TSelf WithMultiState_IsAsyncLink(bool value)
     {
-        MultiState_IsAsyncLink = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetMultiState_IsAsyncLinkAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CPlugParticleEmitterSubModelBuilderMembers4<TSelf> : CPlugParticleEmitterSubModelBuilderMembers3<TSelf> where TSelf : CPlugParticleEmitterSubModelBuilderMembers4<TSelf>
 {
     private protected CPlugParticleEmitterSubModelBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel> state) : base(state) { }
-    public float BeamLengthSpeedScale
-    {
-        get => state.Get<float>("BeamLengthSpeedScale");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetBeamLengthSpeedScaleAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
-    }
     public TSelf WithBeamLengthSpeedScale(float value)
     {
-        BeamLengthSpeedScale = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetBeamLengthSpeedScaleAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float CollisionBounce
-    {
-        get => state.Get<float>("CollisionBounce");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetCollisionBounceAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithCollisionBounce(float value)
     {
-        CollisionBounce = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetCollisionBounceAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float CollisionDamper
-    {
-        get => state.Get<float>("CollisionDamper");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetCollisionDamperAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithCollisionDamper(float value)
     {
-        CollisionDamper = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetCollisionDamperAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool CollisionEnabled
-    {
-        get => state.Get<bool>("CollisionEnabled");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetCollisionEnabledAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithCollisionEnabled(bool value)
     {
-        CollisionEnabled = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetCollisionEnabledAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float CollisionRadius
-    {
-        get => state.Get<float>("CollisionRadius");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetCollisionRadiusAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithCollisionRadius(float value)
     {
-        CollisionRadius = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetCollisionRadiusAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool PrecalcEnabled
-    {
-        get => state.Get<bool>("PrecalcEnabled");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetPrecalcEnabledAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithPrecalcEnabled(bool value)
     {
-        PrecalcEnabled = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetPrecalcEnabledAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int PrecalcPartCount
-    {
-        get => state.Get<int>("PrecalcPartCount");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetPrecalcPartCountAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithPrecalcPartCount(int value)
     {
-        PrecalcPartCount = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetPrecalcPartCountAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int PrecalcSampleRate
-    {
-        get => state.Get<int>("PrecalcSampleRate");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetPrecalcSampleRateAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithPrecalcSampleRate(int value)
     {
-        PrecalcSampleRate = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetPrecalcSampleRateAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool SortSprites
-    {
-        get => state.Get<bool>("SortSprites");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSortSpritesAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithSortSprites(bool value)
     {
-        SortSprites = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetSortSpritesAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int TextureAtlas
-    {
-        get => state.Get<int>("TextureAtlas");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetTextureAtlasAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithTextureAtlas(int value)
     {
-        TextureAtlas = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetTextureAtlasAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int TextureAtlasDimX
-    {
-        get => state.Get<int>("TextureAtlasDimX");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetTextureAtlasDimXAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithTextureAtlasDimX(int value)
     {
-        TextureAtlasDimX = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetTextureAtlasDimXAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int TextureAtlasDimY
-    {
-        get => state.Get<int>("TextureAtlasDimY");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetTextureAtlasDimYAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithTextureAtlasDimY(int value)
     {
-        TextureAtlasDimY = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetTextureAtlasDimYAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int TextureAtlasFixedIndex
-    {
-        get => state.Get<int>("TextureAtlasFixedIndex");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetTextureAtlasFixedIndexAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithTextureAtlasFixedIndex(int value)
     {
-        TextureAtlasFixedIndex = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleEmitterSubModelBuilderAssignments.GetTextureAtlasFixedIndexAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -692,16 +407,6 @@ public partial class CPlugParticleEmitterSubModelBuilder : CPlugParticleEmitterS
         node.Chunks.Add(chunk090B2019);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B2011 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B2013 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2015>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B2015 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B2016 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B2017 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B2018 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2019>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B2019 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel();
@@ -724,18 +429,6 @@ public partial class CPlugParticleEmitterSubModelBuilder : CPlugParticleEmitterS
         var chunk090B201B = new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B201B();
         node.Chunks.Add(chunk090B201B);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B2011 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B2013 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2015>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B2015 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B2016 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B2017 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B2018 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2019>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B2019 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B201A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B201A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B201B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B201B is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel CreateRecipe2(GameVersion game)
     {
@@ -773,25 +466,6 @@ public partial class CPlugParticleEmitterSubModelBuilder : CPlugParticleEmitterS
         var chunk090B2022 = new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2022();
         node.Chunks.Add(chunk090B2022);
         return node;
-    }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B2011 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B2013 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2015>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B2015 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B2016 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B2017 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B2018 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2019>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B2019 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B201A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B201A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B201B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B201B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B201C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B201C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B201D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B201D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B201E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B201E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B201F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B201F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2020>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B2020 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2021>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B2021 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2022>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B2022 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel CreateRecipe3(GameVersion game)
     {
@@ -832,26 +506,6 @@ public partial class CPlugParticleEmitterSubModelBuilder : CPlugParticleEmitterS
         node.Chunks.Add(chunk090B2023);
         return node;
     }
-    private static void ValidateRecipe3(global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B2011 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B2013 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2015>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B2015 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B2016 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B2017 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B2018 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2019>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B2019 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B201A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B201A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B201B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B201B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B201C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B201C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B201D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B201D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B201E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B201E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B201F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B201F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2020>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B2020 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2021>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B2021 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2022>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B2022 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2023>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B2023 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel CreateRecipe4(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel();
@@ -891,23 +545,6 @@ public partial class CPlugParticleEmitterSubModelBuilder : CPlugParticleEmitterS
         node.Chunks.Add(chunk090B203A);
         return node;
     }
-    private static void ValidateRecipe4(global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B202D>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B202D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B202E>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B202E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B202F>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B202F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2030>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2030 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2031>() is not { Version: 8 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2031 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2032>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2032 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2033>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2033 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2034>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2034 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2035>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2035 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2036>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2036 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2037>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2037 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2038>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2038 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2039>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2039 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B203A>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B203A is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel CreateRecipe5(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel();
@@ -946,23 +583,6 @@ public partial class CPlugParticleEmitterSubModelBuilder : CPlugParticleEmitterS
         var chunk090B203A = new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B203A(game);
         node.Chunks.Add(chunk090B203A);
         return node;
-    }
-    private static void ValidateRecipe5(global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B202D>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B202D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B202E>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B202E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B202F>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B202F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2030>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2030 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2031>() is not { Version: 10 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2031 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2032>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2032 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2033>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2033 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2034>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2034 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2035>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2035 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2036>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2036 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2037>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2037 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2038>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2038 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2039>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2039 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B203A>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B203A is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel CreateRecipe6(GameVersion game)
     {
@@ -1005,24 +625,6 @@ public partial class CPlugParticleEmitterSubModelBuilder : CPlugParticleEmitterS
         node.Chunks.Add(chunk090B203B);
         return node;
     }
-    private static void ValidateRecipe6(global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B202D>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B202D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B202E>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B202E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B202F>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B202F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2030>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2030 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2031>() is not { Version: 13 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2031 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2032>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2032 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2033>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2033 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2034>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2034 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2035>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2035 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2036>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2036 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2037>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2037 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2038>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2038 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2039>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2039 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B203A>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B203A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B203B>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B203B is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel CreateRecipe7(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel();
@@ -1063,27 +665,6 @@ public partial class CPlugParticleEmitterSubModelBuilder : CPlugParticleEmitterS
         var chunk090B203B = new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B203B(game);
         node.Chunks.Add(chunk090B203B);
         return node;
-    }
-    private static void ValidateRecipe7(global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B202D>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B202D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B202E>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B202E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B202F>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B202F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2030>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2030 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2031>() is not { Version: 14 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2031 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2032>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2032 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2033>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2033 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2034>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2034 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2035>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2035 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2036>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2036 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2037>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2037 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2038>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2038 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2039>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B2039 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B203A>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B203A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B203B>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B203B is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel node, GameVersion game)
-    {
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
@@ -1132,14 +713,9 @@ public partial class CPlugParticleEmitterSubModelBuilder : CPlugParticleEmitterS
             var node = CPlugParticleEmitterSubModelBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CPlugParticleEmitterSubModelBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CPlugParticleEmitterSubModelBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel node);
     }
     public partial class TMNESWC : CPlugParticleEmitterSubModelBuilderMembers3<TMNESWC>
     {
@@ -1178,14 +754,9 @@ public partial class CPlugParticleEmitterSubModelBuilder : CPlugParticleEmitterS
             var node = CPlugParticleEmitterSubModelBuilder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CPlugParticleEmitterSubModelBuilder.ValidateRecipe1(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CPlugParticleEmitterSubModelBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel node);
     }
     public partial class VSK5 : CPlugParticleEmitterSubModelBuilderMembers4<VSK5>
     {
@@ -1224,14 +795,9 @@ public partial class CPlugParticleEmitterSubModelBuilder : CPlugParticleEmitterS
             var node = CPlugParticleEmitterSubModelBuilder.CreateRecipe2(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CPlugParticleEmitterSubModelBuilder.ValidateRecipe2(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CPlugParticleEmitterSubModelBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel node);
     }
     public partial class TMF : CPlugParticleEmitterSubModelBuilderMembers4<TMF>
     {
@@ -1270,14 +836,9 @@ public partial class CPlugParticleEmitterSubModelBuilder : CPlugParticleEmitterS
             var node = CPlugParticleEmitterSubModelBuilder.CreateRecipe3(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CPlugParticleEmitterSubModelBuilder.ValidateRecipe3(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CPlugParticleEmitterSubModelBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel node);
     }
     public partial class MP3 : CPlugParticleEmitterSubModelBuilderMembers1<MP3>
     {
@@ -1300,14 +861,9 @@ public partial class CPlugParticleEmitterSubModelBuilder : CPlugParticleEmitterS
             var node = CPlugParticleEmitterSubModelBuilder.CreateRecipe4(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CPlugParticleEmitterSubModelBuilder.ValidateRecipe4(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CPlugParticleEmitterSubModelBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel node);
     }
     public partial class TMT : CPlugParticleEmitterSubModelBuilderMembers1<TMT>
     {
@@ -1330,14 +886,9 @@ public partial class CPlugParticleEmitterSubModelBuilder : CPlugParticleEmitterS
             var node = CPlugParticleEmitterSubModelBuilder.CreateRecipe5(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugParticleEmitterSubModelBuilder.ValidateRecipe5(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugParticleEmitterSubModelBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel node);
     }
     public partial class MP4 : CPlugParticleEmitterSubModelBuilderMembers1<MP4>
     {
@@ -1360,14 +911,9 @@ public partial class CPlugParticleEmitterSubModelBuilder : CPlugParticleEmitterS
             var node = CPlugParticleEmitterSubModelBuilder.CreateRecipe6(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugParticleEmitterSubModelBuilder.ValidateRecipe6(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugParticleEmitterSubModelBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel node);
     }
     public partial class TM2020 : CPlugParticleEmitterSubModelBuilderMembers1<TM2020>
     {
@@ -1390,13 +936,8 @@ public partial class CPlugParticleEmitterSubModelBuilder : CPlugParticleEmitterS
             var node = CPlugParticleEmitterSubModelBuilder.CreateRecipe7(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugParticleEmitterSubModelBuilder.ValidateRecipe7(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugParticleEmitterSubModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel node);
     }
 }

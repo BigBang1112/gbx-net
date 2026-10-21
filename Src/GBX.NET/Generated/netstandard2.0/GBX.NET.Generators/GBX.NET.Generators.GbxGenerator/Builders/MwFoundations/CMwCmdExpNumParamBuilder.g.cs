@@ -36,14 +36,9 @@ public abstract class CMwCmdExpNumParamBuilderBase<TSelf> where TSelf : CMwCmdEx
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam> state;
     private protected CMwCmdExpNumParamBuilderBase() => state = new();
     private protected CMwCmdExpNumParamBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam> state) => this.state = state;
-    public global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive? Parameter
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive?>("Parameter");
-        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumParamBuilderAssignments.GetParameterAssignment(), value, GameVersion.TMF);
-    }
     public TSelf WithParameter(global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive? value)
     {
-        Parameter = value;
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumParamBuilderAssignments.GetParameterAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
 }
@@ -58,14 +53,6 @@ public partial class CMwCmdExpNumParamBuilder : CMwCmdExpNumParamBuilderBase<CMw
         node.Chunks.Add(chunk01048001);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam.Chunk01046000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk01046000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam.Chunk01048001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk01048001 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam node, GameVersion game)
-    {
-    }
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TMF : CMwCmdExpNumParamBuilderBase<TMF>
     {
@@ -76,13 +63,8 @@ public partial class CMwCmdExpNumParamBuilder : CMwCmdExpNumParamBuilderBase<CMw
             var node = CMwCmdExpNumParamBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CMwCmdExpNumParamBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CMwCmdExpNumParamBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam node);
-        partial void ValidateNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam node);
     }
 }

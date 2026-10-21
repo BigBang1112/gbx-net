@@ -46,13 +46,6 @@ public partial class CPlugDynaWaterModelBuilder : CPlugDynaWaterModelBuilderBase
         node.Chunks.Add(chunk0915F000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugDynaWaterModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugDynaWaterModel.Chunk0915F000>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk0915F000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugDynaWaterModel node, GameVersion game)
-    {
-    }
     public TM2020 ForTM2020() => new(state.Snapshot());
     public partial class TM2020 : CPlugDynaWaterModelBuilderBase<TM2020>
     {
@@ -63,13 +56,8 @@ public partial class CPlugDynaWaterModelBuilder : CPlugDynaWaterModelBuilderBase
             var node = CPlugDynaWaterModelBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugDynaWaterModelBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugDynaWaterModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugDynaWaterModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugDynaWaterModel node);
     }
 }

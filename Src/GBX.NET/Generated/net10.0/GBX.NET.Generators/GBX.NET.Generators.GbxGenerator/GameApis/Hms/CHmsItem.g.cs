@@ -41,102 +41,52 @@ public partial class CHmsItem : global::GBX.NET.Interfaces.Hms.IHmsItem, global:
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolidTM10? global::GBX.NET.Interfaces.Hms.IHmsItemMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolidTM10>.Solid
     {
-        get
-        {
-            var node = Solid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            return node;
-        }
+        get => Solid;
         set => Solid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolidTMPU? global::GBX.NET.Interfaces.Hms.IHmsItemMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolidTMPU>.Solid
     {
-        get
-        {
-            var node = Solid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            return node;
-        }
+        get => Solid;
         set => Solid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolidTMSX? global::GBX.NET.Interfaces.Hms.IHmsItemMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolidTMSX>.Solid
     {
-        get
-        {
-            var node = Solid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => Solid;
         set => Solid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolidTMNESWC? global::GBX.NET.Interfaces.Hms.IHmsItemMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolidTMNESWC>.Solid
     {
-        get
-        {
-            var node = Solid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => Solid;
         set => Solid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5? global::GBX.NET.Interfaces.Hms.IHmsItemMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5>.Solid
     {
-        get
-        {
-            var node = Solid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => Solid;
         set => Solid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolidTMF? global::GBX.NET.Interfaces.Hms.IHmsItemMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolidTMF>.Solid
     {
-        get
-        {
-            var node = Solid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => Solid;
         set => Solid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolidMP3? global::GBX.NET.Interfaces.Hms.IHmsItemMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolidMP3>.Solid
     {
-        get
-        {
-            var node = Solid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => Solid;
         set => Solid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolidTMT? global::GBX.NET.Interfaces.Hms.IHmsItemMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolidTMT>.Solid
     {
-        get
-        {
-            var node = Solid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => Solid;
         set => Solid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolidMP4? global::GBX.NET.Interfaces.Hms.IHmsItemMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolidMP4>.Solid
     {
-        get
-        {
-            var node = Solid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Solid;
         set => Solid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020? global::GBX.NET.Interfaces.Hms.IHmsItemMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020>.Solid
     {
-        get
-        {
-            var node = Solid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => Solid;
         set => Solid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

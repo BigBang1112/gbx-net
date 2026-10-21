@@ -36,24 +36,14 @@ public abstract class CMwCmdAffectParamEnumBuilderBase<TSelf> where TSelf : CMwC
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdAffectParamEnum> state;
     private protected CMwCmdAffectParamEnumBuilderBase() => state = new();
     private protected CMwCmdAffectParamEnumBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdAffectParamEnum> state) => this.state = state;
-    public global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive? Parameter
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive?>("Parameter");
-        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdAffectParamBuilderAssignments.GetParameterAssignment(), value, GameVersion.TMF);
-    }
     public TSelf WithParameter(global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive? value)
     {
-        Parameter = value;
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdAffectParamBuilderAssignments.GetParameterAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Value
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdExp?>("Value");
-        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdAffectParamBuilderAssignments.GetValueAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithValue(global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value)
     {
-        Value = value;
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdAffectParamBuilderAssignments.GetValueAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
     public TSelf WithValueReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value)
@@ -72,13 +62,6 @@ public partial class CMwCmdAffectParamEnumBuilder : CMwCmdAffectParamEnumBuilder
         node.Chunks.Add(chunk01033001);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.MwFoundations.CMwCmdAffectParamEnum node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdAffectParam.Chunk01033001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk01033001 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.MwFoundations.CMwCmdAffectParamEnum node, GameVersion game)
-    {
-    }
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TMF : CMwCmdAffectParamEnumBuilderBase<TMF>
     {
@@ -89,13 +72,8 @@ public partial class CMwCmdAffectParamEnumBuilder : CMwCmdAffectParamEnumBuilder
             var node = CMwCmdAffectParamEnumBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CMwCmdAffectParamEnumBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CMwCmdAffectParamEnumBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdAffectParamEnum node);
-        partial void ValidateNode(global::GBX.NET.Engines.MwFoundations.CMwCmdAffectParamEnum node);
     }
 }

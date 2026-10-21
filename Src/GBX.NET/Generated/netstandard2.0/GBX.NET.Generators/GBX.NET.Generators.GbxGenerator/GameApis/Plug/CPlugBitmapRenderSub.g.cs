@@ -36,82 +36,42 @@ public partial class CPlugBitmapRenderSub : global::GBX.NET.Interfaces.Plug.IPlu
     public static new global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderSubBuilder Create() => new();
     global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX>.ShaderToForce
     {
-        get
-        {
-            var node = ShaderToForce;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => ShaderToForce;
         set => ShaderToForce = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC>.ShaderToForce
     {
-        get
-        {
-            var node = ShaderToForce;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => ShaderToForce;
         set => ShaderToForce = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5>.ShaderToForce
     {
-        get
-        {
-            var node = ShaderToForce;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => ShaderToForce;
         set => ShaderToForce = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTMF? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderTMF>.ShaderToForce
     {
-        get
-        {
-            var node = ShaderToForce;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => ShaderToForce;
         set => ShaderToForce = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderMP3? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderMP3>.ShaderToForce
     {
-        get
-        {
-            var node = ShaderToForce;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => ShaderToForce;
         set => ShaderToForce = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTMT? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderTMT>.ShaderToForce
     {
-        get
-        {
-            var node = ShaderToForce;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => ShaderToForce;
         set => ShaderToForce = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderMP4? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderMP4>.ShaderToForce
     {
-        get
-        {
-            var node = ShaderToForce;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => ShaderToForce;
         set => ShaderToForce = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020>.ShaderToForce
     {
-        get
-        {
-            var node = ShaderToForce;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => ShaderToForce;
         set => ShaderToForce = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

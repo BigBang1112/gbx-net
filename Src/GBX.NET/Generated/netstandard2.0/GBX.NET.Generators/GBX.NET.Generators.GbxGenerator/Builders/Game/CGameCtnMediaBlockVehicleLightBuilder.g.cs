@@ -36,34 +36,19 @@ public abstract class CGameCtnMediaBlockVehicleLightBuilderBase<TSelf> where TSe
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockVehicleLight> state;
     private protected CGameCtnMediaBlockVehicleLightBuilderBase() => state = new();
     private protected CGameCtnMediaBlockVehicleLightBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockVehicleLight> state) => this.state = state;
-    public TimeSingle End
-    {
-        get => state.Get<TimeSingle>("End");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockVehicleLightBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithEnd(TimeSingle value)
     {
-        End = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockVehicleLightBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public TimeSingle Start
-    {
-        get => state.Get<TimeSingle>("Start");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockVehicleLightBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStart(TimeSingle value)
     {
-        Start = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockVehicleLightBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int Target
-    {
-        get => state.Get<int>("Target");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockVehicleLightBuilderAssignments.GetTargetAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTarget(int value)
     {
-        Target = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockVehicleLightBuilderAssignments.GetTargetAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -77,14 +62,6 @@ public partial class CGameCtnMediaBlockVehicleLightBuilder : CGameCtnMediaBlockV
         var chunk03133001 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockVehicleLight.Chunk03133001();
         node.Chunks.Add(chunk03133001);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockVehicleLight node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockVehicleLight.Chunk03133000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03133000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockVehicleLight.Chunk03133001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03133001 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockVehicleLight node, GameVersion game)
-    {
     }
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -100,14 +77,9 @@ public partial class CGameCtnMediaBlockVehicleLightBuilder : CGameCtnMediaBlockV
             var node = CGameCtnMediaBlockVehicleLightBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameCtnMediaBlockVehicleLightBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameCtnMediaBlockVehicleLightBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockVehicleLight node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockVehicleLight node);
     }
     public partial class MP4 : CGameCtnMediaBlockVehicleLightBuilderBase<MP4>
     {
@@ -118,14 +90,9 @@ public partial class CGameCtnMediaBlockVehicleLightBuilder : CGameCtnMediaBlockV
             var node = CGameCtnMediaBlockVehicleLightBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameCtnMediaBlockVehicleLightBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameCtnMediaBlockVehicleLightBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockVehicleLight node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockVehicleLight node);
     }
     public partial class TM2020 : CGameCtnMediaBlockVehicleLightBuilderBase<TM2020>
     {
@@ -136,13 +103,8 @@ public partial class CGameCtnMediaBlockVehicleLightBuilder : CGameCtnMediaBlockV
             var node = CGameCtnMediaBlockVehicleLightBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameCtnMediaBlockVehicleLightBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameCtnMediaBlockVehicleLightBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockVehicleLight node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockVehicleLight node);
     }
 }

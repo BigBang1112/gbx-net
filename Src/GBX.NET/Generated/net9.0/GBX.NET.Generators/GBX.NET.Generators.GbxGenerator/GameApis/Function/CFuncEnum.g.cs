@@ -36,62 +36,32 @@ public partial class CFuncEnum : global::GBX.NET.Interfaces.Function.IFuncEnum, 
     public static global::GBX.NET.Builders.Engines.Function.CFuncEnumBuilder Create() => new();
     global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5? global::GBX.NET.Interfaces.Function.IFuncEnumMembers2<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5>.IconIndexs
     {
-        get
-        {
-            var node = IconIndexs;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => IconIndexs;
         set => IconIndexs = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF? global::GBX.NET.Interfaces.Function.IFuncEnumMembers2<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF>.IconIndexs
     {
-        get
-        {
-            var node = IconIndexs;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => IconIndexs;
         set => IconIndexs = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3? global::GBX.NET.Interfaces.Function.IFuncEnumMembers2<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3>.IconIndexs
     {
-        get
-        {
-            var node = IconIndexs;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => IconIndexs;
         set => IconIndexs = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT? global::GBX.NET.Interfaces.Function.IFuncEnumMembers2<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT>.IconIndexs
     {
-        get
-        {
-            var node = IconIndexs;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => IconIndexs;
         set => IconIndexs = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4? global::GBX.NET.Interfaces.Function.IFuncEnumMembers2<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>.IconIndexs
     {
-        get
-        {
-            var node = IconIndexs;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => IconIndexs;
         set => IconIndexs = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020? global::GBX.NET.Interfaces.Function.IFuncEnumMembers2<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020>.IconIndexs
     {
-        get
-        {
-            var node = IconIndexs;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => IconIndexs;
         set => IconIndexs = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

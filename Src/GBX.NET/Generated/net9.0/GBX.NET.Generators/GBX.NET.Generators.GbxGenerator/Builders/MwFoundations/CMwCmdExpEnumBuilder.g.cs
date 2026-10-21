@@ -36,24 +36,14 @@ public abstract class CMwCmdExpEnumBuilderBase<TSelf> where TSelf : CMwCmdExpEnu
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpEnum> state;
     private protected CMwCmdExpEnumBuilderBase() => state = new();
     private protected CMwCmdExpEnumBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpEnum> state) => this.state = state;
-    public int EnumValue
-    {
-        get => state.Get<int>("EnumValue");
-        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpEnumBuilderAssignments.GetEnumValueAssignment(), value, GameVersion.TMF);
-    }
     public TSelf WithEnumValue(int value)
     {
-        EnumValue = value;
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpEnumBuilderAssignments.GetEnumValueAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
-    }
-    public uint ParamId
-    {
-        get => state.Get<uint>("ParamId");
-        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpEnumBuilderAssignments.GetParamIdAssignment(), value, GameVersion.TMF);
     }
     public TSelf WithParamId(uint value)
     {
-        ParamId = value;
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpEnumBuilderAssignments.GetParamIdAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
 }
@@ -66,13 +56,6 @@ public partial class CMwCmdExpEnumBuilder : CMwCmdExpEnumBuilderBase<CMwCmdExpEn
         node.Chunks.Add(chunk01059000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.MwFoundations.CMwCmdExpEnum node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdExpEnum.Chunk01059000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk01059000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.MwFoundations.CMwCmdExpEnum node, GameVersion game)
-    {
-    }
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TMF : CMwCmdExpEnumBuilderBase<TMF>
     {
@@ -83,13 +66,8 @@ public partial class CMwCmdExpEnumBuilder : CMwCmdExpEnumBuilderBase<CMwCmdExpEn
             var node = CMwCmdExpEnumBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CMwCmdExpEnumBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CMwCmdExpEnumBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpEnum node);
-        partial void ValidateNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpEnum node);
     }
 }

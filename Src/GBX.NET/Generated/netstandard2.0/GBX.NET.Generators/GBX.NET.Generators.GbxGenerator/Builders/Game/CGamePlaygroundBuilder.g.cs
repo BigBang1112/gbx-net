@@ -36,14 +36,9 @@ public abstract class CGamePlaygroundBuilderBase<TSelf> where TSelf : CGamePlayg
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayground> state;
     private protected CGamePlaygroundBuilderBase() => state = new();
     private protected CGamePlaygroundBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayground> state) => this.state = state;
-    public string? Name
-    {
-        get => state.Get<string?>("Name");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameNodBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithName(string? value)
     {
-        Name = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameNodBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -55,13 +50,6 @@ public partial class CGamePlaygroundBuilder : CGamePlaygroundBuilderBase<CGamePl
         var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
         node.Chunks.Add(chunk03008000);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGamePlayground node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03008000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGamePlayground node, GameVersion game)
-    {
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -84,14 +72,9 @@ public partial class CGamePlaygroundBuilder : CGamePlaygroundBuilderBase<CGamePl
             var node = CGamePlaygroundBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CGamePlaygroundBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CGamePlaygroundBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayground node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGamePlayground node);
     }
     public partial class TMPU : CGamePlaygroundBuilderBase<TMPU>
     {
@@ -102,14 +85,9 @@ public partial class CGamePlaygroundBuilder : CGamePlaygroundBuilderBase<CGamePl
             var node = CGamePlaygroundBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CGamePlaygroundBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CGamePlaygroundBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayground node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGamePlayground node);
     }
     public partial class TMSX : CGamePlaygroundBuilderBase<TMSX>
     {
@@ -120,14 +98,9 @@ public partial class CGamePlaygroundBuilder : CGamePlaygroundBuilderBase<CGamePl
             var node = CGamePlaygroundBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CGamePlaygroundBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CGamePlaygroundBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayground node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGamePlayground node);
     }
     public partial class TMNESWC : CGamePlaygroundBuilderBase<TMNESWC>
     {
@@ -138,14 +111,9 @@ public partial class CGamePlaygroundBuilder : CGamePlaygroundBuilderBase<CGamePl
             var node = CGamePlaygroundBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CGamePlaygroundBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CGamePlaygroundBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayground node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGamePlayground node);
     }
     public partial class VSK5 : CGamePlaygroundBuilderBase<VSK5>
     {
@@ -156,14 +124,9 @@ public partial class CGamePlaygroundBuilder : CGamePlaygroundBuilderBase<CGamePl
             var node = CGamePlaygroundBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CGamePlaygroundBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CGamePlaygroundBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayground node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGamePlayground node);
     }
     public partial class TMF : CGamePlaygroundBuilderBase<TMF>
     {
@@ -174,14 +137,9 @@ public partial class CGamePlaygroundBuilder : CGamePlaygroundBuilderBase<CGamePl
             var node = CGamePlaygroundBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CGamePlaygroundBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CGamePlaygroundBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayground node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGamePlayground node);
     }
     public partial class MP3 : CGamePlaygroundBuilderBase<MP3>
     {
@@ -192,14 +150,9 @@ public partial class CGamePlaygroundBuilder : CGamePlaygroundBuilderBase<CGamePl
             var node = CGamePlaygroundBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CGamePlaygroundBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CGamePlaygroundBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayground node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGamePlayground node);
     }
     public partial class TMT : CGamePlaygroundBuilderBase<TMT>
     {
@@ -210,14 +163,9 @@ public partial class CGamePlaygroundBuilder : CGamePlaygroundBuilderBase<CGamePl
             var node = CGamePlaygroundBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGamePlaygroundBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGamePlaygroundBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayground node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGamePlayground node);
     }
     public partial class MP4 : CGamePlaygroundBuilderBase<MP4>
     {
@@ -228,14 +176,9 @@ public partial class CGamePlaygroundBuilder : CGamePlaygroundBuilderBase<CGamePl
             var node = CGamePlaygroundBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGamePlaygroundBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGamePlaygroundBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayground node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGamePlayground node);
     }
     public partial class TM2020 : CGamePlaygroundBuilderBase<TM2020>
     {
@@ -246,13 +189,8 @@ public partial class CGamePlaygroundBuilder : CGamePlaygroundBuilderBase<CGamePl
             var node = CGamePlaygroundBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGamePlaygroundBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGamePlaygroundBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayground node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGamePlayground node);
     }
 }

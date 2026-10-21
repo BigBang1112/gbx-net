@@ -36,12 +36,7 @@ public partial class CMotionEmitterFlock : global::GBX.NET.Interfaces.Motion.IMo
     public static global::GBX.NET.Builders.Engines.Motion.CMotionEmitterFlockBuilder Create() => new();
     global::GBX.NET.Interfaces.Plug.IPlugFlockModelMP3? global::GBX.NET.Interfaces.Motion.IMotionEmitterFlockMP3.FlockModel
     {
-        get
-        {
-            var node = FlockModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => FlockModel;
         set => FlockModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFlockModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

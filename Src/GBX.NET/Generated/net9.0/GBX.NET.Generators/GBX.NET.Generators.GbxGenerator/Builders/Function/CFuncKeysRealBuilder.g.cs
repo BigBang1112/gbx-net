@@ -36,14 +36,9 @@ public abstract class CFuncKeysRealBuilderBase<TSelf> where TSelf : CFuncKeysRea
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysReal> state;
     private protected CFuncKeysRealBuilderBase() => state = new();
     private protected CFuncKeysRealBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysReal> state) => this.state = state;
-    public float[]? Xs
-    {
-        get => state.Get<float[]?>("Xs");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysBuilderAssignments.GetXsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithXs(params float[]? value)
     {
-        Xs = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysBuilderAssignments.GetXsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithXs(IEnumerable<float> values)
@@ -54,14 +49,9 @@ public abstract class CFuncKeysRealBuilderBase<TSelf> where TSelf : CFuncKeysRea
 public abstract class CFuncKeysRealBuilderMembers1<TSelf> : CFuncKeysRealBuilderBase<TSelf> where TSelf : CFuncKeysRealBuilderMembers1<TSelf>
 {
     private protected CFuncKeysRealBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysReal> state) : base(state) { }
-    public float[]? Ys
-    {
-        get => state.Get<float[]?>("Ys");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetYsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithYs(params float[]? value)
     {
-        Ys = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetYsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithYs(IEnumerable<float> values)
@@ -72,58 +62,33 @@ public abstract class CFuncKeysRealBuilderMembers1<TSelf> : CFuncKeysRealBuilder
 public abstract class CFuncKeysRealBuilderMembers2<TSelf> : CFuncKeysRealBuilderMembers1<TSelf> where TSelf : CFuncKeysRealBuilderMembers2<TSelf>
 {
     private protected CFuncKeysRealBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysReal> state) : base(state) { }
-    public global::GBX.NET.Engines.Function.CFuncKeysReal.ERealInterp RealInterp
-    {
-        get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal.ERealInterp>("RealInterp");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetRealInterpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithRealInterp(global::GBX.NET.Engines.Function.CFuncKeysReal.ERealInterp value)
     {
-        RealInterp = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetRealInterpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CFuncKeysRealBuilderMembers3<TSelf> : CFuncKeysRealBuilderMembers2<TSelf> where TSelf : CFuncKeysRealBuilderMembers3<TSelf>
 {
     private protected CFuncKeysRealBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysReal> state) : base(state) { }
-    public bool ForceTangentMaxX
-    {
-        get => state.Get<bool>("ForceTangentMaxX");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetForceTangentMaxXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
-    }
     public TSelf WithForceTangentMaxX(bool value)
     {
-        ForceTangentMaxX = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetForceTangentMaxXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool ForceTangentMinX
-    {
-        get => state.Get<bool>("ForceTangentMinX");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetForceTangentMinXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithForceTangentMinX(bool value)
     {
-        ForceTangentMinX = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetForceTangentMinXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float ForcedTangentMaxX
-    {
-        get => state.Get<float>("ForcedTangentMaxX");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetForcedTangentMaxXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithForcedTangentMaxX(float value)
     {
-        ForcedTangentMaxX = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetForcedTangentMaxXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float ForcedTangentMinX
-    {
-        get => state.Get<float>("ForcedTangentMinX");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetForcedTangentMinXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithForcedTangentMinX(float value)
     {
-        ForcedTangentMinX = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetForcedTangentMinXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -140,12 +105,6 @@ public partial class CFuncKeysRealBuilder : CFuncKeysRealBuilderBase<CFuncKeysRe
         node.Chunks.Add(chunk05002003);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Function.CFuncKeysReal node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncKeysReal.Chunk0501A000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0501A000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncKeys.Chunk05002001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05002001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncKeys.Chunk05002003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05002003 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Function.CFuncKeysReal CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Function.CFuncKeysReal();
@@ -156,12 +115,6 @@ public partial class CFuncKeysRealBuilder : CFuncKeysRealBuilderBase<CFuncKeysRe
         var chunk05002003 = new global::GBX.NET.Engines.Function.CFuncKeys.Chunk05002003();
         node.Chunks.Add(chunk05002003);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Function.CFuncKeysReal node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncKeysReal.Chunk0501A001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0501A001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncKeys.Chunk05002001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05002001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncKeys.Chunk05002003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05002003 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Function.CFuncKeysReal CreateRecipe2(GameVersion game)
     {
@@ -174,12 +127,6 @@ public partial class CFuncKeysRealBuilder : CFuncKeysRealBuilderBase<CFuncKeysRe
         node.Chunks.Add(chunk05002003);
         return node;
     }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Function.CFuncKeysReal node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncKeysReal.Chunk0501A002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0501A002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncKeys.Chunk05002001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05002001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncKeys.Chunk05002003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05002003 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Function.CFuncKeysReal CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Function.CFuncKeysReal();
@@ -188,14 +135,6 @@ public partial class CFuncKeysRealBuilder : CFuncKeysRealBuilderBase<CFuncKeysRe
         var chunk05002003 = new global::GBX.NET.Engines.Function.CFuncKeys.Chunk05002003();
         node.Chunks.Add(chunk05002003);
         return node;
-    }
-    private static void ValidateRecipe3(global::GBX.NET.Engines.Function.CFuncKeysReal node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncKeys.Chunk05002001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05002001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncKeys.Chunk05002003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05002003 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Function.CFuncKeysReal node, GameVersion game)
-    {
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -218,14 +157,9 @@ public partial class CFuncKeysRealBuilder : CFuncKeysRealBuilderBase<CFuncKeysRe
             var node = CFuncKeysRealBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CFuncKeysRealBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CFuncKeysRealBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncKeysReal node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncKeysReal node);
     }
     public partial class TMPU : CFuncKeysRealBuilderMembers1<TMPU>
     {
@@ -236,14 +170,9 @@ public partial class CFuncKeysRealBuilder : CFuncKeysRealBuilderBase<CFuncKeysRe
             var node = CFuncKeysRealBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CFuncKeysRealBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CFuncKeysRealBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncKeysReal node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncKeysReal node);
     }
     public partial class TMSX : CFuncKeysRealBuilderMembers2<TMSX>
     {
@@ -254,14 +183,9 @@ public partial class CFuncKeysRealBuilder : CFuncKeysRealBuilderBase<CFuncKeysRe
             var node = CFuncKeysRealBuilder.CreateRecipe1(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CFuncKeysRealBuilder.ValidateRecipe1(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CFuncKeysRealBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncKeysReal node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncKeysReal node);
     }
     public partial class TMNESWC : CFuncKeysRealBuilderMembers2<TMNESWC>
     {
@@ -272,14 +196,9 @@ public partial class CFuncKeysRealBuilder : CFuncKeysRealBuilderBase<CFuncKeysRe
             var node = CFuncKeysRealBuilder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CFuncKeysRealBuilder.ValidateRecipe1(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CFuncKeysRealBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncKeysReal node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncKeysReal node);
     }
     public partial class VSK5 : CFuncKeysRealBuilderMembers2<VSK5>
     {
@@ -290,14 +209,9 @@ public partial class CFuncKeysRealBuilder : CFuncKeysRealBuilderBase<CFuncKeysRe
             var node = CFuncKeysRealBuilder.CreateRecipe1(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CFuncKeysRealBuilder.ValidateRecipe1(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CFuncKeysRealBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncKeysReal node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncKeysReal node);
     }
     public partial class TMF : CFuncKeysRealBuilderMembers2<TMF>
     {
@@ -308,14 +222,9 @@ public partial class CFuncKeysRealBuilder : CFuncKeysRealBuilderBase<CFuncKeysRe
             var node = CFuncKeysRealBuilder.CreateRecipe1(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CFuncKeysRealBuilder.ValidateRecipe1(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CFuncKeysRealBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncKeysReal node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncKeysReal node);
     }
     public partial class MP3 : CFuncKeysRealBuilderMembers3<MP3>
     {
@@ -326,14 +235,9 @@ public partial class CFuncKeysRealBuilder : CFuncKeysRealBuilderBase<CFuncKeysRe
             var node = CFuncKeysRealBuilder.CreateRecipe2(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CFuncKeysRealBuilder.ValidateRecipe2(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CFuncKeysRealBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncKeysReal node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncKeysReal node);
     }
     public partial class TMT : CFuncKeysRealBuilderMembers3<TMT>
     {
@@ -344,14 +248,9 @@ public partial class CFuncKeysRealBuilder : CFuncKeysRealBuilderBase<CFuncKeysRe
             var node = CFuncKeysRealBuilder.CreateRecipe2(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CFuncKeysRealBuilder.ValidateRecipe2(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CFuncKeysRealBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncKeysReal node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncKeysReal node);
     }
     public partial class MP4 : CFuncKeysRealBuilderMembers3<MP4>
     {
@@ -362,14 +261,9 @@ public partial class CFuncKeysRealBuilder : CFuncKeysRealBuilderBase<CFuncKeysRe
             var node = CFuncKeysRealBuilder.CreateRecipe2(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CFuncKeysRealBuilder.ValidateRecipe2(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CFuncKeysRealBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncKeysReal node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncKeysReal node);
     }
     public partial class TM2020 : CFuncKeysRealBuilderBase<TM2020>
     {
@@ -380,13 +274,8 @@ public partial class CFuncKeysRealBuilder : CFuncKeysRealBuilderBase<CFuncKeysRe
             var node = CFuncKeysRealBuilder.CreateRecipe3(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CFuncKeysRealBuilder.ValidateRecipe3(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CFuncKeysRealBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncKeysReal node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncKeysReal node);
     }
 }

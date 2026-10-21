@@ -46,23 +46,12 @@ public partial class CGameChallengeScoresBuilder : CGameChallengeScoresBuilderBa
         node.Chunks.Add(chunk03064001);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameChallengeScores node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameChallengeScores.Chunk03064001>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk03064001 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameChallengeScores CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameChallengeScores();
         var chunk03064001 = new global::GBX.NET.Engines.Game.CGameChallengeScores.Chunk03064001(game);
         node.Chunks.Add(chunk03064001);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameChallengeScores node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameChallengeScores.Chunk03064001>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk03064001 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameChallengeScores node, GameVersion game)
-    {
     }
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -75,14 +64,9 @@ public partial class CGameChallengeScoresBuilder : CGameChallengeScoresBuilderBa
             var node = CGameChallengeScoresBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CGameChallengeScoresBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CGameChallengeScoresBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameChallengeScores node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameChallengeScores node);
     }
     public partial class MP3 : CGameChallengeScoresBuilderBase<MP3>
     {
@@ -93,13 +77,8 @@ public partial class CGameChallengeScoresBuilder : CGameChallengeScoresBuilderBa
             var node = CGameChallengeScoresBuilder.CreateRecipe1(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CGameChallengeScoresBuilder.ValidateRecipe1(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CGameChallengeScoresBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameChallengeScores node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameChallengeScores node);
     }
 }

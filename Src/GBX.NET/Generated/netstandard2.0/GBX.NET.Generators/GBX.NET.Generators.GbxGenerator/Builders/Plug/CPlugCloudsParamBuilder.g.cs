@@ -36,88 +36,48 @@ public abstract class CPlugCloudsParamBuilderBase<TSelf> where TSelf : CPlugClou
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCloudsParam> state;
     private protected CPlugCloudsParamBuilderBase() => state = new();
     private protected CPlugCloudsParamBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCloudsParam> state) => this.state = state;
-    public float BottomFarZ
-    {
-        get => state.Get<float>("BottomFarZ");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsParamBuilderAssignments.GetBottomFarZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithBottomFarZ(float value)
     {
-        BottomFarZ = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsParamBuilderAssignments.GetBottomFarZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float BottomNearZ
-    {
-        get => state.Get<float>("BottomNearZ");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsParamBuilderAssignments.GetBottomNearZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithBottomNearZ(float value)
     {
-        BottomNearZ = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsParamBuilderAssignments.GetBottomNearZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugCloudsParam.EHeightCenter HeightCenter
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugCloudsParam.EHeightCenter>("HeightCenter");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsParamBuilderAssignments.GetHeightCenterAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithHeightCenter(global::GBX.NET.Engines.Plug.CPlugCloudsParam.EHeightCenter value)
     {
-        HeightCenter = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsParamBuilderAssignments.GetHeightCenterAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public Vec2 HeightCenterXZ
-    {
-        get => state.Get<Vec2>("HeightCenterXZ");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsParamBuilderAssignments.GetHeightCenterXZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithHeightCenterXZ(Vec2 value)
     {
-        HeightCenterXZ = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsParamBuilderAssignments.GetHeightCenterXZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugCloudsParam.ELighting Lighting
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugCloudsParam.ELighting>("Lighting");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsParamBuilderAssignments.GetLightingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLighting(global::GBX.NET.Engines.Plug.CPlugCloudsParam.ELighting value)
     {
-        Lighting = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsParamBuilderAssignments.GetLightingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool MaterialUseT3b
-    {
-        get => state.Get<bool>("MaterialUseT3b");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsParamBuilderAssignments.GetMaterialUseT3bAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaterialUseT3b(bool value)
     {
-        MaterialUseT3b = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsParamBuilderAssignments.GetMaterialUseT3bAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public Vec2[]? Points
-    {
-        get => state.Get<Vec2[]?>("Points");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsParamBuilderAssignments.GetPointsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithPoints(params Vec2[]? value)
     {
-        Points = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsParamBuilderAssignments.GetPointsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithPoints(IEnumerable<Vec2> values)
     {
         return WithPoints(values.ToArray());
     }
-    public float SpeedScale
-    {
-        get => state.Get<float>("SpeedScale");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsParamBuilderAssignments.GetSpeedScaleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithSpeedScale(float value)
     {
-        SpeedScale = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsParamBuilderAssignments.GetSpeedScaleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -132,14 +92,6 @@ public partial class CPlugCloudsParamBuilder : CPlugCloudsParamBuilderBase<CPlug
         chunk09182002.Version = 0;
         node.Chunks.Add(chunk09182002);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugCloudsParam node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCloudsParam.Chunk09182001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09182001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCloudsParam.Chunk09182002>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk09182002 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugCloudsParam node, GameVersion game)
-    {
     }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -156,14 +108,9 @@ public partial class CPlugCloudsParamBuilder : CPlugCloudsParamBuilderBase<CPlug
             var node = CPlugCloudsParamBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CPlugCloudsParamBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CPlugCloudsParamBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCloudsParam node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCloudsParam node);
     }
     public partial class TMT : CPlugCloudsParamBuilderBase<TMT>
     {
@@ -174,14 +121,9 @@ public partial class CPlugCloudsParamBuilder : CPlugCloudsParamBuilderBase<CPlug
             var node = CPlugCloudsParamBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugCloudsParamBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugCloudsParamBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCloudsParam node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCloudsParam node);
     }
     public partial class MP4 : CPlugCloudsParamBuilderBase<MP4>
     {
@@ -192,14 +134,9 @@ public partial class CPlugCloudsParamBuilder : CPlugCloudsParamBuilderBase<CPlug
             var node = CPlugCloudsParamBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugCloudsParamBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugCloudsParamBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCloudsParam node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCloudsParam node);
     }
     public partial class TM2020 : CPlugCloudsParamBuilderBase<TM2020>
     {
@@ -210,13 +147,8 @@ public partial class CPlugCloudsParamBuilder : CPlugCloudsParamBuilderBase<CPlug
             var node = CPlugCloudsParamBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugCloudsParamBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugCloudsParamBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCloudsParam node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCloudsParam node);
     }
 }

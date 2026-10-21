@@ -156,242 +156,122 @@ public partial class CPlugBulletModel : global::GBX.NET.Interfaces.Plug.IPlugBul
     }
     global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4.BeamVisualModel
     {
-        get
-        {
-            var node = BeamVisualModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => BeamVisualModel;
         set => BeamVisualModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4.BitmapCrosshair
     {
-        get
-        {
-            var node = BitmapCrosshair;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => BitmapCrosshair;
         set => BitmapCrosshair = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4.BitmapCrosshairTriLaser
     {
-        get
-        {
-            var node = BitmapCrosshairTriLaser;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => BitmapCrosshairTriLaser;
         set => BitmapCrosshairTriLaser = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4.BitmapLasersight
     {
-        get
-        {
-            var node = BitmapLasersight;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => BitmapLasersight;
         set => BitmapLasersight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4.DamageAttenuationFromDist
     {
-        get
-        {
-            var node = DamageAttenuationFromDist;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => DamageAttenuationFromDist;
         set => DamageAttenuationFromDist = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4.ExplosionBullet
     {
-        get
-        {
-            var node = ExplosionBullet;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => ExplosionBullet;
         set => ExplosionBullet = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4.ExplosionEnergyFromLifeTime
     {
-        get
-        {
-            var node = ExplosionEnergyFromLifeTime;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => ExplosionEnergyFromLifeTime;
         set => ExplosionEnergyFromLifeTime = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4.ExplosionRadiusCoefFromLifeTime
     {
-        get
-        {
-            var node = ExplosionRadiusCoefFromLifeTime;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => ExplosionRadiusCoefFromLifeTime;
         set => ExplosionRadiusCoefFromLifeTime = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4.ExplosionSurface
     {
-        get
-        {
-            var node = ExplosionSurface;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => ExplosionSurface;
         set => ExplosionSurface = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4.Icon
     {
-        get
-        {
-            var node = Icon;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Icon;
         set => Icon = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4.ImpactBounce
     {
-        get
-        {
-            var node = ImpactBounce;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => ImpactBounce;
         set => ImpactBounce = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4.ParticleModelAlive
     {
-        get
-        {
-            var node = ParticleModelAlive;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => ParticleModelAlive;
         set => ParticleModelAlive = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4.ParticleModelFire
     {
-        get
-        {
-            var node = ParticleModelFire;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => ParticleModelFire;
         set => ParticleModelFire = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4.SoundAlive
     {
-        get
-        {
-            var node = SoundAlive;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => SoundAlive;
         set => SoundAlive = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4.SoundAlivePitchFromRemainingLifeTime
     {
-        get
-        {
-            var node = SoundAlivePitchFromRemainingLifeTime;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => SoundAlivePitchFromRemainingLifeTime;
         set => SoundAlivePitchFromRemainingLifeTime = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4.SoundAliveVolumeFromRemainingLifeTime
     {
-        get
-        {
-            var node = SoundAliveVolumeFromRemainingLifeTime;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => SoundAliveVolumeFromRemainingLifeTime;
         set => SoundAliveVolumeFromRemainingLifeTime = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4.SoundFire
     {
-        get
-        {
-            var node = SoundFire;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => SoundFire;
         set => SoundFire = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4.SoundFirePitchFromRemainingAmmo
     {
-        get
-        {
-            var node = SoundFirePitchFromRemainingAmmo;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => SoundFirePitchFromRemainingAmmo;
         set => SoundFirePitchFromRemainingAmmo = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4.SoundFireVolumeFromRemainingAmmo
     {
-        get
-        {
-            var node = SoundFireVolumeFromRemainingAmmo;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => SoundFireVolumeFromRemainingAmmo;
         set => SoundFireVolumeFromRemainingAmmo = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4.SoundGauge
     {
-        get
-        {
-            var node = SoundGauge;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => SoundGauge;
         set => SoundGauge = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4.SoundReloading
     {
-        get
-        {
-            var node = SoundReloading;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => SoundReloading;
         set => SoundReloading = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4.SpeedFromHorizonAngle
     {
-        get
-        {
-            var node = SpeedFromHorizonAngle;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => SpeedFromHorizonAngle;
         set => SpeedFromHorizonAngle = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4.SpeedFromTriggerDuration
     {
-        get
-        {
-            var node = SpeedFromTriggerDuration;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => SpeedFromTriggerDuration;
         set => SpeedFromTriggerDuration = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4.SpreadCoefFormChargeDuration
     {
-        get
-        {
-            var node = SpreadCoefFormChargeDuration;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => SpreadCoefFormChargeDuration;
         set => SpreadCoefFormChargeDuration = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

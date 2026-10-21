@@ -36,14 +36,9 @@ public abstract class CPlugFxLightningBuilderBase<TSelf> where TSelf : CPlugFxLi
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFxLightning> state;
     private protected CPlugFxLightningBuilderBase() => state = new();
     private protected CPlugFxLightningBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFxLightning> state) => this.state = state;
-    public global::GBX.NET.Engines.Plug.CPlugSound? Sound
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFxLightningBuilderAssignments.GetSoundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithSound(global::GBX.NET.Engines.Plug.CPlugSound? value)
     {
-        Sound = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFxLightningBuilderAssignments.GetSoundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
@@ -61,13 +56,6 @@ public partial class CPlugFxLightningBuilder : CPlugFxLightningBuilderBase<CPlug
         var chunk090D8000 = new global::GBX.NET.Engines.Plug.CPlugFxLightning.Chunk090D8000(game);
         node.Chunks.Add(chunk090D8000);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugFxLightning node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFxLightning.Chunk090D8000>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090D8000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugFxLightning node, GameVersion game)
-    {
     }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -88,14 +76,9 @@ public partial class CPlugFxLightningBuilder : CPlugFxLightningBuilderBase<CPlug
             var node = CPlugFxLightningBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CPlugFxLightningBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CPlugFxLightningBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugFxLightning node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugFxLightning node);
     }
     public partial class TMT : CPlugFxLightningBuilderBase<TMT>
     {
@@ -110,14 +93,9 @@ public partial class CPlugFxLightningBuilder : CPlugFxLightningBuilderBase<CPlug
             var node = CPlugFxLightningBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugFxLightningBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugFxLightningBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugFxLightning node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugFxLightning node);
     }
     public partial class MP4 : CPlugFxLightningBuilderBase<MP4>
     {
@@ -132,14 +110,9 @@ public partial class CPlugFxLightningBuilder : CPlugFxLightningBuilderBase<CPlug
             var node = CPlugFxLightningBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugFxLightningBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugFxLightningBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugFxLightning node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugFxLightning node);
     }
     public partial class TM2020 : CPlugFxLightningBuilderBase<TM2020>
     {
@@ -154,13 +127,8 @@ public partial class CPlugFxLightningBuilder : CPlugFxLightningBuilderBase<CPlug
             var node = CPlugFxLightningBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugFxLightningBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugFxLightningBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugFxLightning node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugFxLightning node);
     }
 }

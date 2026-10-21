@@ -36,84 +36,44 @@ public abstract class CPlugShieldModelBuilderBase<TSelf> where TSelf : CPlugShie
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShieldModel> state;
     private protected CPlugShieldModelBuilderBase() => state = new();
     private protected CPlugShieldModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShieldModel> state) => this.state = state;
-    public int Cooldown
-    {
-        get => state.Get<int>("Cooldown");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetCooldownAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithCooldown(int value)
     {
-        Cooldown = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetCooldownAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public bool DoDamagesToPlayers
-    {
-        get => state.Get<bool>("DoDamagesToPlayers");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetDoDamagesToPlayersAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithDoDamagesToPlayers(bool value)
     {
-        DoDamagesToPlayers = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetDoDamagesToPlayersAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public bool DoDamagesToShields
-    {
-        get => state.Get<bool>("DoDamagesToShields");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetDoDamagesToShieldsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithDoDamagesToShields(bool value)
     {
-        DoDamagesToShields = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetDoDamagesToShieldsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public bool IsBouncing
-    {
-        get => state.Get<bool>("IsBouncing");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetIsBouncingAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithIsBouncing(bool value)
     {
-        IsBouncing = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetIsBouncingAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float MeshScale
-    {
-        get => state.Get<float>("MeshScale");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetMeshScaleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithMeshScale(float value)
     {
-        MeshScale = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetMeshScaleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public bool NeedActivation
-    {
-        get => state.Get<bool>("NeedActivation");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetNeedActivationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithNeedActivation(bool value)
     {
-        NeedActivation = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetNeedActivationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public Vec3 RelativePos
-    {
-        get => state.Get<Vec3>("RelativePos");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetRelativePosAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithRelativePos(Vec3 value)
     {
-        RelativePos = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetRelativePosAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugSurface? Shape
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugSurface?>("Shape");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetShapeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithShape(global::GBX.NET.Engines.Plug.CPlugSurface? value)
     {
-        Shape = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetShapeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithShapeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSurface> value)
@@ -122,24 +82,14 @@ public abstract class CPlugShieldModelBuilderBase<TSelf> where TSelf : CPlugShie
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetShapeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
-    public string? ShapeRef
-    {
-        get => state.Get<string?>("ShapeRef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetShapeRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithShapeRef(string? value)
     {
-        ShapeRef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetShapeRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugSolid2Model? ShapeVisModel
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugSolid2Model?>("ShapeVisModel");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetShapeVisModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithShapeVisModel(global::GBX.NET.Engines.Plug.CPlugSolid2Model? value)
     {
-        ShapeVisModel = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetShapeVisModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithShapeVisModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid2Model> value)
@@ -148,24 +98,14 @@ public abstract class CPlugShieldModelBuilderBase<TSelf> where TSelf : CPlugShie
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetShapeVisModelReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
-    public string? ShapeVisModelRef
-    {
-        get => state.Get<string?>("ShapeVisModelRef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetShapeVisModelRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithShapeVisModelRef(string? value)
     {
-        ShapeVisModelRef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetShapeVisModelRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugSound? ShieldActiveSound
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("ShieldActiveSound");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetShieldActiveSoundAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithShieldActiveSound(global::GBX.NET.Engines.Plug.CPlugSound? value)
     {
-        ShieldActiveSound = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetShieldActiveSoundAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithShieldActiveSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
@@ -174,34 +114,19 @@ public abstract class CPlugShieldModelBuilderBase<TSelf> where TSelf : CPlugShie
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetShieldActiveSoundReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
-    public string? ShieldActiveSoundRef
-    {
-        get => state.Get<string?>("ShieldActiveSoundRef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetShieldActiveSoundRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithShieldActiveSoundRef(string? value)
     {
-        ShieldActiveSoundRef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetShieldActiveSoundRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public int ShieldArmor
-    {
-        get => state.Get<int>("ShieldArmor");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetShieldArmorAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithShieldArmor(int value)
     {
-        ShieldArmor = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetShieldArmorAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugSound? ShieldDestroySound
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("ShieldDestroySound");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetShieldDestroySoundAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithShieldDestroySound(global::GBX.NET.Engines.Plug.CPlugSound? value)
     {
-        ShieldDestroySound = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetShieldDestroySoundAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithShieldDestroySoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
@@ -210,34 +135,19 @@ public abstract class CPlugShieldModelBuilderBase<TSelf> where TSelf : CPlugShie
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetShieldDestroySoundReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
-    public string? ShieldDestroySoundRef
-    {
-        get => state.Get<string?>("ShieldDestroySoundRef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetShieldDestroySoundRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithShieldDestroySoundRef(string? value)
     {
-        ShieldDestroySoundRef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetShieldDestroySoundRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public int ShieldDuration
-    {
-        get => state.Get<int>("ShieldDuration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetShieldDurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithShieldDuration(int value)
     {
-        ShieldDuration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetShieldDurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? ShieldTouchParticle
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("ShieldTouchParticle");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetShieldTouchParticleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithShieldTouchParticle(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
     {
-        ShieldTouchParticle = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetShieldTouchParticleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithShieldTouchParticleReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
@@ -246,24 +156,14 @@ public abstract class CPlugShieldModelBuilderBase<TSelf> where TSelf : CPlugShie
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetShieldTouchParticleReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
-    public string? ShieldTouchParticleRef
-    {
-        get => state.Get<string?>("ShieldTouchParticleRef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetShieldTouchParticleRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithShieldTouchParticleRef(string? value)
     {
-        ShieldTouchParticleRef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetShieldTouchParticleRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugSound? ShieldTouchSound
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("ShieldTouchSound");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetShieldTouchSoundAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithShieldTouchSound(global::GBX.NET.Engines.Plug.CPlugSound? value)
     {
-        ShieldTouchSound = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetShieldTouchSoundAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithShieldTouchSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
@@ -272,54 +172,29 @@ public abstract class CPlugShieldModelBuilderBase<TSelf> where TSelf : CPlugShie
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetShieldTouchSoundReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
-    public string? ShieldTouchSoundRef
-    {
-        get => state.Get<string?>("ShieldTouchSoundRef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetShieldTouchSoundRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithShieldTouchSoundRef(string? value)
     {
-        ShieldTouchSoundRef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetShieldTouchSoundRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float SphereRadius
-    {
-        get => state.Get<float>("SphereRadius");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetSphereRadiusAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithSphereRadius(float value)
     {
-        SphereRadius = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetSphereRadiusAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public int TextureNotches
-    {
-        get => state.Get<int>("TextureNotches");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetTextureNotchesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithTextureNotches(int value)
     {
-        TextureNotches = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetTextureNotchesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public int TickReload
-    {
-        get => state.Get<int>("TickReload");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetTickReloadAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithTickReload(int value)
     {
-        TickReload = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetTickReloadAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float Transparency
-    {
-        get => state.Get<float>("Transparency");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetTransparencyAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithTransparency(float value)
     {
-        Transparency = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugShieldModelBuilderAssignments.GetTransparencyAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
 }
@@ -331,13 +206,6 @@ public partial class CPlugShieldModelBuilder : CPlugShieldModelBuilderBase<CPlug
         var chunk09111000 = new global::GBX.NET.Engines.Plug.CPlugShieldModel.Chunk09111000(game);
         node.Chunks.Add(chunk09111000);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugShieldModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugShieldModel.Chunk09111000>() is not { Version: 7 }) throw new InvalidOperationException($"Required {game} chunk Chunk09111000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugShieldModel node, GameVersion game)
-    {
     }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -376,14 +244,9 @@ public partial class CPlugShieldModelBuilder : CPlugShieldModelBuilderBase<CPlug
             var node = CPlugShieldModelBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugShieldModelBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugShieldModelBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugShieldModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugShieldModel node);
     }
     public partial class TM2020 : CPlugShieldModelBuilderBase<TM2020>
     {
@@ -418,13 +281,8 @@ public partial class CPlugShieldModelBuilder : CPlugShieldModelBuilderBase<CPlug
             var node = CPlugShieldModelBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugShieldModelBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugShieldModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugShieldModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugShieldModel node);
     }
 }

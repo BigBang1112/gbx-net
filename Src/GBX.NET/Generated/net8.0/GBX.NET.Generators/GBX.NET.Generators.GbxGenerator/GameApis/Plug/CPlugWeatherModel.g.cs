@@ -41,167 +41,107 @@ public partial class CPlugWeatherModel : global::GBX.NET.Interfaces.Plug.IPlugWe
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugWeather>? global::GBX.NET.Interfaces.Plug.IPlugWeatherModel.Weathers
     {
-        get => Weathers is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugWeather, global::GBX.NET.Interfaces.Plug.IPlugWeather>(GetWeathersBuilderReferences, GameVersion.Unspecified, true, "Weathers");
+        get => Weathers is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugWeather, global::GBX.NET.Interfaces.Plug.IPlugWeather>(GetWeathersBuilderReferences, true, "Weathers");
         set => Weathers = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugWeather>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugWeather, global::GBX.NET.Interfaces.Plug.IPlugWeather>(value, false));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX, global::GBX.NET.Interfaces.Plug.IPlugWeatherTMSX>.BitmapSpecularDir
     {
-        get
-        {
-            var node = BitmapSpecularDir;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => BitmapSpecularDir;
         set => BitmapSpecularDir = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugWeatherTMSX>? global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX, global::GBX.NET.Interfaces.Plug.IPlugWeatherTMSX>.Weathers
     {
-        get => Weathers is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugWeather, global::GBX.NET.Interfaces.Plug.IPlugWeatherTMSX>(GetWeathersBuilderReferences, GameVersion.TMSX, true, "Weathers");
+        get => Weathers is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugWeather, global::GBX.NET.Interfaces.Plug.IPlugWeatherTMSX>(GetWeathersBuilderReferences, true, "Weathers");
         set => Weathers = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugWeather>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugWeather, global::GBX.NET.Interfaces.Plug.IPlugWeatherTMSX>(value, false));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugWeatherTMNESWC>.BitmapSpecularDir
     {
-        get
-        {
-            var node = BitmapSpecularDir;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => BitmapSpecularDir;
         set => BitmapSpecularDir = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugWeatherTMNESWC>? global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugWeatherTMNESWC>.Weathers
     {
-        get => Weathers is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugWeather, global::GBX.NET.Interfaces.Plug.IPlugWeatherTMNESWC>(GetWeathersBuilderReferences, GameVersion.TMNESWC, true, "Weathers");
+        get => Weathers is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugWeather, global::GBX.NET.Interfaces.Plug.IPlugWeatherTMNESWC>(GetWeathersBuilderReferences, true, "Weathers");
         set => Weathers = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugWeather>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugWeather, global::GBX.NET.Interfaces.Plug.IPlugWeatherTMNESWC>(value, false));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5, global::GBX.NET.Interfaces.Plug.IPlugWeatherVSK5>.BitmapSpecularDir
     {
-        get
-        {
-            var node = BitmapSpecularDir;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => BitmapSpecularDir;
         set => BitmapSpecularDir = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugWeatherVSK5>? global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5, global::GBX.NET.Interfaces.Plug.IPlugWeatherVSK5>.Weathers
     {
-        get => Weathers is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugWeather, global::GBX.NET.Interfaces.Plug.IPlugWeatherVSK5>(GetWeathersBuilderReferences, GameVersion.VSK5, true, "Weathers");
+        get => Weathers is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugWeather, global::GBX.NET.Interfaces.Plug.IPlugWeatherVSK5>(GetWeathersBuilderReferences, true, "Weathers");
         set => Weathers = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugWeather>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugWeather, global::GBX.NET.Interfaces.Plug.IPlugWeatherVSK5>(value, false));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF, global::GBX.NET.Interfaces.Plug.IPlugWeatherTMF>.BitmapSpecularDir
     {
-        get
-        {
-            var node = BitmapSpecularDir;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => BitmapSpecularDir;
         set => BitmapSpecularDir = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugWeatherTMF>? global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF, global::GBX.NET.Interfaces.Plug.IPlugWeatherTMF>.Weathers
     {
-        get => Weathers is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugWeather, global::GBX.NET.Interfaces.Plug.IPlugWeatherTMF>(GetWeathersBuilderReferences, GameVersion.TMF, true, "Weathers");
+        get => Weathers is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugWeather, global::GBX.NET.Interfaces.Plug.IPlugWeatherTMF>(GetWeathersBuilderReferences, true, "Weathers");
         set => Weathers = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugWeather>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugWeather, global::GBX.NET.Interfaces.Plug.IPlugWeatherTMF>(value, false));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3, global::GBX.NET.Interfaces.Plug.IPlugWeatherMP3>.BitmapSpecularDir
     {
-        get
-        {
-            var node = BitmapSpecularDir;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => BitmapSpecularDir;
         set => BitmapSpecularDir = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>.BitmapWaterFog
     {
-        get
-        {
-            var node = BitmapWaterFog;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => BitmapWaterFog;
         set => BitmapWaterFog = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugWeatherMP3>? global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3, global::GBX.NET.Interfaces.Plug.IPlugWeatherMP3>.Weathers
     {
-        get => Weathers is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugWeather, global::GBX.NET.Interfaces.Plug.IPlugWeatherMP3>(GetWeathersBuilderReferences, GameVersion.MP3, true, "Weathers");
+        get => Weathers is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugWeather, global::GBX.NET.Interfaces.Plug.IPlugWeatherMP3>(GetWeathersBuilderReferences, true, "Weathers");
         set => Weathers = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugWeather>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugWeather, global::GBX.NET.Interfaces.Plug.IPlugWeatherMP3>(value, false));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Plug.IPlugWeatherTMT>.BitmapSpecularDir
     {
-        get
-        {
-            var node = BitmapSpecularDir;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => BitmapSpecularDir;
         set => BitmapSpecularDir = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>.BitmapWaterFog
     {
-        get
-        {
-            var node = BitmapWaterFog;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => BitmapWaterFog;
         set => BitmapWaterFog = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugWeatherTMT>? global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Plug.IPlugWeatherTMT>.Weathers
     {
-        get => Weathers is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugWeather, global::GBX.NET.Interfaces.Plug.IPlugWeatherTMT>(GetWeathersBuilderReferences, GameVersion.TMT, true, "Weathers");
+        get => Weathers is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugWeather, global::GBX.NET.Interfaces.Plug.IPlugWeatherTMT>(GetWeathersBuilderReferences, true, "Weathers");
         set => Weathers = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugWeather>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugWeather, global::GBX.NET.Interfaces.Plug.IPlugWeatherTMT>(value, false));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugWeatherMP4>.BitmapSpecularDir
     {
-        get
-        {
-            var node = BitmapSpecularDir;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => BitmapSpecularDir;
         set => BitmapSpecularDir = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>.BitmapWaterFog
     {
-        get
-        {
-            var node = BitmapWaterFog;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => BitmapWaterFog;
         set => BitmapWaterFog = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugWeatherMP4>? global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugWeatherMP4>.Weathers
     {
-        get => Weathers is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugWeather, global::GBX.NET.Interfaces.Plug.IPlugWeatherMP4>(GetWeathersBuilderReferences, GameVersion.MP4, true, "Weathers");
+        get => Weathers is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugWeather, global::GBX.NET.Interfaces.Plug.IPlugWeatherMP4>(GetWeathersBuilderReferences, true, "Weathers");
         set => Weathers = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugWeather>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugWeather, global::GBX.NET.Interfaces.Plug.IPlugWeatherMP4>(value, false));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugWeatherTM2020>.BitmapSpecularDir
     {
-        get
-        {
-            var node = BitmapSpecularDir;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => BitmapSpecularDir;
         set => BitmapSpecularDir = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>.BitmapWaterFog
     {
-        get
-        {
-            var node = BitmapWaterFog;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => BitmapWaterFog;
         set => BitmapWaterFog = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugWeatherTM2020>? global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugWeatherTM2020>.Weathers
     {
-        get => Weathers is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugWeather, global::GBX.NET.Interfaces.Plug.IPlugWeatherTM2020>(GetWeathersBuilderReferences, GameVersion.TM2020, true, "Weathers");
+        get => Weathers is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugWeather, global::GBX.NET.Interfaces.Plug.IPlugWeatherTM2020>(GetWeathersBuilderReferences, true, "Weathers");
         set => Weathers = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugWeather>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugWeather, global::GBX.NET.Interfaces.Plug.IPlugWeatherTM2020>(value, false));
     }
     private NodeRefList<global::GBX.NET.Engines.Plug.CPlugWeather>? GetWeathersBuilderReferences() => Weathers;

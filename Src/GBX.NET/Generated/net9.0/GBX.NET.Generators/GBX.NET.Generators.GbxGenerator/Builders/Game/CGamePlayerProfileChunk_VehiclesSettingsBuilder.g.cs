@@ -36,14 +36,9 @@ public abstract class CGamePlayerProfileChunk_VehiclesSettingsBuilderBase<TSelf>
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings> state;
     private protected CGamePlayerProfileChunk_VehiclesSettingsBuilderBase() => state = new();
     private protected CGamePlayerProfileChunk_VehiclesSettingsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings> state) => this.state = state;
-    public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.VehicleProfile[]? VehicleProfiles
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.VehicleProfile[]?>("VehicleProfiles");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_VehiclesSettingsBuilderAssignments.GetVehicleProfilesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithVehicleProfiles(params global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.VehicleProfile[]? value)
     {
-        VehicleProfiles = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_VehiclesSettingsBuilderAssignments.GetVehicleProfilesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithVehicleProfiles(IEnumerable<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.VehicleProfile> values)
@@ -66,13 +61,6 @@ public partial class CGamePlayerProfileChunk_VehiclesSettingsBuilder : CGamePlay
         node.Chunks.Add(chunk03130003);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.Chunk03130000>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk03130000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.Chunk03130001>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk03130001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.Chunk03130002>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk03130002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.Chunk03130003>() is not { Version: 7 }) throw new InvalidOperationException($"Required {game} chunk Chunk03130003 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings();
@@ -85,13 +73,6 @@ public partial class CGamePlayerProfileChunk_VehiclesSettingsBuilder : CGamePlay
         var chunk03130003 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.Chunk03130003(game);
         node.Chunks.Add(chunk03130003);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.Chunk03130000>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk03130000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.Chunk03130001>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk03130001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.Chunk03130002>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk03130002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.Chunk03130003>() is not { Version: 7 }) throw new InvalidOperationException($"Required {game} chunk Chunk03130003 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings CreateRecipe2(GameVersion game)
     {
@@ -108,14 +89,6 @@ public partial class CGamePlayerProfileChunk_VehiclesSettingsBuilder : CGamePlay
         node.Chunks.Add(chunk03130004);
         return node;
     }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.Chunk03130000>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk03130000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.Chunk03130001>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk03130001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.Chunk03130002>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk03130002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.Chunk03130003>() is not { Version: 7 }) throw new InvalidOperationException($"Required {game} chunk Chunk03130003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.Chunk03130004>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk03130004 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings();
@@ -130,17 +103,6 @@ public partial class CGamePlayerProfileChunk_VehiclesSettingsBuilder : CGamePlay
         var chunk03130004 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.Chunk03130004(game);
         node.Chunks.Add(chunk03130004);
         return node;
-    }
-    private static void ValidateRecipe3(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.Chunk03130000>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk03130000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.Chunk03130001>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk03130001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.Chunk03130002>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk03130002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.Chunk03130003>() is not { Version: 7 }) throw new InvalidOperationException($"Required {game} chunk Chunk03130003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.Chunk03130004>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk03130004 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings node, GameVersion game)
-    {
     }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -157,14 +119,9 @@ public partial class CGamePlayerProfileChunk_VehiclesSettingsBuilder : CGamePlay
             var node = CGamePlayerProfileChunk_VehiclesSettingsBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CGamePlayerProfileChunk_VehiclesSettingsBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CGamePlayerProfileChunk_VehiclesSettingsBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings node);
     }
     public partial class TMT : CGamePlayerProfileChunk_VehiclesSettingsBuilderBase<TMT>
     {
@@ -175,14 +132,9 @@ public partial class CGamePlayerProfileChunk_VehiclesSettingsBuilder : CGamePlay
             var node = CGamePlayerProfileChunk_VehiclesSettingsBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGamePlayerProfileChunk_VehiclesSettingsBuilder.ValidateRecipe1(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGamePlayerProfileChunk_VehiclesSettingsBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings node);
     }
     public partial class MP4 : CGamePlayerProfileChunk_VehiclesSettingsBuilderBase<MP4>
     {
@@ -193,14 +145,9 @@ public partial class CGamePlayerProfileChunk_VehiclesSettingsBuilder : CGamePlay
             var node = CGamePlayerProfileChunk_VehiclesSettingsBuilder.CreateRecipe2(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGamePlayerProfileChunk_VehiclesSettingsBuilder.ValidateRecipe2(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGamePlayerProfileChunk_VehiclesSettingsBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings node);
     }
     public partial class TM2020 : CGamePlayerProfileChunk_VehiclesSettingsBuilderBase<TM2020>
     {
@@ -211,13 +158,8 @@ public partial class CGamePlayerProfileChunk_VehiclesSettingsBuilder : CGamePlay
             var node = CGamePlayerProfileChunk_VehiclesSettingsBuilder.CreateRecipe3(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGamePlayerProfileChunk_VehiclesSettingsBuilder.ValidateRecipe3(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGamePlayerProfileChunk_VehiclesSettingsBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings node);
     }
 }

@@ -51,222 +51,112 @@ public partial class CPlugVehicleVisEmitterModel : global::GBX.NET.Interfaces.Pl
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelVSK5? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelVSK5>.ParticleEmitterModel0
     {
-        get
-        {
-            var node = ParticleEmitterModel0;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => ParticleEmitterModel0;
         set => ParticleEmitterModel0 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelVSK5? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelVSK5>.ParticleEmitterModel1
     {
-        get
-        {
-            var node = ParticleEmitterModel1;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => ParticleEmitterModel1;
         set => ParticleEmitterModel1 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelVSK5? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelVSK5>.ParticleEmitterModel2
     {
-        get
-        {
-            var node = ParticleEmitterModel2;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => ParticleEmitterModel2;
         set => ParticleEmitterModel2 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMF? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMF>.ParticleEmitterModel0
     {
-        get
-        {
-            var node = ParticleEmitterModel0;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => ParticleEmitterModel0;
         set => ParticleEmitterModel0 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMF? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMF>.ParticleEmitterModel1
     {
-        get
-        {
-            var node = ParticleEmitterModel1;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => ParticleEmitterModel1;
         set => ParticleEmitterModel1 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMF? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMF>.ParticleEmitterModel2
     {
-        get
-        {
-            var node = ParticleEmitterModel2;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => ParticleEmitterModel2;
         set => ParticleEmitterModel2 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3>.ParticleEmitterModel0
     {
-        get
-        {
-            var node = ParticleEmitterModel0;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => ParticleEmitterModel0;
         set => ParticleEmitterModel0 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3>.ParticleEmitterModel1
     {
-        get
-        {
-            var node = ParticleEmitterModel1;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => ParticleEmitterModel1;
         set => ParticleEmitterModel1 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3>.ParticleEmitterModel2
     {
-        get
-        {
-            var node = ParticleEmitterModel2;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => ParticleEmitterModel2;
         set => ParticleEmitterModel2 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3>.ParticleEmitterModelShoot
     {
-        get
-        {
-            var node = ParticleEmitterModelShoot;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => ParticleEmitterModelShoot;
         set => ParticleEmitterModelShoot = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT>.ParticleEmitterModel0
     {
-        get
-        {
-            var node = ParticleEmitterModel0;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => ParticleEmitterModel0;
         set => ParticleEmitterModel0 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT>.ParticleEmitterModel1
     {
-        get
-        {
-            var node = ParticleEmitterModel1;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => ParticleEmitterModel1;
         set => ParticleEmitterModel1 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT>.ParticleEmitterModel2
     {
-        get
-        {
-            var node = ParticleEmitterModel2;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => ParticleEmitterModel2;
         set => ParticleEmitterModel2 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT>.ParticleEmitterModelShoot
     {
-        get
-        {
-            var node = ParticleEmitterModelShoot;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => ParticleEmitterModelShoot;
         set => ParticleEmitterModelShoot = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4>.ParticleEmitterModel0
     {
-        get
-        {
-            var node = ParticleEmitterModel0;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => ParticleEmitterModel0;
         set => ParticleEmitterModel0 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4>.ParticleEmitterModel1
     {
-        get
-        {
-            var node = ParticleEmitterModel1;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => ParticleEmitterModel1;
         set => ParticleEmitterModel1 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4>.ParticleEmitterModel2
     {
-        get
-        {
-            var node = ParticleEmitterModel2;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => ParticleEmitterModel2;
         set => ParticleEmitterModel2 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4>.ParticleEmitterModelShoot
     {
-        get
-        {
-            var node = ParticleEmitterModelShoot;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => ParticleEmitterModelShoot;
         set => ParticleEmitterModelShoot = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020>.ParticleEmitterModel0
     {
-        get
-        {
-            var node = ParticleEmitterModel0;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => ParticleEmitterModel0;
         set => ParticleEmitterModel0 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020>.ParticleEmitterModel1
     {
-        get
-        {
-            var node = ParticleEmitterModel1;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => ParticleEmitterModel1;
         set => ParticleEmitterModel1 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020>.ParticleEmitterModel2
     {
-        get
-        {
-            var node = ParticleEmitterModel2;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => ParticleEmitterModel2;
         set => ParticleEmitterModel2 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020>.ParticleEmitterModelShoot
     {
-        get
-        {
-            var node = ParticleEmitterModelShoot;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => ParticleEmitterModelShoot;
         set => ParticleEmitterModelShoot = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

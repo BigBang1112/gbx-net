@@ -36,292 +36,152 @@ public abstract class CGameControlCameraTargetBuilderBase<TSelf> where TSelf : C
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraTarget> state;
     private protected CGameControlCameraTargetBuilderBase() => state = new();
     private protected CGameControlCameraTargetBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraTarget> state) => this.state = state;
-    public bool Interpolate
-    {
-        get => state.Get<bool>("Interpolate");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetInterpolateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithInterpolate(bool value)
     {
-        Interpolate = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetInterpolateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool IsUpLinked
-    {
-        get => state.Get<bool>("IsUpLinked");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetIsUpLinkedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIsUpLinked(bool value)
     {
-        IsUpLinked = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetIsUpLinkedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public Iso4 Location
-    {
-        get => state.Get<Iso4>("Location");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetLocationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLocation(Iso4 value)
     {
-        Location = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetLocationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float LookAtFactor
-    {
-        get => state.Get<float>("LookAtFactor");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetLookAtFactorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLookAtFactor(float value)
     {
-        LookAtFactor = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetLookAtFactorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public string? Name
-    {
-        get => state.Get<string?>("Name");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithName(string? value)
     {
-        Name = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CGameControlCameraTargetBuilderMembers1<TSelf> : CGameControlCameraTargetBuilderBase<TSelf> where TSelf : CGameControlCameraTargetBuilderMembers1<TSelf>
 {
     private protected CGameControlCameraTargetBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraTarget> state) : base(state) { }
-    public bool CanCameraMove
-    {
-        get => state.Get<bool>("CanCameraMove");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetCanCameraMoveAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithCanCameraMove(bool value)
     {
-        CanCameraMove = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetCanCameraMoveAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float DefaultFov
-    {
-        get => state.Get<float>("DefaultFov");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetDefaultFovAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithDefaultFov(float value)
     {
-        DefaultFov = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetDefaultFovAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public Iso4 ForcedLocation
-    {
-        get => state.Get<Iso4>("ForcedLocation");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetForcedLocationAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithForcedLocation(Iso4 value)
     {
-        ForcedLocation = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetForcedLocationAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float Fov
-    {
-        get => state.Get<float>("Fov");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetFovAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithFov(float value)
     {
-        Fov = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetFovAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool IsFirstPerson
-    {
-        get => state.Get<bool>("IsFirstPerson");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetIsFirstPersonAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithIsFirstPerson(bool value)
     {
-        IsFirstPerson = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetIsFirstPersonAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool IsFollowing
-    {
-        get => state.Get<bool>("IsFollowing");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetIsFollowingAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithIsFollowing(bool value)
     {
-        IsFollowing = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetIsFollowingAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float MaxDist
-    {
-        get => state.Get<float>("MaxDist");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxDistAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithMaxDist(float value)
     {
-        MaxDist = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxDistAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float MaxSpeed
-    {
-        get => state.Get<float>("MaxSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxSpeedAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithMaxSpeed(float value)
     {
-        MaxSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxSpeedAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float MinDist
-    {
-        get => state.Get<float>("MinDist");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMinDistAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithMinDist(float value)
     {
-        MinDist = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMinDistAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float PlaneDist
-    {
-        get => state.Get<float>("PlaneDist");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetPlaneDistAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithPlaneDist(float value)
     {
-        PlaneDist = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetPlaneDistAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool UseForcedLocation
-    {
-        get => state.Get<bool>("UseForcedLocation");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetUseForcedLocationAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithUseForcedLocation(bool value)
     {
-        UseForcedLocation = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetUseForcedLocationAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool UseOnlyFollowedMobilPosition
-    {
-        get => state.Get<bool>("UseOnlyFollowedMobilPosition");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetUseOnlyFollowedMobilPositionAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithUseOnlyFollowedMobilPosition(bool value)
     {
-        UseOnlyFollowedMobilPosition = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetUseOnlyFollowedMobilPositionAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CGameControlCameraTargetBuilderMembers2<TSelf> : CGameControlCameraTargetBuilderMembers1<TSelf> where TSelf : CGameControlCameraTargetBuilderMembers2<TSelf>
 {
     private protected CGameControlCameraTargetBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraTarget> state) : base(state) { }
-    public float DefaultFarZ
-    {
-        get => state.Get<float>("DefaultFarZ");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetDefaultFarZAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
-    }
     public TSelf WithDefaultFarZ(float value)
     {
-        DefaultFarZ = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetDefaultFarZAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float DefaultNearZ
-    {
-        get => state.Get<float>("DefaultNearZ");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetDefaultNearZAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithDefaultNearZ(float value)
     {
-        DefaultNearZ = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetDefaultNearZAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public Vec3 ForcedUp
-    {
-        get => state.Get<Vec3>("ForcedUp");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetForcedUpAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithForcedUp(Vec3 value)
     {
-        ForcedUp = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetForcedUpAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float MaxFarZ
-    {
-        get => state.Get<float>("MaxFarZ");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxFarZAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithMaxFarZ(float value)
     {
-        MaxFarZ = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxFarZAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float MaxFov
-    {
-        get => state.Get<float>("MaxFov");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxFovAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithMaxFov(float value)
     {
-        MaxFov = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxFovAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float MaxNearZ
-    {
-        get => state.Get<float>("MaxNearZ");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxNearZAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithMaxNearZ(float value)
     {
-        MaxNearZ = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxNearZAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float MinFarZ
-    {
-        get => state.Get<float>("MinFarZ");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMinFarZAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithMinFarZ(float value)
     {
-        MinFarZ = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMinFarZAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float MinFov
-    {
-        get => state.Get<float>("MinFov");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMinFovAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithMinFov(float value)
     {
-        MinFov = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMinFovAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float MinNearZ
-    {
-        get => state.Get<float>("MinNearZ");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMinNearZAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithMinNearZ(float value)
     {
-        MinNearZ = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMinNearZAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public Vec3 RelativeFollowedPos
-    {
-        get => state.Get<Vec3>("RelativeFollowedPos");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetRelativeFollowedPosAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithRelativeFollowedPos(Vec3 value)
     {
-        RelativeFollowedPos = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetRelativeFollowedPosAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool UseForcedUp
-    {
-        get => state.Get<bool>("UseForcedUp");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetUseForcedUpAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
     }
     public TSelf WithUseForcedUp(bool value)
     {
-        UseForcedUp = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetUseForcedUpAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -344,15 +204,6 @@ public partial class CGameControlCameraTargetBuilder : CGameControlCameraTargetB
         node.Chunks.Add(chunk0306B004);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameControlCameraTarget node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03072001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03072002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0306B001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0306B002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0306B003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0306B004 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameControlCameraTarget CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameControlCameraTarget();
@@ -363,12 +214,6 @@ public partial class CGameControlCameraTargetBuilder : CGameControlCameraTargetB
         var chunk0306B009 = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B009();
         node.Chunks.Add(chunk0306B009);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameControlCameraTarget node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03072001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03072002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0306B009 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Game.CGameControlCameraTarget CreateRecipe2(GameVersion game)
     {
@@ -383,13 +228,6 @@ public partial class CGameControlCameraTargetBuilder : CGameControlCameraTargetB
         node.Chunks.Add(chunk0306B00B);
         return node;
     }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Game.CGameControlCameraTarget node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03072001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03072002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0306B00A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0306B00B is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameControlCameraTarget CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameControlCameraTarget();
@@ -401,12 +239,6 @@ public partial class CGameControlCameraTargetBuilder : CGameControlCameraTargetB
         node.Chunks.Add(chunk0306B00A);
         return node;
     }
-    private static void ValidateRecipe3(global::GBX.NET.Engines.Game.CGameControlCameraTarget node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03072001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03072002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0306B00A is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameControlCameraTarget CreateRecipe4(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameControlCameraTarget();
@@ -415,11 +247,6 @@ public partial class CGameControlCameraTargetBuilder : CGameControlCameraTargetB
         var chunk0306B00A = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A();
         node.Chunks.Add(chunk0306B00A);
         return node;
-    }
-    private static void ValidateRecipe4(global::GBX.NET.Engines.Game.CGameControlCameraTarget node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03072001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0306B00A is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Game.CGameControlCameraTarget CreateRecipe5(GameVersion game)
     {
@@ -431,15 +258,6 @@ public partial class CGameControlCameraTargetBuilder : CGameControlCameraTargetB
         var chunk0306B00C = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00C();
         node.Chunks.Add(chunk0306B00C);
         return node;
-    }
-    private static void ValidateRecipe5(global::GBX.NET.Engines.Game.CGameControlCameraTarget node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03072001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0306B00A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0306B00C is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameControlCameraTarget node, GameVersion game)
-    {
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
@@ -454,24 +272,14 @@ public partial class CGameControlCameraTargetBuilder : CGameControlCameraTargetB
     public partial class TMSX : CGameControlCameraTargetBuilderMembers1<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraTarget> state) : base(state) { }
-        public bool CanUseRelativeTargetLocation
-        {
-            get => state.Get<bool>("CanUseRelativeTargetLocation");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-        }
         public TMSX WithCanUseRelativeTargetLocation(bool value)
         {
-            CanUseRelativeTargetLocation = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
             return this;
-        }
-        public Vec3 RelativeTargetPos
-        {
-            get => state.Get<Vec3>("RelativeTargetPos");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetRelativeTargetPosAssignment(), value, GameVersion.TMSX);
         }
         public TMSX WithRelativeTargetPos(Vec3 value)
         {
-            RelativeTargetPos = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetRelativeTargetPosAssignment(), value, GameVersion.TMSX);
             return this;
         }
         public global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMSX BuildInterface() => Build();
@@ -480,26 +288,16 @@ public partial class CGameControlCameraTargetBuilder : CGameControlCameraTargetB
             var node = CGameControlCameraTargetBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CGameControlCameraTargetBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CGameControlCameraTargetBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameControlCameraTarget node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameControlCameraTarget node);
     }
     public partial class TMNESWC : CGameControlCameraTargetBuilderMembers2<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraTarget> state) : base(state) { }
-        public bool CanUseRelativeTargetLocation
-        {
-            get => state.Get<bool>("CanUseRelativeTargetLocation");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-        }
         public TMNESWC WithCanUseRelativeTargetLocation(bool value)
         {
-            CanUseRelativeTargetLocation = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMNESWC BuildInterface() => Build();
@@ -508,26 +306,16 @@ public partial class CGameControlCameraTargetBuilder : CGameControlCameraTargetB
             var node = CGameControlCameraTargetBuilder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CGameControlCameraTargetBuilder.ValidateRecipe1(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CGameControlCameraTargetBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameControlCameraTarget node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameControlCameraTarget node);
     }
     public partial class VSK5 : CGameControlCameraTargetBuilderMembers2<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraTarget> state) : base(state) { }
-        public bool CanUseRelativeTargetLocation
-        {
-            get => state.Get<bool>("CanUseRelativeTargetLocation");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-        }
         public VSK5 WithCanUseRelativeTargetLocation(bool value)
         {
-            CanUseRelativeTargetLocation = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.Game.IGameControlCameraTargetVSK5 BuildInterface() => Build();
@@ -536,26 +324,16 @@ public partial class CGameControlCameraTargetBuilder : CGameControlCameraTargetB
             var node = CGameControlCameraTargetBuilder.CreateRecipe1(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CGameControlCameraTargetBuilder.ValidateRecipe1(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CGameControlCameraTargetBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameControlCameraTarget node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameControlCameraTarget node);
     }
     public partial class TMF : CGameControlCameraTargetBuilderMembers2<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraTarget> state) : base(state) { }
-        public bool CanUseRelativeTargetLocation
-        {
-            get => state.Get<bool>("CanUseRelativeTargetLocation");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-        }
         public TMF WithCanUseRelativeTargetLocation(bool value)
         {
-            CanUseRelativeTargetLocation = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMF BuildInterface() => Build();
@@ -564,26 +342,16 @@ public partial class CGameControlCameraTargetBuilder : CGameControlCameraTargetB
             var node = CGameControlCameraTargetBuilder.CreateRecipe2(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CGameControlCameraTargetBuilder.ValidateRecipe2(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CGameControlCameraTargetBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameControlCameraTarget node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameControlCameraTarget node);
     }
     public partial class MP3 : CGameControlCameraTargetBuilderBase<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraTarget> state) : base(state) { }
-        public bool CanUseRelativeTargetLocation
-        {
-            get => state.Get<bool>("CanUseRelativeTargetLocation");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-        }
         public MP3 WithCanUseRelativeTargetLocation(bool value)
         {
-            CanUseRelativeTargetLocation = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.Game.IGameControlCameraTargetMP3 BuildInterface() => Build();
@@ -592,14 +360,9 @@ public partial class CGameControlCameraTargetBuilder : CGameControlCameraTargetB
             var node = CGameControlCameraTargetBuilder.CreateRecipe3(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CGameControlCameraTargetBuilder.ValidateRecipe3(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CGameControlCameraTargetBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameControlCameraTarget node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameControlCameraTarget node);
     }
     public partial class TMT : CGameControlCameraTargetBuilderBase<TMT>
     {
@@ -610,14 +373,9 @@ public partial class CGameControlCameraTargetBuilder : CGameControlCameraTargetB
             var node = CGameControlCameraTargetBuilder.CreateRecipe4(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameControlCameraTargetBuilder.ValidateRecipe4(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameControlCameraTargetBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameControlCameraTarget node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameControlCameraTarget node);
     }
     public partial class MP4 : CGameControlCameraTargetBuilderMembers2<MP4>
     {
@@ -628,14 +386,9 @@ public partial class CGameControlCameraTargetBuilder : CGameControlCameraTargetB
             var node = CGameControlCameraTargetBuilder.CreateRecipe5(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameControlCameraTargetBuilder.ValidateRecipe5(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameControlCameraTargetBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameControlCameraTarget node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameControlCameraTarget node);
     }
     public partial class TM2020 : CGameControlCameraTargetBuilderBase<TM2020>
     {
@@ -646,13 +399,8 @@ public partial class CGameControlCameraTargetBuilder : CGameControlCameraTargetB
             var node = CGameControlCameraTargetBuilder.CreateRecipe4(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameControlCameraTargetBuilder.ValidateRecipe4(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameControlCameraTargetBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameControlCameraTarget node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameControlCameraTarget node);
     }
 }

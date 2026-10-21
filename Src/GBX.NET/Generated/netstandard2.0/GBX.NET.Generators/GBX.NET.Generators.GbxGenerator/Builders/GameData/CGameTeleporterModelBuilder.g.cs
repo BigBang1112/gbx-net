@@ -36,24 +36,14 @@ public abstract class CGameTeleporterModelBuilderBase<TSelf> where TSelf : CGame
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.GameData.CGameTeleporterModel> state;
     private protected CGameTeleporterModelBuilderBase() => state = new();
     private protected CGameTeleporterModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameTeleporterModel> state) => this.state = state;
-    public Vec3 CenterPos
-    {
-        get => state.Get<Vec3>("CenterPos");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameTeleporterModelBuilderAssignments.GetCenterPosAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithCenterPos(Vec3 value)
     {
-        CenterPos = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameTeleporterModelBuilderAssignments.GetCenterPosAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.GameData.CGameSpawnModel? Spawn
-    {
-        get => state.Get<global::GBX.NET.Engines.GameData.CGameSpawnModel?>("Spawn");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameTeleporterModelBuilderAssignments.GetSpawnAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSpawn(global::GBX.NET.Engines.GameData.CGameSpawnModel? value)
     {
-        Spawn = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameTeleporterModelBuilderAssignments.GetSpawnAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithSpawnReference(NodeRef<global::GBX.NET.Engines.GameData.CGameSpawnModel> value)
@@ -62,14 +52,9 @@ public abstract class CGameTeleporterModelBuilderBase<TSelf> where TSelf : CGame
         state.Set(global::GBX.NET.Builders.Engines.GameData.CGameTeleporterModelBuilderAssignments.GetSpawnReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugSurface? TriggerShape
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugSurface?>("TriggerShape");
-        set => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameTeleporterModelBuilderAssignments.GetTriggerShapeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithTriggerShape(global::GBX.NET.Engines.Plug.CPlugSurface? value)
     {
-        TriggerShape = value;
+        state.Set(global::GBX.NET.Builders.Engines.GameData.CGameTeleporterModelBuilderAssignments.GetTriggerShapeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithTriggerShapeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSurface> value)
@@ -87,13 +72,6 @@ public partial class CGameTeleporterModelBuilder : CGameTeleporterModelBuilderBa
         var chunk2E00C000 = new global::GBX.NET.Engines.GameData.CGameTeleporterModel.Chunk2E00C000(game);
         node.Chunks.Add(chunk2E00C000);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.GameData.CGameTeleporterModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameTeleporterModel.Chunk2E00C000>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk2E00C000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.GameData.CGameTeleporterModel node, GameVersion game)
-    {
     }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -118,14 +96,9 @@ public partial class CGameTeleporterModelBuilder : CGameTeleporterModelBuilderBa
             var node = CGameTeleporterModelBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CGameTeleporterModelBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CGameTeleporterModelBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameTeleporterModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.GameData.CGameTeleporterModel node);
     }
     public partial class TMT : CGameTeleporterModelBuilderBase<TMT>
     {
@@ -144,14 +117,9 @@ public partial class CGameTeleporterModelBuilder : CGameTeleporterModelBuilderBa
             var node = CGameTeleporterModelBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameTeleporterModelBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameTeleporterModelBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameTeleporterModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.GameData.CGameTeleporterModel node);
     }
     public partial class MP4 : CGameTeleporterModelBuilderBase<MP4>
     {
@@ -170,14 +138,9 @@ public partial class CGameTeleporterModelBuilder : CGameTeleporterModelBuilderBa
             var node = CGameTeleporterModelBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameTeleporterModelBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameTeleporterModelBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameTeleporterModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.GameData.CGameTeleporterModel node);
     }
     public partial class TM2020 : CGameTeleporterModelBuilderBase<TM2020>
     {
@@ -192,13 +155,8 @@ public partial class CGameTeleporterModelBuilder : CGameTeleporterModelBuilderBa
             var node = CGameTeleporterModelBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameTeleporterModelBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameTeleporterModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameTeleporterModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.GameData.CGameTeleporterModel node);
     }
 }

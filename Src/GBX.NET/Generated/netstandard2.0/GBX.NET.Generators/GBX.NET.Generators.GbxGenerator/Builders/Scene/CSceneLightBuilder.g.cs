@@ -36,34 +36,19 @@ public abstract class CSceneLightBuilderBase<TSelf> where TSelf : CSceneLightBui
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneLight> state;
     private protected CSceneLightBuilderBase() => state = new();
     private protected CSceneLightBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneLight> state) => this.state = state;
-    public bool IsActive
-    {
-        get => state.Get<bool>("IsActive");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CScenePocBuilderAssignments.GetIsActiveAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithIsActive(bool value)
     {
-        IsActive = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CScenePocBuilderAssignments.GetIsActiveAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Hms.CHmsLight? Light
-    {
-        get => state.Get<global::GBX.NET.Engines.Hms.CHmsLight?>("Light");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneLightBuilderAssignments.GetLightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLight(global::GBX.NET.Engines.Hms.CHmsLight? value)
     {
-        Light = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneLightBuilderAssignments.GetLightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Motion.CMotion? Motion
-    {
-        get => state.Get<global::GBX.NET.Engines.Motion.CMotion?>("Motion");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMotion(global::GBX.NET.Engines.Motion.CMotion? value)
     {
-        Motion = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithMotionReference(NodeRef<global::GBX.NET.Engines.Motion.CMotion> value)
@@ -72,14 +57,9 @@ public abstract class CSceneLightBuilderBase<TSelf> where TSelf : CSceneLightBui
         state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public string? Name
-    {
-        get => state.Get<string?>("Name");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithName(string? value)
     {
-        Name = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -100,14 +80,6 @@ public partial class CSceneLightBuilder : CSceneLightBuilderBase<CSceneLightBuil
         node.Chunks.Add(chunk0A005004);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Scene.CSceneLight node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneLight.Chunk0A00B000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A00B000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A009000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005004 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Scene.CSceneLight CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Scene.CSceneLight();
@@ -120,16 +92,6 @@ public partial class CSceneLightBuilder : CSceneLightBuilderBase<CSceneLightBuil
         var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
         node.Chunks.Add(chunk0A005003);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Scene.CSceneLight node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneLight.Chunk0A00B000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A00B000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A009000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005003 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Scene.CSceneLight node, GameVersion game)
-    {
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -156,14 +118,9 @@ public partial class CSceneLightBuilder : CSceneLightBuilderBase<CSceneLightBuil
             var node = CSceneLightBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CSceneLightBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CSceneLightBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneLight node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneLight node);
     }
     public partial class TMPU : CSceneLightBuilderBase<TMPU>
     {
@@ -178,14 +135,9 @@ public partial class CSceneLightBuilder : CSceneLightBuilderBase<CSceneLightBuil
             var node = CSceneLightBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CSceneLightBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CSceneLightBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneLight node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneLight node);
     }
     public partial class TMSX : CSceneLightBuilderBase<TMSX>
     {
@@ -200,14 +152,9 @@ public partial class CSceneLightBuilder : CSceneLightBuilderBase<CSceneLightBuil
             var node = CSceneLightBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CSceneLightBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CSceneLightBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneLight node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneLight node);
     }
     public partial class TMNESWC : CSceneLightBuilderBase<TMNESWC>
     {
@@ -222,14 +169,9 @@ public partial class CSceneLightBuilder : CSceneLightBuilderBase<CSceneLightBuil
             var node = CSceneLightBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CSceneLightBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CSceneLightBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneLight node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneLight node);
     }
     public partial class VSK5 : CSceneLightBuilderBase<VSK5>
     {
@@ -244,14 +186,9 @@ public partial class CSceneLightBuilder : CSceneLightBuilderBase<CSceneLightBuil
             var node = CSceneLightBuilder.CreateRecipe1(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CSceneLightBuilder.ValidateRecipe1(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CSceneLightBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneLight node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneLight node);
     }
     public partial class TMF : CSceneLightBuilderBase<TMF>
     {
@@ -266,14 +203,9 @@ public partial class CSceneLightBuilder : CSceneLightBuilderBase<CSceneLightBuil
             var node = CSceneLightBuilder.CreateRecipe1(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CSceneLightBuilder.ValidateRecipe1(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CSceneLightBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneLight node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneLight node);
     }
     public partial class MP3 : CSceneLightBuilderBase<MP3>
     {
@@ -288,14 +220,9 @@ public partial class CSceneLightBuilder : CSceneLightBuilderBase<CSceneLightBuil
             var node = CSceneLightBuilder.CreateRecipe1(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CSceneLightBuilder.ValidateRecipe1(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CSceneLightBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneLight node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneLight node);
     }
     public partial class TMT : CSceneLightBuilderBase<TMT>
     {
@@ -310,14 +237,9 @@ public partial class CSceneLightBuilder : CSceneLightBuilderBase<CSceneLightBuil
             var node = CSceneLightBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CSceneLightBuilder.ValidateRecipe1(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CSceneLightBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneLight node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneLight node);
     }
     public partial class MP4 : CSceneLightBuilderBase<MP4>
     {
@@ -332,14 +254,9 @@ public partial class CSceneLightBuilder : CSceneLightBuilderBase<CSceneLightBuil
             var node = CSceneLightBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CSceneLightBuilder.ValidateRecipe1(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CSceneLightBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneLight node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneLight node);
     }
     public partial class TM2020 : CSceneLightBuilderBase<TM2020>
     {
@@ -354,13 +271,8 @@ public partial class CSceneLightBuilder : CSceneLightBuilderBase<CSceneLightBuil
             var node = CSceneLightBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CSceneLightBuilder.ValidateRecipe1(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CSceneLightBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneLight node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneLight node);
     }
 }

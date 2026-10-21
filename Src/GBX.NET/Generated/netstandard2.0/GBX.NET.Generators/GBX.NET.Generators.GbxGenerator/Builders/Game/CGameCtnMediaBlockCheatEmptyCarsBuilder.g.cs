@@ -36,14 +36,9 @@ public abstract class CGameCtnMediaBlockCheatEmptyCarsBuilderBase<TSelf> where T
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCheatEmptyCars> state;
     private protected CGameCtnMediaBlockCheatEmptyCarsBuilderBase() => state = new();
     private protected CGameCtnMediaBlockCheatEmptyCarsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCheatEmptyCars> state) => this.state = state;
-    public global::GBX.NET.Engines.Plug.CPlugDataTape? DataTape
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugDataTape?>("DataTape");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCheatEmptyCarsBuilderAssignments.GetDataTapeAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
-    }
     public TSelf WithDataTape(global::GBX.NET.Engines.Plug.CPlugDataTape? value)
     {
-        DataTape = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCheatEmptyCarsBuilderAssignments.GetDataTapeAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithDataTapeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugDataTape> value)
@@ -52,24 +47,14 @@ public abstract class CGameCtnMediaBlockCheatEmptyCarsBuilderBase<TSelf> where T
         state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCheatEmptyCarsBuilderAssignments.GetDataTapeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public TimeSingle End
-    {
-        get => state.Get<TimeSingle>("End");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCheatEmptyCarsBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
-    }
     public TSelf WithEnd(TimeSingle value)
     {
-        End = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCheatEmptyCarsBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public TimeSingle Start
-    {
-        get => state.Get<TimeSingle>("Start");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCheatEmptyCarsBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
     }
     public TSelf WithStart(TimeSingle value)
     {
-        Start = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCheatEmptyCarsBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -81,13 +66,6 @@ public partial class CGameCtnMediaBlockCheatEmptyCarsBuilder : CGameCtnMediaBloc
         var chunk0325E000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCheatEmptyCars.Chunk0325E000();
         node.Chunks.Add(chunk0325E000);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCheatEmptyCars node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCheatEmptyCars.Chunk0325E000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0325E000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCheatEmptyCars node, GameVersion game)
-    {
     }
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -106,14 +84,9 @@ public partial class CGameCtnMediaBlockCheatEmptyCarsBuilder : CGameCtnMediaBloc
             var node = CGameCtnMediaBlockCheatEmptyCarsBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameCtnMediaBlockCheatEmptyCarsBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameCtnMediaBlockCheatEmptyCarsBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCheatEmptyCars node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCheatEmptyCars node);
     }
     public partial class MP4 : CGameCtnMediaBlockCheatEmptyCarsBuilderBase<MP4>
     {
@@ -128,13 +101,8 @@ public partial class CGameCtnMediaBlockCheatEmptyCarsBuilder : CGameCtnMediaBloc
             var node = CGameCtnMediaBlockCheatEmptyCarsBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameCtnMediaBlockCheatEmptyCarsBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameCtnMediaBlockCheatEmptyCarsBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCheatEmptyCars node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCheatEmptyCars node);
     }
 }

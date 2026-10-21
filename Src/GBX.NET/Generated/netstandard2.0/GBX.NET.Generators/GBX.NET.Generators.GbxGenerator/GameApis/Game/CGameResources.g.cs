@@ -36,62 +36,32 @@ public partial class CGameResources : global::GBX.NET.Interfaces.Game.IGameResou
     public static global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilder Create() => new();
     global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? global::GBX.NET.Interfaces.Game.IGameResourcesMP4.AudioBalance_Base
     {
-        get
-        {
-            var node = AudioBalance_Base;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => AudioBalance_Base;
         set => AudioBalance_Base = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioBalance node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? global::GBX.NET.Interfaces.Game.IGameResourcesMP4.AudioBalance_Editor
     {
-        get
-        {
-            var node = AudioBalance_Editor;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => AudioBalance_Editor;
         set => AudioBalance_Editor = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioBalance node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? global::GBX.NET.Interfaces.Game.IGameResourcesMP4.AudioBalance_Menus
     {
-        get
-        {
-            var node = AudioBalance_Menus;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => AudioBalance_Menus;
         set => AudioBalance_Menus = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioBalance node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Game.IGameResourcesMP4.BitmapCubeMenuManiaPlanet3d
     {
-        get
-        {
-            var node = BitmapCubeMenuManiaPlanet3d;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => BitmapCubeMenuManiaPlanet3d;
         set => BitmapCubeMenuManiaPlanet3d = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Game.IGameResourcesMP4.BitmapTeamEmblems
     {
-        get
-        {
-            var node = BitmapTeamEmblems;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => BitmapTeamEmblems;
         set => BitmapTeamEmblems = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4? global::GBX.NET.Interfaces.Game.IGameResourcesMP4.StationGameSkin
     {
-        get
-        {
-            var node = StationGameSkin;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => StationGameSkin;
         set => StationGameSkin = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

@@ -36,84 +36,44 @@ public abstract class CGameCtnDecorationMoodBuilderBase<TSelf> where TSelf : CGa
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state;
     private protected CGameCtnDecorationMoodBuilderBase() => state = new();
     private protected CGameCtnDecorationMoodBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state) => this.state = state;
-    public bool BackgroundIsLocallyLighted
-    {
-        get => state.Get<bool>("BackgroundIsLocallyLighted");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetBackgroundIsLocallyLightedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithBackgroundIsLocallyLighted(bool value)
     {
-        BackgroundIsLocallyLighted = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetBackgroundIsLocallyLightedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float DeltaGMT
-    {
-        get => state.Get<float>("DeltaGMT");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetDeltaGMTAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDeltaGMT(float value)
     {
-        DeltaGMT = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetDeltaGMTAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool IsNight
-    {
-        get => state.Get<bool>("IsNight");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetIsNightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIsNight(bool value)
     {
-        IsNight = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetIsNightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float Latitude
-    {
-        get => state.Get<float>("Latitude");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetLatitudeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLatitude(float value)
     {
-        Latitude = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetLatitudeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float Longitude
-    {
-        get => state.Get<float>("Longitude");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetLongitudeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithLongitude(float value)
     {
-        Longitude = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetLongitudeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public string? RemapFolder
-    {
-        get => state.Get<string?>("RemapFolder");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetRemapFolderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRemapFolder(string? value)
     {
-        RemapFolder = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetRemapFolderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float RemappedStartDayTime
-    {
-        get => state.Get<float>("RemappedStartDayTime");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetRemappedStartDayTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRemappedStartDayTime(float value)
     {
-        RemappedStartDayTime = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetRemappedStartDayTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugGameSkin? Remapping
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugGameSkin?>("Remapping");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetRemappingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRemapping(global::GBX.NET.Engines.Plug.CPlugGameSkin? value)
     {
-        Remapping = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetRemappingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithRemappingReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin> value)
@@ -122,78 +82,43 @@ public abstract class CGameCtnDecorationMoodBuilderBase<TSelf> where TSelf : CGa
         state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetRemappingReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public float ShadowCarIntensity
-    {
-        get => state.Get<float>("ShadowCarIntensity");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetShadowCarIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithShadowCarIntensity(float value)
     {
-        ShadowCarIntensity = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetShadowCarIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int ShadowCountCarHuman
-    {
-        get => state.Get<int>("ShadowCountCarHuman");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetShadowCountCarHumanAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithShadowCountCarHuman(int value)
     {
-        ShadowCountCarHuman = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetShadowCountCarHumanAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int ShadowCountCarOpponent
-    {
-        get => state.Get<int>("ShadowCountCarOpponent");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetShadowCountCarOpponentAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithShadowCountCarOpponent(int value)
     {
-        ShadowCountCarOpponent = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetShadowCountCarOpponentAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool ShadowScene
-    {
-        get => state.Get<bool>("ShadowScene");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetShadowSceneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithShadowScene(bool value)
     {
-        ShadowScene = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetShadowSceneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public TimeInt32 TimeSunFall
-    {
-        get => state.Get<TimeInt32>("TimeSunFall");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetTimeSunFallAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithTimeSunFall(TimeInt32 value)
     {
-        TimeSunFall = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetTimeSunFallAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public TimeInt32 TimeSunRise
-    {
-        get => state.Get<TimeInt32>("TimeSunRise");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetTimeSunRiseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithTimeSunRise(TimeInt32 value)
     {
-        TimeSunRise = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetTimeSunRiseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnDecorationMoodBuilderMembers1<TSelf> : CGameCtnDecorationMoodBuilderBase<TSelf> where TSelf : CGameCtnDecorationMoodBuilderMembers1<TSelf>
 {
     private protected CGameCtnDecorationMoodBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state) : base(state) { }
-    public global::GBX.NET.Engines.Hms.CHmsLightMap? HmsLightMap
-    {
-        get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMap?>("HmsLightMap");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetHmsLightMapAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithHmsLightMap(global::GBX.NET.Engines.Hms.CHmsLightMap? value)
     {
-        HmsLightMap = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetHmsLightMapAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithHmsLightMapReference(NodeRef<global::GBX.NET.Engines.Hms.CHmsLightMap> value)
@@ -206,28 +131,18 @@ public abstract class CGameCtnDecorationMoodBuilderMembers1<TSelf> : CGameCtnDec
 public abstract class CGameCtnDecorationMoodBuilderMembers2<TSelf> : CGameCtnDecorationMoodBuilderBase<TSelf> where TSelf : CGameCtnDecorationMoodBuilderMembers2<TSelf>
 {
     private protected CGameCtnDecorationMoodBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state) : base(state) { }
-    public bool SolidLightAreSkinned
-    {
-        get => state.Get<bool>("SolidLightAreSkinned");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetSolidLightAreSkinnedAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX);
-    }
     public TSelf WithSolidLightAreSkinned(bool value)
     {
-        SolidLightAreSkinned = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetSolidLightAreSkinnedAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnDecorationMoodBuilderMembers3<TSelf> : CGameCtnDecorationMoodBuilderMembers1<TSelf> where TSelf : CGameCtnDecorationMoodBuilderMembers3<TSelf>
 {
     private protected CGameCtnDecorationMoodBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state) : base(state) { }
-    public global::GBX.NET.Engines.Hms.CHmsAmbientOcc? HmsAmbientOcc
-    {
-        get => state.Get<global::GBX.NET.Engines.Hms.CHmsAmbientOcc?>("HmsAmbientOcc");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetHmsAmbientOccAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    }
     public TSelf WithHmsAmbientOcc(global::GBX.NET.Engines.Hms.CHmsAmbientOcc? value)
     {
-        HmsAmbientOcc = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetHmsAmbientOccAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithHmsAmbientOccReference(NodeRef<global::GBX.NET.Engines.Hms.CHmsAmbientOcc> value)
@@ -240,14 +155,9 @@ public abstract class CGameCtnDecorationMoodBuilderMembers3<TSelf> : CGameCtnDec
 public abstract class CGameCtnDecorationMoodBuilderMembers4<TSelf> : CGameCtnDecorationMoodBuilderMembers3<TSelf> where TSelf : CGameCtnDecorationMoodBuilderMembers4<TSelf>
 {
     private protected CGameCtnDecorationMoodBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state) : base(state) { }
-    public global::GBX.NET.Engines.Function.CFuncCloudsSolids? CloudsSolids
-    {
-        get => state.Get<global::GBX.NET.Engines.Function.CFuncCloudsSolids?>("CloudsSolids");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetCloudsSolidsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithCloudsSolids(global::GBX.NET.Engines.Function.CFuncCloudsSolids? value)
     {
-        CloudsSolids = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetCloudsSolidsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithCloudsSolidsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncCloudsSolids> value)
@@ -256,34 +166,19 @@ public abstract class CGameCtnDecorationMoodBuilderMembers4<TSelf> : CGameCtnDec
         state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetCloudsSolidsReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public float EditorHelperHdrScale
-    {
-        get => state.Get<float>("EditorHelperHdrScale");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetEditorHelperHdrScaleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithEditorHelperHdrScale(float value)
     {
-        EditorHelperHdrScale = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetEditorHelperHdrScaleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool EnableStars
-    {
-        get => state.Get<bool>("EnableStars");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetEnableStarsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEnableStars(bool value)
     {
-        EnableStars = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetEnableStarsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Function.CFuncKeysReal? FxBloom_FidFuncIntensAtHdrNorm
-    {
-        get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("FxBloom_FidFuncIntensAtHdrNorm");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetFxBloom_FidFuncIntensAtHdrNormAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFxBloom_FidFuncIntensAtHdrNorm(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
     {
-        FxBloom_FidFuncIntensAtHdrNorm = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetFxBloom_FidFuncIntensAtHdrNormAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithFxBloom_FidFuncIntensAtHdrNormReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
@@ -292,14 +187,9 @@ public abstract class CGameCtnDecorationMoodBuilderMembers4<TSelf> : CGameCtnDec
         state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetFxBloom_FidFuncIntensAtHdrNormReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3? FxHdrScalesT3
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3?>("FxHdrScalesT3");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetFxHdrScalesT3Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithFxHdrScalesT3(global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3? value)
     {
-        FxHdrScalesT3 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetFxHdrScalesT3Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithFxHdrScalesT3Reference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3> value)
@@ -308,14 +198,9 @@ public abstract class CGameCtnDecorationMoodBuilderMembers4<TSelf> : CGameCtnDec
         state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetFxHdrScalesT3ReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugFxLightning? FxLightning
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugFxLightning?>("FxLightning");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetFxLightningAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithFxLightning(global::GBX.NET.Engines.Plug.CPlugFxLightning? value)
     {
-        FxLightning = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetFxLightningAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithFxLightningReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFxLightning> value)
@@ -324,14 +209,9 @@ public abstract class CGameCtnDecorationMoodBuilderMembers4<TSelf> : CGameCtnDec
         state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetFxLightningReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal? FxWindOnDecal
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal?>("FxWindOnDecal");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetFxWindOnDecalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithFxWindOnDecal(global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal? value)
     {
-        FxWindOnDecal = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetFxWindOnDecalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithFxWindOnDecalReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal> value)
@@ -340,14 +220,9 @@ public abstract class CGameCtnDecorationMoodBuilderMembers4<TSelf> : CGameCtnDec
         state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetFxWindOnDecalReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite? FxWindOnTreeSprite
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite?>("FxWindOnTreeSprite");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetFxWindOnTreeSpriteAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithFxWindOnTreeSprite(global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite? value)
     {
-        FxWindOnTreeSprite = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetFxWindOnTreeSpriteAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithFxWindOnTreeSpriteReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite> value)
@@ -356,74 +231,39 @@ public abstract class CGameCtnDecorationMoodBuilderMembers4<TSelf> : CGameCtnDec
         state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetFxWindOnTreeSpriteReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public float LocalLightScale
-    {
-        get => state.Get<float>("LocalLightScale");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetLocalLightScaleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithLocalLightScale(float value)
     {
-        LocalLightScale = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetLocalLightScaleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float SunMoonIntensity
-    {
-        get => state.Get<float>("SunMoonIntensity");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetSunMoonIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSunMoonIntensity(float value)
     {
-        SunMoonIntensity = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetSunMoonIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public Vec3 Tech3Bloom
-    {
-        get => state.Get<Vec3>("Tech3Bloom");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetTech3BloomAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTech3Bloom(Vec3 value)
     {
-        Tech3Bloom = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetTech3BloomAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public Vec3 Tech3SpecularFake_ExpScaleMax
-    {
-        get => state.Get<Vec3>("Tech3SpecularFake_ExpScaleMax");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetTech3SpecularFake_ExpScaleMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTech3SpecularFake_ExpScaleMax(Vec3 value)
     {
-        Tech3SpecularFake_ExpScaleMax = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetTech3SpecularFake_ExpScaleMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public Vec2 Tech3SpecularLocal
-    {
-        get => state.Get<Vec2>("Tech3SpecularLocal");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetTech3SpecularLocalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTech3SpecularLocal(Vec2 value)
     {
-        Tech3SpecularLocal = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetTech3SpecularLocalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public Vec4 Tech3ToneMapAutoExp
-    {
-        get => state.Get<Vec4>("Tech3ToneMapAutoExp");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetTech3ToneMapAutoExpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTech3ToneMapAutoExp(Vec4 value)
     {
-        Tech3ToneMapAutoExp = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetTech3ToneMapAutoExpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Function.CFuncKeysReal? ToneMapAutoExp_FidAvgLumiToKeyValue
-    {
-        get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("ToneMapAutoExp_FidAvgLumiToKeyValue");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetToneMapAutoExp_FidAvgLumiToKeyValueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithToneMapAutoExp_FidAvgLumiToKeyValue(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
     {
-        ToneMapAutoExp_FidAvgLumiToKeyValue = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetToneMapAutoExp_FidAvgLumiToKeyValueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithToneMapAutoExp_FidAvgLumiToKeyValueReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
@@ -432,48 +272,28 @@ public abstract class CGameCtnDecorationMoodBuilderMembers4<TSelf> : CGameCtnDec
         state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetToneMapAutoExp_FidAvgLumiToKeyValueReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public float ToneMapExposureStaticBase
-    {
-        get => state.Get<float>("ToneMapExposureStaticBase");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetToneMapExposureStaticBaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithToneMapExposureStaticBase(float value)
     {
-        ToneMapExposureStaticBase = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetToneMapExposureStaticBaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int ToneMapFilmCurve
-    {
-        get => state.Get<int>("ToneMapFilmCurve");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetToneMapFilmCurveAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithToneMapFilmCurve(int value)
     {
-        ToneMapFilmCurve = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetToneMapFilmCurveAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool WaterReflectFakeCube
-    {
-        get => state.Get<bool>("WaterReflectFakeCube");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetWaterReflectFakeCubeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithWaterReflectFakeCube(bool value)
     {
-        WaterReflectFakeCube = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetWaterReflectFakeCubeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnDecorationMoodBuilderMembers5<TSelf> : CGameCtnDecorationMoodBuilderMembers4<TSelf> where TSelf : CGameCtnDecorationMoodBuilderMembers5<TSelf>
 {
     private protected CGameCtnDecorationMoodBuilderMembers5(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state) : base(state) { }
-    public global::GBX.NET.Engines.Plug.CPlugMoodBlender? MoodBlender
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugMoodBlender?>("MoodBlender");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetMoodBlenderAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithMoodBlender(global::GBX.NET.Engines.Plug.CPlugMoodBlender? value)
     {
-        MoodBlender = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetMoodBlenderAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithMoodBlenderReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMoodBlender> value)
@@ -498,13 +318,6 @@ public partial class CGameCtnDecorationMoodBuilder : CGameCtnDecorationMoodBuild
         node.Chunks.Add(chunk0303A003);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A003 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameCtnDecorationMood CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood();
@@ -517,13 +330,6 @@ public partial class CGameCtnDecorationMoodBuilder : CGameCtnDecorationMoodBuild
         var chunk0303A004 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A004();
         node.Chunks.Add(chunk0303A004);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A004 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Game.CGameCtnDecorationMood CreateRecipe2(GameVersion game)
     {
@@ -539,14 +345,6 @@ public partial class CGameCtnDecorationMoodBuilder : CGameCtnDecorationMoodBuild
         var chunk0303A005 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A005();
         node.Chunks.Add(chunk0303A005);
         return node;
-    }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A005 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Game.CGameCtnDecorationMood CreateRecipe3(GameVersion game)
     {
@@ -572,18 +370,6 @@ public partial class CGameCtnDecorationMoodBuilder : CGameCtnDecorationMoodBuild
         node.Chunks.Add(chunk0303A013);
         return node;
     }
-    private static void ValidateRecipe3(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A007 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A00C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A00C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A00F>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk0303A00F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A012>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0303A012 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A013>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0303A013 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameCtnDecorationMood CreateRecipe4(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood();
@@ -608,21 +394,6 @@ public partial class CGameCtnDecorationMoodBuilder : CGameCtnDecorationMoodBuild
         node.Chunks.Add(chunk0303A013);
         return node;
     }
-    private static void ValidateRecipe4(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A007 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A00C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A00C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A00F>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk0303A00F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A012>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0303A012 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A013>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0303A013 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node, GameVersion game)
-    {
-    }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
@@ -646,14 +417,9 @@ public partial class CGameCtnDecorationMoodBuilder : CGameCtnDecorationMoodBuild
             var node = CGameCtnDecorationMoodBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CGameCtnDecorationMoodBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CGameCtnDecorationMoodBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node);
     }
     public partial class TMNESWC : CGameCtnDecorationMoodBuilderMembers2<TMNESWC>
     {
@@ -668,14 +434,9 @@ public partial class CGameCtnDecorationMoodBuilder : CGameCtnDecorationMoodBuild
             var node = CGameCtnDecorationMoodBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CGameCtnDecorationMoodBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CGameCtnDecorationMoodBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node);
     }
     public partial class VSK5 : CGameCtnDecorationMoodBuilderMembers1<VSK5>
     {
@@ -694,14 +455,9 @@ public partial class CGameCtnDecorationMoodBuilder : CGameCtnDecorationMoodBuild
             var node = CGameCtnDecorationMoodBuilder.CreateRecipe1(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CGameCtnDecorationMoodBuilder.ValidateRecipe1(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CGameCtnDecorationMoodBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node);
     }
     public partial class TMF : CGameCtnDecorationMoodBuilderMembers3<TMF>
     {
@@ -724,14 +480,9 @@ public partial class CGameCtnDecorationMoodBuilder : CGameCtnDecorationMoodBuild
             var node = CGameCtnDecorationMoodBuilder.CreateRecipe2(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CGameCtnDecorationMoodBuilder.ValidateRecipe2(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CGameCtnDecorationMoodBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node);
     }
     public partial class MP3 : CGameCtnDecorationMoodBuilderMembers4<MP3>
     {
@@ -770,14 +521,9 @@ public partial class CGameCtnDecorationMoodBuilder : CGameCtnDecorationMoodBuild
             var node = CGameCtnDecorationMoodBuilder.CreateRecipe3(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CGameCtnDecorationMoodBuilder.ValidateRecipe3(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CGameCtnDecorationMoodBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node);
     }
     public partial class TMT : CGameCtnDecorationMoodBuilderMembers4<TMT>
     {
@@ -816,14 +562,9 @@ public partial class CGameCtnDecorationMoodBuilder : CGameCtnDecorationMoodBuild
             var node = CGameCtnDecorationMoodBuilder.CreateRecipe3(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameCtnDecorationMoodBuilder.ValidateRecipe3(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameCtnDecorationMoodBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node);
     }
     public partial class MP4 : CGameCtnDecorationMoodBuilderMembers5<MP4>
     {
@@ -862,14 +603,9 @@ public partial class CGameCtnDecorationMoodBuilder : CGameCtnDecorationMoodBuild
             var node = CGameCtnDecorationMoodBuilder.CreateRecipe4(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameCtnDecorationMoodBuilder.ValidateRecipe4(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameCtnDecorationMoodBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node);
     }
     public partial class TM2020 : CGameCtnDecorationMoodBuilderMembers5<TM2020>
     {
@@ -908,13 +644,8 @@ public partial class CGameCtnDecorationMoodBuilder : CGameCtnDecorationMoodBuild
             var node = CGameCtnDecorationMoodBuilder.CreateRecipe4(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameCtnDecorationMoodBuilder.ValidateRecipe4(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameCtnDecorationMoodBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node);
     }
 }

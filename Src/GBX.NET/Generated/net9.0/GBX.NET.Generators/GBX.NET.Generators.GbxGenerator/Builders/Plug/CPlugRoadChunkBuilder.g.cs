@@ -46,23 +46,12 @@ public partial class CPlugRoadChunkBuilder : CPlugRoadChunkBuilderBase<CPlugRoad
         node.Chunks.Add(chunk09128000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugRoadChunk node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugRoadChunk.Chunk09128000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09128000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugRoadChunk CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugRoadChunk();
         var chunk09128000 = new global::GBX.NET.Engines.Plug.CPlugRoadChunk.Chunk09128000();
         node.Chunks.Add(chunk09128000);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugRoadChunk node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugRoadChunk.Chunk09128000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09128000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugRoadChunk node, GameVersion game)
-    {
     }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -77,14 +66,9 @@ public partial class CPlugRoadChunkBuilder : CPlugRoadChunkBuilderBase<CPlugRoad
             var node = CPlugRoadChunkBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugRoadChunkBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugRoadChunkBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugRoadChunk node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugRoadChunk node);
     }
     public partial class TM2020 : CPlugRoadChunkBuilderBase<TM2020>
     {
@@ -95,13 +79,8 @@ public partial class CPlugRoadChunkBuilder : CPlugRoadChunkBuilderBase<CPlugRoad
             var node = CPlugRoadChunkBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugRoadChunkBuilder.ValidateRecipe1(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugRoadChunkBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugRoadChunk node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugRoadChunk node);
     }
 }

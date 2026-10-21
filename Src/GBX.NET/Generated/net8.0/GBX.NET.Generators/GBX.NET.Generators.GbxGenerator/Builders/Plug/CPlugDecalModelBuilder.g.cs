@@ -36,14 +36,9 @@ public abstract class CPlugDecalModelBuilderBase<TSelf> where TSelf : CPlugDecal
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state;
     private protected CPlugDecalModelBuilderBase() => state = new();
     private protected CPlugDecalModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state) => this.state = state;
-    public global::GBX.NET.Engines.Plug.CPlugBitmap? DiffuseA
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("DiffuseA");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetDiffuseAAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithDiffuseA(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
-        DiffuseA = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetDiffuseAAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithDiffuseAReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
@@ -52,34 +47,19 @@ public abstract class CPlugDecalModelBuilderBase<TSelf> where TSelf : CPlugDecal
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetDiffuseAReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public bool FadeNormalAndZ
-    {
-        get => state.Get<bool>("FadeNormalAndZ");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetFadeNormalAndZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithFadeNormalAndZ(bool value)
     {
-        FadeNormalAndZ = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetFadeNormalAndZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public uint Flags
-    {
-        get => state.Get<uint>("Flags");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFlags(uint value)
     {
-        Flags = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugBitmap? Icon
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("Icon");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetIconAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIcon(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
-        Icon = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetIconAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithIconReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
@@ -88,44 +68,24 @@ public abstract class CPlugDecalModelBuilderBase<TSelf> where TSelf : CPlugDecal
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetIconReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public bool IsObsolete
-    {
-        get => state.Get<bool>("IsObsolete");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetIsObsoleteAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithIsObsolete(bool value)
     {
-        IsObsolete = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetIsObsoleteAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float MaxAngleN3dCos
-    {
-        get => state.Get<float>("MaxAngleN3dCos");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetMaxAngleN3dCosAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaxAngleN3dCos(float value)
     {
-        MaxAngleN3dCos = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetMaxAngleN3dCosAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float MaxAngleNCos
-    {
-        get => state.Get<float>("MaxAngleNCos");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetMaxAngleNCosAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaxAngleNCos(float value)
     {
-        MaxAngleNCos = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetMaxAngleNCosAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugBitmap? Normal
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("Normal");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetNormalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNormal(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
-        Normal = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetNormalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithNormalReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
@@ -134,24 +94,14 @@ public abstract class CPlugDecalModelBuilderBase<TSelf> where TSelf : CPlugDecal
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetNormalReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public bool RandomInstances
-    {
-        get => state.Get<bool>("RandomInstances");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetRandomInstancesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithRandomInstances(bool value)
     {
-        RandomInstances = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetRandomInstancesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugSolid? Solid
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugSolid?>("Solid");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSolidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSolid(global::GBX.NET.Engines.Plug.CPlugSolid? value)
     {
-        Solid = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSolidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithSolidReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid> value)
@@ -160,14 +110,9 @@ public abstract class CPlugDecalModelBuilderBase<TSelf> where TSelf : CPlugDecal
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSolidReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugBitmap? Specular
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("Specular");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSpecularAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithSpecular(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
-        Specular = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSpecularAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithSpecularReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
@@ -176,14 +121,9 @@ public abstract class CPlugDecalModelBuilderBase<TSelf> where TSelf : CPlugDecal
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSpecularReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugBitmap? Sprite3dBitmap
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("Sprite3dBitmap");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSprite3dBitmapAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithSprite3dBitmap(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
-        Sprite3dBitmap = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSprite3dBitmapAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithSprite3dBitmapReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
@@ -192,78 +132,43 @@ public abstract class CPlugDecalModelBuilderBase<TSelf> where TSelf : CPlugDecal
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSprite3dBitmapReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public string? Sprite3dGroupId
-    {
-        get => state.Get<string?>("Sprite3dGroupId");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSprite3dGroupIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithSprite3dGroupId(string? value)
     {
-        Sprite3dGroupId = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSprite3dGroupIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float TexelByMeter
-    {
-        get => state.Get<float>("TexelByMeter");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetTexelByMeterAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTexelByMeter(float value)
     {
-        TexelByMeter = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetTexelByMeterAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
 public abstract class CPlugDecalModelBuilderMembers1<TSelf> : CPlugDecalModelBuilderBase<TSelf> where TSelf : CPlugDecalModelBuilderMembers1<TSelf>
 {
     private protected CPlugDecalModelBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state) : base(state) { }
-    public string DiffuseARef
-    {
-        get => state.Get<string>("DiffuseARef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetDiffuseARefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithDiffuseARef(string value)
     {
-        DiffuseARef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetDiffuseARefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int MinAngleN3d
-    {
-        get => state.Get<int>("MinAngleN3d");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetMinAngleN3dAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMinAngleN3d(int value)
     {
-        MinAngleN3d = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetMinAngleN3dAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public string NormalRef
-    {
-        get => state.Get<string>("NormalRef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetNormalRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNormalRef(string value)
     {
-        NormalRef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetNormalRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public string SpecularRef
-    {
-        get => state.Get<string>("SpecularRef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSpecularRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSpecularRef(string value)
     {
-        SpecularRef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSpecularRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.MwFoundations.CMwNod? Svg
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("Svg");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSvgAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSvg(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
-        Svg = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSvgAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithSvgReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
@@ -272,48 +177,28 @@ public abstract class CPlugDecalModelBuilderMembers1<TSelf> : CPlugDecalModelBui
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSvgReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public float SvgAlpha
-    {
-        get => state.Get<float>("SvgAlpha");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSvgAlphaAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithSvgAlpha(float value)
     {
-        SvgAlpha = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSvgAlphaAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public string SvgRef
-    {
-        get => state.Get<string>("SvgRef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSvgRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSvgRef(string value)
     {
-        SvgRef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSvgRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float SvgSize
-    {
-        get => state.Get<float>("SvgSize");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSvgSizeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSvgSize(float value)
     {
-        SvgSize = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetSvgSizeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
 public abstract class CPlugDecalModelBuilderMembers2<TSelf> : CPlugDecalModelBuilderMembers1<TSelf> where TSelf : CPlugDecalModelBuilderMembers2<TSelf>
 {
     private protected CPlugDecalModelBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecalModel> state) : base(state) { }
-    public NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecalModel>? DecalModels
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecalModel>?>("DecalModels");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetDecalModelsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithDecalModels(NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecalModel>? value)
     {
-        DecalModels = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetDecalModelsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithDecalModels(params global::GBX.NET.Engines.Plug.CPlugDecalModel[] values)
@@ -324,28 +209,18 @@ public abstract class CPlugDecalModelBuilderMembers2<TSelf> : CPlugDecalModelBui
     {
         return WithDecalModels(values.ToArray());
     }
-    public global::GBX.NET.Engines.Plug.CPlugDecalModel.MacroDecalSet[] MacroDecalSets
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugDecalModel.MacroDecalSet[]>("MacroDecalSets");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetMacroDecalSetsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithMacroDecalSets(params global::GBX.NET.Engines.Plug.CPlugDecalModel.MacroDecalSet[] value)
     {
-        MacroDecalSets = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetMacroDecalSetsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithMacroDecalSets(IEnumerable<global::GBX.NET.Engines.Plug.CPlugDecalModel.MacroDecalSet> values)
     {
         return WithMacroDecalSets(values.ToArray());
     }
-    public global::GBX.NET.Engines.Plug.CPlugBitmap? Roughness
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("Roughness");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetRoughnessAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithRoughness(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
-        Roughness = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetRoughnessAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithRoughnessReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
@@ -354,14 +229,9 @@ public abstract class CPlugDecalModelBuilderMembers2<TSelf> : CPlugDecalModelBui
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetRoughnessReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
-    public string RoughnessRef
-    {
-        get => state.Get<string>("RoughnessRef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetRoughnessRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithRoughnessRef(string value)
     {
-        RoughnessRef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecalModelBuilderAssignments.GetRoughnessRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
 }
@@ -381,13 +251,6 @@ public partial class CPlugDecalModelBuilder : CPlugDecalModelBuilderBase<CPlugDe
         node.Chunks.Add(chunk090A7006);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugDecalModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugDecalModel.Chunk090A7002>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk090A7002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugDecalModel.Chunk090A7003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090A7003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugDecalModel.Chunk090A7004>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk090A7004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugDecalModel.Chunk090A7006>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090A7006 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugDecalModel CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugDecalModel();
@@ -402,13 +265,6 @@ public partial class CPlugDecalModelBuilder : CPlugDecalModelBuilderBase<CPlugDe
         node.Chunks.Add(chunk090A7006);
         return node;
     }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugDecalModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugDecalModel.Chunk090A7002>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk090A7002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugDecalModel.Chunk090A7003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090A7003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugDecalModel.Chunk090A7004>() is not { Version: 7 }) throw new InvalidOperationException($"Required {game} chunk Chunk090A7004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugDecalModel.Chunk090A7006>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090A7006 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugDecalModel CreateRecipe2(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugDecalModel();
@@ -422,22 +278,6 @@ public partial class CPlugDecalModelBuilder : CPlugDecalModelBuilderBase<CPlugDe
         chunk090A7006.Version = 0;
         node.Chunks.Add(chunk090A7006);
         return node;
-    }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Plug.CPlugDecalModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugDecalModel.Chunk090A7002>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk Chunk090A7002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugDecalModel.Chunk090A7003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090A7003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugDecalModel.Chunk090A7004>() is not { Version: 8 }) throw new InvalidOperationException($"Required {game} chunk Chunk090A7004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugDecalModel.Chunk090A7006>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090A7006 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugDecalModel node, GameVersion game)
-    {
-        if ((game & (GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT)) != 0 && node.DiffuseARef is null) throw new MemberNullException("DiffuseARef");
-        if ((game & (GameVersion.MP4 | GameVersion.TM2020)) != 0 && node.MacroDecalSets is null) throw new MemberNullException("MacroDecalSets");
-        if ((game & (GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT)) != 0 && node.NormalRef is null) throw new MemberNullException("NormalRef");
-        if ((game & (GameVersion.MP4 | GameVersion.TM2020)) != 0 && node.RoughnessRef is null) throw new MemberNullException("RoughnessRef");
-        if ((game & (GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT)) != 0 && node.SpecularRef is null) throw new MemberNullException("SpecularRef");
-        if ((game & (GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT)) != 0 && node.SvgRef is null) throw new MemberNullException("SvgRef");
     }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -478,14 +318,9 @@ public partial class CPlugDecalModelBuilder : CPlugDecalModelBuilderBase<CPlugDe
             var node = CPlugDecalModelBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CPlugDecalModelBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CPlugDecalModelBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugDecalModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugDecalModel node);
     }
     public partial class TMT : CPlugDecalModelBuilderMembers1<TMT>
     {
@@ -520,14 +355,9 @@ public partial class CPlugDecalModelBuilder : CPlugDecalModelBuilderBase<CPlugDe
             var node = CPlugDecalModelBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugDecalModelBuilder.ValidateRecipe1(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugDecalModelBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugDecalModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugDecalModel node);
     }
     public partial class MP4 : CPlugDecalModelBuilderMembers2<MP4>
     {
@@ -574,14 +404,9 @@ public partial class CPlugDecalModelBuilder : CPlugDecalModelBuilderBase<CPlugDe
             var node = CPlugDecalModelBuilder.CreateRecipe2(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugDecalModelBuilder.ValidateRecipe2(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugDecalModelBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugDecalModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugDecalModel node);
     }
     public partial class TM2020 : CPlugDecalModelBuilderMembers2<TM2020>
     {
@@ -628,13 +453,8 @@ public partial class CPlugDecalModelBuilder : CPlugDecalModelBuilderBase<CPlugDe
             var node = CPlugDecalModelBuilder.CreateRecipe2(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugDecalModelBuilder.ValidateRecipe2(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugDecalModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugDecalModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugDecalModel node);
     }
 }

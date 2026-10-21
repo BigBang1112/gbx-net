@@ -36,24 +36,14 @@ public abstract class CPlugVehicleCarPhyShapeBuilderBase<TSelf> where TSelf : CP
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape> state;
     private protected CPlugVehicleCarPhyShapeBuilderBase() => state = new();
     private protected CPlugVehicleCarPhyShapeBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape> state) => this.state = state;
-    public BoxAligned CarVsCarShapeBox
-    {
-        get => state.Get<BoxAligned>("CarVsCarShapeBox");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetCarVsCarShapeBoxAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithCarVsCarShapeBox(BoxAligned value)
     {
-        CarVsCarShapeBox = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetCarVsCarShapeBoxAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugSurface? MoveShape
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugSurface?>("MoveShape");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetMoveShapeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithMoveShape(global::GBX.NET.Engines.Plug.CPlugSurface? value)
     {
-        MoveShape = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetMoveShapeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithMoveShapeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSurface> value)
@@ -72,13 +62,6 @@ public partial class CPlugVehicleCarPhyShapeBuilder : CPlugVehicleCarPhyShapeBui
         node.Chunks.Add(chunk0910E000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape.Chunk0910E000>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk Chunk0910E000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape node, GameVersion game)
-    {
-    }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
@@ -96,14 +79,9 @@ public partial class CPlugVehicleCarPhyShapeBuilder : CPlugVehicleCarPhyShapeBui
             var node = CPlugVehicleCarPhyShapeBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugVehicleCarPhyShapeBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugVehicleCarPhyShapeBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape node);
     }
     public partial class TM2020 : CPlugVehicleCarPhyShapeBuilderBase<TM2020>
     {
@@ -118,13 +96,8 @@ public partial class CPlugVehicleCarPhyShapeBuilder : CPlugVehicleCarPhyShapeBui
             var node = CPlugVehicleCarPhyShapeBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugVehicleCarPhyShapeBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugVehicleCarPhyShapeBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape node);
     }
 }

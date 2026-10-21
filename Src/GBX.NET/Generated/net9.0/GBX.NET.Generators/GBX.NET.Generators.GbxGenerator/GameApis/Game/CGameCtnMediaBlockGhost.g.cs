@@ -41,42 +41,22 @@ public partial class CGameCtnMediaBlockGhost : global::GBX.NET.Interfaces.Game.I
     }
     global::GBX.NET.Interfaces.Game.IGameCtnGhostTMF? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockGhostMembers1<global::GBX.NET.Interfaces.Game.IGameCtnGhostTMF>.GhostModel
     {
-        get
-        {
-            var node = GhostModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => GhostModel;
         set => GhostModel = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnGhost node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnGhostTMT? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockGhostMembers1<global::GBX.NET.Interfaces.Game.IGameCtnGhostTMT>.GhostModel
     {
-        get
-        {
-            var node = GhostModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => GhostModel;
         set => GhostModel = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnGhost node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnGhostMP4? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockGhostMembers1<global::GBX.NET.Interfaces.Game.IGameCtnGhostMP4>.GhostModel
     {
-        get
-        {
-            var node = GhostModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => GhostModel;
         set => GhostModel = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnGhost node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnGhostTM2020? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockGhostMembers1<global::GBX.NET.Interfaces.Game.IGameCtnGhostTM2020>.GhostModel
     {
-        get
-        {
-            var node = GhostModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => GhostModel;
         set => GhostModel = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnGhost node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

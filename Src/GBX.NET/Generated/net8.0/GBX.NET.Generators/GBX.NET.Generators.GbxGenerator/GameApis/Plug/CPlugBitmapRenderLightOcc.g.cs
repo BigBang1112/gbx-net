@@ -36,72 +36,37 @@ public partial class CPlugBitmapRenderLightOcc : global::GBX.NET.Interfaces.Plug
     public static new global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilder Create() => new();
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightOccMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX>.BitmapToModulate
     {
-        get
-        {
-            var node = BitmapToModulate;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => BitmapToModulate;
         set => BitmapToModulate = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightOccMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC>.BitmapToModulate
     {
-        get
-        {
-            var node = BitmapToModulate;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => BitmapToModulate;
         set => BitmapToModulate = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightOccMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5>.BitmapToModulate
     {
-        get
-        {
-            var node = BitmapToModulate;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => BitmapToModulate;
         set => BitmapToModulate = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightOccMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF>.BitmapToModulate
     {
-        get
-        {
-            var node = BitmapToModulate;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => BitmapToModulate;
         set => BitmapToModulate = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightOccMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>.BitmapToModulate
     {
-        get
-        {
-            var node = BitmapToModulate;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => BitmapToModulate;
         set => BitmapToModulate = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightOccMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>.BitmapToModulate
     {
-        get
-        {
-            var node = BitmapToModulate;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => BitmapToModulate;
         set => BitmapToModulate = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightOccMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>.BitmapToModulate
     {
-        get
-        {
-            var node = BitmapToModulate;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => BitmapToModulate;
         set => BitmapToModulate = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

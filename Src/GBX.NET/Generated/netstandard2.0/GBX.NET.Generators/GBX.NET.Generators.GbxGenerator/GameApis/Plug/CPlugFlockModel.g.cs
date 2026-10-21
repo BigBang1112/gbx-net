@@ -36,82 +36,42 @@ public partial class CPlugFlockModel : global::GBX.NET.Interfaces.Plug.IPlugFloc
     public static global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilder Create() => new();
     global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.Plug.IPlugFlockModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>.SoundEventTakeOff
     {
-        get
-        {
-            var node = SoundEventTakeOff;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => SoundEventTakeOff;
         set => SoundEventTakeOff = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.Plug.IPlugFlockModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>.SoundLoop
     {
-        get
-        {
-            var node = SoundLoop;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => SoundLoop;
         set => SoundLoop = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugFlockModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.SoundEventTakeOff
     {
-        get
-        {
-            var node = SoundEventTakeOff;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => SoundEventTakeOff;
         set => SoundEventTakeOff = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugFlockModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.SoundLoop
     {
-        get
-        {
-            var node = SoundLoop;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => SoundLoop;
         set => SoundLoop = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugFlockModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.SoundEventTakeOff
     {
-        get
-        {
-            var node = SoundEventTakeOff;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => SoundEventTakeOff;
         set => SoundEventTakeOff = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugFlockModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.SoundLoop
     {
-        get
-        {
-            var node = SoundLoop;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => SoundLoop;
         set => SoundLoop = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugFlockModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.SoundEventTakeOff
     {
-        get
-        {
-            var node = SoundEventTakeOff;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => SoundEventTakeOff;
         set => SoundEventTakeOff = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugFlockModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.SoundLoop
     {
-        get
-        {
-            var node = SoundLoop;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => SoundLoop;
         set => SoundLoop = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

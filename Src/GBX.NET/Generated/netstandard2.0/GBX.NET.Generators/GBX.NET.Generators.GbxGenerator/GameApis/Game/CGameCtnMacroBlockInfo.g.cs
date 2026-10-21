@@ -36,102 +36,62 @@ public partial class CGameCtnMacroBlockInfo : global::GBX.NET.Interfaces.Game.IG
     public static new global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilder Create() => new();
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP3>? global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoMembers1<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP3, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP3>.AutoTerrains
     {
-        get => AutoTerrains is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain, global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP3>(GetAutoTerrainsBuilderReferences, GameVersion.MP3, true, "AutoTerrains");
+        get => AutoTerrains is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain, global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP3>(GetAutoTerrainsBuilderReferences, true, "AutoTerrains");
         set => AutoTerrains = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain, global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP3>(value, false));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP3? global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoMembers1<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP3, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP3>.ClipGroupEndRace
     {
-        get
-        {
-            var node = ClipGroupEndRace;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => ClipGroupEndRace;
         set => ClipGroupEndRace = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP3? global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoMembers1<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP3, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP3>.ClipGroupInGame
     {
-        get
-        {
-            var node = ClipGroupInGame;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => ClipGroupInGame;
         set => ClipGroupInGame = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTMT>? global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoMembers1<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMT>.AutoTerrains
     {
-        get => AutoTerrains is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain, global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTMT>(GetAutoTerrainsBuilderReferences, GameVersion.TMT, true, "AutoTerrains");
+        get => AutoTerrains is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain, global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTMT>(GetAutoTerrainsBuilderReferences, true, "AutoTerrains");
         set => AutoTerrains = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain, global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTMT>(value, false));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMT? global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoMembers1<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMT>.ClipGroupEndRace
     {
-        get
-        {
-            var node = ClipGroupEndRace;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => ClipGroupEndRace;
         set => ClipGroupEndRace = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMT? global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoMembers1<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMT>.ClipGroupInGame
     {
-        get
-        {
-            var node = ClipGroupInGame;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => ClipGroupInGame;
         set => ClipGroupInGame = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP4>? global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoMembers1<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP4>.AutoTerrains
     {
-        get => AutoTerrains is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain, global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP4>(GetAutoTerrainsBuilderReferences, GameVersion.MP4, true, "AutoTerrains");
+        get => AutoTerrains is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain, global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP4>(GetAutoTerrainsBuilderReferences, true, "AutoTerrains");
         set => AutoTerrains = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain, global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP4>(value, false));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP4? global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoMembers1<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP4>.ClipGroupEndRace
     {
-        get
-        {
-            var node = ClipGroupEndRace;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => ClipGroupEndRace;
         set => ClipGroupEndRace = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP4? global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoMembers1<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP4>.ClipGroupInGame
     {
-        get
-        {
-            var node = ClipGroupInGame;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => ClipGroupInGame;
         set => ClipGroupInGame = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTM2020>? global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoMembers1<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTM2020, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTM2020>.AutoTerrains
     {
-        get => AutoTerrains is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain, global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTM2020>(GetAutoTerrainsBuilderReferences, GameVersion.TM2020, true, "AutoTerrains");
+        get => AutoTerrains is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain, global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTM2020>(GetAutoTerrainsBuilderReferences, true, "AutoTerrains");
         set => AutoTerrains = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain, global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTM2020>(value, false));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTM2020? global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoMembers1<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTM2020, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTM2020>.ClipGroupEndRace
     {
-        get
-        {
-            var node = ClipGroupEndRace;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => ClipGroupEndRace;
         set => ClipGroupEndRace = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTM2020? global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoMembers1<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTM2020, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTM2020>.ClipGroupInGame
     {
-        get
-        {
-            var node = ClipGroupInGame;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => ClipGroupInGame;
         set => ClipGroupInGame = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     private NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain>? GetAutoTerrainsBuilderReferences() => AutoTerrains;

@@ -36,934 +36,499 @@ public abstract class CSystemConfigDisplayBuilderBase<TSelf> where TSelf : CSyst
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state;
     private protected CSystemConfigDisplayBuilderBase() => state = new();
     private protected CSystemConfigDisplayBuilderBase(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state) => this.state = state;
-    public global::GBX.NET.Engines.System.CSystemConfigDisplay.EAntialiasing Antialiasing
-    {
-        get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EAntialiasing>("Antialiasing");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetAntialiasingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    }
     public TSelf WithAntialiasing(global::GBX.NET.Engines.System.CSystemConfigDisplay.EAntialiasing value)
     {
-        Antialiasing = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetAntialiasingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.System.CSystemConfigDisplay.EColorDepth ColorDepth
-    {
-        get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EColorDepth>("ColorDepth");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetColorDepthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithColorDepth(global::GBX.NET.Engines.System.CSystemConfigDisplay.EColorDepth value)
     {
-        ColorDepth = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetColorDepthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool EmulateCursorGDI
-    {
-        get => state.Get<bool>("EmulateCursorGDI");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEmulateCursorGDIAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithEmulateCursorGDI(bool value)
     {
-        EmulateCursorGDI = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEmulateCursorGDIAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool OptimizePartialDynaGeom
-    {
-        get => state.Get<bool>("OptimizePartialDynaGeom");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetOptimizePartialDynaGeomAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithOptimizePartialDynaGeom(bool value)
     {
-        OptimizePartialDynaGeom = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetOptimizePartialDynaGeomAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int RefreshRate
-    {
-        get => state.Get<int>("RefreshRate");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetRefreshRateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithRefreshRate(int value)
     {
-        RefreshRate = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetRefreshRateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public Int2 ScreenSizeFS
-    {
-        get => state.Get<Int2>("ScreenSizeFS");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetScreenSizeFSAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithScreenSizeFS(Int2 value)
     {
-        ScreenSizeFS = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetScreenSizeFSAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int ScreenSizeWin
-    {
-        get => state.Get<int>("ScreenSizeWin");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetScreenSizeWinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithScreenSizeWin(int value)
     {
-        ScreenSizeWin = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetScreenSizeWinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.System.CSystemConfigDisplay.EShadows Shadows
-    {
-        get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EShadows>("Shadows");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetShadowsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithShadows(global::GBX.NET.Engines.System.CSystemConfigDisplay.EShadows value)
     {
-        Shadows = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetShadowsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.System.CSystemConfigDisplay.ETexturesQuality TexturesQuality
-    {
-        get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.ETexturesQuality>("TexturesQuality");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetTexturesQualityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithTexturesQuality(global::GBX.NET.Engines.System.CSystemConfigDisplay.ETexturesQuality value)
     {
-        TexturesQuality = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetTexturesQualityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.System.CSystemConfigDisplay.EVertexProcess VertexProcess
-    {
-        get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EVertexProcess>("VertexProcess");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetVertexProcessAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithVertexProcess(global::GBX.NET.Engines.System.CSystemConfigDisplay.EVertexProcess value)
     {
-        VertexProcess = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetVertexProcessAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CSystemConfigDisplayBuilderMembers1<TSelf> : CSystemConfigDisplayBuilderBase<TSelf> where TSelf : CSystemConfigDisplayBuilderMembers1<TSelf>
 {
     private protected CSystemConfigDisplayBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state) : base(state) { }
-    public float AgpUseFactor
-    {
-        get => state.Get<float>("AgpUseFactor");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetAgpUseFactorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    }
     public TSelf WithAgpUseFactor(float value)
     {
-        AgpUseFactor = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetAgpUseFactorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.System.CSystemConfigDisplay.EAutoScale AutoScale
-    {
-        get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EAutoScale>("AutoScale");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetAutoScaleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithAutoScale(global::GBX.NET.Engines.System.CSystemConfigDisplay.EAutoScale value)
     {
-        AutoScale = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetAutoScaleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool Customize
-    {
-        get => state.Get<bool>("Customize");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetCustomizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithCustomize(bool value)
     {
-        Customize = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetCustomizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool DisableColorWMask
-    {
-        get => state.Get<bool>("DisableColorWMask");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisableColorWMaskAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithDisableColorWMask(bool value)
     {
-        DisableColorWMask = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisableColorWMaskAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool DisableZBufferRange
-    {
-        get => state.Get<bool>("DisableZBufferRange");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisableZBufferRangeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithDisableZBufferRange(bool value)
     {
-        DisableZBufferRange = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisableZBufferRangeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool EnableFullscreenGDI
-    {
-        get => state.Get<bool>("EnableFullscreenGDI");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEnableFullscreenGDIAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithEnableFullscreenGDI(bool value)
     {
-        EnableFullscreenGDI = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEnableFullscreenGDIAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool FastLoad
-    {
-        get => state.Get<bool>("FastLoad");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetFastLoadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithFastLoad(bool value)
     {
-        FastLoad = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetFastLoadAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool PostFxEnable
-    {
-        get => state.Get<bool>("PostFxEnable");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetPostFxEnableAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithPostFxEnable(bool value)
     {
-        PostFxEnable = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetPostFxEnableAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool ShowBackground
-    {
-        get => state.Get<bool>("ShowBackground");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetShowBackgroundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithShowBackground(bool value)
     {
-        ShowBackground = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetShowBackgroundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.System.CSystemConfigDisplay.EWaterReflect WaterReflect
-    {
-        get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EWaterReflect>("WaterReflect");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetWaterReflectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithWaterReflect(global::GBX.NET.Engines.System.CSystemConfigDisplay.EWaterReflect value)
     {
-        WaterReflect = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetWaterReflectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.System.CSystemConfigDisplay.EZClip ZClip
-    {
-        get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EZClip>("ZClip");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetZClipAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithZClip(global::GBX.NET.Engines.System.CSystemConfigDisplay.EZClip value)
     {
-        ZClip = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetZClipAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.System.CSystemConfigDisplay.EZClipAuto ZClipAuto
-    {
-        get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EZClipAuto>("ZClipAuto");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetZClipAutoAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithZClipAuto(global::GBX.NET.Engines.System.CSystemConfigDisplay.EZClipAuto value)
     {
-        ZClipAuto = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetZClipAutoAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int ZClipNbBlock
-    {
-        get => state.Get<int>("ZClipNbBlock");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetZClipNbBlockAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithZClipNbBlock(int value)
     {
-        ZClipNbBlock = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetZClipNbBlockAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CSystemConfigDisplayBuilderMembers2<TSelf> : CSystemConfigDisplayBuilderMembers1<TSelf> where TSelf : CSystemConfigDisplayBuilderMembers2<TSelf>
 {
     private protected CSystemConfigDisplayBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state) : base(state) { }
-    public bool DisableWindowedAntiAlias
-    {
-        get => state.Get<bool>("DisableWindowedAntiAlias");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisableWindowedAntiAliasAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    }
     public TSelf WithDisableWindowedAntiAlias(bool value)
     {
-        DisableWindowedAntiAlias = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisableWindowedAntiAliasAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool EnableCheckLags
-    {
-        get => state.Get<bool>("EnableCheckLags");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEnableCheckLagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithEnableCheckLags(bool value)
     {
-        EnableCheckLags = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEnableCheckLagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool EnableRenderReadBack
-    {
-        get => state.Get<bool>("EnableRenderReadBack");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEnableRenderReadBackAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithEnableRenderReadBack(bool value)
     {
-        EnableRenderReadBack = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEnableRenderReadBackAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightFromMap LightFromMap
-    {
-        get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightFromMap>("LightFromMap");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetLightFromMapAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithLightFromMap(global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightFromMap value)
     {
-        LightFromMap = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetLightFromMapAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapCompute LightMapCompute
-    {
-        get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapCompute>("LightMapCompute");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetLightMapComputeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithLightMapCompute(global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapCompute value)
     {
-        LightMapCompute = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetLightMapComputeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CSystemConfigDisplayBuilderMembers3<TSelf> : CSystemConfigDisplayBuilderMembers2<TSelf> where TSelf : CSystemConfigDisplayBuilderMembers3<TSelf>
 {
     private protected CSystemConfigDisplayBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state) : base(state) { }
-    public int MultiThreadCountMax
-    {
-        get => state.Get<int>("MultiThreadCountMax");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetMultiThreadCountMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithMultiThreadCountMax(int value)
     {
-        MultiThreadCountMax = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetMultiThreadCountMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool MultiThreadEnable
-    {
-        get => state.Get<bool>("MultiThreadEnable");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetMultiThreadEnableAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMultiThreadEnable(bool value)
     {
-        MultiThreadEnable = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetMultiThreadEnableAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CSystemConfigDisplayBuilderMembers4<TSelf> : CSystemConfigDisplayBuilderMembers1<TSelf> where TSelf : CSystemConfigDisplayBuilderMembers4<TSelf>
 {
     private protected CSystemConfigDisplayBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state) : base(state) { }
-    public bool DisableShadowBuffer
-    {
-        get => state.Get<bool>("DisableShadowBuffer");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisableShadowBufferAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
-    }
     public TSelf WithDisableShadowBuffer(bool value)
     {
-        DisableShadowBuffer = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisableShadowBufferAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool ForceFxColors
-    {
-        get => state.Get<bool>("ForceFxColors");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetForceFxColorsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithForceFxColors(bool value)
     {
-        ForceFxColors = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetForceFxColorsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool ForceFxMotionBlur
-    {
-        get => state.Get<bool>("ForceFxMotionBlur");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetForceFxMotionBlurAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithForceFxMotionBlur(bool value)
     {
-        ForceFxMotionBlur = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetForceFxMotionBlurAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool FullScreen
-    {
-        get => state.Get<bool>("FullScreen");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetFullScreenAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithFullScreen(bool value)
     {
-        FullScreen = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetFullScreenAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.System.CSystemConfigDisplay.EGpuSyncOld GpuSync
-    {
-        get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EGpuSyncOld>("GpuSync");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetGpuSyncAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithGpuSync(global::GBX.NET.Engines.System.CSystemConfigDisplay.EGpuSyncOld value)
     {
-        GpuSync = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetGpuSyncAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool IgnoreDriverCrashes
-    {
-        get => state.Get<bool>("IgnoreDriverCrashes");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetIgnoreDriverCrashesAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithIgnoreDriverCrashes(bool value)
     {
-        IgnoreDriverCrashes = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetIgnoreDriverCrashesAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.System.CSystemConfigDisplay.EPresetOld PresetOld
-    {
-        get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EPresetOld>("PresetOld");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetPresetOldAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithPresetOld(global::GBX.NET.Engines.System.CSystemConfigDisplay.EPresetOld value)
     {
-        PresetOld = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetPresetOldAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.System.CSystemConfigDisplay.EShaderQualityOld ShaderQualityOld
-    {
-        get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EShaderQualityOld>("ShaderQualityOld");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetShaderQualityOldAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithShaderQualityOld(global::GBX.NET.Engines.System.CSystemConfigDisplay.EShaderQualityOld value)
     {
-        ShaderQualityOld = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetShaderQualityOldAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool VSync
-    {
-        get => state.Get<bool>("VSync");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetVSyncAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithVSync(bool value)
     {
-        VSync = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetVSyncAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CSystemConfigDisplayBuilderMembers5<TSelf> : CSystemConfigDisplayBuilderMembers4<TSelf> where TSelf : CSystemConfigDisplayBuilderMembers5<TSelf>
 {
     private protected CSystemConfigDisplayBuilderMembers5(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state) : base(state) { }
-    public float GeomLodScaleZ
-    {
-        get => state.Get<float>("GeomLodScaleZ");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetGeomLodScaleZAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5);
-    }
     public TSelf WithGeomLodScaleZ(float value)
     {
-        GeomLodScaleZ = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetGeomLodScaleZAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CSystemConfigDisplayBuilderMembers6<TSelf> : CSystemConfigDisplayBuilderMembers4<TSelf> where TSelf : CSystemConfigDisplayBuilderMembers6<TSelf>
 {
     private protected CSystemConfigDisplayBuilderMembers6(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state) : base(state) { }
-    public int AnisoQuality
-    {
-        get => state.Get<int>("AnisoQuality");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetAnisoQualityAssignment(), value, GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
-    }
     public TSelf WithAnisoQuality(int value)
     {
-        AnisoQuality = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetAnisoQualityAssignment(), value, GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int MaxFiltering
-    {
-        get => state.Get<int>("MaxFiltering");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetMaxFilteringAssignment(), value, GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithMaxFiltering(int value)
     {
-        MaxFiltering = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetMaxFilteringAssignment(), value, GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CSystemConfigDisplayBuilderMembers7<TSelf> : CSystemConfigDisplayBuilderMembers3<TSelf> where TSelf : CSystemConfigDisplayBuilderMembers7<TSelf>
 {
     private protected CSystemConfigDisplayBuilderMembers7(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state) : base(state) { }
-    public global::GBX.NET.Engines.System.CSystemConfigDisplay.EFilterAnisoQ FilterAnisoQ
-    {
-        get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EFilterAnisoQ>("FilterAnisoQ");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetFilterAnisoQAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    }
     public TSelf WithFilterAnisoQ(global::GBX.NET.Engines.System.CSystemConfigDisplay.EFilterAnisoQ value)
     {
-        FilterAnisoQ = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetFilterAnisoQAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool StereoscopyAdvanced
-    {
-        get => state.Get<bool>("StereoscopyAdvanced");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetStereoscopyAdvancedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithStereoscopyAdvanced(bool value)
     {
-        StereoscopyAdvanced = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetStereoscopyAdvancedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool StereoscopyByDefault
-    {
-        get => state.Get<bool>("StereoscopyByDefault");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetStereoscopyByDefaultAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithStereoscopyByDefault(bool value)
     {
-        StereoscopyByDefault = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetStereoscopyByDefaultAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool WaterGeomStadium
-    {
-        get => state.Get<bool>("WaterGeomStadium");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetWaterGeomStadiumAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithWaterGeomStadium(bool value)
     {
-        WaterGeomStadium = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetWaterGeomStadiumAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
     }
 }
 public abstract class CSystemConfigDisplayBuilderMembers8<TSelf> : CSystemConfigDisplayBuilderMembers6<TSelf> where TSelf : CSystemConfigDisplayBuilderMembers8<TSelf>
 {
     private protected CSystemConfigDisplayBuilderMembers8(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state) : base(state) { }
-    public bool WaterComplex
-    {
-        get => state.Get<bool>("WaterComplex");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetWaterComplexAssignment(), value, GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX);
-    }
     public TSelf WithWaterComplex(bool value)
     {
-        WaterComplex = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetWaterComplexAssignment(), value, GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX);
         return (TSelf)this;
     }
 }
 public abstract class CSystemConfigDisplayBuilderMembers9<TSelf> : CSystemConfigDisplayBuilderMembers5<TSelf> where TSelf : CSystemConfigDisplayBuilderMembers9<TSelf>
 {
     private protected CSystemConfigDisplayBuilderMembers9(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state) : base(state) { }
-    public bool DisableWindowedAntiAlias
-    {
-        get => state.Get<bool>("DisableWindowedAntiAlias");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisableWindowedAntiAliasAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    }
     public TSelf WithDisableWindowedAntiAlias(bool value)
     {
-        DisableWindowedAntiAlias = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisableWindowedAntiAliasAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool EnableCheckLags
-    {
-        get => state.Get<bool>("EnableCheckLags");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEnableCheckLagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithEnableCheckLags(bool value)
     {
-        EnableCheckLags = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEnableCheckLagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool EnableRenderReadBack
-    {
-        get => state.Get<bool>("EnableRenderReadBack");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEnableRenderReadBackAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithEnableRenderReadBack(bool value)
     {
-        EnableRenderReadBack = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEnableRenderReadBackAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool ForceFxBloom
-    {
-        get => state.Get<bool>("ForceFxBloom");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetForceFxBloomAssignment(), value, GameVersion.TMF | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithForceFxBloom(bool value)
     {
-        ForceFxBloom = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetForceFxBloomAssignment(), value, GameVersion.TMF | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightFromMap LightFromMap
-    {
-        get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightFromMap>("LightFromMap");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetLightFromMapAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithLightFromMap(global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightFromMap value)
     {
-        LightFromMap = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetLightFromMapAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapCompute LightMapCompute
-    {
-        get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapCompute>("LightMapCompute");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetLightMapComputeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithLightMapCompute(global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapCompute value)
     {
-        LightMapCompute = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetLightMapComputeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CSystemConfigDisplayBuilderMembers10<TSelf> : CSystemConfigDisplayBuilderMembers9<TSelf> where TSelf : CSystemConfigDisplayBuilderMembers10<TSelf>
 {
     private protected CSystemConfigDisplayBuilderMembers10(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state) : base(state) { }
-    public int AnisoQuality
-    {
-        get => state.Get<int>("AnisoQuality");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetAnisoQualityAssignment(), value, GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
-    }
     public TSelf WithAnisoQuality(int value)
     {
-        AnisoQuality = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetAnisoQualityAssignment(), value, GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool EnableLightMap
-    {
-        get => state.Get<bool>("EnableLightMap");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEnableLightMapAssignment(), value, GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithEnableLightMap(bool value)
     {
-        EnableLightMap = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEnableLightMapAssignment(), value, GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int MaxFiltering
-    {
-        get => state.Get<int>("MaxFiltering");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetMaxFilteringAssignment(), value, GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     }
     public TSelf WithMaxFiltering(int value)
     {
-        MaxFiltering = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetMaxFilteringAssignment(), value, GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CSystemConfigDisplayBuilderMembers11<TSelf> : CSystemConfigDisplayBuilderMembers7<TSelf> where TSelf : CSystemConfigDisplayBuilderMembers11<TSelf>
 {
     private protected CSystemConfigDisplayBuilderMembers11(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state) : base(state) { }
-    public int ConfigVersion
-    {
-        get => state.Get<int>("ConfigVersion");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetConfigVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithConfigVersion(int value)
     {
-        ConfigVersion = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetConfigVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.System.CSystemConfigDisplay.EDeferredAA DeferredAA
-    {
-        get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EDeferredAA>("DeferredAA");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDeferredAAAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDeferredAA(global::GBX.NET.Engines.System.CSystemConfigDisplay.EDeferredAA value)
     {
-        DeferredAA = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDeferredAAAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool DisableHdrCubeRenderMipMap
-    {
-        get => state.Get<bool>("DisableHdrCubeRenderMipMap");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisableHdrCubeRenderMipMapAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDisableHdrCubeRenderMipMap(bool value)
     {
-        DisableHdrCubeRenderMipMap = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisableHdrCubeRenderMipMapAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool DisableShadowBufferRaw
-    {
-        get => state.Get<bool>("DisableShadowBufferRaw");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisableShadowBufferRawAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDisableShadowBufferRaw(bool value)
     {
-        DisableShadowBufferRaw = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisableShadowBufferRawAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.System.CSystemConfigDisplay.EDisplayMode DisplayMode
-    {
-        get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EDisplayMode>("DisplayMode");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisplayModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDisplayMode(global::GBX.NET.Engines.System.CSystemConfigDisplay.EDisplayMode value)
     {
-        DisplayMode = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisplayModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.System.CSystemConfigDisplay.EDisplaySync DisplaySync
-    {
-        get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EDisplaySync>("DisplaySync");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisplaySyncAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDisplaySync(global::GBX.NET.Engines.System.CSystemConfigDisplay.EDisplaySync value)
     {
-        DisplaySync = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisplaySyncAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.System.CSystemConfigDisplay.EFxBloomHdr FxBloomHdr
-    {
-        get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EFxBloomHdr>("FxBloomHdr");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetFxBloomHdrAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFxBloomHdr(global::GBX.NET.Engines.System.CSystemConfigDisplay.EFxBloomHdr value)
     {
-        FxBloomHdr = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetFxBloomHdrAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.System.CSystemConfigDisplay.EFxMotionBlur FxMotionBlur
-    {
-        get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EFxMotionBlur>("FxMotionBlur");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetFxMotionBlurAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFxMotionBlur(global::GBX.NET.Engines.System.CSystemConfigDisplay.EFxMotionBlur value)
     {
-        FxMotionBlur = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetFxMotionBlurAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float FxMotionBlurIntens
-    {
-        get => state.Get<float>("FxMotionBlurIntens");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetFxMotionBlurIntensAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFxMotionBlurIntens(float value)
     {
-        FxMotionBlurIntens = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetFxMotionBlurIntensAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.System.CSystemConfigDisplay.EGeometryQuality GeometryQuality
-    {
-        get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EGeometryQuality>("GeometryQuality");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetGeometryQualityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGeometryQuality(global::GBX.NET.Engines.System.CSystemConfigDisplay.EGeometryQuality value)
     {
-        GeometryQuality = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetGeometryQualityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.System.CSystemConfigDisplay.EGpuSync GpuSync0
-    {
-        get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EGpuSync>("GpuSync0");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetGpuSync0Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithGpuSync0(global::GBX.NET.Engines.System.CSystemConfigDisplay.EGpuSync value)
     {
-        GpuSync0 = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetGpuSync0Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool IgnoreDriverCrashesRaw
-    {
-        get => state.Get<bool>("IgnoreDriverCrashesRaw");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetIgnoreDriverCrashesRawAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithIgnoreDriverCrashesRaw(bool value)
     {
-        IgnoreDriverCrashesRaw = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetIgnoreDriverCrashesRawAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool LightMapLightIndex
-    {
-        get => state.Get<bool>("LightMapLightIndex");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetLightMapLightIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLightMapLightIndex(bool value)
     {
-        LightMapLightIndex = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetLightMapLightIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapQuality LightMapQuality
-    {
-        get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapQuality>("LightMapQuality");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetLightMapQualityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLightMapQuality(global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapQuality value)
     {
-        LightMapQuality = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetLightMapQualityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool LightMapQualityUltra
-    {
-        get => state.Get<bool>("LightMapQualityUltra");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetLightMapQualityUltraAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLightMapQualityUltra(bool value)
     {
-        LightMapQualityUltra = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetLightMapQualityUltraAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapSizeMax LightMapSizeMax
-    {
-        get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapSizeMax>("LightMapSizeMax");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetLightMapSizeMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLightMapSizeMax(global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapSizeMax value)
     {
-        LightMapSizeMax = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetLightMapSizeMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int MaxFps
-    {
-        get => state.Get<int>("MaxFps");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetMaxFpsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaxFps(int value)
     {
-        MaxFps = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetMaxFpsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float ParticleMaxGpuLoadMs
-    {
-        get => state.Get<float>("ParticleMaxGpuLoadMs");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetParticleMaxGpuLoadMsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithParticleMaxGpuLoadMs(float value)
     {
-        ParticleMaxGpuLoadMs = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetParticleMaxGpuLoadMsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.System.CSystemConfigDisplay.EPreset Preset
-    {
-        get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EPreset>("Preset");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetPresetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithPreset(global::GBX.NET.Engines.System.CSystemConfigDisplay.EPreset value)
     {
-        Preset = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetPresetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.System.CSystemConfigDisplay.EScreenShotExt ScreenShotExt
-    {
-        get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EScreenShotExt>("ScreenShotExt");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetScreenShotExtAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithScreenShotExt(global::GBX.NET.Engines.System.CSystemConfigDisplay.EScreenShotExt value)
     {
-        ScreenShotExt = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetScreenShotExtAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.System.CSystemConfigDisplay.EShaderQ ShaderQuality
-    {
-        get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EShaderQ>("ShaderQuality");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetShaderQualityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithShaderQuality(global::GBX.NET.Engines.System.CSystemConfigDisplay.EShaderQ value)
     {
-        ShaderQuality = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetShaderQualityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool TextureDecals_2D
-    {
-        get => state.Get<bool>("TextureDecals_2D");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetTextureDecals_2DAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTextureDecals_2D(bool value)
     {
-        TextureDecals_2D = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetTextureDecals_2DAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool TextureDecals_3D
-    {
-        get => state.Get<bool>("TextureDecals_3D");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetTextureDecals_3DAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTextureDecals_3D(bool value)
     {
-        TextureDecals_3D = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetTextureDecals_3DAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.System.CSystemConfigDisplay.ETripleBuffer TripleBuffer
-    {
-        get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.ETripleBuffer>("TripleBuffer");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetTripleBufferAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTripleBuffer(global::GBX.NET.Engines.System.CSystemConfigDisplay.ETripleBuffer value)
     {
-        TripleBuffer = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetTripleBufferAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.System.CSystemConfigDisplay.EVehicleReflect VehicleReflect
-    {
-        get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EVehicleReflect>("VehicleReflect");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetVehicleReflectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithVehicleReflect(global::GBX.NET.Engines.System.CSystemConfigDisplay.EVehicleReflect value)
     {
-        VehicleReflect = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetVehicleReflectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
 public abstract class CSystemConfigDisplayBuilderMembers12<TSelf> : CSystemConfigDisplayBuilderMembers11<TSelf> where TSelf : CSystemConfigDisplayBuilderMembers12<TSelf>
 {
     private protected CSystemConfigDisplayBuilderMembers12(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state) : base(state) { }
-    public bool EnableD3D9Ex
-    {
-        get => state.Get<bool>("EnableD3D9Ex");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEnableD3D9ExAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
-    }
     public TSelf WithEnableD3D9Ex(bool value)
     {
-        EnableD3D9Ex = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEnableD3D9ExAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
 public abstract class CSystemConfigDisplayBuilderMembers13<TSelf> : CSystemConfigDisplayBuilderMembers11<TSelf> where TSelf : CSystemConfigDisplayBuilderMembers13<TSelf>
 {
     private protected CSystemConfigDisplayBuilderMembers13(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state) : base(state) { }
-    public global::GBX.NET.Engines.System.CSystemConfigDisplay.ERenderingApi RenderingApi
-    {
-        get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.ERenderingApi>("RenderingApi");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetRenderingApiAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithRenderingApi(global::GBX.NET.Engines.System.CSystemConfigDisplay.ERenderingApi value)
     {
-        RenderingApi = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetRenderingApiAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
 public abstract class CSystemConfigDisplayBuilderMembers14<TSelf> : CSystemConfigDisplayBuilderMembers12<TSelf> where TSelf : CSystemConfigDisplayBuilderMembers14<TSelf>
 {
     private protected CSystemConfigDisplayBuilderMembers14(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state) : base(state) { }
-    public bool EnableD3D9_BC4_BC5
-    {
-        get => state.Get<bool>("EnableD3D9_BC4_BC5");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEnableD3D9_BC4_BC5Assignment(), value, GameVersion.MP3 | GameVersion.TMT);
-    }
     public TSelf WithEnableD3D9_BC4_BC5(bool value)
     {
-        EnableD3D9_BC4_BC5 = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEnableD3D9_BC4_BC5Assignment(), value, GameVersion.MP3 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
 public abstract class CSystemConfigDisplayBuilderMembers15<TSelf> : CSystemConfigDisplayBuilderMembers13<TSelf> where TSelf : CSystemConfigDisplayBuilderMembers15<TSelf>
 {
     private protected CSystemConfigDisplayBuilderMembers15(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state) : base(state) { }
-    public string? AdapterDesc
-    {
-        get => state.Get<string?>("AdapterDesc");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetAdapterDescAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithAdapterDesc(string? value)
     {
-        AdapterDesc = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetAdapterDescAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public bool AsyncRenderEnabled
-    {
-        get => state.Get<bool>("AsyncRenderEnabled");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetAsyncRenderEnabledAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithAsyncRenderEnabled(bool value)
     {
-        AsyncRenderEnabled = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetAsyncRenderEnabledAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public bool ForceD3D11FeatureLevel10
-    {
-        get => state.Get<bool>("ForceD3D11FeatureLevel10");
-        set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetForceD3D11FeatureLevel10Assignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithForceD3D11FeatureLevel10(bool value)
     {
-        ForceD3D11FeatureLevel10 = value;
+        state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetForceD3D11FeatureLevel10Assignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
 }
@@ -979,12 +544,6 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         var chunk0B013003 = new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013003();
         node.Chunks.Add(chunk0B013003);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.System.CSystemConfigDisplay node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013003 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.System.CSystemConfigDisplay CreateRecipe1(GameVersion game)
     {
@@ -1012,20 +571,6 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         var chunk0B01300F = new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01300F();
         node.Chunks.Add(chunk0B01300F);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.System.CSystemConfigDisplay node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013008 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01300A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01300A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01300B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01300B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01300D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01300D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01300E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01300E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01300F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01300F is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.System.CSystemConfigDisplay CreateRecipe2(GameVersion game)
     {
@@ -1055,21 +600,6 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         var chunk0B013010 = new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013010();
         node.Chunks.Add(chunk0B013010);
         return node;
-    }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.System.CSystemConfigDisplay node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013008 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01300A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01300A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01300B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01300B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01300D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01300D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01300E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01300E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01300F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01300F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013010 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.System.CSystemConfigDisplay CreateRecipe3(GameVersion game)
     {
@@ -1115,29 +645,6 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         var chunk0B01301B = new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01301B();
         node.Chunks.Add(chunk0B01301B);
         return node;
-    }
-    private static void ValidateRecipe3(global::GBX.NET.Engines.System.CSystemConfigDisplay node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013008 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01300A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01300A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01300B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01300B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01300D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01300D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01300F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01300F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013011 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013013 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013015>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013015 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013016 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013017 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013018 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013019>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013019 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01301A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01301A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01301B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01301B is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.System.CSystemConfigDisplay CreateRecipe4(GameVersion game)
     {
@@ -1185,30 +692,6 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         var chunk0B01301C = new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01301C();
         node.Chunks.Add(chunk0B01301C);
         return node;
-    }
-    private static void ValidateRecipe4(global::GBX.NET.Engines.System.CSystemConfigDisplay node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013008 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01300A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01300A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01300B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01300B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01300D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01300D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01300F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01300F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013011 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013013 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013015>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013015 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013016 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013017 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013018 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013019>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013019 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01301A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01301A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01301B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01301B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01301C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01301C is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.System.CSystemConfigDisplay CreateRecipe5(GameVersion game)
     {
@@ -1262,33 +745,6 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         var chunk0B013022 = new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013022();
         node.Chunks.Add(chunk0B013022);
         return node;
-    }
-    private static void ValidateRecipe5(global::GBX.NET.Engines.System.CSystemConfigDisplay node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013008 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01300A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01300A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01300B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01300B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01300F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01300F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013011 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013013 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013015>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013015 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013016 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013017 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013018 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013019>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013019 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01301B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01301B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01301C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01301C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01301D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01301D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01301E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01301E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013020>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013020 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013021>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013021 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013022>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013022 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.System.CSystemConfigDisplay CreateRecipe6(GameVersion game)
     {
@@ -1359,41 +815,6 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         node.Chunks.Add(chunk0B01303B);
         return node;
     }
-    private static void ValidateRecipe6(global::GBX.NET.Engines.System.CSystemConfigDisplay node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013008 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01300B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01300B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01300F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01300F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013015>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013015 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013016 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013017 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013018 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013019>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013019 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01301B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01301B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01301C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01301C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013020>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013020 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013021>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013021 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013025>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013025 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013026>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013026 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01302A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01302A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01302C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01302C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01302D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01302D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01302E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01302E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01302F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01302F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013030>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013030 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013031>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013031 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013032>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013032 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013033>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013033 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013035>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013035 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013036>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0B013036 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013038>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013038 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013039>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013039 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01303A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01303A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01303B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01303B is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.System.CSystemConfigDisplay CreateRecipe7(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.System.CSystemConfigDisplay(game);
@@ -1462,41 +883,6 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         var chunk0B01303B = new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01303B();
         node.Chunks.Add(chunk0B01303B);
         return node;
-    }
-    private static void ValidateRecipe7(global::GBX.NET.Engines.System.CSystemConfigDisplay node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013008 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01300B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01300B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01300F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01300F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013015>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013015 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013016 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013017 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013018 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013019>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013019 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01301B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01301B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01301C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01301C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013020>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013020 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013021>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013021 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013025>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013025 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013026>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013026 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01302A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01302A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01302C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01302C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01302D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01302D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01302E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01302E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01302F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01302F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013030>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013030 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013031>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013031 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013032>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013032 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013033>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013033 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013035>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013035 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013036>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0B013036 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013038>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013038 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013039>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013039 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01303A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01303A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01303B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01303B is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.System.CSystemConfigDisplay CreateRecipe8(GameVersion game)
     {
@@ -1568,42 +954,6 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         var chunk0B01303D = new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01303D();
         node.Chunks.Add(chunk0B01303D);
         return node;
-    }
-    private static void ValidateRecipe8(global::GBX.NET.Engines.System.CSystemConfigDisplay node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013008 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01300B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01300B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01300F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01300F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013015>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013015 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013016 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013017 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013018 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013019>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013019 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01301B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01301B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01301C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01301C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013020>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013020 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013021>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013021 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013025>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013025 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013026>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013026 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01302A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01302A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01302C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01302C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01302D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01302D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01302E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01302E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01302F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01302F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013030>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013030 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013031>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013031 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013032>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013032 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013033>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013033 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013035>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013035 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013036>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk0B013036 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013039>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013039 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01303A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01303A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01303B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01303B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01303C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01303C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01303D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01303D is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.System.CSystemConfigDisplay CreateRecipe9(GameVersion game)
     {
@@ -1678,46 +1028,6 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         node.Chunks.Add(chunk0B01303F);
         return node;
     }
-    private static void ValidateRecipe9(global::GBX.NET.Engines.System.CSystemConfigDisplay node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013008 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01300B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01300B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01300F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01300F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013015>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013015 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013016 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013017 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013018 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013019>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013019 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01301B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01301B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01301C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01301C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013020>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013020 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013021>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013021 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013025>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013025 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013026>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013026 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01302A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01302A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01302C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01302C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01302D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01302D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01302F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01302F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013030>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013030 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013031>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013031 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013032>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013032 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013033>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013033 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013035>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013035 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013036>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk0B013036 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013039>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B013039 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01303A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01303A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01303B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01303B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01303C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01303C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01303D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01303D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01303E>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0B01303E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01303F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0B01303F is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.System.CSystemConfigDisplay node, GameVersion game)
-    {
-    }
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMO ForTMO() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -1734,84 +1044,44 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
     public partial class TMPU : CSystemConfigDisplayBuilderBase<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state) : base(state) { }
-        public bool DisableShadowBuffer
-        {
-            get => state.Get<bool>("DisableShadowBuffer");
-            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisableShadowBufferAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
-        }
         public TMPU WithDisableShadowBuffer(bool value)
         {
-            DisableShadowBuffer = value;
+            state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetDisableShadowBufferAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
             return this;
-        }
-        public bool FullScreen
-        {
-            get => state.Get<bool>("FullScreen");
-            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetFullScreenAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMPU WithFullScreen(bool value)
         {
-            FullScreen = value;
+            state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetFullScreenAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
             return this;
-        }
-        public int GfxQualityOld
-        {
-            get => state.Get<int>("GfxQualityOld");
-            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetGfxQualityOldAssignment(), value, GameVersion.TMPU);
         }
         public TMPU WithGfxQualityOld(int value)
         {
-            GfxQualityOld = value;
+            state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetGfxQualityOldAssignment(), value, GameVersion.TMPU);
             return this;
-        }
-        public global::GBX.NET.Engines.System.CSystemConfigDisplay.EGpuSyncOld GpuSync
-        {
-            get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EGpuSyncOld>("GpuSync");
-            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetGpuSyncAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMPU WithGpuSync(global::GBX.NET.Engines.System.CSystemConfigDisplay.EGpuSyncOld value)
         {
-            GpuSync = value;
+            state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetGpuSyncAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
             return this;
-        }
-        public bool IgnoreDriverCrashes
-        {
-            get => state.Get<bool>("IgnoreDriverCrashes");
-            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetIgnoreDriverCrashesAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMPU WithIgnoreDriverCrashes(bool value)
         {
-            IgnoreDriverCrashes = value;
+            state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetIgnoreDriverCrashesAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
             return this;
-        }
-        public int MaxFiltering
-        {
-            get => state.Get<int>("MaxFiltering");
-            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetMaxFilteringAssignment(), value, GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMPU WithMaxFiltering(int value)
         {
-            MaxFiltering = value;
+            state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetMaxFilteringAssignment(), value, GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
             return this;
-        }
-        public global::GBX.NET.Engines.System.CSystemConfigDisplay.EShaderQualityOld ShaderQualityOld
-        {
-            get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EShaderQualityOld>("ShaderQualityOld");
-            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetShaderQualityOldAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMPU WithShaderQualityOld(global::GBX.NET.Engines.System.CSystemConfigDisplay.EShaderQualityOld value)
         {
-            ShaderQualityOld = value;
+            state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetShaderQualityOldAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
             return this;
-        }
-        public bool VSync
-        {
-            get => state.Get<bool>("VSync");
-            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetVSyncAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         }
         public TMPU WithVSync(bool value)
         {
-            VSync = value;
+            state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetVSyncAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.System.ISystemConfigDisplayTMPU BuildInterface() => Build();
@@ -1820,14 +1090,9 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
             var node = CSystemConfigDisplayBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CSystemConfigDisplayBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CSystemConfigDisplayBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.System.CSystemConfigDisplay node);
-        partial void ValidateNode(global::GBX.NET.Engines.System.CSystemConfigDisplay node);
     }
     public partial class TMO : CSystemConfigDisplayBuilderMembers8<TMO>
     {
@@ -1838,14 +1103,9 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
             var node = CSystemConfigDisplayBuilder.CreateRecipe1(GameVersion.TMO);
             state.Apply(node, GameVersion.TMO);
             CustomizeNode(node);
-            CSystemConfigDisplayBuilder.ValidateRecipe1(node, GameVersion.TMO);
-            NodeBuilderValidation.Validate(node, GameVersion.TMO);
-            CSystemConfigDisplayBuilder.ValidateRequiredMembers(node, GameVersion.TMO);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.System.CSystemConfigDisplay node);
-        partial void ValidateNode(global::GBX.NET.Engines.System.CSystemConfigDisplay node);
     }
     public partial class TMSX : CSystemConfigDisplayBuilderMembers8<TMSX>
     {
@@ -1856,26 +1116,16 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
             var node = CSystemConfigDisplayBuilder.CreateRecipe1(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CSystemConfigDisplayBuilder.ValidateRecipe1(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CSystemConfigDisplayBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.System.CSystemConfigDisplay node);
-        partial void ValidateNode(global::GBX.NET.Engines.System.CSystemConfigDisplay node);
     }
     public partial class TMNESWC : CSystemConfigDisplayBuilderMembers8<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state) : base(state) { }
-        public float GeomLodScaleZ
-        {
-            get => state.Get<float>("GeomLodScaleZ");
-            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetGeomLodScaleZAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5);
-        }
         public TMNESWC WithGeomLodScaleZ(float value)
         {
-            GeomLodScaleZ = value;
+            state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetGeomLodScaleZAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.System.ISystemConfigDisplayTMNESWC BuildInterface() => Build();
@@ -1884,14 +1134,9 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
             var node = CSystemConfigDisplayBuilder.CreateRecipe2(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CSystemConfigDisplayBuilder.ValidateRecipe2(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CSystemConfigDisplayBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.System.CSystemConfigDisplay node);
-        partial void ValidateNode(global::GBX.NET.Engines.System.CSystemConfigDisplay node);
     }
     public partial class TMU : CSystemConfigDisplayBuilderMembers10<TMU>
     {
@@ -1902,36 +1147,21 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
             var node = CSystemConfigDisplayBuilder.CreateRecipe3(GameVersion.TMU);
             state.Apply(node, GameVersion.TMU);
             CustomizeNode(node);
-            CSystemConfigDisplayBuilder.ValidateRecipe3(node, GameVersion.TMU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMU);
-            CSystemConfigDisplayBuilder.ValidateRequiredMembers(node, GameVersion.TMU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.System.CSystemConfigDisplay node);
-        partial void ValidateNode(global::GBX.NET.Engines.System.CSystemConfigDisplay node);
     }
     public partial class VSK5 : CSystemConfigDisplayBuilderMembers10<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state) : base(state) { }
-        public int MultiThreadCountMax
-        {
-            get => state.Get<int>("MultiThreadCountMax");
-            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetMultiThreadCountMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-        }
         public VSK5 WithMultiThreadCountMax(int value)
         {
-            MultiThreadCountMax = value;
+            state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetMultiThreadCountMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
             return this;
-        }
-        public bool MultiThreadEnable
-        {
-            get => state.Get<bool>("MultiThreadEnable");
-            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetMultiThreadEnableAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         }
         public VSK5 WithMultiThreadEnable(bool value)
         {
-            MultiThreadEnable = value;
+            state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetMultiThreadEnableAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.System.ISystemConfigDisplayVSK5 BuildInterface() => Build();
@@ -1940,96 +1170,51 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
             var node = CSystemConfigDisplayBuilder.CreateRecipe4(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CSystemConfigDisplayBuilder.ValidateRecipe4(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CSystemConfigDisplayBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.System.CSystemConfigDisplay node);
-        partial void ValidateNode(global::GBX.NET.Engines.System.CSystemConfigDisplay node);
     }
     public partial class TMF : CSystemConfigDisplayBuilderMembers9<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state) : base(state) { }
-        public global::GBX.NET.Engines.System.CSystemConfigDisplay.EFilterAnisoQ FilterAnisoQ
-        {
-            get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EFilterAnisoQ>("FilterAnisoQ");
-            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetFilterAnisoQAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-        }
         public TMF WithFilterAnisoQ(global::GBX.NET.Engines.System.CSystemConfigDisplay.EFilterAnisoQ value)
         {
-            FilterAnisoQ = value;
+            state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetFilterAnisoQAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
             return this;
-        }
-        public global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapQualityOld LightMapQualityOld
-        {
-            get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapQualityOld>("LightMapQualityOld");
-            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetLightMapQualityOldAssignment(), value, GameVersion.TMF);
         }
         public TMF WithLightMapQualityOld(global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapQualityOld value)
         {
-            LightMapQualityOld = value;
+            state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetLightMapQualityOldAssignment(), value, GameVersion.TMF);
             return this;
-        }
-        public int MultiThreadCountMax
-        {
-            get => state.Get<int>("MultiThreadCountMax");
-            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetMultiThreadCountMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMF WithMultiThreadCountMax(int value)
         {
-            MultiThreadCountMax = value;
+            state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetMultiThreadCountMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
             return this;
-        }
-        public bool MultiThreadEnable
-        {
-            get => state.Get<bool>("MultiThreadEnable");
-            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetMultiThreadEnableAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         }
         public TMF WithMultiThreadEnable(bool value)
         {
-            MultiThreadEnable = value;
+            state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetMultiThreadEnableAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
             return this;
-        }
-        public bool StereoscopyAdvanced
-        {
-            get => state.Get<bool>("StereoscopyAdvanced");
-            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetStereoscopyAdvancedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         }
         public TMF WithStereoscopyAdvanced(bool value)
         {
-            StereoscopyAdvanced = value;
+            state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetStereoscopyAdvancedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
             return this;
-        }
-        public bool StereoscopyByDefault
-        {
-            get => state.Get<bool>("StereoscopyByDefault");
-            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetStereoscopyByDefaultAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         }
         public TMF WithStereoscopyByDefault(bool value)
         {
-            StereoscopyByDefault = value;
+            state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetStereoscopyByDefaultAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
             return this;
-        }
-        public bool TreeAlwaysHq
-        {
-            get => state.Get<bool>("TreeAlwaysHq");
-            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetTreeAlwaysHqAssignment(), value, GameVersion.TMF);
         }
         public TMF WithTreeAlwaysHq(bool value)
         {
-            TreeAlwaysHq = value;
+            state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetTreeAlwaysHqAssignment(), value, GameVersion.TMF);
             return this;
-        }
-        public bool WaterGeomStadium
-        {
-            get => state.Get<bool>("WaterGeomStadium");
-            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetWaterGeomStadiumAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         }
         public TMF WithWaterGeomStadium(bool value)
         {
-            WaterGeomStadium = value;
+            state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetWaterGeomStadiumAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
             return this;
         }
         public global::GBX.NET.Interfaces.System.ISystemConfigDisplayTMF BuildInterface() => Build();
@@ -2038,14 +1223,9 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
             var node = CSystemConfigDisplayBuilder.CreateRecipe5(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CSystemConfigDisplayBuilder.ValidateRecipe5(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CSystemConfigDisplayBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.System.CSystemConfigDisplay node);
-        partial void ValidateNode(global::GBX.NET.Engines.System.CSystemConfigDisplay node);
     }
     public partial class MP3 : CSystemConfigDisplayBuilderMembers14<MP3>
     {
@@ -2056,26 +1236,16 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
             var node = CSystemConfigDisplayBuilder.CreateRecipe6(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CSystemConfigDisplayBuilder.ValidateRecipe6(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CSystemConfigDisplayBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.System.CSystemConfigDisplay node);
-        partial void ValidateNode(global::GBX.NET.Engines.System.CSystemConfigDisplay node);
     }
     public partial class TMT : CSystemConfigDisplayBuilderMembers14<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state) : base(state) { }
-        public global::GBX.NET.Engines.System.CSystemConfigDisplay.ERenderingApi RenderingApi
-        {
-            get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.ERenderingApi>("RenderingApi");
-            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetRenderingApiAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-        }
         public TMT WithRenderingApi(global::GBX.NET.Engines.System.CSystemConfigDisplay.ERenderingApi value)
         {
-            RenderingApi = value;
+            state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetRenderingApiAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
             return this;
         }
         public global::GBX.NET.Interfaces.System.ISystemConfigDisplayTMT BuildInterface() => Build();
@@ -2084,26 +1254,16 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
             var node = CSystemConfigDisplayBuilder.CreateRecipe7(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CSystemConfigDisplayBuilder.ValidateRecipe7(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CSystemConfigDisplayBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.System.CSystemConfigDisplay node);
-        partial void ValidateNode(global::GBX.NET.Engines.System.CSystemConfigDisplay node);
     }
     public partial class MP4 : CSystemConfigDisplayBuilderMembers15<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state) : base(state) { }
-        public bool EnableD3D9Ex
-        {
-            get => state.Get<bool>("EnableD3D9Ex");
-            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEnableD3D9ExAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
-        }
         public MP4 WithEnableD3D9Ex(bool value)
         {
-            EnableD3D9Ex = value;
+            state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEnableD3D9ExAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
             return this;
         }
         public global::GBX.NET.Interfaces.System.ISystemConfigDisplayMP4 BuildInterface() => Build();
@@ -2112,56 +1272,31 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
             var node = CSystemConfigDisplayBuilder.CreateRecipe8(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CSystemConfigDisplayBuilder.ValidateRecipe8(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CSystemConfigDisplayBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.System.CSystemConfigDisplay node);
-        partial void ValidateNode(global::GBX.NET.Engines.System.CSystemConfigDisplay node);
     }
     public partial class TM2020 : CSystemConfigDisplayBuilderMembers15<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state) : base(state) { }
-        public bool AutomaticEnabled
-        {
-            get => state.Get<bool>("AutomaticEnabled");
-            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetAutomaticEnabledAssignment(), value, GameVersion.TM2020);
-        }
         public TM2020 WithAutomaticEnabled(bool value)
         {
-            AutomaticEnabled = value;
+            state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetAutomaticEnabledAssignment(), value, GameVersion.TM2020);
             return this;
-        }
-        public int AutomaticMinFps
-        {
-            get => state.Get<int>("AutomaticMinFps");
-            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetAutomaticMinFpsAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithAutomaticMinFps(int value)
         {
-            AutomaticMinFps = value;
+            state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetAutomaticMinFpsAssignment(), value, GameVersion.TM2020);
             return this;
-        }
-        public global::GBX.NET.Engines.System.CSystemConfigDisplay.EEverywhereReflect EverywhereReflect
-        {
-            get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EEverywhereReflect>("EverywhereReflect");
-            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEverywhereReflectAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithEverywhereReflect(global::GBX.NET.Engines.System.CSystemConfigDisplay.EEverywhereReflect value)
         {
-            EverywhereReflect = value;
+            state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEverywhereReflectAssignment(), value, GameVersion.TM2020);
             return this;
-        }
-        public global::GBX.NET.Engines.System.CSystemConfigDisplay.EFxBlur FxBlur
-        {
-            get => state.Get<global::GBX.NET.Engines.System.CSystemConfigDisplay.EFxBlur>("FxBlur");
-            set => state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetFxBlurAssignment(), value, GameVersion.TM2020);
         }
         public TM2020 WithFxBlur(global::GBX.NET.Engines.System.CSystemConfigDisplay.EFxBlur value)
         {
-            FxBlur = value;
+            state.Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetFxBlurAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public global::GBX.NET.Interfaces.System.ISystemConfigDisplayTM2020 BuildInterface() => Build();
@@ -2170,13 +1305,8 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
             var node = CSystemConfigDisplayBuilder.CreateRecipe9(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CSystemConfigDisplayBuilder.ValidateRecipe9(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CSystemConfigDisplayBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.System.CSystemConfigDisplay node);
-        partial void ValidateNode(global::GBX.NET.Engines.System.CSystemConfigDisplay node);
     }
 }

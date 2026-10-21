@@ -36,14 +36,9 @@ public abstract class CPlugVehicleMaterialGroupBuilderBase<TSelf> where TSelf : 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup> state;
     private protected CPlugVehicleMaterialGroupBuilderBase() => state = new();
     private protected CPlugVehicleMaterialGroupBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup> state) => this.state = state;
-    public int[] MaterialIds
-    {
-        get => state.Get<int[]>("MaterialIds");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialGroupBuilderAssignments.GetMaterialIdsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithMaterialIds(params int[] value)
     {
-        MaterialIds = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialGroupBuilderAssignments.GetMaterialIdsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithMaterialIds(IEnumerable<int> values)
@@ -59,14 +54,6 @@ public partial class CPlugVehicleMaterialGroupBuilder : CPlugVehicleMaterialGrou
         var chunk090E9000 = new global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup.Chunk090E9000();
         node.Chunks.Add(chunk090E9000);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup.Chunk090E9000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E9000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup node, GameVersion game)
-    {
-        if (node.MaterialIds is null) throw new MemberNullException("MaterialIds");
     }
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
@@ -85,14 +72,9 @@ public partial class CPlugVehicleMaterialGroupBuilder : CPlugVehicleMaterialGrou
             var node = CPlugVehicleMaterialGroupBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CPlugVehicleMaterialGroupBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CPlugVehicleMaterialGroupBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup node);
     }
     public partial class TMF : CPlugVehicleMaterialGroupBuilderBase<TMF>
     {
@@ -103,14 +85,9 @@ public partial class CPlugVehicleMaterialGroupBuilder : CPlugVehicleMaterialGrou
             var node = CPlugVehicleMaterialGroupBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CPlugVehicleMaterialGroupBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CPlugVehicleMaterialGroupBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup node);
     }
     public partial class MP3 : CPlugVehicleMaterialGroupBuilderBase<MP3>
     {
@@ -121,14 +98,9 @@ public partial class CPlugVehicleMaterialGroupBuilder : CPlugVehicleMaterialGrou
             var node = CPlugVehicleMaterialGroupBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CPlugVehicleMaterialGroupBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CPlugVehicleMaterialGroupBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup node);
     }
     public partial class TMT : CPlugVehicleMaterialGroupBuilderBase<TMT>
     {
@@ -139,14 +111,9 @@ public partial class CPlugVehicleMaterialGroupBuilder : CPlugVehicleMaterialGrou
             var node = CPlugVehicleMaterialGroupBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugVehicleMaterialGroupBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugVehicleMaterialGroupBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup node);
     }
     public partial class MP4 : CPlugVehicleMaterialGroupBuilderBase<MP4>
     {
@@ -157,14 +124,9 @@ public partial class CPlugVehicleMaterialGroupBuilder : CPlugVehicleMaterialGrou
             var node = CPlugVehicleMaterialGroupBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugVehicleMaterialGroupBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugVehicleMaterialGroupBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup node);
     }
     public partial class TM2020 : CPlugVehicleMaterialGroupBuilderBase<TM2020>
     {
@@ -175,13 +137,8 @@ public partial class CPlugVehicleMaterialGroupBuilder : CPlugVehicleMaterialGrou
             var node = CPlugVehicleMaterialGroupBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugVehicleMaterialGroupBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugVehicleMaterialGroupBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup node);
     }
 }

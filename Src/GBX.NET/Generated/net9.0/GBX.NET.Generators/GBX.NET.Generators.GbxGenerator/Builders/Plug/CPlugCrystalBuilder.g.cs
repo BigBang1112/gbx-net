@@ -36,14 +36,9 @@ public abstract class CPlugCrystalBuilderBase<TSelf> where TSelf : CPlugCrystalB
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCrystal> state;
     private protected CPlugCrystalBuilderBase() => state = new();
     private protected CPlugCrystalBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCrystal> state) => this.state = state;
-    public List<global::GBX.NET.Engines.Plug.CPlugCrystal.Material> Materials
-    {
-        get => state.Get<List<global::GBX.NET.Engines.Plug.CPlugCrystal.Material>>("Materials");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetMaterialsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithMaterials(List<global::GBX.NET.Engines.Plug.CPlugCrystal.Material> value)
     {
-        Materials = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetMaterialsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithMaterials(params global::GBX.NET.Engines.Plug.CPlugCrystal.Material[] values)
@@ -58,110 +53,65 @@ public abstract class CPlugCrystalBuilderBase<TSelf> where TSelf : CPlugCrystalB
 public abstract class CPlugCrystalBuilderMembers1<TSelf> : CPlugCrystalBuilderBase<TSelf> where TSelf : CPlugCrystalBuilderMembers1<TSelf>
 {
     private protected CPlugCrystalBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCrystal> state) : base(state) { }
-    public int GenerateMode
-    {
-        get => state.Get<int>("GenerateMode");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetGenerateModeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithGenerateMode(int value)
     {
-        GenerateMode = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetGenerateModeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float SpriteSize
-    {
-        get => state.Get<float>("SpriteSize");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetSpriteSizeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSpriteSize(float value)
     {
-        SpriteSize = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetSpriteSizeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CPlugCrystalBuilderMembers2<TSelf> : CPlugCrystalBuilderBase<TSelf> where TSelf : CPlugCrystalBuilderMembers2<TSelf>
 {
     private protected CPlugCrystalBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCrystal> state) : base(state) { }
-    public uint Flags
-    {
-        get => state.Get<uint>("Flags");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeGeneratorBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithFlags(uint value)
     {
-        Flags = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeGeneratorBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool IsSaveGenerated
-    {
-        get => state.Get<bool>("IsSaveGenerated");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeGeneratorBuilderAssignments.GetIsSaveGeneratedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIsSaveGenerated(bool value)
     {
-        IsSaveGenerated = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeGeneratorBuilderAssignments.GetIsSaveGeneratedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public bool IsToKeepInSaveAsRelease
-    {
-        get => state.Get<bool>("IsToKeepInSaveAsRelease");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeGeneratorBuilderAssignments.GetIsToKeepInSaveAsReleaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithIsToKeepInSaveAsRelease(bool value)
     {
-        IsToKeepInSaveAsRelease = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeGeneratorBuilderAssignments.GetIsToKeepInSaveAsReleaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CPlugCrystalBuilderMembers3<TSelf> : CPlugCrystalBuilderMembers2<TSelf> where TSelf : CPlugCrystalBuilderMembers3<TSelf>
 {
     private protected CPlugCrystalBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCrystal> state) : base(state) { }
-    public byte[]? EditorData
-    {
-        get => state.Get<byte[]?>("EditorData");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetEditorDataAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithEditorData(params byte[]? value)
     {
-        EditorData = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetEditorDataAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithEditorData(IEnumerable<byte> values)
     {
         return WithEditorData(values.ToArray());
     }
-    public int EditorDataFlags
-    {
-        get => state.Get<int>("EditorDataFlags");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetEditorDataFlagsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithEditorDataFlags(int value)
     {
-        EditorDataFlags = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetEditorDataFlagsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public int[]? FaceSmoothingGroupIndices
-    {
-        get => state.Get<int[]?>("FaceSmoothingGroupIndices");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetFaceSmoothingGroupIndicesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithFaceSmoothingGroupIndices(params int[]? value)
     {
-        FaceSmoothingGroupIndices = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetFaceSmoothingGroupIndicesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithFaceSmoothingGroupIndices(IEnumerable<int> values)
     {
         return WithFaceSmoothingGroupIndices(values.ToArray());
     }
-    public float[]? SmoothingGroups
-    {
-        get => state.Get<float[]?>("SmoothingGroups");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetSmoothingGroupsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithSmoothingGroups(params float[]? value)
     {
-        SmoothingGroups = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetSmoothingGroupsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithSmoothingGroups(IEnumerable<float> values)
@@ -182,12 +132,6 @@ public partial class CPlugCrystalBuilder : CPlugCrystalBuilderBase<CPlugCrystalB
         node.Chunks.Add(chunk09003003);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugCrystal node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCrystal.Chunk09003000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09003000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCrystal.Chunk09003002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09003002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCrystal.Chunk09003003>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk09003003 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugCrystal CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugCrystal();
@@ -201,13 +145,6 @@ public partial class CPlugCrystalBuilder : CPlugCrystalBuilderBase<CPlugCrystalB
         node.Chunks.Add(chunk09051000);
         return node;
     }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugCrystal node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCrystal.Chunk09003000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09003000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCrystal.Chunk09003002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09003002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCrystal.Chunk09003003>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk09003003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTreeGenerator.Chunk09051000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09051000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugCrystal CreateRecipe2(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugCrystal();
@@ -218,12 +155,6 @@ public partial class CPlugCrystalBuilder : CPlugCrystalBuilderBase<CPlugCrystalB
         var chunk09051000 = new global::GBX.NET.Engines.Plug.CPlugTreeGenerator.Chunk09051000();
         node.Chunks.Add(chunk09051000);
         return node;
-    }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Plug.CPlugCrystal node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCrystal.Chunk09003000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09003000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCrystal.Chunk09003003>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk09003003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTreeGenerator.Chunk09051000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09051000 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Plug.CPlugCrystal CreateRecipe3(GameVersion game)
     {
@@ -244,15 +175,6 @@ public partial class CPlugCrystalBuilder : CPlugCrystalBuilderBase<CPlugCrystalB
         node.Chunks.Add(chunk09051000);
         return node;
     }
-    private static void ValidateRecipe3(global::GBX.NET.Engines.Plug.CPlugCrystal node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCrystal.Chunk09003003>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk09003003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCrystal.Chunk09003004>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk09003004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCrystal.Chunk09003005>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk09003005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCrystal.Chunk09003006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09003006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCrystal.Chunk09003007>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk09003007 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTreeGenerator.Chunk09051000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09051000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugCrystal CreateRecipe4(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugCrystal();
@@ -271,19 +193,6 @@ public partial class CPlugCrystalBuilder : CPlugCrystalBuilderBase<CPlugCrystalB
         var chunk09051000 = new global::GBX.NET.Engines.Plug.CPlugTreeGenerator.Chunk09051000();
         node.Chunks.Add(chunk09051000);
         return node;
-    }
-    private static void ValidateRecipe4(global::GBX.NET.Engines.Plug.CPlugCrystal node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCrystal.Chunk09003003>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk09003003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCrystal.Chunk09003004>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk09003004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCrystal.Chunk09003005>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk09003005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCrystal.Chunk09003006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09003006 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCrystal.Chunk09003007>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk09003007 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTreeGenerator.Chunk09051000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09051000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugCrystal node, GameVersion game)
-    {
-        if (node.Materials is null) throw new MemberNullException("Materials");
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -306,14 +215,9 @@ public partial class CPlugCrystalBuilder : CPlugCrystalBuilderBase<CPlugCrystalB
             var node = CPlugCrystalBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CPlugCrystalBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CPlugCrystalBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCrystal node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCrystal node);
     }
     public partial class TMPU : CPlugCrystalBuilderMembers1<TMPU>
     {
@@ -324,36 +228,21 @@ public partial class CPlugCrystalBuilder : CPlugCrystalBuilderBase<CPlugCrystalB
             var node = CPlugCrystalBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CPlugCrystalBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CPlugCrystalBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCrystal node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCrystal node);
     }
     public partial class TMSX : CPlugCrystalBuilderMembers2<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCrystal> state) : base(state) { }
-        public int GenerateMode
-        {
-            get => state.Get<int>("GenerateMode");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetGenerateModeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-        }
         public TMSX WithGenerateMode(int value)
         {
-            GenerateMode = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetGenerateModeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
-        }
-        public float SpriteSize
-        {
-            get => state.Get<float>("SpriteSize");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetSpriteSizeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMSX WithSpriteSize(float value)
         {
-            SpriteSize = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetSpriteSizeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.Plug.IPlugCrystalTMSX BuildInterface() => Build();
@@ -362,36 +251,21 @@ public partial class CPlugCrystalBuilder : CPlugCrystalBuilderBase<CPlugCrystalB
             var node = CPlugCrystalBuilder.CreateRecipe1(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CPlugCrystalBuilder.ValidateRecipe1(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CPlugCrystalBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCrystal node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCrystal node);
     }
     public partial class TMNESWC : CPlugCrystalBuilderMembers2<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCrystal> state) : base(state) { }
-        public int GenerateMode
-        {
-            get => state.Get<int>("GenerateMode");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetGenerateModeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-        }
         public TMNESWC WithGenerateMode(int value)
         {
-            GenerateMode = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetGenerateModeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
-        }
-        public float SpriteSize
-        {
-            get => state.Get<float>("SpriteSize");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetSpriteSizeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMNESWC WithSpriteSize(float value)
         {
-            SpriteSize = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetSpriteSizeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.Plug.IPlugCrystalTMNESWC BuildInterface() => Build();
@@ -400,36 +274,21 @@ public partial class CPlugCrystalBuilder : CPlugCrystalBuilderBase<CPlugCrystalB
             var node = CPlugCrystalBuilder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CPlugCrystalBuilder.ValidateRecipe1(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CPlugCrystalBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCrystal node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCrystal node);
     }
     public partial class VSK5 : CPlugCrystalBuilderMembers2<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCrystal> state) : base(state) { }
-        public int GenerateMode
-        {
-            get => state.Get<int>("GenerateMode");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetGenerateModeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-        }
         public VSK5 WithGenerateMode(int value)
         {
-            GenerateMode = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetGenerateModeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
-        }
-        public float SpriteSize
-        {
-            get => state.Get<float>("SpriteSize");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetSpriteSizeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public VSK5 WithSpriteSize(float value)
         {
-            SpriteSize = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetSpriteSizeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.Plug.IPlugCrystalVSK5 BuildInterface() => Build();
@@ -438,36 +297,21 @@ public partial class CPlugCrystalBuilder : CPlugCrystalBuilderBase<CPlugCrystalB
             var node = CPlugCrystalBuilder.CreateRecipe1(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CPlugCrystalBuilder.ValidateRecipe1(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CPlugCrystalBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCrystal node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCrystal node);
     }
     public partial class TMF : CPlugCrystalBuilderMembers2<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCrystal> state) : base(state) { }
-        public int GenerateMode
-        {
-            get => state.Get<int>("GenerateMode");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetGenerateModeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-        }
         public TMF WithGenerateMode(int value)
         {
-            GenerateMode = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetGenerateModeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
-        }
-        public float SpriteSize
-        {
-            get => state.Get<float>("SpriteSize");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetSpriteSizeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         }
         public TMF WithSpriteSize(float value)
         {
-            SpriteSize = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCrystalBuilderAssignments.GetSpriteSizeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
             return this;
         }
         public global::GBX.NET.Interfaces.Plug.IPlugCrystalTMF BuildInterface() => Build();
@@ -476,14 +320,9 @@ public partial class CPlugCrystalBuilder : CPlugCrystalBuilderBase<CPlugCrystalB
             var node = CPlugCrystalBuilder.CreateRecipe1(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CPlugCrystalBuilder.ValidateRecipe1(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CPlugCrystalBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCrystal node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCrystal node);
     }
     public partial class MP3 : CPlugCrystalBuilderMembers2<MP3>
     {
@@ -494,14 +333,9 @@ public partial class CPlugCrystalBuilder : CPlugCrystalBuilderBase<CPlugCrystalB
             var node = CPlugCrystalBuilder.CreateRecipe2(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CPlugCrystalBuilder.ValidateRecipe2(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CPlugCrystalBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCrystal node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCrystal node);
     }
     public partial class TMT : CPlugCrystalBuilderMembers2<TMT>
     {
@@ -512,14 +346,9 @@ public partial class CPlugCrystalBuilder : CPlugCrystalBuilderBase<CPlugCrystalB
             var node = CPlugCrystalBuilder.CreateRecipe2(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugCrystalBuilder.ValidateRecipe2(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugCrystalBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCrystal node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCrystal node);
     }
     public partial class MP4 : CPlugCrystalBuilderMembers3<MP4>
     {
@@ -530,14 +359,9 @@ public partial class CPlugCrystalBuilder : CPlugCrystalBuilderBase<CPlugCrystalB
             var node = CPlugCrystalBuilder.CreateRecipe3(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugCrystalBuilder.ValidateRecipe3(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugCrystalBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCrystal node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCrystal node);
     }
     public partial class TM2020 : CPlugCrystalBuilderMembers3<TM2020>
     {
@@ -548,13 +372,8 @@ public partial class CPlugCrystalBuilder : CPlugCrystalBuilderBase<CPlugCrystalB
             var node = CPlugCrystalBuilder.CreateRecipe4(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugCrystalBuilder.ValidateRecipe4(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugCrystalBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCrystal node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCrystal node);
     }
 }

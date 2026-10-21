@@ -36,14 +36,9 @@ public abstract class CGamePlayerProfileChunk_ScriptPersistentTraitsBuilderBase<
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ScriptPersistentTraits> state;
     private protected CGamePlayerProfileChunk_ScriptPersistentTraitsBuilderBase() => state = new();
     private protected CGamePlayerProfileChunk_ScriptPersistentTraitsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ScriptPersistentTraits> state) => this.state = state;
-    public global::GBX.NET.Engines.Script.CScriptTraitsPersistent? ScriptPersistentTraits
-    {
-        get => state.Get<global::GBX.NET.Engines.Script.CScriptTraitsPersistent?>("ScriptPersistentTraits");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_ScriptPersistentTraitsBuilderAssignments.GetScriptPersistentTraitsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithScriptPersistentTraits(global::GBX.NET.Engines.Script.CScriptTraitsPersistent? value)
     {
-        ScriptPersistentTraits = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_ScriptPersistentTraitsBuilderAssignments.GetScriptPersistentTraitsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -55,13 +50,6 @@ public partial class CGamePlayerProfileChunk_ScriptPersistentTraitsBuilder : CGa
         var chunk03170000 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ScriptPersistentTraits.Chunk03170000(game);
         node.Chunks.Add(chunk03170000);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ScriptPersistentTraits node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ScriptPersistentTraits.Chunk03170000>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk03170000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ScriptPersistentTraits node, GameVersion game)
-    {
     }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -78,14 +66,9 @@ public partial class CGamePlayerProfileChunk_ScriptPersistentTraitsBuilder : CGa
             var node = CGamePlayerProfileChunk_ScriptPersistentTraitsBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CGamePlayerProfileChunk_ScriptPersistentTraitsBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CGamePlayerProfileChunk_ScriptPersistentTraitsBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ScriptPersistentTraits node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ScriptPersistentTraits node);
     }
     public partial class TMT : CGamePlayerProfileChunk_ScriptPersistentTraitsBuilderBase<TMT>
     {
@@ -96,14 +79,9 @@ public partial class CGamePlayerProfileChunk_ScriptPersistentTraitsBuilder : CGa
             var node = CGamePlayerProfileChunk_ScriptPersistentTraitsBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGamePlayerProfileChunk_ScriptPersistentTraitsBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGamePlayerProfileChunk_ScriptPersistentTraitsBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ScriptPersistentTraits node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ScriptPersistentTraits node);
     }
     public partial class MP4 : CGamePlayerProfileChunk_ScriptPersistentTraitsBuilderBase<MP4>
     {
@@ -114,14 +92,9 @@ public partial class CGamePlayerProfileChunk_ScriptPersistentTraitsBuilder : CGa
             var node = CGamePlayerProfileChunk_ScriptPersistentTraitsBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGamePlayerProfileChunk_ScriptPersistentTraitsBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGamePlayerProfileChunk_ScriptPersistentTraitsBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ScriptPersistentTraits node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ScriptPersistentTraits node);
     }
     public partial class TM2020 : CGamePlayerProfileChunk_ScriptPersistentTraitsBuilderBase<TM2020>
     {
@@ -132,13 +105,8 @@ public partial class CGamePlayerProfileChunk_ScriptPersistentTraitsBuilder : CGa
             var node = CGamePlayerProfileChunk_ScriptPersistentTraitsBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGamePlayerProfileChunk_ScriptPersistentTraitsBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGamePlayerProfileChunk_ScriptPersistentTraitsBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ScriptPersistentTraits node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ScriptPersistentTraits node);
     }
 }

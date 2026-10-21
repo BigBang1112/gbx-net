@@ -46,13 +46,6 @@ public partial class CPlugVehicleGearBoxBuilder : CPlugVehicleGearBoxBuilderBase
         node.Chunks.Add(chunk09094001);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugVehicleGearBox node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleGearBox.Chunk09094001>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk09094001 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugVehicleGearBox node, GameVersion game)
-    {
-    }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
@@ -66,14 +59,9 @@ public partial class CPlugVehicleGearBoxBuilder : CPlugVehicleGearBoxBuilderBase
             var node = CPlugVehicleGearBoxBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugVehicleGearBoxBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugVehicleGearBoxBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleGearBox node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleGearBox node);
     }
     public partial class TM2020 : CPlugVehicleGearBoxBuilderBase<TM2020>
     {
@@ -84,13 +72,8 @@ public partial class CPlugVehicleGearBoxBuilder : CPlugVehicleGearBoxBuilderBase
             var node = CPlugVehicleGearBoxBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugVehicleGearBoxBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugVehicleGearBoxBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleGearBox node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleGearBox node);
     }
 }

@@ -36,14 +36,9 @@ public abstract class CMwCmdAffectIdentEnumBuilderBase<TSelf> where TSelf : CMwC
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdentEnum> state;
     private protected CMwCmdAffectIdentEnumBuilderBase() => state = new();
     private protected CMwCmdAffectIdentEnumBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdentEnum> state) => this.state = state;
-    public global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Value
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdExp?>("Value");
-        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdAffectIdentBuilderAssignments.GetValueAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithValue(global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value)
     {
-        Value = value;
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdAffectIdentBuilderAssignments.GetValueAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithValueReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value)
@@ -62,13 +57,6 @@ public partial class CMwCmdAffectIdentEnumBuilder : CMwCmdAffectIdentEnumBuilder
         node.Chunks.Add(chunk01032000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdentEnum node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdent.Chunk01032000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk01032000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdentEnum node, GameVersion game)
-    {
-    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -84,14 +72,9 @@ public partial class CMwCmdAffectIdentEnumBuilder : CMwCmdAffectIdentEnumBuilder
             var node = CMwCmdAffectIdentEnumBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CMwCmdAffectIdentEnumBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CMwCmdAffectIdentEnumBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdentEnum node);
-        partial void ValidateNode(global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdentEnum node);
     }
     public partial class TMPU : CMwCmdAffectIdentEnumBuilderBase<TMPU>
     {
@@ -102,14 +85,9 @@ public partial class CMwCmdAffectIdentEnumBuilder : CMwCmdAffectIdentEnumBuilder
             var node = CMwCmdAffectIdentEnumBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CMwCmdAffectIdentEnumBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CMwCmdAffectIdentEnumBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdentEnum node);
-        partial void ValidateNode(global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdentEnum node);
     }
     public partial class TMSX : CMwCmdAffectIdentEnumBuilderBase<TMSX>
     {
@@ -120,14 +98,9 @@ public partial class CMwCmdAffectIdentEnumBuilder : CMwCmdAffectIdentEnumBuilder
             var node = CMwCmdAffectIdentEnumBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CMwCmdAffectIdentEnumBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CMwCmdAffectIdentEnumBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdentEnum node);
-        partial void ValidateNode(global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdentEnum node);
     }
     public partial class TMNESWC : CMwCmdAffectIdentEnumBuilderBase<TMNESWC>
     {
@@ -138,14 +111,9 @@ public partial class CMwCmdAffectIdentEnumBuilder : CMwCmdAffectIdentEnumBuilder
             var node = CMwCmdAffectIdentEnumBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CMwCmdAffectIdentEnumBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CMwCmdAffectIdentEnumBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdentEnum node);
-        partial void ValidateNode(global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdentEnum node);
     }
     public partial class VSK5 : CMwCmdAffectIdentEnumBuilderBase<VSK5>
     {
@@ -156,14 +124,9 @@ public partial class CMwCmdAffectIdentEnumBuilder : CMwCmdAffectIdentEnumBuilder
             var node = CMwCmdAffectIdentEnumBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CMwCmdAffectIdentEnumBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CMwCmdAffectIdentEnumBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdentEnum node);
-        partial void ValidateNode(global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdentEnum node);
     }
     public partial class TMF : CMwCmdAffectIdentEnumBuilderBase<TMF>
     {
@@ -174,13 +137,8 @@ public partial class CMwCmdAffectIdentEnumBuilder : CMwCmdAffectIdentEnumBuilder
             var node = CMwCmdAffectIdentEnumBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CMwCmdAffectIdentEnumBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CMwCmdAffectIdentEnumBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdentEnum node);
-        partial void ValidateNode(global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdentEnum node);
     }
 }

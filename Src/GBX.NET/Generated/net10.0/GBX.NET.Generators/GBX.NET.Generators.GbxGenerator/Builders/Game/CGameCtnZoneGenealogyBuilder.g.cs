@@ -36,44 +36,24 @@ public abstract class CGameCtnZoneGenealogyBuilderBase<TSelf> where TSelf : CGam
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy> state;
     private protected CGameCtnZoneGenealogyBuilderBase() => state = new();
     private protected CGameCtnZoneGenealogyBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy> state) => this.state = state;
-    public int CurrentIndex
-    {
-        get => state.Get<int>("CurrentIndex");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneGenealogyBuilderAssignments.GetCurrentIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithCurrentIndex(int value)
     {
-        CurrentIndex = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneGenealogyBuilderAssignments.GetCurrentIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public string? CurrentZoneId
-    {
-        get => state.Get<string?>("CurrentZoneId");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneGenealogyBuilderAssignments.GetCurrentZoneIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithCurrentZoneId(string? value)
     {
-        CurrentZoneId = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneGenealogyBuilderAssignments.GetCurrentZoneIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public Direction Dir
-    {
-        get => state.Get<Direction>("Dir");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneGenealogyBuilderAssignments.GetDirAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDir(Direction value)
     {
-        Dir = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneGenealogyBuilderAssignments.GetDirAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public string[]? ZoneIds
-    {
-        get => state.Get<string[]?>("ZoneIds");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneGenealogyBuilderAssignments.GetZoneIdsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithZoneIds(params string[]? value)
     {
-        ZoneIds = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneGenealogyBuilderAssignments.GetZoneIdsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithZoneIds(IEnumerable<string> values)
@@ -90,13 +70,6 @@ public partial class CGameCtnZoneGenealogyBuilder : CGameCtnZoneGenealogyBuilder
         node.Chunks.Add(chunk0311D002);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy.Chunk0311D002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0311D002 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy node, GameVersion game)
-    {
-    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -112,14 +85,9 @@ public partial class CGameCtnZoneGenealogyBuilder : CGameCtnZoneGenealogyBuilder
             var node = CGameCtnZoneGenealogyBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CGameCtnZoneGenealogyBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CGameCtnZoneGenealogyBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy node);
     }
     public partial class TMT : CGameCtnZoneGenealogyBuilderBase<TMT>
     {
@@ -130,14 +98,9 @@ public partial class CGameCtnZoneGenealogyBuilder : CGameCtnZoneGenealogyBuilder
             var node = CGameCtnZoneGenealogyBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameCtnZoneGenealogyBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameCtnZoneGenealogyBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy node);
     }
     public partial class MP4 : CGameCtnZoneGenealogyBuilderBase<MP4>
     {
@@ -148,14 +111,9 @@ public partial class CGameCtnZoneGenealogyBuilder : CGameCtnZoneGenealogyBuilder
             var node = CGameCtnZoneGenealogyBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameCtnZoneGenealogyBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameCtnZoneGenealogyBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy node);
     }
     public partial class TM2020 : CGameCtnZoneGenealogyBuilderBase<TM2020>
     {
@@ -166,13 +124,8 @@ public partial class CGameCtnZoneGenealogyBuilder : CGameCtnZoneGenealogyBuilder
             var node = CGameCtnZoneGenealogyBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameCtnZoneGenealogyBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameCtnZoneGenealogyBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy node);
     }
 }

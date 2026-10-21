@@ -36,84 +36,44 @@ public abstract class CGameCtnMediaBlockFxCameraMapBuilderBase<TSelf> where TSel
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraMap> state;
     private protected CGameCtnMediaBlockFxCameraMapBuilderBase() => state = new();
     private protected CGameCtnMediaBlockFxCameraMapBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraMap> state) => this.state = state;
-    public byte ArchiveMarker
-    {
-        get => state.Get<byte>("ArchiveMarker");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxCameraMapBuilderAssignments.GetArchiveMarkerAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithArchiveMarker(byte value)
     {
-        ArchiveMarker = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxCameraMapBuilderAssignments.GetArchiveMarkerAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public TimeSingle End
-    {
-        get => state.Get<TimeSingle>("End");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxCameraMapBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEnd(TimeSingle value)
     {
-        End = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxCameraMapBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float FarZ
-    {
-        get => state.Get<float>("FarZ");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxCameraMapBuilderAssignments.GetFarZAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFarZ(float value)
     {
-        FarZ = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxCameraMapBuilderAssignments.GetFarZAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float Fov
-    {
-        get => state.Get<float>("Fov");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxCameraMapBuilderAssignments.GetFovAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFov(float value)
     {
-        Fov = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxCameraMapBuilderAssignments.GetFovAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public PackDesc? Image
-    {
-        get => state.Get<PackDesc?>("Image");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxCameraMapBuilderAssignments.GetImageAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithImage(PackDesc? value)
     {
-        Image = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxCameraMapBuilderAssignments.GetImageAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float NearZ
-    {
-        get => state.Get<float>("NearZ");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxCameraMapBuilderAssignments.GetNearZAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithNearZ(float value)
     {
-        NearZ = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxCameraMapBuilderAssignments.GetNearZAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public TimeSingle Start
-    {
-        get => state.Get<TimeSingle>("Start");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxCameraMapBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStart(TimeSingle value)
     {
-        Start = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxCameraMapBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public Iso4 Transform
-    {
-        get => state.Get<Iso4>("Transform");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxCameraMapBuilderAssignments.GetTransformAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithTransform(Iso4 value)
     {
-        Transform = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxCameraMapBuilderAssignments.GetTransformAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -127,14 +87,6 @@ public partial class CGameCtnMediaBlockFxCameraMapBuilder : CGameCtnMediaBlockFx
         var chunk03139001 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraMap.Chunk03139001();
         node.Chunks.Add(chunk03139001);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraMap node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraMap.Chunk03139000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03139000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraMap.Chunk03139001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03139001 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraMap node, GameVersion game)
-    {
     }
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -150,14 +102,9 @@ public partial class CGameCtnMediaBlockFxCameraMapBuilder : CGameCtnMediaBlockFx
             var node = CGameCtnMediaBlockFxCameraMapBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameCtnMediaBlockFxCameraMapBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameCtnMediaBlockFxCameraMapBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraMap node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraMap node);
     }
     public partial class MP4 : CGameCtnMediaBlockFxCameraMapBuilderBase<MP4>
     {
@@ -168,14 +115,9 @@ public partial class CGameCtnMediaBlockFxCameraMapBuilder : CGameCtnMediaBlockFx
             var node = CGameCtnMediaBlockFxCameraMapBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameCtnMediaBlockFxCameraMapBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameCtnMediaBlockFxCameraMapBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraMap node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraMap node);
     }
     public partial class TM2020 : CGameCtnMediaBlockFxCameraMapBuilderBase<TM2020>
     {
@@ -186,13 +128,8 @@ public partial class CGameCtnMediaBlockFxCameraMapBuilder : CGameCtnMediaBlockFx
             var node = CGameCtnMediaBlockFxCameraMapBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameCtnMediaBlockFxCameraMapBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameCtnMediaBlockFxCameraMapBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraMap node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraMap node);
     }
 }

@@ -36,34 +36,19 @@ public abstract class CGameCtnMediaBlockManialinkBuilderBase<TSelf> where TSelf 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockManialink> state;
     private protected CGameCtnMediaBlockManialinkBuilderBase() => state = new();
     private protected CGameCtnMediaBlockManialinkBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockManialink> state) => this.state = state;
-    public TimeSingle End
-    {
-        get => state.Get<TimeSingle>("End");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockManialinkBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithEnd(TimeSingle value)
     {
-        End = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockManialinkBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public string? ManialinkUrl
-    {
-        get => state.Get<string?>("ManialinkUrl");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockManialinkBuilderAssignments.GetManialinkUrlAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithManialinkUrl(string? value)
     {
-        ManialinkUrl = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockManialinkBuilderAssignments.GetManialinkUrlAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public TimeSingle Start
-    {
-        get => state.Get<TimeSingle>("Start");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockManialinkBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStart(TimeSingle value)
     {
-        Start = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockManialinkBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -76,13 +61,6 @@ public partial class CGameCtnMediaBlockManialinkBuilder : CGameCtnMediaBlockMani
         chunk0312A001.Version = 0;
         node.Chunks.Add(chunk0312A001);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockManialink node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockManialink.Chunk0312A001>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312A001 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockManialink node, GameVersion game)
-    {
     }
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -98,14 +76,9 @@ public partial class CGameCtnMediaBlockManialinkBuilder : CGameCtnMediaBlockMani
             var node = CGameCtnMediaBlockManialinkBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameCtnMediaBlockManialinkBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameCtnMediaBlockManialinkBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockManialink node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockManialink node);
     }
     public partial class MP4 : CGameCtnMediaBlockManialinkBuilderBase<MP4>
     {
@@ -116,14 +89,9 @@ public partial class CGameCtnMediaBlockManialinkBuilder : CGameCtnMediaBlockMani
             var node = CGameCtnMediaBlockManialinkBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameCtnMediaBlockManialinkBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameCtnMediaBlockManialinkBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockManialink node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockManialink node);
     }
     public partial class TM2020 : CGameCtnMediaBlockManialinkBuilderBase<TM2020>
     {
@@ -134,13 +102,8 @@ public partial class CGameCtnMediaBlockManialinkBuilder : CGameCtnMediaBlockMani
             var node = CGameCtnMediaBlockManialinkBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameCtnMediaBlockManialinkBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameCtnMediaBlockManialinkBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockManialink node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockManialink node);
     }
 }

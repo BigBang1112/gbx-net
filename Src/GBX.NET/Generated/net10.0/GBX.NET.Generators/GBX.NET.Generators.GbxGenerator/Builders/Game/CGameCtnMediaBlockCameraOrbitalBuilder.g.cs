@@ -36,14 +36,9 @@ public abstract class CGameCtnMediaBlockCameraOrbitalBuilderBase<TSelf> where TS
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraOrbital> state;
     private protected CGameCtnMediaBlockCameraOrbitalBuilderBase() => state = new();
     private protected CGameCtnMediaBlockCameraOrbitalBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraOrbital> state) => this.state = state;
-    public List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraOrbital.Key>? Keys
-    {
-        get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraOrbital.Key>?>("Keys");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraOrbitalBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraOrbital.Key>? value)
     {
-        Keys = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraOrbitalBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithKeys(params global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraOrbital.Key[] values)
@@ -64,23 +59,12 @@ public partial class CGameCtnMediaBlockCameraOrbitalBuilder : CGameCtnMediaBlock
         node.Chunks.Add(chunk030A0000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraOrbital node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraOrbital.Chunk030A0000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk030A0000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraOrbital CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraOrbital();
         var chunk030A0001 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraOrbital.Chunk030A0001(game);
         node.Chunks.Add(chunk030A0001);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraOrbital node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraOrbital.Chunk030A0001>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk030A0001 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraOrbital node, GameVersion game)
-    {
     }
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
@@ -98,14 +82,9 @@ public partial class CGameCtnMediaBlockCameraOrbitalBuilder : CGameCtnMediaBlock
             var node = CGameCtnMediaBlockCameraOrbitalBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CGameCtnMediaBlockCameraOrbitalBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CGameCtnMediaBlockCameraOrbitalBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraOrbital node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraOrbital node);
     }
     public partial class TMF : CGameCtnMediaBlockCameraOrbitalBuilderBase<TMF>
     {
@@ -116,14 +95,9 @@ public partial class CGameCtnMediaBlockCameraOrbitalBuilder : CGameCtnMediaBlock
             var node = CGameCtnMediaBlockCameraOrbitalBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CGameCtnMediaBlockCameraOrbitalBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CGameCtnMediaBlockCameraOrbitalBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraOrbital node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraOrbital node);
     }
     public partial class TMT : CGameCtnMediaBlockCameraOrbitalBuilderBase<TMT>
     {
@@ -134,14 +108,9 @@ public partial class CGameCtnMediaBlockCameraOrbitalBuilder : CGameCtnMediaBlock
             var node = CGameCtnMediaBlockCameraOrbitalBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameCtnMediaBlockCameraOrbitalBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameCtnMediaBlockCameraOrbitalBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraOrbital node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraOrbital node);
     }
     public partial class MP4 : CGameCtnMediaBlockCameraOrbitalBuilderBase<MP4>
     {
@@ -152,14 +121,9 @@ public partial class CGameCtnMediaBlockCameraOrbitalBuilder : CGameCtnMediaBlock
             var node = CGameCtnMediaBlockCameraOrbitalBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameCtnMediaBlockCameraOrbitalBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameCtnMediaBlockCameraOrbitalBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraOrbital node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraOrbital node);
     }
     public partial class TM2020 : CGameCtnMediaBlockCameraOrbitalBuilderBase<TM2020>
     {
@@ -170,13 +134,8 @@ public partial class CGameCtnMediaBlockCameraOrbitalBuilder : CGameCtnMediaBlock
             var node = CGameCtnMediaBlockCameraOrbitalBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameCtnMediaBlockCameraOrbitalBuilder.ValidateRecipe1(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameCtnMediaBlockCameraOrbitalBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraOrbital node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraOrbital node);
     }
 }

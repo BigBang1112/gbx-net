@@ -36,14 +36,9 @@ public abstract class CPlugSolidBuilderBase<TSelf> where TSelf : CPlugSolidBuild
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid> state;
     private protected CPlugSolidBuilderBase() => state = new();
     private protected CPlugSolidBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid> state) => this.state = state;
-    public global::GBX.NET.Engines.Plug.CPlugSolid? Model
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugSolid?>("Model");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithModel(global::GBX.NET.Engines.Plug.CPlugSolid? value)
     {
-        Model = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid> value)
@@ -52,24 +47,14 @@ public abstract class CPlugSolidBuilderBase<TSelf> where TSelf : CPlugSolidBuild
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetModelReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public int PlugIdCounter
-    {
-        get => state.Get<int>("PlugIdCounter");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetPlugIdCounterAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithPlugIdCounter(int value)
     {
-        PlugIdCounter = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetPlugIdCounterAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugTree? Tree
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugTree?>("Tree");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetTreeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithTree(global::GBX.NET.Engines.Plug.CPlugTree? value)
     {
-        Tree = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetTreeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithTreeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugTree> value)
@@ -78,150 +63,85 @@ public abstract class CPlugSolidBuilderBase<TSelf> where TSelf : CPlugSolidBuild
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetTreeReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public bool UseModel
-    {
-        get => state.Get<bool>("UseModel");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetUseModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithUseModel(bool value)
     {
-        UseModel = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetUseModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CPlugSolidBuilderMembers1<TSelf> : CPlugSolidBuilderBase<TSelf> where TSelf : CPlugSolidBuilderMembers1<TSelf>
 {
     private protected CPlugSolidBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid> state) : base(state) { }
-    public bool? ModelIsExternal
-    {
-        get => state.Get<bool?>("ModelIsExternal");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetModelIsExternalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithModelIsExternal(bool? value)
     {
-        ModelIsExternal = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetModelIsExternalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CPlugSolidBuilderMembers2<TSelf> : CPlugSolidBuilderBase<TSelf> where TSelf : CPlugSolidBuilderMembers2<TSelf>
 {
     private protected CPlugSolidBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid> state) : base(state) { }
-    public float AngularFluidFriction
-    {
-        get => state.Get<float>("AngularFluidFriction");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetAngularFluidFrictionAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithAngularFluidFriction(float value)
     {
-        AngularFluidFriction = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetAngularFluidFrictionAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public Vec3 CenterOfMass
-    {
-        get => state.Get<Vec3>("CenterOfMass");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetCenterOfMassAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithCenterOfMass(Vec3 value)
     {
-        CenterOfMass = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetCenterOfMassAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public Mat3 InverseInertiaMatrix
-    {
-        get => state.Get<Mat3>("InverseInertiaMatrix");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetInverseInertiaMatrixAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithInverseInertiaMatrix(Mat3 value)
     {
-        InverseInertiaMatrix = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetInverseInertiaMatrixAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float LinearFluidFriction
-    {
-        get => state.Get<float>("LinearFluidFriction");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetLinearFluidFrictionAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithLinearFluidFriction(float value)
     {
-        LinearFluidFriction = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetLinearFluidFrictionAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float Mass
-    {
-        get => state.Get<float>("Mass");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetMassAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithMass(float value)
     {
-        Mass = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetMassAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float MaxDistPerStep
-    {
-        get => state.Get<float>("MaxDistPerStep");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetMaxDistPerStepAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithMaxDistPerStep(float value)
     {
-        MaxDistPerStep = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetMaxDistPerStepAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CPlugSolidBuilderMembers3<TSelf> : CPlugSolidBuilderMembers2<TSelf> where TSelf : CPlugSolidBuilderMembers3<TSelf>
 {
     private protected CPlugSolidBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid> state) : base(state) { }
-    public bool? ModelIsExternal
-    {
-        get => state.Get<bool?>("ModelIsExternal");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetModelIsExternalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithModelIsExternal(bool? value)
     {
-        ModelIsExternal = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetModelIsExternalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public byte TileCountU
-    {
-        get => state.Get<byte>("TileCountU");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetTileCountUAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     }
     public TSelf WithTileCountU(byte value)
     {
-        TileCountU = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetTileCountUAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CPlugSolidBuilderMembers4<TSelf> : CPlugSolidBuilderMembers1<TSelf> where TSelf : CPlugSolidBuilderMembers4<TSelf>
 {
     private protected CPlugSolidBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid> state) : base(state) { }
-    public DateTime? FileWriteTime
-    {
-        get => state.Get<DateTime?>("FileWriteTime");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetFileWriteTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithFileWriteTime(DateTime? value)
     {
-        FileWriteTime = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetFileWriteTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool HasPreLightGen
-    {
-        get => state.Get<bool>("HasPreLightGen");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetHasPreLightGenAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithHasPreLightGen(bool value)
     {
-        HasPreLightGen = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetHasPreLightGenAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>? ParticleEmitterModels
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>?>("ParticleEmitterModels");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetParticleEmitterModelsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithParticleEmitterModels(NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>? value)
     {
-        ParticleEmitterModels = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetParticleEmitterModelsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithParticleEmitterModels(params global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel[] values)
@@ -232,52 +152,32 @@ public abstract class CPlugSolidBuilderMembers4<TSelf> : CPlugSolidBuilderMember
     {
         return WithParticleEmitterModels(values.ToArray());
     }
-    public global::GBX.NET.Engines.Plug.CPlugSolid.LocatedInstance[]? ParticleInstances
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugSolid.LocatedInstance[]?>("ParticleInstances");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetParticleInstancesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithParticleInstances(params global::GBX.NET.Engines.Plug.CPlugSolid.LocatedInstance[]? value)
     {
-        ParticleInstances = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetParticleInstancesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithParticleInstances(IEnumerable<global::GBX.NET.Engines.Plug.CPlugSolid.LocatedInstance> values)
     {
         return WithParticleInstances(values.ToArray());
     }
-    public global::GBX.NET.Engines.Plug.CPlugSolid.PreLightGen? SolidPreLightGen
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugSolid.PreLightGen?>("SolidPreLightGen");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetSolidPreLightGenAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithSolidPreLightGen(global::GBX.NET.Engines.Plug.CPlugSolid.PreLightGen? value)
     {
-        SolidPreLightGen = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetSolidPreLightGenAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugSolid.LocatedInstance[]? SoundInstances
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugSolid.LocatedInstance[]?>("SoundInstances");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetSoundInstancesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSoundInstances(params global::GBX.NET.Engines.Plug.CPlugSolid.LocatedInstance[]? value)
     {
-        SoundInstances = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetSoundInstancesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithSoundInstances(IEnumerable<global::GBX.NET.Engines.Plug.CPlugSolid.LocatedInstance> values)
     {
         return WithSoundInstances(values.ToArray());
     }
-    public NodeRefList<global::GBX.NET.Engines.Plug.CPlugSound>? Sounds
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugSound>?>("Sounds");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetSoundsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithSounds(NodeRefList<global::GBX.NET.Engines.Plug.CPlugSound>? value)
     {
-        Sounds = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetSoundsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithSounds(params global::GBX.NET.Engines.Plug.CPlugSound[] values)
@@ -292,14 +192,9 @@ public abstract class CPlugSolidBuilderMembers4<TSelf> : CPlugSolidBuilderMember
 public abstract class CPlugSolidBuilderMembers5<TSelf> : CPlugSolidBuilderMembers4<TSelf> where TSelf : CPlugSolidBuilderMembers5<TSelf>
 {
     private protected CPlugSolidBuilderMembers5(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid> state) : base(state) { }
-    public global::GBX.NET.Engines.Plug.CPlugSolid.LodNormalMap? SolidLodNormalMap
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugSolid.LodNormalMap?>("SolidLodNormalMap");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetSolidLodNormalMapAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithSolidLodNormalMap(global::GBX.NET.Engines.Plug.CPlugSolid.LodNormalMap? value)
     {
-        SolidLodNormalMap = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetSolidLodNormalMapAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
 }
@@ -322,15 +217,6 @@ public partial class CPlugSolidBuilder : CPlugSolidBuilderBase<CPlugSolidBuilder
         node.Chunks.Add(chunk0900500F);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugSolid node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09005000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09005007 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk0900500C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900500C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk0900500D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900500D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk0900500E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900500E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk0900500F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900500F is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugSolid CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugSolid();
@@ -343,13 +229,6 @@ public partial class CPlugSolidBuilder : CPlugSolidBuilderBase<CPlugSolidBuilder
         var chunk0900500E = new global::GBX.NET.Engines.Plug.CPlugSolid.Chunk0900500E();
         node.Chunks.Add(chunk0900500E);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugSolid node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09005000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09005007 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk0900500D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900500D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk0900500E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900500E is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Plug.CPlugSolid CreateRecipe2(GameVersion game)
     {
@@ -370,16 +249,6 @@ public partial class CPlugSolidBuilder : CPlugSolidBuilderBase<CPlugSolidBuilder
         node.Chunks.Add(chunk09005010);
         return node;
     }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Plug.CPlugSolid node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09005000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09005007 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk0900500C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900500C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk0900500D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900500D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk0900500E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900500E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk0900500F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900500F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09005010 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugSolid CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugSolid();
@@ -397,15 +266,6 @@ public partial class CPlugSolidBuilder : CPlugSolidBuilderBase<CPlugSolidBuilder
         node.Chunks.Add(chunk09005010);
         return node;
     }
-    private static void ValidateRecipe3(global::GBX.NET.Engines.Plug.CPlugSolid node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09005000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk0900500C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900500C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk0900500D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900500D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk0900500E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900500E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk0900500F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900500F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09005010 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugSolid CreateRecipe4(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugSolid();
@@ -420,14 +280,6 @@ public partial class CPlugSolidBuilder : CPlugSolidBuilderBase<CPlugSolidBuilder
         var chunk09005012 = new global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005012();
         node.Chunks.Add(chunk09005012);
         return node;
-    }
-    private static void ValidateRecipe4(global::GBX.NET.Engines.Plug.CPlugSolid node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09005000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk0900500E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900500E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09005010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09005011 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005012>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09005012 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Plug.CPlugSolid CreateRecipe5(GameVersion game)
     {
@@ -444,14 +296,6 @@ public partial class CPlugSolidBuilder : CPlugSolidBuilderBase<CPlugSolidBuilder
         node.Chunks.Add(chunk09005019);
         return node;
     }
-    private static void ValidateRecipe5(global::GBX.NET.Engines.Plug.CPlugSolid node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09005000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09005010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09005011 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005017>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk09005017 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005019>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk09005019 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugSolid CreateRecipe6(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugSolid();
@@ -466,14 +310,6 @@ public partial class CPlugSolidBuilder : CPlugSolidBuilderBase<CPlugSolidBuilder
         var chunk09005019 = new global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005019(game);
         node.Chunks.Add(chunk09005019);
         return node;
-    }
-    private static void ValidateRecipe6(global::GBX.NET.Engines.Plug.CPlugSolid node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09005000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09005010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09005011 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005017>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk09005017 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005019>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk09005019 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Plug.CPlugSolid CreateRecipe7(GameVersion game)
     {
@@ -492,15 +328,6 @@ public partial class CPlugSolidBuilder : CPlugSolidBuilderBase<CPlugSolidBuilder
         node.Chunks.Add(chunk0900501A);
         return node;
     }
-    private static void ValidateRecipe7(global::GBX.NET.Engines.Plug.CPlugSolid node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09005000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09005010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09005011 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005017>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk09005017 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005019>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk09005019 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk0900501A>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk0900501A is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugSolid CreateRecipe8(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugSolid();
@@ -517,18 +344,6 @@ public partial class CPlugSolidBuilder : CPlugSolidBuilderBase<CPlugSolidBuilder
         var chunk0900501A = new global::GBX.NET.Engines.Plug.CPlugSolid.Chunk0900501A(game);
         node.Chunks.Add(chunk0900501A);
         return node;
-    }
-    private static void ValidateRecipe8(global::GBX.NET.Engines.Plug.CPlugSolid node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09005000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09005010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09005011 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005017>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk09005017 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005019>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk09005019 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSolid.Chunk0900501A>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk0900501A is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugSolid node, GameVersion game)
-    {
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -559,14 +374,9 @@ public partial class CPlugSolidBuilder : CPlugSolidBuilderBase<CPlugSolidBuilder
             var node = CPlugSolidBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CPlugSolidBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CPlugSolidBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSolid node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugSolid node);
     }
     public partial class TMPU : CPlugSolidBuilderMembers2<TMPU>
     {
@@ -585,14 +395,9 @@ public partial class CPlugSolidBuilder : CPlugSolidBuilderBase<CPlugSolidBuilder
             var node = CPlugSolidBuilder.CreateRecipe1(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CPlugSolidBuilder.ValidateRecipe1(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CPlugSolidBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSolid node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugSolid node);
     }
     public partial class TMSX : CPlugSolidBuilderMembers2<TMSX>
     {
@@ -611,14 +416,9 @@ public partial class CPlugSolidBuilder : CPlugSolidBuilderBase<CPlugSolidBuilder
             var node = CPlugSolidBuilder.CreateRecipe2(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CPlugSolidBuilder.ValidateRecipe2(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CPlugSolidBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSolid node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugSolid node);
     }
     public partial class TMNESWC : CPlugSolidBuilderMembers2<TMNESWC>
     {
@@ -637,14 +437,9 @@ public partial class CPlugSolidBuilder : CPlugSolidBuilderBase<CPlugSolidBuilder
             var node = CPlugSolidBuilder.CreateRecipe3(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CPlugSolidBuilder.ValidateRecipe3(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CPlugSolidBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSolid node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugSolid node);
     }
     public partial class VSK5 : CPlugSolidBuilderMembers3<VSK5>
     {
@@ -663,14 +458,9 @@ public partial class CPlugSolidBuilder : CPlugSolidBuilderBase<CPlugSolidBuilder
             var node = CPlugSolidBuilder.CreateRecipe4(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CPlugSolidBuilder.ValidateRecipe4(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CPlugSolidBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSolid node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugSolid node);
     }
     public partial class TMF : CPlugSolidBuilderMembers3<TMF>
     {
@@ -689,14 +479,9 @@ public partial class CPlugSolidBuilder : CPlugSolidBuilderBase<CPlugSolidBuilder
             var node = CPlugSolidBuilder.CreateRecipe4(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CPlugSolidBuilder.ValidateRecipe4(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CPlugSolidBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSolid node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugSolid node);
     }
     public partial class MP3 : CPlugSolidBuilderMembers4<MP3>
     {
@@ -731,14 +516,9 @@ public partial class CPlugSolidBuilder : CPlugSolidBuilderBase<CPlugSolidBuilder
             var node = CPlugSolidBuilder.CreateRecipe5(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CPlugSolidBuilder.ValidateRecipe5(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CPlugSolidBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSolid node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugSolid node);
     }
     public partial class TMT : CPlugSolidBuilderMembers4<TMT>
     {
@@ -773,14 +553,9 @@ public partial class CPlugSolidBuilder : CPlugSolidBuilderBase<CPlugSolidBuilder
             var node = CPlugSolidBuilder.CreateRecipe6(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugSolidBuilder.ValidateRecipe6(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugSolidBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSolid node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugSolid node);
     }
     public partial class MP4 : CPlugSolidBuilderMembers5<MP4>
     {
@@ -815,14 +590,9 @@ public partial class CPlugSolidBuilder : CPlugSolidBuilderBase<CPlugSolidBuilder
             var node = CPlugSolidBuilder.CreateRecipe7(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugSolidBuilder.ValidateRecipe7(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugSolidBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSolid node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugSolid node);
     }
     public partial class TM2020 : CPlugSolidBuilderMembers5<TM2020>
     {
@@ -839,14 +609,9 @@ public partial class CPlugSolidBuilder : CPlugSolidBuilderBase<CPlugSolidBuilder
         {
             return WithParticleEmitterModels(values.ToArray());
         }
-        public global::GBX.NET.Engines.Plug.CPlugPath? Path
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugPath?>("Path");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetPathAssignment(), value, GameVersion.TM2020);
-        }
         public TM2020 WithPath(global::GBX.NET.Engines.Plug.CPlugPath? value)
         {
-            Path = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetPathAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public TM2020 WithPathReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugPath> value)
@@ -877,13 +642,8 @@ public partial class CPlugSolidBuilder : CPlugSolidBuilderBase<CPlugSolidBuilder
             var node = CPlugSolidBuilder.CreateRecipe8(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugSolidBuilder.ValidateRecipe8(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugSolidBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSolid node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugSolid node);
     }
 }

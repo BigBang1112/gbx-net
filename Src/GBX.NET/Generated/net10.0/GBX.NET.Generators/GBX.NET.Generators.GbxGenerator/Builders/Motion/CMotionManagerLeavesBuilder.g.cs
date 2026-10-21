@@ -36,14 +36,9 @@ public abstract class CMotionManagerLeavesBuilderBase<TSelf> where TSelf : CMoti
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionManagerLeaves> state;
     private protected CMotionManagerLeavesBuilderBase() => state = new();
     private protected CMotionManagerLeavesBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionManagerLeaves> state) => this.state = state;
-    public global::GBX.NET.Engines.Scene.CSceneMobilLeaves? MobilLeaves
-    {
-        get => state.Get<global::GBX.NET.Engines.Scene.CSceneMobilLeaves?>("MobilLeaves");
-        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionManagerLeavesBuilderAssignments.GetMobilLeavesAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithMobilLeaves(global::GBX.NET.Engines.Scene.CSceneMobilLeaves? value)
     {
-        MobilLeaves = value;
+        state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionManagerLeavesBuilderAssignments.GetMobilLeavesAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithMobilLeavesReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> value)
@@ -61,13 +56,6 @@ public partial class CMotionManagerLeavesBuilder : CMotionManagerLeavesBuilderBa
         var chunk0804C000 = new global::GBX.NET.Engines.Motion.CMotionManagerLeaves.Chunk0804C000();
         node.Chunks.Add(chunk0804C000);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Motion.CMotionManagerLeaves node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionManagerLeaves.Chunk0804C000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0804C000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Motion.CMotionManagerLeaves node, GameVersion game)
-    {
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -90,14 +78,9 @@ public partial class CMotionManagerLeavesBuilder : CMotionManagerLeavesBuilderBa
             var node = CMotionManagerLeavesBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CMotionManagerLeavesBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CMotionManagerLeavesBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionManagerLeaves node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionManagerLeaves node);
     }
     public partial class TMPU : CMotionManagerLeavesBuilderBase<TMPU>
     {
@@ -112,14 +95,9 @@ public partial class CMotionManagerLeavesBuilder : CMotionManagerLeavesBuilderBa
             var node = CMotionManagerLeavesBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CMotionManagerLeavesBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CMotionManagerLeavesBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionManagerLeaves node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionManagerLeaves node);
     }
     public partial class TMSX : CMotionManagerLeavesBuilderBase<TMSX>
     {
@@ -134,14 +112,9 @@ public partial class CMotionManagerLeavesBuilder : CMotionManagerLeavesBuilderBa
             var node = CMotionManagerLeavesBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CMotionManagerLeavesBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CMotionManagerLeavesBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionManagerLeaves node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionManagerLeaves node);
     }
     public partial class TMNESWC : CMotionManagerLeavesBuilderBase<TMNESWC>
     {
@@ -156,14 +129,9 @@ public partial class CMotionManagerLeavesBuilder : CMotionManagerLeavesBuilderBa
             var node = CMotionManagerLeavesBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CMotionManagerLeavesBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CMotionManagerLeavesBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionManagerLeaves node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionManagerLeaves node);
     }
     public partial class VSK5 : CMotionManagerLeavesBuilderBase<VSK5>
     {
@@ -178,14 +146,9 @@ public partial class CMotionManagerLeavesBuilder : CMotionManagerLeavesBuilderBa
             var node = CMotionManagerLeavesBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CMotionManagerLeavesBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CMotionManagerLeavesBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionManagerLeaves node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionManagerLeaves node);
     }
     public partial class TMF : CMotionManagerLeavesBuilderBase<TMF>
     {
@@ -200,14 +163,9 @@ public partial class CMotionManagerLeavesBuilder : CMotionManagerLeavesBuilderBa
             var node = CMotionManagerLeavesBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CMotionManagerLeavesBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CMotionManagerLeavesBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionManagerLeaves node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionManagerLeaves node);
     }
     public partial class MP3 : CMotionManagerLeavesBuilderBase<MP3>
     {
@@ -222,14 +180,9 @@ public partial class CMotionManagerLeavesBuilder : CMotionManagerLeavesBuilderBa
             var node = CMotionManagerLeavesBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CMotionManagerLeavesBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CMotionManagerLeavesBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionManagerLeaves node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionManagerLeaves node);
     }
     public partial class TMT : CMotionManagerLeavesBuilderBase<TMT>
     {
@@ -244,13 +197,8 @@ public partial class CMotionManagerLeavesBuilder : CMotionManagerLeavesBuilderBa
             var node = CMotionManagerLeavesBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CMotionManagerLeavesBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CMotionManagerLeavesBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionManagerLeaves node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionManagerLeaves node);
     }
 }

@@ -76,1372 +76,687 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTM10? global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundTM10>.ActionSound
     {
-        get
-        {
-            var node = ActionSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            return node;
-        }
+        get => ActionSound;
         set => ActionSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTM10? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTM10, global::GBX.NET.Interfaces.Plug.IPlugSoundTM10>.DefaultShader
     {
-        get
-        {
-            var node = DefaultShader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            return node;
-        }
+        get => DefaultShader;
         set => DefaultShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTM10? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTM10, global::GBX.NET.Interfaces.Plug.IPlugSoundTM10>.EntrySound
     {
-        get
-        {
-            var node = EntrySound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            return node;
-        }
+        get => EntrySound;
         set => EntrySound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTM10? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTM10, global::GBX.NET.Interfaces.Plug.IPlugSoundTM10>.EnumListShader
     {
-        get
-        {
-            var node = EnumListShader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            return node;
-        }
+        get => EnumListShader;
         set => EnumListShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTM10? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTM10, global::GBX.NET.Interfaces.Plug.IPlugSoundTM10>.EnumSound
     {
-        get
-        {
-            var node = EnumSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            return node;
-        }
+        get => EnumSound;
         set => EnumSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10? global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10>.FocusGainedScript
     {
-        get
-        {
-            var node = FocusGainedScript;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            return node;
-        }
+        get => FocusGainedScript;
         set => FocusGainedScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10? global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10>.FocusLostScript
     {
-        get
-        {
-            var node = FocusLostScript;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            return node;
-        }
+        get => FocusLostScript;
         set => FocusLostScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTM10? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTM10, global::GBX.NET.Interfaces.Plug.IPlugSoundTM10>.FocusSound
     {
-        get
-        {
-            var node = FocusSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            return node;
-        }
+        get => FocusSound;
         set => FocusSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU? global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU>.ActionSound
     {
-        get
-        {
-            var node = ActionSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            return node;
-        }
+        get => ActionSound;
         set => ActionSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU, global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU>.DefaultShader
     {
-        get
-        {
-            var node = DefaultShader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            return node;
-        }
+        get => DefaultShader;
         set => DefaultShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU, global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU>.EntrySound
     {
-        get
-        {
-            var node = EntrySound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            return node;
-        }
+        get => EntrySound;
         set => EntrySound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU, global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU>.EnumListShader
     {
-        get
-        {
-            var node = EnumListShader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            return node;
-        }
+        get => EnumListShader;
         set => EnumListShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU, global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU>.EnumSound
     {
-        get
-        {
-            var node = EnumSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            return node;
-        }
+        get => EnumSound;
         set => EnumSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU? global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU>.FocusGainedScript
     {
-        get
-        {
-            var node = FocusGainedScript;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            return node;
-        }
+        get => FocusGainedScript;
         set => FocusGainedScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU? global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU>.FocusLostScript
     {
-        get
-        {
-            var node = FocusLostScript;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            return node;
-        }
+        get => FocusLostScript;
         set => FocusLostScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU, global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU>.FocusSound
     {
-        get
-        {
-            var node = FocusSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            return node;
-        }
+        get => FocusSound;
         set => FocusSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX? global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX>.ActionSound
     {
-        get
-        {
-            var node = ActionSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => ActionSound;
         set => ActionSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX, global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX>.DefaultShader
     {
-        get
-        {
-            var node = DefaultShader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => DefaultShader;
         set => DefaultShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectMasterTMSX? global::GBX.NET.Interfaces.Control.IControlStyleMembers11<global::GBX.NET.Interfaces.Control.IControlEffectMasterTMSX>.EffectMaster
     {
-        get
-        {
-            var node = EffectMaster;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => EffectMaster;
         set => EffectMaster = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffectMaster node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX, global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX>.EntrySound
     {
-        get
-        {
-            var node = EntrySound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => EntrySound;
         set => EntrySound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX, global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX>.EnumListShader
     {
-        get
-        {
-            var node = EnumListShader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => EnumListShader;
         set => EnumListShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX, global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX>.EnumSound
     {
-        get
-        {
-            var node = EnumSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => EnumSound;
         set => EnumSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX? global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX>.FocusGainedScript
     {
-        get
-        {
-            var node = FocusGainedScript;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => FocusGainedScript;
         set => FocusGainedScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX? global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX>.FocusLostScript
     {
-        get
-        {
-            var node = FocusLostScript;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => FocusLostScript;
         set => FocusLostScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX, global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX>.FocusSound
     {
-        get
-        {
-            var node = FocusSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => FocusSound;
         set => FocusSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC? global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC>.ActionSound
     {
-        get
-        {
-            var node = ActionSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => ActionSound;
         set => ActionSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnumTMNESWC? global::GBX.NET.Interfaces.Control.IControlStyleMembers8<global::GBX.NET.Interfaces.Function.IFuncEnumTMNESWC>.ButtonDefaultIcons
     {
-        get
-        {
-            var node = ButtonDefaultIcons;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => ButtonDefaultIcons;
         set => ButtonDefaultIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC>.DefaultShader
     {
-        get
-        {
-            var node = DefaultShader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => DefaultShader;
         set => DefaultShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectMasterTMNESWC? global::GBX.NET.Interfaces.Control.IControlStyleMembers11<global::GBX.NET.Interfaces.Control.IControlEffectMasterTMNESWC>.EffectMaster
     {
-        get
-        {
-            var node = EffectMaster;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => EffectMaster;
         set => EffectMaster = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffectMaster node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC>.EntrySound
     {
-        get
-        {
-            var node = EntrySound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => EntrySound;
         set => EntrySound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnumTMNESWC? global::GBX.NET.Interfaces.Control.IControlStyleMembers7<global::GBX.NET.Interfaces.Function.IFuncEnumTMNESWC>.EnumForceIcons
     {
-        get
-        {
-            var node = EnumForceIcons;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => EnumForceIcons;
         set => EnumForceIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC>.EnumListShader
     {
-        get
-        {
-            var node = EnumListShader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => EnumListShader;
         set => EnumListShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC>.EnumSound
     {
-        get
-        {
-            var node = EnumSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => EnumSound;
         set => EnumSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC? global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC>.FocusGainedScript
     {
-        get
-        {
-            var node = FocusGainedScript;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => FocusGainedScript;
         set => FocusGainedScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC? global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC>.FocusLostScript
     {
-        get
-        {
-            var node = FocusLostScript;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => FocusLostScript;
         set => FocusLostScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC>.FocusSound
     {
-        get
-        {
-            var node = FocusSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => FocusSound;
         set => FocusSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>.ActionSound
     {
-        get
-        {
-            var node = ActionSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => ActionSound;
         set => ActionSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnumVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers8<global::GBX.NET.Interfaces.Function.IFuncEnumVSK5>.ButtonDefaultIcons
     {
-        get
-        {
-            var node = ButtonDefaultIcons;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => ButtonDefaultIcons;
         set => ButtonDefaultIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>.DefaultShader
     {
-        get
-        {
-            var node = DefaultShader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => DefaultShader;
         set => DefaultShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectMasterVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers11<global::GBX.NET.Interfaces.Control.IControlEffectMasterVSK5>.EffectMaster
     {
-        get
-        {
-            var node = EffectMaster;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => EffectMaster;
         set => EffectMaster = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffectMaster node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>.EntrySound
     {
-        get
-        {
-            var node = EntrySound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => EntrySound;
         set => EntrySound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnumVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers7<global::GBX.NET.Interfaces.Function.IFuncEnumVSK5>.EnumForceIcons
     {
-        get
-        {
-            var node = EnumForceIcons;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => EnumForceIcons;
         set => EnumForceIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>.EnumListShader
     {
-        get
-        {
-            var node = EnumListShader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => EnumListShader;
         set => EnumListShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>.EnumSound
     {
-        get
-        {
-            var node = EnumSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => EnumSound;
         set => EnumSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>.FocusAreaMaterial
     {
-        get
-        {
-            var node = FocusAreaMaterial;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => FocusAreaMaterial;
         set => FocusAreaMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>.FocusAreaMaterialFocused
     {
-        get
-        {
-            var node = FocusAreaMaterialFocused;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => FocusAreaMaterialFocused;
         set => FocusAreaMaterialFocused = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>.FocusAreaMaterialReadOnly
     {
-        get
-        {
-            var node = FocusAreaMaterialReadOnly;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => FocusAreaMaterialReadOnly;
         set => FocusAreaMaterialReadOnly = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>.FocusAreaMaterialSelected
     {
-        get
-        {
-            var node = FocusAreaMaterialSelected;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => FocusAreaMaterialSelected;
         set => FocusAreaMaterialSelected = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>.FocusAreaSolid
     {
-        get
-        {
-            var node = FocusAreaSolid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => FocusAreaSolid;
         set => FocusAreaSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5>.FocusGainedScript
     {
-        get
-        {
-            var node = FocusGainedScript;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => FocusGainedScript;
         set => FocusGainedScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5>.FocusLostScript
     {
-        get
-        {
-            var node = FocusLostScript;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => FocusLostScript;
         set => FocusLostScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>.FocusSound
     {
-        get
-        {
-            var node = FocusSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => FocusSound;
         set => FocusSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnumVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>.SliderBarIcons
     {
-        get
-        {
-            var node = SliderBarIcons;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => SliderBarIcons;
         set => SliderBarIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnumVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>.SliderCursorIcons
     {
-        get
-        {
-            var node = SliderCursorIcons;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => SliderCursorIcons;
         set => SliderCursorIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>.SliderSound
     {
-        get
-        {
-            var node = SliderSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => SliderSound;
         set => SliderSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>.ActionSound
     {
-        get
-        {
-            var node = ActionSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => ActionSound;
         set => ActionSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnumTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers8<global::GBX.NET.Interfaces.Function.IFuncEnumTMF>.ButtonDefaultIcons
     {
-        get
-        {
-            var node = ButtonDefaultIcons;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => ButtonDefaultIcons;
         set => ButtonDefaultIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>.DefaultShader
     {
-        get
-        {
-            var node = DefaultShader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => DefaultShader;
         set => DefaultShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectMasterTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers11<global::GBX.NET.Interfaces.Control.IControlEffectMasterTMF>.EffectMaster
     {
-        get
-        {
-            var node = EffectMaster;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => EffectMaster;
         set => EffectMaster = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffectMaster node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>.EntrySound
     {
-        get
-        {
-            var node = EntrySound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => EntrySound;
         set => EntrySound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnumTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers7<global::GBX.NET.Interfaces.Function.IFuncEnumTMF>.EnumForceIcons
     {
-        get
-        {
-            var node = EnumForceIcons;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => EnumForceIcons;
         set => EnumForceIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>.EnumListShader
     {
-        get
-        {
-            var node = EnumListShader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => EnumListShader;
         set => EnumListShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>.EnumSound
     {
-        get
-        {
-            var node = EnumSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => EnumSound;
         set => EnumSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Plug.IPlugSolidTMF, global::GBX.NET.Interfaces.Function.IFuncEnumTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>.FocusAreaMaterial
     {
-        get
-        {
-            var node = FocusAreaMaterial;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => FocusAreaMaterial;
         set => FocusAreaMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Plug.IPlugSolidTMF, global::GBX.NET.Interfaces.Function.IFuncEnumTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>.FocusAreaMaterialFocused
     {
-        get
-        {
-            var node = FocusAreaMaterialFocused;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => FocusAreaMaterialFocused;
         set => FocusAreaMaterialFocused = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Plug.IPlugSolidTMF, global::GBX.NET.Interfaces.Function.IFuncEnumTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>.FocusAreaMaterialReadOnly
     {
-        get
-        {
-            var node = FocusAreaMaterialReadOnly;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => FocusAreaMaterialReadOnly;
         set => FocusAreaMaterialReadOnly = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Plug.IPlugSolidTMF, global::GBX.NET.Interfaces.Function.IFuncEnumTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>.FocusAreaMaterialSelected
     {
-        get
-        {
-            var node = FocusAreaMaterialSelected;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => FocusAreaMaterialSelected;
         set => FocusAreaMaterialSelected = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolidTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Plug.IPlugSolidTMF, global::GBX.NET.Interfaces.Function.IFuncEnumTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>.FocusAreaSolid
     {
-        get
-        {
-            var node = FocusAreaSolid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => FocusAreaSolid;
         set => FocusAreaSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMF>.FocusGainedScript
     {
-        get
-        {
-            var node = FocusGainedScript;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => FocusGainedScript;
         set => FocusGainedScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMF>.FocusLostScript
     {
-        get
-        {
-            var node = FocusLostScript;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => FocusLostScript;
         set => FocusLostScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>.FocusSound
     {
-        get
-        {
-            var node = FocusSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => FocusSound;
         set => FocusSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnumTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Plug.IPlugSolidTMF, global::GBX.NET.Interfaces.Function.IFuncEnumTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>.SliderBarIcons
     {
-        get
-        {
-            var node = SliderBarIcons;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => SliderBarIcons;
         set => SliderBarIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnumTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Plug.IPlugSolidTMF, global::GBX.NET.Interfaces.Function.IFuncEnumTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>.SliderCursorIcons
     {
-        get
-        {
-            var node = SliderCursorIcons;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => SliderCursorIcons;
         set => SliderCursorIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Plug.IPlugSolidTMF, global::GBX.NET.Interfaces.Function.IFuncEnumTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>.SliderSound
     {
-        get
-        {
-            var node = SliderSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => SliderSound;
         set => SliderSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>.DefaultShader
     {
-        get
-        {
-            var node = DefaultShader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => DefaultShader;
         set => DefaultShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectMasterMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers11<global::GBX.NET.Interfaces.Control.IControlEffectMasterMP3>.EffectMaster
     {
-        get
-        {
-            var node = EffectMaster;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => EffectMaster;
         set => EffectMaster = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffectMaster node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>.EntrySound
     {
-        get
-        {
-            var node = EntrySound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => EntrySound;
         set => EntrySound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnumMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers7<global::GBX.NET.Interfaces.Function.IFuncEnumMP3>.EnumForceIcons
     {
-        get
-        {
-            var node = EnumForceIcons;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => EnumForceIcons;
         set => EnumForceIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>.EnumListShader
     {
-        get
-        {
-            var node = EnumListShader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => EnumListShader;
         set => EnumListShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>.EnumSound
     {
-        get
-        {
-            var node = EnumSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => EnumSound;
         set => EnumSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugSolidMP3, global::GBX.NET.Interfaces.Function.IFuncEnumMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>.FocusAreaMaterial
     {
-        get
-        {
-            var node = FocusAreaMaterial;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => FocusAreaMaterial;
         set => FocusAreaMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugSolidMP3, global::GBX.NET.Interfaces.Function.IFuncEnumMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>.FocusAreaMaterialFocused
     {
-        get
-        {
-            var node = FocusAreaMaterialFocused;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => FocusAreaMaterialFocused;
         set => FocusAreaMaterialFocused = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugSolidMP3, global::GBX.NET.Interfaces.Function.IFuncEnumMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>.FocusAreaMaterialReadOnly
     {
-        get
-        {
-            var node = FocusAreaMaterialReadOnly;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => FocusAreaMaterialReadOnly;
         set => FocusAreaMaterialReadOnly = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugSolidMP3, global::GBX.NET.Interfaces.Function.IFuncEnumMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>.FocusAreaMaterialSelected
     {
-        get
-        {
-            var node = FocusAreaMaterialSelected;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => FocusAreaMaterialSelected;
         set => FocusAreaMaterialSelected = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolidMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugSolidMP3, global::GBX.NET.Interfaces.Function.IFuncEnumMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>.FocusAreaSolid
     {
-        get
-        {
-            var node = FocusAreaSolid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => FocusAreaSolid;
         set => FocusAreaSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>.FocusSound
     {
-        get
-        {
-            var node = FocusSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => FocusSound;
         set => FocusSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnumMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugSolidMP3, global::GBX.NET.Interfaces.Function.IFuncEnumMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>.SliderBarIcons
     {
-        get
-        {
-            var node = SliderBarIcons;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => SliderBarIcons;
         set => SliderBarIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnumMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugSolidMP3, global::GBX.NET.Interfaces.Function.IFuncEnumMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>.SliderCursorIcons
     {
-        get
-        {
-            var node = SliderCursorIcons;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => SliderCursorIcons;
         set => SliderCursorIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugSolidMP3, global::GBX.NET.Interfaces.Function.IFuncEnumMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>.SliderSound
     {
-        get
-        {
-            var node = SliderSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => SliderSound;
         set => SliderSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.DefaultShader
     {
-        get
-        {
-            var node = DefaultShader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => DefaultShader;
         set => DefaultShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectMasterTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers11<global::GBX.NET.Interfaces.Control.IControlEffectMasterTMT>.EffectMaster
     {
-        get
-        {
-            var node = EffectMaster;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => EffectMaster;
         set => EffectMaster = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffectMaster node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.EntrySound
     {
-        get
-        {
-            var node = EntrySound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => EntrySound;
         set => EntrySound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnumTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers7<global::GBX.NET.Interfaces.Function.IFuncEnumTMT>.EnumForceIcons
     {
-        get
-        {
-            var node = EnumForceIcons;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => EnumForceIcons;
         set => EnumForceIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.EnumListShader
     {
-        get
-        {
-            var node = EnumListShader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => EnumListShader;
         set => EnumListShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.EnumSound
     {
-        get
-        {
-            var node = EnumSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => EnumSound;
         set => EnumSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugSolidTMT, global::GBX.NET.Interfaces.Function.IFuncEnumTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.FocusAreaMaterial
     {
-        get
-        {
-            var node = FocusAreaMaterial;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => FocusAreaMaterial;
         set => FocusAreaMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugSolidTMT, global::GBX.NET.Interfaces.Function.IFuncEnumTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.FocusAreaMaterialFocused
     {
-        get
-        {
-            var node = FocusAreaMaterialFocused;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => FocusAreaMaterialFocused;
         set => FocusAreaMaterialFocused = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugSolidTMT, global::GBX.NET.Interfaces.Function.IFuncEnumTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.FocusAreaMaterialReadOnly
     {
-        get
-        {
-            var node = FocusAreaMaterialReadOnly;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => FocusAreaMaterialReadOnly;
         set => FocusAreaMaterialReadOnly = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugSolidTMT, global::GBX.NET.Interfaces.Function.IFuncEnumTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.FocusAreaMaterialSelected
     {
-        get
-        {
-            var node = FocusAreaMaterialSelected;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => FocusAreaMaterialSelected;
         set => FocusAreaMaterialSelected = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolidTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugSolidTMT, global::GBX.NET.Interfaces.Function.IFuncEnumTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.FocusAreaSolid
     {
-        get
-        {
-            var node = FocusAreaSolid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => FocusAreaSolid;
         set => FocusAreaSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.FocusSound
     {
-        get
-        {
-            var node = FocusSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => FocusSound;
         set => FocusSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnumTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugSolidTMT, global::GBX.NET.Interfaces.Function.IFuncEnumTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.SliderBarIcons
     {
-        get
-        {
-            var node = SliderBarIcons;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => SliderBarIcons;
         set => SliderBarIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnumTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugSolidTMT, global::GBX.NET.Interfaces.Function.IFuncEnumTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.SliderCursorIcons
     {
-        get
-        {
-            var node = SliderCursorIcons;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => SliderCursorIcons;
         set => SliderCursorIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugSolidTMT, global::GBX.NET.Interfaces.Function.IFuncEnumTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.SliderSound
     {
-        get
-        {
-            var node = SliderSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => SliderSound;
         set => SliderSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Control.IControlStyleMP4.ActionBackSound
     {
-        get
-        {
-            var node = ActionBackSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => ActionBackSound;
         set => ActionBackSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.ActionSound
     {
-        get
-        {
-            var node = ActionSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => ActionSound;
         set => ActionSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnumMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers8<global::GBX.NET.Interfaces.Function.IFuncEnumMP4>.ButtonDefaultIcons
     {
-        get
-        {
-            var node = ButtonDefaultIcons;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => ButtonDefaultIcons;
         set => ButtonDefaultIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.DefaultShader
     {
-        get
-        {
-            var node = DefaultShader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => DefaultShader;
         set => DefaultShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectMasterMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers11<global::GBX.NET.Interfaces.Control.IControlEffectMasterMP4>.EffectMaster
     {
-        get
-        {
-            var node = EffectMaster;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => EffectMaster;
         set => EffectMaster = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffectMaster node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.EntrySound
     {
-        get
-        {
-            var node = EntrySound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => EntrySound;
         set => EntrySound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnumMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers7<global::GBX.NET.Interfaces.Function.IFuncEnumMP4>.EnumForceIcons
     {
-        get
-        {
-            var node = EnumForceIcons;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => EnumForceIcons;
         set => EnumForceIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.EnumListShader
     {
-        get
-        {
-            var node = EnumListShader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => EnumListShader;
         set => EnumListShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.EnumSound
     {
-        get
-        {
-            var node = EnumSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => EnumSound;
         set => EnumSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugSolidMP4, global::GBX.NET.Interfaces.Function.IFuncEnumMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.FocusAreaMaterial
     {
-        get
-        {
-            var node = FocusAreaMaterial;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => FocusAreaMaterial;
         set => FocusAreaMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugSolidMP4, global::GBX.NET.Interfaces.Function.IFuncEnumMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.FocusAreaMaterialFocused
     {
-        get
-        {
-            var node = FocusAreaMaterialFocused;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => FocusAreaMaterialFocused;
         set => FocusAreaMaterialFocused = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugSolidMP4, global::GBX.NET.Interfaces.Function.IFuncEnumMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.FocusAreaMaterialReadOnly
     {
-        get
-        {
-            var node = FocusAreaMaterialReadOnly;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => FocusAreaMaterialReadOnly;
         set => FocusAreaMaterialReadOnly = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugSolidMP4, global::GBX.NET.Interfaces.Function.IFuncEnumMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.FocusAreaMaterialSelected
     {
-        get
-        {
-            var node = FocusAreaMaterialSelected;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => FocusAreaMaterialSelected;
         set => FocusAreaMaterialSelected = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolidMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugSolidMP4, global::GBX.NET.Interfaces.Function.IFuncEnumMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.FocusAreaSolid
     {
-        get
-        {
-            var node = FocusAreaSolid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => FocusAreaSolid;
         set => FocusAreaSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.FocusSound
     {
-        get
-        {
-            var node = FocusSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => FocusSound;
         set => FocusSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnumMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugSolidMP4, global::GBX.NET.Interfaces.Function.IFuncEnumMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.SliderBarIcons
     {
-        get
-        {
-            var node = SliderBarIcons;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => SliderBarIcons;
         set => SliderBarIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnumMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugSolidMP4, global::GBX.NET.Interfaces.Function.IFuncEnumMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.SliderCursorIcons
     {
-        get
-        {
-            var node = SliderCursorIcons;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => SliderCursorIcons;
         set => SliderCursorIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugSolidMP4, global::GBX.NET.Interfaces.Function.IFuncEnumMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.SliderSound
     {
-        get
-        {
-            var node = SliderSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => SliderSound;
         set => SliderSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.DefaultShader
     {
-        get
-        {
-            var node = DefaultShader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => DefaultShader;
         set => DefaultShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectMasterTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers11<global::GBX.NET.Interfaces.Control.IControlEffectMasterTM2020>.EffectMaster
     {
-        get
-        {
-            var node = EffectMaster;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => EffectMaster;
         set => EffectMaster = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffectMaster node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.EntrySound
     {
-        get
-        {
-            var node = EntrySound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => EntrySound;
         set => EntrySound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnumTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers7<global::GBX.NET.Interfaces.Function.IFuncEnumTM2020>.EnumForceIcons
     {
-        get
-        {
-            var node = EnumForceIcons;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => EnumForceIcons;
         set => EnumForceIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.EnumListShader
     {
-        get
-        {
-            var node = EnumListShader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => EnumListShader;
         set => EnumListShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.EnumSound
     {
-        get
-        {
-            var node = EnumSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => EnumSound;
         set => EnumSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.FocusAreaMaterial
     {
-        get
-        {
-            var node = FocusAreaMaterial;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => FocusAreaMaterial;
         set => FocusAreaMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.FocusAreaMaterialFocused
     {
-        get
-        {
-            var node = FocusAreaMaterialFocused;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => FocusAreaMaterialFocused;
         set => FocusAreaMaterialFocused = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.FocusAreaMaterialReadOnly
     {
-        get
-        {
-            var node = FocusAreaMaterialReadOnly;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => FocusAreaMaterialReadOnly;
         set => FocusAreaMaterialReadOnly = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.FocusAreaMaterialSelected
     {
-        get
-        {
-            var node = FocusAreaMaterialSelected;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => FocusAreaMaterialSelected;
         set => FocusAreaMaterialSelected = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.FocusAreaSolid
     {
-        get
-        {
-            var node = FocusAreaSolid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => FocusAreaSolid;
         set => FocusAreaSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.FocusSound
     {
-        get
-        {
-            var node = FocusSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => FocusSound;
         set => FocusSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnumTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.SliderBarIcons
     {
-        get
-        {
-            var node = SliderBarIcons;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => SliderBarIcons;
         set => SliderBarIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnumTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.SliderCursorIcons
     {
-        get
-        {
-            var node = SliderCursorIcons;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => SliderCursorIcons;
         set => SliderCursorIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.SliderSound
     {
-        get
-        {
-            var node = SliderSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => SliderSound;
         set => SliderSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

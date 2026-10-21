@@ -36,27 +36,27 @@ public partial class CPlugBitmapDecals : global::GBX.NET.Interfaces.Plug.IPlugBi
     public static global::GBX.NET.Builders.Engines.Plug.CPlugBitmapDecalsBuilder Create() => new();
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecalModel>? global::GBX.NET.Interfaces.Plug.IPlugBitmapDecals.DecalModels
     {
-        get => DecalModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugDecalModel, global::GBX.NET.Interfaces.Plug.IPlugDecalModel>(GetDecalModelsBuilderReferences, GameVersion.Unspecified, true, "DecalModels");
+        get => DecalModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugDecalModel, global::GBX.NET.Interfaces.Plug.IPlugDecalModel>(GetDecalModelsBuilderReferences, true, "DecalModels");
         set => DecalModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecalModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugDecalModel, global::GBX.NET.Interfaces.Plug.IPlugDecalModel>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecalModelMP3>? global::GBX.NET.Interfaces.Plug.IPlugBitmapDecalsMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecalModelMP3>.DecalModels
     {
-        get => DecalModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugDecalModel, global::GBX.NET.Interfaces.Plug.IPlugDecalModelMP3>(GetDecalModelsBuilderReferences, GameVersion.MP3, true, "DecalModels");
+        get => DecalModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugDecalModel, global::GBX.NET.Interfaces.Plug.IPlugDecalModelMP3>(GetDecalModelsBuilderReferences, true, "DecalModels");
         set => DecalModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecalModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugDecalModel, global::GBX.NET.Interfaces.Plug.IPlugDecalModelMP3>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecalModelTMT>? global::GBX.NET.Interfaces.Plug.IPlugBitmapDecalsMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecalModelTMT>.DecalModels
     {
-        get => DecalModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugDecalModel, global::GBX.NET.Interfaces.Plug.IPlugDecalModelTMT>(GetDecalModelsBuilderReferences, GameVersion.TMT, true, "DecalModels");
+        get => DecalModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugDecalModel, global::GBX.NET.Interfaces.Plug.IPlugDecalModelTMT>(GetDecalModelsBuilderReferences, true, "DecalModels");
         set => DecalModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecalModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugDecalModel, global::GBX.NET.Interfaces.Plug.IPlugDecalModelTMT>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecalModelMP4>? global::GBX.NET.Interfaces.Plug.IPlugBitmapDecalsMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecalModelMP4>.DecalModels
     {
-        get => DecalModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugDecalModel, global::GBX.NET.Interfaces.Plug.IPlugDecalModelMP4>(GetDecalModelsBuilderReferences, GameVersion.MP4, true, "DecalModels");
+        get => DecalModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugDecalModel, global::GBX.NET.Interfaces.Plug.IPlugDecalModelMP4>(GetDecalModelsBuilderReferences, true, "DecalModels");
         set => DecalModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecalModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugDecalModel, global::GBX.NET.Interfaces.Plug.IPlugDecalModelMP4>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecalModelTM2020>? global::GBX.NET.Interfaces.Plug.IPlugBitmapDecalsMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecalModelTM2020>.DecalModels
     {
-        get => DecalModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugDecalModel, global::GBX.NET.Interfaces.Plug.IPlugDecalModelTM2020>(GetDecalModelsBuilderReferences, GameVersion.TM2020, true, "DecalModels");
+        get => DecalModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugDecalModel, global::GBX.NET.Interfaces.Plug.IPlugDecalModelTM2020>(GetDecalModelsBuilderReferences, true, "DecalModels");
         set => DecalModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecalModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugDecalModel, global::GBX.NET.Interfaces.Plug.IPlugDecalModelTM2020>(value, false));
     }
     private NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecalModel>? GetDecalModelsBuilderReferences() => DecalModels;

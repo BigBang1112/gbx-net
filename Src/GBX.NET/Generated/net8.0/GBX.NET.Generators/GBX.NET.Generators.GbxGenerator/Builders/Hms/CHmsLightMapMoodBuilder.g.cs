@@ -36,68 +36,38 @@ public abstract class CHmsLightMapMoodBuilderBase<TSelf> where TSelf : CHmsLight
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapMood> state;
     private protected CHmsLightMapMoodBuilderBase() => state = new();
     private protected CHmsLightMapMoodBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapMood> state) => this.state = state;
-    public Vec2 AmbientRange
-    {
-        get => state.Get<Vec2>("AmbientRange");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapMoodBuilderAssignments.GetAmbientRangeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithAmbientRange(Vec2 value)
     {
-        AmbientRange = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapMoodBuilderAssignments.GetAmbientRangeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float DirectionalScale
-    {
-        get => state.Get<float>("DirectionalScale");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapMoodBuilderAssignments.GetDirectionalScaleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDirectionalScale(float value)
     {
-        DirectionalScale = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapMoodBuilderAssignments.GetDirectionalScaleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CHmsLightMapMoodBuilderMembers1<TSelf> : CHmsLightMapMoodBuilderBase<TSelf> where TSelf : CHmsLightMapMoodBuilderMembers1<TSelf>
 {
     private protected CHmsLightMapMoodBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapMood> state) : base(state) { }
-    public float BounceFactor
-    {
-        get => state.Get<float>("BounceFactor");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapMoodBuilderAssignments.GetBounceFactorAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithBounceFactor(float value)
     {
-        BounceFactor = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapMoodBuilderAssignments.GetBounceFactorAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float MaxHDR
-    {
-        get => state.Get<float>("MaxHDR");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapMoodBuilderAssignments.GetMaxHDRAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMaxHDR(float value)
     {
-        MaxHDR = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapMoodBuilderAssignments.GetMaxHDRAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float SkyFactor
-    {
-        get => state.Get<float>("SkyFactor");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapMoodBuilderAssignments.GetSkyFactorAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSkyFactor(float value)
     {
-        SkyFactor = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapMoodBuilderAssignments.GetSkyFactorAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool SkyUseClouds
-    {
-        get => state.Get<bool>("SkyUseClouds");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapMoodBuilderAssignments.GetSkyUseCloudsAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSkyUseClouds(bool value)
     {
-        SkyUseClouds = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapMoodBuilderAssignments.GetSkyUseCloudsAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -110,10 +80,6 @@ public partial class CHmsLightMapMoodBuilder : CHmsLightMapMoodBuilderBase<CHmsL
         node.Chunks.Add(chunk06023000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Hms.CHmsLightMapMood node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapMood.Chunk06023000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06023000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Hms.CHmsLightMapMood CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Hms.CHmsLightMapMood();
@@ -123,14 +89,6 @@ public partial class CHmsLightMapMoodBuilder : CHmsLightMapMoodBuilderBase<CHmsL
         chunk06023004.Version = 0;
         node.Chunks.Add(chunk06023004);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Hms.CHmsLightMapMood node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapMood.Chunk06023000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06023000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapMood.Chunk06023004>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk06023004 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Hms.CHmsLightMapMood node, GameVersion game)
-    {
     }
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
@@ -149,14 +107,9 @@ public partial class CHmsLightMapMoodBuilder : CHmsLightMapMoodBuilderBase<CHmsL
             var node = CHmsLightMapMoodBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CHmsLightMapMoodBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CHmsLightMapMoodBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLightMapMood node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsLightMapMood node);
     }
     public partial class TMF : CHmsLightMapMoodBuilderBase<TMF>
     {
@@ -167,14 +120,9 @@ public partial class CHmsLightMapMoodBuilder : CHmsLightMapMoodBuilderBase<CHmsL
             var node = CHmsLightMapMoodBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CHmsLightMapMoodBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CHmsLightMapMoodBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLightMapMood node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsLightMapMood node);
     }
     public partial class MP3 : CHmsLightMapMoodBuilderMembers1<MP3>
     {
@@ -185,14 +133,9 @@ public partial class CHmsLightMapMoodBuilder : CHmsLightMapMoodBuilderBase<CHmsL
             var node = CHmsLightMapMoodBuilder.CreateRecipe1(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CHmsLightMapMoodBuilder.ValidateRecipe1(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CHmsLightMapMoodBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLightMapMood node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsLightMapMood node);
     }
     public partial class TMT : CHmsLightMapMoodBuilderMembers1<TMT>
     {
@@ -203,14 +146,9 @@ public partial class CHmsLightMapMoodBuilder : CHmsLightMapMoodBuilderBase<CHmsL
             var node = CHmsLightMapMoodBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CHmsLightMapMoodBuilder.ValidateRecipe1(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CHmsLightMapMoodBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLightMapMood node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsLightMapMood node);
     }
     public partial class MP4 : CHmsLightMapMoodBuilderBase<MP4>
     {
@@ -221,14 +159,9 @@ public partial class CHmsLightMapMoodBuilder : CHmsLightMapMoodBuilderBase<CHmsL
             var node = CHmsLightMapMoodBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CHmsLightMapMoodBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CHmsLightMapMoodBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLightMapMood node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsLightMapMood node);
     }
     public partial class TM2020 : CHmsLightMapMoodBuilderMembers1<TM2020>
     {
@@ -239,13 +172,8 @@ public partial class CHmsLightMapMoodBuilder : CHmsLightMapMoodBuilderBase<CHmsL
             var node = CHmsLightMapMoodBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CHmsLightMapMoodBuilder.ValidateRecipe1(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CHmsLightMapMoodBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLightMapMood node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsLightMapMood node);
     }
 }

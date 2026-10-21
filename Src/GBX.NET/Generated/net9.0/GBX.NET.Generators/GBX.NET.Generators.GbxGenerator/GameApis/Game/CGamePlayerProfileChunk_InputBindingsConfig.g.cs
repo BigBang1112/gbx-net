@@ -41,42 +41,22 @@ public partial class CGamePlayerProfileChunk_InputBindingsConfig : global::GBX.N
     }
     global::GBX.NET.Interfaces.Input.IInputBindingsConfigMP3? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_InputBindingsConfigMembers1<global::GBX.NET.Interfaces.Input.IInputBindingsConfigMP3>.Config
     {
-        get
-        {
-            var node = Config;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => Config;
         set => Config = value is null ? null : value is global::GBX.NET.Engines.Input.CInputBindingsConfig node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMT? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_InputBindingsConfigMembers1<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMT>.Config
     {
-        get
-        {
-            var node = Config;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => Config;
         set => Config = value is null ? null : value is global::GBX.NET.Engines.Input.CInputBindingsConfig node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Input.IInputBindingsConfigMP4? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_InputBindingsConfigMembers1<global::GBX.NET.Interfaces.Input.IInputBindingsConfigMP4>.Config
     {
-        get
-        {
-            var node = Config;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Config;
         set => Config = value is null ? null : value is global::GBX.NET.Engines.Input.CInputBindingsConfig node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Input.IInputBindingsConfigTM2020? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_InputBindingsConfigMembers1<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTM2020>.Config
     {
-        get
-        {
-            var node = Config;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => Config;
         set => Config = value is null ? null : value is global::GBX.NET.Engines.Input.CInputBindingsConfig node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

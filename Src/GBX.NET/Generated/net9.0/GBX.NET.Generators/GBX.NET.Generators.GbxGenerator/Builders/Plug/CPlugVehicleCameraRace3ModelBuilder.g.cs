@@ -36,738 +36,373 @@ public abstract class CPlugVehicleCameraRace3ModelBuilderBase<TSelf> where TSelf
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model> state;
     private protected CPlugVehicleCameraRace3ModelBuilderBase() => state = new();
     private protected CPlugVehicleCameraRace3ModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model> state) => this.state = state;
-    public float ConstantFlyingLookDownFactor
-    {
-        get => state.Get<float>("ConstantFlyingLookDownFactor");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetConstantFlyingLookDownFactorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithConstantFlyingLookDownFactor(float value)
     {
-        ConstantFlyingLookDownFactor = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetConstantFlyingLookDownFactorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float DefaultFov
-    {
-        get => state.Get<float>("DefaultFov");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetDefaultFovAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDefaultFov(float value)
     {
-        DefaultFov = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetDefaultFovAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float EventBurningLookAtFactorDelta
-    {
-        get => state.Get<float>("EventBurningLookAtFactorDelta");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetEventBurningLookAtFactorDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEventBurningLookAtFactorDelta(float value)
     {
-        EventBurningLookAtFactorDelta = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetEventBurningLookAtFactorDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int EventBurningLookAtFactorTimeDown
-    {
-        get => state.Get<int>("EventBurningLookAtFactorTimeDown");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetEventBurningLookAtFactorTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEventBurningLookAtFactorTimeDown(int value)
     {
-        EventBurningLookAtFactorTimeDown = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetEventBurningLookAtFactorTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int EventBurningLookAtFactorTimeUp
-    {
-        get => state.Get<int>("EventBurningLookAtFactorTimeUp");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetEventBurningLookAtFactorTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEventBurningLookAtFactorTimeUp(int value)
     {
-        EventBurningLookAtFactorTimeUp = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetEventBurningLookAtFactorTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float EventBurningRadiusDelta
-    {
-        get => state.Get<float>("EventBurningRadiusDelta");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetEventBurningRadiusDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEventBurningRadiusDelta(float value)
     {
-        EventBurningRadiusDelta = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetEventBurningRadiusDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int EventBurningRadiusTimeDown
-    {
-        get => state.Get<int>("EventBurningRadiusTimeDown");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetEventBurningRadiusTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEventBurningRadiusTimeDown(int value)
     {
-        EventBurningRadiusTimeDown = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetEventBurningRadiusTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int EventBurningRadiusTimeUp
-    {
-        get => state.Get<int>("EventBurningRadiusTimeUp");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetEventBurningRadiusTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEventBurningRadiusTimeUp(int value)
     {
-        EventBurningRadiusTimeUp = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetEventBurningRadiusTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float EventChangeGearFarDelta
-    {
-        get => state.Get<float>("EventChangeGearFarDelta");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetEventChangeGearFarDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEventChangeGearFarDelta(float value)
     {
-        EventChangeGearFarDelta = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetEventChangeGearFarDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int EventChangeGearFarTimeDown
-    {
-        get => state.Get<int>("EventChangeGearFarTimeDown");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetEventChangeGearFarTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEventChangeGearFarTimeDown(int value)
     {
-        EventChangeGearFarTimeDown = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetEventChangeGearFarTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int EventChangeGearFarTimeUp
-    {
-        get => state.Get<int>("EventChangeGearFarTimeUp");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetEventChangeGearFarTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEventChangeGearFarTimeUp(int value)
     {
-        EventChangeGearFarTimeUp = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetEventChangeGearFarTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float EventTurboFarDelta
-    {
-        get => state.Get<float>("EventTurboFarDelta");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetEventTurboFarDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEventTurboFarDelta(float value)
     {
-        EventTurboFarDelta = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetEventTurboFarDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int EventTurboFarTimeDown
-    {
-        get => state.Get<int>("EventTurboFarTimeDown");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetEventTurboFarTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEventTurboFarTimeDown(int value)
     {
-        EventTurboFarTimeDown = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetEventTurboFarTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int EventTurboFarTimeUp
-    {
-        get => state.Get<int>("EventTurboFarTimeUp");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetEventTurboFarTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEventTurboFarTimeUp(int value)
     {
-        EventTurboFarTimeUp = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetEventTurboFarTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float EventTurboFovDelta
-    {
-        get => state.Get<float>("EventTurboFovDelta");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetEventTurboFovDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEventTurboFovDelta(float value)
     {
-        EventTurboFovDelta = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetEventTurboFovDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int EventTurboFovTimeDown
-    {
-        get => state.Get<int>("EventTurboFovTimeDown");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetEventTurboFovTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEventTurboFovTimeDown(int value)
     {
-        EventTurboFovTimeDown = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetEventTurboFovTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int EventTurboFovTimeUp
-    {
-        get => state.Get<int>("EventTurboFovTimeUp");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetEventTurboFovTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithEventTurboFovTimeUp(int value)
     {
-        EventTurboFovTimeUp = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetEventTurboFovTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float Far
-    {
-        get => state.Get<float>("Far");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetFarAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFar(float value)
     {
-        Far = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetFarAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int FlyDurationBeforeFlyingBehavior
-    {
-        get => state.Get<int>("FlyDurationBeforeFlyingBehavior");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetFlyDurationBeforeFlyingBehaviorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFlyDurationBeforeFlyingBehavior(int value)
     {
-        FlyDurationBeforeFlyingBehavior = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetFlyDurationBeforeFlyingBehaviorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public PlugCurve? FlyingLookDownFactorFromSpeedRatio
-    {
-        get => state.Get<PlugCurve?>("FlyingLookDownFactorFromSpeedRatio");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetFlyingLookDownFactorFromSpeedRatioAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFlyingLookDownFactorFromSpeedRatio(PlugCurve? value)
     {
-        FlyingLookDownFactorFromSpeedRatio = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetFlyingLookDownFactorFromSpeedRatioAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float FlyingLookDownFactorKa
-    {
-        get => state.Get<float>("FlyingLookDownFactorKa");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetFlyingLookDownFactorKaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFlyingLookDownFactorKa(float value)
     {
-        FlyingLookDownFactorKa = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetFlyingLookDownFactorKaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float FlyingLookDownFactorKi
-    {
-        get => state.Get<float>("FlyingLookDownFactorKi");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetFlyingLookDownFactorKiAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFlyingLookDownFactorKi(float value)
     {
-        FlyingLookDownFactorKi = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetFlyingLookDownFactorKiAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool FollowWheelsPlane
-    {
-        get => state.Get<bool>("FollowWheelsPlane");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetFollowWheelsPlaneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithFollowWheelsPlane(bool value)
     {
-        FollowWheelsPlane = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetFollowWheelsPlaneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool ForceUpV010
-    {
-        get => state.Get<bool>("ForceUpV010");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetForceUpV010Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithForceUpV010(bool value)
     {
-        ForceUpV010 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetForceUpV010Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float InputBrakeFarDelta
-    {
-        get => state.Get<float>("InputBrakeFarDelta");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetInputBrakeFarDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputBrakeFarDelta(float value)
     {
-        InputBrakeFarDelta = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetInputBrakeFarDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int InputBrakeFarTimeDown
-    {
-        get => state.Get<int>("InputBrakeFarTimeDown");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetInputBrakeFarTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputBrakeFarTimeDown(int value)
     {
-        InputBrakeFarTimeDown = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetInputBrakeFarTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int InputBrakeFarTimeUp
-    {
-        get => state.Get<int>("InputBrakeFarTimeUp");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetInputBrakeFarTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputBrakeFarTimeUp(int value)
     {
-        InputBrakeFarTimeUp = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetInputBrakeFarTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float InputGasFarDelta
-    {
-        get => state.Get<float>("InputGasFarDelta");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetInputGasFarDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputGasFarDelta(float value)
     {
-        InputGasFarDelta = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetInputGasFarDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int InputGasFarTimeDown
-    {
-        get => state.Get<int>("InputGasFarTimeDown");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetInputGasFarTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputGasFarTimeDown(int value)
     {
-        InputGasFarTimeDown = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetInputGasFarTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int InputGasFarTimeUp
-    {
-        get => state.Get<int>("InputGasFarTimeUp");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetInputGasFarTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputGasFarTimeUp(int value)
     {
-        InputGasFarTimeUp = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetInputGasFarTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int InputNoSteerDurationBeforeReset
-    {
-        get => state.Get<int>("InputNoSteerDurationBeforeReset");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetInputNoSteerDurationBeforeResetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputNoSteerDurationBeforeReset(int value)
     {
-        InputNoSteerDurationBeforeReset = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetInputNoSteerDurationBeforeResetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int InputSteerDurationBeforeBurnoutShowView
-    {
-        get => state.Get<int>("InputSteerDurationBeforeBurnoutShowView");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetInputSteerDurationBeforeBurnoutShowViewAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputSteerDurationBeforeBurnoutShowView(int value)
     {
-        InputSteerDurationBeforeBurnoutShowView = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetInputSteerDurationBeforeBurnoutShowViewAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float InputSteerFarDelta
-    {
-        get => state.Get<float>("InputSteerFarDelta");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetInputSteerFarDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputSteerFarDelta(float value)
     {
-        InputSteerFarDelta = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetInputSteerFarDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int InputSteerFarTimeDown
-    {
-        get => state.Get<int>("InputSteerFarTimeDown");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetInputSteerFarTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputSteerFarTimeDown(int value)
     {
-        InputSteerFarTimeDown = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetInputSteerFarTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int InputSteerFarTimeUp
-    {
-        get => state.Get<int>("InputSteerFarTimeUp");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetInputSteerFarTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithInputSteerFarTimeUp(int value)
     {
-        InputSteerFarTimeUp = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetInputSteerFarTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float LookAtFactor
-    {
-        get => state.Get<float>("LookAtFactor");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetLookAtFactorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLookAtFactor(float value)
     {
-        LookAtFactor = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetLookAtFactorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public PlugCurve? LookAtFactorFromUpSpeedRatio
-    {
-        get => state.Get<PlugCurve?>("LookAtFactorFromUpSpeedRatio");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetLookAtFactorFromUpSpeedRatioAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithLookAtFactorFromUpSpeedRatio(PlugCurve? value)
     {
-        LookAtFactorFromUpSpeedRatio = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetLookAtFactorFromUpSpeedRatioAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float MinSpeed
-    {
-        get => state.Get<float>("MinSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetMinSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMinSpeed(float value)
     {
-        MinSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetMinSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float MinSpeed2
-    {
-        get => state.Get<float>("MinSpeed2");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetMinSpeed2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithMinSpeed2(float value)
     {
-        MinSpeed2 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetMinSpeed2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float RadiusDamperKa
-    {
-        get => state.Get<float>("RadiusDamperKa");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetRadiusDamperKaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRadiusDamperKa(float value)
     {
-        RadiusDamperKa = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetRadiusDamperKaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float RadiusDamperKi
-    {
-        get => state.Get<float>("RadiusDamperKi");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetRadiusDamperKiAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithRadiusDamperKi(float value)
     {
-        RadiusDamperKi = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetRadiusDamperKiAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float SlerpSpeed
-    {
-        get => state.Get<float>("SlerpSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSlerpSpeed(float value)
     {
-        SlerpSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float SlerpSpeedCamUp
-    {
-        get => state.Get<float>("SlerpSpeedCamUp");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpSpeedCamUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSlerpSpeedCamUp(float value)
     {
-        SlerpSpeedCamUp = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpSpeedCamUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float SlerpSpeedCamUpDelta
-    {
-        get => state.Get<float>("SlerpSpeedCamUpDelta");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpSpeedCamUpDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSlerpSpeedCamUpDelta(float value)
     {
-        SlerpSpeedCamUpDelta = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpSpeedCamUpDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float SlerpSpeedCamUpFlyingBehavior
-    {
-        get => state.Get<float>("SlerpSpeedCamUpFlyingBehavior");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpSpeedCamUpFlyingBehaviorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSlerpSpeedCamUpFlyingBehavior(float value)
     {
-        SlerpSpeedCamUpFlyingBehavior = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpSpeedCamUpFlyingBehaviorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int SlerpSpeedCamUpTimeDown
-    {
-        get => state.Get<int>("SlerpSpeedCamUpTimeDown");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpSpeedCamUpTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSlerpSpeedCamUpTimeDown(int value)
     {
-        SlerpSpeedCamUpTimeDown = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpSpeedCamUpTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int SlerpSpeedCamUpTimeUp
-    {
-        get => state.Get<int>("SlerpSpeedCamUpTimeUp");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpSpeedCamUpTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSlerpSpeedCamUpTimeUp(int value)
     {
-        SlerpSpeedCamUpTimeUp = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpSpeedCamUpTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float SlerpSpeedDelta
-    {
-        get => state.Get<float>("SlerpSpeedDelta");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpSpeedDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSlerpSpeedDelta(float value)
     {
-        SlerpSpeedDelta = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpSpeedDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float SlerpSpeedFlyingBehavior
-    {
-        get => state.Get<float>("SlerpSpeedFlyingBehavior");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpSpeedFlyingBehaviorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSlerpSpeedFlyingBehavior(float value)
     {
-        SlerpSpeedFlyingBehavior = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpSpeedFlyingBehaviorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public PlugCurve? SlerpSpeedModulationFromSpeed
-    {
-        get => state.Get<PlugCurve?>("SlerpSpeedModulationFromSpeed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpSpeedModulationFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSlerpSpeedModulationFromSpeed(PlugCurve? value)
     {
-        SlerpSpeedModulationFromSpeed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpSpeedModulationFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int SlerpSpeedTimeDown
-    {
-        get => state.Get<int>("SlerpSpeedTimeDown");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpSpeedTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSlerpSpeedTimeDown(int value)
     {
-        SlerpSpeedTimeDown = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpSpeedTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int SlerpSpeedTimeUp
-    {
-        get => state.Get<int>("SlerpSpeedTimeUp");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpSpeedTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSlerpSpeedTimeUp(int value)
     {
-        SlerpSpeedTimeUp = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpSpeedTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float SlerpTargetCamUpDelta
-    {
-        get => state.Get<float>("SlerpTargetCamUpDelta");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpTargetCamUpDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSlerpTargetCamUpDelta(float value)
     {
-        SlerpTargetCamUpDelta = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpTargetCamUpDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int SlerpTargetCamUpTimeDown
-    {
-        get => state.Get<int>("SlerpTargetCamUpTimeDown");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpTargetCamUpTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSlerpTargetCamUpTimeDown(int value)
     {
-        SlerpTargetCamUpTimeDown = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpTargetCamUpTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int SlerpTargetCamUpTimeUp
-    {
-        get => state.Get<int>("SlerpTargetCamUpTimeUp");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpTargetCamUpTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSlerpTargetCamUpTimeUp(int value)
     {
-        SlerpTargetCamUpTimeUp = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpTargetCamUpTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float SlerpTargetPosDelta
-    {
-        get => state.Get<float>("SlerpTargetPosDelta");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpTargetPosDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSlerpTargetPosDelta(float value)
     {
-        SlerpTargetPosDelta = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpTargetPosDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float SlerpTargetPosFlyingDelta
-    {
-        get => state.Get<float>("SlerpTargetPosFlyingDelta");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpTargetPosFlyingDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSlerpTargetPosFlyingDelta(float value)
     {
-        SlerpTargetPosFlyingDelta = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpTargetPosFlyingDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int SlerpTargetPosFlyingTimeDown
-    {
-        get => state.Get<int>("SlerpTargetPosFlyingTimeDown");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpTargetPosFlyingTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSlerpTargetPosFlyingTimeDown(int value)
     {
-        SlerpTargetPosFlyingTimeDown = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpTargetPosFlyingTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int SlerpTargetPosFlyingTimeUp
-    {
-        get => state.Get<int>("SlerpTargetPosFlyingTimeUp");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpTargetPosFlyingTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSlerpTargetPosFlyingTimeUp(int value)
     {
-        SlerpTargetPosFlyingTimeUp = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpTargetPosFlyingTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float SlerpTargetPosNormalBehaviorDelta
-    {
-        get => state.Get<float>("SlerpTargetPosNormalBehaviorDelta");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpTargetPosNormalBehaviorDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSlerpTargetPosNormalBehaviorDelta(float value)
     {
-        SlerpTargetPosNormalBehaviorDelta = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpTargetPosNormalBehaviorDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int SlerpTargetPosNormalBehaviorTimeDown
-    {
-        get => state.Get<int>("SlerpTargetPosNormalBehaviorTimeDown");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpTargetPosNormalBehaviorTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSlerpTargetPosNormalBehaviorTimeDown(int value)
     {
-        SlerpTargetPosNormalBehaviorTimeDown = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpTargetPosNormalBehaviorTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int SlerpTargetPosNormalBehaviorTimeUp
-    {
-        get => state.Get<int>("SlerpTargetPosNormalBehaviorTimeUp");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpTargetPosNormalBehaviorTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSlerpTargetPosNormalBehaviorTimeUp(int value)
     {
-        SlerpTargetPosNormalBehaviorTimeUp = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpTargetPosNormalBehaviorTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int SlerpTargetPosTimeDown
-    {
-        get => state.Get<int>("SlerpTargetPosTimeDown");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpTargetPosTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSlerpTargetPosTimeDown(int value)
     {
-        SlerpTargetPosTimeDown = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpTargetPosTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int SlerpTargetPosTimeUp
-    {
-        get => state.Get<int>("SlerpTargetPosTimeUp");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpTargetPosTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSlerpTargetPosTimeUp(int value)
     {
-        SlerpTargetPosTimeUp = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetSlerpTargetPosTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float StateFlyingLookAtFactorDelta
-    {
-        get => state.Get<float>("StateFlyingLookAtFactorDelta");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetStateFlyingLookAtFactorDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStateFlyingLookAtFactorDelta(float value)
     {
-        StateFlyingLookAtFactorDelta = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetStateFlyingLookAtFactorDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int StateFlyingLookAtFactorTimeDown
-    {
-        get => state.Get<int>("StateFlyingLookAtFactorTimeDown");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetStateFlyingLookAtFactorTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStateFlyingLookAtFactorTimeDown(int value)
     {
-        StateFlyingLookAtFactorTimeDown = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetStateFlyingLookAtFactorTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int StateFlyingLookAtFactorTimeUp
-    {
-        get => state.Get<int>("StateFlyingLookAtFactorTimeUp");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetStateFlyingLookAtFactorTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStateFlyingLookAtFactorTimeUp(int value)
     {
-        StateFlyingLookAtFactorTimeUp = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetStateFlyingLookAtFactorTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float StateFlyingLookAtStep
-    {
-        get => state.Get<float>("StateFlyingLookAtStep");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetStateFlyingLookAtStepAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStateFlyingLookAtStep(float value)
     {
-        StateFlyingLookAtStep = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetStateFlyingLookAtStepAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float StateFlyingRadiusDelta
-    {
-        get => state.Get<float>("StateFlyingRadiusDelta");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetStateFlyingRadiusDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStateFlyingRadiusDelta(float value)
     {
-        StateFlyingRadiusDelta = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetStateFlyingRadiusDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int StateFlyingRadiusTimeDown
-    {
-        get => state.Get<int>("StateFlyingRadiusTimeDown");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetStateFlyingRadiusTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStateFlyingRadiusTimeDown(int value)
     {
-        StateFlyingRadiusTimeDown = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetStateFlyingRadiusTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int StateFlyingRadiusTimeUp
-    {
-        get => state.Get<int>("StateFlyingRadiusTimeUp");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetStateFlyingRadiusTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithStateFlyingRadiusTimeUp(int value)
     {
-        StateFlyingRadiusTimeUp = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetStateFlyingRadiusTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float Up
-    {
-        get => state.Get<float>("Up");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithUp(float value)
     {
-        Up = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
 public abstract class CPlugVehicleCameraRace3ModelBuilderMembers1<TSelf> : CPlugVehicleCameraRace3ModelBuilderBase<TSelf> where TSelf : CPlugVehicleCameraRace3ModelBuilderMembers1<TSelf>
 {
     private protected CPlugVehicleCameraRace3ModelBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model> state) : base(state) { }
-    public global::GBX.NET.Engines.Plug.CPlugCamShakeModel? Shake
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugCamShakeModel?>("Shake");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCamControlModelBuilderAssignments.GetShakeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithShake(global::GBX.NET.Engines.Plug.CPlugCamShakeModel? value)
     {
-        Shake = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCamControlModelBuilderAssignments.GetShakeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithShakeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugCamShakeModel> value)
@@ -780,54 +415,29 @@ public abstract class CPlugVehicleCameraRace3ModelBuilderMembers1<TSelf> : CPlug
 public abstract class CPlugVehicleCameraRace3ModelBuilderMembers2<TSelf> : CPlugVehicleCameraRace3ModelBuilderMembers1<TSelf> where TSelf : CPlugVehicleCameraRace3ModelBuilderMembers2<TSelf>
 {
     private protected CPlugVehicleCameraRace3ModelBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model> state) : base(state) { }
-    public float AirSpawn_VelY0
-    {
-        get => state.Get<float>("AirSpawn_VelY0");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetAirSpawn_VelY0Assignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithAirSpawn_VelY0(float value)
     {
-        AirSpawn_VelY0 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetAirSpawn_VelY0Assignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float AirSpawn_VelY1
-    {
-        get => state.Get<float>("AirSpawn_VelY1");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetAirSpawn_VelY1Assignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithAirSpawn_VelY1(float value)
     {
-        AirSpawn_VelY1 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetAirSpawn_VelY1Assignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public PlugCurve? DeltaRadiusFromSpeedKmh
-    {
-        get => state.Get<PlugCurve?>("DeltaRadiusFromSpeedKmh");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetDeltaRadiusFromSpeedKmhAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithDeltaRadiusFromSpeedKmh(PlugCurve? value)
     {
-        DeltaRadiusFromSpeedKmh = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetDeltaRadiusFromSpeedKmhAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float HelicopterCameraSlerpRoll
-    {
-        get => state.Get<float>("HelicopterCameraSlerpRoll");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetHelicopterCameraSlerpRollAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithHelicopterCameraSlerpRoll(float value)
     {
-        HelicopterCameraSlerpRoll = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetHelicopterCameraSlerpRollAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float VehiclePitchCoef
-    {
-        get => state.Get<float>("VehiclePitchCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetVehiclePitchCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithVehiclePitchCoef(float value)
     {
-        VehiclePitchCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace3ModelBuilderAssignments.GetVehiclePitchCoefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
 }
@@ -848,14 +458,6 @@ public partial class CPlugVehicleCameraRace3ModelBuilder : CPlugVehicleCameraRac
         node.Chunks.Add(chunk090EF004);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model.Chunk090EF000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090EF000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model.Chunk090EF001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090EF001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model.Chunk090EF002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090EF002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model.Chunk090EF003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090EF003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model.Chunk090EF004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090EF004 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model();
@@ -873,15 +475,6 @@ public partial class CPlugVehicleCameraRace3ModelBuilder : CPlugVehicleCameraRac
         chunk0910C000.Version = 0;
         node.Chunks.Add(chunk0910C000);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model.Chunk090EF000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090EF000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model.Chunk090EF001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090EF001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model.Chunk090EF002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090EF002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model.Chunk090EF003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090EF003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model.Chunk090EF004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090EF004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0910C000 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model CreateRecipe2(GameVersion game)
     {
@@ -901,15 +494,6 @@ public partial class CPlugVehicleCameraRace3ModelBuilder : CPlugVehicleCameraRac
         node.Chunks.Add(chunk0910C000);
         return node;
     }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model.Chunk090EF001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090EF001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model.Chunk090EF002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090EF002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model.Chunk090EF003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090EF003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model.Chunk090EF004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090EF004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model.Chunk090EF005>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk090EF005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0910C000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model();
@@ -928,18 +512,6 @@ public partial class CPlugVehicleCameraRace3ModelBuilder : CPlugVehicleCameraRac
         node.Chunks.Add(chunk0910C000);
         return node;
     }
-    private static void ValidateRecipe3(global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model.Chunk090EF001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090EF001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model.Chunk090EF002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090EF002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model.Chunk090EF003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090EF003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model.Chunk090EF004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090EF004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model.Chunk090EF005>() is not { Version: 8 }) throw new InvalidOperationException($"Required {game} chunk Chunk090EF005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0910C000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model node, GameVersion game)
-    {
-    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -955,14 +527,9 @@ public partial class CPlugVehicleCameraRace3ModelBuilder : CPlugVehicleCameraRac
             var node = CPlugVehicleCameraRace3ModelBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CPlugVehicleCameraRace3ModelBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CPlugVehicleCameraRace3ModelBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model node);
     }
     public partial class TMT : CPlugVehicleCameraRace3ModelBuilderMembers1<TMT>
     {
@@ -977,14 +544,9 @@ public partial class CPlugVehicleCameraRace3ModelBuilder : CPlugVehicleCameraRac
             var node = CPlugVehicleCameraRace3ModelBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugVehicleCameraRace3ModelBuilder.ValidateRecipe1(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugVehicleCameraRace3ModelBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model node);
     }
     public partial class MP4 : CPlugVehicleCameraRace3ModelBuilderMembers2<MP4>
     {
@@ -999,14 +561,9 @@ public partial class CPlugVehicleCameraRace3ModelBuilder : CPlugVehicleCameraRac
             var node = CPlugVehicleCameraRace3ModelBuilder.CreateRecipe2(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugVehicleCameraRace3ModelBuilder.ValidateRecipe2(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugVehicleCameraRace3ModelBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model node);
     }
     public partial class TM2020 : CPlugVehicleCameraRace3ModelBuilderMembers2<TM2020>
     {
@@ -1021,13 +578,8 @@ public partial class CPlugVehicleCameraRace3ModelBuilder : CPlugVehicleCameraRac
             var node = CPlugVehicleCameraRace3ModelBuilder.CreateRecipe3(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugVehicleCameraRace3ModelBuilder.ValidateRecipe3(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugVehicleCameraRace3ModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model node);
     }
 }

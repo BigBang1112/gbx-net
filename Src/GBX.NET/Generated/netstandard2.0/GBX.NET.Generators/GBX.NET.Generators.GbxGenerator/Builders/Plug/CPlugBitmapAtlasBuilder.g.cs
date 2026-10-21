@@ -36,14 +36,9 @@ public abstract class CPlugBitmapAtlasBuilderBase<TSelf> where TSelf : CPlugBitm
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapAtlas> state;
     private protected CPlugBitmapAtlasBuilderBase() => state = new();
     private protected CPlugBitmapAtlasBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapAtlas> state) => this.state = state;
-    public global::GBX.NET.Engines.Plug.CPlugBitmapAtlas.SubTex[]? SubTextures
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmapAtlas.SubTex[]?>("SubTextures");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapAtlasBuilderAssignments.GetSubTexturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithSubTextures(params global::GBX.NET.Engines.Plug.CPlugBitmapAtlas.SubTex[]? value)
     {
-        SubTextures = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapAtlasBuilderAssignments.GetSubTexturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithSubTextures(IEnumerable<global::GBX.NET.Engines.Plug.CPlugBitmapAtlas.SubTex> values)
@@ -60,13 +55,6 @@ public partial class CPlugBitmapAtlasBuilder : CPlugBitmapAtlasBuilderBase<CPlug
         node.Chunks.Add(chunk090A8002);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugBitmapAtlas node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugBitmapAtlas.Chunk090A8002>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk090A8002 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugBitmapAtlas node, GameVersion game)
-    {
-    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -82,14 +70,9 @@ public partial class CPlugBitmapAtlasBuilder : CPlugBitmapAtlasBuilderBase<CPlug
             var node = CPlugBitmapAtlasBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CPlugBitmapAtlasBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CPlugBitmapAtlasBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBitmapAtlas node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugBitmapAtlas node);
     }
     public partial class TMT : CPlugBitmapAtlasBuilderBase<TMT>
     {
@@ -100,14 +83,9 @@ public partial class CPlugBitmapAtlasBuilder : CPlugBitmapAtlasBuilderBase<CPlug
             var node = CPlugBitmapAtlasBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugBitmapAtlasBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugBitmapAtlasBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBitmapAtlas node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugBitmapAtlas node);
     }
     public partial class MP4 : CPlugBitmapAtlasBuilderBase<MP4>
     {
@@ -118,14 +96,9 @@ public partial class CPlugBitmapAtlasBuilder : CPlugBitmapAtlasBuilderBase<CPlug
             var node = CPlugBitmapAtlasBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugBitmapAtlasBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugBitmapAtlasBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBitmapAtlas node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugBitmapAtlas node);
     }
     public partial class TM2020 : CPlugBitmapAtlasBuilderBase<TM2020>
     {
@@ -136,13 +109,8 @@ public partial class CPlugBitmapAtlasBuilder : CPlugBitmapAtlasBuilderBase<CPlug
             var node = CPlugBitmapAtlasBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugBitmapAtlasBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugBitmapAtlasBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBitmapAtlas node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugBitmapAtlas node);
     }
 }

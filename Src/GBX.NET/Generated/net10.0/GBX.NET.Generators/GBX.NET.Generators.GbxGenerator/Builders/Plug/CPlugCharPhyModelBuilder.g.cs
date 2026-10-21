@@ -36,28 +36,18 @@ public abstract class CPlugCharPhyModelBuilderBase<TSelf> where TSelf : CPlugCha
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhyModel> state;
     private protected CPlugCharPhyModelBuilderBase() => state = new();
     private protected CPlugCharPhyModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhyModel> state) => this.state = state;
-    public global::GBX.NET.Engines.Plug.CPlugCharPhyModel.SmoothRealModel[]? Smoothing
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.SmoothRealModel[]?>("Smoothing");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyModelBuilderAssignments.GetSmoothingAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithSmoothing(params global::GBX.NET.Engines.Plug.CPlugCharPhyModel.SmoothRealModel[]? value)
     {
-        Smoothing = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyModelBuilderAssignments.GetSmoothingAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithSmoothing(IEnumerable<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.SmoothRealModel> values)
     {
         return WithSmoothing(values.ToArray());
     }
-    public int SmoothingVersion
-    {
-        get => state.Get<int>("SmoothingVersion");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyModelBuilderAssignments.GetSmoothingVersionAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithSmoothingVersion(int value)
     {
-        SmoothingVersion = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyModelBuilderAssignments.GetSmoothingVersionAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
 }
@@ -133,41 +123,6 @@ public partial class CPlugCharPhyModelBuilder : CPlugCharPhyModelBuilderBase<CPl
         var chunk090C902F = new global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C902F(game);
         node.Chunks.Add(chunk090C902F);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugCharPhyModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C900D>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C900D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C900E>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C900E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C900F>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C900F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9010>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9011>() is not { Version: 12 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9011 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9012>() is not { Version: 26 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9012 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9013>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9013 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9014>() is not { Version: 9 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9014 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9015>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9015 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9016>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9016 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9017>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9017 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9018>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9018 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9019>() is not { Version: 10 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9019 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C901A>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C901A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C901B>() is not { Version: 19 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C901B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C901C>() is not { Version: 21 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C901C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C901D>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C901D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C901F>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C901F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9020>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9020 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9022>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9022 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9023>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9023 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9024>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9024 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9025>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9025 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9026>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9026 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9027>() is not { Version: 10 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9027 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9028>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9028 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9029>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9029 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C902A>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C902A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C902B>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C902B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C902D>() is not { Version: 7 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C902D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C902E>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C902E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C902F>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C902F is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Plug.CPlugCharPhyModel CreateRecipe1(GameVersion game)
     {
@@ -260,53 +215,6 @@ public partial class CPlugCharPhyModelBuilder : CPlugCharPhyModelBuilderBase<CPl
         node.Chunks.Add(chunk090C9038);
         return node;
     }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugCharPhyModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090C9000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C900D>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C900D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C900E>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C900E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C900F>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C900F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9010>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9010 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9011>() is not { Version: 16 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9011 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9012>() is not { Version: 28 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9012 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9013>() is not { Version: 7 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9013 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9014>() is not { Version: 10 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9014 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9015>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9015 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9016>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9016 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9017>() is not { Version: 7 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9017 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9018>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9018 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9019>() is not { Version: 11 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9019 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C901A>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C901A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C901B>() is not { Version: 20 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C901B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C901C>() is not { Version: 22 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C901C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C901D>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C901D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C901F>() is not { Version: 7 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C901F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9020>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9020 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9022>() is not { Version: 7 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9022 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9023>() is not { Version: 8 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9023 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9024>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9024 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9025>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9025 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9026>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9026 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9027>() is not { Version: 11 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9027 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9028>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9028 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9029>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9029 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C902A>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C902A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C902B>() is not { Version: 7 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C902B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C902C>() is not { Version: 13 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C902C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C902D>() is not { Version: 8 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C902D is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C902E>() is not { Version: 9 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C902E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9031>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9031 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9032>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9032 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9033>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9033 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9034>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9034 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9035>() is not { Version: 10 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9035 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9036>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9036 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9037>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9037 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9038>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090C9038 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugCharPhyModel node, GameVersion game)
-    {
-    }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
@@ -320,26 +228,16 @@ public partial class CPlugCharPhyModelBuilder : CPlugCharPhyModelBuilderBase<CPl
             var node = CPlugCharPhyModelBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugCharPhyModelBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugCharPhyModelBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCharPhyModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCharPhyModel node);
     }
     public partial class TM2020 : CPlugCharPhyModelBuilderBase<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhyModel> state) : base(state) { }
-        public string? Name
-        {
-            get => state.Get<string?>("Name");
-            set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyModelBuilderAssignments.GetNameAssignment(), value, GameVersion.TM2020);
-        }
         public TM2020 WithName(string? value)
         {
-            Name = value;
+            state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyModelBuilderAssignments.GetNameAssignment(), value, GameVersion.TM2020);
             return this;
         }
         public global::GBX.NET.Interfaces.Plug.IPlugCharPhyModelTM2020 BuildInterface() => Build();
@@ -348,13 +246,8 @@ public partial class CPlugCharPhyModelBuilder : CPlugCharPhyModelBuilderBase<CPl
             var node = CPlugCharPhyModelBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugCharPhyModelBuilder.ValidateRecipe1(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugCharPhyModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCharPhyModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugCharPhyModel node);
     }
 }

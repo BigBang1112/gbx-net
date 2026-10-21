@@ -36,82 +36,42 @@ public partial class CMotionEmitterLeaves : global::GBX.NET.Interfaces.Motion.IM
     public static global::GBX.NET.Builders.Engines.Motion.CMotionEmitterLeavesBuilder Create() => new();
     global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTM10? global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesMembers1<global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTM10>.ManagerModel
     {
-        get
-        {
-            var node = ManagerModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            return node;
-        }
+        get => ManagerModel;
         set => ManagerModel = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionManagerLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMPU? global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesMembers1<global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMPU>.ManagerModel
     {
-        get
-        {
-            var node = ManagerModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            return node;
-        }
+        get => ManagerModel;
         set => ManagerModel = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionManagerLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMSX? global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesMembers1<global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMSX>.ManagerModel
     {
-        get
-        {
-            var node = ManagerModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => ManagerModel;
         set => ManagerModel = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionManagerLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMNESWC? global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesMembers1<global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMNESWC>.ManagerModel
     {
-        get
-        {
-            var node = ManagerModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => ManagerModel;
         set => ManagerModel = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionManagerLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesVSK5? global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesMembers1<global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesVSK5>.ManagerModel
     {
-        get
-        {
-            var node = ManagerModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => ManagerModel;
         set => ManagerModel = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionManagerLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMF? global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesMembers1<global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMF>.ManagerModel
     {
-        get
-        {
-            var node = ManagerModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => ManagerModel;
         set => ManagerModel = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionManagerLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesMP3? global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesMembers1<global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesMP3>.ManagerModel
     {
-        get
-        {
-            var node = ManagerModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => ManagerModel;
         set => ManagerModel = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionManagerLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMT? global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesMembers1<global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMT>.ManagerModel
     {
-        get
-        {
-            var node = ManagerModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => ManagerModel;
         set => ManagerModel = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionManagerLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

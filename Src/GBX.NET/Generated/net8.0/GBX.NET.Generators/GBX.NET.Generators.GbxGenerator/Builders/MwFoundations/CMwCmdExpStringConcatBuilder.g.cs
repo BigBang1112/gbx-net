@@ -36,14 +36,9 @@ public abstract class CMwCmdExpStringConcatBuilderBase<TSelf> where TSelf : CMwC
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpStringConcat> state;
     private protected CMwCmdExpStringConcatBuilderBase() => state = new();
     private protected CMwCmdExpStringConcatBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpStringConcat> state) => this.state = state;
-    public global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Value1
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdExp?>("Value1");
-        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpStringConcatBuilderAssignments.GetValue1Assignment(), value, GameVersion.TMF);
-    }
     public TSelf WithValue1(global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value)
     {
-        Value1 = value;
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpStringConcatBuilderAssignments.GetValue1Assignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
     public TSelf WithValue1Reference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value)
@@ -52,14 +47,9 @@ public abstract class CMwCmdExpStringConcatBuilderBase<TSelf> where TSelf : CMwC
         state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpStringConcatBuilderAssignments.GetValue1ReferenceAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Value2
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdExp?>("Value2");
-        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpStringConcatBuilderAssignments.GetValue2Assignment(), value, GameVersion.TMF);
-    }
     public TSelf WithValue2(global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value)
     {
-        Value2 = value;
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpStringConcatBuilderAssignments.GetValue2Assignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
     public TSelf WithValue2Reference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value)
@@ -80,14 +70,6 @@ public partial class CMwCmdExpStringConcatBuilder : CMwCmdExpStringConcatBuilder
         node.Chunks.Add(chunk00105100);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.MwFoundations.CMwCmdExpStringConcat node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdExpStringConcat.Chunk0104E000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0104E000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdExpStringConcat.Chunk00105100>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk00105100 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.MwFoundations.CMwCmdExpStringConcat node, GameVersion game)
-    {
-    }
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TMF : CMwCmdExpStringConcatBuilderBase<TMF>
     {
@@ -98,13 +80,8 @@ public partial class CMwCmdExpStringConcatBuilder : CMwCmdExpStringConcatBuilder
             var node = CMwCmdExpStringConcatBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CMwCmdExpStringConcatBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CMwCmdExpStringConcatBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpStringConcat node);
-        partial void ValidateNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpStringConcat node);
     }
 }

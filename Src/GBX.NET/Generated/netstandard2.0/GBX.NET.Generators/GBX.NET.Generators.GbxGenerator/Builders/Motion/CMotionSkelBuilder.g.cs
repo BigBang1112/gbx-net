@@ -36,14 +36,9 @@ public abstract class CMotionSkelBuilderBase<TSelf> where TSelf : CMotionSkelBui
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionSkel> state;
     private protected CMotionSkelBuilderBase() => state = new();
     private protected CMotionSkelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionSkel> state) => this.state = state;
-    public global::GBX.NET.Engines.Function.CFuncKeysSkel? KeysSkel
-    {
-        get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysSkel?>("KeysSkel");
-        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionSkelBuilderAssignments.GetKeysSkelAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithKeysSkel(global::GBX.NET.Engines.Function.CFuncKeysSkel? value)
     {
-        KeysSkel = value;
+        state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionSkelBuilderAssignments.GetKeysSkelAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithKeysSkelReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysSkel> value)
@@ -52,14 +47,9 @@ public abstract class CMotionSkelBuilderBase<TSelf> where TSelf : CMotionSkelBui
         state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionSkelBuilderAssignments.GetKeysSkelReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Function.CFuncSkelValues? SkelValues
-    {
-        get => state.Get<global::GBX.NET.Engines.Function.CFuncSkelValues?>("SkelValues");
-        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionSkelSimpleBuilderAssignments.GetSkelValuesAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithSkelValues(global::GBX.NET.Engines.Function.CFuncSkelValues? value)
     {
-        SkelValues = value;
+        state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionSkelSimpleBuilderAssignments.GetSkelValuesAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithSkelValuesReference(NodeRef<global::GBX.NET.Engines.Function.CFuncSkelValues> value)
@@ -79,14 +69,6 @@ public partial class CMotionSkelBuilder : CMotionSkelBuilderBase<CMotionSkelBuil
         var chunk08036000 = new global::GBX.NET.Engines.Motion.CMotionSkelSimple.Chunk08036000();
         node.Chunks.Add(chunk08036000);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Motion.CMotionSkel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionSkel.Chunk08037000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk08037000 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionSkelSimple.Chunk08036000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk08036000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Motion.CMotionSkel node, GameVersion game)
-    {
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -111,14 +93,9 @@ public partial class CMotionSkelBuilder : CMotionSkelBuilderBase<CMotionSkelBuil
             var node = CMotionSkelBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CMotionSkelBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CMotionSkelBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionSkel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionSkel node);
     }
     public partial class TMPU : CMotionSkelBuilderBase<TMPU>
     {
@@ -137,14 +114,9 @@ public partial class CMotionSkelBuilder : CMotionSkelBuilderBase<CMotionSkelBuil
             var node = CMotionSkelBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CMotionSkelBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CMotionSkelBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionSkel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionSkel node);
     }
     public partial class TMSX : CMotionSkelBuilderBase<TMSX>
     {
@@ -163,14 +135,9 @@ public partial class CMotionSkelBuilder : CMotionSkelBuilderBase<CMotionSkelBuil
             var node = CMotionSkelBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CMotionSkelBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CMotionSkelBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionSkel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionSkel node);
     }
     public partial class TMNESWC : CMotionSkelBuilderBase<TMNESWC>
     {
@@ -189,14 +156,9 @@ public partial class CMotionSkelBuilder : CMotionSkelBuilderBase<CMotionSkelBuil
             var node = CMotionSkelBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CMotionSkelBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CMotionSkelBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionSkel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionSkel node);
     }
     public partial class VSK5 : CMotionSkelBuilderBase<VSK5>
     {
@@ -215,14 +177,9 @@ public partial class CMotionSkelBuilder : CMotionSkelBuilderBase<CMotionSkelBuil
             var node = CMotionSkelBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CMotionSkelBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CMotionSkelBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionSkel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionSkel node);
     }
     public partial class TMF : CMotionSkelBuilderBase<TMF>
     {
@@ -241,13 +198,8 @@ public partial class CMotionSkelBuilder : CMotionSkelBuilderBase<CMotionSkelBuil
             var node = CMotionSkelBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CMotionSkelBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CMotionSkelBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionSkel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionSkel node);
     }
 }

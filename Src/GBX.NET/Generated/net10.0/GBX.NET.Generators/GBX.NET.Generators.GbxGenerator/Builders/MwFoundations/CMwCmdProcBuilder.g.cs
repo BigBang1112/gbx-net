@@ -36,14 +36,9 @@ public abstract class CMwCmdProcBuilderBase<TSelf> where TSelf : CMwCmdProcBuild
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdProc> state;
     private protected CMwCmdProcBuilderBase() => state = new();
     private protected CMwCmdProcBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdProc> state) => this.state = state;
-    public NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwCmdExp>? Arguments
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwCmdExp>?>("Arguments");
-        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdProcBuilderAssignments.GetArgumentsAssignment(), value, GameVersion.TMF);
-    }
     public TSelf WithArguments(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwCmdExp>? value)
     {
-        Arguments = value;
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdProcBuilderAssignments.GetArgumentsAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
     public TSelf WithArguments(params global::GBX.NET.Engines.MwFoundations.CMwCmdExp[] values)
@@ -54,14 +49,9 @@ public abstract class CMwCmdProcBuilderBase<TSelf> where TSelf : CMwCmdProcBuild
     {
         return WithArguments(values.ToArray());
     }
-    public global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive? Parameter
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive?>("Parameter");
-        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdProcBuilderAssignments.GetParameterAssignment(), value, GameVersion.TMF);
-    }
     public TSelf WithParameter(global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive? value)
     {
-        Parameter = value;
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdProcBuilderAssignments.GetParameterAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
 }
@@ -74,13 +64,6 @@ public partial class CMwCmdProcBuilder : CMwCmdProcBuilderBase<CMwCmdProcBuilder
         node.Chunks.Add(chunk01097002);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.MwFoundations.CMwCmdProc node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdProc.Chunk01097002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk01097002 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.MwFoundations.CMwCmdProc node, GameVersion game)
-    {
-    }
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TMF : CMwCmdProcBuilderBase<TMF>
     {
@@ -91,13 +74,8 @@ public partial class CMwCmdProcBuilder : CMwCmdProcBuilderBase<CMwCmdProcBuilder
             var node = CMwCmdProcBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CMwCmdProcBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CMwCmdProcBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdProc node);
-        partial void ValidateNode(global::GBX.NET.Engines.MwFoundations.CMwCmdProc node);
     }
 }

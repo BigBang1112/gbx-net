@@ -40,14 +40,9 @@ public abstract class CPlugVehicleMaterialBuilderBase<TSelf> where TSelf : CPlug
 public abstract class CPlugVehicleMaterialBuilderMembers1<TSelf> : CPlugVehicleMaterialBuilderBase<TSelf> where TSelf : CPlugVehicleMaterialBuilderMembers1<TSelf>
 {
     private protected CPlugVehicleMaterialBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial> state) : base(state) { }
-    public global::GBX.NET.Engines.Plug.CPlugBitmap? MaterialHeightDetailBitmap
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("MaterialHeightDetailBitmap");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetMaterialHeightDetailBitmapAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithMaterialHeightDetailBitmap(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
-        MaterialHeightDetailBitmap = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetMaterialHeightDetailBitmapAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithMaterialHeightDetailBitmapReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
@@ -56,116 +51,66 @@ public abstract class CPlugVehicleMaterialBuilderMembers1<TSelf> : CPlugVehicleM
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetMaterialHeightDetailBitmapReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public Vec2 MaterialHeightDetailScale
-    {
-        get => state.Get<Vec2>("MaterialHeightDetailScale");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetMaterialHeightDetailScaleAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithMaterialHeightDetailScale(Vec2 value)
     {
-        MaterialHeightDetailScale = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetMaterialHeightDetailScaleAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CPlugVehicleMaterialBuilderMembers2<TSelf> : CPlugVehicleMaterialBuilderMembers1<TSelf> where TSelf : CPlugVehicleMaterialBuilderMembers2<TSelf>
 {
     private protected CPlugVehicleMaterialBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial> state) : base(state) { }
-    public float AccelerationCoef
-    {
-        get => state.Get<float>("AccelerationCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetAccelerationCoefAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithAccelerationCoef(float value)
     {
-        AccelerationCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetAccelerationCoefAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float BrakeCoef
-    {
-        get => state.Get<float>("BrakeCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetBrakeCoefAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithBrakeCoef(float value)
     {
-        BrakeCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetBrakeCoefAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float Grip
-    {
-        get => state.Get<float>("Grip");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetGripAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithGrip(float value)
     {
-        Grip = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetGripAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public byte MaterialId
-    {
-        get => state.Get<byte>("MaterialId");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetMaterialIdAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithMaterialId(byte value)
     {
-        MaterialId = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetMaterialIdAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float Speed
-    {
-        get => state.Get<float>("Speed");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetSpeedAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithSpeed(float value)
     {
-        Speed = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetSpeedAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float VibrationMax
-    {
-        get => state.Get<float>("VibrationMax");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetVibrationMaxAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithVibrationMax(float value)
     {
-        VibrationMax = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetVibrationMaxAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float VibrationSpeedCoef
-    {
-        get => state.Get<float>("VibrationSpeedCoef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetVibrationSpeedCoefAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithVibrationSpeedCoef(float value)
     {
-        VibrationSpeedCoef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetVibrationSpeedCoefAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CPlugVehicleMaterialBuilderMembers3<TSelf> : CPlugVehicleMaterialBuilderMembers2<TSelf> where TSelf : CPlugVehicleMaterialBuilderMembers3<TSelf>
 {
     private protected CPlugVehicleMaterialBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial> state) : base(state) { }
-    public bool TrailIsOnlyWhenSliding
-    {
-        get => state.Get<bool>("TrailIsOnlyWhenSliding");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetTrailIsOnlyWhenSlidingAssignment(), value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX);
-    }
     public TSelf WithTrailIsOnlyWhenSliding(bool value)
     {
-        TrailIsOnlyWhenSliding = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetTrailIsOnlyWhenSlidingAssignment(), value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX);
         return (TSelf)this;
     }
 }
 public abstract class CPlugVehicleMaterialBuilderMembers4<TSelf> : CPlugVehicleMaterialBuilderMembers3<TSelf> where TSelf : CPlugVehicleMaterialBuilderMembers4<TSelf>
 {
     private protected CPlugVehicleMaterialBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial> state) : base(state) { }
-    public global::GBX.NET.Engines.Plug.CPlugFlockModel? TrailManagerModel
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugFlockModel?>("TrailManagerModel");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetTrailManagerModelAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
-    }
     public TSelf WithTrailManagerModel(global::GBX.NET.Engines.Plug.CPlugFlockModel? value)
     {
-        TrailManagerModel = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetTrailManagerModelAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
         return (TSelf)this;
     }
     public TSelf WithTrailManagerModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFlockModel> value)
@@ -174,14 +119,9 @@ public abstract class CPlugVehicleMaterialBuilderMembers4<TSelf> : CPlugVehicleM
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetTrailManagerModelReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugShader? TrailShader
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugShader?>("TrailShader");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetTrailShaderAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
-    }
     public TSelf WithTrailShader(global::GBX.NET.Engines.Plug.CPlugShader? value)
     {
-        TrailShader = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetTrailShaderAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
         return (TSelf)this;
     }
     public TSelf WithTrailShaderReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value)
@@ -206,13 +146,6 @@ public partial class CPlugVehicleMaterialBuilder : CPlugVehicleMaterialBuilderBa
         node.Chunks.Add(chunk090F1006);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugVehicleMaterial node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial.Chunk090F1001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090F1001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial.Chunk090F1004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090F1004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial.Chunk090F1005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090F1005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial.Chunk090F1006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090F1006 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugVehicleMaterial CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugVehicleMaterial();
@@ -232,16 +165,6 @@ public partial class CPlugVehicleMaterialBuilder : CPlugVehicleMaterialBuilderBa
         node.Chunks.Add(chunk090F100D);
         return node;
     }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugVehicleMaterial node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial.Chunk090F1004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090F1004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial.Chunk090F1005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090F1005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial.Chunk090F1009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090F1009 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial.Chunk090F100A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090F100A is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial.Chunk090F100B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090F100B is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial.Chunk090F100C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090F100C is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial.Chunk090F100D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090F100D is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugVehicleMaterial CreateRecipe2(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugVehicleMaterial();
@@ -252,12 +175,6 @@ public partial class CPlugVehicleMaterialBuilder : CPlugVehicleMaterialBuilderBa
         var chunk090F100E = new global::GBX.NET.Engines.Plug.CPlugVehicleMaterial.Chunk090F100E();
         node.Chunks.Add(chunk090F100E);
         return node;
-    }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Plug.CPlugVehicleMaterial node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial.Chunk090F1004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090F1004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial.Chunk090F1005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090F1005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial.Chunk090F100E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090F100E is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Plug.CPlugVehicleMaterial CreateRecipe3(GameVersion game)
     {
@@ -272,13 +189,6 @@ public partial class CPlugVehicleMaterialBuilder : CPlugVehicleMaterialBuilderBa
         node.Chunks.Add(chunk090F100F);
         return node;
     }
-    private static void ValidateRecipe3(global::GBX.NET.Engines.Plug.CPlugVehicleMaterial node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial.Chunk090F1004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090F1004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial.Chunk090F1005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090F1005 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial.Chunk090F100E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090F100E is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial.Chunk090F100F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090F100F is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugVehicleMaterial CreateRecipe4(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugVehicleMaterial();
@@ -290,12 +200,6 @@ public partial class CPlugVehicleMaterialBuilder : CPlugVehicleMaterialBuilderBa
         node.Chunks.Add(chunk090F1010);
         return node;
     }
-    private static void ValidateRecipe4(global::GBX.NET.Engines.Plug.CPlugVehicleMaterial node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial.Chunk090F1004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090F1004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial.Chunk090F100F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090F100F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial.Chunk090F1010>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk090F1010 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugVehicleMaterial CreateRecipe5(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugVehicleMaterial();
@@ -305,11 +209,6 @@ public partial class CPlugVehicleMaterialBuilder : CPlugVehicleMaterialBuilderBa
         node.Chunks.Add(chunk090F1010);
         return node;
     }
-    private static void ValidateRecipe5(global::GBX.NET.Engines.Plug.CPlugVehicleMaterial node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial.Chunk090F100F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090F100F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial.Chunk090F1010>() is not { Version: 7 }) throw new InvalidOperationException($"Required {game} chunk Chunk090F1010 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugVehicleMaterial CreateRecipe6(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugVehicleMaterial();
@@ -318,14 +217,6 @@ public partial class CPlugVehicleMaterialBuilder : CPlugVehicleMaterialBuilderBa
         var chunk090F1010 = new global::GBX.NET.Engines.Plug.CPlugVehicleMaterial.Chunk090F1010(game);
         node.Chunks.Add(chunk090F1010);
         return node;
-    }
-    private static void ValidateRecipe6(global::GBX.NET.Engines.Plug.CPlugVehicleMaterial node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial.Chunk090F100F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090F100F is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial.Chunk090F1010>() is not { Version: 14 }) throw new InvalidOperationException($"Required {game} chunk Chunk090F1010 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugVehicleMaterial node, GameVersion game)
-    {
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -359,14 +250,9 @@ public partial class CPlugVehicleMaterialBuilder : CPlugVehicleMaterialBuilderBa
             var node = CPlugVehicleMaterialBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CPlugVehicleMaterialBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CPlugVehicleMaterialBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleMaterial node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleMaterial node);
     }
     public partial class TMPU : CPlugVehicleMaterialBuilderMembers4<TMPU>
     {
@@ -389,14 +275,9 @@ public partial class CPlugVehicleMaterialBuilder : CPlugVehicleMaterialBuilderBa
             var node = CPlugVehicleMaterialBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CPlugVehicleMaterialBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CPlugVehicleMaterialBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleMaterial node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleMaterial node);
     }
     public partial class TMSX : CPlugVehicleMaterialBuilderMembers3<TMSX>
     {
@@ -411,14 +292,9 @@ public partial class CPlugVehicleMaterialBuilder : CPlugVehicleMaterialBuilderBa
             var node = CPlugVehicleMaterialBuilder.CreateRecipe1(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CPlugVehicleMaterialBuilder.ValidateRecipe1(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CPlugVehicleMaterialBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleMaterial node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleMaterial node);
     }
     public partial class TMNESWC : CPlugVehicleMaterialBuilderMembers2<TMNESWC>
     {
@@ -433,14 +309,9 @@ public partial class CPlugVehicleMaterialBuilder : CPlugVehicleMaterialBuilderBa
             var node = CPlugVehicleMaterialBuilder.CreateRecipe2(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CPlugVehicleMaterialBuilder.ValidateRecipe2(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CPlugVehicleMaterialBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleMaterial node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleMaterial node);
     }
     public partial class VSK5 : CPlugVehicleMaterialBuilderMembers2<VSK5>
     {
@@ -455,14 +326,9 @@ public partial class CPlugVehicleMaterialBuilder : CPlugVehicleMaterialBuilderBa
             var node = CPlugVehicleMaterialBuilder.CreateRecipe2(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CPlugVehicleMaterialBuilder.ValidateRecipe2(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CPlugVehicleMaterialBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleMaterial node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleMaterial node);
     }
     public partial class TMF : CPlugVehicleMaterialBuilderMembers2<TMF>
     {
@@ -477,14 +343,9 @@ public partial class CPlugVehicleMaterialBuilder : CPlugVehicleMaterialBuilderBa
             var node = CPlugVehicleMaterialBuilder.CreateRecipe3(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CPlugVehicleMaterialBuilder.ValidateRecipe3(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CPlugVehicleMaterialBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleMaterial node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleMaterial node);
     }
     public partial class MP3 : CPlugVehicleMaterialBuilderMembers1<MP3>
     {
@@ -499,14 +360,9 @@ public partial class CPlugVehicleMaterialBuilder : CPlugVehicleMaterialBuilderBa
             var node = CPlugVehicleMaterialBuilder.CreateRecipe4(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CPlugVehicleMaterialBuilder.ValidateRecipe4(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CPlugVehicleMaterialBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleMaterial node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleMaterial node);
     }
     public partial class MP4 : CPlugVehicleMaterialBuilderBase<MP4>
     {
@@ -517,14 +373,9 @@ public partial class CPlugVehicleMaterialBuilder : CPlugVehicleMaterialBuilderBa
             var node = CPlugVehicleMaterialBuilder.CreateRecipe5(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugVehicleMaterialBuilder.ValidateRecipe5(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugVehicleMaterialBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleMaterial node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleMaterial node);
     }
     public partial class TM2020 : CPlugVehicleMaterialBuilderBase<TM2020>
     {
@@ -535,13 +386,8 @@ public partial class CPlugVehicleMaterialBuilder : CPlugVehicleMaterialBuilderBa
             var node = CPlugVehicleMaterialBuilder.CreateRecipe6(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugVehicleMaterialBuilder.ValidateRecipe6(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugVehicleMaterialBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleMaterial node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleMaterial node);
     }
 }

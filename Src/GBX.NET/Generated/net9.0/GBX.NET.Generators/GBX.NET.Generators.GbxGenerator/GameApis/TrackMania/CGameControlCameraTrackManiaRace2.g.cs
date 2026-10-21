@@ -36,122 +36,62 @@ public partial class CGameControlCameraTrackManiaRace2 : global::GBX.NET.Interfa
     public static new global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2Builder Create() => new();
     global::GBX.NET.Interfaces.Function.IFuncKeysRealTMSX? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace2Members2<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMSX>.LookAtFactorFromUpSpeedRatio
     {
-        get
-        {
-            var node = LookAtFactorFromUpSpeedRatio;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => LookAtFactorFromUpSpeedRatio;
         set => LookAtFactorFromUpSpeedRatio = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysRealTMSX? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace2Members2<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMSX>.RollFromSpeed
     {
-        get
-        {
-            var node = RollFromSpeed;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => RollFromSpeed;
         set => RollFromSpeed = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysRealTMSX? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace2Members2<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMSX>.YawFromSpeed
     {
-        get
-        {
-            var node = YawFromSpeed;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => YawFromSpeed;
         set => YawFromSpeed = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysRealTMNESWC? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace2Members2<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMNESWC>.LookAtFactorFromUpSpeedRatio
     {
-        get
-        {
-            var node = LookAtFactorFromUpSpeedRatio;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => LookAtFactorFromUpSpeedRatio;
         set => LookAtFactorFromUpSpeedRatio = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysRealTMNESWC? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace2Members2<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMNESWC>.RollFromSpeed
     {
-        get
-        {
-            var node = RollFromSpeed;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => RollFromSpeed;
         set => RollFromSpeed = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysRealTMNESWC? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace2Members2<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMNESWC>.YawFromSpeed
     {
-        get
-        {
-            var node = YawFromSpeed;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => YawFromSpeed;
         set => YawFromSpeed = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysRealVSK5? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace2Members2<global::GBX.NET.Interfaces.Function.IFuncKeysRealVSK5>.LookAtFactorFromUpSpeedRatio
     {
-        get
-        {
-            var node = LookAtFactorFromUpSpeedRatio;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => LookAtFactorFromUpSpeedRatio;
         set => LookAtFactorFromUpSpeedRatio = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysRealVSK5? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace2Members2<global::GBX.NET.Interfaces.Function.IFuncKeysRealVSK5>.RollFromSpeed
     {
-        get
-        {
-            var node = RollFromSpeed;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => RollFromSpeed;
         set => RollFromSpeed = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysRealVSK5? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace2Members2<global::GBX.NET.Interfaces.Function.IFuncKeysRealVSK5>.YawFromSpeed
     {
-        get
-        {
-            var node = YawFromSpeed;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => YawFromSpeed;
         set => YawFromSpeed = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysRealTMF? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace2Members2<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMF>.LookAtFactorFromUpSpeedRatio
     {
-        get
-        {
-            var node = LookAtFactorFromUpSpeedRatio;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => LookAtFactorFromUpSpeedRatio;
         set => LookAtFactorFromUpSpeedRatio = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysRealTMF? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace2Members2<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMF>.RollFromSpeed
     {
-        get
-        {
-            var node = RollFromSpeed;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => RollFromSpeed;
         set => RollFromSpeed = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysRealTMF? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace2Members2<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMF>.YawFromSpeed
     {
-        get
-        {
-            var node = YawFromSpeed;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => YawFromSpeed;
         set => YawFromSpeed = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

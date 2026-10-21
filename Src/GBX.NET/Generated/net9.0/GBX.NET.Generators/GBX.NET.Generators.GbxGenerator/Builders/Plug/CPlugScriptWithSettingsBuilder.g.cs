@@ -36,14 +36,9 @@ public abstract class CPlugScriptWithSettingsBuilderBase<TSelf> where TSelf : CP
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugScriptWithSettings> state;
     private protected CPlugScriptWithSettingsBuilderBase() => state = new();
     private protected CPlugScriptWithSettingsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugScriptWithSettings> state) => this.state = state;
-    public global::GBX.NET.Engines.Plug.CPlugFileTextScript? Script
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugFileTextScript?>("Script");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugScriptWithSettingsBuilderAssignments.GetScriptAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithScript(global::GBX.NET.Engines.Plug.CPlugFileTextScript? value)
     {
-        Script = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugScriptWithSettingsBuilderAssignments.GetScriptAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithScriptReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileTextScript> value)
@@ -52,28 +47,18 @@ public abstract class CPlugScriptWithSettingsBuilderBase<TSelf> where TSelf : CP
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugScriptWithSettingsBuilderAssignments.GetScriptReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Script.CScriptSetting[]? Settings
-    {
-        get => state.Get<global::GBX.NET.Engines.Script.CScriptSetting[]?>("Settings");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugScriptWithSettingsBuilderAssignments.GetSettingsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithSettings(params global::GBX.NET.Engines.Script.CScriptSetting[]? value)
     {
-        Settings = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugScriptWithSettingsBuilderAssignments.GetSettingsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithSettings(IEnumerable<global::GBX.NET.Engines.Script.CScriptSetting> values)
     {
         return WithSettings(values.ToArray());
     }
-    public int SettingsVersion
-    {
-        get => state.Get<int>("SettingsVersion");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugScriptWithSettingsBuilderAssignments.GetSettingsVersionAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithSettingsVersion(int value)
     {
-        SettingsVersion = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugScriptWithSettingsBuilderAssignments.GetSettingsVersionAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
 }
@@ -85,13 +70,6 @@ public partial class CPlugScriptWithSettingsBuilder : CPlugScriptWithSettingsBui
         var chunk09083000 = new global::GBX.NET.Engines.Plug.CPlugScriptWithSettings.Chunk09083000();
         node.Chunks.Add(chunk09083000);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugScriptWithSettings node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugScriptWithSettings.Chunk09083000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09083000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugScriptWithSettings node, GameVersion game)
-    {
     }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -106,14 +84,9 @@ public partial class CPlugScriptWithSettingsBuilder : CPlugScriptWithSettingsBui
             var node = CPlugScriptWithSettingsBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugScriptWithSettingsBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugScriptWithSettingsBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugScriptWithSettings node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugScriptWithSettings node);
     }
     public partial class TM2020 : CPlugScriptWithSettingsBuilderBase<TM2020>
     {
@@ -124,13 +97,8 @@ public partial class CPlugScriptWithSettingsBuilder : CPlugScriptWithSettingsBui
             var node = CPlugScriptWithSettingsBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugScriptWithSettingsBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugScriptWithSettingsBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugScriptWithSettings node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugScriptWithSettings node);
     }
 }

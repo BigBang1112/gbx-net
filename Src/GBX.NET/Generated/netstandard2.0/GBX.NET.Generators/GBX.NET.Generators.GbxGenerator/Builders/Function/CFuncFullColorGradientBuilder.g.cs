@@ -36,64 +36,34 @@ public abstract class CFuncFullColorGradientBuilderBase<TSelf> where TSelf : CFu
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Function.CFuncFullColorGradient> state;
     private protected CFuncFullColorGradientBuilderBase() => state = new();
     private protected CFuncFullColorGradientBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncFullColorGradient> state) => this.state = state;
-    public float KeyFramePos1
-    {
-        get => state.Get<float>("KeyFramePos1");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncFullColorGradientBuilderAssignments.GetKeyFramePos1Assignment(), value, GameVersion.TMF);
-    }
     public TSelf WithKeyFramePos1(float value)
     {
-        KeyFramePos1 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncFullColorGradientBuilderAssignments.GetKeyFramePos1Assignment(), value, GameVersion.TMF);
         return (TSelf)this;
-    }
-    public float KeyFramePos2
-    {
-        get => state.Get<float>("KeyFramePos2");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncFullColorGradientBuilderAssignments.GetKeyFramePos2Assignment(), value, GameVersion.TMF);
     }
     public TSelf WithKeyFramePos2(float value)
     {
-        KeyFramePos2 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncFullColorGradientBuilderAssignments.GetKeyFramePos2Assignment(), value, GameVersion.TMF);
         return (TSelf)this;
-    }
-    public Vec3 KeyFrameValue0
-    {
-        get => state.Get<Vec3>("KeyFrameValue0");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncFullColorGradientBuilderAssignments.GetKeyFrameValue0Assignment(), value, GameVersion.TMF);
     }
     public TSelf WithKeyFrameValue0(Vec3 value)
     {
-        KeyFrameValue0 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncFullColorGradientBuilderAssignments.GetKeyFrameValue0Assignment(), value, GameVersion.TMF);
         return (TSelf)this;
-    }
-    public Vec3 KeyFrameValue1
-    {
-        get => state.Get<Vec3>("KeyFrameValue1");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncFullColorGradientBuilderAssignments.GetKeyFrameValue1Assignment(), value, GameVersion.TMF);
     }
     public TSelf WithKeyFrameValue1(Vec3 value)
     {
-        KeyFrameValue1 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncFullColorGradientBuilderAssignments.GetKeyFrameValue1Assignment(), value, GameVersion.TMF);
         return (TSelf)this;
-    }
-    public Vec3 KeyFrameValue2
-    {
-        get => state.Get<Vec3>("KeyFrameValue2");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncFullColorGradientBuilderAssignments.GetKeyFrameValue2Assignment(), value, GameVersion.TMF);
     }
     public TSelf WithKeyFrameValue2(Vec3 value)
     {
-        KeyFrameValue2 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncFullColorGradientBuilderAssignments.GetKeyFrameValue2Assignment(), value, GameVersion.TMF);
         return (TSelf)this;
-    }
-    public Vec3 KeyFrameValue3
-    {
-        get => state.Get<Vec3>("KeyFrameValue3");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncFullColorGradientBuilderAssignments.GetKeyFrameValue3Assignment(), value, GameVersion.TMF);
     }
     public TSelf WithKeyFrameValue3(Vec3 value)
     {
-        KeyFrameValue3 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncFullColorGradientBuilderAssignments.GetKeyFrameValue3Assignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
 }
@@ -106,13 +76,6 @@ public partial class CFuncFullColorGradientBuilder : CFuncFullColorGradientBuild
         node.Chunks.Add(chunk05039000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Function.CFuncFullColorGradient node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncFullColorGradient.Chunk05039000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05039000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Function.CFuncFullColorGradient node, GameVersion game)
-    {
-    }
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TMF : CFuncFullColorGradientBuilderBase<TMF>
     {
@@ -123,13 +86,8 @@ public partial class CFuncFullColorGradientBuilder : CFuncFullColorGradientBuild
             var node = CFuncFullColorGradientBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CFuncFullColorGradientBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CFuncFullColorGradientBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncFullColorGradient node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncFullColorGradient node);
     }
 }

@@ -36,84 +36,44 @@ public abstract class CFuncEnvelopeBuilderBase<TSelf> where TSelf : CFuncEnvelop
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnvelope> state;
     private protected CFuncEnvelopeBuilderBase() => state = new();
     private protected CFuncEnvelopeBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnvelope> state) => this.state = state;
-    public float Amplitude
-    {
-        get => state.Get<float>("Amplitude");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetAmplitudeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithAmplitude(float value)
     {
-        Amplitude = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetAmplitudeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float Frequency
-    {
-        get => state.Get<float>("Frequency");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetFrequencyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithFrequency(float value)
     {
-        Frequency = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetFrequencyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float KeyFramePos1
-    {
-        get => state.Get<float>("KeyFramePos1");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetKeyFramePos1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithKeyFramePos1(float value)
     {
-        KeyFramePos1 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetKeyFramePos1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float KeyFrameValue0
-    {
-        get => state.Get<float>("KeyFrameValue0");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetKeyFrameValue0Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithKeyFrameValue0(float value)
     {
-        KeyFrameValue0 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetKeyFrameValue0Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float KeyFrameValue1
-    {
-        get => state.Get<float>("KeyFrameValue1");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetKeyFrameValue1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithKeyFrameValue1(float value)
     {
-        KeyFrameValue1 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetKeyFrameValue1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float KeyFrameValue2
-    {
-        get => state.Get<float>("KeyFrameValue2");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetKeyFrameValue2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithKeyFrameValue2(float value)
     {
-        KeyFrameValue2 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetKeyFrameValue2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public float KeyFrameValue3
-    {
-        get => state.Get<float>("KeyFrameValue3");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetKeyFrameValue3Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithKeyFrameValue3(float value)
     {
-        KeyFrameValue3 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetKeyFrameValue3Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Function.CFuncEnvelope.EModulation ModFunc
-    {
-        get => state.Get<global::GBX.NET.Engines.Function.CFuncEnvelope.EModulation>("ModFunc");
-        set => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetModFuncAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithModFunc(global::GBX.NET.Engines.Function.CFuncEnvelope.EModulation value)
     {
-        ModFunc = value;
+        state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetModFuncAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -125,13 +85,6 @@ public partial class CFuncEnvelopeBuilder : CFuncEnvelopeBuilderBase<CFuncEnvelo
         var chunk05036000 = new global::GBX.NET.Engines.Function.CFuncEnvelope.Chunk05036000();
         node.Chunks.Add(chunk05036000);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Function.CFuncEnvelope node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncEnvelope.Chunk05036000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05036000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Function.CFuncEnvelope node, GameVersion game)
-    {
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
@@ -151,14 +104,9 @@ public partial class CFuncEnvelopeBuilder : CFuncEnvelopeBuilderBase<CFuncEnvelo
             var node = CFuncEnvelopeBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CFuncEnvelopeBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CFuncEnvelopeBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncEnvelope node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncEnvelope node);
     }
     public partial class TMNESWC : CFuncEnvelopeBuilderBase<TMNESWC>
     {
@@ -169,14 +117,9 @@ public partial class CFuncEnvelopeBuilder : CFuncEnvelopeBuilderBase<CFuncEnvelo
             var node = CFuncEnvelopeBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CFuncEnvelopeBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CFuncEnvelopeBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncEnvelope node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncEnvelope node);
     }
     public partial class VSK5 : CFuncEnvelopeBuilderBase<VSK5>
     {
@@ -187,14 +130,9 @@ public partial class CFuncEnvelopeBuilder : CFuncEnvelopeBuilderBase<CFuncEnvelo
             var node = CFuncEnvelopeBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CFuncEnvelopeBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CFuncEnvelopeBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncEnvelope node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncEnvelope node);
     }
     public partial class TMF : CFuncEnvelopeBuilderBase<TMF>
     {
@@ -205,14 +143,9 @@ public partial class CFuncEnvelopeBuilder : CFuncEnvelopeBuilderBase<CFuncEnvelo
             var node = CFuncEnvelopeBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CFuncEnvelopeBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CFuncEnvelopeBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncEnvelope node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncEnvelope node);
     }
     public partial class MP3 : CFuncEnvelopeBuilderBase<MP3>
     {
@@ -223,14 +156,9 @@ public partial class CFuncEnvelopeBuilder : CFuncEnvelopeBuilderBase<CFuncEnvelo
             var node = CFuncEnvelopeBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CFuncEnvelopeBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CFuncEnvelopeBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncEnvelope node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncEnvelope node);
     }
     public partial class TMT : CFuncEnvelopeBuilderBase<TMT>
     {
@@ -241,14 +169,9 @@ public partial class CFuncEnvelopeBuilder : CFuncEnvelopeBuilderBase<CFuncEnvelo
             var node = CFuncEnvelopeBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CFuncEnvelopeBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CFuncEnvelopeBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncEnvelope node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncEnvelope node);
     }
     public partial class MP4 : CFuncEnvelopeBuilderBase<MP4>
     {
@@ -259,13 +182,8 @@ public partial class CFuncEnvelopeBuilder : CFuncEnvelopeBuilderBase<CFuncEnvelo
             var node = CFuncEnvelopeBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CFuncEnvelopeBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CFuncEnvelopeBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncEnvelope node);
-        partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncEnvelope node);
     }
 }

@@ -36,34 +36,19 @@ public abstract class CHmsAmbientOccBuilderBase<TSelf> where TSelf : CHmsAmbient
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsAmbientOcc> state;
     private protected CHmsAmbientOccBuilderBase() => state = new();
     private protected CHmsAmbientOccBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsAmbientOcc> state) => this.state = state;
-    public float BlurPower
-    {
-        get => state.Get<float>("BlurPower");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsAmbientOccBuilderAssignments.GetBlurPowerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    }
     public TSelf WithBlurPower(float value)
     {
-        BlurPower = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsAmbientOccBuilderAssignments.GetBlurPowerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public uint BlurTexelCount
-    {
-        get => state.Get<uint>("BlurTexelCount");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsAmbientOccBuilderAssignments.GetBlurTexelCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithBlurTexelCount(uint value)
     {
-        BlurTexelCount = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsAmbientOccBuilderAssignments.GetBlurTexelCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public float ImageRadius
-    {
-        get => state.Get<float>("ImageRadius");
-        set => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsAmbientOccBuilderAssignments.GetImageRadiusAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithImageRadius(float value)
     {
-        ImageRadius = value;
+        state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsAmbientOccBuilderAssignments.GetImageRadiusAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -75,13 +60,6 @@ public partial class CHmsAmbientOccBuilder : CHmsAmbientOccBuilderBase<CHmsAmbie
         var chunk06026000 = new global::GBX.NET.Engines.Hms.CHmsAmbientOcc.Chunk06026000();
         node.Chunks.Add(chunk06026000);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Hms.CHmsAmbientOcc node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsAmbientOcc.Chunk06026000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06026000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Hms.CHmsAmbientOcc node, GameVersion game)
-    {
     }
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -99,14 +77,9 @@ public partial class CHmsAmbientOccBuilder : CHmsAmbientOccBuilderBase<CHmsAmbie
             var node = CHmsAmbientOccBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CHmsAmbientOccBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CHmsAmbientOccBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsAmbientOcc node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsAmbientOcc node);
     }
     public partial class MP3 : CHmsAmbientOccBuilderBase<MP3>
     {
@@ -117,14 +90,9 @@ public partial class CHmsAmbientOccBuilder : CHmsAmbientOccBuilderBase<CHmsAmbie
             var node = CHmsAmbientOccBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CHmsAmbientOccBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CHmsAmbientOccBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsAmbientOcc node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsAmbientOcc node);
     }
     public partial class TMT : CHmsAmbientOccBuilderBase<TMT>
     {
@@ -135,14 +103,9 @@ public partial class CHmsAmbientOccBuilder : CHmsAmbientOccBuilderBase<CHmsAmbie
             var node = CHmsAmbientOccBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CHmsAmbientOccBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CHmsAmbientOccBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsAmbientOcc node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsAmbientOcc node);
     }
     public partial class MP4 : CHmsAmbientOccBuilderBase<MP4>
     {
@@ -153,14 +116,9 @@ public partial class CHmsAmbientOccBuilder : CHmsAmbientOccBuilderBase<CHmsAmbie
             var node = CHmsAmbientOccBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CHmsAmbientOccBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CHmsAmbientOccBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsAmbientOcc node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsAmbientOcc node);
     }
     public partial class TM2020 : CHmsAmbientOccBuilderBase<TM2020>
     {
@@ -171,13 +129,8 @@ public partial class CHmsAmbientOccBuilder : CHmsAmbientOccBuilderBase<CHmsAmbie
             var node = CHmsAmbientOccBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CHmsAmbientOccBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CHmsAmbientOccBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsAmbientOcc node);
-        partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsAmbientOcc node);
     }
 }

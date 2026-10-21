@@ -36,44 +36,24 @@ public abstract class CPlugSpawnModelBuilderBase<TSelf> where TSelf : CPlugSpawn
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpawnModel> state;
     private protected CPlugSpawnModelBuilderBase() => state = new();
     private protected CPlugSpawnModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpawnModel> state) => this.state = state;
-    public Vec3 DefaultGravitySpawn
-    {
-        get => state.Get<Vec3>("DefaultGravitySpawn");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpawnModelBuilderAssignments.GetDefaultGravitySpawnAssignment(), value, GameVersion.TM2020);
-    }
     public TSelf WithDefaultGravitySpawn(Vec3 value)
     {
-        DefaultGravitySpawn = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpawnModelBuilderAssignments.GetDefaultGravitySpawnAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public Iso4 Loc
-    {
-        get => state.Get<Iso4>("Loc");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpawnModelBuilderAssignments.GetLocAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithLoc(Iso4 value)
     {
-        Loc = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpawnModelBuilderAssignments.GetLocAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public TimeInt32 TorqueDuration
-    {
-        get => state.Get<TimeInt32>("TorqueDuration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpawnModelBuilderAssignments.GetTorqueDurationAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithTorqueDuration(TimeInt32 value)
     {
-        TorqueDuration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpawnModelBuilderAssignments.GetTorqueDurationAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float TorqueX
-    {
-        get => state.Get<float>("TorqueX");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpawnModelBuilderAssignments.GetTorqueXAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithTorqueX(float value)
     {
-        TorqueX = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpawnModelBuilderAssignments.GetTorqueXAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
     }
 }
@@ -86,13 +66,6 @@ public partial class CPlugSpawnModelBuilder : CPlugSpawnModelBuilderBase<CPlugSp
         node.Chunks.Add(chunk0917A000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugSpawnModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSpawnModel.Chunk0917A000>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk0917A000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugSpawnModel node, GameVersion game)
-    {
-    }
     public TM2020 ForTM2020() => new(state.Snapshot());
     public partial class TM2020 : CPlugSpawnModelBuilderBase<TM2020>
     {
@@ -103,13 +76,8 @@ public partial class CPlugSpawnModelBuilder : CPlugSpawnModelBuilderBase<CPlugSp
             var node = CPlugSpawnModelBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugSpawnModelBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugSpawnModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSpawnModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugSpawnModel node);
     }
 }

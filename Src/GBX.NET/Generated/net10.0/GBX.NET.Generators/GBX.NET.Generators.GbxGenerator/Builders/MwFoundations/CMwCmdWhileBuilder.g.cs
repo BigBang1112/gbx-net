@@ -36,14 +36,9 @@ public abstract class CMwCmdWhileBuilderBase<TSelf> where TSelf : CMwCmdWhileBui
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdWhile> state;
     private protected CMwCmdWhileBuilderBase() => state = new();
     private protected CMwCmdWhileBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdWhile> state) => this.state = state;
-    public global::GBX.NET.Engines.MwFoundations.CMwCmdBlock? Block
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdBlock?>("Block");
-        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdWhileBuilderAssignments.GetBlockAssignment(), value, GameVersion.TMF);
-    }
     public TSelf WithBlock(global::GBX.NET.Engines.MwFoundations.CMwCmdBlock? value)
     {
-        Block = value;
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdWhileBuilderAssignments.GetBlockAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
     public TSelf WithBlockReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdBlock> value)
@@ -52,14 +47,9 @@ public abstract class CMwCmdWhileBuilderBase<TSelf> where TSelf : CMwCmdWhileBui
         state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdWhileBuilderAssignments.GetBlockReferenceAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Condition
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdExp?>("Condition");
-        set => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdWhileBuilderAssignments.GetConditionAssignment(), value, GameVersion.TMF);
-    }
     public TSelf WithCondition(global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value)
     {
-        Condition = value;
+        state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdWhileBuilderAssignments.GetConditionAssignment(), value, GameVersion.TMF);
         return (TSelf)this;
     }
     public TSelf WithConditionReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value)
@@ -78,13 +68,6 @@ public partial class CMwCmdWhileBuilder : CMwCmdWhileBuilderBase<CMwCmdWhileBuil
         node.Chunks.Add(chunk01037000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.MwFoundations.CMwCmdWhile node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdWhile.Chunk01037000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk01037000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.MwFoundations.CMwCmdWhile node, GameVersion game)
-    {
-    }
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TMF : CMwCmdWhileBuilderBase<TMF>
     {
@@ -99,13 +82,8 @@ public partial class CMwCmdWhileBuilder : CMwCmdWhileBuilderBase<CMwCmdWhileBuil
             var node = CMwCmdWhileBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CMwCmdWhileBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CMwCmdWhileBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdWhile node);
-        partial void ValidateNode(global::GBX.NET.Engines.MwFoundations.CMwCmdWhile node);
     }
 }

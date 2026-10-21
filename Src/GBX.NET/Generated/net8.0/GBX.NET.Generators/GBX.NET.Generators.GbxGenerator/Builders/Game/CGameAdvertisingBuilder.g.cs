@@ -36,28 +36,18 @@ public abstract class CGameAdvertisingBuilderBase<TSelf> where TSelf : CGameAdve
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameAdvertising> state;
     private protected CGameAdvertisingBuilderBase() => state = new();
     private protected CGameAdvertisingBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameAdvertising> state) => this.state = state;
-    public string? Name
-    {
-        get => state.Get<string?>("Name");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameNodBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithName(string? value)
     {
-        Name = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameNodBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CGameAdvertisingBuilderMembers1<TSelf> : CGameAdvertisingBuilderBase<TSelf> where TSelf : CGameAdvertisingBuilderMembers1<TSelf>
 {
     private protected CGameAdvertisingBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Game.CGameAdvertising> state) : base(state) { }
-    public NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? Files
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>?>("Files");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameAdvertisingBuilderAssignments.GetFilesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithFiles(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value)
     {
-        Files = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameAdvertisingBuilderAssignments.GetFilesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithFiles(params global::GBX.NET.Engines.MwFoundations.CMwNod[] values)
@@ -72,24 +62,14 @@ public abstract class CGameAdvertisingBuilderMembers1<TSelf> : CGameAdvertisingB
 public abstract class CGameAdvertisingBuilderMembers2<TSelf> : CGameAdvertisingBuilderMembers1<TSelf> where TSelf : CGameAdvertisingBuilderMembers2<TSelf>
 {
     private protected CGameAdvertisingBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Game.CGameAdvertising> state) : base(state) { }
-    public global::GBX.NET.Engines.Game.CGameAdvertising.EMode Mode
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameAdvertising.EMode>("Mode");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameAdvertisingBuilderAssignments.GetModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithMode(global::GBX.NET.Engines.Game.CGameAdvertising.EMode value)
     {
-        Mode = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameAdvertisingBuilderAssignments.GetModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public string? Radial_Config
-    {
-        get => state.Get<string?>("Radial_Config");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameAdvertisingBuilderAssignments.GetRadial_ConfigAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithRadial_Config(string? value)
     {
-        Radial_Config = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameAdvertisingBuilderAssignments.GetRadial_ConfigAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -102,10 +82,6 @@ public partial class CGameAdvertisingBuilder : CGameAdvertisingBuilderBase<CGame
         node.Chunks.Add(chunk03008000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameAdvertising node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03008000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameAdvertising CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameAdvertising();
@@ -116,12 +92,6 @@ public partial class CGameAdvertisingBuilder : CGameAdvertisingBuilderBase<CGame
         var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
         node.Chunks.Add(chunk03008000);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameAdvertising node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameAdvertising.Chunk0303D001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303D001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameAdvertising.Chunk0303D002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303D002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03008000 is missing or has an incompatible version.");
     }
     private static global::GBX.NET.Engines.Game.CGameAdvertising CreateRecipe2(GameVersion game)
     {
@@ -138,14 +108,6 @@ public partial class CGameAdvertisingBuilder : CGameAdvertisingBuilderBase<CGame
         node.Chunks.Add(chunk03008000);
         return node;
     }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Game.CGameAdvertising node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameAdvertising.Chunk0303D001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303D001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameAdvertising.Chunk0303D002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303D002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameAdvertising.Chunk0303D003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303D003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameAdvertising.Chunk0303D004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303D004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03008000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameAdvertising CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameAdvertising();
@@ -158,16 +120,6 @@ public partial class CGameAdvertisingBuilder : CGameAdvertisingBuilderBase<CGame
         var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
         node.Chunks.Add(chunk03008000);
         return node;
-    }
-    private static void ValidateRecipe3(global::GBX.NET.Engines.Game.CGameAdvertising node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameAdvertising.Chunk0303D001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303D001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameAdvertising.Chunk0303D003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303D003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameAdvertising.Chunk0303D004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303D004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03008000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameAdvertising node, GameVersion game)
-    {
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -190,14 +142,9 @@ public partial class CGameAdvertisingBuilder : CGameAdvertisingBuilderBase<CGame
             var node = CGameAdvertisingBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CGameAdvertisingBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CGameAdvertisingBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameAdvertising node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameAdvertising node);
     }
     public partial class TMPU : CGameAdvertisingBuilderBase<TMPU>
     {
@@ -208,26 +155,16 @@ public partial class CGameAdvertisingBuilder : CGameAdvertisingBuilderBase<CGame
             var node = CGameAdvertisingBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CGameAdvertisingBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CGameAdvertisingBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameAdvertising node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameAdvertising node);
     }
     public partial class TMSX : CGameAdvertisingBuilderMembers1<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Game.CGameAdvertising> state) : base(state) { }
-        public NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? FilesOrig
-        {
-            get => state.Get<NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>?>("FilesOrig");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameAdvertisingBuilderAssignments.GetFilesOrigAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX);
-        }
         public TMSX WithFilesOrig(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value)
         {
-            FilesOrig = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameAdvertisingBuilderAssignments.GetFilesOrigAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX);
             return this;
         }
         public TMSX WithFilesOrig(params global::GBX.NET.Engines.MwFoundations.CMwNod[] values)
@@ -244,26 +181,16 @@ public partial class CGameAdvertisingBuilder : CGameAdvertisingBuilderBase<CGame
             var node = CGameAdvertisingBuilder.CreateRecipe1(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CGameAdvertisingBuilder.ValidateRecipe1(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CGameAdvertisingBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameAdvertising node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameAdvertising node);
     }
     public partial class TMNESWC : CGameAdvertisingBuilderMembers2<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGameAdvertising> state) : base(state) { }
-        public NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? FilesOrig
-        {
-            get => state.Get<NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>?>("FilesOrig");
-            set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameAdvertisingBuilderAssignments.GetFilesOrigAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX);
-        }
         public TMNESWC WithFilesOrig(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value)
         {
-            FilesOrig = value;
+            state.Set(global::GBX.NET.Builders.Engines.Game.CGameAdvertisingBuilderAssignments.GetFilesOrigAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX);
             return this;
         }
         public TMNESWC WithFilesOrig(params global::GBX.NET.Engines.MwFoundations.CMwNod[] values)
@@ -280,14 +207,9 @@ public partial class CGameAdvertisingBuilder : CGameAdvertisingBuilderBase<CGame
             var node = CGameAdvertisingBuilder.CreateRecipe2(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CGameAdvertisingBuilder.ValidateRecipe2(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CGameAdvertisingBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameAdvertising node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameAdvertising node);
     }
     public partial class VSK5 : CGameAdvertisingBuilderMembers2<VSK5>
     {
@@ -298,14 +220,9 @@ public partial class CGameAdvertisingBuilder : CGameAdvertisingBuilderBase<CGame
             var node = CGameAdvertisingBuilder.CreateRecipe3(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CGameAdvertisingBuilder.ValidateRecipe3(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CGameAdvertisingBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameAdvertising node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameAdvertising node);
     }
     public partial class TMF : CGameAdvertisingBuilderMembers2<TMF>
     {
@@ -316,14 +233,9 @@ public partial class CGameAdvertisingBuilder : CGameAdvertisingBuilderBase<CGame
             var node = CGameAdvertisingBuilder.CreateRecipe3(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CGameAdvertisingBuilder.ValidateRecipe3(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CGameAdvertisingBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameAdvertising node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameAdvertising node);
     }
     public partial class MP3 : CGameAdvertisingBuilderMembers2<MP3>
     {
@@ -334,14 +246,9 @@ public partial class CGameAdvertisingBuilder : CGameAdvertisingBuilderBase<CGame
             var node = CGameAdvertisingBuilder.CreateRecipe3(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CGameAdvertisingBuilder.ValidateRecipe3(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CGameAdvertisingBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameAdvertising node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameAdvertising node);
     }
     public partial class TMT : CGameAdvertisingBuilderMembers2<TMT>
     {
@@ -352,14 +259,9 @@ public partial class CGameAdvertisingBuilder : CGameAdvertisingBuilderBase<CGame
             var node = CGameAdvertisingBuilder.CreateRecipe3(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameAdvertisingBuilder.ValidateRecipe3(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameAdvertisingBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameAdvertising node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameAdvertising node);
     }
     public partial class MP4 : CGameAdvertisingBuilderMembers2<MP4>
     {
@@ -370,14 +272,9 @@ public partial class CGameAdvertisingBuilder : CGameAdvertisingBuilderBase<CGame
             var node = CGameAdvertisingBuilder.CreateRecipe3(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameAdvertisingBuilder.ValidateRecipe3(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameAdvertisingBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameAdvertising node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameAdvertising node);
     }
     public partial class TM2020 : CGameAdvertisingBuilderBase<TM2020>
     {
@@ -388,13 +285,8 @@ public partial class CGameAdvertisingBuilder : CGameAdvertisingBuilderBase<CGame
             var node = CGameAdvertisingBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameAdvertisingBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameAdvertisingBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameAdvertising node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameAdvertising node);
     }
 }

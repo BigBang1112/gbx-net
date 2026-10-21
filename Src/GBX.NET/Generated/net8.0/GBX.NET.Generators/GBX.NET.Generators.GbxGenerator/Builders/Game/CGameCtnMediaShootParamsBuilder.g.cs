@@ -36,222 +36,117 @@ public abstract class CGameCtnMediaShootParamsBuilderBase<TSelf> where TSelf : C
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams> state;
     private protected CGameCtnMediaShootParamsBuilderBase() => state = new();
     private protected CGameCtnMediaShootParamsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams> state) => this.state = state;
-    public bool Hq
-    {
-        get => state.Get<bool>("Hq");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetHqAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    }
     public TSelf WithHq(bool value)
     {
-        Hq = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetHqAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool HqAmbientOcc
-    {
-        get => state.Get<bool>("HqAmbientOcc");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetHqAmbientOccAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithHqAmbientOcc(bool value)
     {
-        HqAmbientOcc = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetHqAmbientOccAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int HqSampleCountPerAxe
-    {
-        get => state.Get<int>("HqSampleCountPerAxe");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetHqSampleCountPerAxeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithHqSampleCountPerAxe(int value)
     {
-        HqSampleCountPerAxe = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetHqSampleCountPerAxeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool HqSoftShadows
-    {
-        get => state.Get<bool>("HqSoftShadows");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetHqSoftShadowsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithHqSoftShadows(bool value)
     {
-        HqSoftShadows = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetHqSoftShadowsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool IsAudioStream
-    {
-        get => state.Get<bool>("IsAudioStream");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetIsAudioStreamAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithIsAudioStream(bool value)
     {
-        IsAudioStream = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetIsAudioStreamAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int SizeX
-    {
-        get => state.Get<int>("SizeX");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetSizeXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithSizeX(int value)
     {
-        SizeX = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetSizeXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int SizeY
-    {
-        get => state.Get<int>("SizeY");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetSizeYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithSizeY(int value)
     {
-        SizeY = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetSizeYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EStereo3d Stereo3d
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EStereo3d>("Stereo3d");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetStereo3dAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithStereo3d(global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EStereo3d value)
     {
-        Stereo3d = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetStereo3dAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int VideoFps
-    {
-        get => state.Get<int>("VideoFps");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetVideoFpsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     }
     public TSelf WithVideoFps(int value)
     {
-        VideoFps = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetVideoFpsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnMediaShootParamsBuilderMembers1<TSelf> : CGameCtnMediaShootParamsBuilderBase<TSelf> where TSelf : CGameCtnMediaShootParamsBuilderMembers1<TSelf>
 {
     private protected CGameCtnMediaShootParamsBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams> state) : base(state) { }
-    public global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.AudioEnc? AudioEncoding
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.AudioEnc?>("AudioEncoding");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetAudioEncodingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithAudioEncoding(global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.AudioEnc? value)
     {
-        AudioEncoding = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetAudioEncodingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public int DofSampleCount
-    {
-        get => state.Get<int>("DofSampleCount");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetDofSampleCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithDofSampleCount(int value)
     {
-        DofSampleCount = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetDofSampleCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EExtScreen ExtScreen
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EExtScreen>("ExtScreen");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetExtScreenAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithExtScreen(global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EExtScreen value)
     {
-        ExtScreen = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetExtScreenAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EExtVideo ExtVideo
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EExtVideo>("ExtVideo");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetExtVideoAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithExtVideo(global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EExtVideo value)
     {
-        ExtVideo = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetExtVideoAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool HqCarReflects
-    {
-        get => state.Get<bool>("HqCarReflects");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetHqCarReflectsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithHqCarReflects(bool value)
     {
-        HqCarReflects = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetHqCarReflectsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool HqDOF
-    {
-        get => state.Get<bool>("HqDOF");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetHqDOFAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithHqDOF(bool value)
     {
-        HqDOF = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetHqDOFAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool Hud3d
-    {
-        get => state.Get<bool>("Hud3d");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetHud3dAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithHud3d(bool value)
     {
-        Hud3d = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetHud3dAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool ReflectRayCast
-    {
-        get => state.Get<bool>("ReflectRayCast");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetReflectRayCastAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithReflectRayCast(bool value)
     {
-        ReflectRayCast = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetReflectRayCastAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public bool ReflectSubSample
-    {
-        get => state.Get<bool>("ReflectSubSample");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetReflectSubSampleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithReflectSubSample(bool value)
     {
-        ReflectSubSample = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetReflectSubSampleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.VideoEnc? VideoEncoding
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.VideoEnc?>("VideoEncoding");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetVideoEncodingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithVideoEncoding(global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.VideoEnc? value)
     {
-        VideoEncoding = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetVideoEncodingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EQualityPreset WebmVideoAutoBitrate
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EQualityPreset>("WebmVideoAutoBitrate");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetWebmVideoAutoBitrateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithWebmVideoAutoBitrate(global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EQualityPreset value)
     {
-        WebmVideoAutoBitrate = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetWebmVideoAutoBitrateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
 }
 public abstract class CGameCtnMediaShootParamsBuilderMembers2<TSelf> : CGameCtnMediaShootParamsBuilderMembers1<TSelf> where TSelf : CGameCtnMediaShootParamsBuilderMembers2<TSelf>
 {
     private protected CGameCtnMediaShootParamsBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams> state) : base(state) { }
-    public global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EMotionBlur MotionBlur
-    {
-        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EMotionBlur>("MotionBlur");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetMotionBlurAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithMotionBlur(global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EMotionBlur value)
     {
-        MotionBlur = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaShootParamsBuilderAssignments.GetMotionBlurAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
 }
@@ -264,10 +159,6 @@ public partial class CGameCtnMediaShootParamsBuilder : CGameCtnMediaShootParamsB
         node.Chunks.Add(chunk03060001);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaShootParams node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.Chunk03060001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03060001 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameCtnMediaShootParams CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnMediaShootParams();
@@ -275,23 +166,12 @@ public partial class CGameCtnMediaShootParamsBuilder : CGameCtnMediaShootParamsB
         node.Chunks.Add(chunk03060002);
         return node;
     }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameCtnMediaShootParams node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.Chunk03060002>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03060002 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameCtnMediaShootParams CreateRecipe2(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnMediaShootParams();
         var chunk03060002 = new global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.Chunk03060002(game);
         node.Chunks.Add(chunk03060002);
         return node;
-    }
-    private static void ValidateRecipe2(global::GBX.NET.Engines.Game.CGameCtnMediaShootParams node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.Chunk03060002>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk03060002 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaShootParams node, GameVersion game)
-    {
     }
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -309,14 +189,9 @@ public partial class CGameCtnMediaShootParamsBuilder : CGameCtnMediaShootParamsB
             var node = CGameCtnMediaShootParamsBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CGameCtnMediaShootParamsBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CGameCtnMediaShootParamsBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaShootParams node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaShootParams node);
     }
     public partial class MP3 : CGameCtnMediaShootParamsBuilderMembers1<MP3>
     {
@@ -327,14 +202,9 @@ public partial class CGameCtnMediaShootParamsBuilder : CGameCtnMediaShootParamsB
             var node = CGameCtnMediaShootParamsBuilder.CreateRecipe1(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CGameCtnMediaShootParamsBuilder.ValidateRecipe1(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CGameCtnMediaShootParamsBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaShootParams node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaShootParams node);
     }
     public partial class TMT : CGameCtnMediaShootParamsBuilderMembers1<TMT>
     {
@@ -345,14 +215,9 @@ public partial class CGameCtnMediaShootParamsBuilder : CGameCtnMediaShootParamsB
             var node = CGameCtnMediaShootParamsBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameCtnMediaShootParamsBuilder.ValidateRecipe1(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameCtnMediaShootParamsBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaShootParams node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaShootParams node);
     }
     public partial class MP4 : CGameCtnMediaShootParamsBuilderMembers2<MP4>
     {
@@ -363,14 +228,9 @@ public partial class CGameCtnMediaShootParamsBuilder : CGameCtnMediaShootParamsB
             var node = CGameCtnMediaShootParamsBuilder.CreateRecipe2(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameCtnMediaShootParamsBuilder.ValidateRecipe2(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameCtnMediaShootParamsBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaShootParams node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaShootParams node);
     }
     public partial class TM2020 : CGameCtnMediaShootParamsBuilderMembers2<TM2020>
     {
@@ -381,13 +241,8 @@ public partial class CGameCtnMediaShootParamsBuilder : CGameCtnMediaShootParamsB
             var node = CGameCtnMediaShootParamsBuilder.CreateRecipe2(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameCtnMediaShootParamsBuilder.ValidateRecipe2(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameCtnMediaShootParamsBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaShootParams node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaShootParams node);
     }
 }

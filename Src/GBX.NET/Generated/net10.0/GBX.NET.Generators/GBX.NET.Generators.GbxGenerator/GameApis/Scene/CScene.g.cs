@@ -35,32 +35,32 @@ public partial class CScene : global::GBX.NET.Interfaces.Scene.IScene, global::G
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionManagerTMSX>? global::GBX.NET.Interfaces.Scene.ISceneMembers3<global::GBX.NET.Interfaces.Motion.IMotionManagerTMSX>.MotionManagerModels
     {
-        get => MotionManagerModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerTMSX>(GetMotionManagerModelsBuilderReferences, GameVersion.TMSX, true, "MotionManagerModels");
+        get => MotionManagerModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerTMSX>(GetMotionManagerModelsBuilderReferences, true, "MotionManagerModels");
         set => MotionManagerModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Motion.CMotionManager>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerTMSX>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionManagerTMNESWC>? global::GBX.NET.Interfaces.Scene.ISceneMembers3<global::GBX.NET.Interfaces.Motion.IMotionManagerTMNESWC>.MotionManagerModels
     {
-        get => MotionManagerModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerTMNESWC>(GetMotionManagerModelsBuilderReferences, GameVersion.TMNESWC, true, "MotionManagerModels");
+        get => MotionManagerModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerTMNESWC>(GetMotionManagerModelsBuilderReferences, true, "MotionManagerModels");
         set => MotionManagerModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Motion.CMotionManager>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerTMNESWC>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionManagerVSK5>? global::GBX.NET.Interfaces.Scene.ISceneMembers3<global::GBX.NET.Interfaces.Motion.IMotionManagerVSK5>.MotionManagerModels
     {
-        get => MotionManagerModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerVSK5>(GetMotionManagerModelsBuilderReferences, GameVersion.VSK5, true, "MotionManagerModels");
+        get => MotionManagerModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerVSK5>(GetMotionManagerModelsBuilderReferences, true, "MotionManagerModels");
         set => MotionManagerModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Motion.CMotionManager>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerVSK5>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionManagerTMF>? global::GBX.NET.Interfaces.Scene.ISceneMembers3<global::GBX.NET.Interfaces.Motion.IMotionManagerTMF>.MotionManagerModels
     {
-        get => MotionManagerModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerTMF>(GetMotionManagerModelsBuilderReferences, GameVersion.TMF, true, "MotionManagerModels");
+        get => MotionManagerModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerTMF>(GetMotionManagerModelsBuilderReferences, true, "MotionManagerModels");
         set => MotionManagerModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Motion.CMotionManager>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerTMF>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionManagerMP3>? global::GBX.NET.Interfaces.Scene.ISceneMembers3<global::GBX.NET.Interfaces.Motion.IMotionManagerMP3>.MotionManagerModels
     {
-        get => MotionManagerModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerMP3>(GetMotionManagerModelsBuilderReferences, GameVersion.MP3, true, "MotionManagerModels");
+        get => MotionManagerModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerMP3>(GetMotionManagerModelsBuilderReferences, true, "MotionManagerModels");
         set => MotionManagerModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Motion.CMotionManager>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerMP3>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionManagerTMT>? global::GBX.NET.Interfaces.Scene.ISceneMembers3<global::GBX.NET.Interfaces.Motion.IMotionManagerTMT>.MotionManagerModels
     {
-        get => MotionManagerModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerTMT>(GetMotionManagerModelsBuilderReferences, GameVersion.TMT, true, "MotionManagerModels");
+        get => MotionManagerModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerTMT>(GetMotionManagerModelsBuilderReferences, true, "MotionManagerModels");
         set => MotionManagerModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Motion.CMotionManager>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerTMT>(value, false));
     }
     private NodeRefList<global::GBX.NET.Engines.Motion.CMotionManager>? GetMotionManagerModelsBuilderReferences() => MotionManagerModels;

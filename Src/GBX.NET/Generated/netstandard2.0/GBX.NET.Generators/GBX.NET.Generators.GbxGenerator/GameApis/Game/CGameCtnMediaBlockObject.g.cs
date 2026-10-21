@@ -41,32 +41,17 @@ public partial class CGameCtnMediaBlockObject : global::GBX.NET.Interfaces.Game.
     }
     global::GBX.NET.Interfaces.Game.IGameReplayObjectVisDataTMT? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockObjectMembers1<global::GBX.NET.Interfaces.Game.IGameReplayObjectVisDataTMT>.VisData
     {
-        get
-        {
-            var node = VisData;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => VisData;
         set => VisData = value is null ? null : value is global::GBX.NET.Engines.Game.CGameReplayObjectVisData node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameReplayObjectVisDataMP4? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockObjectMembers1<global::GBX.NET.Interfaces.Game.IGameReplayObjectVisDataMP4>.VisData
     {
-        get
-        {
-            var node = VisData;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => VisData;
         set => VisData = value is null ? null : value is global::GBX.NET.Engines.Game.CGameReplayObjectVisData node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameReplayObjectVisDataTM2020? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockObjectMembers1<global::GBX.NET.Interfaces.Game.IGameReplayObjectVisDataTM2020>.VisData
     {
-        get
-        {
-            var node = VisData;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => VisData;
         set => VisData = value is null ? null : value is global::GBX.NET.Engines.Game.CGameReplayObjectVisData node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

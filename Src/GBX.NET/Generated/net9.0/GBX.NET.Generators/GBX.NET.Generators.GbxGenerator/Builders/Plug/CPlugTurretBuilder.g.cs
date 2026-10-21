@@ -36,104 +36,54 @@ public abstract class CPlugTurretBuilderBase<TSelf> where TSelf : CPlugTurretBui
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTurret> state;
     private protected CPlugTurretBuilderBase() => state = new();
     private protected CPlugTurretBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTurret> state) => this.state = state;
-    public float AimAnticipation
-    {
-        get => state.Get<float>("AimAnticipation");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetAimAnticipationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithAimAnticipation(float value)
     {
-        AimAnticipation = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetAimAnticipationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float AimDetectFOVDeg
-    {
-        get => state.Get<float>("AimDetectFOVDeg");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetAimDetectFOVDegAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithAimDetectFOVDeg(float value)
     {
-        AimDetectFOVDeg = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetAimDetectFOVDegAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float AimDetectRadius
-    {
-        get => state.Get<float>("AimDetectRadius");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetAimDetectRadiusAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithAimDetectRadius(float value)
     {
-        AimDetectRadius = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetAimDetectRadiusAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public bool AimEnabled
-    {
-        get => state.Get<bool>("AimEnabled");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetAimEnabledAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithAimEnabled(bool value)
     {
-        AimEnabled = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetAimEnabledAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float AimFireMaxAngleDeg
-    {
-        get => state.Get<float>("AimFireMaxAngleDeg");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetAimFireMaxAngleDegAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithAimFireMaxAngleDeg(float value)
     {
-        AimFireMaxAngleDeg = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetAimFireMaxAngleDegAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float AimFireMaxDist
-    {
-        get => state.Get<float>("AimFireMaxDist");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetAimFireMaxDistAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithAimFireMaxDist(float value)
     {
-        AimFireMaxDist = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetAimFireMaxDistAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public int AimFireTargetChangeDelayMs
-    {
-        get => state.Get<int>("AimFireTargetChangeDelayMs");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetAimFireTargetChangeDelayMsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithAimFireTargetChangeDelayMs(int value)
     {
-        AimFireTargetChangeDelayMs = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetAimFireTargetChangeDelayMsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public int AimKeepAimingDurationMs
-    {
-        get => state.Get<int>("AimKeepAimingDurationMs");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetAimKeepAimingDurationMsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithAimKeepAimingDurationMs(int value)
     {
-        AimKeepAimingDurationMs = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetAimKeepAimingDurationMsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float AimMaxTrackDist
-    {
-        get => state.Get<float>("AimMaxTrackDist");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetAimMaxTrackDistAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithAimMaxTrackDist(float value)
     {
-        AimMaxTrackDist = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetAimMaxTrackDistAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugBulletModel? BulletModel
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBulletModel?>("BulletModel");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetBulletModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithBulletModel(global::GBX.NET.Engines.Plug.CPlugBulletModel? value)
     {
-        BulletModel = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetBulletModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithBulletModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBulletModel> value)
@@ -142,264 +92,134 @@ public abstract class CPlugTurretBuilderBase<TSelf> where TSelf : CPlugTurretBui
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetBulletModelReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
-    public string? BulletModelRef
-    {
-        get => state.Get<string?>("BulletModelRef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetBulletModelRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithBulletModelRef(string? value)
     {
-        BulletModelRef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetBulletModelRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public int FirePeriodMs
-    {
-        get => state.Get<int>("FirePeriodMs");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetFirePeriodMsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithFirePeriodMs(int value)
     {
-        FirePeriodMs = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetFirePeriodMsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float FixedAngleMaxDeg
-    {
-        get => state.Get<float>("FixedAngleMaxDeg");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetFixedAngleMaxDegAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithFixedAngleMaxDeg(float value)
     {
-        FixedAngleMaxDeg = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetFixedAngleMaxDegAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float FixedAngleMinDeg
-    {
-        get => state.Get<float>("FixedAngleMinDeg");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetFixedAngleMinDegAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithFixedAngleMinDeg(float value)
     {
-        FixedAngleMinDeg = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetFixedAngleMinDegAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public int FixedAnglePeriodMs
-    {
-        get => state.Get<int>("FixedAnglePeriodMs");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetFixedAnglePeriodMsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithFixedAnglePeriodMs(int value)
     {
-        FixedAnglePeriodMs = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetFixedAnglePeriodMsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugTurret.ETurretFixedAngleSignal FixedAngleSignal
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugTurret.ETurretFixedAngleSignal>("FixedAngleSignal");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetFixedAngleSignalAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithFixedAngleSignal(global::GBX.NET.Engines.Plug.CPlugTurret.ETurretFixedAngleSignal value)
     {
-        FixedAngleSignal = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetFixedAngleSignalAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public bool IsControllable
-    {
-        get => state.Get<bool>("IsControllable");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetIsControllableAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithIsControllable(bool value)
     {
-        IsControllable = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetIsControllableAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public Vec3 Joint0LocalAxis
-    {
-        get => state.Get<Vec3>("Joint0LocalAxis");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetJoint0LocalAxisAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithJoint0LocalAxis(Vec3 value)
     {
-        Joint0LocalAxis = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetJoint0LocalAxisAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float Joint0MaxAngleDeg
-    {
-        get => state.Get<float>("Joint0MaxAngleDeg");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetJoint0MaxAngleDegAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithJoint0MaxAngleDeg(float value)
     {
-        Joint0MaxAngleDeg = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetJoint0MaxAngleDegAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float Joint0MinAngleDeg
-    {
-        get => state.Get<float>("Joint0MinAngleDeg");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetJoint0MinAngleDegAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithJoint0MinAngleDeg(float value)
     {
-        Joint0MinAngleDeg = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetJoint0MinAngleDegAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public string? Joint0Name
-    {
-        get => state.Get<string?>("Joint0Name");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetJoint0NameAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithJoint0Name(string? value)
     {
-        Joint0Name = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetJoint0NameAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float Joint0NextJointUpdateAngleMaxDeg
-    {
-        get => state.Get<float>("Joint0NextJointUpdateAngleMaxDeg");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetJoint0NextJointUpdateAngleMaxDegAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithJoint0NextJointUpdateAngleMaxDeg(float value)
     {
-        Joint0NextJointUpdateAngleMaxDeg = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetJoint0NextJointUpdateAngleMaxDegAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float Joint0SpeedDegPerS
-    {
-        get => state.Get<float>("Joint0SpeedDegPerS");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetJoint0SpeedDegPerSAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithJoint0SpeedDegPerS(float value)
     {
-        Joint0SpeedDegPerS = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetJoint0SpeedDegPerSAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public Vec3 Joint1LocalAxis
-    {
-        get => state.Get<Vec3>("Joint1LocalAxis");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetJoint1LocalAxisAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithJoint1LocalAxis(Vec3 value)
     {
-        Joint1LocalAxis = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetJoint1LocalAxisAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float Joint1MaxAngleDeg
-    {
-        get => state.Get<float>("Joint1MaxAngleDeg");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetJoint1MaxAngleDegAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithJoint1MaxAngleDeg(float value)
     {
-        Joint1MaxAngleDeg = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetJoint1MaxAngleDegAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float Joint1MinAngleDeg
-    {
-        get => state.Get<float>("Joint1MinAngleDeg");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetJoint1MinAngleDegAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithJoint1MinAngleDeg(float value)
     {
-        Joint1MinAngleDeg = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetJoint1MinAngleDegAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public string? Joint1Name
-    {
-        get => state.Get<string?>("Joint1Name");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetJoint1NameAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithJoint1Name(string? value)
     {
-        Joint1Name = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetJoint1NameAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float Joint1NextJointUpdateAngleMaxDeg
-    {
-        get => state.Get<float>("Joint1NextJointUpdateAngleMaxDeg");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetJoint1NextJointUpdateAngleMaxDegAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithJoint1NextJointUpdateAngleMaxDeg(float value)
     {
-        Joint1NextJointUpdateAngleMaxDeg = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetJoint1NextJointUpdateAngleMaxDegAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public float Joint1SpeedDegPerS
-    {
-        get => state.Get<float>("Joint1SpeedDegPerS");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetJoint1SpeedDegPerSAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithJoint1SpeedDegPerS(float value)
     {
-        Joint1SpeedDegPerS = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetJoint1SpeedDegPerSAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public Vec3 JointFireLocalAxis
-    {
-        get => state.Get<Vec3>("JointFireLocalAxis");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetJointFireLocalAxisAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithJointFireLocalAxis(Vec3 value)
     {
-        JointFireLocalAxis = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetJointFireLocalAxisAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public string? JointFireName
-    {
-        get => state.Get<string?>("JointFireName");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetJointFireNameAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithJointFireName(string? value)
     {
-        JointFireName = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetJointFireNameAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public string? JointRadarName
-    {
-        get => state.Get<string?>("JointRadarName");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetJointRadarNameAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithJointRadarName(string? value)
     {
-        JointRadarName = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetJointRadarNameAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public int LifeArmorMax
-    {
-        get => state.Get<int>("LifeArmorMax");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetLifeArmorMaxAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLifeArmorMax(int value)
     {
-        LifeArmorMax = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetLifeArmorMaxAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public int LifeDisabledDuration
-    {
-        get => state.Get<int>("LifeDisabledDuration");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetLifeDisabledDurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLifeDisabledDuration(int value)
     {
-        LifeDisabledDuration = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetLifeDisabledDurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugTurret.EOnArmorEmtpy LifeOnArmorEmtpy
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugTurret.EOnArmorEmtpy>("LifeOnArmorEmtpy");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetLifeOnArmorEmtpyAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithLifeOnArmorEmtpy(global::GBX.NET.Engines.Plug.CPlugTurret.EOnArmorEmtpy value)
     {
-        LifeOnArmorEmtpy = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetLifeOnArmorEmtpyAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugSolid2Model? Mesh
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugSolid2Model?>("Mesh");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetMeshAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithMesh(global::GBX.NET.Engines.Plug.CPlugSolid2Model? value)
     {
-        Mesh = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetMeshAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithMeshReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid2Model> value)
@@ -408,24 +228,14 @@ public abstract class CPlugTurretBuilderBase<TSelf> where TSelf : CPlugTurretBui
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetMeshReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
-    public string? MeshRef
-    {
-        get => state.Get<string?>("MeshRef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetMeshRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithMeshRef(string? value)
     {
-        MeshRef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetMeshRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? OnFireParticle
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("OnFireParticle");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetOnFireParticleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithOnFireParticle(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
     {
-        OnFireParticle = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetOnFireParticleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithOnFireParticleReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
@@ -434,14 +244,9 @@ public abstract class CPlugTurretBuilderBase<TSelf> where TSelf : CPlugTurretBui
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetOnFireParticleReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.MwFoundations.CMwNod? RotateSound1
-    {
-        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("RotateSound1");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetRotateSound1Assignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithRotateSound1(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
     {
-        RotateSound1 = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetRotateSound1Assignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithRotateSound1Reference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
@@ -450,24 +255,14 @@ public abstract class CPlugTurretBuilderBase<TSelf> where TSelf : CPlugTurretBui
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetRotateSound1ReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
-    public string? RotateSound1Ref
-    {
-        get => state.Get<string?>("RotateSound1Ref");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetRotateSound1RefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithRotateSound1Ref(string? value)
     {
-        RotateSound1Ref = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetRotateSound1RefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugSurface? Shape
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugSurface?>("Shape");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetShapeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithShape(global::GBX.NET.Engines.Plug.CPlugSurface? value)
     {
-        Shape = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetShapeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithShapeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSurface> value)
@@ -476,24 +271,14 @@ public abstract class CPlugTurretBuilderBase<TSelf> where TSelf : CPlugTurretBui
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetShapeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
-    public string? ShapeRef
-    {
-        get => state.Get<string?>("ShapeRef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetShapeRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithShapeRef(string? value)
     {
-        ShapeRef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetShapeRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugSkel? Skel
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugSkel?>("Skel");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetSkelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithSkel(global::GBX.NET.Engines.Plug.CPlugSkel? value)
     {
-        Skel = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetSkelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithSkelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSkel> value)
@@ -502,24 +287,14 @@ public abstract class CPlugTurretBuilderBase<TSelf> where TSelf : CPlugTurretBui
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetSkelReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
-    public string? SkelRef
-    {
-        get => state.Get<string?>("SkelRef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetSkelRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithSkelRef(string? value)
     {
-        SkelRef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetSkelRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Plug.CPlugVisEntFxModel? VisEntFx
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisEntFxModel?>("VisEntFx");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetVisEntFxAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     }
     public TSelf WithVisEntFx(global::GBX.NET.Engines.Plug.CPlugVisEntFxModel? value)
     {
-        VisEntFx = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetVisEntFxAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithVisEntFxReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugVisEntFxModel> value)
@@ -528,14 +303,9 @@ public abstract class CPlugTurretBuilderBase<TSelf> where TSelf : CPlugTurretBui
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetVisEntFxReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
-    public string? VisEntFxRef
-    {
-        get => state.Get<string?>("VisEntFxRef");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetVisEntFxRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-    }
     public TSelf WithVisEntFxRef(string? value)
     {
-        VisEntFxRef = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTurretBuilderAssignments.GetVisEntFxRefAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
         return (TSelf)this;
     }
 }
@@ -548,23 +318,12 @@ public partial class CPlugTurretBuilder : CPlugTurretBuilderBase<CPlugTurretBuil
         node.Chunks.Add(chunk0910F000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugTurret node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTurret.Chunk0910F000>() is not { Version: 19 }) throw new InvalidOperationException($"Required {game} chunk Chunk0910F000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugTurret CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugTurret();
         var chunk0910F000 = new global::GBX.NET.Engines.Plug.CPlugTurret.Chunk0910F000(game);
         node.Chunks.Add(chunk0910F000);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugTurret node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTurret.Chunk0910F000>() is not { Version: 20 }) throw new InvalidOperationException($"Required {game} chunk Chunk0910F000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugTurret node, GameVersion game)
-    {
     }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -603,14 +362,9 @@ public partial class CPlugTurretBuilder : CPlugTurretBuilderBase<CPlugTurretBuil
             var node = CPlugTurretBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugTurretBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugTurretBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugTurret node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugTurret node);
     }
     public partial class TM2020 : CPlugTurretBuilderBase<TM2020>
     {
@@ -641,13 +395,8 @@ public partial class CPlugTurretBuilder : CPlugTurretBuilderBase<CPlugTurretBuil
             var node = CPlugTurretBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugTurretBuilder.ValidateRecipe1(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugTurretBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugTurret node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugTurret node);
     }
 }

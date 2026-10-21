@@ -36,14 +36,9 @@ public abstract class CMotionShaderBuilderBase<TSelf> where TSelf : CMotionShade
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionShader> state;
     private protected CMotionShaderBuilderBase() => state = new();
     private protected CMotionShaderBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionShader> state) => this.state = state;
-    public global::GBX.NET.Engines.Function.CFuncShader? FuncShader
-    {
-        get => state.Get<global::GBX.NET.Engines.Function.CFuncShader?>("FuncShader");
-        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionShaderBuilderAssignments.GetFuncShaderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithFuncShader(global::GBX.NET.Engines.Function.CFuncShader? value)
     {
-        FuncShader = value;
+        state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionShaderBuilderAssignments.GetFuncShaderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithFuncShaderReference(NodeRef<global::GBX.NET.Engines.Function.CFuncShader> value)
@@ -52,14 +47,9 @@ public abstract class CMotionShaderBuilderBase<TSelf> where TSelf : CMotionShade
         state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionShaderBuilderAssignments.GetFuncShaderReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugMaterial? Material
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("Material");
-        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionShaderBuilderAssignments.GetMaterialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithMaterial(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
     {
-        Material = value;
+        state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionShaderBuilderAssignments.GetMaterialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
@@ -68,14 +58,9 @@ public abstract class CMotionShaderBuilderBase<TSelf> where TSelf : CMotionShade
         state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionShaderBuilderAssignments.GetMaterialReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugShader? Shader
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugShader?>("Shader");
-        set => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionShaderBuilderAssignments.GetShaderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithShader(global::GBX.NET.Engines.Plug.CPlugShader? value)
     {
-        Shader = value;
+        state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionShaderBuilderAssignments.GetShaderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithShaderReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value)
@@ -93,13 +78,6 @@ public partial class CMotionShaderBuilder : CMotionShaderBuilderBase<CMotionShad
         var chunk0802B000 = new global::GBX.NET.Engines.Motion.CMotionShader.Chunk0802B000();
         node.Chunks.Add(chunk0802B000);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Motion.CMotionShader node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionShader.Chunk0802B000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0802B000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Motion.CMotionShader node, GameVersion game)
-    {
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
@@ -133,14 +111,9 @@ public partial class CMotionShaderBuilder : CMotionShaderBuilderBase<CMotionShad
             var node = CMotionShaderBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            CMotionShaderBuilder.ValidateRecipe0(node, GameVersion.TM10);
-            NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            CMotionShaderBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionShader node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionShader node);
     }
     public partial class TMPU : CMotionShaderBuilderBase<TMPU>
     {
@@ -163,14 +136,9 @@ public partial class CMotionShaderBuilder : CMotionShaderBuilderBase<CMotionShad
             var node = CMotionShaderBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            CMotionShaderBuilder.ValidateRecipe0(node, GameVersion.TMPU);
-            NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            CMotionShaderBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionShader node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionShader node);
     }
     public partial class TMSX : CMotionShaderBuilderBase<TMSX>
     {
@@ -193,14 +161,9 @@ public partial class CMotionShaderBuilder : CMotionShaderBuilderBase<CMotionShad
             var node = CMotionShaderBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CMotionShaderBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CMotionShaderBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionShader node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionShader node);
     }
     public partial class TMNESWC : CMotionShaderBuilderBase<TMNESWC>
     {
@@ -223,14 +186,9 @@ public partial class CMotionShaderBuilder : CMotionShaderBuilderBase<CMotionShad
             var node = CMotionShaderBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CMotionShaderBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CMotionShaderBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionShader node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionShader node);
     }
     public partial class VSK5 : CMotionShaderBuilderBase<VSK5>
     {
@@ -253,14 +211,9 @@ public partial class CMotionShaderBuilder : CMotionShaderBuilderBase<CMotionShad
             var node = CMotionShaderBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CMotionShaderBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CMotionShaderBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionShader node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionShader node);
     }
     public partial class TMF : CMotionShaderBuilderBase<TMF>
     {
@@ -283,14 +236,9 @@ public partial class CMotionShaderBuilder : CMotionShaderBuilderBase<CMotionShad
             var node = CMotionShaderBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CMotionShaderBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CMotionShaderBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionShader node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionShader node);
     }
     public partial class MP3 : CMotionShaderBuilderBase<MP3>
     {
@@ -313,14 +261,9 @@ public partial class CMotionShaderBuilder : CMotionShaderBuilderBase<CMotionShad
             var node = CMotionShaderBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CMotionShaderBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CMotionShaderBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionShader node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionShader node);
     }
     public partial class TMT : CMotionShaderBuilderBase<TMT>
     {
@@ -343,14 +286,9 @@ public partial class CMotionShaderBuilder : CMotionShaderBuilderBase<CMotionShad
             var node = CMotionShaderBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CMotionShaderBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CMotionShaderBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionShader node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionShader node);
     }
     public partial class MP4 : CMotionShaderBuilderBase<MP4>
     {
@@ -373,13 +311,8 @@ public partial class CMotionShaderBuilder : CMotionShaderBuilderBase<CMotionShad
             var node = CMotionShaderBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CMotionShaderBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CMotionShaderBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionShader node);
-        partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionShader node);
     }
 }

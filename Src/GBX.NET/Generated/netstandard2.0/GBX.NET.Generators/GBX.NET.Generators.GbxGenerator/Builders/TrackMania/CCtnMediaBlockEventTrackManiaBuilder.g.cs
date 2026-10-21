@@ -36,38 +36,23 @@ public abstract class CCtnMediaBlockEventTrackManiaBuilderBase<TSelf> where TSel
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania> state;
     private protected CCtnMediaBlockEventTrackManiaBuilderBase() => state = new();
     private protected CCtnMediaBlockEventTrackManiaBuilderBase(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania> state) => this.state = state;
-    public TimeSingle End
-    {
-        get => state.Get<TimeSingle>("End");
-        set => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockEventTrackManiaBuilderAssignments.GetEndAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    }
     public TSelf WithEnd(TimeSingle value)
     {
-        End = value;
+        state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockEventTrackManiaBuilderAssignments.GetEndAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public TimeSingle Start
-    {
-        get => state.Get<TimeSingle>("Start");
-        set => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockEventTrackManiaBuilderAssignments.GetStartAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     }
     public TSelf WithStart(TimeSingle value)
     {
-        Start = value;
+        state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockEventTrackManiaBuilderAssignments.GetStartAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
 public abstract class CCtnMediaBlockEventTrackManiaBuilderMembers1<TSelf> : CCtnMediaBlockEventTrackManiaBuilderBase<TSelf> where TSelf : CCtnMediaBlockEventTrackManiaBuilderMembers1<TSelf>
 {
     private protected CCtnMediaBlockEventTrackManiaBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania> state) : base(state) { }
-    public global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania.Event[]? Events
-    {
-        get => state.Get<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania.Event[]?>("Events");
-        set => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockEventTrackManiaBuilderAssignments.GetEventsAssignment(), value, GameVersion.TMNESWC | GameVersion.VSK5);
-    }
     public TSelf WithEvents(params global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania.Event[]? value)
     {
-        Events = value;
+        state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockEventTrackManiaBuilderAssignments.GetEventsAssignment(), value, GameVersion.TMNESWC | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithEvents(IEnumerable<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania.Event> values)
@@ -84,10 +69,6 @@ public partial class CCtnMediaBlockEventTrackManiaBuilder : CCtnMediaBlockEventT
         node.Chunks.Add(chunk2407F000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania.Chunk2407F000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2407F000 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania();
@@ -95,27 +76,15 @@ public partial class CCtnMediaBlockEventTrackManiaBuilder : CCtnMediaBlockEventT
         node.Chunks.Add(chunk2407F003);
         return node;
     }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania.Chunk2407F003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2407F003 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania node, GameVersion game)
-    {
-    }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public partial class TMSX : CCtnMediaBlockEventTrackManiaBuilderBase<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania> state) : base(state) { }
-        public global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania.Stunt[]? Stunts
-        {
-            get => state.Get<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania.Stunt[]?>("Stunts");
-            set => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockEventTrackManiaBuilderAssignments.GetStuntsAssignment(), value, GameVersion.TMSX);
-        }
         public TMSX WithStunts(params global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania.Stunt[]? value)
         {
-            Stunts = value;
+            state.Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockEventTrackManiaBuilderAssignments.GetStuntsAssignment(), value, GameVersion.TMSX);
             return this;
         }
         public TMSX WithStunts(IEnumerable<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania.Stunt> values)
@@ -128,14 +97,9 @@ public partial class CCtnMediaBlockEventTrackManiaBuilder : CCtnMediaBlockEventT
             var node = CCtnMediaBlockEventTrackManiaBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CCtnMediaBlockEventTrackManiaBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CCtnMediaBlockEventTrackManiaBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania node);
-        partial void ValidateNode(global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania node);
     }
     public partial class TMNESWC : CCtnMediaBlockEventTrackManiaBuilderMembers1<TMNESWC>
     {
@@ -146,14 +110,9 @@ public partial class CCtnMediaBlockEventTrackManiaBuilder : CCtnMediaBlockEventT
             var node = CCtnMediaBlockEventTrackManiaBuilder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CCtnMediaBlockEventTrackManiaBuilder.ValidateRecipe1(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CCtnMediaBlockEventTrackManiaBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania node);
-        partial void ValidateNode(global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania node);
     }
     public partial class VSK5 : CCtnMediaBlockEventTrackManiaBuilderMembers1<VSK5>
     {
@@ -164,13 +123,8 @@ public partial class CCtnMediaBlockEventTrackManiaBuilder : CCtnMediaBlockEventT
             var node = CCtnMediaBlockEventTrackManiaBuilder.CreateRecipe1(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CCtnMediaBlockEventTrackManiaBuilder.ValidateRecipe1(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CCtnMediaBlockEventTrackManiaBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania node);
-        partial void ValidateNode(global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania node);
     }
 }

@@ -36,32 +36,17 @@ public partial class CPlugSoundMulti : global::GBX.NET.Interfaces.Plug.IPlugSoun
     public static new global::GBX.NET.Builders.Engines.Plug.CPlugSoundMultiBuilder Create() => new();
     global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers4<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT>.VolumeFromInput
     {
-        get
-        {
-            var node = VolumeFromInput;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => VolumeFromInput;
         set => VolumeFromInput = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers4<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4>.VolumeFromInput
     {
-        get
-        {
-            var node = VolumeFromInput;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => VolumeFromInput;
         set => VolumeFromInput = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers4<global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020>.VolumeFromInput
     {
-        get
-        {
-            var node = VolumeFromInput;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => VolumeFromInput;
         set => VolumeFromInput = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

@@ -36,48 +36,28 @@ public abstract class CPlugTrafficZoneSquaresBuilderBase<TSelf> where TSelf : CP
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares> state;
     private protected CPlugTrafficZoneSquaresBuilderBase() => state = new();
     private protected CPlugTrafficZoneSquaresBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares> state) => this.state = state;
-    public float BaseHeight
-    {
-        get => state.Get<float>("BaseHeight");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficZoneSquaresBuilderAssignments.GetBaseHeightAssignment(), value, GameVersion.TMT);
-    }
     public TSelf WithBaseHeight(float value)
     {
-        BaseHeight = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficZoneSquaresBuilderAssignments.GetBaseHeightAssignment(), value, GameVersion.TMT);
         return (TSelf)this;
-    }
-    public Vec3 SquareSize
-    {
-        get => state.Get<Vec3>("SquareSize");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficZoneSquaresBuilderAssignments.GetSquareSizeAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithSquareSize(Vec3 value)
     {
-        SquareSize = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficZoneSquaresBuilderAssignments.GetSquareSizeAssignment(), value, GameVersion.TMT);
         return (TSelf)this;
-    }
-    public Int3[]? Squares
-    {
-        get => state.Get<Int3[]?>("Squares");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficZoneSquaresBuilderAssignments.GetSquaresAssignment(), value, GameVersion.TMT);
     }
     public TSelf WithSquares(params Int3[]? value)
     {
-        Squares = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficZoneSquaresBuilderAssignments.GetSquaresAssignment(), value, GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithSquares(IEnumerable<Int3> values)
     {
         return WithSquares(values.ToArray());
     }
-    public string ZoneId
-    {
-        get => state.Get<string>("ZoneId");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficZoneSquaresBuilderAssignments.GetZoneIdAssignment(), value, GameVersion.TMT);
-    }
     public TSelf WithZoneId(string value)
     {
-        ZoneId = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficZoneSquaresBuilderAssignments.GetZoneIdAssignment(), value, GameVersion.TMT);
         return (TSelf)this;
     }
 }
@@ -90,14 +70,6 @@ public partial class CPlugTrafficZoneSquaresBuilder : CPlugTrafficZoneSquaresBui
         node.Chunks.Add(chunk090D2000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares.Chunk090D2000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090D2000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares node, GameVersion game)
-    {
-        if (node.ZoneId is null) throw new MemberNullException("ZoneId");
-    }
     public TMT ForTMT() => new(state.Snapshot());
     public partial class TMT : CPlugTrafficZoneSquaresBuilderBase<TMT>
     {
@@ -108,13 +80,8 @@ public partial class CPlugTrafficZoneSquaresBuilder : CPlugTrafficZoneSquaresBui
             var node = CPlugTrafficZoneSquaresBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugTrafficZoneSquaresBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugTrafficZoneSquaresBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares node);
     }
 }

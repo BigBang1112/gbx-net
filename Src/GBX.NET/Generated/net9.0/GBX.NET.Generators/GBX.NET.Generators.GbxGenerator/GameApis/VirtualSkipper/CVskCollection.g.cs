@@ -36,452 +36,252 @@ public partial class CVskCollection : global::GBX.NET.Interfaces.VirtualSkipper.
     public static new global::GBX.NET.Builders.Engines.VirtualSkipper.CVskCollectionBuilder Create() => new();
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneTM10>? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTM10.CompleteZoneList
     {
-        get => CompleteZoneList is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneTM10>(GetCompleteZoneListBuilderReferences, GameVersion.TM10, true, "CompleteZoneList");
+        get => CompleteZoneList is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneTM10>(GetCompleteZoneListBuilderReferences, true, "CompleteZoneList");
         set => CompleteZoneList = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZone>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneTM10>(value, false));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnDecorationTM10? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTM10.DefaultDecoration
     {
-        get
-        {
-            var node = DefaultDecoration;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            return node;
-        }
+        get => DefaultDecoration;
         set => DefaultDecoration = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnDecoration node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnZoneTM10? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTM10.DefaultZone
     {
-        get
-        {
-            var node = DefaultZone;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            return node;
-        }
+        get => DefaultZone;
         set => DefaultZone = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTM10.IconFid
     {
-        get
-        {
-            var node = IconFid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            return node;
-        }
+        get => IconFid;
         set => IconFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTM10.IconSmallFid
     {
-        get
-        {
-            var node = IconSmallFid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            return node;
-        }
+        get => IconSmallFid;
         set => IconSmallFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneTMPU>? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMPU.CompleteZoneList
     {
-        get => CompleteZoneList is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMPU>(GetCompleteZoneListBuilderReferences, GameVersion.TMPU, true, "CompleteZoneList");
+        get => CompleteZoneList is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMPU>(GetCompleteZoneListBuilderReferences, true, "CompleteZoneList");
         set => CompleteZoneList = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZone>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMPU>(value, false));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMPU? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMPU.DefaultDecoration
     {
-        get
-        {
-            var node = DefaultDecoration;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            return node;
-        }
+        get => DefaultDecoration;
         set => DefaultDecoration = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnDecoration node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnZoneTMPU? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMPU.DefaultZone
     {
-        get
-        {
-            var node = DefaultZone;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            return node;
-        }
+        get => DefaultZone;
         set => DefaultZone = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMPU.IconFid
     {
-        get
-        {
-            var node = IconFid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            return node;
-        }
+        get => IconFid;
         set => IconFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMPU.IconSmallFid
     {
-        get
-        {
-            var node = IconSmallFid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            return node;
-        }
+        get => IconSmallFid;
         set => IconSmallFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneTMSX>? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMSX.CompleteZoneList
     {
-        get => CompleteZoneList is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMSX>(GetCompleteZoneListBuilderReferences, GameVersion.TMSX, true, "CompleteZoneList");
+        get => CompleteZoneList is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMSX>(GetCompleteZoneListBuilderReferences, true, "CompleteZoneList");
         set => CompleteZoneList = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZone>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMSX>(value, false));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMSX? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMSX.DefaultDecoration
     {
-        get
-        {
-            var node = DefaultDecoration;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => DefaultDecoration;
         set => DefaultDecoration = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnDecoration node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnZoneTMSX? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMSX.DefaultZone
     {
-        get
-        {
-            var node = DefaultZone;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => DefaultZone;
         set => DefaultZone = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMSX.IconFid
     {
-        get
-        {
-            var node = IconFid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => IconFid;
         set => IconFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMSX.IconSmallFid
     {
-        get
-        {
-            var node = IconSmallFid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => IconSmallFid;
         set => IconSmallFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneTMNESWC>? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMNESWC.CompleteZoneList
     {
-        get => CompleteZoneList is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMNESWC>(GetCompleteZoneListBuilderReferences, GameVersion.TMNESWC, true, "CompleteZoneList");
+        get => CompleteZoneList is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMNESWC>(GetCompleteZoneListBuilderReferences, true, "CompleteZoneList");
         set => CompleteZoneList = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZone>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMNESWC>(value, false));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMNESWC? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMNESWC.DefaultDecoration
     {
-        get
-        {
-            var node = DefaultDecoration;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => DefaultDecoration;
         set => DefaultDecoration = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnDecoration node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnZoneTMNESWC? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMNESWC.DefaultZone
     {
-        get
-        {
-            var node = DefaultZone;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => DefaultZone;
         set => DefaultZone = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMNESWC.IconFid
     {
-        get
-        {
-            var node = IconFid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => IconFid;
         set => IconFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMNESWC.IconSmallFid
     {
-        get
-        {
-            var node = IconSmallFid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => IconSmallFid;
         set => IconSmallFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneVSK5>? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionVSK5.CompleteZoneList
     {
-        get => CompleteZoneList is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneVSK5>(GetCompleteZoneListBuilderReferences, GameVersion.VSK5, true, "CompleteZoneList");
+        get => CompleteZoneList is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneVSK5>(GetCompleteZoneListBuilderReferences, true, "CompleteZoneList");
         set => CompleteZoneList = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZone>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneVSK5>(value, false));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnDecorationVSK5? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionVSK5.DefaultDecoration
     {
-        get
-        {
-            var node = DefaultDecoration;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => DefaultDecoration;
         set => DefaultDecoration = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnDecoration node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnZoneVSK5? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionVSK5.DefaultZone
     {
-        get
-        {
-            var node = DefaultZone;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => DefaultZone;
         set => DefaultZone = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionVSK5.IconFid
     {
-        get
-        {
-            var node = IconFid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => IconFid;
         set => IconFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionVSK5.IconSmallFid
     {
-        get
-        {
-            var node = IconSmallFid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => IconSmallFid;
         set => IconSmallFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneTMF>? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMF.CompleteZoneList
     {
-        get => CompleteZoneList is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMF>(GetCompleteZoneListBuilderReferences, GameVersion.TMF, true, "CompleteZoneList");
+        get => CompleteZoneList is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMF>(GetCompleteZoneListBuilderReferences, true, "CompleteZoneList");
         set => CompleteZoneList = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZone>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMF>(value, false));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMF? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMF.DefaultDecoration
     {
-        get
-        {
-            var node = DefaultDecoration;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => DefaultDecoration;
         set => DefaultDecoration = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnDecoration node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnZoneTMF? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMF.DefaultZone
     {
-        get
-        {
-            var node = DefaultZone;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => DefaultZone;
         set => DefaultZone = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMF.IconFid
     {
-        get
-        {
-            var node = IconFid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => IconFid;
         set => IconFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMF.IconSmallFid
     {
-        get
-        {
-            var node = IconSmallFid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => IconSmallFid;
         set => IconSmallFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneMP3>? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionMP3.CompleteZoneList
     {
-        get => CompleteZoneList is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneMP3>(GetCompleteZoneListBuilderReferences, GameVersion.MP3, true, "CompleteZoneList");
+        get => CompleteZoneList is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneMP3>(GetCompleteZoneListBuilderReferences, true, "CompleteZoneList");
         set => CompleteZoneList = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZone>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneMP3>(value, false));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnDecorationMP3? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionMP3.DefaultDecoration
     {
-        get
-        {
-            var node = DefaultDecoration;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => DefaultDecoration;
         set => DefaultDecoration = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnDecoration node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnZoneMP3? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionMP3.DefaultZone
     {
-        get
-        {
-            var node = DefaultZone;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => DefaultZone;
         set => DefaultZone = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionMP3.IconFid
     {
-        get
-        {
-            var node = IconFid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => IconFid;
         set => IconFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionMP3.IconSmallFid
     {
-        get
-        {
-            var node = IconSmallFid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => IconSmallFid;
         set => IconSmallFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneTMT>? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMT.CompleteZoneList
     {
-        get => CompleteZoneList is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMT>(GetCompleteZoneListBuilderReferences, GameVersion.TMT, true, "CompleteZoneList");
+        get => CompleteZoneList is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMT>(GetCompleteZoneListBuilderReferences, true, "CompleteZoneList");
         set => CompleteZoneList = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZone>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMT>(value, false));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMT? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMT.DefaultDecoration
     {
-        get
-        {
-            var node = DefaultDecoration;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => DefaultDecoration;
         set => DefaultDecoration = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnDecoration node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnZoneTMT? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMT.DefaultZone
     {
-        get
-        {
-            var node = DefaultZone;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => DefaultZone;
         set => DefaultZone = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMT.IconFid
     {
-        get
-        {
-            var node = IconFid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => IconFid;
         set => IconFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMT.IconSmallFid
     {
-        get
-        {
-            var node = IconSmallFid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => IconSmallFid;
         set => IconSmallFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneMP4>? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionMP4.CompleteZoneList
     {
-        get => CompleteZoneList is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneMP4>(GetCompleteZoneListBuilderReferences, GameVersion.MP4, true, "CompleteZoneList");
+        get => CompleteZoneList is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneMP4>(GetCompleteZoneListBuilderReferences, true, "CompleteZoneList");
         set => CompleteZoneList = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZone>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneMP4>(value, false));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnDecorationMP4? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionMP4.DefaultDecoration
     {
-        get
-        {
-            var node = DefaultDecoration;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => DefaultDecoration;
         set => DefaultDecoration = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnDecoration node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnZoneMP4? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionMP4.DefaultZone
     {
-        get
-        {
-            var node = DefaultZone;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => DefaultZone;
         set => DefaultZone = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionMP4.IconFid
     {
-        get
-        {
-            var node = IconFid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => IconFid;
         set => IconFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionMP4.IconSmallFid
     {
-        get
-        {
-            var node = IconSmallFid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => IconSmallFid;
         set => IconSmallFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneTM2020>? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTM2020.CompleteZoneList
     {
-        get => CompleteZoneList is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneTM2020>(GetCompleteZoneListBuilderReferences, GameVersion.TM2020, true, "CompleteZoneList");
+        get => CompleteZoneList is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneTM2020>(GetCompleteZoneListBuilderReferences, true, "CompleteZoneList");
         set => CompleteZoneList = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZone>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneTM2020>(value, false));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnDecorationTM2020? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTM2020.DefaultDecoration
     {
-        get
-        {
-            var node = DefaultDecoration;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => DefaultDecoration;
         set => DefaultDecoration = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnDecoration node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnZoneTM2020? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTM2020.DefaultZone
     {
-        get
-        {
-            var node = DefaultZone;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => DefaultZone;
         set => DefaultZone = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTM2020.IconFid
     {
-        get
-        {
-            var node = IconFid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => IconFid;
         set => IconFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTM2020.IconSmallFid
     {
-        get
-        {
-            var node = IconSmallFid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => IconSmallFid;
         set => IconSmallFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     private NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZone>? GetCompleteZoneListBuilderReferences() => CompleteZoneList;

@@ -36,14 +36,9 @@ public abstract class CPlugAnimClipBuilderBase<TSelf> where TSelf : CPlugAnimCli
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimClip> state;
     private protected CPlugAnimClipBuilderBase() => state = new();
     private protected CPlugAnimClipBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimClip> state) => this.state = state;
-    public global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked? Baked
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked?>("Baked");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimClipBuilderAssignments.GetBakedAssignment(), value, GameVersion.TM2020);
-    }
     public TSelf WithBaked(global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked? value)
     {
-        Baked = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimClipBuilderAssignments.GetBakedAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithBakedReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> value)
@@ -52,14 +47,9 @@ public abstract class CPlugAnimClipBuilderBase<TSelf> where TSelf : CPlugAnimCli
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimClipBuilderAssignments.GetBakedReferenceAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugAnimSkelEdition? Edition
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugAnimSkelEdition?>("Edition");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimClipBuilderAssignments.GetEditionAssignment(), value, GameVersion.TM2020);
-    }
     public TSelf WithEdition(global::GBX.NET.Engines.Plug.CPlugAnimSkelEdition? value)
     {
-        Edition = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimClipBuilderAssignments.GetEditionAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithEditionReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimSkelEdition> value)
@@ -68,34 +58,19 @@ public abstract class CPlugAnimClipBuilderBase<TSelf> where TSelf : CPlugAnimCli
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimClipBuilderAssignments.GetEditionReferenceAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugAnimClip.ClipFlags? Flags
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugAnimClip.ClipFlags?>("Flags");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimClipBuilderAssignments.GetFlagsAssignment(), value, GameVersion.TM2020);
-    }
     public TSelf WithFlags(global::GBX.NET.Engines.Plug.CPlugAnimClip.ClipFlags? value)
     {
-        Flags = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimClipBuilderAssignments.GetFlagsAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public int FlagsVersion
-    {
-        get => state.Get<int>("FlagsVersion");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimClipBuilderAssignments.GetFlagsVersionAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithFlagsVersion(int value)
     {
-        FlagsVersion = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimClipBuilderAssignments.GetFlagsVersionAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
-    }
-    public string? Name
-    {
-        get => state.Get<string?>("Name");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimClipBuilderAssignments.GetNameAssignment(), value, GameVersion.TM2020);
     }
     public TSelf WithName(string? value)
     {
-        Name = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimClipBuilderAssignments.GetNameAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
     }
 }
@@ -107,13 +82,6 @@ public partial class CPlugAnimClipBuilder : CPlugAnimClipBuilderBase<CPlugAnimCl
         var chunk09135000 = new global::GBX.NET.Engines.Plug.CPlugAnimClip.Chunk09135000(game);
         node.Chunks.Add(chunk09135000);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugAnimClip node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAnimClip.Chunk09135000>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk09135000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugAnimClip node, GameVersion game)
-    {
     }
     public TM2020 ForTM2020() => new(state.Snapshot());
     public partial class TM2020 : CPlugAnimClipBuilderBase<TM2020>
@@ -129,13 +97,8 @@ public partial class CPlugAnimClipBuilder : CPlugAnimClipBuilderBase<CPlugAnimCl
             var node = CPlugAnimClipBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugAnimClipBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugAnimClipBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAnimClip node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugAnimClip node);
     }
 }

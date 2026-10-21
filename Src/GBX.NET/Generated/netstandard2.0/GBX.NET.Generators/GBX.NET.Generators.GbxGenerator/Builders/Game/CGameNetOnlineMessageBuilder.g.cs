@@ -36,64 +36,34 @@ public abstract class CGameNetOnlineMessageBuilderBase<TSelf> where TSelf : CGam
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameNetOnlineMessage> state;
     private protected CGameNetOnlineMessageBuilderBase() => state = new();
     private protected CGameNetOnlineMessageBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameNetOnlineMessage> state) => this.state = state;
-    public DateTime? Date
-    {
-        get => state.Get<DateTime?>("Date");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameNetOnlineMessageBuilderAssignments.GetDateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithDate(DateTime? value)
     {
-        Date = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameNetOnlineMessageBuilderAssignments.GetDateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public int Donation
-    {
-        get => state.Get<int>("Donation");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameNetOnlineMessageBuilderAssignments.GetDonationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithDonation(int value)
     {
-        Donation = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameNetOnlineMessageBuilderAssignments.GetDonationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public string? Message
-    {
-        get => state.Get<string?>("Message");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameNetOnlineMessageBuilderAssignments.GetMessageAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithMessage(string? value)
     {
-        Message = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameNetOnlineMessageBuilderAssignments.GetMessageAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public string? ReceiverLogin
-    {
-        get => state.Get<string?>("ReceiverLogin");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameNetOnlineMessageBuilderAssignments.GetReceiverLoginAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithReceiverLogin(string? value)
     {
-        ReceiverLogin = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameNetOnlineMessageBuilderAssignments.GetReceiverLoginAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public string? SenderLogin
-    {
-        get => state.Get<string?>("SenderLogin");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameNetOnlineMessageBuilderAssignments.GetSenderLoginAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSenderLogin(string? value)
     {
-        SenderLogin = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameNetOnlineMessageBuilderAssignments.GetSenderLoginAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
-    }
-    public string? Subject
-    {
-        get => state.Get<string?>("Subject");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameNetOnlineMessageBuilderAssignments.GetSubjectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     }
     public TSelf WithSubject(string? value)
     {
-        Subject = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameNetOnlineMessageBuilderAssignments.GetSubjectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
 }
@@ -105,13 +75,6 @@ public partial class CGameNetOnlineMessageBuilder : CGameNetOnlineMessageBuilder
         var chunk03028000 = new global::GBX.NET.Engines.Game.CGameNetOnlineMessage.Chunk03028000();
         node.Chunks.Add(chunk03028000);
         return node;
-    }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameNetOnlineMessage node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNetOnlineMessage.Chunk03028000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03028000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameNetOnlineMessage node, GameVersion game)
-    {
     }
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
@@ -130,14 +93,9 @@ public partial class CGameNetOnlineMessageBuilder : CGameNetOnlineMessageBuilder
             var node = CGameNetOnlineMessageBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CGameNetOnlineMessageBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CGameNetOnlineMessageBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameNetOnlineMessage node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameNetOnlineMessage node);
     }
     public partial class TMF : CGameNetOnlineMessageBuilderBase<TMF>
     {
@@ -148,14 +106,9 @@ public partial class CGameNetOnlineMessageBuilder : CGameNetOnlineMessageBuilder
             var node = CGameNetOnlineMessageBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CGameNetOnlineMessageBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CGameNetOnlineMessageBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameNetOnlineMessage node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameNetOnlineMessage node);
     }
     public partial class MP3 : CGameNetOnlineMessageBuilderBase<MP3>
     {
@@ -166,14 +119,9 @@ public partial class CGameNetOnlineMessageBuilder : CGameNetOnlineMessageBuilder
             var node = CGameNetOnlineMessageBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CGameNetOnlineMessageBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CGameNetOnlineMessageBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameNetOnlineMessage node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameNetOnlineMessage node);
     }
     public partial class TMT : CGameNetOnlineMessageBuilderBase<TMT>
     {
@@ -184,14 +132,9 @@ public partial class CGameNetOnlineMessageBuilder : CGameNetOnlineMessageBuilder
             var node = CGameNetOnlineMessageBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameNetOnlineMessageBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameNetOnlineMessageBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameNetOnlineMessage node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameNetOnlineMessage node);
     }
     public partial class MP4 : CGameNetOnlineMessageBuilderBase<MP4>
     {
@@ -202,14 +145,9 @@ public partial class CGameNetOnlineMessageBuilder : CGameNetOnlineMessageBuilder
             var node = CGameNetOnlineMessageBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameNetOnlineMessageBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameNetOnlineMessageBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameNetOnlineMessage node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameNetOnlineMessage node);
     }
     public partial class TM2020 : CGameNetOnlineMessageBuilderBase<TM2020>
     {
@@ -220,13 +158,8 @@ public partial class CGameNetOnlineMessageBuilder : CGameNetOnlineMessageBuilder
             var node = CGameNetOnlineMessageBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameNetOnlineMessageBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameNetOnlineMessageBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameNetOnlineMessage node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameNetOnlineMessage node);
     }
 }

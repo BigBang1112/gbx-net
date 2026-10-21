@@ -36,14 +36,9 @@ public abstract class CPlugWeatherModelBuilderBase<TSelf> where TSelf : CPlugWea
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeatherModel> state;
     private protected CPlugWeatherModelBuilderBase() => state = new();
     private protected CPlugWeatherModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeatherModel> state) => this.state = state;
-    public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapSpecularDir
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapSpecularDir");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherModelBuilderAssignments.GetBitmapSpecularDirAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithBitmapSpecularDir(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
-        BitmapSpecularDir = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherModelBuilderAssignments.GetBitmapSpecularDirAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithBitmapSpecularDirReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
@@ -52,14 +47,9 @@ public abstract class CPlugWeatherModelBuilderBase<TSelf> where TSelf : CPlugWea
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherModelBuilderAssignments.GetBitmapSpecularDirReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
-    public NodeRefList<global::GBX.NET.Engines.Plug.CPlugWeather>? Weathers
-    {
-        get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugWeather>?>("Weathers");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherModelBuilderAssignments.GetWeathersAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithWeathers(NodeRefList<global::GBX.NET.Engines.Plug.CPlugWeather>? value)
     {
-        Weathers = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherModelBuilderAssignments.GetWeathersAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithWeathers(params global::GBX.NET.Engines.Plug.CPlugWeather[] values)
@@ -74,14 +64,9 @@ public abstract class CPlugWeatherModelBuilderBase<TSelf> where TSelf : CPlugWea
 public abstract class CPlugWeatherModelBuilderMembers1<TSelf> : CPlugWeatherModelBuilderBase<TSelf> where TSelf : CPlugWeatherModelBuilderMembers1<TSelf>
 {
     private protected CPlugWeatherModelBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeatherModel> state) : base(state) { }
-    public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapWaterFog
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapWaterFog");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherModelBuilderAssignments.GetBitmapWaterFogAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithBitmapWaterFog(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
     {
-        BitmapWaterFog = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherModelBuilderAssignments.GetBitmapWaterFogAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithBitmapWaterFogReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
@@ -90,14 +75,9 @@ public abstract class CPlugWeatherModelBuilderMembers1<TSelf> : CPlugWeatherMode
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherModelBuilderAssignments.GetBitmapWaterFogReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Function.CFuncDayTime? FuncDayTime
-    {
-        get => state.Get<global::GBX.NET.Engines.Function.CFuncDayTime?>("FuncDayTime");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherModelBuilderAssignments.GetFuncDayTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithFuncDayTime(global::GBX.NET.Engines.Function.CFuncDayTime? value)
     {
-        FuncDayTime = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherModelBuilderAssignments.GetFuncDayTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithFuncDayTimeReference(NodeRef<global::GBX.NET.Engines.Function.CFuncDayTime> value)
@@ -106,14 +86,9 @@ public abstract class CPlugWeatherModelBuilderMembers1<TSelf> : CPlugWeatherMode
         state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherModelBuilderAssignments.GetFuncDayTimeReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
-    public global::GBX.NET.Engines.Plug.CPlugMoodSetting? MoodSetting
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugMoodSetting?>("MoodSetting");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherModelBuilderAssignments.GetMoodSettingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithMoodSetting(global::GBX.NET.Engines.Plug.CPlugMoodSetting? value)
     {
-        MoodSetting = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherModelBuilderAssignments.GetMoodSettingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithMoodSettingReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMoodSetting> value)
@@ -132,10 +107,6 @@ public partial class CPlugWeatherModelBuilder : CPlugWeatherModelBuilderBase<CPl
         node.Chunks.Add(chunk090BF001);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugWeatherModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090BF001 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Plug.CPlugWeatherModel CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugWeatherModel();
@@ -148,16 +119,6 @@ public partial class CPlugWeatherModelBuilder : CPlugWeatherModelBuilderBase<CPl
         var chunk090BF004 = new global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF004();
         node.Chunks.Add(chunk090BF004);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugWeatherModel node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090BF001 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090BF002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090BF003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090BF004 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugWeatherModel node, GameVersion game)
-    {
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
@@ -190,14 +151,9 @@ public partial class CPlugWeatherModelBuilder : CPlugWeatherModelBuilderBase<CPl
             var node = CPlugWeatherModelBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CPlugWeatherModelBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CPlugWeatherModelBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugWeatherModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugWeatherModel node);
     }
     public partial class TMNESWC : CPlugWeatherModelBuilderBase<TMNESWC>
     {
@@ -220,14 +176,9 @@ public partial class CPlugWeatherModelBuilder : CPlugWeatherModelBuilderBase<CPl
             var node = CPlugWeatherModelBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CPlugWeatherModelBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CPlugWeatherModelBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugWeatherModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugWeatherModel node);
     }
     public partial class VSK5 : CPlugWeatherModelBuilderBase<VSK5>
     {
@@ -250,14 +201,9 @@ public partial class CPlugWeatherModelBuilder : CPlugWeatherModelBuilderBase<CPl
             var node = CPlugWeatherModelBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CPlugWeatherModelBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CPlugWeatherModelBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugWeatherModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugWeatherModel node);
     }
     public partial class TMF : CPlugWeatherModelBuilderBase<TMF>
     {
@@ -280,14 +226,9 @@ public partial class CPlugWeatherModelBuilder : CPlugWeatherModelBuilderBase<CPl
             var node = CPlugWeatherModelBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CPlugWeatherModelBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CPlugWeatherModelBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugWeatherModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugWeatherModel node);
     }
     public partial class MP3 : CPlugWeatherModelBuilderMembers1<MP3>
     {
@@ -314,14 +255,9 @@ public partial class CPlugWeatherModelBuilder : CPlugWeatherModelBuilderBase<CPl
             var node = CPlugWeatherModelBuilder.CreateRecipe1(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CPlugWeatherModelBuilder.ValidateRecipe1(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CPlugWeatherModelBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugWeatherModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugWeatherModel node);
     }
     public partial class TMT : CPlugWeatherModelBuilderMembers1<TMT>
     {
@@ -348,14 +284,9 @@ public partial class CPlugWeatherModelBuilder : CPlugWeatherModelBuilderBase<CPl
             var node = CPlugWeatherModelBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CPlugWeatherModelBuilder.ValidateRecipe1(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CPlugWeatherModelBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugWeatherModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugWeatherModel node);
     }
     public partial class MP4 : CPlugWeatherModelBuilderMembers1<MP4>
     {
@@ -382,14 +313,9 @@ public partial class CPlugWeatherModelBuilder : CPlugWeatherModelBuilderBase<CPl
             var node = CPlugWeatherModelBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CPlugWeatherModelBuilder.ValidateRecipe1(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CPlugWeatherModelBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugWeatherModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugWeatherModel node);
     }
     public partial class TM2020 : CPlugWeatherModelBuilderMembers1<TM2020>
     {
@@ -416,13 +342,8 @@ public partial class CPlugWeatherModelBuilder : CPlugWeatherModelBuilderBase<CPl
             var node = CPlugWeatherModelBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugWeatherModelBuilder.ValidateRecipe1(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugWeatherModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugWeatherModel node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugWeatherModel node);
     }
 }

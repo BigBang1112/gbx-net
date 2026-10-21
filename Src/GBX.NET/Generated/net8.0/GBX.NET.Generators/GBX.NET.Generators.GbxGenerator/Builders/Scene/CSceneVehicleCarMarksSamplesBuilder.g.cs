@@ -36,48 +36,28 @@ public abstract class CSceneVehicleCarMarksSamplesBuilderBase<TSelf> where TSelf
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples> state;
     private protected CSceneVehicleCarMarksSamplesBuilderBase() => state = new();
     private protected CSceneVehicleCarMarksSamplesBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples> state) => this.state = state;
-    public bool Disabled
-    {
-        get => state.Get<bool>("Disabled");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksSamplesBuilderAssignments.GetDisabledAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithDisabled(bool value)
     {
-        Disabled = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksSamplesBuilderAssignments.GetDisabledAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public string? Name
-    {
-        get => state.Get<string?>("Name");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksSamplesBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithName(string? value)
     {
-        Name = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksSamplesBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
-    }
-    public global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples.Sample[]? Samples
-    {
-        get => state.Get<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples.Sample[]?>("Samples");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksSamplesBuilderAssignments.GetSamplesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     }
     public TSelf WithSamples(params global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples.Sample[]? value)
     {
-        Samples = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksSamplesBuilderAssignments.GetSamplesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithSamples(IEnumerable<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples.Sample> values)
     {
         return WithSamples(values.ToArray());
     }
-    public uint[]? Stops
-    {
-        get => state.Get<uint[]?>("Stops");
-        set => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksSamplesBuilderAssignments.GetStopsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
-    }
     public TSelf WithStops(params uint[]? value)
     {
-        Stops = value;
+        state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksSamplesBuilderAssignments.GetStopsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         return (TSelf)this;
     }
     public TSelf WithStops(IEnumerable<uint> values)
@@ -101,16 +81,6 @@ public partial class CSceneVehicleCarMarksSamplesBuilder : CSceneVehicleCarMarks
         node.Chunks.Add(chunk0A083006);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples.Chunk0A083002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A083002 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples.Chunk0A083003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A083003 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples.Chunk0A083004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A083004 is missing or has an incompatible version.");
-        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples.Chunk0A083006>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0A083006 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples node, GameVersion game)
-    {
-    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -126,14 +96,9 @@ public partial class CSceneVehicleCarMarksSamplesBuilder : CSceneVehicleCarMarks
             var node = CSceneVehicleCarMarksSamplesBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CSceneVehicleCarMarksSamplesBuilder.ValidateRecipe0(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CSceneVehicleCarMarksSamplesBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples node);
     }
     public partial class TMT : CSceneVehicleCarMarksSamplesBuilderBase<TMT>
     {
@@ -144,14 +109,9 @@ public partial class CSceneVehicleCarMarksSamplesBuilder : CSceneVehicleCarMarks
             var node = CSceneVehicleCarMarksSamplesBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CSceneVehicleCarMarksSamplesBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CSceneVehicleCarMarksSamplesBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples node);
     }
     public partial class MP4 : CSceneVehicleCarMarksSamplesBuilderBase<MP4>
     {
@@ -162,14 +122,9 @@ public partial class CSceneVehicleCarMarksSamplesBuilder : CSceneVehicleCarMarks
             var node = CSceneVehicleCarMarksSamplesBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CSceneVehicleCarMarksSamplesBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CSceneVehicleCarMarksSamplesBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples node);
     }
     public partial class TM2020 : CSceneVehicleCarMarksSamplesBuilderBase<TM2020>
     {
@@ -180,13 +135,8 @@ public partial class CSceneVehicleCarMarksSamplesBuilder : CSceneVehicleCarMarks
             var node = CSceneVehicleCarMarksSamplesBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CSceneVehicleCarMarksSamplesBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CSceneVehicleCarMarksSamplesBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples node);
-        partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples node);
     }
 }

@@ -36,32 +36,32 @@ public partial class CPlugVehiclePhyTunings : global::GBX.NET.Interfaces.Plug.IP
     public static global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyTuningsBuilder Create() => new();
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuning>? global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTunings.Tuning
     {
-        get => Tuning is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuning>(GetTuningBuilderReferences, GameVersion.Unspecified, true, "Tuning");
+        get => Tuning is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuning>(GetTuningBuilderReferences, true, "Tuning");
         set => Tuning = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuning>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningVSK5>? global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsMembers2<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningVSK5>.Tuning
     {
-        get => Tuning is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningVSK5>(GetTuningBuilderReferences, GameVersion.VSK5, true, "Tuning");
+        get => Tuning is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningVSK5>(GetTuningBuilderReferences, true, "Tuning");
         set => Tuning = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningVSK5>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningTMF>? global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsMembers2<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningTMF>.Tuning
     {
-        get => Tuning is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningTMF>(GetTuningBuilderReferences, GameVersion.TMF, true, "Tuning");
+        get => Tuning is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningTMF>(GetTuningBuilderReferences, true, "Tuning");
         set => Tuning = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningTMF>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningMP3>? global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsMembers2<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningMP3>.Tuning
     {
-        get => Tuning is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningMP3>(GetTuningBuilderReferences, GameVersion.MP3, true, "Tuning");
+        get => Tuning is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningMP3>(GetTuningBuilderReferences, true, "Tuning");
         set => Tuning = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningMP3>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningMP4>? global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsMembers2<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningMP4>.Tuning
     {
-        get => Tuning is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningMP4>(GetTuningBuilderReferences, GameVersion.MP4, true, "Tuning");
+        get => Tuning is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningMP4>(GetTuningBuilderReferences, true, "Tuning");
         set => Tuning = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningMP4>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningTM2020>? global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsMembers2<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningTM2020>.Tuning
     {
-        get => Tuning is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningTM2020>(GetTuningBuilderReferences, GameVersion.TM2020, true, "Tuning");
+        get => Tuning is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningTM2020>(GetTuningBuilderReferences, true, "Tuning");
         set => Tuning = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningTM2020>(value, false));
     }
     private NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning>? GetTuningBuilderReferences() => Tuning;

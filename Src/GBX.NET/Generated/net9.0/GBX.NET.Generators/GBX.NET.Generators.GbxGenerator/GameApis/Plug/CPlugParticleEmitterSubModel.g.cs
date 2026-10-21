@@ -46,402 +46,202 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
     }
     global::GBX.NET.Interfaces.Function.IFuncColorGradientTMSX? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientTMSX, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMSX>.ColorGradient
     {
-        get
-        {
-            var node = ColorGradient;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => ColorGradient;
         set => ColorGradient = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncColorGradient node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMSX? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientTMSX, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMSX>.IntensityFilter
     {
-        get
-        {
-            var node = IntensityFilter;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => IntensityFilter;
         set => IntensityFilter = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX, global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX>.Material
     {
-        get
-        {
-            var node = Material;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => Material;
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX, global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX>.Shader
     {
-        get
-        {
-            var node = Shader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => Shader;
         set => Shader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMSX? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientTMSX, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMSX>.SizeOverLife
     {
-        get
-        {
-            var node = SizeOverLife;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => SizeOverLife;
         set => SizeOverLife = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMSX? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientTMSX, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMSX>.SizeXOverLife
     {
-        get
-        {
-            var node = SizeXOverLife;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => SizeXOverLife;
         set => SizeXOverLife = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMSX? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientTMSX, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMSX>.TransparencyOverLife
     {
-        get
-        {
-            var node = TransparencyOverLife;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
+        get => TransparencyOverLife;
         set => TransparencyOverLife = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncColorGradientTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientTMNESWC, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMNESWC>.ColorGradient
     {
-        get
-        {
-            var node = ColorGradient;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => ColorGradient;
         set => ColorGradient = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncColorGradient node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientTMNESWC, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMNESWC>.IntensityFilter
     {
-        get
-        {
-            var node = IntensityFilter;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => IntensityFilter;
         set => IntensityFilter = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC>.Material
     {
-        get
-        {
-            var node = Material;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => Material;
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC>.Shader
     {
-        get
-        {
-            var node = Shader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => Shader;
         set => Shader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientTMNESWC, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMNESWC>.SizeOverLife
     {
-        get
-        {
-            var node = SizeOverLife;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => SizeOverLife;
         set => SizeOverLife = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientTMNESWC, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMNESWC>.SizeXOverLife
     {
-        get
-        {
-            var node = SizeXOverLife;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => SizeXOverLife;
         set => SizeXOverLife = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientTMNESWC, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMNESWC>.TransparencyOverLife
     {
-        get
-        {
-            var node = TransparencyOverLife;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
+        get => TransparencyOverLife;
         set => TransparencyOverLife = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncColorGradientVSK5? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientVSK5, global::GBX.NET.Interfaces.Function.IFuncEnvelopeVSK5>.ColorGradient
     {
-        get
-        {
-            var node = ColorGradient;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => ColorGradient;
         set => ColorGradient = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncColorGradient node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnvelopeVSK5? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientVSK5, global::GBX.NET.Interfaces.Function.IFuncEnvelopeVSK5>.IntensityFilter
     {
-        get
-        {
-            var node = IntensityFilter;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => IntensityFilter;
         set => IntensityFilter = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5>.Material
     {
-        get
-        {
-            var node = Material;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => Material;
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5>.Shader
     {
-        get
-        {
-            var node = Shader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => Shader;
         set => Shader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnvelopeVSK5? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientVSK5, global::GBX.NET.Interfaces.Function.IFuncEnvelopeVSK5>.SizeOverLife
     {
-        get
-        {
-            var node = SizeOverLife;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => SizeOverLife;
         set => SizeOverLife = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnvelopeVSK5? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientVSK5, global::GBX.NET.Interfaces.Function.IFuncEnvelopeVSK5>.SizeXOverLife
     {
-        get
-        {
-            var node = SizeXOverLife;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => SizeXOverLife;
         set => SizeXOverLife = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnvelopeVSK5? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientVSK5, global::GBX.NET.Interfaces.Function.IFuncEnvelopeVSK5>.TransparencyOverLife
     {
-        get
-        {
-            var node = TransparencyOverLife;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
+        get => TransparencyOverLife;
         set => TransparencyOverLife = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncColorGradientTMF? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientTMF, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMF>.ColorGradient
     {
-        get
-        {
-            var node = ColorGradient;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => ColorGradient;
         set => ColorGradient = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncColorGradient node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMF? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientTMF, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMF>.IntensityFilter
     {
-        get
-        {
-            var node = IntensityFilter;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => IntensityFilter;
         set => IntensityFilter = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Plug.IPlugShaderTMF>.Material
     {
-        get
-        {
-            var node = Material;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => Material;
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTMF? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Plug.IPlugShaderTMF>.Shader
     {
-        get
-        {
-            var node = Shader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => Shader;
         set => Shader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMF? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientTMF, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMF>.SizeOverLife
     {
-        get
-        {
-            var node = SizeOverLife;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => SizeOverLife;
         set => SizeOverLife = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMF? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientTMF, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMF>.SizeXOverLife
     {
-        get
-        {
-            var node = SizeXOverLife;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => SizeXOverLife;
         set => SizeXOverLife = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMF? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientTMF, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMF>.TransparencyOverLife
     {
-        get
-        {
-            var node = TransparencyOverLife;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
+        get => TransparencyOverLife;
         set => TransparencyOverLife = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugShaderMP3>.Material
     {
-        get
-        {
-            var node = Material;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => Material;
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderMP3? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugShaderMP3>.Shader
     {
-        get
-        {
-            var node = Shader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => Shader;
         set => Shader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP3? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP3>.Solid2Model
     {
-        get
-        {
-            var node = Solid2Model;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
+        get => Solid2Model;
         set => Solid2Model = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid2Model node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugShaderTMT>.Material
     {
-        get
-        {
-            var node = Material;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => Material;
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTMT? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugShaderTMT>.Shader
     {
-        get
-        {
-            var node = Shader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => Shader;
         set => Shader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTMT? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTMT>.Solid2Model
     {
-        get
-        {
-            var node = Solid2Model;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
+        get => Solid2Model;
         set => Solid2Model = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid2Model node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugShaderMP4>.Material
     {
-        get
-        {
-            var node = Material;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Material;
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderMP4? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugShaderMP4>.Shader
     {
-        get
-        {
-            var node = Shader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Shader;
         set => Shader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4>.Solid2Model
     {
-        get
-        {
-            var node = Solid2Model;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Solid2Model;
         set => Solid2Model = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid2Model node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020>.Material
     {
-        get
-        {
-            var node = Material;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => Material;
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020>.Shader
     {
-        get
-        {
-            var node = Shader;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => Shader;
         set => Shader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020>.Solid2Model
     {
-        get
-        {
-            var node = Solid2Model;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => Solid2Model;
         set => Solid2Model = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid2Model node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

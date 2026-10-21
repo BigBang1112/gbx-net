@@ -36,14 +36,9 @@ public abstract class CGameCtnMediaBlockFxBlurDepthBuilderBase<TSelf> where TSel
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth> state;
     private protected CGameCtnMediaBlockFxBlurDepthBuilderBase() => state = new();
     private protected CGameCtnMediaBlockFxBlurDepthBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth> state) => this.state = state;
-    public List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth.Key>? Keys
-    {
-        get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth.Key>?>("Keys");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxBlurDepthBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth.Key>? value)
     {
-        Keys = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxBlurDepthBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithKeys(params global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth.Key[] values)
@@ -64,13 +59,6 @@ public partial class CGameCtnMediaBlockFxBlurDepthBuilder : CGameCtnMediaBlockFx
         node.Chunks.Add(chunk03081001);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth.Chunk03081001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03081001 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth node, GameVersion game)
-    {
-    }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
@@ -89,14 +77,9 @@ public partial class CGameCtnMediaBlockFxBlurDepthBuilder : CGameCtnMediaBlockFx
             var node = CGameCtnMediaBlockFxBlurDepthBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CGameCtnMediaBlockFxBlurDepthBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CGameCtnMediaBlockFxBlurDepthBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth node);
     }
     public partial class TMNESWC : CGameCtnMediaBlockFxBlurDepthBuilderBase<TMNESWC>
     {
@@ -107,14 +90,9 @@ public partial class CGameCtnMediaBlockFxBlurDepthBuilder : CGameCtnMediaBlockFx
             var node = CGameCtnMediaBlockFxBlurDepthBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CGameCtnMediaBlockFxBlurDepthBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CGameCtnMediaBlockFxBlurDepthBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth node);
     }
     public partial class VSK5 : CGameCtnMediaBlockFxBlurDepthBuilderBase<VSK5>
     {
@@ -125,14 +103,9 @@ public partial class CGameCtnMediaBlockFxBlurDepthBuilder : CGameCtnMediaBlockFx
             var node = CGameCtnMediaBlockFxBlurDepthBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CGameCtnMediaBlockFxBlurDepthBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CGameCtnMediaBlockFxBlurDepthBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth node);
     }
     public partial class TMF : CGameCtnMediaBlockFxBlurDepthBuilderBase<TMF>
     {
@@ -143,14 +116,9 @@ public partial class CGameCtnMediaBlockFxBlurDepthBuilder : CGameCtnMediaBlockFx
             var node = CGameCtnMediaBlockFxBlurDepthBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CGameCtnMediaBlockFxBlurDepthBuilder.ValidateRecipe0(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CGameCtnMediaBlockFxBlurDepthBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth node);
     }
     public partial class TMT : CGameCtnMediaBlockFxBlurDepthBuilderBase<TMT>
     {
@@ -161,14 +129,9 @@ public partial class CGameCtnMediaBlockFxBlurDepthBuilder : CGameCtnMediaBlockFx
             var node = CGameCtnMediaBlockFxBlurDepthBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameCtnMediaBlockFxBlurDepthBuilder.ValidateRecipe0(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameCtnMediaBlockFxBlurDepthBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth node);
     }
     public partial class MP4 : CGameCtnMediaBlockFxBlurDepthBuilderBase<MP4>
     {
@@ -179,14 +142,9 @@ public partial class CGameCtnMediaBlockFxBlurDepthBuilder : CGameCtnMediaBlockFx
             var node = CGameCtnMediaBlockFxBlurDepthBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameCtnMediaBlockFxBlurDepthBuilder.ValidateRecipe0(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameCtnMediaBlockFxBlurDepthBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth node);
     }
     public partial class TM2020 : CGameCtnMediaBlockFxBlurDepthBuilderBase<TM2020>
     {
@@ -197,13 +155,8 @@ public partial class CGameCtnMediaBlockFxBlurDepthBuilder : CGameCtnMediaBlockFx
             var node = CGameCtnMediaBlockFxBlurDepthBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameCtnMediaBlockFxBlurDepthBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameCtnMediaBlockFxBlurDepthBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth node);
     }
 }

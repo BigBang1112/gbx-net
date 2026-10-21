@@ -56,82 +56,42 @@ public partial class CGameObjectModel : global::GBX.NET.Interfaces.GameData.IGam
     }
     global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMP4? global::GBX.NET.Interfaces.GameData.IGameObjectModelMembers1<global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMP4, global::GBX.NET.Interfaces.GameData.IGameObjectModelMP4, global::GBX.NET.Interfaces.GameData.IGameObjectVisModelMP4>.Phy
     {
-        get
-        {
-            var node = Phy;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Phy;
         set => Phy = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameObjectPhyModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.GameData.IGameObjectModelMP4? global::GBX.NET.Interfaces.GameData.IGameObjectModelMembers1<global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMP4, global::GBX.NET.Interfaces.GameData.IGameObjectModelMP4, global::GBX.NET.Interfaces.GameData.IGameObjectVisModelMP4>.SlaveHealDome
     {
-        get
-        {
-            var node = SlaveHealDome;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => SlaveHealDome;
         set => SlaveHealDome = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameObjectModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.GameData.IGameObjectModelMP4? global::GBX.NET.Interfaces.GameData.IGameObjectModelMembers1<global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMP4, global::GBX.NET.Interfaces.GameData.IGameObjectModelMP4, global::GBX.NET.Interfaces.GameData.IGameObjectVisModelMP4>.SlaveShieldDome
     {
-        get
-        {
-            var node = SlaveShieldDome;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => SlaveShieldDome;
         set => SlaveShieldDome = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameObjectModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.GameData.IGameObjectVisModelMP4? global::GBX.NET.Interfaces.GameData.IGameObjectModelMembers1<global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMP4, global::GBX.NET.Interfaces.GameData.IGameObjectModelMP4, global::GBX.NET.Interfaces.GameData.IGameObjectVisModelMP4>.Vis
     {
-        get
-        {
-            var node = Vis;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
+        get => Vis;
         set => Vis = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameObjectVisModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelTM2020? global::GBX.NET.Interfaces.GameData.IGameObjectModelMembers1<global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelTM2020, global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020, global::GBX.NET.Interfaces.GameData.IGameObjectVisModelTM2020>.Phy
     {
-        get
-        {
-            var node = Phy;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => Phy;
         set => Phy = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameObjectPhyModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020? global::GBX.NET.Interfaces.GameData.IGameObjectModelMembers1<global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelTM2020, global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020, global::GBX.NET.Interfaces.GameData.IGameObjectVisModelTM2020>.SlaveHealDome
     {
-        get
-        {
-            var node = SlaveHealDome;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => SlaveHealDome;
         set => SlaveHealDome = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameObjectModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020? global::GBX.NET.Interfaces.GameData.IGameObjectModelMembers1<global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelTM2020, global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020, global::GBX.NET.Interfaces.GameData.IGameObjectVisModelTM2020>.SlaveShieldDome
     {
-        get
-        {
-            var node = SlaveShieldDome;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => SlaveShieldDome;
         set => SlaveShieldDome = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameObjectModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.GameData.IGameObjectVisModelTM2020? global::GBX.NET.Interfaces.GameData.IGameObjectModelMembers1<global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelTM2020, global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020, global::GBX.NET.Interfaces.GameData.IGameObjectVisModelTM2020>.Vis
     {
-        get
-        {
-            var node = Vis;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
+        get => Vis;
         set => Vis = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameObjectVisModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

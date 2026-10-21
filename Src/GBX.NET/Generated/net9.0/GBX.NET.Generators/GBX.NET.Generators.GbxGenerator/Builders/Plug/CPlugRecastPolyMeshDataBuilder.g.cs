@@ -36,14 +36,9 @@ public abstract class CPlugRecastPolyMeshDataBuilderBase<TSelf> where TSelf : CP
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData> state;
     private protected CPlugRecastPolyMeshDataBuilderBase() => state = new();
     private protected CPlugRecastPolyMeshDataBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData> state) => this.state = state;
-    public global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData.HeightfieldLayer[]? HeightfieldLayers
-    {
-        get => state.Get<global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData.HeightfieldLayer[]?>("HeightfieldLayers");
-        set => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugRecastPolyMeshDataBuilderAssignments.GetHeightfieldLayersAssignment(), value, GameVersion.TM2020);
-    }
     public TSelf WithHeightfieldLayers(params global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData.HeightfieldLayer[]? value)
     {
-        HeightfieldLayers = value;
+        state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugRecastPolyMeshDataBuilderAssignments.GetHeightfieldLayersAssignment(), value, GameVersion.TM2020);
         return (TSelf)this;
     }
     public TSelf WithHeightfieldLayers(IEnumerable<global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData.HeightfieldLayer> values)
@@ -60,13 +55,6 @@ public partial class CPlugRecastPolyMeshDataBuilder : CPlugRecastPolyMeshDataBui
         node.Chunks.Add(chunk09150000);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData.Chunk09150000>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk09150000 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData node, GameVersion game)
-    {
-    }
     public TM2020 ForTM2020() => new(state.Snapshot());
     public partial class TM2020 : CPlugRecastPolyMeshDataBuilderBase<TM2020>
     {
@@ -77,13 +65,8 @@ public partial class CPlugRecastPolyMeshDataBuilder : CPlugRecastPolyMeshDataBui
             var node = CPlugRecastPolyMeshDataBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CPlugRecastPolyMeshDataBuilder.ValidateRecipe0(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CPlugRecastPolyMeshDataBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData node);
-        partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData node);
     }
 }

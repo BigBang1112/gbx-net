@@ -36,14 +36,9 @@ public abstract class CGameCtnMediaClipGroupBuilderBase<TSelf> where TSelf : CGa
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> state;
     private protected CGameCtnMediaClipGroupBuilderBase() => state = new();
     private protected CGameCtnMediaClipGroupBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> state) => this.state = state;
-    public global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup.ClipTrigger> Clips
-    {
-        get => state.Get<global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup.ClipTrigger>>("Clips");
-        set => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipGroupBuilderAssignments.GetClipsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    }
     public TSelf WithClips(global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup.ClipTrigger> value)
     {
-        Clips = value;
+        state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipGroupBuilderAssignments.GetClipsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         return (TSelf)this;
     }
     public TSelf WithClips(params global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup.ClipTrigger[] values)
@@ -64,23 +59,12 @@ public partial class CGameCtnMediaClipGroupBuilder : CGameCtnMediaClipGroupBuild
         node.Chunks.Add(chunk0307A002);
         return node;
     }
-    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup.Chunk0307A002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0307A002 is missing or has an incompatible version.");
-    }
     private static global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup();
         var chunk0307A003 = new global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup.Chunk0307A003();
         node.Chunks.Add(chunk0307A003);
         return node;
-    }
-    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node, GameVersion game)
-    {
-        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup.Chunk0307A003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0307A003 is missing or has an incompatible version.");
-    }
-    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node, GameVersion game)
-    {
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
@@ -101,14 +85,9 @@ public partial class CGameCtnMediaClipGroupBuilder : CGameCtnMediaClipGroupBuild
             var node = CGameCtnMediaClipGroupBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            CGameCtnMediaClipGroupBuilder.ValidateRecipe0(node, GameVersion.TMSX);
-            NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            CGameCtnMediaClipGroupBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node);
     }
     public partial class TMNESWC : CGameCtnMediaClipGroupBuilderBase<TMNESWC>
     {
@@ -119,14 +98,9 @@ public partial class CGameCtnMediaClipGroupBuilder : CGameCtnMediaClipGroupBuild
             var node = CGameCtnMediaClipGroupBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            CGameCtnMediaClipGroupBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
-            NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            CGameCtnMediaClipGroupBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node);
     }
     public partial class VSK5 : CGameCtnMediaClipGroupBuilderBase<VSK5>
     {
@@ -137,14 +111,9 @@ public partial class CGameCtnMediaClipGroupBuilder : CGameCtnMediaClipGroupBuild
             var node = CGameCtnMediaClipGroupBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            CGameCtnMediaClipGroupBuilder.ValidateRecipe0(node, GameVersion.VSK5);
-            NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            CGameCtnMediaClipGroupBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node);
     }
     public partial class TMF : CGameCtnMediaClipGroupBuilderBase<TMF>
     {
@@ -155,14 +124,9 @@ public partial class CGameCtnMediaClipGroupBuilder : CGameCtnMediaClipGroupBuild
             var node = CGameCtnMediaClipGroupBuilder.CreateRecipe1(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            CGameCtnMediaClipGroupBuilder.ValidateRecipe1(node, GameVersion.TMF);
-            NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            CGameCtnMediaClipGroupBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node);
     }
     public partial class MP3 : CGameCtnMediaClipGroupBuilderBase<MP3>
     {
@@ -173,14 +137,9 @@ public partial class CGameCtnMediaClipGroupBuilder : CGameCtnMediaClipGroupBuild
             var node = CGameCtnMediaClipGroupBuilder.CreateRecipe1(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            CGameCtnMediaClipGroupBuilder.ValidateRecipe1(node, GameVersion.MP3);
-            NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            CGameCtnMediaClipGroupBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node);
     }
     public partial class TMT : CGameCtnMediaClipGroupBuilderBase<TMT>
     {
@@ -191,14 +150,9 @@ public partial class CGameCtnMediaClipGroupBuilder : CGameCtnMediaClipGroupBuild
             var node = CGameCtnMediaClipGroupBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            CGameCtnMediaClipGroupBuilder.ValidateRecipe1(node, GameVersion.TMT);
-            NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            CGameCtnMediaClipGroupBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node);
     }
     public partial class MP4 : CGameCtnMediaClipGroupBuilderBase<MP4>
     {
@@ -209,14 +163,9 @@ public partial class CGameCtnMediaClipGroupBuilder : CGameCtnMediaClipGroupBuild
             var node = CGameCtnMediaClipGroupBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            CGameCtnMediaClipGroupBuilder.ValidateRecipe1(node, GameVersion.MP4);
-            NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            CGameCtnMediaClipGroupBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node);
     }
     public partial class TM2020 : CGameCtnMediaClipGroupBuilderBase<TM2020>
     {
@@ -227,13 +176,8 @@ public partial class CGameCtnMediaClipGroupBuilder : CGameCtnMediaClipGroupBuild
             var node = CGameCtnMediaClipGroupBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            CGameCtnMediaClipGroupBuilder.ValidateRecipe1(node, GameVersion.TM2020);
-            NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            CGameCtnMediaClipGroupBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
-            ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node);
-        partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node);
     }
 }
