@@ -6,7 +6,7 @@ using Microsoft.CodeAnalysis.Text;
 
 namespace GBX.NET.Generators.Tests;
 
-public class GenerationTests
+public partial class GenerationTests
 {
     [Test]
     [Arguments(0)]
@@ -3944,11 +3944,11 @@ public class GenerationTests
 
     private static (GeneratorRunResult Result, Compilation Compilation) Run(string source, Text file, bool compile = false) => Run(source, compile, new[] { file });
     private static (GeneratorRunResult Result, Compilation Compilation) Run(string source, params Text[] files) => Run(source, false, files);
-    private static (GeneratorRunResult Result, Compilation Compilation) Run(string source, bool compile, Text[] files)
+    private static (GeneratorRunResult Result, Compilation Compilation) Run(string source, bool compile, Text[] files, string extraSupport = "")
     {
         var options = new CSharpParseOptions(LanguageVersion.Preview);
         var references = ((string)AppContext.GetData("TRUSTED_PLATFORM_ASSEMBLIES")!).Split(Path.PathSeparator).Select(x => MetadataReference.CreateFromFile(x));
-        var compilation = CSharpCompilation.Create("Fixture", new[] { CSharpSyntaxTree.ParseText(source, options), CSharpSyntaxTree.ParseText(compile ? Support : "", options) }, references,
+        var compilation = CSharpCompilation.Create("Fixture", new[] { CSharpSyntaxTree.ParseText(source, options), CSharpSyntaxTree.ParseText(compile ? Support : "", options), CSharpSyntaxTree.ParseText(extraSupport, options) }, references,
             new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
         GeneratorDriver driver = CSharpGeneratorDriver.Create(new[] { new GbxGenerator().AsSourceGenerator() }, additionalTexts: files, parseOptions: options);
         driver = driver.RunGeneratorsAndUpdateCompilation(compilation, out var output, out _);
@@ -3974,7 +3974,7 @@ public class GenerationTests
         namespace GBX.NET
         {
             [System.Flags]
-            public enum GameVersion { Unspecified = 0, TM10 = 1, TM2020 = 2 }
+            public enum GameVersion { Unspecified = 0, TM10 = 1, TM2020 = 2, MP4 = 4, TMF = 8 }
             public interface IClass { }
             public interface IVersionable { int Version { get; set; } }
             public class External<T> where T : GBX.NET.Engines.Game.CMwNod? { }
@@ -4158,7 +4158,7 @@ public class GenerationTests
         }
         namespace GBX.NET.Engines.Game
         {
-            public class CMwNod : GBX.NET.IClass
+            public partial class CMwNod : GBX.NET.IClass
             {
                 internal virtual uint GetId() => 0;
                 public virtual System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, GBX.NET.NodeRef>> EnumerateReferences() => [];

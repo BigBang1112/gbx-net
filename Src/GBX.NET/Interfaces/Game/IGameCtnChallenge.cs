@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Interfaces.Game;
 
-public interface IGameCtnChallenge : IClassVersion<CGameCtnChallenge>
+public partial interface IGameCtnChallenge : IClassVersion<CGameCtnChallenge>
 {
     string MapUid { get; set; }
+    [Obsolete("Use GetBlocks() on the selected game interface for scoped block access.")]
     NodeRefList<CGameCtnBlock> Blocks { get; set; }
 
     string GetEnvironment();

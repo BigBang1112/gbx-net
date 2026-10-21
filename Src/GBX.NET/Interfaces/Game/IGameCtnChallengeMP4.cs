@@ -2,7 +2,7 @@
 
 namespace GBX.NET.Interfaces.Game;
 
-public interface IGameCtnChallengeMP4 : IGameCtnChallenge
+public partial interface IGameCtnChallengeMP4 : IGameCtnChallenge
 {
     IEnumerable<IGameCtnBlockMP4> GetBlocks();
     IEnumerable<IGameCtnBlockMP4> GetBakedBlocks();

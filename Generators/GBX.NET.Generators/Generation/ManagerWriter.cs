@@ -9,7 +9,7 @@ internal static class ManagerWriter
     public static void Generate(SourceProductionContext context, IReadOnlyDictionary<string, LayoutModel> layouts,
         ImmutableArray<KeyValuePair<string, string>> resources)
     {
-        var classes = layouts.Values.OrderBy(static x => x.Id).ToArray();
+        var classes = layouts.Values.OrderBy(static x => x.Id).ThenBy(static x => x.File.TypeKey, StringComparer.Ordinal).ToArray();
         var defaultClasses = classes.GroupBy(static x => x.Id)
             .Select(static group => group.FirstOrDefault(static x => x.Game is null) ?? group.First()).ToArray();
         var gameClasses = classes.Where(static x => x.Game is not null).ToArray();

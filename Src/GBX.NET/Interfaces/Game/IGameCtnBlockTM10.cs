@@ -1,7 +1,7 @@
 ﻿namespace GBX.NET.Interfaces.Game;
 
-public interface IGameCtnBlockTM10 : IGameCtnBlock
+public partial interface IGameCtnBlockTM10 : IGameCtnBlock
 {
     Ident BlockModel { get; set; }
-    byte Variant { get; set; }
+    new byte Variant { get; set; }
 }

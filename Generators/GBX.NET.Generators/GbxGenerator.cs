@@ -45,6 +45,8 @@ public sealed class GbxGenerator : IIncrementalGenerator
         var generationPlan = generationInputs.Select(static (inputs, token) => GenerationPlan.Create(inputs, token))
             .WithTrackingName("PlannedEngineTypes");
         context.RegisterSourceOutput(generationPlan, EngineWriter.Generate);
+        context.RegisterSourceOutput(generationPlan.Combine(context.CompilationProvider),
+            static (sourceContext, input) => GameApiWriter.Generate(sourceContext, input.Left, input.Right));
 
         var resources = context.AdditionalTextsProvider
             .Where(static file => file.Path.EndsWith(".txt", StringComparison.OrdinalIgnoreCase))
