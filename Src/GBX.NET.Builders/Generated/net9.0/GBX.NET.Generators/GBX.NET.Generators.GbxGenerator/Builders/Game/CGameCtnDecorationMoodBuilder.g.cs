@@ -120,20 +120,6 @@ public partial class CGameCtnDecorationMoodBuilder : CGameCtnDecorationMoodBuild
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A013() { Version = 0 });
         return node;
     }
-    private static global::GBX.NET.Engines.Game.CGameCtnDecorationMood CreateRecipe4(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood();
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A000());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A002());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A004());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A005());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A007());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A00C());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A00F(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A012(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A013() { Version = 0 });
-        return node;
-    }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
@@ -218,7 +204,7 @@ public partial class CGameCtnDecorationMoodBuilder : CGameCtnDecorationMoodBuild
         public MP4 WithRemapping(global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4? value) => base.WithRemapping(value is null ? (global::GBX.NET.Engines.Plug.CPlugGameSkin?)null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithToneMapAutoExp_FidAvgLumiToKeyValue(global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? value) => base.WithToneMapAutoExp_FidAvgLumiToKeyValue(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnDecorationMood Build() => BuildNode(CGameCtnDecorationMoodBuilder.CreateRecipe4(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Game.CGameCtnDecorationMood Build() => BuildNode(CGameCtnDecorationMoodBuilder.CreateRecipe3(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node);
     }
     public partial class TM2020 : CGameCtnDecorationMoodBuilderMembers5<TM2020>
@@ -232,7 +218,7 @@ public partial class CGameCtnDecorationMoodBuilder : CGameCtnDecorationMoodBuild
         public TM2020 WithRemapping(global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM2020? value) => base.WithRemapping(value is null ? (global::GBX.NET.Engines.Plug.CPlugGameSkin?)null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithToneMapAutoExp_FidAvgLumiToKeyValue(global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? value) => base.WithToneMapAutoExp_FidAvgLumiToKeyValue(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnDecorationMood Build() => BuildNode(CGameCtnDecorationMoodBuilder.CreateRecipe4(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Game.CGameCtnDecorationMood Build() => BuildNode(CGameCtnDecorationMoodBuilder.CreateRecipe3(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node);
     }
 }

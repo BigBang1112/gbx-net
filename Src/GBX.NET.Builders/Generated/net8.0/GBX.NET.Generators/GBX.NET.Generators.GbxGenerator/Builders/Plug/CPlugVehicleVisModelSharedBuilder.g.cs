@@ -94,23 +94,6 @@ public partial class CPlugVehicleVisModelSharedBuilder : CPlugVehicleVisModelSha
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E800A());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8012());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8015());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8016());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8018());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E801E(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E801F(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8020(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8021(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8022(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8023(game));
-        return node;
-    }
-    private static global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared CreateRecipe5(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8009());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E800A());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8012());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8015());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E8018());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E801E(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.Chunk090E801F(game));
@@ -192,7 +175,7 @@ public partial class CPlugVehicleVisModelSharedBuilder : CPlugVehicleVisModelSha
         public MP4 WithVehicleMaterialGroups(params global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupMP4[] values) => base.WithVehicleMaterialGroups(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupMP4>(values, false));
         public MP4 WithVehicleMaterialGroups(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupMP4> values) => WithVehicleMaterialGroups(values.ToArray());
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared Build() => BuildNode(CPlugVehicleVisModelSharedBuilder.CreateRecipe4(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared Build() => BuildNode(CPlugVehicleVisModelSharedBuilder.CreateRecipe3(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared node);
     }
     public partial class TM2020 : CPlugVehicleVisModelSharedBuilderMembers1<TM2020>
@@ -205,7 +188,7 @@ public partial class CPlugVehicleVisModelSharedBuilder : CPlugVehicleVisModelSha
         public TM2020 WithWheelSettings(params global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.WheelSetting[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelSharedBuilderAssignments.GetWheelSettingsAssignment(), value, SupportedGames1);
         public TM2020 WithWheelSettings(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.WheelSetting> values) => WithWheelSettings(values.ToArray());
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared Build() => BuildNode(CPlugVehicleVisModelSharedBuilder.CreateRecipe5(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared Build() => BuildNode(CPlugVehicleVisModelSharedBuilder.CreateRecipe4(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared node);
     }
 }

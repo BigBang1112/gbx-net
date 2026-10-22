@@ -77,8 +77,7 @@ public partial class CPlugCharVisModelBuilder : CPlugCharVisModelBuilderBase<CPl
 {
     private static global::GBX.NET.Engines.Plug.CPlugCharVisModel CreateRecipe0(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.Plug.CPlugCharVisModel();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharVisModel.Chunk090C7003(game));
+        var node = CreateRecipe1(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharVisModel.Chunk090C7006(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharVisModel.Chunk090C7007(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharVisModel.Chunk090C7008(game));

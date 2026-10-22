@@ -118,19 +118,6 @@ public partial class CPlugVisual2DBuilder : CPlugVisual2DBuilderBase<CPlugVisual
         var node = new global::GBX.NET.Engines.Plug.CPlugVisual2D();
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual2D.Chunk0904A000());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600F(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006010() { Version = 0 });
-        return node;
-    }
-    private static global::GBX.NET.Engines.Plug.CPlugVisual2D CreateRecipe7(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugVisual2D();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual2D.Chunk0904A000());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B());
@@ -217,14 +204,14 @@ public partial class CPlugVisual2DBuilder : CPlugVisual2DBuilderBase<CPlugVisual
         public MP4 WithFuncVisual(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualAssignment(), value, SupportedGames2);
         public MP4 WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualReferenceAssignment(), value, SupportedGames2);
         public global::GBX.NET.Interfaces.Plug.IPlugVisual2DMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugVisual2D Build() => BuildNode(CPlugVisual2DBuilder.CreateRecipe6(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Plug.CPlugVisual2D Build() => BuildNode(CPlugVisual2DBuilder.CreateRecipe5(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisual2D node);
     }
     public partial class TM2020 : CPlugVisual2DBuilderMembers5<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisual2D> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugVisual2DTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugVisual2D Build() => BuildNode(CPlugVisual2DBuilder.CreateRecipe7(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugVisual2D Build() => BuildNode(CPlugVisual2DBuilder.CreateRecipe6(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisual2D node);
     }
 }

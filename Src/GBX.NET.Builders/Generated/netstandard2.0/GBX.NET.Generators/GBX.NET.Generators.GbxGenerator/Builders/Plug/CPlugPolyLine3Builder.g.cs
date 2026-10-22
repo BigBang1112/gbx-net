@@ -21,12 +21,6 @@ public partial class CPlugPolyLine3Builder : CPlugPolyLine3BuilderBase<CPlugPoly
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugPolyLine3.Chunk09118000(game));
         return node;
     }
-    private static global::GBX.NET.Engines.Plug.CPlugPolyLine3 CreateRecipe1(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugPolyLine3();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugPolyLine3.Chunk09118000(game));
-        return node;
-    }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
@@ -42,7 +36,7 @@ public partial class CPlugPolyLine3Builder : CPlugPolyLine3BuilderBase<CPlugPoly
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugPolyLine3> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugPolyLine3TM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugPolyLine3 Build() => BuildNode(CPlugPolyLine3Builder.CreateRecipe1(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugPolyLine3 Build() => BuildNode(CPlugPolyLine3Builder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugPolyLine3 node);
     }
 }

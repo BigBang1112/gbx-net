@@ -47,9 +47,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
     }
     private static global::GBX.NET.Engines.Game.CGamePlayerScore CreateRecipe3(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.Game.CGamePlayerScore();
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D004());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D006());
+        var node = CreateRecipe1(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D00F());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D010());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D011());

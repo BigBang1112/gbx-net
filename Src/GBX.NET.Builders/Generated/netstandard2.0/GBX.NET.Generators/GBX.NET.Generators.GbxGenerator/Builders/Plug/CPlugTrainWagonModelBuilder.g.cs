@@ -38,12 +38,6 @@ public partial class CPlugTrainWagonModelBuilder : CPlugTrainWagonModelBuilderBa
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugTrainWagonModel.Chunk0911C000(game));
         return node;
     }
-    private static global::GBX.NET.Engines.Plug.CPlugTrainWagonModel CreateRecipe1(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugTrainWagonModel();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugTrainWagonModel.Chunk0911C000(game));
-        return node;
-    }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
@@ -84,7 +78,7 @@ public partial class CPlugTrainWagonModelBuilder : CPlugTrainWagonModelBuilderBa
         public TM2020 WithSparkleParticleReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetSparkleParticleReferenceAssignment(), value, SupportedGames2);
         public TM2020 WithSparkleParticle(global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? value) => WithSparkleParticle(value is null ? (global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?)null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugTrainWagonModelTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugTrainWagonModel Build() => BuildNode(CPlugTrainWagonModelBuilder.CreateRecipe1(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugTrainWagonModel Build() => BuildNode(CPlugTrainWagonModelBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugTrainWagonModel node);
     }
 }

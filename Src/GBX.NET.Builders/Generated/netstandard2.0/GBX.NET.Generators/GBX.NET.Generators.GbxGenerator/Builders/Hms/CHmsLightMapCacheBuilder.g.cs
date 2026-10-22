@@ -103,48 +103,6 @@ public partial class CHmsLightMapCacheBuilder : CHmsLightMapCacheBuilderBase<CHm
         node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602201A(game));
         return node;
     }
-    private static global::GBX.NET.Engines.Hms.CHmsLightMapCache CreateRecipe3(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Hms.CHmsLightMapCache();
-        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200B());
-        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200F());
-        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022013());
-        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022015(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022016());
-        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022017());
-        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022018());
-        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022019());
-        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602201A(game));
-        return node;
-    }
-    private static global::GBX.NET.Engines.Hms.CHmsLightMapCache CreateRecipe4(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Hms.CHmsLightMapCache();
-        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200B());
-        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200F());
-        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022013());
-        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022015(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022016());
-        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022017());
-        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022018());
-        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022019());
-        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602201A(game));
-        return node;
-    }
-    private static global::GBX.NET.Engines.Hms.CHmsLightMapCache CreateRecipe5(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Hms.CHmsLightMapCache();
-        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200B());
-        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200F());
-        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022013());
-        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022015(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022016());
-        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022017());
-        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022018());
-        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022019());
-        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602201A(game));
-        return node;
-    }
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -183,14 +141,14 @@ public partial class CHmsLightMapCacheBuilder : CHmsLightMapCacheBuilderBase<CHm
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state) : base(state) { }
         public TMT WithGpuPlatform(global::GBX.NET.Engines.Hms.CHmsLightMapCache.EPlugGpuPlatform value) => Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetGpuPlatformAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         public global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache Build() => BuildNode(CHmsLightMapCacheBuilder.CreateRecipe3(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Hms.CHmsLightMapCache Build() => BuildNode(CHmsLightMapCacheBuilder.CreateRecipe2(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLightMapCache node);
     }
     public partial class MP4 : CHmsLightMapCacheBuilderMembers5<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state) : base(state) { }
         public global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache Build() => BuildNode(CHmsLightMapCacheBuilder.CreateRecipe4(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Hms.CHmsLightMapCache Build() => BuildNode(CHmsLightMapCacheBuilder.CreateRecipe2(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLightMapCache node);
     }
     public partial class TM2020 : CHmsLightMapCacheBuilderMembers5<TM2020>
@@ -198,7 +156,7 @@ public partial class CHmsLightMapCacheBuilder : CHmsLightMapCacheBuilderBase<CHm
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state) : base(state) { }
         public TM2020 WithChallengeMapUid(string? value) => Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetChallengeMapUidAssignment(), value, GameVersion.TM2020);
         public global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache Build() => BuildNode(CHmsLightMapCacheBuilder.CreateRecipe5(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Hms.CHmsLightMapCache Build() => BuildNode(CHmsLightMapCacheBuilder.CreateRecipe2(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLightMapCache node);
     }
 }

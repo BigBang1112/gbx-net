@@ -67,24 +67,6 @@ public partial class CPlugDecalModelBuilder : CPlugDecalModelBuilderBase<CPlugDe
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugDecalModel.Chunk090A7006() { Version = 0 });
         return node;
     }
-    private static global::GBX.NET.Engines.Plug.CPlugDecalModel CreateRecipe1(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugDecalModel();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugDecalModel.Chunk090A7002(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugDecalModel.Chunk090A7003());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugDecalModel.Chunk090A7004(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugDecalModel.Chunk090A7006() { Version = 0 });
-        return node;
-    }
-    private static global::GBX.NET.Engines.Plug.CPlugDecalModel CreateRecipe2(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugDecalModel();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugDecalModel.Chunk090A7002(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugDecalModel.Chunk090A7003());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugDecalModel.Chunk090A7004(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugDecalModel.Chunk090A7006() { Version = 0 });
-        return node;
-    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -114,7 +96,7 @@ public partial class CPlugDecalModelBuilder : CPlugDecalModelBuilderBase<CPlugDe
         public TMT WithSpecular(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? value) => base.WithSpecular(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithSprite3dBitmap(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? value) => base.WithSprite3dBitmap(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugDecalModelTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugDecalModel Build() => BuildNode(CPlugDecalModelBuilder.CreateRecipe1(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Plug.CPlugDecalModel Build() => BuildNode(CPlugDecalModelBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugDecalModel node);
     }
     public partial class MP4 : CPlugDecalModelBuilderMembers2<MP4>
@@ -130,7 +112,7 @@ public partial class CPlugDecalModelBuilder : CPlugDecalModelBuilderBase<CPlugDe
         public MP4 WithSpecular(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value) => base.WithSpecular(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithSprite3dBitmap(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value) => base.WithSprite3dBitmap(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugDecalModelMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugDecalModel Build() => BuildNode(CPlugDecalModelBuilder.CreateRecipe2(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Plug.CPlugDecalModel Build() => BuildNode(CPlugDecalModelBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugDecalModel node);
     }
     public partial class TM2020 : CPlugDecalModelBuilderMembers2<TM2020>
@@ -146,7 +128,7 @@ public partial class CPlugDecalModelBuilder : CPlugDecalModelBuilderBase<CPlugDe
         public TM2020 WithSpecular(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? value) => base.WithSpecular(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithSprite3dBitmap(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? value) => base.WithSprite3dBitmap(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugDecalModelTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugDecalModel Build() => BuildNode(CPlugDecalModelBuilder.CreateRecipe2(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugDecalModel Build() => BuildNode(CPlugDecalModelBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugDecalModel node);
     }
 }

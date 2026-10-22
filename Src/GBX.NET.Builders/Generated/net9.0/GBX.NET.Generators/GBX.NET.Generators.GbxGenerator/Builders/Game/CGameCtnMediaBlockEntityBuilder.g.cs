@@ -37,8 +37,7 @@ public partial class CGameCtnMediaBlockEntityBuilder : CGameCtnMediaBlockEntityB
     }
     private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity CreateRecipe1(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity();
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.Chunk0329F000(game));
+        var node = CreateRecipe0(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.Chunk0329F002());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.Chunk0329F003());
         return node;

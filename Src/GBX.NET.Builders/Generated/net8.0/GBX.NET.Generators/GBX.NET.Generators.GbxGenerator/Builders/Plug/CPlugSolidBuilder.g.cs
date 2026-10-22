@@ -122,33 +122,7 @@ public partial class CPlugSolidBuilder : CPlugSolidBuilderBase<CPlugSolidBuilder
     }
     private static global::GBX.NET.Engines.Plug.CPlugSolid CreateRecipe6(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.Plug.CPlugSolid();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005000());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005010());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005011());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005017(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005019(game));
-        return node;
-    }
-    private static global::GBX.NET.Engines.Plug.CPlugSolid CreateRecipe7(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugSolid();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005000());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005010());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005011());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005017(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005019(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSolid.Chunk0900501A(game));
-        return node;
-    }
-    private static global::GBX.NET.Engines.Plug.CPlugSolid CreateRecipe8(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugSolid();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005000());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005010());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005011());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005017(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSolid.Chunk09005019(game));
+        var node = CreateRecipe5(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSolid.Chunk0900501A(game));
         return node;
     }
@@ -241,7 +215,7 @@ public partial class CPlugSolidBuilder : CPlugSolidBuilderBase<CPlugSolidBuilder
         public TMT WithSounds(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugSoundTMT> values) => WithSounds(values.ToArray());
         public TMT WithTree(global::GBX.NET.Interfaces.Plug.IPlugTreeTMT? value) => base.WithTree(value is null ? (global::GBX.NET.Engines.Plug.CPlugTree?)null : value is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugSolidTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugSolid Build() => BuildNode(CPlugSolidBuilder.CreateRecipe6(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Plug.CPlugSolid Build() => BuildNode(CPlugSolidBuilder.CreateRecipe5(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSolid node);
     }
     public partial class MP4 : CPlugSolidBuilderMembers5<MP4>
@@ -254,7 +228,7 @@ public partial class CPlugSolidBuilder : CPlugSolidBuilderBase<CPlugSolidBuilder
         public MP4 WithSounds(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugSoundMP4> values) => WithSounds(values.ToArray());
         public MP4 WithTree(global::GBX.NET.Interfaces.Plug.IPlugTreeMP4? value) => base.WithTree(value is null ? (global::GBX.NET.Engines.Plug.CPlugTree?)null : value is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugSolidMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugSolid Build() => BuildNode(CPlugSolidBuilder.CreateRecipe7(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Plug.CPlugSolid Build() => BuildNode(CPlugSolidBuilder.CreateRecipe6(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSolid node);
     }
     public partial class TM2020 : CPlugSolidBuilderMembers5<TM2020>
@@ -270,7 +244,7 @@ public partial class CPlugSolidBuilder : CPlugSolidBuilderBase<CPlugSolidBuilder
         public TM2020 WithSounds(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020> values) => WithSounds(values.ToArray());
         public TM2020 WithTree(global::GBX.NET.Interfaces.Plug.IPlugTreeTM2020? value) => base.WithTree(value is null ? (global::GBX.NET.Engines.Plug.CPlugTree?)null : value is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugSolid Build() => BuildNode(CPlugSolidBuilder.CreateRecipe8(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugSolid Build() => BuildNode(CPlugSolidBuilder.CreateRecipe6(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSolid node);
     }
 }

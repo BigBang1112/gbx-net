@@ -144,22 +144,6 @@ public partial class CGameCtnCollectorBuilder : CGameCtnCollectorBuilderBase<CGa
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001003(game));
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001004());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006());
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001008());
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001009());
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100B());
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100C());
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100D());
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100E());
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001010(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001011(game));
-        return node;
-    }
-    private static global::GBX.NET.Engines.GameData.CGameCtnCollector CreateRecipe8(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.GameData.CGameCtnCollector();
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001003(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001004());
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001008() { Version = 0 });
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001008());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001009());
@@ -255,14 +239,14 @@ public partial class CGameCtnCollectorBuilder : CGameCtnCollectorBuilderBase<CGa
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCtnCollector> state) : base(state) { }
         public global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.GameData.CGameCtnCollector Build() => BuildNode(CGameCtnCollectorBuilder.CreateRecipe7(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.GameData.CGameCtnCollector Build() => BuildNode(CGameCtnCollectorBuilder.CreateRecipe6(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameCtnCollector node);
     }
     public partial class MP4 : CGameCtnCollectorBuilderMembers5<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCtnCollector> state) : base(state) { }
         public global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.GameData.CGameCtnCollector Build() => BuildNode(CGameCtnCollectorBuilder.CreateRecipe7(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.GameData.CGameCtnCollector Build() => BuildNode(CGameCtnCollectorBuilder.CreateRecipe6(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameCtnCollector node);
     }
     public partial class TM2020 : CGameCtnCollectorBuilderMembers5<TM2020>
@@ -275,7 +259,7 @@ public partial class CGameCtnCollectorBuilder : CGameCtnCollectorBuilderBase<CGa
         public TM2020 WithModelKitDbRelease(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbReleaseAssignment(), value, SupportedGames5);
         public TM2020 WithModelKitDbReleaseReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbReleaseReferenceAssignment(), value, SupportedGames5);
         public global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.GameData.CGameCtnCollector Build() => BuildNode(CGameCtnCollectorBuilder.CreateRecipe8(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.GameData.CGameCtnCollector Build() => BuildNode(CGameCtnCollectorBuilder.CreateRecipe7(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameCtnCollector node);
     }
 }

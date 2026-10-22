@@ -28,12 +28,6 @@ public partial class CPlugVertexStreamBuilder : CPlugVertexStreamBuilderBase<CPl
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVertexStream.Chunk09056000(game));
         return node;
     }
-    private static global::GBX.NET.Engines.Plug.CPlugVertexStream CreateRecipe1(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugVertexStream();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVertexStream.Chunk09056000(game));
-        return node;
-    }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
@@ -81,7 +75,7 @@ public partial class CPlugVertexStreamBuilder : CPlugVertexStreamBuilderBase<CPl
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVertexStream> state) : base(state) { }
         public MP3 WithStreamModel(global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMP3? value) => base.WithStreamModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugVertexStream?)null : value is global::GBX.NET.Engines.Plug.CPlugVertexStream node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMP3 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugVertexStream Build() => BuildNode(CPlugVertexStreamBuilder.CreateRecipe1(GameVersion.MP3), GameVersion.MP3);
+        public global::GBX.NET.Engines.Plug.CPlugVertexStream Build() => BuildNode(CPlugVertexStreamBuilder.CreateRecipe0(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVertexStream node);
     }
     public partial class TMT : CPlugVertexStreamBuilderBase<TMT>
@@ -97,7 +91,7 @@ public partial class CPlugVertexStreamBuilder : CPlugVertexStreamBuilderBase<CPl
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVertexStream> state) : base(state) { }
         public MP4 WithStreamModel(global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMP4? value) => base.WithStreamModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugVertexStream?)null : value is global::GBX.NET.Engines.Plug.CPlugVertexStream node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugVertexStream Build() => BuildNode(CPlugVertexStreamBuilder.CreateRecipe1(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Plug.CPlugVertexStream Build() => BuildNode(CPlugVertexStreamBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVertexStream node);
     }
     public partial class TM2020 : CPlugVertexStreamBuilderMembers1<TM2020>
@@ -105,7 +99,7 @@ public partial class CPlugVertexStreamBuilder : CPlugVertexStreamBuilderBase<CPl
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVertexStream> state) : base(state) { }
         public TM2020 WithStreamModel(global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTM2020? value) => base.WithStreamModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugVertexStream?)null : value is global::GBX.NET.Engines.Plug.CPlugVertexStream node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugVertexStream Build() => BuildNode(CPlugVertexStreamBuilder.CreateRecipe1(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugVertexStream Build() => BuildNode(CPlugVertexStreamBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVertexStream node);
     }
 }

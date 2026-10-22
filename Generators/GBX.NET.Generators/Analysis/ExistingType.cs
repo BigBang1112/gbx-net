@@ -4,7 +4,7 @@ namespace GBX.NET.Generators.Analysis;
 /// Syntax declared by an engine type, merged across all of its source partials.
 /// No inherited, implicit or generated members are inferred here.
 /// </summary>
-internal sealed class ExistingType
+internal sealed class ExistingType : IEquatable<ExistingType>
 {
     public string Namespace { get; }
     public string Name { get; }
@@ -107,4 +107,13 @@ internal sealed class ExistingType
 
     private static string Qualify(ExplicitInterfaceSpecifierSyntax? specifier, string name) =>
         specifier is null ? name : $"{specifier.Name}.{name}";
+
+    // The syntax provider reruns its transform after every edit. An unchanged
+    // tree keeps its nodes, so equal declarations let the generation plan cache.
+    public bool Equals(ExistingType? other) => other is not null && Key == other.Key &&
+        Declarations.SequenceEqual(other.Declarations, static (left, right) => ReferenceEquals(left, right));
+
+    public override bool Equals(object? obj) => Equals(obj as ExistingType);
+
+    public override int GetHashCode() => Key.GetHashCode();
 }

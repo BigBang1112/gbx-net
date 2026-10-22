@@ -174,22 +174,6 @@ public partial class CPlugSoundEngine2Builder : CPlugSoundEngine2BuilderBase<CPl
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugAudio.Chunk09001001());
         return node;
     }
-    private static global::GBX.NET.Engines.Plug.CPlugSoundEngine2 CreateRecipe6(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugSoundEngine2();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSoundEngine2.Chunk09029000() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSoundEngine2.Chunk09029001(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSoundEngine2.Chunk09029002(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSoundEngine2.Chunk09029003(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSound.Chunk0901A000());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSound.Chunk0901A00E(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSound.Chunk0901A00F(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSound.Chunk0901A011() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSound.Chunk0901A012() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSound.Chunk0901A013() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugAudio.Chunk09001001());
-        return node;
-    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -301,7 +285,7 @@ public partial class CPlugSoundEngine2Builder : CPlugSoundEngine2BuilderBase<CPl
         public TM2020 WithVolumeFormSpeedKmh(global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? value) => base.WithVolumeFormSpeedKmh(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithVolumeFromDistance(global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? value) => base.WithVolumeFromDistance(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugSoundEngine2TM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugSoundEngine2 Build() => BuildNode(CPlugSoundEngine2Builder.CreateRecipe6(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugSoundEngine2 Build() => BuildNode(CPlugSoundEngine2Builder.CreateRecipe5(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSoundEngine2 node);
     }
 }

@@ -101,14 +101,7 @@ public partial class CGameCtnBlockInfoVariantBuilder : CGameCtnBlockInfoVariantB
     }
     private static global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariant CreateRecipe2(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariant();
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariant.Chunk0315B002());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariant.Chunk0315B003(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariant.Chunk0315B004());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariant.Chunk0315B005(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariant.Chunk0315B006(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariant.Chunk0315B007() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariant.Chunk0315B008(game));
+        var node = CreateRecipe1(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariant.Chunk0315B009(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariant.Chunk0315B00A(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariant.Chunk0315B00B(game));
@@ -117,14 +110,7 @@ public partial class CGameCtnBlockInfoVariantBuilder : CGameCtnBlockInfoVariantB
     }
     private static global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariant CreateRecipe3(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariant();
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariant.Chunk0315B002());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariant.Chunk0315B003(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariant.Chunk0315B004());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariant.Chunk0315B005(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariant.Chunk0315B006(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariant.Chunk0315B007() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariant.Chunk0315B008(game));
+        var node = CreateRecipe1(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariant.Chunk0315B009(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariant.Chunk0315B00A(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariant.Chunk0315B00B(game));

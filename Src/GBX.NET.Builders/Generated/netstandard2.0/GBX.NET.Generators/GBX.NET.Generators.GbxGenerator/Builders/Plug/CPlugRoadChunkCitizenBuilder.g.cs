@@ -16,12 +16,6 @@ public partial class CPlugRoadChunkCitizenBuilder : CPlugRoadChunkCitizenBuilder
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugRoadChunk.Chunk09128000());
         return node;
     }
-    private static global::GBX.NET.Engines.Plug.CPlugRoadChunkCitizen CreateRecipe1(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugRoadChunkCitizen();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugRoadChunk.Chunk09128000());
-        return node;
-    }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
@@ -37,7 +31,7 @@ public partial class CPlugRoadChunkCitizenBuilder : CPlugRoadChunkCitizenBuilder
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugRoadChunkCitizen> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugRoadChunkCitizenTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugRoadChunkCitizen Build() => BuildNode(CPlugRoadChunkCitizenBuilder.CreateRecipe1(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugRoadChunkCitizen Build() => BuildNode(CPlugRoadChunkCitizenBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugRoadChunkCitizen node);
     }
 }

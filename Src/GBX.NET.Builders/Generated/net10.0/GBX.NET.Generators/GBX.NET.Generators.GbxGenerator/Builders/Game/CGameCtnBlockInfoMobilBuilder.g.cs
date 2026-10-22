@@ -52,30 +52,6 @@ public partial class CGameCtnBlockInfoMobilBuilder : CGameCtnBlockInfoMobilBuild
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoMobil.Chunk03122004() { Version = 0 });
         return node;
     }
-    private static global::GBX.NET.Engines.Game.CGameCtnBlockInfoMobil CreateRecipe1(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Game.CGameCtnBlockInfoMobil();
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoMobil.Chunk03122002());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoMobil.Chunk03122003(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoMobil.Chunk03122004() { Version = 0 });
-        return node;
-    }
-    private static global::GBX.NET.Engines.Game.CGameCtnBlockInfoMobil CreateRecipe2(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Game.CGameCtnBlockInfoMobil();
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoMobil.Chunk03122002());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoMobil.Chunk03122003(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoMobil.Chunk03122004() { Version = 0 });
-        return node;
-    }
-    private static global::GBX.NET.Engines.Game.CGameCtnBlockInfoMobil CreateRecipe3(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Game.CGameCtnBlockInfoMobil();
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoMobil.Chunk03122002());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoMobil.Chunk03122003(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoMobil.Chunk03122004() { Version = 0 });
-        return node;
-    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -101,7 +77,7 @@ public partial class CGameCtnBlockInfoMobilBuilder : CGameCtnBlockInfoMobilBuild
         public TMT WithSolidDecals(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnSolidDecalsTMT> values) => WithSolidDecals(values.ToArray());
         public TMT WithSolidFid(global::GBX.NET.Interfaces.Plug.IPlugSolidTMT? value) => base.WithSolidFid(value is null ? (global::GBX.NET.Engines.Plug.CPlugSolid?)null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobilTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnBlockInfoMobil Build() => BuildNode(CGameCtnBlockInfoMobilBuilder.CreateRecipe1(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Game.CGameCtnBlockInfoMobil Build() => BuildNode(CGameCtnBlockInfoMobilBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockInfoMobil node);
     }
     public partial class MP4 : CGameCtnBlockInfoMobilBuilderMembers2<MP4>
@@ -117,7 +93,7 @@ public partial class CGameCtnBlockInfoMobilBuilder : CGameCtnBlockInfoMobilBuild
         public MP4 WithTrafficPathReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugPath> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoMobilBuilderAssignments.GetTrafficPathReferenceAssignment(), value, SupportedGames2);
         public MP4 WithTrafficPath(global::GBX.NET.Interfaces.Plug.IPlugPathMP4? value) => WithTrafficPath(value is null ? (global::GBX.NET.Engines.Plug.CPlugPath?)null : value is global::GBX.NET.Engines.Plug.CPlugPath node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobilMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnBlockInfoMobil Build() => BuildNode(CGameCtnBlockInfoMobilBuilder.CreateRecipe2(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Game.CGameCtnBlockInfoMobil Build() => BuildNode(CGameCtnBlockInfoMobilBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockInfoMobil node);
     }
     public partial class TM2020 : CGameCtnBlockInfoMobilBuilderMembers2<TM2020>
@@ -157,7 +133,7 @@ public partial class CGameCtnBlockInfoMobilBuilder : CGameCtnBlockInfoMobilBuild
         public TM2020 WithVFXsReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugVFXFile> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoMobilBuilderAssignments.GetVFXsReferenceAssignment(), value, SupportedGames5);
         public TM2020 WithVFXs(global::GBX.NET.Interfaces.Plug.IPlugVFXFileTM2020? value) => WithVFXs(value is null ? (global::GBX.NET.Engines.Plug.CPlugVFXFile?)null : value is global::GBX.NET.Engines.Plug.CPlugVFXFile node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobilTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnBlockInfoMobil Build() => BuildNode(CGameCtnBlockInfoMobilBuilder.CreateRecipe3(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Game.CGameCtnBlockInfoMobil Build() => BuildNode(CGameCtnBlockInfoMobilBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockInfoMobil node);
     }
 }

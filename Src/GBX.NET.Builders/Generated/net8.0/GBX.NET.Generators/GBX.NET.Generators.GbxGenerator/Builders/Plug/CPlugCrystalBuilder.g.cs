@@ -73,17 +73,6 @@ public partial class CPlugCrystalBuilder : CPlugCrystalBuilderBase<CPlugCrystalB
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugTreeGenerator.Chunk09051000());
         return node;
     }
-    private static global::GBX.NET.Engines.Plug.CPlugCrystal CreateRecipe4(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugCrystal();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCrystal.Chunk09003003(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCrystal.Chunk09003004(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCrystal.Chunk09003005() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCrystal.Chunk09003006());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCrystal.Chunk09003007() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugTreeGenerator.Chunk09051000());
-        return node;
-    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -171,7 +160,7 @@ public partial class CPlugCrystalBuilder : CPlugCrystalBuilderBase<CPlugCrystalB
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCrystal> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugCrystalTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugCrystal Build() => BuildNode(CPlugCrystalBuilder.CreateRecipe4(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugCrystal Build() => BuildNode(CPlugCrystalBuilder.CreateRecipe3(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCrystal node);
     }
 }

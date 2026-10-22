@@ -31,12 +31,6 @@ public partial class CGameCtnMediaBlockCameraPathBuilder : CGameCtnMediaBlockCam
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath.Chunk030A1003(game));
         return node;
     }
-    private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath CreateRecipe3(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath();
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath.Chunk030A1003(game));
-        return node;
-    }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
@@ -85,14 +79,14 @@ public partial class CGameCtnMediaBlockCameraPathBuilder : CGameCtnMediaBlockCam
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraPathMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath Build() => BuildNode(CGameCtnMediaBlockCameraPathBuilder.CreateRecipe3(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath Build() => BuildNode(CGameCtnMediaBlockCameraPathBuilder.CreateRecipe2(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath node);
     }
     public partial class TM2020 : CGameCtnMediaBlockCameraPathBuilderBase<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraPathTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath Build() => BuildNode(CGameCtnMediaBlockCameraPathBuilder.CreateRecipe3(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath Build() => BuildNode(CGameCtnMediaBlockCameraPathBuilder.CreateRecipe2(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath node);
     }
 }

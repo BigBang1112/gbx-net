@@ -100,22 +100,7 @@ public partial class CGameCtnDecorationAudioBuilder : CGameCtnDecorationAudioBui
     }
     private static global::GBX.NET.Engines.Game.CGameCtnDecorationAudio CreateRecipe2(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.Game.CGameCtnDecorationAudio();
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecorationAudio.Chunk03039000());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecorationAudio.Chunk03039003(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecorationAudio.Chunk03039004(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecorationAudio.Chunk03039005() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecorationAudio.Chunk03039006() { Version = 0 });
-        return node;
-    }
-    private static global::GBX.NET.Engines.Game.CGameCtnDecorationAudio CreateRecipe3(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Game.CGameCtnDecorationAudio();
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecorationAudio.Chunk03039000());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecorationAudio.Chunk03039003(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecorationAudio.Chunk03039004(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecorationAudio.Chunk03039005() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecorationAudio.Chunk03039006() { Version = 0 });
+        var node = CreateRecipe1(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecorationAudio.Chunk03039007() { Version = 0 });
         return node;
     }
@@ -219,7 +204,7 @@ public partial class CGameCtnDecorationAudioBuilder : CGameCtnDecorationAudioBui
         public TMT WithAudioEnvUndergroundEnclosed(global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMT? value) => base.WithAudioEnvUndergroundEnclosed(value is null ? (global::GBX.NET.Engines.Plug.CPlugAudioEnvironment?)null : value is global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithAudioEnvUndergroundOpen(global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMT? value) => base.WithAudioEnvUndergroundOpen(value is null ? (global::GBX.NET.Engines.Plug.CPlugAudioEnvironment?)null : value is global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnDecorationAudio Build() => BuildNode(CGameCtnDecorationAudioBuilder.CreateRecipe2(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Game.CGameCtnDecorationAudio Build() => BuildNode(CGameCtnDecorationAudioBuilder.CreateRecipe1(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecorationAudio node);
     }
     public partial class MP4 : CGameCtnDecorationAudioBuilderMembers3<MP4>
@@ -248,7 +233,7 @@ public partial class CGameCtnDecorationAudioBuilder : CGameCtnDecorationAudioBui
         public MP4 WithAudioEnvUndergroundEnclosed(global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentMP4? value) => base.WithAudioEnvUndergroundEnclosed(value is null ? (global::GBX.NET.Engines.Plug.CPlugAudioEnvironment?)null : value is global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithAudioEnvUndergroundOpen(global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentMP4? value) => base.WithAudioEnvUndergroundOpen(value is null ? (global::GBX.NET.Engines.Plug.CPlugAudioEnvironment?)null : value is global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnDecorationAudio Build() => BuildNode(CGameCtnDecorationAudioBuilder.CreateRecipe2(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Game.CGameCtnDecorationAudio Build() => BuildNode(CGameCtnDecorationAudioBuilder.CreateRecipe1(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecorationAudio node);
     }
     public partial class TM2020 : CGameCtnDecorationAudioBuilderMembers3<TM2020>
@@ -288,7 +273,7 @@ public partial class CGameCtnDecorationAudioBuilder : CGameCtnDecorationAudioBui
         public TM2020 WithDefaultWooshDecoItems(global::GBX.NET.Engines.Plug.CPlugFileText? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationAudioBuilderAssignments.GetDefaultWooshDecoItemsAssignment(), value, SupportedGames4);
         public TM2020 WithDefaultWooshDecoItemsReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileText> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationAudioBuilderAssignments.GetDefaultWooshDecoItemsReferenceAssignment(), value, SupportedGames4);
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnDecorationAudio Build() => BuildNode(CGameCtnDecorationAudioBuilder.CreateRecipe3(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Game.CGameCtnDecorationAudio Build() => BuildNode(CGameCtnDecorationAudioBuilder.CreateRecipe2(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecorationAudio node);
     }
 }

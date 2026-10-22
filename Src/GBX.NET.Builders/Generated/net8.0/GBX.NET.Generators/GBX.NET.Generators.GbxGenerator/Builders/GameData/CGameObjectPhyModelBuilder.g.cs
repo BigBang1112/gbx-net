@@ -60,22 +60,13 @@ public partial class CGameObjectPhyModelBuilder : CGameObjectPhyModelBuilderBase
     }
     private static global::GBX.NET.Engines.GameData.CGameObjectPhyModel CreateRecipe1(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.GameData.CGameObjectPhyModel();
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameObjectPhyModel.Chunk2E006001(game));
+        var node = CreateRecipe0(game);
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameObjectPhyModel.Chunk2E006003());
         return node;
     }
     private static global::GBX.NET.Engines.GameData.CGameObjectPhyModel CreateRecipe2(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.GameData.CGameObjectPhyModel();
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameObjectPhyModel.Chunk2E006001(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameObjectPhyModel.Chunk2E006003());
-        return node;
-    }
-    private static global::GBX.NET.Engines.GameData.CGameObjectPhyModel CreateRecipe3(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.GameData.CGameObjectPhyModel();
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameObjectPhyModel.Chunk2E006001(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameObjectPhyModel.Chunk2E006003());
+        var node = CreateRecipe1(game);
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameObjectPhyModel.Chunk2E006005(game));
         return node;
     }
@@ -102,7 +93,7 @@ public partial class CGameObjectPhyModelBuilder : CGameObjectPhyModelBuilderBase
         public TMT WithMoveShapeFid(global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT? value) => base.WithMoveShapeFid(value is null ? (global::GBX.NET.Engines.Plug.CPlugSurface?)null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithTriggerShapeFid(global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT? value) => base.WithTriggerShapeFid(value is null ? (global::GBX.NET.Engines.Plug.CPlugSurface?)null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.GameData.CGameObjectPhyModel Build() => BuildNode(CGameObjectPhyModelBuilder.CreateRecipe1(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.GameData.CGameObjectPhyModel Build() => BuildNode(CGameObjectPhyModelBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameObjectPhyModel node);
     }
     public partial class MP4 : CGameObjectPhyModelBuilderMembers1<MP4>
@@ -112,7 +103,7 @@ public partial class CGameObjectPhyModelBuilder : CGameObjectPhyModelBuilderBase
         public MP4 WithMoveShapeFid(global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4? value) => base.WithMoveShapeFid(value is null ? (global::GBX.NET.Engines.Plug.CPlugSurface?)null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithTriggerShapeFid(global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4? value) => base.WithTriggerShapeFid(value is null ? (global::GBX.NET.Engines.Plug.CPlugSurface?)null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.GameData.CGameObjectPhyModel Build() => BuildNode(CGameObjectPhyModelBuilder.CreateRecipe2(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.GameData.CGameObjectPhyModel Build() => BuildNode(CGameObjectPhyModelBuilder.CreateRecipe1(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameObjectPhyModel node);
     }
     public partial class TM2020 : CGameObjectPhyModelBuilderMembers1<TM2020>
@@ -129,7 +120,7 @@ public partial class CGameObjectPhyModelBuilder : CGameObjectPhyModelBuilderBase
         public TM2020 WithThrowableStunnedDuration(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameObjectPhyModelBuilderAssignments.GetThrowableStunnedDurationAssignment(), value, SupportedGames3);
         public TM2020 WithTriggerShapeFid(global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020? value) => base.WithTriggerShapeFid(value is null ? (global::GBX.NET.Engines.Plug.CPlugSurface?)null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.GameData.CGameObjectPhyModel Build() => BuildNode(CGameObjectPhyModelBuilder.CreateRecipe3(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.GameData.CGameObjectPhyModel Build() => BuildNode(CGameObjectPhyModelBuilder.CreateRecipe2(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameObjectPhyModel node);
     }
 }

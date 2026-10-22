@@ -61,16 +61,7 @@ public partial class CGameUserProfileBuilder : CGameUserProfileBuilderBase<CGame
     }
     private static global::GBX.NET.Engines.Game.CGameUserProfile CreateRecipe1(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.Game.CGameUserProfile();
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC000(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC001(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC002(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC003(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC004(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC005(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC006(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC007(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC008(game));
+        var node = CreateRecipe0(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameUserProfile.Chunk031CC009());
         return node;
     }

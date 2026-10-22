@@ -41,23 +41,7 @@ public partial class CGameCtnAnchoredObjectBuilder : CGameCtnAnchoredObjectBuild
     }
     private static global::GBX.NET.Engines.Game.CGameCtnAnchoredObject CreateRecipe1(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.Game.CGameCtnAnchoredObject();
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnAnchoredObject.Chunk03101002(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnAnchoredObject.Chunk03101004() { Version = 0 });
-        return node;
-    }
-    private static global::GBX.NET.Engines.Game.CGameCtnAnchoredObject CreateRecipe2(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Game.CGameCtnAnchoredObject();
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnAnchoredObject.Chunk03101002(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnAnchoredObject.Chunk03101004() { Version = 0 });
-        return node;
-    }
-    private static global::GBX.NET.Engines.Game.CGameCtnAnchoredObject CreateRecipe3(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Game.CGameCtnAnchoredObject();
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnAnchoredObject.Chunk03101002(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnAnchoredObject.Chunk03101004() { Version = 0 });
+        var node = CreateRecipe0(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnAnchoredObject.Chunk03101005(game));
         return node;
     }
@@ -80,7 +64,7 @@ public partial class CGameCtnAnchoredObjectBuilder : CGameCtnAnchoredObjectBuild
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject> state) : base(state) { }
         public TMT WithWaypointSpecialProperty(global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyTMT? value) => base.WithWaypointSpecialProperty(value is null ? (global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty?)null : value is global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnAnchoredObject Build() => BuildNode(CGameCtnAnchoredObjectBuilder.CreateRecipe1(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Game.CGameCtnAnchoredObject Build() => BuildNode(CGameCtnAnchoredObjectBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnAnchoredObject node);
     }
     public partial class MP4 : CGameCtnAnchoredObjectBuilderMembers2<MP4>
@@ -88,7 +72,7 @@ public partial class CGameCtnAnchoredObjectBuilder : CGameCtnAnchoredObjectBuild
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject> state) : base(state) { }
         public MP4 WithWaypointSpecialProperty(global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyMP4? value) => base.WithWaypointSpecialProperty(value is null ? (global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty?)null : value is global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnAnchoredObject Build() => BuildNode(CGameCtnAnchoredObjectBuilder.CreateRecipe2(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Game.CGameCtnAnchoredObject Build() => BuildNode(CGameCtnAnchoredObjectBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnAnchoredObject node);
     }
     public partial class TM2020 : CGameCtnAnchoredObjectBuilderMembers2<TM2020>
@@ -100,7 +84,7 @@ public partial class CGameCtnAnchoredObjectBuilder : CGameCtnAnchoredObjectBuild
         public TM2020 WithScriptTraitsVersion(byte value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAnchoredObjectBuilderAssignments.GetScriptTraitsVersionAssignment(), value, SupportedGames2);
         public TM2020 WithWaypointSpecialProperty(global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyTM2020? value) => base.WithWaypointSpecialProperty(value is null ? (global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty?)null : value is global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnAnchoredObject Build() => BuildNode(CGameCtnAnchoredObjectBuilder.CreateRecipe3(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Game.CGameCtnAnchoredObject Build() => BuildNode(CGameCtnAnchoredObjectBuilder.CreateRecipe1(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnAnchoredObject node);
     }
 }

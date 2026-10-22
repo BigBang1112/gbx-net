@@ -44,13 +44,6 @@ public partial class CGameCtnMediaBlockSoundBuilder : CGameCtnMediaBlockSoundBui
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7004(game));
         return node;
     }
-    private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound CreateRecipe2(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound();
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7003(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7004(game));
-        return node;
-    }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
@@ -92,21 +85,21 @@ public partial class CGameCtnMediaBlockSoundBuilder : CGameCtnMediaBlockSoundBui
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSoundTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound Build() => BuildNode(CGameCtnMediaBlockSoundBuilder.CreateRecipe2(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound Build() => BuildNode(CGameCtnMediaBlockSoundBuilder.CreateRecipe1(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound node);
     }
     public partial class MP4 : CGameCtnMediaBlockSoundBuilderMembers2<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSoundMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound Build() => BuildNode(CGameCtnMediaBlockSoundBuilder.CreateRecipe2(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound Build() => BuildNode(CGameCtnMediaBlockSoundBuilder.CreateRecipe1(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound node);
     }
     public partial class TM2020 : CGameCtnMediaBlockSoundBuilderMembers2<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSoundTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound Build() => BuildNode(CGameCtnMediaBlockSoundBuilder.CreateRecipe2(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound Build() => BuildNode(CGameCtnMediaBlockSoundBuilder.CreateRecipe1(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound node);
     }
 }

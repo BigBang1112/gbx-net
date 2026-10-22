@@ -127,17 +127,6 @@ public partial class CPlugVehicleCameraRace3ModelBuilder : CPlugVehicleCameraRac
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000() { Version = 0 });
         return node;
     }
-    private static global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model CreateRecipe3(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model.Chunk090EF001());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model.Chunk090EF002());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model.Chunk090EF003());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model.Chunk090EF004());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model.Chunk090EF005(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000() { Version = 0 });
-        return node;
-    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -172,7 +161,7 @@ public partial class CPlugVehicleCameraRace3ModelBuilder : CPlugVehicleCameraRac
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model> state) : base(state) { }
         public TM2020 WithShake(global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTM2020? value) => base.WithShake(value is null ? (global::GBX.NET.Engines.Plug.CPlugCamShakeModel?)null : value is global::GBX.NET.Engines.Plug.CPlugCamShakeModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraRace3ModelTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model Build() => BuildNode(CPlugVehicleCameraRace3ModelBuilder.CreateRecipe3(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model Build() => BuildNode(CPlugVehicleCameraRace3ModelBuilder.CreateRecipe2(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model node);
     }
 }

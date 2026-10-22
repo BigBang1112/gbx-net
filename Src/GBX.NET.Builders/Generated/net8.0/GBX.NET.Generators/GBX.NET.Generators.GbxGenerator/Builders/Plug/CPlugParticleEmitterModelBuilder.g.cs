@@ -49,19 +49,7 @@ public partial class CPlugParticleEmitterModelBuilder : CPlugParticleEmitterMode
     }
     private static global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel CreateRecipe2(GameVersion game)
     {
-        var node = CreateRecipe0(game);
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel.Chunk090B3001());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel.Chunk090B3002(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel.Chunk090B3003() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel.Chunk090B3004(game));
-        return node;
-    }
-    private static global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel CreateRecipe3(GameVersion game)
-    {
-        var node = CreateRecipe0(game);
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel.Chunk090B3001());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel.Chunk090B3002(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel.Chunk090B3003() { Version = 0 });
+        var node = CreateRecipe1(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel.Chunk090B3004(game));
         return node;
     }
@@ -146,7 +134,7 @@ public partial class CPlugParticleEmitterModelBuilder : CPlugParticleEmitterMode
         public TM2020 WithParticleEmitterSubModels(params global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTM2020[] values) => base.WithParticleEmitterSubModels(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTM2020>(values, false));
         public TM2020 WithParticleEmitterSubModels(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTM2020> values) => WithParticleEmitterSubModels(values.ToArray());
         public global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel Build() => BuildNode(CPlugParticleEmitterModelBuilder.CreateRecipe3(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel Build() => BuildNode(CPlugParticleEmitterModelBuilder.CreateRecipe2(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node);
     }
 }

@@ -23,12 +23,6 @@ public partial class CPlugImageArrayBuilder : CPlugImageArrayBuilderBase<CPlugIm
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugImageArray.Chunk0914C000(game));
         return node;
     }
-    private static global::GBX.NET.Engines.Plug.CPlugImageArray CreateRecipe1(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugImageArray();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugImageArray.Chunk0914C000(game));
-        return node;
-    }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
@@ -45,7 +39,7 @@ public partial class CPlugImageArrayBuilder : CPlugImageArrayBuilderBase<CPlugIm
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugImageArray> state) : base(state) { }
         public TM2020 WithFolder_TextureDecals(string? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugImageArrayBuilderAssignments.GetFolder_TextureDecalsAssignment(), value, GameVersion.TM2020);
         public global::GBX.NET.Interfaces.Plug.IPlugImageArrayTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugImageArray Build() => BuildNode(CPlugImageArrayBuilder.CreateRecipe1(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugImageArray Build() => BuildNode(CPlugImageArrayBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugImageArray node);
     }
 }

@@ -27,7 +27,7 @@ public class CScriptTraitsMetadataMethodGenerator : IIncrementalGenerator
                 return enumScriptTypeMembers;
             });
 
-        context.RegisterLibraryOutput(metadata, GenerateSource);
+        context.RegisterLibraryOutput(metadata, context.BuildersOnly(), GenerateSource);
     }
 
     public static void GenerateSource(SourceProductionContext context, ImmutableList<IFieldSymbol> enumScriptTypeMembers)

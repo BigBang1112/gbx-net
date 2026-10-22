@@ -46,25 +46,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
     }
     private static global::GBX.NET.Engines.Plug.CPlugFlockModel CreateRecipe1(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.Plug.CPlugFlockModel();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5000(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5001(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5002(game));
-        return node;
-    }
-    private static global::GBX.NET.Engines.Plug.CPlugFlockModel CreateRecipe2(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugFlockModel();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5000(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5001(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5002(game));
-        return node;
-    }
-    private static global::GBX.NET.Engines.Plug.CPlugFlockModel CreateRecipe3(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugFlockModel();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5000(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5001(game));
+        var node = CreateRecipe0(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5002(game));
         return node;
     }
@@ -182,7 +164,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public MP4 WithSoundLoopReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetSoundLoopReferenceAssignment(), value, SupportedGames3);
         public MP4 WithSoundLoop(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value) => WithSoundLoop(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugFlockModelMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugFlockModel Build() => BuildNode(CPlugFlockModelBuilder.CreateRecipe2(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Plug.CPlugFlockModel Build() => BuildNode(CPlugFlockModelBuilder.CreateRecipe1(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugFlockModel node);
     }
     public partial class TM2020 : CPlugFlockModelBuilderBase<TM2020>
@@ -201,7 +183,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public TM2020 WithSoundLoopReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetSoundLoopReferenceAssignment(), value, SupportedGames3);
         public TM2020 WithSoundLoop(global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? value) => WithSoundLoop(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugFlockModelTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugFlockModel Build() => BuildNode(CPlugFlockModelBuilder.CreateRecipe3(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugFlockModel Build() => BuildNode(CPlugFlockModelBuilder.CreateRecipe1(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugFlockModel node);
     }
 }

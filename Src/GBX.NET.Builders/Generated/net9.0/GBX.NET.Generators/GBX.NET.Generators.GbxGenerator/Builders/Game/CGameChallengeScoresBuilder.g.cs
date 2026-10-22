@@ -16,12 +16,6 @@ public partial class CGameChallengeScoresBuilder : CGameChallengeScoresBuilderBa
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameChallengeScores.Chunk03064001(game));
         return node;
     }
-    private static global::GBX.NET.Engines.Game.CGameChallengeScores CreateRecipe1(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Game.CGameChallengeScores();
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameChallengeScores.Chunk03064001(game));
-        return node;
-    }
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
     public partial class TMF : CGameChallengeScoresBuilderBase<TMF>
@@ -35,7 +29,7 @@ public partial class CGameChallengeScoresBuilder : CGameChallengeScoresBuilderBa
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Game.CGameChallengeScores> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameChallengeScoresMP3 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameChallengeScores Build() => BuildNode(CGameChallengeScoresBuilder.CreateRecipe1(GameVersion.MP3), GameVersion.MP3);
+        public global::GBX.NET.Engines.Game.CGameChallengeScores Build() => BuildNode(CGameChallengeScoresBuilder.CreateRecipe0(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameChallengeScores node);
     }
 }

@@ -42,21 +42,7 @@ public partial class CPlugSolid2ModelBuilder : CPlugSolid2ModelBuilderBase<CPlug
     }
     private static global::GBX.NET.Engines.Plug.CPlugSolid2Model CreateRecipe1(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.Plug.CPlugSolid2Model();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSolid2Model.Chunk090BB000());
-        return node;
-    }
-    private static global::GBX.NET.Engines.Plug.CPlugSolid2Model CreateRecipe2(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugSolid2Model();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSolid2Model.Chunk090BB000());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSolid2Model.Chunk090BB002());
-        return node;
-    }
-    private static global::GBX.NET.Engines.Plug.CPlugSolid2Model CreateRecipe3(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugSolid2Model();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSolid2Model.Chunk090BB000());
+        var node = CreateRecipe0(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSolid2Model.Chunk090BB002());
         return node;
     }
@@ -95,7 +81,7 @@ public partial class CPlugSolid2ModelBuilder : CPlugSolid2ModelBuilderBase<CPlug
         public TMT WithVisuals(params global::GBX.NET.Interfaces.Plug.IPlugVisualTMT[] values) => base.WithVisuals(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVisual, global::GBX.NET.Interfaces.Plug.IPlugVisualTMT>(values, false));
         public TMT WithVisuals(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugVisualTMT> values) => WithVisuals(values.ToArray());
         public global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugSolid2Model Build() => BuildNode(CPlugSolid2ModelBuilder.CreateRecipe1(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Plug.CPlugSolid2Model Build() => BuildNode(CPlugSolid2ModelBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSolid2Model node);
     }
     public partial class MP4 : CPlugSolid2ModelBuilderMembers1<MP4>
@@ -111,7 +97,7 @@ public partial class CPlugSolid2ModelBuilder : CPlugSolid2ModelBuilderBase<CPlug
         public MP4 WithVisuals(params global::GBX.NET.Interfaces.Plug.IPlugVisualMP4[] values) => base.WithVisuals(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVisual, global::GBX.NET.Interfaces.Plug.IPlugVisualMP4>(values, false));
         public MP4 WithVisuals(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugVisualMP4> values) => WithVisuals(values.ToArray());
         public global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugSolid2Model Build() => BuildNode(CPlugSolid2ModelBuilder.CreateRecipe2(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Plug.CPlugSolid2Model Build() => BuildNode(CPlugSolid2ModelBuilder.CreateRecipe1(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSolid2Model node);
     }
     public partial class TM2020 : CPlugSolid2ModelBuilderMembers1<TM2020>
@@ -127,7 +113,7 @@ public partial class CPlugSolid2ModelBuilder : CPlugSolid2ModelBuilderBase<CPlug
         public TM2020 WithVisuals(params global::GBX.NET.Interfaces.Plug.IPlugVisualTM2020[] values) => base.WithVisuals(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVisual, global::GBX.NET.Interfaces.Plug.IPlugVisualTM2020>(values, false));
         public TM2020 WithVisuals(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugVisualTM2020> values) => WithVisuals(values.ToArray());
         public global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugSolid2Model Build() => BuildNode(CPlugSolid2ModelBuilder.CreateRecipe3(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugSolid2Model Build() => BuildNode(CPlugSolid2ModelBuilder.CreateRecipe1(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSolid2Model node);
     }
 }

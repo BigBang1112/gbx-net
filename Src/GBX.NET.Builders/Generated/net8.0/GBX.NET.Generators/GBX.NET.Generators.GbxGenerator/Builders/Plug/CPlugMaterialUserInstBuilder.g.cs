@@ -47,22 +47,13 @@ public partial class CPlugMaterialUserInstBuilder : CPlugMaterialUserInstBuilder
     }
     private static global::GBX.NET.Engines.Plug.CPlugMaterialUserInst CreateRecipe1(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.Plug.CPlugMaterialUserInst();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Chunk090FD000(game));
+        var node = CreateRecipe0(game);
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Chunk090FD001(game));
         return node;
     }
     private static global::GBX.NET.Engines.Plug.CPlugMaterialUserInst CreateRecipe2(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.Plug.CPlugMaterialUserInst();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Chunk090FD000(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Chunk090FD001(game));
-        return node;
-    }
-    private static global::GBX.NET.Engines.Plug.CPlugMaterialUserInst CreateRecipe3(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugMaterialUserInst();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Chunk090FD000(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Chunk090FD001(game));
+        var node = CreateRecipe1(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Chunk090FD002() { Version = 0 });
         return node;
     }
@@ -83,14 +74,14 @@ public partial class CPlugMaterialUserInstBuilder : CPlugMaterialUserInstBuilder
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugMaterialUserInst Build() => BuildNode(CPlugMaterialUserInstBuilder.CreateRecipe1(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Plug.CPlugMaterialUserInst Build() => BuildNode(CPlugMaterialUserInstBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMaterialUserInst node);
     }
     public partial class MP4 : CPlugMaterialUserInstBuilderMembers2<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugMaterialUserInst Build() => BuildNode(CPlugMaterialUserInstBuilder.CreateRecipe2(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Plug.CPlugMaterialUserInst Build() => BuildNode(CPlugMaterialUserInstBuilder.CreateRecipe1(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMaterialUserInst node);
     }
     public partial class TM2020 : CPlugMaterialUserInstBuilderMembers2<TM2020>
@@ -99,7 +90,7 @@ public partial class CPlugMaterialUserInstBuilder : CPlugMaterialUserInstBuilder
         public TM2020 WithIsUsingGameMaterial(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetIsUsingGameMaterialAssignment(), value, SupportedGames3);
         public TM2020 WithSurfaceGameplayId(global::GBX.NET.Engines.Plug.CPlugSurface.GameplayId value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetSurfaceGameplayIdAssignment(), value, SupportedGames3);
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugMaterialUserInst Build() => BuildNode(CPlugMaterialUserInstBuilder.CreateRecipe3(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugMaterialUserInst Build() => BuildNode(CPlugMaterialUserInstBuilder.CreateRecipe2(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMaterialUserInst node);
     }
 }

@@ -63,14 +63,6 @@ public partial class CPlugAudioBalanceBuilder : CPlugAudioBalanceBuilderBase<CPl
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugAudio.Chunk09001001());
         return node;
     }
-    private static global::GBX.NET.Engines.Plug.CPlugAudioBalance CreateRecipe2(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugAudioBalance();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugAudioBalance.Chunk09034000(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugAudioBalance.Chunk09034001(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugAudio.Chunk09001001());
-        return node;
-    }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
@@ -130,7 +122,7 @@ public partial class CPlugAudioBalanceBuilder : CPlugAudioBalanceBuilderBase<CPl
         public TMT WithPitchFromDistance_Player_Others(global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? value) => base.WithPitchFromDistance_Player_Others(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithRolloffFromMusicVolume(global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? value) => base.WithRolloffFromMusicVolume(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugAudioBalance Build() => BuildNode(CPlugAudioBalanceBuilder.CreateRecipe2(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Plug.CPlugAudioBalance Build() => BuildNode(CPlugAudioBalanceBuilder.CreateRecipe1(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAudioBalance node);
     }
     public partial class MP4 : CPlugAudioBalanceBuilderMembers2<MP4>
@@ -142,7 +134,7 @@ public partial class CPlugAudioBalanceBuilder : CPlugAudioBalanceBuilderBase<CPl
         public MP4 WithPitchFromDistance_Player_Others(global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? value) => base.WithPitchFromDistance_Player_Others(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithRolloffFromMusicVolume(global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? value) => base.WithRolloffFromMusicVolume(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugAudioBalance Build() => BuildNode(CPlugAudioBalanceBuilder.CreateRecipe2(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Plug.CPlugAudioBalance Build() => BuildNode(CPlugAudioBalanceBuilder.CreateRecipe1(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAudioBalance node);
     }
     public partial class TM2020 : CPlugAudioBalanceBuilderMembers2<TM2020>
@@ -154,7 +146,7 @@ public partial class CPlugAudioBalanceBuilder : CPlugAudioBalanceBuilderBase<CPl
         public TM2020 WithPitchFromDistance_Player_Others(global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? value) => base.WithPitchFromDistance_Player_Others(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithRolloffFromMusicVolume(global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? value) => base.WithRolloffFromMusicVolume(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugAudioBalance Build() => BuildNode(CPlugAudioBalanceBuilder.CreateRecipe2(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugAudioBalance Build() => BuildNode(CPlugAudioBalanceBuilder.CreateRecipe1(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAudioBalance node);
     }
 }

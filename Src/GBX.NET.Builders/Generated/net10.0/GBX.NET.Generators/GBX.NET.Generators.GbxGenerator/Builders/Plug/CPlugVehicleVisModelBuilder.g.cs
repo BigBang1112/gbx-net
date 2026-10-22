@@ -48,24 +48,7 @@ public partial class CPlugVehicleVisModelBuilder : CPlugVehicleVisModelBuilderBa
     }
     private static global::GBX.NET.Engines.Plug.CPlugVehicleVisModel CreateRecipe1(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel(game);
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7000(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7001(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7002(game));
-        return node;
-    }
-    private static global::GBX.NET.Engines.Plug.CPlugVehicleVisModel CreateRecipe2(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel(game);
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7000(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7001(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7002(game));
-        return node;
-    }
-    private static global::GBX.NET.Engines.Plug.CPlugVehicleVisModel CreateRecipe3(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel(game);
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7000(game));
+        var node = CreateRecipe0(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7001(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7002(game));
         return node;
@@ -99,7 +82,7 @@ public partial class CPlugVehicleVisModelBuilder : CPlugVehicleVisModelBuilderBa
         public MP4 WithAudioEnvironmentForFirstPerson(global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentMP4? value) => base.WithAudioEnvironmentForFirstPerson(value is null ? (global::GBX.NET.Engines.Plug.CPlugAudioEnvironment?)null : value is global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithShared(global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMP4? value) => base.WithShared(value is null ? (global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared?)null : value is global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugVehicleVisModel Build() => BuildNode(CPlugVehicleVisModelBuilder.CreateRecipe2(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Plug.CPlugVehicleVisModel Build() => BuildNode(CPlugVehicleVisModelBuilder.CreateRecipe1(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisModel node);
     }
     public partial class TM2020 : CPlugVehicleVisModelBuilderMembers2<TM2020>
@@ -111,7 +94,7 @@ public partial class CPlugVehicleVisModelBuilder : CPlugVehicleVisModelBuilderBa
         public TM2020 WithFxSystem(global::GBX.NET.Interfaces.Plug.IPlugFxSystemTM2020? value) => WithFxSystem(value is null ? (global::GBX.NET.Engines.Plug.CPlugFxSystem?)null : value is global::GBX.NET.Engines.Plug.CPlugFxSystem node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithShared(global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedTM2020? value) => base.WithShared(value is null ? (global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared?)null : value is global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugVehicleVisModel Build() => BuildNode(CPlugVehicleVisModelBuilder.CreateRecipe3(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugVehicleVisModel Build() => BuildNode(CPlugVehicleVisModelBuilder.CreateRecipe1(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisModel node);
     }
 }

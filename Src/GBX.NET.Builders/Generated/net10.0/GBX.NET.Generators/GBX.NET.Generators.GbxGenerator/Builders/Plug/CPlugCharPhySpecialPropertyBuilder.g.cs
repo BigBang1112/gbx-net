@@ -33,12 +33,6 @@ public partial class CPlugCharPhySpecialPropertyBuilder : CPlugCharPhySpecialPro
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty.Chunk090F2000(game));
         return node;
     }
-    private static global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty CreateRecipe1(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty.Chunk090F2000(game));
-        return node;
-    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -97,28 +91,28 @@ public partial class CPlugCharPhySpecialPropertyBuilder : CPlugCharPhySpecialPro
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugCharPhySpecialPropertyMP3 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty Build() => BuildNode(CPlugCharPhySpecialPropertyBuilder.CreateRecipe1(GameVersion.MP3), GameVersion.MP3);
+        public global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty Build() => BuildNode(CPlugCharPhySpecialPropertyBuilder.CreateRecipe0(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty node);
     }
     public partial class TMT : CPlugCharPhySpecialPropertyBuilderMembers1<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugCharPhySpecialPropertyTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty Build() => BuildNode(CPlugCharPhySpecialPropertyBuilder.CreateRecipe1(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty Build() => BuildNode(CPlugCharPhySpecialPropertyBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty node);
     }
     public partial class MP4 : CPlugCharPhySpecialPropertyBuilderMembers1<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugCharPhySpecialPropertyMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty Build() => BuildNode(CPlugCharPhySpecialPropertyBuilder.CreateRecipe1(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty Build() => BuildNode(CPlugCharPhySpecialPropertyBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty node);
     }
     public partial class TM2020 : CPlugCharPhySpecialPropertyBuilderMembers1<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugCharPhySpecialPropertyTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty Build() => BuildNode(CPlugCharPhySpecialPropertyBuilder.CreateRecipe1(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty Build() => BuildNode(CPlugCharPhySpecialPropertyBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty node);
     }
 }

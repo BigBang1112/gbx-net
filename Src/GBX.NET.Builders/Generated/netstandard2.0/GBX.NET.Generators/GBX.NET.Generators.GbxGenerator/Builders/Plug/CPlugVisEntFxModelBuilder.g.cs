@@ -30,12 +30,6 @@ public partial class CPlugVisEntFxModelBuilder : CPlugVisEntFxModelBuilderBase<C
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisEntFxModel.Chunk09115000(game));
         return node;
     }
-    private static global::GBX.NET.Engines.Plug.CPlugVisEntFxModel CreateRecipe1(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugVisEntFxModel();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisEntFxModel.Chunk09115000(game));
-        return node;
-    }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
@@ -61,7 +55,7 @@ public partial class CPlugVisEntFxModelBuilder : CPlugVisEntFxModelBuilderBase<C
         public TM2020 WithPart_TeleportUnspawn(global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? value) => base.WithPart_TeleportUnspawn(value is null ? (global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?)null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithTacticalLight(global::GBX.NET.Interfaces.Graphic.IGxLightBallTM2020? value) => base.WithTacticalLight(value is null ? (global::GBX.NET.Engines.Graphic.GxLightBall?)null : value is global::GBX.NET.Engines.Graphic.GxLightBall node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugVisEntFxModel Build() => BuildNode(CPlugVisEntFxModelBuilder.CreateRecipe1(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugVisEntFxModel Build() => BuildNode(CPlugVisEntFxModelBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisEntFxModel node);
     }
 }

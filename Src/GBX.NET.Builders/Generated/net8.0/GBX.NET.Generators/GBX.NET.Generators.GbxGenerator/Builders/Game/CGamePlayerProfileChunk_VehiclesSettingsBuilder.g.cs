@@ -23,26 +23,7 @@ public partial class CGamePlayerProfileChunk_VehiclesSettingsBuilder : CGamePlay
     }
     private static global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings CreateRecipe1(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings();
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.Chunk03130000(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.Chunk03130001(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.Chunk03130002(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.Chunk03130003(game));
-        return node;
-    }
-    private static global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings CreateRecipe2(GameVersion game)
-    {
-        var node = CreateRecipe1(game);
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.Chunk03130004(game));
-        return node;
-    }
-    private static global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings CreateRecipe3(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings();
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.Chunk03130000(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.Chunk03130001(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.Chunk03130002(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.Chunk03130003(game));
+        var node = CreateRecipe0(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings.Chunk03130004(game));
         return node;
     }
@@ -63,21 +44,21 @@ public partial class CGamePlayerProfileChunk_VehiclesSettingsBuilder : CGamePlay
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_VehiclesSettingsTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings Build() => BuildNode(CGamePlayerProfileChunk_VehiclesSettingsBuilder.CreateRecipe1(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings Build() => BuildNode(CGamePlayerProfileChunk_VehiclesSettingsBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings node);
     }
     public partial class MP4 : CGamePlayerProfileChunk_VehiclesSettingsBuilderBase<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_VehiclesSettingsMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings Build() => BuildNode(CGamePlayerProfileChunk_VehiclesSettingsBuilder.CreateRecipe2(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings Build() => BuildNode(CGamePlayerProfileChunk_VehiclesSettingsBuilder.CreateRecipe1(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings node);
     }
     public partial class TM2020 : CGamePlayerProfileChunk_VehiclesSettingsBuilderBase<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_VehiclesSettingsTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings Build() => BuildNode(CGamePlayerProfileChunk_VehiclesSettingsBuilder.CreateRecipe3(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings Build() => BuildNode(CGamePlayerProfileChunk_VehiclesSettingsBuilder.CreateRecipe1(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_VehiclesSettings node);
     }
 }

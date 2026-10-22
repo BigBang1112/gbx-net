@@ -16,18 +16,6 @@ public partial class CPlugSkelBuilder : CPlugSkelBuilderBase<CPlugSkelBuilder>
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSkel.Chunk090BA000(game));
         return node;
     }
-    private static global::GBX.NET.Engines.Plug.CPlugSkel CreateRecipe1(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugSkel();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSkel.Chunk090BA000(game));
-        return node;
-    }
-    private static global::GBX.NET.Engines.Plug.CPlugSkel CreateRecipe2(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugSkel();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSkel.Chunk090BA000(game));
-        return node;
-    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -52,14 +40,14 @@ public partial class CPlugSkelBuilder : CPlugSkelBuilderBase<CPlugSkelBuilder>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSkel> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugSkelMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugSkel Build() => BuildNode(CPlugSkelBuilder.CreateRecipe1(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Plug.CPlugSkel Build() => BuildNode(CPlugSkelBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSkel node);
     }
     public partial class TM2020 : CPlugSkelBuilderBase<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSkel> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugSkelTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugSkel Build() => BuildNode(CPlugSkelBuilder.CreateRecipe2(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugSkel Build() => BuildNode(CPlugSkelBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSkel node);
     }
 }

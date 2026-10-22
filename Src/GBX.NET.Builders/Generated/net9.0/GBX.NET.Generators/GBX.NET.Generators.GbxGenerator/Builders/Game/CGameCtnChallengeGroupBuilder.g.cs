@@ -103,13 +103,6 @@ public partial class CGameCtnChallengeGroupBuilder : CGameCtnChallengeGroupBuild
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallengeGroup.Chunk0308F00B(game));
         return node;
     }
-    private static global::GBX.NET.Engines.Game.CGameCtnChallengeGroup CreateRecipe5(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Game.CGameCtnChallengeGroup(game);
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallengeGroup.Chunk0308F002());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallengeGroup.Chunk0308F00B(game));
-        return node;
-    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -201,14 +194,14 @@ public partial class CGameCtnChallengeGroupBuilder : CGameCtnChallengeGroupBuild
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnChallengeGroup Build() => BuildNode(CGameCtnChallengeGroupBuilder.CreateRecipe5(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Game.CGameCtnChallengeGroup Build() => BuildNode(CGameCtnChallengeGroupBuilder.CreateRecipe4(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node);
     }
     public partial class TM2020 : CGameCtnChallengeGroupBuilderBase<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnChallengeGroup Build() => BuildNode(CGameCtnChallengeGroupBuilder.CreateRecipe5(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Game.CGameCtnChallengeGroup Build() => BuildNode(CGameCtnChallengeGroupBuilder.CreateRecipe4(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node);
     }
 }

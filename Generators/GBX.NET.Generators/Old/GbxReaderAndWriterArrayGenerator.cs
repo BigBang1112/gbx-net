@@ -39,8 +39,9 @@ public class GbxReaderAndWriterArrayGenerator : IIncrementalGenerator
                     .ToImmutableArray();
             });
 
-        context.RegisterLibraryOutput(readerRefTypeMethods, GenerateReaderSource);
-        context.RegisterLibraryOutput(writerRefTypeMethods, GenerateWriterSource);
+        var buildersOnly = context.BuildersOnly();
+        context.RegisterLibraryOutput(readerRefTypeMethods, buildersOnly, GenerateReaderSource);
+        context.RegisterLibraryOutput(writerRefTypeMethods, buildersOnly, GenerateWriterSource);
     }
 
     private void GenerateReaderSource(SourceProductionContext context, ImmutableArray<IMethodSymbol> methodSymbols)

@@ -171,12 +171,6 @@ public partial class CSceneLayoutBuilder : CSceneLayoutBuilderBase<CSceneLayoutB
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneLayout.Chunk0A00301C(game));
         return node;
     }
-    private static global::GBX.NET.Engines.Scene.CSceneLayout CreateRecipe6(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Scene.CSceneLayout();
-        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneLayout.Chunk0A00301C(game));
-        return node;
-    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -331,7 +325,7 @@ public partial class CSceneLayoutBuilder : CSceneLayoutBuilderBase<CSceneLayoutB
         public TM2020 WithSceneFxNod(global::GBX.NET.Interfaces.Scene.ISceneFxNodTM2020? value) => base.WithSceneFxNod(value is null ? (global::GBX.NET.Engines.Scene.CSceneFxNod?)null : value is global::GBX.NET.Engines.Scene.CSceneFxNod node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithWeatherModel(global::GBX.NET.Interfaces.Plug.IPlugWeatherModelTM2020? value) => base.WithWeatherModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugWeatherModel?)null : value is global::GBX.NET.Engines.Plug.CPlugWeatherModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Scene.ISceneLayoutTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Scene.CSceneLayout Build() => BuildNode(CSceneLayoutBuilder.CreateRecipe6(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Scene.CSceneLayout Build() => BuildNode(CSceneLayoutBuilder.CreateRecipe5(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneLayout node);
     }
 }

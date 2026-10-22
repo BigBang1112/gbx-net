@@ -37,7 +37,7 @@ public sealed class GbxGenerator : IIncrementalGenerator
             .Select(static (file, token) => ChunkLParsing.Parse(file, token))
             .WithTrackingName("ChunkLParseResults");
 
-        context.RegisterLibraryOutput(parseResults, static (sourceContext, result) =>
+        context.RegisterLibraryOutput(parseResults, buildersOnly, static (sourceContext, result) =>
         {
             foreach (var diagnostic in result.Diagnostics)
             {
@@ -57,21 +57,18 @@ public sealed class GbxGenerator : IIncrementalGenerator
 
         var generationPlan = generationInputs.Select(static (inputs, token) => GenerationPlan.Create(inputs, token))
             .WithTrackingName("PlannedEngineTypes");
-        context.RegisterLibraryOutput(generationPlan, EngineWriter.Generate);
-        context.RegisterSourceOutput(generationPlan.Combine(buildersOnly).Combine(librarySources).Combine(context.CompilationProvider),
-            static (sourceContext, input) =>
-            {
-                var (((plan, builders), sources), compilation) = input;
-                // The added library declarations shadow their referenced metadata,
-                // which lets the semantic model inspect the same handwritten syntax.
-                GameVersionWriter.Generate(sourceContext, plan, sources.IsEmpty ? compilation : compilation.AddSyntaxTrees(sources), builders);
-            });
+        context.RegisterLibraryOutput(generationPlan, buildersOnly, EngineWriter.Generate);
+        var gameSymbols = generationPlan.Combine(librarySources).Combine(context.CompilationProvider)
+            .Select(static (input, _) => GameSymbols.Create(input.Left.Left, input.Right, input.Left.Right))
+            .WithTrackingName("GameSymbols");
+        context.RegisterSourceOutput(generationPlan.Combine(gameSymbols).Combine(buildersOnly),
+            static (sourceContext, input) => GameVersionWriter.Generate(sourceContext, input.Left.Left, input.Left.Right, input.Right));
 
         var resources = context.AdditionalTextsProvider
             .Where(static file => file.Path.EndsWith(".txt", StringComparison.OrdinalIgnoreCase))
             .Select(static (file, token) => new KeyValuePair<string, string>(System.IO.Path.GetFileName(file.Path), file.GetText(token)?.ToString() ?? ""))
             .Collect();
-        context.RegisterLibraryOutput(generationPlan.Combine(resources), static (sourceContext, input) =>
+        context.RegisterLibraryOutput(generationPlan.Combine(resources), buildersOnly, static (sourceContext, input) =>
         {
             if (!input.Right.Any(static x => x.Key == "CollectionId.txt")) return;
             ManagerWriter.Generate(sourceContext, input.Left.Layouts, input.Right);

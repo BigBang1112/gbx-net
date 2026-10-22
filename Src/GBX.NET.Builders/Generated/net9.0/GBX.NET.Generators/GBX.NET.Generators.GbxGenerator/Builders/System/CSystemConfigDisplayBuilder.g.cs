@@ -326,43 +326,6 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013033());
         node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013035());
         node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013036(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013038());
-        node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013039());
-        node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01303A());
-        node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01303B());
-        return node;
-    }
-    private static global::GBX.NET.Engines.System.CSystemConfigDisplay CreateRecipe8(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.System.CSystemConfigDisplay(game);
-        node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013004());
-        node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013005());
-        node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013008());
-        node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013009());
-        node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01300B());
-        node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01300F());
-        node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013015());
-        node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013016());
-        node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013017());
-        node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013018());
-        node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013019());
-        node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01301B());
-        node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01301C());
-        node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013020());
-        node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013021());
-        node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013025());
-        node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013026());
-        node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01302A());
-        node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01302C());
-        node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01302D());
-        node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01302E());
-        node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01302F());
-        node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013030());
-        node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013031());
-        node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013032());
-        node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013033());
-        node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013035());
-        node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013036(game));
         node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013039());
         node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01303A());
         node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01303B());
@@ -370,7 +333,7 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B01303D());
         return node;
     }
-    private static global::GBX.NET.Engines.System.CSystemConfigDisplay CreateRecipe9(GameVersion game)
+    private static global::GBX.NET.Engines.System.CSystemConfigDisplay CreateRecipe8(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.System.CSystemConfigDisplay(game);
         node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemConfigDisplay.Chunk0B013004());
@@ -502,7 +465,7 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state) : base(state) { }
         public TMT WithRenderingApi(global::GBX.NET.Engines.System.CSystemConfigDisplay.ERenderingApi value) => Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetRenderingApiAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         public global::GBX.NET.Interfaces.System.ISystemConfigDisplayTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.System.CSystemConfigDisplay Build() => BuildNode(CSystemConfigDisplayBuilder.CreateRecipe7(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.System.CSystemConfigDisplay Build() => BuildNode(CSystemConfigDisplayBuilder.CreateRecipe6(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.System.CSystemConfigDisplay node);
     }
     public partial class MP4 : CSystemConfigDisplayBuilderMembers15<MP4>
@@ -510,7 +473,7 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.System.CSystemConfigDisplay> state) : base(state) { }
         public MP4 WithEnableD3D9Ex(bool value) => Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEnableD3D9ExAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
         public global::GBX.NET.Interfaces.System.ISystemConfigDisplayMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.System.CSystemConfigDisplay Build() => BuildNode(CSystemConfigDisplayBuilder.CreateRecipe8(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.System.CSystemConfigDisplay Build() => BuildNode(CSystemConfigDisplayBuilder.CreateRecipe7(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.System.CSystemConfigDisplay node);
     }
     public partial class TM2020 : CSystemConfigDisplayBuilderMembers15<TM2020>
@@ -521,7 +484,7 @@ public partial class CSystemConfigDisplayBuilder : CSystemConfigDisplayBuilderBa
         public TM2020 WithEverywhereReflect(global::GBX.NET.Engines.System.CSystemConfigDisplay.EEverywhereReflect value) => Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetEverywhereReflectAssignment(), value, SupportedGames8);
         public TM2020 WithFxBlur(global::GBX.NET.Engines.System.CSystemConfigDisplay.EFxBlur value) => Set(global::GBX.NET.Builders.Engines.System.CSystemConfigDisplayBuilderAssignments.GetFxBlurAssignment(), value, SupportedGames8);
         public global::GBX.NET.Interfaces.System.ISystemConfigDisplayTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.System.CSystemConfigDisplay Build() => BuildNode(CSystemConfigDisplayBuilder.CreateRecipe9(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.System.CSystemConfigDisplay Build() => BuildNode(CSystemConfigDisplayBuilder.CreateRecipe8(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.System.CSystemConfigDisplay node);
     }
 }

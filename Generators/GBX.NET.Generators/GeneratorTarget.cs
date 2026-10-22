@@ -13,18 +13,18 @@ internal static class GeneratorTarget
 
     // The node library already contains this output. A builder package would duplicate it.
     public static void RegisterLibraryOutput<T>(this IncrementalGeneratorInitializationContext context,
-        IncrementalValueProvider<T> source, Action<SourceProductionContext, T> action)
+        IncrementalValueProvider<T> source, IncrementalValueProvider<bool> buildersOnly, Action<SourceProductionContext, T> action)
     {
-        context.RegisterSourceOutput(source.Combine(context.BuildersOnly()), (sourceContext, input) =>
+        context.RegisterSourceOutput(source.Combine(buildersOnly), (sourceContext, input) =>
         {
             if (!input.Right) action(sourceContext, input.Left);
         });
     }
 
     public static void RegisterLibraryOutput<T>(this IncrementalGeneratorInitializationContext context,
-        IncrementalValuesProvider<T> source, Action<SourceProductionContext, T> action)
+        IncrementalValuesProvider<T> source, IncrementalValueProvider<bool> buildersOnly, Action<SourceProductionContext, T> action)
     {
-        context.RegisterSourceOutput(source.Combine(context.BuildersOnly()), (sourceContext, input) =>
+        context.RegisterSourceOutput(source.Combine(buildersOnly), (sourceContext, input) =>
         {
             if (!input.Right) action(sourceContext, input.Left);
         });

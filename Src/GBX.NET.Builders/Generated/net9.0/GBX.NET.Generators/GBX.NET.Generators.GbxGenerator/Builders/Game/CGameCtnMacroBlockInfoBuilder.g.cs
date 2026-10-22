@@ -225,33 +225,6 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001003(game));
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001004());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006());
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001008());
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001009());
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100B());
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100C());
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100D());
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100E());
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001010(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001011(game));
-        return node;
-    }
-    private static global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo CreateRecipe9(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo();
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.Chunk0310D000());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.Chunk0310D001());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.Chunk0310D002());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.Chunk0310D006());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.Chunk0310D008());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.Chunk0310D00B());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.Chunk0310D00C(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.Chunk0310D00E(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.Chunk0310D00F() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.Chunk0310D010() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.Chunk0310D011() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001003(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001004());
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001008() { Version = 0 });
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001008());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001009());
@@ -366,7 +339,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         public MP4 WithClipGroupEndRace(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP4? value) => base.WithClipGroupEndRace(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithClipGroupInGame(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP4? value) => base.WithClipGroupInGame(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo Build() => BuildNode(CGameCtnMacroBlockInfoBuilder.CreateRecipe8(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo Build() => BuildNode(CGameCtnMacroBlockInfoBuilder.CreateRecipe7(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo node);
     }
     public partial class TM2020 : CGameCtnMacroBlockInfoBuilderMembers5<TM2020>
@@ -383,7 +356,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         public TM2020 WithModelKitDbRelease(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbReleaseAssignment(), value, SupportedGames6);
         public TM2020 WithModelKitDbReleaseReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbReleaseReferenceAssignment(), value, SupportedGames6);
         public global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo Build() => BuildNode(CGameCtnMacroBlockInfoBuilder.CreateRecipe9(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo Build() => BuildNode(CGameCtnMacroBlockInfoBuilder.CreateRecipe8(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo node);
     }
 }

@@ -23,12 +23,6 @@ public partial class CGameVehicleModelBuilder : CGameVehicleModelBuilderBase<CGa
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameVehicleModel.Chunk2E01C000(game));
         return node;
     }
-    private static global::GBX.NET.Engines.GameData.CGameVehicleModel CreateRecipe1(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.GameData.CGameVehicleModel();
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameVehicleModel.Chunk2E01C000(game));
-        return node;
-    }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
@@ -48,7 +42,7 @@ public partial class CGameVehicleModelBuilder : CGameVehicleModelBuilderBase<CGa
         public TM2020 WithPhyModel(global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelTM2020? value) => base.WithPhyModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel?)null : value is global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithVisModel(global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelTM2020? value) => base.WithVisModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugVehicleVisModel?)null : value is global::GBX.NET.Engines.Plug.CPlugVehicleVisModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.GameData.IGameVehicleModelTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.GameData.CGameVehicleModel Build() => BuildNode(CGameVehicleModelBuilder.CreateRecipe1(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.GameData.CGameVehicleModel Build() => BuildNode(CGameVehicleModelBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameVehicleModel node);
     }
 }

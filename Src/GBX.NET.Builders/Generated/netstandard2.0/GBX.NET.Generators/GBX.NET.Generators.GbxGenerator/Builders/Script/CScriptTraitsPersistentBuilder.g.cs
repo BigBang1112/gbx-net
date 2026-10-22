@@ -16,18 +16,6 @@ public partial class CScriptTraitsPersistentBuilder : CScriptTraitsPersistentBui
         node.Chunks.Add(new global::GBX.NET.Engines.Script.CScriptTraitsPersistent.Chunk11001000());
         return node;
     }
-    private static global::GBX.NET.Engines.Script.CScriptTraitsPersistent CreateRecipe1(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Script.CScriptTraitsPersistent();
-        node.Chunks.Add(new global::GBX.NET.Engines.Script.CScriptTraitsPersistent.Chunk11001000());
-        return node;
-    }
-    private static global::GBX.NET.Engines.Script.CScriptTraitsPersistent CreateRecipe2(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Script.CScriptTraitsPersistent();
-        node.Chunks.Add(new global::GBX.NET.Engines.Script.CScriptTraitsPersistent.Chunk11001000());
-        return node;
-    }
     public MP3 ForMP3() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -44,14 +32,14 @@ public partial class CScriptTraitsPersistentBuilder : CScriptTraitsPersistentBui
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Script.CScriptTraitsPersistent> state) : base(state) { }
         public global::GBX.NET.Interfaces.Script.IScriptTraitsPersistentMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Script.CScriptTraitsPersistent Build() => BuildNode(CScriptTraitsPersistentBuilder.CreateRecipe1(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Script.CScriptTraitsPersistent Build() => BuildNode(CScriptTraitsPersistentBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Script.CScriptTraitsPersistent node);
     }
     public partial class TM2020 : CScriptTraitsPersistentBuilderBase<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Script.CScriptTraitsPersistent> state) : base(state) { }
         public global::GBX.NET.Interfaces.Script.IScriptTraitsPersistentTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Script.CScriptTraitsPersistent Build() => BuildNode(CScriptTraitsPersistentBuilder.CreateRecipe2(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Script.CScriptTraitsPersistent Build() => BuildNode(CScriptTraitsPersistentBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Script.CScriptTraitsPersistent node);
     }
 }

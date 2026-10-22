@@ -81,8 +81,7 @@ public partial class CGameCtnMediaClipBuilder : CGameCtnMediaClipBuilderBase<CGa
     }
     private static global::GBX.NET.Engines.Game.CGameCtnMediaClip CreateRecipe5(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaClip();
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk0307900D(game));
+        var node = CreateRecipe4(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk0307900E(game));
         return node;
     }

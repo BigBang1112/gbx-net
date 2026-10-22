@@ -12,18 +12,11 @@ public partial class CScriptTraitsMetadataBuilder : CScriptTraitsMetadataBuilder
 {
     private static global::GBX.NET.Engines.Script.CScriptTraitsMetadata CreateRecipe0(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.Script.CScriptTraitsMetadata();
-        node.Chunks.Add(new global::GBX.NET.Engines.Script.CScriptTraitsMetadata.Chunk11002000());
+        var node = CreateRecipe1(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Script.CScriptTraitsMetadata.Chunk11001000());
         return node;
     }
     private static global::GBX.NET.Engines.Script.CScriptTraitsMetadata CreateRecipe1(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Script.CScriptTraitsMetadata();
-        node.Chunks.Add(new global::GBX.NET.Engines.Script.CScriptTraitsMetadata.Chunk11002000());
-        return node;
-    }
-    private static global::GBX.NET.Engines.Script.CScriptTraitsMetadata CreateRecipe2(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Script.CScriptTraitsMetadata();
         node.Chunks.Add(new global::GBX.NET.Engines.Script.CScriptTraitsMetadata.Chunk11002000());
@@ -60,7 +53,7 @@ public partial class CScriptTraitsMetadataBuilder : CScriptTraitsMetadataBuilder
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Script.CScriptTraitsMetadata> state) : base(state) { }
         public global::GBX.NET.Interfaces.Script.IScriptTraitsMetadataTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Script.CScriptTraitsMetadata Build() => BuildNode(CScriptTraitsMetadataBuilder.CreateRecipe2(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Script.CScriptTraitsMetadata Build() => BuildNode(CScriptTraitsMetadataBuilder.CreateRecipe1(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Script.CScriptTraitsMetadata node);
     }
 }

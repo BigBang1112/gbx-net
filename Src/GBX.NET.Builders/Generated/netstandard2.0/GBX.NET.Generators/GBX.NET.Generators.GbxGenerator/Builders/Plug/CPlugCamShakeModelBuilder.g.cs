@@ -18,12 +18,6 @@ public partial class CPlugCamShakeModelBuilder : CPlugCamShakeModelBuilderBase<C
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCamShakeModel.Chunk0910B000(game));
         return node;
     }
-    private static global::GBX.NET.Engines.Plug.CPlugCamShakeModel CreateRecipe1(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugCamShakeModel();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCamShakeModel.Chunk0910B000(game));
-        return node;
-    }
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -47,7 +41,7 @@ public partial class CPlugCamShakeModelBuilder : CPlugCamShakeModelBuilderBase<C
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCamShakeModel> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugCamShakeModel Build() => BuildNode(CPlugCamShakeModelBuilder.CreateRecipe1(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugCamShakeModel Build() => BuildNode(CPlugCamShakeModelBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCamShakeModel node);
     }
 }

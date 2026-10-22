@@ -65,8 +65,7 @@ public partial class CGameCommonItemEntityModelEditionBuilder : CGameCommonItemE
     }
     private static global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition CreateRecipe1(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition();
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition.Chunk2E026000(game));
+        var node = CreateRecipe0(game);
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition.Chunk2E026001() { Version = 0 });
         return node;
     }

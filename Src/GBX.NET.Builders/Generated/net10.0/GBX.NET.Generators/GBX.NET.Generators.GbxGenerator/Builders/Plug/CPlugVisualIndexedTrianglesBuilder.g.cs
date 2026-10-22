@@ -136,21 +136,6 @@ public partial class CPlugVisualIndexedTrianglesBuilder : CPlugVisualIndexedTria
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C004());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600F(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006010() { Version = 0 });
-        return node;
-    }
-    private static global::GBX.NET.Engines.Plug.CPlugVisualIndexedTriangles CreateRecipe7(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugVisualIndexedTriangles();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisualIndexed.Chunk0906A001());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C004());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B());
@@ -239,14 +224,14 @@ public partial class CPlugVisualIndexedTrianglesBuilder : CPlugVisualIndexedTria
         public MP4 WithFuncVisual(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualAssignment(), value, SupportedGames2);
         public MP4 WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualReferenceAssignment(), value, SupportedGames2);
         public global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedTrianglesMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugVisualIndexedTriangles Build() => BuildNode(CPlugVisualIndexedTrianglesBuilder.CreateRecipe6(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Plug.CPlugVisualIndexedTriangles Build() => BuildNode(CPlugVisualIndexedTrianglesBuilder.CreateRecipe5(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisualIndexedTriangles node);
     }
     public partial class TM2020 : CPlugVisualIndexedTrianglesBuilderMembers6<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualIndexedTriangles> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedTrianglesTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugVisualIndexedTriangles Build() => BuildNode(CPlugVisualIndexedTrianglesBuilder.CreateRecipe7(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugVisualIndexedTriangles Build() => BuildNode(CPlugVisualIndexedTrianglesBuilder.CreateRecipe6(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisualIndexedTriangles node);
     }
 }

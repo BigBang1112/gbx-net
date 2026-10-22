@@ -16,12 +16,6 @@ public partial class CPlugFxHdrScales_Tech3Builder : CPlugFxHdrScales_Tech3Build
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3.Chunk090F5000(game));
         return node;
     }
-    private static global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3 CreateRecipe1(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3.Chunk090F5000(game));
-        return node;
-    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -39,21 +33,21 @@ public partial class CPlugFxHdrScales_Tech3Builder : CPlugFxHdrScales_Tech3Build
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3TMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3 Build() => BuildNode(CPlugFxHdrScales_Tech3Builder.CreateRecipe1(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3 Build() => BuildNode(CPlugFxHdrScales_Tech3Builder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3 node);
     }
     public partial class MP4 : CPlugFxHdrScales_Tech3BuilderBase<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3MP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3 Build() => BuildNode(CPlugFxHdrScales_Tech3Builder.CreateRecipe1(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3 Build() => BuildNode(CPlugFxHdrScales_Tech3Builder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3 node);
     }
     public partial class TM2020 : CPlugFxHdrScales_Tech3BuilderBase<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3TM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3 Build() => BuildNode(CPlugFxHdrScales_Tech3Builder.CreateRecipe1(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3 Build() => BuildNode(CPlugFxHdrScales_Tech3Builder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3 node);
     }
 }

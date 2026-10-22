@@ -22,12 +22,6 @@ public partial class CPlugPathBuilder : CPlugPathBuilderBase<CPlugPathBuilder>
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugPath.Chunk09119000(game));
         return node;
     }
-    private static global::GBX.NET.Engines.Plug.CPlugPath CreateRecipe1(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugPath();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugPath.Chunk09119000(game));
-        return node;
-    }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
@@ -47,7 +41,7 @@ public partial class CPlugPathBuilder : CPlugPathBuilderBase<CPlugPathBuilder>
         public TM2020 WithPolyLines(params global::GBX.NET.Interfaces.Plug.IPlugPolyLine3TM2020[] values) => base.WithPolyLines(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugPolyLine3, global::GBX.NET.Interfaces.Plug.IPlugPolyLine3TM2020>(values, false));
         public TM2020 WithPolyLines(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugPolyLine3TM2020> values) => WithPolyLines(values.ToArray());
         public global::GBX.NET.Interfaces.Plug.IPlugPathTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugPath Build() => BuildNode(CPlugPathBuilder.CreateRecipe1(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugPath Build() => BuildNode(CPlugPathBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugPath node);
     }
 }

@@ -53,33 +53,6 @@ public partial class CPlugParticleGpuModelBuilder : CPlugParticleGpuModelBuilder
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleGpuModel.Chunk090C6003(game));
         return node;
     }
-    private static global::GBX.NET.Engines.Plug.CPlugParticleGpuModel CreateRecipe1(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugParticleGpuModel();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleGpuModel.Chunk090C6000(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleGpuModel.Chunk090C6001(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleGpuModel.Chunk090C6002(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleGpuModel.Chunk090C6003(game));
-        return node;
-    }
-    private static global::GBX.NET.Engines.Plug.CPlugParticleGpuModel CreateRecipe2(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugParticleGpuModel();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleGpuModel.Chunk090C6000(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleGpuModel.Chunk090C6001(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleGpuModel.Chunk090C6002(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleGpuModel.Chunk090C6003(game));
-        return node;
-    }
-    private static global::GBX.NET.Engines.Plug.CPlugParticleGpuModel CreateRecipe3(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugParticleGpuModel();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleGpuModel.Chunk090C6000(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleGpuModel.Chunk090C6001(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleGpuModel.Chunk090C6002(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleGpuModel.Chunk090C6003(game));
-        return node;
-    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -99,7 +72,7 @@ public partial class CPlugParticleGpuModelBuilder : CPlugParticleGpuModelBuilder
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel> state) : base(state) { }
         public TMT WithBitmap(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? value) => base.WithBitmap(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugParticleGpuModelTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugParticleGpuModel Build() => BuildNode(CPlugParticleGpuModelBuilder.CreateRecipe1(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Plug.CPlugParticleGpuModel Build() => BuildNode(CPlugParticleGpuModelBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleGpuModel node);
     }
     public partial class MP4 : CPlugParticleGpuModelBuilderMembers1<MP4>
@@ -108,7 +81,7 @@ public partial class CPlugParticleGpuModelBuilder : CPlugParticleGpuModelBuilder
         public MP4 WithBitmap(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value) => base.WithBitmap(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithBitmapOverLife(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value) => base.WithBitmapOverLife(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugParticleGpuModelMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugParticleGpuModel Build() => BuildNode(CPlugParticleGpuModelBuilder.CreateRecipe2(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Plug.CPlugParticleGpuModel Build() => BuildNode(CPlugParticleGpuModelBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleGpuModel node);
     }
     public partial class TM2020 : CPlugParticleGpuModelBuilderMembers1<TM2020>
@@ -117,7 +90,7 @@ public partial class CPlugParticleGpuModelBuilder : CPlugParticleGpuModelBuilder
         public TM2020 WithBitmap(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? value) => base.WithBitmap(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithBitmapOverLife(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? value) => base.WithBitmapOverLife(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugParticleGpuModelTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugParticleGpuModel Build() => BuildNode(CPlugParticleGpuModelBuilder.CreateRecipe3(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugParticleGpuModel Build() => BuildNode(CPlugParticleGpuModelBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleGpuModel node);
     }
 }

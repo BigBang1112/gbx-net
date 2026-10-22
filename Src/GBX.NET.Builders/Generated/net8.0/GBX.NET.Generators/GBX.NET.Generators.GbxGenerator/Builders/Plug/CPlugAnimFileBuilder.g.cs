@@ -72,18 +72,6 @@ public partial class CPlugAnimFileBuilder : CPlugAnimFileBuilderBase<CPlugAnimFi
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugAnimFile.Chunk090B0003(game));
         return node;
     }
-    private static global::GBX.NET.Engines.Plug.CPlugAnimFile CreateRecipe1(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugAnimFile();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugAnimFile.Chunk090B0003(game));
-        return node;
-    }
-    private static global::GBX.NET.Engines.Plug.CPlugAnimFile CreateRecipe2(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugAnimFile();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugAnimFile.Chunk090B0003(game));
-        return node;
-    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -114,7 +102,7 @@ public partial class CPlugAnimFileBuilder : CPlugAnimFileBuilderBase<CPlugAnimFi
         public MP4 WithGraphStacks(params global::GBX.NET.Engines.Plug.CPlugAnimGraphStack[] values) => WithGraphStacks(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimGraphStack>(values));
         public MP4 WithGraphStacks(IEnumerable<global::GBX.NET.Engines.Plug.CPlugAnimGraphStack> values) => WithGraphStacks(values.ToArray());
         public global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugAnimFile Build() => BuildNode(CPlugAnimFileBuilder.CreateRecipe1(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Plug.CPlugAnimFile Build() => BuildNode(CPlugAnimFileBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAnimFile node);
     }
     public partial class TM2020 : CPlugAnimFileBuilderBase<TM2020>
@@ -144,7 +132,7 @@ public partial class CPlugAnimFileBuilder : CPlugAnimFileBuilderBase<CPlugAnimFi
         public TM2020 WithSkelResources(IEnumerable<global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource> values) => WithSkelResources(values.ToArray());
         public TM2020 WithVariableVersion(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetVariableVersionAssignment(), value, SupportedGames3);
         public global::GBX.NET.Interfaces.Plug.IPlugAnimFileTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugAnimFile Build() => BuildNode(CPlugAnimFileBuilder.CreateRecipe2(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugAnimFile Build() => BuildNode(CPlugAnimFileBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAnimFile node);
     }
 }

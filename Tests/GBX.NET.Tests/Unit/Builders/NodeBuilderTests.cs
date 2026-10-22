@@ -131,6 +131,21 @@ public class NodeBuilderTests
     }
 
     [Test]
+    public async Task Build_DictionaryMembers_DoNotShareContainers()
+    {
+        var sound = new NodeRef<CPlugSound>();
+        var musics = new Dictionary<string, NodeRef<CPlugSound>>(StringComparer.OrdinalIgnoreCase) { ["Day"] = sound };
+        var builder = CGameCtnDecorationAudio.Create().WithMusics(musics).ForTMF();
+        musics.Clear();
+
+        var first = builder.Build();
+        first.Musics!.Clear();
+        var second = builder.Build();
+        await Assert.That(second.Musics).IsNotSameReferenceAs(first.Musics);
+        await Assert.That(second.Musics!["day"]).IsSameReferenceAs(sound);
+    }
+
+    [Test]
     public async Task Build_ReferenceCollections_PreserveUnresolvedDescriptorsWithoutIO()
     {
         var descriptor = new GbxRefTableFile(new GbxRefTable(), 0, true, "missing.Track.Gbx");

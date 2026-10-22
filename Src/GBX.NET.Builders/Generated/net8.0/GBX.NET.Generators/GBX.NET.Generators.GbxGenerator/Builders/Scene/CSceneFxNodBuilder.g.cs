@@ -40,12 +40,6 @@ public partial class CSceneFxNodBuilder : CSceneFxNodBuilderBase<CSceneFxNodBuil
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFxNod.Chunk0A03A002(game));
         return node;
     }
-    private static global::GBX.NET.Engines.Scene.CSceneFxNod CreateRecipe2(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Scene.CSceneFxNod();
-        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFxNod.Chunk0A03A002(game));
-        return node;
-    }
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
@@ -114,7 +108,7 @@ public partial class CSceneFxNodBuilder : CSceneFxNodBuilderBase<CSceneFxNodBuil
         public TM2020 WithFxIndex(int value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxNodBuilderAssignments.GetFxIndexAssignment(), value, GameVersion.TM2020);
         public TM2020 WithNodInput(global::GBX.NET.Interfaces.Scene.ISceneFxNodTM2020? value) => base.WithNodInput(value is null ? (global::GBX.NET.Engines.Scene.CSceneFxNod?)null : value is global::GBX.NET.Engines.Scene.CSceneFxNod node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Scene.ISceneFxNodTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Scene.CSceneFxNod Build() => BuildNode(CSceneFxNodBuilder.CreateRecipe2(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Scene.CSceneFxNod Build() => BuildNode(CSceneFxNodBuilder.CreateRecipe1(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxNod node);
     }
 }

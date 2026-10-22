@@ -138,12 +138,6 @@ public partial class CGameCtnCampaignBuilder : CGameCtnCampaignBuilderBase<CGame
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnCampaign.Chunk03090012(game));
         return node;
     }
-    private static global::GBX.NET.Engines.Game.CGameCtnCampaign CreateRecipe7(GameVersion game)
-    {
-        var node = CreateRecipe5(game);
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnCampaign.Chunk03090012(game));
-        return node;
-    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -260,7 +254,7 @@ public partial class CGameCtnCampaignBuilder : CGameCtnCampaignBuilderBase<CGame
         public TM2020 WithChallengeGroups(params global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTM2020[] values) => base.WithChallengeGroups(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTM2020>(values, false));
         public TM2020 WithChallengeGroups(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTM2020> values) => WithChallengeGroups(values.ToArray());
         public global::GBX.NET.Interfaces.Game.IGameCtnCampaignTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnCampaign Build() => BuildNode(CGameCtnCampaignBuilder.CreateRecipe7(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Game.CGameCtnCampaign Build() => BuildNode(CGameCtnCampaignBuilder.CreateRecipe6(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnCampaign node);
     }
 }

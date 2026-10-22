@@ -19,12 +19,6 @@ public partial class CGameCtnMediaBlockFogBuilder : CGameCtnMediaBlockFogBuilder
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFog.Chunk03199000(game));
         return node;
     }
-    private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockFog CreateRecipe1(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFog();
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFog.Chunk03199000(game));
-        return node;
-    }
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -41,14 +35,14 @@ public partial class CGameCtnMediaBlockFogBuilder : CGameCtnMediaBlockFogBuilder
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFog> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFogMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnMediaBlockFog Build() => BuildNode(CGameCtnMediaBlockFogBuilder.CreateRecipe1(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Game.CGameCtnMediaBlockFog Build() => BuildNode(CGameCtnMediaBlockFogBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFog node);
     }
     public partial class TM2020 : CGameCtnMediaBlockFogBuilderBase<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFog> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFogTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnMediaBlockFog Build() => BuildNode(CGameCtnMediaBlockFogBuilder.CreateRecipe1(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Game.CGameCtnMediaBlockFog Build() => BuildNode(CGameCtnMediaBlockFogBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFog node);
     }
 }

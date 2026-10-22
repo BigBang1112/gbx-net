@@ -248,21 +248,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
     }
     private static global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk CreateRecipe4(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk();
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043014());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043016());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043017());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301C());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043021());
+        var node = CreateRecipe2(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025());
@@ -420,50 +406,6 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043042(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043043());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043044());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043047() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043048() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043049(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304B());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304D(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304F());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043050() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043051() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043052() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043053(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043054(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043055());
-        return node;
-    }
-    private static global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk CreateRecipe11(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk();
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043007(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043008(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043026());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043028());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043029());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304302A());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043034());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043036());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043038());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304303D());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304303E() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043040(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043042(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043043());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043044());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043048() { Version = 0 });
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043049(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304B());
@@ -481,7 +423,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043059(game));
         return node;
     }
-    private static global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk CreateRecipe12(GameVersion game)
+    private static global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk CreateRecipe11(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk();
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002(game));
@@ -755,7 +697,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public TMT WithZoneGenealogy(params global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTMT[] values) => base.WithZoneGenealogy(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTMT>(values, false));
         public TMT WithZoneGenealogy(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTMT> values) => WithZoneGenealogy(values.ToArray());
         public global::GBX.NET.Interfaces.VirtualSkipper.IConstructionChallengeVskTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk Build() => BuildNode(CConstructionChallengeVskBuilder.CreateRecipe10(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk Build() => BuildNode(CConstructionChallengeVskBuilder.CreateRecipe9(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk node);
     }
     public partial class MP4 : CConstructionChallengeVskBuilderMembers9<MP4>
@@ -784,7 +726,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public MP4 WithZoneGenealogy(params global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP4[] values) => base.WithZoneGenealogy(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP4>(values, false));
         public MP4 WithZoneGenealogy(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP4> values) => WithZoneGenealogy(values.ToArray());
         public global::GBX.NET.Interfaces.VirtualSkipper.IConstructionChallengeVskMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk Build() => BuildNode(CConstructionChallengeVskBuilder.CreateRecipe11(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk Build() => BuildNode(CConstructionChallengeVskBuilder.CreateRecipe10(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk node);
     }
     public partial class TM2020 : CConstructionChallengeVskBuilderMembers9<TM2020>
@@ -831,7 +773,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public TM2020 WithZoneGenealogy(params global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTM2020[] values) => base.WithZoneGenealogy(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTM2020>(values, false));
         public TM2020 WithZoneGenealogy(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTM2020> values) => WithZoneGenealogy(values.ToArray());
         public global::GBX.NET.Interfaces.VirtualSkipper.IConstructionChallengeVskTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk Build() => BuildNode(CConstructionChallengeVskBuilder.CreateRecipe12(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk Build() => BuildNode(CConstructionChallengeVskBuilder.CreateRecipe11(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk node);
     }
 }

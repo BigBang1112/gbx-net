@@ -48,25 +48,6 @@ public partial class CGamePlayerProfileChunk_GameSettingsBuilder : CGamePlayerPr
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings.Chunk0312D00D());
         return node;
     }
-    private static global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings CreateRecipe2(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings();
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings.Chunk0312D000(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings.Chunk0312D001(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings.Chunk0312D002(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings.Chunk0312D003(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings.Chunk0312D004(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings.Chunk0312D005(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings.Chunk0312D006(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings.Chunk0312D007(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings.Chunk0312D008(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings.Chunk0312D009(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings.Chunk0312D00A() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings.Chunk0312D00B(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings.Chunk0312D00C(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings.Chunk0312D00D());
-        return node;
-    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -100,7 +81,7 @@ public partial class CGamePlayerProfileChunk_GameSettingsBuilder : CGamePlayerPr
         public TM2020 WithEditorHelp(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameSettingsBuilderAssignments.GetEditorHelpAssignment(), value, SupportedGames2);
         public TM2020 WithOpponentVisibility(byte value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_GameSettingsBuilderAssignments.GetOpponentVisibilityAssignment(), value, SupportedGames2);
         public global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_GameSettingsTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings Build() => BuildNode(CGamePlayerProfileChunk_GameSettingsBuilder.CreateRecipe2(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings Build() => BuildNode(CGamePlayerProfileChunk_GameSettingsBuilder.CreateRecipe1(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameSettings node);
     }
 }

@@ -22,12 +22,6 @@ public partial class CGameBlockItemBuilder : CGameBlockItemBuilderBase<CGameBloc
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameBlockItem.Chunk2E025000());
         return node;
     }
-    private static global::GBX.NET.Engines.GameData.CGameBlockItem CreateRecipe1(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.GameData.CGameBlockItem();
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameBlockItem.Chunk2E025000());
-        return node;
-    }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
@@ -43,7 +37,7 @@ public partial class CGameBlockItemBuilder : CGameBlockItemBuilderBase<CGameBloc
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameBlockItem> state) : base(state) { }
         public global::GBX.NET.Interfaces.GameData.IGameBlockItemTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.GameData.CGameBlockItem Build() => BuildNode(CGameBlockItemBuilder.CreateRecipe1(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.GameData.CGameBlockItem Build() => BuildNode(CGameBlockItemBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameBlockItem node);
     }
 }

@@ -23,8 +23,7 @@ public partial class CGameCtnMediaBlockCameraSimpleBuilder : CGameCtnMediaBlockC
     }
     private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple CreateRecipe1(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple();
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple.Chunk030A1002(game));
+        var node = CreateRecipe0(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple.Chunk0309F002() { Version = 3 });
         return node;
     }

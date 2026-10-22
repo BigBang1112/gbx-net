@@ -27,12 +27,10 @@ internal sealed class GameNodeModel(LayoutModel layout)
     public IEnumerable<string> BuildableGames => Games.Where(g => !RecipeErrors.ContainsKey(g));
     public bool HasBuilder => !Layout.IsAbstract && BuildableGames.Any();
 
-    public static Dictionary<string, GameNodeModel> Create(GenerationPlan plan, Compilation compilation)
+    public static Dictionary<string, GameNodeModel> Create(GenerationPlan plan, GameSymbols symbols)
     {
-        var knownGames = compilation.GetTypeByMetadataName("GBX.NET.GameVersion")!.GetMembers()
-            .OfType<IFieldSymbol>().Where(static f => f.HasConstantValue && Convert.ToInt64(f.ConstantValue) > 0)
-            .Where(static f => (Convert.ToInt64(f.ConstantValue) & (Convert.ToInt64(f.ConstantValue) - 1)) == 0)
-            .Select(static f => f.Name).ToArray();
+        var knownGames = symbols.Games.Where(static g => g.Value > 0 && (g.Value & (g.Value - 1)) == 0)
+            .Select(static g => g.Key).ToArray();
         var nodes = plan.Layouts.Values.ToDictionary(static l => l.Name, static l => new GameNodeModel(l), StringComparer.Ordinal);
 
         foreach (var node in nodes.Values)
@@ -63,6 +61,9 @@ internal sealed class GameNodeModel(LayoutModel layout)
                 {
                     var arguments = attribute.ArgumentList?.Arguments ?? default;
                     if (arguments.Count == 0) throw new InvalidOperationException("NodeBuilderRecipe requires an exact game context.");
+                    // A combined mask would otherwise be read as its last flag.
+                    if (arguments[0].Expression is not (IdentifierNameSyntax or MemberAccessExpressionSyntax))
+                        throw new InvalidOperationException("NodeBuilderRecipe requires one known GameVersion value.");
                     var gameName = SyntaxOverlap.Simple(arguments[0].Expression.ToString());
                     if (!knownGames.Contains(gameName)) throw new InvalidOperationException("NodeBuilderRecipe requires one known GameVersion value.");
                     if (node.Layout.Game is not null && node.Layout.Game != gameName)
@@ -144,11 +145,7 @@ internal sealed class GameNodeModel(LayoutModel layout)
                     if (property.ExplicitInterfaceSpecifier is not null || !property.Modifiers.Any(SyntaxKind.PublicKeyword) ||
                         property.Modifiers.Any(SyntaxKind.StaticKeyword)) continue;
                     if (property.Identifier.ValueText is "Id" or "References" or "GameVersion" or "Chunks") continue;
-                    var symbol = compilation.GetSemanticModel(property.SyntaxTree).GetDeclaredSymbol(property) as IPropertySymbol;
-                    var memberType = symbol?.Type.TypeKind != TypeKind.Error
-                        ? symbol?.Type.ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat.WithMiscellaneousOptions(
-                            SymbolDisplayMiscellaneousOptions.UseSpecialTypes | SymbolDisplayMiscellaneousOptions.IncludeNullableReferenceTypeModifier))
-                        : null;
+                    symbols.PropertyTypes.TryGetValue(GameSymbols.PropertyKey(owner, property), out var memberType);
                     var name = property.Identifier.ValueText;
                     properties.TryGetValue(name, out var previous);
                     var writable = property.AccessorList?.Accessors.Any(static a => a.IsKind(SyntaxKind.SetAccessorDeclaration) &&
@@ -184,10 +181,7 @@ internal sealed class GameNodeModel(LayoutModel layout)
                         node.MemberErrors.Add(method.Identifier.ValueText + ": generic or version-scoped method requires an explicit interface contract");
                         continue;
                     }
-                    var semantic = compilation.GetSemanticModel(method.SyntaxTree);
-                    var constant = semantic.GetConstantValue(attribute.ArgumentList.Arguments[0].Expression);
-                    if (!constant.HasValue) continue;
-                    var mask = Convert.ToInt64(constant.Value);
+                    if (!symbols.MethodMasks.TryGetValue(GameSymbols.MethodKey(owner, method), out var mask)) continue;
                     var parameters = string.Join(", ", method.ParameterList.Parameters.Select(p => p.WithType(
                         SyntaxFactory.ParseTypeName(Qualify(p.Type?.ToString() ?? "object", owner, plan))
                             .WithTrailingTrivia(SyntaxFactory.Space)).WithoutTrivia().ToString()));
@@ -197,8 +191,7 @@ internal sealed class GameNodeModel(LayoutModel layout)
                     var model = new GameMethod(owner, method, Qualify(method.ReturnType.ToString(), owner, plan), parameters, arguments);
                     foreach (var game in node.Games)
                     {
-                        var value = (IFieldSymbol)compilation.GetTypeByMetadataName("GBX.NET.GameVersion")!.GetMembers(game).Single();
-                        if ((mask & Convert.ToInt64(value.ConstantValue)) != 0) model.Games.Add(game);
+                        if ((mask & symbols.Games.Single(g => g.Key == game).Value) != 0) model.Games.Add(game);
                     }
                     if (model.Games.Count > 0 && !node.Methods.Any(m => m.Declaration.Identifier.ValueText == method.Identifier.ValueText &&
                         m.Parameters == parameters)) node.Methods.Add(model);
@@ -247,14 +240,6 @@ internal sealed class GameNodeModel(LayoutModel layout)
             }
         }
         return false;
-    }
-
-    public static int Version(ChunkModel chunk, string game)
-    {
-        var qualifier = chunk.Declaration.VersionQualifiers.FirstOrDefault(q => q.Label == game);
-        if (qualifier?.MaxVersion is { } version) return version;
-        var fallback = chunk.Scope.Fields.FirstOrDefault(static f => f.IsVersion)?.Declaration.DefaultValue;
-        return fallback is not null && int.TryParse(ChunkL.ChunkLParser.WriteExpression(fallback), out var value) ? value : 0;
     }
 
     private static bool Writable(GameChunk candidate, GenerationPlan plan, HashSet<uint> visited)

@@ -208,12 +208,14 @@ internal static class NodeBuilderWriter
 
     private static Dictionary<string, int> WriteRecipes(CodeWriter code, GameNodeModel node)
     {
-        var recipes = node.BuildableGames.GroupBy(game =>
-            string.Join("|", node.Recipes[game].Select(c => c.Owner.QualifiedName + "." + c.Chunk.Name + ":" + c.Version(game)))).ToArray();
+        // A chunk created with the game constructor sets its own version, so
+        // games differing only in such versions share one recipe body.
+        string Key(GameChunk candidate, string game) => candidate.Owner.QualifiedName + "." + candidate.Chunk.Name +
+            (EmitsVersion(candidate) ? ":" + candidate.Version(game) : "");
+        var recipes = node.BuildableGames.GroupBy(game => string.Join("|", node.Recipes[game].Select(c => Key(c, game)))).ToArray();
         var result = new Dictionary<string, int>(StringComparer.Ordinal);
         var gameCtor = GameDefaultsWriter.Enabled(node.Layout.Scope, false) || HasGameConstructor(node.Layout.Existing);
-        var keys = recipes.Select(recipe => node.Recipes[recipe.First()]
-            .Select(c => c.Owner.QualifiedName + "." + c.Chunk.Name + ":" + c.Version(recipe.First())).ToArray()).ToArray();
+        var keys = recipes.Select(recipe => node.Recipes[recipe.First()].Select(c => Key(c, recipe.First())).ToArray()).ToArray();
         for (var i = 0; i < recipes.Length; i++)
         {
             var recipe = recipes[i];
@@ -229,16 +231,19 @@ internal static class NodeBuilderWriter
                 $"var node = new {node.Layout.QualifiedName}({(gameCtor ? "game" : "")});");
             foreach (var candidate in node.Recipes[game].Skip(prefix >= 0 ? keys[prefix].Length : 0))
             {
-                var chunk = candidate.Chunk;
-                var hasCtor = GameDefaultsWriter.Enabled(chunk.Scope, true) || HasGameConstructor(chunk.Scope.Existing);
-                var version = candidate.HasVersion && !hasCtor ? $" {{ Version = {candidate.Version(game)} }}" : "";
-                code.Line($"node.Chunks.Add(new {candidate.Owner.QualifiedName}.{chunk.Name}({(hasCtor ? "game" : "")}){version});");
+                var version = EmitsVersion(candidate) ? $" {{ Version = {candidate.Version(game)} }}" : "";
+                code.Line($"node.Chunks.Add(new {candidate.Owner.QualifiedName}.{candidate.Chunk.Name}({(HasChunkGameConstructor(candidate) ? "game" : "")}){version});");
             }
             code.Line("return node;");
             code.Close();
         }
         return result;
     }
+
+    private static bool HasChunkGameConstructor(GameChunk candidate)
+        => GameDefaultsWriter.Enabled(candidate.Chunk.Scope, true) || HasGameConstructor(candidate.Chunk.Scope.Existing);
+
+    private static bool EmitsVersion(GameChunk candidate) => candidate.HasVersion && !HasChunkGameConstructor(candidate);
 
     private static bool HasGameConstructor(ExistingType? type) => type?.Constructors.Any(static c =>
         c.ParameterList.Parameters.Count == 1 && SyntaxOverlap.Normalize(c.ParameterList.Parameters[0].Type?.ToString() ?? "") == "GameVersion") == true;
@@ -346,6 +351,8 @@ internal static class NodeBuilderWriter
         }
         if (type.StartsWith("List<", StringComparison.Ordinal) || type.StartsWith("global::System.Collections.Generic.List<", StringComparison.Ordinal))
             return $"{value} is null ? null! : new {type}({value})";
+        if (type.StartsWith("Dictionary<", StringComparison.Ordinal) || type.StartsWith("global::System.Collections.Generic.Dictionary<", StringComparison.Ordinal))
+            return $"{value} is null ? null! : new {type}({value}, {value}.Comparer)";
         return value;
     }
 

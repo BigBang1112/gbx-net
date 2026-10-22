@@ -18,12 +18,6 @@ public partial class CGameCommonItemEntityModelBuilder : CGameCommonItemEntityMo
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel.Chunk2E027000(game));
         return node;
     }
-    private static global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel CreateRecipe1(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel();
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel.Chunk2E027000(game));
-        return node;
-    }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
@@ -64,7 +58,7 @@ public partial class CGameCommonItemEntityModelBuilder : CGameCommonItemEntityMo
         public TM2020 WithTriggerShape(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelBuilderAssignments.GetTriggerShapeAssignment(), value, SupportedGames2);
         public TM2020 WithTriggerShapeReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelBuilderAssignments.GetTriggerShapeReferenceAssignment(), value, SupportedGames2);
         public global::GBX.NET.Interfaces.GameData.IGameCommonItemEntityModelTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel Build() => BuildNode(CGameCommonItemEntityModelBuilder.CreateRecipe1(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel Build() => BuildNode(CGameCommonItemEntityModelBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel node);
     }
 }

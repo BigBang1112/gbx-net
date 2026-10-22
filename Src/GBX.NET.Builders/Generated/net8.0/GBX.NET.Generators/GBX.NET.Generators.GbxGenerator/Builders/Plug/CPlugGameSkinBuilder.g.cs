@@ -55,29 +55,6 @@ public partial class CPlugGameSkinBuilder : CPlugGameSkinBuilderBase<CPlugGameSk
     private static global::GBX.NET.Engines.Plug.CPlugGameSkin CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugGameSkin();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugGameSkin.Chunk090F4003());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugGameSkin.Chunk090F4004(game));
-        return node;
-    }
-    private static global::GBX.NET.Engines.Plug.CPlugGameSkin CreateRecipe4(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugGameSkin();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugGameSkin.HeaderChunk090F4000(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugGameSkin.Chunk090F4003());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugGameSkin.Chunk090F4004(game));
-        return node;
-    }
-    private static global::GBX.NET.Engines.Plug.CPlugGameSkin CreateRecipe5(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugGameSkin();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugGameSkin.HeaderChunk090F4000(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugGameSkin.Chunk090F4003());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugGameSkin.Chunk090F4004(game));
-        return node;
-    }
-    private static global::GBX.NET.Engines.Plug.CPlugGameSkin CreateRecipe6(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugGameSkin();
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugGameSkin.HeaderChunk090F4000(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugGameSkin.Chunk090F4003());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugGameSkin.Chunk090F4005(game));
@@ -134,7 +111,7 @@ public partial class CPlugGameSkinBuilder : CPlugGameSkinBuilderBase<CPlugGameSk
         public VSK5 WithCustomizableFids(IEnumerable<global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid> values) => WithCustomizableFids(values.ToArray());
         public VSK5 WithDirNameAlt(string? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinBuilderAssignments.GetDirNameAltAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Plug.IPlugGameSkinVSK5 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugGameSkin Build() => BuildNode(CPlugGameSkinBuilder.CreateRecipe3(GameVersion.VSK5), GameVersion.VSK5);
+        public global::GBX.NET.Engines.Plug.CPlugGameSkin Build() => BuildNode(CPlugGameSkinBuilder.CreateRecipe2(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugGameSkin node);
     }
     public partial class TMF : CPlugGameSkinBuilderMembers3<TMF>
@@ -144,7 +121,7 @@ public partial class CPlugGameSkinBuilder : CPlugGameSkinBuilderBase<CPlugGameSk
         public TMF WithCustomizableFids(IEnumerable<global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid> values) => WithCustomizableFids(values.ToArray());
         public TMF WithDirNameAlt(string? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinBuilderAssignments.GetDirNameAltAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMF BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugGameSkin Build() => BuildNode(CPlugGameSkinBuilder.CreateRecipe4(GameVersion.TMF), GameVersion.TMF);
+        public global::GBX.NET.Engines.Plug.CPlugGameSkin Build() => BuildNode(CPlugGameSkinBuilder.CreateRecipe1(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugGameSkin node);
     }
     public partial class MP3 : CPlugGameSkinBuilderMembers3<MP3>
@@ -154,7 +131,7 @@ public partial class CPlugGameSkinBuilder : CPlugGameSkinBuilderBase<CPlugGameSk
         public MP3 WithCustomizableFids(IEnumerable<global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid> values) => WithCustomizableFids(values.ToArray());
         public MP3 WithDirNameAlt(string? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinBuilderAssignments.GetDirNameAltAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP3 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugGameSkin Build() => BuildNode(CPlugGameSkinBuilder.CreateRecipe5(GameVersion.MP3), GameVersion.MP3);
+        public global::GBX.NET.Engines.Plug.CPlugGameSkin Build() => BuildNode(CPlugGameSkinBuilder.CreateRecipe1(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugGameSkin node);
     }
     public partial class TMT : CPlugGameSkinBuilderMembers3<TMT>
@@ -164,7 +141,7 @@ public partial class CPlugGameSkinBuilder : CPlugGameSkinBuilderBase<CPlugGameSk
         public TMT WithCustomizableFids(IEnumerable<global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid> values) => WithCustomizableFids(values.ToArray());
         public TMT WithDirNameAlt(string? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinBuilderAssignments.GetDirNameAltAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugGameSkin Build() => BuildNode(CPlugGameSkinBuilder.CreateRecipe5(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Plug.CPlugGameSkin Build() => BuildNode(CPlugGameSkinBuilder.CreateRecipe1(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugGameSkin node);
     }
     public partial class MP4 : CPlugGameSkinBuilderMembers3<MP4>
@@ -174,7 +151,7 @@ public partial class CPlugGameSkinBuilder : CPlugGameSkinBuilderBase<CPlugGameSk
         public MP4 WithCustomizableFids(IEnumerable<global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid> values) => WithCustomizableFids(values.ToArray());
         public MP4 WithDirNameAlt(string? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinBuilderAssignments.GetDirNameAltAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugGameSkin Build() => BuildNode(CPlugGameSkinBuilder.CreateRecipe5(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Plug.CPlugGameSkin Build() => BuildNode(CPlugGameSkinBuilder.CreateRecipe1(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugGameSkin node);
     }
     public partial class TM2020 : CPlugGameSkinBuilderMembers3<TM2020>
@@ -184,7 +161,7 @@ public partial class CPlugGameSkinBuilder : CPlugGameSkinBuilderBase<CPlugGameSk
         public TM2020 WithCustomizableFilePaths(IEnumerable<global::GBX.NET.Engines.Plug.CPlugGameSkin.HeaderFid> values) => WithCustomizableFilePaths(values.ToArray());
         public TM2020 WithDirNameAlt(string? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinBuilderAssignments.GetDirNameAltAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugGameSkin Build() => BuildNode(CPlugGameSkinBuilder.CreateRecipe6(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugGameSkin Build() => BuildNode(CPlugGameSkinBuilder.CreateRecipe3(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugGameSkin node);
     }
 }

@@ -21,13 +21,6 @@ public partial class CGamePlayerProfileChunk_ManiaPlanetStationsBuilder : CGameP
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStations.Chunk03180003(game));
         return node;
     }
-    private static global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStations CreateRecipe1(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStations();
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStations.Chunk03180002());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStations.Chunk03180003(game));
-        return node;
-    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -52,14 +45,14 @@ public partial class CGamePlayerProfileChunk_ManiaPlanetStationsBuilder : CGameP
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStations> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_ManiaPlanetStationsMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStations Build() => BuildNode(CGamePlayerProfileChunk_ManiaPlanetStationsBuilder.CreateRecipe1(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStations Build() => BuildNode(CGamePlayerProfileChunk_ManiaPlanetStationsBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStations node);
     }
     public partial class TM2020 : CGamePlayerProfileChunk_ManiaPlanetStationsBuilderBase<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStations> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_ManiaPlanetStationsTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStations Build() => BuildNode(CGamePlayerProfileChunk_ManiaPlanetStationsBuilder.CreateRecipe1(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStations Build() => BuildNode(CGamePlayerProfileChunk_ManiaPlanetStationsBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStations node);
     }
 }

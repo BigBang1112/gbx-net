@@ -153,60 +153,7 @@ public partial class CPlugParticleEmitterSubModelBuilder : CPlugParticleEmitterS
     }
     private static global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel CreateRecipe5(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B202D(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B202E() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B202F(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2030() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2031(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2032() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2033(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2034(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2035(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2036() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2037(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2038() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2039() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B203A(game));
-        return node;
-    }
-    private static global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel CreateRecipe6(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B202D(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B202E() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B202F(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2030() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2031(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2032() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2033(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2034(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2035(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2036() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2037(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2038() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2039() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B203A(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B203B(game));
-        return node;
-    }
-    private static global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel CreateRecipe7(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B202D(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B202E() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B202F(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2030() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2031(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2032() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2033(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2034(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2035(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2036() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2037(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2038() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B2039() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B203A(game));
+        var node = CreateRecipe4(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel.Chunk090B203B(game));
         return node;
     }
@@ -293,7 +240,7 @@ public partial class CPlugParticleEmitterSubModelBuilder : CPlugParticleEmitterS
         public TMT WithShader(global::GBX.NET.Interfaces.Plug.IPlugShaderTMT? value) => base.WithShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithSolid2Model(global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTMT? value) => base.WithSolid2Model(value is null ? (global::GBX.NET.Engines.Plug.CPlugSolid2Model?)null : value is global::GBX.NET.Engines.Plug.CPlugSolid2Model node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel Build() => BuildNode(CPlugParticleEmitterSubModelBuilder.CreateRecipe5(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel Build() => BuildNode(CPlugParticleEmitterSubModelBuilder.CreateRecipe4(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel node);
     }
     public partial class MP4 : CPlugParticleEmitterSubModelBuilderMembers1<MP4>
@@ -303,7 +250,7 @@ public partial class CPlugParticleEmitterSubModelBuilder : CPlugParticleEmitterS
         public MP4 WithShader(global::GBX.NET.Interfaces.Plug.IPlugShaderMP4? value) => base.WithShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithSolid2Model(global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4? value) => base.WithSolid2Model(value is null ? (global::GBX.NET.Engines.Plug.CPlugSolid2Model?)null : value is global::GBX.NET.Engines.Plug.CPlugSolid2Model node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel Build() => BuildNode(CPlugParticleEmitterSubModelBuilder.CreateRecipe6(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel Build() => BuildNode(CPlugParticleEmitterSubModelBuilder.CreateRecipe5(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel node);
     }
     public partial class TM2020 : CPlugParticleEmitterSubModelBuilderMembers1<TM2020>
@@ -313,7 +260,7 @@ public partial class CPlugParticleEmitterSubModelBuilder : CPlugParticleEmitterS
         public TM2020 WithShader(global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020? value) => base.WithShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithSolid2Model(global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020? value) => base.WithSolid2Model(value is null ? (global::GBX.NET.Engines.Plug.CPlugSolid2Model?)null : value is global::GBX.NET.Engines.Plug.CPlugSolid2Model node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel Build() => BuildNode(CPlugParticleEmitterSubModelBuilder.CreateRecipe7(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel Build() => BuildNode(CPlugParticleEmitterSubModelBuilder.CreateRecipe5(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel node);
     }
 }

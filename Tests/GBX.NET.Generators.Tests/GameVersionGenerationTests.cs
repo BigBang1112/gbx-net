@@ -108,7 +108,7 @@ public partial class GenerationTests
         await AssertNoErrors(compilation);
         var builder = result.GeneratedSources.Single(static s => s.HintName == "Builders/Game/ExampleBuilder.g.cs").SyntaxTree;
         await Assert.That(builder.GetRoot().DescendantNodes().OfType<ObjectCreationExpressionSyntax>()
-            .Count(static creation => creation.Type.ToString().EndsWith(".Chunk03043001", StringComparison.Ordinal))).IsEqualTo(2);
+            .Count(static creation => creation.Type.ToString().EndsWith(".Chunk03043001", StringComparison.Ordinal))).IsEqualTo(1);
         await Assert.That((bool)InvokeGame(compilation, "Verify")!).IsTrue();
     }
 
@@ -717,6 +717,94 @@ public partial class GenerationTests
             "Builders/Game/GameNodeBuilderExtensions.g.cs", "Builders/NodeBuilderCoverage.g.cs"
         });
         await Assert.That(InvokeBuilders(library, builders)).IsEqualTo(true);
+    }
+
+    [Test]
+    public async Task Generate_GameBuilders_RejectsCombinedRecipeGames()
+    {
+        var (result, _) = RunGame("""
+            namespace GBX.NET.Engines.Game
+            {
+                [GBX.NET.Attributes.NodeBuilderRecipe(GBX.NET.GameVersion.TM10 | GBX.NET.GameVersion.MP4, typeof(Example.Chunk03043001))]
+                public partial class Example { }
+            }
+            """, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              int Value
+            """));
+        await Assert.That(result.Diagnostics.Select(static d => d.Id).ToArray()).IsEquivalentTo(new[] { "GBXNETGEN300" });
+        await Assert.That(result.GeneratedSources.Any(static s => s.HintName == "Builders/Game/ExampleBuilder.g.cs")).IsFalse();
+    }
+
+    [Test]
+    public async Task Generate_GameBuilders_ShareRecipesDifferingOnlyInConstructorVersions()
+    {
+        var (result, compilation) = RunGame("""
+            namespace GBX.NET.Engines.Game
+            {
+                public partial class Example
+                {
+                    public static int Verify() => Example.Create().ForTM10().Build().GetChunk<Chunk03043001>()!.Version * 10 +
+                        Example.Create().ForMP4().Build().GetChunk<Chunk03043001>()!.Version;
+                }
+            }
+            """, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001 [TM10.v1, MP4.v2]
+              version
+              int Value
+            """));
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var builder = result.GeneratedSources.Single(static s => s.HintName == "Builders/Game/ExampleBuilder.g.cs").SourceText.ToString();
+        await Assert.That(builder).Contains("CreateRecipe0(");
+        await Assert.That(builder.Contains("CreateRecipe1(", StringComparison.Ordinal)).IsFalse();
+        await Assert.That((int)InvokeGame(compilation, "Verify")!).IsEqualTo(12);
+    }
+
+    [Test]
+    public async Task Generate_BuilderPackage_ReportsInvalidRecipe()
+    {
+        var layout = new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001 [TM10]
+              int Value
+            """);
+        var (_, library) = Run("""
+            namespace GBX.NET.Engines.Game
+            {
+                [GBX.NET.Attributes.NodeBuilderRecipe(GBX.NET.GameVersion.Unspecified)]
+                public partial class Example { }
+            }
+            """ + GameSupport, true, [layout]);
+        var (result, builders) = RunBuilders(library, layout, "");
+        await Assert.That(result.Diagnostics.Select(static d => d.Id).ToArray()).IsEquivalentTo(new[] { "GBXNETGEN300" });
+        var coverage = result.GeneratedSources.Single(static s => s.HintName == "Builders/NodeBuilderCoverage.g.cs").SourceText.ToString();
+        await Assert.That(coverage).Contains("Example: NodeBuilderRecipe requires one known GameVersion value.");
+    }
+
+    [Test]
+    public async Task Generate_GameInterfaces_UnrelatedEditReusesGameSymbols()
+    {
+        var options = new CSharpParseOptions(LanguageVersion.Preview);
+        var references = ((string)AppContext.GetData("TRUSTED_PLATFORM_ASSEMBLIES")!).Split(Path.PathSeparator)
+            .Select(static x => MetadataReference.CreateFromFile(x));
+        var compilation = CSharpCompilation.Create("Fixture", [CSharpSyntaxTree.ParseText(Support + GameSupport, options)], references,
+            new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
+        GeneratorDriver driver = CSharpGeneratorDriver.Create([new GbxGenerator().AsSourceGenerator()],
+            additionalTexts: [new Text("Engines/Game/Example.chunkl", "Example 0x03043000\n0x001 [TM10]\n  int Value\n")],
+            parseOptions: options, driverOptions: new GeneratorDriverOptions(IncrementalGeneratorOutputKind.None, trackIncrementalGeneratorSteps: true));
+        driver = driver.RunGenerators(compilation);
+        driver = driver.RunGenerators(compilation.AddSyntaxTrees(CSharpSyntaxTree.ParseText("namespace Other { class Unrelated { } }", options)));
+
+        var result = driver.GetRunResult().Results.Single();
+        await Assert.That(result.TrackedSteps["PlannedEngineTypes"].SelectMany(static s => s.Outputs)
+            .All(static o => o.Reason == IncrementalStepRunReason.Cached)).IsTrue();
+        await Assert.That(result.TrackedSteps["GameSymbols"].SelectMany(static s => s.Outputs)
+            .All(static o => o.Reason == IncrementalStepRunReason.Unchanged)).IsTrue();
+        await Assert.That(result.TrackedOutputSteps["SourceOutput"].SelectMany(static s => s.Outputs)
+            .All(static o => o.Reason is IncrementalStepRunReason.Cached or IncrementalStepRunReason.Unchanged)).IsTrue();
     }
 
     private static (GeneratorRunResult Result, Compilation Compilation) RunGame(string source, params Text[] files)

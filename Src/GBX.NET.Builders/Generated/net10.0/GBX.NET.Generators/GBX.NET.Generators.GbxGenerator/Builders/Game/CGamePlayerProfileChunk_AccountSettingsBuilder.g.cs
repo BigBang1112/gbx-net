@@ -103,22 +103,7 @@ public partial class CGamePlayerProfileChunk_AccountSettingsBuilder : CGamePlaye
     }
     private static global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings CreateRecipe1(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings();
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C000(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C001(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C002(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C003(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C004(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C005(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C006(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C007() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C008(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C009(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00A(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00B(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00C() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00D() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00E() { Version = 0 });
+        var node = CreateRecipe0(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00F() { Version = 0 });
         return node;
     }

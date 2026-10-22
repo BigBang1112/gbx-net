@@ -9,7 +9,7 @@ public class InputWithTimeGenerator : IIncrementalGenerator
     {
         var namesAndContents = context.CompilationProvider.Select(GetTypeSymbols);
 
-        context.RegisterLibraryOutput(namesAndContents, GenerateSource);
+        context.RegisterLibraryOutput(namesAndContents, context.BuildersOnly(), GenerateSource);
     }
 
     private IEnumerable<INamedTypeSymbol> GetTypeSymbols(Compilation compilation, CancellationToken token)

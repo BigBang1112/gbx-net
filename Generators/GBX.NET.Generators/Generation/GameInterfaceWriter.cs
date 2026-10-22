@@ -3,7 +3,7 @@ namespace GBX.NET.Generators.Generation;
 // Writes the game version interfaces of a node and the node partial implementing them.
 internal static class GameInterfaceWriter
 {
-    public static string Interfaces(GameNodeModel node, GameVersionModel model, INamedTypeSymbol classVersion)
+    public static string Interfaces(GameNodeModel node, GameVersionModel model, ImmutableArray<string> classContract)
     {
         var code = CodeWriter.Generated(node.InterfaceNamespace);
         var parent = model.Parent(node);
@@ -19,7 +19,9 @@ internal static class GameInterfaceWriter
             bases.AddRange(groups.Where(g => g.Games.Contains(game)).Select(g => g.Contract(game)));
             code.Open($"public partial interface {name} : " + string.Join(", ", bases));
             if (game.Length == 0 && parent is not null)
-                CommonClassContract(code, classVersion);
+            {
+                foreach (var line in classContract) code.Line(line);
+            }
             foreach (var member in node.MembersFor(game))
             {
                 if (!model.OwnsProjection(node, game, member)) continue;
@@ -88,29 +90,6 @@ internal static class GameInterfaceWriter
         }
     }
 
-    private static void CommonClassContract(CodeWriter code, INamedTypeSymbol contract)
-    {
-        // A derived node retains IClassVersion<Derived> for typed parsing, while
-        // its base view carries IClassVersion<Base>. Redeclare their shared
-        // operations once on the derived common view to avoid ambiguous calls.
-        foreach (var property in contract.GetMembers().OfType<IPropertySymbol>())
-            code.Line($"new {property.Type.ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat)} {SyntaxOverlap.Escape(property.Name)} {{ get; }}");
-        foreach (var method in contract.GetMembers().OfType<IMethodSymbol>().Where(static m => m.MethodKind == MethodKind.Ordinary))
-        {
-            var parameters = string.Join(", ", method.Parameters.Select(p => p.Type.ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat) +
-                " " + SyntaxOverlap.Escape(p.Name) + (p.HasExplicitDefaultValue ? " = " + DefaultParameter(p.ExplicitDefaultValue) : "")));
-            code.Line($"new {method.ReturnType.ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat)} {SyntaxOverlap.Escape(method.Name)}({parameters});");
-        }
-    }
-
-    private static string DefaultParameter(object? value) => value switch
-    {
-        null => "default",
-        bool boolean => boolean ? "true" : "false",
-        string text => SymbolDisplay.FormatLiteral(text, true),
-        _ => Convert.ToString(value, System.Globalization.CultureInfo.InvariantCulture) ?? "default"
-    };
-
     public static string Implementation(GameNodeModel node, GameVersionModel model)
     {
         var code = CodeWriter.Generated(node.Layout.File.Namespace);
@@ -168,7 +147,7 @@ internal static class GameInterfaceWriter
                 var name = SyntaxOverlap.Escape(member.Name);
                 var access = $"(({parent.Layout.QualifiedName})this).{name}";
                 code.Open($"{member.Type} {contract}.{name}");
-                var required = !member.Type.EndsWith("?", StringComparison.Ordinal) && IsReferenceType(member.Type);
+                var required = !member.Type.EndsWith("?", StringComparison.Ordinal) && IsReferenceType(member.Type, model.Plan);
                 code.Line($"get => {access}{(required ? " ?? throw new MemberNullException(" + SymbolDisplay.FormatLiteral(member.Name, true) + ")" : "")};");
                 if (member.Writable) code.Line($"set => {access} = value;");
                 code.Close();
@@ -206,7 +185,27 @@ internal static class GameInterfaceWriter
             code.Line($"set => {property} = value is null ? {(nullable ? "null" : "throw new ArgumentNullException(nameof(value))")} : new NodeRefList<{element}>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<{element}, {view}>(value, {(requiredElement ? "false" : "true")}));");
     }
 
-    private static bool IsReferenceType(string type) => type is "string" or "Ident" or "PackDesc" ||
-        type.EndsWith("[]", StringComparison.Ordinal) || type.StartsWith("List<", StringComparison.Ordinal) ||
-        type.StartsWith("NodeRefList<", StringComparison.Ordinal) || type.StartsWith("global::GBX.NET.Engines.", StringComparison.Ordinal) && !type.Contains(".E");
+    // A null check on a value type would not compile. Engine types are classes
+    // when they are nodes, archives or nested classes declared by hand.
+    private static bool IsReferenceType(string type, GenerationPlan plan)
+    {
+        if (type is "string" or "Ident" or "PackDesc" || type.EndsWith("[]", StringComparison.Ordinal)) return true;
+        var name = type.StartsWith("global::", StringComparison.Ordinal) ? type.Substring("global::".Length) : type;
+        var generic = name.IndexOf('<');
+        if (generic >= 0)
+        {
+            return name.Substring(0, generic) is "List" or "NodeRefList" or "Dictionary" or "GBX.NET.NodeRefList" or
+                "System.Collections.Generic.List" or "System.Collections.Generic.Dictionary";
+        }
+        if (!name.StartsWith("GBX.NET.Engines.", StringComparison.Ordinal)) return false;
+        if (plan.Layouts.Values.Any(l => l.File.TypeKey == name)) return true;
+        var dot = name.LastIndexOf('.');
+        var simple = name.Substring(dot + 1);
+        var container = plan.Layouts.Values.FirstOrDefault(l => l.File.TypeKey == name.Substring(0, dot));
+        if (container is null) return false;
+        if (container.Archives.ContainsKey(simple)) return true;
+        return plan.Existing.TryGetValue(container.File.TypeKey + "+" + simple, out var nested) &&
+            nested.Declarations.All(static d => d is ClassDeclarationSyntax || d is RecordDeclarationSyntax record &&
+                !record.ClassOrStructKeyword.IsKind(SyntaxKind.StructKeyword));
+    }
 }

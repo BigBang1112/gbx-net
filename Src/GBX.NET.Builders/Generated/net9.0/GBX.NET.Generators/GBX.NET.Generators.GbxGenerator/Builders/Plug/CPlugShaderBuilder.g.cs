@@ -101,19 +101,6 @@ public partial class CPlugShaderBuilder : CPlugShaderBuilderBase<CPlugShaderBuil
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShader.Chunk09002020(game));
         return node;
     }
-    private static global::GBX.NET.Engines.Plug.CPlugShader CreateRecipe6(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugShader(game);
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShader.Chunk09002007());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShader.Chunk09002018());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShader.Chunk0900201B() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShader.Chunk0900201C(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShader.Chunk0900201D());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShader.Chunk0900201E(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShader.Chunk0900201F() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShader.Chunk09002020(game));
-        return node;
-    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -254,7 +241,7 @@ public partial class CPlugShaderBuilder : CPlugShaderBuilderBase<CPlugShaderBuil
         public TM2020 WithPasses(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTM2020> values) => WithPasses(values.ToArray());
         public TM2020 WithSolidWiredApply(global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTM2020? value) => base.WithSolidWiredApply(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmapApply?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmapApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugShader Build() => BuildNode(CPlugShaderBuilder.CreateRecipe6(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugShader Build() => BuildNode(CPlugShaderBuilder.CreateRecipe5(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugShader node);
     }
 }

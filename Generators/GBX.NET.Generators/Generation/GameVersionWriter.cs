@@ -12,24 +12,21 @@ internal static class GameVersionWriter
     private static readonly DiagnosticDescriptor MissingMember = new("GBXNETGEN302", "Game member context is incomplete",
         "Cannot project {0}: {1}", "GBX.NET.Generators", DiagnosticSeverity.Info, true);
 
-    public static void Generate(SourceProductionContext context, GenerationPlan plan, Compilation compilation, bool buildersOnly)
+    public static void Generate(SourceProductionContext context, GenerationPlan plan, GameSymbols symbols, bool buildersOnly)
     {
         // Lightweight serializer fixtures and downstream consumers need not provide
         // the library's game version runtime. Do not emit an API they cannot support.
-        var classVersion = compilation.GetTypeByMetadataName("GBX.NET.IClassVersion`1");
-        if (classVersion is null || compilation.GetTypeByMetadataName("GBX.NET.GameVersion") is null) return;
+        if (!symbols.HasRuntime) return;
         // Builders live in a separate package. The node library does not
         // provide their runtime, so it emits only the game version API.
-        var builders = compilation.GetTypeByMetadataName("GBX.NET.Builders.NodeBuilder`2") is not null &&
-            compilation.GetTypeByMetadataName("GBX.NET.Builders.NodeBuilderState`1") is not null;
+        var builders = symbols.HasBuilderRuntime;
         var apis = !buildersOnly;
         if (!builders && !apis) return;
 
         GameVersionModel model;
         try
         {
-            model = new GameVersionModel(plan, GameNodeModel.Create(plan, compilation),
-                compilation.SupportsRuntimeCapability(RuntimeCapability.DefaultImplementationsOfInterfaces));
+            model = new GameVersionModel(plan, GameNodeModel.Create(plan, symbols), symbols.DefaultImplementations);
         }
         catch (Exception exception) when (exception is not OperationCanceledException)
         {
@@ -45,7 +42,8 @@ internal static class GameVersionWriter
             var location = Location.Create(node.Layout.File.Path, default, default);
             if (node.MetadataError is not null)
             {
-                if (apis) context.ReportDiagnostic(Diagnostic.Create(InvalidApi, location, node.Layout.Name, node.MetadataError));
+                coverage.Add(node.Layout.Name + ": " + node.MetadataError);
+                context.ReportDiagnostic(Diagnostic.Create(InvalidApi, location, node.Layout.Name, node.MetadataError));
                 continue;
             }
             if (node.Games.Count == 0)
@@ -67,7 +65,7 @@ internal static class GameVersionWriter
                 }
                 if (apis)
                 {
-                    context.AddSource($"Interfaces/{node.Layout.File.Engine}/{node.InterfaceName}.g.cs", GameInterfaceWriter.Interfaces(node, model, classVersion));
+                    context.AddSource($"Interfaces/{node.Layout.File.Engine}/{node.InterfaceName}.g.cs", GameInterfaceWriter.Interfaces(node, model, symbols.ClassContract));
                     context.AddSource($"InterfaceImplementations/{node.Layout.File.Engine}/{node.Layout.Name}.g.cs", GameInterfaceWriter.Implementation(node, model));
                 }
                 if (builders && node.HasBuilder)

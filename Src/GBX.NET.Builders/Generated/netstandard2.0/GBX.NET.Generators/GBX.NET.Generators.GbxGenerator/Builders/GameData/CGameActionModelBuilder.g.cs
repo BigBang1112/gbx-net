@@ -73,24 +73,6 @@ public partial class CGameActionModelBuilder : CGameActionModelBuilderBase<CGame
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameActionModel.Chunk2E008000(game));
         return node;
     }
-    private static global::GBX.NET.Engines.GameData.CGameActionModel CreateRecipe1(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.GameData.CGameActionModel();
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameActionModel.Chunk2E008000(game));
-        return node;
-    }
-    private static global::GBX.NET.Engines.GameData.CGameActionModel CreateRecipe2(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.GameData.CGameActionModel();
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameActionModel.Chunk2E008000(game));
-        return node;
-    }
-    private static global::GBX.NET.Engines.GameData.CGameActionModel CreateRecipe3(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.GameData.CGameActionModel();
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameActionModel.Chunk2E008000(game));
-        return node;
-    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -112,7 +94,7 @@ public partial class CGameActionModelBuilder : CGameActionModelBuilderBase<CGame
         public TMT WithLegacyInventoryValues(params int[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetLegacyInventoryValuesAssignment(), value, GameVersion.TMT);
         public TMT WithLegacyInventoryValues(IEnumerable<int> values) => WithLegacyInventoryValues(values.ToArray());
         public global::GBX.NET.Interfaces.GameData.IGameActionModelTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.GameData.CGameActionModel Build() => BuildNode(CGameActionModelBuilder.CreateRecipe1(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.GameData.CGameActionModel Build() => BuildNode(CGameActionModelBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameActionModel node);
     }
     public partial class MP4 : CGameActionModelBuilderMembers2<MP4>
@@ -124,7 +106,7 @@ public partial class CGameActionModelBuilder : CGameActionModelBuilderBase<CGame
         public MP4 WithScript(global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsMP4? value) => base.WithScript(value is null ? (global::GBX.NET.Engines.Plug.CPlugScriptWithSettings?)null : value is global::GBX.NET.Engines.Plug.CPlugScriptWithSettings node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithShieldModel(global::GBX.NET.Interfaces.Plug.IPlugShieldModelMP4? value) => base.WithShieldModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugShieldModel?)null : value is global::GBX.NET.Engines.Plug.CPlugShieldModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.GameData.IGameActionModelMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.GameData.CGameActionModel Build() => BuildNode(CGameActionModelBuilder.CreateRecipe2(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.GameData.CGameActionModel Build() => BuildNode(CGameActionModelBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameActionModel node);
     }
     public partial class TM2020 : CGameActionModelBuilderMembers2<TM2020>
@@ -134,7 +116,7 @@ public partial class CGameActionModelBuilder : CGameActionModelBuilderBase<CGame
         public TM2020 WithScript(global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsTM2020? value) => base.WithScript(value is null ? (global::GBX.NET.Engines.Plug.CPlugScriptWithSettings?)null : value is global::GBX.NET.Engines.Plug.CPlugScriptWithSettings node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithShieldModel(global::GBX.NET.Interfaces.Plug.IPlugShieldModelTM2020? value) => base.WithShieldModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugShieldModel?)null : value is global::GBX.NET.Engines.Plug.CPlugShieldModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.GameData.IGameActionModelTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.GameData.CGameActionModel Build() => BuildNode(CGameActionModelBuilder.CreateRecipe3(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.GameData.CGameActionModel Build() => BuildNode(CGameActionModelBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameActionModel node);
     }
 }

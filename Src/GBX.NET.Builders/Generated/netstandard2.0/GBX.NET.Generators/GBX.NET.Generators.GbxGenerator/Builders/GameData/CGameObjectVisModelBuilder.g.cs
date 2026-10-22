@@ -53,22 +53,7 @@ public partial class CGameObjectVisModelBuilder : CGameObjectVisModelBuilderBase
     }
     private static global::GBX.NET.Engines.GameData.CGameObjectVisModel CreateRecipe1(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.GameData.CGameObjectVisModel();
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameObjectVisModel.Chunk2E007001(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameObjectVisModel.Chunk2E007002() { Version = 0 });
-        return node;
-    }
-    private static global::GBX.NET.Engines.GameData.CGameObjectVisModel CreateRecipe2(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.GameData.CGameObjectVisModel();
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameObjectVisModel.Chunk2E007001(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameObjectVisModel.Chunk2E007002() { Version = 0 });
-        return node;
-    }
-    private static global::GBX.NET.Engines.GameData.CGameObjectVisModel CreateRecipe3(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.GameData.CGameObjectVisModel();
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameObjectVisModel.Chunk2E007001(game));
+        var node = CreateRecipe0(game);
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameObjectVisModel.Chunk2E007002() { Version = 0 });
         return node;
     }
@@ -104,7 +89,7 @@ public partial class CGameObjectVisModelBuilder : CGameObjectVisModelBuilderBase
         public MP4 WithMeshShaded(global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4? value) => base.WithMeshShaded(value is null ? (global::GBX.NET.Engines.Plug.CPlugSolid2Model?)null : value is global::GBX.NET.Engines.Plug.CPlugSolid2Model node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithSolid(global::GBX.NET.Interfaces.Plug.IPlugSolidMP4? value) => base.WithSolid(value is null ? (global::GBX.NET.Engines.Plug.CPlugSolid?)null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.GameData.IGameObjectVisModelMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.GameData.CGameObjectVisModel Build() => BuildNode(CGameObjectVisModelBuilder.CreateRecipe2(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.GameData.CGameObjectVisModel Build() => BuildNode(CGameObjectVisModelBuilder.CreateRecipe1(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameObjectVisModel node);
     }
     public partial class TM2020 : CGameObjectVisModelBuilderMembers2<TM2020>
@@ -115,7 +100,7 @@ public partial class CGameObjectVisModelBuilder : CGameObjectVisModelBuilderBase
         public TM2020 WithMeshShaded(global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020? value) => base.WithMeshShaded(value is null ? (global::GBX.NET.Engines.Plug.CPlugSolid2Model?)null : value is global::GBX.NET.Engines.Plug.CPlugSolid2Model node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithSolid(global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020? value) => base.WithSolid(value is null ? (global::GBX.NET.Engines.Plug.CPlugSolid?)null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.GameData.IGameObjectVisModelTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.GameData.CGameObjectVisModel Build() => BuildNode(CGameObjectVisModelBuilder.CreateRecipe3(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.GameData.CGameObjectVisModel Build() => BuildNode(CGameObjectVisModelBuilder.CreateRecipe1(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameObjectVisModel node);
     }
 }

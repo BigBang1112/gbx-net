@@ -94,13 +94,6 @@ public partial class CPlugVehicleMaterialBuilder : CPlugVehicleMaterialBuilderBa
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVehicleMaterial.Chunk090F1010(game));
         return node;
     }
-    private static global::GBX.NET.Engines.Plug.CPlugVehicleMaterial CreateRecipe6(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugVehicleMaterial();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVehicleMaterial.Chunk090F100F());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVehicleMaterial.Chunk090F1010(game));
-        return node;
-    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -183,7 +176,7 @@ public partial class CPlugVehicleMaterialBuilder : CPlugVehicleMaterialBuilderBa
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugVehicleMaterial Build() => BuildNode(CPlugVehicleMaterialBuilder.CreateRecipe6(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugVehicleMaterial Build() => BuildNode(CPlugVehicleMaterialBuilder.CreateRecipe5(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleMaterial node);
     }
 }

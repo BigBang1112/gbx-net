@@ -53,12 +53,6 @@ public partial class CGameCtnMediaShootParamsBuilder : CGameCtnMediaShootParamsB
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.Chunk03060002(game));
         return node;
     }
-    private static global::GBX.NET.Engines.Game.CGameCtnMediaShootParams CreateRecipe2(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaShootParams();
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.Chunk03060002(game));
-        return node;
-    }
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -91,14 +85,14 @@ public partial class CGameCtnMediaShootParamsBuilder : CGameCtnMediaShootParamsB
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaShootParamsMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnMediaShootParams Build() => BuildNode(CGameCtnMediaShootParamsBuilder.CreateRecipe2(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Game.CGameCtnMediaShootParams Build() => BuildNode(CGameCtnMediaShootParamsBuilder.CreateRecipe1(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaShootParams node);
     }
     public partial class TM2020 : CGameCtnMediaShootParamsBuilderMembers2<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaShootParamsTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnMediaShootParams Build() => BuildNode(CGameCtnMediaShootParamsBuilder.CreateRecipe2(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Game.CGameCtnMediaShootParams Build() => BuildNode(CGameCtnMediaShootParamsBuilder.CreateRecipe1(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaShootParams node);
     }
 }
