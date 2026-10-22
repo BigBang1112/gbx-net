@@ -1,9 +1,3 @@
-using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System.Collections.Immutable;
-using System.Threading;
-
 namespace GBX.NET.Generators.Analysis;
 
 internal static class ExistingTypeAnalysis
@@ -23,7 +17,9 @@ internal static class ExistingTypeAnalysis
                 .Where(static t => t.IsKind(SyntaxKind.IdentifierToken))
                 .Select(static t => t.ValueText))));
 
-        if (@namespace != "GBX.NET" && !@namespace.StartsWith(EnginesNamespace + ".", StringComparison.Ordinal))
+        if (@namespace != "GBX.NET" && !@namespace.StartsWith(EnginesNamespace + ".", StringComparison.Ordinal) &&
+            @namespace != "GBX.NET.Builders" && !@namespace.StartsWith("GBX.NET.Builders.", StringComparison.Ordinal) &&
+            !@namespace.StartsWith("GBX.NET.Interfaces.", StringComparison.Ordinal))
         {
             return null;
         }

@@ -1,4 +1,4 @@
-<Solution>
+﻿<Solution>
   <Folder Name="/Benchmarks/">
     <Project Path="Benchmarks/GBX.NET.Benchmarks/GBX.NET.Benchmarks.csproj" />
   </Folder>
@@ -63,6 +63,7 @@
   </Folder>
   <Folder Name="/Src/">
     <Project Path="Src/GBX.NET.BlockInfo/GBX.NET.BlockInfo.csproj" />
+    <Project Path="Src/GBX.NET.Builders/GBX.NET.Builders.csproj" />
     <Project Path="Src/GBX.NET.Crypto/GBX.NET.Crypto.csproj" />
     <Project Path="Src/GBX.NET.Extensions.Hosting/GBX.NET.Extensions.Hosting.csproj" />
     <Project Path="Src/GBX.NET.Hashing/GBX.NET.Hashing.csproj" />

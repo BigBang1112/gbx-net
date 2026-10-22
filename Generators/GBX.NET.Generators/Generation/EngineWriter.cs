@@ -2,10 +2,6 @@ using ChunkL;
 using ChunkL.Syntax;
 using GBX.NET.Generators.Analysis;
 using GBX.NET.Generators.Parsing;
-using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System.Collections.Immutable;
 
 namespace GBX.NET.Generators.Generation;
 
@@ -51,14 +47,6 @@ internal static class EngineWriter
         code.Line("#nullable enable");
         code.BlankLine();
 
-        foreach (var ns in new[] { "System", "System.IO", "System.Collections.Generic", "TmEssentials", "GBX.NET.Attributes", "GBX.NET.Serialization", "GBX.NET.Serialization.Chunking" }
-            .Concat(layouts.Values.Select(static x => x.File.Namespace))
-            .Distinct()
-            .OrderBy(static x => x, StringComparer.Ordinal))
-        {
-            code.Line("using global::" + ns + ";");
-        }
-        code.BlankLine();
         code.Line($"namespace {layout.File.Namespace};");
         code.BlankLine();
 

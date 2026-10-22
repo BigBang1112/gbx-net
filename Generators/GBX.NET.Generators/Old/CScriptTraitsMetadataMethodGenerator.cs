@@ -1,5 +1,3 @@
-using Microsoft.CodeAnalysis;
-using System.Collections.Immutable;
 using System.Text;
 
 namespace GBX.NET.Generators;
@@ -29,7 +27,7 @@ public class CScriptTraitsMetadataMethodGenerator : IIncrementalGenerator
                 return enumScriptTypeMembers;
             });
 
-        context.RegisterSourceOutput(metadata, GenerateSource);
+        context.RegisterLibraryOutput(metadata, context.BuildersOnly(), GenerateSource);
     }
 
     public static void GenerateSource(SourceProductionContext context, ImmutableList<IFieldSymbol> enumScriptTypeMembers)

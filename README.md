@@ -489,13 +489,13 @@ Console.WriteLine(gbx.Node.BuildVersion);
 
 ### Game Version Interfaces!
 
-Interfaces (short name of Game Version Interfaces) is a new *upcoming* feature of GBX.NET 2 where you can scope the Gbx classes for specific Trackmania/Shootmania games to hide unrelated properties and avoid large amount of null checks. These null checks will be done for you behind the scenes and will throw exceptions if they are "exceptional" for the game version you pick.
+Game Version Interfaces scope Gbx classes to specific Trackmania/Shootmania games, hiding unrelated properties. Required nullable-backed members are checked behind the scenes and throw exceptions when their values are missing for the selected contract.
 
 Currently, it is split into 3 ideas:
-- Chunk Game Version Specification *(partially available now)*
+- Chunk Game Version Specification
   - Every `CMwNod` has a member `GameVersion` that can guess from which game the Gbx file is, or where it could be supported.
-- Generated Game Version Interfaces *(still WIP)*
-- Generated Builders *(still WIP)*
+- Generated Game Version Interfaces, based on the layouts' game metadata
+- [Generated Builders](Docs/NodeBuilders.md) in the `GBX.NET.Builders` package, available where a supported creation recipe can be established
 
 Since 2.0.1, the experimentation of Game Version Interfaces started on the `CGameCtnChallenge` and `CGameCtnBlock` classes. Example:
 
@@ -504,7 +504,7 @@ using GBX.NET;
 using GBX.NET.Engines.Game;
 using GBX.NET.Interfaces.Game;
 
-var map = Gbx.ParseNode<CGameCtnChallenge, IGameCtnChallengeTMF>();
+var map = Gbx.ParseNode<CGameCtnChallenge, IGameCtnChallengeTMF>("Path/To/My.Map.Gbx");
 
 foreach (var block in map.GetBlocks())
 {
@@ -512,6 +512,17 @@ foreach (var block in map.GetBlocks())
     // Console.WriteLine(block.Color); -- block color is not available in TMF
 }
 ```
+
+Create a node with the selected game's chunks and defaults (requires the `GBX.NET.Builders` package):
+
+```cs
+var clip = CGameCtnMediaClip.Create()
+    .WithName("Intro")
+    .ForTMF()
+    .Build();
+```
+
+`Build()` returns the concrete node. `BuildInterface()` returns the selected game's interface. `ForTM2()` and `ForSM()` are aliases for `ForMP4()`. See [Generated node builders](Docs/NodeBuilders.md) for references, partial customizations, and recipe diagnostics.
 
 ## Optimization
 
@@ -635,6 +646,7 @@ GBX.NET 2 is licensed under multiple licenses, depending on the part of the proj
 
 - MIT License
   - **Src/GBX.NET**
+  - Src/GBX.NET.Builders
   - Src/GBX.NET.PAK
   - Src/GBX.NET.Crypto
   - Src/GBX.NET.Hashing

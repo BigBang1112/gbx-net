@@ -1,4 +1,3 @@
-using Microsoft.CodeAnalysis;
 using System.Text;
 
 namespace GBX.NET.Generators;
@@ -10,7 +9,7 @@ public class InputWithTimeGenerator : IIncrementalGenerator
     {
         var namesAndContents = context.CompilationProvider.Select(GetTypeSymbols);
 
-        context.RegisterSourceOutput(namesAndContents, GenerateSource);
+        context.RegisterLibraryOutput(namesAndContents, context.BuildersOnly(), GenerateSource);
     }
 
     private IEnumerable<INamedTypeSymbol> GetTypeSymbols(Compilation compilation, CancellationToken token)

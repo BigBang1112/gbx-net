@@ -1,6 +1,3 @@
-using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
-using System.Collections.Immutable;
 using System.Text;
 
 namespace GBX.NET.Generators;
@@ -12,7 +9,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
     {
         var readAndWriteSymbols = context.CompilationProvider.Select(GetReaderAndWriterMethods);
 
-        context.RegisterSourceOutput(readAndWriteSymbols, GenerateReaderWriterSource);
+        context.RegisterLibraryOutput(readAndWriteSymbols, context.BuildersOnly(), GenerateReaderWriterSource);
     }
 
     private IEnumerable<(IMethodSymbol ReaderMethod, IMethodSymbol WriterMethod, bool IsNamed)> GetReaderAndWriterMethods(Compilation compilation, CancellationToken token)

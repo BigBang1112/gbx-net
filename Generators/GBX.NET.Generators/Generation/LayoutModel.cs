@@ -1,7 +1,6 @@
 using ChunkL.Syntax;
 using GBX.NET.Generators.Analysis;
 using GBX.NET.Generators.Parsing;
-using System.Collections.Immutable;
 using System.Globalization;
 
 namespace GBX.NET.Generators.Generation;
