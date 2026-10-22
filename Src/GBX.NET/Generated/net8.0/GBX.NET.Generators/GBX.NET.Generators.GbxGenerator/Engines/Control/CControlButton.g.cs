@@ -86,24 +86,6 @@ public partial class CControlButton : CControlText, IClass
         set => NodeRef.SetEmbedded(ref actionSoundRef, value);
     }
 
-    private float clipLength = -1f;
-    /// <remarks>Applied with: 0x009 body chunk</remarks>
-    [AppliedWithChunk<Chunk07007009>]
-    public float ClipLength
-    {
-        get => this.clipLength;
-        set => this.clipLength = value;
-    }
-
-    private int textMode = 3;
-    /// <remarks>Applied with: 0x00A body chunk</remarks>
-    [AppliedWithChunk<Chunk0700700A>]
-    public int TextMode
-    {
-        get => this.textMode;
-        set => this.textMode = value;
-    }
-
     private int subIconIndexOn;
     /// <remarks>Applied with: 0x00B body chunk</remarks>
     [AppliedWithChunk<Chunk0700700B>]
@@ -148,8 +130,6 @@ public partial class CControlButton : CControlText, IClass
         ((CControlButton)clone).iconsId = context.Clone(this.iconsId)!;
         ((CControlButton)clone).subIconIndexOff = context.Clone(this.subIconIndexOff)!;
         ((CControlButton)clone).actionSoundRef = context.Clone(this.actionSoundRef)!;
-        ((CControlButton)clone).clipLength = context.Clone(this.clipLength)!;
-        ((CControlButton)clone).textMode = context.Clone(this.textMode)!;
         ((CControlButton)clone).subIconIndexOn = context.Clone(this.subIconIndexOn)!;
     }
 
@@ -421,7 +401,7 @@ public partial class CControlButton : CControlText, IClass
 
         public override void ReadWrite(CControlButton n, GbxReaderWriter rw)
         {
-            rw.Single(ref n.clipLength);
+            n.ClipLength = rw.Single(n.ClipLength);
         }
     }
 
@@ -440,7 +420,7 @@ public partial class CControlButton : CControlText, IClass
 
         public override void ReadWrite(CControlButton n, GbxReaderWriter rw)
         {
-            rw.Int32(ref n.textMode);
+            n.TextMode = rw.Int32(n.TextMode);
         }
     }
 

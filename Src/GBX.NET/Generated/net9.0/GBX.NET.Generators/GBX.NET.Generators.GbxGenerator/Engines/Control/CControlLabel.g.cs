@@ -39,29 +39,6 @@ public partial class CControlLabel : CControlText, IClass
         set => this.dontDrawText = value;
     }
 
-    private int maxLine = -1;
-    /// <remarks>Applied with: 0x003, 0x004, 0x005, 0x006 body chunks</remarks>
-    [AppliedWithChunk<Chunk07006003>]
-    [AppliedWithChunk<Chunk07006004>]
-    [AppliedWithChunk<Chunk07006005>]
-    [AppliedWithChunk<Chunk07006006>]
-    public int MaxLine
-    {
-        get => this.maxLine;
-        set => this.maxLine = value;
-    }
-
-    private float clipLength = -1f;
-    /// <remarks>Applied with: 0x004, 0x005, 0x006 body chunks</remarks>
-    [AppliedWithChunk<Chunk07006004>]
-    [AppliedWithChunk<Chunk07006005>]
-    [AppliedWithChunk<Chunk07006006>]
-    public float ClipLength
-    {
-        get => this.clipLength;
-        set => this.clipLength = value;
-    }
-
     private NodeRef<CPlugBitmap>? bitmapRef;
     /// <remarks>Applied with: 0x005, 0x006, 0x007, 0x009 body chunks</remarks>
     [AppliedWithChunk<Chunk07006005>]
@@ -72,15 +49,6 @@ public partial class CControlLabel : CControlText, IClass
     {
         get => bitmapRef?.Resolve();
         set => NodeRef.SetEmbedded(ref bitmapRef, value);
-    }
-
-    private int textMode = 3;
-    /// <remarks>Applied with: 0x006 body chunk</remarks>
-    [AppliedWithChunk<Chunk07006006>]
-    public int TextMode
-    {
-        get => this.textMode;
-        set => this.textMode = value;
     }
 
     private Vec4 imageColor = (1, 1, 1, 1);
@@ -118,10 +86,7 @@ public partial class CControlLabel : CControlText, IClass
         base.DeepCloneFields(clone, context);
         ((CControlLabel)clone).label = context.Clone(this.label)!;
         ((CControlLabel)clone).dontDrawText = context.Clone(this.dontDrawText)!;
-        ((CControlLabel)clone).maxLine = context.Clone(this.maxLine)!;
-        ((CControlLabel)clone).clipLength = context.Clone(this.clipLength)!;
         ((CControlLabel)clone).bitmapRef = context.Clone(this.bitmapRef)!;
-        ((CControlLabel)clone).textMode = context.Clone(this.textMode)!;
         ((CControlLabel)clone).imageColor = context.Clone(this.imageColor)!;
     }
 
@@ -234,7 +199,7 @@ public partial class CControlLabel : CControlText, IClass
 
         public override void ReadWrite(CControlLabel n, GbxReaderWriter rw)
         {
-            rw.Int32(ref n.maxLine);
+            n.MaxLine = rw.Int32(n.MaxLine);
         }
     }
 
@@ -253,8 +218,8 @@ public partial class CControlLabel : CControlText, IClass
 
         public override void ReadWrite(CControlLabel n, GbxReaderWriter rw)
         {
-            rw.Int32(ref n.maxLine);
-            rw.Single(ref n.clipLength);
+            n.MaxLine = rw.Int32(n.MaxLine);
+            n.ClipLength = rw.Single(n.ClipLength);
         }
     }
 
@@ -276,8 +241,8 @@ public partial class CControlLabel : CControlText, IClass
             rw.String(ref n.label);
             rw.NodeRef(ref n.bitmapRef);
             rw.Boolean(ref n.dontDrawText);
-            rw.Int32(ref n.maxLine);
-            rw.Single(ref n.clipLength);
+            n.MaxLine = rw.Int32(n.MaxLine);
+            n.ClipLength = rw.Single(n.ClipLength);
         }
     }
 
@@ -299,9 +264,9 @@ public partial class CControlLabel : CControlText, IClass
             rw.String(ref n.label);
             rw.NodeRef(ref n.bitmapRef);
             rw.Boolean(ref n.dontDrawText);
-            rw.Int32(ref n.maxLine);
-            rw.Single(ref n.clipLength);
-            rw.Int32(ref n.textMode);
+            n.MaxLine = rw.Int32(n.MaxLine);
+            n.ClipLength = rw.Single(n.ClipLength);
+            n.TextMode = rw.Int32(n.TextMode);
         }
     }
 

@@ -12,19 +12,9 @@ public partial class CTrackManiaControlCard : CGameControlCard, IClass
 
     internal override uint GetId() => Id;
 
-    private bool useDelays;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
-    [AppliedWithChunk<Chunk2408F000>]
-    public bool UseDelays
-    {
-        get => this.useDelays;
-        set => this.useDelays = value;
-    }
-
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CTrackManiaControlCard)clone).useDelays = context.Clone(this.useDelays)!;
     }
 
     public CTrackManiaControlCard()
@@ -46,7 +36,7 @@ public partial class CTrackManiaControlCard : CGameControlCard, IClass
 
         public override void ReadWrite(CTrackManiaControlCard n, GbxReaderWriter rw)
         {
-            rw.Boolean(ref n.useDelays);
+            n.UseDelays = rw.Boolean(n.UseDelays);
         }
     }
 

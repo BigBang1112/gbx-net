@@ -26,19 +26,19 @@ CControlEntry 0x07009000
   bool IsPassword
   int MaxLength = -1
   int Type
-  float ClipLength = -1f
+  float ClipLength = -1f (inherited)
 
 0x007
-  int MaxLine = -1
+  int MaxLine = -1 (inherited)
 
 0x008
   bool SetValueOnFocusLost = true
   bool IsPassword
   int Type
-  int TextMode = 3
+  int TextMode = 3 (inherited)
   int MaxLength = -1
-  float ClipLength = -1f
-  int MaxLine = -1
+  float ClipLength = -1f (inherited)
+  int MaxLine = -1 (inherited)
 
 0x009
   bool SetValueOnFocusLost = true

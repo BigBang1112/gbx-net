@@ -62,16 +62,16 @@ CControlEnum 0x0700A000
   bool IsLooping
   int
   int DisplayType
-  int TextMode
+  int TextMode (inherited)
   CFuncEnum FuncEnum
 
 0x009 // looping, display and text modes, enum and clip length
   bool IsLooping
   int
   int DisplayType
-  int TextMode
+  int TextMode (inherited)
   CFuncEnum FuncEnum
-  float ClipLength
+  float ClipLength (inherited)
 
 0x00A
   id[]

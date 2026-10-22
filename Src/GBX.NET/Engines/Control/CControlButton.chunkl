@@ -41,10 +41,10 @@ CControlButton 0x07007000
   CPlugSound ActionSound
 
 0x009
-  float ClipLength = -1f
+  float ClipLength = -1f (inherited)
 
 0x00A
-  int TextMode = 3
+  int TextMode = 3 (inherited)
 
 0x00B
   id IconsId

@@ -15,26 +15,26 @@ CControlLabel 0x07006000
   bool DontDrawText
 
 0x003
-  int MaxLine = -1
+  int MaxLine = -1 (inherited)
 
 0x004
-  int MaxLine = -1
-  float ClipLength = -1f
+  int MaxLine = -1 (inherited)
+  float ClipLength = -1f (inherited)
 
 0x005
   string Label
   CPlugBitmap Bitmap
   bool DontDrawText
-  int MaxLine = -1
-  float ClipLength = -1f
+  int MaxLine = -1 (inherited)
+  float ClipLength = -1f (inherited)
 
 0x006
   string Label
   CPlugBitmap Bitmap
   bool DontDrawText
-  int MaxLine = -1
-  float ClipLength = -1f
-  int TextMode = 3
+  int MaxLine = -1 (inherited)
+  float ClipLength = -1f (inherited)
+  int TextMode = 3 (inherited)
 
 0x007
   string Label

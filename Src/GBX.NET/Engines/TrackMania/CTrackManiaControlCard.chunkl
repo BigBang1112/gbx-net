@@ -2,6 +2,6 @@ CTrackManiaControlCard 0x2408F000
 - inherits: CGameControlCard
 
 0x000 // UseDelays
-  bool UseDelays
+  bool UseDelays (inherited)
 
 0x001

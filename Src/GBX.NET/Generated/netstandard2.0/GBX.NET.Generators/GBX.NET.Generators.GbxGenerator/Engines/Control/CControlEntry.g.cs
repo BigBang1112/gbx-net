@@ -68,35 +68,6 @@ public partial class CControlEntry : CControlText, IClass
         set => this.@type = value;
     }
 
-    private float clipLength = -1f;
-    /// <remarks>Applied with: 0x006, 0x008 body chunks</remarks>
-    [AppliedWithChunk<Chunk07009006>]
-    [AppliedWithChunk<Chunk07009008>]
-    public float ClipLength
-    {
-        get => this.clipLength;
-        set => this.clipLength = value;
-    }
-
-    private int maxLine = -1;
-    /// <remarks>Applied with: 0x007, 0x008 body chunks</remarks>
-    [AppliedWithChunk<Chunk07009007>]
-    [AppliedWithChunk<Chunk07009008>]
-    public int MaxLine
-    {
-        get => this.maxLine;
-        set => this.maxLine = value;
-    }
-
-    private int textMode = 3;
-    /// <remarks>Applied with: 0x008 body chunk</remarks>
-    [AppliedWithChunk<Chunk07009008>]
-    public int TextMode
-    {
-        get => this.textMode;
-        set => this.textMode = value;
-    }
-
     private bool selectAllOnFocusGained;
     /// <remarks>Applied with: 0x009, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk07009009>]
@@ -123,9 +94,6 @@ public partial class CControlEntry : CControlText, IClass
         ((CControlEntry)clone).isPassword = context.Clone(this.isPassword)!;
         ((CControlEntry)clone).maxLength = context.Clone(this.maxLength)!;
         ((CControlEntry)clone).@type = context.Clone(this.@type)!;
-        ((CControlEntry)clone).clipLength = context.Clone(this.clipLength)!;
-        ((CControlEntry)clone).maxLine = context.Clone(this.maxLine)!;
-        ((CControlEntry)clone).textMode = context.Clone(this.textMode)!;
         ((CControlEntry)clone).selectAllOnFocusGained = context.Clone(this.selectAllOnFocusGained)!;
         ((CControlEntry)clone).isNewPassword = context.Clone(this.isNewPassword)!;
     }
@@ -257,7 +225,7 @@ public partial class CControlEntry : CControlText, IClass
             rw.Boolean(ref n.isPassword);
             rw.Int32(ref n.maxLength);
             rw.Int32(ref n.@type);
-            rw.Single(ref n.clipLength);
+            n.ClipLength = rw.Single(n.ClipLength);
         }
     }
 
@@ -276,7 +244,7 @@ public partial class CControlEntry : CControlText, IClass
 
         public override void ReadWrite(CControlEntry n, GbxReaderWriter rw)
         {
-            rw.Int32(ref n.maxLine);
+            n.MaxLine = rw.Int32(n.MaxLine);
         }
     }
 
@@ -298,10 +266,10 @@ public partial class CControlEntry : CControlText, IClass
             rw.Boolean(ref n.setValueOnFocusLost);
             rw.Boolean(ref n.isPassword);
             rw.Int32(ref n.@type);
-            rw.Int32(ref n.textMode);
+            n.TextMode = rw.Int32(n.TextMode);
             rw.Int32(ref n.maxLength);
-            rw.Single(ref n.clipLength);
-            rw.Int32(ref n.maxLine);
+            n.ClipLength = rw.Single(n.ClipLength);
+            n.MaxLine = rw.Int32(n.MaxLine);
         }
     }
 

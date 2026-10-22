@@ -89,25 +89,6 @@ public partial class CControlEnum : CControlText, IClass
         set => NodeRef.SetEmbedded(ref funcEnumRef, value);
     }
 
-    private int textMode;
-    /// <remarks>Applied with: 0x008, 0x009 body chunks</remarks>
-    [AppliedWithChunk<Chunk0700A008>]
-    [AppliedWithChunk<Chunk0700A009>]
-    public int TextMode
-    {
-        get => this.textMode;
-        set => this.textMode = value;
-    }
-
-    private float clipLength;
-    /// <remarks>Applied with: 0x009 body chunk</remarks>
-    [AppliedWithChunk<Chunk0700A009>]
-    public float ClipLength
-    {
-        get => this.clipLength;
-        set => this.clipLength = value;
-    }
-
     public new NodeRefView References => new(this);
     public new readonly struct NodeRefView
     {
@@ -145,8 +126,6 @@ public partial class CControlEnum : CControlText, IClass
         ((CControlEnum)clone).enumListShaderRef = context.Clone(this.enumListShaderRef)!;
         ((CControlEnum)clone).enumIconWidth = context.Clone(this.enumIconWidth)!;
         ((CControlEnum)clone).funcEnumRef = context.Clone(this.funcEnumRef)!;
-        ((CControlEnum)clone).textMode = context.Clone(this.textMode)!;
-        ((CControlEnum)clone).clipLength = context.Clone(this.clipLength)!;
     }
 
     public CControlEnum()
@@ -442,7 +421,7 @@ public partial class CControlEnum : CControlText, IClass
             rw.Boolean(ref n.isLooping);
             rw.Int32(ref U01);
             rw.Int32(ref n.displayType);
-            rw.Int32(ref n.textMode);
+            n.TextMode = rw.Int32(n.TextMode);
             rw.NodeRef(ref n.funcEnumRef);
         }
     }
@@ -467,9 +446,9 @@ public partial class CControlEnum : CControlText, IClass
             rw.Boolean(ref n.isLooping);
             rw.Int32(ref U01);
             rw.Int32(ref n.displayType);
-            rw.Int32(ref n.textMode);
+            n.TextMode = rw.Int32(n.TextMode);
             rw.NodeRef(ref n.funcEnumRef);
-            rw.Single(ref n.clipLength);
+            n.ClipLength = rw.Single(n.ClipLength);
         }
     }
 
