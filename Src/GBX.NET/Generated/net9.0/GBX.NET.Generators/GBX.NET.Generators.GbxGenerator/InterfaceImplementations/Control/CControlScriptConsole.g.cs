@@ -5,5 +5,4 @@ namespace GBX.NET.Engines.Control;
 
 public partial class CControlScriptConsole : global::GBX.NET.Interfaces.Control.IControlScriptConsole, global::GBX.NET.Interfaces.Control.IControlScriptConsoleTM10, global::GBX.NET.Interfaces.Control.IControlScriptConsoleTMPU, global::GBX.NET.Interfaces.Control.IControlScriptConsoleTMSX, global::GBX.NET.Interfaces.Control.IControlScriptConsoleTMNESWC, global::GBX.NET.Interfaces.Control.IControlScriptConsoleVSK5, global::GBX.NET.Interfaces.Control.IControlScriptConsoleTMF, global::GBX.NET.Interfaces.Control.IControlScriptConsoleMP3, global::GBX.NET.Interfaces.Control.IControlScriptConsoleTMT, global::GBX.NET.Interfaces.Control.IControlScriptConsoleMP4, global::GBX.NET.Interfaces.Control.IControlScriptConsoleTM2020
 {
-    internal NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? GetObjectLinkInterfaceReferences() => ObjectLink;
 }

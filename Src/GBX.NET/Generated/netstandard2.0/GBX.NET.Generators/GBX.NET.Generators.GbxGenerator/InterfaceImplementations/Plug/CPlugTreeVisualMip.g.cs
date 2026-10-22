@@ -245,5 +245,4 @@ public partial class CPlugTreeVisualMip : global::GBX.NET.Interfaces.Plug.IPlugT
         get => Visual;
         set => Visual = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVisual node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    internal NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>? GetChildrenInterfaceReferences() => Children;
 }

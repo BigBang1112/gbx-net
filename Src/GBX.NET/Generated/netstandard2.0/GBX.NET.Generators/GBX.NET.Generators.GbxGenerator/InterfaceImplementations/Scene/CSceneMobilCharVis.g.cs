@@ -100,5 +100,4 @@ public partial class CSceneMobilCharVis : global::GBX.NET.Interfaces.Scene.IScen
         get => Motion;
         set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    internal NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? GetObjectLinkInterfaceReferences() => ObjectLink;
 }

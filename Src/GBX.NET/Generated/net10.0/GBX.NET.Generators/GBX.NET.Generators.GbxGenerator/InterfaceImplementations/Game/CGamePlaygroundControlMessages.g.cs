@@ -5,5 +5,4 @@ namespace GBX.NET.Engines.Game;
 
 public partial class CGamePlaygroundControlMessages : global::GBX.NET.Interfaces.Game.IGamePlaygroundControlMessages, global::GBX.NET.Interfaces.Game.IGamePlaygroundControlMessagesTM10, global::GBX.NET.Interfaces.Game.IGamePlaygroundControlMessagesTMPU, global::GBX.NET.Interfaces.Game.IGamePlaygroundControlMessagesTMSX, global::GBX.NET.Interfaces.Game.IGamePlaygroundControlMessagesTMNESWC, global::GBX.NET.Interfaces.Game.IGamePlaygroundControlMessagesVSK5, global::GBX.NET.Interfaces.Game.IGamePlaygroundControlMessagesTMF, global::GBX.NET.Interfaces.Game.IGamePlaygroundControlMessagesMP3, global::GBX.NET.Interfaces.Game.IGamePlaygroundControlMessagesTMT, global::GBX.NET.Interfaces.Game.IGamePlaygroundControlMessagesMP4, global::GBX.NET.Interfaces.Game.IGamePlaygroundControlMessagesTM2020
 {
-    internal NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? GetObjectLinkInterfaceReferences() => ObjectLink;
 }

@@ -5,5 +5,4 @@ namespace GBX.NET.Engines.Game;
 
 public partial class CGameControlCardNetOnlineNews : global::GBX.NET.Interfaces.Game.IGameControlCardNetOnlineNews, global::GBX.NET.Interfaces.Game.IGameControlCardNetOnlineNewsTMF
 {
-    internal NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? GetObjectLinkInterfaceReferences() => ObjectLink;
 }

@@ -5,5 +5,4 @@ namespace GBX.NET.Engines.Scene;
 
 public partial class CSceneVehicle : global::GBX.NET.Interfaces.Scene.ISceneVehicle, global::GBX.NET.Interfaces.Scene.ISceneVehicleTM10, global::GBX.NET.Interfaces.Scene.ISceneVehicleTMPU, global::GBX.NET.Interfaces.Scene.ISceneVehicleTMSX, global::GBX.NET.Interfaces.Scene.ISceneVehicleTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneVehicleVSK5, global::GBX.NET.Interfaces.Scene.ISceneVehicleTMF, global::GBX.NET.Interfaces.Scene.ISceneVehicleMP3, global::GBX.NET.Interfaces.Scene.ISceneVehicleTMT, global::GBX.NET.Interfaces.Scene.ISceneVehicleMP4, global::GBX.NET.Interfaces.Scene.ISceneVehicleTM2020
 {
-    internal NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? GetObjectLinkInterfaceReferences() => ObjectLink;
 }

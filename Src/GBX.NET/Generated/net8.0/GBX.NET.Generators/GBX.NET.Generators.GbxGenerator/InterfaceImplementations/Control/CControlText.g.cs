@@ -5,5 +5,4 @@ namespace GBX.NET.Engines.Control;
 
 public partial class CControlText : global::GBX.NET.Interfaces.Control.IControlText, global::GBX.NET.Interfaces.Control.IControlTextTM10, global::GBX.NET.Interfaces.Control.IControlTextTMPU, global::GBX.NET.Interfaces.Control.IControlTextTMSX, global::GBX.NET.Interfaces.Control.IControlTextTMNESWC, global::GBX.NET.Interfaces.Control.IControlTextVSK5, global::GBX.NET.Interfaces.Control.IControlTextTMF, global::GBX.NET.Interfaces.Control.IControlTextMP3, global::GBX.NET.Interfaces.Control.IControlTextTMT, global::GBX.NET.Interfaces.Control.IControlTextMP4, global::GBX.NET.Interfaces.Control.IControlTextTM2020
 {
-    internal NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? GetObjectLinkInterfaceReferences() => ObjectLink;
 }

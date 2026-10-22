@@ -155,5 +155,4 @@ public partial class CPlugShaderGeneric : global::GBX.NET.Interfaces.Plug.IPlugS
         get => SolidWiredApply;
         set => SolidWiredApply = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    internal NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>? GetPassesInterfaceReferences() => Passes;
 }

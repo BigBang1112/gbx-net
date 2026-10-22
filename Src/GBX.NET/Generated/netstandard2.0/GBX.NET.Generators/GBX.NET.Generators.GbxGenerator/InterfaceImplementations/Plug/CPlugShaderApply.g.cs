@@ -346,6 +346,5 @@ public partial class CPlugShaderApply : global::GBX.NET.Interfaces.Plug.IPlugSha
         set => UnusedBitmapAddresses = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTM2020>(value, false));
     }
     internal NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>? GetBitmapAddressesInterfaceReferences() => BitmapAddresses;
-    internal NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>? GetPassesInterfaceReferences() => Passes;
     internal NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>? GetUnusedBitmapAddressesInterfaceReferences() => UnusedBitmapAddresses;
 }

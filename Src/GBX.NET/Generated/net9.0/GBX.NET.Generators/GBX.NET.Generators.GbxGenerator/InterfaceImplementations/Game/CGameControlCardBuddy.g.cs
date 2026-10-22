@@ -5,5 +5,4 @@ namespace GBX.NET.Engines.Game;
 
 public partial class CGameControlCardBuddy : global::GBX.NET.Interfaces.Game.IGameControlCardBuddy, global::GBX.NET.Interfaces.Game.IGameControlCardBuddyTM10, global::GBX.NET.Interfaces.Game.IGameControlCardBuddyTMPU, global::GBX.NET.Interfaces.Game.IGameControlCardBuddyTMSX, global::GBX.NET.Interfaces.Game.IGameControlCardBuddyTMNESWC, global::GBX.NET.Interfaces.Game.IGameControlCardBuddyVSK5, global::GBX.NET.Interfaces.Game.IGameControlCardBuddyTMF, global::GBX.NET.Interfaces.Game.IGameControlCardBuddyMP3, global::GBX.NET.Interfaces.Game.IGameControlCardBuddyTMT, global::GBX.NET.Interfaces.Game.IGameControlCardBuddyMP4, global::GBX.NET.Interfaces.Game.IGameControlCardBuddyTM2020
 {
-    internal NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? GetObjectLinkInterfaceReferences() => ObjectLink;
 }

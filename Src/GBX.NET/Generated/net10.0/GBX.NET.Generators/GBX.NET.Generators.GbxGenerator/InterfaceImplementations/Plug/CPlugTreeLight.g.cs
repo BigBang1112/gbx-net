@@ -5,5 +5,4 @@ namespace GBX.NET.Engines.Plug;
 
 public partial class CPlugTreeLight : global::GBX.NET.Interfaces.Plug.IPlugTreeLight, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTM10, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMPU, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMSX, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugTreeLightVSK5, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMF, global::GBX.NET.Interfaces.Plug.IPlugTreeLightMP3, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMT, global::GBX.NET.Interfaces.Plug.IPlugTreeLightMP4, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTM2020
 {
-    internal NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>? GetChildrenInterfaceReferences() => Children;
 }

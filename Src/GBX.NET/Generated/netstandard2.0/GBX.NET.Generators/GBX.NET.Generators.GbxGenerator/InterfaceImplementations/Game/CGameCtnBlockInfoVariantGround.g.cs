@@ -171,5 +171,4 @@ public partial class CGameCtnBlockInfoVariantGround : global::GBX.NET.Interfaces
         set => WaypointTriggerSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     internal NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain>? GetAutoTerrainsInterfaceReferences() => AutoTerrains;
-    internal NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo>? GetBlockUnitModelsInterfaceReferences() => BlockUnitModels;
 }

@@ -5,5 +5,4 @@ namespace GBX.NET.Engines.Game;
 
 public partial class CGameControlCard : global::GBX.NET.Interfaces.Game.IGameControlCard, global::GBX.NET.Interfaces.Game.IGameControlCardTM10, global::GBX.NET.Interfaces.Game.IGameControlCardTMPU, global::GBX.NET.Interfaces.Game.IGameControlCardTMSX, global::GBX.NET.Interfaces.Game.IGameControlCardTMNESWC, global::GBX.NET.Interfaces.Game.IGameControlCardVSK5, global::GBX.NET.Interfaces.Game.IGameControlCardTMF, global::GBX.NET.Interfaces.Game.IGameControlCardMP3, global::GBX.NET.Interfaces.Game.IGameControlCardTMT, global::GBX.NET.Interfaces.Game.IGameControlCardMP4, global::GBX.NET.Interfaces.Game.IGameControlCardTM2020
 {
-    internal NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? GetObjectLinkInterfaceReferences() => ObjectLink;
 }

@@ -118,15 +118,31 @@ internal static class GameInterfaceWriter
                 code.Line($"{returned} {node.Interface(game)}.{method.Declaration.Identifier.Text}({method.Parameters}) => {method.Declaration.Identifier.Text}({method.Arguments});");
             }
         }
-        foreach (var member in node.Members.Where(m => m.Field?.StorageDeclaration.Type.ArrayDimensions == 1 &&
-            node.Views.Any(game => node.MembersFor(game).Contains(m) &&
-                !model.ExistingProperty(node, game, m) && !model.InheritedProperty(node, game, m) && model.Project(m, game) != m.Type)))
+        foreach (var member in node.Members.Where(m => NeedsInterfaceReferences(node, m, model)))
         {
+            // A base node already reading the same property shares its helper.
+            var inherited = InheritedInterfaceReferences(node, member, model);
+            if (inherited?.Owner == member.Owner) continue;
             var element = GameNodeModel.Qualify(ReferenceModel.Element(member.Field!), member.Owner, model.Plan);
-            code.Line($"internal NodeRefList<{element}>? Get{member.Name}InterfaceReferences() => {SyntaxOverlap.Escape(member.Name)};");
+            code.Line($"internal {(inherited is null ? "" : "new ")}NodeRefList<{element}>? Get{member.Name}InterfaceReferences() => {SyntaxOverlap.Escape(member.Name)};");
         }
         code.Close();
         return code.ToString();
+    }
+
+    private static bool NeedsInterfaceReferences(GameNodeModel node, GameMember member, GameVersionModel model)
+        => member.Field?.StorageDeclaration.Type.ArrayDimensions == 1 && node.Views.Any(game => node.MembersFor(game).Contains(member) &&
+            !model.ExistingProperty(node, game, member) && !model.InheritedProperty(node, game, member) && model.Project(member, game) != member.Type);
+
+    private static GameMember? InheritedInterfaceReferences(GameNodeModel node, GameMember member, GameVersionModel model)
+    {
+        foreach (var layout in GameNodeModel.Hierarchy(node.Layout, model.Plan.Layouts).Skip(1))
+        {
+            if (!model.Nodes.TryGetValue(layout.Name, out var ancestor) || ancestor.Games.Count == 0) continue;
+            var inherited = ancestor.Members.FirstOrDefault(m => m.Name == member.Name);
+            if (inherited is not null && NeedsInterfaceReferences(ancestor, inherited, model)) return inherited;
+        }
+        return null;
     }
 
     // A node member hiding an unprojected base node member would otherwise

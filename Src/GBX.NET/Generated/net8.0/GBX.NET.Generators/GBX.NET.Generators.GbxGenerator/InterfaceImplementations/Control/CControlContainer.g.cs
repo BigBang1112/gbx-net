@@ -5,5 +5,4 @@ namespace GBX.NET.Engines.Control;
 
 public partial class CControlContainer : global::GBX.NET.Interfaces.Control.IControlContainer, global::GBX.NET.Interfaces.Control.IControlContainerTM10, global::GBX.NET.Interfaces.Control.IControlContainerTMPU, global::GBX.NET.Interfaces.Control.IControlContainerTMSX, global::GBX.NET.Interfaces.Control.IControlContainerTMNESWC, global::GBX.NET.Interfaces.Control.IControlContainerVSK5, global::GBX.NET.Interfaces.Control.IControlContainerTMF, global::GBX.NET.Interfaces.Control.IControlContainerMP3, global::GBX.NET.Interfaces.Control.IControlContainerTMT, global::GBX.NET.Interfaces.Control.IControlContainerMP4, global::GBX.NET.Interfaces.Control.IControlContainerTM2020
 {
-    internal NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? GetObjectLinkInterfaceReferences() => ObjectLink;
 }

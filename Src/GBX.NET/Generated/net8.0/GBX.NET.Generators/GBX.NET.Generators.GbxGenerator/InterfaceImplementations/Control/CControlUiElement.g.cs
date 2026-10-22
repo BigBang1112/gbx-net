@@ -5,5 +5,4 @@ namespace GBX.NET.Engines.Control;
 
 public partial class CControlUiElement : global::GBX.NET.Interfaces.Control.IControlUiElement, global::GBX.NET.Interfaces.Control.IControlUiElementTM10, global::GBX.NET.Interfaces.Control.IControlUiElementTMPU, global::GBX.NET.Interfaces.Control.IControlUiElementTMSX, global::GBX.NET.Interfaces.Control.IControlUiElementTMNESWC, global::GBX.NET.Interfaces.Control.IControlUiElementVSK5, global::GBX.NET.Interfaces.Control.IControlUiElementTMF, global::GBX.NET.Interfaces.Control.IControlUiElementMP3, global::GBX.NET.Interfaces.Control.IControlUiElementTMT, global::GBX.NET.Interfaces.Control.IControlUiElementMP4, global::GBX.NET.Interfaces.Control.IControlUiElementTM2020
 {
-    internal NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? GetObjectLinkInterfaceReferences() => ObjectLink;
 }

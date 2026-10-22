@@ -5,5 +5,4 @@ namespace GBX.NET.Engines.Control;
 
 public partial class CControlListCard : global::GBX.NET.Interfaces.Control.IControlListCard, global::GBX.NET.Interfaces.Control.IControlListCardTM10, global::GBX.NET.Interfaces.Control.IControlListCardTMPU, global::GBX.NET.Interfaces.Control.IControlListCardTMSX, global::GBX.NET.Interfaces.Control.IControlListCardTMNESWC, global::GBX.NET.Interfaces.Control.IControlListCardVSK5, global::GBX.NET.Interfaces.Control.IControlListCardTMF, global::GBX.NET.Interfaces.Control.IControlListCardMP3, global::GBX.NET.Interfaces.Control.IControlListCardTMT, global::GBX.NET.Interfaces.Control.IControlListCardMP4, global::GBX.NET.Interfaces.Control.IControlListCardTM2020
 {
-    internal NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? GetObjectLinkInterfaceReferences() => ObjectLink;
 }

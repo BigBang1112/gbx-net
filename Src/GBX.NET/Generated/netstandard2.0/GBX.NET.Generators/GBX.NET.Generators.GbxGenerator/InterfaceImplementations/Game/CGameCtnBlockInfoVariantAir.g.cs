@@ -145,5 +145,4 @@ public partial class CGameCtnBlockInfoVariantAir : global::GBX.NET.Interfaces.Ga
         get => WaypointTriggerSolid;
         set => WaypointTriggerSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    internal NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo>? GetBlockUnitModelsInterfaceReferences() => BlockUnitModels;
 }

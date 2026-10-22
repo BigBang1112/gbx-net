@@ -255,5 +255,4 @@ public partial class CVskCollection : global::GBX.NET.Interfaces.VirtualSkipper.
         get => IconSmallFid;
         set => IconSmallFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    internal NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZone>? GetCompleteZoneListInterfaceReferences() => CompleteZoneList;
 }

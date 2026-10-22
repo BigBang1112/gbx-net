@@ -5,5 +5,4 @@ namespace GBX.NET.Engines.TrackMania;
 
 public partial class CCtnControlNetTeamInfoCard : global::GBX.NET.Interfaces.TrackMania.ICtnControlNetTeamInfoCard, global::GBX.NET.Interfaces.TrackMania.ICtnControlNetTeamInfoCardTM10, global::GBX.NET.Interfaces.TrackMania.ICtnControlNetTeamInfoCardTMPU, global::GBX.NET.Interfaces.TrackMania.ICtnControlNetTeamInfoCardTMSX, global::GBX.NET.Interfaces.TrackMania.ICtnControlNetTeamInfoCardTMNESWC, global::GBX.NET.Interfaces.TrackMania.ICtnControlNetTeamInfoCardVSK5, global::GBX.NET.Interfaces.TrackMania.ICtnControlNetTeamInfoCardTMF, global::GBX.NET.Interfaces.TrackMania.ICtnControlNetTeamInfoCardMP3, global::GBX.NET.Interfaces.TrackMania.ICtnControlNetTeamInfoCardTMT, global::GBX.NET.Interfaces.TrackMania.ICtnControlNetTeamInfoCardMP4, global::GBX.NET.Interfaces.TrackMania.ICtnControlNetTeamInfoCardTM2020
 {
-    internal NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? GetObjectLinkInterfaceReferences() => ObjectLink;
 }
