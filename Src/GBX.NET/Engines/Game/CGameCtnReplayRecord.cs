@@ -334,7 +334,7 @@ public partial class CGameCtnReplayRecord
     public ImmutableList<InterfaceScriptInfo>? InterfaceScriptInfos => interfaceScriptInfos;
 
     /// <summary>
-    /// Inputs (keyboard, pad, wheel) of the replay ONLY from TM1.0 (2003). For inputs stored in other games: see <see cref="CGameCtnGhost.Inputs"/> in <see cref="Ghosts"/>. TM2020 and Shootmania inputs are available in <see cref="Ghosts"/> in <see cref="CGameCtnGhost.PlayerInputs"/>. Can be null if <see cref="EventsDuration"/> is 0, which can happen when you save the replay in editor.
+    /// Inputs (keyboard, pad, wheel) of the replay ONLY from TM1.0 (2003). For inputs stored in other games: see <see cref="CGameCtnGhost.Inputs"/> in <see cref="Ghosts"/>. TM2020 and Shootmania inputs are available in <see cref="Ghosts"/> in <see cref="CGameCtnGhost.PlayerInputs"/>. Can be null if <see cref="CGameCtnGhost.EventsDuration"/> is 0, which can happen when you save the replay in editor.
     /// </summary>
     /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk03093003>]

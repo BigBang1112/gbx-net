@@ -1,12 +1,64 @@
 using GBX.NET.Engines.Game;
 using GBX.NET.Exceptions;
 using GBX.NET.Serialization;
+using System.Xml.Linq;
 
 namespace GBX.NET.Tests.Unit.Engines.Game;
 
 [Category("Unit")]
 public class CGameCtnChallengeTests
 {
+    [Test]
+    [Arguments(false)]
+    [Arguments(true)]
+    public async Task CreateHeaderXml_MissingIntroAndGroupClip_IncludesOtherMediaDependencies(bool endRace)
+    {
+        var image = new CGameCtnMediaBlockImage { Image = new PackDesc("Media/image.png") };
+        var clip = new CGameCtnMediaClip { Tracks = [new CGameCtnMediaTrack { Blocks = [image] }] };
+        var group = new CGameCtnMediaClipGroup
+        {
+            Clips = [default, new(clip, new())]
+        };
+        var map = new CGameCtnChallenge
+        {
+            MapInfo = new Ident("Map", "Stadium", "Author"),
+            ClipGroupInGame = endRace ? null : group,
+            ClipGroupEndRace = endRace ? group : null,
+            ClipGlobal = new CGameCtnMediaClip
+            {
+                Tracks = [new CGameCtnMediaTrack { Blocks = [new CGameCtnMediaBlockSound { Sound = new PackDesc("Media/sound.ogg") }] }]
+            }
+        };
+
+        var xml = XDocument.Parse(map.CreateHeaderXml(GameVersion.TM2020));
+        var files = xml.Descendants("dep").Select(x => (string?)x.Attribute("file") ?? throw new InvalidDataException("Dependency has no file attribute.")).ToArray();
+
+        await Assert.That(files).IsEquivalentTo(new[] { "Media/image.png", "Media/sound.ogg" }, CollectionOrdering.Matching);
+    }
+
+    [Test]
+    [Arguments(false)]
+    [Arguments(true)]
+    public void WriteBlocks_NullEntryWithCoordinateOffset_ThrowsInvalidOperationException(bool baked)
+    {
+        var map = new CGameCtnChallenge();
+        var blocks = new NodeRefList<CGameCtnBlock>();
+        blocks.Add(new NodeRef<CGameCtnBlock>());
+        if (baked) map.BakedBlocks = blocks;
+        else map.Blocks = blocks;
+        using var stream = new MemoryStream();
+        using var writer = new GbxWriter(stream);
+
+        if (baked)
+        {
+            Assert.Throws<InvalidOperationException>(() => new CGameCtnChallenge.Chunk03043048 { BlocksVersion = 6 }.Write(map, writer));
+        }
+        else
+        {
+            Assert.Throws<InvalidOperationException>(() => new CGameCtnChallenge.Chunk0304301F { Version = 6 }.Write(map, writer));
+        }
+    }
+
     [Test]
     [Arguments(5, false)]
     [Arguments(8, false)]

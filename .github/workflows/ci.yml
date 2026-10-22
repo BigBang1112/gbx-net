@@ -44,6 +44,5 @@ jobs:
         10.0.x
         9.0.x
         8.0.x
-      # WebAssembly apps build without native relinking and the wasm-tools workload.
       restore-args: -p:SkipWasmNative=true
       build-args: -p:SkipWasmNative=true

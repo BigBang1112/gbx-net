@@ -107,9 +107,9 @@ public partial class CPlugTree
     {
         return GetAllChildren(this, includeVisualMipLevels);
 
-        static IEnumerable<CPlugTree> GetAllChildren(CPlugTree tree, bool includeVisualMipLevels)
+        static IEnumerable<CPlugTree> GetAllChildren(CPlugTree? tree, bool includeVisualMipLevels)
         {
-            if (tree.Children is null)
+            if (tree?.Children is null)
             {
                 yield break;
             }
@@ -148,10 +148,8 @@ public partial class CPlugTree
                 location = tree.Location ?? Iso4.Identity;
             }
 
-            if (tree is CPlugTreeVisualMip mip)
+            if (tree is CPlugTreeVisualMip mip && GetLodTree(mip, lod) is { } lodChild)
             {
-                var lodChild = GetLodTree(mip, lod);
-
                 var newLocation = MultiplyAddIso4(location, lodChild.Location.GetValueOrDefault(Iso4.Identity));
 
                 foreach (var descendant in GetAllChildren(lodChild, lod, newLocation))
@@ -201,15 +199,14 @@ public partial class CPlugTree
             );
         }
 
-        static CPlugTree GetLodTree(CPlugTreeVisualMip mip, int lod)
+        static CPlugTree? GetLodTree(CPlugTreeVisualMip mip, int lod)
         {
             return mip.Levels
                 .OrderBy(x => x.FarZ)
                 .Select(x => x.Tree)
                 .ElementAtOrDefault(lod) ?? mip.Levels
                     .OrderBy(x => x.FarZ)
-                    .First()
-                    .Tree;
+                    .FirstOrDefault()?.Tree;
         }
     }
 

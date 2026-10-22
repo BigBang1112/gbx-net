@@ -1027,12 +1027,12 @@ public partial class CGameCtnChallenge :
 
         void AppendMediaTrackerDeps(StringBuilder sb)
         {
-            foreach (var block in ClipIntro?.Tracks
-                .Concat(ClipGroupInGame?.Clips.SelectMany(x => x.Clip?.Tracks) ?? [])
-                .Concat(ClipGroupEndRace?.Clips.SelectMany(x => x.Clip?.Tracks) ?? [])
+            foreach (var block in (ClipIntro?.Tracks ?? [])
+                .Concat(ClipGroupInGame?.Clips.SelectMany(x => x.Clip?.Tracks ?? []) ?? [])
+                .Concat(ClipGroupEndRace?.Clips.SelectMany(x => x.Clip?.Tracks ?? []) ?? [])
                 .Concat(ClipGlobal?.Tracks ?? [])
                 .Concat(ClipAmbiance?.Tracks ?? [])
-                .SelectMany(x => x.Blocks) ?? [])
+                .SelectMany(x => x.Blocks))
             {
                 switch (block)
                 {
@@ -1267,6 +1267,11 @@ public partial class CGameCtnChallenge :
 
             foreach (var block in n.blocks.GetEmbeddedNodes())
             {
+                if (block is null)
+                {
+                    throw new InvalidOperationException("Blocks cannot contain null entries when writing coordinates.");
+                }
+
                 try
                 {
                     block.Coord += new Int3(1, 0, 1);
@@ -1719,6 +1724,11 @@ public partial class CGameCtnChallenge :
                 {
                     foreach (var block in n.bakedBlocks.GetEmbeddedNodes())
                     {
+                        if (block is null)
+                        {
+                            throw new InvalidOperationException("Baked blocks cannot contain null entries when writing coordinates.");
+                        }
+
                         try
                         {
                             block.Coord += new Int3(1, 0, 1);

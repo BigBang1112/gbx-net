@@ -9,6 +9,41 @@ namespace GBX.NET.Tests.Unit.Engines.Plug;
 public class CPlugTreeLayoutTests
 {
     [Test]
+    public async Task GetAllChildren_MissingMipTree_ContinuesToOtherLevelsAndChildren()
+    {
+        var descendant = new CPlugTree();
+        var sibling = new CPlugTree();
+        var mip = new CPlugTreeVisualMip
+        {
+            Levels = [new(10, null), new(20, new CPlugTree { Children = [descendant] })]
+        };
+        var root = new CPlugTree { Children = [mip, sibling] };
+
+        await Assert.That(root.GetAllChildren(includeVisualMipLevels: true).ToArray())
+            .IsEquivalentTo(new CPlugTree[] { mip, descendant, sibling }, CollectionOrdering.Matching);
+    }
+
+    [Test]
+    [Arguments(false)]
+    [Arguments(true)]
+    public async Task GetAllChildrenWithLocation_MissingMipTree_PreservesRegularChildren(bool emptyLevels)
+    {
+        var child = new CPlugTree { Location = Iso4.Identity with { TX = 2 } };
+        var mip = new CPlugTreeVisualMip
+        {
+            Children = [child],
+            Location = Iso4.Identity with { TY = 3 },
+            Levels = emptyLevels ? [] : [new(10, null)]
+        };
+
+        var children = mip.GetAllChildrenWithLocation().ToArray();
+
+        await Assert.That(children).HasSingleItem();
+        await Assert.That(children[0].Tree).IsSameReferenceAs(child);
+        await Assert.That(children[0].Location).IsEqualTo(Iso4.Identity with { TX = 2, TY = 3 });
+    }
+
+    [Test]
     [Arguments(false)]
     [Arguments(true)]
     public async Task ReadWrite_ModelReference_ControlsModelIdAndPropertyPayload(bool hasModel)

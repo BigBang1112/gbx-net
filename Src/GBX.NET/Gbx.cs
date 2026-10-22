@@ -462,7 +462,7 @@ public partial class Gbx : IGbx
             ClassIdRemapMode = classIdRemapMode
         };
 
-        Header.Write(writer, Node, settings);
+        Header.Write(writer, Node);
 
         var hasRawBodyData = !Body.RawData.IsDefaultOrEmpty;
         var outputRefTable = hasRawBodyData ? RefTable : new GbxRefTable

@@ -105,7 +105,7 @@ public partial interface IGbxWriter : IDisposable
     void WriteZlibData(ZlibData? value, Action<GbxWriter> action);
     void WriteOptimizedInt(int value, int determineFrom);
     void WriteVarNat15(short value);
-    void WriteWritable<T>(T? value, int version = 0) where T : IWritable, new();
+    void WriteWritable<T>(T? value, int version = 0) where T : IWritable?, new();
     void WriteWritable<TWritable, TNode>(TWritable? value, TNode node, int version = 0)
         where TNode : IClass
         where TWritable : IWritable<TNode>, new();
@@ -160,8 +160,8 @@ public partial interface IGbxWriter : IDisposable
     void WriteArrayWritable_deprec<T>(T[]? value, bool byteLengthPrefix = false, int version = 0) where T : IWritable, new();
     /// <summary>Writes an array of rows. A null length writes an Int32 length prefix for that dimension.</summary>
     void WriteJaggedArrayWritable<T>(T[][]? value, int? innerLength = null, int? outerLength = null, int version = 0) where T : IWritable, new();
-    void WriteListWritable<T>(List<T>? value, bool byteLengthPrefix = false, int version = 0) where T : IWritable, new();
-    void WriteListWritable_deprec<T>(List<T>? value, bool byteLengthPrefix = false, int version = 0) where T : IWritable, new();
+    void WriteListWritable<T>(List<T>? value, bool byteLengthPrefix = false, int version = 0) where T : IWritable?, new();
+    void WriteListWritable_deprec<T>(List<T>? value, bool byteLengthPrefix = false, int version = 0) where T : IWritable?, new();
 
     void WriteArrayId(string[]? value);
     void WriteArrayId(string[]? value, int length);
@@ -1059,7 +1059,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         if (value is not CMwNod nod) throw new NotSupportedException("Meta references require a CMwNod target.");
         var classId = nod.GetId();
 
-        if (value?.IsWriteSupported == false)
+        if (!value.IsWriteSupported)
         {
             throw new ClassWriteNotSupportedException(classId);
         }
@@ -1517,7 +1517,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         }
     }
 
-    public void WriteWritable<T>(T? value, int version = 0) where T : IWritable, new()
+    public void WriteWritable<T>(T? value, int version = 0) where T : IWritable?, new()
     {
         if (value is null)
         {
@@ -2075,7 +2075,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         WriteArrayWritable(value, byteLengthPrefix, version);
     }
 
-    public void WriteListWritable<T>(List<T>? value, bool byteLengthPrefix = false, int version = 0) where T : IWritable, new()
+    public void WriteListWritable<T>(List<T>? value, bool byteLengthPrefix = false, int version = 0) where T : IWritable?, new()
     {
         if (value is null)
         {
@@ -2104,7 +2104,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         }
     }
 
-    public void WriteListWritable_deprec<T>(List<T>? value, bool byteLengthPrefix = false, int version = 0) where T : IWritable, new()
+    public void WriteListWritable_deprec<T>(List<T>? value, bool byteLengthPrefix = false, int version = 0) where T : IWritable?, new()
     {
         WriteDeprecVersion();
         WriteListWritable(value, byteLengthPrefix, version);
