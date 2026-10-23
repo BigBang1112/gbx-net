@@ -14,20 +14,20 @@ public partial class CPlugVegetTreeModel : CMwNod, IClass, IReadableWritable, IR
 
     public int Version { get; set; } = 21;
 
-    private int u01;
+    private int u01 = -1;
     public int U01
     {
         get => this.u01;
         set => this.u01 = value;
     }
 
-    private TextureSet[]? textures;
+    private TextureSet[]? materials;
     /// <remarks>Applied with: archive</remarks>
     [AppliedWithArchive]
-    public TextureSet[]? Textures
+    public TextureSet[]? Materials
     {
-        get => this.textures;
-        set => this.textures = value;
+        get => this.materials;
+        set => this.materials = value;
     }
 
     private string[]? textureNames;
@@ -39,46 +39,56 @@ public partial class CPlugVegetTreeModel : CMwNod, IClass, IReadableWritable, IR
         set => this.textureNames = value;
     }
 
-    private GeometryGroup[]? geometryGroups;
+    private GeometryGroup[]? lodModels;
     /// <remarks>Applied with: archive</remarks>
     [AppliedWithArchive]
-    public GeometryGroup[]? GeometryGroups
+    public GeometryGroup[]? LodModels
     {
-        get => this.geometryGroups;
-        set => this.geometryGroups = value;
+        get => this.lodModels;
+        set => this.lodModels = value;
     }
 
-    private float[]? distances;
+    private float[]? lodMaxDists;
     /// <remarks>Applied with: archive</remarks>
     [AppliedWithArchive]
-    public float[]? Distances
+    public float[]? LodMaxDists
     {
-        get => this.distances;
-        set => this.distances = value;
+        get => this.lodMaxDists;
+        set => this.lodMaxDists = value;
     }
 
-    private byte u02;
+    private byte u02 = 1;
     public byte U02
     {
         get => this.u02;
         set => this.u02 = value;
     }
 
-    private float u03;
-    public float U03
+    private float lodDistAtFov90 = 150;
+    /// <summary>
+    /// ImpostorGenParams.LodDistAtFov90
+    /// </summary>
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
+    public float LodDistAtFov90
     {
-        get => this.u03;
-        set => this.u03 = value;
+        get => this.lodDistAtFov90;
+        set => this.lodDistAtFov90 = value;
     }
 
-    private byte u04;
-    public byte U04
+    private EPlaneComputeMode planeComputeMode = EPlaneComputeMode.Zero;
+    /// <summary>
+    /// ImpostorGenParams.PlaneComputeMode
+    /// </summary>
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
+    public EPlaneComputeMode PlaneComputeMode
     {
-        get => this.u04;
-        set => this.u04 = value;
+        get => this.planeComputeMode;
+        set => this.planeComputeMode = value;
     }
 
-    private byte u05;
+    private byte u05 = 2;
     public byte U05
     {
         get => this.u05;
@@ -92,25 +102,34 @@ public partial class CPlugVegetTreeModel : CMwNod, IClass, IReadableWritable, IR
         set => this.u06 = value;
     }
 
-    private float u07;
-    public float U07
+    private float angleMax_RotXZ_Deg = 1;
+    /// <remarks>Applied with: archive v9+</remarks>
+    [AppliedWithArchive(9)]
+    public float AngleMax_RotXZ_Deg
     {
-        get => this.u07;
-        set => this.u07 = value;
+        get => this.angleMax_RotXZ_Deg;
+        set => this.angleMax_RotXZ_Deg = value;
     }
 
-    private float u08;
-    public float U08
+    private float scaleVar01 = 0.1f;
+    /// <summary>
+    /// max random scale reduction per instance
+    /// </summary>
+    /// <remarks>Applied with: archive v9+</remarks>
+    [AppliedWithArchive(9)]
+    public float ScaleVar01
     {
-        get => this.u08;
-        set => this.u08 = value;
+        get => this.scaleVar01;
+        set => this.scaleVar01 = value;
     }
 
-    private float u09;
-    public float U09
+    private bool enableRandomRotationY = true;
+    /// <remarks>Applied with: archive v10+</remarks>
+    [AppliedWithArchive(10)]
+    public bool EnableRandomRotationY
     {
-        get => this.u09;
-        set => this.u09 = value;
+        get => this.enableRandomRotationY;
+        set => this.enableRandomRotationY = value;
     }
 
     private CollisionSurface? collision;
@@ -122,88 +141,124 @@ public partial class CPlugVegetTreeModel : CMwNod, IClass, IReadableWritable, IR
         set => this.collision = value;
     }
 
-    private int u10;
-    public int U10
+    private bool force_No_Collision;
+    /// <remarks>Applied with: archive v12+</remarks>
+    [AppliedWithArchive(12)]
+    public bool Force_No_Collision
     {
-        get => this.u10;
-        set => this.u10 = value;
+        get => this.force_No_Collision;
+        set => this.force_No_Collision = value;
     }
 
-    private NodeRef<CPlugBitmap>? u11Ref;
-    public CPlugBitmap? U11
+    private NodeRef<CPlugBitmap>? propagationBaseColorRef;
+    /// <summary>
+    /// Propagation.Render.BaseColor
+    /// </summary>
+    /// <remarks>Applied with: archive v16+</remarks>
+    [AppliedWithArchive(16)]
+    public CPlugBitmap? PropagationBaseColor
     {
-        get => u11Ref?.Resolve();
-        set => NodeRef.SetEmbedded(ref u11Ref, value);
+        get => propagationBaseColorRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref propagationBaseColorRef, value);
     }
 
-    private NodeRef<CPlugBitmap>? u12Ref;
-    public CPlugBitmap? U12
+    private NodeRef<CPlugBitmap>? propagationNormalRef;
+    /// <summary>
+    /// Propagation.Render.Normal
+    /// </summary>
+    /// <remarks>Applied with: archive v16+</remarks>
+    [AppliedWithArchive(16)]
+    public CPlugBitmap? PropagationNormal
     {
-        get => u12Ref?.Resolve();
-        set => NodeRef.SetEmbedded(ref u12Ref, value);
+        get => propagationNormalRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref propagationNormalRef, value);
     }
 
-    private float u13;
-    public float U13
+    private Int2 propagationAtlasGrid = (1, 1);
+    /// <summary>
+    /// Propagation.Render.c2AtlasGrid
+    /// </summary>
+    /// <remarks>Applied with: archive v16+</remarks>
+    [AppliedWithArchive(16)]
+    public Int2 PropagationAtlasGrid
     {
-        get => this.u13;
-        set => this.u13 = value;
+        get => this.propagationAtlasGrid;
+        set => this.propagationAtlasGrid = value;
     }
 
-    private float u14;
-    public float U14
+    private float propagationLeafSize = 0.1f;
+    /// <remarks>Applied with: archive v16+</remarks>
+    [AppliedWithArchive(16)]
+    public float PropagationLeafSize
     {
-        get => this.u14;
-        set => this.u14 = value;
+        get => this.propagationLeafSize;
+        set => this.propagationLeafSize = value;
     }
 
-    private float u15;
-    public float U15
+    private int propagationGroundGenPointCount = 1000;
+    /// <summary>
+    /// Propagation.Phy.cGroundGenPoint
+    /// </summary>
+    /// <remarks>Applied with: archive v16+</remarks>
+    [AppliedWithArchive(16)]
+    public int PropagationGroundGenPointCount
     {
-        get => this.u15;
-        set => this.u15 = value;
+        get => this.propagationGroundGenPointCount;
+        set => this.propagationGroundGenPointCount = value;
     }
 
-    private float u16;
-    public float U16
+    private int propagationLeafPerSecondCount = 20;
+    /// <summary>
+    /// Propagation.Phy.cLeafPerSecond
+    /// </summary>
+    /// <remarks>Applied with: archive v19+</remarks>
+    [AppliedWithArchive(19)]
+    public int PropagationLeafPerSecondCount
     {
-        get => this.u16;
-        set => this.u16 = value;
+        get => this.propagationLeafPerSecondCount;
+        set => this.propagationLeafPerSecondCount = value;
     }
 
-    private float u17;
-    public float U17
+    private float propagationConeHalfAngleDeg = 45;
+    /// <remarks>Applied with: archive v16+</remarks>
+    [AppliedWithArchive(16)]
+    public float PropagationConeHalfAngleDeg
     {
-        get => this.u17;
-        set => this.u17 = value;
+        get => this.propagationConeHalfAngleDeg;
+        set => this.propagationConeHalfAngleDeg = value;
     }
 
-    private float u18;
-    public float U18
+    private float propagationEmissionSpawnRadius = 2;
+    /// <remarks>Applied with: archive v16+</remarks>
+    [AppliedWithArchive(16)]
+    public float PropagationEmissionSpawnRadius
     {
-        get => this.u18;
-        set => this.u18 = value;
+        get => this.propagationEmissionSpawnRadius;
+        set => this.propagationEmissionSpawnRadius = value;
     }
 
-    private float u19;
-    public float U19
+    private bool propagationEnable;
+    /// <summary>
+    /// Propagation.Phy.Enable
+    /// </summary>
+    /// <remarks>Applied with: archive v16+</remarks>
+    [AppliedWithArchive(16)]
+    public bool PropagationEnable
     {
-        get => this.u19;
-        set => this.u19 = value;
+        get => this.propagationEnable;
+        set => this.propagationEnable = value;
     }
 
-    private float u20;
-    public float U20
+    private Vec3[]? propagationEmissionPositions;
+    /// <summary>
+    /// Propagation.EmissionPoss
+    /// </summary>
+    /// <remarks>Applied with: archive v16+</remarks>
+    [AppliedWithArchive(16)]
+    public Vec3[]? PropagationEmissionPositions
     {
-        get => this.u20;
-        set => this.u20 = value;
-    }
-
-    private Vec3[]? u21;
-    public Vec3[]? U21
-    {
-        get => this.u21;
-        set => this.u21 = value;
+        get => this.propagationEmissionPositions;
+        set => this.propagationEmissionPositions = value;
     }
 
     private Additional? additionalData;
@@ -215,18 +270,22 @@ public partial class CPlugVegetTreeModel : CMwNod, IClass, IReadableWritable, IR
         set => this.additionalData = value;
     }
 
-    private int u22;
-    public int U22
+    private bool impostor_AllPlanesVisible;
+    /// <remarks>Applied with: archive v20+</remarks>
+    [AppliedWithArchive(20)]
+    public bool Impostor_AllPlanesVisible
     {
-        get => this.u22;
-        set => this.u22 = value;
+        get => this.impostor_AllPlanesVisible;
+        set => this.impostor_AllPlanesVisible = value;
     }
 
-    private float u23 = 1f;
-    public float U23
+    private bool receivesPSSM = true;
+    /// <remarks>Applied with: archive v21+</remarks>
+    [AppliedWithArchive(21)]
+    public bool ReceivesPSSM
     {
-        get => this.u23;
-        set => this.u23 = value;
+        get => this.receivesPSSM;
+        set => this.receivesPSSM = value;
     }
 
     public NodeRefView References => new(this);
@@ -234,14 +293,14 @@ public partial class CPlugVegetTreeModel : CMwNod, IClass, IReadableWritable, IR
     {
         private readonly CPlugVegetTreeModel owner;
         internal NodeRefView(CPlugVegetTreeModel owner) => this.owner = owner;
-        public NodeRef<CPlugBitmap> U11 => NodeRef.GetOrCreate(ref owner.u11Ref);
-        public NodeRef<CPlugBitmap> U12 => NodeRef.GetOrCreate(ref owner.u12Ref);
+        public NodeRef<CPlugBitmap> PropagationBaseColor => NodeRef.GetOrCreate(ref owner.propagationBaseColorRef);
+        public NodeRef<CPlugBitmap> PropagationNormal => NodeRef.GetOrCreate(ref owner.propagationNormalRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("U11", NodeRef.GetOrCreate(ref u11Ref));
-        yield return new("U12", NodeRef.GetOrCreate(ref u12Ref));
+        yield return new("PropagationBaseColor", NodeRef.GetOrCreate(ref propagationBaseColorRef));
+        yield return new("PropagationNormal", NodeRef.GetOrCreate(ref propagationNormalRef));
         yield break;
     }
 
@@ -250,34 +309,33 @@ public partial class CPlugVegetTreeModel : CMwNod, IClass, IReadableWritable, IR
         base.DeepCloneFields(clone, context);
         ((CPlugVegetTreeModel)clone).Version = context.Clone(this.Version)!;
         ((CPlugVegetTreeModel)clone).u01 = context.Clone(this.u01)!;
-        ((CPlugVegetTreeModel)clone).textures = context.CloneArray(this.textures)!;
+        ((CPlugVegetTreeModel)clone).materials = context.CloneArray(this.materials)!;
         ((CPlugVegetTreeModel)clone).textureNames = context.CloneArray(this.textureNames)!;
-        ((CPlugVegetTreeModel)clone).geometryGroups = context.CloneArray(this.geometryGroups)!;
-        ((CPlugVegetTreeModel)clone).distances = context.CloneArray(this.distances)!;
+        ((CPlugVegetTreeModel)clone).lodModels = context.CloneArray(this.lodModels)!;
+        ((CPlugVegetTreeModel)clone).lodMaxDists = context.CloneArray(this.lodMaxDists)!;
         ((CPlugVegetTreeModel)clone).u02 = context.Clone(this.u02)!;
-        ((CPlugVegetTreeModel)clone).u03 = context.Clone(this.u03)!;
-        ((CPlugVegetTreeModel)clone).u04 = context.Clone(this.u04)!;
+        ((CPlugVegetTreeModel)clone).lodDistAtFov90 = context.Clone(this.lodDistAtFov90)!;
+        ((CPlugVegetTreeModel)clone).planeComputeMode = context.Clone(this.planeComputeMode)!;
         ((CPlugVegetTreeModel)clone).u05 = context.Clone(this.u05)!;
         ((CPlugVegetTreeModel)clone).u06 = context.Clone(this.u06)!;
-        ((CPlugVegetTreeModel)clone).u07 = context.Clone(this.u07)!;
-        ((CPlugVegetTreeModel)clone).u08 = context.Clone(this.u08)!;
-        ((CPlugVegetTreeModel)clone).u09 = context.Clone(this.u09)!;
+        ((CPlugVegetTreeModel)clone).angleMax_RotXZ_Deg = context.Clone(this.angleMax_RotXZ_Deg)!;
+        ((CPlugVegetTreeModel)clone).scaleVar01 = context.Clone(this.scaleVar01)!;
+        ((CPlugVegetTreeModel)clone).enableRandomRotationY = context.Clone(this.enableRandomRotationY)!;
         ((CPlugVegetTreeModel)clone).collision = context.Clone(this.collision)!;
-        ((CPlugVegetTreeModel)clone).u10 = context.Clone(this.u10)!;
-        ((CPlugVegetTreeModel)clone).u11Ref = context.Clone(this.u11Ref)!;
-        ((CPlugVegetTreeModel)clone).u12Ref = context.Clone(this.u12Ref)!;
-        ((CPlugVegetTreeModel)clone).u13 = context.Clone(this.u13)!;
-        ((CPlugVegetTreeModel)clone).u14 = context.Clone(this.u14)!;
-        ((CPlugVegetTreeModel)clone).u15 = context.Clone(this.u15)!;
-        ((CPlugVegetTreeModel)clone).u16 = context.Clone(this.u16)!;
-        ((CPlugVegetTreeModel)clone).u17 = context.Clone(this.u17)!;
-        ((CPlugVegetTreeModel)clone).u18 = context.Clone(this.u18)!;
-        ((CPlugVegetTreeModel)clone).u19 = context.Clone(this.u19)!;
-        ((CPlugVegetTreeModel)clone).u20 = context.Clone(this.u20)!;
-        ((CPlugVegetTreeModel)clone).u21 = context.CloneArray(this.u21)!;
+        ((CPlugVegetTreeModel)clone).force_No_Collision = context.Clone(this.force_No_Collision)!;
+        ((CPlugVegetTreeModel)clone).propagationBaseColorRef = context.Clone(this.propagationBaseColorRef)!;
+        ((CPlugVegetTreeModel)clone).propagationNormalRef = context.Clone(this.propagationNormalRef)!;
+        ((CPlugVegetTreeModel)clone).propagationAtlasGrid = context.Clone(this.propagationAtlasGrid)!;
+        ((CPlugVegetTreeModel)clone).propagationLeafSize = context.Clone(this.propagationLeafSize)!;
+        ((CPlugVegetTreeModel)clone).propagationGroundGenPointCount = context.Clone(this.propagationGroundGenPointCount)!;
+        ((CPlugVegetTreeModel)clone).propagationLeafPerSecondCount = context.Clone(this.propagationLeafPerSecondCount)!;
+        ((CPlugVegetTreeModel)clone).propagationConeHalfAngleDeg = context.Clone(this.propagationConeHalfAngleDeg)!;
+        ((CPlugVegetTreeModel)clone).propagationEmissionSpawnRadius = context.Clone(this.propagationEmissionSpawnRadius)!;
+        ((CPlugVegetTreeModel)clone).propagationEnable = context.Clone(this.propagationEnable)!;
+        ((CPlugVegetTreeModel)clone).propagationEmissionPositions = context.CloneArray(this.propagationEmissionPositions)!;
         ((CPlugVegetTreeModel)clone).additionalData = context.Clone(this.additionalData)!;
-        ((CPlugVegetTreeModel)clone).u22 = context.Clone(this.u22)!;
-        ((CPlugVegetTreeModel)clone).u23 = context.Clone(this.u23)!;
+        ((CPlugVegetTreeModel)clone).impostor_AllPlanesVisible = context.Clone(this.impostor_AllPlanesVisible)!;
+        ((CPlugVegetTreeModel)clone).receivesPSSM = context.Clone(this.receivesPSSM)!;
     }
 
     public CPlugVegetTreeModel()
@@ -293,20 +351,20 @@ public partial class CPlugVegetTreeModel : CMwNod, IClass, IReadableWritable, IR
             rw.Int32(ref this.u01);
         }
 
-        var geometryGroupCount = rw.Int32((rw.Writer is null ? default : (GeometryGroups?.Length?? 0)));
-        var distanceCount = rw.Int32((rw.Writer is null ? default : (Distances?.Length?? 0)));
-        rw.ArrayReadableWritable<TextureSet>(ref this.textures!, version: Version);
+        var lodModelCount = rw.Int32((rw.Writer is null ? default : (LodModels?.Length?? 0)));
+        var lodMaxDistCount = rw.Int32((rw.Writer is null ? default : (LodMaxDists?.Length?? 0)));
+        rw.ArrayReadableWritable<TextureSet>(ref this.materials!, version: Version);
 
         if (Version >= 2)
         {
             rw.ArrayId(ref this.textureNames!);
         }
 
-        rw.ArrayReadableWritable<GeometryGroup>(ref this.geometryGroups!, geometryGroupCount, version: Version);
-        rw.Array<float>(ref this.distances!, distanceCount);
+        rw.ArrayReadableWritable<GeometryGroup>(ref this.lodModels!, lodModelCount, version: Version);
+        rw.Array<float>(ref this.lodMaxDists!, lodMaxDistCount);
         rw.Byte(ref this.u02);
-        rw.Single(ref this.u03);
-        rw.Byte(ref this.u04);
+        rw.Single(ref this.lodDistAtFov90);
+        rw.EnumByte<EPlaneComputeMode>(ref this.planeComputeMode);
         rw.Byte(ref this.u05);
 
         if (Version >= 7)
@@ -316,13 +374,13 @@ public partial class CPlugVegetTreeModel : CMwNod, IClass, IReadableWritable, IR
 
         if (Version >= 9)
         {
-            rw.Single(ref this.u07);
-            rw.Single(ref this.u08);
+            rw.Single(ref this.angleMax_RotXZ_Deg);
+            rw.Single(ref this.scaleVar01);
         }
 
         if (Version >= 10)
         {
-            rw.Single(ref this.u09);
+            rw.Boolean(ref this.enableRandomRotationY);
         }
 
         if (Version >= 11)
@@ -332,27 +390,26 @@ public partial class CPlugVegetTreeModel : CMwNod, IClass, IReadableWritable, IR
 
         if (Version >= 12)
         {
-            rw.Int32(ref this.u10);
+            rw.Boolean(ref this.force_No_Collision);
         }
 
         if (Version >= 16)
         {
-            rw.NodeRef(ref this.u11Ref);
-            rw.NodeRef(ref this.u12Ref);
-            rw.Single(ref this.u13);
-            rw.Single(ref this.u14);
-            rw.Single(ref this.u15);
-            rw.Single(ref this.u16);
+            rw.NodeRef(ref this.propagationBaseColorRef);
+            rw.NodeRef(ref this.propagationNormalRef);
+            rw.Int2(ref this.propagationAtlasGrid);
+            rw.Single(ref this.propagationLeafSize);
+            rw.Int32(ref this.propagationGroundGenPointCount);
 
             if (Version >= 19)
             {
-                rw.Single(ref this.u17);
+                rw.Int32(ref this.propagationLeafPerSecondCount);
             }
 
-            rw.Single(ref this.u18);
-            rw.Single(ref this.u19);
-            rw.Single(ref this.u20);
-            rw.Array<Vec3>(ref this.u21!);
+            rw.Single(ref this.propagationConeHalfAngleDeg);
+            rw.Single(ref this.propagationEmissionSpawnRadius);
+            rw.Boolean(ref this.propagationEnable);
+            rw.Array<Vec3>(ref this.propagationEmissionPositions!);
         }
 
         if (Version >= 17)
@@ -367,12 +424,12 @@ public partial class CPlugVegetTreeModel : CMwNod, IClass, IReadableWritable, IR
 
         if (Version >= 20)
         {
-            rw.Int32(ref this.u22);
+            rw.Boolean(ref this.impostor_AllPlanesVisible);
         }
 
         if (Version >= 21)
         {
-            rw.Single(ref this.u23);
+            rw.Boolean(ref this.receivesPSSM);
         }
     }
 
@@ -411,42 +468,60 @@ public partial class CPlugVegetTreeModel : CMwNod, IClass, IReadableWritable, IR
             set => NodeRef.SetEmbedded(ref u03Ref, value);
         }
 
-        private NodeRef<CPlugFileImg>? u04Ref;
-        public CPlugFileImg? U04
+        private NodeRef<CPlugFileImg>? colorImageRef;
+        /// <summary>
+        /// Veget.Images[EVegetTexture_Color]
+        /// </summary>
+        public CPlugFileImg? ColorImage
         {
-            get => u04Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref u04Ref, value);
+            get => colorImageRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref colorImageRef, value);
         }
 
-        private NodeRef<CPlugFileImg>? u05Ref;
-        public CPlugFileImg? U05
+        private NodeRef<CPlugFileImg>? normalImageRef;
+        /// <summary>
+        /// Veget.Images[EVegetTexture_Normal]
+        /// </summary>
+        public CPlugFileImg? NormalImage
         {
-            get => u05Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref u05Ref, value);
+            get => normalImageRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref normalImageRef, value);
         }
 
-        private NodeRef<CPlugFileImg>? u06Ref;
-        public CPlugFileImg? U06
+        private NodeRef<CPlugFileImg>? roughnessImageRef;
+        /// <summary>
+        /// Veget.Images[EVegetTexture_Roughness]
+        /// </summary>
+        public CPlugFileImg? RoughnessImage
         {
-            get => u06Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref u06Ref, value);
+            get => roughnessImageRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref roughnessImageRef, value);
         }
 
-        private NodeRef<CMwNod>? u07Ref;
-        public CMwNod? U07
+        private NodeRef<CMwNod>? variationRef;
+        /// <summary>
+        /// CPlugVegetMaterialVariation
+        /// </summary>
+        public CMwNod? Variation
         {
-            get => u07Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref u07Ref, value);
+            get => variationRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref variationRef, value);
         }
 
-        private NodeRef<CMwNod>? u08Ref;
-        public CMwNod? U08
+        private NodeRef<CMwNod>? subSurfaceRef;
+        /// <summary>
+        /// CPlugVegetSubSurfaceParams
+        /// </summary>
+        public CMwNod? SubSurface
         {
-            get => u08Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref u08Ref, value);
+            get => subSurfaceRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref subSurfaceRef, value);
         }
 
         private NodeRef<CPlugMaterial>? materialRef;
+        /// <summary>
+        /// PlugMat
+        /// </summary>
         public CPlugMaterial? Material
         {
             get => materialRef?.Resolve();
@@ -468,11 +543,11 @@ public partial class CPlugVegetTreeModel : CMwNod, IClass, IReadableWritable, IR
             public NodeRef<CPlugBitmap> U01 => NodeRef.GetOrCreate(ref owner.u01Ref);
             public NodeRef<CPlugBitmap> U02 => NodeRef.GetOrCreate(ref owner.u02Ref);
             public NodeRef<CPlugBitmap> U03 => NodeRef.GetOrCreate(ref owner.u03Ref);
-            public NodeRef<CPlugFileImg> U04 => NodeRef.GetOrCreate(ref owner.u04Ref);
-            public NodeRef<CPlugFileImg> U05 => NodeRef.GetOrCreate(ref owner.u05Ref);
-            public NodeRef<CPlugFileImg> U06 => NodeRef.GetOrCreate(ref owner.u06Ref);
-            public NodeRef<CMwNod> U07 => NodeRef.GetOrCreate(ref owner.u07Ref);
-            public NodeRef<CMwNod> U08 => NodeRef.GetOrCreate(ref owner.u08Ref);
+            public NodeRef<CPlugFileImg> ColorImage => NodeRef.GetOrCreate(ref owner.colorImageRef);
+            public NodeRef<CPlugFileImg> NormalImage => NodeRef.GetOrCreate(ref owner.normalImageRef);
+            public NodeRef<CPlugFileImg> RoughnessImage => NodeRef.GetOrCreate(ref owner.roughnessImageRef);
+            public NodeRef<CMwNod> Variation => NodeRef.GetOrCreate(ref owner.variationRef);
+            public NodeRef<CMwNod> SubSurface => NodeRef.GetOrCreate(ref owner.subSurfaceRef);
             public NodeRef<CPlugMaterial> Material => NodeRef.GetOrCreate(ref owner.materialRef);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
@@ -480,11 +555,11 @@ public partial class CPlugVegetTreeModel : CMwNod, IClass, IReadableWritable, IR
             yield return new("U01", NodeRef.GetOrCreate(ref u01Ref));
             yield return new("U02", NodeRef.GetOrCreate(ref u02Ref));
             yield return new("U03", NodeRef.GetOrCreate(ref u03Ref));
-            yield return new("U04", NodeRef.GetOrCreate(ref u04Ref));
-            yield return new("U05", NodeRef.GetOrCreate(ref u05Ref));
-            yield return new("U06", NodeRef.GetOrCreate(ref u06Ref));
-            yield return new("U07", NodeRef.GetOrCreate(ref u07Ref));
-            yield return new("U08", NodeRef.GetOrCreate(ref u08Ref));
+            yield return new("ColorImage", NodeRef.GetOrCreate(ref colorImageRef));
+            yield return new("NormalImage", NodeRef.GetOrCreate(ref normalImageRef));
+            yield return new("RoughnessImage", NodeRef.GetOrCreate(ref roughnessImageRef));
+            yield return new("Variation", NodeRef.GetOrCreate(ref variationRef));
+            yield return new("SubSurface", NodeRef.GetOrCreate(ref subSurfaceRef));
             yield return new("Material", NodeRef.GetOrCreate(ref materialRef));
             yield break;
         }
@@ -502,11 +577,11 @@ public partial class CPlugVegetTreeModel : CMwNod, IClass, IReadableWritable, IR
             ((TextureSet)clone).u01Ref = context.Clone(this.u01Ref)!;
             ((TextureSet)clone).u02Ref = context.Clone(this.u02Ref)!;
             ((TextureSet)clone).u03Ref = context.Clone(this.u03Ref)!;
-            ((TextureSet)clone).u04Ref = context.Clone(this.u04Ref)!;
-            ((TextureSet)clone).u05Ref = context.Clone(this.u05Ref)!;
-            ((TextureSet)clone).u06Ref = context.Clone(this.u06Ref)!;
-            ((TextureSet)clone).u07Ref = context.Clone(this.u07Ref)!;
-            ((TextureSet)clone).u08Ref = context.Clone(this.u08Ref)!;
+            ((TextureSet)clone).colorImageRef = context.Clone(this.colorImageRef)!;
+            ((TextureSet)clone).normalImageRef = context.Clone(this.normalImageRef)!;
+            ((TextureSet)clone).roughnessImageRef = context.Clone(this.roughnessImageRef)!;
+            ((TextureSet)clone).variationRef = context.Clone(this.variationRef)!;
+            ((TextureSet)clone).subSurfaceRef = context.Clone(this.subSurfaceRef)!;
             ((TextureSet)clone).materialRef = context.Clone(this.materialRef)!;
             ((TextureSet)clone).u09 = context.Clone(this.u09)!;
         }
@@ -520,18 +595,18 @@ public partial class CPlugVegetTreeModel : CMwNod, IClass, IReadableWritable, IR
                 rw.NodeRef(ref this.u03Ref);
             }
 
-            rw.NodeRef(ref this.u04Ref);
-            rw.NodeRef(ref this.u05Ref);
-            rw.NodeRef(ref this.u06Ref);
+            rw.NodeRef(ref this.colorImageRef);
+            rw.NodeRef(ref this.normalImageRef);
+            rw.NodeRef(ref this.roughnessImageRef);
 
             if (v >= 2)
             {
-                rw.NodeRef(ref this.u07Ref);
+                rw.NodeRef(ref this.variationRef);
             }
 
             if (v >= 3)
             {
-                rw.NodeRef(ref this.u08Ref);
+                rw.NodeRef(ref this.subSurfaceRef);
             }
 
             if (v >= 4)
@@ -560,11 +635,14 @@ public partial class CPlugVegetTreeModel : CMwNod, IClass, IReadableWritable, IR
 
     public partial class GeometryGroup : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private Geometry[]? geometries;
-        public Geometry[]? Geometries
+        private Geometry[]? shadedGeoms;
+        /// <summary>
+        /// SGs
+        /// </summary>
+        public Geometry[]? ShadedGeoms
         {
-            get => this.geometries;
-            set => this.geometries = value;
+            get => this.shadedGeoms;
+            set => this.shadedGeoms = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -577,12 +655,12 @@ public partial class CPlugVegetTreeModel : CMwNod, IClass, IReadableWritable, IR
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((GeometryGroup)clone).geometries = context.CloneArray(this.geometries)!;
+            ((GeometryGroup)clone).shadedGeoms = context.CloneArray(this.shadedGeoms)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.ArrayReadableWritable<Geometry>(ref this.geometries!, version: v);
+            rw.ArrayReadableWritable<Geometry>(ref this.shadedGeoms!, version: v);
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -600,11 +678,14 @@ public partial class CPlugVegetTreeModel : CMwNod, IClass, IReadableWritable, IR
 
     public partial class Geometry : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private ushort u01;
-        public ushort U01
+        private ushort modelMaterialIndex;
+        /// <summary>
+        /// iModelMat
+        /// </summary>
+        public ushort ModelMaterialIndex
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.modelMaterialIndex;
+            set => this.modelMaterialIndex = value;
         }
 
         private NodeRef<CPlugVisual>? visualRef;
@@ -644,21 +725,21 @@ public partial class CPlugVegetTreeModel : CMwNod, IClass, IReadableWritable, IR
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((Geometry)clone).u01 = context.Clone(this.u01)!;
+            ((Geometry)clone).modelMaterialIndex = context.Clone(this.modelMaterialIndex)!;
             ((Geometry)clone).visualRef = context.Clone(this.visualRef)!;
             ((Geometry)clone).u02 = context.Clone(this.u02)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            if (v <= 15)
+            if (v <= 14)
             {
-                this.u01 = (ushort)rw.Int32((int)this.u01);
+                this.modelMaterialIndex = (ushort)rw.Int32((int)this.modelMaterialIndex);
             }
 
             if (v >= 15)
             {
-                rw.UInt16(ref this.u01);
+                rw.UInt16(ref this.modelMaterialIndex);
             }
 
             rw.NodeRef(ref this.visualRef);
@@ -722,7 +803,7 @@ public partial class CPlugVegetTreeModel : CMwNod, IClass, IReadableWritable, IR
             set => this.u01 = value;
         }
 
-        private float u02;
+        private float u02 = -1;
         public float U02
         {
             get => this.u02;
@@ -736,56 +817,56 @@ public partial class CPlugVegetTreeModel : CMwNod, IClass, IReadableWritable, IR
             set => this.u03 = value;
         }
 
-        private float u04;
+        private float u04 = float.MaxValue;
         public float U04
         {
             get => this.u04;
             set => this.u04 = value;
         }
 
-        private float u05;
+        private float u05 = float.MaxValue;
         public float U05
         {
             get => this.u05;
             set => this.u05 = value;
         }
 
-        private float u06;
+        private float u06 = float.MinValue;
         public float U06
         {
             get => this.u06;
             set => this.u06 = value;
         }
 
-        private float u07;
+        private float u07 = float.MinValue;
         public float U07
         {
             get => this.u07;
             set => this.u07 = value;
         }
 
-        private float u08;
+        private float u08 = float.MaxValue;
         public float U08
         {
             get => this.u08;
             set => this.u08 = value;
         }
 
-        private float u09;
+        private float u09 = float.MaxValue;
         public float U09
         {
             get => this.u09;
             set => this.u09 = value;
         }
 
-        private float u10;
+        private float u10 = float.MinValue;
         public float U10
         {
             get => this.u10;
             set => this.u10 = value;
         }
 
-        private float u11;
+        private float u11 = float.MinValue;
         public float U11
         {
             get => this.u11;
@@ -959,5 +1040,14 @@ public partial class CPlugVegetTreeModel : CMwNod, IClass, IReadableWritable, IR
             using var rw = new GbxReaderWriter(w);
             ReadWrite(rw, v);
         }
+    }
+
+    public enum EPlaneComputeMode
+    {
+        BoundingBoxBorder,
+        BoundingBoxCenter,
+        TrunkBoundingBoxCenter,
+        Zero,
+        HorizontalPlaneBottom,
     }
 }
