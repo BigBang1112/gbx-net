@@ -3,6 +3,9 @@
 
 namespace GBX.NET.Engines.Plug;
 
+/// <summary>
+/// Vehicle collision shapes and wheel placement.
+/// </summary>
 /// <remarks>ID: 0x0910E000</remarks>
 [Class(0x0910E000)]
 public partial class CPlugVehicleCarPhyShape : CMwNod, IClass
@@ -11,6 +14,24 @@ public partial class CPlugVehicleCarPhyShape : CMwNod, IClass
     public static new uint Id => 0x0910E000;
 
     internal override uint GetId() => Id;
+
+    private float offsetX;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk0910E000>]
+    public float OffsetX
+    {
+        get => this.offsetX;
+        set => this.offsetX = value;
+    }
+
+    private NodeRef<CPlugSolid>? surfSolidRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk0910E000>]
+    public CPlugSolid? SurfSolid
+    {
+        get => surfSolidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref surfSolidRef, value);
+    }
 
     private NodeRef<CPlugSurface>? moveShapeRef;
     /// <remarks>Applied with: 0x000 v1+ body chunk</remarks>
@@ -21,13 +42,157 @@ public partial class CPlugVehicleCarPhyShape : CMwNod, IClass
         set => NodeRef.SetEmbedded(ref moveShapeRef, value);
     }
 
-    private BoxAligned carVsCarShapeBox;
+    private CPlugVehicleWheelPhyModel[]? wheels;
     /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0910E000>]
-    public BoxAligned CarVsCarShapeBox
+    public CPlugVehicleWheelPhyModel[]? Wheels
     {
-        get => this.carVsCarShapeBox;
-        set => this.carVsCarShapeBox = value;
+        get => this.wheels;
+        set => this.wheels = value;
+    }
+
+    private BoxAligned vehicleBBox = (0, 0, 0, -1, -1, -1);
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk0910E000>]
+    public BoxAligned VehicleBBox
+    {
+        get => this.vehicleBBox;
+        set => this.vehicleBBox = value;
+    }
+
+    private bool useSimplifiedCarModel = true;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk0910E000>]
+    public bool UseSimplifiedCarModel
+    {
+        get => this.useSimplifiedCarModel;
+        set => this.useSimplifiedCarModel = value;
+    }
+
+    private float groundY;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk0910E000>]
+    public float GroundY
+    {
+        get => this.groundY;
+        set => this.groundY = value;
+    }
+
+    private float frontWheelZ = 1;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk0910E000>]
+    public float FrontWheelZ
+    {
+        get => this.frontWheelZ;
+        set => this.frontWheelZ = value;
+    }
+
+    private float backWheelZ = -1;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk0910E000>]
+    public float BackWheelZ
+    {
+        get => this.backWheelZ;
+        set => this.backWheelZ = value;
+    }
+
+    private float frontWheelX = 1;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk0910E000>]
+    public float FrontWheelX
+    {
+        get => this.frontWheelX;
+        set => this.frontWheelX = value;
+    }
+
+    private float backWheelX = 1;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk0910E000>]
+    public float BackWheelX
+    {
+        get => this.backWheelX;
+        set => this.backWheelX = value;
+    }
+
+    private float frontWheelRadius = 0.5f;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk0910E000>]
+    public float FrontWheelRadius
+    {
+        get => this.frontWheelRadius;
+        set => this.frontWheelRadius = value;
+    }
+
+    private float backWheelRadius = 0.5f;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk0910E000>]
+    public float BackWheelRadius
+    {
+        get => this.backWheelRadius;
+        set => this.backWheelRadius = value;
+    }
+
+    private float frontWheelHalfWidth = 0.5f;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk0910E000>]
+    public float FrontWheelHalfWidth
+    {
+        get => this.frontWheelHalfWidth;
+        set => this.frontWheelHalfWidth = value;
+    }
+
+    private float backWheelHalfWidth = 0.5f;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk0910E000>]
+    public float BackWheelHalfWidth
+    {
+        get => this.backWheelHalfWidth;
+        set => this.backWheelHalfWidth = value;
+    }
+
+    private Vec4[]? volumeSpheres;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk0910E000>]
+    public Vec4[]? VolumeSpheres
+    {
+        get => this.volumeSpheres;
+        set => this.volumeSpheres = value;
+    }
+
+    private BoxAligned carVsCarShape_Box = (0, 0.6f, 0.1f, 1, 0.6f, 2.1f);
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk0910E000>]
+    public BoxAligned CarVsCarShape_Box
+    {
+        get => this.carVsCarShape_Box;
+        set => this.carVsCarShape_Box = value;
+    }
+
+    private NodeRef<CPlugSurface>? carVsCarShapeRef;
+    /// <remarks>Applied with: 0x000 v5+ body chunk</remarks>
+    [AppliedWithChunk<Chunk0910E000>(5)]
+    public CPlugSurface? CarVsCarShape
+    {
+        get => carVsCarShapeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref carVsCarShapeRef, value);
+    }
+
+    private NodeRef<CPlugSurface>? hitShapeRef;
+    /// <remarks>Applied with: 0x000 v6+ body chunk</remarks>
+    [AppliedWithChunk<Chunk0910E000>(6)]
+    public CPlugSurface? HitShape
+    {
+        get => hitShapeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref hitShapeRef, value);
+    }
+
+    private NodeRef<CPlugSurface>? waterShapeRef;
+    /// <remarks>Applied with: 0x000 v6+ body chunk</remarks>
+    [AppliedWithChunk<Chunk0910E000>(6)]
+    public CPlugSurface? WaterShape
+    {
+        get => waterShapeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref waterShapeRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -35,20 +200,46 @@ public partial class CPlugVehicleCarPhyShape : CMwNod, IClass
     {
         private readonly CPlugVehicleCarPhyShape owner;
         internal NodeRefView(CPlugVehicleCarPhyShape owner) => this.owner = owner;
+        public NodeRef<CPlugSolid> SurfSolid => NodeRef.GetOrCreate(ref owner.surfSolidRef);
         public NodeRef<CPlugSurface> MoveShape => NodeRef.GetOrCreate(ref owner.moveShapeRef);
+        public NodeRef<CPlugSurface> CarVsCarShape => NodeRef.GetOrCreate(ref owner.carVsCarShapeRef);
+        public NodeRef<CPlugSurface> HitShape => NodeRef.GetOrCreate(ref owner.hitShapeRef);
+        public NodeRef<CPlugSurface> WaterShape => NodeRef.GetOrCreate(ref owner.waterShapeRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("SurfSolid", NodeRef.GetOrCreate(ref surfSolidRef));
         yield return new("MoveShape", NodeRef.GetOrCreate(ref moveShapeRef));
+        yield return new("CarVsCarShape", NodeRef.GetOrCreate(ref carVsCarShapeRef));
+        yield return new("HitShape", NodeRef.GetOrCreate(ref hitShapeRef));
+        yield return new("WaterShape", NodeRef.GetOrCreate(ref waterShapeRef));
         yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugVehicleCarPhyShape)clone).offsetX = context.Clone(this.offsetX)!;
+        ((CPlugVehicleCarPhyShape)clone).surfSolidRef = context.Clone(this.surfSolidRef)!;
         ((CPlugVehicleCarPhyShape)clone).moveShapeRef = context.Clone(this.moveShapeRef)!;
-        ((CPlugVehicleCarPhyShape)clone).carVsCarShapeBox = context.Clone(this.carVsCarShapeBox)!;
+        ((CPlugVehicleCarPhyShape)clone).wheels = context.CloneArray(this.wheels)!;
+        ((CPlugVehicleCarPhyShape)clone).vehicleBBox = context.Clone(this.vehicleBBox)!;
+        ((CPlugVehicleCarPhyShape)clone).useSimplifiedCarModel = context.Clone(this.useSimplifiedCarModel)!;
+        ((CPlugVehicleCarPhyShape)clone).groundY = context.Clone(this.groundY)!;
+        ((CPlugVehicleCarPhyShape)clone).frontWheelZ = context.Clone(this.frontWheelZ)!;
+        ((CPlugVehicleCarPhyShape)clone).backWheelZ = context.Clone(this.backWheelZ)!;
+        ((CPlugVehicleCarPhyShape)clone).frontWheelX = context.Clone(this.frontWheelX)!;
+        ((CPlugVehicleCarPhyShape)clone).backWheelX = context.Clone(this.backWheelX)!;
+        ((CPlugVehicleCarPhyShape)clone).frontWheelRadius = context.Clone(this.frontWheelRadius)!;
+        ((CPlugVehicleCarPhyShape)clone).backWheelRadius = context.Clone(this.backWheelRadius)!;
+        ((CPlugVehicleCarPhyShape)clone).frontWheelHalfWidth = context.Clone(this.frontWheelHalfWidth)!;
+        ((CPlugVehicleCarPhyShape)clone).backWheelHalfWidth = context.Clone(this.backWheelHalfWidth)!;
+        ((CPlugVehicleCarPhyShape)clone).volumeSpheres = context.CloneArray(this.volumeSpheres)!;
+        ((CPlugVehicleCarPhyShape)clone).carVsCarShape_Box = context.Clone(this.carVsCarShape_Box)!;
+        ((CPlugVehicleCarPhyShape)clone).carVsCarShapeRef = context.Clone(this.carVsCarShapeRef)!;
+        ((CPlugVehicleCarPhyShape)clone).hitShapeRef = context.Clone(this.hitShapeRef)!;
+        ((CPlugVehicleCarPhyShape)clone).waterShapeRef = context.Clone(this.waterShapeRef)!;
     }
 
     public CPlugVehicleCarPhyShape()
@@ -56,36 +247,15 @@ public partial class CPlugVehicleCarPhyShape : CMwNod, IClass
     }
 
     /// <summary>
-    /// CPlugVehicleCarPhyShape 0x000 chunk
+    /// CPlugVehicleCarPhyShape 0x000 chunk (shape)
     /// </summary>
-    [Chunk(0x0910E000)]
+    [Chunk(0x0910E000, "shape")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 6, 6)]
     public partial class Chunk0910E000 : Chunk<CPlugVehicleCarPhyShape>, IVersionable
     {
         public override uint Id => 0x0910E000;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public float U01;
-
-        private NodeRef<CPlugSolid>? U02Ref;
-        public CPlugSolid? U02
-        {
-            get => U02Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U02Ref, value);
-        }
-        public CPlugVehicleWheelPhyModel[]? U04;
-        public BoxAligned U05;
-        public bool U06;
-        public float U07;
-        public float U08;
-        public float U09;
-        public float U10;
-        public float U11;
-        public float U12;
-        public float U13;
-        public float U14;
-        public float U15;
-        public Vec4[]? U16;
         public bool U18;
         public bool U19;
         public float U20;
@@ -111,46 +281,17 @@ public partial class CPlugVehicleCarPhyShape : CMwNod, IClass
         }
         public Vec3[]? U35;
 
-        private NodeRef<CPlugSurface>? U36Ref;
-        public CPlugSurface? U36
-        {
-            get => U36Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U36Ref, value);
-        }
-
-        private NodeRef<CPlugSurface>? U37Ref;
-        public CPlugSurface? U37
-        {
-            get => U37Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U37Ref, value);
-        }
-
-        private NodeRef<CPlugSurface>? U38Ref;
-        public CPlugSurface? U38
-        {
-            get => U38Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U38Ref, value);
-        }
-
         public NodeRefView References => new(this);
         public readonly struct NodeRefView
         {
             private readonly Chunk0910E000 owner;
             internal NodeRefView(Chunk0910E000 owner) => this.owner = owner;
-            public NodeRef<CPlugSolid> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
             public NodeRef<CPlugSurface> U34 => NodeRef.GetOrCreate(ref owner.U34Ref);
-            public NodeRef<CPlugSurface> U36 => NodeRef.GetOrCreate(ref owner.U36Ref);
-            public NodeRef<CPlugSurface> U37 => NodeRef.GetOrCreate(ref owner.U37Ref);
-            public NodeRef<CPlugSurface> U38 => NodeRef.GetOrCreate(ref owner.U38Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
             yield return new("U34", NodeRef.GetOrCreate(ref U34Ref));
-            yield return new("U36", NodeRef.GetOrCreate(ref U36Ref));
-            yield return new("U37", NodeRef.GetOrCreate(ref U37Ref));
-            yield return new("U38", NodeRef.GetOrCreate(ref U38Ref));
             yield break;
         }
 
@@ -164,27 +305,17 @@ public partial class CPlugVehicleCarPhyShape : CMwNod, IClass
             {
                 Version = 6;
             }
+
+            U25 = 0.05f;
+            U30 = 50;
+            U31 = 1.5f;
+            U32 = 0.01f;
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0910E000)clone).Version = context.Clone(this.Version)!;
-            ((Chunk0910E000)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0910E000)clone).U02Ref = context.Clone(this.U02Ref)!;
-            ((Chunk0910E000)clone).U04 = context.CloneArray(this.U04)!;
-            ((Chunk0910E000)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk0910E000)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk0910E000)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk0910E000)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk0910E000)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk0910E000)clone).U10 = context.Clone(this.U10)!;
-            ((Chunk0910E000)clone).U11 = context.Clone(this.U11)!;
-            ((Chunk0910E000)clone).U12 = context.Clone(this.U12)!;
-            ((Chunk0910E000)clone).U13 = context.Clone(this.U13)!;
-            ((Chunk0910E000)clone).U14 = context.Clone(this.U14)!;
-            ((Chunk0910E000)clone).U15 = context.Clone(this.U15)!;
-            ((Chunk0910E000)clone).U16 = context.CloneArray(this.U16)!;
             ((Chunk0910E000)clone).U18 = context.Clone(this.U18)!;
             ((Chunk0910E000)clone).U19 = context.Clone(this.U19)!;
             ((Chunk0910E000)clone).U20 = context.Clone(this.U20)!;
@@ -203,9 +334,6 @@ public partial class CPlugVehicleCarPhyShape : CMwNod, IClass
             ((Chunk0910E000)clone).U33 = context.Clone(this.U33)!;
             ((Chunk0910E000)clone).U34Ref = context.Clone(this.U34Ref)!;
             ((Chunk0910E000)clone).U35 = context.CloneArray(this.U35)!;
-            ((Chunk0910E000)clone).U36Ref = context.Clone(this.U36Ref)!;
-            ((Chunk0910E000)clone).U37Ref = context.Clone(this.U37Ref)!;
-            ((Chunk0910E000)clone).U38Ref = context.Clone(this.U38Ref)!;
         }
 
         public override void ReadWrite(CPlugVehicleCarPhyShape n, GbxReaderWriter rw)
@@ -216,31 +344,31 @@ public partial class CPlugVehicleCarPhyShape : CMwNod, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.Single(ref U01);
-            rw.NodeRef(ref U02Ref);
+            rw.Single(ref n.offsetX);
+            rw.NodeRef(ref n.surfSolidRef);
 
             if (Version >= 1)
             {
-                if ((U02Ref?.Kind ?? NodeRefKind.None) == NodeRefKind.None)
+                if ((n.surfSolidRef?.Kind ?? NodeRefKind.None) == NodeRefKind.None)
                 {
                     rw.NodeRef(ref n.moveShapeRef);
                 }
             }
 
-            rw.ArrayReadableWritable<CPlugVehicleWheelPhyModel>(ref U04!, version: Version);
-            rw.BoxAligned(ref U05);
-            rw.Boolean(ref U06);
-            rw.Single(ref U07);
-            rw.Single(ref U08);
-            rw.Single(ref U09);
-            rw.Single(ref U10);
-            rw.Single(ref U11);
-            rw.Single(ref U12);
-            rw.Single(ref U13);
-            rw.Single(ref U14);
-            rw.Single(ref U15);
-            rw.Array<Vec4>(ref U16!);
-            rw.BoxAligned(ref n.carVsCarShapeBox);
+            rw.ArrayReadableWritable<CPlugVehicleWheelPhyModel>(ref n.wheels!, version: Version);
+            rw.BoxAligned(ref n.vehicleBBox);
+            rw.Boolean(ref n.useSimplifiedCarModel);
+            rw.Single(ref n.groundY);
+            rw.Single(ref n.frontWheelZ);
+            rw.Single(ref n.backWheelZ);
+            rw.Single(ref n.frontWheelX);
+            rw.Single(ref n.backWheelX);
+            rw.Single(ref n.frontWheelRadius);
+            rw.Single(ref n.backWheelRadius);
+            rw.Single(ref n.frontWheelHalfWidth);
+            rw.Single(ref n.backWheelHalfWidth);
+            rw.Array<Vec4>(ref n.volumeSpheres!);
+            rw.BoxAligned(ref n.carVsCarShape_Box);
             rw.Boolean(ref U18);
             rw.Boolean(ref U19);
             rw.Single(ref U20);
@@ -259,32 +387,32 @@ public partial class CPlugVehicleCarPhyShape : CMwNod, IClass
                 rw.Single(ref U30);
                 rw.Single(ref U31);
                 rw.Single(ref U32);
+            }
 
-                if (Version >= 3)
+            if (Version >= 3)
+            {
+                rw.String(ref U33);
+
+                if (U33== null || U33== "")
                 {
-                    rw.String(ref U33);
-
-                    if (U33== null || U33== "")
-                    {
-                        rw.NodeRef(ref U34Ref);
-                    }
-
-                    if (Version >= 4)
-                    {
-                        rw.Array<Vec3>(ref U35!);
-
-                        if (Version >= 5)
-                        {
-                            rw.NodeRef(ref U36Ref);
-
-                            if (Version >= 6)
-                            {
-                                rw.NodeRef(ref U37Ref);
-                                rw.NodeRef(ref U38Ref);
-                            }
-                        }
-                    }
+                    rw.NodeRef(ref U34Ref);
                 }
+            }
+
+            if (Version >= 4)
+            {
+                rw.Array<Vec3>(ref U35!);
+            }
+
+            if (Version >= 5)
+            {
+                rw.NodeRef(ref n.carVsCarShapeRef);
+            }
+
+            if (Version >= 6)
+            {
+                rw.NodeRef(ref n.hitShapeRef);
+                rw.NodeRef(ref n.waterShapeRef);
             }
         }
     }

@@ -30,37 +30,37 @@ public partial class CPlugSoundEngine2 : CPlugSound, IClass
         set => this.rpmMaxFromEngine = value;
     }
 
-    private CFuncKeysReal? volume_Speed;
-    /// <remarks>Applied with: 0x001 v0-4 body chunk</remarks>
-    [AppliedWithChunk<Chunk09029001>(0, 4)]
-    public CFuncKeysReal? Volume_Speed
+    private PlugCurve? volume_Speed;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
+    [AppliedWithChunk<Chunk09029001>]
+    public PlugCurve? Volume_Speed
     {
         get => this.volume_Speed;
         set => this.volume_Speed = value;
     }
 
-    private CFuncKeysReal? volume_Distance;
-    /// <remarks>Applied with: 0x001 v0-4 body chunk</remarks>
-    [AppliedWithChunk<Chunk09029001>(0, 4)]
-    public CFuncKeysReal? Volume_Distance
+    private PlugCurve? volume_Distance;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
+    [AppliedWithChunk<Chunk09029001>]
+    public PlugCurve? Volume_Distance
     {
         get => this.volume_Distance;
         set => this.volume_Distance = value;
     }
 
-    private CFuncKeysReal? volume_Rpm;
-    /// <remarks>Applied with: 0x001 v0-4 body chunk</remarks>
-    [AppliedWithChunk<Chunk09029001>(0, 4)]
-    public CFuncKeysReal? Volume_Rpm
+    private PlugCurve? volume_Rpm;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
+    [AppliedWithChunk<Chunk09029001>]
+    public PlugCurve? Volume_Rpm
     {
         get => this.volume_Rpm;
         set => this.volume_Rpm = value;
     }
 
-    private CFuncKeysReal? volume_Throttle;
-    /// <remarks>Applied with: 0x001 v0-4 body chunk</remarks>
-    [AppliedWithChunk<Chunk09029001>(0, 4)]
-    public CFuncKeysReal? Volume_Throttle
+    private PlugCurve? volume_Throttle;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
+    [AppliedWithChunk<Chunk09029001>]
+    public PlugCurve? Volume_Throttle
     {
         get => this.volume_Throttle;
         set => this.volume_Throttle = value;
@@ -102,22 +102,31 @@ public partial class CPlugSoundEngine2 : CPlugSound, IClass
         set => this.rpmGamma = value;
     }
 
-    private CFuncKeysReal? volume_Gear;
-    /// <remarks>Applied with: 0x001 v3-4 body chunk</remarks>
-    [AppliedWithChunk<Chunk09029001>(3, 4)]
-    public CFuncKeysReal? Volume_Gear
+    private PlugCurve? volume_Gear;
+    /// <remarks>Applied with: 0x001 v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk09029001>(3)]
+    public PlugCurve? Volume_Gear
     {
         get => this.volume_Gear;
         set => this.volume_Gear = value;
     }
 
-    private CFuncKeysReal? rpmFactor_Gear;
-    /// <remarks>Applied with: 0x001 v3-4 body chunk</remarks>
-    [AppliedWithChunk<Chunk09029001>(3, 4)]
-    public CFuncKeysReal? RpmFactor_Gear
+    private PlugCurve? rpmFactor_Gear;
+    /// <remarks>Applied with: 0x001 v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk09029001>(3)]
+    public PlugCurve? RpmFactor_Gear
     {
         get => this.rpmFactor_Gear;
         set => this.rpmFactor_Gear = value;
+    }
+
+    private LowPassFilter[]? lowPassFilters;
+    /// <remarks>Applied with: 0x001 v4+ body chunk</remarks>
+    [AppliedWithChunk<Chunk09029001>(4)]
+    public LowPassFilter[]? LowPassFilters
+    {
+        get => this.lowPassFilters;
+        set => this.lowPassFilters = value;
     }
 
     private AudioMotor[]? audioMotors;
@@ -129,19 +138,19 @@ public partial class CPlugSoundEngine2 : CPlugSound, IClass
         set => this.audioMotors = value;
     }
 
-    private CFuncKeysReal? audioMotors_PitchRandomize_Rpm;
-    /// <remarks>Applied with: 0x002 v0-5 body chunk</remarks>
-    [AppliedWithChunk<Chunk09029002>(0, 5)]
-    public CFuncKeysReal? AudioMotors_PitchRandomize_Rpm
+    private PlugCurve? audioMotors_PitchRandomize_Rpm;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
+    [AppliedWithChunk<Chunk09029002>]
+    public PlugCurve? AudioMotors_PitchRandomize_Rpm
     {
         get => this.audioMotors_PitchRandomize_Rpm;
         set => this.audioMotors_PitchRandomize_Rpm = value;
     }
 
-    private CFuncKeysReal? audioMotors_PitchRandomize_Throttle;
-    /// <remarks>Applied with: 0x002 v0-5 body chunk</remarks>
-    [AppliedWithChunk<Chunk09029002>(0, 5)]
-    public CFuncKeysReal? AudioMotors_PitchRandomize_Throttle
+    private PlugCurve? audioMotors_PitchRandomize_Throttle;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
+    [AppliedWithChunk<Chunk09029002>]
+    public PlugCurve? AudioMotors_PitchRandomize_Throttle
     {
         get => this.audioMotors_PitchRandomize_Throttle;
         set => this.audioMotors_PitchRandomize_Throttle = value;
@@ -198,6 +207,7 @@ public partial class CPlugSoundEngine2 : CPlugSound, IClass
         ((CPlugSoundEngine2)clone).rpmGamma = context.Clone(this.rpmGamma)!;
         ((CPlugSoundEngine2)clone).volume_Gear = context.Clone(this.volume_Gear)!;
         ((CPlugSoundEngine2)clone).rpmFactor_Gear = context.Clone(this.rpmFactor_Gear)!;
+        ((CPlugSoundEngine2)clone).lowPassFilters = context.CloneArray(this.lowPassFilters)!;
         ((CPlugSoundEngine2)clone).audioMotors = context.CloneArray(this.audioMotors)!;
         ((CPlugSoundEngine2)clone).audioMotors_PitchRandomize_Rpm = context.Clone(this.audioMotors_PitchRandomize_Rpm)!;
         ((CPlugSoundEngine2)clone).audioMotors_PitchRandomize_Throttle = context.Clone(this.audioMotors_PitchRandomize_Throttle)!;
@@ -250,13 +260,6 @@ public partial class CPlugSoundEngine2 : CPlugSound, IClass
         public override uint Id => 0x09029001;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public PlugCurve? U01;
-        public PlugCurve? U02;
-        public PlugCurve? U03;
-        public PlugCurve? U04;
-        public PlugCurve? U05;
-        public PlugCurve? U06;
-        public Vec2[]? U07;
 
         public Chunk09029001() : this(GameVersion.Unspecified)
         {
@@ -278,13 +281,6 @@ public partial class CPlugSoundEngine2 : CPlugSound, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk09029001)clone).Version = context.Clone(this.Version)!;
-            ((Chunk09029001)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk09029001)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk09029001)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk09029001)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk09029001)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk09029001)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk09029001)clone).U07 = context.CloneArray(this.U07)!;
         }
 
         public override void ReadWrite(CPlugSoundEngine2 n, GbxReaderWriter rw)
@@ -299,18 +295,18 @@ public partial class CPlugSoundEngine2 : CPlugSound, IClass
 
             if (Version <= 4)
             {
-                rw.Node<CFuncKeysReal>(ref n.volume_Speed);
-                rw.Node<CFuncKeysReal>(ref n.volume_Distance);
-                rw.Node<CFuncKeysReal>(ref n.volume_Rpm);
-                rw.Node<CFuncKeysReal>(ref n.volume_Throttle);
+                (n.volume_Speed ??= new PlugCurve()).ReadWriteDirect<CFuncKeysReal>(rw);
+                (n.volume_Distance ??= new PlugCurve()).ReadWriteDirect<CFuncKeysReal>(rw);
+                (n.volume_Rpm ??= new PlugCurve()).ReadWriteDirect<CFuncKeysReal>(rw);
+                (n.volume_Throttle ??= new PlugCurve()).ReadWriteDirect<CFuncKeysReal>(rw);
             }
 
             if (Version >= 5)
             {
-                rw.ReadableWritable<PlugCurve>(ref U01, version: Version);
-                rw.ReadableWritable<PlugCurve>(ref U02, version: Version);
-                rw.ReadableWritable<PlugCurve>(ref U03, version: Version);
-                rw.ReadableWritable<PlugCurve>(ref U04, version: Version);
+                rw.ReadableWritable<PlugCurve>(ref n.volume_Speed, version: Version);
+                rw.ReadableWritable<PlugCurve>(ref n.volume_Distance, version: Version);
+                rw.ReadableWritable<PlugCurve>(ref n.volume_Rpm, version: Version);
+                rw.ReadableWritable<PlugCurve>(ref n.volume_Throttle, version: Version);
             }
 
             if (Version >= 1)
@@ -327,15 +323,19 @@ public partial class CPlugSoundEngine2 : CPlugSound, IClass
 
             if (Version >= 3 && Version <= 4)
             {
-                rw.Node<CFuncKeysReal>(ref n.volume_Gear);
-                rw.Node<CFuncKeysReal>(ref n.rpmFactor_Gear);
+                (n.volume_Gear ??= new PlugCurve()).ReadWriteDirect<CFuncKeysReal>(rw);
+                (n.rpmFactor_Gear ??= new PlugCurve()).ReadWriteDirect<CFuncKeysReal>(rw);
             }
 
             if (Version >= 5)
             {
-                rw.ReadableWritable<PlugCurve>(ref U05, version: Version);
-                rw.ReadableWritable<PlugCurve>(ref U06, version: Version);
-                rw.Array<Vec2>(ref U07!, 3);
+                rw.ReadableWritable<PlugCurve>(ref n.volume_Gear, version: Version);
+                rw.ReadableWritable<PlugCurve>(ref n.rpmFactor_Gear, version: Version);
+            }
+
+            if (Version >= 4)
+            {
+                rw.ArrayReadableWritable<LowPassFilter>(ref n.lowPassFilters!, 3, version: Version);
             }
         }
     }
@@ -350,9 +350,7 @@ public partial class CPlugSoundEngine2 : CPlugSound, IClass
         public override uint Id => 0x09029002;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public PlugCurve? U01;
-        public PlugCurve? U02;
-        public CFuncKeysReal? U03;
+        public CFuncKeysReal? U01;
 
         public Chunk09029002() : this(GameVersion.Unspecified)
         {
@@ -375,8 +373,6 @@ public partial class CPlugSoundEngine2 : CPlugSound, IClass
             base.DeepCloneFields(clone, context);
             ((Chunk09029002)clone).Version = context.Clone(this.Version)!;
             ((Chunk09029002)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk09029002)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk09029002)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CPlugSoundEngine2 n, GbxReaderWriter rw)
@@ -391,19 +387,19 @@ public partial class CPlugSoundEngine2 : CPlugSound, IClass
 
             if (Version <= 5)
             {
-                rw.Node<CFuncKeysReal>(ref n.audioMotors_PitchRandomize_Rpm);
-                rw.Node<CFuncKeysReal>(ref n.audioMotors_PitchRandomize_Throttle);
+                (n.audioMotors_PitchRandomize_Rpm ??= new PlugCurve()).ReadWriteDirect<CFuncKeysReal>(rw);
+                (n.audioMotors_PitchRandomize_Throttle ??= new PlugCurve()).ReadWriteDirect<CFuncKeysReal>(rw);
             }
 
             if (Version >= 6)
             {
-                rw.ReadableWritable<PlugCurve>(ref U01, version: Version);
-                rw.ReadableWritable<PlugCurve>(ref U02, version: Version);
+                rw.ReadableWritable<PlugCurve>(ref n.audioMotors_PitchRandomize_Rpm, version: Version);
+                rw.ReadableWritable<PlugCurve>(ref n.audioMotors_PitchRandomize_Throttle, version: Version);
             }
 
             if (Version == 0)
             {
-                rw.Node<CFuncKeysReal>(ref U03);
+                rw.Node<CFuncKeysReal>(ref U01);
             }
         }
     }
@@ -469,32 +465,18 @@ public partial class CPlugSoundEngine2 : CPlugSound, IClass
 
     public partial class PerspectiveVolume : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private CFuncKeysReal? release;
-        public CFuncKeysReal? Release
+        private PlugCurve? rpm;
+        public PlugCurve? Rpm
         {
-            get => this.release;
-            set => this.release = value;
+            get => this.rpm;
+            set => this.rpm = value;
         }
 
-        private CFuncKeysReal? throttle;
-        public CFuncKeysReal? Throttle
+        private PlugCurve? throttle;
+        public PlugCurve? Throttle
         {
             get => this.throttle;
             set => this.throttle = value;
-        }
-
-        private PlugCurve? u01;
-        public PlugCurve? U01
-        {
-            get => this.u01;
-            set => this.u01 = value;
-        }
-
-        private PlugCurve? u02;
-        public PlugCurve? U02
-        {
-            get => this.u02;
-            set => this.u02 = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -507,24 +489,22 @@ public partial class CPlugSoundEngine2 : CPlugSound, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((PerspectiveVolume)clone).release = context.Clone(this.release)!;
+            ((PerspectiveVolume)clone).rpm = context.Clone(this.rpm)!;
             ((PerspectiveVolume)clone).throttle = context.Clone(this.throttle)!;
-            ((PerspectiveVolume)clone).u01 = context.Clone(this.u01)!;
-            ((PerspectiveVolume)clone).u02 = context.Clone(this.u02)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             if (v <= 4)
             {
-                rw.Node<CFuncKeysReal>(ref this.release);
-                rw.Node<CFuncKeysReal>(ref this.throttle);
+                (this.rpm ??= new PlugCurve()).ReadWriteDirect<CFuncKeysReal>(rw);
+                (this.throttle ??= new PlugCurve()).ReadWriteDirect<CFuncKeysReal>(rw);
             }
 
             if (v >= 5)
             {
-                rw.ReadableWritable<PlugCurve>(ref this.u01, version: v);
-                rw.ReadableWritable<PlugCurve>(ref this.u02, version: v);
+                rw.ReadableWritable<PlugCurve>(ref this.rpm, version: v);
+                rw.ReadableWritable<PlugCurve>(ref this.throttle, version: v);
             }
         }
 
@@ -544,6 +524,9 @@ public partial class CPlugSoundEngine2 : CPlugSound, IClass
     public partial class AudioMotor : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private NodeRef<CMwNod>? throttleRef;
+        /// <summary>
+        /// CPlugFileAudioMotors
+        /// </summary>
         public CMwNod? Throttle
         {
             get => throttleRef?.Resolve();
@@ -551,6 +534,9 @@ public partial class CPlugSoundEngine2 : CPlugSound, IClass
         }
 
         private NodeRef<CMwNod>? releaseRef;
+        /// <summary>
+        /// CPlugFileAudioMotors
+        /// </summary>
         public CMwNod? Release
         {
             get => releaseRef?.Resolve();
@@ -572,24 +558,33 @@ public partial class CPlugSoundEngine2 : CPlugSound, IClass
         }
 
         private float lowPassCutoffRatio = 1f;
+        /// <summary>
+        /// moved to LowPassFilters in 0x001 v4+
+        /// </summary>
         public float LowPassCutoffRatio
         {
             get => this.lowPassCutoffRatio;
             set => this.lowPassCutoffRatio = value;
         }
 
-        private float u01 = 1f;
-        public float U01
+        private float idleVolume = 1f;
+        /// <summary>
+        /// linear, shown in dB as AudioMotors_IdleVolumedB
+        /// </summary>
+        public float IdleVolume
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.idleVolume;
+            set => this.idleVolume = value;
         }
 
-        private float u02 = 1f;
-        public float U02
+        private float limiterVolume = 1f;
+        /// <summary>
+        /// linear, shown in dB as AudioMotors_LimiterVolumedB
+        /// </summary>
+        public float LimiterVolume
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.limiterVolume;
+            set => this.limiterVolume = value;
         }
 
         public NodeRefView References => new(this);
@@ -626,8 +621,8 @@ public partial class CPlugSoundEngine2 : CPlugSound, IClass
             ((AudioMotor)clone).idleLoopRef = context.Clone(this.idleLoopRef)!;
             ((AudioMotor)clone).limiterLoopRef = context.Clone(this.limiterLoopRef)!;
             ((AudioMotor)clone).lowPassCutoffRatio = context.Clone(this.lowPassCutoffRatio)!;
-            ((AudioMotor)clone).u01 = context.Clone(this.u01)!;
-            ((AudioMotor)clone).u02 = context.Clone(this.u02)!;
+            ((AudioMotor)clone).idleVolume = context.Clone(this.idleVolume)!;
+            ((AudioMotor)clone).limiterVolume = context.Clone(this.limiterVolume)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -640,15 +635,15 @@ public partial class CPlugSoundEngine2 : CPlugSound, IClass
                 rw.NodeRef(ref this.idleLoopRef);
                 rw.NodeRef(ref this.limiterLoopRef);
 
-                if (v >= 4 && v <= 5)
+                if (v == 4)
                 {
                     rw.Single(ref this.lowPassCutoffRatio);
                 }
 
                 if (v >= 3)
                 {
-                    rw.Single(ref this.u01);
-                    rw.Single(ref this.u02);
+                    rw.Single(ref this.idleVolume);
+                    rw.Single(ref this.limiterVolume);
                 }
             }
         }
@@ -740,6 +735,58 @@ public partial class CPlugSoundEngine2 : CPlugSound, IClass
                 rw.Single(ref this.coneAttenuation);
                 rw.Single(ref this.coneAngle);
             }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class LowPassFilter : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private float cutoffRatio = 1f;
+        public float CutoffRatio
+        {
+            get => this.cutoffRatio;
+            set => this.cutoffRatio = value;
+        }
+
+        private bool enabled;
+        /// <summary>
+        /// set by v4 0x002 when the cutoff ratio is below 0.9
+        /// </summary>
+        public bool Enabled
+        {
+            get => this.enabled;
+            set => this.enabled = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (LowPassFilter)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((LowPassFilter)clone).cutoffRatio = context.Clone(this.cutoffRatio)!;
+            ((LowPassFilter)clone).enabled = context.Clone(this.enabled)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Single(ref this.cutoffRatio);
+            rw.Boolean(ref this.enabled);
         }
 
         public virtual void Read(GbxReader r, int v = 0)

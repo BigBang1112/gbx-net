@@ -4,56 +4,47 @@
 namespace GBX.NET.Interfaces.Plug;
 
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IPlugTrainWagonModelMembers1<T0, T1, T2, T3, T4> : global::GBX.NET.Interfaces.Plug.IPlugTrainWagonModel where T0 : class where T1 : class where T2 : class where T3 : class where T4 : class
+public interface IPlugTrainWagonModelMembers1<T0, T1, T2, T3> : global::GBX.NET.Interfaces.Plug.IPlugTrainWagonModel where T0 : class where T1 : class where T2 : class where T3 : class
 {
-    new T0? AccelCurve
+    new T0? Mesh
     {
-        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugTrainWagonModel)this).AccelCurve);
-        set => ((global::GBX.NET.Engines.Plug.CPlugTrainWagonModel)this).AccelCurve = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    new T1? Mesh
-    {
-        get => (T1?)(object?)(((global::GBX.NET.Engines.Plug.CPlugTrainWagonModel)this).Mesh);
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugTrainWagonModel)this).Mesh);
         set => ((global::GBX.NET.Engines.Plug.CPlugTrainWagonModel)this).Mesh = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid2Model node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new T2? Shape
+    new T1? Shape
     {
-        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugTrainWagonModel)this).Shape);
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Plug.CPlugTrainWagonModel)this).Shape);
         set => ((global::GBX.NET.Engines.Plug.CPlugTrainWagonModel)this).Shape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new T3? SmokeEmitterModel
+    new T2? SmokeEmitterModel
     {
-        get => (T3?)(object?)(((global::GBX.NET.Engines.Plug.CPlugTrainWagonModel)this).SmokeEmitterModel);
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugTrainWagonModel)this).SmokeEmitterModel);
         set => ((global::GBX.NET.Engines.Plug.CPlugTrainWagonModel)this).SmokeEmitterModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new T4? SoundBrake
+    new T3? SoundBrake
     {
-        get => (T4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugTrainWagonModel)this).SoundBrake);
+        get => (T3?)(object?)(((global::GBX.NET.Engines.Plug.CPlugTrainWagonModel)this).SoundBrake);
         set => ((global::GBX.NET.Engines.Plug.CPlugTrainWagonModel)this).SoundBrake = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new T4? SoundCollision
+    new T3? SoundCollision
     {
-        get => (T4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugTrainWagonModel)this).SoundCollision);
+        get => (T3?)(object?)(((global::GBX.NET.Engines.Plug.CPlugTrainWagonModel)this).SoundCollision);
         set => ((global::GBX.NET.Engines.Plug.CPlugTrainWagonModel)this).SoundCollision = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new T4? SoundEngine
+    new T3? SoundEngine
     {
-        get => (T4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugTrainWagonModel)this).SoundEngine);
+        get => (T3?)(object?)(((global::GBX.NET.Engines.Plug.CPlugTrainWagonModel)this).SoundEngine);
         set => ((global::GBX.NET.Engines.Plug.CPlugTrainWagonModel)this).SoundEngine = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new T4? SoundRailContact
+    new T3? SoundRailContact
     {
-        get => (T4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugTrainWagonModel)this).SoundRailContact);
+        get => (T3?)(object?)(((global::GBX.NET.Engines.Plug.CPlugTrainWagonModel)this).SoundRailContact);
         set => ((global::GBX.NET.Engines.Plug.CPlugTrainWagonModel)this).SoundRailContact = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }
 public partial interface IPlugTrainWagonModel : IClassVersion<global::GBX.NET.Engines.Plug.CPlugTrainWagonModel>
 {
-    global::GBX.NET.Interfaces.Function.IFuncKeysReal? AccelCurve
-    {
-        get => (global::GBX.NET.Interfaces.Function.IFuncKeysReal?)(object?)(((global::GBX.NET.Engines.Plug.CPlugTrainWagonModel)this).AccelCurve);
-        set => ((global::GBX.NET.Engines.Plug.CPlugTrainWagonModel)this).AccelCurve = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
+    PlugCurve? AccelCurve { get; set; }
     bool GenLengthFromShape { get; set; }
     bool IsLoco { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugSolid2Model? Mesh
@@ -95,11 +86,11 @@ public partial interface IPlugTrainWagonModel : IClassVersion<global::GBX.NET.En
     float WagonLength { get; set; }
 }
 
-public partial interface IPlugTrainWagonModelMP4 : IPlugTrainWagonModel, global::GBX.NET.Interfaces.Plug.IPlugTrainWagonModelMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>
+public partial interface IPlugTrainWagonModelMP4 : IPlugTrainWagonModel, global::GBX.NET.Interfaces.Plug.IPlugTrainWagonModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>
 {
 }
 
-public partial interface IPlugTrainWagonModelTM2020 : IPlugTrainWagonModel, global::GBX.NET.Interfaces.Plug.IPlugTrainWagonModelMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>
+public partial interface IPlugTrainWagonModelTM2020 : IPlugTrainWagonModel, global::GBX.NET.Interfaces.Plug.IPlugTrainWagonModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>
 {
     global::GBX.NET.Interfaces.Plug.IPlugAnimFileTM2020? AnimFile
     {

@@ -44,7 +44,7 @@ public partial class CPlugVehicleCameraHelicoModelBuilder : CPlugVehicleCameraHe
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraHelicoModel> state) : base(state) { }
         public MP4 WithShake(global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelMP4? value) => base.WithShake(value is null ? (global::GBX.NET.Engines.Plug.CPlugCamShakeModel?)null : value is global::GBX.NET.Engines.Plug.CPlugCamShakeModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraHelicoModelMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugVehicleCameraHelicoModel Build() => BuildNode(CPlugVehicleCameraHelicoModelBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Plug.CPlugVehicleCameraHelicoModel Build() => BuildNode(CPlugVehicleCameraHelicoModelBuilder.CreateRecipe1(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleCameraHelicoModel node);
     }
     public partial class TM2020 : CPlugVehicleCameraHelicoModelBuilderBase<TM2020>

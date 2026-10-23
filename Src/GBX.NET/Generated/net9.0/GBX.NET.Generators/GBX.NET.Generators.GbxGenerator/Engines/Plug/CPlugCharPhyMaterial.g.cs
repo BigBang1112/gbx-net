@@ -3,6 +3,9 @@
 
 namespace GBX.NET.Engines.Plug;
 
+/// <summary>
+/// Character physics properties of one surface material.
+/// </summary>
 /// <remarks>ID: 0x090CA000</remarks>
 [Class(0x090CA000)]
 public partial class CPlugCharPhyMaterial : CMwNod, IClass
@@ -12,9 +15,154 @@ public partial class CPlugCharPhyMaterial : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
+    private CPlugSurface.MaterialId surfaceMaterialId;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
+    [AppliedWithChunk<Chunk090CA000>]
+    [AppliedWithChunk<Chunk090CA001>]
+    public CPlugSurface.MaterialId SurfaceMaterialId
+    {
+        get => this.surfaceMaterialId;
+        set => this.surfaceMaterialId = value;
+    }
+
+    private bool slideSurf;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
+    [AppliedWithChunk<Chunk090CA000>]
+    [AppliedWithChunk<Chunk090CA001>]
+    public bool SlideSurf
+    {
+        get => this.slideSurf;
+        set => this.slideSurf = value;
+    }
+
+    private bool climbable;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
+    [AppliedWithChunk<Chunk090CA000>]
+    [AppliedWithChunk<Chunk090CA001>]
+    public bool Climbable
+    {
+        get => this.climbable;
+        set => this.climbable = value;
+    }
+
+    private bool wallJumpable;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
+    [AppliedWithChunk<Chunk090CA000>]
+    [AppliedWithChunk<Chunk090CA001>]
+    public bool WallJumpable
+    {
+        get => this.wallJumpable;
+        set => this.wallJumpable = value;
+    }
+
+    private float maxWalkSlope = 60;
+    /// <summary>
+    /// degrees
+    /// </summary>
+    /// <remarks>Applied with: 0x001 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CA001>(1)]
+    public float MaxWalkSlope
+    {
+        get => this.maxWalkSlope;
+        set => this.maxWalkSlope = value;
+    }
+
+    private float speedCoef = 1;
+    /// <summary>
+    /// scales the max speed
+    /// </summary>
+    /// <remarks>Applied with: 0x001 v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CA001>(3)]
+    public float SpeedCoef
+    {
+        get => this.speedCoef;
+        set => this.speedCoef = value;
+    }
+
+    private float maxSlideSlope = 60;
+    /// <summary>
+    /// degrees, steeper ground slides without control
+    /// </summary>
+    /// <remarks>Applied with: 0x001 v4+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CA001>(4)]
+    public float MaxSlideSlope
+    {
+        get => this.maxSlideSlope;
+        set => this.maxSlideSlope = value;
+    }
+
+    private float blowHorizontalCoef = 1;
+    /// <summary>
+    /// square root scales the horizontal blow
+    /// </summary>
+    /// <remarks>Applied with: 0x001 v6+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CA001>(6)]
+    public float BlowHorizontalCoef
+    {
+        get => this.blowHorizontalCoef;
+        set => this.blowHorizontalCoef = value;
+    }
+
+    private float accelMax = -1;
+    /// <summary>
+    /// clamps the acceleration
+    /// </summary>
+    /// <remarks>Applied with: 0x001 v7+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CA001>(7)]
+    public float AccelMax
+    {
+        get => this.accelMax;
+        set => this.accelMax = value;
+    }
+
+    private float frictionMax = -1;
+    /// <summary>
+    /// clamps the friction
+    /// </summary>
+    /// <remarks>Applied with: 0x001 v7+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CA001>(7)]
+    public float FrictionMax
+    {
+        get => this.frictionMax;
+        set => this.frictionMax = value;
+    }
+
+    private bool ignoreBlows;
+    /// <remarks>Applied with: 0x001 v8+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CA001>(8)]
+    public bool IgnoreBlows
+    {
+        get => this.ignoreBlows;
+        set => this.ignoreBlows = value;
+    }
+
+    private float groundBlowCoef = 1;
+    /// <summary>
+    /// blow scale while on ground
+    /// </summary>
+    /// <remarks>Applied with: 0x001 v10+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CA001>(10)]
+    public float GroundBlowCoef
+    {
+        get => this.groundBlowCoef;
+        set => this.groundBlowCoef = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugCharPhyMaterial)clone).surfaceMaterialId = context.Clone(this.surfaceMaterialId)!;
+        ((CPlugCharPhyMaterial)clone).slideSurf = context.Clone(this.slideSurf)!;
+        ((CPlugCharPhyMaterial)clone).climbable = context.Clone(this.climbable)!;
+        ((CPlugCharPhyMaterial)clone).wallJumpable = context.Clone(this.wallJumpable)!;
+        ((CPlugCharPhyMaterial)clone).maxWalkSlope = context.Clone(this.maxWalkSlope)!;
+        ((CPlugCharPhyMaterial)clone).speedCoef = context.Clone(this.speedCoef)!;
+        ((CPlugCharPhyMaterial)clone).maxSlideSlope = context.Clone(this.maxSlideSlope)!;
+        ((CPlugCharPhyMaterial)clone).blowHorizontalCoef = context.Clone(this.blowHorizontalCoef)!;
+        ((CPlugCharPhyMaterial)clone).accelMax = context.Clone(this.accelMax)!;
+        ((CPlugCharPhyMaterial)clone).frictionMax = context.Clone(this.frictionMax)!;
+        ((CPlugCharPhyMaterial)clone).ignoreBlows = context.Clone(this.ignoreBlows)!;
+        ((CPlugCharPhyMaterial)clone).groundBlowCoef = context.Clone(this.groundBlowCoef)!;
     }
 
     public CPlugCharPhyMaterial()
@@ -22,15 +170,17 @@ public partial class CPlugCharPhyMaterial : CMwNod, IClass
     }
 
     /// <summary>
-    /// CPlugCharPhyMaterial 0x000 chunk
+    /// CPlugCharPhyMaterial 0x000 chunk (legacy material)
     /// </summary>
-    [Chunk(0x090CA000)]
+    [Chunk(0x090CA000, "legacy material")]
     public partial class Chunk090CA000 : Chunk<CPlugCharPhyMaterial>
     {
         public override uint Id => 0x090CA000;
-        public byte U01;
 
         private NodeRef<CFuncKeysReal>? U02Ref;
+        /// <summary>
+        /// discarded
+        /// </summary>
         public CFuncKeysReal? U02
         {
             get => U02Ref?.Resolve();
@@ -38,15 +188,15 @@ public partial class CPlugCharPhyMaterial : CMwNod, IClass
         }
 
         private NodeRef<CFuncKeysReal>? U03Ref;
+        /// <summary>
+        /// discarded
+        /// </summary>
         public CFuncKeysReal? U03
         {
             get => U03Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U03Ref, value);
         }
-        public float U04;
-        public bool U05;
-        public bool U06;
-        public bool U07;
+        public float U04 = 1;
         public bool U08;
         public bool U09;
 
@@ -69,42 +219,42 @@ public partial class CPlugCharPhyMaterial : CMwNod, IClass
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk090CA000)clone).U01 = context.Clone(this.U01)!;
             ((Chunk090CA000)clone).U02Ref = context.Clone(this.U02Ref)!;
             ((Chunk090CA000)clone).U03Ref = context.Clone(this.U03Ref)!;
             ((Chunk090CA000)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk090CA000)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk090CA000)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk090CA000)clone).U07 = context.Clone(this.U07)!;
             ((Chunk090CA000)clone).U08 = context.Clone(this.U08)!;
             ((Chunk090CA000)clone).U09 = context.Clone(this.U09)!;
         }
 
         public override void ReadWrite(CPlugCharPhyMaterial n, GbxReaderWriter rw)
         {
-            rw.Byte(ref U01);
+            rw.EnumByte<CPlugSurface.MaterialId>(ref n.surfaceMaterialId);
             rw.NodeRef(ref U02Ref);
             rw.NodeRef(ref U03Ref);
             rw.Single(ref U04);
-            rw.Boolean(ref U05);
-            rw.Boolean(ref U06);
-            rw.Boolean(ref U07);
+            rw.Boolean(ref n.slideSurf);
+            rw.Boolean(ref n.climbable);
+            rw.Boolean(ref n.wallJumpable);
             rw.Boolean(ref U08);
             rw.Boolean(ref U09);
         }
     }
 
     /// <summary>
-    /// CPlugCharPhyMaterial 0x001 chunk
+    /// CPlugCharPhyMaterial 0x001 chunk (material)
     /// </summary>
-    [Chunk(0x090CA001)]
+    [Chunk(0x090CA001, "material")]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 11, 11)]
     public partial class Chunk090CA001 : Chunk<CPlugCharPhyMaterial>, IVersionable
     {
         public override uint Id => 0x090CA001;
-        public int Version { get; set; } = 11;
-        public byte U01;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public int Version { get; set; }
 
         private NodeRef<CFuncKeysReal>? U02Ref;
+        /// <summary>
+        /// discarded
+        /// </summary>
         public CFuncKeysReal? U02
         {
             get => U02Ref?.Resolve();
@@ -112,26 +262,18 @@ public partial class CPlugCharPhyMaterial : CMwNod, IClass
         }
 
         private NodeRef<CFuncKeysReal>? U03Ref;
+        /// <summary>
+        /// discarded
+        /// </summary>
         public CFuncKeysReal? U03
         {
             get => U03Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U03Ref, value);
         }
         public float U04;
-        public bool U05;
-        public bool U06;
-        public bool U07;
         public bool U08;
-        public float U09;
-        public float U10;
-        public float U11;
         public bool U12;
-        public float U13;
-        public float U14;
-        public float U15;
-        public bool U16;
         public float U17;
-        public float U18;
         public float U19;
 
         public NodeRefView References => new(this);
@@ -150,35 +292,48 @@ public partial class CPlugCharPhyMaterial : CMwNod, IClass
             yield break;
         }
 
+        public Chunk090CA001() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090CA001(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 11;
+            }
+            else
+            {
+                Version = 11;
+            }
+
+            U04 = 1;
+            U17 = 1;
+            U19 = 1;
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090CA001)clone).Version = context.Clone(this.Version)!;
-            ((Chunk090CA001)clone).U01 = context.Clone(this.U01)!;
             ((Chunk090CA001)clone).U02Ref = context.Clone(this.U02Ref)!;
             ((Chunk090CA001)clone).U03Ref = context.Clone(this.U03Ref)!;
             ((Chunk090CA001)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk090CA001)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk090CA001)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk090CA001)clone).U07 = context.Clone(this.U07)!;
             ((Chunk090CA001)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk090CA001)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk090CA001)clone).U10 = context.Clone(this.U10)!;
-            ((Chunk090CA001)clone).U11 = context.Clone(this.U11)!;
             ((Chunk090CA001)clone).U12 = context.Clone(this.U12)!;
-            ((Chunk090CA001)clone).U13 = context.Clone(this.U13)!;
-            ((Chunk090CA001)clone).U14 = context.Clone(this.U14)!;
-            ((Chunk090CA001)clone).U15 = context.Clone(this.U15)!;
-            ((Chunk090CA001)clone).U16 = context.Clone(this.U16)!;
             ((Chunk090CA001)clone).U17 = context.Clone(this.U17)!;
-            ((Chunk090CA001)clone).U18 = context.Clone(this.U18)!;
             ((Chunk090CA001)clone).U19 = context.Clone(this.U19)!;
         }
 
         public override void ReadWrite(CPlugCharPhyMaterial n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.Byte(ref U01);
+            if (Version > global::System.Math.Max(11, 11))
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.EnumByte<CPlugSurface.MaterialId>(ref n.surfaceMaterialId);
 
             if (Version <= 2)
             {
@@ -187,24 +342,24 @@ public partial class CPlugCharPhyMaterial : CMwNod, IClass
             }
 
             rw.Single(ref U04);
-            rw.Boolean(ref U05);
-            rw.Boolean(ref U06);
-            rw.Boolean(ref U07);
+            rw.Boolean(ref n.slideSurf);
+            rw.Boolean(ref n.climbable);
+            rw.Boolean(ref n.wallJumpable);
             rw.Boolean(ref U08);
 
             if (Version >= 1)
             {
-                rw.Single(ref U09);
+                rw.Single(ref n.maxWalkSlope);
             }
 
             if (Version >= 3)
             {
-                rw.Single(ref U10);
+                rw.Single(ref n.speedCoef);
             }
 
             if (Version >= 4)
             {
-                rw.Single(ref U11);
+                rw.Single(ref n.maxSlideSlope);
             }
 
             if (Version >= 5)
@@ -214,18 +369,18 @@ public partial class CPlugCharPhyMaterial : CMwNod, IClass
 
             if (Version >= 6)
             {
-                rw.Single(ref U13);
+                rw.Single(ref n.blowHorizontalCoef);
             }
 
             if (Version >= 7)
             {
-                rw.Single(ref U14);
-                rw.Single(ref U15);
+                rw.Single(ref n.accelMax);
+                rw.Single(ref n.frictionMax);
             }
 
             if (Version >= 8)
             {
-                rw.Boolean(ref U16);
+                rw.Boolean(ref n.ignoreBlows);
             }
 
             if (Version >= 9)
@@ -235,7 +390,7 @@ public partial class CPlugCharPhyMaterial : CMwNod, IClass
 
             if (Version >= 10)
             {
-                rw.Single(ref U18);
+                rw.Single(ref n.groundBlowCoef);
             }
 
             if (Version >= 11)

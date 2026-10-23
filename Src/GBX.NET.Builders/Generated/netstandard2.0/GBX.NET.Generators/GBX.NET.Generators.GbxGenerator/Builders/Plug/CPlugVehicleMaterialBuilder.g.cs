@@ -7,40 +7,66 @@ public abstract class CPlugVehicleMaterialBuilderBase<TSelf> : NodeBuilder<globa
 {
     private protected CPlugVehicleMaterialBuilderBase() { }
     private protected CPlugVehicleMaterialBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames2 = GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames3 = GameVersion.TM10 | GameVersion.TMPU;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020;
+    private protected const GameVersion SupportedGames3 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF;
+    private protected const GameVersion SupportedGames4 = GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames5 = GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames6 = GameVersion.MP4 | GameVersion.TM2020;
+    private protected const GameVersion SupportedGames7 = GameVersion.TM10 | GameVersion.TMPU;
+    public TSelf WithAccelerationCoef(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetAccelerationCoefAssignment(), value, SupportedGames1);
+    public TSelf WithBrakeCoef(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetBrakeCoefAssignment(), value, SupportedGames1);
+    public TSelf WithGrip(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetGripAssignment(), value, SupportedGames1);
+    public TSelf WithM6_MaterialHeightDetail_Scale(Vec2 value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetM6_MaterialHeightDetail_ScaleAssignment(), value, SupportedGames1);
+    public TSelf WithMaterialId(byte value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetMaterialIdAssignment(), value, SupportedGames1);
+    public TSelf WithSpeed(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetSpeedAssignment(), value, SupportedGames1);
 }
 public abstract class CPlugVehicleMaterialBuilderMembers1<TSelf> : CPlugVehicleMaterialBuilderBase<TSelf> where TSelf : CPlugVehicleMaterialBuilderMembers1<TSelf>
 {
     private protected CPlugVehicleMaterialBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial> state) : base(state) { }
-    public TSelf WithMaterialHeightDetailBitmap(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetMaterialHeightDetailBitmapAssignment(), value, SupportedGames1);
-    public TSelf WithMaterialHeightDetailBitmapReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetMaterialHeightDetailBitmapReferenceAssignment(), value, SupportedGames1);
-    public TSelf WithMaterialHeightDetailScale(Vec2 value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetMaterialHeightDetailScaleAssignment(), value, SupportedGames1);
+    public TSelf WithRumble_BumpsSpacing(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetRumble_BumpsSpacingAssignment(), value, SupportedGames3);
+    public TSelf WithRumble_VibrationCorrection(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetRumble_VibrationCorrectionAssignment(), value, SupportedGames3);
 }
-public abstract class CPlugVehicleMaterialBuilderMembers2<TSelf> : CPlugVehicleMaterialBuilderMembers1<TSelf> where TSelf : CPlugVehicleMaterialBuilderMembers2<TSelf>
+public abstract class CPlugVehicleMaterialBuilderMembers2<TSelf> : CPlugVehicleMaterialBuilderBase<TSelf> where TSelf : CPlugVehicleMaterialBuilderMembers2<TSelf>
 {
     private protected CPlugVehicleMaterialBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial> state) : base(state) { }
-    public TSelf WithAccelerationCoef(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetAccelerationCoefAssignment(), value, SupportedGames2);
-    public TSelf WithBrakeCoef(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetBrakeCoefAssignment(), value, SupportedGames2);
-    public TSelf WithGrip(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetGripAssignment(), value, SupportedGames2);
-    public TSelf WithMaterialId(byte value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetMaterialIdAssignment(), value, SupportedGames2);
-    public TSelf WithSpeed(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetSpeedAssignment(), value, SupportedGames2);
-    public TSelf WithVibrationMax(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetVibrationMaxAssignment(), value, SupportedGames2);
-    public TSelf WithVibrationSpeedCoef(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetVibrationSpeedCoefAssignment(), value, SupportedGames2);
+    public TSelf WithVibrationMax(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetVibrationMaxAssignment(), value, SupportedGames5);
+    public TSelf WithVibrationSpeedCoef(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetVibrationSpeedCoefAssignment(), value, SupportedGames5);
 }
 public abstract class CPlugVehicleMaterialBuilderMembers3<TSelf> : CPlugVehicleMaterialBuilderMembers2<TSelf> where TSelf : CPlugVehicleMaterialBuilderMembers3<TSelf>
 {
     private protected CPlugVehicleMaterialBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial> state) : base(state) { }
+    public TSelf WithMaterialHeightDetailBitmap(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetMaterialHeightDetailBitmapAssignment(), value, SupportedGames4);
+    public TSelf WithMaterialHeightDetailBitmapReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetMaterialHeightDetailBitmapReferenceAssignment(), value, SupportedGames4);
     public TSelf WithTrailIsOnlyWhenSliding(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetTrailIsOnlyWhenSlidingAssignment(), value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX);
 }
 public abstract class CPlugVehicleMaterialBuilderMembers4<TSelf> : CPlugVehicleMaterialBuilderMembers3<TSelf> where TSelf : CPlugVehicleMaterialBuilderMembers4<TSelf>
 {
     private protected CPlugVehicleMaterialBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial> state) : base(state) { }
-    public TSelf WithTrailManagerModel(global::GBX.NET.Engines.Plug.CPlugFlockModel? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetTrailManagerModelAssignment(), value, SupportedGames3);
-    public TSelf WithTrailManagerModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFlockModel> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetTrailManagerModelReferenceAssignment(), value, SupportedGames3);
-    public TSelf WithTrailShader(global::GBX.NET.Engines.Plug.CPlugShader? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetTrailShaderAssignment(), value, SupportedGames3);
-    public TSelf WithTrailShaderReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetTrailShaderReferenceAssignment(), value, SupportedGames3);
+    public TSelf WithTrailManagerModel(global::GBX.NET.Engines.Plug.CPlugFlockModel? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetTrailManagerModelAssignment(), value, SupportedGames7);
+    public TSelf WithTrailManagerModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFlockModel> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetTrailManagerModelReferenceAssignment(), value, SupportedGames7);
+    public TSelf WithTrailShader(global::GBX.NET.Engines.Plug.CPlugShader? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetTrailShaderAssignment(), value, SupportedGames7);
+    public TSelf WithTrailShaderReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetTrailShaderReferenceAssignment(), value, SupportedGames7);
+}
+public abstract class CPlugVehicleMaterialBuilderMembers5<TSelf> : CPlugVehicleMaterialBuilderMembers1<TSelf> where TSelf : CPlugVehicleMaterialBuilderMembers5<TSelf>
+{
+    private protected CPlugVehicleMaterialBuilderMembers5(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial> state) : base(state) { }
+    public TSelf WithFrictionMax(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetFrictionMaxAssignment(), value, SupportedGames2);
+    public TSelf WithFrictionSpeedMax(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetFrictionSpeedMaxAssignment(), value, SupportedGames2);
+    public TSelf WithFrictionSpeedMin(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetFrictionSpeedMinAssignment(), value, SupportedGames2);
+    public TSelf WithM7_BumpCellSize(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetM7_BumpCellSizeAssignment(), value, SupportedGames2);
+    public TSelf WithM7_BumpReplacementMax(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetM7_BumpReplacementMaxAssignment(), value, SupportedGames2);
+    public TSelf WithM7_BumpReplacementMin(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetM7_BumpReplacementMinAssignment(), value, SupportedGames2);
+    public TSelf WithM7_BumpReplacementSpeedCoef(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetM7_BumpReplacementSpeedCoefAssignment(), value, SupportedGames2);
+}
+public abstract class CPlugVehicleMaterialBuilderMembers6<TSelf> : CPlugVehicleMaterialBuilderMembers5<TSelf> where TSelf : CPlugVehicleMaterialBuilderMembers6<TSelf>
+{
+    private protected CPlugVehicleMaterialBuilderMembers6(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial> state) : base(state) { }
+    public TSelf WithDrifting_InputSteerSensitivityFromSpeed(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetDrifting_InputSteerSensitivityFromSpeedAssignment(), value, SupportedGames6);
+    public TSelf WithDrifting_TransfertForceCoef(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetDrifting_TransfertForceCoefAssignment(), value, SupportedGames6);
+    public TSelf WithM6_MaterialHeightDetail_Enable(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetM6_MaterialHeightDetail_EnableAssignment(), value, SupportedGames6);
+    public TSelf WithVibrationMax(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetVibrationMaxAssignment(), value, SupportedGames5);
+    public TSelf WithVibrationSpeedCoef(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetVibrationSpeedCoefAssignment(), value, SupportedGames5);
 }
 public partial class CPlugVehicleMaterialBuilder : CPlugVehicleMaterialBuilderBase<CPlugVehicleMaterialBuilder>
 {
@@ -136,7 +162,9 @@ public partial class CPlugVehicleMaterialBuilder : CPlugVehicleMaterialBuilderBa
     public partial class TMNESWC : CPlugVehicleMaterialBuilderMembers2<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial> state) : base(state) { }
-        public TMNESWC WithMaterialHeightDetailBitmap(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? value) => base.WithMaterialHeightDetailBitmap(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMNESWC WithMaterialHeightDetailBitmap(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetMaterialHeightDetailBitmapAssignment(), value, SupportedGames4);
+        public TMNESWC WithMaterialHeightDetailBitmapReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetMaterialHeightDetailBitmapReferenceAssignment(), value, SupportedGames4);
+        public TMNESWC WithMaterialHeightDetailBitmap(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? value) => WithMaterialHeightDetailBitmap(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleMaterial Build() => BuildNode(CPlugVehicleMaterialBuilder.CreateRecipe2(GameVersion.TMNESWC), GameVersion.TMNESWC);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleMaterial node);
@@ -144,7 +172,9 @@ public partial class CPlugVehicleMaterialBuilder : CPlugVehicleMaterialBuilderBa
     public partial class VSK5 : CPlugVehicleMaterialBuilderMembers2<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial> state) : base(state) { }
-        public VSK5 WithMaterialHeightDetailBitmap(global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? value) => base.WithMaterialHeightDetailBitmap(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public VSK5 WithMaterialHeightDetailBitmap(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetMaterialHeightDetailBitmapAssignment(), value, SupportedGames4);
+        public VSK5 WithMaterialHeightDetailBitmapReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetMaterialHeightDetailBitmapReferenceAssignment(), value, SupportedGames4);
+        public VSK5 WithMaterialHeightDetailBitmap(global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? value) => WithMaterialHeightDetailBitmap(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleMaterial Build() => BuildNode(CPlugVehicleMaterialBuilder.CreateRecipe2(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleMaterial node);
@@ -152,27 +182,33 @@ public partial class CPlugVehicleMaterialBuilder : CPlugVehicleMaterialBuilderBa
     public partial class TMF : CPlugVehicleMaterialBuilderMembers2<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial> state) : base(state) { }
-        public TMF WithMaterialHeightDetailBitmap(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? value) => base.WithMaterialHeightDetailBitmap(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMF WithMaterialHeightDetailBitmap(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetMaterialHeightDetailBitmapAssignment(), value, SupportedGames4);
+        public TMF WithMaterialHeightDetailBitmapReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetMaterialHeightDetailBitmapReferenceAssignment(), value, SupportedGames4);
+        public TMF WithMaterialHeightDetailBitmap(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? value) => WithMaterialHeightDetailBitmap(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMF WithRumble_BumpsSpacing(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetRumble_BumpsSpacingAssignment(), value, SupportedGames3);
+        public TMF WithRumble_VibrationCorrection(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetRumble_VibrationCorrectionAssignment(), value, SupportedGames3);
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleMaterial Build() => BuildNode(CPlugVehicleMaterialBuilder.CreateRecipe3(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleMaterial node);
     }
-    public partial class MP3 : CPlugVehicleMaterialBuilderMembers1<MP3>
+    public partial class MP3 : CPlugVehicleMaterialBuilderMembers5<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial> state) : base(state) { }
-        public MP3 WithMaterialHeightDetailBitmap(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? value) => base.WithMaterialHeightDetailBitmap(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP3 WithMaterialHeightDetailBitmap(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetMaterialHeightDetailBitmapAssignment(), value, SupportedGames4);
+        public MP3 WithMaterialHeightDetailBitmapReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilderAssignments.GetMaterialHeightDetailBitmapReferenceAssignment(), value, SupportedGames4);
+        public MP3 WithMaterialHeightDetailBitmap(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? value) => WithMaterialHeightDetailBitmap(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleMaterial Build() => BuildNode(CPlugVehicleMaterialBuilder.CreateRecipe4(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleMaterial node);
     }
-    public partial class MP4 : CPlugVehicleMaterialBuilderBase<MP4>
+    public partial class MP4 : CPlugVehicleMaterialBuilderMembers6<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleMaterial Build() => BuildNode(CPlugVehicleMaterialBuilder.CreateRecipe5(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleMaterial node);
     }
-    public partial class TM2020 : CPlugVehicleMaterialBuilderBase<TM2020>
+    public partial class TM2020 : CPlugVehicleMaterialBuilderMembers6<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialTM2020 BuildInterface() => Build();

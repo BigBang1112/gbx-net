@@ -23,6 +23,8 @@ public partial class CPlugCharPhyMaterialsBuilder : CPlugCharPhyMaterialsBuilder
     public partial class TM2020 : CPlugCharPhyMaterialsBuilderBase<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials> state) : base(state) { }
+        public TM2020 WithMaterials(params global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialTM2020[] values) => base.WithMaterials(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial, global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialTM2020>(values, false));
+        public TM2020 WithMaterials(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialTM2020> values) => WithMaterials(values.ToArray());
         public global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialsTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials Build() => BuildNode(CPlugCharPhyMaterialsBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials node);

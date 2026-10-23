@@ -1539,6 +1539,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
   PlugCurve Drifting_BackCoefIntensityFromSpeed
   PlugCurve Drifting_WheelLateralForce_FromWheelLateralSpeed
   PlugCurve Drifting_BackCoefFromSlipAngle
+
 0x0B0 [TM2020.v1]
   version
   float

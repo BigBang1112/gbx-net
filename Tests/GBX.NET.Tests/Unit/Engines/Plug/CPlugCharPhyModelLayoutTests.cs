@@ -138,6 +138,97 @@ public class CPlugCharPhyModelLayoutTests
     }
 
     [Test]
+    [Arguments(0x02C, 13)]
+    [Arguments(0x02E, 4)]
+    [Arguments(0x031, 4)]
+    [Arguments(0x031, 5)]
+    public async Task ReadWrite_ManiaPlanetTypedChunks_UseNativeBooleanAndNaturalFields(int offset, int version)
+    {
+        object[] curve = version >= 5 && offset == 0x031 ? [3, 0, (ushort)0] : [-1];
+        var fields = offset switch
+        {
+            0x02C => new List<object>
+            {
+                true, 1f, false, true, true, false, true, 123, true, 234, 345, 456, false,
+                1, true, 2, 3, false, 2f, 3f, 4, 4f, 5f,
+                5, true, 6, 7, false, 6f, 7f, 8, 8f, 9, 9f, 10f
+            },
+            0x02E => [true, 1f, 2f, 3f, 4f, -1, 123, true, false, 5f, 6f, 7f, 8f, 9f],
+            0x031 => [true, false, true, false, 123, 1f, true, 234, 345, 2f, .. curve, .. curve, .. curve, .. curve, .. curve, true, 456, 3f, .. curve, .. curve],
+            _ => throw new ArgumentOutOfRangeException(nameof(offset))
+        };
+        await AssertPayloadRoundtrip(offset, version, fields);
+    }
+
+    [Test]
+    public async Task ReadWrite_GrapnelChunk_MapsManiaPlanetMetaMembers()
+    {
+        var node = await AssertPayloadRoundtrip(0x02B, 6,
+        [
+            true, 0.5f, 40f, 30f, 2f, 0.25f,
+            true, false, true, false, true, false,
+            true, -1, -1, -1,
+            false, 3f, 0.1f, 0.2f, 0.3f,
+            true, false, 1500, -1, 0.4f,
+            false, true, 0.6f
+        ]);
+
+        await Assert.That(node.GrapnelEnabled).IsTrue();
+        await Assert.That(node.GrapnelCharPhyFrictionCoef).IsEqualTo(0.5f);
+        await Assert.That(node.GrapnelInitialSpeed).IsEqualTo(40f);
+        await Assert.That(node.GrapnelMaxDist).IsEqualTo(30f);
+        await Assert.That(node.GrapnelMinDist).IsEqualTo(2f);
+        await Assert.That(node.GrapnelRadius).IsEqualTo(0.25f);
+        await Assert.That(node.GrapnelElastic).IsTrue();
+        await Assert.That(node.GrapnelMouseStretchSpeed).IsEqualTo(3f);
+        await Assert.That(node.GrapnelAfterGrapnelFrictionDuration).IsEqualTo(1500);
+        await Assert.That(node.GrapnelOffsetDirYForce).IsEqualTo(0.4f);
+        await Assert.That(node.GrapnelOnlyOnChar).IsTrue();
+        await Assert.That(node.GrapnelDynaTractionForceCoef).IsEqualTo(0.6f);
+    }
+
+    [Test]
+    public async Task ReadWrite_EquipmentChunks_MapManiaPlanetMetaMembers()
+    {
+        var powerBoots = await AssertPayloadRoundtrip(0x02D, 7, [true, 2000, 500, -1, true, false, 3f, true, 1.5f, false, true, true]);
+        await Assert.That(powerBoots.PowerBootsAccelEnabled).IsTrue();
+        await Assert.That(powerBoots.PowerBootsCooldown).IsEqualTo(2000);
+        await Assert.That(powerBoots.PowerBootsDuration).IsEqualTo(500);
+        await Assert.That(powerBoots.PowerBootsWalkOnWaterEnabled).IsTrue();
+        await Assert.That(powerBoots.PowerBootsMinSpeedToStayOnGround).IsEqualTo(3f);
+        await Assert.That(powerBoots.PowerBootsSuperJumpCoef).IsEqualTo(1.5f);
+        await Assert.That(powerBoots.PowerBootsStrafeDisabled).IsTrue();
+        await Assert.That(powerBoots.PowerBootsMaintainButtonDown).IsTrue();
+
+        var jetPack = await AssertPayloadRoundtrip(0x02E, 4, [true, 1f, 2f, 3f, 4f, -1, 1, true, false, 10f, 20f, 0.5f, 90f, 45f]);
+        await Assert.That(jetPack.JetPackEnabled).IsTrue();
+        await Assert.That(jetPack.JetPackAirForceCoef).IsEqualTo(3f);
+        await Assert.That(jetPack.JetPackTakeOffImpulse).IsEqualTo(4f);
+        await Assert.That(jetPack.JetPackVersion2).IsEqualTo(1);
+        await Assert.That(jetPack.JetPackClampRollValueDeg).IsEqualTo(20f);
+        await Assert.That(jetPack.JetPackFrictionRotCoef).IsEqualTo(0.5f);
+        await Assert.That(jetPack.JetPackRollRotationSpeedDegS).IsEqualTo(45f);
+
+        var sniperTurret = await AssertPayloadRoundtrip(0x02F, 1, [true, 3000, 10000, (ushort)5]);
+        await Assert.That(sniperTurret.SniperTurretEnabled).IsTrue();
+        await Assert.That(sniperTurret.SniperTurretDuration).IsEqualTo(3000);
+        await Assert.That(sniperTurret.SniperTurretCooldown).IsEqualTo(10000);
+        await Assert.That(sniperTurret.SniperTurretAmmoGain).IsEqualTo((ushort)5);
+    }
+
+    [Test]
+    [Arguments(0x000, GameVersion.MP4 | GameVersion.TM2020)]
+    [Arguments(0x02C, GameVersion.MP4 | GameVersion.TM2020)]
+    [Arguments(0x031, GameVersion.MP4 | GameVersion.TM2020)]
+    public async Task GameVersion_ManiaPlanetWritableChunks_IncludeMP4(int offset, GameVersion expected)
+    {
+        var chunk = (IChunk)Activator.CreateInstance(
+            typeof(CPlugCharPhyModel).GetNestedType($"Chunk{0x090C9000 + offset:X8}")!)!;
+
+        await Assert.That(chunk.GameVersion).IsEqualTo(expected);
+    }
+
+    [Test]
     [Arguments("")]
     [Arguments("abc")]
     [Arguments("abcd")]
@@ -166,7 +257,7 @@ public class CPlugCharPhyModelLayoutTests
         await Assert.That(initializer.Bytes).IsEquivalentTo(expected, CollectionOrdering.Matching);
     }
 
-    private static async Task AssertPayloadRoundtrip(int offset, int version, List<object> fields)
+    private static async Task<CPlugCharPhyModel> AssertPayloadRoundtrip(int offset, int version, List<object> fields)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -200,6 +291,7 @@ public class CPlugCharPhyModelLayoutTests
         using (var writer = new GbxWriter(saved))
         using (var rw = new GbxReaderWriter(writer)) chunk.ReadWrite(node, rw);
         await Assert.That(saved.ToArray()).IsEquivalentTo(payload.ToArray()[..^4], CollectionOrdering.Matching);
+        return node;
     }
 
     private sealed class RecordingInitializer : IEncryptionInitializer

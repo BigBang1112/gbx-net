@@ -8,9 +8,33 @@ public abstract class CPlugVehicleCarPhyShapeBuilderBase<TSelf> : NodeBuilder<gl
     private protected CPlugVehicleCarPhyShapeBuilderBase() { }
     private protected CPlugVehicleCarPhyShapeBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape> state) : base(state) { }
     private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020;
-    public TSelf WithCarVsCarShapeBox(BoxAligned value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetCarVsCarShapeBoxAssignment(), value, SupportedGames1);
+    public TSelf WithBackWheelHalfWidth(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetBackWheelHalfWidthAssignment(), value, SupportedGames1);
+    public TSelf WithBackWheelRadius(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetBackWheelRadiusAssignment(), value, SupportedGames1);
+    public TSelf WithBackWheelX(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetBackWheelXAssignment(), value, SupportedGames1);
+    public TSelf WithBackWheelZ(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetBackWheelZAssignment(), value, SupportedGames1);
+    public TSelf WithCarVsCarShape(global::GBX.NET.Engines.Plug.CPlugSurface? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetCarVsCarShapeAssignment(), value, SupportedGames1);
+    public TSelf WithCarVsCarShapeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSurface> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetCarVsCarShapeReferenceAssignment(), value, SupportedGames1);
+    public TSelf WithCarVsCarShape_Box(BoxAligned value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetCarVsCarShape_BoxAssignment(), value, SupportedGames1);
+    public TSelf WithFrontWheelHalfWidth(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetFrontWheelHalfWidthAssignment(), value, SupportedGames1);
+    public TSelf WithFrontWheelRadius(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetFrontWheelRadiusAssignment(), value, SupportedGames1);
+    public TSelf WithFrontWheelX(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetFrontWheelXAssignment(), value, SupportedGames1);
+    public TSelf WithFrontWheelZ(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetFrontWheelZAssignment(), value, SupportedGames1);
+    public TSelf WithGroundY(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetGroundYAssignment(), value, SupportedGames1);
+    public TSelf WithHitShape(global::GBX.NET.Engines.Plug.CPlugSurface? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetHitShapeAssignment(), value, SupportedGames1);
+    public TSelf WithHitShapeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSurface> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetHitShapeReferenceAssignment(), value, SupportedGames1);
     public TSelf WithMoveShape(global::GBX.NET.Engines.Plug.CPlugSurface? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetMoveShapeAssignment(), value, SupportedGames1);
     public TSelf WithMoveShapeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSurface> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetMoveShapeReferenceAssignment(), value, SupportedGames1);
+    public TSelf WithOffsetX(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetOffsetXAssignment(), value, SupportedGames1);
+    public TSelf WithSurfSolid(global::GBX.NET.Engines.Plug.CPlugSolid? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetSurfSolidAssignment(), value, SupportedGames1);
+    public TSelf WithSurfSolidReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetSurfSolidReferenceAssignment(), value, SupportedGames1);
+    public TSelf WithUseSimplifiedCarModel(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetUseSimplifiedCarModelAssignment(), value, SupportedGames1);
+    public TSelf WithVehicleBBox(BoxAligned value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetVehicleBBoxAssignment(), value, SupportedGames1);
+    public TSelf WithVolumeSpheres(params Vec4[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetVolumeSpheresAssignment(), value, SupportedGames1);
+    public TSelf WithVolumeSpheres(IEnumerable<Vec4> values) => WithVolumeSpheres(values.ToArray());
+    public TSelf WithWaterShape(global::GBX.NET.Engines.Plug.CPlugSurface? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetWaterShapeAssignment(), value, SupportedGames1);
+    public TSelf WithWaterShapeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSurface> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetWaterShapeReferenceAssignment(), value, SupportedGames1);
+    public TSelf WithWheels(params global::GBX.NET.Engines.Plug.CPlugVehicleWheelPhyModel[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetWheelsAssignment(), value, SupportedGames1);
+    public TSelf WithWheels(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVehicleWheelPhyModel> values) => WithWheels(values.ToArray());
 }
 public partial class CPlugVehicleCarPhyShapeBuilder : CPlugVehicleCarPhyShapeBuilderBase<CPlugVehicleCarPhyShapeBuilder>
 {
@@ -27,7 +51,11 @@ public partial class CPlugVehicleCarPhyShapeBuilder : CPlugVehicleCarPhyShapeBui
     public partial class MP4 : CPlugVehicleCarPhyShapeBuilderBase<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape> state) : base(state) { }
+        public MP4 WithCarVsCarShape(global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4? value) => base.WithCarVsCarShape(value is null ? (global::GBX.NET.Engines.Plug.CPlugSurface?)null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithHitShape(global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4? value) => base.WithHitShape(value is null ? (global::GBX.NET.Engines.Plug.CPlugSurface?)null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithMoveShape(global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4? value) => base.WithMoveShape(value is null ? (global::GBX.NET.Engines.Plug.CPlugSurface?)null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithSurfSolid(global::GBX.NET.Interfaces.Plug.IPlugSolidMP4? value) => base.WithSurfSolid(value is null ? (global::GBX.NET.Engines.Plug.CPlugSolid?)null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithWaterShape(global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4? value) => base.WithWaterShape(value is null ? (global::GBX.NET.Engines.Plug.CPlugSurface?)null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape Build() => BuildNode(CPlugVehicleCarPhyShapeBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape node);
@@ -35,7 +63,11 @@ public partial class CPlugVehicleCarPhyShapeBuilder : CPlugVehicleCarPhyShapeBui
     public partial class TM2020 : CPlugVehicleCarPhyShapeBuilderBase<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape> state) : base(state) { }
+        public TM2020 WithCarVsCarShape(global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020? value) => base.WithCarVsCarShape(value is null ? (global::GBX.NET.Engines.Plug.CPlugSurface?)null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithHitShape(global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020? value) => base.WithHitShape(value is null ? (global::GBX.NET.Engines.Plug.CPlugSurface?)null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithMoveShape(global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020? value) => base.WithMoveShape(value is null ? (global::GBX.NET.Engines.Plug.CPlugSurface?)null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithSurfSolid(global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020? value) => base.WithSurfSolid(value is null ? (global::GBX.NET.Engines.Plug.CPlugSolid?)null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithWaterShape(global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020? value) => base.WithWaterShape(value is null ? (global::GBX.NET.Engines.Plug.CPlugSurface?)null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape Build() => BuildNode(CPlugVehicleCarPhyShapeBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape node);

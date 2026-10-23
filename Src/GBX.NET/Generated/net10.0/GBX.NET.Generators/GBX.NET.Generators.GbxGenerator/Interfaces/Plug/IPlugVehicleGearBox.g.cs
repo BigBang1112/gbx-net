@@ -5,6 +5,18 @@ namespace GBX.NET.Interfaces.Plug;
 
 public partial interface IPlugVehicleGearBox : IClassVersion<global::GBX.NET.Engines.Plug.CPlugVehicleGearBox>
 {
+    int ChangeGearDeclutchDuration { get; set; }
+    int ChangeGearPeriod { get; set; }
+    float[]? GearRatios { get; set; }
+    float MinSpeedKmhForDrive { get; set; }
+    float MotorRpmInertiaDecluthFree { get; set; }
+    float MotorRpmInertiaDecluthGas { get; set; }
+    float MotorRpmInertiaOnLoad { get; set; }
+    float OptimalRpm_Release { get; set; }
+    float OptimalRpm_Throttle { get; set; }
+    float RpmGammaCorrection { get; set; }
+    bool Sequential { get; set; }
+    float TakeOffSpeedKmh { get; set; }
 }
 
 public partial interface IPlugVehicleGearBoxMP4 : IPlugVehicleGearBox

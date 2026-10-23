@@ -5,10 +5,11 @@ namespace GBX.NET.Interfaces.Plug;
 
 public partial interface IPlugCharPhyMaterials : IClassVersion<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials>
 {
-    NodeRefList<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial>? Materials { get; set; }
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterial>? Materials { get; set; }
 }
 
 public partial interface IPlugCharPhyMaterialsTM2020 : IPlugCharPhyMaterials
 {
+    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialTM2020>? Materials { get; set; }
 }
 

@@ -5499,6 +5499,7 @@ public static partial class ClassManager
         0x09093001 => new global::GBX.NET.Engines.Plug.CPlugIconIndex.Chunk09093001(),
         0x09093002 => new global::GBX.NET.Engines.Plug.CPlugIconIndex.Chunk09093002(),
         0x09093003 => new global::GBX.NET.Engines.Plug.CPlugIconIndex.Chunk09093003(),
+        0x09094000 => new global::GBX.NET.Engines.Plug.CPlugVehicleGearBox.Chunk09094000(),
         0x09094001 => new global::GBX.NET.Engines.Plug.CPlugVehicleGearBox.Chunk09094001(),
         0x0909E000 => new global::GBX.NET.Engines.Plug.CPlugBitmapRenderOverlay.Chunk0909E000(),
         0x0909F000 => new global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightOcc.Chunk0909F000(),

@@ -39,12 +39,582 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         set => this.smoothing = value;
     }
 
+    private bool grapnelEnabled;
+    /// <remarks>Applied with: 0x02B body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902B>]
+    public bool GrapnelEnabled
+    {
+        get => this.grapnelEnabled;
+        set => this.grapnelEnabled = value;
+    }
+
+    private float grapnelCharPhyFrictionCoef;
+    /// <remarks>Applied with: 0x02B body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902B>]
+    public float GrapnelCharPhyFrictionCoef
+    {
+        get => this.grapnelCharPhyFrictionCoef;
+        set => this.grapnelCharPhyFrictionCoef = value;
+    }
+
+    private float grapnelInitialSpeed;
+    /// <remarks>Applied with: 0x02B body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902B>]
+    public float GrapnelInitialSpeed
+    {
+        get => this.grapnelInitialSpeed;
+        set => this.grapnelInitialSpeed = value;
+    }
+
+    private float grapnelMaxDist;
+    /// <remarks>Applied with: 0x02B body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902B>]
+    public float GrapnelMaxDist
+    {
+        get => this.grapnelMaxDist;
+        set => this.grapnelMaxDist = value;
+    }
+
+    private float grapnelMinDist;
+    /// <remarks>Applied with: 0x02B body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902B>]
+    public float GrapnelMinDist
+    {
+        get => this.grapnelMinDist;
+        set => this.grapnelMinDist = value;
+    }
+
+    private float grapnelRadius;
+    /// <remarks>Applied with: 0x02B body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902B>]
+    public float GrapnelRadius
+    {
+        get => this.grapnelRadius;
+        set => this.grapnelRadius = value;
+    }
+
+    private bool grapnelAutoJump;
+    /// <remarks>Applied with: 0x02B v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902B>(2)]
+    public bool GrapnelAutoJump
+    {
+        get => this.grapnelAutoJump;
+        set => this.grapnelAutoJump = value;
+    }
+
+    private bool grapnelAutoRetract;
+    /// <remarks>Applied with: 0x02B v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902B>(2)]
+    public bool GrapnelAutoRetract
+    {
+        get => this.grapnelAutoRetract;
+        set => this.grapnelAutoRetract = value;
+    }
+
+    private bool grapnelElastic;
+    /// <remarks>Applied with: 0x02B v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902B>(2)]
+    public bool GrapnelElastic
+    {
+        get => this.grapnelElastic;
+        set => this.grapnelElastic = value;
+    }
+
+    private bool grapnelMaintainButtonDown;
+    /// <remarks>Applied with: 0x02B v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902B>(2)]
+    public bool GrapnelMaintainButtonDown
+    {
+        get => this.grapnelMaintainButtonDown;
+        set => this.grapnelMaintainButtonDown = value;
+    }
+
+    private bool grapnelOnlyInAirState;
+    /// <remarks>Applied with: 0x02B v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902B>(2)]
+    public bool GrapnelOnlyInAirState
+    {
+        get => this.grapnelOnlyInAirState;
+        set => this.grapnelOnlyInAirState = value;
+    }
+
+    private bool grapnelSwitchElasticNormalEnabled;
+    /// <remarks>Applied with: 0x02B v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902B>(2)]
+    public bool GrapnelSwitchElasticNormalEnabled
+    {
+        get => this.grapnelSwitchElasticNormalEnabled;
+        set => this.grapnelSwitchElasticNormalEnabled = value;
+    }
+
+    private bool grapnelElasticInstantThrow;
+    /// <remarks>Applied with: 0x02B v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902B>(3)]
+    public bool GrapnelElasticInstantThrow
+    {
+        get => this.grapnelElasticInstantThrow;
+        set => this.grapnelElasticInstantThrow = value;
+    }
+
+    private PlugCurve? grapnelElasticForceTensor;
+    /// <remarks>Applied with: 0x02B v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902B>(3)]
+    public PlugCurve? GrapnelElasticForceTensor
+    {
+        get => this.grapnelElasticForceTensor;
+        set => this.grapnelElasticForceTensor = value;
+    }
+
+    private PlugCurve? grapnelElasticForceThrow;
+    /// <remarks>Applied with: 0x02B v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902B>(3)]
+    public PlugCurve? GrapnelElasticForceThrow
+    {
+        get => this.grapnelElasticForceThrow;
+        set => this.grapnelElasticForceThrow = value;
+    }
+
+    private PlugCurve? grapnelElasticForceThrowVertical;
+    /// <remarks>Applied with: 0x02B v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902B>(3)]
+    public PlugCurve? GrapnelElasticForceThrowVertical
+    {
+        get => this.grapnelElasticForceThrowVertical;
+        set => this.grapnelElasticForceThrowVertical = value;
+    }
+
+    private bool grapnelElasticUseMouseToStretch;
+    /// <remarks>Applied with: 0x02B v4+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902B>(4)]
+    public bool GrapnelElasticUseMouseToStretch
+    {
+        get => this.grapnelElasticUseMouseToStretch;
+        set => this.grapnelElasticUseMouseToStretch = value;
+    }
+
+    private float grapnelMouseStretchSpeed;
+    /// <remarks>Applied with: 0x02B v4+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902B>(4)]
+    public float GrapnelMouseStretchSpeed
+    {
+        get => this.grapnelMouseStretchSpeed;
+        set => this.grapnelMouseStretchSpeed = value;
+    }
+
+    private float grapnelSlowDownGroundStateAllDir;
+    /// <remarks>Applied with: 0x02B v4+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902B>(4)]
+    public float GrapnelSlowDownGroundStateAllDir
+    {
+        get => this.grapnelSlowDownGroundStateAllDir;
+        set => this.grapnelSlowDownGroundStateAllDir = value;
+    }
+
+    private float grapnelSlowDownAllDirCoef;
+    /// <remarks>Applied with: 0x02B v4+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902B>(4)]
+    public float GrapnelSlowDownAllDirCoef
+    {
+        get => this.grapnelSlowDownAllDirCoef;
+        set => this.grapnelSlowDownAllDirCoef = value;
+    }
+
+    private float grapnelSlowDownTractionDirCoef;
+    /// <remarks>Applied with: 0x02B v4+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902B>(4)]
+    public float GrapnelSlowDownTractionDirCoef
+    {
+        get => this.grapnelSlowDownTractionDirCoef;
+        set => this.grapnelSlowDownTractionDirCoef = value;
+    }
+
+    private bool grapnelControlledEndJump;
+    /// <remarks>Applied with: 0x02B v5+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902B>(5)]
+    public bool GrapnelControlledEndJump
+    {
+        get => this.grapnelControlledEndJump;
+        set => this.grapnelControlledEndJump = value;
+    }
+
+    private bool grapnelAimControlEndJump;
+    /// <remarks>Applied with: 0x02B v5+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902B>(5)]
+    public bool GrapnelAimControlEndJump
+    {
+        get => this.grapnelAimControlEndJump;
+        set => this.grapnelAimControlEndJump = value;
+    }
+
+    private int grapnelAfterGrapnelFrictionDuration;
+    /// <remarks>Applied with: 0x02B v5+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902B>(5)]
+    public int GrapnelAfterGrapnelFrictionDuration
+    {
+        get => this.grapnelAfterGrapnelFrictionDuration;
+        set => this.grapnelAfterGrapnelFrictionDuration = value;
+    }
+
+    private PlugCurve? grapnelTractionFromDist;
+    /// <remarks>Applied with: 0x02B v5+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902B>(5)]
+    public PlugCurve? GrapnelTractionFromDist
+    {
+        get => this.grapnelTractionFromDist;
+        set => this.grapnelTractionFromDist = value;
+    }
+
+    private float grapnelOffsetDirYForce;
+    /// <remarks>Applied with: 0x02B v5+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902B>(5)]
+    public float GrapnelOffsetDirYForce
+    {
+        get => this.grapnelOffsetDirYForce;
+        set => this.grapnelOffsetDirYForce = value;
+    }
+
+    private bool grapnelCanFireIfMissed;
+    /// <remarks>Applied with: 0x02B v6+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902B>(6)]
+    public bool GrapnelCanFireIfMissed
+    {
+        get => this.grapnelCanFireIfMissed;
+        set => this.grapnelCanFireIfMissed = value;
+    }
+
+    private bool grapnelOnlyOnChar;
+    /// <remarks>Applied with: 0x02B v6+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902B>(6)]
+    public bool GrapnelOnlyOnChar
+    {
+        get => this.grapnelOnlyOnChar;
+        set => this.grapnelOnlyOnChar = value;
+    }
+
+    private float grapnelDynaTractionForceCoef;
+    /// <remarks>Applied with: 0x02B v6+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902B>(6)]
+    public float GrapnelDynaTractionForceCoef
+    {
+        get => this.grapnelDynaTractionForceCoef;
+        set => this.grapnelDynaTractionForceCoef = value;
+    }
+
+    private bool powerBootsAccelEnabled;
+    /// <remarks>Applied with: 0x02D body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902D>]
+    public bool PowerBootsAccelEnabled
+    {
+        get => this.powerBootsAccelEnabled;
+        set => this.powerBootsAccelEnabled = value;
+    }
+
+    private int powerBootsCooldown;
+    /// <remarks>Applied with: 0x02D body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902D>]
+    public int PowerBootsCooldown
+    {
+        get => this.powerBootsCooldown;
+        set => this.powerBootsCooldown = value;
+    }
+
+    private int powerBootsDuration;
+    /// <remarks>Applied with: 0x02D body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902D>]
+    public int PowerBootsDuration
+    {
+        get => this.powerBootsDuration;
+        set => this.powerBootsDuration = value;
+    }
+
+    private PlugCurve? powerBootsAccelCurveFromVelKmh;
+    /// <remarks>Applied with: 0x02D body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902D>]
+    public PlugCurve? PowerBootsAccelCurveFromVelKmh
+    {
+        get => this.powerBootsAccelCurveFromVelKmh;
+        set => this.powerBootsAccelCurveFromVelKmh = value;
+    }
+
+    private bool powerBootsWalkOnWaterEnabled;
+    /// <remarks>Applied with: 0x02D v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902D>(2)]
+    public bool PowerBootsWalkOnWaterEnabled
+    {
+        get => this.powerBootsWalkOnWaterEnabled;
+        set => this.powerBootsWalkOnWaterEnabled = value;
+    }
+
+    private bool powerBootsStayOnGround;
+    /// <remarks>Applied with: 0x02D v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902D>(3)]
+    public bool PowerBootsStayOnGround
+    {
+        get => this.powerBootsStayOnGround;
+        set => this.powerBootsStayOnGround = value;
+    }
+
+    private float powerBootsMinSpeedToStayOnGround;
+    /// <remarks>Applied with: 0x02D v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902D>(3)]
+    public float PowerBootsMinSpeedToStayOnGround
+    {
+        get => this.powerBootsMinSpeedToStayOnGround;
+        set => this.powerBootsMinSpeedToStayOnGround = value;
+    }
+
+    private bool powerBootsSuperJump;
+    /// <remarks>Applied with: 0x02D v4+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902D>(4)]
+    public bool PowerBootsSuperJump
+    {
+        get => this.powerBootsSuperJump;
+        set => this.powerBootsSuperJump = value;
+    }
+
+    private float powerBootsSuperJumpCoef;
+    /// <remarks>Applied with: 0x02D v4+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902D>(4)]
+    public float PowerBootsSuperJumpCoef
+    {
+        get => this.powerBootsSuperJumpCoef;
+        set => this.powerBootsSuperJumpCoef = value;
+    }
+
+    private bool powerBootsJumpEnabled;
+    /// <remarks>Applied with: 0x02D v5+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902D>(5)]
+    public bool PowerBootsJumpEnabled
+    {
+        get => this.powerBootsJumpEnabled;
+        set => this.powerBootsJumpEnabled = value;
+    }
+
+    private bool powerBootsStrafeDisabled;
+    /// <remarks>Applied with: 0x02D v6+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902D>(6)]
+    public bool PowerBootsStrafeDisabled
+    {
+        get => this.powerBootsStrafeDisabled;
+        set => this.powerBootsStrafeDisabled = value;
+    }
+
+    private bool powerBootsMaintainButtonDown;
+    /// <remarks>Applied with: 0x02D v7+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902D>(7)]
+    public bool PowerBootsMaintainButtonDown
+    {
+        get => this.powerBootsMaintainButtonDown;
+        set => this.powerBootsMaintainButtonDown = value;
+    }
+
+    private bool jetPackEnabled;
+    /// <remarks>Applied with: 0x02E body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902E>]
+    public bool JetPackEnabled
+    {
+        get => this.jetPackEnabled;
+        set => this.jetPackEnabled = value;
+    }
+
+    private float jetPackAirForceCoef;
+    /// <remarks>Applied with: 0x02E v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902E>(3)]
+    public float JetPackAirForceCoef
+    {
+        get => this.jetPackAirForceCoef;
+        set => this.jetPackAirForceCoef = value;
+    }
+
+    private float jetPackTakeOffImpulse;
+    /// <remarks>Applied with: 0x02E v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902E>(3)]
+    public float JetPackTakeOffImpulse
+    {
+        get => this.jetPackTakeOffImpulse;
+        set => this.jetPackTakeOffImpulse = value;
+    }
+
+    private PlugCurve? jetPackYForceFromYSpeed;
+    /// <remarks>Applied with: 0x02E v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902E>(3)]
+    public PlugCurve? JetPackYForceFromYSpeed
+    {
+        get => this.jetPackYForceFromYSpeed;
+        set => this.jetPackYForceFromYSpeed = value;
+    }
+
+    private int jetPackVersion2;
+    /// <remarks>Applied with: 0x02E v4+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902E>(4)]
+    public int JetPackVersion2
+    {
+        get => this.jetPackVersion2;
+        set => this.jetPackVersion2 = value;
+    }
+
+    private bool jetPackReturnToVerticalPitch;
+    /// <remarks>Applied with: 0x02E v4+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902E>(4)]
+    public bool JetPackReturnToVerticalPitch
+    {
+        get => this.jetPackReturnToVerticalPitch;
+        set => this.jetPackReturnToVerticalPitch = value;
+    }
+
+    private bool jetPackReturnToVerticalRoll;
+    /// <remarks>Applied with: 0x02E v4+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902E>(4)]
+    public bool JetPackReturnToVerticalRoll
+    {
+        get => this.jetPackReturnToVerticalRoll;
+        set => this.jetPackReturnToVerticalRoll = value;
+    }
+
+    private float jetPackClampPitchValueDeg;
+    /// <remarks>Applied with: 0x02E v4+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902E>(4)]
+    public float JetPackClampPitchValueDeg
+    {
+        get => this.jetPackClampPitchValueDeg;
+        set => this.jetPackClampPitchValueDeg = value;
+    }
+
+    private float jetPackClampRollValueDeg;
+    /// <remarks>Applied with: 0x02E v4+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902E>(4)]
+    public float JetPackClampRollValueDeg
+    {
+        get => this.jetPackClampRollValueDeg;
+        set => this.jetPackClampRollValueDeg = value;
+    }
+
+    private float jetPackFrictionRotCoef;
+    /// <remarks>Applied with: 0x02E v4+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902E>(4)]
+    public float JetPackFrictionRotCoef
+    {
+        get => this.jetPackFrictionRotCoef;
+        set => this.jetPackFrictionRotCoef = value;
+    }
+
+    private float jetPackPitchRotationSpeedDegS;
+    /// <remarks>Applied with: 0x02E v4+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902E>(4)]
+    public float JetPackPitchRotationSpeedDegS
+    {
+        get => this.jetPackPitchRotationSpeedDegS;
+        set => this.jetPackPitchRotationSpeedDegS = value;
+    }
+
+    private float jetPackRollRotationSpeedDegS;
+    /// <remarks>Applied with: 0x02E v4+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902E>(4)]
+    public float JetPackRollRotationSpeedDegS
+    {
+        get => this.jetPackRollRotationSpeedDegS;
+        set => this.jetPackRollRotationSpeedDegS = value;
+    }
+
+    private bool sniperTurretEnabled;
+    /// <remarks>Applied with: 0x02F body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902F>]
+    public bool SniperTurretEnabled
+    {
+        get => this.sniperTurretEnabled;
+        set => this.sniperTurretEnabled = value;
+    }
+
+    private int sniperTurretDuration;
+    /// <remarks>Applied with: 0x02F body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902F>]
+    public int SniperTurretDuration
+    {
+        get => this.sniperTurretDuration;
+        set => this.sniperTurretDuration = value;
+    }
+
+    private int sniperTurretCooldown;
+    /// <remarks>Applied with: 0x02F body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902F>]
+    public int SniperTurretCooldown
+    {
+        get => this.sniperTurretCooldown;
+        set => this.sniperTurretCooldown = value;
+    }
+
+    private ushort sniperTurretAmmoGain;
+    /// <remarks>Applied with: 0x02F body chunk</remarks>
+    [AppliedWithChunk<Chunk090C902F>]
+    public ushort SniperTurretAmmoGain
+    {
+        get => this.sniperTurretAmmoGain;
+        set => this.sniperTurretAmmoGain = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CPlugCharPhyModel)clone).name = context.Clone(this.name)!;
         ((CPlugCharPhyModel)clone).smoothingVersion = context.Clone(this.smoothingVersion)!;
         ((CPlugCharPhyModel)clone).smoothing = context.CloneArray(this.smoothing)!;
+        ((CPlugCharPhyModel)clone).grapnelEnabled = context.Clone(this.grapnelEnabled)!;
+        ((CPlugCharPhyModel)clone).grapnelCharPhyFrictionCoef = context.Clone(this.grapnelCharPhyFrictionCoef)!;
+        ((CPlugCharPhyModel)clone).grapnelInitialSpeed = context.Clone(this.grapnelInitialSpeed)!;
+        ((CPlugCharPhyModel)clone).grapnelMaxDist = context.Clone(this.grapnelMaxDist)!;
+        ((CPlugCharPhyModel)clone).grapnelMinDist = context.Clone(this.grapnelMinDist)!;
+        ((CPlugCharPhyModel)clone).grapnelRadius = context.Clone(this.grapnelRadius)!;
+        ((CPlugCharPhyModel)clone).grapnelAutoJump = context.Clone(this.grapnelAutoJump)!;
+        ((CPlugCharPhyModel)clone).grapnelAutoRetract = context.Clone(this.grapnelAutoRetract)!;
+        ((CPlugCharPhyModel)clone).grapnelElastic = context.Clone(this.grapnelElastic)!;
+        ((CPlugCharPhyModel)clone).grapnelMaintainButtonDown = context.Clone(this.grapnelMaintainButtonDown)!;
+        ((CPlugCharPhyModel)clone).grapnelOnlyInAirState = context.Clone(this.grapnelOnlyInAirState)!;
+        ((CPlugCharPhyModel)clone).grapnelSwitchElasticNormalEnabled = context.Clone(this.grapnelSwitchElasticNormalEnabled)!;
+        ((CPlugCharPhyModel)clone).grapnelElasticInstantThrow = context.Clone(this.grapnelElasticInstantThrow)!;
+        ((CPlugCharPhyModel)clone).grapnelElasticForceTensor = context.Clone(this.grapnelElasticForceTensor)!;
+        ((CPlugCharPhyModel)clone).grapnelElasticForceThrow = context.Clone(this.grapnelElasticForceThrow)!;
+        ((CPlugCharPhyModel)clone).grapnelElasticForceThrowVertical = context.Clone(this.grapnelElasticForceThrowVertical)!;
+        ((CPlugCharPhyModel)clone).grapnelElasticUseMouseToStretch = context.Clone(this.grapnelElasticUseMouseToStretch)!;
+        ((CPlugCharPhyModel)clone).grapnelMouseStretchSpeed = context.Clone(this.grapnelMouseStretchSpeed)!;
+        ((CPlugCharPhyModel)clone).grapnelSlowDownGroundStateAllDir = context.Clone(this.grapnelSlowDownGroundStateAllDir)!;
+        ((CPlugCharPhyModel)clone).grapnelSlowDownAllDirCoef = context.Clone(this.grapnelSlowDownAllDirCoef)!;
+        ((CPlugCharPhyModel)clone).grapnelSlowDownTractionDirCoef = context.Clone(this.grapnelSlowDownTractionDirCoef)!;
+        ((CPlugCharPhyModel)clone).grapnelControlledEndJump = context.Clone(this.grapnelControlledEndJump)!;
+        ((CPlugCharPhyModel)clone).grapnelAimControlEndJump = context.Clone(this.grapnelAimControlEndJump)!;
+        ((CPlugCharPhyModel)clone).grapnelAfterGrapnelFrictionDuration = context.Clone(this.grapnelAfterGrapnelFrictionDuration)!;
+        ((CPlugCharPhyModel)clone).grapnelTractionFromDist = context.Clone(this.grapnelTractionFromDist)!;
+        ((CPlugCharPhyModel)clone).grapnelOffsetDirYForce = context.Clone(this.grapnelOffsetDirYForce)!;
+        ((CPlugCharPhyModel)clone).grapnelCanFireIfMissed = context.Clone(this.grapnelCanFireIfMissed)!;
+        ((CPlugCharPhyModel)clone).grapnelOnlyOnChar = context.Clone(this.grapnelOnlyOnChar)!;
+        ((CPlugCharPhyModel)clone).grapnelDynaTractionForceCoef = context.Clone(this.grapnelDynaTractionForceCoef)!;
+        ((CPlugCharPhyModel)clone).powerBootsAccelEnabled = context.Clone(this.powerBootsAccelEnabled)!;
+        ((CPlugCharPhyModel)clone).powerBootsCooldown = context.Clone(this.powerBootsCooldown)!;
+        ((CPlugCharPhyModel)clone).powerBootsDuration = context.Clone(this.powerBootsDuration)!;
+        ((CPlugCharPhyModel)clone).powerBootsAccelCurveFromVelKmh = context.Clone(this.powerBootsAccelCurveFromVelKmh)!;
+        ((CPlugCharPhyModel)clone).powerBootsWalkOnWaterEnabled = context.Clone(this.powerBootsWalkOnWaterEnabled)!;
+        ((CPlugCharPhyModel)clone).powerBootsStayOnGround = context.Clone(this.powerBootsStayOnGround)!;
+        ((CPlugCharPhyModel)clone).powerBootsMinSpeedToStayOnGround = context.Clone(this.powerBootsMinSpeedToStayOnGround)!;
+        ((CPlugCharPhyModel)clone).powerBootsSuperJump = context.Clone(this.powerBootsSuperJump)!;
+        ((CPlugCharPhyModel)clone).powerBootsSuperJumpCoef = context.Clone(this.powerBootsSuperJumpCoef)!;
+        ((CPlugCharPhyModel)clone).powerBootsJumpEnabled = context.Clone(this.powerBootsJumpEnabled)!;
+        ((CPlugCharPhyModel)clone).powerBootsStrafeDisabled = context.Clone(this.powerBootsStrafeDisabled)!;
+        ((CPlugCharPhyModel)clone).powerBootsMaintainButtonDown = context.Clone(this.powerBootsMaintainButtonDown)!;
+        ((CPlugCharPhyModel)clone).jetPackEnabled = context.Clone(this.jetPackEnabled)!;
+        ((CPlugCharPhyModel)clone).jetPackAirForceCoef = context.Clone(this.jetPackAirForceCoef)!;
+        ((CPlugCharPhyModel)clone).jetPackTakeOffImpulse = context.Clone(this.jetPackTakeOffImpulse)!;
+        ((CPlugCharPhyModel)clone).jetPackYForceFromYSpeed = context.Clone(this.jetPackYForceFromYSpeed)!;
+        ((CPlugCharPhyModel)clone).jetPackVersion2 = context.Clone(this.jetPackVersion2)!;
+        ((CPlugCharPhyModel)clone).jetPackReturnToVerticalPitch = context.Clone(this.jetPackReturnToVerticalPitch)!;
+        ((CPlugCharPhyModel)clone).jetPackReturnToVerticalRoll = context.Clone(this.jetPackReturnToVerticalRoll)!;
+        ((CPlugCharPhyModel)clone).jetPackClampPitchValueDeg = context.Clone(this.jetPackClampPitchValueDeg)!;
+        ((CPlugCharPhyModel)clone).jetPackClampRollValueDeg = context.Clone(this.jetPackClampRollValueDeg)!;
+        ((CPlugCharPhyModel)clone).jetPackFrictionRotCoef = context.Clone(this.jetPackFrictionRotCoef)!;
+        ((CPlugCharPhyModel)clone).jetPackPitchRotationSpeedDegS = context.Clone(this.jetPackPitchRotationSpeedDegS)!;
+        ((CPlugCharPhyModel)clone).jetPackRollRotationSpeedDegS = context.Clone(this.jetPackRollRotationSpeedDegS)!;
+        ((CPlugCharPhyModel)clone).sniperTurretEnabled = context.Clone(this.sniperTurretEnabled)!;
+        ((CPlugCharPhyModel)clone).sniperTurretDuration = context.Clone(this.sniperTurretDuration)!;
+        ((CPlugCharPhyModel)clone).sniperTurretCooldown = context.Clone(this.sniperTurretCooldown)!;
+        ((CPlugCharPhyModel)clone).sniperTurretAmmoGain = context.Clone(this.sniperTurretAmmoGain)!;
     }
 
     public CPlugCharPhyModel()
@@ -55,11 +625,11 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     /// CPlugCharPhyModel 0x000 chunk
     /// </summary>
     [Chunk(0x090C9000)]
-    [ChunkGameVersion(GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090C9000 : Chunk<CPlugCharPhyModel>
     {
         public override uint Id => 0x090C9000;
-        public override GameVersion GameVersion => GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -133,9 +703,9 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// CPlugCharPhyModel 0x00E chunk
+    /// CPlugCharPhyModel 0x00E chunk (jump)
     /// </summary>
-    [Chunk(0x090C900E)]
+    [Chunk(0x090C900E, "jump")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090C900E : Chunk<CPlugCharPhyModel>, IVersionable
     {
@@ -176,9 +746,9 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// CPlugCharPhyModel 0x00F chunk
+    /// CPlugCharPhyModel 0x00F chunk (run)
     /// </summary>
-    [Chunk(0x090C900F)]
+    [Chunk(0x090C900F, "run")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 4, 5)]
     public partial class Chunk090C900F : Chunk<CPlugCharPhyModel>, IVersionable
     {
@@ -513,9 +1083,9 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// CPlugCharPhyModel 0x012 chunk
+    /// CPlugCharPhyModel 0x012 chunk (walk)
     /// </summary>
-    [Chunk(0x090C9012)]
+    [Chunk(0x090C9012, "walk")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 26, 28)]
     public partial class Chunk090C9012 : Chunk<CPlugCharPhyModel>, IVersionable
     {
@@ -862,9 +1432,9 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// CPlugCharPhyModel 0x013 chunk
+    /// CPlugCharPhyModel 0x013 chunk (sneak)
     /// </summary>
-    [Chunk(0x090C9013)]
+    [Chunk(0x090C9013, "sneak")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 6, 7)]
     public partial class Chunk090C9013 : Chunk<CPlugCharPhyModel>, IVersionable
     {
@@ -974,9 +1544,9 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// CPlugCharPhyModel 0x014 chunk
+    /// CPlugCharPhyModel 0x014 chunk (attractor)
     /// </summary>
-    [Chunk(0x090C9014)]
+    [Chunk(0x090C9014, "attractor")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 9, 10)]
     public partial class Chunk090C9014 : Chunk<CPlugCharPhyModel>, IVersionable
     {
@@ -1264,9 +1834,9 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// CPlugCharPhyModel 0x016 chunk
+    /// CPlugCharPhyModel 0x016 chunk (swim)
     /// </summary>
-    [Chunk(0x090C9016)]
+    [Chunk(0x090C9016, "swim")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 2, 3)]
     public partial class Chunk090C9016 : Chunk<CPlugCharPhyModel>, IVersionable
     {
@@ -1339,9 +1909,9 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// CPlugCharPhyModel 0x017 chunk
+    /// CPlugCharPhyModel 0x017 chunk (swim)
     /// </summary>
-    [Chunk(0x090C9017)]
+    [Chunk(0x090C9017, "swim")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 6, 7)]
     public partial class Chunk090C9017 : Chunk<CPlugCharPhyModel>, IVersionable
     {
@@ -1453,9 +2023,9 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// CPlugCharPhyModel 0x018 chunk
+    /// CPlugCharPhyModel 0x018 chunk (sneak)
     /// </summary>
-    [Chunk(0x090C9018)]
+    [Chunk(0x090C9018, "sneak")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 3, 4)]
     public partial class Chunk090C9018 : Chunk<CPlugCharPhyModel>, IVersionable
     {
@@ -1552,9 +2122,9 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// CPlugCharPhyModel 0x019 chunk
+    /// CPlugCharPhyModel 0x019 chunk (wall jump)
     /// </summary>
-    [Chunk(0x090C9019)]
+    [Chunk(0x090C9019, "wall jump")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 10, 11)]
     public partial class Chunk090C9019 : Chunk<CPlugCharPhyModel>, IVersionable
     {
@@ -1696,9 +2266,9 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// CPlugCharPhyModel 0x01A chunk
+    /// CPlugCharPhyModel 0x01A chunk (jump)
     /// </summary>
-    [Chunk(0x090C901A)]
+    [Chunk(0x090C901A, "jump")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090C901A : Chunk<CPlugCharPhyModel>, IVersionable
     {
@@ -1736,9 +2306,9 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// CPlugCharPhyModel 0x01B chunk
+    /// CPlugCharPhyModel 0x01B chunk (jump)
     /// </summary>
-    [Chunk(0x090C901B)]
+    [Chunk(0x090C901B, "jump")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 19, 20)]
     public partial class Chunk090C901B : Chunk<CPlugCharPhyModel>, IVersionable
     {
@@ -1987,9 +2557,9 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// CPlugCharPhyModel 0x01C chunk
+    /// CPlugCharPhyModel 0x01C chunk (stamina)
     /// </summary>
-    [Chunk(0x090C901C)]
+    [Chunk(0x090C901C, "stamina")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 21, 22)]
     public partial class Chunk090C901C : Chunk<CPlugCharPhyModel>, IVersionable
     {
@@ -2291,9 +2861,9 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// CPlugCharPhyModel 0x01D chunk
+    /// CPlugCharPhyModel 0x01D chunk (gliding)
     /// </summary>
-    [Chunk(0x090C901D)]
+    [Chunk(0x090C901D, "gliding")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 4, 5)]
     public partial class Chunk090C901D : Chunk<CPlugCharPhyModel>, IVersionable
     {
@@ -2381,9 +2951,9 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// CPlugCharPhyModel 0x01F chunk
+    /// CPlugCharPhyModel 0x01F chunk (air control)
     /// </summary>
-    [Chunk(0x090C901F)]
+    [Chunk(0x090C901F, "air control")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 6, 7)]
     public partial class Chunk090C901F : Chunk<CPlugCharPhyModel>, IVersionable
     {
@@ -3000,9 +3570,9 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// CPlugCharPhyModel 0x027 chunk
+    /// CPlugCharPhyModel 0x027 chunk (slide surf)
     /// </summary>
-    [Chunk(0x090C9027)]
+    [Chunk(0x090C9027, "slide surf")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 10, 11)]
     public partial class Chunk090C9027 : Chunk<CPlugCharPhyModel>, IVersionable
     {
@@ -3152,9 +3722,9 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// CPlugCharPhyModel 0x028 chunk
+    /// CPlugCharPhyModel 0x028 chunk (attractor)
     /// </summary>
-    [Chunk(0x090C9028)]
+    [Chunk(0x090C9028, "attractor")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 5, 6)]
     public partial class Chunk090C9028 : Chunk<CPlugCharPhyModel>, IVersionable
     {
@@ -3415,44 +3985,15 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// CPlugCharPhyModel 0x02B chunk
+    /// CPlugCharPhyModel 0x02B chunk (grapnel)
     /// </summary>
-    [Chunk(0x090C902B)]
+    [Chunk(0x090C902B, "grapnel")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 6, 7)]
     public partial class Chunk090C902B : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C902B;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public bool U01;
-        public float U02;
-        public float U03;
-        public float U04;
-        public float U05;
-        public float U06;
-        public bool U07;
-        public bool U08;
-        public bool U09;
-        public bool U10;
-        public bool U11;
-        public bool U12;
-        public bool U13;
-        public PlugCurve? U14;
-        public PlugCurve? U15;
-        public PlugCurve? U16;
-        public bool U17;
-        public float U18;
-        public float U19;
-        public float U20;
-        public float U21;
-        public bool U22;
-        public bool U23;
-        public int U24;
-        public PlugCurve? U25;
-        public float U26;
-        public bool U27;
-        public bool U28;
-        public float U29;
 
         public Chunk090C902B() : this(GameVersion.Unspecified)
         {
@@ -3474,35 +4015,6 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090C902B)clone).Version = context.Clone(this.Version)!;
-            ((Chunk090C902B)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk090C902B)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk090C902B)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk090C902B)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk090C902B)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk090C902B)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk090C902B)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk090C902B)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk090C902B)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk090C902B)clone).U10 = context.Clone(this.U10)!;
-            ((Chunk090C902B)clone).U11 = context.Clone(this.U11)!;
-            ((Chunk090C902B)clone).U12 = context.Clone(this.U12)!;
-            ((Chunk090C902B)clone).U13 = context.Clone(this.U13)!;
-            ((Chunk090C902B)clone).U14 = context.Clone(this.U14)!;
-            ((Chunk090C902B)clone).U15 = context.Clone(this.U15)!;
-            ((Chunk090C902B)clone).U16 = context.Clone(this.U16)!;
-            ((Chunk090C902B)clone).U17 = context.Clone(this.U17)!;
-            ((Chunk090C902B)clone).U18 = context.Clone(this.U18)!;
-            ((Chunk090C902B)clone).U19 = context.Clone(this.U19)!;
-            ((Chunk090C902B)clone).U20 = context.Clone(this.U20)!;
-            ((Chunk090C902B)clone).U21 = context.Clone(this.U21)!;
-            ((Chunk090C902B)clone).U22 = context.Clone(this.U22)!;
-            ((Chunk090C902B)clone).U23 = context.Clone(this.U23)!;
-            ((Chunk090C902B)clone).U24 = context.Clone(this.U24)!;
-            ((Chunk090C902B)clone).U25 = context.Clone(this.U25)!;
-            ((Chunk090C902B)clone).U26 = context.Clone(this.U26)!;
-            ((Chunk090C902B)clone).U27 = context.Clone(this.U27)!;
-            ((Chunk090C902B)clone).U28 = context.Clone(this.U28)!;
-            ((Chunk090C902B)clone).U29 = context.Clone(this.U29)!;
         }
 
         public override void ReadWrite(CPlugCharPhyModel n, GbxReaderWriter rw)
@@ -3513,96 +4025,96 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.Boolean(ref U01);
-            rw.Single(ref U02);
-            rw.Single(ref U03);
-            rw.Single(ref U04);
-            rw.Single(ref U05);
-            rw.Single(ref U06);
+            rw.Boolean(ref n.grapnelEnabled);
+            rw.Single(ref n.grapnelCharPhyFrictionCoef);
+            rw.Single(ref n.grapnelInitialSpeed);
+            rw.Single(ref n.grapnelMaxDist);
+            rw.Single(ref n.grapnelMinDist);
+            rw.Single(ref n.grapnelRadius);
 
             if (Version >= 2)
             {
-                rw.Boolean(ref U07);
-                rw.Boolean(ref U08);
-                rw.Boolean(ref U09);
-                rw.Boolean(ref U10);
-                rw.Boolean(ref U11);
-                rw.Boolean(ref U12);
+                rw.Boolean(ref n.grapnelAutoJump);
+                rw.Boolean(ref n.grapnelAutoRetract);
+                rw.Boolean(ref n.grapnelElastic);
+                rw.Boolean(ref n.grapnelMaintainButtonDown);
+                rw.Boolean(ref n.grapnelOnlyInAirState);
+                rw.Boolean(ref n.grapnelSwitchElasticNormalEnabled);
             }
 
             if (Version >= 3)
             {
-                rw.Boolean(ref U13);
-                rw.ReadableWritable<PlugCurve>(ref U14, version: Version- 7);
-                rw.ReadableWritable<PlugCurve>(ref U15, version: Version- 7);
-                rw.ReadableWritable<PlugCurve>(ref U16, version: Version- 7);
+                rw.Boolean(ref n.grapnelElasticInstantThrow);
+                rw.ReadableWritable<PlugCurve>(ref n.grapnelElasticForceTensor, version: Version- 7);
+                rw.ReadableWritable<PlugCurve>(ref n.grapnelElasticForceThrow, version: Version- 7);
+                rw.ReadableWritable<PlugCurve>(ref n.grapnelElasticForceThrowVertical, version: Version- 7);
             }
 
             if (Version >= 4)
             {
-                rw.Boolean(ref U17);
-                rw.Single(ref U18);
-                rw.Single(ref U19);
-                rw.Single(ref U20);
-                rw.Single(ref U21);
+                rw.Boolean(ref n.grapnelElasticUseMouseToStretch);
+                rw.Single(ref n.grapnelMouseStretchSpeed);
+                rw.Single(ref n.grapnelSlowDownGroundStateAllDir);
+                rw.Single(ref n.grapnelSlowDownAllDirCoef);
+                rw.Single(ref n.grapnelSlowDownTractionDirCoef);
             }
 
             if (Version >= 5)
             {
-                rw.Boolean(ref U22);
-                rw.Boolean(ref U23);
-                rw.Int32(ref U24);
-                rw.ReadableWritable<PlugCurve>(ref U25, version: Version- 7);
-                rw.Single(ref U26);
+                rw.Boolean(ref n.grapnelControlledEndJump);
+                rw.Boolean(ref n.grapnelAimControlEndJump);
+                rw.Int32(ref n.grapnelAfterGrapnelFrictionDuration);
+                rw.ReadableWritable<PlugCurve>(ref n.grapnelTractionFromDist, version: Version- 7);
+                rw.Single(ref n.grapnelOffsetDirYForce);
             }
 
             if (Version >= 6)
             {
-                rw.Boolean(ref U27);
-                rw.Boolean(ref U28);
-                rw.Single(ref U29);
+                rw.Boolean(ref n.grapnelCanFireIfMissed);
+                rw.Boolean(ref n.grapnelOnlyOnChar);
+                rw.Single(ref n.grapnelDynaTractionForceCoef);
             }
         }
     }
 
     /// <summary>
-    /// CPlugCharPhyModel 0x02C chunk
+    /// CPlugCharPhyModel 0x02C chunk (values discarded by all games)
     /// </summary>
-    [Chunk(0x090C902C)]
-    [ChunkGameVersion(GameVersion.TM2020, 13)]
+    [Chunk(0x090C902C, "values discarded by all games")]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 13, 13)]
     public partial class Chunk090C902C : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C902C;
-        public override GameVersion GameVersion => GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public int U01;
+        public bool U01;
         public float U02;
-        public int U03;
-        public int U04;
-        public int U05;
-        public int U06;
-        public int U07;
+        public bool U03;
+        public bool U04;
+        public bool U05;
+        public bool U06;
+        public bool U07;
         public int U08;
-        public int U09;
+        public bool U09;
         public int U10;
         public int U11;
         public int U12;
-        public int U13;
+        public bool U13;
         public int U14;
-        public int U15;
+        public bool U15;
         public int U16;
         public int U17;
-        public int U18;
+        public bool U18;
         public float U19;
         public float U20;
         public int U21;
         public float U22;
         public float U23;
         public int U24;
-        public int U25;
+        public bool U25;
         public int U26;
         public int U27;
-        public int U28;
+        public bool U28;
         public float U29;
         public float U30;
         public int U31;
@@ -3617,7 +4129,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
 
         public Chunk090C902C(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 13;
             }
@@ -3672,26 +4184,26 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.Int32(ref U01);
+            rw.Boolean(ref U01);
 
             if (Version >= 2)
             {
                 rw.Single(ref U02);
-                rw.Int32(ref U03);
-                rw.Int32(ref U04);
+                rw.Boolean(ref U03);
+                rw.Boolean(ref U04);
             }
 
             if (Version >= 3)
             {
-                rw.Int32(ref U05);
-                rw.Int32(ref U06);
-                rw.Int32(ref U07);
+                rw.Boolean(ref U05);
+                rw.Boolean(ref U06);
+                rw.Boolean(ref U07);
                 rw.Int32(ref U08);
             }
 
             if (Version >= 4)
             {
-                rw.Int32(ref U09);
+                rw.Boolean(ref U09);
             }
 
             if (Version >= 5)
@@ -3707,16 +4219,16 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
 
             if (Version >= 7)
             {
-                rw.Int32(ref U13);
+                rw.Boolean(ref U13);
             }
 
             if (Version >= 8)
             {
                 rw.Int32(ref U14);
-                rw.Int32(ref U15);
+                rw.Boolean(ref U15);
                 rw.Int32(ref U16);
                 rw.Int32(ref U17);
-                rw.Int32(ref U18);
+                rw.Boolean(ref U18);
                 rw.Single(ref U19);
                 rw.Single(ref U20);
                 rw.Int32(ref U21);
@@ -3731,10 +4243,10 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             if (Version >= 10)
             {
                 rw.Int32(ref U24);
-                rw.Int32(ref U25);
+                rw.Boolean(ref U25);
                 rw.Int32(ref U26);
                 rw.Int32(ref U27);
-                rw.Int32(ref U28);
+                rw.Boolean(ref U28);
                 rw.Single(ref U29);
                 rw.Single(ref U30);
                 rw.Int32(ref U31);
@@ -3759,27 +4271,15 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// CPlugCharPhyModel 0x02D chunk
+    /// CPlugCharPhyModel 0x02D chunk (power boots)
     /// </summary>
-    [Chunk(0x090C902D)]
+    [Chunk(0x090C902D, "power boots")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 7, 8)]
     public partial class Chunk090C902D : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C902D;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public bool U01;
-        public int U02;
-        public int U03;
-        public PlugCurve? U04;
-        public bool U05;
-        public bool U06;
-        public float U07;
-        public bool U08;
-        public float U09;
-        public bool U10;
-        public bool U11;
-        public bool U12;
 
         public Chunk090C902D() : this(GameVersion.Unspecified)
         {
@@ -3801,18 +4301,6 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090C902D)clone).Version = context.Clone(this.Version)!;
-            ((Chunk090C902D)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk090C902D)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk090C902D)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk090C902D)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk090C902D)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk090C902D)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk090C902D)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk090C902D)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk090C902D)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk090C902D)clone).U10 = context.Clone(this.U10)!;
-            ((Chunk090C902D)clone).U11 = context.Clone(this.U11)!;
-            ((Chunk090C902D)clone).U12 = context.Clone(this.U12)!;
         }
 
         public override void ReadWrite(CPlugCharPhyModel n, GbxReaderWriter rw)
@@ -3823,70 +4311,70 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.Boolean(ref U01);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
-            rw.ReadableWritable<PlugCurve>(ref U04, version: Version- 8);
+            rw.Boolean(ref n.powerBootsAccelEnabled);
+            rw.Int32(ref n.powerBootsCooldown);
+            rw.Int32(ref n.powerBootsDuration);
+            rw.ReadableWritable<PlugCurve>(ref n.powerBootsAccelCurveFromVelKmh, version: Version- 8);
 
             if (Version >= 2)
             {
-                rw.Boolean(ref U05);
+                rw.Boolean(ref n.powerBootsWalkOnWaterEnabled);
             }
 
             if (Version >= 3)
             {
-                rw.Boolean(ref U06);
-                rw.Single(ref U07);
+                rw.Boolean(ref n.powerBootsStayOnGround);
+                rw.Single(ref n.powerBootsMinSpeedToStayOnGround);
             }
 
             if (Version >= 4)
             {
-                rw.Boolean(ref U08);
-                rw.Single(ref U09);
+                rw.Boolean(ref n.powerBootsSuperJump);
+                rw.Single(ref n.powerBootsSuperJumpCoef);
             }
 
             if (Version >= 5)
             {
-                rw.Boolean(ref U10);
+                rw.Boolean(ref n.powerBootsJumpEnabled);
             }
 
             if (Version >= 6)
             {
-                rw.Boolean(ref U11);
+                rw.Boolean(ref n.powerBootsStrafeDisabled);
             }
 
             if (Version >= 7)
             {
-                rw.Boolean(ref U12);
+                rw.Boolean(ref n.powerBootsMaintainButtonDown);
             }
         }
     }
 
     /// <summary>
-    /// CPlugCharPhyModel 0x02E chunk
+    /// CPlugCharPhyModel 0x02E chunk (jet pack)
     /// </summary>
-    [Chunk(0x090C902E)]
+    [Chunk(0x090C902E, "jet pack")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 4, 9)]
     public partial class Chunk090C902E : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C902E;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public bool U01;
+        public float U01;
         public float U02;
-        public float U03;
-        public float U04;
+        public PlugCurve? U03;
+        public PlugCurve? U04;
         public float U05;
-        public PlugCurve? U06;
-        public bool U07;
-        public bool U08;
-        public bool U09;
+        public float U06;
+        public float U07;
+        public float U08;
+        public float U09;
         public float U10;
         public float U11;
-        public float U12;
+        public PlugCurve? U12;
         public float U13;
         public float U14;
-        public PlugCurve? U15;
+        public float U15;
         public PlugCurve? U16;
         public float U17;
         public float U18;
@@ -3896,31 +4384,19 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         public float U22;
         public float U23;
         public PlugCurve? U24;
-        public float U25;
+        public PlugCurve? U25;
         public float U26;
-        public float U27;
+        public PlugCurve? U27;
         public PlugCurve? U28;
-        public float U29;
+        public PlugCurve? U29;
         public float U30;
-        public float U31;
+        public PlugCurve? U31;
         public float U32;
         public float U33;
         public float U34;
-        public float U35;
-        public PlugCurve? U36;
-        public PlugCurve? U37;
-        public float U38;
-        public PlugCurve? U39;
-        public PlugCurve? U40;
-        public PlugCurve? U41;
-        public float U42;
-        public PlugCurve? U43;
-        public float U44;
-        public float U45;
-        public float U46;
-        public ushort U47;
-        public ushort U48;
-        public ushort U49;
+        public ushort U35;
+        public ushort U36;
+        public ushort U37;
 
         public Chunk090C902E() : this(GameVersion.Unspecified)
         {
@@ -3979,18 +4455,6 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             ((Chunk090C902E)clone).U35 = context.Clone(this.U35)!;
             ((Chunk090C902E)clone).U36 = context.Clone(this.U36)!;
             ((Chunk090C902E)clone).U37 = context.Clone(this.U37)!;
-            ((Chunk090C902E)clone).U38 = context.Clone(this.U38)!;
-            ((Chunk090C902E)clone).U39 = context.Clone(this.U39)!;
-            ((Chunk090C902E)clone).U40 = context.Clone(this.U40)!;
-            ((Chunk090C902E)clone).U41 = context.Clone(this.U41)!;
-            ((Chunk090C902E)clone).U42 = context.Clone(this.U42)!;
-            ((Chunk090C902E)clone).U43 = context.Clone(this.U43)!;
-            ((Chunk090C902E)clone).U44 = context.Clone(this.U44)!;
-            ((Chunk090C902E)clone).U45 = context.Clone(this.U45)!;
-            ((Chunk090C902E)clone).U46 = context.Clone(this.U46)!;
-            ((Chunk090C902E)clone).U47 = context.Clone(this.U47)!;
-            ((Chunk090C902E)clone).U48 = context.Clone(this.U48)!;
-            ((Chunk090C902E)clone).U49 = context.Clone(this.U49)!;
         }
 
         public override void ReadWrite(CPlugCharPhyModel n, GbxReaderWriter rw)
@@ -4001,36 +4465,48 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.Boolean(ref U01);
+            rw.Boolean(ref n.jetPackEnabled);
 
             if (Version >= 2)
             {
+                rw.Single(ref U01);
                 rw.Single(ref U02);
-                rw.Single(ref U03);
             }
 
             if (Version >= 3)
             {
-                rw.Single(ref U04);
-                rw.Single(ref U05);
-                rw.ReadableWritable<PlugCurve>(ref U06, version: Version- 9);
+                rw.Single(ref n.jetPackAirForceCoef);
+                rw.Single(ref n.jetPackTakeOffImpulse);
+                rw.ReadableWritable<PlugCurve>(ref n.jetPackYForceFromYSpeed, version: Version- 9);
             }
 
             if (Version >= 4)
             {
-                rw.Boolean(ref U07);
-                rw.Boolean(ref U08);
-                rw.Boolean(ref U09);
-                rw.Single(ref U10);
-                rw.Single(ref U11);
-                rw.Single(ref U12);
-                rw.Single(ref U13);
-                rw.Single(ref U14);
+                rw.Int32(ref n.jetPackVersion2);
+                rw.Boolean(ref n.jetPackReturnToVerticalPitch);
+                rw.Boolean(ref n.jetPackReturnToVerticalRoll);
+                rw.Single(ref n.jetPackClampPitchValueDeg);
+                rw.Single(ref n.jetPackClampRollValueDeg);
+                rw.Single(ref n.jetPackFrictionRotCoef);
+                rw.Single(ref n.jetPackPitchRotationSpeedDegS);
+                rw.Single(ref n.jetPackRollRotationSpeedDegS);
             }
 
             if (Version >= 5)
             {
-                rw.ReadableWritable<PlugCurve>(ref U15, version: Version- 9);
+                rw.ReadableWritable<PlugCurve>(ref U03, version: Version- 9);
+                rw.ReadableWritable<PlugCurve>(ref U04, version: Version- 9);
+                rw.Single(ref U05);
+                rw.Single(ref U06);
+                rw.Single(ref U07);
+                rw.Single(ref U08);
+                rw.Single(ref U09);
+                rw.Single(ref U10);
+                rw.Single(ref U11);
+                rw.ReadableWritable<PlugCurve>(ref U12, version: Version- 9);
+                rw.Single(ref U13);
+                rw.Single(ref U14);
+                rw.Single(ref U15);
                 rw.ReadableWritable<PlugCurve>(ref U16, version: Version- 9);
                 rw.Single(ref U17);
                 rw.Single(ref U18);
@@ -4040,61 +4516,45 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
                 rw.Single(ref U22);
                 rw.Single(ref U23);
                 rw.ReadableWritable<PlugCurve>(ref U24, version: Version- 9);
-                rw.Single(ref U25);
+                rw.ReadableWritable<PlugCurve>(ref U25, version: Version- 9);
                 rw.Single(ref U26);
-                rw.Single(ref U27);
+                rw.ReadableWritable<PlugCurve>(ref U27, version: Version- 9);
                 rw.ReadableWritable<PlugCurve>(ref U28, version: Version- 9);
-                rw.Single(ref U29);
-                rw.Single(ref U30);
-                rw.Single(ref U31);
-                rw.Single(ref U32);
-                rw.Single(ref U33);
-                rw.Single(ref U34);
-                rw.Single(ref U35);
-                rw.ReadableWritable<PlugCurve>(ref U36, version: Version- 9);
-                rw.ReadableWritable<PlugCurve>(ref U37, version: Version- 9);
-                rw.Single(ref U38);
-                rw.ReadableWritable<PlugCurve>(ref U39, version: Version- 9);
-                rw.ReadableWritable<PlugCurve>(ref U40, version: Version- 9);
             }
 
             if (Version >= 6)
             {
-                rw.ReadableWritable<PlugCurve>(ref U41, version: Version- 9);
-                rw.Single(ref U42);
+                rw.ReadableWritable<PlugCurve>(ref U29, version: Version- 9);
+                rw.Single(ref U30);
             }
 
             if (Version >= 7)
             {
-                rw.ReadableWritable<PlugCurve>(ref U43, version: Version- 9);
-                rw.Single(ref U44);
-                rw.Single(ref U45);
+                rw.ReadableWritable<PlugCurve>(ref U31, version: Version- 9);
+                rw.Single(ref U32);
+                rw.Single(ref U33);
             }
 
             if (Version >= 8)
             {
-                rw.Single(ref U46);
-                rw.UInt16(ref U47);
-                rw.UInt16(ref U48);
-                rw.UInt16(ref U49);
+                rw.Single(ref U34);
+                rw.UInt16(ref U35);
+                rw.UInt16(ref U36);
+                rw.UInt16(ref U37);
             }
         }
     }
 
     /// <summary>
-    /// CPlugCharPhyModel 0x02F chunk
+    /// CPlugCharPhyModel 0x02F chunk (sniper turret)
     /// </summary>
-    [Chunk(0x090C902F)]
+    [Chunk(0x090C902F, "sniper turret")]
     [ChunkGameVersion(GameVersion.MP4, 1)]
     public partial class Chunk090C902F : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C902F;
         public override GameVersion GameVersion => GameVersion.MP4;
         public int Version { get; set; }
-        public bool U01;
-        public int U02;
-        public int U03;
-        public ushort U04;
 
         public Chunk090C902F() : this(GameVersion.Unspecified)
         {
@@ -4112,10 +4572,6 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090C902F)clone).Version = context.Clone(this.Version)!;
-            ((Chunk090C902F)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk090C902F)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk090C902F)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk090C902F)clone).U04 = context.Clone(this.U04)!;
         }
 
         public override void ReadWrite(CPlugCharPhyModel n, GbxReaderWriter rw)
@@ -4126,10 +4582,10 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.Boolean(ref U01);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
-            rw.UInt16(ref U04);
+            rw.Boolean(ref n.sniperTurretEnabled);
+            rw.Int32(ref n.sniperTurretDuration);
+            rw.Int32(ref n.sniperTurretCooldown);
+            rw.UInt16(ref n.sniperTurretAmmoGain);
         }
     }
 
@@ -4137,29 +4593,29 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     /// CPlugCharPhyModel 0x031 chunk
     /// </summary>
     [Chunk(0x090C9031)]
-    [ChunkGameVersion(GameVersion.TM2020, 5)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 4, 5)]
     public partial class Chunk090C9031 : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C9031;
-        public override GameVersion GameVersion => GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public float U01;
-        public float U02;
-        public float U03;
-        public float U04;
-        public float U05;
+        public bool U01;
+        public bool U02;
+        public bool U03;
+        public bool U04;
+        public int U05;
         public float U06;
-        public float U07;
-        public float U08;
-        public float U09;
+        public bool U07;
+        public int U08;
+        public int U09;
         public float U10;
         public PlugCurve? U11;
         public PlugCurve? U12;
         public PlugCurve? U13;
         public PlugCurve? U14;
         public PlugCurve? U15;
-        public float U16;
-        public float U17;
+        public bool U16;
+        public int U17;
         public float U18;
         public PlugCurve? U19;
         public PlugCurve? U20;
@@ -4170,7 +4626,11 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
 
         public Chunk090C9031(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 4;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 5;
             }
@@ -4210,15 +4670,15 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.Single(ref U01);
-            rw.Single(ref U02);
-            rw.Single(ref U03);
-            rw.Single(ref U04);
-            rw.Single(ref U05);
+            rw.Boolean(ref U01);
+            rw.Boolean(ref U02);
+            rw.Boolean(ref U03);
+            rw.Boolean(ref U04);
+            rw.Int32(ref U05);
             rw.Single(ref U06);
-            rw.Single(ref U07);
-            rw.Single(ref U08);
-            rw.Single(ref U09);
+            rw.Boolean(ref U07);
+            rw.Int32(ref U08);
+            rw.Int32(ref U09);
             rw.Single(ref U10);
             rw.ReadableWritable<PlugCurve>(ref U11, version: Version- 5);
             rw.ReadableWritable<PlugCurve>(ref U12, version: Version- 5);
@@ -4232,8 +4692,8 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
 
             if (Version >= 3)
             {
-                rw.Single(ref U16);
-                rw.Single(ref U17);
+                rw.Boolean(ref U16);
+                rw.Int32(ref U17);
                 rw.Single(ref U18);
             }
 

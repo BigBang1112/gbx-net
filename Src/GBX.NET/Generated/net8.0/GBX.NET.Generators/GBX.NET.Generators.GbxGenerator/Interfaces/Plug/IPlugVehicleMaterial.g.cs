@@ -4,7 +4,25 @@
 namespace GBX.NET.Interfaces.Plug;
 
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IPlugVehicleMaterialMembers1<T0, T1> : global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterial where T0 : class where T1 : class
+public interface IPlugVehicleMaterialMembers1 : global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterial
+{
+    float FrictionMax { get; set; }
+    float FrictionSpeedMax { get; set; }
+    float FrictionSpeedMin { get; set; }
+    float M7_BumpCellSize { get; set; }
+    float M7_BumpReplacementMax { get; set; }
+    float M7_BumpReplacementMin { get; set; }
+    float M7_BumpReplacementSpeedCoef { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVehicleMaterialMembers2 : global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterial
+{
+    float Drifting_InputSteerSensitivityFromSpeed { get; set; }
+    float Drifting_TransfertForceCoef { get; set; }
+    bool M6_MaterialHeightDetail_Enable { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVehicleMaterialMembers3<T0, T1> : global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterial where T0 : class where T1 : class
 {
     T0? TrailManagerModel
     {
@@ -18,68 +36,74 @@ public interface IPlugVehicleMaterialMembers1<T0, T1> : global::GBX.NET.Interfac
     }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IPlugVehicleMaterialMembers2 : global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterial
+public interface IPlugVehicleMaterialMembers4 : global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterial
 {
     bool TrailIsOnlyWhenSliding { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IPlugVehicleMaterialMembers3 : global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterial
-{
-    float AccelerationCoef { get; set; }
-    float BrakeCoef { get; set; }
-    float Grip { get; set; }
-    byte MaterialId { get; set; }
-    float Speed { get; set; }
-    float VibrationMax { get; set; }
-    float VibrationSpeedCoef { get; set; }
-}
-[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IPlugVehicleMaterialMembers4<T0> : global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterial where T0 : class
+public interface IPlugVehicleMaterialMembers5<T0> : global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterial where T0 : class
 {
     T0? MaterialHeightDetailBitmap
     {
         get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleMaterial)this).MaterialHeightDetailBitmap);
         set => ((global::GBX.NET.Engines.Plug.CPlugVehicleMaterial)this).MaterialHeightDetailBitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    Vec2 MaterialHeightDetailScale { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVehicleMaterialMembers6 : global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterial
+{
+    float VibrationMax { get; set; }
+    float VibrationSpeedCoef { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVehicleMaterialMembers7 : global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterial
+{
+    float Rumble_BumpsSpacing { get; set; }
+    float Rumble_VibrationCorrection { get; set; }
 }
 public partial interface IPlugVehicleMaterial : IClassVersion<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial>
 {
+    float AccelerationCoef { get; set; }
+    float BrakeCoef { get; set; }
+    float Grip { get; set; }
+    Vec2 M6_MaterialHeightDetail_Scale { get; set; }
+    byte MaterialId { get; set; }
+    float Speed { get; set; }
 }
 
-public partial interface IPlugVehicleMaterialTM10 : IPlugVehicleMaterial, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers1<global::GBX.NET.Interfaces.Plug.IPlugFlockModelTM10, global::GBX.NET.Interfaces.Plug.IPlugShaderTM10>, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers2, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers3, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10>
+public partial interface IPlugVehicleMaterialTM10 : IPlugVehicleMaterial, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers3<global::GBX.NET.Interfaces.Plug.IPlugFlockModelTM10, global::GBX.NET.Interfaces.Plug.IPlugShaderTM10>, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers4, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers5<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10>, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers6
 {
 }
 
-public partial interface IPlugVehicleMaterialTMPU : IPlugVehicleMaterial, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers1<global::GBX.NET.Interfaces.Plug.IPlugFlockModelTMPU, global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU>, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers2, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers3, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU>
+public partial interface IPlugVehicleMaterialTMPU : IPlugVehicleMaterial, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers3<global::GBX.NET.Interfaces.Plug.IPlugFlockModelTMPU, global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU>, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers4, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers5<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU>, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers6
 {
 }
 
-public partial interface IPlugVehicleMaterialTMSX : IPlugVehicleMaterial, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers2, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers3, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX>
+public partial interface IPlugVehicleMaterialTMSX : IPlugVehicleMaterial, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers4, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers5<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX>, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers6
 {
 }
 
-public partial interface IPlugVehicleMaterialTMNESWC : IPlugVehicleMaterial, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers3, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC>
+public partial interface IPlugVehicleMaterialTMNESWC : IPlugVehicleMaterial, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers5<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC>, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers6
 {
 }
 
-public partial interface IPlugVehicleMaterialVSK5 : IPlugVehicleMaterial, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers3, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5>
+public partial interface IPlugVehicleMaterialVSK5 : IPlugVehicleMaterial, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers5<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5>, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers6
 {
 }
 
-public partial interface IPlugVehicleMaterialTMF : IPlugVehicleMaterial, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers3, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF>
+public partial interface IPlugVehicleMaterialTMF : IPlugVehicleMaterial, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers5<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF>, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers6, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers7
 {
 }
 
-public partial interface IPlugVehicleMaterialMP3 : IPlugVehicleMaterial, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>
+public partial interface IPlugVehicleMaterialMP3 : IPlugVehicleMaterial, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers1, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers5<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers7
 {
 }
 
-public partial interface IPlugVehicleMaterialMP4 : IPlugVehicleMaterial
+public partial interface IPlugVehicleMaterialMP4 : IPlugVehicleMaterial, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers1, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers2, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers6, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers7
 {
 }
 
-public partial interface IPlugVehicleMaterialTM2020 : IPlugVehicleMaterial
+public partial interface IPlugVehicleMaterialTM2020 : IPlugVehicleMaterial, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers1, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers2, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers6, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers7
 {
 }
 

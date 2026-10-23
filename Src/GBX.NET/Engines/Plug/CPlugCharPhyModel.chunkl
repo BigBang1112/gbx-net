@@ -1,6 +1,6 @@
 CPlugCharPhyModel 0x090C9000
 
-0x000 [TM2020]
+0x000 [MP4, TM2020]
   id Name
 
 0x00D [MP4.v2, TM2020.v2]
@@ -14,7 +14,7 @@ CPlugCharPhyModel 0x090C9000
   v2+
     bool
 
-0x00E [MP4, TM2020]
+0x00E [MP4, TM2020] // jump
   version
   bool
   bool
@@ -22,7 +22,7 @@ CPlugCharPhyModel 0x090C9000
   float
   float
 
-0x00F [MP4.v4, TM2020.v5]
+0x00F [MP4.v4, TM2020.v5] // run
   version
   PlugCurve (version: Version - 5)
   PlugCurve (version: Version - 5)
@@ -86,7 +86,7 @@ CPlugCharPhyModel 0x090C9000
   v16+
     string[]
 
-0x012 [MP4.v26, TM2020.v28]
+0x012 [MP4.v26, TM2020.v28] // walk
   version
   PlugCurve (version: Version - 28)
   PlugCurve (version: Version - 28)
@@ -161,7 +161,7 @@ CPlugCharPhyModel 0x090C9000
     int
     PlugCurve (version: Version - 28)
 
-0x013 [MP4.v6, TM2020.v7]
+0x013 [MP4.v6, TM2020.v7] // sneak
   version
   v2-
     CMwNod
@@ -178,7 +178,7 @@ CPlugCharPhyModel 0x090C9000
   v5=
     float
 
-0x014 [MP4.v9, TM2020.v10]
+0x014 [MP4.v9, TM2020.v10] // attractor
   version
   CMwNod
   CMwNod
@@ -233,7 +233,7 @@ CPlugCharPhyModel 0x090C9000
   v1+
     PlugCurve (version: Version - 2)
 
-0x016 [MP4.v2, TM2020.v3]
+0x016 [MP4.v2, TM2020.v3] // swim
   version
   v2+
     bool
@@ -245,7 +245,7 @@ CPlugCharPhyModel 0x090C9000
   float
   bool
 
-0x017 [MP4.v6, TM2020.v7]
+0x017 [MP4.v6, TM2020.v7] // swim
   version
   v6+
     bool
@@ -269,7 +269,7 @@ CPlugCharPhyModel 0x090C9000
     float
     float
 
-0x018 [MP4.v3, TM2020.v4]
+0x018 [MP4.v3, TM2020.v4] // sneak
   version
   PlugCurve (version: Version - 4)
   v0=
@@ -282,7 +282,7 @@ CPlugCharPhyModel 0x090C9000
   v3+
     CPlugSurface
 
-0x019 [MP4.v10, TM2020.v11]
+0x019 [MP4.v10, TM2020.v11] // wall jump
   version
   bool
   bool
@@ -315,14 +315,14 @@ CPlugCharPhyModel 0x090C9000
     bool
     int
 
-0x01A [MP4, TM2020]
+0x01A [MP4, TM2020] // jump
   version
   bool
   float
   float
   float
 
-0x01B [MP4.v19, TM2020.v20]
+0x01B [MP4.v19, TM2020.v20] // jump
   version
   PlugCurve (version: Version - 20)
   v5-
@@ -375,7 +375,7 @@ CPlugCharPhyModel 0x090C9000
     int
     int
 
-0x01C [MP4.v21, TM2020.v22]
+0x01C [MP4.v21, TM2020.v22] // stamina
   version
   ushort
   v1-
@@ -443,7 +443,7 @@ CPlugCharPhyModel 0x090C9000
     float
     float
 
-0x01D [MP4.v4, TM2020.v5]
+0x01D [MP4.v4, TM2020.v5] // gliding
   version
   v4+
     bool
@@ -460,7 +460,7 @@ CPlugCharPhyModel 0x090C9000
     PlugCurve (version: Version - 5)
     PlugCurve (version: Version - 5)
 
-0x01F [MP4.v6, TM2020.v7]
+0x01F [MP4.v6, TM2020.v7] // air control
   version
   v4+
     bool
@@ -563,7 +563,7 @@ CPlugCharPhyModel 0x090C9000
   v1+
     float
 
-0x027 [MP4.v10, TM2020.v11]
+0x027 [MP4.v10, TM2020.v11] // slide surf
   version
   bool
   PlugCurve (version: Version - 11)
@@ -592,7 +592,7 @@ CPlugCharPhyModel 0x090C9000
   v10+
     PlugCurve (version: Version - 11)
 
-0x028 [MP4.v5, TM2020.v6]
+0x028 [MP4.v5, TM2020.v6] // attractor
   version
   float
   float
@@ -639,70 +639,70 @@ CPlugCharPhyModel 0x090C9000
   float
   float
 
-0x02B [MP4.v6, TM2020.v7]
+0x02B [MP4.v6, TM2020.v7] // grapnel
+  version
+  bool GrapnelEnabled
+  float GrapnelCharPhyFrictionCoef
+  float GrapnelInitialSpeed
+  float GrapnelMaxDist
+  float GrapnelMinDist
+  float GrapnelRadius
+  v2+
+    bool GrapnelAutoJump
+    bool GrapnelAutoRetract
+    bool GrapnelElastic
+    bool GrapnelMaintainButtonDown
+    bool GrapnelOnlyInAirState
+    bool GrapnelSwitchElasticNormalEnabled
+  v3+
+    bool GrapnelElasticInstantThrow
+    PlugCurve GrapnelElasticForceTensor (version: Version - 7)
+    PlugCurve GrapnelElasticForceThrow (version: Version - 7)
+    PlugCurve GrapnelElasticForceThrowVertical (version: Version - 7)
+  v4+
+    bool GrapnelElasticUseMouseToStretch
+    float GrapnelMouseStretchSpeed
+    float GrapnelSlowDownGroundStateAllDir
+    float GrapnelSlowDownAllDirCoef
+    float GrapnelSlowDownTractionDirCoef
+  v5+
+    bool GrapnelControlledEndJump
+    bool GrapnelAimControlEndJump
+    int GrapnelAfterGrapnelFrictionDuration
+    PlugCurve GrapnelTractionFromDist (version: Version - 7)
+    float GrapnelOffsetDirYForce
+  v6+
+    bool GrapnelCanFireIfMissed
+    bool GrapnelOnlyOnChar
+    float GrapnelDynaTractionForceCoef
+
+0x02C [MP4.v13, TM2020.v13] // values discarded by all games
   version
   bool
-  float
-  float
-  float
-  float
-  float
   v2+
-    bool
-    bool
-    bool
-    bool
+    float
     bool
     bool
   v3+
     bool
-    PlugCurve (version: Version - 7)
-    PlugCurve (version: Version - 7)
-    PlugCurve (version: Version - 7)
+    bool
+    bool
+    int
   v4+
     bool
-    float
-    float
-    float
-    float
-  v5+
-    bool
-    bool
-    int
-    PlugCurve (version: Version - 7)
-    float
-  v6+
-    bool
-    bool
-    float
-
-0x02C [TM2020.v13]
-  version
-  int
-  v2+
-    float
-    int
-    int
-  v3+
-    int
-    int
-    int
-    int
-  v4+
-    int
   v5+
     int
   v6+
     int
     int
   v7+
-    int
+    bool
   v8+
     int
+    bool
     int
     int
-    int
-    int
+    bool
     float
     float
     int
@@ -711,10 +711,10 @@ CPlugCharPhyModel 0x090C9000
     float
   v10+
     int
+    bool
     int
     int
-    int
-    int
+    bool
     float
     float
     int
@@ -726,46 +726,46 @@ CPlugCharPhyModel 0x090C9000
   v13+
     float
 
-0x02D [MP4.v7, TM2020.v8]
+0x02D [MP4.v7, TM2020.v8] // power boots
   version
-  bool
-  int
-  int
-  PlugCurve (version: Version - 8)
+  bool PowerBootsAccelEnabled
+  int PowerBootsCooldown
+  int PowerBootsDuration
+  PlugCurve PowerBootsAccelCurveFromVelKmh (version: Version - 8)
   v2+
-    bool
+    bool PowerBootsWalkOnWaterEnabled
   v3+
-    bool
-    float
+    bool PowerBootsStayOnGround
+    float PowerBootsMinSpeedToStayOnGround
   v4+
-    bool
-    float
+    bool PowerBootsSuperJump
+    float PowerBootsSuperJumpCoef
   v5+
-    bool
+    bool PowerBootsJumpEnabled
   v6+
-    bool
+    bool PowerBootsStrafeDisabled
   v7+
-    bool
+    bool PowerBootsMaintainButtonDown
 
-0x02E [MP4.v4, TM2020.v9]
+0x02E [MP4.v4, TM2020.v9] // jet pack
   version
-  bool
+  bool JetPackEnabled
   v2+
-    float
-    float
+    float // legacy JetPackAirForceCoef, read again from v3
+    float // discarded
   v3+
-    float
-    float
-    PlugCurve (version: Version - 9)
+    float JetPackAirForceCoef
+    float JetPackTakeOffImpulse
+    PlugCurve JetPackYForceFromYSpeed (version: Version - 9)
   v4+
-    bool
-    bool
-    bool
-    float
-    float
-    float
-    float
-    float
+    int JetPackVersion2
+    bool JetPackReturnToVerticalPitch
+    bool JetPackReturnToVerticalRoll
+    float JetPackClampPitchValueDeg
+    float JetPackClampRollValueDeg
+    float JetPackFrictionRotCoef
+    float JetPackPitchRotationSpeedDegS
+    float JetPackRollRotationSpeedDegS
   v5+
     PlugCurve (version: Version - 9)
     PlugCurve (version: Version - 9)
@@ -806,24 +806,24 @@ CPlugCharPhyModel 0x090C9000
     ushort
     ushort
 
-0x02F [MP4.v1]
+0x02F [MP4.v1] // sniper turret
   version
+  bool SniperTurretEnabled
+  int SniperTurretDuration
+  int SniperTurretCooldown
+  ushort SniperTurretAmmoGain
+
+0x031 [MP4.v4, TM2020.v5]
+  version
+  bool
+  bool
+  bool
+  bool
+  int
+  float
   bool
   int
   int
-  ushort
-
-0x031 [TM2020.v5]
-  version
-  float
-  float
-  float
-  float
-  float
-  float
-  float
-  float
-  float
   float
   PlugCurve (version: Version - 5)
   PlugCurve (version: Version - 5)
@@ -832,8 +832,8 @@ CPlugCharPhyModel 0x090C9000
   v2+
     PlugCurve (version: Version - 5)
   v3+
-    float
-    float
+    bool
+    int
     float
   v4+
     PlugCurve (version: Version - 5)

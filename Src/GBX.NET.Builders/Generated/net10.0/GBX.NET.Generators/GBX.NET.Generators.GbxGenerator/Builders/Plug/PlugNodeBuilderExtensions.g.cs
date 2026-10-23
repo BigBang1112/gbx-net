@@ -259,6 +259,14 @@ public static class CPlugCamShakeModelBuilderExtensions
     }
 }
 
+public static class CPlugCharPhyMaterialBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial)
+    {
+        public static global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyMaterialBuilder Create() => new();
+    }
+}
+
 public static class CPlugCharPhyMaterialsBuilderExtensions
 {
     extension(global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials)

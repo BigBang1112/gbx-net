@@ -7,6 +7,20 @@ public abstract class CPlugVehicleGearBoxBuilderBase<TSelf> : NodeBuilder<global
 {
     private protected CPlugVehicleGearBoxBuilderBase() { }
     private protected CPlugVehicleGearBoxBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleGearBox> state) : base(state) { }
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020;
+    public TSelf WithChangeGearDeclutchDuration(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleGearBoxBuilderAssignments.GetChangeGearDeclutchDurationAssignment(), value, SupportedGames1);
+    public TSelf WithChangeGearPeriod(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleGearBoxBuilderAssignments.GetChangeGearPeriodAssignment(), value, SupportedGames1);
+    public TSelf WithGearRatios(params float[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleGearBoxBuilderAssignments.GetGearRatiosAssignment(), value, SupportedGames1);
+    public TSelf WithGearRatios(IEnumerable<float> values) => WithGearRatios(values.ToArray());
+    public TSelf WithMinSpeedKmhForDrive(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleGearBoxBuilderAssignments.GetMinSpeedKmhForDriveAssignment(), value, SupportedGames1);
+    public TSelf WithMotorRpmInertiaDecluthFree(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleGearBoxBuilderAssignments.GetMotorRpmInertiaDecluthFreeAssignment(), value, SupportedGames1);
+    public TSelf WithMotorRpmInertiaDecluthGas(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleGearBoxBuilderAssignments.GetMotorRpmInertiaDecluthGasAssignment(), value, SupportedGames1);
+    public TSelf WithMotorRpmInertiaOnLoad(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleGearBoxBuilderAssignments.GetMotorRpmInertiaOnLoadAssignment(), value, SupportedGames1);
+    public TSelf WithOptimalRpm_Release(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleGearBoxBuilderAssignments.GetOptimalRpm_ReleaseAssignment(), value, SupportedGames1);
+    public TSelf WithOptimalRpm_Throttle(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleGearBoxBuilderAssignments.GetOptimalRpm_ThrottleAssignment(), value, SupportedGames1);
+    public TSelf WithRpmGammaCorrection(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleGearBoxBuilderAssignments.GetRpmGammaCorrectionAssignment(), value, SupportedGames1);
+    public TSelf WithSequential(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleGearBoxBuilderAssignments.GetSequentialAssignment(), value, SupportedGames1);
+    public TSelf WithTakeOffSpeedKmh(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleGearBoxBuilderAssignments.GetTakeOffSpeedKmhAssignment(), value, SupportedGames1);
 }
 public partial class CPlugVehicleGearBoxBuilder : CPlugVehicleGearBoxBuilderBase<CPlugVehicleGearBoxBuilder>
 {

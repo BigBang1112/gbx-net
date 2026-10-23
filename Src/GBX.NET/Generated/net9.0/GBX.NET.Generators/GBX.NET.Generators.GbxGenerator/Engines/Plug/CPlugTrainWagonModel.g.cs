@@ -75,7 +75,7 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
         set => NodeRef.SetEmbedded(ref soundCollisionRef, value);
     }
 
-    private float wagonLength;
+    private float wagonLength = 1;
     /// <remarks>Applied with: 0x000 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk0911C000>(5)]
     public float WagonLength
@@ -93,7 +93,7 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
         set => this.wagonColOffset = value;
     }
 
-    private bool genLengthFromShape;
+    private bool genLengthFromShape = true;
     /// <remarks>Applied with: 0x000 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk0911C000>(5)]
     public bool GenLengthFromShape
@@ -102,13 +102,13 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
         set => this.genLengthFromShape = value;
     }
 
-    private NodeRef<CFuncKeysReal>? accelCurveRef;
+    private PlugCurve? accelCurve;
     /// <remarks>Applied with: 0x000 v6+ body chunk</remarks>
     [AppliedWithChunk<Chunk0911C000>(6)]
-    public CFuncKeysReal? AccelCurve
+    public PlugCurve? AccelCurve
     {
-        get => accelCurveRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref accelCurveRef, value);
+        get => this.accelCurve;
+        set => this.accelCurve = value;
     }
 
     private NodeRef<CPlugParticleEmitterModel>? smokeEmitterModelRef;
@@ -158,7 +158,6 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
         public NodeRef<CPlugSound> SoundBrake => NodeRef.GetOrCreate(ref owner.soundBrakeRef);
         public NodeRef<CPlugSound> SoundRailContact => NodeRef.GetOrCreate(ref owner.soundRailContactRef);
         public NodeRef<CPlugSound> SoundCollision => NodeRef.GetOrCreate(ref owner.soundCollisionRef);
-        public NodeRef<CFuncKeysReal> AccelCurve => NodeRef.GetOrCreate(ref owner.accelCurveRef);
         public NodeRef<CPlugParticleEmitterModel> SmokeEmitterModel => NodeRef.GetOrCreate(ref owner.smokeEmitterModelRef);
         public NodeRef<CPlugParticleEmitterModel> DustEmitterModel => NodeRef.GetOrCreate(ref owner.dustEmitterModelRef);
         public NodeRef<CPlugParticleEmitterModel> SparkleParticle => NodeRef.GetOrCreate(ref owner.sparkleParticleRef);
@@ -173,7 +172,6 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
         yield return new("SoundBrake", NodeRef.GetOrCreate(ref soundBrakeRef));
         yield return new("SoundRailContact", NodeRef.GetOrCreate(ref soundRailContactRef));
         yield return new("SoundCollision", NodeRef.GetOrCreate(ref soundCollisionRef));
-        yield return new("AccelCurve", NodeRef.GetOrCreate(ref accelCurveRef));
         yield return new("SmokeEmitterModel", NodeRef.GetOrCreate(ref smokeEmitterModelRef));
         yield return new("DustEmitterModel", NodeRef.GetOrCreate(ref dustEmitterModelRef));
         yield return new("SparkleParticle", NodeRef.GetOrCreate(ref sparkleParticleRef));
@@ -194,7 +192,7 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
         ((CPlugTrainWagonModel)clone).wagonLength = context.Clone(this.wagonLength)!;
         ((CPlugTrainWagonModel)clone).wagonColOffset = context.Clone(this.wagonColOffset)!;
         ((CPlugTrainWagonModel)clone).genLengthFromShape = context.Clone(this.genLengthFromShape)!;
-        ((CPlugTrainWagonModel)clone).accelCurveRef = context.Clone(this.accelCurveRef)!;
+        ((CPlugTrainWagonModel)clone).accelCurve = context.Clone(this.accelCurve)!;
         ((CPlugTrainWagonModel)clone).smokeEmitterModelRef = context.Clone(this.smokeEmitterModelRef)!;
         ((CPlugTrainWagonModel)clone).dustEmitterModelRef = context.Clone(this.dustEmitterModelRef)!;
         ((CPlugTrainWagonModel)clone).sparkleParticleRef = context.Clone(this.sparkleParticleRef)!;
@@ -206,25 +204,34 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// CPlugTrainWagonModel 0x000 chunk
+    /// CPlugTrainWagonModel 0x000 chunk (wagon)
     /// </summary>
-    [Chunk(0x0911C000)]
+    [Chunk(0x0911C000, "wagon")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 7, 12)]
     public partial class Chunk0911C000 : Chunk<CPlugTrainWagonModel>, IVersionable
     {
         public override uint Id => 0x0911C000;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+        public int[]? U05;
         public Vec3 U01;
+        public int U06;
 
-        private NodeRef<CFuncKeysReal>? U02Ref;
-        public CFuncKeysReal? U02
+        private NodeRef<CPlugSurface>? U02Ref;
+        /// <summary>
+        /// discarded
+        /// </summary>
+        public CPlugSurface? U02
         {
             get => U02Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U02Ref, value);
         }
+        public float U04;
 
         private NodeRef<CMwNod>? U03Ref;
+        /// <summary>
+        /// discarded
+        /// </summary>
         public CMwNod? U03
         {
             get => U03Ref?.Resolve();
@@ -236,7 +243,7 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
         {
             private readonly Chunk0911C000 owner;
             internal NodeRefView(Chunk0911C000 owner) => this.owner = owner;
-            public NodeRef<CFuncKeysReal> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+            public NodeRef<CPlugSurface> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
             public NodeRef<CMwNod> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
@@ -261,14 +268,19 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
             {
                 Version = 12;
             }
+
+            U01 = (15, 1, 1);
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0911C000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0911C000)clone).U05 = context.CloneArray(this.U05)!;
             ((Chunk0911C000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0911C000)clone).U06 = context.Clone(this.U06)!;
             ((Chunk0911C000)clone).U02Ref = context.Clone(this.U02Ref)!;
+            ((Chunk0911C000)clone).U04 = context.Clone(this.U04)!;
             ((Chunk0911C000)clone).U03Ref = context.Clone(this.U03Ref)!;
         }
 
@@ -280,6 +292,11 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
+            if (Version <= 4)
+            {
+                rw.Array<int>(ref U05!, 3);
+            }
+
             rw.NodeRef(ref n.shapeRef);
             rw.NodeRef(ref n.meshRef);
 
@@ -287,48 +304,57 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
             {
                 rw.Boolean(ref n.isLoco);
                 rw.Vec3(ref U01);
+            }
 
-                if (Version >= 3)
+            if (Version >= 3)
+            {
+                rw.NodeRef(ref n.soundEngineRef);
+                rw.NodeRef(ref n.soundBrakeRef);
+                rw.NodeRef(ref n.soundRailContactRef);
+                rw.NodeRef(ref n.soundCollisionRef);
+            }
+
+            if (Version == 4)
+            {
+                rw.Int32(ref U06);
+            }
+
+            if (Version >= 5)
+            {
+                rw.Single(ref n.wagonLength);
+                rw.Single(ref n.wagonColOffset);
+                rw.Boolean(ref n.genLengthFromShape);
+            }
+
+            if (Version >= 6)
+            {
+                rw.ReadableWritable<PlugCurve>(ref n.accelCurve, version: Version- 11);
+            }
+
+            if (Version >= 7)
+            {
+                rw.NodeRef(ref n.smokeEmitterModelRef);
+            }
+
+            if (Version >= 8)
+            {
+                rw.NodeRef(ref U02Ref);
+                rw.NodeRef(ref n.dustEmitterModelRef);
+                rw.NodeRef(ref n.sparkleParticleRef);
+                rw.Single(ref U04);
+            }
+
+            if (Version >= 9)
+            {
+                if (Version<= 11)
                 {
-                    rw.NodeRef(ref n.soundEngineRef);
-                    rw.NodeRef(ref n.soundBrakeRef);
-                    rw.NodeRef(ref n.soundRailContactRef);
-                    rw.NodeRef(ref n.soundCollisionRef);
-
-                    if (Version >= 5)
-                    {
-                        rw.Single(ref n.wagonLength);
-                        rw.Single(ref n.wagonColOffset);
-                        rw.Boolean(ref n.genLengthFromShape);
-
-                        if (Version >= 6)
-                        {
-                            rw.NodeRef(ref n.accelCurveRef);
-
-                            if (Version >= 7)
-                            {
-                                rw.NodeRef(ref n.smokeEmitterModelRef);
-
-                                if (Version >= 8)
-                                {
-                                    rw.NodeRef(ref U02Ref);
-                                    rw.NodeRef(ref n.dustEmitterModelRef);
-                                    rw.NodeRef(ref n.sparkleParticleRef);
-
-                                    if (Version >= 9)
-                                    {
-                                        rw.NodeRef(ref U03Ref);
-
-                                        if (Version >= 10)
-                                        {
-                                            rw.NodeRef(ref n.animFileRef);
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    rw.NodeRef(ref U03Ref);
                 }
+            }
+
+            if (Version >= 10)
+            {
+                rw.NodeRef(ref n.animFileRef);
             }
         }
     }

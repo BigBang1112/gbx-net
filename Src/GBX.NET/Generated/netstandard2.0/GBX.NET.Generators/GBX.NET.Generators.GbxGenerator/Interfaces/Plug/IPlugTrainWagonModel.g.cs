@@ -4,20 +4,19 @@
 namespace GBX.NET.Interfaces.Plug;
 
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IPlugTrainWagonModelMembers1<T0, T1, T2, T3, T4> : global::GBX.NET.Interfaces.Plug.IPlugTrainWagonModel where T0 : class where T1 : class where T2 : class where T3 : class where T4 : class
+public interface IPlugTrainWagonModelMembers1<T0, T1, T2, T3> : global::GBX.NET.Interfaces.Plug.IPlugTrainWagonModel where T0 : class where T1 : class where T2 : class where T3 : class
 {
-    new T0? AccelCurve { get; set; }
-    new T1? Mesh { get; set; }
-    new T2? Shape { get; set; }
-    new T3? SmokeEmitterModel { get; set; }
-    new T4? SoundBrake { get; set; }
-    new T4? SoundCollision { get; set; }
-    new T4? SoundEngine { get; set; }
-    new T4? SoundRailContact { get; set; }
+    new T0? Mesh { get; set; }
+    new T1? Shape { get; set; }
+    new T2? SmokeEmitterModel { get; set; }
+    new T3? SoundBrake { get; set; }
+    new T3? SoundCollision { get; set; }
+    new T3? SoundEngine { get; set; }
+    new T3? SoundRailContact { get; set; }
 }
 public partial interface IPlugTrainWagonModel : IClassVersion<global::GBX.NET.Engines.Plug.CPlugTrainWagonModel>
 {
-    global::GBX.NET.Interfaces.Function.IFuncKeysReal? AccelCurve { get; set; }
+    PlugCurve? AccelCurve { get; set; }
     bool GenLengthFromShape { get; set; }
     bool IsLoco { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugSolid2Model? Mesh { get; set; }
@@ -31,11 +30,11 @@ public partial interface IPlugTrainWagonModel : IClassVersion<global::GBX.NET.En
     float WagonLength { get; set; }
 }
 
-public partial interface IPlugTrainWagonModelMP4 : IPlugTrainWagonModel, global::GBX.NET.Interfaces.Plug.IPlugTrainWagonModelMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>
+public partial interface IPlugTrainWagonModelMP4 : IPlugTrainWagonModel, global::GBX.NET.Interfaces.Plug.IPlugTrainWagonModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>
 {
 }
 
-public partial interface IPlugTrainWagonModelTM2020 : IPlugTrainWagonModel, global::GBX.NET.Interfaces.Plug.IPlugTrainWagonModelMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>
+public partial interface IPlugTrainWagonModelTM2020 : IPlugTrainWagonModel, global::GBX.NET.Interfaces.Plug.IPlugTrainWagonModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>
 {
     global::GBX.NET.Interfaces.Plug.IPlugAnimFileTM2020? AnimFile { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? DustEmitterModel { get; set; }

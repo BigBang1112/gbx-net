@@ -9,8 +9,7 @@ public abstract class CPlugTrainWagonModelBuilderBase<TSelf> : NodeBuilder<globa
     private protected CPlugTrainWagonModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrainWagonModel> state) : base(state) { }
     private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020;
     private protected const GameVersion SupportedGames2 = GameVersion.TM2020;
-    public TSelf WithAccelCurve(global::GBX.NET.Engines.Function.CFuncKeysReal? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetAccelCurveAssignment(), value, SupportedGames1);
-    public TSelf WithAccelCurveReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetAccelCurveReferenceAssignment(), value, SupportedGames1);
+    public TSelf WithAccelCurve(PlugCurve? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetAccelCurveAssignment(), value, SupportedGames1);
     public TSelf WithGenLengthFromShape(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetGenLengthFromShapeAssignment(), value, SupportedGames1);
     public TSelf WithIsLoco(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetIsLocoAssignment(), value, SupportedGames1);
     public TSelf WithMesh(global::GBX.NET.Engines.Plug.CPlugSolid2Model? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetMeshAssignment(), value, SupportedGames1);
@@ -45,7 +44,6 @@ public partial class CPlugTrainWagonModelBuilder : CPlugTrainWagonModelBuilderBa
     public partial class MP4 : CPlugTrainWagonModelBuilderBase<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrainWagonModel> state) : base(state) { }
-        public MP4 WithAccelCurve(global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? value) => base.WithAccelCurve(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithMesh(global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4? value) => base.WithMesh(value is null ? (global::GBX.NET.Engines.Plug.CPlugSolid2Model?)null : value is global::GBX.NET.Engines.Plug.CPlugSolid2Model node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithShape(global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4? value) => base.WithShape(value is null ? (global::GBX.NET.Engines.Plug.CPlugSurface?)null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithSmokeEmitterModel(global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? value) => base.WithSmokeEmitterModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?)null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -60,7 +58,6 @@ public partial class CPlugTrainWagonModelBuilder : CPlugTrainWagonModelBuilderBa
     public partial class TM2020 : CPlugTrainWagonModelBuilderBase<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrainWagonModel> state) : base(state) { }
-        public TM2020 WithAccelCurve(global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? value) => base.WithAccelCurve(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithAnimFile(global::GBX.NET.Engines.Plug.CPlugAnimFile? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetAnimFileAssignment(), value, SupportedGames2);
         public TM2020 WithAnimFileReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimFile> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilderAssignments.GetAnimFileReferenceAssignment(), value, SupportedGames2);
         public TM2020 WithAnimFile(global::GBX.NET.Interfaces.Plug.IPlugAnimFileTM2020? value) => WithAnimFile(value is null ? (global::GBX.NET.Engines.Plug.CPlugAnimFile?)null : value is global::GBX.NET.Engines.Plug.CPlugAnimFile node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));

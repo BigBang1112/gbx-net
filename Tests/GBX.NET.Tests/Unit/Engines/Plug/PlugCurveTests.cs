@@ -56,7 +56,7 @@ public class PlugCurveTests
         WriteFloats(writer, 9); // Versions 7, 1, 2 and 3 add scalar fields.
         writer.Write(false);
         writer.Write(Vec2.Zero);
-        WriteFloats(writer, version <= 13 ? 4 : 3);
+        WriteFloats(writer, version <= 12 ? 4 : 3);
         WriteCurve(payload, version >= 12, "First.Func.Gbx");
         if (version >= 10) WriteCurve(payload, version >= 12, "Second.Func.Gbx");
         if (version >= 11) writer.Write(25.5f);

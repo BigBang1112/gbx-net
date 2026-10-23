@@ -30,7 +30,8 @@ CPlugSoundEngine2 0x09029000
   v5+
     PlugCurve
     PlugCurve
-    vec2[3]
+  v4+
+    LowPassFilter[3] LowPassFilters
 
 0x002 [MP4.v4, TM2020.v6]
   version
@@ -57,23 +58,23 @@ CPlugSoundEngine2 0x09029000
 
 archive PerspectiveVolume
   v4-
-    CFuncKeysReal Release (direct)
+    CFuncKeysReal Rpm (direct)
     CFuncKeysReal Throttle (direct)
   v5+ // curves stored inline
     PlugCurve
     PlugCurve
 
 archive AudioMotor
-  CMwNod Throttle
-  CMwNod Release
+  CMwNod Throttle // CPlugFileAudioMotors
+  CMwNod Release // CPlugFileAudioMotors
   v2+
     CPlugFileSnd IdleLoop
     CPlugFileSnd LimiterLoop
-    v4..5
-      float LowPassCutoffRatio = 1f
+    v4=
+      float LowPassCutoffRatio = 1f // moved to LowPassFilters in 0x001 v4+
     v3+
-      float U01 = 1f
-      float U02 = 1f
+      float IdleVolume = 1f // linear, shown in dB as AudioMotors_IdleVolumedB
+      float LimiterVolume = 1f // linear, shown in dB as AudioMotors_LimiterVolumedB
 
 archive SubEmitter
   float Volume = 1f
@@ -83,3 +84,7 @@ archive SubEmitter
   v2+
     float ConeAttenuation
     float ConeAngle
+
+archive LowPassFilter
+  float CutoffRatio = 1f
+  bool Enabled // set by v4 0x002 when the cutoff ratio is below 0.9

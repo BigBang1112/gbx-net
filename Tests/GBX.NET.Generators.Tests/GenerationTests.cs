@@ -1048,6 +1048,54 @@ public partial class GenerationTests
     }
 
     [Test]
+    public async Task Generate_SharedDirectLegacyAndInlineCurves_EmitsDirectCurveSerialization()
+    {
+        var (result, compilation) = Run("""
+            namespace GBX.NET.Engines.Game
+            {
+                public class CFuncKeysReal : CMwNod { }
+                public class CPlugCurveSimpleNod : CFuncKeysReal { }
+                public class PlugCurve : GBX.NET.Serialization.IReadableWritable, GBX.NET.Serialization.IReadable, GBX.NET.Serialization.IWritable
+                {
+                    public static implicit operator PlugCurve(CFuncKeysReal? value) => new();
+                    public static implicit operator CFuncKeysReal?(PlugCurve? value) => null;
+                    public void ReadWrite(GBX.NET.Serialization.GbxReaderWriter rw, int version = 0) { }
+                    public void ReadWriteDirect<T>(GBX.NET.Serialization.GbxReaderWriter rw) where T : CFuncKeysReal, new() { }
+                    public void Read(GBX.NET.Serialization.GbxReader reader, int version = 0) { }
+                    public void Write(GBX.NET.Serialization.GbxWriter writer, int version = 0) { }
+                }
+                public partial class Example { }
+            }
+            namespace GBX.NET.Serialization
+            {
+                public partial class GbxReaderWriter
+                {
+                    public void ReadableWritable<T>(ref T? value, int version = 0) where T : class, IReadableWritable, new() { }
+                }
+            }
+            """, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              version
+              v4-
+                CFuncKeysReal Curve (direct)
+                CPlugCurveSimpleNod SimpleCurve (direct)
+              v5+
+                PlugCurve Curve
+                PlugCurve SimpleCurve
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var generated = Engine(result).GetText().ToString();
+        await Assert.That(generated).Contains("public PlugCurve? Curve");
+        await Assert.That(generated).Contains("public PlugCurve? SimpleCurve");
+        await Assert.That(generated).Contains("(n.curve ??= new PlugCurve()).ReadWriteDirect<CFuncKeysReal>(rw);");
+        await Assert.That(generated).Contains("(n.simpleCurve ??= new PlugCurve()).ReadWriteDirect<CPlugCurveSimpleNod>(rw);");
+        await Assert.That(generated).Contains("rw.ReadableWritable<PlugCurve>(ref n.curve");
+    }
+
+    [Test]
     [Arguments("GBX.NET.Engines.Game")]
     [Arguments("GBX.NET")]
     public async Task Generate_StandaloneHandwrittenArchives_EmitsSerialization(string archiveNamespace)

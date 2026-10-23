@@ -13,10 +13,11 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private byte materialId;
-    /// <remarks>Applied with: 0x001, 0x009, 0x00E body chunks</remarks>
+    /// <remarks>Applied with: 0x001, 0x009, 0x00E, 0x010 body chunks</remarks>
     [AppliedWithChunk<Chunk090F1001>]
     [AppliedWithChunk<Chunk090F1009>]
     [AppliedWithChunk<Chunk090F100E>]
+    [AppliedWithChunk<Chunk090F1010>]
     public byte MaterialId
     {
         get => this.materialId;
@@ -43,21 +44,25 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
     }
 
     private float vibrationSpeedCoef;
-    /// <remarks>Applied with: 0x001, 0x009, 0x00E body chunks</remarks>
+    /// <remarks>Applied with: 0x001, 0x009, 0x00E, 0x010 v1-1, 0x010 v7+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F1001>]
     [AppliedWithChunk<Chunk090F1009>]
     [AppliedWithChunk<Chunk090F100E>]
+    [AppliedWithChunk<Chunk090F1010>(1, 1)]
+    [AppliedWithChunk<Chunk090F1010>(7)]
     public float VibrationSpeedCoef
     {
         get => this.vibrationSpeedCoef;
         set => this.vibrationSpeedCoef = value;
     }
 
-    private float vibrationMax;
-    /// <remarks>Applied with: 0x001, 0x009, 0x00E body chunks</remarks>
+    private float vibrationMax = 0.5f;
+    /// <remarks>Applied with: 0x001, 0x009, 0x00E, 0x010 v1-1, 0x010 v7+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F1001>]
     [AppliedWithChunk<Chunk090F1009>]
     [AppliedWithChunk<Chunk090F100E>]
+    [AppliedWithChunk<Chunk090F1010>(1, 1)]
+    [AppliedWithChunk<Chunk090F1010>(7)]
     public float VibrationMax
     {
         get => this.vibrationMax;
@@ -65,6 +70,9 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? materialHeightDetailBitmapRef;
+    /// <summary>
+    /// enables the height detail when set
+    /// </summary>
     /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk090F1004>]
     public CPlugBitmap? MaterialHeightDetailBitmap
@@ -73,45 +81,50 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         set => NodeRef.SetEmbedded(ref materialHeightDetailBitmapRef, value);
     }
 
-    private Vec2 materialHeightDetailScale;
-    /// <remarks>Applied with: 0x004 body chunk</remarks>
+    private Vec2 m6_MaterialHeightDetail_Scale = (32, 32);
+    /// <remarks>Applied with: 0x004, 0x010 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F1004>]
-    public Vec2 MaterialHeightDetailScale
+    [AppliedWithChunk<Chunk090F1010>(4)]
+    public Vec2 M6_MaterialHeightDetail_Scale
     {
-        get => this.materialHeightDetailScale;
-        set => this.materialHeightDetailScale = value;
+        get => this.m6_MaterialHeightDetail_Scale;
+        set => this.m6_MaterialHeightDetail_Scale = value;
     }
 
-    private float speed;
-    /// <remarks>Applied with: 0x005 body chunk</remarks>
+    private float speed = 1;
+    /// <remarks>Applied with: 0x005, 0x010 body chunks</remarks>
     [AppliedWithChunk<Chunk090F1005>]
+    [AppliedWithChunk<Chunk090F1010>]
     public float Speed
     {
         get => this.speed;
         set => this.speed = value;
     }
 
-    private float grip;
-    /// <remarks>Applied with: 0x005 body chunk</remarks>
+    private float grip = 1;
+    /// <remarks>Applied with: 0x005, 0x010 body chunks</remarks>
     [AppliedWithChunk<Chunk090F1005>]
+    [AppliedWithChunk<Chunk090F1010>]
     public float Grip
     {
         get => this.grip;
         set => this.grip = value;
     }
 
-    private float accelerationCoef;
-    /// <remarks>Applied with: 0x005 body chunk</remarks>
+    private float accelerationCoef = 1;
+    /// <remarks>Applied with: 0x005, 0x010 body chunks</remarks>
     [AppliedWithChunk<Chunk090F1005>]
+    [AppliedWithChunk<Chunk090F1010>]
     public float AccelerationCoef
     {
         get => this.accelerationCoef;
         set => this.accelerationCoef = value;
     }
 
-    private float brakeCoef;
-    /// <remarks>Applied with: 0x005 body chunk</remarks>
+    private float brakeCoef = 1;
+    /// <remarks>Applied with: 0x005, 0x010 body chunks</remarks>
     [AppliedWithChunk<Chunk090F1005>]
+    [AppliedWithChunk<Chunk090F1010>]
     public float BrakeCoef
     {
         get => this.brakeCoef;
@@ -125,6 +138,114 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
     {
         get => trailManagerModelRef?.Resolve();
         set => NodeRef.SetEmbedded(ref trailManagerModelRef, value);
+    }
+
+    private float rumble_BumpsSpacing = 2.5f;
+    /// <remarks>Applied with: 0x00F body chunk</remarks>
+    [AppliedWithChunk<Chunk090F100F>]
+    public float Rumble_BumpsSpacing
+    {
+        get => this.rumble_BumpsSpacing;
+        set => this.rumble_BumpsSpacing = value;
+    }
+
+    private float rumble_VibrationCorrection = 1;
+    /// <remarks>Applied with: 0x00F body chunk</remarks>
+    [AppliedWithChunk<Chunk090F100F>]
+    public float Rumble_VibrationCorrection
+    {
+        get => this.rumble_VibrationCorrection;
+        set => this.rumble_VibrationCorrection = value;
+    }
+
+    private float m7_BumpReplacementMax;
+    /// <remarks>Applied with: 0x010 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090F1010>(1)]
+    public float M7_BumpReplacementMax
+    {
+        get => this.m7_BumpReplacementMax;
+        set => this.m7_BumpReplacementMax = value;
+    }
+
+    private float m7_BumpReplacementMin;
+    /// <remarks>Applied with: 0x010 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090F1010>(1)]
+    public float M7_BumpReplacementMin
+    {
+        get => this.m7_BumpReplacementMin;
+        set => this.m7_BumpReplacementMin = value;
+    }
+
+    private float m7_BumpCellSize;
+    /// <remarks>Applied with: 0x010 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090F1010>(1)]
+    public float M7_BumpCellSize
+    {
+        get => this.m7_BumpCellSize;
+        set => this.m7_BumpCellSize = value;
+    }
+
+    private float m7_BumpReplacementSpeedCoef = 0.05f;
+    /// <remarks>Applied with: 0x010 v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090F1010>(2)]
+    public float M7_BumpReplacementSpeedCoef
+    {
+        get => this.m7_BumpReplacementSpeedCoef;
+        set => this.m7_BumpReplacementSpeedCoef = value;
+    }
+
+    private float frictionSpeedMin;
+    /// <remarks>Applied with: 0x010 v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090F1010>(3)]
+    public float FrictionSpeedMin
+    {
+        get => this.frictionSpeedMin;
+        set => this.frictionSpeedMin = value;
+    }
+
+    private float frictionSpeedMax;
+    /// <remarks>Applied with: 0x010 v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090F1010>(3)]
+    public float FrictionSpeedMax
+    {
+        get => this.frictionSpeedMax;
+        set => this.frictionSpeedMax = value;
+    }
+
+    private float frictionMax;
+    /// <remarks>Applied with: 0x010 v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090F1010>(3)]
+    public float FrictionMax
+    {
+        get => this.frictionMax;
+        set => this.frictionMax = value;
+    }
+
+    private bool m6_MaterialHeightDetail_Enable;
+    /// <remarks>Applied with: 0x010 v4+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090F1010>(4)]
+    public bool M6_MaterialHeightDetail_Enable
+    {
+        get => this.m6_MaterialHeightDetail_Enable;
+        set => this.m6_MaterialHeightDetail_Enable = value;
+    }
+
+    private float drifting_TransfertForceCoef = -1;
+    /// <remarks>Applied with: 0x010 v5+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090F1010>(5)]
+    public float Drifting_TransfertForceCoef
+    {
+        get => this.drifting_TransfertForceCoef;
+        set => this.drifting_TransfertForceCoef = value;
+    }
+
+    private float drifting_InputSteerSensitivityFromSpeed = -1;
+    /// <remarks>Applied with: 0x010 v6+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090F1010>(6)]
+    public float Drifting_InputSteerSensitivityFromSpeed
+    {
+        get => this.drifting_InputSteerSensitivityFromSpeed;
+        set => this.drifting_InputSteerSensitivityFromSpeed = value;
     }
 
     public NodeRefView References => new(this);
@@ -154,12 +275,24 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         ((CPlugVehicleMaterial)clone).vibrationSpeedCoef = context.Clone(this.vibrationSpeedCoef)!;
         ((CPlugVehicleMaterial)clone).vibrationMax = context.Clone(this.vibrationMax)!;
         ((CPlugVehicleMaterial)clone).materialHeightDetailBitmapRef = context.Clone(this.materialHeightDetailBitmapRef)!;
-        ((CPlugVehicleMaterial)clone).materialHeightDetailScale = context.Clone(this.materialHeightDetailScale)!;
+        ((CPlugVehicleMaterial)clone).m6_MaterialHeightDetail_Scale = context.Clone(this.m6_MaterialHeightDetail_Scale)!;
         ((CPlugVehicleMaterial)clone).speed = context.Clone(this.speed)!;
         ((CPlugVehicleMaterial)clone).grip = context.Clone(this.grip)!;
         ((CPlugVehicleMaterial)clone).accelerationCoef = context.Clone(this.accelerationCoef)!;
         ((CPlugVehicleMaterial)clone).brakeCoef = context.Clone(this.brakeCoef)!;
         ((CPlugVehicleMaterial)clone).trailManagerModelRef = context.Clone(this.trailManagerModelRef)!;
+        ((CPlugVehicleMaterial)clone).rumble_BumpsSpacing = context.Clone(this.rumble_BumpsSpacing)!;
+        ((CPlugVehicleMaterial)clone).rumble_VibrationCorrection = context.Clone(this.rumble_VibrationCorrection)!;
+        ((CPlugVehicleMaterial)clone).m7_BumpReplacementMax = context.Clone(this.m7_BumpReplacementMax)!;
+        ((CPlugVehicleMaterial)clone).m7_BumpReplacementMin = context.Clone(this.m7_BumpReplacementMin)!;
+        ((CPlugVehicleMaterial)clone).m7_BumpCellSize = context.Clone(this.m7_BumpCellSize)!;
+        ((CPlugVehicleMaterial)clone).m7_BumpReplacementSpeedCoef = context.Clone(this.m7_BumpReplacementSpeedCoef)!;
+        ((CPlugVehicleMaterial)clone).frictionSpeedMin = context.Clone(this.frictionSpeedMin)!;
+        ((CPlugVehicleMaterial)clone).frictionSpeedMax = context.Clone(this.frictionSpeedMax)!;
+        ((CPlugVehicleMaterial)clone).frictionMax = context.Clone(this.frictionMax)!;
+        ((CPlugVehicleMaterial)clone).m6_MaterialHeightDetail_Enable = context.Clone(this.m6_MaterialHeightDetail_Enable)!;
+        ((CPlugVehicleMaterial)clone).drifting_TransfertForceCoef = context.Clone(this.drifting_TransfertForceCoef)!;
+        ((CPlugVehicleMaterial)clone).drifting_InputSteerSensitivityFromSpeed = context.Clone(this.drifting_InputSteerSensitivityFromSpeed)!;
     }
 
     public CPlugVehicleMaterial()
@@ -192,9 +325,9 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
     }
 
     /// <summary>
-    /// CPlugVehicleMaterial 0x004 chunk
+    /// CPlugVehicleMaterial 0x004 chunk (material height detail)
     /// </summary>
-    [Chunk(0x090F1004)]
+    [Chunk(0x090F1004, "material height detail")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3)]
     public partial class Chunk090F1004 : Chunk<CPlugVehicleMaterial>
     {
@@ -209,14 +342,14 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         public override void ReadWrite(CPlugVehicleMaterial n, GbxReaderWriter rw)
         {
             rw.NodeRef(ref n.materialHeightDetailBitmapRef);
-            rw.Vec2(ref n.materialHeightDetailScale);
+            rw.Vec2(ref n.m6_MaterialHeightDetail_Scale);
         }
     }
 
     /// <summary>
-    /// CPlugVehicleMaterial 0x005 chunk
+    /// CPlugVehicleMaterial 0x005 chunk (physics coefficients)
     /// </summary>
-    [Chunk(0x090F1005)]
+    [Chunk(0x090F1005, "physics coefficients")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090F1005 : Chunk<CPlugVehicleMaterial>
     {
@@ -545,61 +678,37 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
     }
 
     /// <summary>
-    /// CPlugVehicleMaterial 0x00F chunk
+    /// CPlugVehicleMaterial 0x00F chunk (rumble)
     /// </summary>
-    [Chunk(0x090F100F)]
+    [Chunk(0x090F100F, "rumble")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090F100F : Chunk<CPlugVehicleMaterial>
     {
         public override uint Id => 0x090F100F;
         public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020;
-        public float U01;
-        public float U02;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk090F100F)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk090F100F)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CPlugVehicleMaterial n, GbxReaderWriter rw)
         {
-            rw.Single(ref U01);
-            rw.Single(ref U02);
+            rw.Single(ref n.rumble_BumpsSpacing);
+            rw.Single(ref n.rumble_VibrationCorrection);
         }
     }
 
     /// <summary>
-    /// CPlugVehicleMaterial 0x010 chunk
+    /// CPlugVehicleMaterial 0x010 chunk (physics)
     /// </summary>
-    [Chunk(0x090F1010)]
+    [Chunk(0x090F1010, "physics")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020, 3, 7, 14)]
     public partial class Chunk090F1010 : Chunk<CPlugVehicleMaterial>, IVersionable
     {
         public override uint Id => 0x090F1010;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public float U01;
-        public float U02;
-        public float U03;
-        public float U04;
-        public byte U05;
-        public float U06;
-        public float U07;
-        public float U08;
-        public float U09;
-        public float U10;
-        public float U11;
-        public float U12;
-        public float U13;
-        public float U14;
-        public float U15;
-        public float U16;
-        public bool U17;
-        public Vec2 U18;
-        public float U19;
-        public float U20;
         public float U21;
         public float U22;
         public PlugCurve? U23;
@@ -609,7 +718,7 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         public PlugCurve? U27;
         public float U28;
         public float U29;
-        public float U30;
+        public int U30;
         public PlugCurve? U31;
         public int U32;
 
@@ -631,32 +740,16 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
             {
                 Version = 14;
             }
+
+            U25 = 3;
+            U29 = 1;
+            U30 = 1;
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090F1010)clone).Version = context.Clone(this.Version)!;
-            ((Chunk090F1010)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk090F1010)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk090F1010)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk090F1010)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk090F1010)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk090F1010)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk090F1010)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk090F1010)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk090F1010)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk090F1010)clone).U10 = context.Clone(this.U10)!;
-            ((Chunk090F1010)clone).U11 = context.Clone(this.U11)!;
-            ((Chunk090F1010)clone).U12 = context.Clone(this.U12)!;
-            ((Chunk090F1010)clone).U13 = context.Clone(this.U13)!;
-            ((Chunk090F1010)clone).U14 = context.Clone(this.U14)!;
-            ((Chunk090F1010)clone).U15 = context.Clone(this.U15)!;
-            ((Chunk090F1010)clone).U16 = context.Clone(this.U16)!;
-            ((Chunk090F1010)clone).U17 = context.Clone(this.U17)!;
-            ((Chunk090F1010)clone).U18 = context.Clone(this.U18)!;
-            ((Chunk090F1010)clone).U19 = context.Clone(this.U19)!;
-            ((Chunk090F1010)clone).U20 = context.Clone(this.U20)!;
             ((Chunk090F1010)clone).U21 = context.Clone(this.U21)!;
             ((Chunk090F1010)clone).U22 = context.Clone(this.U22)!;
             ((Chunk090F1010)clone).U23 = context.Clone(this.U23)!;
@@ -679,64 +772,64 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.Single(ref U01);
-            rw.Single(ref U02);
-            rw.Single(ref U03);
-            rw.Single(ref U04);
-            rw.Byte(ref U05);
+            rw.Single(ref n.speed);
+            rw.Single(ref n.grip);
+            rw.Single(ref n.accelerationCoef);
+            rw.Single(ref n.brakeCoef);
+            rw.Byte(ref n.materialId);
 
             if (Version == 1)
             {
-                rw.Single(ref U06);
-                rw.Single(ref U07);
+                rw.Single(ref n.vibrationSpeedCoef);
+                rw.Single(ref n.vibrationMax);
             }
 
             if (Version >= 7)
             {
-                rw.Single(ref U08);
-                rw.Single(ref U09);
+                rw.Single(ref n.vibrationSpeedCoef);
+                rw.Single(ref n.vibrationMax);
             }
 
             if (Version >= 1)
             {
-                rw.Single(ref U10);
-                rw.Single(ref U11);
-                rw.Single(ref U12);
+                rw.Single(ref n.m7_BumpReplacementMax);
+                rw.Single(ref n.m7_BumpReplacementMin);
+                rw.Single(ref n.m7_BumpCellSize);
             }
 
             if (Version >= 2)
             {
-                rw.Single(ref U13);
+                rw.Single(ref n.m7_BumpReplacementSpeedCoef);
             }
 
             if (Version >= 3)
             {
-                rw.Single(ref U14);
-                rw.Single(ref U15);
-                rw.Single(ref U16);
+                rw.Single(ref n.frictionSpeedMin);
+                rw.Single(ref n.frictionSpeedMax);
+                rw.Single(ref n.frictionMax);
             }
 
             if (Version >= 4)
             {
-                rw.Boolean(ref U17);
-                rw.Vec2(ref U18);
+                rw.Boolean(ref n.m6_MaterialHeightDetail_Enable);
+                rw.Vec2(ref n.m6_MaterialHeightDetail_Scale);
             }
 
             if (Version >= 5)
             {
-                rw.Single(ref U19);
+                rw.Single(ref n.drifting_TransfertForceCoef);
             }
 
             if (Version >= 6)
             {
-                rw.Single(ref U20);
+                rw.Single(ref n.drifting_InputSteerSensitivityFromSpeed);
             }
 
             if (Version >= 8)
             {
                 rw.Single(ref U21);
 
-                if (Version <= 13)
+                if (Version <= 12)
                 {
                     rw.Single(ref U22);
                 }
@@ -763,7 +856,7 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
                 rw.ReadableWritable<PlugCurve>(ref U27, version: Version- 12);
                 rw.Single(ref U28);
                 rw.Single(ref U29);
-                rw.Single(ref U30);
+                rw.Int32(ref U30);
             }
 
             if (Version >= 14)

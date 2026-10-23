@@ -5,17 +5,17 @@ CPlugVehicleMaterial 0x090F1000
   bool TrailIsOnlyWhenSliding
   CPlugShader TrailShader
   float VibrationSpeedCoef
-  float VibrationMax
+  float VibrationMax = 0.5f
 
-0x004 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3]
-  CPlugBitmap MaterialHeightDetailBitmap
-  vec2 MaterialHeightDetailScale
+0x004 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3] // material height detail
+  CPlugBitmap MaterialHeightDetailBitmap // enables the height detail when set
+  vec2 M6_MaterialHeightDetail_Scale = (32, 32)
 
-0x005 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
-  float Speed
-  float Grip
-  float AccelerationCoef
-  float BrakeCoef
+0x005 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF] // physics coefficients
+  float Speed = 1
+  float Grip = 1
+  float AccelerationCoef = 1
+  float BrakeCoef = 1
 
 0x006 [TM10, TMPU]
   CPlugFlockModel TrailManagerModel
@@ -48,56 +48,56 @@ CPlugVehicleMaterial 0x090F1000
   float VibrationSpeedCoef
   float VibrationMax
 
-0x00F [TMF, MP3, MP4, TM2020]
-  float
-  float
+0x00F [TMF, MP3, MP4, TM2020] // rumble
+  float Rumble_BumpsSpacing = 2.5f
+  float Rumble_VibrationCorrection = 1
 
-0x010 [MP3.v3, MP4.v7, TM2020.v14]
+0x010 [MP3.v3, MP4.v7, TM2020.v14] // physics
   version
-  float
-  float
-  float
-  float
-  byte
+  float Speed
+  float Grip
+  float AccelerationCoef
+  float BrakeCoef
+  byte MaterialId
   v1=
-    float
-    float
+    float VibrationSpeedCoef
+    float VibrationMax
   v7+
-    float
-    float
+    float VibrationSpeedCoef
+    float VibrationMax
   v1+
-    float
-    float
-    float
+    float M7_BumpReplacementMax
+    float M7_BumpReplacementMin
+    float M7_BumpCellSize
   v2+
-    float
+    float M7_BumpReplacementSpeedCoef = 0.05f
   v3+
-    float
-    float
-    float
+    float FrictionSpeedMin
+    float FrictionSpeedMax
+    float FrictionMax
   v4+
-    bool
-    vec2
+    bool M6_MaterialHeightDetail_Enable
+    vec2 M6_MaterialHeightDetail_Scale
   v5+
-    float
+    float Drifting_TransfertForceCoef = -1
   v6+
-    float
+    float Drifting_InputSteerSensitivityFromSpeed = -1
   v8+
-    float
-    v13-
-      float
+    float U21
+    v12-
+      float U22 // constant value of U26
   v9+
-    PlugCurve (version: Version - 12)
+    PlugCurve U23 (version: Version - 12)
   v10+
-    PlugCurve (version: Version - 12)
+    PlugCurve U24 (version: Version - 12)
   v11+
-    float
+    float U25 = 3
   v13+
-    PlugCurve (version: Version - 12)
-    PlugCurve (version: Version - 12)
-    float
-    float
-    float
+    PlugCurve U26 (version: Version - 12)
+    PlugCurve U27 (version: Version - 12)
+    float U28
+    float U29 = 1
+    int U30 = 1
   v14+
-    PlugCurve (version: Version - 12)
-    int
+    PlugCurve U31 (version: Version - 12)
+    int U32

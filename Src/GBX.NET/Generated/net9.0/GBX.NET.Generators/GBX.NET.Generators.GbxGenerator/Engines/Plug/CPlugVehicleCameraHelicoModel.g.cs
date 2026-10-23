@@ -25,11 +25,11 @@ public partial class CPlugVehicleCameraHelicoModel : CPlugCamControlModel, IClas
     /// CPlugVehicleCameraHelicoModel 0x000 chunk (helicopter camera settings and curves)
     /// </summary>
     [Chunk(0x0914D000, "helicopter camera settings and curves")]
-    [ChunkGameVersion(GameVersion.TM2020, 9)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 8, 9)]
     public partial class Chunk0914D000 : Chunk<CPlugVehicleCameraHelicoModel>, IVersionable
     {
         public override uint Id => 0x0914D000;
-        public override GameVersion GameVersion => GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public float U01;
         public float U02;
@@ -38,16 +38,16 @@ public partial class CPlugVehicleCameraHelicoModel : CPlugCamControlModel, IClas
         public float U05;
         public float U06;
         public float U07;
-        public int U08;
+        public float U08;
         public float U09;
         public float U10;
         public float U11;
         public float U12;
         public float U13;
         public float U14;
-        public int U15;
-        public int U16;
-        public int U17;
+        public float U15;
+        public float U16;
+        public float U17;
         public PlugCurve? U18;
         public float U19;
         public float U20;
@@ -60,8 +60,8 @@ public partial class CPlugVehicleCameraHelicoModel : CPlugCamControlModel, IClas
         public PlugCurve? U27;
         public CPlugCurveSimpleNod? U28;
         public CPlugCurveSimpleNod? U29;
-        public float U30;
-        public float U31;
+        public int U30;
+        public int U31;
 
         public Chunk0914D000() : this(GameVersion.Unspecified)
         {
@@ -69,10 +69,28 @@ public partial class CPlugVehicleCameraHelicoModel : CPlugCamControlModel, IClas
 
         public Chunk0914D000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 8;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 9;
             }
+
+            U01 = 12;
+            U02 = 30;
+            U03 = 80;
+            U05 = 1;
+            U06 = 4;
+            U09 = 4;
+            U10 = 0.3f;
+            U13 = 1;
+            U14 = 1;
+            U19 = 3;
+            U20 = -6;
+            U30 = 1000;
+            U31 = 1000;
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -127,57 +145,110 @@ public partial class CPlugVehicleCameraHelicoModel : CPlugCamControlModel, IClas
             rw.Single(ref U05);
             rw.Single(ref U06);
             rw.Single(ref U07);
-            rw.Int32(ref U08);
+            rw.Single(ref U08);
             rw.Single(ref U09);
             rw.Single(ref U10);
             rw.Single(ref U11);
             rw.Single(ref U12);
             rw.Single(ref U13);
             rw.Single(ref U14);
-            rw.Int32(ref U15);
-            rw.Int32(ref U16);
-            rw.Int32(ref U17);
-            rw.ReadableWritable<PlugCurve>(ref U18, version: Version- 9);
+            rw.Single(ref U15);
+            rw.Single(ref U16);
+            rw.Single(ref U17);
+
+            if (Version <= 8)
+            {
+                (U18 ??= new PlugCurve()).ReadWriteDirect<CPlugCurveSimpleNod>(rw);
+            }
+
+            if (Version >= 9)
+            {
+                rw.ReadableWritable<PlugCurve>(ref U18, version: Version);
+            }
+
             rw.Single(ref U19);
             rw.Single(ref U20);
 
             if (Version >= 2)
             {
-                rw.ReadableWritable<PlugCurve>(ref U21, version: Version- 9);
+                if (Version <= 8)
+                {
+                    (U21 ??= new PlugCurve()).ReadWriteDirect<CPlugCurveSimpleNod>(rw);
+                }
+
+                if (Version >= 9)
+                {
+                    rw.ReadableWritable<PlugCurve>(ref U21, version: Version);
+                }
             }
 
             if (Version >= 3)
             {
-                rw.ReadableWritable<PlugCurve>(ref U22, version: Version- 9);
+                if (Version <= 8)
+                {
+                    (U22 ??= new PlugCurve()).ReadWriteDirect<CPlugCurveSimpleNod>(rw);
+                }
+
+                if (Version >= 9)
+                {
+                    rw.ReadableWritable<PlugCurve>(ref U22, version: Version);
+                }
             }
 
             if (Version >= 4)
             {
-                rw.ReadableWritable<PlugCurve>(ref U23, version: Version- 9);
+                if (Version <= 8)
+                {
+                    (U23 ??= new PlugCurve()).ReadWriteDirect<CPlugCurveSimpleNod>(rw);
+                }
+
+                if (Version >= 9)
+                {
+                    rw.ReadableWritable<PlugCurve>(ref U23, version: Version);
+                }
             }
 
             if (Version >= 5)
             {
-                rw.ReadableWritable<PlugCurve>(ref U24, version: Version- 9);
-                rw.ReadableWritable<PlugCurve>(ref U25, version: Version- 9);
-                rw.ReadableWritable<PlugCurve>(ref U26, version: Version- 9);
+                if (Version <= 8)
+                {
+                    (U24 ??= new PlugCurve()).ReadWriteDirect<CPlugCurveSimpleNod>(rw);
+                    (U25 ??= new PlugCurve()).ReadWriteDirect<CPlugCurveSimpleNod>(rw);
+                    (U26 ??= new PlugCurve()).ReadWriteDirect<CPlugCurveSimpleNod>(rw);
+                }
+
+                if (Version >= 9)
+                {
+                    rw.ReadableWritable<PlugCurve>(ref U24, version: Version);
+                    rw.ReadableWritable<PlugCurve>(ref U25, version: Version);
+                    rw.ReadableWritable<PlugCurve>(ref U26, version: Version);
+                }
             }
 
             if (Version >= 6)
             {
-                rw.ReadableWritable<PlugCurve>(ref U27, version: Version- 9);
+                if (Version <= 8)
+                {
+                    (U27 ??= new PlugCurve()).ReadWriteDirect<CPlugCurveSimpleNod>(rw);
+                }
+
+                if (Version >= 9)
+                {
+                    rw.ReadableWritable<PlugCurve>(ref U27, version: Version);
+                }
+
                 rw.Node<CPlugCurveSimpleNod>(ref U28);
                 rw.Node<CPlugCurveSimpleNod>(ref U29);
             }
 
             if (Version >= 7)
             {
-                rw.Single(ref U30);
+                rw.Int32(ref U30);
             }
 
             if (Version >= 8)
             {
-                rw.Single(ref U31);
+                rw.Int32(ref U31);
             }
         }
     }
