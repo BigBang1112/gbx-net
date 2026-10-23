@@ -30,11 +30,6 @@ public partial class CGameCtnMediaBlockEntity
         }
     }
 
-    public partial class SBadge
-    {
-        public Vec3 Color { get; set; } = new(1, 1, 1);
-    }
-
     public partial class SSticker
     {
         [Obsolete("Use Name instead.")]

@@ -2094,7 +2094,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     {
         public int Version { get; set; }
 
-        private Vec3 color;
+        private Vec3 color = (1, 1, 1);
         public Vec3 Color
         {
             get => this.color;
@@ -2158,7 +2158,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
                 rw.String(ref this.u02);
             }
 
-            rw.ListReadableWritable<SSticker>(ref this.stickers!, version: v);
+            rw.ListReadableWritable<SSticker>(ref this.stickers!, version: Version);
             rw.ListString(ref this.layers!);
         }
 
@@ -2177,18 +2177,24 @@ public partial class CGameCtnGhost : CGameGhost, IClass
 
     public partial class SSticker : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private string? u01;
-        public string? U01
+        private string? name;
+        /// <summary>
+        /// Sticker image directory under Stickers.
+        /// </summary>
+        public string? Name
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.name;
+            set => this.name = value;
         }
 
-        private string? u02;
-        public string? U02
+        private string? slot;
+        /// <summary>
+        /// Destination slot in the badge mesh.
+        /// </summary>
+        public string? Slot
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.slot;
+            set => this.slot = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -2201,14 +2207,14 @@ public partial class CGameCtnGhost : CGameGhost, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((SSticker)clone).u01 = context.Clone(this.u01)!;
-            ((SSticker)clone).u02 = context.Clone(this.u02)!;
+            ((SSticker)clone).name = context.Clone(this.name)!;
+            ((SSticker)clone).slot = context.Clone(this.slot)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.String(ref this.u01);
-            rw.String(ref this.u02);
+            rw.String(ref this.name);
+            rw.String(ref this.slot);
         }
 
         public virtual void Read(GbxReader r, int v = 0)

@@ -442,6 +442,13 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     {
         public int Version { get; set; }
 
+        private Vec3 color = (1, 1, 1);
+        public Vec3 Color
+        {
+            get => this.color;
+            set => this.color = value;
+        }
+
         private int u01;
         public int U01
         {
@@ -481,17 +488,17 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
             ((SBadge)clone).Version = context.Clone(this.Version)!;
+            ((SBadge)clone).color = context.Clone(this.color)!;
             ((SBadge)clone).u01 = context.Clone(this.u01)!;
             ((SBadge)clone).u02 = context.Clone(this.u02)!;
             ((SBadge)clone).stickers = context.CloneList(this.stickers)!;
             ((SBadge)clone).layers = context.CloneList(this.layers)!;
-            ((SBadge)clone).Color = context.Clone(this.Color)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.VersionInt32(this);
-            this.Color = rw.Vec3(this.Color);
+            rw.Vec3(ref this.color);
 
             if (Version == 0)
             {

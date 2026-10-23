@@ -267,16 +267,16 @@ archive PlayerInputData
 
 archive SBadge
   version
-  vec3 Color
+  vec3 Color = (1, 1, 1)
   v0= (archive)
     int
     string
-  SSticker[] Stickers (version: v, list)
+  SSticker[] Stickers (list)
   string[] Layers (list)
 
 archive SSticker
-  string
-  string
+  string Name // Sticker image directory under Stickers.
+  string Slot // Destination slot in the badge mesh.
 
 archive Checkpoint
   int? Time (time)

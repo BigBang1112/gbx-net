@@ -429,6 +429,15 @@ public partial class CGameCtnGhost
         }
     }
 
+    public partial class SSticker
+    {
+        [Obsolete("Use Name instead.")]
+        public string? U01 { get => Name; set => Name = value; }
+
+        [Obsolete("Use Slot instead.")]
+        public string? U02 { get => Slot; set => Slot = value; }
+    }
+
     public override bool IsGameVersion(GameVersion version, bool strict = false)
     {
         if (!base.IsGameVersion(version, strict))
