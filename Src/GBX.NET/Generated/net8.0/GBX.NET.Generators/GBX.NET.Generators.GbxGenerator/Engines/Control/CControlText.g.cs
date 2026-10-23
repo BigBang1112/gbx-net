@@ -13,8 +13,14 @@ public partial class CControlText : CControlBase, IClass
     internal override uint GetId() => Id;
 
     private int maxLine = -1;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000, CControlEntry.0x007, CControlEntry.0x008, CControlLabel.0x003, CControlLabel.0x004, CControlLabel.0x005, CControlLabel.0x006 body chunks</remarks>
     [AppliedWithChunk<Chunk07031000>]
+    [AppliedWithChunk<global::GBX.NET.Engines.Control.CControlEntry.Chunk07009007>]
+    [AppliedWithChunk<global::GBX.NET.Engines.Control.CControlEntry.Chunk07009008>]
+    [AppliedWithChunk<global::GBX.NET.Engines.Control.CControlLabel.Chunk07006003>]
+    [AppliedWithChunk<global::GBX.NET.Engines.Control.CControlLabel.Chunk07006004>]
+    [AppliedWithChunk<global::GBX.NET.Engines.Control.CControlLabel.Chunk07006005>]
+    [AppliedWithChunk<global::GBX.NET.Engines.Control.CControlLabel.Chunk07006006>]
     public int MaxLine
     {
         get => this.maxLine;
@@ -22,8 +28,15 @@ public partial class CControlText : CControlBase, IClass
     }
 
     private float clipLength = -1f;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000, CControlButton.0x009, CControlEntry.0x006, CControlEntry.0x008, CControlEnum.0x009, CControlLabel.0x004, CControlLabel.0x005, CControlLabel.0x006 body chunks</remarks>
     [AppliedWithChunk<Chunk07031000>]
+    [AppliedWithChunk<global::GBX.NET.Engines.Control.CControlButton.Chunk07007009>]
+    [AppliedWithChunk<global::GBX.NET.Engines.Control.CControlEntry.Chunk07009006>]
+    [AppliedWithChunk<global::GBX.NET.Engines.Control.CControlEntry.Chunk07009008>]
+    [AppliedWithChunk<global::GBX.NET.Engines.Control.CControlEnum.Chunk0700A009>]
+    [AppliedWithChunk<global::GBX.NET.Engines.Control.CControlLabel.Chunk07006004>]
+    [AppliedWithChunk<global::GBX.NET.Engines.Control.CControlLabel.Chunk07006005>]
+    [AppliedWithChunk<global::GBX.NET.Engines.Control.CControlLabel.Chunk07006006>]
     public float ClipLength
     {
         get => this.clipLength;
@@ -31,8 +44,13 @@ public partial class CControlText : CControlBase, IClass
     }
 
     private int textMode = 3;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000, CControlButton.0x00A, CControlEntry.0x008, CControlEnum.0x008, CControlEnum.0x009, CControlLabel.0x006 body chunks</remarks>
     [AppliedWithChunk<Chunk07031000>]
+    [AppliedWithChunk<global::GBX.NET.Engines.Control.CControlButton.Chunk0700700A>]
+    [AppliedWithChunk<global::GBX.NET.Engines.Control.CControlEntry.Chunk07009008>]
+    [AppliedWithChunk<global::GBX.NET.Engines.Control.CControlEnum.Chunk0700A008>]
+    [AppliedWithChunk<global::GBX.NET.Engines.Control.CControlEnum.Chunk0700A009>]
+    [AppliedWithChunk<global::GBX.NET.Engines.Control.CControlLabel.Chunk07006006>]
     public int TextMode
     {
         get => this.textMode;

@@ -84,15 +84,17 @@ public partial class CGameCtnCollector : CMwNod, IClass
     [AppliedWithChunk<Chunk2E001007>]
     public partial int NbAvailableMax { get; set; }
 
-    /// <remarks>Applied with: 0x003 v7+ header chunk, 0x00C body chunk</remarks>
+    /// <remarks>Applied with: 0x003 v7+ header chunk, 0x00C, CGameCtnBlockInfo.0x005 body chunks</remarks>
     [AppliedWithChunk<HeaderChunk2E001003>(7)]
     [AppliedWithChunk<Chunk2E00100C>]
+    [AppliedWithChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E005>]
     public partial string? Name { get; set; }
 
     private EProdState prodState = EProdState.Release;
-    /// <remarks>Applied with: 0x003 v8+ header chunk, 0x011 v1+ body chunk</remarks>
+    /// <remarks>Applied with: 0x003 v8+ header chunk, 0x011 v1+, CGameCtnBlockInfo.0x02E body chunks</remarks>
     [AppliedWithChunk<HeaderChunk2E001003>(8)]
     [AppliedWithChunk<Chunk2E001011>(1)]
+    [AppliedWithChunk<global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E02E>]
     public EProdState ProdState
     {
         get => this.prodState;

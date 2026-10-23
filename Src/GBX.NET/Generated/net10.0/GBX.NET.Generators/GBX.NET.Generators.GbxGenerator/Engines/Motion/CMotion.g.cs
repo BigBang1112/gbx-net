@@ -13,8 +13,12 @@ public abstract partial class CMotion : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private string? name;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000, CMotionPlayer.0x001, CMotionPlayer.0x002, CMotionPlayer.0x003, CMotionPlayer.0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk08001000>]
+    [AppliedWithChunk<global::GBX.NET.Engines.Motion.CMotionPlayer.Chunk08034001>]
+    [AppliedWithChunk<global::GBX.NET.Engines.Motion.CMotionPlayer.Chunk08034002>]
+    [AppliedWithChunk<global::GBX.NET.Engines.Motion.CMotionPlayer.Chunk08034003>]
+    [AppliedWithChunk<global::GBX.NET.Engines.Motion.CMotionPlayer.Chunk08034004>]
     public string? Name
     {
         get => this.name;

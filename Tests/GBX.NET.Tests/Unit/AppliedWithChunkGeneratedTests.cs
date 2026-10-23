@@ -2,6 +2,8 @@ using GBX.NET.Attributes;
 using GBX.NET.Engines.Control;
 using GBX.NET.Engines.Game;
 using GBX.NET.Engines.Plug;
+using GBX.NET.Engines.TrackMania;
+using GBX.NET.Serialization.Chunking;
 using System.Reflection;
 
 namespace GBX.NET.Tests.Unit;
@@ -9,6 +11,23 @@ namespace GBX.NET.Tests.Unit;
 [Category("Unit")]
 public class AppliedWithChunkGeneratedTests
 {
+    [Test]
+    [Arguments(typeof(CControlButton), nameof(CControlText.ClipLength), typeof(CControlButton.Chunk07007009))]
+    [Arguments(typeof(CControlButton), nameof(CControlText.TextMode), typeof(CControlButton.Chunk0700700A))]
+    [Arguments(typeof(CControlEntry), nameof(CControlText.MaxLine), typeof(CControlEntry.Chunk07009008))]
+    [Arguments(typeof(CControlEnum), nameof(CControlText.ClipLength), typeof(CControlEnum.Chunk0700A009))]
+    [Arguments(typeof(CControlLabel), nameof(CControlText.TextMode), typeof(CControlLabel.Chunk07006006))]
+    [Arguments(typeof(CTrackManiaControlCard), nameof(CGameControlCard.UseDelays), typeof(CTrackManiaControlCard.Chunk2408F000))]
+    [Arguments(typeof(CGameCtnBlockInfo), nameof(CGameCtnBlockInfo.Name), typeof(CGameCtnBlockInfo.Chunk0304E005))]
+    public async Task GetCustomAttributes_InheritedProperties_ReturnsDerivedChunkMetadata(Type nodeType, string propertyName, Type chunkType)
+    {
+        var property = nodeType.GetProperty(propertyName)!;
+        await Assert.That(property.DeclaringType).IsNotEqualTo(nodeType);
+        var applied = property.GetCustomAttributes<AppliedWithChunkAttribute>().Single(x => x.ChunkType == chunkType);
+
+        await Assert.That(applied.Applies((IChunk)Activator.CreateInstance(chunkType)!)).IsTrue();
+    }
+
     [Test]
     [Arguments(nameof(CGameCtnChallenge.MapType))]
     [Arguments(nameof(CGameCtnChallenge.MapStyle))]

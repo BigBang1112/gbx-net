@@ -13,7 +13,7 @@ public partial class CPlugBitmapSampler : CPlug, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CPlugBitmap>? bitmapRef;
-    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x006, 0x007, 0x008, 0x009, 0x00A, 0x00B body chunks</remarks>
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x006, 0x007, 0x008, 0x009, 0x00A, 0x00B, CPlugBitmapAddress.0x000 body chunks</remarks>
     [AppliedWithChunk<Chunk0907E000>]
     [AppliedWithChunk<Chunk0907E001>]
     [AppliedWithChunk<Chunk0907E002>]
@@ -26,6 +26,7 @@ public partial class CPlugBitmapSampler : CPlug, IClass
     [AppliedWithChunk<Chunk0907E009>]
     [AppliedWithChunk<Chunk0907E00A>]
     [AppliedWithChunk<Chunk0907E00B>]
+    [AppliedWithChunk<global::GBX.NET.Engines.Plug.CPlugBitmapAddress.Chunk09047000>]
     public CPlugBitmap? Bitmap
     {
         get => bitmapRef?.Resolve();
@@ -33,8 +34,10 @@ public partial class CPlugBitmapSampler : CPlug, IClass
     }
 
     private ETexFilter wantedFiltering;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000, CPlugBitmapAddress.0x001, CPlugBitmapAddress.0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0907E000>]
+    [AppliedWithChunk<global::GBX.NET.Engines.Plug.CPlugBitmapAddress.Chunk09047001>]
+    [AppliedWithChunk<global::GBX.NET.Engines.Plug.CPlugBitmapAddress.Chunk09047003>]
     public ETexFilter WantedFiltering
     {
         get => this.wantedFiltering;
@@ -42,8 +45,10 @@ public partial class CPlugBitmapSampler : CPlug, IClass
     }
 
     private ETexAddress texAddressU;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000, CPlugBitmapAddress.0x001, CPlugBitmapAddress.0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0907E000>]
+    [AppliedWithChunk<global::GBX.NET.Engines.Plug.CPlugBitmapAddress.Chunk09047001>]
+    [AppliedWithChunk<global::GBX.NET.Engines.Plug.CPlugBitmapAddress.Chunk09047003>]
     public ETexAddress TexAddressU
     {
         get => this.texAddressU;
@@ -51,8 +56,10 @@ public partial class CPlugBitmapSampler : CPlug, IClass
     }
 
     private ETexAddress texAddressV;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000, CPlugBitmapAddress.0x001, CPlugBitmapAddress.0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0907E000>]
+    [AppliedWithChunk<global::GBX.NET.Engines.Plug.CPlugBitmapAddress.Chunk09047001>]
+    [AppliedWithChunk<global::GBX.NET.Engines.Plug.CPlugBitmapAddress.Chunk09047003>]
     public ETexAddress TexAddressV
     {
         get => this.texAddressV;
@@ -60,7 +67,7 @@ public partial class CPlugBitmapSampler : CPlug, IClass
     }
 
     private float mipMapLodBias;
-    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x006, 0x007, 0x008, 0x009, 0x00A, 0x00B body chunks</remarks>
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x006, 0x007, 0x008, 0x009, 0x00A, 0x00B, CPlugBitmapAddress.0x001, CPlugBitmapAddress.0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0907E000>]
     [AppliedWithChunk<Chunk0907E001>]
     [AppliedWithChunk<Chunk0907E002>]
@@ -73,6 +80,8 @@ public partial class CPlugBitmapSampler : CPlug, IClass
     [AppliedWithChunk<Chunk0907E009>]
     [AppliedWithChunk<Chunk0907E00A>]
     [AppliedWithChunk<Chunk0907E00B>]
+    [AppliedWithChunk<global::GBX.NET.Engines.Plug.CPlugBitmapAddress.Chunk09047001>]
+    [AppliedWithChunk<global::GBX.NET.Engines.Plug.CPlugBitmapAddress.Chunk09047003>]
     public float MipMapLodBias
     {
         get => this.mipMapLodBias;

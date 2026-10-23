@@ -3098,6 +3098,106 @@ public partial class GenerationTests
     }
 
     [Test]
+    [Arguments(false)]
+    [Arguments(true)]
+    public async Task Generate_InheritedProperty_AnnotatesDeclaringPropertyWithDescendantChunks(bool partialProperty)
+    {
+        var source = partialProperty ? """
+            namespace GBX.NET.Engines.Game;
+            public partial class Base
+            {
+                public partial int Value { get => value; set => this.value = value; }
+                private int value;
+            }
+            """ : "";
+        var (result, compilation) = Run(source, true,
+        [
+            new Text("Engines/Game/Base.chunkl", """
+                Base 0x03043000
+                property int Alias
+                  get = Value
+                0x001
+                  int Value
+                  CMwNod Target
+                """),
+            new Text("Engines/Game/Middle.chunkl", """
+                Middle 0x03044000
+                - inherits: Base
+                """),
+            new Text("Engines/Control/Derived.chunkl", """
+                Derived 0x07007000
+                - inherits: Middle
+                0x001
+                  version
+                  v1-
+                    int Value (inherited)
+                  v3+
+                    int Value (inherited)
+                    CMwNod Target (inherited)
+                0x002 (base: 0x001)
+                0x003 (header)
+                  version
+                  v2+
+                    int Value (inherited)
+                """),
+            new Text("Engines/Game/Hidden.chunkl", """
+                Hidden 0x03045000
+                - inherits: Base
+                0x001
+                  int Value
+                """),
+            new Text("Engines/Game/HiddenDerived.chunkl", """
+                HiddenDerived 0x03046000
+                - inherits: Hidden
+                0x001
+                  int Value (inherited)
+                """),
+            new Text("Engines/Game/Unrelated.chunkl", """
+                Unrelated 0x03047000
+                0x001
+                  int Value
+                """)
+        ]);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+
+        var properties = result.GeneratedSources.Single(x => x.HintName == "Engines/Game/Base.g.cs")
+            .SyntaxTree.GetRoot().DescendantNodes().OfType<ClassDeclarationSyntax>()
+            .Single(x => x.Identifier.ValueText == "Base").Members.OfType<PropertyDeclarationSyntax>()
+            .Where(x => x.Identifier.ValueText is "Value" or "Alias" or "Target")
+            .ToDictionary(x => x.Identifier.ValueText);
+        var expected = new[]
+        {
+            "AppliedWithChunk<Chunk03043001>",
+            "AppliedWithChunk<global::GBX.NET.Engines.Control.Derived.Chunk07007001>(0, 1)",
+            "AppliedWithChunk<global::GBX.NET.Engines.Control.Derived.Chunk07007001>(3)",
+            "AppliedWithChunk<global::GBX.NET.Engines.Control.Derived.Chunk07007002>(0, 1)",
+            "AppliedWithChunk<global::GBX.NET.Engines.Control.Derived.Chunk07007002>(3)",
+            "AppliedWithChunk<global::GBX.NET.Engines.Control.Derived.HeaderChunk07007003>(2)"
+        };
+        foreach (var name in new[] { "Value", "Alias" })
+        {
+            await Assert.That(properties[name].AttributeLists.SelectMany(x => x.Attributes).Select(x => x.ToString()))
+                .IsEquivalentTo(expected);
+        }
+        await Assert.That(properties["Value"].GetLeadingTrivia().ToFullString()).Contains("Derived.0x001 v0-1");
+        await Assert.That(properties["Target"].AttributeLists.SelectMany(x => x.Attributes).Select(x => x.ToString()))
+            .IsEquivalentTo(new[]
+            {
+                "AppliedWithChunk<Chunk03043001>",
+                "AppliedWithChunk<global::GBX.NET.Engines.Control.Derived.Chunk07007001>(3)",
+                "AppliedWithChunk<global::GBX.NET.Engines.Control.Derived.Chunk07007002>(3)"
+            });
+        var hidden = result.GeneratedSources.Single(x => x.HintName == "Engines/Game/Hidden.g.cs").SourceText.ToString();
+        await Assert.That(hidden).Contains("AppliedWithChunk<global::GBX.NET.Engines.Game.HiddenDerived.Chunk03046001>");
+        var derived = result.GeneratedSources.Single(x => x.HintName == "Engines/Control/Derived.g.cs").SourceText.ToString();
+        await Assert.That(derived).DoesNotContain("public int Value");
+        await Assert.That(derived).DoesNotContain("public CMwNod? Target");
+        await Assert.That(derived).Contains("n.Value = rw.Int32(n.Value)");
+    }
+
+    [Test]
     [Arguments(0)]
     [Arguments(1)]
     public async Task Generate_InheritedNodeReference_UsesTheBaseReferenceView(int structureKind)

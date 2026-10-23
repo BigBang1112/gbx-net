@@ -106,7 +106,7 @@ internal static class EngineWriter
 
             code.BlankLine();
             Documentation(code, property.TrailingComment?.Text);
-            AppliedWithChunkAttributes(code, layout, property.Name);
+            AppliedWithChunkAttributes(code, layout, property.Name, layouts);
             if (layout.Scope.FindField(property.Name) is { } field)
                 GameDefaultAttributesWriter.Write(code, field);
 
@@ -378,7 +378,7 @@ internal static class EngineWriter
                 Documentation(code, field.Declaration.TrailingComment?.Text);
                 if (ReferenceEquals(scope, layout.Scope))
                 {
-                    AppliedWithChunkAttributes(code, layout, field.Name);
+                    AppliedWithChunkAttributes(code, layout, field.Name, layouts);
                 }
 
                 GameDefaultAttributesWriter.Write(code, field);
@@ -434,7 +434,7 @@ internal static class EngineWriter
         if (!SyntaxOverlap.Has(scope.Existing, field.Name) || partialProperty is not null)
         {
             Documentation(code, field.Declaration.TrailingComment?.Text);
-            if (!chunk && ReferenceEquals(scope, layout.Scope)) AppliedWithChunkAttributes(code, layout, field.Name);
+            if (!chunk && ReferenceEquals(scope, layout.Scope)) AppliedWithChunkAttributes(code, layout, field.Name, layouts);
             GameDefaultAttributesWriter.Write(code, field);
             if (partialProperty is not null) PartialProperty(code, partialProperty);
             else if (!scalar && chunk) code.Line($"public {type} {property};");
@@ -609,7 +609,8 @@ internal static class EngineWriter
         }
     }
 
-    private static void AppliedWithChunkAttributes(CodeWriter code, LayoutModel layout, string propertyName)
+    private static void AppliedWithChunkAttributes(CodeWriter code, LayoutModel layout, string propertyName,
+        IReadOnlyDictionary<string, LayoutModel> layouts)
     {
         var fields = new HashSet<string>(StringComparer.Ordinal) { propertyName };
         var property = layout.FindProperty(propertyName);
@@ -627,12 +628,11 @@ internal static class EngineWriter
             }
         }
 
-        var applications = layout.Chunks.SelectMany(chunk =>
-            AppliedWithChunkRanges.Get(chunk, fields, layout.Chunks, layout.Id).Select(range => (Chunk: chunk, Range: range))).ToArray();
+        var applications = Applications().ToArray();
         if (applications.Length == 0) return;
 
         var groups = applications.GroupBy(static x => x.Chunk.IsHeader).Select(group =>
-            string.Join(", ", group.Select(static x => $"0x{x.Chunk.Id & 0xFFF:X3}" +
+            string.Join(", ", group.Select(x => (x.Owner == layout ? "" : x.Owner.Name + ".") + $"0x{x.Chunk.Id & 0xFFF:X3}" +
                 (x.Range.End < int.MaxValue ? $" v{x.Range.Start}-{x.Range.End}" : x.Range.Start > 0 ? $" v{x.Range.Start}+" : ""))) +
             (group.Key ? " header" : " body") + (group.Count() == 1 ? " chunk" : " chunks"));
         code.Line("/// <remarks>Applied with: " + string.Join(", ", groups) + "</remarks>");
@@ -642,7 +642,42 @@ internal static class EngineWriter
             var range = application.Range;
             var arguments = range.End < int.MaxValue ? $"({range.Start}, {range.End})" :
                 range.Start > 0 ? $"({range.Start})" : "";
-            code.Line("[AppliedWithChunk<" + application.Chunk.Name + ">" + arguments + "]");
+            var chunkType = (application.Owner == layout ? "" : application.Owner.QualifiedName + ".") + application.Chunk.Name;
+            code.Line("[AppliedWithChunk<" + chunkType + ">" + arguments + "]");
+        }
+
+        IEnumerable<(LayoutModel Owner, ChunkModel Chunk, AppliedWithChunkRanges.Range Range)> Applications()
+        {
+            var descendants = layouts.Values.Where(owner => owner != layout && fields.Any(name => InheritsField(owner, name)))
+                .OrderBy(static x => x.File.TypeKey, StringComparer.Ordinal);
+            foreach (var owner in new[] { layout }.Concat(descendants))
+            {
+                var names = fields.Where(name => owner == layout || InheritsField(owner, name)).ToArray();
+                foreach (var chunk in owner.Chunks)
+                {
+                    foreach (var range in AppliedWithChunkRanges.Get(chunk, names, owner.Chunks, owner.Id))
+                        yield return (owner, chunk, range);
+                }
+            }
+        }
+
+        bool InheritsField(LayoutModel owner, string name)
+        {
+            if (owner.Scope.FindField(name)?.Occurrences.Any(static x => LayoutModel.Has(x.Attributes, "inherited")) != true)
+                return false;
+
+            var visited = new HashSet<string>(StringComparer.Ordinal);
+            while (owner != layout)
+            {
+                if (!visited.Add(owner.Name) || owner.FindProperty(name) is not null ||
+                    owner.Existing?.Properties.Any(p => p.Identifier.ValueText == name && p.ExplicitInterfaceSpecifier is null) == true ||
+                    owner.Scope.FindField(name) is { } field && !field.Occurrences.Any(static x => LayoutModel.Has(x.Attributes, "inherited")))
+                    return false;
+
+                if (owner.BaseName is null || !layouts.TryGetValue(owner.BaseName, out owner)) return false;
+            }
+
+            return true;
         }
     }
 

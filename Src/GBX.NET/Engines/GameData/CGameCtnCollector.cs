@@ -15,8 +15,6 @@ public partial class CGameCtnCollector
         set => ident = value;
     }
 
-    /// <remarks>Applied with: 0x005 body chunk</remarks>
-    [AppliedWithChunk<GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E005>]
     public partial string? Name
     {
         get => !string.IsNullOrEmpty(name) || string.IsNullOrEmpty(ident.Id)

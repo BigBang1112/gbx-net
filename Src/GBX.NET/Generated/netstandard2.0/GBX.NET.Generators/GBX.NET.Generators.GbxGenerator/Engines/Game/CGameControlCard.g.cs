@@ -13,10 +13,11 @@ public partial class CGameControlCard : CControlFrame, IClass
     internal override uint GetId() => Id;
 
     private bool useDelays;
-    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, CTrackManiaControlCard.0x000 body chunks</remarks>
     [AppliedWithChunk<Chunk0309A000>]
     [AppliedWithChunk<Chunk0309A001>]
     [AppliedWithChunk<Chunk0309A002>]
+    [AppliedWithChunk<global::GBX.NET.Engines.TrackMania.CTrackManiaControlCard.Chunk2408F000>]
     public bool UseDelays
     {
         get => this.useDelays;

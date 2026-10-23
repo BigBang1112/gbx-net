@@ -13,8 +13,10 @@ public abstract partial class CGameModulePlaygroundModel : CGameModuleModelCommo
     internal override uint GetId() => Id;
 
     private float sizeX;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000, CGameModulePlaygroundChronoModel.0x000, CGameModulePlaygroundTeamStateModel.0x000 body chunks</remarks>
     [AppliedWithChunk<Chunk2E012000>]
+    [AppliedWithChunk<global::GBX.NET.Engines.GameData.CGameModulePlaygroundChronoModel.Chunk2E01E000>]
+    [AppliedWithChunk<global::GBX.NET.Engines.GameData.CGameModulePlaygroundTeamStateModel.Chunk2E022000>]
     public float SizeX
     {
         get => this.sizeX;
@@ -22,8 +24,10 @@ public abstract partial class CGameModulePlaygroundModel : CGameModuleModelCommo
     }
 
     private float sizeY;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000, CGameModulePlaygroundChronoModel.0x000, CGameModulePlaygroundTeamStateModel.0x000 body chunks</remarks>
     [AppliedWithChunk<Chunk2E012000>]
+    [AppliedWithChunk<global::GBX.NET.Engines.GameData.CGameModulePlaygroundChronoModel.Chunk2E01E000>]
+    [AppliedWithChunk<global::GBX.NET.Engines.GameData.CGameModulePlaygroundTeamStateModel.Chunk2E022000>]
     public float SizeY
     {
         get => this.sizeY;
