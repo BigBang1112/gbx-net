@@ -112,6 +112,9 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private CPlugCustomBeamModel[]? beams;
+    /// <summary>
+    /// native ignores BeamVersion before v18
+    /// </summary>
     /// <remarks>Applied with: 0x000 v16+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(16)]
     public CPlugCustomBeamModel[]? Beams
@@ -558,7 +561,7 @@ public partial class CGameActionModel : CMwNod, IClass
             if (Version >= 16)
             {
                 rw.Int32(ref n.beamVersion);
-                rw.ArrayReadableWritable<CPlugCustomBeamModel>(ref n.beams!, version: n. BeamVersion);
+                rw.ArrayReadableWritable<CPlugCustomBeamModel>(ref n.beams!, version: Version>= 18 ? n. BeamVersion : 1);
             }
 
             if (Version >= 15)

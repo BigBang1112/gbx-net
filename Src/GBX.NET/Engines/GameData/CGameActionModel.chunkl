@@ -24,7 +24,7 @@ CGameActionModel 0x2E008000
     string Description
   v16+
     int BeamVersion = 1
-    CPlugCustomBeamModel[] Beams (version: n.BeamVersion)
+    CPlugCustomBeamModel[] Beams (version: Version >= 18 ? n.BeamVersion : 1) // native ignores BeamVersion before v18
   v15+
     bool IsCustom
   v26+

@@ -275,6 +275,14 @@ public static class CPlugCharPhyModelBuilderExtensions
     }
 }
 
+public static class CPlugCharPhyRecoilModelBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Plug.CPlugCharPhyRecoilModel)
+    {
+        public static global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyRecoilModelBuilder Create() => new();
+    }
+}
+
 public static class CPlugCharPhySpecialPropertyBuilderExtensions
 {
     extension(global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty)
@@ -328,6 +336,14 @@ public static class CPlugDataTapeBuilderExtensions
     extension(global::GBX.NET.Engines.Plug.CPlugDataTape)
     {
         public static global::GBX.NET.Builders.Engines.Plug.CPlugDataTapeBuilder Create() => new();
+    }
+}
+
+public static class CPlugDayTimeBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Plug.CPlugDayTime)
+    {
+        public static global::GBX.NET.Builders.Engines.Plug.CPlugDayTimeBuilder Create() => new();
     }
 }
 

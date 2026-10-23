@@ -35,81 +35,119 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
         set => u02 = value;
     }
 
-    private string? u03;
-    public string? U03
+    private string? fireSound;
+    /// <summary>
+    /// sound library ID copied to CPlugBulletModel.SoundFire
+    /// </summary>
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
+    public string? FireSound
     {
-        get => this.u03;
-        set => this.u03 = value;
+        get => this.fireSound;
+        set => this.fireSound = value;
     }
 
-    private string? u04;
-    public string? U04
+    private string? reloadingSound;
+    /// <summary>
+    /// sound library ID copied to CPlugBulletModel.SoundReloading
+    /// </summary>
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
+    public string? ReloadingSound
     {
-        get => this.u04;
-        set => this.u04 = value;
+        get => this.reloadingSound;
+        set => this.reloadingSound = value;
     }
 
-    private string? u05;
-    public string? U05
+    private string? explosionSound;
+    /// <summary>
+    /// sound library ID copied to the first explosion impact sound
+    /// </summary>
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
+    public string? ExplosionSound
     {
-        get => this.u05;
-        set => this.u05 = value;
+        get => this.explosionSound;
+        set => this.explosionSound = value;
     }
 
-    private float u06;
-    public float U06
+    private float fireSoundVolume = -1;
+    /// <summary>
+    /// negative keeps the library sound volume
+    /// </summary>
+    /// <remarks>Applied with: archive v1+</remarks>
+    [AppliedWithArchive(1)]
+    public float FireSoundVolume
     {
-        get => this.u06;
-        set => this.u06 = value;
+        get => this.fireSoundVolume;
+        set => this.fireSoundVolume = value;
     }
 
-    private float u07;
-    public float U07
+    private float reloadingSoundVolume = -1;
+    /// <remarks>Applied with: archive v1+</remarks>
+    [AppliedWithArchive(1)]
+    public float ReloadingSoundVolume
     {
-        get => this.u07;
-        set => this.u07 = value;
+        get => this.reloadingSoundVolume;
+        set => this.reloadingSoundVolume = value;
     }
 
-    private float u08;
-    public float U08
+    private float explosionSoundVolume = -1;
+    /// <remarks>Applied with: archive v1+</remarks>
+    [AppliedWithArchive(1)]
+    public float ExplosionSoundVolume
     {
-        get => this.u08;
-        set => this.u08 = value;
+        get => this.explosionSoundVolume;
+        set => this.explosionSoundVolume = value;
     }
 
-    private bool u09;
-    public bool U09
+    private bool showPlayerExplosion = true;
+    /// <summary>
+    /// same bullet field as CPlugCustomBulletModel.BulletShowPlayerExplosion
+    /// </summary>
+    /// <remarks>Applied with: archive v2+</remarks>
+    [AppliedWithArchive(2)]
+    public bool ShowPlayerExplosion
     {
-        get => this.u09;
-        set => this.u09 = value;
+        get => this.showPlayerExplosion;
+        set => this.showPlayerExplosion = value;
     }
 
-    private bool u10;
+    private bool u10 = true;
     public bool U10
     {
         get => this.u10;
         set => this.u10 = value;
     }
 
-    private bool u11;
-    public bool U11
+    private bool modifyFOV = true;
+    /// <summary>
+    /// same bullet field as CPlugCustomBulletModel.BulletModifyFOV
+    /// </summary>
+    /// <remarks>Applied with: archive v3+</remarks>
+    [AppliedWithArchive(3)]
+    public bool ModifyFOV
     {
-        get => this.u11;
-        set => this.u11 = value;
+        get => this.modifyFOV;
+        set => this.modifyFOV = value;
     }
 
-    private float u12;
-    public float U12
+    private float triLaserRadiusAtOneMeter_Zoom0;
+    /// <remarks>Applied with: archive v4+</remarks>
+    [AppliedWithArchive(4)]
+    public float TriLaserRadiusAtOneMeter_Zoom0
     {
-        get => this.u12;
-        set => this.u12 = value;
+        get => this.triLaserRadiusAtOneMeter_Zoom0;
+        set => this.triLaserRadiusAtOneMeter_Zoom0 = value;
     }
 
-    private float u13;
-    public float U13
+    private float triLaserRadiusAtOneMeter_Zoom1;
+    /// <remarks>Applied with: archive v4+</remarks>
+    [AppliedWithArchive(4)]
+    public float TriLaserRadiusAtOneMeter_Zoom1
     {
-        get => this.u13;
-        set => this.u13 = value;
+        get => this.triLaserRadiusAtOneMeter_Zoom1;
+        set => this.triLaserRadiusAtOneMeter_Zoom1 = value;
     }
 
     private int laserDamage;
@@ -148,10 +186,10 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
         set => this.visualOffsetFirstPerson = value;
     }
 
-    private byte beamType;
+    private ECustomBeamType beamType;
     /// <remarks>Applied with: archive v8+</remarks>
     [AppliedWithArchive(8)]
-    public byte BeamType
+    public ECustomBeamType BeamType
     {
         get => this.beamType;
         set => this.beamType = value;
@@ -176,6 +214,9 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
     }
 
     private float u14;
+    /// <summary>
+    /// discarded
+    /// </summary>
     public float U14
     {
         get => this.u14;
@@ -183,22 +224,25 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
     }
 
     private int u15;
+    /// <summary>
+    /// discarded
+    /// </summary>
     public int U15
     {
         get => this.u15;
         set => this.u15 = value;
     }
 
-    private NodeRef<CFuncKeysReal>? damageAttenuationFromDistRef;
+    private PlugCurve? damageAttenuationFromDist;
     /// <remarks>Applied with: archive v11+</remarks>
     [AppliedWithArchive(11)]
-    public CFuncKeysReal? DamageAttenuationFromDist
+    public PlugCurve? DamageAttenuationFromDist
     {
-        get => damageAttenuationFromDistRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref damageAttenuationFromDistRef, value);
+        get => this.damageAttenuationFromDist;
+        set => this.damageAttenuationFromDist = value;
     }
 
-    private float maxDistance;
+    private float maxDistance = 50;
     /// <remarks>Applied with: archive v12+</remarks>
     [AppliedWithArchive(12)]
     public float MaxDistance
@@ -241,7 +285,7 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
         set => this.blowValue = value;
     }
 
-    private bool laserShowAdvancedCrosshair;
+    private bool laserShowAdvancedCrosshair = true;
     /// <remarks>Applied with: archive v14+</remarks>
     [AppliedWithArchive(14)]
     public bool LaserShowAdvancedCrosshair
@@ -257,7 +301,6 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
         internal NodeRefView(CPlugCustomBeamModel owner) => this.owner = owner;
         public IReadOnlyList<NodeRef<CPlugBeamEmitterSubModel>>? U01 => owner.u01?.References;
         public IReadOnlyList<NodeRef<CPlugParticleEmitterSubModel>>? U02 => owner.u02?.References;
-        public NodeRef<CFuncKeysReal> DamageAttenuationFromDist => NodeRef.GetOrCreate(ref owner.damageAttenuationFromDistRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
@@ -270,7 +313,6 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
         {
             for (var i = 0; i < u02.Count; i++) yield return new("U02" + "[" + i + "]", u02.Get(i));
         }
-        yield return new("DamageAttenuationFromDist", NodeRef.GetOrCreate(ref damageAttenuationFromDistRef));
         yield break;
     }
 
@@ -280,17 +322,17 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
         ((CPlugCustomBeamModel)clone).bulletName = context.Clone(this.bulletName)!;
         ((CPlugCustomBeamModel)clone).u01 = context.Clone(this.u01)!;
         ((CPlugCustomBeamModel)clone).u02 = context.Clone(this.u02)!;
-        ((CPlugCustomBeamModel)clone).u03 = context.Clone(this.u03)!;
-        ((CPlugCustomBeamModel)clone).u04 = context.Clone(this.u04)!;
-        ((CPlugCustomBeamModel)clone).u05 = context.Clone(this.u05)!;
-        ((CPlugCustomBeamModel)clone).u06 = context.Clone(this.u06)!;
-        ((CPlugCustomBeamModel)clone).u07 = context.Clone(this.u07)!;
-        ((CPlugCustomBeamModel)clone).u08 = context.Clone(this.u08)!;
-        ((CPlugCustomBeamModel)clone).u09 = context.Clone(this.u09)!;
+        ((CPlugCustomBeamModel)clone).fireSound = context.Clone(this.fireSound)!;
+        ((CPlugCustomBeamModel)clone).reloadingSound = context.Clone(this.reloadingSound)!;
+        ((CPlugCustomBeamModel)clone).explosionSound = context.Clone(this.explosionSound)!;
+        ((CPlugCustomBeamModel)clone).fireSoundVolume = context.Clone(this.fireSoundVolume)!;
+        ((CPlugCustomBeamModel)clone).reloadingSoundVolume = context.Clone(this.reloadingSoundVolume)!;
+        ((CPlugCustomBeamModel)clone).explosionSoundVolume = context.Clone(this.explosionSoundVolume)!;
+        ((CPlugCustomBeamModel)clone).showPlayerExplosion = context.Clone(this.showPlayerExplosion)!;
         ((CPlugCustomBeamModel)clone).u10 = context.Clone(this.u10)!;
-        ((CPlugCustomBeamModel)clone).u11 = context.Clone(this.u11)!;
-        ((CPlugCustomBeamModel)clone).u12 = context.Clone(this.u12)!;
-        ((CPlugCustomBeamModel)clone).u13 = context.Clone(this.u13)!;
+        ((CPlugCustomBeamModel)clone).modifyFOV = context.Clone(this.modifyFOV)!;
+        ((CPlugCustomBeamModel)clone).triLaserRadiusAtOneMeter_Zoom0 = context.Clone(this.triLaserRadiusAtOneMeter_Zoom0)!;
+        ((CPlugCustomBeamModel)clone).triLaserRadiusAtOneMeter_Zoom1 = context.Clone(this.triLaserRadiusAtOneMeter_Zoom1)!;
         ((CPlugCustomBeamModel)clone).laserDamage = context.Clone(this.laserDamage)!;
         ((CPlugCustomBeamModel)clone).laserRadiusDamage = context.Clone(this.laserRadiusDamage)!;
         ((CPlugCustomBeamModel)clone).bulletVsRadius = context.Clone(this.bulletVsRadius)!;
@@ -300,7 +342,7 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
         ((CPlugCustomBeamModel)clone).damageAttenuationWithDist = context.Clone(this.damageAttenuationWithDist)!;
         ((CPlugCustomBeamModel)clone).u14 = context.Clone(this.u14)!;
         ((CPlugCustomBeamModel)clone).u15 = context.Clone(this.u15)!;
-        ((CPlugCustomBeamModel)clone).damageAttenuationFromDistRef = context.Clone(this.damageAttenuationFromDistRef)!;
+        ((CPlugCustomBeamModel)clone).damageAttenuationFromDist = context.Clone(this.damageAttenuationFromDist)!;
         ((CPlugCustomBeamModel)clone).maxDistance = context.Clone(this.maxDistance)!;
         ((CPlugCustomBeamModel)clone).u16 = context.Clone(this.u16)!;
         ((CPlugCustomBeamModel)clone).laserRadius = context.Clone(this.laserRadius)!;
@@ -318,29 +360,29 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
         rw.String(ref this.bulletName);
         this.u01 = rw.ListNodeRef_deprec<CPlugBeamEmitterSubModel>(this.u01);
         this.u02 = rw.ListNodeRef_deprec<CPlugParticleEmitterSubModel>(this.u02);
-        rw.Id(ref this.u03);
-        rw.Id(ref this.u04);
-        rw.Id(ref this.u05);
+        rw.Id(ref this.fireSound);
+        rw.Id(ref this.reloadingSound);
+        rw.Id(ref this.explosionSound);
 
         if (v >= 1)
         {
-            rw.Single(ref this.u06);
-            rw.Single(ref this.u07);
-            rw.Single(ref this.u08);
+            rw.Single(ref this.fireSoundVolume);
+            rw.Single(ref this.reloadingSoundVolume);
+            rw.Single(ref this.explosionSoundVolume);
 
             if (v >= 2)
             {
-                rw.Boolean(ref this.u09);
+                rw.Boolean(ref this.showPlayerExplosion);
                 rw.Boolean(ref this.u10);
 
                 if (v >= 3)
                 {
-                    rw.Boolean(ref this.u11);
+                    rw.Boolean(ref this.modifyFOV);
 
                     if (v >= 4)
                     {
-                        rw.Single(ref this.u12);
-                        rw.Single(ref this.u13);
+                        rw.Single(ref this.triLaserRadiusAtOneMeter_Zoom0);
+                        rw.Single(ref this.triLaserRadiusAtOneMeter_Zoom1);
 
                         if (v >= 5)
                         {
@@ -357,7 +399,7 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
                                     if (v >= 8)
                                     {
                                         rw.Vec3(ref this.visualOffsetFirstPerson);
-                                        rw.Byte(ref this.beamType);
+                                        rw.EnumByte<ECustomBeamType>(ref this.beamType);
 
                                         if (v >= 9)
                                         {
@@ -371,7 +413,7 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
 
                                                 if (v >= 11)
                                                 {
-                                                    rw.NodeRef(ref this.damageAttenuationFromDistRef);
+                                                    rw.ReadableWritable<PlugCurve>(ref this.damageAttenuationFromDist, version: v- 15);
 
                                                     if (v >= 12)
                                                     {
@@ -413,5 +455,12 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
     {
         using var rw = new GbxReaderWriter(w);
         ReadWrite(rw, v);
+    }
+
+    public enum ECustomBeamType
+    {
+        Laser,
+        Beam,
+        Slash,
     }
 }

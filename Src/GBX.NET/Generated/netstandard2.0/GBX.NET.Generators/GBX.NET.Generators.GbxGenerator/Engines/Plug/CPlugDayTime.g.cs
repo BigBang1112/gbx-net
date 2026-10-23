@@ -3,6 +3,9 @@
 
 namespace GBX.NET.Engines.Plug;
 
+/// <summary>
+/// Atmosphere settings for one time of day.
+/// </summary>
 /// <remarks>ID: 0x09181000</remarks>
 [Class(0x09181000)]
 public partial class CPlugDayTime : CFunc, IClass
@@ -11,6 +14,161 @@ public partial class CPlugDayTime : CFunc, IClass
     public static new uint Id => 0x09181000;
 
     internal override uint GetId() => Id;
+
+    private float hdrSunPower = 25000;
+    /// <summary>
+    /// HdrSun.Power
+    /// </summary>
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk09181000>]
+    public float HdrSunPower
+    {
+        get => this.hdrSunPower;
+        set => this.hdrSunPower = value;
+    }
+
+    private float atmo1Power = 50;
+    /// <summary>
+    /// HdrSun.Atmo1.Power
+    /// </summary>
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk09181000>]
+    public float Atmo1Power
+    {
+        get => this.atmo1Power;
+        set => this.atmo1Power = value;
+    }
+
+    private float atmo1ColorScale = 0.25f;
+    /// <summary>
+    /// HdrSun.Atmo1.Color scale
+    /// </summary>
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk09181000>]
+    public float Atmo1ColorScale
+    {
+        get => this.atmo1ColorScale;
+        set => this.atmo1ColorScale = value;
+    }
+
+    private float atmo2Power = 5;
+    /// <summary>
+    /// HdrSun.Atmo2.Power
+    /// </summary>
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk09181000>]
+    public float Atmo2Power
+    {
+        get => this.atmo2Power;
+        set => this.atmo2Power = value;
+    }
+
+    private float atmo2ColorScale = 0.125f;
+    /// <summary>
+    /// HdrSun.Atmo2.Color scale
+    /// </summary>
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk09181000>]
+    public float Atmo2ColorScale
+    {
+        get => this.atmo2ColorScale;
+        set => this.atmo2ColorScale = value;
+    }
+
+    private Vec3 atmo1Color = (1, 1, 1);
+    /// <summary>
+    /// HdrSun.Atmo1.Color
+    /// </summary>
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
+    [AppliedWithChunk<Chunk09181001>]
+    public Vec3 Atmo1Color
+    {
+        get => this.atmo1Color;
+        set => this.atmo1Color = value;
+    }
+
+    private Vec3 atmo2Color = (1, 1, 1);
+    /// <summary>
+    /// HdrSun.Atmo2.Color
+    /// </summary>
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
+    [AppliedWithChunk<Chunk09181001>]
+    public Vec3 Atmo2Color
+    {
+        get => this.atmo2Color;
+        set => this.atmo2Color = value;
+    }
+
+    private float sunThroughIntens = 0.75f;
+    /// <summary>
+    /// Clouds.SunThroughIntens
+    /// </summary>
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
+    [AppliedWithChunk<Chunk09181002>]
+    public float SunThroughIntens
+    {
+        get => this.sunThroughIntens;
+        set => this.sunThroughIntens = value;
+    }
+
+    private Vec3 cloudsX2MinRgb;
+    /// <summary>
+    /// CloudsX2.MinRgb
+    /// </summary>
+    /// <remarks>Applied with: 0x003, 0x004 body chunks</remarks>
+    [AppliedWithChunk<Chunk09181003>]
+    [AppliedWithChunk<Chunk09181004>]
+    public Vec3 CloudsX2MinRgb
+    {
+        get => this.cloudsX2MinRgb;
+        set => this.cloudsX2MinRgb = value;
+    }
+
+    private Vec3 cloudsX2MaxRgb = (1, 1, 1);
+    /// <summary>
+    /// CloudsX2.MaxRgb
+    /// </summary>
+    /// <remarks>Applied with: 0x003, 0x004 body chunks</remarks>
+    [AppliedWithChunk<Chunk09181003>]
+    [AppliedWithChunk<Chunk09181004>]
+    public Vec3 CloudsX2MaxRgb
+    {
+        get => this.cloudsX2MaxRgb;
+        set => this.cloudsX2MaxRgb = value;
+    }
+
+    private float cloudsX2MinRgbX = 1;
+    /// <summary>
+    /// CloudsX2.MinRgbX
+    /// </summary>
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
+    [AppliedWithChunk<Chunk09181004>]
+    public float CloudsX2MinRgbX
+    {
+        get => this.cloudsX2MinRgbX;
+        set => this.cloudsX2MinRgbX = value;
+    }
+
+    private float cloudsX2MaxRgbX = 1;
+    /// <summary>
+    /// CloudsX2.MaxRgbX
+    /// </summary>
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
+    [AppliedWithChunk<Chunk09181004>]
+    public float CloudsX2MaxRgbX
+    {
+        get => this.cloudsX2MaxRgbX;
+        set => this.cloudsX2MaxRgbX = value;
+    }
+
+    private float fxSmSelfIllumScaleGamePlay = 1;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
+    [AppliedWithChunk<Chunk09181005>]
+    public float FxSmSelfIllumScaleGamePlay
+    {
+        get => this.fxSmSelfIllumScaleGamePlay;
+        set => this.fxSmSelfIllumScaleGamePlay = value;
+    }
 
     private FogMatterId[]? fogMatters;
     /// <remarks>Applied with: 0x006 body chunk</remarks>
@@ -21,10 +179,190 @@ public partial class CPlugDayTime : CFunc, IClass
         set => this.fogMatters = value;
     }
 
+    private Vec3 cloudsVortexMinRgb;
+    /// <summary>
+    /// CloudsVortex.MinRgb
+    /// </summary>
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
+    [AppliedWithChunk<Chunk09181007>]
+    public Vec3 CloudsVortexMinRgb
+    {
+        get => this.cloudsVortexMinRgb;
+        set => this.cloudsVortexMinRgb = value;
+    }
+
+    private Vec3 cloudsVortexMaxRgb = (1, 1, 1);
+    /// <summary>
+    /// CloudsVortex.MaxRgb
+    /// </summary>
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
+    [AppliedWithChunk<Chunk09181007>]
+    public Vec3 CloudsVortexMaxRgb
+    {
+        get => this.cloudsVortexMaxRgb;
+        set => this.cloudsVortexMaxRgb = value;
+    }
+
+    private float cloudsEdgeLight0Power;
+    /// <summary>
+    /// Clouds.EdgeLight.Layer0.Power
+    /// </summary>
+    /// <remarks>Applied with: 0x007 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk09181007>(1)]
+    public float CloudsEdgeLight0Power
+    {
+        get => this.cloudsEdgeLight0Power;
+        set => this.cloudsEdgeLight0Power = value;
+    }
+
+    private float cloudsEdgeLight0Scale;
+    /// <summary>
+    /// Clouds.EdgeLight.Layer0.Scale
+    /// </summary>
+    /// <remarks>Applied with: 0x007 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk09181007>(1)]
+    public float CloudsEdgeLight0Scale
+    {
+        get => this.cloudsEdgeLight0Scale;
+        set => this.cloudsEdgeLight0Scale = value;
+    }
+
+    private float cloudsEdgeLight1Power;
+    /// <remarks>Applied with: 0x007 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk09181007>(1)]
+    public float CloudsEdgeLight1Power
+    {
+        get => this.cloudsEdgeLight1Power;
+        set => this.cloudsEdgeLight1Power = value;
+    }
+
+    private float cloudsEdgeLight1Scale;
+    /// <remarks>Applied with: 0x007 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk09181007>(1)]
+    public float CloudsEdgeLight1Scale
+    {
+        get => this.cloudsEdgeLight1Scale;
+        set => this.cloudsEdgeLight1Scale = value;
+    }
+
+    private float cloudsEdgeLight2Power;
+    /// <remarks>Applied with: 0x007 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk09181007>(1)]
+    public float CloudsEdgeLight2Power
+    {
+        get => this.cloudsEdgeLight2Power;
+        set => this.cloudsEdgeLight2Power = value;
+    }
+
+    private float cloudsEdgeLight2Scale;
+    /// <remarks>Applied with: 0x007 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk09181007>(1)]
+    public float CloudsEdgeLight2Scale
+    {
+        get => this.cloudsEdgeLight2Scale;
+        set => this.cloudsEdgeLight2Scale = value;
+    }
+
+    private float cloudsGodLightIntens;
+    /// <summary>
+    /// Clouds.GodLightIntens
+    /// </summary>
+    /// <remarks>Applied with: 0x007 v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk09181007>(2)]
+    public float CloudsGodLightIntens
+    {
+        get => this.cloudsGodLightIntens;
+        set => this.cloudsGodLightIntens = value;
+    }
+
+    private Vec3 cloudsMinRgb;
+    /// <summary>
+    /// Clouds.MinRgb
+    /// </summary>
+    /// <remarks>Applied with: 0x007 v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk09181007>(3)]
+    public Vec3 CloudsMinRgb
+    {
+        get => this.cloudsMinRgb;
+        set => this.cloudsMinRgb = value;
+    }
+
+    private Vec3 cloudsMaxRgb = (1, 1, 1);
+    /// <summary>
+    /// Clouds.MaxRgb
+    /// </summary>
+    /// <remarks>Applied with: 0x007 v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk09181007>(3)]
+    public Vec3 CloudsMaxRgb
+    {
+        get => this.cloudsMaxRgb;
+        set => this.cloudsMaxRgb = value;
+    }
+
+    private float cloudsMinRgbX = 1;
+    /// <summary>
+    /// Clouds.MinRgbX
+    /// </summary>
+    /// <remarks>Applied with: 0x007 v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk09181007>(3)]
+    public float CloudsMinRgbX
+    {
+        get => this.cloudsMinRgbX;
+        set => this.cloudsMinRgbX = value;
+    }
+
+    private float cloudsMaxRgbX = 1;
+    /// <summary>
+    /// Clouds.MaxRgbX
+    /// </summary>
+    /// <remarks>Applied with: 0x007 v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk09181007>(3)]
+    public float CloudsMaxRgbX
+    {
+        get => this.cloudsMaxRgbX;
+        set => this.cloudsMaxRgbX = value;
+    }
+
+    private float moonHdrScale = 1;
+    /// <remarks>Applied with: 0x008 body chunk</remarks>
+    [AppliedWithChunk<Chunk09181008>]
+    public float MoonHdrScale
+    {
+        get => this.moonHdrScale;
+        set => this.moonHdrScale = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugDayTime)clone).hdrSunPower = context.Clone(this.hdrSunPower)!;
+        ((CPlugDayTime)clone).atmo1Power = context.Clone(this.atmo1Power)!;
+        ((CPlugDayTime)clone).atmo1ColorScale = context.Clone(this.atmo1ColorScale)!;
+        ((CPlugDayTime)clone).atmo2Power = context.Clone(this.atmo2Power)!;
+        ((CPlugDayTime)clone).atmo2ColorScale = context.Clone(this.atmo2ColorScale)!;
+        ((CPlugDayTime)clone).atmo1Color = context.Clone(this.atmo1Color)!;
+        ((CPlugDayTime)clone).atmo2Color = context.Clone(this.atmo2Color)!;
+        ((CPlugDayTime)clone).sunThroughIntens = context.Clone(this.sunThroughIntens)!;
+        ((CPlugDayTime)clone).cloudsX2MinRgb = context.Clone(this.cloudsX2MinRgb)!;
+        ((CPlugDayTime)clone).cloudsX2MaxRgb = context.Clone(this.cloudsX2MaxRgb)!;
+        ((CPlugDayTime)clone).cloudsX2MinRgbX = context.Clone(this.cloudsX2MinRgbX)!;
+        ((CPlugDayTime)clone).cloudsX2MaxRgbX = context.Clone(this.cloudsX2MaxRgbX)!;
+        ((CPlugDayTime)clone).fxSmSelfIllumScaleGamePlay = context.Clone(this.fxSmSelfIllumScaleGamePlay)!;
         ((CPlugDayTime)clone).fogMatters = context.CloneArray(this.fogMatters)!;
+        ((CPlugDayTime)clone).cloudsVortexMinRgb = context.Clone(this.cloudsVortexMinRgb)!;
+        ((CPlugDayTime)clone).cloudsVortexMaxRgb = context.Clone(this.cloudsVortexMaxRgb)!;
+        ((CPlugDayTime)clone).cloudsEdgeLight0Power = context.Clone(this.cloudsEdgeLight0Power)!;
+        ((CPlugDayTime)clone).cloudsEdgeLight0Scale = context.Clone(this.cloudsEdgeLight0Scale)!;
+        ((CPlugDayTime)clone).cloudsEdgeLight1Power = context.Clone(this.cloudsEdgeLight1Power)!;
+        ((CPlugDayTime)clone).cloudsEdgeLight1Scale = context.Clone(this.cloudsEdgeLight1Scale)!;
+        ((CPlugDayTime)clone).cloudsEdgeLight2Power = context.Clone(this.cloudsEdgeLight2Power)!;
+        ((CPlugDayTime)clone).cloudsEdgeLight2Scale = context.Clone(this.cloudsEdgeLight2Scale)!;
+        ((CPlugDayTime)clone).cloudsGodLightIntens = context.Clone(this.cloudsGodLightIntens)!;
+        ((CPlugDayTime)clone).cloudsMinRgb = context.Clone(this.cloudsMinRgb)!;
+        ((CPlugDayTime)clone).cloudsMaxRgb = context.Clone(this.cloudsMaxRgb)!;
+        ((CPlugDayTime)clone).cloudsMinRgbX = context.Clone(this.cloudsMinRgbX)!;
+        ((CPlugDayTime)clone).cloudsMaxRgbX = context.Clone(this.cloudsMaxRgbX)!;
+        ((CPlugDayTime)clone).moonHdrScale = context.Clone(this.moonHdrScale)!;
     }
 
     public CPlugDayTime()
@@ -32,197 +370,146 @@ public partial class CPlugDayTime : CFunc, IClass
     }
 
     /// <summary>
-    /// CPlugDayTime 0x000 chunk
+    /// CPlugDayTime 0x000 chunk (sun and atmosphere powers)
     /// </summary>
-    [Chunk(0x09181000)]
+    [Chunk(0x09181000, "sun and atmosphere powers")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09181000 : Chunk<CPlugDayTime>
     {
         public override uint Id => 0x09181000;
-        public float U01;
-        public float U02;
-        public float U03;
-        public float U04;
-        public float U05;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09181000)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk09181000)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk09181000)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk09181000)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk09181000)clone).U05 = context.Clone(this.U05)!;
         }
 
         public override void ReadWrite(CPlugDayTime n, GbxReaderWriter rw)
         {
-            rw.Single(ref U01);
-            rw.Single(ref U02);
-            rw.Single(ref U03);
-            rw.Single(ref U04);
-            rw.Single(ref U05);
+            rw.Single(ref n.hdrSunPower);
+            rw.Single(ref n.atmo1Power);
+            rw.Single(ref n.atmo1ColorScale);
+            rw.Single(ref n.atmo2Power);
+            rw.Single(ref n.atmo2ColorScale);
         }
     }
 
     /// <summary>
-    /// CPlugDayTime 0x001 chunk
+    /// CPlugDayTime 0x001 chunk (atmosphere colors)
     /// </summary>
-    [Chunk(0x09181001)]
+    [Chunk(0x09181001, "atmosphere colors")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09181001 : Chunk<CPlugDayTime>
     {
         public override uint Id => 0x09181001;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public bool U01 = true;
-        public float U02;
-        public float U03;
-        public float U04;
-        public float U05;
-        public float U06;
-        public float U07;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk09181001)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk09181001)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk09181001)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk09181001)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk09181001)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk09181001)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk09181001)clone).U07 = context.Clone(this.U07)!;
         }
 
         public override void ReadWrite(CPlugDayTime n, GbxReaderWriter rw)
         {
             rw.Boolean(ref U01);
-            rw.Single(ref U02);
-            rw.Single(ref U03);
-            rw.Single(ref U04);
-            rw.Single(ref U05);
-            rw.Single(ref U06);
-            rw.Single(ref U07);
+            rw.Vec3(ref n.atmo1Color);
+            rw.Vec3(ref n.atmo2Color);
         }
     }
 
     /// <summary>
-    /// CPlugDayTime 0x002 chunk
+    /// CPlugDayTime 0x002 chunk (SunThroughIntens)
     /// </summary>
-    [Chunk(0x09181002)]
+    [Chunk(0x09181002, "SunThroughIntens")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09181002 : Chunk<CPlugDayTime>
     {
         public override uint Id => 0x09181002;
-        public float U01;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09181002)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CPlugDayTime n, GbxReaderWriter rw)
         {
-            rw.Single(ref U01);
+            rw.Single(ref n.sunThroughIntens);
         }
     }
 
     /// <summary>
-    /// CPlugDayTime 0x003 chunk
+    /// CPlugDayTime 0x003 chunk (legacy CloudsX2 colors)
     /// </summary>
-    [Chunk(0x09181003)]
+    [Chunk(0x09181003, "legacy CloudsX2 colors")]
     public partial class Chunk09181003 : Chunk<CPlugDayTime>
     {
         public override uint Id => 0x09181003;
-        public float U01;
-        public float U02;
-        public float U03;
-        public float U04;
-        public float U05;
-        public float U06;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09181003)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk09181003)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk09181003)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk09181003)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk09181003)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk09181003)clone).U06 = context.Clone(this.U06)!;
         }
 
         public override void ReadWrite(CPlugDayTime n, GbxReaderWriter rw)
         {
-            rw.Single(ref U01);
-            rw.Single(ref U02);
-            rw.Single(ref U03);
-            rw.Single(ref U04);
-            rw.Single(ref U05);
-            rw.Single(ref U06);
+            rw.Vec3(ref n.cloudsX2MinRgb);
+            rw.Vec3(ref n.cloudsX2MaxRgb);
         }
     }
 
     /// <summary>
-    /// CPlugDayTime 0x004 chunk
+    /// CPlugDayTime 0x004 chunk (CloudsX2 colors)
     /// </summary>
-    [Chunk(0x09181004)]
+    [Chunk(0x09181004, "CloudsX2 colors")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09181004 : Chunk<CPlugDayTime>
     {
         public override uint Id => 0x09181004;
-        public float U01;
-        public float U02;
-        public float U03;
-        public float U04;
-        public float U05;
-        public float U06;
-        public float U07;
-        public float U08;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09181004)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk09181004)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk09181004)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk09181004)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk09181004)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk09181004)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk09181004)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk09181004)clone).U08 = context.Clone(this.U08)!;
         }
 
         public override void ReadWrite(CPlugDayTime n, GbxReaderWriter rw)
         {
-            rw.Single(ref U01);
-            rw.Single(ref U02);
-            rw.Single(ref U03);
-            rw.Single(ref U04);
-            rw.Single(ref U05);
-            rw.Single(ref U06);
-            rw.Single(ref U07);
-            rw.Single(ref U08);
+            rw.Vec3(ref n.cloudsX2MinRgb);
+            rw.Vec3(ref n.cloudsX2MaxRgb);
+            rw.Single(ref n.cloudsX2MinRgbX);
+            rw.Single(ref n.cloudsX2MaxRgbX);
         }
     }
 
     /// <summary>
-    /// CPlugDayTime 0x005 chunk
+    /// CPlugDayTime 0x005 chunk (FxSmSelfIllumScaleGamePlay)
     /// </summary>
-    [Chunk(0x09181005)]
+    [Chunk(0x09181005, "FxSmSelfIllumScaleGamePlay")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09181005 : Chunk<CPlugDayTime>, IVersionable
     {
         public override uint Id => 0x09181005;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public float U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk09181005)clone).Version = context.Clone(this.Version)!;
-            ((Chunk09181005)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CPlugDayTime n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.Single(ref U01);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.Single(ref n.fxSmSelfIllumScaleGamePlay);
         }
     }
 
@@ -230,9 +517,11 @@ public partial class CPlugDayTime : CFunc, IClass
     /// CPlugDayTime 0x006 chunk (fog matters)
     /// </summary>
     [Chunk(0x09181006, "fog matters")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09181006 : Chunk<CPlugDayTime>
     {
         public override uint Id => 0x09181006;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -246,122 +535,100 @@ public partial class CPlugDayTime : CFunc, IClass
     }
 
     /// <summary>
-    /// CPlugDayTime 0x007 chunk
+    /// CPlugDayTime 0x007 chunk (clouds)
     /// </summary>
-    [Chunk(0x09181007)]
+    [Chunk(0x09181007, "clouds")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 3, 3, 3)]
     public partial class Chunk09181007 : Chunk<CPlugDayTime>, IVersionable
     {
         public override uint Id => 0x09181007;
-        public int Version { get; set; } = 3;
-        public float U01;
-        public float U02;
-        public float U03;
-        public float U04;
-        public float U05;
-        public float U06;
-        public float U07;
-        public float U08;
-        public float U09;
-        public float U10;
-        public float U11;
-        public float U12;
-        public float U13;
-        public float U14;
-        public float U15;
-        public float U16;
-        public float U17;
-        public float U18;
-        public float U19;
-        public float U20;
-        public float U21;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public int Version { get; set; }
+
+        public Chunk09181007() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk09181007(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 3;
+            }
+            else
+            {
+                Version = 3;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk09181007)clone).Version = context.Clone(this.Version)!;
-            ((Chunk09181007)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk09181007)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk09181007)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk09181007)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk09181007)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk09181007)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk09181007)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk09181007)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk09181007)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk09181007)clone).U10 = context.Clone(this.U10)!;
-            ((Chunk09181007)clone).U11 = context.Clone(this.U11)!;
-            ((Chunk09181007)clone).U12 = context.Clone(this.U12)!;
-            ((Chunk09181007)clone).U13 = context.Clone(this.U13)!;
-            ((Chunk09181007)clone).U14 = context.Clone(this.U14)!;
-            ((Chunk09181007)clone).U15 = context.Clone(this.U15)!;
-            ((Chunk09181007)clone).U16 = context.Clone(this.U16)!;
-            ((Chunk09181007)clone).U17 = context.Clone(this.U17)!;
-            ((Chunk09181007)clone).U18 = context.Clone(this.U18)!;
-            ((Chunk09181007)clone).U19 = context.Clone(this.U19)!;
-            ((Chunk09181007)clone).U20 = context.Clone(this.U20)!;
-            ((Chunk09181007)clone).U21 = context.Clone(this.U21)!;
         }
 
         public override void ReadWrite(CPlugDayTime n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.Single(ref U01);
-            rw.Single(ref U02);
-            rw.Single(ref U03);
-            rw.Single(ref U04);
-            rw.Single(ref U05);
-            rw.Single(ref U06);
+            if (Version > global::System.Math.Max(3, 3))
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.Vec3(ref n.cloudsVortexMinRgb);
+            rw.Vec3(ref n.cloudsVortexMaxRgb);
 
             if (Version >= 1)
             {
-                rw.Single(ref U07);
-                rw.Single(ref U08);
-                rw.Single(ref U09);
-                rw.Single(ref U10);
-                rw.Single(ref U11);
-                rw.Single(ref U12);
+                rw.Single(ref n.cloudsEdgeLight0Power);
+                rw.Single(ref n.cloudsEdgeLight0Scale);
+                rw.Single(ref n.cloudsEdgeLight1Power);
+                rw.Single(ref n.cloudsEdgeLight1Scale);
+                rw.Single(ref n.cloudsEdgeLight2Power);
+                rw.Single(ref n.cloudsEdgeLight2Scale);
             }
 
             if (Version >= 2)
             {
-                rw.Single(ref U13);
+                rw.Single(ref n.cloudsGodLightIntens);
             }
 
             if (Version >= 3)
             {
-                rw.Single(ref U14);
-                rw.Single(ref U15);
-                rw.Single(ref U16);
-                rw.Single(ref U17);
-                rw.Single(ref U18);
-                rw.Single(ref U19);
-                rw.Single(ref U20);
-                rw.Single(ref U21);
+                rw.Vec3(ref n.cloudsMinRgb);
+                rw.Vec3(ref n.cloudsMaxRgb);
+                rw.Single(ref n.cloudsMinRgbX);
+                rw.Single(ref n.cloudsMaxRgbX);
             }
         }
     }
 
     /// <summary>
-    /// CPlugDayTime 0x008 chunk
+    /// CPlugDayTime 0x008 chunk (MoonHdrScale)
     /// </summary>
-    [Chunk(0x09181008)]
+    [Chunk(0x09181008, "MoonHdrScale")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09181008 : Chunk<CPlugDayTime>, IVersionable
     {
         public override uint Id => 0x09181008;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public float U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk09181008)clone).Version = context.Clone(this.Version)!;
-            ((Chunk09181008)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CPlugDayTime n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.Single(ref U01);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.Single(ref n.moonHdrScale);
         }
     }
 
@@ -374,32 +641,18 @@ public partial class CPlugDayTime : CFunc, IClass
             set => this.id = value;
         }
 
-        private float u01;
-        public float U01
+        private float density = 0.001f;
+        public float Density
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.density;
+            set => this.density = value;
         }
 
-        private float u02;
-        public float U02
+        private Vec3 color = (1, 1, 1);
+        public Vec3 Color
         {
-            get => this.u02;
-            set => this.u02 = value;
-        }
-
-        private float u03;
-        public float U03
-        {
-            get => this.u03;
-            set => this.u03 = value;
-        }
-
-        private float u04;
-        public float U04
-        {
-            get => this.u04;
-            set => this.u04 = value;
+            get => this.color;
+            set => this.color = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -413,19 +666,15 @@ public partial class CPlugDayTime : CFunc, IClass
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
             ((FogMatterId)clone).id = context.Clone(this.id)!;
-            ((FogMatterId)clone).u01 = context.Clone(this.u01)!;
-            ((FogMatterId)clone).u02 = context.Clone(this.u02)!;
-            ((FogMatterId)clone).u03 = context.Clone(this.u03)!;
-            ((FogMatterId)clone).u04 = context.Clone(this.u04)!;
+            ((FogMatterId)clone).density = context.Clone(this.density)!;
+            ((FogMatterId)clone).color = context.Clone(this.color)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Id(ref this.id);
-            rw.Single(ref this.u01);
-            rw.Single(ref this.u02);
-            rw.Single(ref this.u03);
-            rw.Single(ref this.u04);
+            rw.Single(ref this.density);
+            rw.Vec3(ref this.color);
         }
 
         public virtual void Read(GbxReader r, int v = 0)
