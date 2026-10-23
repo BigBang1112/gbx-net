@@ -13,6 +13,8 @@ public partial class NPlugStaticObjectModel_SInstanceParams : SMetaPtr, IClass, 
     internal override uint GetId() => Id;
 
     private float phase01;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public float Phase01
     {
         get => this.phase01;

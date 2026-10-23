@@ -13,6 +13,8 @@ public partial class NPlugDyna_SKinematicConstraint : CMwNod, IClass, IReadableW
     internal override uint GetId() => Id;
 
     private int subVersion;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public int SubVersion
     {
         get => this.subVersion;
@@ -20,6 +22,8 @@ public partial class NPlugDyna_SKinematicConstraint : CMwNod, IClass, IReadableW
     }
 
     private AnimFunc? transAnimFunc;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public AnimFunc? TransAnimFunc
     {
         get => this.transAnimFunc;
@@ -27,6 +31,8 @@ public partial class NPlugDyna_SKinematicConstraint : CMwNod, IClass, IReadableW
     }
 
     private AnimFunc? rotAnimFunc;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public AnimFunc? RotAnimFunc
     {
         get => this.rotAnimFunc;
@@ -34,6 +40,8 @@ public partial class NPlugDyna_SKinematicConstraint : CMwNod, IClass, IReadableW
     }
 
     private EShaderTcType shaderTcType;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public EShaderTcType ShaderTcType
     {
         get => this.shaderTcType;
@@ -41,6 +49,8 @@ public partial class NPlugDyna_SKinematicConstraint : CMwNod, IClass, IReadableW
     }
 
     private int shaderTcVersion;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public int ShaderTcVersion
     {
         get => this.shaderTcVersion;
@@ -48,6 +58,8 @@ public partial class NPlugDyna_SKinematicConstraint : CMwNod, IClass, IReadableW
     }
 
     private AnimFuncNat[]? shaderTcAnimFunc;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public AnimFuncNat[]? ShaderTcAnimFunc
     {
         get => this.shaderTcAnimFunc;
@@ -55,6 +67,8 @@ public partial class NPlugDyna_SKinematicConstraint : CMwNod, IClass, IReadableW
     }
 
     private TransSubTextureIn? shaderTcDataTransSub;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public TransSubTextureIn? ShaderTcDataTransSub
     {
         get => this.shaderTcDataTransSub;
@@ -62,6 +76,8 @@ public partial class NPlugDyna_SKinematicConstraint : CMwNod, IClass, IReadableW
     }
 
     private EAxis transAxis;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public EAxis TransAxis
     {
         get => this.transAxis;
@@ -69,6 +85,8 @@ public partial class NPlugDyna_SKinematicConstraint : CMwNod, IClass, IReadableW
     }
 
     private float transMin;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public float TransMin
     {
         get => this.transMin;
@@ -76,6 +94,8 @@ public partial class NPlugDyna_SKinematicConstraint : CMwNod, IClass, IReadableW
     }
 
     private float transMax;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public float TransMax
     {
         get => this.transMax;
@@ -83,6 +103,8 @@ public partial class NPlugDyna_SKinematicConstraint : CMwNod, IClass, IReadableW
     }
 
     private EAxis rotAxis;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public EAxis RotAxis
     {
         get => this.rotAxis;
@@ -90,6 +112,8 @@ public partial class NPlugDyna_SKinematicConstraint : CMwNod, IClass, IReadableW
     }
 
     private float angleMinDeg;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public float AngleMinDeg
     {
         get => this.angleMinDeg;
@@ -97,6 +121,8 @@ public partial class NPlugDyna_SKinematicConstraint : CMwNod, IClass, IReadableW
     }
 
     private float angleMaxDeg;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public float AngleMaxDeg
     {
         get => this.angleMaxDeg;

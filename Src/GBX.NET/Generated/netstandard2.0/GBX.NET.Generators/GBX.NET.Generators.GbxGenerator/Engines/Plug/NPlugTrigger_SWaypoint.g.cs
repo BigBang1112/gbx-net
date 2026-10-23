@@ -13,6 +13,8 @@ public partial class NPlugTrigger_SWaypoint : CMwNod, IClass, IReadableWritable,
     internal override uint GetId() => Id;
 
     private EGameItemWaypointType @type;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public EGameItemWaypointType Type
     {
         get => this.@type;
@@ -20,6 +22,8 @@ public partial class NPlugTrigger_SWaypoint : CMwNod, IClass, IReadableWritable,
     }
 
     private NodeRef<CPlugSurface>? triggerShapeRef;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public CPlugSurface? TriggerShape
     {
         get => triggerShapeRef?.Resolve();
@@ -27,6 +31,8 @@ public partial class NPlugTrigger_SWaypoint : CMwNod, IClass, IReadableWritable,
     }
 
     private bool noRespawn;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public bool NoRespawn
     {
         get => this.noRespawn;

@@ -23,6 +23,23 @@ internal static class AppliedWithChunkRanges
     public static IReadOnlyList<Range> Get(ChunkModel chunk, IEnumerable<string> fields, IReadOnlyList<ChunkModel> chunks, uint classId)
         => Normalize(fields.SelectMany(field => Get(chunk, field, chunks, classId)));
 
+    /// <summary>
+    /// Gets the class archive versions that apply the fields. Archives with their own version report that version,
+    /// other archives report the caller's version argument.
+    /// </summary>
+    public static IReadOnlyList<Range> GetArchive(IEnumerable<IBodyStatement> body, ScopeModel scope, IEnumerable<string> fields)
+    {
+        var result = new List<Range>();
+        foreach (var field in fields)
+        {
+            Walk(body, [All], field, scope, scope.HasVersion ? StoredVersionNames : ArgumentVersionNames, archive: true, onBase: null, result);
+        }
+        return Normalize(result);
+    }
+
+    private static readonly string[] StoredVersionNames = ["Version"];
+    private static readonly string[] ArgumentVersionNames = ["v"];
+
     private static void Collect(ChunkModel chunk, string field, IReadOnlyList<ChunkModel> chunks, uint classId,
         IReadOnlyList<Range> versions, List<Range> result, HashSet<uint> visited)
     {
@@ -43,91 +60,98 @@ internal static class AppliedWithChunkRanges
         }
         else
         {
-            Walk(chunk.Scope.Body, versions);
+            Walk(chunk.Scope.Body, versions, field, chunk.Scope, chunk.Scope.HasVersion ? StoredVersionNames : [], archive: false,
+                parent is null ? null : current => Collect(parent, field, chunks, classId, current, result, visited), result);
         }
 
         visited.Remove(chunk.Id);
+    }
 
-        void Walk(IEnumerable<IBodyStatement> statements, IReadOnlyList<Range> current)
+    private static void Walk(IEnumerable<IBodyStatement> statements, IReadOnlyList<Range> current, string field, ScopeModel scope,
+        string[] versionNames, bool archive, Action<IReadOnlyList<Range>>? onBase, List<Range> result)
+    {
+        if (current.Count == 0) return;
+
+        foreach (var statement in statements)
         {
-            if (current.Count == 0) return;
-
-            foreach (var statement in statements)
+            switch (statement)
             {
-                switch (statement)
-                {
-                    case FieldDeclaration declaration when declaration.IsSpecialKeyword && declaration.Type.Name == "base":
-                        if (parent is not null) Collect(parent, field, chunks, classId, current, result, visited);
-                        break;
+                case FieldDeclaration declaration when declaration.IsSpecialKeyword && declaration.Type.Name == "base":
+                    onBase?.Invoke(current);
+                    break;
 
-                    case FieldDeclaration declaration when declaration.Name == field &&
-                        chunk.Scope.Occurrences.TryGetValue(declaration, out var occurrence) && !occurrence.IsUnknown && !occurrence.IsLocal:
-                        result.AddRange(current);
-                        break;
+                case FieldDeclaration declaration when declaration.Name == field &&
+                    scope.Occurrences.TryGetValue(declaration, out var occurrence) && !occurrence.IsUnknown && !occurrence.IsLocal:
+                    result.AddRange(current);
+                    break;
 
-                    case VersionCondition version:
-                        var end = version.Kind switch
-                        {
-                            VersionConditionKind.Exact or VersionConditionKind.LessOrEqual => version.Version,
-                            VersionConditionKind.Range => version.VersionEnd ?? int.MaxValue,
-                            _ => int.MaxValue
-                        };
-                        var start = version.Kind == VersionConditionKind.LessOrEqual ? 0 : version.Version;
-                        Walk(version.Body, Intersect(current, [new Range(start, end)]));
-                        break;
+                // An archive with its own version reports that version, so caller version branches do not narrow it.
+                case VersionCondition version when archive && scope.HasVersion && LayoutModel.Has(version.Attributes, "chunk"):
+                    Walk(version.Body, current, field, scope, versionNames, archive, onBase, result);
+                    break;
 
-                    case IfStatement conditional:
+                case VersionCondition version:
+                    var end = version.Kind switch
                     {
-                        var remaining = current;
-                        VisitBranch(conditional.Condition, conditional.Body);
-                        foreach (var alternative in conditional.ElseIfs)
-                        {
-                            VisitBranch(alternative.Condition, alternative.Body);
-                        }
-                        if (conditional.Else is not null) Walk(conditional.Else.Body, remaining);
+                        VersionConditionKind.Exact or VersionConditionKind.LessOrEqual => version.Version,
+                        VersionConditionKind.Range => version.VersionEnd ?? int.MaxValue,
+                        _ => int.MaxValue
+                    };
+                    var start = version.Kind == VersionConditionKind.LessOrEqual ? 0 : version.Version;
+                    Walk(version.Body, Intersect(current, [new Range(start, end)]), field, scope, versionNames, archive, onBase, result);
+                    break;
 
-                        void VisitBranch(ChunkL.Syntax.Expression condition, IEnumerable<IBodyStatement> body)
-                        {
-                            var allowed = chunk.Scope.HasVersion ? Condition(condition) : null;
-                            Walk(body, allowed is null ? remaining : Intersect(remaining, allowed));
-                            if (allowed is not null) remaining = Except(remaining, allowed);
-                        }
-                        break;
+                case IfStatement conditional:
+                {
+                    var remaining = current;
+                    VisitBranch(conditional.Condition, conditional.Body);
+                    foreach (var alternative in conditional.ElseIfs)
+                    {
+                        VisitBranch(alternative.Condition, alternative.Body);
                     }
+                    if (conditional.Else is not null) Walk(conditional.Else.Body, remaining, field, scope, versionNames, archive, onBase, result);
 
-                    case BlockStatement block:
-                        Walk(block.Body, current);
-                        break;
-
-                    case LoopStatement loop:
-                        Walk(loop.Body, current);
-                        break;
-
-                    case WhileStatement loop:
-                        Walk(loop.Body, current);
-                        break;
-
-                    case SwitchStatement selection:
-                        foreach (var branch in selection.Cases) Walk(branch.Body, current);
-                        if (selection.Default is not null) Walk(selection.Default.Body, current);
-                        break;
+                    void VisitBranch(ChunkL.Syntax.Expression condition, IEnumerable<IBodyStatement> body)
+                    {
+                        var allowed = versionNames.Length > 0 ? Condition(condition, versionNames) : null;
+                        Walk(body, allowed is null ? remaining : Intersect(remaining, allowed), field, scope, versionNames, archive, onBase, result);
+                        if (allowed is not null) remaining = Except(remaining, allowed);
+                    }
+                    break;
                 }
+
+                case BlockStatement block:
+                    Walk(block.Body, current, field, scope, versionNames, archive, onBase, result);
+                    break;
+
+                case LoopStatement loop:
+                    Walk(loop.Body, current, field, scope, versionNames, archive, onBase, result);
+                    break;
+
+                case WhileStatement loop:
+                    Walk(loop.Body, current, field, scope, versionNames, archive, onBase, result);
+                    break;
+
+                case SwitchStatement selection:
+                    foreach (var branch in selection.Cases) Walk(branch.Body, current, field, scope, versionNames, archive, onBase, result);
+                    if (selection.Default is not null) Walk(selection.Default.Body, current, field, scope, versionNames, archive, onBase, result);
+                    break;
             }
         }
     }
 
-    private static IReadOnlyList<Range>? Condition(ChunkL.Syntax.Expression condition)
+    private static IReadOnlyList<Range>? Condition(ChunkL.Syntax.Expression condition, string[] versionNames)
     {
         var text = ChunkLParser.WriteExpression(condition);
-        return Condition(SyntaxFactory.ParseExpression(text));
+        return Condition(SyntaxFactory.ParseExpression(text), versionNames);
     }
 
-    private static IReadOnlyList<Range>? Condition(ExpressionSyntax expression)
+    private static IReadOnlyList<Range>? Condition(ExpressionSyntax expression, string[] versionNames)
     {
-        if (expression is ParenthesizedExpressionSyntax parentheses) return Condition(parentheses.Expression);
+        if (expression is ParenthesizedExpressionSyntax parentheses) return Condition(parentheses.Expression, versionNames);
         if (expression is PrefixUnaryExpressionSyntax unary && unary.IsKind(SyntaxKind.LogicalNotExpression))
         {
-            var inner = Condition(unary.Operand);
+            var inner = Condition(unary.Operand, versionNames);
             return inner is null ? null : Except([All], inner);
         }
 
@@ -135,14 +159,14 @@ internal static class AppliedWithChunkRanges
 
         if (binary.IsKind(SyntaxKind.LogicalAndExpression) || binary.IsKind(SyntaxKind.LogicalOrExpression))
         {
-            var left = Condition(binary.Left);
-            var right = Condition(binary.Right);
+            var left = Condition(binary.Left, versionNames);
+            var right = Condition(binary.Right, versionNames);
             if (left is null || right is null) return null;
             return binary.IsKind(SyntaxKind.LogicalAndExpression) ? Intersect(left, right) : Normalize(left.Concat(right));
         }
 
-        var versionOnLeft = binary.Left is IdentifierNameSyntax { Identifier.ValueText: "Version" };
-        var versionOnRight = binary.Right is IdentifierNameSyntax { Identifier.ValueText: "Version" };
+        var versionOnLeft = binary.Left is IdentifierNameSyntax leftName && versionNames.Contains(leftName.Identifier.ValueText);
+        var versionOnRight = binary.Right is IdentifierNameSyntax rightName && versionNames.Contains(rightName.Identifier.ValueText);
         if (versionOnLeft == versionOnRight) return null;
 
         var value = versionOnLeft ? Integer(binary.Right) : Integer(binary.Left);

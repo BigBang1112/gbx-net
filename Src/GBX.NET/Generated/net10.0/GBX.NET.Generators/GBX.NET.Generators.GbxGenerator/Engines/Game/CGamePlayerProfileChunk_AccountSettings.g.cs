@@ -13,8 +13,9 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     internal override uint GetId() => Id;
 
     private string? description;
-    /// <remarks>Applied with: 0x001 body chunk</remarks>
+    /// <remarks>Applied with: 0x001 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk0312C001>]
+    [AppliedWithArchive]
     [SupportsFormatting]
     public string? Description
     {
@@ -23,8 +24,9 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private string? nickName;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk0312C000>]
+    [AppliedWithArchive]
     [SupportsFormatting]
     public string? NickName
     {
@@ -33,8 +35,9 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private byte flags = 14;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk0312C000>]
+    [AppliedWithArchive]
     public byte Flags
     {
         get => this.flags;
@@ -42,8 +45,9 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private string? onlineLogin;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk0312C000>]
+    [AppliedWithArchive]
     public string? OnlineLogin
     {
         get => this.onlineLogin;
@@ -51,8 +55,9 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private string? onlinePassword;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk0312C000>]
+    [AppliedWithArchive]
     public string? OnlinePassword
     {
         get => this.onlinePassword;
@@ -60,8 +65,9 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private string? onlineValidationCode;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk0312C000>]
+    [AppliedWithArchive]
     public string? OnlineValidationCode
     {
         get => this.onlineValidationCode;
@@ -69,8 +75,9 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private string? onlineSupportKey;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk0312C000>]
+    [AppliedWithArchive]
     public string? OnlineSupportKey
     {
         get => this.onlineSupportKey;
@@ -78,8 +85,9 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private string? lastUsedMSAddress;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk0312C000>]
+    [AppliedWithArchive]
     public string? LastUsedMSAddress
     {
         get => this.lastUsedMSAddress;
@@ -87,8 +95,9 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private string? lastUsedMSPath;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk0312C000>]
+    [AppliedWithArchive]
     public string? LastUsedMSPath
     {
         get => this.lastUsedMSPath;
@@ -96,8 +105,9 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private string? lastSessionId;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk0312C000>]
+    [AppliedWithArchive]
     public string? LastSessionId
     {
         get => this.lastSessionId;
@@ -105,8 +115,9 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private string? league;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk0312C000>]
+    [AppliedWithArchive]
     [SupportsFormatting]
     public string? League
     {
@@ -122,8 +133,9 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private int onlineRemainingNickNamesChangesCount = -1;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk0312C000>]
+    [AppliedWithArchive]
     public int OnlineRemainingNickNamesChangesCount
     {
         get => this.onlineRemainingNickNamesChangesCount;
@@ -131,8 +143,9 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private int onlinePlanets;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk0312C000>]
+    [AppliedWithArchive]
     public int OnlinePlanets
     {
         get => this.onlinePlanets;
@@ -140,8 +153,9 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private string? encryptedKeyHexa;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive v1+</remarks>
     [AppliedWithChunk<Chunk0312C000>]
+    [AppliedWithArchive(1)]
     public string? EncryptedKeyHexa
     {
         get => this.encryptedKeyHexa;
@@ -149,8 +163,9 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private string? rSAPrivateKey;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk0312C000>]
+    [AppliedWithArchive]
     public string? RSAPrivateKey
     {
         get => this.rSAPrivateKey;
@@ -165,6 +180,8 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private int legacyBuddyArchiveVersion = 5;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public int LegacyBuddyArchiveVersion
     {
         get => this.legacyBuddyArchiveVersion;
@@ -172,8 +189,9 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private CGameBuddy[]? buddies;
-    /// <remarks>Applied with: 0x003 body chunk</remarks>
+    /// <remarks>Applied with: 0x003 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk0312C003>]
+    [AppliedWithArchive]
     public CGameBuddy[]? Buddies
     {
         get => this.buddies;
@@ -181,6 +199,8 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private ulong receivedMessagesSystemTime;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public ulong ReceivedMessagesSystemTime
     {
         get => this.receivedMessagesSystemTime;
@@ -188,8 +208,9 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private NodeRefList<CGameNetOnlineMessage>? inboxMessages;
-    /// <remarks>Applied with: 0x005 body chunk</remarks>
+    /// <remarks>Applied with: 0x005 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk0312C005>]
+    [AppliedWithArchive]
     public NodeRefList<CGameNetOnlineMessage>? InboxMessages
     {
         get => inboxMessages;
@@ -197,8 +218,9 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private NodeRefList<CGameNetOnlineMessage>? readMessages;
-    /// <remarks>Applied with: 0x005 body chunk</remarks>
+    /// <remarks>Applied with: 0x005 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk0312C005>]
+    [AppliedWithArchive]
     public NodeRefList<CGameNetOnlineMessage>? ReadMessages
     {
         get => readMessages;
@@ -206,8 +228,9 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private NodeRefList<CGameNetOnlineMessage>? outboxMessages;
-    /// <remarks>Applied with: 0x005 body chunk</remarks>
+    /// <remarks>Applied with: 0x005 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk0312C005>]
+    [AppliedWithArchive]
     public NodeRefList<CGameNetOnlineMessage>? OutboxMessages
     {
         get => outboxMessages;
@@ -215,8 +238,9 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private byte flags2;
-    /// <remarks>Applied with: 0x006 body chunk</remarks>
+    /// <remarks>Applied with: 0x006 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk0312C006>]
+    [AppliedWithArchive]
     public byte Flags2
     {
         get => this.flags2;
@@ -231,8 +255,9 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private string? avatarName;
-    /// <remarks>Applied with: 0x001 body chunk</remarks>
+    /// <remarks>Applied with: 0x001 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk0312C001>]
+    [AppliedWithArchive]
     [SupportsFormatting]
     public string? AvatarName
     {
@@ -241,8 +266,9 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private SPlayerTagsConfig? playerTagsConfig;
-    /// <remarks>Applied with: 0x001 body chunk</remarks>
+    /// <remarks>Applied with: 0x001 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk0312C001>]
+    [AppliedWithArchive]
     public SPlayerTagsConfig? PlayerTagsConfig
     {
         get => this.playerTagsConfig;
@@ -250,8 +276,9 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private bool receiveNews;
-    /// <remarks>Applied with: 0x002 body chunk</remarks>
+    /// <remarks>Applied with: 0x002 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk0312C002>]
+    [AppliedWithArchive]
     public bool ReceiveNews
     {
         get => this.receiveNews;
@@ -266,8 +293,9 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private int eulaVersion;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive v5+</remarks>
     [AppliedWithChunk<Chunk0312C000>]
+    [AppliedWithArchive(5)]
     public int EulaVersion
     {
         get => this.eulaVersion;
@@ -275,8 +303,9 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private int buddyArchiveVersion = 5;
-    /// <remarks>Applied with: 0x003 body chunk</remarks>
+    /// <remarks>Applied with: 0x003 body chunk, archive v8+</remarks>
     [AppliedWithChunk<Chunk0312C003>]
+    [AppliedWithArchive(8)]
     public int BuddyArchiveVersion
     {
         get => this.buddyArchiveVersion;

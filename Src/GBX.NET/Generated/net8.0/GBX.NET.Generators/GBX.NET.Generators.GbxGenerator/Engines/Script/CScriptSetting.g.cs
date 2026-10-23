@@ -13,6 +13,8 @@ public partial class CScriptSetting : CMwNod, IClass, IReadableWritable, IReadab
     internal override uint GetId() => Id;
 
     private string? name;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public string? Name
     {
         get => this.name;
@@ -20,6 +22,8 @@ public partial class CScriptSetting : CMwNod, IClass, IReadableWritable, IReadab
     }
 
     private int @type;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public int Type
     {
         get => this.@type;
@@ -27,6 +31,8 @@ public partial class CScriptSetting : CMwNod, IClass, IReadableWritable, IReadab
     }
 
     private bool boolean;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public bool Boolean
     {
         get => this.boolean;
@@ -34,6 +40,8 @@ public partial class CScriptSetting : CMwNod, IClass, IReadableWritable, IReadab
     }
 
     private int integer;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public int Integer
     {
         get => this.integer;
@@ -41,6 +49,8 @@ public partial class CScriptSetting : CMwNod, IClass, IReadableWritable, IReadab
     }
 
     private float real;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public float Real
     {
         get => this.real;
@@ -48,6 +58,8 @@ public partial class CScriptSetting : CMwNod, IClass, IReadableWritable, IReadab
     }
 
     private string? text;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public string? Text
     {
         get => this.text;

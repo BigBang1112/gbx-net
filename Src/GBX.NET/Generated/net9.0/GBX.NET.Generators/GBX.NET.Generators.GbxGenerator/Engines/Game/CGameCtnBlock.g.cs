@@ -16,6 +16,8 @@ public partial class CGameCtnBlock : CMwNod, IClass, IReadable, IWritable
     internal override uint GetId() => Id;
 
     private string? author;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public string? Author
     {
         get => this.author;
@@ -25,6 +27,8 @@ public partial class CGameCtnBlock : CMwNod, IClass, IReadable, IWritable
     private NodeRef<CGameCtnBlockSkin>? skinRef;
 
     private NodeRef<CPlugCharPhySpecialProperty>? phyCharSpecialPropertyRef;
+    /// <remarks>Applied with: archive v2+</remarks>
+    [AppliedWithArchive(2)]
     public CPlugCharPhySpecialProperty? PhyCharSpecialProperty
     {
         get => phyCharSpecialPropertyRef?.Resolve();
@@ -34,6 +38,8 @@ public partial class CGameCtnBlock : CMwNod, IClass, IReadable, IWritable
     private NodeRef<CGameWaypointSpecialProperty>? waypointSpecialPropertyRef;
 
     private SSquareCardEventIds[]? squareCardEventIds;
+    /// <remarks>Applied with: archive v2+</remarks>
+    [AppliedWithArchive(2)]
     public SSquareCardEventIds[]? SquareCardEventIds
     {
         get => this.squareCardEventIds;
@@ -41,6 +47,8 @@ public partial class CGameCtnBlock : CMwNod, IClass, IReadable, IWritable
     }
 
     private int decalIntensity = 1;
+    /// <remarks>Applied with: archive v2+</remarks>
+    [AppliedWithArchive(2)]
     public int DecalIntensity
     {
         get => this.decalIntensity;
@@ -48,6 +56,8 @@ public partial class CGameCtnBlock : CMwNod, IClass, IReadable, IWritable
     }
 
     private int decalVariant = -1;
+    /// <remarks>Applied with: archive v2+</remarks>
+    [AppliedWithArchive(2)]
     public int DecalVariant
     {
         get => this.decalVariant;

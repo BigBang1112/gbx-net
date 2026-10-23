@@ -13,6 +13,8 @@ public partial class NPlugDyna_SPrefabConstraintParams : SMetaPtr, IClass, IRead
     internal override uint GetId() => Id;
 
     private int ent1;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public int Ent1
     {
         get => this.ent1;
@@ -20,6 +22,8 @@ public partial class NPlugDyna_SPrefabConstraintParams : SMetaPtr, IClass, IRead
     }
 
     private int ent2;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public int Ent2
     {
         get => this.ent2;
@@ -27,6 +31,8 @@ public partial class NPlugDyna_SPrefabConstraintParams : SMetaPtr, IClass, IRead
     }
 
     private Vec3 pos1;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public Vec3 Pos1
     {
         get => this.pos1;
@@ -34,6 +40,8 @@ public partial class NPlugDyna_SPrefabConstraintParams : SMetaPtr, IClass, IRead
     }
 
     private Vec3 pos2;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public Vec3 Pos2
     {
         get => this.pos2;

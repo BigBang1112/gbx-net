@@ -3071,6 +3071,62 @@ public partial class GenerationTests
     }
 
     [Test]
+    public async Task Generate_ClassArchiveMembers_EmitAppliedWithArchiveRanges()
+    {
+        var (result, compilation) = Run("", true,
+        [
+            new Text("Engines/Game/Example.chunkl", """
+                Example 0x03043000
+                archive
+                  int Always
+                  v2+
+                    int Since
+                  v0..3
+                    int Range
+                  if v < 2
+                    int Early
+                  int U01
+                0x001
+                  int Always
+                """),
+            new Text("Engines/Game/Versioned.chunkl", """
+                Versioned 0x03044000
+                archive
+                  version = 3
+                  v1+ (archive)
+                    int Stored
+                  v2+ (chunk)
+                    int Caller
+                """)
+        ]);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+
+        var example = Attributes("Example");
+        await Assert.That(example["Always"]).IsEquivalentTo(new[] { "AppliedWithChunk<Chunk03043001>", "AppliedWithArchive" });
+        await Assert.That(example["Since"]).IsEquivalentTo(new[] { "AppliedWithArchive(2)" });
+        await Assert.That(example["Range"]).IsEquivalentTo(new[] { "AppliedWithArchive(0, 3)" });
+        await Assert.That(example["Early"]).IsEquivalentTo(new[] { "AppliedWithArchive(0, 1)" });
+        await Assert.That(example.ContainsKey("U01") && example["U01"].Length > 0).IsFalse();
+
+        var versioned = Attributes("Versioned");
+        await Assert.That(versioned["Stored"]).IsEquivalentTo(new[] { "AppliedWithArchive(1)" });
+        await Assert.That(versioned["Caller"]).IsEquivalentTo(new[] { "AppliedWithArchive" });
+
+        var generated = result.GeneratedSources.Single(x => x.HintName == "Engines/Game/Example.g.cs").SourceText.ToString();
+        await Assert.That(generated).Contains("/// <remarks>Applied with: 0x001 body chunk, archive</remarks>");
+        await Assert.That(generated).Contains("/// <remarks>Applied with: archive v0-3</remarks>");
+
+        Dictionary<string, string[]> Attributes(string className)
+            => result.GeneratedSources.Single(x => x.HintName == $"Engines/Game/{className}.g.cs")
+                .SyntaxTree.GetRoot().DescendantNodes().OfType<ClassDeclarationSyntax>()
+                .Single(x => x.Identifier.ValueText == className).Members.OfType<PropertyDeclarationSyntax>()
+                .ToDictionary(x => x.Identifier.ValueText,
+                    x => x.AttributeLists.SelectMany(a => a.Attributes).Select(a => a.ToString()).ToArray());
+    }
+
+    [Test]
     public async Task Generate_InheritedProperty_DoesNotDuplicateStorage()
     {
         var (result, compilation) = Run("", true,
@@ -4183,6 +4239,12 @@ public partial class GenerationTests
             {
                 public AppliedWithChunkAttribute(int sinceVersion = 0) { }
                 public AppliedWithChunkAttribute(int sinceVersion, int upToVersion) { }
+            }
+            [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]
+            public class AppliedWithArchiveAttribute : System.Attribute
+            {
+                public AppliedWithArchiveAttribute(int sinceVersion = 0) { }
+                public AppliedWithArchiveAttribute(int sinceVersion, int upToVersion) { }
             }
         }
         namespace GBX.NET.Serialization

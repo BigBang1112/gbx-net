@@ -13,6 +13,8 @@ public partial class CPlugVehicleWheelPhyModel : CMwNod, IClass, IReadableWritab
     internal override uint GetId() => Id;
 
     private bool isDriving;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public bool IsDriving
     {
         get => this.isDriving;
@@ -20,6 +22,8 @@ public partial class CPlugVehicleWheelPhyModel : CMwNod, IClass, IReadableWritab
     }
 
     private bool isSteering;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public bool IsSteering
     {
         get => this.isSteering;
@@ -27,6 +31,8 @@ public partial class CPlugVehicleWheelPhyModel : CMwNod, IClass, IReadableWritab
     }
 
     private string? wheelId;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public string? WheelId
     {
         get => this.wheelId;

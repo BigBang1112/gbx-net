@@ -13,6 +13,8 @@ public partial class NPlugItemPlacement_SPlacement : SMetaPtr, IClass, IReadable
     internal override uint GetId() => Id;
 
     private int iLayout;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public int ILayout
     {
         get => this.iLayout;
@@ -20,6 +22,8 @@ public partial class NPlugItemPlacement_SPlacement : SMetaPtr, IClass, IReadable
     }
 
     private NPlugItemPlacement_SPlacementOption[]? options;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public NPlugItemPlacement_SPlacementOption[]? Options
     {
         get => this.options;

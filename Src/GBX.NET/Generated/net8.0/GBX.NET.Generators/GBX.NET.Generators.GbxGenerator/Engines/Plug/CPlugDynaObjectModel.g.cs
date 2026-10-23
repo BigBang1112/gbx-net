@@ -15,6 +15,8 @@ public partial class CPlugDynaObjectModel : CMwNod, IClass, IReadableWritable, I
     public int Version { get; set; } = 13;
 
     private bool isStatic;
+    /// <remarks>Applied with: archive v9+</remarks>
+    [AppliedWithArchive(9)]
     public bool IsStatic
     {
         get => this.isStatic;
@@ -22,6 +24,8 @@ public partial class CPlugDynaObjectModel : CMwNod, IClass, IReadableWritable, I
     }
 
     private bool dynamizeOnSpawn;
+    /// <remarks>Applied with: archive v11+</remarks>
+    [AppliedWithArchive(11)]
     public bool DynamizeOnSpawn
     {
         get => this.dynamizeOnSpawn;
@@ -29,6 +33,8 @@ public partial class CPlugDynaObjectModel : CMwNod, IClass, IReadableWritable, I
     }
 
     private NodeRef<CPlugSolid2Model>? meshRef;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public CPlugSolid2Model? Mesh
     {
         get => meshRef?.Resolve();
@@ -36,6 +42,8 @@ public partial class CPlugDynaObjectModel : CMwNod, IClass, IReadableWritable, I
     }
 
     private NodeRef<CPlugSurface>? dynaShapeRef;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public CPlugSurface? DynaShape
     {
         get => dynaShapeRef?.Resolve();
@@ -43,6 +51,8 @@ public partial class CPlugDynaObjectModel : CMwNod, IClass, IReadableWritable, I
     }
 
     private NodeRef<CPlugDynaModel>? dynaModelRef;
+    /// <remarks>Applied with: archive v0-2</remarks>
+    [AppliedWithArchive(0, 2)]
     public CPlugDynaModel? DynaModel
     {
         get => dynaModelRef?.Resolve();
@@ -50,6 +60,8 @@ public partial class CPlugDynaObjectModel : CMwNod, IClass, IReadableWritable, I
     }
 
     private NodeRef<CPlugSurface>? staticShapeRef;
+    /// <remarks>Applied with: archive v1+</remarks>
+    [AppliedWithArchive(1)]
     public CPlugSurface? StaticShape
     {
         get => staticShapeRef?.Resolve();
@@ -57,6 +69,8 @@ public partial class CPlugDynaObjectModel : CMwNod, IClass, IReadableWritable, I
     }
 
     private float breakSpeedKmh = 100;
+    /// <remarks>Applied with: archive v2+</remarks>
+    [AppliedWithArchive(2)]
     public float BreakSpeedKmh
     {
         get => this.breakSpeedKmh;
@@ -64,6 +78,8 @@ public partial class CPlugDynaObjectModel : CMwNod, IClass, IReadableWritable, I
     }
 
     private float mass = 10;
+    /// <remarks>Applied with: archive v3+</remarks>
+    [AppliedWithArchive(3)]
     public float Mass
     {
         get => this.mass;
@@ -71,6 +87,8 @@ public partial class CPlugDynaObjectModel : CMwNod, IClass, IReadableWritable, I
     }
 
     private float lightAliveDurationScMin = 5;
+    /// <remarks>Applied with: archive v5+</remarks>
+    [AppliedWithArchive(5)]
     public float LightAliveDurationScMin
     {
         get => this.lightAliveDurationScMin;
@@ -78,6 +96,8 @@ public partial class CPlugDynaObjectModel : CMwNod, IClass, IReadableWritable, I
     }
 
     private float lightAliveDurationScMax = 7;
+    /// <remarks>Applied with: archive v5+</remarks>
+    [AppliedWithArchive(5)]
     public float LightAliveDurationScMax
     {
         get => this.lightAliveDurationScMax;
@@ -148,6 +168,8 @@ public partial class CPlugDynaObjectModel : CMwNod, IClass, IReadableWritable, I
     }
 
     private NodeRef<CPlugAnimLocSimple>? locAnimRef;
+    /// <remarks>Applied with: archive v7+</remarks>
+    [AppliedWithArchive(7)]
     public CPlugAnimLocSimple? LocAnim
     {
         get => locAnimRef?.Resolve();
@@ -162,6 +184,8 @@ public partial class CPlugDynaObjectModel : CMwNod, IClass, IReadableWritable, I
     }
 
     private bool locAnimIsPhysical;
+    /// <remarks>Applied with: archive v10+</remarks>
+    [AppliedWithArchive(10)]
     public bool LocAnimIsPhysical
     {
         get => this.locAnimIsPhysical;
@@ -176,6 +200,8 @@ public partial class CPlugDynaObjectModel : CMwNod, IClass, IReadableWritable, I
     }
 
     private NodeRef<CPlugDynaWaterModel>? waterModelRef;
+    /// <remarks>Applied with: archive v13+</remarks>
+    [AppliedWithArchive(13)]
     public CPlugDynaWaterModel? WaterModel
     {
         get => waterModelRef?.Resolve();

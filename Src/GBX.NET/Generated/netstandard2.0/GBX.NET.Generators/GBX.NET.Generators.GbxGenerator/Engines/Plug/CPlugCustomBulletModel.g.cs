@@ -13,6 +13,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     internal override uint GetId() => Id;
 
     private string? bulletName;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public string? BulletName
     {
         get => this.bulletName;
@@ -20,6 +22,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private float bulletSpeed;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public float BulletSpeed
     {
         get => this.bulletSpeed;
@@ -27,6 +31,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private float bulletMass;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public float BulletMass
     {
         get => this.bulletMass;
@@ -34,6 +40,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private float bulletHitboxRadius;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public float BulletHitboxRadius
     {
         get => this.bulletHitboxRadius;
@@ -41,6 +49,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private float bulletFluidFriction;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public float BulletFluidFriction
     {
         get => this.bulletFluidFriction;
@@ -48,6 +58,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private float bulletLifeTime;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public float BulletLifeTime
     {
         get => this.bulletLifeTime;
@@ -55,6 +67,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private bool bulletExplodeOnEndLife;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public bool BulletExplodeOnEndLife
     {
         get => this.bulletExplodeOnEndLife;
@@ -62,6 +76,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private int bulletRebounds;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public int BulletRebounds
     {
         get => this.bulletRebounds;
@@ -69,6 +85,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private bool bulletBounceOnTechWall;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public bool BulletBounceOnTechWall
     {
         get => this.bulletBounceOnTechWall;
@@ -76,6 +94,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private int bulletPattern;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public int BulletPattern
     {
         get => this.bulletPattern;
@@ -111,6 +131,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private int patternBulletCount;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public int PatternBulletCount
     {
         get => this.patternBulletCount;
@@ -118,6 +140,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private float patternBulletRadius;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public float PatternBulletRadius
     {
         get => this.patternBulletRadius;
@@ -125,6 +149,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private float patternBulletSpinSecond;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public float PatternBulletSpinSecond
     {
         get => this.patternBulletSpinSecond;
@@ -132,6 +158,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private float patternBulletBlendDuration;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public float PatternBulletBlendDuration
     {
         get => this.patternBulletBlendDuration;
@@ -139,6 +167,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private bool patternBulletApexRegroup;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public bool PatternBulletApexRegroup
     {
         get => this.patternBulletApexRegroup;
@@ -146,6 +176,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private float patternBulletMinApexTime;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public float PatternBulletMinApexTime
     {
         get => this.patternBulletMinApexTime;
@@ -153,6 +185,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private bool patternBulletRandomRotations;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public bool PatternBulletRandomRotations
     {
         get => this.patternBulletRandomRotations;
@@ -160,6 +194,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private int noPatternBulletCount;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public int NoPatternBulletCount
     {
         get => this.noPatternBulletCount;
@@ -167,6 +203,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private float noPatternBulletDispersionAngle;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public float NoPatternBulletDispersionAngle
     {
         get => this.noPatternBulletDispersionAngle;
@@ -174,6 +212,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private float noPatternBulletSpeedCoef;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public float NoPatternBulletSpeedCoef
     {
         get => this.noPatternBulletSpeedCoef;
@@ -181,6 +221,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private string? bulletAliveSound;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public string? BulletAliveSound
     {
         get => this.bulletAliveSound;
@@ -188,6 +230,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private string? bulletExplosionSound;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public string? BulletExplosionSound
     {
         get => this.bulletExplosionSound;
@@ -195,6 +239,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private string? bulletShootingSound;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public string? BulletShootingSound
     {
         get => this.bulletShootingSound;
@@ -202,6 +248,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private NodeRefList<CPlugParticleEmitterSubModel>? aliveParticleEmitterSubModels;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public NodeRefList<CPlugParticleEmitterSubModel>? AliveParticleEmitterSubModels
     {
         get => aliveParticleEmitterSubModels;
@@ -209,6 +257,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private NodeRefList<CPlugParticleEmitterSubModel>? explosionParticleEmitterSubModels;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public NodeRefList<CPlugParticleEmitterSubModel>? ExplosionParticleEmitterSubModels
     {
         get => explosionParticleEmitterSubModels;
@@ -258,6 +308,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private float bulletLifeTimeAfterFirstImpact;
+    /// <remarks>Applied with: archive v1+</remarks>
+    [AppliedWithArchive(1)]
     public float BulletLifeTimeAfterFirstImpact
     {
         get => this.bulletLifeTimeAfterFirstImpact;
@@ -265,6 +317,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private float bulletImpactBouncingN;
+    /// <remarks>Applied with: archive v2+</remarks>
+    [AppliedWithArchive(2)]
     public float BulletImpactBouncingN
     {
         get => this.bulletImpactBouncingN;
@@ -272,6 +326,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private float bulletImpactBouncingT;
+    /// <remarks>Applied with: archive v2+</remarks>
+    [AppliedWithArchive(2)]
     public float BulletImpactBouncingT
     {
         get => this.bulletImpactBouncingT;
@@ -286,6 +342,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private float bulletHomingDist;
+    /// <remarks>Applied with: archive v4+</remarks>
+    [AppliedWithArchive(4)]
     public float BulletHomingDist
     {
         get => this.bulletHomingDist;
@@ -293,6 +351,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private float bulletHomingAngularSpeed;
+    /// <remarks>Applied with: archive v4+</remarks>
+    [AppliedWithArchive(4)]
     public float BulletHomingAngularSpeed
     {
         get => this.bulletHomingAngularSpeed;
@@ -300,6 +360,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private float bulletHomingPeriod;
+    /// <remarks>Applied with: archive v4+</remarks>
+    [AppliedWithArchive(4)]
     public float BulletHomingPeriod
     {
         get => this.bulletHomingPeriod;
@@ -307,6 +369,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private bool bulletShowPlayerExplosion;
+    /// <remarks>Applied with: archive v5+</remarks>
+    [AppliedWithArchive(5)]
     public bool BulletShowPlayerExplosion
     {
         get => this.bulletShowPlayerExplosion;
@@ -321,6 +385,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private string? bulletReboundSound;
+    /// <remarks>Applied with: archive v7+</remarks>
+    [AppliedWithArchive(7)]
     public string? BulletReboundSound
     {
         get => this.bulletReboundSound;
@@ -328,6 +394,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private float bulletAliveSoundVolume;
+    /// <remarks>Applied with: archive v8+</remarks>
+    [AppliedWithArchive(8)]
     public float BulletAliveSoundVolume
     {
         get => this.bulletAliveSoundVolume;
@@ -335,6 +403,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private float bulletExplosionSoundVolume;
+    /// <remarks>Applied with: archive v8+</remarks>
+    [AppliedWithArchive(8)]
     public float BulletExplosionSoundVolume
     {
         get => this.bulletExplosionSoundVolume;
@@ -342,6 +412,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private float bulletShootingSoundVolume;
+    /// <remarks>Applied with: archive v8+</remarks>
+    [AppliedWithArchive(8)]
     public float BulletShootingSoundVolume
     {
         get => this.bulletShootingSoundVolume;
@@ -349,6 +421,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private float bulletReboundSoundVolume;
+    /// <remarks>Applied with: archive v8+</remarks>
+    [AppliedWithArchive(8)]
     public float BulletReboundSoundVolume
     {
         get => this.bulletReboundSoundVolume;
@@ -356,6 +430,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private bool bulletShowDebris;
+    /// <remarks>Applied with: archive v9+</remarks>
+    [AppliedWithArchive(9)]
     public bool BulletShowDebris
     {
         get => this.bulletShowDebris;
@@ -363,6 +439,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private bool bulletModifyFOV;
+    /// <remarks>Applied with: archive v10+</remarks>
+    [AppliedWithArchive(10)]
     public bool BulletModifyFOV
     {
         get => this.bulletModifyFOV;
@@ -377,6 +455,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private bool bulletIsFlare;
+    /// <remarks>Applied with: archive v12+</remarks>
+    [AppliedWithArchive(12)]
     public bool BulletIsFlare
     {
         get => this.bulletIsFlare;
@@ -384,6 +464,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private float bulletFlareAttractionRadius;
+    /// <remarks>Applied with: archive v13+</remarks>
+    [AppliedWithArchive(13)]
     public float BulletFlareAttractionRadius
     {
         get => this.bulletFlareAttractionRadius;
@@ -391,6 +473,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private float bulletFlareExplosionRadius;
+    /// <remarks>Applied with: archive v13+</remarks>
+    [AppliedWithArchive(13)]
     public float BulletFlareExplosionRadius
     {
         get => this.bulletFlareExplosionRadius;
@@ -398,6 +482,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private string? bulletHomingSound;
+    /// <remarks>Applied with: archive v14+</remarks>
+    [AppliedWithArchive(14)]
     public string? BulletHomingSound
     {
         get => this.bulletHomingSound;
@@ -405,6 +491,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private float bulletHomingSoundVolume;
+    /// <remarks>Applied with: archive v14+</remarks>
+    [AppliedWithArchive(14)]
     public float BulletHomingSoundVolume
     {
         get => this.bulletHomingSoundVolume;
@@ -419,6 +507,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private float bulletGuidedAngularSpeed;
+    /// <remarks>Applied with: archive v15+</remarks>
+    [AppliedWithArchive(15)]
     public float BulletGuidedAngularSpeed
     {
         get => this.bulletGuidedAngularSpeed;
@@ -426,6 +516,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private int bulletHomingLockDuration;
+    /// <remarks>Applied with: archive v16+</remarks>
+    [AppliedWithArchive(16)]
     public int BulletHomingLockDuration
     {
         get => this.bulletHomingLockDuration;
@@ -433,6 +525,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private bool bulletIsWard;
+    /// <remarks>Applied with: archive v17+</remarks>
+    [AppliedWithArchive(17)]
     public bool BulletIsWard
     {
         get => this.bulletIsWard;
@@ -440,6 +534,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private float bulletWardRadius;
+    /// <remarks>Applied with: archive v17+</remarks>
+    [AppliedWithArchive(17)]
     public float BulletWardRadius
     {
         get => this.bulletWardRadius;
@@ -454,6 +550,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private int bulletGuidedMinLifeTime;
+    /// <remarks>Applied with: archive v18+</remarks>
+    [AppliedWithArchive(18)]
     public int BulletGuidedMinLifeTime
     {
         get => this.bulletGuidedMinLifeTime;
@@ -461,6 +559,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private float bulletGunSpeedCoef;
+    /// <remarks>Applied with: archive v20+</remarks>
+    [AppliedWithArchive(20)]
     public float BulletGunSpeedCoef
     {
         get => this.bulletGunSpeedCoef;
@@ -468,6 +568,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private int bulletType;
+    /// <remarks>Applied with: archive v21+</remarks>
+    [AppliedWithArchive(21)]
     public int BulletType
     {
         get => this.bulletType;
@@ -475,6 +577,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private int bulletHomingDamageMinAngle_Deg;
+    /// <remarks>Applied with: archive v22+</remarks>
+    [AppliedWithArchive(22)]
     public int BulletHomingDamageMinAngle_Deg
     {
         get => this.bulletHomingDamageMinAngle_Deg;
@@ -482,6 +586,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private int bulletHomingDamageMaxAngle_Deg;
+    /// <remarks>Applied with: archive v22+</remarks>
+    [AppliedWithArchive(22)]
     public int BulletHomingDamageMaxAngle_Deg
     {
         get => this.bulletHomingDamageMaxAngle_Deg;
@@ -489,6 +595,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private float bulletRecoil;
+    /// <remarks>Applied with: archive v23+</remarks>
+    [AppliedWithArchive(23)]
     public float BulletRecoil
     {
         get => this.bulletRecoil;
@@ -496,6 +604,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private float bulletGunSpeedCoefRatioMin;
+    /// <remarks>Applied with: archive v24+</remarks>
+    [AppliedWithArchive(24)]
     public float BulletGunSpeedCoefRatioMin
     {
         get => this.bulletGunSpeedCoefRatioMin;
@@ -503,6 +613,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     }
 
     private float bulletGunSpeedCoefRatioMax;
+    /// <remarks>Applied with: archive v24+</remarks>
+    [AppliedWithArchive(24)]
     public float BulletGunSpeedCoefRatioMax
     {
         get => this.bulletGunSpeedCoefRatioMax;

@@ -13,6 +13,8 @@ public partial class NPlugItemPlacement_SClass : CMwNod, IClass, IReadableWritab
     internal override uint GetId() => Id;
 
     private string? sizeGroup;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public string? SizeGroup
     {
         get => this.sizeGroup;
@@ -20,6 +22,8 @@ public partial class NPlugItemPlacement_SClass : CMwNod, IClass, IReadableWritab
     }
 
     private string[]? compatibleGroupsIds;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public string[]? CompatibleGroupsIds
     {
         get => this.compatibleGroupsIds;
@@ -27,6 +31,8 @@ public partial class NPlugItemPlacement_SClass : CMwNod, IClass, IReadableWritab
     }
 
     private bool alwaysUp;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public bool AlwaysUp
     {
         get => this.alwaysUp;
@@ -34,6 +40,8 @@ public partial class NPlugItemPlacement_SClass : CMwNod, IClass, IReadableWritab
     }
 
     private bool alignToInterior;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public bool AlignToInterior
     {
         get => this.alignToInterior;
@@ -41,6 +49,8 @@ public partial class NPlugItemPlacement_SClass : CMwNod, IClass, IReadableWritab
     }
 
     private bool alignToWorldDir;
+    /// <remarks>Applied with: archive v8+</remarks>
+    [AppliedWithArchive(8)]
     public bool AlignToWorldDir
     {
         get => this.alignToWorldDir;
@@ -48,6 +58,8 @@ public partial class NPlugItemPlacement_SClass : CMwNod, IClass, IReadableWritab
     }
 
     private Vec3 worldDir = (0, 0, 1);
+    /// <remarks>Applied with: archive v8+</remarks>
+    [AppliedWithArchive(8)]
     public Vec3 WorldDir
     {
         get => this.worldDir;
@@ -55,6 +67,8 @@ public partial class NPlugItemPlacement_SClass : CMwNod, IClass, IReadableWritab
     }
 
     private LegacyPatchLayout[]? legacyPatchLayouts;
+    /// <remarks>Applied with: archive v0-3</remarks>
+    [AppliedWithArchive(0, 3)]
     public LegacyPatchLayout[]? LegacyPatchLayouts
     {
         get => this.legacyPatchLayouts;
@@ -62,6 +76,8 @@ public partial class NPlugItemPlacement_SClass : CMwNod, IClass, IReadableWritab
     }
 
     private PatchLayout[]? patchLayouts;
+    /// <remarks>Applied with: archive v4+</remarks>
+    [AppliedWithArchive(4)]
     public PatchLayout[]? PatchLayouts
     {
         get => this.patchLayouts;
@@ -79,6 +95,8 @@ public partial class NPlugItemPlacement_SClass : CMwNod, IClass, IReadableWritab
     }
 
     private int[]? groupCurPatchLayouts;
+    /// <remarks>Applied with: archive v6+</remarks>
+    [AppliedWithArchive(6)]
     public int[]? GroupCurPatchLayouts
     {
         get => this.groupCurPatchLayouts;

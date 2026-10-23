@@ -629,22 +629,34 @@ internal static class EngineWriter
         }
 
         var applications = Applications().ToArray();
-        if (applications.Length == 0) return;
+        var archiveRanges = layout.SelfArchive is null ? []
+            : AppliedWithChunkRanges.GetArchive(layout.SelfArchive.Body, layout.Scope, fields);
+        if (applications.Length == 0 && archiveRanges.Count == 0) return;
 
         var groups = applications.GroupBy(static x => x.Chunk.IsHeader).Select(group =>
             string.Join(", ", group.Select(x => (x.Owner == layout ? "" : x.Owner.Name + ".") + $"0x{x.Chunk.Id & 0xFFF:X3}" +
-                (x.Range.End < int.MaxValue ? $" v{x.Range.Start}-{x.Range.End}" : x.Range.Start > 0 ? $" v{x.Range.Start}+" : ""))) +
+                VersionText(x.Range))) +
             (group.Key ? " header" : " body") + (group.Count() == 1 ? " chunk" : " chunks"));
+        if (archiveRanges.Count > 0)
+            groups = groups.Append("archive" + string.Join(",", archiveRanges.Select(VersionText)));
         code.Line("/// <remarks>Applied with: " + string.Join(", ", groups) + "</remarks>");
 
         foreach (var application in applications)
         {
-            var range = application.Range;
-            var arguments = range.End < int.MaxValue ? $"({range.Start}, {range.End})" :
-                range.Start > 0 ? $"({range.Start})" : "";
             var chunkType = (application.Owner == layout ? "" : application.Owner.QualifiedName + ".") + application.Chunk.Name;
-            code.Line("[AppliedWithChunk<" + chunkType + ">" + arguments + "]");
+            code.Line("[AppliedWithChunk<" + chunkType + ">" + VersionArguments(application.Range) + "]");
         }
+
+        foreach (var range in archiveRanges)
+        {
+            code.Line("[AppliedWithArchive" + VersionArguments(range) + "]");
+        }
+
+        static string VersionText(AppliedWithChunkRanges.Range range)
+            => range.End < int.MaxValue ? $" v{range.Start}-{range.End}" : range.Start > 0 ? $" v{range.Start}+" : "";
+
+        static string VersionArguments(AppliedWithChunkRanges.Range range)
+            => range.End < int.MaxValue ? $"({range.Start}, {range.End})" : range.Start > 0 ? $"({range.Start})" : "";
 
         IEnumerable<(LayoutModel Owner, ChunkModel Chunk, AppliedWithChunkRanges.Range Range)> Applications()
         {

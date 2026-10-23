@@ -13,6 +13,8 @@ public partial class CPlugDynaWaterModel : CMwNod, IClass, IReadableWritable, IR
     internal override uint GetId() => Id;
 
     private float gravity;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public float Gravity
     {
         get => this.gravity;
@@ -76,6 +78,8 @@ public partial class CPlugDynaWaterModel : CMwNod, IClass, IReadableWritable, IR
     }
 
     private NodeRef<CPlugSurface>? surfaceRef;
+    /// <remarks>Applied with: archive v3+</remarks>
+    [AppliedWithArchive(3)]
     public CPlugSurface? Surface
     {
         get => surfaceRef?.Resolve();

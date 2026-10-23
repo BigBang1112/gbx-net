@@ -22,6 +22,8 @@ public partial class CPlugVegetTreeModel : CMwNod, IClass, IReadableWritable, IR
     }
 
     private TextureSet[]? textures;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public TextureSet[]? Textures
     {
         get => this.textures;
@@ -29,6 +31,8 @@ public partial class CPlugVegetTreeModel : CMwNod, IClass, IReadableWritable, IR
     }
 
     private string[]? textureNames;
+    /// <remarks>Applied with: archive v2+</remarks>
+    [AppliedWithArchive(2)]
     public string[]? TextureNames
     {
         get => this.textureNames;
@@ -36,6 +40,8 @@ public partial class CPlugVegetTreeModel : CMwNod, IClass, IReadableWritable, IR
     }
 
     private GeometryGroup[]? geometryGroups;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public GeometryGroup[]? GeometryGroups
     {
         get => this.geometryGroups;
@@ -43,6 +49,8 @@ public partial class CPlugVegetTreeModel : CMwNod, IClass, IReadableWritable, IR
     }
 
     private float[]? distances;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public float[]? Distances
     {
         get => this.distances;
@@ -106,6 +114,8 @@ public partial class CPlugVegetTreeModel : CMwNod, IClass, IReadableWritable, IR
     }
 
     private CollisionSurface? collision;
+    /// <remarks>Applied with: archive v11+</remarks>
+    [AppliedWithArchive(11)]
     public CollisionSurface? Collision
     {
         get => this.collision;
@@ -197,6 +207,8 @@ public partial class CPlugVegetTreeModel : CMwNod, IClass, IReadableWritable, IR
     }
 
     private Additional? additionalData;
+    /// <remarks>Applied with: archive v17+</remarks>
+    [AppliedWithArchive(17)]
     public Additional? AdditionalData
     {
         get => this.additionalData;

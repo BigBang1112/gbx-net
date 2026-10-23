@@ -13,6 +13,8 @@ public partial class CPlugFileGen : CPlugFileImg, IClass, IReadableWritable, IRe
     internal override uint GetId() => Id;
 
     private int genKind;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     [GameVersionDefault(GameVersion.TM2020, 54)]
     public int GenKind
     {
@@ -21,6 +23,8 @@ public partial class CPlugFileGen : CPlugFileImg, IClass, IReadableWritable, IRe
     }
 
     private int[]? intParams;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public int[]? IntParams
     {
         get => this.intParams;
@@ -28,6 +32,8 @@ public partial class CPlugFileGen : CPlugFileImg, IClass, IReadableWritable, IRe
     }
 
     private Vec4[]? colorParams;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public Vec4[]? ColorParams
     {
         get => this.colorParams;
@@ -35,6 +41,8 @@ public partial class CPlugFileGen : CPlugFileImg, IClass, IReadableWritable, IRe
     }
 
     private float[]? realParams;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public float[]? RealParams
     {
         get => this.realParams;
@@ -42,6 +50,8 @@ public partial class CPlugFileGen : CPlugFileImg, IClass, IReadableWritable, IRe
     }
 
     private string? script;
+    /// <remarks>Applied with: archive v3+</remarks>
+    [AppliedWithArchive(3)]
     public string? Script
     {
         get => this.script;
@@ -49,6 +59,8 @@ public partial class CPlugFileGen : CPlugFileImg, IClass, IReadableWritable, IRe
     }
 
     private CFuncKeysReal[]? functions;
+    /// <remarks>Applied with: archive v4+</remarks>
+    [AppliedWithArchive(4)]
     public CFuncKeysReal[]? Functions
     {
         get => this.functions;
@@ -56,6 +68,8 @@ public partial class CPlugFileGen : CPlugFileImg, IClass, IReadableWritable, IRe
     }
 
     private NodeRefList<CPlugFileImg>? inputImages;
+    /// <remarks>Applied with: archive v6+</remarks>
+    [AppliedWithArchive(6)]
     public NodeRefList<CPlugFileImg>? InputImages
     {
         get => inputImages;
@@ -63,6 +77,8 @@ public partial class CPlugFileGen : CPlugFileImg, IClass, IReadableWritable, IRe
     }
 
     private byte[]? pixelData;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public byte[]? PixelData
     {
         get => this.pixelData;

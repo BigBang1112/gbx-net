@@ -13,6 +13,8 @@ public partial class CPlugFileText : CPlugFile, IClass, IReadableWritable, IRead
     internal override uint GetId() => Id;
 
     private string? text;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public string? Text
     {
         get => this.text;

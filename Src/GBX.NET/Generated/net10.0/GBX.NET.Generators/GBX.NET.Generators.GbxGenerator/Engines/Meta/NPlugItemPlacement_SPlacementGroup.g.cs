@@ -13,6 +13,8 @@ public partial class NPlugItemPlacement_SPlacementGroup : SMetaPtr, IClass, IRea
     internal override uint GetId() => Id;
 
     private NPlugItemPlacement_SPlacement[]? placements;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public NPlugItemPlacement_SPlacement[]? Placements
     {
         get => this.placements;

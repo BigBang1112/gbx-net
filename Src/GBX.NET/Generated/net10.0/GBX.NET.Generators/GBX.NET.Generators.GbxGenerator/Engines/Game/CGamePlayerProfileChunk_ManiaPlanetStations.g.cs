@@ -39,6 +39,14 @@ public partial class CGamePlayerProfileChunk_ManiaPlanetStations : CGamePlayerPr
         set => this.isFirstLaunch = value;
     }
 
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
+    [AppliedWithChunk<Chunk03180002>]
+    public partial GameStationDesc[]? Stations { get; set; }
+
+    /// <remarks>Applied with: 0x002 v4+ body chunk</remarks>
+    [AppliedWithChunk<Chunk03180002>(4)]
+    public partial bool HasSeenWelcomePage { get; set; }
+
     private string? latestTitleIdLoaded;
     /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk03180003>]
@@ -124,19 +132,35 @@ public partial class CGamePlayerProfileChunk_ManiaPlanetStations : CGamePlayerPr
     /// </summary>
     [Chunk(0x03180002, "Stations")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 4, 4, 6, 6)]
-    public partial class Chunk03180002 : SkippableChunk<CGamePlayerProfileChunk_ManiaPlanetStations>
+    public partial class Chunk03180002 : SkippableChunk<CGamePlayerProfileChunk_ManiaPlanetStations>, IVersionable
     {
         public override uint Id => 0x03180002;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
+        public Chunk03180002() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03180002(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT)
+            {
+                Version = 4;
+            }
+            else if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 6;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+            ((Chunk03180002)clone).Version = context.Clone(this.Version)!;
             ((Chunk03180002)clone).U01 = context.Clone(this.U01)!;
             ((Chunk03180002)clone).U02 = context.Clone(this.U02)!;
             ((Chunk03180002)clone).U03 = context.Clone(this.U03)!;
             ((Chunk03180002)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk03180002)clone).Version = context.Clone(this.Version)!;
         }
     }
 

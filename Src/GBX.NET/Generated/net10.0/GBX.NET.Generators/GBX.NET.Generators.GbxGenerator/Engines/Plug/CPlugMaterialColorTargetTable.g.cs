@@ -15,6 +15,8 @@ public partial class CPlugMaterialColorTargetTable : CMwNod, IClass, IReadableWr
     public int Version { get; set; } = 3;
 
     private int[]? legacyColors1;
+    /// <remarks>Applied with: archive v0-2</remarks>
+    [AppliedWithArchive(0, 2)]
     public int[]? LegacyColors1
     {
         get => this.legacyColors1;
@@ -22,6 +24,8 @@ public partial class CPlugMaterialColorTargetTable : CMwNod, IClass, IReadableWr
     }
 
     private int[]? legacyColors2;
+    /// <remarks>Applied with: archive v1-2</remarks>
+    [AppliedWithArchive(1, 2)]
     public int[]? LegacyColors2
     {
         get => this.legacyColors2;
@@ -29,6 +33,8 @@ public partial class CPlugMaterialColorTargetTable : CMwNod, IClass, IReadableWr
     }
 
     private int[]? legacyColors3;
+    /// <remarks>Applied with: archive v2-2</remarks>
+    [AppliedWithArchive(2, 2)]
     public int[]? LegacyColors3
     {
         get => this.legacyColors3;
@@ -36,6 +42,8 @@ public partial class CPlugMaterialColorTargetTable : CMwNod, IClass, IReadableWr
     }
 
     private int[]? legacyColors4;
+    /// <remarks>Applied with: archive v2-2</remarks>
+    [AppliedWithArchive(2, 2)]
     public int[]? LegacyColors4
     {
         get => this.legacyColors4;
@@ -43,6 +51,8 @@ public partial class CPlugMaterialColorTargetTable : CMwNod, IClass, IReadableWr
     }
 
     private ColorPair[]? colors;
+    /// <remarks>Applied with: archive v3+</remarks>
+    [AppliedWithArchive(3)]
     public ColorPair[]? Colors
     {
         get => this.colors;

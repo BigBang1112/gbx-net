@@ -13,6 +13,8 @@ public partial class CPlugVehicleVisGeomModel : CMwNod, IClass, IReadableWritabl
     internal override uint GetId() => Id;
 
     private NodeRef<CPlugSolid2Model>? meshNodeRef;
+    /// <remarks>Applied with: archive v3+</remarks>
+    [AppliedWithArchive(3)]
     public CPlugSolid2Model? Mesh
     {
         get => meshNodeRef?.Resolve();
@@ -27,6 +29,8 @@ public partial class CPlugVehicleVisGeomModel : CMwNod, IClass, IReadableWritabl
     }
 
     private DamagePart[]? damageParts;
+    /// <remarks>Applied with: archive v3+</remarks>
+    [AppliedWithArchive(3)]
     public DamagePart[]? DamageParts
     {
         get => this.damageParts;
@@ -34,6 +38,8 @@ public partial class CPlugVehicleVisGeomModel : CMwNod, IClass, IReadableWritabl
     }
 
     private GlassModel[]? glass;
+    /// <remarks>Applied with: archive v3+</remarks>
+    [AppliedWithArchive(3)]
     public GlassModel[]? Glass
     {
         get => this.glass;
@@ -48,6 +54,8 @@ public partial class CPlugVehicleVisGeomModel : CMwNod, IClass, IReadableWritabl
     }
 
     private string? meshRefPath;
+    /// <remarks>Applied with: archive v7+</remarks>
+    [AppliedWithArchive(7)]
     public string? MeshRefPath
     {
         get => this.meshRefPath;
@@ -55,6 +63,8 @@ public partial class CPlugVehicleVisGeomModel : CMwNod, IClass, IReadableWritabl
     }
 
     private NodeRef<CPlugSolid2Model>? meshRefRef;
+    /// <remarks>Applied with: archive v7+</remarks>
+    [AppliedWithArchive(7)]
     public CPlugSolid2Model? MeshRef
     {
         get => meshRefRef?.Resolve();

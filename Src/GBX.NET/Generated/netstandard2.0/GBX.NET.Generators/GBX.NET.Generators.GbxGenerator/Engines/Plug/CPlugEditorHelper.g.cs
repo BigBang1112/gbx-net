@@ -13,6 +13,8 @@ public partial class CPlugEditorHelper : CMwNod, IClass, IReadableWritable, IRea
     internal override uint GetId() => Id;
 
     private NodeRef<CPlugPrefab>? prefabRef;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public CPlugPrefab? Prefab
     {
         get => prefabRef?.Resolve();

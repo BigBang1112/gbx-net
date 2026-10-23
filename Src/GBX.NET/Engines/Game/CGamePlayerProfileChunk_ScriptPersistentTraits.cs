@@ -3,5 +3,5 @@
 public partial class CGamePlayerProfileChunk_ScriptPersistentTraits
 {
     private CScriptTraitsPersistent? scriptPersistentTraits;
-    public CScriptTraitsPersistent? ScriptPersistentTraits { get => scriptPersistentTraits; set => scriptPersistentTraits = value; }
+    public partial CScriptTraitsPersistent? ScriptPersistentTraits { get => scriptPersistentTraits; set => scriptPersistentTraits = value; }
 }

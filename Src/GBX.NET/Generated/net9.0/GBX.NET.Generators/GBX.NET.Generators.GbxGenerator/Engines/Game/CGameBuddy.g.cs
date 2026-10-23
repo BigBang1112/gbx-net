@@ -15,6 +15,8 @@ public partial class CGameBuddy : CMwNod, IClass, IReadableWritable, IReadable, 
     public int Version { get; set; }
 
     private string? login;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public string? Login
     {
         get => this.login;
@@ -36,6 +38,8 @@ public partial class CGameBuddy : CMwNod, IClass, IReadableWritable, IReadable, 
     }
 
     private string? nickName;
+    /// <remarks>Applied with: archive v1+</remarks>
+    [AppliedWithArchive(1)]
     [SupportsFormatting]
     public string? NickName
     {
@@ -58,6 +62,8 @@ public partial class CGameBuddy : CMwNod, IClass, IReadableWritable, IReadable, 
     }
 
     private int skillsRank;
+    /// <remarks>Applied with: archive v1+</remarks>
+    [AppliedWithArchive(1)]
     public int SkillsRank
     {
         get => this.skillsRank;
@@ -65,6 +71,8 @@ public partial class CGameBuddy : CMwNod, IClass, IReadableWritable, IReadable, 
     }
 
     private int skillsPoints;
+    /// <remarks>Applied with: archive v1+</remarks>
+    [AppliedWithArchive(1)]
     public int SkillsPoints
     {
         get => this.skillsPoints;
@@ -72,6 +80,8 @@ public partial class CGameBuddy : CMwNod, IClass, IReadableWritable, IReadable, 
     }
 
     private int ladderRank;
+    /// <remarks>Applied with: archive v1+</remarks>
+    [AppliedWithArchive(1)]
     public int LadderRank
     {
         get => this.ladderRank;
@@ -79,6 +89,8 @@ public partial class CGameBuddy : CMwNod, IClass, IReadableWritable, IReadable, 
     }
 
     private int ladderPoints;
+    /// <remarks>Applied with: archive v1+</remarks>
+    [AppliedWithArchive(1)]
     public int LadderPoints
     {
         get => this.ladderPoints;
@@ -93,6 +105,8 @@ public partial class CGameBuddy : CMwNod, IClass, IReadableWritable, IReadable, 
     }
 
     private bool invited;
+    /// <remarks>Applied with: archive v2+</remarks>
+    [AppliedWithArchive(2)]
     public bool Invited
     {
         get => this.invited;
@@ -100,6 +114,8 @@ public partial class CGameBuddy : CMwNod, IClass, IReadableWritable, IReadable, 
     }
 
     private bool waitingConfimation;
+    /// <remarks>Applied with: archive v2+</remarks>
+    [AppliedWithArchive(2)]
     public bool WaitingConfimation
     {
         get => this.waitingConfimation;
@@ -107,6 +123,8 @@ public partial class CGameBuddy : CMwNod, IClass, IReadableWritable, IReadable, 
     }
 
     private CampaignMedal[]? campaignMedals;
+    /// <remarks>Applied with: archive v3+</remarks>
+    [AppliedWithArchive(3)]
     public CampaignMedal[]? CampaignMedals
     {
         get => this.campaignMedals;
@@ -114,6 +132,8 @@ public partial class CGameBuddy : CMwNod, IClass, IReadableWritable, IReadable, 
     }
 
     private string? path;
+    /// <remarks>Applied with: archive v4+</remarks>
+    [AppliedWithArchive(4)]
     public string? Path
     {
         get => this.path;
@@ -121,6 +141,8 @@ public partial class CGameBuddy : CMwNod, IClass, IReadableWritable, IReadable, 
     }
 
     private bool canReceiveMessages;
+    /// <remarks>Applied with: archive v5+</remarks>
+    [AppliedWithArchive(5)]
     public bool CanReceiveMessages
     {
         get => this.canReceiveMessages;

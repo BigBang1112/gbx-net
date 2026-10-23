@@ -15,6 +15,8 @@ public partial class CPlugAnimJointExprGroup : CMwNod, IClass, IReadableWritable
     public int Version { get; set; }
 
     private Expression[]? expressions;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public Expression[]? Expressions
     {
         get => this.expressions;

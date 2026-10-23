@@ -13,6 +13,8 @@ public partial class NPlugItem_SVariantList : CMwNod, IClass, IReadableWritable,
     internal override uint GetId() => Id;
 
     private NPlugItem_SVariant[]? variants;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public NPlugItem_SVariant[]? Variants
     {
         get => this.variants;

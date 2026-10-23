@@ -13,6 +13,8 @@ public partial class NPlugTrigger_SSpecial : CMwNod, IClass, IReadableWritable, 
     internal override uint GetId() => Id;
 
     private NodeRef<CPlugSurface>? triggerShapeRef;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public CPlugSurface? TriggerShape
     {
         get => triggerShapeRef?.Resolve();
@@ -20,6 +22,8 @@ public partial class NPlugTrigger_SSpecial : CMwNod, IClass, IReadableWritable, 
     }
 
     private bool isMergeable;
+    /// <remarks>Applied with: archive v2+</remarks>
+    [AppliedWithArchive(2)]
     public bool IsMergeable
     {
         get => this.isMergeable;

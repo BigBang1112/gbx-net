@@ -55,6 +55,14 @@
                 break;
             }
         }
+
+        // Nodes without chunks are serialized with their class archive
+        if (!chunkExists && node.Chunks.Count == 0)
+        {
+            var archiveVersion = GetArchiveVersion(node);
+            chunkExists = propertyAttributes.OfType<AppliedWithArchiveAttribute>()
+                .Any(x => archiveVersion is null || x.Applies(archiveVersion.Value));
+        }
     }
 
     var isNotIncluded = isNodePropertyWithAppliedWithChunkAttributes && !chunkExists;
@@ -249,6 +257,18 @@
     private DynamicComponent? valueRendererDynamic;
 
     private ValueRenderer? ValueRenderer => valueRendererDynamic?.Instance as ValueRenderer;
+
+    /// <summary>
+    /// Gets the version the class archive was serialized with, or null if it's unknown.
+    /// </summary>
+    private static int? GetArchiveVersion(CMwNod node) => node switch
+    {
+        // Profile chunks pass the first stored archive version to the archive
+        GBX.NET.Engines.Game.CGamePlayerProfileChunk profileChunk => profileChunk.SkipArchiveVersion ?? profileChunk.ArchiveVersion,
+        // Archives with their own version
+        IVersionable versionable => versionable.Version,
+        _ => null
+    };
 
     /// <summary>
     /// Owner of the property. Ignored on enumerable elements.

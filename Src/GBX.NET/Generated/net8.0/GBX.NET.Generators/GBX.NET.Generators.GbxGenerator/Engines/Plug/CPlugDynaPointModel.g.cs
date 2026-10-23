@@ -15,6 +15,8 @@ public partial class CPlugDynaPointModel : CMwNod, IClass, IReadableWritable, IR
     public int Version { get; set; }
 
     private Vec3 center;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public Vec3 Center
     {
         get => this.center;
@@ -22,6 +24,8 @@ public partial class CPlugDynaPointModel : CMwNod, IClass, IReadableWritable, IR
     }
 
     private float radius = 0.5f;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public float Radius
     {
         get => this.radius;
@@ -29,6 +33,8 @@ public partial class CPlugDynaPointModel : CMwNod, IClass, IReadableWritable, IR
     }
 
     private float friction = 0.8f;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public float Friction
     {
         get => this.friction;
@@ -36,6 +42,8 @@ public partial class CPlugDynaPointModel : CMwNod, IClass, IReadableWritable, IR
     }
 
     private float restitution = 0.5f;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public float Restitution
     {
         get => this.restitution;
@@ -43,6 +51,8 @@ public partial class CPlugDynaPointModel : CMwNod, IClass, IReadableWritable, IR
     }
 
     private float gravityCoef = 1;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public float GravityCoef
     {
         get => this.gravityCoef;

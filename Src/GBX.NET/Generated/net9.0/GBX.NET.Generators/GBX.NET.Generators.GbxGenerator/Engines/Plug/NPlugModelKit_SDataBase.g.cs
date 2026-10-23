@@ -15,6 +15,8 @@ public partial class NPlugModelKit_SDataBase : CMwNod, IClass, IReadableWritable
     public int Version { get; set; } = 6;
 
     private Option[]? options;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public Option[]? Options
     {
         get => this.options;
@@ -22,6 +24,8 @@ public partial class NPlugModelKit_SDataBase : CMwNod, IClass, IReadableWritable
     }
 
     private ushort[]? defaultOptions;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public ushort[]? DefaultOptions
     {
         get => this.defaultOptions;
@@ -29,6 +33,8 @@ public partial class NPlugModelKit_SDataBase : CMwNod, IClass, IReadableWritable
     }
 
     private Material[]? materials;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public Material[]? Materials
     {
         get => this.materials;
@@ -36,6 +42,8 @@ public partial class NPlugModelKit_SDataBase : CMwNod, IClass, IReadableWritable
     }
 
     private PartFile[]? partFiles;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public PartFile[]? PartFiles
     {
         get => this.partFiles;
@@ -43,6 +51,8 @@ public partial class NPlugModelKit_SDataBase : CMwNod, IClass, IReadableWritable
     }
 
     private PartVersion[]? allPartVersions;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public PartVersion[]? AllPartVersions
     {
         get => this.allPartVersions;
@@ -50,6 +60,8 @@ public partial class NPlugModelKit_SDataBase : CMwNod, IClass, IReadableWritable
     }
 
     private Part[]? parts;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public Part[]? Parts
     {
         get => this.parts;
@@ -57,6 +69,8 @@ public partial class NPlugModelKit_SDataBase : CMwNod, IClass, IReadableWritable
     }
 
     private Model[]? models;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public Model[]? Models
     {
         get => this.models;
@@ -64,6 +78,8 @@ public partial class NPlugModelKit_SDataBase : CMwNod, IClass, IReadableWritable
     }
 
     private NodeRefList<CMwNod>? resources;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public NodeRefList<CMwNod>? Resources
     {
         get => resources;

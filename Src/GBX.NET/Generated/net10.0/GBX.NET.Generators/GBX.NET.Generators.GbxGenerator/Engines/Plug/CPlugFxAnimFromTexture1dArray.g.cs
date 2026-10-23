@@ -15,6 +15,8 @@ public partial class CPlugFxAnimFromTexture1dArray : CMwNod, IClass, IReadableWr
     public int Version { get; set; }
 
     private Elem[]? elems;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public Elem[]? Elems
     {
         get => this.elems;

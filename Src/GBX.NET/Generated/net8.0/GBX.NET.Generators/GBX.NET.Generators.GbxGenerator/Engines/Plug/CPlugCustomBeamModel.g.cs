@@ -13,6 +13,8 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
     internal override uint GetId() => Id;
 
     private string? bulletName;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public string? BulletName
     {
         get => this.bulletName;
@@ -111,6 +113,8 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
     }
 
     private int laserDamage;
+    /// <remarks>Applied with: archive v5+</remarks>
+    [AppliedWithArchive(5)]
     public int LaserDamage
     {
         get => this.laserDamage;
@@ -118,6 +122,8 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
     }
 
     private float laserRadiusDamage;
+    /// <remarks>Applied with: archive v6+</remarks>
+    [AppliedWithArchive(6)]
     public float LaserRadiusDamage
     {
         get => this.laserRadiusDamage;
@@ -125,6 +131,8 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
     }
 
     private float bulletVsRadius;
+    /// <remarks>Applied with: archive v7+</remarks>
+    [AppliedWithArchive(7)]
     public float BulletVsRadius
     {
         get => this.bulletVsRadius;
@@ -132,6 +140,8 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
     }
 
     private Vec3 visualOffsetFirstPerson;
+    /// <remarks>Applied with: archive v8+</remarks>
+    [AppliedWithArchive(8)]
     public Vec3 VisualOffsetFirstPerson
     {
         get => this.visualOffsetFirstPerson;
@@ -139,6 +149,8 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
     }
 
     private byte beamType;
+    /// <remarks>Applied with: archive v8+</remarks>
+    [AppliedWithArchive(8)]
     public byte BeamType
     {
         get => this.beamType;
@@ -146,6 +158,8 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
     }
 
     private float laserDispersionAngle;
+    /// <remarks>Applied with: archive v9+</remarks>
+    [AppliedWithArchive(9)]
     public float LaserDispersionAngle
     {
         get => this.laserDispersionAngle;
@@ -153,6 +167,8 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
     }
 
     private bool damageAttenuationWithDist;
+    /// <remarks>Applied with: archive v10+</remarks>
+    [AppliedWithArchive(10)]
     public bool DamageAttenuationWithDist
     {
         get => this.damageAttenuationWithDist;
@@ -174,6 +190,8 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
     }
 
     private NodeRef<CFuncKeysReal>? damageAttenuationFromDistRef;
+    /// <remarks>Applied with: archive v11+</remarks>
+    [AppliedWithArchive(11)]
     public CFuncKeysReal? DamageAttenuationFromDist
     {
         get => damageAttenuationFromDistRef?.Resolve();
@@ -181,6 +199,8 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
     }
 
     private float maxDistance;
+    /// <remarks>Applied with: archive v12+</remarks>
+    [AppliedWithArchive(12)]
     public float MaxDistance
     {
         get => this.maxDistance;
@@ -195,6 +215,8 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
     }
 
     private float laserRadius;
+    /// <remarks>Applied with: archive v12+</remarks>
+    [AppliedWithArchive(12)]
     public float LaserRadius
     {
         get => this.laserRadius;
@@ -202,6 +224,8 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
     }
 
     private float blowRadius;
+    /// <remarks>Applied with: archive v13+</remarks>
+    [AppliedWithArchive(13)]
     public float BlowRadius
     {
         get => this.blowRadius;
@@ -209,6 +233,8 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
     }
 
     private float blowValue;
+    /// <remarks>Applied with: archive v13+</remarks>
+    [AppliedWithArchive(13)]
     public float BlowValue
     {
         get => this.blowValue;
@@ -216,6 +242,8 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
     }
 
     private bool laserShowAdvancedCrosshair;
+    /// <remarks>Applied with: archive v14+</remarks>
+    [AppliedWithArchive(14)]
     public bool LaserShowAdvancedCrosshair
     {
         get => this.laserShowAdvancedCrosshair;

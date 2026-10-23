@@ -20,6 +20,8 @@ public partial class CPlugTriggerAction : CMwNod, IClass, IReadableWritable, IRe
     }
 
     private float endYaw;
+    /// <remarks>Applied with: archive v4+</remarks>
+    [AppliedWithArchive(4)]
     public float EndYaw
     {
         get => this.endYaw;
@@ -27,6 +29,8 @@ public partial class CPlugTriggerAction : CMwNod, IClass, IReadableWritable, IRe
     }
 
     private Vec3 endPos;
+    /// <remarks>Applied with: archive v4+</remarks>
+    [AppliedWithArchive(4)]
     public Vec3 EndPos
     {
         get => this.endPos;
@@ -41,6 +45,8 @@ public partial class CPlugTriggerAction : CMwNod, IClass, IReadableWritable, IRe
     }
 
     private int actionIndex;
+    /// <remarks>Applied with: archive v2+</remarks>
+    [AppliedWithArchive(2)]
     public int ActionIndex
     {
         get => this.actionIndex;
@@ -48,6 +54,8 @@ public partial class CPlugTriggerAction : CMwNod, IClass, IReadableWritable, IRe
     }
 
     private EType @type;
+    /// <remarks>Applied with: archive v1+</remarks>
+    [AppliedWithArchive(1)]
     public EType Type
     {
         get => this.@type;
@@ -62,6 +70,8 @@ public partial class CPlugTriggerAction : CMwNod, IClass, IReadableWritable, IRe
     }
 
     private float startYaw;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public float StartYaw
     {
         get => this.startYaw;
@@ -69,6 +79,8 @@ public partial class CPlugTriggerAction : CMwNod, IClass, IReadableWritable, IRe
     }
 
     private Vec3 startPos;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public Vec3 StartPos
     {
         get => this.startPos;
@@ -76,6 +88,8 @@ public partial class CPlugTriggerAction : CMwNod, IClass, IReadableWritable, IRe
     }
 
     private float radius = 1f;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public float Radius
     {
         get => this.radius;
@@ -83,6 +97,8 @@ public partial class CPlugTriggerAction : CMwNod, IClass, IReadableWritable, IRe
     }
 
     private float height = 1f;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public float Height
     {
         get => this.height;

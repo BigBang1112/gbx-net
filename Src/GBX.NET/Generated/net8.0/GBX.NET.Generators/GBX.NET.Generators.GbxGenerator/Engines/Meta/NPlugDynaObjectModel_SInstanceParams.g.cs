@@ -13,6 +13,8 @@ public partial class NPlugDynaObjectModel_SInstanceParams : SMetaPtr, IClass, IR
     internal override uint GetId() => Id;
 
     private float periodSc;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public float PeriodSc
     {
         get => this.periodSc;
@@ -20,6 +22,8 @@ public partial class NPlugDynaObjectModel_SInstanceParams : SMetaPtr, IClass, IR
     }
 
     private int textureId;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public int TextureId
     {
         get => this.textureId;
@@ -27,6 +31,8 @@ public partial class NPlugDynaObjectModel_SInstanceParams : SMetaPtr, IClass, IR
     }
 
     private bool isKinematic;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public bool IsKinematic
     {
         get => this.isKinematic;
@@ -34,6 +40,8 @@ public partial class NPlugDynaObjectModel_SInstanceParams : SMetaPtr, IClass, IR
     }
 
     private float periodScMax;
+    /// <remarks>Applied with: archive v1+</remarks>
+    [AppliedWithArchive(1)]
     public float PeriodScMax
     {
         get => this.periodScMax;
@@ -41,6 +49,8 @@ public partial class NPlugDynaObjectModel_SInstanceParams : SMetaPtr, IClass, IR
     }
 
     private float phase01;
+    /// <remarks>Applied with: archive v1+</remarks>
+    [AppliedWithArchive(1)]
     public float Phase01
     {
         get => this.phase01;
@@ -48,6 +58,8 @@ public partial class NPlugDynaObjectModel_SInstanceParams : SMetaPtr, IClass, IR
     }
 
     private float phase01Max;
+    /// <remarks>Applied with: archive v1+</remarks>
+    [AppliedWithArchive(1)]
     public float Phase01Max
     {
         get => this.phase01Max;
@@ -55,6 +67,8 @@ public partial class NPlugDynaObjectModel_SInstanceParams : SMetaPtr, IClass, IR
     }
 
     private bool castStaticShadow;
+    /// <remarks>Applied with: archive v2+</remarks>
+    [AppliedWithArchive(2)]
     public bool CastStaticShadow
     {
         get => this.castStaticShadow;

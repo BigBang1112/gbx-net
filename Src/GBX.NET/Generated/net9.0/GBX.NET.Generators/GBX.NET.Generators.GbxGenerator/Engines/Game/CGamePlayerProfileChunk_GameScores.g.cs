@@ -22,8 +22,14 @@ public partial class CGamePlayerProfileChunk_GameScores : CGamePlayerProfileChun
     }
 
     private NodeRef<CGamePlayerOfficialScores>? officialScores1Ref;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
+    [AppliedWithChunk<Chunk03146001>]
+    public partial CGamePlayerOfficialScores? OfficialScores1 { get; set; }
 
     private NodeRef<CGamePlayerOfficialScores>? officialScores2Ref;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
+    [AppliedWithChunk<Chunk03146004>]
+    public partial CGamePlayerOfficialScores? OfficialScores2 { get; set; }
 
     private LadderMatchResult[]? ladderMatchResults;
     /// <remarks>Applied with: 0x005 body chunk</remarks>

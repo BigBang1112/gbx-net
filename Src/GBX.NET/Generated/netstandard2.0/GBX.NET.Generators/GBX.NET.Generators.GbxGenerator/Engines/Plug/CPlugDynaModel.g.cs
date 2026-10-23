@@ -15,6 +15,8 @@ public partial class CPlugDynaModel : CMwNod, IClass, IReadableWritable, IReadab
     public int Version { get; set; } = 4;
 
     private float linearMass = 1;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public float LinearMass
     {
         get => this.linearMass;
@@ -22,6 +24,8 @@ public partial class CPlugDynaModel : CMwNod, IClass, IReadableWritable, IReadab
     }
 
     private float maxDistPerStep = 0.3f;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public float MaxDistPerStep
     {
         get => this.maxDistPerStep;
@@ -29,6 +33,8 @@ public partial class CPlugDynaModel : CMwNod, IClass, IReadableWritable, IReadab
     }
 
     private Vec3 centerOfMass;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public Vec3 CenterOfMass
     {
         get => this.centerOfMass;
@@ -36,6 +42,8 @@ public partial class CPlugDynaModel : CMwNod, IClass, IReadableWritable, IReadab
     }
 
     private Mat3 inverseInertiaMatrix = (0.23873241f, 0, 0, 0, 0.23873241f, 0, 0, 0, 0.23873241f);
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public Mat3 InverseInertiaMatrix
     {
         get => this.inverseInertiaMatrix;
@@ -43,6 +51,8 @@ public partial class CPlugDynaModel : CMwNod, IClass, IReadableWritable, IReadab
     }
 
     private float angularSpeedClamp = 10000;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public float AngularSpeedClamp
     {
         get => this.angularSpeedClamp;
@@ -50,6 +60,8 @@ public partial class CPlugDynaModel : CMwNod, IClass, IReadableWritable, IReadab
     }
 
     private bool useTMSimulation = true;
+    /// <remarks>Applied with: archive v1+</remarks>
+    [AppliedWithArchive(1)]
     public bool UseTMSimulation
     {
         get => this.useTMSimulation;
@@ -57,6 +69,8 @@ public partial class CPlugDynaModel : CMwNod, IClass, IReadableWritable, IReadab
     }
 
     private ESleepingMethod sleepingMethod = ESleepingMethod.LowLinearVel_AngularVel;
+    /// <remarks>Applied with: archive v2+</remarks>
+    [AppliedWithArchive(2)]
     public ESleepingMethod SleepingMethod
     {
         get => this.sleepingMethod;
@@ -64,6 +78,8 @@ public partial class CPlugDynaModel : CMwNod, IClass, IReadableWritable, IReadab
     }
 
     private bool enableSubStepping;
+    /// <remarks>Applied with: archive v3+</remarks>
+    [AppliedWithArchive(3)]
     public bool EnableSubStepping
     {
         get => this.enableSubStepping;
@@ -71,6 +87,8 @@ public partial class CPlugDynaModel : CMwNod, IClass, IReadableWritable, IReadab
     }
 
     private NodeRef<CPlugDynaWaterModel>? waterModelRef;
+    /// <remarks>Applied with: archive v4+</remarks>
+    [AppliedWithArchive(4)]
     public CPlugDynaWaterModel? WaterModel
     {
         get => waterModelRef?.Resolve();

@@ -13,6 +13,8 @@ public partial class NPlugItemPlacement_SGroups : CMwNod, IClass, IReadableWrita
     internal override uint GetId() => Id;
 
     private SIdGroup[]? idGroups;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public SIdGroup[]? IdGroups
     {
         get => this.idGroups;
@@ -20,6 +22,8 @@ public partial class NPlugItemPlacement_SGroups : CMwNod, IClass, IReadableWrita
     }
 
     private SSizeGroup[]? sizeGroups;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public SSizeGroup[]? SizeGroups
     {
         get => this.sizeGroups;

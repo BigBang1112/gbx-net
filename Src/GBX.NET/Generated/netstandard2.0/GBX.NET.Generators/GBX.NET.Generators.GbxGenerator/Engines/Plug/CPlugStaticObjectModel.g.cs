@@ -13,6 +13,8 @@ public partial class CPlugStaticObjectModel : CMwNod, IClass, IReadableWritable,
     internal override uint GetId() => Id;
 
     private int version;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public int Version
     {
         get => this.version;
@@ -20,6 +22,8 @@ public partial class CPlugStaticObjectModel : CMwNod, IClass, IReadableWritable,
     }
 
     private NodeRef<CPlugSolid2Model>? meshRef;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public CPlugSolid2Model? Mesh
     {
         get => meshRef?.Resolve();
@@ -27,6 +31,8 @@ public partial class CPlugStaticObjectModel : CMwNod, IClass, IReadableWritable,
     }
 
     private bool isMeshCollidable;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public bool IsMeshCollidable
     {
         get => this.isMeshCollidable;
@@ -34,6 +40,8 @@ public partial class CPlugStaticObjectModel : CMwNod, IClass, IReadableWritable,
     }
 
     private NodeRef<CPlugSurface>? shapeRef;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public CPlugSurface? Shape
     {
         get => shapeRef?.Resolve();

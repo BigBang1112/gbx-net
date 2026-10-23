@@ -8,6 +8,7 @@ public abstract class CGamePlayerProfileChunk_ManiaPlanetStationsBuilderBase<TSe
     private protected CGamePlayerProfileChunk_ManiaPlanetStationsBuilderBase() { }
     private protected CGamePlayerProfileChunk_ManiaPlanetStationsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStations> state) : base(state) { }
     private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
+    public TSelf WithHasSeenWelcomePage(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStationsBuilderAssignments.GetHasSeenWelcomePageAssignment(), value, SupportedGames1);
     public TSelf WithLatestTitleIdLoaded(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStationsBuilderAssignments.GetLatestTitleIdLoadedAssignment(), value, SupportedGames1);
     public TSelf WithStations(params global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStations.GameStationDesc[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStationsBuilderAssignments.GetStationsAssignment(), value, SupportedGames1);
     public TSelf WithStations(IEnumerable<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStations.GameStationDesc> values) => WithStations(values.ToArray());
@@ -17,7 +18,7 @@ public partial class CGamePlayerProfileChunk_ManiaPlanetStationsBuilder : CGameP
     private static global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStations CreateRecipe0(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStations();
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStations.Chunk03180002());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStations.Chunk03180002(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStations.Chunk03180003(game));
         return node;
     }

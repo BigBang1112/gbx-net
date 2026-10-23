@@ -765,19 +765,25 @@ CGamePlayerProfile 0x0308C000
 0x07B (skippable)
   int
 
-0x07C (skippable) [MP3, TMT, MP4, TM2020]
+0x07C (skippable, demonstration: partial) [MP3, TMT, MP4, TM2020]
   id ProfileId
   string ProfileName
+  // Each old profile chunk is preceded by its class ID, names, checksum, update time and archive versions.
+  CGamePlayerProfileChunk[] OldProfileChunks (direct)
 
-0x07D (skippable)
+0x07D (skippable, demonstration: partial)
   version
   id ProfileId
   string ProfileName
+  // Each profile chunk is preceded by its class ID, names, checksum and update time, and stored as data.
+  CGamePlayerProfileChunk[] ProfileChunks (direct)
 
-0x07E (skippable) [MP3.v2, TMT.v2, MP4.v2, TM2020.v2]
+0x07E (skippable, demonstration: partial) [MP3.v2, TMT.v2, MP4.v2, TM2020.v2]
   version
   id ProfileId
   string ProfileName
+  // Each profile chunk is preceded by its class ID, names, checksum, update time and v2+ creation time, and stored as data.
+  CGamePlayerProfileChunk[] ProfileChunks (direct)
 
 0x240B5003 (not-remapped) [VSK5, TMF]
   string

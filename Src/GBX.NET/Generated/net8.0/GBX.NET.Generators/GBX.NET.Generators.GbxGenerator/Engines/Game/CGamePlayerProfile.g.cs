@@ -901,6 +901,15 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         set => this.lastSessionId = value;
     }
 
+    /// <remarks>Applied with: 0x07C body chunk</remarks>
+    [AppliedWithChunk<Chunk0308C07C>]
+    public partial CGamePlayerProfileChunk[]? OldProfileChunks { get; set; }
+
+    /// <remarks>Applied with: 0x07D, 0x07E body chunks</remarks>
+    [AppliedWithChunk<Chunk0308C07D>]
+    [AppliedWithChunk<Chunk0308C07E>]
+    public partial CGamePlayerProfileChunk[]? ProfileChunks { get; set; }
+
     private ChallengeOpponent[]? challengeOpponents;
     /// <remarks>Applied with: 0x006 body chunk</remarks>
     [AppliedWithChunk<Chunk240B5006>]

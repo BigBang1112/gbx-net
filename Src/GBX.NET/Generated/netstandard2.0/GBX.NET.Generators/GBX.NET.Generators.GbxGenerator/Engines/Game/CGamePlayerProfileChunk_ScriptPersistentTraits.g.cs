@@ -12,6 +12,10 @@ public partial class CGamePlayerProfileChunk_ScriptPersistentTraits : CGamePlaye
 
     internal override uint GetId() => Id;
 
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk03170000>]
+    public partial CScriptTraitsPersistent? ScriptPersistentTraits { get; set; }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);

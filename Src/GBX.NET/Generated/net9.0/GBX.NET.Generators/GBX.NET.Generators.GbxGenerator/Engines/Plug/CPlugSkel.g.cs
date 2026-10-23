@@ -13,6 +13,8 @@ public partial class CPlugSkel : CMwNod, IClass, IReadableWritable, IReadable, I
     internal override uint GetId() => Id;
 
     private string name = "";
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public string Name
     {
         get => this.name;
@@ -20,6 +22,8 @@ public partial class CPlugSkel : CMwNod, IClass, IReadableWritable, IReadable, I
     }
 
     private Joint[] joints = [];
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public Joint[] Joints
     {
         get => this.joints;
@@ -27,6 +31,8 @@ public partial class CPlugSkel : CMwNod, IClass, IReadableWritable, IReadable, I
     }
 
     private Setup? skelSetup;
+    /// <remarks>Applied with: archive v2+</remarks>
+    [AppliedWithArchive(2)]
     public Setup? SkelSetup
     {
         get => this.skelSetup;
@@ -34,6 +40,8 @@ public partial class CPlugSkel : CMwNod, IClass, IReadableWritable, IReadable, I
     }
 
     private Socket[] sockets = [];
+    /// <remarks>Applied with: archive v6+</remarks>
+    [AppliedWithArchive(6)]
     public Socket[] Sockets
     {
         get => this.sockets;
@@ -41,6 +49,8 @@ public partial class CPlugSkel : CMwNod, IClass, IReadableWritable, IReadable, I
     }
 
     private ExtraJoints? additionalJoints;
+    /// <remarks>Applied with: archive v9+</remarks>
+    [AppliedWithArchive(9)]
     public ExtraJoints? AdditionalJoints
     {
         get => this.additionalJoints;
@@ -61,6 +71,8 @@ public partial class CPlugSkel : CMwNod, IClass, IReadableWritable, IReadable, I
     /// <summary>
     /// Animation LOD index for each joint.
     /// </summary>
+    /// <remarks>Applied with: archive v16+</remarks>
+    [AppliedWithArchive(16)]
     public byte[]? AnimLodIndexs
     {
         get => this.animLodIndexs;
@@ -75,6 +87,8 @@ public partial class CPlugSkel : CMwNod, IClass, IReadableWritable, IReadable, I
     }
 
     private int jointExprVersion;
+    /// <remarks>Applied with: archive v14-14</remarks>
+    [AppliedWithArchive(14, 14)]
     public int JointExprVersion
     {
         get => this.jointExprVersion;
@@ -82,6 +96,8 @@ public partial class CPlugSkel : CMwNod, IClass, IReadableWritable, IReadable, I
     }
 
     private JointExpr[] jointExprs = [];
+    /// <remarks>Applied with: archive v14-14</remarks>
+    [AppliedWithArchive(14, 14)]
     public JointExpr[] JointExprs
     {
         get => this.jointExprs;
@@ -103,6 +119,8 @@ public partial class CPlugSkel : CMwNod, IClass, IReadableWritable, IReadable, I
     }
 
     private byte animLodCount = 1;
+    /// <remarks>Applied with: archive v17+</remarks>
+    [AppliedWithArchive(17)]
     public byte AnimLodCount
     {
         get => this.animLodCount;
@@ -110,6 +128,8 @@ public partial class CPlugSkel : CMwNod, IClass, IReadableWritable, IReadable, I
     }
 
     private float[]? animLodDistances;
+    /// <remarks>Applied with: archive v17+</remarks>
+    [AppliedWithArchive(17)]
     public float[]? AnimLodDistances
     {
         get => this.animLodDistances;

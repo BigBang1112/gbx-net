@@ -13,6 +13,8 @@ public partial class CPlugAnimSpotModel : CMwNod, IClass, IReadableWritable, IRe
     internal override uint GetId() => Id;
 
     private string? name;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public string? Name
     {
         get => this.name;
@@ -20,6 +22,8 @@ public partial class CPlugAnimSpotModel : CMwNod, IClass, IReadableWritable, IRe
     }
 
     private string[]? clipNames;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
     public string[]? ClipNames
     {
         get => this.clipNames;
@@ -27,6 +31,8 @@ public partial class CPlugAnimSpotModel : CMwNod, IClass, IReadableWritable, IRe
     }
 
     private int spotType;
+    /// <remarks>Applied with: archive v1+</remarks>
+    [AppliedWithArchive(1)]
     public int SpotType
     {
         get => this.spotType;
