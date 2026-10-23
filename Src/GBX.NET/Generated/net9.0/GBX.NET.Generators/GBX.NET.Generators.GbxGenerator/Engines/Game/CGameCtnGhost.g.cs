@@ -2013,11 +2013,14 @@ public partial class CGameCtnGhost : CGameGhost, IClass
             set => this.version = value;
         }
 
-        private int u01;
-        public int U01
+        private TimeInt32 startTime;
+        /// <summary>
+        /// replay time of the first input tick
+        /// </summary>
+        public TimeInt32 StartTime
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.startTime;
+            set => this.startTime = value;
         }
 
         private TimeInt32? startOffset;
@@ -2052,7 +2055,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
             ((PlayerInputData)clone).version = context.Clone(this.version)!;
-            ((PlayerInputData)clone).u01 = context.Clone(this.u01)!;
+            ((PlayerInputData)clone).startTime = context.Clone(this.startTime)!;
             ((PlayerInputData)clone).startOffset = context.Clone(this.startOffset)!;
             ((PlayerInputData)clone).ticks = context.Clone(this.ticks)!;
             ((PlayerInputData)clone).data = context.CloneArray(this.data)!;
@@ -2063,7 +2066,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.EnumInt32<EVersion>(ref this.version);
-            rw.Int32(ref this.u01);
+            rw.TimeInt32(ref this.startTime);
 
             if (v >= 4)
             {
