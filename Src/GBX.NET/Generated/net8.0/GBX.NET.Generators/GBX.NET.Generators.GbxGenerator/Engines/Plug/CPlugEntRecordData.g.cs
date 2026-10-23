@@ -58,35 +58,50 @@ public partial class CPlugEntRecordData : CMwNod, IClass
             set => this.classId = value;
         }
 
-        private int u01;
-        public int U01
+        private int stateSize;
+        /// <summary>
+        /// byte size of one recorded state
+        /// </summary>
+        public int StateSize
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.stateSize;
+            set => this.stateSize = value;
         }
 
-        private int u02;
-        public int U02
+        private int sceneUIdOffset = -1;
+        /// <summary>
+        /// byte offset of the scene UID within a state
+        /// </summary>
+        public int SceneUIdOffset
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.sceneUIdOffset;
+            set => this.sceneUIdOffset = value;
         }
 
-        private int u03;
-        public int U03
+        private int stateArchiveVersion = -1;
+        /// <summary>
+        /// version passed to the state serializer
+        /// </summary>
+        public int StateArchiveVersion
         {
-            get => this.u03;
-            set => this.u03 = value;
+            get => this.stateArchiveVersion;
+            set => this.stateArchiveVersion = value;
         }
 
-        private byte[]? u04;
-        public byte[]? U04
+        private byte[]? initialState;
+        /// <summary>
+        /// state that a newly recorded entity starts from
+        /// </summary>
+        public byte[]? InitialState
         {
-            get => this.u04;
-            set => this.u04 = value;
+            get => this.initialState;
+            set => this.initialState = value;
         }
 
         private int u05;
+        /// <summary>
+        /// discarded, written as 0
+        /// </summary>
         public int U05
         {
             get => this.u05;
@@ -104,20 +119,20 @@ public partial class CPlugEntRecordData : CMwNod, IClass
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
             ((EntRecordDesc)clone).classId = context.Clone(this.classId)!;
-            ((EntRecordDesc)clone).u01 = context.Clone(this.u01)!;
-            ((EntRecordDesc)clone).u02 = context.Clone(this.u02)!;
-            ((EntRecordDesc)clone).u03 = context.Clone(this.u03)!;
-            ((EntRecordDesc)clone).u04 = context.CloneArray(this.u04)!;
+            ((EntRecordDesc)clone).stateSize = context.Clone(this.stateSize)!;
+            ((EntRecordDesc)clone).sceneUIdOffset = context.Clone(this.sceneUIdOffset)!;
+            ((EntRecordDesc)clone).stateArchiveVersion = context.Clone(this.stateArchiveVersion)!;
+            ((EntRecordDesc)clone).initialState = context.CloneArray(this.initialState)!;
             ((EntRecordDesc)clone).u05 = context.Clone(this.u05)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.UInt32(ref this.classId);
-            rw.Int32(ref this.u01);
-            rw.Int32(ref this.u02);
-            rw.Int32(ref this.u03);
-            rw.Data(ref this.u04);
+            rw.Int32(ref this.stateSize);
+            rw.Int32(ref this.sceneUIdOffset);
+            rw.Int32(ref this.stateArchiveVersion);
+            rw.Data(ref this.initialState);
             rw.Int32(ref this.u05);
         }
 
@@ -136,18 +151,21 @@ public partial class CPlugEntRecordData : CMwNod, IClass
 
     public partial class NoticeRecordDesc : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private int u01;
-        public int U01
+        private int noticeArchiveVersion = -1;
+        /// <summary>
+        /// version passed to the notice serializer
+        /// </summary>
+        public int NoticeArchiveVersion
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.noticeArchiveVersion;
+            set => this.noticeArchiveVersion = value;
         }
 
-        private int u02;
-        public int U02
+        private int noticeType = -1;
+        public int NoticeType
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.noticeType;
+            set => this.noticeType = value;
         }
 
         private uint? classId;
@@ -167,15 +185,15 @@ public partial class CPlugEntRecordData : CMwNod, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((NoticeRecordDesc)clone).u01 = context.Clone(this.u01)!;
-            ((NoticeRecordDesc)clone).u02 = context.Clone(this.u02)!;
+            ((NoticeRecordDesc)clone).noticeArchiveVersion = context.Clone(this.noticeArchiveVersion)!;
+            ((NoticeRecordDesc)clone).noticeType = context.Clone(this.noticeType)!;
             ((NoticeRecordDesc)clone).classId = context.Clone(this.classId)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Int32(ref this.u01);
-            rw.Int32(ref this.u02);
+            rw.Int32(ref this.noticeArchiveVersion);
+            rw.Int32(ref this.noticeType);
 
             if (v >= 4)
             {
