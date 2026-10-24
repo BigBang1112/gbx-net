@@ -32,7 +32,9 @@ public class GbxValidationChunkTests
             clip.ReadWrite(rw);
         }
         var expectedPrefix = originalBody.ToArray()[..^4];
+        var beforeSave = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
         var saved = Save(clip, compression);
+        var afterSave = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
         var body = GetBody(saved);
 
         await Assert.That(body[..expectedPrefix.Length]).IsEquivalentTo(expectedPrefix, CollectionOrdering.Matching);
@@ -45,10 +47,14 @@ public class GbxValidationChunkTests
         var payloadStart = input.Position;
         await Assert.That(Encoding.ASCII.GetString(reader.ReadBytes(4))).IsEqualTo("GBXN");
         await Assert.That(reader.ReadInt32()).IsEqualTo(1);
-        await Assert.That(reader.ReadInt64()).IsEqualTo((long)expectedPrefix.Length);
-        await Assert.That(reader.ReadBytes(32)).IsEquivalentTo(SHA256.HashData(expectedPrefix), CollectionOrdering.Matching);
         await Assert.That(reader.ReadString()).IsEqualTo(SimplestGit.CommitHash);
         await Assert.That(reader.ReadString()).IsEqualTo(SimplestGit.Tag);
+        var timestamp = reader.ReadInt64();
+        await Assert.That(timestamp >= beforeSave && timestamp <= afterSave).IsTrue();
+        var byteCount = reader.ReadInt64();
+        var hashStart = checked((int)input.Position);
+        await Assert.That(byteCount).IsEqualTo((long)hashStart);
+        await Assert.That(reader.ReadBytes(32)).IsEquivalentTo(SHA256.HashData(body.AsSpan(0, hashStart)), CollectionOrdering.Matching);
         await Assert.That(input.Position - payloadStart).IsEqualTo((long)size);
         await Assert.That(reader.ReadUInt32()).IsEqualTo(0xFACADE01u);
         await Assert.That(input.Position).IsEqualTo(input.Length);
@@ -60,7 +66,36 @@ public class GbxValidationChunkTests
         await Assert.That(reparsed.Node.Chunks.Contains(ChunkId)).IsFalse();
         await Assert.That(reparsed.Node.Tracks![0].Chunks.Contains(ChunkId)).IsFalse();
         await Assert.That(reparsed.Node.Tracks[0].Name).IsEqualTo(track.Name);
-        await Assert.That(Save(reparsed.Node, compression)).IsEquivalentTo(saved, CollectionOrdering.Matching);
+        await GbxAssert.HaveEqualSavedBytes(saved, Save(reparsed.Node, compression));
+    }
+
+    [Test]
+    [Arguments(0)]
+    [Arguments(3)]
+    public async Task Write_HashesThroughMetadataWithoutIncludingTrailingBufferBytes(int prefixLength)
+    {
+        using var output = new MemoryStream();
+        // Leave stale bytes beyond the current position to check the hash boundary.
+        output.Write(Enumerable.Repeat((byte)0xAB, 1024).ToArray());
+        output.Position = prefixLength;
+        using var writer = new GbxWriter(output);
+
+        var beforeWrite = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+        GbxValidationChunk.Write(writer);
+        var afterWrite = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+
+        var end = checked((int)output.Position);
+        var body = output.ToArray()[..end];
+        var hashStart = end - 32;
+        using var input = new MemoryStream(body);
+        input.Position = prefixLength + 20;
+        using var reader = new GbxReader(input);
+        await Assert.That(reader.ReadString()).IsEqualTo(SimplestGit.CommitHash);
+        await Assert.That(reader.ReadString()).IsEqualTo(SimplestGit.Tag);
+        var timestamp = reader.ReadInt64();
+        await Assert.That(timestamp >= beforeWrite && timestamp <= afterWrite).IsTrue();
+        await Assert.That(reader.ReadInt64()).IsEqualTo((long)hashStart);
+        await Assert.That(body[hashStart..]).IsEquivalentTo(SHA256.HashData(body.AsSpan(0, hashStart)), CollectionOrdering.Matching);
     }
 
     [Test]
@@ -99,7 +134,7 @@ public class GbxValidationChunkTests
 
         var actual = Save(clip, GbxCompression.Uncompressed);
 
-        await Assert.That(actual).IsEquivalentTo(expected, CollectionOrdering.Matching);
+        await GbxAssert.HaveEqualSavedBytes(expected, actual);
         await Assert.That(clip.Chunks.Get(ChunkId)).IsSameReferenceAs(staleChunk);
     }
 

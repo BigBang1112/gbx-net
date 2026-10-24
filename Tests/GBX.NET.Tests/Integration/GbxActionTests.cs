@@ -36,7 +36,7 @@ public class GbxActionTests
 
         using var secondSave = new MemoryStream();
         restored.Save(secondSave);
-        await Assert.That(secondSave.ToArray()).IsEquivalentTo(saved.ToArray(), CollectionOrdering.Matching);
+        await GbxAssert.HaveEqualSavedBytes(saved.ToArray(), secondSave.ToArray());
     }
 
     [Test]

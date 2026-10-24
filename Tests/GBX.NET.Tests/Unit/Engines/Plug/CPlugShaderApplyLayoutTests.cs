@@ -118,7 +118,7 @@ public class CPlugShaderApplyLayoutTests
         await Assert.That(parsed.Node.BitmapApplyArray.BitmapAddresses![0]).IsTypeOf<CPlugBitmapAddress>();
         using var saved = new MemoryStream();
         parsed.Save(saved);
-        await Assert.That(saved.ToArray()).IsEquivalentTo(stream.ToArray(), CollectionOrdering.Matching);
+        await GbxAssert.HaveEqualSavedBytes(stream.ToArray(), saved.ToArray());
     }
 
     [Test]
