@@ -1,5 +1,9 @@
 CGameCtnBlockInfoFrontier 0x03050000
 - inherits: CGameCtnBlockInfo
 
-0x000
- bool
+constructor
+  IsInternal = true
+  CatalogPosition = -1
+
+0x000 [MP3, TMT, MP4, TM2020] // frontier flag
+  bool (write: true)

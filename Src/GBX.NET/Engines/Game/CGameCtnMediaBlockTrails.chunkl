@@ -1,6 +1,6 @@
 CGameCtnMediaBlockTrails 0x030A9000
 - inherits: CGameCtnMediaBlock
 
-0x000
- timefloat Start
- timefloat End
+0x000 [TMSX, TMNESWC, VSK5, TMF, TMT, MP4, TM2020]
+  float Start (time)
+  float End (time)

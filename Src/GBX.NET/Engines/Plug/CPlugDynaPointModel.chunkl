@@ -1,11 +1,9 @@
 CPlugDynaPointModel 0x090D7000
 
 archive
- int
- int
- int
- int
- int
- int
- int
- int
+  version
+  vec3 Center
+  float Radius = 0.5f
+  float Friction = 0.8f
+  float Restitution = 0.5f
+  float GravityCoef = 1

@@ -1,8 +1,8 @@
 CGameTurbineModel 0x2E010000
 
-0x000
- version
- iso4 Loc
- float SilencerBubble_RadiusMute
- float SilencerBubble_RadiusFade
- bool SilencerBubble_OnlyPlayerSounds
+0x000 [MP3, TMT, MP4, TM2020]
+  version
+  iso4 Loc
+  float SilencerBubble_RadiusMute
+  float SilencerBubble_RadiusFade
+  bool SilencerBubble_OnlyPlayerSounds

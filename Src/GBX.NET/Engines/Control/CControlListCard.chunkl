@@ -1,0 +1,21 @@
+CControlListCard 0x07036000
+- inherits: CControlFrame
+
+0x000 // legacy page size and transposition
+  CControlBase[] (deprec)
+  int NbLinesPerPage
+  int NbColumnsPerPage
+  bool Transpose
+
+0x001 // AllowMultipleSelection
+  bool AllowMultipleSelection
+
+0x002 // page size, transposition and grid size
+  version = 1
+  CControlBase[] (deprec)
+  int NbLinesPerPage
+  int NbColumnsPerPage
+  int FastPageStep
+  bool Transpose
+  v1+
+    vec2 GridSize

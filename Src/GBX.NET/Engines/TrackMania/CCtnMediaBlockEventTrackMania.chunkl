@@ -1,102 +1,145 @@
 CCtnMediaBlockEventTrackMania 0x2407F000
-- inherits: CGameCtnMediaBlock
+- inherits: CGameCtnMediaBlockEvent
 
-0x000
- timefloat Start
- timefloat End
- bool
- Stunt[] Stunts
+0x000 [TMSX]
+  float Start (time)
+  float End (time)
+  bool
+  Stunt[] Stunts
 
-0x003
- timefloat Start
- timefloat End
- bool
- Event[] Events
+0x001
+  float Start (time)
+  float End (time)
+  bool U01
+  Event[] Events (version: 0)
+
+0x002
+  float Start (time)
+  float End (time)
+  bool U01
+  Event[] Events (version: 1)
+
+0x003 [TMNESWC, VSK5]
+  float Start (time)
+  float End (time)
+  bool
+  Event[] Events (version: 2)
+
+0x004
+  float Start (time)
+  float End (time)
+  bool U01
+  Event[] Events (version: 3)
 
 archive Stunt
- v0= // More of a hack
-  timefloat Time
- int<EStuntFigure> Figure
- int Angle
- int Score
- float Factor
- bool Straight
- bool
- bool
- bool
- int Combo
- int TotalScore
+  v0= // More of a hack
+    float Time (time)
+  int<EStuntFigure> Figure
+  int Angle
+  int Score
+  float Factor
+  bool Straight
+  bool
+  bool
+  bool
+  int Combo
+  int TotalScore
 
 archive Checkpoint
- int U01
- if U01 != 0
-  return
- timefloat Time
- int U02
- int U03
- int U04
-
-archive EndOfLap
- int U01
- if U01 >= 2
-  return
- timefloat Time
- int U02
- int U03
- v1=
+  int U01
+  if U01 != 0
+    return
+  int RaceTime (time)
+  int U02
+  int U03
   int U04
 
+archive EndOfLap
+  int U01
+  if U01 >= 2
+    return
+  int RaceTime (time)
+  int U02
+  int U03
+  if U01 == 1
+    int U04
+
 archive EndOfRace
- int U01
- if U01 != 0
-  return
- timefloat Time
- int U02
+  int U01
+  if U01 != 0
+    return
+  int RaceTime (time)
+  int U02
 
 archive Event (inherits: IKey)
+  float Time (time)
+  versionb
+  v0= (archive)
+    int<EventType> Type
+    byte? U02
+    string? U03
+    string? U04
+  v1+ (archive)
+    v1..2 (archive)
+      int? U01
+    v3+ (archive)
+      byte? U02
+    int<EventType> Type
+  switch Type
+    case EventType.Stunt
+      Stunt Stunt (version: 1)
+    case EventType.Checkpoint
+      Checkpoint Checkpoint (version: 0)
+    case EventType.EndOfLap
+      v0..1 (archive)
+        EndOfLap EndOfLap (version: 0)
+      v2+ (archive)
+        EndOfLap EndOfLap (version: 1)
+    case EventType.EndOfRace
+      EndOfRace EndOfRace (version: 0)
 
 enum EventType
- Stunt
- Checkpoint
- EndOfLap
- EndOfRace
+  Stunt
+  Checkpoint
+  EndOfLap
+  EndOfRace
 
 enum EStuntFigure
- None
- StraightJump
- Flip
- BackFlip
- Spin
- Aerial
- AlleyOop
- Roll
- Corkscrew
- SpinOff
- Rodeo
- FlipFlap
- Twister
- FreeStyle
- SpinningMix
- FlippingChaos
- RollingMadness
- WreckNone
- WreckStraightJump
- WreckFlip
- WreckBackFlip
- WreckSpin
- WreckAerial
- WreckAlleyOop
- WreckRoll
- WreckCorkscrew
- WreckSpinOff
- WreckRodeo
- WreckFlipFlap
- WreckTwister
- WreckFreeStyle
- WreckSpinningMix
- WreckFlippingChaos
- WreckRollingMadness
- TimePenalty
- RespawnPenalty
- Grind
- Reset
+  None
+  StraightJump
+  Flip
+  BackFlip
+  Spin
+  Aerial
+  AlleyOop
+  Roll
+  Corkscrew
+  SpinOff
+  Rodeo
+  FlipFlap
+  Twister
+  FreeStyle
+  SpinningMix
+  FlippingChaos
+  RollingMadness
+  WreckNone
+  WreckStraightJump
+  WreckFlip
+  WreckBackFlip
+  WreckSpin
+  WreckAerial
+  WreckAlleyOop
+  WreckRoll
+  WreckCorkscrew
+  WreckSpinOff
+  WreckRodeo
+  WreckFlipFlap
+  WreckTwister
+  WreckFreeStyle
+  WreckSpinningMix
+  WreckFlippingChaos
+  WreckRollingMadness
+  TimePenalty
+  RespawnPenalty
+  Grind
+  Reset

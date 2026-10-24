@@ -1,0 +1,65 @@
+NPlugModelKit_SDataBase 0x09166000
+
+archive
+  version = 6
+  if Version < 5
+    throw (type: NotSupportedException, message: Unsupported legacy model kit database)
+  Option[] Options
+  ushort[] DefaultOptions
+  Material[] Materials
+  PartFile[] PartFiles
+  PartVersion[] AllPartVersions
+  Part[] Parts
+  Model[] Models
+  CMwNod[] Resources
+
+archive Option
+  string Name
+  ushort U01
+  string[] Values
+  int U02
+  v6+
+    byte U03
+
+archive Material
+  uint U01
+  id Name
+  MaterialFile[] Files
+  CMwNod U02
+  CMwNod U03
+
+archive MaterialFile
+  CMwNod File
+  uint U01
+
+archive PartFile
+  CMwNod U01
+  NamedFile[] U02
+  NamedFile[] U03
+  NamedFile[] U04
+  NamedFile[] U05
+  CMwNod U06
+  CMwNod U07
+  int[] U08
+
+archive NamedFile
+  id Name
+  CMwNod File
+
+archive PartVersion
+  int U01
+  byte[] Data
+
+archive Part
+  string Name
+  int U01
+  int U02
+  string U03
+  string U04
+  int U05
+  string U06
+
+archive Model
+  int U01
+  int[] U02
+  ushort[] U03

@@ -1,0 +1,10 @@
+CPlugFxAnimFromTexture1dArray 0x09149000
+
+archive
+  version
+  Elem[] Elems
+
+archive Elem
+  CPlugFileImg Texture
+  float PeriodScMin
+  float PeriodScMax

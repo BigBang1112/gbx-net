@@ -105,6 +105,7 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxCom
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public async Task<GbxBody> ParseAsync(IClass node, CancellationToken cancellationToken = default)
     {
+        reader.NodeDict[0] = node;
         if (Settings.ReadRawBody)
         {
             throw new NotSupportedException("Reading raw body is not supported when parsing body to a node.");

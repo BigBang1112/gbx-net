@@ -1,10 +1,10 @@
 CGameCtnMediaBlockFxCameraBlend 0x0316D000
 - inherits: CGameCtnMediaBlock
 
-0x000
- version
- list<Key> Keys
+0x000 [TMT, MP4, TM2020]
+  version
+  Key[] Keys (list)
 
 archive Key (inherits: IKey)
- timefloat Time
- float CaptureWeight
+  float Time (time)
+  float CaptureWeight

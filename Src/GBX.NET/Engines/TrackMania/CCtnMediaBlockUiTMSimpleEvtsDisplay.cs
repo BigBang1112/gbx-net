@@ -2,6 +2,7 @@
 
 public partial class CCtnMediaBlockUiTMSimpleEvtsDisplay
 {
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk24092000>]
     [AppliedWithChunk<Chunk24092002>]
     public EDisplayMode DisplayMode { get; set; }

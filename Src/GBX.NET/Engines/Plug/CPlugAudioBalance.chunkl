@@ -1,52 +1,73 @@
 CPlugAudioBalance 0x09034000
 - inherits: CPlugAudio
 
-0x000
- version
- Group[] Groups (version: Version)
- v1+
-  float
+0x000 [MP3.v9, TMT.v12, MP4.v12, TM2020.v12] // mixer groups and distance attenuation
+  version
+  Group[] Groups
+  v1+
+    float SceneVolume = 1
   v2+
-   float
-   v6+
-    float
-    v7+
-     float
-     float
-     float
-     float
-     CFuncKeysReal (external)
-     CFuncKeysReal (external)
-     v8+
-      CFuncKeysReal (external)
-      CFuncKeysReal (external)
-      v9+
-       CFuncKeysReal (external)
-       v10+
-        float
-        float
-        float
-        v11+
-         float
-         v12+
-          float
+    float RolloffFactor = 1
+  v6+
+    float RefDistanceFactor = 1
+  v7+
+    float MaxDistFade_Ratio_Focused = 1
+    float MaxDistFade_Rolloff_Focused = 1
+    float MaxDistFade_Ratio_Others = 1
+    float MaxDistFade_Rolloff_Others = 1
+    CFuncKeysReal PitchFromDistance_Player_Focused
+    CFuncKeysReal PitchFromDistance_Player_Others
+  v8+
+    CFuncKeysReal PitchFromDistance_BengsGuns_Focused
+    CFuncKeysReal PitchFromDistance_BengsGuns_Others
+  v9+
+    CFuncKeysReal RolloffFromMusicVolume
+  v10+
+    float SceneLfeSend
+    float MusicLfeSend
+    float GlobalLfeSend
+  v11+
+    float AutoRadiusFactor = 0.15f
+  v12+
+    float UiVolume = 1
 
-0x001
- version
- float
- float
- float
- bool
+0x001 [MP3.v0, TMT.v1, MP4.v1, TM2020.v1] // transition durations
+  version
+  float AttackDuration = 0.3f
+  v0=
+    float HoldDuration (local, write: "n.MinimumDuration - n.AttackDuration")
+    MinimumDuration = HoldDuration + AttackDuration
+  v1+
+    float MinimumDuration = 0.5f
+  float ReleaseDuration = 0.7f
+  bool IsAbsolute
 
 archive Group
- Line (version: v)
- Line (version: v)
+  Line Others
+  Line Focused
 
 archive Line
- float
- float
- float
- v3+
-  float
+  float Volume = 1
+  float Pitch = 1
+  float DopplerFactor = 1
+  v3+
+    float RolloffFactor = 1
   v6+
-   float
+    float DistanceFactor = 1
+
+enum EAudioBalanceGroup
+  Auto
+  Music
+  Menus
+  Ambiance
+  Player
+  Bengs
+  Guns
+  BackingDirect
+  Trails
+  GameUI
+  Custom1
+  Custom2
+  OtherPlayers
+  ImpactWarning
+  Environment

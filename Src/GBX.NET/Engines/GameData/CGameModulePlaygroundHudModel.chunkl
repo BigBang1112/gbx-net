@@ -1,0 +1,51 @@
+CGameModulePlaygroundHudModel 0x2E019000
+- inherits: CGameModuleModelCommon
+
+0x000 (skippable) // manialink and module slots
+  version = 9
+  CPlugFileText Manialink
+  Slot Inventory
+  Slot Store
+  Slot ScoresTable
+  v2+
+    Slot Chrono
+  v3+
+    Slot SpeedMeter
+  v4+
+    Slot PlayerState
+  v5+
+    Slot TeamState
+  v9+
+    Slot Altimeter
+    Slot Throttle
+  v8+
+    Module[] Modules
+    id[] U01
+
+archive Slot
+  string Path
+  if Path == null || Path == ""
+    CGameModulePlaygroundModel Model
+  v7-
+    float U01
+    float U02
+    float U03
+    float U04
+  v8+
+    if (Path != null && Path != "") || Model != null
+      float U01
+      float U02
+      float U03
+      float U04
+
+archive Module
+  string Path
+  if Path == null || Path == ""
+    CGameModulePlaygroundModel Model
+  int U01
+  id U02
+  float U03
+  float U04
+  float U05
+  float U06
+  string U07

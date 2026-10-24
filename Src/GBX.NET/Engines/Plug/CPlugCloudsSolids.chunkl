@@ -1,0 +1,8 @@
+CPlugCloudsSolids 0x09183000
+- inherits: CFunc
+
+0x000 // SolidFids
+  CPlugSolid[] SolidFids
+
+0x001 // GridSizeXZ
+  vec2 GridSizeXZ

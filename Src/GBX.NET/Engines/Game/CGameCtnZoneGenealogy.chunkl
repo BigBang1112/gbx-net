@@ -1,11 +1,11 @@
 CGameCtnZoneGenealogy 0x0311D000
 
 0x001
- int CurrentIndex
- int<Direction> Dir
+  int CurrentIndex
+  int<Direction> Dir
 
-0x002 [MP4, TM2020]
- id[] ZoneIds
- int CurrentIndex
- int<Direction> Dir
- id CurrentZoneId
+0x002 [MP3, TMT, MP4, TM2020]
+  id[] ZoneIds
+  int CurrentIndex
+  int<Direction> Dir
+  id CurrentZoneId

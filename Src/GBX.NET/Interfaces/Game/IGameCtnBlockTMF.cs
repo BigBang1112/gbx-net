@@ -1,3 +1,3 @@
 ﻿namespace GBX.NET.Interfaces.Game;
 
-public interface IGameCtnBlockTMF : IGameCtnBlockTMSX;
+public partial interface IGameCtnBlockTMF : IGameCtnBlockTMSX;

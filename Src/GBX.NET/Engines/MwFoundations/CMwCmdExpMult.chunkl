@@ -1,0 +1,2 @@
+CMwCmdExpMult 0x01043000
+- inherits: CMwCmdExpNumBin

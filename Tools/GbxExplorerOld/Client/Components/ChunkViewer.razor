@@ -103,15 +103,21 @@
         }
         else
         {
-            var fields = chunkType.GetFields();
+            var fields = chunkType.GetFields()
+                .Where(x => !x.IsDefined(typeof(ObsoleteAttribute)))
+                .ToArray();
+            var versionProperty = chunkType.GetProperty(nameof(IVersionable.Version));
+            var versionable = versionProperty?.IsDefined(typeof(ObsoleteAttribute)) == true ? null : Chunk as IVersionable;
             
-            <div class="inner @(fields.Length == 0 && Chunk is not IVersionable ? "one-column" : "")">
+            <div class="inner @(fields.Length == 0 && versionable is null ? "one-column" : "")">
 
-                @if (Chunk is IVersionable versionable)
+                @if (versionable is not null)
                 {
-                    <div style="font-weight:bold;">Version</div>
+                    <div style="font-weight:bold;">
+                        Version
+                    </div>
                     <div style="font-size:0.85rem;display:flex;font-family:Source Code Pro;">
-                        <DynamicComponent Type="ValueRendererService[typeof(int)]" Parameters="GetValueRendererParameters(versionable.Version, isNullable: false, typeof(int), property: chunkType.GetProperty(nameof(IVersionable.Version)))" />
+                        <DynamicComponent Type="ValueRendererService[typeof(int)]" Parameters="GetValueRendererParameters(versionable.Version, isNullable: false, typeof(int), property: versionProperty)" />
                     </div>
                 }
 
@@ -152,7 +158,7 @@
     public Action<IChunk>? Deletion { get; set; }
 
     [Parameter]
-    public GbxExplorerOld.Client.Components.ValuePreviews.NodeValuePreview ValuePreview { get; set; }
+    public GbxExplorerOld.Client.Components.ValuePreviews.NodeValuePreview ValuePreview { get; set; } = default!;
 
     private async Task OpenOrCloseChunkAsync(Type chunkType)
     {

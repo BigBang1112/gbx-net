@@ -1,0 +1,13 @@
+NPlugItemPlacement_SGroups 0x2F0B8000
+
+archive
+  version
+  SIdGroup[] IdGroups
+  SSizeGroup[] SizeGroups
+
+archive SIdGroup
+  id Name
+
+archive SSizeGroup
+  id Name
+  vec3 Size

@@ -1,0 +1,35 @@
+<Project>
+    <UsingTask TaskName="GbxCliCompressFileHashes" TaskFactory="RoslynCodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)/Microsoft.Build.Tasks.Core.dll">
+        <ParameterGroup>
+            <SourceFile ParameterType="System.String" Required="true" />
+            <DestinationFile ParameterType="System.String" Required="true" />
+        </ParameterGroup>
+        <Task>
+            <Using Namespace="System.IO" />
+            <Using Namespace="System.IO.Compression" />
+            <Code Type="Fragment" Language="cs"><![CDATA[
+                Directory.CreateDirectory(Path.GetDirectoryName(DestinationFile));
+                using (var source = File.OpenRead(SourceFile))
+                using (var destination = File.Create(DestinationFile))
+                using (var compressed = new GZipStream(destination, CompressionLevel.Optimal))
+                {
+                    source.CopyTo(compressed);
+                }
+            ]]></Code>
+        </Task>
+    </UsingTask>
+
+    <Target Name="CompressFileHashes"
+            Inputs="$(FileHashesSource);$(MSBuildThisFileFullPath);$(MSBuildProjectFullPath)"
+            Outputs="$(IntermediateOutputPath)FileHashes.txt.gz">
+        <GbxCliCompressFileHashes SourceFile="$(FileHashesSource)" DestinationFile="$(IntermediateOutputPath)FileHashes.txt.gz" />
+    </Target>
+
+    <Target Name="EmbedCompressedFileHashes" BeforeTargets="AssignTargetPaths" DependsOnTargets="CompressFileHashes" Condition="'$(DesignTimeBuild)' != 'true'">
+        <ItemGroup>
+            <EmbeddedResource Remove="$(FileHashesSource)" />
+            <EmbeddedResource Include="$(IntermediateOutputPath)FileHashes.txt.gz" LogicalName="GbxCLI.FileHashes.txt.gz" />
+            <FileWrites Include="$(IntermediateOutputPath)FileHashes.txt.gz" />
+        </ItemGroup>
+    </Target>
+</Project>

@@ -1,0 +1,2 @@
+CMwCmdExpPower 0x0104A000
+- inherits: CMwCmdExpNumBin

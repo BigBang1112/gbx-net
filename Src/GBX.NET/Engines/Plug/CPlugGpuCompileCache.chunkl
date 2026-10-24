@@ -1,0 +1,134 @@
+CPlugGpuCompileCache 0x09053000
+
+0x007 // legacy compile data
+  version = 12
+  CompileData Data (version: Version)
+
+0x008 [TM2020.v18] // compiled shader
+  version
+  int
+  v15+
+    int
+  v4+
+    int Type
+  v7+
+    int
+  v5+
+    ulong
+  v4-
+    int
+  v3..8
+    HashPair[] LegacyHashes
+  v9+
+    ulong[] Hashes
+  v2-
+    ulong
+    ulong
+  string EntryPoint
+  v1-
+    int
+  v0=
+    int[]
+  v1+
+    ushort[]
+  v6+
+    Include[] Includes (version: Version)
+  v8+
+    int
+  v11+
+    int
+  v12+
+    string
+    int[]
+  v13+
+    bool HasSlots
+    if HasSlots
+      SlotTable Slots
+  v17=
+    byte
+  v14+
+    CompileData Data (version: Version)
+
+0x009 [TM2020.v2]
+  version
+  v1+
+    int
+
+archive CompileData (contextual)
+  Param[] Params (version: v)
+  Define[] Defines
+  byte[] ByteCode
+  v10+
+    int
+  v16+
+    vec3[]
+    int[]
+  v18+
+    byte
+  v7+
+    id[]
+  v5-
+    LegacyEntry[] LegacyEntries (version: v)
+
+archive Param (contextual) // shader parameter binding
+  int
+  int
+  int
+  int
+  v5-
+    int
+    int
+  int
+  int
+  v4+
+    ushort
+  v2..3
+    int
+  v3+
+    int
+  v9+
+    int
+  v5+
+    int
+  v8+
+    int
+  v11..13
+    int
+    int
+  v14+
+    if n.Type == 3 || n.Type == 6
+      int
+      int
+    else if n.Type == 2
+      ulong
+      ulong
+  v12+
+    int
+  v16+
+    int
+    int
+
+archive Define // preprocessor define
+  id Name
+  string Value
+
+archive Include // source include
+  string Path
+  ulong Hash
+
+archive HashPair
+  ulong
+  ulong
+
+archive LegacyEntry
+  v0=
+    CMwNod
+  v1+
+    string
+  ulong
+
+archive SlotTable
+  int
+  ulong[]
+  int[]
+  ulong[]

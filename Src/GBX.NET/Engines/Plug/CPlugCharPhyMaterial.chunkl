@@ -1,0 +1,45 @@
+CPlugCharPhyMaterial 0x090CA000 // Character physics properties of one surface material.
+
+0x000 // legacy material
+  byte<CPlugSurface.MaterialId> SurfaceMaterialId
+  CFuncKeysReal U02 // discarded
+  CFuncKeysReal U03 // discarded
+  float U04 = 1
+  bool SlideSurf
+  bool Climbable
+  bool WallJumpable
+  bool U08 // discarded
+  bool U09
+
+0x001 [MP4.v11, TM2020.v11] // material
+  version = 11
+  byte<CPlugSurface.MaterialId> SurfaceMaterialId
+  v2-
+    CFuncKeysReal U02 // discarded
+    CFuncKeysReal U03 // discarded
+  float U04 = 1
+  bool SlideSurf // ground used for slide surfing
+  bool Climbable // wall can be climbed
+  bool WallJumpable // wall allows wall jumps
+  bool U08
+  v1+
+    float MaxWalkSlope = 60 // degrees
+  v3+
+    float SpeedCoef = 1 // scales the max speed
+  v4+
+    float MaxSlideSlope = 60 // degrees, steeper ground slides without control
+  v5+
+    bool U12 // skips ground contact in some movement states
+  v6+
+    float BlowHorizontalCoef = 1 // square root scales the horizontal blow
+  v7+
+    float AccelMax = -1 // clamps the acceleration
+    float FrictionMax = -1 // clamps the friction
+  v8+
+    bool IgnoreBlows
+  v9+
+    float U17 = 1
+  v10+
+    float GroundBlowCoef = 1 // blow scale while on ground
+  v11+
+    float U19 = 1

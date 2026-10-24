@@ -1,0 +1,185 @@
+CGameManiaTitle 0x03001000
+- inherits: CGameNod
+
+0x000 [MP4.v6]
+  version
+  string Name
+  string Desc
+  string InfoUrl
+  v1-
+    CMwNod
+    CMwNod
+  CMwNod Logos
+  v3+
+    int SortIndex
+  v4+
+    string CollectionGroup
+  v5+
+    int ModelSkinInit
+  v6+
+    string DownloadUrl
+
+0x001 [MP4.v16, TM2020.v17]
+  version
+  CMwNod MenuBg
+  v2=
+    CMwNod
+  v3=
+    CMwNod
+  v3+
+    CMwNod MenuMusic
+  v3=
+    CMwNod
+    string
+  v4+
+    CMwNod
+  v5+
+    string MenuBgFolder
+  v6+
+    CMwNod MenuBgReplay
+  v7+
+    CMwNod MenuHeader
+  v9+
+    string MenuMainManialinkUrl
+  v10=
+    vec4
+  v11=
+    vec4
+  v11+
+    CMwNod SkinnedLogosStyle
+  v12+
+    CMwNod MenuStyle3d
+  v13+
+    CMwNod MenuSkyGrad
+  v14+
+    string StationManialinkUrl
+    string BoxCaseManialinkUrl
+  v15+
+    bool
+  v16+
+    CPlugFont Hud3dFont
+  v17+
+    CMwNod
+
+0x002 [MP4.v3]
+  version
+  CGameManiaTitleCore TitleCore
+  v2=
+    bool
+  v3+
+    datauint
+
+0x003 [MP4.v2]
+  version
+  CGameCtnCollection[] Collections
+  v2+
+    CMwNod Mod
+
+0x004
+  version = 3
+  CMwNod
+  v3+
+    CMwNod
+
+0x005 [MP4.v2]
+  version
+  CMwNod SkinnedBoxCase
+  v1-
+    CMwNod
+    CMwNod
+
+0x006 [MP4]
+  ident VehicleIdent
+
+0x007
+  version
+  string MenuMainManialinkUrl
+
+0x008 [MP4.v2, TM2020.v3]
+  version
+  v1-
+    CGameCtnChallenge
+  v2+
+    CGameCtnChallenge[] EditorSimpleChallenges
+  CGameCtnChallenge AnimEditor_DefaultChallenge
+  v1+
+    CMwNod EditorMapType
+  v3+
+    CMwNod
+
+0x009
+  version = 2
+  bool
+  string
+  v2+
+    string
+    string
+    string
+
+0x00A [MP4]
+  version
+  CPlugSound[] Music
+
+0x00B [MP4.v6]
+  version
+  v1-
+    CMwNod
+    CMwNod
+    CMwNod SoloMode
+    int
+    v1+
+      CMwNod SoloDataPack
+  v2+
+    CMwNod SoloDataPack
+    CMwNod SoloMode
+    v4+
+      int = -1
+    v5-
+      LegacyCampaign[] LegacyCampaigns (version: Version)
+    v6+
+      ScoreContext[] ScoreContexts
+      Campaign[] Campaigns
+
+0x00C [MP4.v1]
+  version
+  CMwNod SplitScreenPlaylist
+  CMwNod SplitScreenMode
+  CMwNod NetPlaylist
+  CMwNod NetMode
+  v1+
+    CMwNod HudDefaultModule
+
+archive ScoreContext
+  string Name
+  int U01
+  bool U02
+  bool U03
+  bool U04
+  bool U05
+
+archive Campaign
+  CMwNod U01
+  CMwNod U02
+  string U03
+  bool U04
+  bool U05
+  bool U06
+
+archive LegacyCampaign
+  CMwNod U01
+  CMwNod U02
+  v3-
+    int U03
+  v4+
+    int U04
+    bool U05
+    v5+
+      bool U06
+    bool U07
+    v5+
+      bool U08
+    bool U09
+
+0x00D [TM2020]
+  version
+  CMwNod[]

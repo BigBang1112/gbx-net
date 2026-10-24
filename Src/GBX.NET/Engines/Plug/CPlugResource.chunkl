@@ -1,0 +1,4 @@
+CPlugResource 0x090BE000
+
+0x000 [MP4] // named resources
+  CPlugModelShading.FidId[] Resources

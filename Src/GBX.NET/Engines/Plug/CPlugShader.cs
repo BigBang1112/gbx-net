@@ -1,5 +1,6 @@
 ﻿using static GBX.NET.BitHelper;
 
+using GBX.NET.Components;
 namespace GBX.NET.Engines.Plug;
 
 public partial class CPlugShader
@@ -108,8 +109,8 @@ public partial class CPlugShader
 
     public bool GReqColor0
     {
-        get => GetBit(RequirementFlags, 0x13);
-        set => RequirementFlags = SetBit(RequirementFlags, 0x13, value);
+        get => GetBit(RequirementFlags2, 9);
+        set => RequirementFlags2 = SetBit(RequirementFlags2, 9, value);
     }
 
     public bool IsTranslucent
@@ -232,6 +233,7 @@ public partial class CPlugShader
         set => RequirementFlags = SetBitRange(RequirementFlags, 0x1A, 2, (int)value);
     }
 
+    [Obsolete("Use SortIndexValue to access the complete signed sorting index.")]
     public bool SortIndex
     {
         get => GetBit(RequirementFlags, 0x19);
@@ -244,16 +246,48 @@ public partial class CPlugShader
         set => RequirementFlags = SetBit(RequirementFlags, 0x31, value);
     }
 
+    /// <summary>
+    /// Gets or sets the signed sorting index in the legacy requirement flag layout.
+    /// </summary>
+    public int SortIndexValue
+    {
+        get => (GetBitRange(RequirementFlags, 19, 7) << 25) >> 25;
+        set => RequirementFlags = SetBitRange(RequirementFlags, 19, 7, value & 0x7F);
+    }
+
+    private ulong GetLegacyRequirementFlags14(ulong original)
+    {
+        if (SortOldRequirementFlags(original) == RequirementFlags)
+            return original;
+
+        if (!SortCustom)
+            return RequirementFlags;
+
+        var mode = (RequirementFlags >> 26) & 3;
+        var legacyMode = mode switch
+        {
+            0 => 0UL,
+            2 => 1UL,
+            3 => 2UL,
+            _ => throw new NotSupportedException("Chunk 0x09002014 cannot represent this sorting position.")
+        };
+        return (RequirementFlags & ~0x0C000000UL) | (legacyMode << 26);
+    }
+
     public partial class Chunk09002014
     {
         public override void ReadWrite(CPlugShader n, GbxReaderWriter rw)
         {
-            rw.DataUInt64(ref n.requirementFlags); // SRequirement
-            rw.Single(ref U01);
-            rw.NodeRef<CMwNod>(ref U02);
+            if (rw.Writer is not null)
+                U01 = n.GetLegacyRequirementFlags14(U01);
+
+            rw.DataUInt64(ref U01);
+            rw.Single(ref n.lightMapQuality);
+            rw.NodeRef(ref n.materialFxRef);
             rw.UInt16(ref n.visibleIdFlags);
 
-            n.requirementFlags = SortOldRequirementFlags(n.requirementFlags);
+            if (rw.Reader is not null)
+                n.RequirementFlags = SortOldRequirementFlags(U01);
         }
     }
 
@@ -266,9 +300,34 @@ public partial class CPlugShader
 
         return mode switch
         {
-            0 => value & 0xF3FFFFFFUL,
-            1 => (value & 0xFBFFFFFFUL) | 0x08000000UL,
+            0 => value & ~0x0C000000UL,
+            1 => (value & ~0x04000000UL) | 0x08000000UL,
             _ => value | 0x0C000000UL
         };
+    }
+
+    [Obsolete("Use ShaderCustom instead.")]
+    public partial class UnknownStruct : ShaderCustom
+    {
+        [Obsolete("Use ExternalShader instead.")]
+        public CMwNod? U01 { get => ExternalShader; set => ExternalShader = (CPlugShader?)value; }
+
+        [Obsolete("Use HasShader instead.")]
+        public bool U02 { get => HasShader; set => HasShader = value; }
+
+        [Obsolete("Use Shader instead.")]
+        public CMwNod? U03 { get => Shader; set => Shader = (CPlugShader?)value; }
+    }
+
+    [Obsolete("Use ShaderCustom with serialization version -1 instead.")]
+    public partial class UnknownStruct2 : ShaderCustom
+    {
+        [Obsolete("Use ExternalShader instead.")]
+        public CMwNod? U01 { get => ExternalShader; set => ExternalShader = (CPlugShader?)value; }
+
+        [Obsolete("Use Shader instead.")]
+        public CMwNod? U02 { get => Shader; set => Shader = (CPlugShader?)value; }
+
+        public override void ReadWrite(GbxReaderWriter rw, int v = 0) => base.ReadWrite(rw, -1);
     }
 }

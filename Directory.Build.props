@@ -1,0 +1,10 @@
+<Project>
+
+  <!-- CI passes SkipWasmNative=true to build WebAssembly apps without native
+       relinking, which is slow. The targets file is imported after the project
+       file, but before the SDK resolves workloads. -->
+  <PropertyGroup Condition="'$(SkipWasmNative)' == 'true'">
+    <BeforeMicrosoftNETSdkTargets>$(MSBuildThisFileDirectory)Build/SkipWasmNative.targets</BeforeMicrosoftNETSdkTargets>
+  </PropertyGroup>
+
+</Project>

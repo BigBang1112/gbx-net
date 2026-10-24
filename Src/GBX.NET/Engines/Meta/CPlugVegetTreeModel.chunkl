@@ -1,0 +1,112 @@
+CPlugVegetTreeModel 0x2F086000
+
+archive
+  version = 21
+  v14+ (archive)
+    int U01 = -1
+  int LodModelCount (local, write: "LodModels?.Length ?? 0")
+  int LodMaxDistCount (local, write: "LodMaxDists?.Length ?? 0")
+  TextureSet[] Materials
+  v2+ (archive)
+    id[] TextureNames
+  GeometryGroup[LodModelCount] LodModels
+  float[LodMaxDistCount] LodMaxDists
+  byte U02 = 1
+  float LodDistAtFov90 = 150 // ImpostorGenParams.LodDistAtFov90
+  byte<EPlaneComputeMode> PlaneComputeMode = EPlaneComputeMode.Zero // ImpostorGenParams.PlaneComputeMode
+  byte U05 = 2
+  v7+ (archive)
+    ulong U06 = 2
+  v9+ (archive)
+    float AngleMax_RotXZ_Deg = 1
+    float ScaleVar01 = 0.1f // max random scale reduction per instance
+  v10+ (archive)
+    bool EnableRandomRotationY = true
+  v11+ (archive)
+    CollisionSurface Collision
+  v12+ (archive)
+    bool Force_No_Collision
+  v16+ (archive)
+    CPlugBitmap PropagationBaseColor // Propagation.Render.BaseColor
+    CPlugBitmap PropagationNormal // Propagation.Render.Normal
+    int2 PropagationAtlasGrid = (1, 1) // Propagation.Render.c2AtlasGrid
+    float PropagationLeafSize = 0.1f
+    int PropagationGroundGenPointCount = 1000 // Propagation.Phy.cGroundGenPoint
+    v19+ (archive)
+      int PropagationLeafPerSecondCount = 20 // Propagation.Phy.cLeafPerSecond
+    float PropagationConeHalfAngleDeg = 45
+    float PropagationEmissionSpawnRadius = 2
+    bool PropagationEnable // Propagation.Phy.Enable
+    vec3[] PropagationEmissionPositions // Propagation.EmissionPoss
+  v17+ (archive)
+    bool HasAdditionalData (local, write: "AdditionalData != null")
+    if HasAdditionalData
+      Additional AdditionalData
+  v20+ (archive)
+    bool Impostor_AllPlanesVisible
+  v21+ (archive)
+    bool ReceivesPSSM = true
+
+enum EPlaneComputeMode
+  BoundingBoxBorder
+  BoundingBoxCenter
+  TrunkBoundingBoxCenter
+  Zero
+  HorizontalPlaneBottom
+
+archive TextureSet // NPlugVeget::SMaterial
+  v18+
+    CPlugBitmap U01
+    CPlugBitmap U02
+    CPlugBitmap U03
+  CPlugFileImg ColorImage // Veget.Images[EVegetTexture_Color]
+  CPlugFileImg NormalImage // Veget.Images[EVegetTexture_Normal]
+  CPlugFileImg RoughnessImage // Veget.Images[EVegetTexture_Roughness]
+  v2+
+    CMwNod Variation // CPlugVegetMaterialVariation
+  v3+
+    CMwNod SubSurface // CPlugVegetSubSurfaceParams
+  v4+
+    CPlugMaterial Material // PlugMat
+  v5+
+    byte U09
+
+archive GeometryGroup // NPlugVeget::STreeLodModel
+  Geometry[] ShadedGeoms // SGs
+
+archive Geometry // NPlugVeget::SShadedGeom
+  v14-
+    int<ushort> ModelMaterialIndex // iModelMat
+  v15+
+    ushort ModelMaterialIndex
+  CPlugVisual Visual
+  v15+
+    byte U02
+
+archive CollisionSurface
+
+archive Additional
+  version = 1
+  int U01
+  float U02 = -1
+  bool U03
+  float U04 = float.MaxValue
+  float U05 = float.MaxValue
+  float U06 = float.MinValue
+  float U07 = float.MinValue
+  float U08 = float.MaxValue
+  float U09 = float.MaxValue
+  float U10 = float.MinValue
+  float U11 = float.MinValue
+  float U12
+  float U13
+  boxaligned[] U15
+  v1+ (archive)
+    AdditionalElement[] U16
+
+archive AdditionalElement
+  float U01
+  float U02
+  float U03
+  float U04
+  float U05

@@ -1,0 +1,165 @@
+CGameCoverFlowDesc 0x0316F000
+
+0x000 [MP4] // scene, skin, time and style
+  version = 5
+  CMwNod SceneFid
+  CPlugGameSkin GameSkin
+  string GameSkinFolder
+  float TimeRemapped
+  v0=
+    float
+  v1=
+    LegacyMood
+  v2=
+    LegacyMood
+    float
+    float
+  v3=
+    LegacyMood
+    float
+    float
+    float
+    float
+    float
+    float
+    float
+    float
+  v4=
+    throw (type: NotSupportedException, message: Unsupported inline cover flow mood)
+  v5+
+    CGameManialink3dStyle Style
+
+0x001 // legacy linear groups
+  version = 3
+  LegacyLinearGroup[3]
+  v3+
+    float SpeedChangeGroup
+    float SpeedZ
+
+0x002 [MP4] // speeds, transitions and linear groups
+  version = 4
+  float SpeedChangeGroup
+  float SpeedZ
+  v3+
+    float TransitionRotateAngleDegPrev
+    float TransitionRotateAngleDegNext
+  LinearGroup[] LinearGroups
+
+0x003 [MP4] // linear group sounds
+  version = 1
+  LinearSoundSet[] LinearSounds
+
+0x004 [MP4] // cameras and group locations
+  version = 4
+  v1-
+    CMwNod[] (deprec)
+  v2+
+    Camera[] Cameras
+  iso4 StationsGroup_MainRelLoc
+  iso4 StationsGroup_ListRelLoc
+  v3+
+    iso4 BoxesGroup_RelLoc
+  v4+
+    iso4 StationsGroup_HomeManialinkRelLoc
+
+archive LegacyMood
+  float U01
+  float U02
+  float U03
+  float U04
+  float U05
+  float U06
+  float U07
+  float U08
+  float U09
+  float U10
+  float U11
+  float U12
+  float U13
+  float U14
+  float U15
+  float U16
+  float U17
+  float U18
+  float U19
+  float U20
+  float U21
+
+archive LegacyLinearGroup
+  v2+
+    int Index
+  float LinearSpeedMove
+  float LinearStepX
+  float LinearStepY
+  float LinearStepZ0
+  float LinearStepZ1
+  float LinearAngleMax0
+  float LinearAngleMax1
+  float LinearOffsetX
+  float LinearOffsetY
+  float LinearOffsetZ
+  float LinearBumpY
+  float LinearZoomDistance
+  int LinearTransitionDuration0
+  int LinearTransitionDuration1
+  int LinearTransitionDuration2
+
+archive LinearGroup
+  float LinearOffsetX
+  float LinearOffsetY
+  float LinearOffsetZ
+  float LinearStepX
+  float LinearStepY
+  float LinearStepZ0
+  float LinearStepZ1
+  float LinearAngleMax0
+  float LinearAngleMax1
+  float LinearSpeedMove
+  bool
+  v2+
+    float LinearSpeedFocus
+  float LinearZoomDistance
+  float LinearBumpY
+  int LinearTransitionDuration0
+  int LinearTransitionDuration1
+  int LinearTransitionDuration2
+
+archive LinearSoundSet
+  CPlugSound LinearSound_FocusGained
+  CPlugSound LinearSound_FocusLoop
+  CPlugSound LinearSound_FocusLost
+  CPlugSound LinearSound_Select
+  CPlugSound LinearSound_Edit
+  CPlugSound LinearSound_Clear
+  CPlugSound LinearSound_GroupEnter
+  CPlugSound LinearSound_GroupLoop
+  CPlugSound LinearSound_GroupLeave
+  CPlugSound LinearSound_TransitionBump
+  CPlugSound LinearSound_TransitionZoomIn
+  CPlugSound LinearSound_TransitionZoomOut
+
+archive Camera
+  byte U01
+  byte U02
+  float U03
+  float U04
+  float U05
+  float U06
+  float U07
+  float U08
+  float U09
+  float U10
+  float U11
+  float U12
+  float U13
+  float U14
+  float U15
+  float U16
+  float U17
+  float U18
+  float U19
+  float U20
+  float U21
+  float U22
+  float U23
+  float U24

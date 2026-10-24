@@ -1,5 +1,5 @@
 CSceneLight 0x0A00B000
 - inherits: CScenePoc
 
-0x000
- CHmsLight Light (direct)
+0x000 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  CHmsLight Light (direct)

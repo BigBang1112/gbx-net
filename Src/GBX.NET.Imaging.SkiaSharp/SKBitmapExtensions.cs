@@ -13,7 +13,7 @@ internal static class SKBitmapExtensions
             surface.Translate(rotated.Width, rotated.Height);
             surface.RotateDegrees(180);
             surface.Scale(-1, 1, rotated.Width / 2f, 0);
-            surface.DrawBitmap(bitmap, 0, 0);
+            surface.DrawBitmap(bitmap, 0, 0, SKSamplingOptions.Default);
         }
 
         return rotated;

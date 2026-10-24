@@ -1,20 +1,55 @@
 CPlugVisualSprite 0x09010000
 - inherits: CPlugVisual3D
 
-0x005
- int
- float
- float
- float
- float
- float
+property bool RadiusInScreen
+  get = (SpriteFlags & 8) != 0
+  set
+    if value
+      SpriteFlags = SpriteFlags | 8
+    else
+      SpriteFlags = SpriteFlags & 0xFFFFFFF7
 
-0x006
- int16
- int16
+property bool UseGlobalDir
+  get = (SpriteFlags & 0x20) != 0
+  set
+    if value
+      SpriteFlags = SpriteFlags | 0x20
+    else
+      SpriteFlags = SpriteFlags & 0xFFFFFFDF
 
-0x008
- CPlugSpriteParam SpriteParam (direct)
+property bool UseTextureAtlas
+  get = (SpriteFlags & 0x40) != 0
+  set
+    if value
+      SpriteFlags = SpriteFlags | 0x40
+    else
+      SpriteFlags = SpriteFlags & 0xFFFFFFBF
 
-0x009
- Rect[]
+0x000 // legacy render mode
+  int<ERenderMode> RenderMode
+
+0x001 // legacy render mode and sorting
+  int<ERenderMode> RenderMode
+  bool SortBackToFront
+
+0x002 [TM10, TMPU] // SpriteFlags
+  uint SpriteFlags
+
+0x005 [TMSX, TMNESWC, VSK5, TMF] // legacy sprite flags, direction, and pivot
+  uint SpriteFlags
+  vec3 GlobalDirection = (0, 1, 0)
+  vec2 PivotPoint
+
+0x006 [TMSX, TMNESWC, VSK5, TMF] // legacy atlas grid dimensions
+  ushort AtlasGridCountU = 1
+  ushort AtlasGridCountV = 1
+
+0x008 [MP3, TMT, MP4, TM2020] // SpriteParam
+  CPlugSpriteParam SpriteParam (direct)
+
+0x009 [MP3, TMT, MP4, TM2020] // AtlasTexCoords
+  rect[] AtlasTexCoords
+
+enum ERenderMode
+  Quad
+  RotatedQuad

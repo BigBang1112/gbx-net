@@ -1,0 +1,7 @@
+CSceneVehicleCarMarksModel 0x0A081000
+
+0x000 [TMT, MP4, TM2020] // mark models
+  CSceneVehicleCarMarksModelSub[] Models (deprec)
+
+0x001 [TMT, MP4, TM2020] // Disabled
+  bool Disabled

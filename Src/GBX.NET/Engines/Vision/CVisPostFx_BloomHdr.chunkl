@@ -1,0 +1,39 @@
+CVisPostFx_BloomHdr 0x0C032000
+- inherits: CSceneFxCompo
+
+0x000 // downsampling and blur settings
+  float
+  int DownCount
+  int BlurSizeDown1_2x2
+  float BlurSizeScaleByLevel
+  float BlurCenterOverEdges
+  float UpScale
+
+0x001 // legacy distortion shaders
+  CMwNod ShaderDistorImageSpace
+  CMwNod ShaderDistorGetDepthIntens
+  CMwNod ShaderDistorAtDepth
+
+0x002 // distortion shaders
+  CMwNod ShaderDistorImageSpace
+  CMwNod ShaderDistorGetDepthIntens
+  CMwNod ShaderDistorAtDepth
+
+0x003 // select filter shaders
+  CMwNod FidShaderBloomSelectFilterDown2
+  CMwNod FidShaderBloomSelectFilterDown4
+  CFuncKeysReal
+
+0x004 // ShaderHorizonBlur
+  version
+  CMwNod ShaderHorizonBlur
+
+0x005 // final, streak and editor shaders
+  version = 1
+  v1+
+    CMwNod ShaderBloomFinal
+  if ShaderBloomFinal == null
+    CMwNod PHlsl_Final
+  CMwNod PHlsl_StreaksSelectSrc
+  CMwNod PHlsl_StreaksWorkDir
+  CMwNod PHlsl_EdShowBlow

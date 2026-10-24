@@ -1,0 +1,90 @@
+CPlugSoundEngine2 0x09029000
+- inherits: CPlugSound
+
+0x000 [MP4, TM2020]
+  version
+  string Loops_Folder
+
+0x001 [MP4.v3, TM2020.v5]
+  version
+  float RpmMaxFromEngine = 10000f
+  v4-
+    CFuncKeysReal Volume_Speed (direct)
+    CFuncKeysReal Volume_Distance (direct)
+    CFuncKeysReal Volume_Rpm (direct)
+    CFuncKeysReal Volume_Throttle (direct)
+  v5+ // curves stored inline
+    PlugCurve
+    PlugCurve
+    PlugCurve
+    PlugCurve
+  v1+
+    PerspectiveVolume[3] PerspectiveVolumes (version: Version)
+    bool Loops_RpmClamp = true
+    bool Loops_UseVolumeCorrection
+  v2+
+    float RpmGamma = 1f
+  v3..4
+    CFuncKeysReal Volume_Gear (direct)
+    CFuncKeysReal RpmFactor_Gear (direct)
+  v5+
+    PlugCurve
+    PlugCurve
+  v4+
+    LowPassFilter[3] LowPassFilters
+
+0x002 [MP4.v4, TM2020.v6]
+  version
+  AudioMotor[3] AudioMotors (version: Version)
+  v5-
+    CFuncKeysReal AudioMotors_PitchRandomize_Rpm (direct)
+    CFuncKeysReal AudioMotors_PitchRandomize_Throttle (direct)
+  v6+ // curves stored inline
+    PlugCurve
+    PlugCurve
+  v0=
+    CFuncKeysReal (direct)
+
+0x003 [MP4.v4, TM2020.v4]
+  version
+  SubEmitter[3] SubEmitters (version: Version)
+  v1+
+    float Mix_FrontBackSpread = 1f
+    v2-
+      float[4]
+    v3+
+      float MixFront = 0.85f
+      float MixBack = 0.35f
+
+archive PerspectiveVolume
+  v4-
+    CFuncKeysReal Rpm (direct)
+    CFuncKeysReal Throttle (direct)
+  v5+ // curves stored inline
+    PlugCurve
+    PlugCurve
+
+archive AudioMotor
+  CMwNod Throttle // CPlugFileAudioMotors
+  CMwNod Release // CPlugFileAudioMotors
+  v2+
+    CPlugFileSnd IdleLoop
+    CPlugFileSnd LimiterLoop
+    v4=
+      float LowPassCutoffRatio = 1f // moved to LowPassFilters in 0x001 v4+
+    v3+
+      float IdleVolume = 1f // linear, shown in dB as AudioMotors_IdleVolumedB
+      float LimiterVolume = 1f // linear, shown in dB as AudioMotors_LimiterVolumedB
+
+archive SubEmitter
+  float Volume = 1f
+  float RelativeSize = 1f
+  vec3 RelativePosition
+  vec3 RelativeDirection
+  v2+
+    float ConeAttenuation
+    float ConeAngle
+
+archive LowPassFilter
+  float CutoffRatio = 1f
+  bool Enabled // set by v4 0x002 when the cutoff ratio is below 0.9

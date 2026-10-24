@@ -15,12 +15,16 @@ public sealed partial class Pak6 : Pak
     public string? UsageSubDir { get; private set; }
     public IncludedPackHeader[] IncludedPacks { get; private set; } = [];
 
-    public byte[]? U01 { get; private set; }
+    /// <summary>
+    /// Compatibility alias for <see cref="Pak.KeySalt"/>.
+    /// </summary>
+    [Obsolete("Use KeySalt instead.")]
+    public byte[]? U01 => KeySalt;
 
     public override bool IsHeaderPrivate => (HeaderFlags & 1) != 0;
     public override bool UseDefaultHeaderKey => (HeaderFlags & 2) != 0;
-    public bool IsDataPrivate => (HeaderFlags & 4) != 0;
-    public override bool IsHeaderEncrypted => IsHeaderPrivate || UseDefaultHeaderKey;
+    public override bool IsDataPrivate => (HeaderFlags & 4) != 0;
+    public override bool IsHeaderEncrypted => IsHeaderPrivate || UseDefaultHeaderKey || HasKeySalt;
 
     internal Pak6(Stream stream, byte[]? key, int version, byte[] checksum) : base(stream, key, version)
     {
@@ -51,7 +55,7 @@ public sealed partial class Pak6 : Pak
             if (version < 9)
             {
                 Comments = await r.ReadStringAsync(cancellationToken);
-                U01 = await r.ReadBytesAsync(16, cancellationToken); // some blowfish key likely
+                KeySalt = await r.ReadBytesAsync(16, cancellationToken);
 
                 if (version == 8)
                 {
@@ -79,7 +83,7 @@ public sealed partial class Pak6 : Pak
 
                 UsageSubDir = await r.ReadStringAsync(cancellationToken);
                 CreationBuildInfo = await r.ReadStringAsync(cancellationToken);
-                U01 = await r.ReadBytesAsync(16, cancellationToken); // some blowfish key likely
+                KeySalt = await r.ReadBytesAsync(16, cancellationToken);
 
                 if (version >= 10)
                 {

@@ -3,7 +3,7 @@ using GBX.NET.Managers;
 
 namespace GBX.NET.Serialization;
 
-internal sealed class GbxHeaderWriter(GbxHeader header, GbxWriter writer, GbxWriteSettings settings)
+internal sealed class GbxHeaderWriter(GbxHeader header, GbxWriter writer)
 {
     public bool Write(IClass? node)
     {

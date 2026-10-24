@@ -1,0 +1,19 @@
+CGameModulePlaygroundInventoryModel 0x2E016000
+- inherits: CGameModulePlaygroundModel
+
+0x000 (skippable) // title, capacity and categories
+  version = 1
+  string Title
+  int SlotCapacity
+  int
+  int
+  int
+  int CategoryCount (local, write: "n.Categories?.Length ?? 0")
+  int CategoryDataCount (local, write: "n.Categories?.Length ?? 0")
+  Category[CategoryCount] Categories
+
+archive Category
+  string Name
+  string U01
+  int U02
+  string U03

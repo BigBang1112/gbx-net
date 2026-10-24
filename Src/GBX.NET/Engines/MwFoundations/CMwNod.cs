@@ -21,18 +21,29 @@ public partial class CMwNod : IClass
     private ChunkSet? chunks;
     public IChunkSet Chunks => chunks ??= new ChunkSet(this);
 
+    public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences() => [];
+
     internal virtual void Read(GbxReaderWriter rw)
+    {
+        Read(rw, firstChunkId: null);
+    }
+
+    internal void Read(GbxReaderWriter rw, uint? firstChunkId)
     {
         var r = rw.Reader ?? throw new Exception("Reader is required but not available.");
 
-        r.TryInitializeDecryption(this);
+        if (!firstChunkId.HasValue)
+        {
+            r.TryInitializeDecryption(this);
+        }
 
         var prevChunkId = default(uint?);
         var maxSkippableChunkSize = r.Settings.MaxSkippableChunkSize ?? MaxSkippableChunkSize;
 
         while (true)
         {
-            var rawChunkId = r.ReadHexUInt32();
+            var rawChunkId = firstChunkId ?? r.ReadHexUInt32();
+            firstChunkId = null;
 
             if (!OnRawChunkIdRead(rawChunkId))
             {
@@ -401,21 +412,28 @@ public partial class CMwNod : IClass
 #if NET8_0_OR_GREATER
     [Experimental("GBXNET10001")]
 #endif
-    public virtual CMwNod DeepClone()
-    {
-        var clone = (CMwNod)MemberwiseClone();
-        DeepCloneChunks(clone);
-        return clone;
-    }
+    public virtual CMwNod DeepClone() => new DeepCloneContext().CloneNode(this);
 
 #if NET8_0_OR_GREATER
     [Experimental("GBXNET10001")]
 #endif
-    IClass IClass.DeepClone()
+    IClass IClass.DeepClone() => DeepClone();
+
+    internal CMwNod CreateCloneShell() => (CMwNod)MemberwiseClone();
+
+    internal virtual void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
-        var clone = (IClass)MemberwiseClone();
-        DeepCloneChunks(clone);
-        return clone;
+        if (chunks is null)
+        {
+            return;
+        }
+
+        clone.chunks = new ChunkSet(clone);
+
+        foreach (var chunk in chunks)
+        {
+            clone.chunks.Add(context.CloneChunk(chunk));
+        }
     }
 
 #if NET8_0_OR_GREATER
@@ -427,7 +445,12 @@ public partial class CMwNod : IClass
         {
             return;
         }
-        
+
+        if (dest is CMwNod destNode)
+        {
+            destNode.chunks = new ChunkSet(destNode);
+        }
+
         foreach (var chunk in chunks)
         {
             var chunkClone = chunk.DeepClone();
@@ -492,8 +515,7 @@ public partial class CMwNod : IClass
 
     public Gbx ToGbx(GbxHeaderBasic headerBasic)
     {
-        var classId = ClassManager.GetId(GetType()) ?? throw new Exception("Class ID not found.");
-        var header = ClassManager.NewHeader(headerBasic, classId) ?? throw new Exception("Header cannot be created.");
+        var header = ClassManager.NewHeader(headerBasic, this) ?? throw new Exception("Header cannot be created.");
         return ClassManager.NewGbx(header, new GbxBody(), this) ?? throw new Exception("Gbx cannot be created.");
     }
 

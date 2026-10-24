@@ -2,8 +2,8 @@ CGameCtnMediaBlockLightmap 0x030C0000
 - inherits: CGameCtnMediaBlock
 
 0x000
- version
- timefloat Start
- timefloat End
- v1+
-  float
+  version
+  float Start (time)
+  float End (time)
+  v1+
+    float

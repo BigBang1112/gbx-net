@@ -3,24 +3,24 @@
 public partial class CGameCtnMediaClip
 {
     private string? name;
-    [AppliedWithChunk<Chunk03079002>]
-    [AppliedWithChunk<Chunk03079003>]
-    [AppliedWithChunk<Chunk03079005>]
-    [AppliedWithChunk<Chunk0307900D>]
-    public string? Name { get => name; set => name = value; }
+    public partial string? Name { get => name; set => name = value; }
 
-    private List<CGameCtnMediaTrack>? tracks;
-    [AppliedWithChunk<Chunk03079002>]
-    [AppliedWithChunk<Chunk03079003>]
-    [AppliedWithChunk<Chunk03079005>]
-    [AppliedWithChunk<Chunk0307900D>]
-    public List<CGameCtnMediaTrack> Tracks
+    private NodeRefList<CGameCtnMediaTrack>? tracks;
+    public partial NodeRefList<CGameCtnMediaTrack> Tracks
     {
         get => tracks ??= [];
         set => tracks = value;
     }
 
     public TMUnlimiter? TMUnlimiterData { get; set; }
+
+    /// <remarks>Applied with: 0x00E body chunk</remarks>
+    [AppliedWithChunk<Chunk0307900E>]
+    public bool TriggersBeforeRaceStart
+    {
+        get => (Flags & 1) != 0;
+        set => Flags = value ? Flags | 1 : Flags & ~1;
+    }
 
     public override string ToString()
     {

@@ -1,9 +1,13 @@
 CPlugVisual3D 0x0902C000
 - inherits: CPlugVisual
 
-0x002 [TM10, TMSX, TMNESWC, TMF, TMT, MP4]
- CMwNod
+0x001 // Legacy vertices and tangents
 
-0x003 [TM10, TMSX, TMNESWC]
+0x002 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // BlendShapes
+  CMwNod BlendShapes
 
-0x004 [TMF, TMT, MP4]
+0x003 (base: 0x001) [TM10, TMPU, TMSX, TMNESWC] // Legacy vertices, tangents and bitangents
+  base
+  vec3[] BiTangents
+
+0x004 [VSK5, TMF, MP3, TMT, MP4, TM2020] // Vertices and tangents

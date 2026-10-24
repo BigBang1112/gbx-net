@@ -1,0 +1,105 @@
+CPlugFxSystem 0x0915C000
+
+0x000 [TM2020.v2] // effect graph and variables
+  version
+  int NodeVersion = 10
+  EffectNode Root (version: NodeVersion)
+  uint InputClassId
+  uint OutputClassId
+  int VariableCount (local, write: "Variables?.Length ?? 0")
+  v1+
+    int VariableVersion = 55
+  Variable[VariableCount] Variables (version: Version >= 1 ? VariableVersion : 53)
+  v2+
+    bool HasSource
+    int
+    if HasSource
+      string
+
+archive EffectNode
+  int Type = -1
+  if Type >= 0
+    id Name
+    if Type == 0
+      EffectNode[] Children
+    if Type == 1
+      string Condition
+      EffectNode Child
+    if Type == 2
+      CPlugFxSystem SubSystem
+    if Type == 3
+      id VariableName
+      int U01
+      string Expression
+    if Type == 4
+      CPlugParticleEmitterModel Emitter
+      id Target
+      string U02
+      string U03
+      v1+
+        string U04
+        string U05
+        string U06
+        string U07
+      v2+
+        string U08
+        string U09
+      v3+
+        string U10
+      v5+
+        string U11
+      v6+
+        int U12
+      v7=
+        float U13
+      v8+
+        string U14
+        string U15
+    if Type == 5
+      CPlugSound Sound
+      id U16
+      int U17
+      v3-
+        int U18
+      string U19
+      v4+
+        int U20
+      string U21
+      v10+
+        string U22
+      v8-
+        string U23
+      int U24
+      if IsSoundSurface
+        string U25
+        string U26
+        string U27
+        string U28
+
+archive Variable
+  id Name
+  byte Type
+  v18+
+    if Type == 0
+      v53-
+        bool U01
+      v54+
+        boolbyte U01
+    if Type == 1 || Type == 2 || Type == 5
+      int U02
+    if Type == 3 || Type == 10
+      int3 U03
+    if Type == 6 || Type == 8
+      byte U04
+    if Type == 7 || Type == 9
+      short U05
+    if Type == 11
+      int2 U06
+    if Type == 12
+      int4 U07
+  v24+
+    byte U08
+  v46+
+    if Type == 2
+      int U09
+      int U10

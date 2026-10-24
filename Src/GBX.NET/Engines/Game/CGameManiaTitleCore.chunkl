@@ -1,0 +1,18 @@
+CGameManiaTitleCore 0x03012000
+- inherits: CGameNod
+
+0x000
+  version = 2
+  CGameCtnCollection CollectionCommon
+  v1=
+    CPlugFont
+
+0x001
+  version = 1
+  CMwNod
+  v1+
+    string ModeScriptFolderName
+
+0x002
+  version
+  bool WithLocalMultiplayer

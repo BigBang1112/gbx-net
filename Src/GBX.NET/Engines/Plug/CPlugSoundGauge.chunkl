@@ -1,0 +1,66 @@
+CPlugSoundGauge 0x09052000
+- inherits: CPlugSound
+
+0x000 [MP4.v2, TM2020.v3]
+  version
+  CPlugFileSnd FileSndFilling
+  CPlugFileSnd FileSndEmptying
+  CPlugFileSnd FileSndOnStopFilling
+  CPlugFileSnd FileSndOnStopEmptying
+  CPlugFileSnd FileSndOnFull
+  CPlugFileSnd FileSndOnEmpty
+  CPlugFileSnd FileSndOnGradFull
+  CPlugFileSnd FileSndOnGradEmpty
+  v1+
+    CPlugFileSnd FileSndFillingFast
+    CPlugFileSnd FileSndEmptyingFast
+  v2+
+    CPlugFileSnd FileSndOnStartFilling
+    CPlugFileSnd FileSndOnStartEmptying
+
+0x001 [MP4.v5, TM2020.v6]
+  version
+  float FastRate = 0.5f
+  v2+
+    float FadeOutDuration = 0.25f
+    float FadeInDuration
+  v5+
+    bool RestartLoopOnChange = true
+  PlugCurve PitchFromRateFilling (version: Version - 6)
+  PlugCurve PitchFromRateOnStopFilling (version: Version - 6)
+  PlugCurve PitchFromRateOnFullOrEmpty (version: Version - 6)
+  PlugCurve PitchFromRateOnGradFull (version: Version - 6)
+  PlugCurve PitchFromRatioFilling (version: Version - 6)
+  PlugCurve PitchFromRatioOnStopFilling (version: Version - 6)
+  PlugCurve PitchFromRatioOnFullOrEmpty (version: Version - 6)
+  PlugCurve PitchFromRatioOnGradFull (version: Version - 6)
+  PlugCurve VolumeFromRateFilling (version: Version - 6)
+  PlugCurve VolumeFromRateOnStopFilling (version: Version - 6)
+  PlugCurve VolumeFromRateOnFullOrEmpty (version: Version - 6)
+  PlugCurve VolumeFromRateOnGradFull (version: Version - 6)
+  PlugCurve VolumeFromRatioFilling (version: Version - 6)
+  PlugCurve VolumeFromRatioOnStopFilling (version: Version - 6)
+  PlugCurve VolumeFromRatioOnFullOrEmpty (version: Version - 6)
+  PlugCurve VolumeFromRatioOnGradFull (version: Version - 6)
+  v3+
+    PlugCurve PitchFromRateOnStartFilling (version: Version - 6)
+    PlugCurve PitchFromRatioOnStartFilling (version: Version - 6)
+    PlugCurve VolumeFromRateOnStartFilling (version: Version - 6)
+    PlugCurve VolumeFromRatioOnStartFilling (version: Version - 6)
+  v4+
+    PlugCurve PitchFromRateEmptying (version: Version - 6)
+    PlugCurve PitchFromRateOnStopEmptying (version: Version - 6)
+    PlugCurve PitchFromRateOnGradEmpty (version: Version - 6)
+    PlugCurve PitchFromRatioEmptying (version: Version - 6)
+    PlugCurve PitchFromRatioOnStopEmptying (version: Version - 6)
+    PlugCurve PitchFromRatioOnGradEmpty (version: Version - 6)
+    PlugCurve VolumeFromRateEmptying (version: Version - 6)
+    PlugCurve VolumeFromRateOnStopEmptying (version: Version - 6)
+    PlugCurve VolumeFromRateOnGradEmpty (version: Version - 6)
+    PlugCurve VolumeFromRatioEmptying (version: Version - 6)
+    PlugCurve VolumeFromRatioOnStopEmptying (version: Version - 6)
+    PlugCurve VolumeFromRatioOnGradEmpty (version: Version - 6)
+    PlugCurve PitchFromRateOnStartEmptying (version: Version - 6)
+    PlugCurve PitchFromRatioOnStartEmptying (version: Version - 6)
+    PlugCurve VolumeFromRateOnStartEmptying (version: Version - 6)
+    PlugCurve VolumeFromRatioOnStartEmptying (version: Version - 6)

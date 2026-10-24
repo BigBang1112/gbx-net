@@ -1,0 +1,62 @@
+CPlugDayTime 0x09181000 // Atmosphere settings for one time of day.
+- inherits: CFunc
+
+0x000 [TMT, MP4, TM2020] // sun and atmosphere powers
+  float HdrSunPower = 25000 // HdrSun.Power
+  float Atmo1Power = 50 // HdrSun.Atmo1.Power
+  float Atmo1ColorScale = 0.25f // HdrSun.Atmo1.Color scale
+  float Atmo2Power = 5 // HdrSun.Atmo2.Power
+  float Atmo2ColorScale = 0.125f // HdrSun.Atmo2.Color scale
+
+0x001 [TMT, MP4, TM2020] // atmosphere colors
+  bool = true
+  vec3 Atmo1Color = (1, 1, 1) // HdrSun.Atmo1.Color
+  vec3 Atmo2Color = (1, 1, 1) // HdrSun.Atmo2.Color
+
+0x002 [TMT, MP4, TM2020] // SunThroughIntens
+  float SunThroughIntens = 0.75f // Clouds.SunThroughIntens
+
+0x003 // legacy CloudsX2 colors
+  vec3 CloudsX2MinRgb // CloudsX2.MinRgb
+  vec3 CloudsX2MaxRgb = (1, 1, 1) // CloudsX2.MaxRgb
+
+0x004 [TMT, MP4, TM2020] // CloudsX2 colors
+  vec3 CloudsX2MinRgb
+  vec3 CloudsX2MaxRgb = (1, 1, 1)
+  float CloudsX2MinRgbX = 1 // CloudsX2.MinRgbX
+  float CloudsX2MaxRgbX = 1 // CloudsX2.MaxRgbX
+
+0x005 [TMT, MP4, TM2020] // FxSmSelfIllumScaleGamePlay
+  version
+  float FxSmSelfIllumScaleGamePlay = 1
+
+0x006 [TMT, MP4, TM2020] // fog matters
+  FogMatterId[] FogMatters
+
+0x007 [TMT.v3, MP4.v3, TM2020.v3] // clouds
+  version = 3
+  vec3 CloudsVortexMinRgb // CloudsVortex.MinRgb
+  vec3 CloudsVortexMaxRgb = (1, 1, 1) // CloudsVortex.MaxRgb
+  v1+
+    float CloudsEdgeLight0Power // Clouds.EdgeLight.Layer0.Power
+    float CloudsEdgeLight0Scale // Clouds.EdgeLight.Layer0.Scale
+    float CloudsEdgeLight1Power
+    float CloudsEdgeLight1Scale
+    float CloudsEdgeLight2Power
+    float CloudsEdgeLight2Scale
+  v2+
+    float CloudsGodLightIntens // Clouds.GodLightIntens
+  v3+
+    vec3 CloudsMinRgb // Clouds.MinRgb
+    vec3 CloudsMaxRgb = (1, 1, 1) // Clouds.MaxRgb
+    float CloudsMinRgbX = 1 // Clouds.MinRgbX
+    float CloudsMaxRgbX = 1 // Clouds.MaxRgbX
+
+0x008 [TMT, MP4, TM2020] // MoonHdrScale
+  version
+  float MoonHdrScale = 1
+
+archive FogMatterId // FogMatter.Matter
+  id Id
+  float Density = 0.001f
+  vec3 Color = (1, 1, 1)

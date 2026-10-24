@@ -1,9 +1,9 @@
 CGameCtnMediaBlockImage 0x030A5000
 - inherits: CGameCtnMediaBlock
 
-0x000
- CControlEffectSimi Effect
- packdesc Image
+0x000 [TMSX, TMNESWC, VSK5, TMF, TMT, MP4, TM2020]
+  CControlEffectSimi Effect
+  packdesc Image
 
-0x001
- float = 0.2f
+0x001 [TMSX]
+  float = 0.2f

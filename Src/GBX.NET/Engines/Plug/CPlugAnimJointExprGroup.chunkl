@@ -1,0 +1,10 @@
+CPlugAnimJointExprGroup 0x09164000
+
+archive
+  version
+  Expression[] Expressions
+
+archive Expression
+  id Name
+  byte Type
+  string Value

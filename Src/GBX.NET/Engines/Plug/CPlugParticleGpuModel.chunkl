@@ -1,81 +1,140 @@
 CPlugParticleGpuModel 0x090C6000
 
-0x000
- version
- float
- float
- float
- float
- v2+
-  float
-  float
-  v3+
-   float
-   v5+
-    bool
-    v6+
-     bool
-
-0x001
- version
- float
- float
- v1+
-  bool
-  bool
-  v2+
-   bool
-
-0x002
- version
- float U01
- v6-
-  CPlugBitmap Bitmap (external)
- v7+
-  bool U02
-  if !U02
-   CPlugBitmap Bitmap (external)
-  if U02
-   string
-  v8+
-   bool
-   float
- float
- float
- int
- int
- v2-
-  float
- v3+
-  float
-  float
+0x000 [MP3.v5, TMT.v6, MP4.v6, TM2020.v6] // lifetime and size
+  version
+  v3-
+    float LegacyLifeAverage
+    float LegacyLifeVariation
+    float LegacySizeAverage
+    float LegacySizeVariation
+    LifeMax = ConvertedLegacyLifeMax
+    LifeVar01 = ConvertedLegacyLifeVar01
+    SizeMax = ConvertedLegacySizeMax
+    SizeVar01 = ConvertedLegacySizeVar01
   v4+
-   float
- float
- float
- bool
- v2+
-  bool
-  v5+
-   bool
-   v6+
-    bool
+    float LifeMax = 1f
+    float LifeVar01
+    float SizeMax = 0.2f
+    float SizeVar01 = 0.4f
+  v0=
+    SizeMax = SizeMax * 0.5f
+  v2+
+    float = 1f
     float
-    v9+
-     CPlugBitmap
-     bool
-     bool
-     bool
-     bool
-     float
-     v10+
-      float
-      bool
-      v11+
-       float
-       bool
+  v3+
+    float SizeEndScale = 1f
+  v5+
+    bool
+  v6+
+    bool
 
-0x003
- version
- float
- float
+0x001 [MP3.v0, TMT.v0, MP4.v2, TM2020.v3] // weight and viscosity
+  version
+  float Weight = -5f
+  float Viscosity = 1f
+  v1+
+    bool
+    bool
+  v2+
+    bool
+  v3+
+    bool
+
+0x002 [MP3.v7, TMT.v7, MP4.v11, TM2020.v22] // textures, intensity and color
+  version
+  v0=
+    float LegacyPersistence
+    Persistence = (1f - SizeVar01 * 0.5f) * SizeMax * legacyPersistence
+  v1+
+    float Persistence = 0.1f
+  v6-
+    CPlugBitmap Bitmap
+  v7+
+    bool BitmapIsFile
+    if !BitmapIsFile
+      CPlugBitmap Bitmap
+    if BitmapIsFile
+      string BitmapFile
+    v8+
+      bool
+      float = 0.2f
+  float Intensity = 1f
+  float IntensityVariation
+  int TextureAtlasDimX = 1
+  int TextureAtlasDimY = 1
+  v2-
+    float LegacyIntensityDecayPower
+    IntensityFadeIn = 0.01f
+    if legacyIntensityDecayPower > 1f
+      IntensityFadeOut = ConvertedLegacyIntensityFadeOut
+      IntensityPower = 1f
+    else
+      IntensityFadeOut = 0.01f
+      IntensityPower = ConvertedLegacyIntensityPower
+  v3+
+    float IntensityPower = 1f
+    float IntensityFadeIn = 0.01f
+    v3=
+      IntensityFadeOut = IntensityFadeIn
+    v4+
+      float IntensityFadeOut = 0.75f
+  float Rotation = 0.5f
+  float RotationVariation = 0.45f
+  bool UseHueShift
+  v2+
+    bool
+  v5+
+    bool
+  v5-
+    UseEmitterHue = true
+    Hue = 0f
+  v6+
+    bool UseEmitterHue = true
+    float Hue
+  v9+
+    CPlugBitmap BitmapOverLife
+    bool
+    bool
+    bool
+    bool UseColorOverLife
+    float = 0.5f
+  v10+
+    float = 1f
+    bool UseEnergyOverLife
+  v11+
+    float
+    bool
+  v12+
+    CPlugBitmap
+  v13+
+    int = 1
+  v14+
+    bool
+    float = 1f
+  v15+
+    float
+  v16+
+    bool
+    float = 1f
+  v17+
+    float = 0.99f
+    float = 1f
+    float = 1f
+  v18+
+    CPlugBitmap
+  v19+
+    bool
+  v20+
+    float = 0.1f
+    float = 0.015f
+    float
+    float
+  v22+
+    float = 0.5f
+
+0x003 [MP3.v0, TMT.v0, MP4.v0, TM2020.v2]
+  version
+  float = 0.75f
+  v2+
+    float = 0.75f
+  float = 1f

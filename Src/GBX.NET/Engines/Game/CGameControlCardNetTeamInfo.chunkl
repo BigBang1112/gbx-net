@@ -1,0 +1,2 @@
+CGameControlCardNetTeamInfo 0x030DC000
+- inherits: CGameControlCard

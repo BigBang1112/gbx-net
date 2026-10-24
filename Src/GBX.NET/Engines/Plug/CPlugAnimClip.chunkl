@@ -1,1 +1,31 @@
 CPlugAnimClip 0x09135000
+
+0x000 [TM2020.v3] // animation clip
+  version
+  int FlagsVersion
+  id Name
+  CPlugAnimSkelBaked Baked
+  v2+
+    CPlugAnimSkelEdition* Edition
+  v3+
+    ClipFlags Flags (version: n.FlagsVersion)
+
+archive ClipFlags
+  bool U01
+  float WorldSpeedKmh
+  float MinPlaySpeed
+  float MaxPlaySpeed
+  bool U02
+  id DifferenceFromClip
+  v1+
+    bool U03
+  v2+
+    float PlaySpeed
+  v3+
+    bool U04
+  v4+
+    byte U05
+  v5+
+    int AlignOffset
+  v6+
+    bool IsPartial

@@ -1,0 +1,63 @@
+CPlugVehicleCameraHelicoModel 0x0914D000
+- inherits: CPlugCamControlModel
+
+0x000 [MP4.v8, TM2020.v9] // helicopter camera settings and curves
+  version
+  float U01 = 12
+  float U02 = 30
+  float U03 = 80
+  float U04
+  float U05 = 1
+  float U06 = 4
+  float U07
+  float U08 // discarded
+  float U09 = 4
+  float U10 = 0.3f
+  float U11
+  float U12
+  float U13 = 1
+  float U14 = 1
+  float U15 // discarded
+  float U16 // discarded
+  float U17 // discarded
+  v8-
+    CPlugCurveSimpleNod U18 (direct)
+  v9+
+    PlugCurve U18
+  float U19 = 3
+  float U20 = -6
+  v2+
+    v8-
+      CPlugCurveSimpleNod U21 (direct)
+    v9+
+      PlugCurve U21
+  v3+
+    v8-
+      CPlugCurveSimpleNod U22 (direct)
+    v9+
+      PlugCurve U22
+  v4+
+    v8-
+      CPlugCurveSimpleNod U23 (direct)
+    v9+
+      PlugCurve U23
+  v5+
+    v8-
+      CPlugCurveSimpleNod U24 (direct)
+      CPlugCurveSimpleNod U25 (direct)
+      CPlugCurveSimpleNod U26 (direct)
+    v9+
+      PlugCurve U24
+      PlugCurve U25
+      PlugCurve U26
+  v6+
+    v8-
+      CPlugCurveSimpleNod U27 (direct)
+    v9+
+      PlugCurve U27
+    CPlugCurveSimpleNod U28 (direct) // discarded
+    CPlugCurveSimpleNod U29 (direct) // discarded
+  v7+
+    int U30 = 1000
+  v8+
+    int U31 = 1000

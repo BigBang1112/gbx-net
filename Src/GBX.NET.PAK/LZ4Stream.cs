@@ -158,7 +158,9 @@ internal partial class LZ4Stream : Stream
             position += numBytesFromBuffer;
             count -= numBytesFromBuffer;
 
-            if (position == UncompressedSize)
+            // Dummy writes can change the cipher state between reads. Do not decrypt
+            // the next compressed block until the caller requests its bytes.
+            if (position == UncompressedSize || count == 0)
                 break;
 
             if (_bufferIndex == _buffer.Length)
@@ -200,8 +202,18 @@ internal partial class LZ4Stream : Stream
         offset = origin == SeekOrigin.Begin ? offset : origin == SeekOrigin.Current ? position + offset : UncompressedSize + offset;
         if (offset >= position)
         {
-            byte[] dummy = new byte[offset - position];
-            Read(dummy, 0, (int)(offset - position));
+            byte[] dummy = new byte[4096];
+
+            while (position < offset)
+            {
+                var bytesToSkip = (int)Math.Min(dummy.Length, offset - position);
+
+                if (Read(dummy, 0, bytesToSkip) == 0)
+                {
+                    break;
+                }
+            }
+
             return position;
         }
         else

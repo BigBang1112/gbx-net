@@ -1,0 +1,2 @@
+CMwCmdAffectIdentIso4 0x01073000
+- inherits: CMwCmdAffectIdent

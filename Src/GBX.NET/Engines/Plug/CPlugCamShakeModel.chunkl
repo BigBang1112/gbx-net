@@ -1,20 +1,18 @@
 CPlugCamShakeModel 0x0910B000
 
-0x000
- version
- int
- int
- float
- float
- float
- float
- v2+
-  float?
+0x000 [TMT.v2, MP4.v2, TM2020.v3] // camera shake parameters
+  version
+  v2-
+    CamShakeParams[1] Params (version: Version)
   v3+
-   int?
-   int?
-   float?
-   float?
-   float?
-   float?
-   float?
+    CamShakeParams[2] Params (version: Version)
+
+archive CamShakeParams
+  int Duration = 150 (time)
+  int FadeDuration = 150 (time)
+  float PosFreq = 12f
+  float PosOffset = 0.05f
+  float RotFreq = 10f
+  float RotOffsetDeg = 1f
+  v2+
+    float ImpactIntensityMin = 0.75f

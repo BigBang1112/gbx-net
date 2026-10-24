@@ -1,0 +1,22 @@
+CGameActionFxResources 0x2E00A000
+
+0x000
+  version
+  string ParticleEmitterSubModels_Continuous
+  string ParticleEmitterSubModels_Splash
+
+0x001
+  version
+  CMwRefBuffer BulletModelsLibrary
+
+0x002
+  version
+  string AudioFxLibraryFolder
+
+0x003
+  version
+  string MeshFolder
+
+0x004
+  version
+  string BeamEmitterSubModels

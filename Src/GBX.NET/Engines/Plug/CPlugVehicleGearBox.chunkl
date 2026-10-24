@@ -1,18 +1,32 @@
-CPlugVehicleGearBox 0x09094000
+CPlugVehicleGearBox 0x09094000 // Vehicle gear ratios and gear change behavior.
 
-0x001
- version
- float[]
- bool
- int
- int
- float
- float
- float
- float
- float
- float
- v1+
-  float?
+0x000 // legacy gear ratios
+  version
+  float // discarded
+  float // discarded
+  float // discarded
+  float // discarded
+  float // discarded
+  float // discarded
+  float // discarded
+  float // discarded
+  float[] GearRatios
+  float[] // discarded
+  float[] // discarded
+
+0x001 [MP4.v2, TM2020.v2] // gear box
+  version
+  float[] GearRatios
+  bool Sequential
+  int ChangeGearPeriod = 400
+  int ChangeGearDeclutchDuration = 50
+  float MinSpeedKmhForDrive = 100
+  float OptimalRpm_Throttle = 7000
+  float OptimalRpm_Release = 6500
+  float MotorRpmInertiaOnLoad = 0.1f
+  float MotorRpmInertiaDecluthGas = 0.4f
+  float MotorRpmInertiaDecluthFree = 1.5f
+  v1+
+    float TakeOffSpeedKmh = 85
   v2+
-   float?
+    float RpmGammaCorrection = 1

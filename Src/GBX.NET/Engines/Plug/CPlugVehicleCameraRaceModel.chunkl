@@ -1,0 +1,31 @@
+CPlugVehicleCameraRaceModel 0x09112000
+- inherits: CPlugCamControlModel
+
+0x000
+  float LookAtFactor = 0.5f
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  vec3 RelativeTargetTrans
+  bool
+  float MinDist = 0.1f
+  float MaxDist = 3.5f
+  float PlaneDist = 4f
+  float Fov = 60f
+
+0x001 [MP4.v1, TM2020.v1]
+  version
+  id CameraId
+  float LookAtFactor = 0.5f
+  iso4 RelativeTargetLocation
+  bool
+  float MinDist = 0.1f
+  float MaxDist = 3.5f
+  float PlaneDist = 4f
+  float Fov = 60f

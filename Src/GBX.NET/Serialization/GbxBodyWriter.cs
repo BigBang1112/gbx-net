@@ -6,6 +6,8 @@ internal sealed class GbxBodyWriter(GbxBody body, GbxWriter writer)
 {
     internal void WriteUncompressed(CMwNod node)
     {
+        writer.NodeDict[node] = 0;
+        
         using var readerWriter = new GbxReaderWriter(writer);
         node.ReadWrite(readerWriter);
     }

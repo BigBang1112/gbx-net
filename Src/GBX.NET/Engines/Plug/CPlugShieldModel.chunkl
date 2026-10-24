@@ -1,36 +1,42 @@
 CPlugShieldModel 0x09111000
 
-0x000
- version
- v7+
-  CPlugSound ShieldActiveSound
-  CPlugSound ShieldTouchSound
-  CPlugSound ShieldDestroySound
-  string ShieldTouchParticleRef
-  if ShieldTouchParticleRef == null || ShieldTouchParticleRef == ""
-   CPlugParticleEmitterModel ShieldTouchParticle
- v6+
-  int
-  float
-  float
-  int
- v5+
-  float
-  bool
-  bool
- v4+
-  int TextureNotches
- v3+
-  vec3 RelativePos
- v2+
-  bool NeedActivation
- v1+
-  bool IsBouncing
-  int ShieldArmor
-  int ShieldDuration
- string ShapeRef
- if ShapeRef == null || ShapeRef == ""
-  CPlugSurface Shape
- string ShapeVisModelRef
- if ShapeVisModelRef == null || ShapeVisModelRef == ""
-  CPlugSolid2Model ShapeVisModel
+0x000 [MP4.v7, TM2020.v7]
+  version
+  v7+
+    string ShieldActiveSoundRef
+    if ShieldActiveSoundRef == null || ShieldActiveSoundRef == ""
+      CPlugSound ShieldActiveSound
+    string ShieldTouchSoundRef
+    if ShieldTouchSoundRef == null || ShieldTouchSoundRef == ""
+      CPlugSound ShieldTouchSound
+    string ShieldDestroySoundRef
+    if ShieldDestroySoundRef == null || ShieldDestroySoundRef == ""
+      CPlugSound ShieldDestroySound
+    string ShieldTouchParticleRef
+    if ShieldTouchParticleRef == null || ShieldTouchParticleRef == ""
+      CPlugParticleEmitterModel ShieldTouchParticle
+  v6+
+    int Cooldown
+    float Transparency
+    float MeshScale
+    int TickReload
+  v5+
+    float SphereRadius
+    bool DoDamagesToPlayers
+    bool DoDamagesToShields
+  v4+
+    int TextureNotches
+  v3+
+    vec3 RelativePos
+  v2+
+    bool NeedActivation
+  v1+
+    bool IsBouncing
+    int ShieldArmor
+    int ShieldDuration
+  string ShapeRef
+  if ShapeRef == null || ShapeRef == ""
+    CPlugSurface Shape
+  string ShapeVisModelRef
+  if ShapeVisModelRef == null || ShapeVisModelRef == ""
+    CPlugSolid2Model ShapeVisModel

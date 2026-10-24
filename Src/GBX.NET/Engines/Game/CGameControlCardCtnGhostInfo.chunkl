@@ -1,0 +1,2 @@
+CGameControlCardCtnGhostInfo 0x030DA000
+- inherits: CGameControlCard

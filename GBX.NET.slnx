@@ -1,12 +1,10 @@
-<Solution>
+﻿<Solution>
   <Folder Name="/Benchmarks/">
     <Project Path="Benchmarks/GBX.NET.Benchmarks/GBX.NET.Benchmarks.csproj" />
   </Folder>
   <Folder Name="/Generators/">
     <File Path="Generators/LICENSE" />
     <Project Path="Generators/GBX.NET.Generators/GBX.NET.Generators.csproj" />
-    <Project Path="Generators/GBX.NET.Lua.Generators/GBX.NET.Lua.Generators.csproj" />
-    <Project Path="Generators/GBX.NET.Tests.Generators/GBX.NET.Tests.Generators.csproj" />
   </Folder>
   <Folder Name="/Položky řešení/">
     <File Path=".dockerignore" />
@@ -65,6 +63,7 @@
   </Folder>
   <Folder Name="/Src/">
     <Project Path="Src/GBX.NET.BlockInfo/GBX.NET.BlockInfo.csproj" />
+    <Project Path="Src/GBX.NET.Builders/GBX.NET.Builders.csproj" />
     <Project Path="Src/GBX.NET.Crypto/GBX.NET.Crypto.csproj" />
     <Project Path="Src/GBX.NET.Extensions.Hosting/GBX.NET.Extensions.Hosting.csproj" />
     <Project Path="Src/GBX.NET.Hashing/GBX.NET.Hashing.csproj" />
@@ -94,35 +93,26 @@
     <Project Path="Templates/MyGbxToolApp/MyGbxToolAppCLI/MyGbxToolAppCLI.csproj" />
   </Folder>
   <Folder Name="/Tests/">
+    <Project Path="Tests/GbxCLI.Tests/GbxCLI.Tests.csproj" />
     <Project Path="Tests/GBX.NET.Crypto.Tests/GBX.NET.Crypto.Tests.csproj" />
+    <Project Path="Tests/GBX.NET.Generators.Tests/GBX.NET.Generators.Tests.csproj" />
     <Project Path="Tests/GBX.NET.PAK.Tests/GBX.NET.PAK.Tests.csproj" Id="e0d7028e-a295-4aa8-9b4c-93f37112ea53" />
     <Project Path="Tests/GBX.NET.Tests/GBX.NET.Tests.csproj" />
   </Folder>
   <Folder Name="/Tools/">
     <File Path="Tools/LICENSE" />
-    <Project Path="Tools/BulkParseTest/BulkParseTest.csproj" />
-    <Project Path="Tools/ClassIdFormatter/ClassIdFormatter.csproj" />
-    <Project Path="Tools/ClassIdTxtFromGbxClassInfo/ClassIdTxtFromGbxClassInfo.csproj" />
-    <Project Path="Tools/ClassInfoFromId/ClassInfoFromId.csproj" />
+    <Project Path="Tools/GbxCLI/GbxCLI.csproj" />
     <Project Path="Tools/CryCryptSwitch/CryCryptSwitch.csproj" />
     <Project Path="Tools/ExtractPakFileHashes/ExtractPakFileHashes.csproj" />
     <Project Path="Tools/GbxDecompress/GbxDecompress.csproj" />
     <Project Path="Tools/GbxDiff/GbxDiff.csproj" />
     <Project Path="Tools/GbxDiscordBot/GbxDiscordBot.csproj" />
     <Project Path="Tools/GbxInspector/GbxInspector.csproj" />
-    <Project Path="Tools/GbxExplorer/Client/GbxExplorer.Client.csproj" />
-    <Project Path="Tools/GbxExplorer/Component/GbxExplorer.Component.csproj" />
-    <Project Path="Tools/GbxExplorer/Photino/GbxExplorer.Photino.csproj" />
-    <Project Path="Tools/GbxExplorer/Server/GbxExplorer.Server.csproj" />
-    <Project Path="Tools/GbxExplorer/Shared/GbxExplorer.Shared.csproj" />
-    <Project Path="Tools/GbxLuaInterpreter/GbxLuaInterpreter.csproj" />
-    <Project Path="Tools/GbxLuaProcess/GbxLuaProcess.csproj" />
     <Project Path="Tools/GbxToJson/GbxToJson.csproj" />
     <Project Path="Tools/MuxCryptSwitch/MuxCryptSwitch.csproj" />
     <Project Path="Tools/ObjExporter/ObjExporter.csproj" />
     <Project Path="Tools/PakToFolder/PakToFolder.csproj" />
     <Project Path="Tools/PakToZip/PakToZip.csproj" />
-    <Project Path="Tools/ParseRepeater/ParseRepeater.csproj" />
     <Project Path="Tools/PopulateExtensions/PopulateExtensions.csproj" Id="a4d3d9a7-2e22-4cfa-bf7c-6c61cf1236f9" />
     <Project Path="Tools/SplitFileHashesPerPak/SplitFileHashesPerPak.csproj" Id="3b8de8d8-dfab-4f67-bf8d-871caf36b57d" />
   </Folder>
