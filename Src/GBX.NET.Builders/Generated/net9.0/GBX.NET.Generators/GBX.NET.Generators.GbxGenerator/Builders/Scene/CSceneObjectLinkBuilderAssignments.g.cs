@@ -5,27 +5,20 @@ namespace GBX.NET.Builders.Engines.Scene;
 
 internal static class CSceneObjectLinkBuilderAssignments
 {
-    private static NodeBuilderProperty<global::GBX.NET.Engines.Scene.CSceneMobil?>? cached0;
-    internal static NodeBuilderProperty<global::GBX.NET.Engines.Scene.CSceneMobil?> GetMobilAssignment() => cached0 ??= new("Mobil", new Action<object, global::GBX.NET.Engines.Scene.CSceneMobil?>(Assign0));
-    private static void Assign0(object node, global::GBX.NET.Engines.Scene.CSceneMobil? value) => ((global::GBX.NET.Engines.Scene.CSceneObjectLink)node).Mobil = value;
-    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Scene.CSceneMobil>>? cached0Reference;
-    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Scene.CSceneMobil>> GetMobilReferenceAssignment() => cached0Reference ??= new("Mobil", new Action<object, NodeRef<global::GBX.NET.Engines.Scene.CSceneMobil>>(Assign0Reference), new Func<NodeRef<global::GBX.NET.Engines.Scene.CSceneMobil>, NodeRef<global::GBX.NET.Engines.Scene.CSceneMobil>>(Copy0));
-    private static void Assign0Reference(object node, NodeRef<global::GBX.NET.Engines.Scene.CSceneMobil> value) => ((global::GBX.NET.Engines.Scene.CSceneObjectLink)node).References.Mobil.CopyFrom(value);
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Scene.CSceneMobil.MobilPtr?>? cached0;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Scene.CSceneMobil.MobilPtr?> GetMobilAssignment() => cached0 ??= new("Mobil", new Action<object, global::GBX.NET.Engines.Scene.CSceneMobil.MobilPtr?>(Assign0));
+    private static void Assign0(object node, global::GBX.NET.Engines.Scene.CSceneMobil.MobilPtr? value) => ((global::GBX.NET.Engines.Scene.CSceneObjectLink)node).Mobil = value;
     private static NodeBuilderProperty<string?>? cached1;
     internal static NodeBuilderProperty<string?> GetMobilTreeIdAssignment() => cached1 ??= new("MobilTreeId", new Action<object, string?>(Assign1));
     private static void Assign1(object node, string? value) => ((global::GBX.NET.Engines.Scene.CSceneObjectLink)node).MobilTreeId = value;
-    private static NodeBuilderProperty<string?>? cached2;
-    internal static NodeBuilderProperty<string?> GetNameAssignment() => cached2 ??= new("Name", new Action<object, string?>(Assign2));
-    private static void Assign2(object node, string? value) => ((global::GBX.NET.Engines.Scene.CSceneObjectLink)node).Name = value;
-    private static NodeBuilderProperty<global::GBX.NET.Engines.Scene.CSceneObject?>? cached3;
-    internal static NodeBuilderProperty<global::GBX.NET.Engines.Scene.CSceneObject?> GetObjectAssignment() => cached3 ??= new("Object", new Action<object, global::GBX.NET.Engines.Scene.CSceneObject?>(Assign3));
-    private static void Assign3(object node, global::GBX.NET.Engines.Scene.CSceneObject? value) => ((global::GBX.NET.Engines.Scene.CSceneObjectLink)node).Object = value;
-    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Scene.CSceneObject>>? cached3Reference;
-    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Scene.CSceneObject>> GetObjectReferenceAssignment() => cached3Reference ??= new("Object", new Action<object, NodeRef<global::GBX.NET.Engines.Scene.CSceneObject>>(Assign3Reference), new Func<NodeRef<global::GBX.NET.Engines.Scene.CSceneObject>, NodeRef<global::GBX.NET.Engines.Scene.CSceneObject>>(Copy1));
-    private static void Assign3Reference(object node, NodeRef<global::GBX.NET.Engines.Scene.CSceneObject> value) => ((global::GBX.NET.Engines.Scene.CSceneObjectLink)node).References.Object.CopyFrom(value);
-    private static NodeBuilderProperty<Iso4>? cached4;
-    internal static NodeBuilderProperty<Iso4> GetRelativeLocationAssignment() => cached4 ??= new("RelativeLocation", new Action<object, Iso4>(Assign4));
-    private static void Assign4(object node, Iso4 value) => ((global::GBX.NET.Engines.Scene.CSceneObjectLink)node).RelativeLocation = value;
-    private static NodeRef<global::GBX.NET.Engines.Scene.CSceneMobil> Copy0(NodeRef<global::GBX.NET.Engines.Scene.CSceneMobil> value) { var copy = new NodeRef<global::GBX.NET.Engines.Scene.CSceneMobil>(); copy.CopyFrom(value); return copy; }
-    private static NodeRef<global::GBX.NET.Engines.Scene.CSceneObject> Copy1(NodeRef<global::GBX.NET.Engines.Scene.CSceneObject> value) { var copy = new NodeRef<global::GBX.NET.Engines.Scene.CSceneObject>(); copy.CopyFrom(value); return copy; }
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Scene.CSceneObject?>? cached2;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Scene.CSceneObject?> GetObjectAssignment() => cached2 ??= new("Object", new Action<object, global::GBX.NET.Engines.Scene.CSceneObject?>(Assign2));
+    private static void Assign2(object node, global::GBX.NET.Engines.Scene.CSceneObject? value) => ((global::GBX.NET.Engines.Scene.CSceneObjectLink)node).Object = value;
+    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Scene.CSceneObject>>? cached2Reference;
+    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Scene.CSceneObject>> GetObjectReferenceAssignment() => cached2Reference ??= new("Object", new Action<object, NodeRef<global::GBX.NET.Engines.Scene.CSceneObject>>(Assign2Reference), new Func<NodeRef<global::GBX.NET.Engines.Scene.CSceneObject>, NodeRef<global::GBX.NET.Engines.Scene.CSceneObject>>(Copy0));
+    private static void Assign2Reference(object node, NodeRef<global::GBX.NET.Engines.Scene.CSceneObject> value) => ((global::GBX.NET.Engines.Scene.CSceneObjectLink)node).References.Object.CopyFrom(value);
+    private static NodeBuilderProperty<Iso4>? cached3;
+    internal static NodeBuilderProperty<Iso4> GetRelativeLocationAssignment() => cached3 ??= new("RelativeLocation", new Action<object, Iso4>(Assign3));
+    private static void Assign3(object node, Iso4 value) => ((global::GBX.NET.Engines.Scene.CSceneObjectLink)node).RelativeLocation = value;
+    private static NodeRef<global::GBX.NET.Engines.Scene.CSceneObject> Copy0(NodeRef<global::GBX.NET.Engines.Scene.CSceneObject> value) { var copy = new NodeRef<global::GBX.NET.Engines.Scene.CSceneObject>(); copy.CopyFrom(value); return copy; }
 }

@@ -67,6 +67,14 @@ public static class CFuncKeysSkelBuilderExtensions
     }
 }
 
+public static class CFuncKeysTransBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Function.CFuncKeysTrans)
+    {
+        public static global::GBX.NET.Builders.Engines.Function.CFuncKeysTransBuilder Create() => new();
+    }
+}
+
 public static class CFuncLightColorBuilderExtensions
 {
     extension(global::GBX.NET.Engines.Function.CFuncLightColor)

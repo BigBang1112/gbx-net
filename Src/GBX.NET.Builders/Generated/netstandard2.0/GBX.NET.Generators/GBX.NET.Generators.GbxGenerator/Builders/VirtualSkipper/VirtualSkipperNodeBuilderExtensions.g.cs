@@ -19,3 +19,27 @@ public static class CVskCollectionBuilderExtensions
     }
 }
 
+public static class CVskCourseBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.VirtualSkipper.CVskCourse)
+    {
+        public static global::GBX.NET.Builders.Engines.VirtualSkipper.CVskCourseBuilder Create() => new();
+    }
+}
+
+public static class CVskTrafficBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.VirtualSkipper.CVskTraffic)
+    {
+        public static global::GBX.NET.Builders.Engines.VirtualSkipper.CVskTrafficBuilder Create() => new();
+    }
+}
+
+public static class CVskTrafficPathBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.VirtualSkipper.CVskTrafficPath)
+    {
+        public static global::GBX.NET.Builders.Engines.VirtualSkipper.CVskTrafficPathBuilder Create() => new();
+    }
+}
+

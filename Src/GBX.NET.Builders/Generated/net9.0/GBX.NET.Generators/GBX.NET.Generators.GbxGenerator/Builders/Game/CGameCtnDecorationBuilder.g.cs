@@ -98,6 +98,11 @@ public partial class CGameCtnDecorationBuilder : CGameCtnDecorationBuilderBase<C
     private static global::GBX.NET.Engines.Game.CGameCtnDecoration CreateRecipe0(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnDecoration();
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038001());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038002());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038003());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038004());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001003(game));
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001004());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001002());
@@ -109,6 +114,12 @@ public partial class CGameCtnDecorationBuilder : CGameCtnDecorationBuilderBase<C
     private static global::GBX.NET.Engines.Game.CGameCtnDecoration CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnDecoration();
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038001());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038002());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038003());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038004());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038006());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038007());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001002());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001004());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006());

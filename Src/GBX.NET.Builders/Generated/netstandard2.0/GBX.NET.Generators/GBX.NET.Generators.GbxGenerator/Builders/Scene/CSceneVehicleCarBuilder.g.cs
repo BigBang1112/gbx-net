@@ -30,9 +30,14 @@ public abstract class CSceneVehicleCarBuilderMembers2<TSelf> : CSceneVehicleCarB
     public TSelf WithVisualVehicles(params global::GBX.NET.Engines.Scene.CSceneVehicleCar.VisualVehicle[]? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarBuilderAssignments.GetVisualVehiclesAssignment(), value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX);
     public TSelf WithVisualVehicles(IEnumerable<global::GBX.NET.Engines.Scene.CSceneVehicleCar.VisualVehicle> values) => WithVisualVehicles(values.ToArray());
 }
-public abstract class CSceneVehicleCarBuilderMembers3<TSelf> : CSceneVehicleCarBuilderMembers1<TSelf> where TSelf : CSceneVehicleCarBuilderMembers3<TSelf>
+public abstract class CSceneVehicleCarBuilderMembers3<TSelf> : CSceneVehicleCarBuilderMembers2<TSelf> where TSelf : CSceneVehicleCarBuilderMembers3<TSelf>
 {
     private protected CSceneVehicleCarBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCar> state) : base(state) { }
+    public TSelf WithSpeedClamp(float value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarBuilderAssignments.GetSpeedClampAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
+}
+public abstract class CSceneVehicleCarBuilderMembers4<TSelf> : CSceneVehicleCarBuilderMembers1<TSelf> where TSelf : CSceneVehicleCarBuilderMembers4<TSelf>
+{
+    private protected CSceneVehicleCarBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCar> state) : base(state) { }
     public TSelf WithEnvironment(global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleBuilderAssignments.GetEnvironmentAssignment(), value, SupportedGames3);
     public TSelf WithEnvironmentReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleBuilderAssignments.GetEnvironmentReferenceAssignment(), value, SupportedGames3);
     public TSelf WithVehicleMaterials(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleBuilderAssignments.GetVehicleMaterialsAssignment(), value, SupportedGames3);
@@ -52,6 +57,7 @@ public partial class CSceneVehicleCarBuilder : CSceneVehicleCarBuilderBase<CScen
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneVehicleCar.Chunk0A02B007());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneVehicleCar.Chunk0A02B008());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneVehicleCar.Chunk0A02B009());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneVehicleCar.Chunk0A02B00A());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005());
@@ -69,6 +75,7 @@ public partial class CSceneVehicleCarBuilder : CSceneVehicleCarBuilderBase<CScen
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneVehicleCar.Chunk0A02B007());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneVehicleCar.Chunk0A02B008());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneVehicleCar.Chunk0A02B009());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneVehicleCar.Chunk0A02B00A());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneVehicleCar.Chunk0A02B00B());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004());
@@ -150,7 +157,7 @@ public partial class CSceneVehicleCarBuilder : CSceneVehicleCarBuilderBase<CScen
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
-    public partial class TM10 : CSceneVehicleCarBuilderMembers2<TM10>
+    public partial class TM10 : CSceneVehicleCarBuilderMembers3<TM10>
     {
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCar> state) : base(state) { }
         public TM10 WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTM10? value) => base.WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -161,7 +168,7 @@ public partial class CSceneVehicleCarBuilder : CSceneVehicleCarBuilderBase<CScen
         public global::GBX.NET.Engines.Scene.CSceneVehicleCar Build() => BuildNode(CSceneVehicleCarBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneVehicleCar node);
     }
-    public partial class TMPU : CSceneVehicleCarBuilderMembers2<TMPU>
+    public partial class TMPU : CSceneVehicleCarBuilderMembers3<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCar> state) : base(state) { }
         public TMPU WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMPU? value) => base.WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -194,7 +201,7 @@ public partial class CSceneVehicleCarBuilder : CSceneVehicleCarBuilderBase<CScen
         public global::GBX.NET.Engines.Scene.CSceneVehicleCar Build() => BuildNode(CSceneVehicleCarBuilder.CreateRecipe3(GameVersion.TMNESWC), GameVersion.TMNESWC);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneVehicleCar node);
     }
-    public partial class VSK5 : CSceneVehicleCarBuilderMembers3<VSK5>
+    public partial class VSK5 : CSceneVehicleCarBuilderMembers4<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCar> state) : base(state) { }
         public VSK5 WithEnvironment(global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentVSK5? value) => base.WithEnvironment(value is null ? (global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment?)null : value is global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -209,7 +216,7 @@ public partial class CSceneVehicleCarBuilder : CSceneVehicleCarBuilderBase<CScen
         public global::GBX.NET.Engines.Scene.CSceneVehicleCar Build() => BuildNode(CSceneVehicleCarBuilder.CreateRecipe4(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneVehicleCar node);
     }
-    public partial class TMF : CSceneVehicleCarBuilderMembers3<TMF>
+    public partial class TMF : CSceneVehicleCarBuilderMembers4<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCar> state) : base(state) { }
         public TMF WithEnvironment(global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentTMF? value) => base.WithEnvironment(value is null ? (global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment?)null : value is global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
