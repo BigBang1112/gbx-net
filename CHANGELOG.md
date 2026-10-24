@@ -20,7 +20,7 @@
 - Fixed validation ghost sample data
 - Fixed lightmaps without frames
 
-GBX.NET.Builders 1.0.0
+GBX.NET.Builders 2.5.0
 - Added generated fluent node builders with game-specific chunks and defaults
 
 GBX.NET.PAK 2.4.5
