@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <PackageId>GBX.NET.Builders</PackageId>
-        <VersionPrefix>1.0.0</VersionPrefix>
+        <VersionPrefix>2.5.0</VersionPrefix>
         <Authors>BigBang1112</Authors>
         <Description>Generated fluent builders that create GBX.NET nodes for a selected game version.</Description>
         <Copyright>Copyright (c) 2026 Petr Pivoňka</Copyright>
